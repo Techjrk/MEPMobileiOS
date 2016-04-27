@@ -13,6 +13,12 @@
 		B70155261CD0C56A0050CF8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155241CD0C56A0050CF8A /* Main.storyboard */; };
 		B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B70155271CD0C56A0050CF8A /* Assets.xcassets */; };
 		B701552B1CD0C56A0050CF8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155291CD0C56A0050CF8A /* LaunchScreen.storyboard */; };
+		B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155371CD0C77B0050CF8A /* SplashViewController.m */; };
+		B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155381CD0C77B0050CF8A /* SplashViewController.xib */; };
+		B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B701553C1CD0C7920050CF8A /* LoginViewController.m */; };
+		B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B701553D1CD0C7920050CF8A /* LoginViewController.xib */; };
+		B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155411CD0C7A20050CF8A /* DashboardViewController.m */; };
+		B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155421CD0C7A20050CF8A /* DashboardViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,15 @@
 		B70155271CD0C56A0050CF8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B701552A1CD0C56A0050CF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B701552C1CD0C56A0050CF8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B70155361CD0C77B0050CF8A /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		B70155371CD0C77B0050CF8A /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		B70155381CD0C77B0050CF8A /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		B701553B1CD0C7920050CF8A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B701553C1CD0C7920050CF8A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B701553D1CD0C7920050CF8A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B70155401CD0C7A20050CF8A /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		B70155411CD0C7A20050CF8A /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		B70155421CD0C7A20050CF8A /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,9 @@
 		B701551A1CD0C56A0050CF8A /* lecet */ = {
 			isa = PBXGroup;
 			children = (
+				B70155351CD0C7570050CF8A /* CustomViews */,
+				B70155341CD0C74D0050CF8A /* Cells */,
+				B70155331CD0C7410050CF8A /* Controllers */,
 				B701551E1CD0C56A0050CF8A /* AppDelegate.h */,
 				B701551F1CD0C56A0050CF8A /* AppDelegate.m */,
 				B70155211CD0C56A0050CF8A /* ViewController.h */,
@@ -77,6 +95,36 @@
 				B701551C1CD0C56A0050CF8A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B70155331CD0C7410050CF8A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B70155361CD0C77B0050CF8A /* SplashViewController.h */,
+				B70155371CD0C77B0050CF8A /* SplashViewController.m */,
+				B70155381CD0C77B0050CF8A /* SplashViewController.xib */,
+				B701553B1CD0C7920050CF8A /* LoginViewController.h */,
+				B701553C1CD0C7920050CF8A /* LoginViewController.m */,
+				B701553D1CD0C7920050CF8A /* LoginViewController.xib */,
+				B70155401CD0C7A20050CF8A /* DashboardViewController.h */,
+				B70155411CD0C7A20050CF8A /* DashboardViewController.m */,
+				B70155421CD0C7A20050CF8A /* DashboardViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B70155341CD0C74D0050CF8A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B70155351CD0C7570050CF8A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +184,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
 				B701552B1CD0C56A0050CF8A /* LaunchScreen.storyboard in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
 				B70155261CD0C56A0050CF8A /* Main.storyboard in Resources */,
+				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
+				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +201,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
+				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
+				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
+				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +354,7 @@
 				B70155311CD0C56A0050CF8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
