@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomTextField">
+            <connections>
+                <outlet property="labelPlaceholder" destination="NXt-CM-ct2" id="Mlo-8C-ZVM"/>
+                <outlet property="textField" destination="Om9-iO-3cm" id="sxx-8r-obq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="119"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXt-CM-ct2">
+                    <rect key="frame" x="4" y="0.0" width="379" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-iO-3cm">
+                    <rect key="frame" x="4" y="26" width="379" height="95"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Om9-iO-3cm" firstAttribute="width" secondItem="NXt-CM-ct2" secondAttribute="width" id="0BH-g3-FlV"/>
+                <constraint firstAttribute="trailing" secondItem="NXt-CM-ct2" secondAttribute="trailing" constant="4" id="AKl-JK-tr7"/>
+                <constraint firstItem="NXt-CM-ct2" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.22" id="cdl-Kl-dZ3"/>
+                <constraint firstItem="NXt-CM-ct2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="jzd-dN-wPB"/>
+                <constraint firstItem="Om9-iO-3cm" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="pka-WJ-OgV"/>
+                <constraint firstItem="NXt-CM-ct2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="smY-z3-qsu"/>
+                <constraint firstItem="Om9-iO-3cm" firstAttribute="top" secondItem="NXt-CM-ct2" secondAttribute="bottom" id="srJ-iz-pEB"/>
+                <constraint firstItem="Om9-iO-3cm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="yYX-CQ-Is5"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="148.5" y="67.5"/>
+        </view>
+    </objects>
+</document>

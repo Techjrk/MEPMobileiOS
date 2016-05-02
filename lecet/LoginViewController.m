@@ -8,30 +8,46 @@
 
 #import "LoginViewController.h"
 
-@interface LoginViewController ()
+#import "CustomTextField.h"
+#import "DashboardViewController.h"
 
+#import "loginConstants.h"
+
+@interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet CustomTextField *textFieldEmail;
+@property (weak, nonatomic) IBOutlet CustomTextField *textFieldPassword;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerHeight;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLogin;
+- (IBAction)tappedButtonLogin:(id)sender;
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _constraintContainerHeight.constant = kDeviceHeight * 0.47;
+    
+    [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
+    [_textFieldPassword setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_PASSWORD")];
+    
+    [_buttonLogin setTitle:NSLocalizedLanguage(@"LOGIN_BUTTON_TEXT") forState:UIControlStateNormal];
+    _buttonLogin.titleLabel.font = LOGIN_BUTTON_FONT;
+    _buttonLogin.backgroundColor = LOGIN_BUTTON_BG_COLOR;
+    _buttonLogin.layer.shadowColor = LOGIN_BUTTON_SHADOW_COLOR.CGColor;
+    _buttonLogin.layer.shadowRadius = 4;
+    _buttonLogin.layer.shadowOffset = CGSizeMake(2, 2);
+    _buttonLogin.layer.shadowOpacity = 0.5;
+    _buttonLogin.layer.masksToBounds = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)tappedButtonLogin:(id)sender {
+    [self.navigationController pushViewController:[DashboardViewController new] animated:YES];
 }
-*/
 
 @end

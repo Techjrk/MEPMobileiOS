@@ -10,15 +10,35 @@
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
 		B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551F1CD0C56A0050CF8A /* AppDelegate.m */; };
 		B70155231CD0C56A0050CF8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155221CD0C56A0050CF8A /* ViewController.m */; };
-		B70155261CD0C56A0050CF8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155241CD0C56A0050CF8A /* Main.storyboard */; };
 		B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B70155271CD0C56A0050CF8A /* Assets.xcassets */; };
-		B701552B1CD0C56A0050CF8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155291CD0C56A0050CF8A /* LaunchScreen.storyboard */; };
 		B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155371CD0C77B0050CF8A /* SplashViewController.m */; };
 		B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155381CD0C77B0050CF8A /* SplashViewController.xib */; };
 		B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B701553C1CD0C7920050CF8A /* LoginViewController.m */; };
 		B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B701553D1CD0C7920050CF8A /* LoginViewController.xib */; };
 		B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155411CD0C7A20050CF8A /* DashboardViewController.m */; };
 		B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155421CD0C7A20050CF8A /* DashboardViewController.xib */; };
+		B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */; };
+		B76C69301CD21CD7009E9F15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */; };
+		B76C69321CD21CF6009E9F15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */; };
+		B76C69341CD21CFD009E9F15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C69331CD21CFD009E9F15 /* MapKit.framework */; };
+		B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76C693C1CD22898009E9F15 /* Lato-Heavy.ttf */; };
+		B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76C693A1CD2282E009E9F15 /* Lato-Black.ttf */; };
+		B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76C69391CD227C9009E9F15 /* Lato-Bold.ttf */; };
+		B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76C693B1CD2284C009E9F15 /* Lato-Semibold.ttf */; };
+		B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76C69381CD227B6009E9F15 /* Lato-Regular.ttf */; };
+		B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69431CD2488A009E9F15 /* CustomTextField.m */; };
+		B76C69461CD2489B009E9F15 /* CustomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69451CD2489B009E9F15 /* CustomTextField.xib */; };
+		B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69491CD2491F009E9F15 /* BaseViewClass.m */; };
+		B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C694C1CD24BDC009E9F15 /* BaseViewController.m */; };
+		B76C69501CD24F05009E9F15 /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76C694F1CD24F05009E9F15 /* en.strings */; };
+		B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69531CD376B2009E9F15 /* MenuHeaderView.m */; };
+		B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69551CD376BE009E9F15 /* MenuHeaderView.xib */; };
+		B76C69601CD3B432009E9F15 /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C695F1CD3B432009E9F15 /* ChartView.m */; };
+		B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69611CD3B442009E9F15 /* ChartView.xib */; };
+		B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69651CD7551E009E9F15 /* BidItemView.m */; };
+		B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69671CD7552E009E9F15 /* BidItemView.xib */; };
+		B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */; };
+		B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +48,7 @@
 		B701551F1CD0C56A0050CF8A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B70155211CD0C56A0050CF8A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B70155221CD0C56A0050CF8A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B70155251CD0C56A0050CF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B70155271CD0C56A0050CF8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B701552A1CD0C56A0050CF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B701552C1CD0C56A0050CF8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B70155361CD0C77B0050CF8A /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		B70155371CD0C77B0050CF8A /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
@@ -41,6 +59,43 @@
 		B70155401CD0C7A20050CF8A /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		B70155411CD0C7A20050CF8A /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		B70155421CD0C7A20050CF8A /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B76C692D1CD21A54009E9F15 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		B76C692E1CD21B6E009E9F15 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B76C69331CD21CFD009E9F15 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B76C69361CD2243D009E9F15 /* loginConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginConstants.h; sourceTree = "<group>"; };
+		B76C69381CD227B6009E9F15 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		B76C69391CD227C9009E9F15 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		B76C693A1CD2282E009E9F15 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		B76C693B1CD2284C009E9F15 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		B76C693C1CD22898009E9F15 /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		B76C69421CD2488A009E9F15 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		B76C69431CD2488A009E9F15 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		B76C69451CD2489B009E9F15 /* CustomTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextField.xib; sourceTree = "<group>"; };
+		B76C69481CD2491F009E9F15 /* BaseViewClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewClass.h; sourceTree = "<group>"; };
+		B76C69491CD2491F009E9F15 /* BaseViewClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewClass.m; sourceTree = "<group>"; };
+		B76C694B1CD24BDC009E9F15 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		B76C694C1CD24BDC009E9F15 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		B76C694F1CD24F05009E9F15 /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = en.strings; sourceTree = "<group>"; };
+		B76C69511CD25616009E9F15 /* customTextFieldConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customTextFieldConstants.h; sourceTree = "<group>"; };
+		B76C69521CD376B2009E9F15 /* MenuHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHeaderView.h; sourceTree = "<group>"; };
+		B76C69531CD376B2009E9F15 /* MenuHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuHeaderView.m; sourceTree = "<group>"; };
+		B76C69551CD376BE009E9F15 /* MenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
+		B76C69571CD37D9B009E9F15 /* dashboardConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dashboardConstants.h; sourceTree = "<group>"; };
+		B76C69581CD396F6009E9F15 /* menuHeaderConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = menuHeaderConstants.h; sourceTree = "<group>"; };
+		B76C695E1CD3B432009E9F15 /* ChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartView.h; sourceTree = "<group>"; };
+		B76C695F1CD3B432009E9F15 /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartView.m; sourceTree = "<group>"; };
+		B76C69611CD3B442009E9F15 /* ChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
+		B76C69631CD3BADF009E9F15 /* chartConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chartConstants.h; sourceTree = "<group>"; };
+		B76C69641CD7551E009E9F15 /* BidItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidItemView.h; sourceTree = "<group>"; };
+		B76C69651CD7551E009E9F15 /* BidItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidItemView.m; sourceTree = "<group>"; };
+		B76C69671CD7552E009E9F15 /* BidItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidItemView.xib; sourceTree = "<group>"; };
+		B76C69691CD75AEF009E9F15 /* BidItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B76C696E1CD76601009E9F15 /* bidItemViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bidItemViewConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +103,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76C69341CD21CFD009E9F15 /* MapKit.framework in Frameworks */,
+				B76C69321CD21CF6009E9F15 /* CoreGraphics.framework in Frameworks */,
+				B76C69301CD21CD7009E9F15 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +115,9 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B76C69331CD21CFD009E9F15 /* MapKit.framework */,
+				B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */,
+				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
 				B701551A1CD0C56A0050CF8A /* lecet */,
 				B70155191CD0C56A0050CF8A /* Products */,
 			);
@@ -73,6 +134,10 @@
 		B701551A1CD0C56A0050CF8A /* lecet */ = {
 			isa = PBXGroup;
 			children = (
+				B76C694E1CD24EEF009E9F15 /* Language */,
+				B76C69471CD24906009E9F15 /* BaseClass */,
+				B76C69371CD227A8009E9F15 /* Fonts */,
+				B76C69351CD22413009E9F15 /* AppConstants */,
 				B70155351CD0C7570050CF8A /* CustomViews */,
 				B70155341CD0C74D0050CF8A /* Cells */,
 				B70155331CD0C7410050CF8A /* Controllers */,
@@ -80,11 +145,11 @@
 				B701551F1CD0C56A0050CF8A /* AppDelegate.m */,
 				B70155211CD0C56A0050CF8A /* ViewController.h */,
 				B70155221CD0C56A0050CF8A /* ViewController.m */,
-				B70155241CD0C56A0050CF8A /* Main.storyboard */,
 				B70155271CD0C56A0050CF8A /* Assets.xcassets */,
-				B70155291CD0C56A0050CF8A /* LaunchScreen.storyboard */,
 				B701552C1CD0C56A0050CF8A /* Info.plist */,
 				B701551B1CD0C56A0050CF8A /* Supporting Files */,
+				B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */,
+				B76C692E1CD21B6E009E9F15 /* PrefixHeader.pch */,
 			);
 			path = lecet;
 			sourceTree = "<group>";
@@ -123,8 +188,68 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B76C69421CD2488A009E9F15 /* CustomTextField.h */,
+				B76C69431CD2488A009E9F15 /* CustomTextField.m */,
+				B76C69451CD2489B009E9F15 /* CustomTextField.xib */,
+				B76C69521CD376B2009E9F15 /* MenuHeaderView.h */,
+				B76C69531CD376B2009E9F15 /* MenuHeaderView.m */,
+				B76C69551CD376BE009E9F15 /* MenuHeaderView.xib */,
+				B76C695E1CD3B432009E9F15 /* ChartView.h */,
+				B76C695F1CD3B432009E9F15 /* ChartView.m */,
+				B76C69611CD3B442009E9F15 /* ChartView.xib */,
+				B76C69641CD7551E009E9F15 /* BidItemView.h */,
+				B76C69651CD7551E009E9F15 /* BidItemView.m */,
+				B76C69671CD7552E009E9F15 /* BidItemView.xib */,
+				B76C69691CD75AEF009E9F15 /* BidItemCollectionViewCell.h */,
+				B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */,
+				B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		B76C69351CD22413009E9F15 /* AppConstants */ = {
+			isa = PBXGroup;
+			children = (
+				B76C692D1CD21A54009E9F15 /* constants.h */,
+				B76C69361CD2243D009E9F15 /* loginConstants.h */,
+				B76C69511CD25616009E9F15 /* customTextFieldConstants.h */,
+				B76C69571CD37D9B009E9F15 /* dashboardConstants.h */,
+				B76C69581CD396F6009E9F15 /* menuHeaderConstants.h */,
+				B76C69631CD3BADF009E9F15 /* chartConstants.h */,
+				B76C696E1CD76601009E9F15 /* bidItemViewConstants.h */,
+			);
+			name = AppConstants;
+			sourceTree = "<group>";
+		};
+		B76C69371CD227A8009E9F15 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B76C693C1CD22898009E9F15 /* Lato-Heavy.ttf */,
+				B76C693A1CD2282E009E9F15 /* Lato-Black.ttf */,
+				B76C69391CD227C9009E9F15 /* Lato-Bold.ttf */,
+				B76C693B1CD2284C009E9F15 /* Lato-Semibold.ttf */,
+				B76C69381CD227B6009E9F15 /* Lato-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		B76C69471CD24906009E9F15 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				B76C69481CD2491F009E9F15 /* BaseViewClass.h */,
+				B76C69491CD2491F009E9F15 /* BaseViewClass.m */,
+				B76C694B1CD24BDC009E9F15 /* BaseViewController.h */,
+				B76C694C1CD24BDC009E9F15 /* BaseViewController.m */,
+			);
+			name = BaseClass;
+			sourceTree = "<group>";
+		};
+		B76C694E1CD24EEF009E9F15 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				B76C694F1CD24F05009E9F15 /* en.strings */,
+			);
+			name = Language;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,12 +309,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
+				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
+				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
+				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
+				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
-				B701552B1CD0C56A0050CF8A /* LaunchScreen.storyboard in Resources */,
+				B76C69461CD2489B009E9F15 /* CustomTextField.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
-				B70155261CD0C56A0050CF8A /* Main.storyboard in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
+				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
+				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
+				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
+				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
+				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
+				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,34 +336,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
+				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
+				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
+				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
+				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
+				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
+				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		B70155241CD0C56A0050CF8A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B70155251CD0C56A0050CF8A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B70155291CD0C56A0050CF8A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B701552A1CD0C56A0050CF8A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B701552D1CD0C56A0050CF8A /* Debug */ = {
@@ -317,7 +440,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = domandtom.lecet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -328,7 +454,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = domandtom.lecet;
 				PRODUCT_NAME = "$(TARGET_NAME)";

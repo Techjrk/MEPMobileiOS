@@ -1,0 +1,26 @@
+/* 
+  en.strings
+  lecet
+
+  Created by Harry Herrys Camigla on 4/28/16.
+  Copyright © 2016 Dom and TOm. All rights reserved.
+*/
+
+//LoginViewController.xib
+"LOGIN_BUTTON_TEXT"                         =               "LOGIN";
+"LOGIN_PLACEHOLDER_EMAIL"                   =               "Email Address";
+"LOGIN_PLACEHOLDER_PASSWORD"                =               "Password";
+
+//MenuHeaderView.xib
+"MENUHEADER_LABEL_HEADER_TEXT"              =               "BIDS";
+"MENUHEADER_LABEL_COUNT_RECENT_TEXT"        =               "%li RECENTLY MADE";
+"MENUHEADER_LABEL_COUNT_HAPPEN_TEXT"        =               "%li HAPPENING SOON";
+
+
+//ChartView.xib
+"CHART_VIEW_LABEL_HOUSING"                  =               "HOUSING";
+"CHART_VIEW_LABEL_ENGINEERING"              =               "ENGINEERING";
+"CHART_VIEW_LABEL_BUILDING"                 =               "BUILDING";
+"CHART_VIEW_LABEL_UTILITIES"                =               "UTILITIES";
+
+

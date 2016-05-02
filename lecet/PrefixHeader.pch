@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  lecet
+//
+//  Created by Harry Herrys Camigla on 4/28/16.
+//  Copyright © 2016 Dom and TOm. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIScreen.h>
+#import "constants.h"
+
+#endif /* PrefixHeader_pch */
