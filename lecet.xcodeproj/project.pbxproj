@@ -39,6 +39,9 @@
 		B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69671CD7552E009E9F15 /* BidItemView.xib */; };
 		B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */; };
 		B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */; };
+		B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69701CD78794009E9F15 /* CustomPieChart.m */; };
+		B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69721CD787A4009E9F15 /* CustomPieChart.xib */; };
+		B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69751CD7890C009E9F15 /* CustomPieChartLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,11 @@
 		B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B76C696E1CD76601009E9F15 /* bidItemViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bidItemViewConstants.h; sourceTree = "<group>"; };
+		B76C696F1CD78794009E9F15 /* CustomPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPieChart.h; sourceTree = "<group>"; };
+		B76C69701CD78794009E9F15 /* CustomPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPieChart.m; sourceTree = "<group>"; };
+		B76C69721CD787A4009E9F15 /* CustomPieChart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPieChart.xib; sourceTree = "<group>"; };
+		B76C69741CD7890C009E9F15 /* CustomPieChartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPieChartLayer.h; sourceTree = "<group>"; };
+		B76C69751CD7890C009E9F15 /* CustomPieChartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPieChartLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +211,11 @@
 				B76C69691CD75AEF009E9F15 /* BidItemCollectionViewCell.h */,
 				B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */,
 				B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */,
+				B76C696F1CD78794009E9F15 /* CustomPieChart.h */,
+				B76C69701CD78794009E9F15 /* CustomPieChart.m */,
+				B76C69721CD787A4009E9F15 /* CustomPieChart.xib */,
+				B76C69741CD7890C009E9F15 /* CustomPieChartLayer.h */,
+				B76C69751CD7890C009E9F15 /* CustomPieChartLayer.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -310,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
+				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
 				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
@@ -337,6 +351,7 @@
 			files = (
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
+				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
@@ -347,6 +362,7 @@
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
