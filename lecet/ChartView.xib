@@ -30,6 +30,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1Z-kT-FPl">
                             <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SA-5R-5dZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <connections>
+                                        <action selector="tappedButtonHousing:" destination="-1" eventType="touchUpInside" id="2b8-cr-Afi"/>
+                                    </connections>
+                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_housing" translatesAutoresizingMaskIntoConstraints="NO" id="VmW-8S-1jj">
                                     <rect key="frame" x="33.5" y="0.0" width="25" height="49"/>
                                 </imageView>
@@ -39,12 +45,6 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SA-5R-5dZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
-                                    <connections>
-                                        <action selector="tappedButtonHousing:" destination="-1" eventType="touchUpInside" id="2b8-cr-Afi"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -73,6 +73,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0n9-mt-Owl">
                             <rect key="frame" x="92" y="0.0" width="92" height="70"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvv-KH-KlX">
+                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <connections>
+                                        <action selector="tappedButtonEngineering:" destination="-1" eventType="touchUpInside" id="quE-aq-MZq"/>
+                                    </connections>
+                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_engineering" translatesAutoresizingMaskIntoConstraints="NO" id="hfc-GH-IF0">
                                     <rect key="frame" x="33.5" y="0.0" width="25.5" height="49"/>
                                 </imageView>
@@ -82,12 +88,6 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvv-KH-KlX">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
-                                    <connections>
-                                        <action selector="tappedButtonEngineering:" destination="-1" eventType="touchUpInside" id="quE-aq-MZq"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -116,6 +116,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APK-NO-qU5">
                             <rect key="frame" x="184" y="0.0" width="92" height="70"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-it-I22">
+                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <connections>
+                                        <action selector="tappedButtonBuilding:" destination="-1" eventType="touchUpInside" id="0G8-sJ-0xd"/>
+                                    </connections>
+                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_building" translatesAutoresizingMaskIntoConstraints="NO" id="92l-yt-cvm">
                                     <rect key="frame" x="35.5" y="0.0" width="22.5" height="49"/>
                                 </imageView>
@@ -125,12 +131,6 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-it-I22">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
-                                    <connections>
-                                        <action selector="tappedButtonBuilding:" destination="-1" eventType="touchUpInside" id="0G8-sJ-0xd"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -159,6 +159,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-tm-o5T">
                             <rect key="frame" x="276" y="0.0" width="92" height="70"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn1-XM-Jll">
+                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <connections>
+                                        <action selector="tappedButtonUtilities:" destination="-1" eventType="touchUpInside" id="3Z0-Fq-JWy"/>
+                                    </connections>
+                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_utilities" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-Ib-PWh">
                                     <rect key="frame" x="37.5" y="0.0" width="18" height="49"/>
                                 </imageView>
@@ -168,12 +174,6 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn1-XM-Jll">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
-                                    <connections>
-                                        <action selector="tappedButtonUtilities:" destination="-1" eventType="touchUpInside" id="3Z0-Fq-JWy"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>

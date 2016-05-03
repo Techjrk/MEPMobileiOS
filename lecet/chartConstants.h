@@ -16,6 +16,7 @@
 #define CHART_BUTTON_ENGINEERING_COLOR              RGB(248, 152, 28)
 #define CHART_BUTTON_BUILDING_COLOR                 RGB(168, 195, 230)
 #define CHART_BUTTON_UTILITIES_COLOR                RGB(76, 145, 209)
+#define CHART_BUTTON_SELECTED_COLOR                 RGB(9, 23, 53)
 
 #define CHART_BUTTON_GROUP_LABEL_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 10)
 

@@ -90,6 +90,22 @@
     CustomPieChartLayer *layer = object;
     NSLog(@"%@ HAS FOCUS %@", layer.tagName, [layer segmentHasFocus]?@"YES":@"NO");
     
+    _buttonHousing.backgroundColor = [UIColor clearColor];
+    _buttonEngineering.backgroundColor = [UIColor clearColor];
+    _buttonBuilding.backgroundColor = [UIColor clearColor];
+    _buttonUtilities.backgroundColor = [UIColor clearColor];
+    if ([layer segmentHasFocus]) {
+        NSString *tagName = layer.tagName;
+        if ([tagName isEqualToString:kTagNameHousing]) {
+            _buttonHousing.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
+        } else if([tagName isEqualToString:kTagNameEngineering]) {
+            _buttonEngineering.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
+        } else if([tagName isEqualToString:kTagNameBuilding]) {
+            _buttonBuilding.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
+        } else {
+            _buttonUtilities.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
+        }
+    }
 }
 
 @end
