@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController">
             <connections>
                 <outlet property="bidsCollectionView" destination="9vD-FZ-MFE" id="NdO-Vh-sYu"/>
+                <outlet property="calendarView" destination="Tqv-Ad-z1n" id="z1N-ph-ePi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,9 +31,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="275"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqv-Ad-z1n">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqv-Ad-z1n" customClass="CustomCalendar">
                                     <rect key="frame" x="600" y="0.0" width="600" height="275"/>
-                                    <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q03-Ls-shX">
                                     <rect key="frame" x="1200" y="0.0" width="600" height="275"/>

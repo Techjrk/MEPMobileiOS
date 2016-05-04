@@ -17,7 +17,7 @@
 #define kDeviceWidth    [[UIScreen mainScreen] bounds].size.width
 #define kDeviceHeight   [[UIScreen mainScreen] bounds].size.height
 #define kDeviceScale    [UIScreen mainScreen].scale
-
+#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
 //***** DEVICE FUNCTIONS *****
 #define isiPhone4 (kDeviceHeight == 480)?TRUE:FALSE

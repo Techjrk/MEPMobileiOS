@@ -9,6 +9,8 @@
 #import "CustomPieChartLayer.h"
 #import <UIKit/UIKit.h>
 
+#import "constants.h"
+
 #define kNOTIFICATION_customViewLayerTapped @"kNOTIFICATION_customViewLayerTapped"
 
 @interface CustomPieChartLayer(){
@@ -26,8 +28,6 @@
 @synthesize focusImageView;
 @synthesize tagName;
 @synthesize customPieChartLayerDelegate;
-
-#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
 #define kHAS_FOCUS_SEGMENT @"kHAS_FOCUS_SEGMENT"
 #define kNOTIFICATION_tappedLayer @"NOTIFICATION_tappedLayer"

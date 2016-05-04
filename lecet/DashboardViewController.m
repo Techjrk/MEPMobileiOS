@@ -10,9 +10,12 @@
 
 #import "dashboardConstants.h"
 #import "BidItemCollectionViewCell.h"
+#import "CustomCalendar.h"
+#import "CalendarItem.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
+@property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 
 @end
 
@@ -30,6 +33,8 @@
     _bidsCollectionView.dataSource = self;
     _bidsCollectionView.backgroundColor = DASHBOARD_BIDS_BG_COLOR;
     
+    [_calendarView setCalendarDate:[NSDate date]];
+    _calendarView.customCalendarDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +60,6 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    
-}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -94,6 +95,14 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     return 0;
+}
+
+- (void)tappedItem:(id)object {
+    CalendarItem *calendarItem = object;
+    CalendarItemState state = [calendarItem getState] == CalendarItemStateActive ? CalendarItemStateSelected : CalendarItemStateActive;
+    
+    [calendarItem setItemState:state];
+
 }
 
 @end
