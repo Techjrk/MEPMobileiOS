@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BidSoonItemCollectionViewCell : UICollectionViewCell
-
+- (void)setItemInfo:(id)info;
 @end

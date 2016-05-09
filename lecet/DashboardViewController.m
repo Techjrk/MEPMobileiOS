@@ -14,14 +14,14 @@
 #import "CustomCalendar.h"
 #import "CalendarItem.h"
 #import "CalendarItemCollectionViewCell.h"
-
-#import "DerivedNSManagedObject.h"
+#import "DB_BidSoon.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
-    NSMutableDictionary *bidItemsSoon;
-    NSMutableDictionary *currentBidItems;
+    NSMutableArray *bidItemsSoon;
+    NSMutableArray *currentBidItems;
+    NSMutableDictionary *bidMarker;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
@@ -72,14 +72,30 @@
 - (void)loadBidItems {
 
     _calendarView.customCalendarDelegate = nil;
+    
+    if (bidMarker == nil) {
+        bidMarker = [[NSMutableDictionary alloc] init];
+    }
+    [bidMarker removeAllObjects];
+    
 
     if (bidItemsSoon == nil) {
-        bidItemsSoon = [[NSMutableDictionary alloc] init];
+        bidItemsSoon = [[NSMutableArray alloc] init];
     }
     [bidItemsSoon removeAllObjects];
 
     [[DataManager sharedManager] happeningSoon:-300 success:^(id object) {
         
+        NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonth == %@", yearMonth];
+
+        bidItemsSoon = [[DB_BidSoon fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
+        
+        
+        for (DB_BidSoon *item in bidItemsSoon) {
+            bidMarker[item.bidYearMonthDay] = @"";
+        }
+        /*
         NSDictionary *bids = object[@"results"];
         
         for (NSDictionary *item in bids) {
@@ -88,16 +104,33 @@
             
             NSString *bidDateString = [DerivedNSManagedObject dateStringFromDateDay:bidDate];
             
-            NSMutableArray *itemList = bidItemsSoon[bidDateString];
+            NSMutableArray *itemList = tempDictionary[bidDateString];
             
             if (itemList == nil) {
                 itemList = [[NSMutableArray alloc] init];
             }
             
             [itemList addObject:item];
-            bidItemsSoon[bidDateString] = itemList;
+
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"bidDate" ascending:YES selector:@selector(localizedStandardCompare:)];
+            
+            NSMutableArray *sortedItems = [[itemList sortedArrayUsingDescriptors:@[ descriptor ]] mutableCopy];
+
+            tempDictionary[bidDateString] = sortedItems;
         }
         
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES selector:@selector(localizedStandardCompare:)];
+        
+        NSMutableArray *keyItems = [[tempDictionary.allKeys sortedArrayUsingDescriptors:@[ descriptor ]] mutableCopy];
+        
+        for (NSString *key in keyItems) {
+            bidItemsSoon[key] = tempDictionary[key];
+        }
+        
+        //bidItemsSoon = tempDictionary;
+        */
+        
+        currentBidItems = bidItemsSoon;
         _calendarView.customCalendarDelegate = self;
 
         [_calendarView reloadData];
@@ -133,6 +166,10 @@
         }
         default: {
             BidSoonItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierSoon forIndexPath:indexPath];
+            
+            NSMutableArray *array = (NSMutableArray*)currentBidItems;
+            [cellItem setItemInfo:array[indexPath.row]];
+            
             cell = cellItem;
             break;
         }
@@ -154,14 +191,8 @@
     NSInteger count = 0;
     
     if (currentBidItems != nil) {
-        if ([currentBidItems isEqual:bidItemsSoon]) {
-            for (NSString *key in [currentBidItems allKeys] ) {
-                NSDictionary *item = currentBidItems[key];
-                count = count + item.count;
-            }
-        } else {
-            count = currentBidItems.count;
-        }
+        count = currentBidItems.count;
+
     }
     
     return count;
@@ -198,13 +229,19 @@
 
 - (void)tappedItem:(id)object {
     CalendarItem *calendarItem = object;
+    
     CalendarItemState state = [calendarItem getState] != CalendarItemStateSelected ? CalendarItemStateSelected : [calendarItem getInitialState];
+    [_calendarView clearSelection];
     [calendarItem setItemState:state];
 
     NSString *itemtag = [calendarItem itemTag];
     
     if (state == CalendarItemStateSelected) {
-        currentBidItems = bidItemsSoon[itemtag];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonthDay == %@", itemtag];
+        
+        currentBidItems = [[DB_BidSoon fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
+
     } else {
         currentBidItems = bidItemsSoon;
 
@@ -219,7 +256,7 @@
     NSString *itemTag = [item itemTag];
     if (itemTag != nil) {
         
-        NSDictionary *bidDate = bidItemsSoon[itemTag];
+        NSDictionary *bidDate = bidMarker[itemTag];
         
         [item setInitialState: bidDate!=nil?CalendarItemStateMarked:CalendarItemStateActive];
     }
@@ -238,10 +275,12 @@
 
         switch (currentPage) {
             case 0: {
-                currentBidItems = [NSMutableDictionary new];
+                [_calendarView clearSelection];
+                currentBidItems = [NSMutableArray new];
                 break;
             }
             default: {
+                [_calendarView clearSelection];
                 currentBidItems = bidItemsSoon;
                 break;
             }

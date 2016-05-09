@@ -11,7 +11,6 @@
 #import "calendarConstants.h"
 #import "CalendarItemCollectionViewCell.h"
 #import "CalendarItem.h"
-#import "DerivedNSManagedObject.h"
 
 @interface CustomCalendar()<UICollectionViewDelegate, UICollectionViewDataSource, CalendarItemCollectionViewCellDelegate>{
     NSDate *currentDate;
@@ -176,9 +175,6 @@
         }
 
     }
-//    _collectionView.delegate = self;
-//    _collectionView.dataSource = self;
-//    [_collectionView reloadData];
 }
 
 - (void)reloadData {
@@ -188,6 +184,10 @@
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView reloadData];
+}
+
+- (void)clearSelection {
+    [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_CLEAR_SELECTION object:nil];
 }
 
 @end

@@ -10,5 +10,5 @@
 #import "BaseViewClass.h"
 
 @interface BidSoonItem : BaseViewClass
-
+- (void)setItemInfo:(id)info;
 @end

@@ -48,6 +48,9 @@
 		B76C69811CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C697F1CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib */; };
 		B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B76C69831CDA0532009E9F15 /* CalendarItem.m */; };
 		B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76C69851CDA0546009E9F15 /* CalendarItem.xib */; };
+		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
+		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
+		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
 		B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */; };
 		B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F41CDB3E3300847FA3 /* AFNetworkReachabilityManager.m */; };
 		B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F61CDB3E3300847FA3 /* AFSecurityPolicy.m */; };
@@ -144,6 +147,11 @@
 		B76C69831CDA0532009E9F15 /* CalendarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarItem.m; sourceTree = "<group>"; };
 		B76C69851CDA0546009E9F15 /* CalendarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarItem.xib; sourceTree = "<group>"; };
 		B76C69871CDA0AC1009E9F15 /* calendarItemConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = calendarItemConstants.h; sourceTree = "<group>"; };
+		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
+		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B7A1D3331CE0AD9D004E94B3 /* DB_BidSoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_BidSoon.h; sourceTree = "<group>"; };
+		B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_BidSoon.m; sourceTree = "<group>"; };
 		B7F109F01CDB3E3300847FA3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B7F109F21CDB3E3300847FA3 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 		B701551A1CD0C56A0050CF8A /* lecet */ = {
 			isa = PBXGroup;
 			children = (
+				B7A1D32D1CE098AA004E94B3 /* Data */,
 				B7F10A251CDB411A00847FA3 /* Managers */,
 				B7F109EE1CDB3E1D00847FA3 /* Libraries */,
 				B76C694E1CD24EEF009E9F15 /* Language */,
@@ -371,6 +380,18 @@
 				B76C694F1CD24F05009E9F15 /* en.strings */,
 			);
 			name = Language;
+			sourceTree = "<group>";
+		};
+		B7A1D32D1CE098AA004E94B3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */,
+				B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */,
+				B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */,
+				B7A1D3331CE0AD9D004E94B3 /* DB_BidSoon.h */,
+				B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {
@@ -557,12 +578,14 @@
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
+				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
 				B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */,
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,
 				B7F10A151CDB3E3300847FA3 /* AFURLRequestSerialization.m in Sources */,
 				B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */,
 				B7F10A171CDB3E3300847FA3 /* AFURLSessionManager.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
+				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
@@ -572,6 +595,7 @@
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
+				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
@@ -718,6 +742,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */,
+			);
+			currentVersion = B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */;
+			path = LECET.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B70155101CD0C56A0050CF8A /* Project object */;
 }

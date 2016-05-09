@@ -8,16 +8,20 @@
 
 #import "BidSoonItem.h"
 
-#import "bidSoonItemConstants.h"
+#import <MapKit/MapKit.h>
 
-@interface BidSoonItem()
+#import "bidSoonItemConstants.h"
+#import "DB_BidSoon.h"
+
+@interface BidSoonItem()<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *groupDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
-@property (weak, nonatomic) IBOutlet UILabel *labelAmount;
+@property (weak, nonatomic) IBOutlet UILabel *labelTime;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidName;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidService;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidType;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidLocation;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
 @implementation BidSoonItem
@@ -34,9 +38,9 @@
     _labelDate.textColor = BID_SOON_ITEMVIEW_LABEL_TEXT_COLOR;
     _labelDate.font = BID_SOON_ITEMVIEW_LABEL_DATE_FONT;
     
-    _labelAmount.text = @"11:30 AM";
-    _labelAmount.textColor = BID_SOON_ITEMVIEW_LABEL_TEXT_COLOR;
-    _labelAmount.font = BID_SOON_ITEMVIEW_LABEL_TIME_FONT;
+    _labelTime.text = @"11:30 AM";
+    _labelTime.textColor = BID_SOON_ITEMVIEW_LABEL_TEXT_COLOR;
+    _labelTime.font = BID_SOON_ITEMVIEW_LABEL_TIME_FONT;
     
     _labelBidName.text = @"Northern Contracting Services";
     _labelBidName.textColor = BID_SOON_ITEMVIEW_LABEL_TEXT_COLOR;
@@ -54,6 +58,57 @@
     _labelBidType.textColor = BID_SOON_ITEMVIEW_LABEL_BIDINFO_COLOR;
     _labelBidType.font = BID_SOON_ITEMVIEW_LABEL_BIDINFO_FONT;
     
+    _mapView.delegate = self;
+    
 }
+
+- (void)setItemInfo:(id)info {
+
+    DB_BidSoon *item = info;
+    
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidDate];
+    _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
+    _labelTime.text = [DerivedNSManagedObject timeStringDate:date];
+    
+    _labelBidService.text = item.title;
+    _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", item.county, item.state];
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([item.geocodeLat floatValue], [item.geocodeLng floatValue]);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+                
+    }
+    
+    return userAnnotationView;
+    
+}
+
 
 @end

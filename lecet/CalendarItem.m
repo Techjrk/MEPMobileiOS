@@ -33,7 +33,13 @@
     _labelItem.font = CALENDAR_ITEM_TEXT_FONT;
     state = CalendarItemStateActive;
     previousState = CalendarItemStateActive;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearSelection:) name:CALENDAR_CLEAR_SELECTION object:nil];
     tag = nil;
+}
+
+- (void)clearSelection:(NSNotification*)notification{
+    state = previousState;
+    [self setNeedsDisplay];
 }
 
 - (IBAction)tappedButtonItem:(id)sender {

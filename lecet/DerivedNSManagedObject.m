@@ -73,6 +73,32 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)yearMonthFromDate:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM"];
+    return [formatter stringFromDate:date];
+}
+
+
++ (NSString *)monthDayStringFromDate:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMMM d"];
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)timeStringDate:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"hh:mm a"];
+    return [formatter stringFromDate:date];
+}
+
+
 + (BOOL)isEmpty:(id)object {
     return (object == nil
             || (object == [NSNull null])

@@ -25,4 +25,8 @@
     self.layer.masksToBounds = NO;
 }
 
+- (void)setItemInfo:(id)info {
+    [_bidItemView setItemInfo:info];
+}
+
 @end

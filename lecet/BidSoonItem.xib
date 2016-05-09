@@ -8,11 +8,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BidSoonItem">
             <connections>
                 <outlet property="groupDate" destination="m2H-mX-Rd0" id="0Hs-jF-aA9"/>
-                <outlet property="labelAmount" destination="EcJ-LG-pnT" id="5Ia-kA-WIq"/>
                 <outlet property="labelBidLocation" destination="mmB-e1-Qek" id="FRo-JR-yBU"/>
                 <outlet property="labelBidService" destination="vrr-xb-eN1" id="nyS-My-Gga"/>
                 <outlet property="labelBidType" destination="JzD-M7-L3i" id="RNq-QK-Xou"/>
                 <outlet property="labelDate" destination="Bpo-Jt-R4R" id="0Vl-HQ-aXp"/>
+                <outlet property="labelTime" destination="EcJ-LG-pnT" id="gCl-Gg-FBG"/>
+                <outlet property="mapView" destination="y6q-HE-Wyp" id="DlS-Tf-8cK"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -48,8 +49,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="h7Y-nF-wlt"/>
                             <exclude reference="Iae-1G-IxH"/>
+                            <exclude reference="h7Y-nF-wlt"/>
                         </mask>
                     </variation>
                 </view>

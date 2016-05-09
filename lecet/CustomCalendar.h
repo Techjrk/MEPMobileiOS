@@ -18,4 +18,5 @@
 @property (weak,nonatomic) id<CustomCalendarDelegate> customCalendarDelegate;
 - (void)setCalendarDate:(NSDate*)calendarDate;
 - (void)reloadData;
+- (void)clearSelection;
 @end

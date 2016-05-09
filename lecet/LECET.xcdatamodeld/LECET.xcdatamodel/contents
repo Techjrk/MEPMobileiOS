@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="DB_BidSoon" representedClassName="DB_BidSoon" syncable="YES">
+        <attribute name="addendaInd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="availableFrom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidSubmitTo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidTimeZone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidYearMonth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidYearMonthDay" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bondBidInd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bondPaymentInd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bondPfrmInd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cnProjectUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contractNbr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="county" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currencyType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dodgeNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="estLow" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPublishDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="planInd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="primaryProjectTypeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priorPublishDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="specAvailable" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statusProjDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statusText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="targetFinishDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="targetStartDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipPlus4" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DB_BidSoon" positionX="-63" positionY="-18" width="128" height="735"/>
+    </elements>
+</model>

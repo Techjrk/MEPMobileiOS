@@ -22,4 +22,5 @@
 #define CALENDAR_LABEL_MONTH_TEXT_COLOR                         RGB(255, 255, 255)
 #define CALENDAR_LABEL_MONTH_TEXT_FONT                          fontNameWithSize(FONT_NAME_LATO_BLACK, 17)
 
+#define CALENDAR_CLEAR_SELECTION                                @"CALENDAR_CLEAR_SELECTION"
 #endif /* calendarConstants_h */
