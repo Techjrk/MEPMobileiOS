@@ -28,7 +28,7 @@
             </constraints>
             <size key="customSize" width="151" height="167"/>
             <connections>
-                <outlet property="bidItemVIew" destination="txg-Hw-5ra" id="9cU-g4-fs1"/>
+                <outlet property="bidItemView" destination="txg-Hw-5ra" id="wDq-Bo-Rf6"/>
             </connections>
             <point key="canvasLocation" x="251.5" y="366.5"/>
         </collectionViewCell>

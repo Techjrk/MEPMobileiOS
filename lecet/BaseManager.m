@@ -9,7 +9,7 @@
 #import "BaseManager.h"
 
 #import "SFHFKeychainUtils.h"
-#import "AFNetworking.h"
+
 
 @implementation BaseManager
 @synthesize managedObjectContext;
@@ -101,7 +101,7 @@
 
 - (void)HTTP_POST:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
     [self changeHTTPHeader:manager];
     

@@ -55,5 +55,16 @@
     _labelPlaceholder.hidden = textField.text.length == 0;
 }
 
+- (NSString *)text {
+    return _textField.text;
+}
+
+- (void)setText:(NSString *)text {
+    _textField.text = text;
+}
+
+- (void)setSecure:(BOOL)secure {
+    _textField.secureTextEntry = secure;
+}
 
 @end

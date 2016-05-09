@@ -11,6 +11,10 @@
 
 #import "constants.h"
 
+#define kItemActive         @"kItemActive"
+#define kItemDay            @"kItemDay"
+#define kItemTag            @"kItemTag"
+
 #define CALENDAR_BG_COLOR                                       RGB(5, 35, 74)
 #define CALENDAR_CONTENT_VIEW_BG_COLOR                          RGB(5, 35, 74)
 #define CALENDAR_MONTH_CONTAINER_VIEW_BG_COLOR                  RGB(248, 152, 28)

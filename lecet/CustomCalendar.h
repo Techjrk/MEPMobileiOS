@@ -11,9 +11,11 @@
 
 @protocol CustomCalendarDelegate<NSObject>
 - (void)tappedItem:(id)object;
+- (void)calendarItemWillDisplay:(id)object;
 @end
 
 @interface CustomCalendar : BaseViewClass
 @property (weak,nonatomic) id<CustomCalendarDelegate> customCalendarDelegate;
 - (void)setCalendarDate:(NSDate*)calendarDate;
+- (void)reloadData;
 @end

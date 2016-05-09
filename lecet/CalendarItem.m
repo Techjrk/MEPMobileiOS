@@ -9,11 +9,13 @@
 #import "CalendarItem.h"
 
 #import "calendarItemConstants.h"
+#import "calendarConstants.h"
 #import "constants.h"
 
 @interface CalendarItem(){
     CalendarItemState state;
     CalendarItemState previousState;
+    NSString *tag;
 }
 @property (weak, nonatomic) IBOutlet UIView *contentRound;
 @property (weak, nonatomic) IBOutlet UIView *contenInner;
@@ -30,6 +32,8 @@
     _labelItem.text = @"26";
     _labelItem.font = CALENDAR_ITEM_TEXT_FONT;
     state = CalendarItemStateActive;
+    previousState = CalendarItemStateActive;
+    tag = nil;
 }
 
 - (IBAction)tappedButtonItem:(id)sender {
@@ -106,19 +110,42 @@
     
 }
 
+- (void)setInitialState:(CalendarItemState)itemState {
+    previousState = itemState;
+    [self setItemState:previousState];
+}
+
 - (void)setItemState:(CalendarItemState)itemState {
     state = itemState;
     
     _itemButton.userInteractionEnabled = state != CalendarItemStateInActive;
-    [self layoutSubviews];
+    [self setNeedsDisplay];
 }
 
 -(CalendarItemState)getState {
     return state;
 }
 
+-(CalendarItemState)getInitialState {
+    return previousState;
+}
+
 - (void)setItemInfo:(id)info {
-    _labelItem.text = info;
+    
+    if (info != nil) {
+        NSNumber *number = info[kItemDay];
+        NSString *text = [NSString stringWithFormat:@"%li",(long)[number integerValue]];
+        tag = info[kItemTag];
+        
+        _labelItem.text = text;
+    } else {
+        _labelItem.text = @"";
+        tag = nil;
+    }
+}
+
+- (NSString*)itemTag {
+    return tag;
 }
 
 @end

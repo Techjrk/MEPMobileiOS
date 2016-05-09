@@ -66,6 +66,11 @@
 		B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A231CDB3E4100847FA3 /* SFHFKeychainUtils.m */; };
 		B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A271CDB41DE00847FA3 /* BaseManager.m */; };
 		B7F10A2B1CDB42FA00847FA3 /* DerivedNSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A2A1CDB42FA00847FA3 /* DerivedNSManagedObject.m */; };
+		B7F10A2E1CDB577800847FA3 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A2D1CDB577800847FA3 /* DataManager.m */; };
+		B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A301CDB898100847FA3 /* BidSoonItem.m */; };
+		B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */; };
+		B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */; };
+		B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +183,15 @@
 		B7F10A271CDB41DE00847FA3 /* BaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseManager.m; sourceTree = "<group>"; };
 		B7F10A291CDB42FA00847FA3 /* DerivedNSManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DerivedNSManagedObject.h; sourceTree = "<group>"; };
 		B7F10A2A1CDB42FA00847FA3 /* DerivedNSManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DerivedNSManagedObject.m; sourceTree = "<group>"; };
+		B7F10A2C1CDB577800847FA3 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		B7F10A2D1CDB577800847FA3 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		B7F10A2F1CDB898100847FA3 /* BidSoonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSoonItem.h; sourceTree = "<group>"; };
+		B7F10A301CDB898100847FA3 /* BidSoonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItem.m; sourceTree = "<group>"; };
+		B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItem.xib; sourceTree = "<group>"; };
+		B7F10A341CDB8AC200847FA3 /* bidSoonItemConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bidSoonItemConstants.h; sourceTree = "<group>"; };
+		B7F10A351CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSoonItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItemCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +285,9 @@
 				B76C697D1CDA04FC009E9F15 /* CalendarItemCollectionViewCell.h */,
 				B76C697E1CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m */,
 				B76C697F1CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib */,
+				B7F10A351CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.h */,
+				B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */,
+				B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -301,6 +318,9 @@
 				B76C69821CDA0532009E9F15 /* CalendarItem.h */,
 				B76C69831CDA0532009E9F15 /* CalendarItem.m */,
 				B76C69851CDA0546009E9F15 /* CalendarItem.xib */,
+				B7F10A2F1CDB898100847FA3 /* BidSoonItem.h */,
+				B7F10A301CDB898100847FA3 /* BidSoonItem.m */,
+				B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -317,6 +337,7 @@
 				B76C696E1CD76601009E9F15 /* bidItemViewConstants.h */,
 				B76C697C1CD9FEF4009E9F15 /* calendarConstants.h */,
 				B76C69871CDA0AC1009E9F15 /* calendarItemConstants.h */,
+				B7F10A341CDB8AC200847FA3 /* bidSoonItemConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -425,6 +446,8 @@
 				B7F10A271CDB41DE00847FA3 /* BaseManager.m */,
 				B7F10A291CDB42FA00847FA3 /* DerivedNSManagedObject.h */,
 				B7F10A2A1CDB42FA00847FA3 /* DerivedNSManagedObject.m */,
+				B7F10A2C1CDB577800847FA3 /* DataManager.h */,
+				B7F10A2D1CDB577800847FA3 /* DataManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -502,8 +525,10 @@
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
+				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
+				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
 			);
@@ -525,6 +550,7 @@
 				B7F10A201CDB3E3300847FA3 /* UIWebView+AFNetworking.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
+				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
@@ -540,6 +566,7 @@
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
+				B7F10A2E1CDB577800847FA3 /* DataManager.m in Sources */,
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
@@ -550,6 +577,7 @@
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
+				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
 				B7F10A161CDB3E3300847FA3 /* AFURLResponseSerialization.m in Sources */,
 			);

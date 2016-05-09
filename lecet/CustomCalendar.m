@@ -11,6 +11,7 @@
 #import "calendarConstants.h"
 #import "CalendarItemCollectionViewCell.h"
 #import "CalendarItem.h"
+#import "DerivedNSManagedObject.h"
 
 @interface CustomCalendar()<UICollectionViewDelegate, UICollectionViewDataSource, CalendarItemCollectionViewCellDelegate>{
     NSDate *currentDate;
@@ -32,8 +33,6 @@
 @implementation CustomCalendar
 
 #define kCellIdentifier     @"kCellIdentifier"
-#define kItemActive         @"kItemActive"
-#define kItemDay            @"kItemDay"
 
 -(void)awakeFromNib {
     [super awakeFromNib];
@@ -68,16 +67,17 @@
     
     NSDictionary *itemDict = (NSDictionary*)dayArray[indexPath.row];
     
-    NSNumber *number = itemDict[kItemDay];
     BOOL isActive = [itemDict[kItemActive] boolValue];
-    NSString *info = [NSString stringWithFormat:@"%li",[number integerValue]];
-    [cell setItemInfo:info];
+    [cell setItemInfo:itemDict];
     
     
     [cell setItemState:isActive?CalendarItemStateActive:CalendarItemStateInActive];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
-    
+
+    if(self.customCalendarDelegate != nil){
+        [self.customCalendarDelegate calendarItemWillDisplay:[cell calendarItem]];
+    }
     return cell;
 }
 
@@ -121,9 +121,6 @@
     [self.customCalendarDelegate tappedItem:calendarItem];
 }
 
-- getDateComponents:(NSDate*)date {
-    return [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday | kCFCalendarUnitWeekdayOrdinal fromDate:date];
-}
 
 - (void)setCalendarDate:(NSDate *)calendarDate {
     
@@ -132,12 +129,13 @@
 
     currentDate = calendarDate;
     
-    NSDateComponents *componentsBase = [self getDateComponents:calendarDate];
-    [componentsBase setDay:1];
+    NSDateComponents *componentsBase = [[DataManager sharedManager] getDateComponents:calendarDate];
+    //[componentsBase setDay:1];
 
-    NSDate *firstDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: componentsBase];
+    NSDate *firstDayOfMonthDate = [[DataManager sharedManager] getDateFirstDay:calendarDate];
+    //NSDate *firstDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: componentsBase];
     
-    NSDateComponents *componentsFirstDay = [self getDateComponents:firstDayOfMonthDate];
+    NSDateComponents *componentsFirstDay = [[DataManager sharedManager] getDateComponents:firstDayOfMonthDate];
     NSInteger startDay = componentsFirstDay.weekday - 1;
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -145,17 +143,18 @@
 
     _labelMonth.text = monthName;
     
-    [componentsFirstDay setMonth:[componentsBase month]+1];
-    [componentsFirstDay setDay:0];
-    NSDate *lastDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: componentsFirstDay];
-    NSDateComponents *componentsLastDay = [self getDateComponents:lastDayOfMonthDate];
+    NSDate *lastDayOfMonthDate = [[DataManager sharedManager] getDateLastDay:calendarDate];
+    NSDateComponents *componentsLastDay = [[DataManager sharedManager] getDateComponents:lastDayOfMonthDate];
     NSInteger lastDay = componentsLastDay.day;
     NSInteger lastWeekRow = componentsLastDay.weekdayOrdinal;
     NSInteger lastWeekDay = componentsLastDay.weekday;
     
     int daysOver = 0;
     for (int i = 0; i< lastDay; i++) {
-        dayArray[i+startDay] = @{kItemActive:[NSNumber numberWithBool:YES], kItemDay:@(i + 1)};
+        
+        NSString *yearMonthDay = [NSString stringWithFormat:@"%li-%02d-%02d",(long)componentsFirstDay.year, (int)componentsFirstDay.month, i +1 ];
+        
+        dayArray[i+startDay] = @{kItemActive:[NSNumber numberWithBool:YES], kItemDay:@(i + 1), kItemTag:yearMonthDay};
         daysOver = i;
     }
     
@@ -170,13 +169,22 @@
         [componentsFirstDay setDay:0];
         NSDate *previousDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: componentsFirstDay];
         
-        NSDateComponents *componentsPrevious = [self getDateComponents:previousDayOfMonthDate];
+        NSDateComponents *componentsPrevious = [[DataManager sharedManager] getDateComponents:previousDayOfMonthDate];
 
         for (int i=0; i<componentsPrevious.weekday; i++) {
             dayArray[componentsPrevious.weekday - (i+1)] = @{kItemActive:[NSNumber numberWithBool:NO], kItemDay:@( componentsPrevious.day - i )};
         }
 
     }
+//    _collectionView.delegate = self;
+//    _collectionView.dataSource = self;
+//    [_collectionView reloadData];
+}
+
+- (void)reloadData {
+    _collectionView.delegate = nil;
+    _collectionView.dataSource = nil;
+
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView reloadData];

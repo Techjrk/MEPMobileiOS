@@ -18,4 +18,6 @@
 @property (nonatomic) CalendarItemState itemState;
 @property (weak, nonatomic) id<CalendarItemCollectionViewCellDelegate> calendarItemCollectionViewCellDelegate;
 - (void) setItemInfo:(id)info;
+- (NSString*)itemTag;
+- (CalendarItem*)calendarItem;
 @end

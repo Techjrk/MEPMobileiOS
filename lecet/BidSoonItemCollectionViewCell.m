@@ -1,20 +1,20 @@
 //
-//  BidItemCollectionViewCell.m
+//  BidSoonItemCollectionViewCell.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/2/16.
+//  Created by Harry Herrys Camigla on 5/7/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "BidItemCollectionViewCell.h"
+#import "BidSoonItemCollectionViewCell.h"
 
-#import "BidItemView.h"
+#import "BidSoonItem.h"
 
-@interface BidItemCollectionViewCell()
-@property (weak, nonatomic) IBOutlet BidItemView *bidItemView;
+@interface BidSoonItemCollectionViewCell()
+@property (weak, nonatomic) IBOutlet BidSoonItem *bidItemView;
 @end
 
-@implementation BidItemCollectionViewCell
+@implementation BidSoonItemCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -23,7 +23,6 @@
     self.layer.shadowOpacity = 0.5;
     self.layer.shadowColor = [UIColor darkGrayColor].CGColor;
     self.layer.masksToBounds = NO;
-
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "AFNetworking.h"
 
 typedef void(^APIBlock)(id object);
 
@@ -24,6 +25,10 @@ typedef void(^APIBlock)(id object);
 - (void)storeKeyChainValue:(NSString*)userName password:(NSString*)password serviceName:(NSString*)serviceName;
 - (NSString*)getKeyChainValue:(NSString*)userName serviceName:(NSString*)serviceName;
 - (NSDictionary*)clientIdentity;
+
+//OVERLOAD
+- (void)changeHTTPHeader:(AFHTTPSessionManager*)manager;
+- (void)authenticate:(AFHTTPSessionManager*)manager;
 
 //HTTP
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;

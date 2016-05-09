@@ -34,4 +34,12 @@
     [_calendarItem setItemInfo:info];
 }
 
+- (NSString*)itemTag {
+    return [_calendarItem itemTag];
+}
+
+- (CalendarItem *)calendarItem {
+    return _calendarItem;
+}
+
 @end

@@ -28,7 +28,9 @@
     _constraintContainerHeight.constant = kDeviceHeight * 0.47;
     
     [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
+    
     [_textFieldPassword setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_PASSWORD")];
+    [_textFieldPassword setSecure:YES];
     
     [_buttonLogin setTitle:NSLocalizedLanguage(@"LOGIN_BUTTON_TEXT") forState:UIControlStateNormal];
     _buttonLogin.titleLabel.font = LOGIN_BUTTON_FONT;
@@ -39,6 +41,10 @@
     _buttonLogin.layer.shadowOpacity = 0.5;
     _buttonLogin.layer.masksToBounds = NO;
     
+    if (isDebug) {
+        [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
+        [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +53,17 @@
 
 
 - (IBAction)tappedButtonLogin:(id)sender {
-    [self.navigationController pushViewController:[DashboardViewController new] animated:YES];
+    
+    [[DataManager sharedManager] userLogin:[_textFieldEmail text] password:[_textFieldPassword text] success:^(id object) {
+        NSString *token = object[@"id"];
+        
+        [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
+        
+        [self.navigationController pushViewController:[DashboardViewController new] animated:YES];
+        
+    } failure:^(id object) {
+        
+    }];
 }
 
 @end
