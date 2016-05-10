@@ -15,11 +15,14 @@
 #import "CalendarItem.h"
 #import "CalendarItemCollectionViewCell.h"
 #import "DB_BidSoon.h"
+#import "DB_BidRecent.h"
+#import "MenuHeaderView.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
+    NSMutableArray *bidItemsRecent;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
 }
@@ -27,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet MenuHeaderView *menuHeader;
 
 @end
 
@@ -45,7 +49,7 @@
 
     _bidsCollectionView.backgroundColor = DASHBOARD_BIDS_BG_COLOR;
     
-    currentDate = [DerivedNSManagedObject dateFromDayString:@"2015-12-01"];
+    currentDate = [DerivedNSManagedObject dateFromDayString:@"2015-11-01"];
     [_calendarView setCalendarDate:currentDate];
     
     currentPage = 0;
@@ -53,14 +57,19 @@
     _bidsCollectionView.delegate = self;
     _bidsCollectionView.dataSource = self;
 
-    
-    /*
     [[DataManager sharedManager] bids:currentDate success:^(id object) {
         
+        bidItemsRecent = [[DB_BidRecent fetchObjectsForPredicate:nil key:@"bidCreateDate" ascending:YES] mutableCopy];
+        
+        currentBidItems = bidItemsRecent;
+        
+        [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_RECENT_TEXT"), currentBidItems.count ]];
+
+        [_bidsCollectionView reloadData];
     } failure:^(id object) {
         
     }];
-     */
+     
     
     [_calendarView reloadData];
     
@@ -95,42 +104,7 @@
         for (DB_BidSoon *item in bidItemsSoon) {
             bidMarker[item.bidYearMonthDay] = @"";
         }
-        /*
-        NSDictionary *bids = object[@"results"];
-        
-        for (NSDictionary *item in bids) {
-            
-            NSDate *bidDate = [DerivedNSManagedObject dateFromDateAndTimeString:item[@"bidDate"]];
-            
-            NSString *bidDateString = [DerivedNSManagedObject dateStringFromDateDay:bidDate];
-            
-            NSMutableArray *itemList = tempDictionary[bidDateString];
-            
-            if (itemList == nil) {
-                itemList = [[NSMutableArray alloc] init];
-            }
-            
-            [itemList addObject:item];
 
-            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"bidDate" ascending:YES selector:@selector(localizedStandardCompare:)];
-            
-            NSMutableArray *sortedItems = [[itemList sortedArrayUsingDescriptors:@[ descriptor ]] mutableCopy];
-
-            tempDictionary[bidDateString] = sortedItems;
-        }
-        
-        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES selector:@selector(localizedStandardCompare:)];
-        
-        NSMutableArray *keyItems = [[tempDictionary.allKeys sortedArrayUsingDescriptors:@[ descriptor ]] mutableCopy];
-        
-        for (NSString *key in keyItems) {
-            bidItemsSoon[key] = tempDictionary[key];
-        }
-        
-        //bidItemsSoon = tempDictionary;
-        */
-        
-        currentBidItems = bidItemsSoon;
         _calendarView.customCalendarDelegate = self;
 
         [_calendarView reloadData];
@@ -161,6 +135,9 @@
     switch (currentPage) {
         case 0: {
             BidItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+            
+            NSMutableArray *array = (NSMutableArray*)currentBidItems;
+            [cellItem setItemInfo:array[indexPath.row]];
             cell = cellItem;
             break;
         }
@@ -276,7 +253,7 @@
         switch (currentPage) {
             case 0: {
                 [_calendarView clearSelection];
-                currentBidItems = [NSMutableArray new];
+                currentBidItems = bidItemsRecent;
                 break;
             }
             default: {
@@ -286,6 +263,12 @@
             }
         }
         
+        if (currentPage == 0) {
+            [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_RECENT_TEXT"), currentBidItems.count ]];
+        } else {
+            [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_HAPPEN_TEXT"), currentBidItems.count ]];
+        }
+     
         [_bidsCollectionView reloadData];
         
     }

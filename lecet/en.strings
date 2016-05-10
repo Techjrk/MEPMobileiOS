@@ -16,7 +16,6 @@
 "MENUHEADER_LABEL_COUNT_RECENT_TEXT"        =               "%li RECENTLY MADE";
 "MENUHEADER_LABEL_COUNT_HAPPEN_TEXT"        =               "%li HAPPENING SOON";
 
-
 //ChartView.xib
 "CHART_VIEW_LABEL_HOUSING"                  =               "HOUSING";
 "CHART_VIEW_LABEL_ENGINEERING"              =               "ENGINEERING";

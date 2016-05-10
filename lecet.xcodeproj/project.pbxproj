@@ -51,6 +51,8 @@
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
+		B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D33B1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m */; };
+		B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D33D1CE1FFBD004E94B3 /* DB_BidRecent.m */; };
 		B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */; };
 		B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F41CDB3E3300847FA3 /* AFNetworkReachabilityManager.m */; };
 		B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F61CDB3E3300847FA3 /* AFSecurityPolicy.m */; };
@@ -152,6 +154,10 @@
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B7A1D3331CE0AD9D004E94B3 /* DB_BidSoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_BidSoon.h; sourceTree = "<group>"; };
 		B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_BidSoon.m; sourceTree = "<group>"; };
+		B7A1D33A1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidRecent+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B7A1D33B1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidRecent+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B7A1D33C1CE1FFBD004E94B3 /* DB_BidRecent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_BidRecent.h; sourceTree = "<group>"; };
+		B7A1D33D1CE1FFBD004E94B3 /* DB_BidRecent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_BidRecent.m; sourceTree = "<group>"; };
 		B7F109F01CDB3E3300847FA3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B7F109F21CDB3E3300847FA3 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -386,6 +392,10 @@
 			isa = PBXGroup;
 			children = (
 				B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */,
+				B7A1D33A1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.h */,
+				B7A1D33B1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m */,
+				B7A1D33C1CE1FFBD004E94B3 /* DB_BidRecent.h */,
+				B7A1D33D1CE1FFBD004E94B3 /* DB_BidRecent.m */,
 				B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */,
 				B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */,
 				B7A1D3331CE0AD9D004E94B3 /* DB_BidSoon.h */,
@@ -569,12 +579,14 @@
 				B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */,
 				B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */,
 				B7F10A201CDB3E3300847FA3 /* UIWebView+AFNetworking.m in Sources */,
+				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
+				B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,

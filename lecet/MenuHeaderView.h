@@ -10,5 +10,5 @@
 #import "BaseViewClass.h"
 
 @interface MenuHeaderView : BaseViewClass
-
+- (void)setTitle:(NSString*)title;
 @end

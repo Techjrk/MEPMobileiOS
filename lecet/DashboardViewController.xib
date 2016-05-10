@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="bidsCollectionView" destination="9vD-FZ-MFE" id="NdO-Vh-sYu"/>
                 <outlet property="calendarView" destination="Tqv-Ad-z1n" id="z1N-ph-ePi"/>
+                <outlet property="menuHeader" destination="88p-eh-KC7" id="i2K-z6-V80"/>
                 <outlet property="pageControl" destination="nAH-JD-F9h" id="dzW-gM-lwI"/>
                 <outlet property="scrollPageView" destination="l96-VF-778" id="CIo-no-CG8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

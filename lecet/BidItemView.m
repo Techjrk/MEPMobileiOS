@@ -9,8 +9,11 @@
 #import "BidItemView.h"
 
 #import "bidItemViewConstants.h"
+#import <MapKit/MapKit.h>
+#import "DB_BidRecent.h"
 
-@interface BidItemView()
+
+@interface BidItemView()<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *groupDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
@@ -18,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelBidService;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidType;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidLocation;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
 @implementation BidItemView
@@ -55,4 +59,65 @@
     _labelBidType.font = BID_ITEMVIEW_LABEL_BIDINFO_FONT;
 
 }
+
+- (void)setInfo:(id)info {
+    DB_BidRecent *item = info;
+    
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidDate];
+    _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    
+    CGFloat estlow = 10000;
+    
+    if (item.estLow == nil) {
+        estlow = [item.estLow floatValue];
+    }
+    NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
+    _labelAmount.text = [NSString stringWithFormat:@"$ %@", estLow ];
+    
+    _labelBidName.text = item.companyName;
+    
+    _labelBidService.text = item.title;
+    _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", item.county, item.state];
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([item.geocodeLat floatValue], [item.geocodeLng floatValue]);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        
+    }
+    
+    return userAnnotationView;
+    
+}
+
+
 @end

@@ -26,4 +26,7 @@
 
 }
 
+- (void)setItemInfo:(id)info {
+    [_bidItemView setInfo:info];
+}
 @end

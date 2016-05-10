@@ -31,4 +31,8 @@
 
 }
 
+- (void)setTitle:(NSString*)title {
+    _labelCount.text = title;
+    
+}
 @end
