@@ -31,8 +31,8 @@
     
     _labelItem.text = @"26";
     _labelItem.font = CALENDAR_ITEM_TEXT_FONT;
-    state = CalendarItemStateActive;
-    previousState = CalendarItemStateActive;
+    state = CalendarItemStateInActive;
+    previousState = CalendarItemStateInActive;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearSelection:) name:CALENDAR_CLEAR_SELECTION object:nil];
     tag = nil;
 }
