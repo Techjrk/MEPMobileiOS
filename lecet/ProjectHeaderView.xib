@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectHeaderView">
+            <connections>
+                <outlet property="labelTitle" destination="bDH-wf-ADg" id="1L6-Wa-VSJ"/>
+                <outlet property="viewInfo" destination="Rpb-L1-w8f" id="V7Z-PU-4Lp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="313"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VA8-VM-5X5">
+                    <rect key="frame" x="0.0" y="0.0" width="326" height="213"/>
+                </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rpb-L1-w8f">
+                    <rect key="frame" x="0.0" y="217" width="326" height="95.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Djh-L6-EOV">
+                            <rect key="frame" x="0.0" y="0.0" width="13" height="95.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wj7-B3-msf">
+                            <rect key="frame" x="312.5" y="0.0" width="13" height="95.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDH-wf-ADg">
+                            <rect key="frame" x="13" y="0.0" width="299.5" height="57.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-mV-XpH">
+                            <rect key="frame" x="51.5" y="57.5" width="261" height="28.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="rUo-mV-XpH" firstAttribute="height" secondItem="Rpb-L1-w8f" secondAttribute="height" multiplier="0.3" id="67x-Fs-D9v"/>
+                        <constraint firstItem="wj7-B3-msf" firstAttribute="top" secondItem="Rpb-L1-w8f" secondAttribute="top" id="6Sd-Aw-O6w"/>
+                        <constraint firstItem="rUo-mV-XpH" firstAttribute="top" secondItem="bDH-wf-ADg" secondAttribute="bottom" id="EJr-7p-e3P"/>
+                        <constraint firstItem="Djh-L6-EOV" firstAttribute="top" secondItem="Rpb-L1-w8f" secondAttribute="top" id="KX1-uf-ZTx"/>
+                        <constraint firstItem="Djh-L6-EOV" firstAttribute="leading" secondItem="Rpb-L1-w8f" secondAttribute="leading" id="KlI-I2-0EM"/>
+                        <constraint firstAttribute="bottom" secondItem="wj7-B3-msf" secondAttribute="bottom" id="T3F-3R-2gS"/>
+                        <constraint firstItem="rUo-mV-XpH" firstAttribute="width" secondItem="Rpb-L1-w8f" secondAttribute="width" multiplier="0.8" id="W9B-gx-bro"/>
+                        <constraint firstAttribute="trailing" secondItem="wj7-B3-msf" secondAttribute="trailing" id="Y2k-2s-m94"/>
+                        <constraint firstItem="bDH-wf-ADg" firstAttribute="leading" secondItem="Djh-L6-EOV" secondAttribute="trailing" id="akS-aX-4Rv"/>
+                        <constraint firstItem="wj7-B3-msf" firstAttribute="leading" secondItem="bDH-wf-ADg" secondAttribute="trailing" id="d7g-2b-AEO"/>
+                        <constraint firstItem="wj7-B3-msf" firstAttribute="leading" secondItem="rUo-mV-XpH" secondAttribute="trailing" id="iyN-a5-ele"/>
+                        <constraint firstItem="wj7-B3-msf" firstAttribute="width" secondItem="Djh-L6-EOV" secondAttribute="width" id="nSd-E8-qv5"/>
+                        <constraint firstItem="bDH-wf-ADg" firstAttribute="top" secondItem="Rpb-L1-w8f" secondAttribute="top" id="oXE-0Y-YNI"/>
+                        <constraint firstAttribute="bottom" secondItem="Djh-L6-EOV" secondAttribute="bottom" id="ssQ-Ck-dp5"/>
+                        <constraint firstItem="Djh-L6-EOV" firstAttribute="width" secondItem="Rpb-L1-w8f" secondAttribute="width" multiplier="0.04" id="uTt-bl-ikw"/>
+                        <constraint firstItem="bDH-wf-ADg" firstAttribute="height" secondItem="Rpb-L1-w8f" secondAttribute="height" multiplier="0.6" id="wls-Zz-8od"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.12660496469999999" blue="0.65176883149999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="VA8-VM-5X5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.68" id="4Kp-jP-xdt"/>
+                <constraint firstItem="Rpb-L1-w8f" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.305" id="PhH-Ur-hCd"/>
+                <constraint firstItem="VA8-VM-5X5" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="TVB-33-ngW"/>
+                <constraint firstAttribute="bottom" secondItem="Rpb-L1-w8f" secondAttribute="bottom" id="VVP-MY-5Pa"/>
+                <constraint firstItem="VA8-VM-5X5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wts-vQ-FlP"/>
+                <constraint firstItem="Rpb-L1-w8f" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="XnF-We-SMp"/>
+                <constraint firstItem="VA8-VM-5X5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xMr-tv-ZT4"/>
+                <constraint firstItem="Rpb-L1-w8f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yrq-Vg-Agq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="57" y="60.5"/>
+        </view>
+    </objects>
+</document>

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+#import "BidSoonItemCollectionViewCell.h"
+
 @interface BidSoonItem : BaseViewClass
+@property (strong, nonatomic) id<BidSoonCollectionItemDelegate>bidSoonCollectionItemDelegate;
 - (void)setItemInfo:(id)info;
+- (NSNumber*)getRecordId;
 @end

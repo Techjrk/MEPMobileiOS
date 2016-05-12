@@ -2,7 +2,7 @@
 //  DB_BidSoon+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/9/16.
+//  Created by Harry Herrys Camigla on 5/12/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

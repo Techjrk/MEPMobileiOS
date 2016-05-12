@@ -13,7 +13,9 @@
 #import "bidSoonItemConstants.h"
 #import "DB_BidSoon.h"
 
-@interface BidSoonItem()<MKMapViewDelegate>
+@interface BidSoonItem()<MKMapViewDelegate>{
+    NSNumber *recordId;
+}
 @property (weak, nonatomic) IBOutlet UIView *groupDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;
@@ -22,9 +24,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelBidType;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidLocation;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation BidSoonItem
+
+@synthesize bidSoonCollectionItemDelegate;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -65,6 +70,8 @@
 - (void)setItemInfo:(id)info {
 
     DB_BidSoon *item = info;
+    
+    recordId = item.recordId;
     
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidDate];
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
@@ -110,5 +117,15 @@
     
 }
 
+
+- (IBAction)tappedButton:(id)sender {
+    if (self.bidSoonCollectionItemDelegate != nil) {
+        [self.bidSoonCollectionItemDelegate tappedBidSoonCollectionItem:self];
+    }
+}
+
+- (NSNumber*)getRecordId {
+    return recordId;
+}
 
 @end

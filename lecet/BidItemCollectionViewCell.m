@@ -29,4 +29,8 @@
 - (void)setItemInfo:(id)info {
     [_bidItemView setInfo:info];
 }
+- (void)setBidCollectionitemDelegate:(id<BidCollectionItemDelegate>)bidCollectionitemDelegate {
+    _bidItemView.bidItemDelegate = (id)bidCollectionitemDelegate;
+}
+
 @end

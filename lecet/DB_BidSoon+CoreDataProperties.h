@@ -2,7 +2,7 @@
 //  DB_BidSoon+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/9/16.
+//  Created by Harry Herrys Camigla on 5/12/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *notes;
 @property (nullable, nonatomic, retain) NSString *ownerClass;
 @property (nullable, nonatomic, retain) NSString *planInd;
-@property (nullable, nonatomic, retain) NSString *primaryProjectTypeId;
+@property (nullable, nonatomic, retain) NSNumber *primaryProjectTypeId;
 @property (nullable, nonatomic, retain) NSString *priorPublishDate;
 @property (nullable, nonatomic, retain) NSString *projDlvrySys;
 @property (nullable, nonatomic, retain) NSNumber *projectStageId;

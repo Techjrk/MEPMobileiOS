@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="75" width="600" height="275"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYh-5W-rHr">
-                            <rect key="frame" x="0.0" y="0.0" width="1800" height="275"/>
+                            <rect key="frame" x="0.0" y="0.0" width="2400" height="275"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qh1-Qr-RKn" customClass="ChartView">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="275"/>
@@ -42,6 +42,10 @@
                                     <rect key="frame" x="1200" y="0.0" width="600" height="275"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQz-W0-2rL" customClass="ChartView">
+                                    <rect key="frame" x="1800" y="0.0" width="600" height="275"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -52,11 +56,15 @@
                                 <constraint firstItem="qh1-Qr-RKn" firstAttribute="leading" secondItem="yYh-5W-rHr" secondAttribute="leading" id="9Gi-lR-8wS"/>
                                 <constraint firstItem="Tqv-Ad-z1n" firstAttribute="top" secondItem="qh1-Qr-RKn" secondAttribute="top" id="9RH-QZ-rMA"/>
                                 <constraint firstItem="Tqv-Ad-z1n" firstAttribute="leading" secondItem="qh1-Qr-RKn" secondAttribute="trailing" id="Csb-RD-7I7"/>
+                                <constraint firstItem="pQz-W0-2rL" firstAttribute="top" secondItem="yYh-5W-rHr" secondAttribute="top" id="OCa-uv-hS5"/>
                                 <constraint firstAttribute="bottom" secondItem="qh1-Qr-RKn" secondAttribute="bottom" id="Rd9-yF-ZKe"/>
-                                <constraint firstItem="qh1-Qr-RKn" firstAttribute="width" secondItem="yYh-5W-rHr" secondAttribute="width" multiplier="0.33333" id="Yv0-lp-Qmu"/>
+                                <constraint firstItem="qh1-Qr-RKn" firstAttribute="width" secondItem="yYh-5W-rHr" secondAttribute="width" multiplier="0.25" id="Yv0-lp-Qmu"/>
                                 <constraint firstItem="Q03-Ls-shX" firstAttribute="width" secondItem="Tqv-Ad-z1n" secondAttribute="width" id="bNB-dL-hwz"/>
                                 <constraint firstItem="Q03-Ls-shX" firstAttribute="leading" secondItem="Tqv-Ad-z1n" secondAttribute="trailing" id="cpU-aX-8Vd"/>
+                                <constraint firstItem="pQz-W0-2rL" firstAttribute="leading" secondItem="Q03-Ls-shX" secondAttribute="trailing" id="jXV-bv-UPT"/>
                                 <constraint firstItem="Q03-Ls-shX" firstAttribute="height" secondItem="Tqv-Ad-z1n" secondAttribute="height" id="mg3-fc-GWS"/>
+                                <constraint firstItem="pQz-W0-2rL" firstAttribute="height" secondItem="Q03-Ls-shX" secondAttribute="height" id="rbg-iQ-ldq"/>
+                                <constraint firstItem="pQz-W0-2rL" firstAttribute="width" secondItem="Q03-Ls-shX" secondAttribute="width" id="ySO-hd-bK0"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -104,7 +112,7 @@
                 <constraint firstItem="l96-VF-778" firstAttribute="centerX" secondItem="88p-eh-KC7" secondAttribute="centerX" id="jpT-TD-cKb"/>
                 <constraint firstItem="88p-eh-KC7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qcd-9T-Z01"/>
                 <constraint firstItem="nAH-JD-F9h" firstAttribute="centerX" secondItem="l96-VF-778" secondAttribute="centerX" id="xRn-bn-i0N"/>
-                <constraint firstItem="yYh-5W-rHr" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="3" id="xxM-Tb-Rdv"/>
+                <constraint firstItem="yYh-5W-rHr" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="4" id="xxM-Tb-Rdv"/>
                 <constraint firstItem="nAH-JD-F9h" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="zbx-eb-8Gg"/>
             </constraints>
             <variation key="default">

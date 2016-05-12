@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BidSoonCollectionItemDelegate <NSObject>
+- (void)tappedBidSoonCollectionItem:(id)object;
+@end
+
 @interface BidSoonItemCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) id<BidSoonCollectionItemDelegate>bidSoonCollectionItemDelegate;
 - (void)setItemInfo:(id)info;
 @end

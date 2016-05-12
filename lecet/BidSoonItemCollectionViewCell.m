@@ -29,4 +29,7 @@
     [_bidItemView setItemInfo:info];
 }
 
+- (void)setBidSoonCollectionItemDelegate:(id<BidSoonCollectionItemDelegate>)bidSoonCollectionItemDelegate {
+    _bidItemView.bidSoonCollectionItemDelegate = bidSoonCollectionItemDelegate;
+}
 @end

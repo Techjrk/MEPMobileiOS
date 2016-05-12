@@ -83,13 +83,13 @@
                         <constraint firstItem="i7e-ij-1ju" firstAttribute="centerX" secondItem="dsl-IQ-i0B" secondAttribute="centerX" id="vAI-jd-tF2"/>
                     </constraints>
                 </view>
-                <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smG-Q0-ChR">
+                <mapView clipsSubviews="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smG-Q0-ChR">
                     <rect key="frame" x="0.0" y="61.5" width="188" height="82"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Mck-Xw-fVW"/>
                     </connections>
                 </mapView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0on-Ke-azY">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0on-Ke-azY">
                     <rect key="frame" x="0.0" y="143.5" width="188" height="61.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmh-ek-aOB">
@@ -141,12 +141,20 @@
                         <constraint firstItem="Hsc-hL-oPh" firstAttribute="leading" secondItem="Zmh-ek-aOB" secondAttribute="leading" id="zfz-HV-Ouh"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDP-mf-61o">
+                    <rect key="frame" x="0.0" y="0.0" width="188" height="205"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="qQJ-EF-k1h"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="0on-Ke-azY" secondAttribute="bottom" id="66X-0A-VYa"/>
                 <constraint firstItem="dsl-IQ-i0B" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8Iz-0h-Pxz"/>
                 <constraint firstItem="CHs-1b-doq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8ri-X2-7iF"/>
+                <constraint firstItem="VDP-mf-61o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EIE-Vu-p5q"/>
+                <constraint firstAttribute="bottom" secondItem="VDP-mf-61o" secondAttribute="bottom" id="Fii-o5-HdX"/>
                 <constraint firstAttribute="trailing" secondItem="0on-Ke-azY" secondAttribute="trailing" id="Hem-R6-FlX"/>
                 <constraint firstItem="smG-Q0-ChR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Hgf-rs-8PO"/>
                 <constraint firstItem="smG-Q0-ChR" firstAttribute="top" secondItem="dsl-IQ-i0B" secondAttribute="bottom" id="J32-p5-t5L"/>
@@ -157,7 +165,9 @@
                 <constraint firstItem="smG-Q0-ChR" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="Uxj-zv-mfu"/>
                 <constraint firstItem="dsl-IQ-i0B" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="WQo-9s-z59"/>
                 <constraint firstItem="smG-Q0-ChR" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="YDX-7R-ghX"/>
+                <constraint firstAttribute="trailing" secondItem="VDP-mf-61o" secondAttribute="trailing" id="eMj-7s-fgX"/>
                 <constraint firstItem="dsl-IQ-i0B" firstAttribute="top" secondItem="CHs-1b-doq" secondAttribute="bottom" id="fIS-Rs-yo9"/>
+                <constraint firstItem="VDP-mf-61o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h6A-0p-GCM"/>
                 <constraint firstAttribute="trailing" secondItem="CHs-1b-doq" secondAttribute="trailing" id="n9s-OJ-xj1"/>
                 <constraint firstItem="0on-Ke-azY" firstAttribute="top" secondItem="smG-Q0-ChR" secondAttribute="bottom" id="t74-eG-5hk"/>
             </constraints>

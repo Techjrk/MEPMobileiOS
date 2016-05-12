@@ -13,7 +13,9 @@
 #import "DB_BidRecent.h"
 
 
-@interface BidItemView()<MKMapViewDelegate>
+@interface BidItemView()<MKMapViewDelegate>{
+    NSNumber *recordId;
+}
 @property (weak, nonatomic) IBOutlet UIView *groupDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
@@ -22,9 +24,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelBidType;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidLocation;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation BidItemView
+
+@synthesize bidItemDelegate;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -63,6 +68,7 @@
 - (void)setInfo:(id)info {
     DB_BidRecent *item = info;
     
+    recordId = item.bidId;
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidDate];
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
     
@@ -119,5 +125,14 @@
     
 }
 
+- (IBAction)tappedButton:(id)sender {
+    if (self.bidItemDelegate != nil) {
+        [self.bidItemDelegate tappedBidCollectionItem:self];
+    }
+}
+
+- (NSNumber *)getRecordId {
+    return recordId;
+}
 
 @end

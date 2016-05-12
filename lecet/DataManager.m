@@ -13,7 +13,7 @@
 
 #define kbaseUrl                @"http://lecet.dt-staging.com/api/"
 #define kUrlLogin               @"LecetUsers/login"
-#define kUrlBids                @"Bids"
+#define kUrlBids                @"Bids/withGroup"
 #define kUrlHappeningSoon       @"Projects/search"
 
 @implementation DataManager
@@ -68,12 +68,16 @@
 
 - (void)bids:(NSDate *)dateFilter  success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDate *startDate = [self getDateFirstDay:dateFilter];
-    NSDate *lastDate = [self getDateLastDay:startDate];
+    //NSDate *startDate = [self getDateFirstDay:dateFilter];
+    //NSDate *lastDate = [self getDateLastDay:startDate];
    
-    NSString *url = [NSString stringWithFormat:@"%@?filter[where][and][0][createDate][gte]=%@&filter[where][and][1][createDate][lte]=%@&filter[include]=project&filter[include]=contact&filter[include]=company&filter[limit]=20", [self url:kUrlBids], [DerivedNSManagedObject dateStringFromDateDay:startDate], [DerivedNSManagedObject dateStringFromDateDay:lastDate] ];
+    //NSString *url = [NSString stringWithFormat:@"%@?filter[where][and][0][createDate][gte]=%@&filter[where][and][1][createDate][lte]=%@&filter[include]=project&filter[include]=contact&filter[include]=company&filter[limit]=20", [self url:kUrlBids], [DerivedNSManagedObject dateStringFromDateDay:startDate], [DerivedNSManagedObject dateStringFromDateDay:lastDate] ];
     
-    [self HTTP_GET:url parameters:nil success:^(id object) {
+    NSDictionary *parameter = @{@"filter[order]":@"createDate DESC", @"filter[limit]":@"100"};
+    
+    NSString *url = [self url:kUrlBids  ];
+    
+    [self HTTP_GET:url parameters:parameter success:^(id object) {
         
         for (NSDictionary *item in object) {
             NSString *recordId = item[@"id"];

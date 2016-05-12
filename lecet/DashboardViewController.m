@@ -17,8 +17,11 @@
 #import "DB_BidSoon.h"
 #import "DB_BidRecent.h"
 #import "MenuHeaderView.h"
+#import "BidItemView.h"
+#import "BidSoonItem.h"
+#import "ProjectDetailViewController.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
@@ -63,7 +66,7 @@
         
         currentBidItems = bidItemsRecent;
         
-        [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_RECENT_TEXT"), currentBidItems.count ]];
+        [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
 
         [_bidsCollectionView reloadData];
     } failure:^(id object) {
@@ -75,7 +78,7 @@
     
     [self loadBidItems];
  
-    _pageControl.numberOfPages = 3;
+    _pageControl.numberOfPages = 4;
 }
 
 - (void)loadBidItems {
@@ -133,11 +136,12 @@
     UICollectionViewCell *cell;
     
     switch (currentPage) {
-        case 0: {
+        case 0 : case 2 :case 3: {
             BidItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
             
             NSMutableArray *array = (NSMutableArray*)currentBidItems;
             [cellItem setItemInfo:array[indexPath.row]];
+            cellItem.bidCollectionitemDelegate = self;
             cell = cellItem;
             break;
         }
@@ -146,7 +150,7 @@
             
             NSMutableArray *array = (NSMutableArray*)currentBidItems;
             [cellItem setItemInfo:array[indexPath.row]];
-            
+            cellItem.bidSoonCollectionItemDelegate = self;
             cell = cellItem;
             break;
         }
@@ -202,6 +206,11 @@
     return 0;
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 #pragma mark CustomCalendar Delegate
 
 - (void)tappedItem:(id)object {
@@ -252,23 +261,30 @@
 
         switch (currentPage) {
             case 0: {
-                [_calendarView clearSelection];
                 currentBidItems = bidItemsRecent;
+                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
                 break;
             }
-            default: {
+            case 1: {
                 [_calendarView clearSelection];
                 currentBidItems = bidItemsSoon;
+                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_SOON_TEXT"), currentBidItems.count ]];
                 break;
+            }
+            case 2: {
+                
+                currentBidItems = bidItemsRecent;
+                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT"), currentBidItems.count ]];
+                break;
+            }
+            case 3: {
+                currentBidItems = bidItemsRecent;
+                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"), currentBidItems.count ]];
+                break;
+                
             }
         }
         
-        if (currentPage == 0) {
-            [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_RECENT_TEXT"), currentBidItems.count ]];
-        } else {
-            [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_HAPPEN_TEXT"), currentBidItems.count ]];
-        }
-     
         [_bidsCollectionView reloadData];
         
     }
@@ -276,6 +292,45 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self pageChanged];
+}
+
+# pragma mark - BID COLLECTION DELEGATE
+
+- (void)tappedBidCollectionItem:(id)object {
+    BidItemView *item = object;
+    BidItemCollectionViewCell *cell = (BidItemCollectionViewCell*)[[item superview] superview];
+    [self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+}
+
+- (void)tappedBidSoonCollectionItem:(id)object {
+    BidSoonItem *item = object;
+    BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
+    [self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+}
+
+- (void)showProjectDetails:(NSNumber*)recordId fromRect:(CGRect)rect {
+    
+    CGRect collectionViewRect = _bidsCollectionView.frame;
+    CGFloat offset = _bidsCollectionView.contentOffset.x;
+    rect.origin.x -= offset;
+    rect.origin.y += collectionViewRect.origin.y;
+
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    detail.view.hidden = YES;
+    detail.previousRect = rect;
+    
+    [self.navigationController presentViewController:detail animated:NO completion:^{
+        detail.view.frame = rect;
+        detail.view.hidden = NO;
+        [UIView animateWithDuration:0.2 animations:^{
+            detail.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
+            [detail.view setNeedsDisplay];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }];
+    
 }
 
 @end

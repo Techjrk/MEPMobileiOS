@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -49,7 +48,7 @@
                                     <rect key="frame" x="105" y="210" width="390" height="32.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F6-Rz-min">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F6-Rz-min">
                                     <rect key="frame" x="105" y="242.5" width="390" height="36"/>
                                     <color key="backgroundColor" red="1" green="0.92299707279999998" blue="0.25783272909999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="Button"/>
@@ -99,8 +98,8 @@
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="KrO-rj-QYr"/>
-                                    <exclude reference="Jnz-kB-bSK"/>
                                     <exclude reference="TvU-Cd-Uj7"/>
+                                    <exclude reference="Jnz-kB-bSK"/>
                                     <exclude reference="kYG-f9-ys2"/>
                                 </mask>
                             </variation>

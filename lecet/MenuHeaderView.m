@@ -26,7 +26,7 @@
 
     
     _labelCount.font = MENUHEADER_LABEL_COUNT_FONT;
-    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_RECENT_TEXT"), 12];
+    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), 12];
     _labelCount.textColor = MENUHEADER_LABEL_COUNT_COLOR;
 
 }

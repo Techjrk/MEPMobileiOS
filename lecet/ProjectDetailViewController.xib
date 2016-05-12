@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectDetailViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxs-xz-Nnu">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8l-w9-9Lk">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-qN-9py" customClass="ProjectHeaderView">
+                                    <rect key="frame" x="0.0" y="0.5" width="375" height="329.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-sj-2hU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhf-j2-imc">
+                                    <rect key="frame" x="319" y="25" width="56" height="25.5"/>
+                                    <state key="normal" image="icon_close"/>
+                                    <connections>
+                                        <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="IUw-gB-CAy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="yhf-j2-imc" firstAttribute="width" secondItem="OeP-sj-2hU" secondAttribute="width" multiplier="0.15" id="07j-x4-Ltj"/>
+                                <constraint firstItem="YnS-qN-9py" firstAttribute="height" secondItem="Y8l-w9-9Lk" secondAttribute="height" multiplier="0.593" id="EEP-bv-3bh"/>
+                                <constraint firstItem="OeP-sj-2hU" firstAttribute="width" secondItem="Y8l-w9-9Lk" secondAttribute="width" id="H3L-oo-tC8"/>
+                                <constraint firstItem="yhf-j2-imc" firstAttribute="top" secondItem="OeP-sj-2hU" secondAttribute="bottom" id="Tci-Oq-eL7"/>
+                                <constraint firstItem="YnS-qN-9py" firstAttribute="width" secondItem="Y8l-w9-9Lk" secondAttribute="width" id="bzi-eL-fPl"/>
+                                <constraint firstItem="YnS-qN-9py" firstAttribute="centerX" secondItem="Y8l-w9-9Lk" secondAttribute="centerX" id="dgi-lL-qFZ"/>
+                                <constraint firstItem="YnS-qN-9py" firstAttribute="top" secondItem="Y8l-w9-9Lk" secondAttribute="top" id="fUk-ZL-r4e"/>
+                                <constraint firstItem="yhf-j2-imc" firstAttribute="height" secondItem="OeP-sj-2hU" secondAttribute="height" id="fcB-te-Pob"/>
+                                <constraint firstItem="OeP-sj-2hU" firstAttribute="top" secondItem="Y8l-w9-9Lk" secondAttribute="top" id="g2q-Ve-Qfd"/>
+                                <constraint firstAttribute="trailing" secondItem="yhf-j2-imc" secondAttribute="trailing" id="oOW-aB-4lz"/>
+                                <constraint firstItem="OeP-sj-2hU" firstAttribute="centerX" secondItem="Y8l-w9-9Lk" secondAttribute="centerX" id="v5E-Xb-eYP"/>
+                                <constraint firstAttribute="height" constant="556" id="xTa-ci-of5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Y8l-w9-9Lk" firstAttribute="centerX" secondItem="sxs-xz-Nnu" secondAttribute="centerX" id="2GE-RU-2ha"/>
+                        <constraint firstItem="Y8l-w9-9Lk" firstAttribute="top" secondItem="sxs-xz-Nnu" secondAttribute="top" id="3xj-4E-wZC"/>
+                        <constraint firstAttribute="bottom" secondItem="Y8l-w9-9Lk" secondAttribute="bottom" priority="250" id="JwO-WZ-Q3W"/>
+                        <constraint firstAttribute="trailing" secondItem="Y8l-w9-9Lk" secondAttribute="trailing" id="LOl-uX-bor"/>
+                        <constraint firstItem="Y8l-w9-9Lk" firstAttribute="width" secondItem="sxs-xz-Nnu" secondAttribute="width" id="PpJ-NP-EMW"/>
+                        <constraint firstAttribute="trailing" secondItem="Y8l-w9-9Lk" secondAttribute="trailing" id="RLI-xV-6kp"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PpJ-NP-EMW"/>
+                            <exclude reference="RLI-xV-6kp"/>
+                        </mask>
+                    </variation>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="sxs-xz-Nnu" secondAttribute="bottom" id="8by-4x-5c1"/>
+                <constraint firstItem="Y8l-w9-9Lk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Zim-is-DAl"/>
+                <constraint firstItem="sxs-xz-Nnu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bXH-D7-n7Z"/>
+                <constraint firstItem="Y8l-w9-9Lk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="eca-wv-bGj"/>
+                <constraint firstItem="OeP-sj-2hU" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="60:139" id="fNl-Cn-LB1"/>
+                <constraint firstItem="sxs-xz-Nnu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hWM-CA-pOF"/>
+                <constraint firstAttribute="trailing" secondItem="sxs-xz-Nnu" secondAttribute="trailing" id="nyc-Rp-XlA"/>
+                <constraint firstItem="OeP-sj-2hU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="vUT-cq-nnt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="eca-wv-bGj"/>
+                    <exclude reference="fNl-Cn-LB1"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="26.5" y="286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_close" width="16" height="16"/>
+    </resources>
+</document>

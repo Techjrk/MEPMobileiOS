@@ -108,7 +108,7 @@
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planInd" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="primaryProjectTypeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="priorPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>

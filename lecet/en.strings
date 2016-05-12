@@ -13,8 +13,10 @@
 
 //MenuHeaderView.xib
 "MENUHEADER_LABEL_HEADER_TEXT"              =               "BIDS";
-"MENUHEADER_LABEL_COUNT_RECENT_TEXT"        =               "%li RECENTLY MADE";
-"MENUHEADER_LABEL_COUNT_HAPPEN_TEXT"        =               "%li HAPPENING SOON";
+"MENUHEADER_LABEL_COUNT_MADE_TEXT"          =               "%li RECENTLY MADE";
+"MENUHEADER_LABEL_COUNT_SOON_TEXT"          =               "%li HAPPENING SOON";
+"MENUHEADER_LABEL_COUNT_ADDED_TEXT"         =               "%li RECENTLY ADDED";
+"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"       =               "%li RECENTLY UPDATED";
 
 //ChartView.xib
 "CHART_VIEW_LABEL_HOUSING"                  =               "HOUSING";
