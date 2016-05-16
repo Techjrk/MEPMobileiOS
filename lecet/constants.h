@@ -56,11 +56,11 @@ NSLocalizedLanguage(NSString *key){
     return NSLocalizedStringFromTable(key, table, nil);
 };
 
-
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
 #define FONT_NAME_LATO_SEMIBOLD                  @"Lato-Semibold"
 #define FONT_NAME_LATO_BOLD                      @"Lato-Bold"
 #define FONT_NAME_LATO_BLACK                     @"Lato-Black"
 #define FONT_NAME_LATO_HEAVY                     @"Lato-Heavy"
+#define FONT_NAME_AWESOME                        @"FontAwesome"
 
 #endif /* constants_h */

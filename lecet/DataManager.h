@@ -16,9 +16,14 @@
 - (NSDateComponents*)getDateComponents:(NSDate*)date;
 - (NSDate*)getDateFirstDay:(NSDate*) date;
 - (NSDate*)getDateLastDay:(NSDate*)date;
-// API
+// API USER
 - (void)userLogin:(NSString*)email password:(NSString*)password success:(APIBlock)success failure:(APIBlock)failure;
+
+//API BIDS
 - (void)bids:(NSDate*)dateFilter success:(APIBlock)success failure:(APIBlock)failure;
+- (void)bidDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+
+//API PROJECTS
 - (void)happeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure;
 
 @end

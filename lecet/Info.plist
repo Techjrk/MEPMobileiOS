@@ -41,6 +41,7 @@
 		<string>Lato-Bold.ttf</string>
 		<string>Lato-Semibold.ttf</string>
 		<string>Lato-Regular.ttf</string>
+		<string>FontAwesome.otf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

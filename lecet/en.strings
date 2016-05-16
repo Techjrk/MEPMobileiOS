@@ -24,4 +24,27 @@
 "CHART_VIEW_LABEL_BUILDING"                 =               "BUILDING";
 "CHART_VIEW_LABEL_UTILITIES"                =               "UTILITIES";
 
+//ProjectState.xib
+"PROJECT_STATE_TRACK"                       =               "Track";
+"PROJECT_STATE_SHARE"                       =               "Share";
+"PROJECT_STATE_HIDE"                        =               "Hide";
 
+//ProjectDetailViewController.xib
+"PROJECT_DETAIL_COUNTY"                     =               "County";
+"PROJECT_DETAIL_PROJECT_ID"                 =               "Project ID";
+"PROJECT_DETAIL_ADDRESS"                    =               "Address";
+"PROJECT_DETAIL_PROJECT_TYPE"               =               "Project Type(s)";
+"PROJECT_DETAIL_ESTLOW"                     =               "Est. Low";
+"PROJECT_DETAIL_STAGE"                      =               "Stage";
+
+//SeeAllView.xib
+"SEE_ALL_BUTTON_TITLE"                      =               "See All";
+
+//NotesView.xib
+"NOTES_VIEW_TITLE"                          =               "Notes";
+
+//ParticipantsView.xib
+"PARTICIPANTS_VIEW_TITLE"                   =               "Participants";
+
+//ProjectBidderView.xib
+"PROJECTBIDDER_VIEW_TITLE"                  =               "Project Bidders";

@@ -299,16 +299,21 @@
 - (void)tappedBidCollectionItem:(id)object {
     BidItemView *item = object;
     BidItemCollectionViewCell *cell = (BidItemCollectionViewCell*)[[item superview] superview];
-    [self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+
+    [[DataManager sharedManager] bidDetail:[item getRecordId] success:^(id object) {
+        [self showProjectDetails:object fromRect:cell.frame];
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (void)tappedBidSoonCollectionItem:(id)object {
     BidSoonItem *item = object;
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
-    [self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+    //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
 }
 
-- (void)showProjectDetails:(NSNumber*)recordId fromRect:(CGRect)rect {
+- (void)showProjectDetails:(id)record fromRect:(CGRect)rect {
     
     CGRect collectionViewRect = _bidsCollectionView.frame;
     CGFloat offset = _bidsCollectionView.contentOffset.x;
@@ -319,6 +324,9 @@
     detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     detail.view.hidden = YES;
     detail.previousRect = rect;
+    if ([record class] == [DB_BidRecent class]) {
+        [detail detailsFromBid:record];
+    }
     
     [self.navigationController presentViewController:detail animated:NO completion:^{
         detail.view.frame = rect;

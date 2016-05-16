@@ -18,6 +18,25 @@
 		B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155411CD0C7A20050CF8A /* DashboardViewController.m */; };
 		B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155421CD0C7A20050CF8A /* DashboardViewController.xib */; };
 		B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */; };
+		B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF631CE634F00035A6D9 /* ProjectStateView.m */; };
+		B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF651CE635030035A6D9 /* ProjectStateView.xib */; };
+		B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF671CE639450035A6D9 /* FontAwesome.otf */; };
+		B70FDF6D1CE9B7160035A6D9 /* CustomEntryField.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF6C1CE9B7160035A6D9 /* CustomEntryField.m */; };
+		B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF6E1CE9B74F0035A6D9 /* CustomEntryField.xib */; };
+		B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF721CE9FECB0035A6D9 /* SeeAllView.m */; };
+		B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF741CE9FEDB0035A6D9 /* SeeAllView.xib */; };
+		B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF781CEA09710035A6D9 /* SectionTitleView.m */; };
+		B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF7A1CEA097F0035A6D9 /* SectionTitleView.xib */; };
+		B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF7E1CEA0BBD0035A6D9 /* PariticpantsView.m */; };
+		B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF801CEA0BD40035A6D9 /* PariticpantsView.xib */; };
+		B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF831CEA0BEE0035A6D9 /* NotesView.m */; };
+		B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */; };
+		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
+		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
+		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
+		B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A3A1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib */; };
+		B7637A3F1CEA4A9900F0FA2F /* ProjectBidderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A3E1CEA4A9900F0FA2F /* ProjectBidderView.m */; };
+		B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A401CEA4AA700F0FA2F /* ProjectBidderView.xib */; };
 		B76C69301CD21CD7009E9F15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */; };
 		B76C69321CD21CF6009E9F15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */; };
 		B76C69341CD21CFD009E9F15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C69331CD21CFD009E9F15 /* MapKit.framework */; };
@@ -101,6 +120,40 @@
 		B70155411CD0C7A20050CF8A /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		B70155421CD0C7A20050CF8A /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B70FDF621CE634F00035A6D9 /* ProjectStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStateView.h; sourceTree = "<group>"; };
+		B70FDF631CE634F00035A6D9 /* ProjectStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStateView.m; sourceTree = "<group>"; };
+		B70FDF651CE635030035A6D9 /* ProjectStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectStateView.xib; sourceTree = "<group>"; };
+		B70FDF671CE639450035A6D9 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		B70FDF691CE63A6D0035A6D9 /* projectStateConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectStateConstants.h; sourceTree = "<group>"; };
+		B70FDF6A1CE64B670035A6D9 /* projectDetailConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectDetailConstants.h; sourceTree = "<group>"; };
+		B70FDF6B1CE9B7160035A6D9 /* CustomEntryField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomEntryField.h; sourceTree = "<group>"; };
+		B70FDF6C1CE9B7160035A6D9 /* CustomEntryField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomEntryField.m; sourceTree = "<group>"; };
+		B70FDF6E1CE9B74F0035A6D9 /* CustomEntryField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomEntryField.xib; sourceTree = "<group>"; };
+		B70FDF701CE9B9960035A6D9 /* customEntryFieldConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customEntryFieldConstants.h; sourceTree = "<group>"; };
+		B70FDF711CE9FECB0035A6D9 /* SeeAllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeAllView.h; sourceTree = "<group>"; };
+		B70FDF721CE9FECB0035A6D9 /* SeeAllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeAllView.m; sourceTree = "<group>"; };
+		B70FDF741CE9FEDB0035A6D9 /* SeeAllView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeeAllView.xib; sourceTree = "<group>"; };
+		B70FDF761CEA01700035A6D9 /* seeAllConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = seeAllConstants.h; sourceTree = "<group>"; };
+		B70FDF771CEA09710035A6D9 /* SectionTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionTitleView.h; sourceTree = "<group>"; };
+		B70FDF781CEA09710035A6D9 /* SectionTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionTitleView.m; sourceTree = "<group>"; };
+		B70FDF7A1CEA097F0035A6D9 /* SectionTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionTitleView.xib; sourceTree = "<group>"; };
+		B70FDF7C1CEA0A410035A6D9 /* sectionTitleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sectionTitleConstants.h; sourceTree = "<group>"; };
+		B70FDF7D1CEA0BBD0035A6D9 /* PariticpantsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PariticpantsView.h; sourceTree = "<group>"; };
+		B70FDF7E1CEA0BBD0035A6D9 /* PariticpantsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PariticpantsView.m; sourceTree = "<group>"; };
+		B70FDF801CEA0BD40035A6D9 /* PariticpantsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PariticpantsView.xib; sourceTree = "<group>"; };
+		B70FDF821CEA0BEE0035A6D9 /* NotesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesView.h; sourceTree = "<group>"; };
+		B70FDF831CEA0BEE0035A6D9 /* NotesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesView.m; sourceTree = "<group>"; };
+		B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesView.xib; sourceTree = "<group>"; };
+		B70FDF871CEA0F570035A6D9 /* notesConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = notesConstants.h; sourceTree = "<group>"; };
+		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
+		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
+		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7637A381CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBiddersCollectionViewCell.h; sourceTree = "<group>"; };
+		B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBiddersCollectionViewCell.m; sourceTree = "<group>"; };
+		B7637A3A1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBiddersCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7637A3D1CEA4A9900F0FA2F /* ProjectBidderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidderView.h; sourceTree = "<group>"; };
+		B7637A3E1CEA4A9900F0FA2F /* ProjectBidderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidderView.m; sourceTree = "<group>"; };
+		B7637A401CEA4AA700F0FA2F /* ProjectBidderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidderView.xib; sourceTree = "<group>"; };
 		B76C692D1CD21A54009E9F15 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		B76C692E1CD21B6E009E9F15 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -317,6 +370,12 @@
 				B7F10A351CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.h */,
 				B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */,
 				B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */,
+				B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */,
+				B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */,
+				B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */,
+				B7637A381CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.h */,
+				B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */,
+				B7637A3A1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -353,6 +412,27 @@
 				B7A1D3451CE4D3BD004E94B3 /* ProjectHeaderView.h */,
 				B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */,
 				B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */,
+				B70FDF621CE634F00035A6D9 /* ProjectStateView.h */,
+				B70FDF631CE634F00035A6D9 /* ProjectStateView.m */,
+				B70FDF651CE635030035A6D9 /* ProjectStateView.xib */,
+				B70FDF6B1CE9B7160035A6D9 /* CustomEntryField.h */,
+				B70FDF6C1CE9B7160035A6D9 /* CustomEntryField.m */,
+				B70FDF6E1CE9B74F0035A6D9 /* CustomEntryField.xib */,
+				B70FDF711CE9FECB0035A6D9 /* SeeAllView.h */,
+				B70FDF721CE9FECB0035A6D9 /* SeeAllView.m */,
+				B70FDF741CE9FEDB0035A6D9 /* SeeAllView.xib */,
+				B70FDF771CEA09710035A6D9 /* SectionTitleView.h */,
+				B70FDF781CEA09710035A6D9 /* SectionTitleView.m */,
+				B70FDF7A1CEA097F0035A6D9 /* SectionTitleView.xib */,
+				B70FDF7D1CEA0BBD0035A6D9 /* PariticpantsView.h */,
+				B70FDF7E1CEA0BBD0035A6D9 /* PariticpantsView.m */,
+				B70FDF801CEA0BD40035A6D9 /* PariticpantsView.xib */,
+				B70FDF821CEA0BEE0035A6D9 /* NotesView.h */,
+				B70FDF831CEA0BEE0035A6D9 /* NotesView.m */,
+				B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */,
+				B7637A3D1CEA4A9900F0FA2F /* ProjectBidderView.h */,
+				B7637A3E1CEA4A9900F0FA2F /* ProjectBidderView.m */,
+				B7637A401CEA4AA700F0FA2F /* ProjectBidderView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -371,6 +451,12 @@
 				B76C69871CDA0AC1009E9F15 /* calendarItemConstants.h */,
 				B7F10A341CDB8AC200847FA3 /* bidSoonItemConstants.h */,
 				B7A1D34A1CE4D9A7004E94B3 /* projectHeaderConstants.h */,
+				B70FDF691CE63A6D0035A6D9 /* projectStateConstants.h */,
+				B70FDF6A1CE64B670035A6D9 /* projectDetailConstants.h */,
+				B70FDF701CE9B9960035A6D9 /* customEntryFieldConstants.h */,
+				B70FDF761CEA01700035A6D9 /* seeAllConstants.h */,
+				B70FDF7C1CEA0A410035A6D9 /* sectionTitleConstants.h */,
+				B70FDF871CEA0F570035A6D9 /* notesConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -378,6 +464,7 @@
 		B76C69371CD227A8009E9F15 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B70FDF671CE639450035A6D9 /* FontAwesome.otf */,
 				B76C693C1CD22898009E9F15 /* Lato-Heavy.ttf */,
 				B76C693A1CD2282E009E9F15 /* Lato-Black.ttf */,
 				B76C69391CD227C9009E9F15 /* Lato-Bold.ttf */,
@@ -560,26 +647,36 @@
 			files = (
 				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
 				B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */,
+				B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */,
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
 				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
+				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
+				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
 				B76C69461CD2489B009E9F15 /* CustomTextField.xib in Resources */,
 				B76C69811CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib in Resources */,
 				B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */,
+				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
+				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
+				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
+				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
+				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
+				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
+				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
 			);
@@ -593,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
+				B7637A3F1CEA4A9900F0FA2F /* ProjectBidderView.m in Sources */,
 				B7F10A1D1CDB3E3300847FA3 /* UIImageView+AFNetworking.m in Sources */,
 				B7F10A1F1CDB3E3300847FA3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				B7F10A2B1CDB42FA00847FA3 /* DerivedNSManagedObject.m in Sources */,
@@ -602,17 +700,22 @@
 				B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */,
 				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
+				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
+				B70FDF6D1CE9B7160035A6D9 /* CustomEntryField.m in Sources */,
+				B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */,
 				B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */,
 				B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */,
+				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
 				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
+				B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */,
 				B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */,
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,
 				B7F10A151CDB3E3300847FA3 /* AFURLRequestSerialization.m in Sources */,
@@ -620,6 +723,7 @@
 				B7F10A171CDB3E3300847FA3 /* AFURLSessionManager.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
+				B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */,
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
@@ -634,6 +738,8 @@
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
+				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,

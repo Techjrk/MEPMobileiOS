@@ -73,7 +73,7 @@
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
     CGFloat estlow = 10000;
     

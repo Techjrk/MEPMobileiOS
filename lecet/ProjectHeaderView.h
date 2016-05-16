@@ -10,5 +10,5 @@
 #import "BaseViewClass.h"
 
 @interface ProjectHeaderView : BaseViewClass
-
+- (void)setHeaderInfo:(id)headerInfo;
 @end

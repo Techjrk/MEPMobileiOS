@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DB_BidRecent.h"
 
 @interface ProjectDetailViewController : UIViewController
 @property (nonatomic) CGRect previousRect;
+- (void)detailsFromBid:(DB_BidRecent*)record;
 @end
