@@ -17,6 +17,7 @@
 @end
 
 @implementation ProjectStateView
+@synthesize projectStateViewDelegate;
 
 - (void)awakeFromNib {
     [self clearSelection];
@@ -30,6 +31,10 @@
     self.layer.shadowOffset = CGSizeMake(2, 2);
     self.layer.shadowOpacity = 0.25;
     self.layer.masksToBounds = NO;
+    
+    _buttonTrack.tag = StateViewTrack;
+    _buttonShare.tag = StateViewShare;
+    _buttonHide.tag = StateViewHide;
 
 }
 
@@ -95,6 +100,8 @@
     _buttonShare.selected = [_buttonShare isEqual:button];
     _buttonHide.selected = [_buttonHide isEqual:button];
     [self setupSelection];
+    
+    [self.projectStateViewDelegate selectedStateViewItem:(StateView)button.tag];
     
 }
 

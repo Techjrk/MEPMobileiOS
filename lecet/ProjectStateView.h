@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-@interface ProjectStateView : BaseViewClass
+typedef enum {
+    StateViewTrack = 0,
+    StateViewShare = 1,
+    StateViewHide = 2
+} StateView;
 
+@protocol ProjectStateViewDelegate <NSObject>
+- (void)selectedStateViewItem:(StateView)stateView;
+@end
+
+@interface ProjectStateView : BaseViewClass
+@property (strong, nonatomic) id<ProjectStateViewDelegate>projectStateViewDelegate;
 @end

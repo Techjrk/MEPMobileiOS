@@ -18,7 +18,7 @@
 #import "PariticpantsView.h"
 #import "ProjectBidderView.h"
 
-@interface ProjectDetailViewController (){
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate>{
     BOOL isShownContentAdjusted;
 }
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
@@ -69,6 +69,8 @@
     [_notesView changeConstraintHeight:_constraintFieldNotes];
     [_participantsView changeConstraintHeight:_constraintFieldParticipants];
     [_projectBidder changeConstraintHeight:_constraintFieldProjectBidder];
+    
+    _projectState.projectStateViewDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,4 +150,9 @@
     }
 
 }
+
+- (void)selectedStateViewItem:(StateView)stateView {
+    
+}
+
 @end
