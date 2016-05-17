@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssociatedBidView">
+            <connections>
+                <outlet property="labelLocation" destination="brL-CH-Lhl" id="sus-Jd-ahf"/>
+                <outlet property="labelProject" destination="LUC-Xm-Pke" id="oGP-14-rvD"/>
+                <outlet property="labelTag" destination="GbT-Z1-8yJ" id="xy7-5N-I70"/>
+                <outlet property="mapView" destination="ABx-Xs-vvI" id="Iuu-Cm-fou"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="386" height="97"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51B-oU-oy2">
+                    <rect key="frame" x="0.0" y="0.0" width="11.5" height="97"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-Xs-vvI">
+                    <rect key="frame" x="11" y="10" width="96.5" height="78"/>
+                </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfU-Al-kMC">
+                    <rect key="frame" x="374" y="0.0" width="11.5" height="97"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbT-Z1-8yJ">
+                    <rect key="frame" x="347" y="10" width="27" height="29"/>
+                    <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbJ-wB-U10">
+                    <rect key="frame" x="108" y="0.0" width="11.5" height="97"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYE-fR-FEN">
+                    <rect key="frame" x="335" y="10" width="11.5" height="29"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUC-Xm-Pke">
+                    <rect key="frame" x="119" y="10" width="215.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidLocation" translatesAutoresizingMaskIntoConstraints="NO" id="6Mt-uL-plW">
+                    <rect key="frame" x="119.5" y="34" width="11.5" height="15.5"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brL-CH-Lhl">
+                    <rect key="frame" x="135" y="31" width="239" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="51B-oU-oy2" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.03" id="1Ok-rW-rtN"/>
+                <constraint firstItem="LUC-Xm-Pke" firstAttribute="leading" secondItem="GbJ-wB-U10" secondAttribute="trailing" id="4Og-MB-aRH"/>
+                <constraint firstItem="aYE-fR-FEN" firstAttribute="centerY" secondItem="tfU-Al-kMC" secondAttribute="centerY" id="8fB-NH-1nD"/>
+                <constraint firstAttribute="bottom" secondItem="51B-oU-oy2" secondAttribute="bottom" id="AhD-w5-bOV"/>
+                <constraint firstItem="LUC-Xm-Pke" firstAttribute="leading" secondItem="ABx-Xs-vvI" secondAttribute="trailing" constant="8" id="Dhy-1W-uRp"/>
+                <constraint firstItem="tfU-Al-kMC" firstAttribute="height" secondItem="51B-oU-oy2" secondAttribute="height" id="DyY-jl-0Gr"/>
+                <constraint firstItem="aYE-fR-FEN" firstAttribute="top" secondItem="GbT-Z1-8yJ" secondAttribute="top" id="EhC-Q3-Dfb"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="centerY" secondItem="brL-CH-Lhl" secondAttribute="centerY" id="GdN-Os-ZeP"/>
+                <constraint firstItem="aYE-fR-FEN" firstAttribute="leading" secondItem="LUC-Xm-Pke" secondAttribute="trailing" id="HT8-oY-mqV"/>
+                <constraint firstItem="51B-oU-oy2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hdt-jX-B1f"/>
+                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.07" id="Hpf-1a-fak"/>
+                <constraint firstItem="ABx-Xs-vvI" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="Hxr-am-G6z"/>
+                <constraint firstItem="LUC-Xm-Pke" firstAttribute="top" secondItem="ABx-Xs-vvI" secondAttribute="top" id="J6f-fo-Gl1"/>
+                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="top" secondItem="ABx-Xs-vvI" secondAttribute="top" id="JZs-XD-qbi"/>
+                <constraint firstItem="tfU-Al-kMC" firstAttribute="leading" secondItem="GbT-Z1-8yJ" secondAttribute="trailing" id="Kj2-iw-L8P"/>
+                <constraint firstItem="tfU-Al-kMC" firstAttribute="width" secondItem="51B-oU-oy2" secondAttribute="width" id="KyV-1V-JC3"/>
+                <constraint firstItem="GbJ-wB-U10" firstAttribute="leading" secondItem="ABx-Xs-vvI" secondAttribute="trailing" id="O5c-on-e3N"/>
+                <constraint firstItem="GbJ-wB-U10" firstAttribute="width" secondItem="51B-oU-oy2" secondAttribute="width" id="R2Z-im-F30"/>
+                <constraint firstItem="51B-oU-oy2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Rg3-m3-Dc4"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="leading" secondItem="GbJ-wB-U10" secondAttribute="trailing" id="Spx-oP-GSw"/>
+                <constraint firstItem="aYE-fR-FEN" firstAttribute="height" secondItem="GbT-Z1-8yJ" secondAttribute="height" id="TPX-Qk-EKj"/>
+                <constraint firstItem="tfU-Al-kMC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UFm-20-1jx"/>
+                <constraint firstAttribute="trailing" secondItem="tfU-Al-kMC" secondAttribute="trailing" id="ZJA-K6-LkN"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="height" secondItem="ABx-Xs-vvI" secondAttribute="height" multiplier="0.2" id="ZJf-Ig-T2J"/>
+                <constraint firstItem="tfU-Al-kMC" firstAttribute="leading" secondItem="brL-CH-Lhl" secondAttribute="trailing" id="Zx8-N9-HBd"/>
+                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="leading" secondItem="aYE-fR-FEN" secondAttribute="trailing" constant="1" id="alq-5q-pgX"/>
+                <constraint firstItem="brL-CH-Lhl" firstAttribute="leading" secondItem="6Mt-uL-plW" secondAttribute="trailing" constant="4" id="bNn-f3-sfe"/>
+                <constraint firstItem="ABx-Xs-vvI" firstAttribute="leading" secondItem="51B-oU-oy2" secondAttribute="trailing" id="dMi-rs-z01"/>
+                <constraint firstItem="brL-CH-Lhl" firstAttribute="top" secondItem="LUC-Xm-Pke" secondAttribute="bottom" id="eoe-Mz-Sqs"/>
+                <constraint firstItem="ABx-Xs-vvI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fZy-9N-uSf"/>
+                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="gP8-Xx-266"/>
+                <constraint firstItem="GbJ-wB-U10" firstAttribute="height" secondItem="51B-oU-oy2" secondAttribute="height" id="kd8-n1-SMQ"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.1" id="lFW-OU-tS6"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="width" secondItem="GbJ-wB-U10" secondAttribute="width" id="lgB-31-aU0"/>
+                <constraint firstItem="aYE-fR-FEN" firstAttribute="width" secondItem="tfU-Al-kMC" secondAttribute="width" id="rMM-C8-txr"/>
+                <constraint firstItem="GbJ-wB-U10" firstAttribute="centerY" secondItem="51B-oU-oy2" secondAttribute="centerY" id="uI1-uh-9MV"/>
+                <constraint firstItem="ABx-Xs-vvI" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.25" id="wfH-fi-NoN"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="top" secondItem="LUC-Xm-Pke" secondAttribute="bottom" id="wzZ-8k-Ih6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Dhy-1W-uRp"/>
+                    <exclude reference="lFW-OU-tS6"/>
+                    <exclude reference="wzZ-8k-Ih6"/>
+                    <exclude reference="8fB-NH-1nD"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="120" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_bidLocation" width="8" height="11"/>
+    </resources>
+</document>

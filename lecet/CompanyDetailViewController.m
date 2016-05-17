@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet CompanyHeaderView *companyHeader;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldAddress;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAddress;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldTotalProjects;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTotalProjects;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldTotalValuation;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTotalValuation;
 
 @end
 
@@ -28,11 +32,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+    _scrollView.contentSize = CGSizeMake(kDeviceWidth, _constraintContentHeight.constant);
     _containerView.backgroundColor = COMPANY_DETAIL_CONTAINER_BG_COLOR;
     
     [_fieldAddress changeConstraintHeight:_constraintFieldAddress];
+    [_fieldTotalProjects changeConstraintHeight:_constraintFieldTotalProjects];
+    [_fieldTotalValuation changeConstraintHeight:_constraintFieldTotalValuation];
     
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:@"38881 Schoolcraft Rd\nLivonia, MI 48150-1033" line2Text:nil];
+    [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
+    [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
 }
 
 - (void)didReceiveMemoryWarning {

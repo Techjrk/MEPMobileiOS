@@ -53,3 +53,6 @@
 "COMPANY_DETAIL_ADDRESS"                    =               "Address";
 "COMPANY_DETAIL_TOTAL_PROJECTS"             =               "Total Projects";
 "COMPANY_DETAIL_TOTAL_VALUATION"            =               "Total Valuation";
+
+//AssociatedProjectsView.xib
+"ASSOCIATED_PROJECTS_TITLE"                 =               "Associated Projects";
