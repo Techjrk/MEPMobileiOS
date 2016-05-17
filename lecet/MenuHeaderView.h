@@ -9,6 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+typedef enum  {
+    MenuHeaderNear = 0,
+    MenuHeaderTrack = 1,
+    MenuHeaderSearch = 2,
+    MenuHeaderMore =3
+} MenuHeaderItem;
+
+@protocol MenuHeaderDelegate <NSObject>
+- (void)tappedMenu:(MenuHeaderItem)menuHeaderItem;
+@end
+
 @interface MenuHeaderView : BaseViewClass
+@property (strong, nonatomic) id<MenuHeaderDelegate>menuHeaderDelegate;
 - (void)setTitle:(NSString*)title;
 @end

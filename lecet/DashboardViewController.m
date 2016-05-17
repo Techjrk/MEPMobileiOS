@@ -21,7 +21,7 @@
 #import "BidSoonItem.h"
 #import "ProjectDetailViewController.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
@@ -79,6 +79,7 @@
     [self loadBidItems];
  
     _pageControl.numberOfPages = 4;
+    _menuHeader.menuHeaderDelegate = self;
 }
 
 - (void)loadBidItems {
@@ -338,6 +339,10 @@
             
         }];
     }];
+    
+}
+
+- (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
     
 }
 

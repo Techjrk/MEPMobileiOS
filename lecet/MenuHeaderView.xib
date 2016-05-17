@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -7,6 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuHeaderView">
             <connections>
+                <outlet property="buttonMore" destination="3TJ-ge-0QP" id="i7j-31-IMs"/>
+                <outlet property="buttonNear" destination="1T2-yG-fGm" id="2m4-s1-u57"/>
+                <outlet property="buttonSearch" destination="QQp-XN-3kf" id="2Ml-7C-T1o"/>
+                <outlet property="buttonTracking" destination="B8V-K4-0WI" id="Cli-zT-nbQ"/>
                 <outlet property="labelCount" destination="CAH-xa-7CN" id="8lV-Oo-Ify"/>
                 <outlet property="labelHeader" destination="ycC-DC-s8B" id="Sgl-K7-4VZ"/>
             </connections>
@@ -23,6 +27,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-ge-0QP">
                     <rect key="frame" x="342" y="29" width="43" height="45.5"/>
                     <state key="normal" image="icon_more"/>
+                    <connections>
+                        <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="ZuL-9c-dey"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXN-26-AvM">
                     <rect key="frame" x="385" y="29" width="8" height="62"/>
@@ -31,14 +38,23 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-XN-3kf">
                     <rect key="frame" x="298.5" y="29" width="43.5" height="45.5"/>
                     <state key="normal" image="icon_search"/>
+                    <connections>
+                        <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="jmb-sj-daq"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-K4-0WI">
                     <rect key="frame" x="255.5" y="29" width="43" height="45.5"/>
                     <state key="normal" image="icon_folder"/>
+                    <connections>
+                        <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="NXG-4O-hNa"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1T2-yG-fGm">
                     <rect key="frame" x="212" y="29" width="43.5" height="45.5"/>
                     <state key="normal" image="icon_location"/>
+                    <connections>
+                        <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="PDu-x0-5Qy"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4f-Yt-g01">
                     <rect key="frame" x="0.0" y="29" width="8" height="62"/>

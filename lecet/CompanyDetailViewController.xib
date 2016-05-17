@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyDetailViewController">
+            <connections>
+                <outlet property="constraintContentHeight" destination="KXn-BA-Bna" id="PdE-vw-wob"/>
+                <outlet property="containerView" destination="rd0-N9-fxn" id="daP-JF-Jfm"/>
+                <outlet property="scrollView" destination="0uK-Xt-6PA" id="UIk-6e-pM3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uK-Xt-6PA">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-N9-fxn">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJW-YR-Bac" customClass="CompanyHeaderView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="294.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="mJW-YR-Bac" firstAttribute="top" secondItem="rd0-N9-fxn" secondAttribute="top" id="0kI-0C-N0O"/>
+                                <constraint firstAttribute="trailing" secondItem="mJW-YR-Bac" secondAttribute="trailing" id="7QJ-uv-seM"/>
+                                <constraint firstAttribute="height" constant="736" id="KXn-BA-Bna"/>
+                                <constraint firstItem="mJW-YR-Bac" firstAttribute="leading" secondItem="rd0-N9-fxn" secondAttribute="leading" id="xxU-db-IXN"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="rd0-N9-fxn" firstAttribute="top" secondItem="0uK-Xt-6PA" secondAttribute="top" id="Eet-TF-pZ1"/>
+                        <constraint firstAttribute="bottom" secondItem="rd0-N9-fxn" secondAttribute="bottom" priority="250" id="Osx-RM-Xd1"/>
+                        <constraint firstAttribute="trailing" secondItem="rd0-N9-fxn" secondAttribute="trailing" id="Tdq-EW-kib"/>
+                        <constraint firstItem="rd0-N9-fxn" firstAttribute="leading" secondItem="0uK-Xt-6PA" secondAttribute="leading" id="hPF-6v-DbF"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mJW-YR-Bac" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="0vX-U1-JDm"/>
+                <constraint firstItem="0uK-Xt-6PA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Dzx-TN-W5q"/>
+                <constraint firstAttribute="bottom" secondItem="0uK-Xt-6PA" secondAttribute="bottom" id="FJC-3N-HMf"/>
+                <constraint firstItem="rd0-N9-fxn" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ejU-GM-pg8"/>
+                <constraint firstAttribute="trailing" secondItem="0uK-Xt-6PA" secondAttribute="trailing" id="gdk-nd-hkt"/>
+                <constraint firstItem="0uK-Xt-6PA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wNw-Ok-ODz"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+        </view>
+    </objects>
+</document>
