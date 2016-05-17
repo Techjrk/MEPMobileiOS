@@ -33,7 +33,7 @@
                     <rect key="frame" x="339.5" y="15" width="34.5" height="33"/>
                     <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbJ-wB-U10">
@@ -44,19 +44,19 @@
                     <rect key="frame" x="327.5" y="15" width="11.5" height="33"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUC-Xm-Pke">
-                    <rect key="frame" x="96" y="15" width="231" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blacklick Creek Sanitary Interceptor Sewer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUC-Xm-Pke">
+                    <rect key="frame" x="96.5" y="15" width="230.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidLocation" translatesAutoresizingMaskIntoConstraints="NO" id="6Mt-uL-plW">
-                    <rect key="frame" x="96.5" y="36.5" width="11.5" height="21"/>
+                    <rect key="frame" x="96.5" y="62.5" width="11.5" height="21"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brL-CH-Lhl">
-                    <rect key="frame" x="111.5" y="36" width="262" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Columbus, OH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brL-CH-Lhl">
+                    <rect key="frame" x="111.5" y="62" width="262" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -101,6 +101,7 @@
                 <constraint firstItem="GbJ-wB-U10" firstAttribute="centerY" secondItem="51B-oU-oy2" secondAttribute="centerY" id="uI1-uh-9MV"/>
                 <constraint firstItem="ABx-Xs-vvI" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.19" id="wfH-fi-NoN"/>
                 <constraint firstItem="6Mt-uL-plW" firstAttribute="top" secondItem="LUC-Xm-Pke" secondAttribute="bottom" id="wzZ-8k-Ih6"/>
+                <constraint firstItem="brL-CH-Lhl" firstAttribute="bottom" secondItem="ABx-Xs-vvI" secondAttribute="bottom" id="yIP-fR-Coy"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -112,6 +113,7 @@
                     <exclude reference="ZJf-Ig-T2J"/>
                     <exclude reference="lFW-OU-tS6"/>
                     <exclude reference="wzZ-8k-Ih6"/>
+                    <exclude reference="eoe-Mz-Sqs"/>
                     <exclude reference="8fB-NH-1nD"/>
                 </mask>
             </variation>
