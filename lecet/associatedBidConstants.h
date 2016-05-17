@@ -23,4 +23,5 @@
 
 #define ASSOCIATED_BID_SHADOW_COLOR                     RGB(0, 0, 0)
 
+
 #endif /* associatedBidConstants_h */
