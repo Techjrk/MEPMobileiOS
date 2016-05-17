@@ -1,5 +1,5 @@
 //
-//  CompanyDetailViewController.h
+//  CompanyStateView.h
 //  lecet
 //
 //  Created by Harry Herrys Camigla on 5/17/16.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BaseViewController.h"
+#import "BaseViewClass.h"
 
-@interface CompanyDetailViewController : UIViewController
-- (void)setInfo:(id)info;
+@interface CompanyStateView : BaseViewClass
+
 @end

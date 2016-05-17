@@ -71,6 +71,8 @@
 		B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C5EF1CEB1B32004A628A /* CompanyHeaderView.xib */; };
 		B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B771C5F21CEB1C64004A628A /* CompanyDetailViewController.m */; };
 		B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C5F31CEB1C64004A628A /* CompanyDetailViewController.xib */; };
+		B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B771C5F91CEB554F004A628A /* CompanyStateView.m */; };
+		B771C5FC1CEB5562004A628A /* CompanyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C5FB1CEB5562004A628A /* CompanyStateView.xib */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -216,6 +218,12 @@
 		B771C5F11CEB1C64004A628A /* CompanyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDetailViewController.h; sourceTree = "<group>"; };
 		B771C5F21CEB1C64004A628A /* CompanyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDetailViewController.m; sourceTree = "<group>"; };
 		B771C5F31CEB1C64004A628A /* CompanyDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyDetailViewController.xib; sourceTree = "<group>"; };
+		B771C5F61CEB478F004A628A /* companyHeaderConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = companyHeaderConstants.h; sourceTree = "<group>"; };
+		B771C5F71CEB52E2004A628A /* companyDetailsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = companyDetailsConstants.h; sourceTree = "<group>"; };
+		B771C5F81CEB554F004A628A /* CompanyStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyStateView.h; sourceTree = "<group>"; };
+		B771C5F91CEB554F004A628A /* CompanyStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStateView.m; sourceTree = "<group>"; };
+		B771C5FB1CEB5562004A628A /* CompanyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyStateView.xib; sourceTree = "<group>"; };
+		B771C5FD1CEB55C1004A628A /* companyStateConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = companyStateConstants.h; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -449,6 +457,9 @@
 				B771C5EC1CEB1B24004A628A /* CompanyHeaderView.h */,
 				B771C5ED1CEB1B24004A628A /* CompanyHeaderView.m */,
 				B771C5EF1CEB1B32004A628A /* CompanyHeaderView.xib */,
+				B771C5F81CEB554F004A628A /* CompanyStateView.h */,
+				B771C5F91CEB554F004A628A /* CompanyStateView.m */,
+				B771C5FB1CEB5562004A628A /* CompanyStateView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -473,6 +484,9 @@
 				B70FDF761CEA01700035A6D9 /* seeAllConstants.h */,
 				B70FDF7C1CEA0A410035A6D9 /* sectionTitleConstants.h */,
 				B70FDF871CEA0F570035A6D9 /* notesConstants.h */,
+				B771C5F61CEB478F004A628A /* companyHeaderConstants.h */,
+				B771C5F71CEB52E2004A628A /* companyDetailsConstants.h */,
+				B771C5FD1CEB55C1004A628A /* companyStateConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -680,6 +694,7 @@
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
+				B771C5FC1CEB5562004A628A /* CompanyStateView.xib in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
@@ -729,6 +744,7 @@
 				B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */,
 				B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */,
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
+				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,

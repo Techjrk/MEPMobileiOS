@@ -82,18 +82,27 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return NO;
+}
+
 - (IBAction)tappedBackButton:(id)sender {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.view.frame = self.previousRect;
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [self dismissViewControllerAnimated:NO completion:^{
-                
-            }];
-     
-        }
-    }];
     
+    if (self.navigationController != nil) {
+
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.frame = self.previousRect;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self dismissViewControllerAnimated:NO completion:^{
+                    
+                }];
+                
+            }
+        }];
+    }
 }
 
 - (void)detailsFromBid:(DB_BidRecent *)record {
@@ -133,7 +142,7 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    //[self layoutContentView];
+    [self layoutContentView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -7,15 +7,69 @@
 //
 
 #import "CompanyHeaderView.h"
+#import <MapKit/MapKit.h>
+#import "companyHeaderConstants.h"
+
+@interface CompanyHeaderView()<MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIView *viewInfo;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@end
 
 @implementation CompanyHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)awakeFromNib {
+ 
+    self.view.backgroundColor = COMPANY_HEADER_BG_COLOR;
+    _viewInfo.backgroundColor = COMPANY_HEADER_INFO_BG_COLOR;
+    
+    _labelTitle.font = COMPANY_HEADER_TITLE_TEXT_FONT;
+    _labelTitle.textColor = COMPANY_HEADER_TITLE_TEXT_COLOR;
 }
-*/
+
+- (void)setHeaderInfo:(id)headerInfo {
+    
+    NSDictionary *info = headerInfo;
+    
+    _labelTitle.text = info[COMPANY_TITLE];
+    CGFloat geoCodeLat = [info[COMPANY_GEOCODE_LAT] floatValue];
+    CGFloat geoCodeLng = [info[COMPANY_GEOCODE_LNG] floatValue];
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+        
+    }
+    
+    return userAnnotationView;
+    
+}
 
 @end

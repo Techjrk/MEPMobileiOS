@@ -314,6 +314,9 @@
     BidSoonItem *item = object;
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
     //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+    CompanyDetailViewController *controller = [CompanyDetailViewController new];
+    [self.navigationController pushViewController:controller animated:NO];
+
 }
 
 - (void)showProjectDetails:(id)record fromRect:(CGRect)rect {
@@ -324,12 +327,17 @@
     rect.origin.y += collectionViewRect.origin.y;
 
     ProjectDetailViewController *detail = [ProjectDetailViewController new];
-    detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    detail.view.hidden = YES;
-    detail.previousRect = rect;
+    detail.view.hidden = NO;
+
     if ([record class] == [DB_BidRecent class]) {
         [detail detailsFromBid:record];
     }
+    
+    [self.navigationController pushViewController:detail animated:YES];
+    /*
+    detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    detail.view.hidden = YES;
+    detail.previousRect = rect;
     
     [self.navigationController presentViewController:detail animated:NO completion:^{
         detail.view.frame = rect;
@@ -341,11 +349,15 @@
             
         }];
     }];
-    
+    */
 }
 
 - (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
     
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return YES;
 }
 
 @end

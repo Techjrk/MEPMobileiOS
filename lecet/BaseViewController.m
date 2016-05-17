@@ -8,7 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
+@interface BaseViewController (){
+    BOOL previousControllerHidden;
+}
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 @end
 
@@ -18,7 +20,9 @@
     [super viewDidLoad];
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     _tapRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:_tapRecognizer];}
+    [self.view addGestureRecognizer:_tapRecognizer];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -28,5 +32,6 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
      [self.view endEditing:YES];
 }
+
 
 @end

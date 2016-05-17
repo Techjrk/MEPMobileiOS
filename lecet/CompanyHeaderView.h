@@ -10,5 +10,5 @@
 #import "BaseViewClass.h"
 
 @interface CompanyHeaderView : BaseViewClass
-
+- (void)setHeaderInfo:(id)headerInfo;
 @end

@@ -8,10 +8,18 @@
 
 #import "CompanyDetailViewController.h"
 
+#import "companyDetailsConstants.h"
+#import "companyHeaderConstants.h"
+#import "CompanyHeaderView.h"
+#import "CustomEntryField.h"
+
 @interface CompanyDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContentHeight;
+@property (weak, nonatomic) IBOutlet CompanyHeaderView *companyHeader;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldAddress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAddress;
 
 @end
 
@@ -19,7 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  
+    _containerView.backgroundColor = COMPANY_DETAIL_CONTAINER_BG_COLOR;
+    
+    [_fieldAddress changeConstraintHeight:_constraintFieldAddress];
+    
+    [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:@"38881 Schoolcraft Rd\nLivonia, MI 48150-1033" line2Text:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,14 +40,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
-*/
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return NO;
+}
+
+- (void)setInfo:(id)info {
+    
+}
 
 @end
