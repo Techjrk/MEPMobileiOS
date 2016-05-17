@@ -21,6 +21,8 @@
 #import "BidSoonItem.h"
 #import "ProjectDetailViewController.h"
 
+#import "CompanyDetailViewController.h"
+
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
