@@ -239,7 +239,7 @@
 		B771C6091CEB7503004A628A /* AssociatedProjectsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedProjectsView.h; sourceTree = "<group>"; };
 		B771C60A1CEB7503004A628A /* AssociatedProjectsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedProjectsView.m; sourceTree = "<group>"; };
 		B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssociatedProjectsView.xib; sourceTree = "<group>"; };
-		B771C60E1CEB795B004A628A /* associatedBidConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = associatedBidConstants.h; sourceTree = "<group>"; };
+		B771C60E1CEB795B004A628A /* AssociatedBidConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssociatedBidConstants.h; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -512,7 +512,7 @@
 				B771C5F61CEB478F004A628A /* companyHeaderConstants.h */,
 				B771C5F71CEB52E2004A628A /* companyDetailsConstants.h */,
 				B771C5FD1CEB55C1004A628A /* companyStateConstants.h */,
-				B771C60E1CEB795B004A628A /* associatedBidConstants.h */,
+				B771C60E1CEB795B004A628A /* AssociatedBidConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
