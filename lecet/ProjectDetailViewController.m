@@ -142,7 +142,7 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    [self layoutContentView];
+    //[self layoutContentView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -153,7 +153,7 @@
     if (!isShownContentAdjusted) {
 
         isShownContentAdjusted = YES;
-        CGFloat contentHeight = _projectBidder.frame.size.height + _projectBidder.frame.origin.y + (kDeviceHeight * 0.1);
+        CGFloat contentHeight = _projectBidder.frame.size.height + _projectBidder.frame.origin.y + (kDeviceHeight * 0.05);
         _constraintContentHeight.constant = contentHeight;
         _scrollView.contentSize = CGSizeMake(kDeviceWidth, contentHeight);
     }

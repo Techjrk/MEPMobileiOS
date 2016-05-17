@@ -11,5 +11,6 @@
 #import "BaseViewClass.h"
 
 @interface AssociatedProjectsView : BaseViewClass
-
+- (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
+- (void)setItems:(NSMutableArray*)items;
 @end

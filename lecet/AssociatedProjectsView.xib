@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssociatedProjectsView">
             <connections>
+                <outlet property="collectionView" destination="xXM-4O-LER" id="tHs-o0-DsO"/>
+                <outlet property="constraintSpacerHeight" destination="hyX-Pa-PRz" id="RLB-hK-yQf"/>
                 <outlet property="constraintTitleHeight" destination="IXf-uZ-d1g" id="DyQ-39-Q2g"/>
                 <outlet property="titleView" destination="cXG-xY-ER2" id="k7i-E5-du4"/>
             </connections>
@@ -16,23 +19,57 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXG-xY-ER2" customClass="SectionTitleView">
-                    <rect key="frame" x="0.0" y="0.0" width="472" height="75"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="14" y="0.0" width="444" height="75"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="IXf-uZ-d1g"/>
                     </constraints>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xXM-4O-LER">
+                    <rect key="frame" x="0.0" y="99" width="472" height="145"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="klZ-Es-uA4">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jq-GH-VdJ">
+                    <rect key="frame" x="14" y="75" width="444" height="24"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="hyX-Pa-PRz"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="8jq-GH-VdJ" firstAttribute="centerX" secondItem="cXG-xY-ER2" secondAttribute="centerX" id="89f-VF-agM"/>
+                <constraint firstItem="cXG-xY-ER2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8ld-w8-c3Q"/>
+                <constraint firstAttribute="bottom" secondItem="xXM-4O-LER" secondAttribute="bottom" id="9X8-yN-xjK"/>
+                <constraint firstItem="xXM-4O-LER" firstAttribute="top" secondItem="cXG-xY-ER2" secondAttribute="bottom" constant="40" id="PGo-JD-526"/>
+                <constraint firstItem="xXM-4O-LER" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SII-F4-Kmn"/>
                 <constraint firstItem="cXG-xY-ER2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Y5S-IK-Pgr"/>
                 <constraint firstItem="cXG-xY-ER2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bga-77-eho"/>
+                <constraint firstItem="8jq-GH-VdJ" firstAttribute="top" secondItem="cXG-xY-ER2" secondAttribute="bottom" id="g7r-hI-Bxc"/>
+                <constraint firstItem="xXM-4O-LER" firstAttribute="top" secondItem="8jq-GH-VdJ" secondAttribute="bottom" id="iTI-Xs-fs5"/>
+                <constraint firstAttribute="trailing" secondItem="xXM-4O-LER" secondAttribute="trailing" id="p56-Hu-1fS"/>
                 <constraint firstAttribute="trailing" secondItem="cXG-xY-ER2" secondAttribute="trailing" id="qLo-pd-xdf"/>
+                <constraint firstItem="cXG-xY-ER2" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.94" id="upN-Ht-Teq"/>
+                <constraint firstItem="8jq-GH-VdJ" firstAttribute="width" secondItem="cXG-xY-ER2" secondAttribute="width" id="x7r-C5-yjj"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="bga-77-eho"/>
+                    <exclude reference="qLo-pd-xdf"/>
+                    <exclude reference="PGo-JD-526"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="163" y="111"/>
         </view>
     </objects>

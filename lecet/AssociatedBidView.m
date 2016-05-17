@@ -39,6 +39,8 @@
     self.layer.shadowOffset = CGSizeMake(2, 2);
     self.layer.shadowOpacity = 0.25;
     self.layer.masksToBounds = NO;
+    self.view.layer.masksToBounds = YES;
+    self.view.layer.cornerRadius = 4.0;
 
 }
 

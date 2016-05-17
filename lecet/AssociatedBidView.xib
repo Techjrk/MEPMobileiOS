@@ -23,38 +23,38 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-Xs-vvI">
-                    <rect key="frame" x="11" y="10" width="96.5" height="78"/>
+                    <rect key="frame" x="11" y="15" width="73.5" height="68"/>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfU-Al-kMC">
                     <rect key="frame" x="374" y="0.0" width="11.5" height="97"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbT-Z1-8yJ">
-                    <rect key="frame" x="347" y="10" width="27" height="29"/>
+                    <rect key="frame" x="339.5" y="15" width="34.5" height="33"/>
                     <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbJ-wB-U10">
-                    <rect key="frame" x="108" y="0.0" width="11.5" height="97"/>
+                    <rect key="frame" x="85" y="0.0" width="11.5" height="97"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYE-fR-FEN">
-                    <rect key="frame" x="335" y="10" width="11.5" height="29"/>
+                    <rect key="frame" x="327.5" y="15" width="11.5" height="33"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUC-Xm-Pke">
-                    <rect key="frame" x="119" y="10" width="215.5" height="21"/>
+                    <rect key="frame" x="96" y="15" width="231" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidLocation" translatesAutoresizingMaskIntoConstraints="NO" id="6Mt-uL-plW">
-                    <rect key="frame" x="119.5" y="34" width="11.5" height="15.5"/>
+                    <rect key="frame" x="96.5" y="36.5" width="11.5" height="21"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brL-CH-Lhl">
-                    <rect key="frame" x="135" y="31" width="239" height="21"/>
+                    <rect key="frame" x="111.5" y="36" width="262" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -72,8 +72,8 @@
                 <constraint firstItem="6Mt-uL-plW" firstAttribute="centerY" secondItem="brL-CH-Lhl" secondAttribute="centerY" id="GdN-Os-ZeP"/>
                 <constraint firstItem="aYE-fR-FEN" firstAttribute="leading" secondItem="LUC-Xm-Pke" secondAttribute="trailing" id="HT8-oY-mqV"/>
                 <constraint firstItem="51B-oU-oy2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hdt-jX-B1f"/>
-                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.07" id="Hpf-1a-fak"/>
-                <constraint firstItem="ABx-Xs-vvI" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="Hxr-am-G6z"/>
+                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.09" id="Hpf-1a-fak"/>
+                <constraint firstItem="ABx-Xs-vvI" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="Hxr-am-G6z"/>
                 <constraint firstItem="LUC-Xm-Pke" firstAttribute="top" secondItem="ABx-Xs-vvI" secondAttribute="top" id="J6f-fo-Gl1"/>
                 <constraint firstItem="GbT-Z1-8yJ" firstAttribute="top" secondItem="ABx-Xs-vvI" secondAttribute="top" id="JZs-XD-qbi"/>
                 <constraint firstItem="tfU-Al-kMC" firstAttribute="leading" secondItem="GbT-Z1-8yJ" secondAttribute="trailing" id="Kj2-iw-L8P"/>
@@ -92,13 +92,14 @@
                 <constraint firstItem="ABx-Xs-vvI" firstAttribute="leading" secondItem="51B-oU-oy2" secondAttribute="trailing" id="dMi-rs-z01"/>
                 <constraint firstItem="brL-CH-Lhl" firstAttribute="top" secondItem="LUC-Xm-Pke" secondAttribute="bottom" id="eoe-Mz-Sqs"/>
                 <constraint firstItem="ABx-Xs-vvI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fZy-9N-uSf"/>
-                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="gP8-Xx-266"/>
+                <constraint firstItem="GbT-Z1-8yJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.35" id="gP8-Xx-266"/>
                 <constraint firstItem="GbJ-wB-U10" firstAttribute="height" secondItem="51B-oU-oy2" secondAttribute="height" id="kd8-n1-SMQ"/>
                 <constraint firstItem="6Mt-uL-plW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.1" id="lFW-OU-tS6"/>
                 <constraint firstItem="6Mt-uL-plW" firstAttribute="width" secondItem="GbJ-wB-U10" secondAttribute="width" id="lgB-31-aU0"/>
+                <constraint firstItem="6Mt-uL-plW" firstAttribute="height" secondItem="brL-CH-Lhl" secondAttribute="height" id="nWj-qz-lA6"/>
                 <constraint firstItem="aYE-fR-FEN" firstAttribute="width" secondItem="tfU-Al-kMC" secondAttribute="width" id="rMM-C8-txr"/>
                 <constraint firstItem="GbJ-wB-U10" firstAttribute="centerY" secondItem="51B-oU-oy2" secondAttribute="centerY" id="uI1-uh-9MV"/>
-                <constraint firstItem="ABx-Xs-vvI" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.25" id="wfH-fi-NoN"/>
+                <constraint firstItem="ABx-Xs-vvI" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.19" id="wfH-fi-NoN"/>
                 <constraint firstItem="6Mt-uL-plW" firstAttribute="top" secondItem="LUC-Xm-Pke" secondAttribute="bottom" id="wzZ-8k-Ih6"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -108,6 +109,7 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="Dhy-1W-uRp"/>
+                    <exclude reference="ZJf-Ig-T2J"/>
                     <exclude reference="lFW-OU-tS6"/>
                     <exclude reference="wzZ-8k-Ih6"/>
                     <exclude reference="8fB-NH-1nD"/>

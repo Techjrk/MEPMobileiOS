@@ -315,7 +315,9 @@
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
     //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
     CompanyDetailViewController *controller = [CompanyDetailViewController new];
-    [self.navigationController pushViewController:controller animated:NO];
+    controller.view.hidden = NO;
+    [controller setInfo:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 
 }
 
