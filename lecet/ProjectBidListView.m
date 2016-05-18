@@ -36,8 +36,7 @@
     [_titleView setTitle:NSLocalizedLanguage(@"PROJECT_BIDS_VIEW_TITLE")];
     _constraintTitleHeight.constant = kDeviceHeight * 0.05;
     _constraintSpacerHeight.constant = kDeviceHeight * 0.015;
-    _constraintSpacerHeight.constant = 0;
-
+    
     [_buttonSeeAll setTitleColor:PROJECT_BID_LIST_BUTTON_COLOR forState:UIControlStateNormal];
     _buttonSeeAll.titleLabel.font = PROJECT_BID_LIST_BUTTON_FONT;
 
@@ -122,7 +121,7 @@
 - (void)layoutSubviews {
     if (cellHeight>0) {
         NSInteger itemCount = collectionItems.count>3?3:collectionItems.count;
-        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + (_constraintSpacerHeight.constant * 2) + _constraintButtonSeeAll.constant;
+        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _constraintSpacerHeight.constant + _constraintButtonSeeAll.constant;
     }
 }
 

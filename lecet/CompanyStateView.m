@@ -34,11 +34,15 @@
     
     _constraintButtonHeight.constant = kDeviceHeight * 0.055;
     [self configureView:_buttonTrack];
+    [_buttonTrack setTitleColor:COMPANY_STATE_BUTTON_COLOR forState:UIControlStateNormal];
+    [_buttonTrack setTitle:NSLocalizedLanguage(@"COMPANY_STATE_TRACK") forState:UIControlStateNormal];
+    
     [self configureView:_buttonShare];
+    [_buttonShare setTitleColor:COMPANY_STATE_BUTTON_COLOR forState:UIControlStateNormal];
+    [_buttonShare setTitle:NSLocalizedLanguage(@"COMPANY_STATE_SHARE") forState:UIControlStateNormal];
     
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactFieldCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 
-    
 }
 
 - (void)configureView:(UIView*)view {
@@ -65,9 +69,7 @@
     
     ContactFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    
-    //[cell setInfo:dict];
-     
+    [cell setInfo:collectionItems[indexPath.row]];
     [self configureView:cell];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];

@@ -8,6 +8,11 @@
 
 #import "ContactFieldCollectionViewCell.h"
 
+#import "ContactFieldView.h"
+
+@interface ContactFieldCollectionViewCell()
+@property (weak, nonatomic) IBOutlet ContactFieldView *fieldItem;
+@end
 @implementation ContactFieldCollectionViewCell
 
 - (void)awakeFromNib {
@@ -15,4 +20,7 @@
     // Initialization code
 }
 
+- (void)setInfo:(id)info {
+    [_fieldItem setInfo:info];
+}
 @end

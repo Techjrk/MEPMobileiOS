@@ -12,7 +12,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWW-Vt-bPz">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWW-Vt-bPz" customClass="ContactFieldView">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -25,6 +25,9 @@
                 <constraint firstItem="TWW-Vt-bPz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="oE9-Tb-dIl"/>
                 <constraint firstItem="TWW-Vt-bPz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rLh-07-UZu"/>
             </constraints>
+            <connections>
+                <outlet property="fieldItem" destination="TWW-Vt-bPz" id="CKj-p5-2JL"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

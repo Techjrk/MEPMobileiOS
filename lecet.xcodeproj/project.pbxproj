@@ -102,6 +102,8 @@
 		B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E1044C1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib */; };
 		B7E104541CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104521CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m */; };
 		B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104531CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib */; };
+		B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104571CECE91600EAD8E7 /* ContactFieldView.m */; };
+		B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */; };
 		B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */; };
 		B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F41CDB3E3300847FA3 /* AFNetworkReachabilityManager.m */; };
 		B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F61CDB3E3300847FA3 /* AFSecurityPolicy.m */; };
@@ -295,6 +297,10 @@
 		B7E104511CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFieldCollectionViewCell.h; sourceTree = "<group>"; };
 		B7E104521CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFieldCollectionViewCell.m; sourceTree = "<group>"; };
 		B7E104531CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactFieldCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7E104561CECE91600EAD8E7 /* ContactFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFieldView.h; sourceTree = "<group>"; };
+		B7E104571CECE91600EAD8E7 /* ContactFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFieldView.m; sourceTree = "<group>"; };
+		B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactFieldView.xib; sourceTree = "<group>"; };
+		B7E1045B1CECEC7F00EAD8E7 /* contactFieldConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = contactFieldConstants.h; sourceTree = "<group>"; };
 		B7F109F01CDB3E3300847FA3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B7F109F21CDB3E3300847FA3 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -545,6 +551,9 @@
 				B7E104451CEC8B5400EAD8E7 /* ProjectBidListView.h */,
 				B7E104461CEC8B5400EAD8E7 /* ProjectBidListView.m */,
 				B7E104481CEC8B7D00EAD8E7 /* ProjectBidListView.xib */,
+				B7E104561CECE91600EAD8E7 /* ContactFieldView.h */,
+				B7E104571CECE91600EAD8E7 /* ContactFieldView.m */,
+				B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -577,6 +586,7 @@
 				B7E104441CEC850900EAD8E7 /* projectBidConstants.h */,
 				B7E1044F1CECA2E300EAD8E7 /* projectBidListConstants.h */,
 				B7E104501CECA6D000EAD8E7 /* associatedProjectsConstants.h */,
+				B7E1045B1CECEC7F00EAD8E7 /* contactFieldConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -797,6 +807,7 @@
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
+				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
@@ -882,6 +893,7 @@
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,

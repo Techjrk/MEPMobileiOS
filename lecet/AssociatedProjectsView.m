@@ -63,7 +63,6 @@
     
     NSDictionary *dict = @{ASSOCIATED_BID_NAME:@"Blacklick Creek Sanitary Interceptor Sewer", ASSOCIATED_BID_LOCATION:@"Columbus, OH"};
     [cell setInfo:dict];
-    //[cell setItem:@"$ 10,000" line1:@"Abhe & Svoboda, Inc" line2:@"Prior Lake, MN"];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     

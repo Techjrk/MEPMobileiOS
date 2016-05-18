@@ -17,6 +17,7 @@
 #import "ContactsListView.h"
 #import "ProjectBidListView.h"
 #import "CompanyStateView.h"
+#import "contactFieldConstants.h"
 
 @interface CompanyDetailViewController (){
     BOOL isShownContentAdjusted;
@@ -102,7 +103,9 @@
     [_fieldAssociatedProjects setItems:[@[@"", @"", @"", @"", @"", @""]mutableCopy]];
     [_fieldContacts setItems:[@[@"", @"", @"", @""]mutableCopy]];
     [_fieldProjectBidList setItems:[@[@"", @"", @"", @""]mutableCopy]];
-    [_fieldCompanyState setItems:[@[@"", @"", @""]mutableCopy] ];
+    
+    NSArray *contactItem = @[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}];
+    [_fieldCompanyState setItems:[contactItem mutableCopy]];
 
 }
 

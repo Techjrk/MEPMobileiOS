@@ -1,5 +1,5 @@
 //
-//  ContactFieldCollectionViewCell.h
+//  ContactFieldView.h
 //  lecet
 //
 //  Created by Harry Herrys Camigla on 5/18/16.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ContactFieldCollectionViewCell : UICollectionViewCell
+#import "BaseViewClass.h"
+@interface ContactFieldView : BaseViewClass
 - (void)setInfo:(id)info;
 @end

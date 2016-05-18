@@ -64,3 +64,7 @@
 //ProjectBidListView.xib
 "PROJECT_BIDS_VIEW_TITLE"                   =               "Project Bids";
 "PROJECT_BIDS_VIEW_ALL"                     =               "See all %li Bids";
+
+//CompanyStateView.xib
+"COMPANY_STATE_TRACK"                       =               "Track";
+"COMPANY_STATE_SHARE"                       =               "Share";
