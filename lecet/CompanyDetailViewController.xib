@@ -11,6 +11,7 @@
                 <outlet property="constraintContentHeight" destination="KXn-BA-Bna" id="PdE-vw-wob"/>
                 <outlet property="constraintFieldAddress" destination="fQa-wU-mJM" id="usz-iO-Fd0"/>
                 <outlet property="constraintFieldAssociatedProjects" destination="H0v-Hq-Qoy" id="A0O-RJ-F6Z"/>
+                <outlet property="constraintFieldCompanyState" destination="j2v-Av-zRV" id="EvH-he-u4e"/>
                 <outlet property="constraintFieldContacts" destination="9xS-Tg-t67" id="raY-qV-Sze"/>
                 <outlet property="constraintFieldNotes" destination="wIr-Fh-nyA" id="7u2-sc-Noo"/>
                 <outlet property="constraintFieldProjectBidList" destination="4v9-eW-PI7" id="yAc-Pm-ocm"/>
@@ -19,6 +20,7 @@
                 <outlet property="containerView" destination="rd0-N9-fxn" id="daP-JF-Jfm"/>
                 <outlet property="fieldAddress" destination="u6k-JJ-xU0" id="YgU-3x-Guc"/>
                 <outlet property="fieldAssociatedProjects" destination="fk6-Z4-0tT" id="1yy-7Y-heN"/>
+                <outlet property="fieldCompanyState" destination="gEH-cs-qPd" id="rCW-m1-b2L"/>
                 <outlet property="fieldContacts" destination="Wmn-DZ-irf" id="xR8-hg-DLO"/>
                 <outlet property="fieldNotes" destination="OIz-FW-BJI" id="vR2-ux-fdC"/>
                 <outlet property="fieldProjectBidList" destination="EmG-Ds-Qsl" id="buc-Hc-Pti"/>
@@ -61,6 +63,9 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEH-cs-qPd" customClass="CompanyStateView">
                                     <rect key="frame" x="17" y="326" width="380" height="191"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="191" id="j2v-Av-zRV"/>
+                                    </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvz-gO-dNK">
                                     <rect key="frame" x="17" y="517" width="380" height="15"/>
@@ -222,6 +227,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="8B6-mw-Nnd"/>
                     <exclude reference="0XJ-cQ-4dz"/>
                 </mask>
             </variation>

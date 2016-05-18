@@ -65,7 +65,6 @@
     
     ProjectBidItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    //[cell setItem:@"$ 10,000" line1:@"Abhe & Svoboda, Inc" line2:@"Prior Lake, MN"];
     NSDictionary *dict = @{PROJECT_BID_NAME:@"Maline Creek CSO 051 & 052 Storage Facility", PROJECT_BID_LOCATION:@"Saint Louis, MO", PROJECT_BID_AMOUNT:@"$82,828,282", PROJECT_BID_DATE:@"1/15/2016"};
 
     [cell setInfo:dict];

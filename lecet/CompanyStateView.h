@@ -11,5 +11,6 @@
 #import "BaseViewClass.h"
 
 @interface CompanyStateView : BaseViewClass
-
+- (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
+- (void)setItems:(NSMutableArray*)items;
 @end

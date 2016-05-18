@@ -16,6 +16,7 @@
 #import "NotesView.h"
 #import "ContactsListView.h"
 #import "ProjectBidListView.h"
+#import "CompanyStateView.h"
 
 @interface CompanyDetailViewController (){
     BOOL isShownContentAdjusted;
@@ -39,6 +40,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldContacts;
 @property (weak, nonatomic) IBOutlet ProjectBidListView *fieldProjectBidList;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidList;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldCompanyState;
+@property (weak, nonatomic) IBOutlet CompanyStateView *fieldCompanyState;
 - (IBAction)tappedButtonBack:(id)sender;
 @end
 
@@ -55,6 +58,7 @@
     [_fieldNotes changeConstraintHeight:_constraintFieldNotes];
     [_fieldContacts changeConstraintHeight:_constraintFieldContacts];
     [_fieldProjectBidList changeConstraintHeight:_constraintFieldProjectBidList];
+    [_fieldCompanyState changeConstraintHeight:_constraintFieldCompanyState];
     
 }
 
@@ -98,6 +102,7 @@
     [_fieldAssociatedProjects setItems:[@[@"", @"", @"", @"", @"", @""]mutableCopy]];
     [_fieldContacts setItems:[@[@"", @"", @"", @""]mutableCopy]];
     [_fieldProjectBidList setItems:[@[@"", @"", @"", @""]mutableCopy]];
+    [_fieldCompanyState setItems:[@[@"", @"", @""]mutableCopy] ];
 
 }
 
