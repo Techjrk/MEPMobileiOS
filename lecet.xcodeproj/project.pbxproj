@@ -88,6 +88,18 @@
 		B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */; };
 		B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */; };
 		B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */; };
+		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
+		B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */; };
+		B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */; };
+		B7E104391CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104371CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib */; };
+		B7E1043C1CEC74E900EAD8E7 /* ContactsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E1043B1CEC74E900EAD8E7 /* ContactsListView.m */; };
+		B7E1043E1CEC74FE00EAD8E7 /* ContactsListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E1043D1CEC74FE00EAD8E7 /* ContactsListView.xib */; };
+		B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104401CEC7DEF00EAD8E7 /* ProjectBidView.m */; };
+		B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104421CEC7DFD00EAD8E7 /* ProjectBidView.xib */; };
+		B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104461CEC8B5400EAD8E7 /* ProjectBidListView.m */; };
+		B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104481CEC8B7D00EAD8E7 /* ProjectBidListView.xib */; };
+		B7E1044D1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E1044B1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m */; };
+		B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E1044C1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib */; };
 		B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */; };
 		B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F41CDB3E3300847FA3 /* AFNetworkReachabilityManager.m */; };
 		B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F109F61CDB3E3300847FA3 /* AFSecurityPolicy.m */; };
@@ -256,6 +268,28 @@
 		B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectHeaderView.m; sourceTree = "<group>"; };
 		B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectHeaderView.xib; sourceTree = "<group>"; };
 		B7A1D34A1CE4D9A7004E94B3 /* projectHeaderConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectHeaderConstants.h; sourceTree = "<group>"; };
+		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
+		B7E104301CEC6D7600EAD8E7 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
+		B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsView.xib; sourceTree = "<group>"; };
+		B7E104341CEC6FA800EAD8E7 /* contactsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = contactsConstants.h; sourceTree = "<group>"; };
+		B7E104351CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B7E104371CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7E1043A1CEC74E900EAD8E7 /* ContactsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsListView.h; sourceTree = "<group>"; };
+		B7E1043B1CEC74E900EAD8E7 /* ContactsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsListView.m; sourceTree = "<group>"; };
+		B7E1043D1CEC74FE00EAD8E7 /* ContactsListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsListView.xib; sourceTree = "<group>"; };
+		B7E1043F1CEC7DEF00EAD8E7 /* ProjectBidView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidView.h; sourceTree = "<group>"; };
+		B7E104401CEC7DEF00EAD8E7 /* ProjectBidView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidView.m; sourceTree = "<group>"; };
+		B7E104421CEC7DFD00EAD8E7 /* ProjectBidView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidView.xib; sourceTree = "<group>"; };
+		B7E104441CEC850900EAD8E7 /* projectBidConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectBidConstants.h; sourceTree = "<group>"; };
+		B7E104451CEC8B5400EAD8E7 /* ProjectBidListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidListView.h; sourceTree = "<group>"; };
+		B7E104461CEC8B5400EAD8E7 /* ProjectBidListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidListView.m; sourceTree = "<group>"; };
+		B7E104481CEC8B7D00EAD8E7 /* ProjectBidListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidListView.xib; sourceTree = "<group>"; };
+		B7E1044A1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B7E1044B1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B7E1044C1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7E1044F1CECA2E300EAD8E7 /* projectBidListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectBidListConstants.h; sourceTree = "<group>"; };
+		B7E104501CECA6D000EAD8E7 /* associatedProjectsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = associatedProjectsConstants.h; sourceTree = "<group>"; };
 		B7F109F01CDB3E3300847FA3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		B7F109F11CDB3E3300847FA3 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B7F109F21CDB3E3300847FA3 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -416,6 +450,12 @@
 				B771C5FE1CEB6C28004A628A /* AssociatedBidCollectionViewCell.h */,
 				B771C5FF1CEB6C28004A628A /* AssociatedBidCollectionViewCell.m */,
 				B771C6001CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib */,
+				B7E104351CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.h */,
+				B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */,
+				B7E104371CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib */,
+				B7E1044A1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.h */,
+				B7E1044B1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m */,
+				B7E1044C1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -485,6 +525,18 @@
 				B771C6091CEB7503004A628A /* AssociatedProjectsView.h */,
 				B771C60A1CEB7503004A628A /* AssociatedProjectsView.m */,
 				B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */,
+				B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */,
+				B7E104301CEC6D7600EAD8E7 /* ContactsView.m */,
+				B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */,
+				B7E1043A1CEC74E900EAD8E7 /* ContactsListView.h */,
+				B7E1043B1CEC74E900EAD8E7 /* ContactsListView.m */,
+				B7E1043D1CEC74FE00EAD8E7 /* ContactsListView.xib */,
+				B7E1043F1CEC7DEF00EAD8E7 /* ProjectBidView.h */,
+				B7E104401CEC7DEF00EAD8E7 /* ProjectBidView.m */,
+				B7E104421CEC7DFD00EAD8E7 /* ProjectBidView.xib */,
+				B7E104451CEC8B5400EAD8E7 /* ProjectBidListView.h */,
+				B7E104461CEC8B5400EAD8E7 /* ProjectBidListView.m */,
+				B7E104481CEC8B7D00EAD8E7 /* ProjectBidListView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -513,6 +565,10 @@
 				B771C5F71CEB52E2004A628A /* companyDetailsConstants.h */,
 				B771C5FD1CEB55C1004A628A /* companyStateConstants.h */,
 				B771C60F1CEB94F0004A628A /* associatedBidConstants.h */,
+				B7E104341CEC6FA800EAD8E7 /* contactsConstants.h */,
+				B7E104441CEC850900EAD8E7 /* projectBidConstants.h */,
+				B7E1044F1CECA2E300EAD8E7 /* projectBidListConstants.h */,
+				B7E104501CECA6D000EAD8E7 /* associatedProjectsConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -705,6 +761,7 @@
 				B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */,
 				B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */,
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
+				B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
@@ -721,15 +778,19 @@
 				B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */,
 				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
+				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
 				B771C5FC1CEB5562004A628A /* CompanyStateView.xib in Resources */,
+				B7E1043E1CEC74FE00EAD8E7 /* ContactsListView.xib in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
+				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
+				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
 				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
@@ -738,6 +799,7 @@
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
+				B7E104391CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib in Resources */,
 				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
@@ -766,6 +828,7 @@
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
+				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
@@ -782,8 +845,11 @@
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
 				B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */,
+				B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */,
 				B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */,
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,
+				B7E1044D1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m in Sources */,
+				B7E1043C1CEC74E900EAD8E7 /* ContactsListView.m in Sources */,
 				B7F10A151CDB3E3300847FA3 /* AFURLRequestSerialization.m in Sources */,
 				B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */,
 				B7F10A171CDB3E3300847FA3 /* AFURLSessionManager.m in Sources */,
@@ -798,6 +864,7 @@
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
+				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
 				B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */,
 				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
@@ -807,6 +874,7 @@
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
+				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B771C6051CEB6C50004A628A /* AssociatedBidView.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,

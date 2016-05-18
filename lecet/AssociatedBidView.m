@@ -22,9 +22,12 @@
 @implementation AssociatedBidView
 
 - (void)awakeFromNib {
+    
+    _labelProject.text = @"";
     _labelProject.font = ASSOCIATED_BID_LABEL_PROJECT_FONT;
     _labelProject.textColor = ASSOCIATED_BID_LABEL_PROJECT_COLOR;
     
+    _labelLocation.text = @"";
     _labelLocation.font = ASSOCIATED_BID_LABEL_LOCATION_FONT;
     _labelLocation.textColor = ASSOCIATED_BID_LABEL_LOCATION_COLOR;
     
@@ -42,6 +45,13 @@
     self.view.layer.masksToBounds = YES;
     self.view.layer.cornerRadius = 4.0;
 
+}
+
+- (void)setInfo:(id)info {
+    NSDictionary *infoDict = info;
+    
+    _labelProject.text = infoDict[ASSOCIATED_BID_NAME];
+    _labelLocation.text = infoDict[ASSOCIATED_BID_LOCATION];
 }
 
 @end

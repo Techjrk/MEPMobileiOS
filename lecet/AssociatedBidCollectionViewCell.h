@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AssociatedBidCollectionViewCell : UICollectionViewCell
-
+- (void)setInfo:(id)info;
 @end

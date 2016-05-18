@@ -40,6 +40,9 @@
                     <exclude reference="dK1-l5-bYo"/>
                 </mask>
             </variation>
+            <connections>
+                <outlet property="item" destination="JUI-Ms-2mP" id="kIY-M5-ofe"/>
+            </connections>
             <point key="canvasLocation" x="296" y="289"/>
         </collectionViewCell>
     </objects>

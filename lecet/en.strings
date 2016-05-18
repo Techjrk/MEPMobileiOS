@@ -56,3 +56,11 @@
 
 //AssociatedProjectsView.xib
 "ASSOCIATED_PROJECTS_TITLE"                 =               "Associated Projects";
+"ASSOCIATED_PROJECTS_ALL"                   =               "See all %li Projects";
+
+//ContactsListView.xib
+"CONTACTS_VIEW_TITLE"                       =               "Contacts";
+
+//ProjectBidListView.xib
+"PROJECT_BIDS_VIEW_TITLE"                   =               "Project Bids";
+"PROJECT_BIDS_VIEW_ALL"                     =               "See all %li Bids";

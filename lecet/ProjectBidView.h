@@ -1,8 +1,8 @@
 //
-//  AssociatedBidView.h
+//  ProjectBidView.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/17/16.
+//  Created by Harry Herrys Camigla on 5/18/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 #import "BaseViewClass.h"
 
-@interface AssociatedBidView : BaseViewClass
+@interface ProjectBidView : BaseViewClass
 - (void)setInfo:(id)info;
 @end

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactsListView">
+            <connections>
+                <outlet property="collectionView" destination="uCb-uL-fPI" id="Mdi-my-2Kd"/>
+                <outlet property="constraintSpacerHeight" destination="8m5-vD-bds" id="PTT-sv-Zu8"/>
+                <outlet property="constraintTitleHeight" destination="xyP-2E-szA" id="daD-Pm-Af3"/>
+                <outlet property="titleView" destination="qFg-49-VJi" id="xTN-tb-Zbd"/>
+                <outlet property="viewSpacer" destination="dB8-hI-1ZM" id="UwZ-BO-voi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="195"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-49-VJi" customClass="SectionTitleView">
+                    <rect key="frame" x="11" y="0.0" width="337" height="74"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="xyP-2E-szA"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uCb-uL-fPI">
+                    <rect key="frame" x="0.0" y="94" width="359" height="101"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Obp-0j-QUQ">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dB8-hI-1ZM">
+                    <rect key="frame" x="10.5" y="74" width="337" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="8m5-vD-bds"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qFg-49-VJi" secondAttribute="trailing" id="4vS-Ix-W3l"/>
+                <constraint firstItem="qFg-49-VJi" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.94" id="6zl-mF-asw"/>
+                <constraint firstItem="dB8-hI-1ZM" firstAttribute="centerX" secondItem="qFg-49-VJi" secondAttribute="centerX" id="71e-xp-PG6"/>
+                <constraint firstItem="qFg-49-VJi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="89D-Mx-MxY"/>
+                <constraint firstItem="qFg-49-VJi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8Qs-i5-arr"/>
+                <constraint firstItem="uCb-uL-fPI" firstAttribute="top" secondItem="qFg-49-VJi" secondAttribute="bottom" constant="50" id="DS7-p3-Apj"/>
+                <constraint firstItem="uCb-uL-fPI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VHv-p6-puc"/>
+                <constraint firstItem="uCb-uL-fPI" firstAttribute="top" secondItem="dB8-hI-1ZM" secondAttribute="bottom" id="a6A-FU-QIR"/>
+                <constraint firstItem="dB8-hI-1ZM" firstAttribute="top" secondItem="qFg-49-VJi" secondAttribute="bottom" id="afR-37-TJ6"/>
+                <constraint firstAttribute="trailing" secondItem="uCb-uL-fPI" secondAttribute="trailing" id="atp-8d-Jry"/>
+                <constraint firstItem="qFg-49-VJi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gTQ-KQ-2HC"/>
+                <constraint firstItem="dB8-hI-1ZM" firstAttribute="width" secondItem="qFg-49-VJi" secondAttribute="width" id="gXO-Hq-oOf"/>
+                <constraint firstAttribute="bottom" secondItem="uCb-uL-fPI" secondAttribute="bottom" id="yVs-Ik-LYW"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4vS-Ix-W3l"/>
+                    <exclude reference="gTQ-KQ-2HC"/>
+                    <exclude reference="DS7-p3-Apj"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="159.5" y="109.5"/>
+        </view>
+    </objects>
+</document>

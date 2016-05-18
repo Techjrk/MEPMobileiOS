@@ -1,24 +1,25 @@
 //
-//  AssociatedProjectsView.m
+//  ProjectBidListView.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/17/16.
+//  Created by Harry Herrys Camigla on 5/18/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "AssociatedProjectsView.h"
+#import "ProjectBidListView.h"
 
 #import "SectionTitleView.h"
-#import "AssociatedBidCollectionViewCell.h"
-#import "associatedProjectsConstants.h"
-#import "associatedBidConstants.h"
+#import "ProjectBidItemCollectionViewCell.h"
+#import "projectBidListConstants.h"
+#import "projectBidConstants.h"
 
-@interface AssociatedProjectsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
+@interface ProjectBidListView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
 }
 @property (weak, nonatomic) IBOutlet SectionTitleView *titleView;
+@property (weak, nonatomic) IBOutlet UIView *viewSpacer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSpacerHeight;
@@ -27,17 +28,21 @@
 - (IBAction)tappedButtonSeeAll:(id)sender;
 @end
 
-@implementation AssociatedProjectsView
+@implementation ProjectBidListView
+
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
-    [_titleView setTitle:NSLocalizedLanguage(@"ASSOCIATED_PROJECTS_TITLE")];
+    [_titleView setTitle:NSLocalizedLanguage(@"PROJECT_BIDS_VIEW_TITLE")];
     _constraintTitleHeight.constant = kDeviceHeight * 0.05;
     _constraintSpacerHeight.constant = kDeviceHeight * 0.015;
-    _constraintButtonSeeAll.constant = 0;
-    [_buttonSeeAll setTitleColor:ASSOCIATED_PROJECTS_BUTTON_COLOR forState:UIControlStateNormal];
-    _buttonSeeAll.titleLabel.font = ASSOCIATED_PROJECTS_BUTTON_FONT;
-    [_collectionView registerNib:[UINib nibWithNibName:[[AssociatedBidCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    _constraintSpacerHeight.constant = 0;
+
+    [_buttonSeeAll setTitleColor:PROJECT_BID_LIST_BUTTON_COLOR forState:UIControlStateNormal];
+    _buttonSeeAll.titleLabel.font = PROJECT_BID_LIST_BUTTON_FONT;
+
+    [_collectionView registerNib:[UINib nibWithNibName:[[ProjectBidItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+
 }
 
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint {
@@ -48,10 +53,9 @@
     collectionItems = items;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    
     _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.04):0;
-    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"ASSOCIATED_PROJECTS_ALL"), items.count ]forState:UIControlStateNormal];
-
+    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECT_BIDS_VIEW_ALL"), items.count ]forState:UIControlStateNormal];
+    
     [_collectionView reloadData];
 }
 
@@ -59,11 +63,12 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    AssociatedBidCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    ProjectBidItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    NSDictionary *dict = @{ASSOCIATED_BID_NAME:@"Blacklick Creek Sanitary Interceptor Sewer", ASSOCIATED_BID_LOCATION:@"Columbus, OH"};
-    [cell setInfo:dict];
     //[cell setItem:@"$ 10,000" line1:@"Abhe & Svoboda, Inc" line2:@"Prior Lake, MN"];
+    NSDictionary *dict = @{PROJECT_BID_NAME:@"Maline Creek CSO 051 & 052 Storage Facility", PROJECT_BID_LOCATION:@"Saint Louis, MO", PROJECT_BID_AMOUNT:@"$82,828,282", PROJECT_BID_DATE:@"1/15/2016"};
+
+    [cell setInfo:dict];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
@@ -87,7 +92,7 @@
     
     CGSize size;
     
-    cellHeight = kDeviceHeight * 0.148;
+    cellHeight = kDeviceHeight * 0.15;
     size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
     return size;
 }
@@ -118,7 +123,7 @@
 - (void)layoutSubviews {
     if (cellHeight>0) {
         NSInteger itemCount = collectionItems.count>3?3:collectionItems.count;
-        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _constraintSpacerHeight.constant + _constraintButtonSeeAll.constant;
+        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + (_constraintSpacerHeight.constant * 2) + _constraintButtonSeeAll.constant;
     }
 }
 

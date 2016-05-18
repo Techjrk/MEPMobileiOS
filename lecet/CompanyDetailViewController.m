@@ -14,6 +14,8 @@
 #import "CustomEntryField.h"
 #import "AssociatedProjectsView.h"
 #import "NotesView.h"
+#import "ContactsListView.h"
+#import "ProjectBidListView.h"
 
 @interface CompanyDetailViewController (){
     BOOL isShownContentAdjusted;
@@ -32,9 +34,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAssociatedProjects;
 @property (weak, nonatomic) IBOutlet NotesView *fieldNotes;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldNotes;
-@property (weak, nonatomic) IBOutlet UIView *viewSpacer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewSpacer;
-
+@property (weak, nonatomic) IBOutlet ContactsListView *fieldContacts;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldContacts;
+@property (weak, nonatomic) IBOutlet ProjectBidListView *fieldProjectBidList;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidList;
+- (IBAction)tappedButtonBack:(id)sender;
 @end
 
 @implementation CompanyDetailViewController
@@ -48,6 +53,8 @@
     [_fieldTotalValuation changeConstraintHeight:_constraintFieldTotalValuation];
     [_fieldAssociatedProjects changeConstraintHeight:_constraintFieldAssociatedProjects];
     [_fieldNotes changeConstraintHeight:_constraintFieldNotes];
+    [_fieldContacts changeConstraintHeight:_constraintFieldContacts];
+    [_fieldProjectBidList changeConstraintHeight:_constraintFieldProjectBidList];
     
 }
 
@@ -63,8 +70,7 @@
     if (!isShownContentAdjusted) {
         
         isShownContentAdjusted = YES;
-        [_viewSpacer setNeedsLayout];
-        CGFloat contentHeight = _fieldNotes.frame.size.height + _fieldNotes.frame.origin.y + (kDeviceHeight * 0.05);
+        CGFloat contentHeight = _fieldProjectBidList.frame.size.height + _fieldProjectBidList.frame.origin.y + (kDeviceHeight * 0.05);
         _constraintContentHeight.constant = contentHeight;
         _scrollView.contentSize = CGSizeMake(kDeviceWidth, contentHeight);
     }
@@ -89,8 +95,14 @@
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:@"38881 Schoolcraft Rd\nLivonia, MI 48150-1033" line2Text:nil];
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
-    [_fieldAssociatedProjects setItems:[@[@"", @""]mutableCopy]];
+    [_fieldAssociatedProjects setItems:[@[@"", @"", @"", @"", @"", @""]mutableCopy]];
+    [_fieldContacts setItems:[@[@"", @"", @"", @""]mutableCopy]];
+    [_fieldProjectBidList setItems:[@[@"", @"", @"", @""]mutableCopy]];
 
 }
 
+- (IBAction)tappedButtonBack:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

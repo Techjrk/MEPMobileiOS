@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssociatedProjectsView">
             <connections>
+                <outlet property="buttonSeeAll" destination="7BH-jp-n5t" id="uVL-JY-wO2"/>
                 <outlet property="collectionView" destination="xXM-4O-LER" id="tHs-o0-DsO"/>
+                <outlet property="constraintButtonSeeAll" destination="s4e-CX-tgA" id="Joy-EE-FAQ"/>
                 <outlet property="constraintSpacerHeight" destination="hyX-Pa-PRz" id="RLB-hK-yQf"/>
                 <outlet property="constraintTitleHeight" destination="IXf-uZ-d1g" id="DyQ-39-Q2g"/>
                 <outlet property="titleView" destination="cXG-xY-ER2" id="k7i-E5-du4"/>
@@ -19,14 +21,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXG-xY-ER2" customClass="SectionTitleView">
-                    <rect key="frame" x="14" y="0.0" width="444" height="75"/>
+                    <rect key="frame" x="14" y="0.0" width="444" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="IXf-uZ-d1g"/>
+                        <constraint firstAttribute="height" constant="30" id="IXf-uZ-d1g"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xXM-4O-LER">
-                    <rect key="frame" x="0.0" y="99" width="472" height="145"/>
+                    <rect key="frame" x="0.0" y="54" width="472" height="159.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="klZ-Es-uA4">
                         <size key="itemSize" width="50" height="50"/>
@@ -36,24 +38,39 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jq-GH-VdJ">
-                    <rect key="frame" x="14" y="75" width="444" height="24"/>
+                    <rect key="frame" x="14" y="30" width="444" height="24"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="hyX-Pa-PRz"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BH-jp-n5t">
+                    <rect key="frame" x="94.5" y="214" width="283" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="s4e-CX-tgA"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedButtonSeeAll:" destination="-1" eventType="touchUpInside" id="n7I-p4-Jy3"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="8jq-GH-VdJ" firstAttribute="centerX" secondItem="cXG-xY-ER2" secondAttribute="centerX" id="89f-VF-agM"/>
                 <constraint firstItem="cXG-xY-ER2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8ld-w8-c3Q"/>
-                <constraint firstAttribute="bottom" secondItem="xXM-4O-LER" secondAttribute="bottom" id="9X8-yN-xjK"/>
+                <constraint firstAttribute="bottom" secondItem="xXM-4O-LER" secondAttribute="bottom" constant="50" id="9X8-yN-xjK"/>
+                <constraint firstItem="7BH-jp-n5t" firstAttribute="centerX" secondItem="xXM-4O-LER" secondAttribute="centerX" id="9mE-pt-pLB"/>
+                <constraint firstAttribute="bottom" secondItem="7BH-jp-n5t" secondAttribute="bottom" id="GY9-6j-aSa"/>
                 <constraint firstItem="xXM-4O-LER" firstAttribute="top" secondItem="cXG-xY-ER2" secondAttribute="bottom" constant="40" id="PGo-JD-526"/>
                 <constraint firstItem="xXM-4O-LER" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SII-F4-Kmn"/>
                 <constraint firstItem="cXG-xY-ER2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Y5S-IK-Pgr"/>
+                <constraint firstItem="7BH-jp-n5t" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="Ysk-dK-oH2"/>
                 <constraint firstItem="cXG-xY-ER2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bga-77-eho"/>
                 <constraint firstItem="8jq-GH-VdJ" firstAttribute="top" secondItem="cXG-xY-ER2" secondAttribute="bottom" id="g7r-hI-Bxc"/>
                 <constraint firstItem="xXM-4O-LER" firstAttribute="top" secondItem="8jq-GH-VdJ" secondAttribute="bottom" id="iTI-Xs-fs5"/>
+                <constraint firstItem="7BH-jp-n5t" firstAttribute="top" secondItem="xXM-4O-LER" secondAttribute="bottom" id="igQ-rh-pWT"/>
                 <constraint firstAttribute="trailing" secondItem="xXM-4O-LER" secondAttribute="trailing" id="p56-Hu-1fS"/>
                 <constraint firstAttribute="trailing" secondItem="cXG-xY-ER2" secondAttribute="trailing" id="qLo-pd-xdf"/>
                 <constraint firstItem="cXG-xY-ER2" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.94" id="upN-Ht-Teq"/>
@@ -67,6 +84,7 @@
                 <mask key="constraints">
                     <exclude reference="bga-77-eho"/>
                     <exclude reference="qLo-pd-xdf"/>
+                    <exclude reference="9X8-yN-xjK"/>
                     <exclude reference="PGo-JD-526"/>
                 </mask>
             </variation>

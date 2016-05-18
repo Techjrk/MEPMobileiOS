@@ -8,10 +8,19 @@
 
 #import "AssociatedBidCollectionViewCell.h"
 
+#import "AssociatedBidView.h"
+
+@interface AssociatedBidCollectionViewCell()
+@property (weak, nonatomic) IBOutlet AssociatedBidView *item;
+@end
+
 @implementation AssociatedBidCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
 
+- (void)setInfo:(id)info {
+    [_item setInfo:info];
+}
 @end
