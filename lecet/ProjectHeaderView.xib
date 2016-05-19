@@ -102,9 +102,16 @@
                         </mask>
                     </variation>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1L6-67-u6U">
+                    <rect key="frame" x="0.0" y="0.0" width="326" height="213"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="8Hh-Vf-R7V"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.12660496469999999" blue="0.65176883149999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="1L6-67-u6U" firstAttribute="height" secondItem="VA8-VM-5X5" secondAttribute="height" id="4JN-8R-7ro"/>
                 <constraint firstItem="VA8-VM-5X5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.68" id="4Kp-jP-xdt"/>
                 <constraint firstItem="SwO-iF-FEK" firstAttribute="height" secondItem="VA8-VM-5X5" secondAttribute="height" id="PJQ-EI-XPe"/>
                 <constraint firstItem="Rpb-L1-w8f" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.305" id="PhH-Ur-hCd"/>
@@ -114,7 +121,10 @@
                 <constraint firstItem="VA8-VM-5X5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wts-vQ-FlP"/>
                 <constraint firstItem="Rpb-L1-w8f" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="XnF-We-SMp"/>
                 <constraint firstItem="SwO-iF-FEK" firstAttribute="top" secondItem="VA8-VM-5X5" secondAttribute="top" id="ZVv-fL-t8V"/>
+                <constraint firstItem="1L6-67-u6U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aPE-cF-jZK"/>
+                <constraint firstItem="1L6-67-u6U" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dwM-Sq-1GJ"/>
                 <constraint firstItem="SwO-iF-FEK" firstAttribute="width" secondItem="VA8-VM-5X5" secondAttribute="width" id="nwD-Y7-Jyf"/>
+                <constraint firstItem="1L6-67-u6U" firstAttribute="width" secondItem="VA8-VM-5X5" secondAttribute="width" id="q69-AL-dGt"/>
                 <constraint firstItem="VA8-VM-5X5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xMr-tv-ZT4"/>
                 <constraint firstItem="Rpb-L1-w8f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yrq-Vg-Agq"/>
             </constraints>

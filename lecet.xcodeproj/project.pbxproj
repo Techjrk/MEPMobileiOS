@@ -18,6 +18,8 @@
 		B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155411CD0C7A20050CF8A /* DashboardViewController.m */; };
 		B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155421CD0C7A20050CF8A /* DashboardViewController.xib */; };
 		B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */; };
+		B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B707BC0A1CEDA18C0003C836 /* MapViewController.m */; };
+		B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B707BC0B1CEDA18C0003C836 /* MapViewController.xib */; };
 		B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF631CE634F00035A6D9 /* ProjectStateView.m */; };
 		B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF651CE635030035A6D9 /* ProjectStateView.xib */; };
 		B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF671CE639450035A6D9 /* FontAwesome.otf */; };
@@ -148,6 +150,9 @@
 		B70155411CD0C7A20050CF8A /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		B70155421CD0C7A20050CF8A /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B707BC091CEDA18C0003C836 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		B707BC0A1CEDA18C0003C836 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		B707BC0B1CEDA18C0003C836 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		B70FDF621CE634F00035A6D9 /* ProjectStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStateView.h; sourceTree = "<group>"; };
 		B70FDF631CE634F00035A6D9 /* ProjectStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStateView.m; sourceTree = "<group>"; };
 		B70FDF651CE635030035A6D9 /* ProjectStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectStateView.xib; sourceTree = "<group>"; };
@@ -436,6 +441,9 @@
 				B771C5F11CEB1C64004A628A /* CompanyDetailViewController.h */,
 				B771C5F21CEB1C64004A628A /* CompanyDetailViewController.m */,
 				B771C5F31CEB1C64004A628A /* CompanyDetailViewController.xib */,
+				B707BC091CEDA18C0003C836 /* MapViewController.h */,
+				B707BC0A1CEDA18C0003C836 /* MapViewController.m */,
+				B707BC0B1CEDA18C0003C836 /* MapViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -786,6 +794,7 @@
 				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
 				B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */,
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
+				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
@@ -860,6 +869,7 @@
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
 				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
+				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,

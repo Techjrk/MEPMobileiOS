@@ -69,16 +69,18 @@
     DB_BidRecent *item = info;
     
     recordId = item.bidId;
-    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidDate];
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidCreateDate];
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    CGFloat estlow = 10000;
+    CGFloat estlow = 0;
     
     if (item.estLow == nil) {
         estlow = [item.estLow floatValue];
+    } else {
+        estlow = item.estLow.floatValue;
     }
     NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
     _labelAmount.text = [NSString stringWithFormat:@"$ %@", estLow ];

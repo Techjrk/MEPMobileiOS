@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol ProjectHeaderDelegate <NSObject>
+- (void)tappedMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
+@end
+
 @interface ProjectHeaderView : BaseViewClass
+@property (strong, nonatomic) id<ProjectHeaderDelegate>projectHeaderDelegate;
 - (void)setHeaderInfo:(id)headerInfo;
 @end

@@ -17,8 +17,9 @@
 #import "NotesView.h"
 #import "PariticpantsView.h"
 #import "ProjectBidderView.h"
+#import "MapViewController.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate>{
     BOOL isShownContentAdjusted;
 }
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
@@ -59,7 +60,7 @@
     [super viewDidLoad];
     self.view.hidden = YES;
     _containerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
-    
+    _headerView.projectHeaderDelegate = self;
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
     [_fieldAddress changeConstraintHeight: _constraintFieldAddress];
@@ -162,6 +163,13 @@
 
 - (void)selectedStateViewItem:(StateView)stateView {
     
+}
+
+- (void)tappedMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
+    
+    MapViewController *map = [MapViewController new];
+    [map setLocationLat:lat lng:lng];
+    [self.navigationController pushViewController:map animated:YES];
 }
 
 @end

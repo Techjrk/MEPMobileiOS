@@ -51,6 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.hidden = YES;
+    
     _containerView.backgroundColor = COMPANY_DETAIL_CONTAINER_BG_COLOR;
     [_fieldAddress changeConstraintHeight:_constraintFieldAddress];
     [_fieldTotalProjects changeConstraintHeight:_constraintFieldTotalProjects];

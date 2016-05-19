@@ -11,14 +11,19 @@
 #import "projectHeaderConstants.h"
 #import <MapKit/MapKit.h>
 
-@interface ProjectHeaderView()<MKMapViewDelegate>
+@interface ProjectHeaderView()<MKMapViewDelegate>{
+    CGFloat geoCodeLat;
+    CGFloat geoCodeLng;
+}
 @property (weak, nonatomic) IBOutlet UIView *viewInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation ProjectHeaderView
+@synthesize projectHeaderDelegate;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -39,8 +44,8 @@
     
     _labelTitle.text = info[PROJECT_TITLE];
     _labelLocation.text = info[PROJECT_LOCATION];
-    CGFloat geoCodeLat = [info[PROJECT_GEOCODE_LAT] floatValue];
-    CGFloat geoCodeLng = [info[PROJECT_GEOCODE_LNG] floatValue];
+    geoCodeLat = [info[PROJECT_GEOCODE_LAT] floatValue];
+    geoCodeLng = [info[PROJECT_GEOCODE_LNG] floatValue];
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
     
@@ -77,6 +82,10 @@
     
     return userAnnotationView;
     
+}
+
+- (IBAction)tappedButton:(id)sender {
+    [self.projectHeaderDelegate tappedMapViewLat:geoCodeLat lng:geoCodeLng];
 }
 
 @end

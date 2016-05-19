@@ -64,7 +64,7 @@
 
     [[DataManager sharedManager] bids:currentDate success:^(id object) {
         
-        bidItemsRecent = [[DB_BidRecent fetchObjectsForPredicate:nil key:@"bidCreateDate" ascending:YES] mutableCopy];
+        bidItemsRecent = [[DB_BidRecent fetchObjectsForPredicate:nil key:@"bidCreateDate" ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecent;
         

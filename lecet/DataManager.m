@@ -76,9 +76,11 @@
     if (record == nil) {
         record = [DB_BidRecent createEntity];
     }
-    
+
+    record.bidCreateDate = [DerivedNSManagedObject objectOrNil:item[@"createDate"]];
+
     NSDictionary *project = item[@"project"];
-    record.recordId = @([recordId integerValue]);;
+    record.recordId = @([recordId integerValue]);
     record.bidId = @([recordId integerValue]);
     record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
