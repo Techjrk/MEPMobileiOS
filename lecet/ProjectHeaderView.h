@@ -10,7 +10,7 @@
 #import "BaseViewClass.h"
 
 @protocol ProjectHeaderDelegate <NSObject>
-- (void)tappedMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
+- (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
 @end
 
 @interface ProjectHeaderView : BaseViewClass

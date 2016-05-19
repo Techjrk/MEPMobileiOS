@@ -165,8 +165,7 @@
     
 }
 
-- (void)tappedMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
-    
+- (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
     MapViewController *map = [MapViewController new];
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];

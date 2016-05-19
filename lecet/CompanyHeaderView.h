@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol CompanyHeaderDelegate <NSObject>
+- (void)tappedCompanyMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
+@end
+
 @interface CompanyHeaderView : BaseViewClass
+@property (strong, nonatomic) id<CompanyHeaderDelegate>companyCampanyHeaderDelegate;
 - (void)setHeaderInfo:(id)headerInfo;
 @end

@@ -10,10 +10,14 @@
 #import <MapKit/MapKit.h>
 #import "companyHeaderConstants.h"
 
-@interface CompanyHeaderView()<MKMapViewDelegate>
+@interface CompanyHeaderView()<MKMapViewDelegate>{
+    CGFloat geoCodeLat;
+    CGFloat geoCodeLng;
+}
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *viewInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation CompanyHeaderView
@@ -32,8 +36,8 @@
     NSDictionary *info = headerInfo;
     
     _labelTitle.text = info[COMPANY_TITLE];
-    CGFloat geoCodeLat = [info[COMPANY_GEOCODE_LAT] floatValue];
-    CGFloat geoCodeLng = [info[COMPANY_GEOCODE_LNG] floatValue];
+    geoCodeLat = [info[COMPANY_GEOCODE_LAT] floatValue];
+    geoCodeLng = [info[COMPANY_GEOCODE_LNG] floatValue];
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
     
@@ -72,4 +76,7 @@
     
 }
 
+- (IBAction)tappedButton:(id)sender {
+    [self.companyCampanyHeaderDelegate tappedCompanyMapViewLat:geoCodeLat lng:geoCodeLng];
+}
 @end

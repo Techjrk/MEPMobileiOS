@@ -18,8 +18,9 @@
 #import "ProjectBidListView.h"
 #import "CompanyStateView.h"
 #import "contactFieldConstants.h"
+#import "MapViewController.h"
 
-@interface CompanyDetailViewController (){
+@interface CompanyDetailViewController ()<CompanyHeaderDelegate>{
     BOOL isShownContentAdjusted;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -52,6 +53,7 @@
     [super viewDidLoad];
     self.view.hidden = YES;
     
+    _companyHeader.companyCampanyHeaderDelegate = self;
     _containerView.backgroundColor = COMPANY_DETAIL_CONTAINER_BG_COLOR;
     [_fieldAddress changeConstraintHeight:_constraintFieldAddress];
     [_fieldTotalProjects changeConstraintHeight:_constraintFieldTotalProjects];
@@ -98,6 +100,8 @@
 }
 
 - (void)setInfo:(id)info {
+    
+    [_companyHeader setHeaderInfo:@{COMPANY_TITLE:@"Jay Dee Contractor, Inc.", COMPANY_GEOCODE_LAT:@" 47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266"}];
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:@"38881 Schoolcraft Rd\nLivonia, MI 48150-1033" line2Text:nil];
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
@@ -114,4 +118,11 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)tappedCompanyMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
+    MapViewController *map = [MapViewController new];
+    [map setLocationLat:lat lng:lng];
+    [self.navigationController pushViewController:map animated:YES];
+}
+
 @end

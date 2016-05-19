@@ -44,6 +44,12 @@
                 <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_mask" translatesAutoresizingMaskIntoConstraints="NO" id="P7j-hc-Lq8">
                     <rect key="frame" x="0.0" y="0.5" width="461" height="239"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFy-Mr-rzl">
+                    <rect key="frame" x="0.0" y="0.0" width="461" height="299"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="jYB-pi-iSY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -55,11 +61,15 @@
                 <constraint firstAttribute="bottom" secondItem="Aup-5a-3TB" secondAttribute="bottom" id="M57-w3-Yad"/>
                 <constraint firstItem="L4K-S5-mUY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Mg5-ge-s0S"/>
                 <constraint firstItem="P7j-hc-Lq8" firstAttribute="top" secondItem="L4K-S5-mUY" secondAttribute="bottom" id="SP7-kS-DwH"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ShS-Ym-DF9"/>
                 <constraint firstItem="Aup-5a-3TB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UGh-Tf-6oH"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="VPw-rg-8us"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cTb-Zh-1en"/>
                 <constraint firstItem="L4K-S5-mUY" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="fi3-iG-lvz"/>
                 <constraint firstItem="P7j-hc-Lq8" firstAttribute="centerX" secondItem="L4K-S5-mUY" secondAttribute="centerX" id="k5a-pJ-d2Z"/>
                 <constraint firstItem="P7j-hc-Lq8" firstAttribute="width" secondItem="L4K-S5-mUY" secondAttribute="width" id="kS1-Od-eLL"/>
                 <constraint firstItem="P7j-hc-Lq8" firstAttribute="height" secondItem="L4K-S5-mUY" secondAttribute="height" id="mQN-vs-lrL"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="unS-EO-1dA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

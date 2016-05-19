@@ -85,7 +85,7 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
-    [self.projectHeaderDelegate tappedMapViewLat:geoCodeLat lng:geoCodeLng];
+    [self.projectHeaderDelegate tappedProjectMapViewLat:geoCodeLat lng:geoCodeLng];
 }
 
 @end
