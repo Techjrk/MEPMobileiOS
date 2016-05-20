@@ -18,6 +18,7 @@
 #import "PariticpantsView.h"
 #import "ProjectBidderView.h"
 #import "MapViewController.h"
+#import "PushZoomAnimator.h"
 
 @interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate>{
     BOOL isShownContentAdjusted;
@@ -90,7 +91,7 @@
 - (IBAction)tappedBackButton:(id)sender {
     
     if (self.navigationController != nil) {
-
+        
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [UIView animateWithDuration:0.2 animations:^{
@@ -170,5 +171,20 @@
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];
 }
+
+
+- (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
+    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+    animator.willPop = operation!=UINavigationControllerOperationPush;
+    if (!animator.willPop){
+        animator.startRect = [_headerView mapFrame];
+        animator.endRect = self.view.frame;
+    } else {
+        animator.startRect = self.view.frame;
+        animator.endRect = [_headerView mapFrame];
+    }
+    return animator;
+}
+
 
 @end

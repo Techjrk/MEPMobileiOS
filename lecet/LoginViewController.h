@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface LoginViewController : BaseViewController
+@protocol LoginDelegate <NSObject>
+- (void)login;
+@end
 
+@interface LoginViewController : BaseViewController
+@property (strong, nonatomic) id<LoginDelegate>loginDelegate;
 @end

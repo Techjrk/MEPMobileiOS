@@ -20,16 +20,18 @@
 #import "BidItemView.h"
 #import "BidSoonItem.h"
 #import "ProjectDetailViewController.h"
-
 #import "CompanyDetailViewController.h"
+#import "PushZoomAnimator.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
     NSMutableArray *bidItemsRecent;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
+    BOOL shouldUsePushZoomAnimation;
+    CGRect originatingFrame;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
@@ -158,9 +160,10 @@
             break;
         }
     }
-    
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
+    [cell contentView].layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
 }
@@ -327,6 +330,9 @@
     CGFloat offset = _bidsCollectionView.contentOffset.x;
     rect.origin.x -= offset;
     rect.origin.y += collectionViewRect.origin.y;
+    
+    shouldUsePushZoomAnimation = YES;
+    originatingFrame = rect;
 
     ProjectDetailViewController *detail = [ProjectDetailViewController new];
     detail.view.hidden = NO;
@@ -336,6 +342,8 @@
     }
     
     [self.navigationController pushViewController:detail animated:YES];
+    
+    //shouldUsePushZoomAnimation = NO;
     /*
     detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     detail.view.hidden = YES;
@@ -352,6 +360,7 @@
         }];
     }];
     */
+    
 }
 
 - (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
@@ -360,6 +369,30 @@
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;
+}
+
+/*
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
+ 
+    return nil;
+    
+}
+*/
+
+- (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
+    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+    if (shouldUsePushZoomAnimation) {
+        animator.willPop = operation!=UINavigationControllerOperationPush;
+        if (!animator.willPop){
+            animator.startRect = originatingFrame;
+            animator.endRect = self.view.frame;
+        } else {
+            animator.startRect = self.view.frame;
+            animator.endRect = originatingFrame;
+        }
+    }
+    return animator;
 }
 
 @end

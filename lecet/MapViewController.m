@@ -13,6 +13,7 @@
 @interface MapViewController ()<MKMapViewDelegate>{
     CGFloat geoLat;
     CGFloat geoLng;
+    BOOL isMapLoaded;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)tappedButton:(id)sender;
@@ -34,16 +35,16 @@
 - (void)UpdateLocation {
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoLat, geoLng);
-    
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
     MKCoordinateRegion region = {coordinate, span};
-    
+    [_mapView setRegion:region];
+}
+
+- (void)addAnnotation {
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoLat, geoLng);
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     [annotation setCoordinate:coordinate];
-    
     [_mapView removeAnnotations:_mapView.annotations];
-    
-    [_mapView setRegion:region];
     [_mapView addAnnotation:annotation];
 }
 
@@ -64,7 +65,6 @@
             userAnnotationView.annotation = annotation;
         
         userAnnotationView.enabled = NO;
-        
         userAnnotationView.canShowCallout = NO;
         userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
         
@@ -82,9 +82,15 @@
     return NO;
 }
 
-
 - (IBAction)tappedButton:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (!isMapLoaded) {
+        isMapLoaded = YES;
+        [self addAnnotation];
+    }
 }
 @end

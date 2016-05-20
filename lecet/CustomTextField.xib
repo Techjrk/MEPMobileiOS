@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -9,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomTextField">
             <connections>
                 <outlet property="labelPlaceholder" destination="NXt-CM-ct2" id="Mlo-8C-ZVM"/>
+                <outlet property="lineView" destination="ugq-xh-qB6" id="Y3V-U4-MSW"/>
                 <outlet property="textField" destination="Om9-iO-3cm" id="sxx-8r-obq"/>
             </connections>
         </placeholder>
@@ -27,15 +27,25 @@
                     <rect key="frame" x="4" y="26" width="379" height="95"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugq-xh-qB6">
+                    <rect key="frame" x="0.0" y="118" width="387" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="c4d-7f-utH"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Om9-iO-3cm" firstAttribute="width" secondItem="NXt-CM-ct2" secondAttribute="width" id="0BH-g3-FlV"/>
+                <constraint firstAttribute="bottom" secondItem="ugq-xh-qB6" secondAttribute="bottom" id="0Th-aB-YGV"/>
                 <constraint firstAttribute="trailing" secondItem="NXt-CM-ct2" secondAttribute="trailing" constant="4" id="AKl-JK-tr7"/>
+                <constraint firstAttribute="trailing" secondItem="ugq-xh-qB6" secondAttribute="trailing" id="V9V-3t-6pb"/>
                 <constraint firstItem="NXt-CM-ct2" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.22" id="cdl-Kl-dZ3"/>
                 <constraint firstItem="NXt-CM-ct2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="jzd-dN-wPB"/>
+                <constraint firstItem="ugq-xh-qB6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kLC-p2-8VP"/>
                 <constraint firstItem="Om9-iO-3cm" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="pka-WJ-OgV"/>
                 <constraint firstItem="NXt-CM-ct2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="smY-z3-qsu"/>
                 <constraint firstItem="Om9-iO-3cm" firstAttribute="top" secondItem="NXt-CM-ct2" secondAttribute="bottom" id="srJ-iz-pEB"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="blurView" destination="n56-D8-pAz" id="5rb-oh-05H"/>
                 <outlet property="buttonLogin" destination="7F6-Rz-min" id="8HJ-nS-AYN"/>
                 <outlet property="constraintContainerHeight" destination="mzX-Qt-Icw" id="pJh-QL-yM2"/>
+                <outlet property="constraintTopSpace" destination="zNZ-eh-OTD" id="fA4-jt-Y3K"/>
+                <outlet property="scrollView" destination="3yk-ui-WUA" id="Qie-AR-9aW"/>
                 <outlet property="textFieldEmail" destination="0Lj-TS-mJO" id="P59-wb-Qzw"/>
                 <outlet property="textFieldPassword" destination="xJ3-KN-eTd" id="Cdr-8w-tRA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,6 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n56-D8-pAz">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yk-ui-WUA">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
@@ -105,6 +112,7 @@
                             </variation>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="600" id="0Jj-W6-gio"/>
                         <constraint firstAttribute="trailing" secondItem="gdt-Un-Fza" secondAttribute="trailing" id="6V0-Ge-mlo"/>
@@ -128,16 +136,22 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="3yk-ui-WUA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="2yH-xN-8Wn"/>
+                <constraint firstItem="n56-D8-pAz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="98s-bQ-r0P"/>
                 <constraint firstItem="7F6-Rz-min" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="DgY-Xr-jzE"/>
                 <constraint firstItem="y22-9z-gdY" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05" id="HM8-aB-m49"/>
                 <constraint firstItem="3yk-ui-WUA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I9U-dM-ntz"/>
                 <constraint firstAttribute="bottom" secondItem="3yk-ui-WUA" secondAttribute="bottom" id="MdO-cV-7Ip"/>
                 <constraint firstItem="gdt-Un-Fza" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="OIa-Uo-pNB"/>
                 <constraint firstItem="3yk-ui-WUA" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Ody-aI-Wfa"/>
+                <constraint firstAttribute="bottom" secondItem="n56-D8-pAz" secondAttribute="bottom" id="U2o-KL-cP7"/>
+                <constraint firstItem="n56-D8-pAz" firstAttribute="height" secondItem="3yk-ui-WUA" secondAttribute="height" id="XnJ-g5-8nb"/>
                 <constraint firstItem="DxF-kt-odB" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.04" id="YaM-0W-3H7"/>
+                <constraint firstItem="n56-D8-pAz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aLG-V2-SNs"/>
                 <constraint firstItem="3Ke-WB-YQy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="clw-iA-5wc"/>
                 <constraint firstAttribute="trailing" secondItem="3yk-ui-WUA" secondAttribute="trailing" id="cvL-C0-uGp"/>
                 <constraint firstItem="3Ke-WB-YQy" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.11" id="e3i-DA-d8n"/>
+                <constraint firstAttribute="trailing" secondItem="n56-D8-pAz" secondAttribute="trailing" id="fVl-S0-q05"/>
+                <constraint firstItem="n56-D8-pAz" firstAttribute="width" secondItem="3yk-ui-WUA" secondAttribute="width" id="qNp-co-l1W"/>
                 <constraint firstItem="0Lj-TS-mJO" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="y6o-CD-eFa"/>
                 <constraint firstItem="3yk-ui-WUA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zNZ-eh-OTD"/>
             </constraints>
@@ -145,6 +159,8 @@
                 <mask key="constraints">
                     <exclude reference="MdO-cV-7Ip"/>
                     <exclude reference="cvL-C0-uGp"/>
+                    <exclude reference="U2o-KL-cP7"/>
+                    <exclude reference="fVl-S0-q05"/>
                 </mask>
             </variation>
         </view>

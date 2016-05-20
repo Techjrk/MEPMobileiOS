@@ -16,4 +16,5 @@
 @interface ProjectHeaderView : BaseViewClass
 @property (strong, nonatomic) id<ProjectHeaderDelegate>projectHeaderDelegate;
 - (void)setHeaderInfo:(id)headerInfo;
+- (CGRect)mapFrame;
 @end

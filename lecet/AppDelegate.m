@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "LandingViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -22,7 +23,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    id vc = [LoginViewController new];
+    id vc = [LandingViewController new];
     
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:vc];
     [navigationViewController setNavigationBarHidden:YES];

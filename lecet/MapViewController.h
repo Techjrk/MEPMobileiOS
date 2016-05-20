@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : BaseViewController
 - (void)setLocationLat:(CGFloat)lat lng:(CGFloat)lng;
 @end

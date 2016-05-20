@@ -107,4 +107,10 @@
     }
 }
 
+- (void)removeFromSuperview {
+    _collectionView.delegate = nil;
+    _collectionView.dataSource = nil;
+    [super removeFromSuperview];
+}
+
 @end
