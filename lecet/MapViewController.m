@@ -17,6 +17,7 @@
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)tappedButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
@@ -90,6 +91,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     if (!isMapLoaded) {
         isMapLoaded = YES;
+        _button.hidden = NO;
         [self addAnnotation];
     }
 }
