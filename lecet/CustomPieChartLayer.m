@@ -35,8 +35,8 @@
 - (instancetype)init{
     self = [super init];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NOTIFICATION_tappedLayer:) name:kNOTIFICATION_tappedLayer object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NOTIFICATION_tappedCustomViewLayer:) name:kNOTIFICATION_customViewLayerTapped object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NOTIFICATION_tappedLayer:) name:kNOTIFICATION_tappedLayer object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NOTIFICATION_tappedCustomViewLayer:) name:kNOTIFICATION_customViewLayerTapped object:nil];
     
     return self;
 }
@@ -88,17 +88,17 @@
 - (void)layerTapped {
     
     hasFocus = !hasFocus;
-    [self.customPieChartLayerDelegate tappedPieSegmentLayer:self];
+    [self.customPieChartLayerDelegate tappedPieSegmentLayer:self hasFocus:hasFocus];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_tappedLayer object:self userInfo:@{kHAS_FOCUS_SEGMENT:[NSNumber numberWithBool:hasFocus]}];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_tappedLayer object:self userInfo:@{kHAS_FOCUS_SEGMENT:[NSNumber numberWithBool:hasFocus]}];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_tappedLayer object:self userInfo:@{kHAS_FOCUS_SEGMENT:[NSNumber numberWithBool:hasFocus]}];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_tappedLayer object:self userInfo:@{kHAS_FOCUS_SEGMENT:[NSNumber numberWithBool:hasFocus]}];
 
 }
 
 - (void)NOTIFICATION_tappedCustomViewLayer:(NSNotification*)notification {
     
-    if([notification.object isEqualToString:self.tagName]){
+    if([notification.object isEqualToString:self.tagName] & [notification.object isEqual:self]){
         [self layerTapped];
     }
 }
@@ -127,6 +127,19 @@
 
 - (BOOL)segmentHasFocus {
     return hasFocus;
+}
+
+- (void)setSegmentFocus:(BOOL)focus hasLayerFocus:(BOOL)focusSegment{
+    hasFocus = focus;
+    hasFocusSegment = focusSegment;
+    
+    if (hasFocus) {
+        self.focusImageView.image = self.focusImage;
+    } else {
+        self.focusImageView.image = nil;
+    }
+    [self setNeedsDisplay];
+
 }
 
 @end

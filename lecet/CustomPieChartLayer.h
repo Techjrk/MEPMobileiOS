@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol CustomPieChartLayerDelegate <NSObject>
-- (void)tappedPieSegmentLayer:(id)object;
+- (void)tappedPieSegmentLayer:(id)object hasFocus:(BOOL)hasFocus;
 @end
 
 @interface CustomPieChartLayer : CALayer
@@ -24,4 +24,5 @@
 @property (weak) id <CustomPieChartLayerDelegate> customPieChartLayerDelegate;
 - (void)layerTapped;
 - (BOOL)segmentHasFocus;
+- (void)setSegmentFocus:(BOOL)focus hasLayerFocus:(BOOL)focusSegment;
 @end

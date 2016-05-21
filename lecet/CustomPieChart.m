@@ -12,7 +12,7 @@
 
 @interface CustomPieChart()<CustomPieChartLayerDelegate>{
     NSMutableDictionary *pieItems;
-    BOOL isDrawn;
+    NSMutableArray *pieLayers;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *selectedSegmentImageView;
 @end
@@ -34,6 +34,9 @@
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES selector:@selector(localizedStandardCompare:)];
 
+    if (pieLayers == nil) {
+        pieLayers = [[NSMutableArray alloc] init];
+    }
     NSArray *keys = [pieItems.allKeys sortedArrayUsingDescriptors:@[ descriptor ]];
     for (NSString *tagItem in keys) {
         
@@ -54,6 +57,7 @@
         
         layer.frame = self.bounds;
         [self.view.layer addSublayer:layer];
+        [pieLayers addObject:layer];
         [layer setNeedsDisplay];
         
     }
@@ -84,7 +88,17 @@
     }
 }
 
-- (void)tappedPieSegmentLayer:(id)object {
+- (void)tappedPieSegmentLayer:(id)object hasFocus:(BOOL)hasFocus{
+    
+    for (CustomPieChartLayer *layer in pieLayers) {
+        if (![layer isEqual:object ]) {
+            [layer setSegmentFocus:NO hasLayerFocus:hasFocus];
+        }
+    }
+    
+    CustomPieChartLayer *layer = object;
+    [layer setSegmentFocus:hasFocus hasLayerFocus:hasFocus];
+    
     [self.customPieChartDelegate tappedPieSegment:object];
 }
 
