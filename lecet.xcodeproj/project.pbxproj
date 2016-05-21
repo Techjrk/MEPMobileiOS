@@ -84,6 +84,8 @@
 		B771C6071CEB6C65004A628A /* AssociatedBidView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C6061CEB6C65004A628A /* AssociatedBidView.xib */; };
 		B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B771C60A1CEB7503004A628A /* AssociatedProjectsView.m */; };
 		B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */; };
+		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
+		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -269,6 +271,8 @@
 		B771C60A1CEB7503004A628A /* AssociatedProjectsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedProjectsView.m; sourceTree = "<group>"; };
 		B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssociatedProjectsView.xib; sourceTree = "<group>"; };
 		B771C60F1CEB94F0004A628A /* associatedBidConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = associatedBidConstants.h; sourceTree = "<group>"; };
+		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */,
 				B76C69341CD21CFD009E9F15 /* MapKit.framework in Frameworks */,
 				B76C69321CD21CF6009E9F15 /* CoreGraphics.framework in Frameworks */,
 				B76C69301CD21CD7009E9F15 /* QuartzCore.framework in Frameworks */,
@@ -381,6 +386,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B79615E81CF0B2FC0089BC32 /* HockeySDK.embeddedframework */,
 				B76C69331CD21CFD009E9F15 /* MapKit.framework */,
 				B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */,
 				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
@@ -652,6 +658,24 @@
 			name = Language;
 			sourceTree = "<group>";
 		};
+		B79615E81CF0B2FC0089BC32 /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */,
+				B79615EA1CF0B2FC0089BC32 /* Resources */,
+			);
+			name = HockeySDK.embeddedframework;
+			path = "HockeySDK-iOS/HockeySDK.embeddedframework";
+			sourceTree = "<group>";
+		};
+		B79615EA1CF0B2FC0089BC32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,6 +843,7 @@
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
+				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
@@ -1030,6 +1055,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
@@ -1045,6 +1074,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
