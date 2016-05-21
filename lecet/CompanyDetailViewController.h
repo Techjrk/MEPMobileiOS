@@ -10,6 +10,6 @@
 
 #import "BaseViewController.h"
 
-@interface CompanyDetailViewController : UIViewController
+@interface CompanyDetailViewController : BaseViewController
 - (void)setInfo:(id)info;
 @end

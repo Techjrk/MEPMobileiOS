@@ -99,7 +99,7 @@
     CustomPieChartLayer *layer = object;
     [layer setSegmentFocus:hasFocus hasLayerFocus:hasFocus];
     
-    [self.customPieChartDelegate tappedPieSegment:object];
+    [self.customPieChartDelegate tappedPieSegment:object chartView:self.customPieChartDelegate];
 }
 
 - (void)tappedPieSegmentByTagName:(NSString*)tagName {

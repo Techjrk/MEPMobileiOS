@@ -79,4 +79,8 @@
 - (IBAction)tappedButton:(id)sender {
     [self.companyCampanyHeaderDelegate tappedCompanyMapViewLat:geoCodeLat lng:geoCodeLng];
 }
+
+- (CGRect)mapFrame {
+    return _mapView.frame;
+}
 @end

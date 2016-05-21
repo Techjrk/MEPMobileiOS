@@ -86,9 +86,8 @@
     [_piechart tappedPieSegmentByTagName:kTagNameUtilities];
 }
 
-- (void)tappedPieSegment:(id)object {
+- (void)tappedPieSegment:(id)object chartView:(id)charView{
     CustomPieChartLayer *layer = object;
-    NSLog(@"%@ HAS FOCUS %@", layer.tagName, [layer segmentHasFocus]?@"YES":@"NO");
     
     _buttonHousing.backgroundColor = [UIColor clearColor];
     _buttonEngineering.backgroundColor = [UIColor clearColor];
@@ -106,6 +105,8 @@
             _buttonUtilities.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
         }
     }
+    
+    [self.chartViewDelegate selectedItemChart:layer.tagName chart:self hasfocus:[layer segmentHasFocus]];
 }
 
 @end

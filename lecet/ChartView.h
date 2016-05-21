@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-@interface ChartView : BaseViewClass
+@protocol ChartViewDelegate <NSObject>
+- (void)selectedItemChart:(NSString*)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus;
+@end
 
+@interface ChartView : BaseViewClass
+@property (strong, nonatomic) id<ChartViewDelegate>chartViewDelegate;
 @end

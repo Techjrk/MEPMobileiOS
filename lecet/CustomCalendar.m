@@ -187,7 +187,7 @@
 }
 
 - (void)clearSelection {
-    [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_CLEAR_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_CLEAR_SELECTION object:self];
 }
 
 @end

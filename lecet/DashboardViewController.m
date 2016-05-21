@@ -22,8 +22,9 @@
 #import "ProjectDetailViewController.h"
 #import "CompanyDetailViewController.h"
 #import "PushZoomAnimator.h"
+#import "ChartView.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
@@ -33,6 +34,7 @@
     BOOL shouldUsePushZoomAnimation;
     CGRect originatingFrame;
 }
+@property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
@@ -63,6 +65,7 @@
     _scrollPageView.delegate = self;
     _bidsCollectionView.delegate = self;
     _bidsCollectionView.dataSource = self;
+    _chartRecentlyMade.chartViewDelegate = self;
 
     [[DataManager sharedManager] bids:currentDate success:^(id object) {
         
@@ -320,6 +323,7 @@
     CompanyDetailViewController *controller = [CompanyDetailViewController new];
     controller.view.hidden = NO;
     [controller setInfo:nil];
+    shouldUsePushZoomAnimation = NO;
     [self.navigationController pushViewController:controller animated:YES];
 
 }
@@ -371,18 +375,9 @@
     return YES;
 }
 
-/*
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
-    
- 
-    return nil;
-    
-}
-*/
-
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
-    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
     if (shouldUsePushZoomAnimation) {
+        PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
         animator.willPop = operation!=UINavigationControllerOperationPush;
         if (!animator.willPop){
             animator.startRect = originatingFrame;
@@ -391,8 +386,15 @@
             animator.startRect = self.view.frame;
             animator.endRect = originatingFrame;
         }
+        return animator;
     }
-    return animator;
+    return nil;
+}
+
+#pragma mark - ChartView Delegate
+
+- (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
+    NSLog(@"%@ HAS FOCUS %@", itemTag, hasFocus?@"YES":@"NO");
 }
 
 @end

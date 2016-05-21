@@ -16,4 +16,5 @@
 @interface CompanyHeaderView : BaseViewClass
 @property (strong, nonatomic) id<CompanyHeaderDelegate>companyCampanyHeaderDelegate;
 - (void)setHeaderInfo:(id)headerInfo;
+- (CGRect)mapFrame;
 @end

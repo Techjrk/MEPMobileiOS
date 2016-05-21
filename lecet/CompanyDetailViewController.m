@@ -19,6 +19,7 @@
 #import "CompanyStateView.h"
 #import "contactFieldConstants.h"
 #import "MapViewController.h"
+#import "PushZoomAnimator.h"
 
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate>{
     BOOL isShownContentAdjusted;
@@ -124,5 +125,19 @@
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];
 }
+
+- (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
+    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+    animator.willPop = operation!=UINavigationControllerOperationPush;
+    if (!animator.willPop){
+        animator.startRect = [_companyHeader mapFrame];
+        animator.endRect = self.view.frame;
+    } else {
+        animator.startRect = self.view.frame;
+        animator.endRect = [_companyHeader mapFrame];
+    }
+    return animator;
+}
+
 
 @end
