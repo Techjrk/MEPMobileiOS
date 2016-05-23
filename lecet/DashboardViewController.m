@@ -23,10 +23,12 @@
 
 
 #import "ProjectDetailViewController.h"
-
 #import "CompanyDetailViewController.h"
+#import "PushZoomAnimator.h"
+#import "ChartView.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate,DropDownMenuDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate,DropDownMenuDelegate>{
+
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
@@ -34,8 +36,10 @@
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
     BOOL isDropDownMenuMoreHidden;
-    
+    BOOL shouldUsePushZoomAnimation;
+    CGRect originatingFrame;
 }
+@property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
@@ -70,10 +74,11 @@
     _scrollPageView.delegate = self;
     _bidsCollectionView.delegate = self;
     _bidsCollectionView.dataSource = self;
+    _chartRecentlyMade.chartViewDelegate = self;
 
     [[DataManager sharedManager] bids:currentDate success:^(id object) {
         
-        bidItemsRecent = [[DB_BidRecent fetchObjectsForPredicate:nil key:@"bidCreateDate" ascending:YES] mutableCopy];
+        bidItemsRecent = [[DB_BidRecent fetchObjectsForPredicate:nil key:@"bidCreateDate" ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecent;
         
@@ -173,9 +178,10 @@
             break;
         }
     }
-    
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
+    [cell contentView].layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
 }
@@ -329,6 +335,12 @@
     BidSoonItem *item = object;
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
     //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+    CompanyDetailViewController *controller = [CompanyDetailViewController new];
+    controller.view.hidden = NO;
+    [controller setInfo:nil];
+    shouldUsePushZoomAnimation = NO;
+    [self.navigationController pushViewController:controller animated:YES];
+
 }
 
 - (void)showProjectDetails:(id)record fromRect:(CGRect)rect {
@@ -337,14 +349,24 @@
     CGFloat offset = _bidsCollectionView.contentOffset.x;
     rect.origin.x -= offset;
     rect.origin.y += collectionViewRect.origin.y;
+    
+    shouldUsePushZoomAnimation = YES;
+    originatingFrame = rect;
 
     ProjectDetailViewController *detail = [ProjectDetailViewController new];
-    detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    detail.view.hidden = YES;
-    detail.previousRect = rect;
+    detail.view.hidden = NO;
+
     if ([record class] == [DB_BidRecent class]) {
         [detail detailsFromBid:record];
     }
+    
+    [self.navigationController pushViewController:detail animated:YES];
+    
+    //shouldUsePushZoomAnimation = NO;
+    /*
+    detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    detail.view.hidden = YES;
+    detail.previousRect = rect;
     
     [self.navigationController presentViewController:detail animated:NO completion:^{
         detail.view.frame = rect;
@@ -356,6 +378,7 @@
             
         }];
     }];
+    */
     
 }
 
@@ -411,6 +434,32 @@
     
     
     
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return YES;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
+    if (shouldUsePushZoomAnimation) {
+        PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+        animator.willPop = operation!=UINavigationControllerOperationPush;
+        if (!animator.willPop){
+            animator.startRect = originatingFrame;
+            animator.endRect = self.view.frame;
+        } else {
+            animator.startRect = self.view.frame;
+            animator.endRect = originatingFrame;
+        }
+        return animator;
+    }
+    return nil;
+}
+
+#pragma mark - ChartView Delegate
+
+- (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
+    NSLog(@"%@ HAS FOCUS %@", itemTag, hasFocus?@"YES":@"NO");
 }
 
 

@@ -38,8 +38,11 @@
 }
 
 - (void)clearSelection:(NSNotification*)notification{
-    state = previousState;
-    [self setNeedsDisplay];
+    
+    if ([self isDescendantOfView:notification.object]) {
+        state = previousState;
+        [self setNeedsDisplay];
+    }
 }
 
 - (IBAction)tappedButtonItem:(id)sender {

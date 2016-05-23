@@ -56,10 +56,9 @@
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhf-j2-imc">
-                                    <rect key="frame" x="319" y="31" width="56" height="31"/>
-                                    <animations/>
-                                    <state key="normal" image="icon_close"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhf-j2-imc">
+                                    <rect key="frame" x="0.0" y="31" width="45" height="31"/>
+                                    <state key="normal" image="icon_arrowLeft"/>
                                     <connections>
                                         <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="IUw-gB-CAy"/>
                                     </connections>
@@ -160,7 +159,7 @@
                             <animations/>
                             <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="yhf-j2-imc" firstAttribute="width" secondItem="OeP-sj-2hU" secondAttribute="width" multiplier="0.15" id="07j-x4-Ltj"/>
+                                <constraint firstItem="yhf-j2-imc" firstAttribute="width" secondItem="OeP-sj-2hU" secondAttribute="width" multiplier="0.12" id="07j-x4-Ltj"/>
                                 <constraint firstItem="ABx-A0-JKU" firstAttribute="width" secondItem="GIa-A5-s8D" secondAttribute="width" id="1Ia-e3-7UA"/>
                                 <constraint firstItem="0xf-0o-iWM" firstAttribute="centerX" secondItem="ABx-A0-JKU" secondAttribute="centerX" id="2Ir-1P-a2J"/>
                                 <constraint firstItem="Yvc-qB-JBc" firstAttribute="width" secondItem="ZiS-Ms-5tj" secondAttribute="width" id="38b-0k-Qs6"/>
@@ -214,6 +213,7 @@
                                 <constraint firstItem="Cx4-Ns-3v6" firstAttribute="width" secondItem="YnS-qN-9py" secondAttribute="width" id="mZ6-LH-L60"/>
                                 <constraint firstItem="dXA-h2-8gS" firstAttribute="top" secondItem="NMG-zi-PLJ" secondAttribute="bottom" id="nvl-jN-s8c"/>
                                 <constraint firstItem="y8n-K4-TIP" firstAttribute="width" secondItem="67k-zk-hsU" secondAttribute="width" id="oDY-8p-zcv"/>
+                                <constraint firstItem="yhf-j2-imc" firstAttribute="leading" secondItem="Y8l-w9-9Lk" secondAttribute="leading" id="oK6-Cr-c6b"/>
                                 <constraint firstAttribute="trailing" secondItem="yhf-j2-imc" secondAttribute="trailing" id="oOW-aB-4lz"/>
                                 <constraint firstItem="Gws-3k-Zp2" firstAttribute="top" secondItem="rzV-o1-dcv" secondAttribute="bottom" id="smD-Nq-DlV"/>
                                 <constraint firstItem="Gws-3k-Zp2" firstAttribute="centerX" secondItem="rzV-o1-dcv" secondAttribute="centerX" id="u9B-TG-2AO"/>
@@ -227,6 +227,7 @@
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="EEP-bv-3bh"/>
+                                    <exclude reference="oOW-aB-4lz"/>
                                     <exclude reference="Cd6-Zg-wF8"/>
                                     <exclude reference="D4a-Tr-PWR"/>
                                     <exclude reference="WHN-Tu-fpm"/>
@@ -303,6 +304,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_close" width="16" height="16"/>
+        <image name="icon_arrowLeft" width="10" height="24"/>
     </resources>
 </document>

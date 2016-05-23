@@ -17,8 +17,10 @@
 #import "NotesView.h"
 #import "PariticpantsView.h"
 #import "ProjectBidderView.h"
+#import "MapViewController.h"
+#import "PushZoomAnimator.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate>{
     BOOL isShownContentAdjusted;
 }
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
@@ -59,7 +61,7 @@
     [super viewDidLoad];
     self.view.hidden = YES;
     _containerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
-    
+    _headerView.projectHeaderDelegate = self;
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
     [_fieldAddress changeConstraintHeight: _constraintFieldAddress];
@@ -82,18 +84,27 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return NO;
+}
+
 - (IBAction)tappedBackButton:(id)sender {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.view.frame = self.previousRect;
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [self dismissViewControllerAnimated:NO completion:^{
-                
-            }];
-     
-        }
-    }];
     
+    if (self.navigationController != nil) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.frame = self.previousRect;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self dismissViewControllerAnimated:NO completion:^{
+                    
+                }];
+                
+            }
+        }];
+    }
 }
 
 - (void)detailsFromBid:(DB_BidRecent *)record {
@@ -144,7 +155,7 @@
     if (!isShownContentAdjusted) {
 
         isShownContentAdjusted = YES;
-        CGFloat contentHeight = _projectBidder.frame.size.height + _projectBidder.frame.origin.y + (kDeviceHeight * 0.1);
+        CGFloat contentHeight = _projectBidder.frame.size.height + _projectBidder.frame.origin.y + (kDeviceHeight * 0.05);
         _constraintContentHeight.constant = contentHeight;
         _scrollView.contentSize = CGSizeMake(kDeviceWidth, contentHeight);
     }
@@ -154,5 +165,26 @@
 - (void)selectedStateViewItem:(StateView)stateView {
     
 }
+
+- (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
+    MapViewController *map = [MapViewController new];
+    [map setLocationLat:lat lng:lng];
+    [self.navigationController pushViewController:map animated:YES];
+}
+
+
+- (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
+    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+    animator.willPop = operation!=UINavigationControllerOperationPush;
+    if (!animator.willPop){
+        animator.startRect = [_headerView mapFrame];
+        animator.endRect = self.view.frame;
+    } else {
+        animator.startRect = self.view.frame;
+        animator.endRect = [_headerView mapFrame];
+    }
+    return animator;
+}
+
 
 @end

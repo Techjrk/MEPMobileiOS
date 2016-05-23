@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CompanyDetailViewController : UIViewController
+#import "BaseViewController.h"
 
+@interface CompanyDetailViewController : BaseViewController
+- (void)setInfo:(id)info;
 @end

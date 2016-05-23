@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 
 #import "CustomTextField.h"
-#import "DashboardViewController.h"
 
 #import "loginConstants.h"
 
@@ -18,13 +17,31 @@
 @property (weak, nonatomic) IBOutlet CustomTextField *textFieldPassword;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerHeight;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLogin;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *blurView;
 - (IBAction)tappedButtonLogin:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopSpace;
 @end
 
 @implementation LoginViewController
-
+@synthesize loginDelegate;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self enableTapGesture:YES];
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
+    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"LAUNCHSCREEN"];
+    controller.view.frame = self.view.frame;
+    [self.view addSubview:controller.view];
+    
+    [self.view sendSubviewToBack:controller.view];
+ 
+    [self addBlurEffect:_blurView];
+    _blurView.alpha = 0;
+    _scrollView.alpha = 0;
+    
+    _constraintTopSpace.constant = kDeviceHeight * 0.3;
+
     _constraintContainerHeight.constant = kDeviceHeight * 0.47;
     
     [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
@@ -47,6 +64,23 @@
     }
 }
 
+
+- (void)addBlurEffect:(UIView*)view {
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    blurEffectView.frame = view.frame;
+    blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
+    UIVisualEffectView *vibrancyEffectView = [[UIVisualEffectView alloc]initWithEffect:vibrancyEffect];
+    vibrancyEffectView.frame = self.view.frame;
+    vibrancyEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    view.backgroundColor = [UIColor clearColor];
+    [_blurView addSubview:blurEffectView];
+    [_blurView addSubview:vibrancyEffectView];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -59,11 +93,34 @@
         
         [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
         
-        [self.navigationController pushViewController:[DashboardViewController new] animated:YES];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self.loginDelegate login];
+        }];
         
     } failure:^(id object) {
         
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [UIView animateWithDuration:0.5 animations:^{
+        _blurView.alpha = 1;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                _scrollView.alpha = 1;
+                _constraintTopSpace.constant = 0;
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [_textFieldEmail becomeFirstResponder];
 }
 
 @end

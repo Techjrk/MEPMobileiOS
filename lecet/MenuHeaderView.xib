@@ -67,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAH-xa-7CN">
-                    <rect key="frame" x="8" y="61" width="204" height="32"/>
+                    <rect key="frame" x="8" y="61" width="306" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                 <constraint firstItem="QQp-XN-3kf" firstAttribute="top" secondItem="eU7-ZN-2R7" secondAttribute="bottom" id="Npk-xb-E1s"/>
                 <constraint firstItem="n4f-Yt-g01" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PKK-Q4-yx0"/>
                 <constraint firstItem="QQp-XN-3kf" firstAttribute="width" secondItem="3TJ-ge-0QP" secondAttribute="width" id="S2j-j0-kyI"/>
-                <constraint firstItem="CAH-xa-7CN" firstAttribute="width" secondItem="ycC-DC-s8B" secondAttribute="width" id="V4o-3m-eaH"/>
+                <constraint firstItem="CAH-xa-7CN" firstAttribute="width" secondItem="ycC-DC-s8B" secondAttribute="width" multiplier="1.5" id="V4o-3m-eaH"/>
                 <constraint firstItem="1T2-yG-fGm" firstAttribute="leading" secondItem="ycC-DC-s8B" secondAttribute="trailing" id="VMo-J9-ptp"/>
                 <constraint firstItem="xXN-26-AvM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.02" id="XVP-Ea-3mY"/>
                 <constraint firstItem="eU7-ZN-2R7" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.32" id="ZFP-RM-pBp"/>

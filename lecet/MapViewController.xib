@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
+            <connections>
+                <outlet property="button" destination="sls-4e-22C" id="guO-rr-HVN"/>
+                <outlet property="mapView" destination="Wyi-PA-wsC" id="siu-1V-aYg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wyi-PA-wsC">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="reK-u8-HtU"/>
+                    </connections>
+                </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycB-I5-LC2">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sls-4e-22C">
+                    <rect key="frame" x="0.0" y="33" width="49.5" height="33"/>
+                    <state key="normal" image="icon_arrowLeftDark"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="085-RT-eGS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="sls-4e-22C" firstAttribute="top" secondItem="ycB-I5-LC2" secondAttribute="bottom" id="0es-Zt-u0d"/>
+                <constraint firstItem="ycB-I5-LC2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WZK-yL-Yfp"/>
+                <constraint firstItem="sls-4e-22C" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.12" id="XRN-XR-sEt"/>
+                <constraint firstAttribute="trailing" secondItem="sls-4e-22C" secondAttribute="trailing" id="XUr-fe-TKz"/>
+                <constraint firstItem="sls-4e-22C" firstAttribute="height" secondItem="ycB-I5-LC2" secondAttribute="height" id="aEU-Jb-vtf"/>
+                <constraint firstAttribute="trailing" secondItem="ycB-I5-LC2" secondAttribute="trailing" id="aXa-B8-Fcc"/>
+                <constraint firstItem="ycB-I5-LC2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="dna-C7-Fvm"/>
+                <constraint firstAttribute="trailing" secondItem="Wyi-PA-wsC" secondAttribute="trailing" id="fFj-Qp-ppi"/>
+                <constraint firstItem="sls-4e-22C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ger-IL-PTy"/>
+                <constraint firstAttribute="bottom" secondItem="Wyi-PA-wsC" secondAttribute="bottom" id="hsa-ib-whB"/>
+                <constraint firstItem="Wyi-PA-wsC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kn0-i8-eWo"/>
+                <constraint firstItem="ycB-I5-LC2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="n2E-6u-1WJ"/>
+                <constraint firstItem="Wyi-PA-wsC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z3J-fb-aHh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="XUr-fe-TKz"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_arrowLeftDark" width="9" height="22"/>
+    </resources>
+</document>

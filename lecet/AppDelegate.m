@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "LandingViewController.h"
+
+@import HockeySDK;
+
 @interface AppDelegate ()
 
 @end
@@ -17,12 +21,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"977079279ce743d6a7d25b89897dbbcc"];
+    // Do some additional configuration if needed here
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator
+     authenticateInstallation];
+
 
     [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    id vc = [LoginViewController new];
+    id vc = [LandingViewController new];
     
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:vc];
     [navigationViewController setNavigationBarHidden:YES];

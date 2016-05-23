@@ -5,36 +5,85 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyHeaderView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyHeaderView">
+            <connections>
+                <outlet property="labelTitle" destination="ydz-R8-2y1" id="KDa-Zd-GyJ"/>
+                <outlet property="mapView" destination="L4K-S5-mUY" id="hd9-Zr-g7b"/>
+                <outlet property="viewInfo" destination="Aup-5a-3TB" id="7rV-47-TYv"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="461" height="299"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="L4K-S5-mUY">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4K-S5-mUY">
                     <rect key="frame" x="0.0" y="0.0" width="461" height="239"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="zSP-QU-ral"/>
+                    </connections>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aup-5a-3TB">
-                    <rect key="frame" x="0.0" y="254" width="461" height="45"/>
+                    <rect key="frame" x="0.0" y="243" width="461" height="55.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydz-R8-2y1">
+                            <rect key="frame" x="23" y="0.0" width="415" height="55.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="ydz-R8-2y1" firstAttribute="top" secondItem="Aup-5a-3TB" secondAttribute="top" id="1ta-YP-P8w"/>
+                        <constraint firstItem="ydz-R8-2y1" firstAttribute="centerX" secondItem="Aup-5a-3TB" secondAttribute="centerX" id="2d3-IA-5BS"/>
+                        <constraint firstItem="ydz-R8-2y1" firstAttribute="height" secondItem="Aup-5a-3TB" secondAttribute="height" id="ebB-Zp-AcE"/>
+                        <constraint firstItem="ydz-R8-2y1" firstAttribute="width" secondItem="Aup-5a-3TB" secondAttribute="width" multiplier="0.9" id="vGq-ia-Bp0"/>
+                    </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_mask" translatesAutoresizingMaskIntoConstraints="NO" id="P7j-hc-Lq8">
+                    <rect key="frame" x="0.0" y="0.5" width="461" height="239"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFy-Mr-rzl">
+                    <rect key="frame" x="0.0" y="0.0" width="461" height="299"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="jYB-pi-iSY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="L4K-S5-mUY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1G0-pd-LKN"/>
                 <constraint firstAttribute="trailing" secondItem="Aup-5a-3TB" secondAttribute="trailing" id="1sj-Qg-4pD"/>
-                <constraint firstItem="Aup-5a-3TB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.15" id="3xD-Xe-4gZ"/>
+                <constraint firstItem="Aup-5a-3TB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.185" id="3xD-Xe-4gZ"/>
+                <constraint firstItem="P7j-hc-Lq8" firstAttribute="centerY" secondItem="L4K-S5-mUY" secondAttribute="centerY" id="EcA-BX-4ca"/>
                 <constraint firstAttribute="trailing" secondItem="L4K-S5-mUY" secondAttribute="trailing" id="IR7-c8-lp3"/>
                 <constraint firstAttribute="bottom" secondItem="Aup-5a-3TB" secondAttribute="bottom" id="M57-w3-Yad"/>
                 <constraint firstItem="L4K-S5-mUY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Mg5-ge-s0S"/>
+                <constraint firstItem="P7j-hc-Lq8" firstAttribute="top" secondItem="L4K-S5-mUY" secondAttribute="bottom" id="SP7-kS-DwH"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ShS-Ym-DF9"/>
                 <constraint firstItem="Aup-5a-3TB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UGh-Tf-6oH"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="VPw-rg-8us"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cTb-Zh-1en"/>
                 <constraint firstItem="L4K-S5-mUY" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="fi3-iG-lvz"/>
+                <constraint firstItem="P7j-hc-Lq8" firstAttribute="centerX" secondItem="L4K-S5-mUY" secondAttribute="centerX" id="k5a-pJ-d2Z"/>
+                <constraint firstItem="P7j-hc-Lq8" firstAttribute="width" secondItem="L4K-S5-mUY" secondAttribute="width" id="kS1-Od-eLL"/>
+                <constraint firstItem="P7j-hc-Lq8" firstAttribute="height" secondItem="L4K-S5-mUY" secondAttribute="height" id="mQN-vs-lrL"/>
+                <constraint firstItem="NFy-Mr-rzl" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="unS-EO-1dA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="SP7-kS-DwH"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="205.5" y="34.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_mask" width="375" height="133"/>
+    </resources>
 </document>

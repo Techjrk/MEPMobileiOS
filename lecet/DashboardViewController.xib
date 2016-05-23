@@ -10,6 +10,7 @@
                 <outlet property="bidsCollectionView" destination="9vD-FZ-MFE" id="NdO-Vh-sYu"/>
                 <outlet property="calendarView" destination="Tqv-Ad-z1n" id="z1N-ph-ePi"/>
                 <outlet property="dropDownMenu" destination="U1Y-ri-10Q" id="7VC-uH-dqf"/>
+                <outlet property="chartRecentlyMade" destination="qh1-Qr-RKn" id="c7B-Ph-C1p"/>
                 <outlet property="menuHeader" destination="88p-eh-KC7" id="i2K-z6-V80"/>
                 <outlet property="pageControl" destination="nAH-JD-F9h" id="dzW-gM-lwI"/>
                 <outlet property="scrollPageView" destination="l96-VF-778" id="CIo-no-CG8"/>

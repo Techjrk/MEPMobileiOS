@@ -10,7 +10,7 @@
 #import "BaseViewClass.h"
 
 @protocol CustomPieChartDelegate <NSObject>
-- (void)tappedPieSegment:(id)object;
+- (void)tappedPieSegment:(id)object chartView:(id)charView;
 @end
 
 @interface CustomPieChart : BaseViewClass

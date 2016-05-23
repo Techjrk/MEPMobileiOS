@@ -91,7 +91,6 @@
     
     button.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     button.layer.borderWidth = 0.5;
-    
     button.layer.masksToBounds = YES;
 }
 
