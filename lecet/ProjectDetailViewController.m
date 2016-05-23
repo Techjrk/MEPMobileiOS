@@ -108,7 +108,9 @@
 }
 
 - (void)detailsFromBid:(DB_BidRecent *)record {
-    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:record.geocodeLat, PROJECT_GEOCODE_LNG:record.geocodeLng, PROJECT_TITLE:record.title, PROJECT_LOCATION: record.address1}];
+    
+    NSString *address1 = record.address1 == nil ? @"": record.address1;
+    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:record.geocodeLat, PROJECT_GEOCODE_LNG:record.geocodeLng, PROJECT_TITLE:record.title, PROJECT_LOCATION: address1}];
     
     [_fieldCounty setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_COUNTY") line1Text:record.county line2Text:nil];
     
@@ -116,7 +118,7 @@
     [_fieldProjectId setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_ID") line1Text:projectId line2Text:nil];
 
     
-    NSString *address = [NSString stringWithFormat:@"%@, %@ %@", record.address1, record.state, record.zip5];
+    NSString *address = [NSString stringWithFormat:@"%@, %@ %@", address1, record.state, record.zip5];
     
     [_fieldAddress setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADDRESS") line1Text:address line2Text:nil];
     
