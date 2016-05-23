@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032E71CF2ED0F00D3D02C /* Utilities.m */; };
+		B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032EB1CF2ED4200D3D02C /* DropDownMenuView.m */; };
+		B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
 		B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551F1CD0C56A0050CF8A /* AppDelegate.m */; };
 		B70155231CD0C56A0050CF8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155221CD0C56A0050CF8A /* ViewController.m */; };
@@ -106,6 +109,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6972B781CF2F2E20092D5CD /* dropDownMenuConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dropDownMenuConstants.h; sourceTree = "<group>"; };
+		B6E032E61CF2ED0F00D3D02C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		B6E032E71CF2ED0F00D3D02C /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		B6E032EA1CF2ED4200D3D02C /* DropDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuView.h; sourceTree = "<group>"; };
+		B6E032EB1CF2ED4200D3D02C /* DropDownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenuView.m; sourceTree = "<group>"; };
+		B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownMenuView.xib; sourceTree = "<group>"; };
 		B70155181CD0C56A0050CF8A /* lecet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lecet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -296,6 +305,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6E032E41CF2ECB200D3D02C /* DropDownMore */ = {
+			isa = PBXGroup;
+			children = (
+				B6E032E91CF2ED3400D3D02C /* MoreMenu */,
+			);
+			name = DropDownMore;
+			sourceTree = "<group>";
+		};
+		B6E032E51CF2ED0200D3D02C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B6E032E61CF2ED0F00D3D02C /* Utilities.h */,
+				B6E032E71CF2ED0F00D3D02C /* Utilities.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		B6E032E91CF2ED3400D3D02C /* MoreMenu */ = {
+			isa = PBXGroup;
+			children = (
+				B6E032EA1CF2ED4200D3D02C /* DropDownMenuView.h */,
+				B6E032EB1CF2ED4200D3D02C /* DropDownMenuView.m */,
+				B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */,
+			);
+			name = MoreMenu;
+			sourceTree = "<group>";
+		};
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +354,7 @@
 		B701551A1CD0C56A0050CF8A /* lecet */ = {
 			isa = PBXGroup;
 			children = (
+				B6E032E51CF2ED0200D3D02C /* Util */,
 				B7A1D32D1CE098AA004E94B3 /* Data */,
 				B7F10A251CDB411A00847FA3 /* Managers */,
 				B7F109EE1CDB3E1D00847FA3 /* Libraries */,
@@ -396,6 +433,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B6E032E41CF2ECB200D3D02C /* DropDownMore */,
 				B76C69421CD2488A009E9F15 /* CustomTextField.h */,
 				B76C69431CD2488A009E9F15 /* CustomTextField.m */,
 				B76C69451CD2489B009E9F15 /* CustomTextField.xib */,
@@ -456,6 +494,7 @@
 		B76C69351CD22413009E9F15 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
+				B6972B781CF2F2E20092D5CD /* dropDownMenuConstants.h */,
 				B76C692D1CD21A54009E9F15 /* constants.h */,
 				B76C69361CD2243D009E9F15 /* loginConstants.h */,
 				B76C69511CD25616009E9F15 /* customTextFieldConstants.h */,
@@ -670,6 +709,7 @@
 				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
+				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
@@ -707,6 +747,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B7637A3F1CEA4A9900F0FA2F /* ProjectBidderView.m in Sources */,
 				B7F10A1D1CDB3E3300847FA3 /* UIImageView+AFNetworking.m in Sources */,
@@ -749,6 +790,7 @@
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
 				B7F10A2E1CDB577800847FA3 /* DataManager.m in Sources */,
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
+				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,

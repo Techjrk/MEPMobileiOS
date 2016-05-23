@@ -19,23 +19,32 @@
 #import "MenuHeaderView.h"
 #import "BidItemView.h"
 #import "BidSoonItem.h"
+#import "DropDownMenuView.h"
+
+
 #import "ProjectDetailViewController.h"
 
 #import "CompanyDetailViewController.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate,DropDownMenuDelegate>{
     NSDate *currentDate;
     NSInteger currentPage;
     NSMutableArray *bidItemsSoon;
     NSMutableArray *bidItemsRecent;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
+    BOOL isDropDownMenuMoreHidden;
+    
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet MenuHeaderView *menuHeader;
+
+@property (weak,nonatomic) IBOutlet DropDownMenuView* dropDownMenu;
+
+
 
 @end
 
@@ -82,6 +91,12 @@
  
     _pageControl.numberOfPages = 4;
     _menuHeader.menuHeaderDelegate = self;
+    
+    
+    
+    //DropDownMenuMore
+    _dropDownMenu.dropDownMenuDelegate = self;
+    isDropDownMenuMoreHidden = YES;
 }
 
 - (void)loadBidItems {
@@ -345,7 +360,58 @@
 }
 
 - (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
+ 
+    if (menuHeaderItem == MenuHeaderMore) {
+        [self showOrHideDropDownMenuMore];
+    }
     
 }
+
+
+#pragma mark - DropDown Menu More
+
+- (void)showOrHideDropDownMenuMore{
+    if (isDropDownMenuMoreHidden) {
+        
+        isDropDownMenuMoreHidden = NO;
+        
+        [_dropDownMenu setHidden:NO];
+        
+        
+        
+        _dropDownMenu.alpha = 0.0f;
+        [UIView beginAnimations:@"fadeIn" context:nil];
+        [UIView setAnimationDuration:1.0];
+        _dropDownMenu.alpha = 1.0f;
+        
+        
+        
+    }else{
+        
+        _dropDownMenu.alpha = 1.0f;
+        [UIView beginAnimations:@"fadeOut" context:nil];
+        [UIView setAnimationDuration:1.0];
+        _dropDownMenu.alpha = 0.0f;
+        
+        
+        
+        isDropDownMenuMoreHidden = YES;
+        
+        //[_dropDownMenu setHidden:YES];
+        
+    }
+    
+}
+
+#pragma mark - Drop Down Menu Delegate
+
+- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
+    
+    
+    
+    
+    
+}
+
 
 @end
