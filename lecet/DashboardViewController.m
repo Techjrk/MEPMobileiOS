@@ -391,12 +391,15 @@
     BidSoonItem *item = object;
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
     //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
+    /*
     CompanyDetailViewController *controller = [CompanyDetailViewController new];
     controller.view.hidden = NO;
     [controller setInfo:nil];
     shouldUsePushZoomAnimation = NO;
     [self.navigationController pushViewController:controller animated:YES];
+     */
 
+    [[DataManager sharedManager] featureNotAvailable:self];
 }
 
 - (void)showProjectDetails:(id)record fromRect:(CGRect)rect {

@@ -19,10 +19,11 @@
 #import "ProjectBidderView.h"
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
+#import "CompanyDetailViewController.h"
 
 #import "DB_Project.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate, PariticipantsDelegate, ProjectBidderDelegate>{
     BOOL isShownContentAdjusted;
 }
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
@@ -74,6 +75,8 @@
     [_participantsView changeConstraintHeight:_constraintFieldParticipants];
     [_projectBidder changeConstraintHeight:_constraintFieldProjectBidder];
     
+    _projectBidder.projectBidderDelegate = self;
+    _participantsView.pariticipantsDelegate = self;
     _projectState.projectStateViewDelegate = self;
 }
 
@@ -196,5 +199,19 @@
     return animator;
 }
 
+- (void)tappedParticipant:(id)object {
+    CompanyDetailViewController *controller = [CompanyDetailViewController new];
+    controller.view.hidden = NO;
+    [controller setInfo:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 
+}
+
+- (void)tappedProjectBidder:(id)object {
+    CompanyDetailViewController *controller = [CompanyDetailViewController new];
+    controller.view.hidden = NO;
+    [controller setInfo:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
 @end

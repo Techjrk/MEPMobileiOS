@@ -458,4 +458,18 @@
     } authenticated:YES];
 
 }
+
+- (void)featureNotAvailable:(UIViewController*)controller {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature not available yet!" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:closeAction];
+    [controller presentViewController:alert animated:YES completion:nil];
+
+}
 @end
