@@ -49,6 +49,12 @@
 //ProjectBidderView.xib
 "PROJECTBIDDER_VIEW_TITLE"                  =               "Project Bidders";
 
+
+//DropDownMenu.xib
+"DROPDOWNMENU_MYPROFILE_BUTTON_TEXT"        =               "My Profile";
+"DROPDOWNMENU_HIDDENPROJECTS_BUTTON_TEXT"   =               "Hidden Projects";
+"DROPDOWNMENU_SETTING_BUTTON_TEXT"          =               "Settings";
+
 //CompanyDetailsViewController.xib
 "COMPANY_DETAIL_ADDRESS"                    =               "Address";
 "COMPANY_DETAIL_TOTAL_PROJECTS"             =               "Total Projects";
