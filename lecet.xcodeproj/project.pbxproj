@@ -89,6 +89,14 @@
 		B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
+		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
+		B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F11CF318D60089BC32 /* DB_Contact.m */; };
+		B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */; };
+		B79616011CF318D60089BC32 /* DB_Project.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F51CF318D60089BC32 /* DB_Project.m */; };
+		B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */; };
+		B79616031CF318D60089BC32 /* DB_Company.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F91CF318D60089BC32 /* DB_Company.m */; };
+		B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615FB1CF318D60089BC32 /* DB_Bid+CoreDataProperties.m */; };
+		B79616051CF318D60089BC32 /* DB_Bid.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615FD1CF318D60089BC32 /* DB_Bid.m */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -282,6 +290,22 @@
 		B771C60F1CEB94F0004A628A /* associatedBidConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = associatedBidConstants.h; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
+		B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Contact+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Contact+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B79615F01CF318D60089BC32 /* DB_Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Contact.h; sourceTree = "<group>"; };
+		B79615F11CF318D60089BC32 /* DB_Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Contact.m; sourceTree = "<group>"; };
+		B79615F21CF318D60089BC32 /* DB_Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Project+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Project+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B79615F41CF318D60089BC32 /* DB_Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Project.h; sourceTree = "<group>"; };
+		B79615F51CF318D60089BC32 /* DB_Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Project.m; sourceTree = "<group>"; };
+		B79615F61CF318D60089BC32 /* DB_Company+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Company+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Company+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B79615F81CF318D60089BC32 /* DB_Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Company.h; sourceTree = "<group>"; };
+		B79615F91CF318D60089BC32 /* DB_Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Company.m; sourceTree = "<group>"; };
+		B79615FA1CF318D60089BC32 /* DB_Bid+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Bid+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B79615FB1CF318D60089BC32 /* DB_Bid+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Bid+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B79615FC1CF318D60089BC32 /* DB_Bid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Bid.h; sourceTree = "<group>"; };
+		B79615FD1CF318D60089BC32 /* DB_Bid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Bid.m; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -719,6 +743,22 @@
 			isa = PBXGroup;
 			children = (
 				B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */,
+				B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */,
+				B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */,
+				B79615F01CF318D60089BC32 /* DB_Contact.h */,
+				B79615F11CF318D60089BC32 /* DB_Contact.m */,
+				B79615F21CF318D60089BC32 /* DB_Project+CoreDataProperties.h */,
+				B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */,
+				B79615F41CF318D60089BC32 /* DB_Project.h */,
+				B79615F51CF318D60089BC32 /* DB_Project.m */,
+				B79615F61CF318D60089BC32 /* DB_Company+CoreDataProperties.h */,
+				B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */,
+				B79615F81CF318D60089BC32 /* DB_Company.h */,
+				B79615F91CF318D60089BC32 /* DB_Company.m */,
+				B79615FA1CF318D60089BC32 /* DB_Bid+CoreDataProperties.h */,
+				B79615FB1CF318D60089BC32 /* DB_Bid+CoreDataProperties.m */,
+				B79615FC1CF318D60089BC32 /* DB_Bid.h */,
+				B79615FD1CF318D60089BC32 /* DB_Bid.m */,
 				B7A1D33A1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.h */,
 				B7A1D33B1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m */,
 				B7A1D33C1CE1FFBD004E94B3 /* DB_BidRecent.h */,
@@ -931,9 +971,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
+				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B7E104541CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B7637A3F1CEA4A9900F0FA2F /* ProjectBidderView.m in Sources */,
+				B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */,
 				B7F10A1D1CDB3E3300847FA3 /* UIImageView+AFNetworking.m in Sources */,
 				B7F10A1F1CDB3E3300847FA3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				B7F10A2B1CDB42FA00847FA3 /* DerivedNSManagedObject.m in Sources */,
@@ -953,6 +995,7 @@
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
 				B70FDF6D1CE9B7160035A6D9 /* CustomEntryField.m in Sources */,
 				B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */,
+				B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */,
 				B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */,
 				B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */,
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
@@ -963,6 +1006,9 @@
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
+				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
+				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
+				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
 				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
 				B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */,
 				B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */,
@@ -984,6 +1030,7 @@
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
+				B79616011CF318D60089BC32 /* DB_Project.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
@@ -998,6 +1045,7 @@
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,
+				B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */,
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B771C6051CEB6C50004A628A /* AssociatedBidView.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
