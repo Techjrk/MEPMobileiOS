@@ -31,12 +31,6 @@
 
 @implementation ChartView
 
-#define kTagNameHousing                 @"01_HOUSING"
-#define kTagNameEngineering             @"02_ENGINEERING"
-#define kTagNameBuilding                @"03_BUILDING"
-#define kTagNameUtilities               @"04_UTILITIES"
-
-
 -(void)awakeFromNib {
 
     [super awakeFromNib];
@@ -61,13 +55,25 @@
     _labelUtilities.font = CHART_BUTTON_GROUP_LABEL_FONT;
     _labelUtilities.textColor = CHART_BUTTON_UTILITIES_COLOR;
     
+/*
     [_piechart addPieItem:kTagNameHousing percent:@(25) legendColor:CHART_BUTTON_HOUSING_COLOR focusImage:[UIImage imageNamed:@"icon_housing"] ];
     [_piechart addPieItem:kTagNameEngineering percent:@(25) legendColor:CHART_BUTTON_ENGINEERING_COLOR focusImage:[UIImage imageNamed:@"icon_engineering"] ];
     [_piechart addPieItem:kTagNameBuilding percent:@(25) legendColor:CHART_BUTTON_BUILDING_COLOR focusImage:[UIImage imageNamed:@"icon_building"] ];
     [_piechart addPieItem:kTagNameUtilities percent:@(25) legendColor:CHART_BUTTON_UTILITIES_COLOR focusImage:[UIImage imageNamed:@"icon_utilities"] ];
+ */
     
     _piechart.customPieChartDelegate = self;
     
+}
+
+- (void)setSegmentItems:(NSMutableDictionary*)items {
+    for (NSString *key in items) {
+        NSDictionary *item = items[key];
+        [_piechart addPieItem:item[CHART_SEGMENT_TAG] percent:item[CHART_SEGMENT_PERCENTAGE] legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
+        [_piechart setNeedsDisplay];
+    }
+    
+    [self setNeedsLayout];
 }
 
 - (IBAction)tappedButtonHousing:(id)sender {

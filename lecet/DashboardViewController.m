@@ -16,6 +16,8 @@
 #import "CalendarItemCollectionViewCell.h"
 #import "DB_BidSoon.h"
 #import "DB_BidRecent.h"
+#import "DB_Bid.h"
+#import "DB_Project.h"
 #import "MenuHeaderView.h"
 #import "BidItemView.h"
 #import "BidSoonItem.h"
@@ -26,6 +28,7 @@
 #import "CompanyDetailViewController.h"
 #import "PushZoomAnimator.h"
 #import "ChartView.h"
+#import "chartConstants.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate,DropDownMenuDelegate>{
 
@@ -75,13 +78,66 @@
     _bidsCollectionView.delegate = self;
     _bidsCollectionView.dataSource = self;
     _chartRecentlyMade.chartViewDelegate = self;
-
+    
+    NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     [[DataManager sharedManager] bids:currentDate success:^(id object) {
         
-        bidItemsRecent = [[DB_BidRecent fetchObjectsForPredicate:nil key:@"bidCreateDate" ascending:NO] mutableCopy];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecent == YES AND relationshipProject.projectGroupId IN %@", @[@(101), @(102), @(103), @(105)]];
+        bidItemsRecent = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecent;
         
+        for (DB_Bid *item in currentBidItems) {
+            
+            NSString *tag = [NSString stringWithFormat:@"%li", item.relationshipProject.projectGroupId.integerValue];
+            NSMutableDictionary *itemDict = segment[tag];
+            
+            if (itemDict == nil) {
+                itemDict = [@{CHART_SEGMENT_COUNT:@(0)} mutableCopy];
+            }
+            NSNumber *number = itemDict[CHART_SEGMENT_COUNT];
+            itemDict[CHART_SEGMENT_COUNT] = @(number.integerValue + 1);
+            segment[tag] = itemDict;
+            
+        }
+        
+        NSInteger itemCount = currentBidItems.count;
+        for (NSString *key in segment.allKeys) {
+            NSMutableDictionary *item = segment[key];
+            NSNumber *number = item[CHART_SEGMENT_COUNT];
+            switch (key.integerValue) {
+                case 101:{
+                    item[CHART_SEGMENT_TAG] = kTagNameEngineering;
+                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_ENGINEERING_COLOR;;
+                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_engineering"];
+                    break;
+                }
+                case 102: {
+                    item[CHART_SEGMENT_TAG] = kTagNameBuilding;
+                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_BUILDING_COLOR;;
+                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_building"];
+                    break;
+                }
+                case 103: {
+                    item[CHART_SEGMENT_TAG] = kTagNameHousing;
+                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_HOUSING_COLOR;;
+                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_housing"];
+                    break;
+                }
+                case 105: {
+                    item[CHART_SEGMENT_TAG] = kTagNameUtilities;
+                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_UTILITIES_COLOR;
+                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_utilities"];
+                    break;
+                }
+            }
+    
+            NSNumber *percentage = @((number.floatValue/itemCount)*100.0);
+            item[CHART_SEGMENT_PERCENTAGE] = percentage;
+            
+        }
+        
+        [_chartRecentlyMade setSegmentItems:segment];
         [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
 
         [_bidsCollectionView reloadData];
@@ -324,7 +380,7 @@
     BidItemView *item = object;
     BidItemCollectionViewCell *cell = (BidItemCollectionViewCell*)[[item superview] superview];
 
-    [[DataManager sharedManager] bidDetail:[item getRecordId] success:^(id object) {
+    [[DataManager sharedManager] projectDetail:[item getProjectRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
     } failure:^(id object) {
         
@@ -356,8 +412,8 @@
     ProjectDetailViewController *detail = [ProjectDetailViewController new];
     detail.view.hidden = NO;
 
-    if ([record class] == [DB_BidRecent class]) {
-        [detail detailsFromBid:record];
+    if ([record class] == [DB_Project class]) {
+        [detail detailsFromProject:record];
     }
     
     [self.navigationController pushViewController:detail animated:YES];
@@ -459,7 +515,47 @@
 #pragma mark - ChartView Delegate
 
 - (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
-    NSLog(@"%@ HAS FOCUS %@", itemTag, hasFocus?@"YES":@"NO");
+    
+    if ([chart isEqual:_chartRecentlyMade]) {
+        
+        if (itemTag != nil) {
+            NSPredicate *predicate =nil;
+            
+            if (hasFocus) {
+                
+                NSInteger category = 0;
+                if([itemTag isEqualToString:@"01_HOUSING"]) {
+                    category = 103;
+                } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
+                    category = 101;
+                } else if ([itemTag isEqualToString:@"03_BUILDING"]){
+                    category = 102;
+                } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
+                    category = 105;
+                }
+                
+                predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li", category];
+            }
+            
+            bidItemsRecent = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+            
+            currentBidItems = bidItemsRecent;
+            
+            [_bidsCollectionView reloadData];
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"No record found!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+                                                     style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction *action) {
+                        
+                                                   }];
+            
+            [alert addAction:closeAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+
+    }
 }
 
 

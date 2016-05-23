@@ -16,6 +16,7 @@
 @dynamic awardInd;
 @dynamic createDate;
 @dynamic recordId;
+@dynamic isRecent;
 @dynamic relationshipCompany;
 @dynamic relationshipContact;
 @dynamic relationshipProject;

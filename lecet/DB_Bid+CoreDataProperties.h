@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *awardInd;
 @property (nullable, nonatomic, retain) NSString *createDate;
 @property (nullable, nonatomic, retain) NSNumber *recordId;
+@property (nullable, nonatomic, retain) NSNumber *isRecent;
 @property (nullable, nonatomic, retain) DB_Company *relationshipCompany;
 @property (nullable, nonatomic, retain) DB_Contact *relationshipContact;
 @property (nullable, nonatomic, retain) DB_Project *relationshipProject;

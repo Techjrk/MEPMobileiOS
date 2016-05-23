@@ -20,6 +20,8 @@
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
 
+#import "DB_Project.h"
+
 @interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate>{
     BOOL isShownContentAdjusted;
 }
@@ -107,36 +109,41 @@
     }
 }
 
-- (void)detailsFromBid:(DB_BidRecent *)record {
+- (void)detailsFromProject:(DB_Project*)record {
     
-    NSString *address1 = record.address1 == nil ? @"": record.address1;
-    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:record.geocodeLat, PROJECT_GEOCODE_LNG:record.geocodeLng, PROJECT_TITLE:record.title, PROJECT_LOCATION: address1}];
+    DB_Project *project = record;
     
-    [_fieldCounty setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_COUNTY") line1Text:record.county line2Text:nil];
+    NSString *address1 = project.address1 == nil ? @"": project.address1;
+    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
     
-    NSString *projectId = [NSString stringWithFormat:@"%@ %@", record.dodgeNumber, (record.dodgeVersion == nil ? @"":[NSString stringWithFormat:@"(v%@)", record.dodgeVersion]) ];
+    [_fieldCounty setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_COUNTY") line1Text:project.county line2Text:nil];
+    
+    NSString *projectId = [NSString stringWithFormat:@"%@ %@", project.dodgeNumber, (project.dodgeVersion == nil ? @"":[NSString stringWithFormat:@"(v%@)", project.dodgeVersion]) ];
     [_fieldProjectId setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_ID") line1Text:projectId line2Text:nil];
 
     
-    NSString *address = [NSString stringWithFormat:@"%@, %@ %@", address1, record.state, record.zip5];
+    NSString *address = [NSString stringWithFormat:@"%@, %@ %@", address1, project.state, project.zip5];
     
     [_fieldAddress setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADDRESS") line1Text:address line2Text:nil];
     
-    [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:@"Sewage Treatment Plant\n(H/Primary)" line2Text:nil];
+    
+    NSString *projectType = [NSString stringWithFormat:@"%@ %@ %@", project.primaryProjectTypeTitle==nil?@"":project.primaryProjectTypeTitle, project.projectCategoryTitle==nil?@"":project.projectCategoryTitle, project.projectGroupTitle==nil?@"":project.projectGroupTitle];
+    
+    [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:projectType line2Text:nil];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    CGFloat estlowValue = 10000;
+    CGFloat estlowValue = 0;
     
-    if (record.estLow == nil) {
-        estlowValue = [record.estLow floatValue];
+    if (project.estLow != nil) {
+        estlowValue = [project.estLow floatValue];
     }
     
-    NSString *estLow = [NSString stringWithFormat:@"%@ %@", record.currencyType == nil? @"$":record.currencyType, [formatter stringFromNumber:[NSNumber numberWithFloat:estlowValue]]];
+    NSString *estLow = [NSString stringWithFormat:@"%@ %@", project.currencyType == nil? @"$":project.currencyType, [formatter stringFromNumber:[NSNumber numberWithFloat:estlowValue]]];
     [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:estLow line2Text:nil];
     
-    [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:@"Bidding (Primary)" line2Text:nil];
+    [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
     [_participantsView setItems:[@[@"",@""] mutableCopy]];
     [_projectBidder setItems:[@[@"",@"", @""] mutableCopy]];
