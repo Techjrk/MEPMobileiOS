@@ -20,11 +20,9 @@
 - (void)userLogin:(NSString*)email password:(NSString*)password success:(APIBlock)success failure:(APIBlock)failure;
 
 //API BIDS
-- (void)bids:(NSDate*)dateFilter success:(APIBlock)success failure:(APIBlock)failure;
+- (void)bidsRecentlyMade:(NSDate*)dateFilter success:(APIBlock)success failure:(APIBlock)failure;
+- (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
-
-//API PROJECTS
-- (void)happeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC
 - (void)featureNotAvailable;

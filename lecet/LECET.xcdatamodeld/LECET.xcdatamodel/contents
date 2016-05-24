@@ -3,7 +3,7 @@
     <entity name="DB_Bid" representedClassName="DB_Bid" syncable="YES">
         <attribute name="awardInd" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isRecent" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isRecentMade" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="relationshipCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Company" inverseName="relationshipBid" inverseEntity="DB_Company" syncable="YES"/>
         <relationship name="relationshipContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Contact" inverseName="relationshipBid" inverseEntity="DB_Contact" syncable="YES"/>
@@ -172,6 +172,8 @@
         <attribute name="bidDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bidSubmitTo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bidTimeZone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidYearMonth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bidYearMonthDay" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bondBidInd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bondPaymentInd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bondPfrmInd" optional="YES" attributeType="String" syncable="YES"/>
@@ -191,6 +193,7 @@
         <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isHappenSoon" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
@@ -223,7 +226,7 @@
     <elements>
         <element name="DB_BidRecent" positionX="-54" positionY="144" width="128" height="1140"/>
         <element name="DB_BidSoon" positionX="-63" positionY="-18" width="128" height="735"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="855"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="900"/>
         <element name="DB_Company" positionX="-45" positionY="144" width="128" height="330"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="150"/>

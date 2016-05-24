@@ -63,11 +63,12 @@
     CGPathCreateCopyByStrokingPath(arc, NULL,
                                    lineWidth,
                                    kCGLineCapButt,
-                                   kCGLineJoinMiter, // the default
+                                   kCGLineJoinMiter,
                                    10);
 
     CGContextAddPath(context, strokedArc);
     
+    CGContextSetFlatness(context, 1.0);
     CGContextSetFillColorWithColor(context, self.layerColor.CGColor);
     CGContextSetStrokeColorWithColor(context, self.layerColor.CGColor);
     CGContextDrawPath(context, kCGPathFillStroke);

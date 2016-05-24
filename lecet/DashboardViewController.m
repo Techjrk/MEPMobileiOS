@@ -82,9 +82,9 @@
     _chartRecentlyMade.chartViewDelegate = self;
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
-    [[DataManager sharedManager] bids:currentDate success:^(id object) {
+    [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecent == YES AND relationshipProject.projectGroupId IN %@", @[@(101), @(102), @(103), @(105)]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.projectGroupId IN %@", @[@(101), @(102), @(103), @(105)]];
         bidItemsRecent = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecent;
@@ -179,15 +179,14 @@
     }
     [bidItemsSoon removeAllObjects];
 
-    [[DataManager sharedManager] happeningSoon:-300 success:^(id object) {
+    [[DataManager sharedManager] bidsHappeningSoon:-300 success:^(id object) {
         
         NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonth == %@", yearMonth];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND bidYearMonth == %@",yearMonth];
+        bidItemsSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:NO] mutableCopy];
 
-        bidItemsSoon = [[DB_BidSoon fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
-        
-        
-        for (DB_BidSoon *item in bidItemsSoon) {
+        for (DB_Project *item in bidItemsSoon) {
             bidMarker[item.bidYearMonthDay] = @"";
         }
 
@@ -310,11 +309,10 @@
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonthDay == %@", itemtag];
         
-        currentBidItems = [[DB_BidSoon fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
+        currentBidItems = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
 
     } else {
         currentBidItems = bidItemsSoon;
-
     }
     
     [_bidsCollectionView reloadData];
@@ -394,6 +392,13 @@
 - (void)tappedBidSoonCollectionItem:(id)object {
     BidSoonItem *item = object;
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
+    
+    [[DataManager sharedManager] projectDetail:[item getRecordId] success:^(id object) {
+        [self showProjectDetails:object fromRect:cell.frame];
+    } failure:^(id object) {
+        
+    }];
+
     //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
     /*
     CompanyDetailViewController *controller = [CompanyDetailViewController new];
@@ -403,7 +408,7 @@
     [self.navigationController pushViewController:controller animated:YES];
      */
 
-    [[DataManager sharedManager] featureNotAvailable];
+    //[[DataManager sharedManager] featureNotAvailable];
 }
 
 - (void)showProjectDetails:(id)record fromRect:(CGRect)rect {

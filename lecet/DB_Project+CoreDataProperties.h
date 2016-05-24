@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/23/16.
+//  Created by Harry Herrys Camigla on 5/24/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -68,16 +68,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *projectCategoryTitle;
 @property (nullable, nonatomic, retain) NSNumber *projectGroupId;
 @property (nullable, nonatomic, retain) NSString *projectGroupTitle;
-@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *relationshipBid;
+@property (nullable, nonatomic, retain) NSNumber *isHappenSoon;
+@property (nullable, nonatomic, retain) NSString *bidYearMonthDay;
+@property (nullable, nonatomic, retain) NSString *bidYearMonth;
+@property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
 
 @end
 
 @interface DB_Project (CoreDataGeneratedAccessors)
 
-- (void)addRelationshipBidObject:(NSManagedObject *)value;
-- (void)removeRelationshipBidObject:(NSManagedObject *)value;
-- (void)addRelationshipBid:(NSSet<NSManagedObject *> *)values;
-- (void)removeRelationshipBid:(NSSet<NSManagedObject *> *)values;
+- (void)addRelationshipBidObject:(DB_Bid *)value;
+- (void)removeRelationshipBidObject:(DB_Bid *)value;
+- (void)addRelationshipBid:(NSSet<DB_Bid *> *)values;
+- (void)removeRelationshipBid:(NSSet<DB_Bid *> *)values;
 
 @end
 

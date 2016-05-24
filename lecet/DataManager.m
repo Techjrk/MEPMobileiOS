@@ -90,7 +90,7 @@
         record = [DB_Bid createEntity];
     }
     
-    record.isRecent = [NSNumber numberWithBool:YES];
+    record.isRecentMade = [NSNumber numberWithBool:YES];
     record.recordId = recordId;
     record.awardInd = [NSNumber numberWithBool:[bid[@"awardInd"] boolValue]];
     record.createDate = bid[@"createDate"];
@@ -113,6 +113,7 @@
         record = [DB_Project createEntity];
     }
 
+    record.isHappenSoon = [NSNumber numberWithBool:YES];
     record.recordId = @([recordId integerValue]);
     record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
@@ -159,7 +160,19 @@
     record.zip5 = [DerivedNSManagedObject objectOrNil:project[@"zip5"]];
     record.zipPlus4 = [DerivedNSManagedObject objectOrNil:project[@"zipPlus4"]];
     
-    
+    if (record.bidDate != nil) {
+        
+        NSDate *bidDate = [DerivedNSManagedObject dateFromDateAndTimeString:record.bidDate];
+        
+        NSString *bidDateString = [DerivedNSManagedObject dateStringFromDateDay:bidDate];
+        
+        NSString *yearMonth = [DerivedNSManagedObject yearMonthFromDate:bidDate];
+        
+        record.bidYearMonthDay = bidDateString;
+        record.bidYearMonth = yearMonth;
+
+        
+    }
     NSDictionary *projectStage = project[@"projectStage"];
     if (projectStage != nil) {
         record.projectStageName = projectStage[@"name"];
@@ -338,7 +351,7 @@
     return record;
 }
 
-- (void)bids:(NSDate *)dateFilter  success:(APIBlock)success failure:(APIBlock)failure {
+- (void)bidsRecentlyMade:(NSDate *)dateFilter  success:(APIBlock)success failure:(APIBlock)failure {
     
     NSDictionary *parameter = @{@"filter[order]":@"createDate DESC", @"filter[limit]":@"100"};
     
@@ -349,7 +362,7 @@
         NSArray *currrentRecords = [DB_Bid fetchObjectsForPredicate:nil key:nil ascending:NO];
         if (currrentRecords != nil) {
             for (DB_Bid *item in currrentRecords) {
-                item.isRecent = [NSNumber numberWithBool:NO];
+                item.isRecentMade = [NSNumber numberWithBool:NO];
             }
         }
         for (NSDictionary *item in object) {
@@ -382,14 +395,27 @@
     
 }
 
-- (void)happeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure{
+- (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure{
 
-    NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"q":@"a" };
+    //NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+    
+    NSDictionary *filter =@{@"filter[searchFilter][biddingWithin][min]":@"2015-11-01", @"filter[searchFilter][biddingWithin][max]":@"2015-11-30",@"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+
     [self HTTP_GET:[self url:kUrlHappeningSoon] parameters:filter success:^(id object) {
+        
+        NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
+        if (currrentRecords != nil) {
+            for (DB_Project *item in currrentRecords) {
+                item.isHappenSoon = [NSNumber numberWithBool:NO];
+            }
+        }
+        
         NSDictionary *results = object[@"results"];
         
         for (NSDictionary *item in results) {
             
+            [self saveManageObjectProject:item];
+            /*
             NSString *recordId = item[@"id"];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %@", recordId];
             
@@ -453,9 +479,9 @@
             record.title = [DerivedNSManagedObject objectOrNil:item[@"title"]];
             record.zip5 = [DerivedNSManagedObject objectOrNil:item[@"zip5"]];
             record.zipPlus4 = [DerivedNSManagedObject objectOrNil:item[@"zipPlus4"]];
-            
-            [self saveContext];
+            */
         }
+        [self saveContext];
 
         success(object);
     } failure:^(id object) {

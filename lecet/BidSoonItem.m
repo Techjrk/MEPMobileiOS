@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 
 #import "bidSoonItemConstants.h"
-#import "DB_BidSoon.h"
+#import "DB_Project.h"
 
 @interface BidSoonItem()<MKMapViewDelegate>{
     NSNumber *recordId;
@@ -69,7 +69,7 @@
 
 - (void)setItemInfo:(id)info {
 
-    DB_BidSoon *item = info;
+    DB_Project *item = info;
     
     recordId = item.recordId;
     

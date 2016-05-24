@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/23/16.
+//  Created by Harry Herrys Camigla on 5/24/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -66,6 +66,9 @@
 @dynamic projectCategoryTitle;
 @dynamic projectGroupId;
 @dynamic projectGroupTitle;
+@dynamic isHappenSoon;
+@dynamic bidYearMonthDay;
+@dynamic bidYearMonth;
 @dynamic relationshipBid;
 
 @end
