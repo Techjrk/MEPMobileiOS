@@ -102,6 +102,9 @@
             CGContextSetFillColorWithColor(context, CALENDAR_ITEM_INDICATOR_MARKED_COLOR.CGColor);
             CGContextSetStrokeColorWithColor(context, CALENDAR_ITEM_INDICATOR_MARKED_COLOR.CGColor);
             CGContextDrawPath(context, kCGPathFillStroke);
+            
+            CGPathRelease(strokedArc);
+            CGPathRelease(arc);
         } else {
             
             CGRect borderRect = CGRectMake(center.x - radius, center.y - radius, radius * 2.0, radius * 2.0);

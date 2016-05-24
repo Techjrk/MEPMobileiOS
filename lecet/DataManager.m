@@ -16,12 +16,17 @@
 #import "DB_Contact.h"
 #import "DB_Project.h"
 
+#import "AppDelegate.h"
+#import "BusyViewController.h"
+
 #define kbaseUrl                    @"http://lecet.dt-staging.com/api/"
 #define kUrlLogin                   @"LecetUsers/login"
 #define kUrlBids                    @"Bids/withGroup"
 #define kUrlProjectDetail           @"Projects/%li?"
 #define kUrlHappeningSoon           @"Projects/search"
 
+@interface DataManager()
+@end
 @implementation DataManager
 
 #pragma mark Date Function
@@ -459,6 +464,8 @@
 
 }
 
+#pragma mark - MISC FEATURE
+
 - (void)featureNotAvailable:(UIViewController*)controller {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature not available yet!" preferredStyle:UIAlertControllerStyleAlert];
     
@@ -472,4 +479,13 @@
     [controller presentViewController:alert animated:YES completion:nil];
 
 }
+
+- (void)showBusyScreen:(UIViewController*)controller {
+    
+    BusyViewController *screen = [BusyViewController new];
+    screen.modalPresentationStyle = UIModalPresentationCustom;
+    [controller presentViewController:screen animated:NO completion:nil];
+    
+}
+
 @end

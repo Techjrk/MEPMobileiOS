@@ -21,12 +21,16 @@
 @property (weak, nonatomic) IBOutlet UIView *blurView;
 - (IBAction)tappedButtonLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopSpace;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSignUp;
+- (IBAction)tappedButtonSignUp:(id)sender;
 @end
 
 @implementation LoginViewController
 @synthesize loginDelegate;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[DataManager sharedManager] startMonitoring];
     [self enableTapGesture:YES];
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
@@ -42,7 +46,6 @@
     
     _constraintTopSpace.constant = kDeviceHeight * 0.3;
 
-    _constraintContainerHeight.constant = kDeviceHeight * 0.47;
     
     [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
     
@@ -57,7 +60,9 @@
     _buttonLogin.layer.shadowOffset = CGSizeMake(2, 2);
     _buttonLogin.layer.shadowOpacity = 0.5;
     _buttonLogin.layer.masksToBounds = NO;
-    
+   
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"LOGIN_SIGNUP") attributes:@{NSFontAttributeName:LOGIN_SIGNUP_FONT, NSForegroundColorAttributeName:LOGIN_SIGNUP_COLOR, NSUnderlineStyleAttributeName:[NSNumber numberWithBool:YES]}];
+    [_buttonSignUp setAttributedTitle:title forState:UIControlStateNormal];
     if (isDebug) {
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
@@ -81,12 +86,15 @@
     [_blurView addSubview:vibrancyEffectView];
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
 
 - (IBAction)tappedButtonLogin:(id)sender {
+    
+    //[[DataManager sharedManager] showBusyScreen:self];
     
     [[DataManager sharedManager] userLogin:[_textFieldEmail text] password:[_textFieldPassword text] success:^(id object) {
         NSString *token = object[@"id"];
@@ -100,10 +108,14 @@
     } failure:^(id object) {
         
     }];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
+    
     [UIView animateWithDuration:0.5 animations:^{
         _blurView.alpha = 1;
         [self.view layoutIfNeeded];
@@ -125,4 +137,8 @@
     [_textFieldEmail becomeFirstResponder];
 }
 
+- (IBAction)tappedButtonSignUp:(id)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LOGIN_SIGNUP_URL]];
+}
 @end

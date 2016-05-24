@@ -10,6 +10,7 @@
 "LOGIN_BUTTON_TEXT"                         =               "LOGIN";
 "LOGIN_PLACEHOLDER_EMAIL"                   =               "Email Address";
 "LOGIN_PLACEHOLDER_PASSWORD"                =               "Password";
+"LOGIN_SIGNUP"                              =               "Sign Up for MEP Access";
 
 //MenuHeaderView.xib
 "MENUHEADER_LABEL_HEADER_TEXT"              =               "BIDS";

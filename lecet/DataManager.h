@@ -28,4 +28,5 @@
 
 //MISC
 - (void)featureNotAvailable:(UIViewController*)controller;
+- (void)showBusyScreen:(UIViewController*)controller;
 @end

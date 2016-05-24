@@ -236,8 +236,8 @@
     }
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
-    [cell contentView].layer.shouldRasterize = YES;
-    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    //[cell contentView].layer.shouldRasterize = YES;
+    //cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
 }

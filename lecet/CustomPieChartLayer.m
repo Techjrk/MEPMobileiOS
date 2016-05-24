@@ -49,8 +49,7 @@
     
     CGMutablePathRef arc = CGPathCreateMutable();
     
-    CGPathAddArc(arc, NULL, center.x, center.y, radius, DEGREES_TO_RADIANS(_startAngle) ,  DEGREES_TO_RADIANS(_endAngle), YES);
-    
+    CGPathAddArc(arc, NULL, center.x, center.y, radius, DEGREES_TO_RADIANS(_startAngle),  DEGREES_TO_RADIANS(_endAngle), YES);
     
     CGFloat multiplier = 0.1;
     if (hasFocus) {
@@ -58,6 +57,7 @@
     } else if (hasFocusSegment) {
         multiplier = 0.06;
     }
+    
     CGFloat lineWidth = kDeviceWidth * multiplier;
     CGPathRef strokedArc =
     CGPathCreateCopyByStrokingPath(arc, NULL,
@@ -66,7 +66,6 @@
                                    kCGLineJoinMiter, // the default
                                    10);
 
-    
     CGContextAddPath(context, strokedArc);
     
     CGContextSetFillColorWithColor(context, self.layerColor.CGColor);
@@ -75,8 +74,11 @@
  
     UIGraphicsPopContext();
 
+    
     self.piePath = arc;
-
+    
+    CGPathRelease(strokedArc);
+ 
 }
 
 - (void)layerTapped {

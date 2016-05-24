@@ -118,7 +118,6 @@
     
     UIBezierPath *shadowPath = [[Utilities sharedIntances] drawShadowPath];
     
-    
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     self.view.layer.shadowOffset = CGSizeMake(-7.0f, -100.0f);
     self.view.layer.shadowOpacity = 0.5f;

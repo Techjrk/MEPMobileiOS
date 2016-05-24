@@ -10,7 +10,12 @@
 
 #import "SFHFKeychainUtils.h"
 
+#import "AppDelegate.h"
 
+@interface BaseManager(){
+    BOOL isNoInternetShown;
+}
+@end
 @implementation BaseManager
 @synthesize managedObjectContext;
 
@@ -83,72 +88,81 @@
 
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [self changeHTTPHeader:manager];
-    
-    if (authenticated) {
-        [self authenticate:manager];
+    if ([self connected]) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [self changeHTTPHeader:manager];
+        
+        if (authenticated) {
+            [self authenticate:manager];
+        }
+        
+        [manager GET:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            failure(error);
+        }];
     }
-    
-    [manager GET:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
 }
 
 - (void)HTTP_POST:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    
-    [self changeHTTPHeader:manager];
-    
-    if (authenticated) {
-        [self authenticate:manager];
+    if ([self connected]) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        
+        [self changeHTTPHeader:manager];
+        
+        if (authenticated) {
+            [self authenticate:manager];
+        }
+        
+        [manager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            failure(error);
+        }];
     }
-    
-    [manager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
-    
 }
 
 - (void)HTTP_PUT:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    [self changeHTTPHeader:manager];
-    
-    if (authenticated) {
-        [self authenticate:manager];
+    if ([self connected]) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [self changeHTTPHeader:manager];
+        
+        if (authenticated) {
+            [self authenticate:manager];
+        }
+        
+        [manager PUT:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            failure(error);
+        }];
     }
-    
-    [manager PUT:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
 }
 
 - (void)HTTP_DELETE:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    [self changeHTTPHeader:manager];
-    
-    if (authenticated) {
-        [self authenticate:manager];
+    if ([self connected]) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [self changeHTTPHeader:manager];
+        
+        if (authenticated) {
+            [self authenticate:manager];
+        }
+        
+        [manager DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            failure(error);
+        }];
     }
-    
-    [manager DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
     
 }
 
@@ -156,5 +170,41 @@
 - (void)changeHTTPHeader:(AFHTTPSessionManager*)manager {}
 - (NSDictionary*)clientIdentity { return nil; }
 - (void)authenticate:(AFHTTPSessionManager*)manager {}
+
+#pragma mark - MISC
+- (void)startMonitoring {
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+
+- (BOOL)connected {
+    
+    BOOL isConnected = [AFNetworkReachabilityManager sharedManager].reachable;
+    
+    if (!isConnected) {
+        [self noInternet];
+    }
+    return isConnected ;
+}
+
+- (void)noInternet {
+    
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    
+    if (isNoInternetShown) {
+        isNoInternetShown = YES;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"No Internet!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+                                                              style:UIAlertActionStyleDestructive
+                                                            handler:^(UIAlertAction *action) {
+                                                                isNoInternetShown = NO;
+                                                            }];
+        
+        [alert addAction:closeAction];
+        [app.navController presentViewController:alert animated:YES completion:nil];
+    }
+    
+}
+
 
 @end

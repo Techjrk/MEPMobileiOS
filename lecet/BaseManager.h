@@ -30,6 +30,10 @@ typedef void(^APIBlock)(id object);
 - (void)changeHTTPHeader:(AFHTTPSessionManager*)manager;
 - (void)authenticate:(AFHTTPSessionManager*)manager;
 
+//MISC
+- (void)startMonitoring;
+- (BOOL)connected;
+
 //HTTP
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
 - (void)HTTP_POST:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
