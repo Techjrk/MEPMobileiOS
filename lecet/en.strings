@@ -75,3 +75,25 @@
 //CompanyStateView.xib
 "COMPANY_STATE_TRACK"                       =               "Track";
 "COMPANY_STATE_SHARE"                       =               "Share";
+
+
+
+//DropDownProjectList.xib
+"DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT"    =               "Trains and Metros";
+"DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT"          =               "Railways";
+"DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT"       =               "Another List";
+"DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT"        =               "High Values";
+"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT"     =               "Select a Tracking List";
+
+
+
+//DropDownMenuShareList.xib
+"DROPDOWNSHARELIST_SENDBYEMAIL_BUTTON_TEXT"         =               "Send by Email";
+"DROPDOWNPROJECTLIST_COPYLINK_BUTTON_TEXT"          =               "Copy Link";
+
+
+//ProjectDetailState.xib
+"PROJECTDETAILSATE_HIDEPROJECT_BUTTON_TEXT"         =               "HIDE PROJECT";
+"PROJECTDETAILSATE_CANCEL_BUTTON_TEXT"              =               "CANCEL";
+"PROJECTDETAILSATE_TITLE_LABEL_TEXT"              =               "You are about to hide this project";
+

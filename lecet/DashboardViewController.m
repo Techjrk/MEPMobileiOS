@@ -51,6 +51,8 @@
 
 @property (weak,nonatomic) IBOutlet DropDownMenuView* dropDownMenu;
 
+@property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
+
 
 
 @end
@@ -158,6 +160,8 @@
     //DropDownMenuMore
     _dropDownMenu.dropDownMenuDelegate = self;
     isDropDownMenuMoreHidden = YES;
+    [self addTappedGestureForDimBackground];
+
 }
 
 - (void)loadBidItems {
@@ -458,31 +462,47 @@
         isDropDownMenuMoreHidden = NO;
         
         [_dropDownMenu setHidden:NO];
+        [_dimDropDownMenuBackgroundView setHidden:NO];
         
-        
-        
+        _dimDropDownMenuBackgroundView.alpha  = 0.0f;
         _dropDownMenu.alpha = 0.0f;
         [UIView beginAnimations:@"fadeIn" context:nil];
         [UIView setAnimationDuration:1.0];
         _dropDownMenu.alpha = 1.0f;
+        _dimDropDownMenuBackgroundView.alpha  = 1.0f;
         
         
         
     }else{
-        
-        _dropDownMenu.alpha = 1.0f;
-        [UIView beginAnimations:@"fadeOut" context:nil];
-        [UIView setAnimationDuration:1.0];
-        _dropDownMenu.alpha = 0.0f;
-        
-        
-        
-        isDropDownMenuMoreHidden = YES;
-        
+        [self hideDropDownMenu];
         //[_dropDownMenu setHidden:YES];
         
     }
     
+}
+
+- (void)addTappedGestureForDimBackground{
+    
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDropDownMenu)];
+    tapped.numberOfTapsRequired = 1;
+    [_dimDropDownMenuBackgroundView addGestureRecognizer:tapped];
+    
+    
+}
+
+
+- (void)hideDropDownMenu{
+    
+    _dropDownMenu.alpha = 1.0f;
+    
+    
+    [UIView beginAnimations:@"fadeOut" context:nil];
+    [UIView setAnimationDuration:1.0];
+    _dropDownMenu.alpha = 0.0f;
+    _dimDropDownMenuBackgroundView.alpha  = 0.0f;
+    
+    isDropDownMenuMoreHidden = YES;
+
 }
 
 #pragma mark - Drop Down Menu Delegate

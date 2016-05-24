@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectDetailStateView">
+            <connections>
+                <outlet property="buttonCancel" destination="EMs-8v-WGi" id="cfK-g7-Aql"/>
+                <outlet property="buttonHideProject" destination="CxY-NK-j23" id="cys-Wa-V7Q"/>
+                <outlet property="labelTitleForDetailState" destination="8Mp-Bw-wuj" id="U6h-aH-VbI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="155"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are about to hide this project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-Bw-wuj">
+                    <rect key="frame" x="8" y="10" width="289" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="U91-Wa-sFt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-NK-j23">
+                    <rect key="frame" x="65" y="62" width="176" height="32"/>
+                    <color key="backgroundColor" red="0.0" green="0.2470588235" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="HIDE PROJECT">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedProjectDetailState:" destination="-1" eventType="touchUpInside" id="mGW-IJ-5B3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMs-8v-WGi">
+                    <rect key="frame" x="117" y="114" width="72" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="UYS-3z-M8l"/>
+                        <constraint firstAttribute="width" constant="72" id="uX8-g1-NIU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="CANCEL">
+                        <color key="titleColor" red="0.0" green="0.24705882352941178" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedProjectDetailState:" destination="-1" eventType="touchUpInside" id="ePZ-EH-SOt"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EEo-eP-sAg"/>
+                <constraint firstItem="EMs-8v-WGi" firstAttribute="centerX" secondItem="CxY-NK-j23" secondAttribute="centerX" id="ZPn-Ue-gtU"/>
+                <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="a74-9T-Mpa"/>
+                <constraint firstItem="CxY-NK-j23" firstAttribute="top" secondItem="8Mp-Bw-wuj" secondAttribute="bottom" constant="19" id="fuo-yc-mqX"/>
+                <constraint firstItem="8Mp-Bw-wuj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="iE4-nx-rci"/>
+                <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="8" id="lvK-sj-DG8"/>
+                <constraint firstItem="CxY-NK-j23" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="65" id="mOz-nl-M8n"/>
+                <constraint firstItem="EMs-8v-WGi" firstAttribute="top" secondItem="CxY-NK-j23" secondAttribute="bottom" constant="20" id="prj-Xz-AdG"/>
+                <constraint firstItem="CxY-NK-j23" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xEo-uP-hgI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
