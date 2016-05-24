@@ -91,5 +91,23 @@
 }
 
 
+-(UIBezierPath *)drawShadowPathFrame:(CGRect)frame{
+    
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
+    CGRect customDimRect = screenRect;
+    
+    customDimRect.size.width = screenRect.size.width + 100;
+    
+    customDimRect.size.height = screenRect.size.height + 100;
+    
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:frame];
+    
+    
+    return shadowPath;
+    
+}
+
 
 @end

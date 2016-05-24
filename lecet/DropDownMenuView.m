@@ -74,6 +74,8 @@
     
     [self drawDimBackgroundAndCornerWithRadius];
     
+
+    
 }
 
 
@@ -101,10 +103,10 @@
     float widthNeedToAdd = screenWidth * 0.021f;
     float width = screenWidth + widthNeedToAdd;
     int triangleTopDirection = -1;
-
+    
     int triangleSize =  9;
     
- 
+    
     UIColor *bgColor = [UIColor whiteColor];
     CAShapeLayer *triangleTop = [[Utilities sharedIntances] drawDropDownTopTriangle:width backgroundColor:bgColor triangleTopDirection:triangleTopDirection heightPlacement:height sizeOfTriangle:triangleSize];
     
@@ -116,8 +118,8 @@
 
 -(void)drawDimBackgroundAndCornerWithRadius{
     
-    UIBezierPath *shadowPath = [[Utilities sharedIntances] drawShadowPath];
     
+    UIBezierPath *shadowPath = [[Utilities sharedIntances] drawShadowPath];
     
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     self.view.layer.shadowOffset = CGSizeMake(-7.0f, -100.0f);

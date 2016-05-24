@@ -20,8 +20,16 @@
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate>{
+#import "DropDownMenuShareList.h"
+#import "DropDownProjectList.h"
+#import "ProjectDetailStateView.h"
+
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,DropDownProjectListDelegate,ProjectDetailStateDelegate>{
     BOOL isShownContentAdjusted;
+    BOOL isDropDownSharelistHidden;
+    BOOL isDropDownProjectListHidden;
+    BOOL isProjectDetailStateHidden;
+    
 }
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet ProjectStateView *projectState;
@@ -50,6 +58,13 @@
 @property (weak, nonatomic) IBOutlet ProjectBidderView *projectBidder;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidder;
 
+@property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
+
+@property (weak,nonatomic) IBOutlet DropDownProjectList *dropDownProjectListView;
+
+@property (weak,nonatomic) IBOutlet ProjectDetailStateView * projectDetailStateView;
+
+@property (weak, nonatomic) IBOutlet UIView *dimProjectDetailStateView;
 
 @end
 
@@ -73,6 +88,24 @@
     [_projectBidder changeConstraintHeight:_constraintFieldProjectBidder];
     
     _projectState.projectStateViewDelegate = self;
+    
+    
+    
+    //ShareList
+    _dropDownShareListView.dropDownShareListDelegate = self;
+    isDropDownSharelistHidden = YES;
+    
+    
+    
+    //ProjectList
+    _dropDownProjectListView.dropDownProjectListDelegate = self;
+    isDropDownProjectListHidden = YES;
+    
+    //ProjectDetailStateView
+    isProjectDetailStateHidden = YES;
+    _projectDetailStateView.projectDetailStateDelegate = self;
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,6 +197,31 @@
 
 - (void)selectedStateViewItem:(StateView)stateView {
     
+    
+    if (stateView == StateViewShare) {
+        
+        [self showOrHideDropDownShareListMenu];
+        [self hideDropDownProjectList];
+        
+    }else if (stateView == StateViewTrack){
+        
+        [self showOrHideDropDownProjectListMenu];
+        [self hideDropDownShareList];
+        
+    }else if (stateView == StateViewHide){
+        
+        [self hideDropDownProjectList];
+        [self hideDropDownShareList];
+        [self showOrHideDropDownProjectDetailState];
+        
+        
+    }
+    
+    
+    
+    
+    
+    
 }
 
 - (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
@@ -185,6 +243,129 @@
     }
     return animator;
 }
+
+
+
+#pragma mark - Share List Method and Delegate
+
+
+- (void)tappedDropDownShareList:(DropDownShareListItem)shareListItem{
+    
+    
+    
+}
+
+
+- (void)showOrHideDropDownShareListMenu{
+    if (isDropDownSharelistHidden) {
+        
+        isDropDownSharelistHidden = NO;
+    
+        [_dropDownShareListView setHidden:NO];
+    
+    }else{
+        
+        isDropDownSharelistHidden = YES;
+        [_dropDownShareListView setHidden:YES];
+        
+    }
+    
+}
+
+
+- (void)hideDropDownShareList{
+    
+    isDropDownSharelistHidden = YES;
+    [_dropDownShareListView setHidden:YES];
+}
+
+
+
+#pragma mark - Proejct List Delegate and Method
+
+- (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem{
+    
+    
+}
+
+
+- (void)showOrHideDropDownProjectListMenu{
+    if (isDropDownProjectListHidden) {
+        
+        isDropDownProjectListHidden = NO;
+        [_dropDownProjectListView setHidden:NO];
+        
+    }else{
+        
+        isDropDownProjectListHidden = YES;
+        [_dropDownProjectListView setHidden:YES];
+        
+    }
+    
+}
+
+
+- (void)hideDropDownProjectList{
+    
+    
+    isDropDownProjectListHidden = YES;
+    [_dropDownProjectListView setHidden:YES];
+    
+}
+
+
+#pragma mark - Project Detail State Delegate
+
+
+- (void)tappedProjectDetailState:(ProjectDetailStateItem)projectDetailStteItem{
+    
+    
+    if (projectDetailStteItem == ProjectDetailStateCancel) {
+        [self hideProjectDetailStateView];
+    }
+    
+}
+
+
+- (void)showOrHideDropDownProjectDetailState{
+    if (isProjectDetailStateHidden) {
+        
+        isProjectDetailStateHidden = NO;
+        [_projectDetailStateView setHidden:NO];
+        [_dimProjectDetailStateView setHidden:NO];
+        
+        
+        
+    }else{
+        
+        isProjectDetailStateHidden = YES;
+        [_projectDetailStateView setHidden:YES];
+        [_dimProjectDetailStateView setHidden:YES];
+        
+    }
+    
+}
+
+
+- (void)hideProjectDetailStateView{
+    
+    isProjectDetailStateHidden = YES;
+    [_projectDetailStateView setHidden:YES];
+    [_dimProjectDetailStateView setHidden:YES];
+
+    
+}
+
+
+- (void)addTappedGestureForDimBackground{
+    
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectDetailStateView)];
+    tapped.numberOfTapsRequired = 1;
+    [_projectDetailStateView addGestureRecognizer:tapped];
+    
+    
+}
+
 
 
 @end
