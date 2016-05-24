@@ -22,6 +22,7 @@
 @end
 
 @implementation PariticpantsView
+@synthesize pariticipantsDelegate;
 
 #define kCellIdentifier         @"kCellIdentifier"
 
@@ -95,9 +96,8 @@
     return 0;
 }
 
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.pariticipantsDelegate tappedParticipant:nil];
 }
 
 #pragma mark - View

@@ -112,6 +112,7 @@
             }
         }
     }
+    [self.customPieChartDelegate tappedPieSegment:nil chartView:self.customPieChartDelegate];
     
 }
 

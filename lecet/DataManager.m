@@ -11,11 +11,16 @@
 #import "DB_BidSoon.h"
 #import "DB_BidRecent.h"
 
-#define kbaseUrl                @"http://lecet.dt-staging.com/api/"
-#define kUrlLogin               @"LecetUsers/login"
-#define kUrlBids                @"Bids/withGroup"
-#define kUrlBidDetail           @"Bids/%li?"
-#define kUrlHappeningSoon       @"Projects/search"
+#import "DB_Bid.h"
+#import "DB_Company.h"
+#import "DB_Contact.h"
+#import "DB_Project.h"
+
+#define kbaseUrl                    @"http://lecet.dt-staging.com/api/"
+#define kUrlLogin                   @"LecetUsers/login"
+#define kUrlBids                    @"Bids/withGroup"
+#define kUrlProjectDetail           @"Projects/%li?"
+#define kUrlHappeningSoon           @"Projects/search"
 
 @implementation DataManager
 
@@ -67,6 +72,169 @@
     } authenticated:NO];
 }
 
+#pragma mark Managed Objects Persist Routines
+
+- (DB_Bid*)saveManageObjectBid:(NSDictionary*)bid {
+    
+    NSNumber *recordId = bid[@"id"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+    
+    DB_Bid *record = [DB_Bid fetchObjectForPredicate:predicate key:nil ascending:YES];
+    
+    if (record == nil) {
+        record = [DB_Bid createEntity];
+    }
+    
+    record.isRecent = [NSNumber numberWithBool:YES];
+    record.recordId = recordId;
+    record.awardInd = [NSNumber numberWithBool:[bid[@"awardInd"] boolValue]];
+    record.createDate = bid[@"createDate"];
+    
+    record.relationshipProject = [self saveManageObjectProject:bid[@"project"]];
+    record.relationshipContact = [self saveManageObjectContact:bid[@"contact"]];
+    record.relationshipCompany = [self saveManageObjectCompany:bid[@"company"]];
+    
+    return record;
+}
+
+- (DB_Project*)saveManageObjectProject:(NSDictionary*)project {
+    
+    NSNumber *recordId = project[@"id"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+
+    DB_Project *record = [DB_Project fetchObjectForPredicate:predicate key:nil ascending:YES];
+    
+    if (record == nil) {
+        record = [DB_Project createEntity];
+    }
+
+    record.recordId = @([recordId integerValue]);
+    record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
+    record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
+    
+    record.address2 = [DerivedNSManagedObject objectOrNil:project[@"address2"]];
+    record.availableFrom = [DerivedNSManagedObject objectOrNil:project[@"availableFrom"]];
+    record.bidDate = [DerivedNSManagedObject objectOrNil:project[@"bidDate"]];
+    record.bidSubmitTo = [DerivedNSManagedObject objectOrNil:project[@"bidSubmitTo"]];
+    record.bidTimeZone = [DerivedNSManagedObject objectOrNil:project[@"bidTimeZone"]];
+    record.bondBidInd = [DerivedNSManagedObject objectOrNil:project[@"bondBidInd"]];
+    record.bondPaymentInd = [DerivedNSManagedObject objectOrNil:project[@"bondPaymentInd"]];
+    
+    record.bondPfrmInd = [DerivedNSManagedObject objectOrNil:project[@"bondPfrmInd"]];
+    record.city = [DerivedNSManagedObject objectOrNil:project[@"city"]];
+    record.cnProjectUrl = [DerivedNSManagedObject objectOrNil:project[@"cnProjectUrl"]];
+    record.contractNbr = [DerivedNSManagedObject objectOrNil:project[@"contractNbr"]];
+    record.country = [DerivedNSManagedObject objectOrNil:project[@"country"]];
+    record.county = [DerivedNSManagedObject objectOrNil:project[@"county"]];
+    record.currencyType = [DerivedNSManagedObject objectOrNil:project[@"currencyType"]];
+    record.details = [DerivedNSManagedObject objectOrNil:project[@"details"]];
+    record.dodgeNumber = [DerivedNSManagedObject objectOrNil:project[@"dodgeNumber"]];
+    record.dodgeVersion = [DerivedNSManagedObject objectOrNil:project[@"dodgeVersion"]];
+    record.estLow = [DerivedNSManagedObject objectOrNil:project[@"estLow"]];
+    record.fipsCounty = [DerivedNSManagedObject objectOrNil:project[@"fipsCounty"]];
+    record.firstPublishDate = [DerivedNSManagedObject objectOrNil:project[@"firstPublishDate"]];
+    record.geoLocationType = [DerivedNSManagedObject objectOrNil:project[@"geoLocationType"]];
+    record.geocodeLat = [DerivedNSManagedObject objectOrNil:project[@"geocode"][@"lat"]];
+    record.geocodeLng = [DerivedNSManagedObject objectOrNil:project[@"geocode"][@"lng"]];
+    record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
+    record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
+    record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
+    record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
+    record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectTypeId"]];
+    record.priorPublishDate = [DerivedNSManagedObject objectOrNil:project[@"priorPublishDate"]];
+    record.projDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"projDlvrySys"]];
+    record.projectStageId = [DerivedNSManagedObject objectOrNil:project[@"projectStageId"]];
+    record.specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
+    record.state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
+    record.statusProjDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"statusProjDlvrySys"]];
+    record.statusText = [DerivedNSManagedObject objectOrNil:project[@"statusText"]];
+    record.targetFinishDate = [DerivedNSManagedObject objectOrNil:project[@"targetFinishDate"]];
+    record.targetStartDate = [DerivedNSManagedObject objectOrNil:project[@"targetStartDate"]];
+    record.title = [DerivedNSManagedObject objectOrNil:project[@"title"]];
+    record.zip5 = [DerivedNSManagedObject objectOrNil:project[@"zip5"]];
+    record.zipPlus4 = [DerivedNSManagedObject objectOrNil:project[@"zipPlus4"]];
+    
+    
+    NSDictionary *projectStage = project[@"projectStage"];
+    if (projectStage != nil) {
+        record.projectStageName = projectStage[@"name"];
+        record.projectStageId = projectStage[@"id"];
+        record.projectStageParentId = projectStage[@"parentId"];
+    }
+    
+    NSDictionary *primaryProjectType = project[@"primaryProjectType"];
+    if (primaryProjectType != nil) {
+        record.primaryProjectTypeTitle = primaryProjectType[@"title"];
+        record.primaryProjectTypeBuildingOrHighway = [DerivedNSManagedObject objectOrNil:primaryProjectType[@"buildingOrHighway"]];
+        record.primaryProjectTypeId = primaryProjectType[@"id"];
+        
+        NSDictionary *category = primaryProjectType[@"projectCategory"];
+        record.projectCategoryId = category[@"id"];
+        record.projectCategoryTitle = category[@"title"];
+        
+        NSDictionary *projectGroup = category[@"projectGroup"];
+        record.projectGroupId = projectGroup[@"id"];
+        record.projectGroupTitle = projectGroup[@"title"];
+    }
+
+    return record;
+}
+
+- (DB_Contact*)saveManageObjectContact:(NSDictionary*)contact {
+    
+    NSNumber *recordId = contact[@"id"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+    
+    DB_Contact *record = [DB_Contact fetchObjectForPredicate:predicate key:nil ascending:YES];
+    
+    if (record == nil) {
+        record = [DB_Contact createEntity];
+    }
+
+    record.recordId = recordId;
+    record.name = contact[@"name"];
+    record.title = contact[@"title"];
+    record.email = contact[@"email"];
+    record.ckmsContactId = contact[@"ckmsContactId"];
+    record.phoneNumber = contact[@"phoneNumber"];
+    record.faxNumber = contact[@"faxNumber"];
+    record.companyId = contact[@"companyId"];
+    
+    return record;
+}
+
+- (DB_Company*)saveManageObjectCompany:(NSDictionary*)company {
+    NSNumber *recordId = company[@"id"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+    
+    DB_Company *record = [DB_Company fetchObjectForPredicate:predicate key:nil ascending:YES];
+    
+    if (record == nil) {
+        record = [DB_Company createEntity];
+    }
+    
+    record.recordId = recordId;
+    record.name = company[@"name"];
+    record.address1 = company[@"address1"];
+    record.address2 = company[@"address2"];
+    record.county = company[@"county"];
+    record.fipsCounty = company[@"fipsCounty"];
+    record.city = company[@"city"];
+    record.state = company[@"state"];
+    record.zip5 = company[@"zip5"];
+    record.zipPlus4 = company[@"zipPlus4"];
+    record.country = company[@"country"];
+    record.ckmsSiteId = company[@"ckmsSiteId"];
+    record.cnCompanysiteUrl = company[@"cnCompanysiteUrl"];
+    record.wwwUrl = company[@"wwwUrl"];
+    record.dcisFactorCntctCode = company[@"dcisFactorCntctCode"];
+    record.dcisFactorCode = company[@"dcisFactorCode"];
+    record.createdAt = company[@"createdAt"];
+    record.updatedAt = company[@"updatedAt"];
+
+    return record;
+}
+
 - (DB_BidRecent*)saveBidItem:(NSDictionary*)item {
     NSString *recordId = item[@"id"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %@", recordId];
@@ -94,7 +262,7 @@
     record.bondPaymentInd = [DerivedNSManagedObject objectOrNil:project[@"bondPaymentInd"]];
     
     record.bondPfrmInd = [DerivedNSManagedObject objectOrNil:project[@"bondPfrmInd"]];
-    record.city = [DerivedNSManagedObject objectOrNil:item[@"city"]];
+    record.city = [DerivedNSManagedObject objectOrNil:project[@"city"]];
     record.cnProjectUrl = [DerivedNSManagedObject objectOrNil:project[@"cnProjectUrl"]];
     record.contractNbr = [DerivedNSManagedObject objectOrNil:project[@"contractNbr"]];
     record.country = [DerivedNSManagedObject objectOrNil:project[@"country"]];
@@ -173,8 +341,15 @@
     
     [self HTTP_GET:url parameters:parameter success:^(id object) {
         
+        NSArray *currrentRecords = [DB_Bid fetchObjectsForPredicate:nil key:nil ascending:NO];
+        if (currrentRecords != nil) {
+            for (DB_Bid *item in currrentRecords) {
+                item.isRecent = [NSNumber numberWithBool:NO];
+            }
+        }
         for (NSDictionary *item in object) {
-            [self saveBidItem:item];
+            
+            [self saveManageObjectBid:item];
         }
 
         [self saveContext];
@@ -185,13 +360,13 @@
     } authenticated:YES];
 }
 
-- (void)bidDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
+- (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [[self url:[NSString stringWithFormat:kUrlBidDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include]=project&filter[include]=contact&filter[include]=company"];
+    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]&projectGroup"];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
         
-        DB_BidRecent *item = [self saveBidItem:object];
+        DB_Project *item = [self saveManageObjectProject:object];
         
         [self saveContext];
         
@@ -281,6 +456,20 @@
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
+
+}
+
+- (void)featureNotAvailable:(UIViewController*)controller {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature not available yet!" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:closeAction];
+    [controller presentViewController:alert animated:YES completion:nil];
 
 }
 @end

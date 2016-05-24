@@ -37,6 +37,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (!isLogin) {
         isLogin = YES;
         [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];

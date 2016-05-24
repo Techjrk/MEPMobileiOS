@@ -19,6 +19,15 @@
 #define CHART_BUTTON_SELECTED_COLOR                 RGB(9, 23, 53)
 
 #define CHART_BUTTON_GROUP_LABEL_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 10)
+#define CHART_SEGMENT_TAG                           @"CHART_SEGMENT_TAG"
+#define CHART_SEGMENT_COUNT                         @"CHART_SEGMENT_COUNT"
+#define CHART_SEGMENT_COLOR                         @"CHART_SEGMENT_COLOR"
+#define CHART_SEGMENT_IMAGE                         @"CHART_SEGMENT_IMAGE"
+#define CHART_SEGMENT_PERCENTAGE                    @"CHART_SEGMENT_PERCENTAGE"
 
+#define kTagNameHousing                             @"01_HOUSING"
+#define kTagNameEngineering                         @"02_ENGINEERING"
+#define kTagNameBuilding                            @"03_BUILDING"
+#define kTagNameUtilities                           @"04_UTILITIES"
 
 #endif /* chartConstants_h */

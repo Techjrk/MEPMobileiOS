@@ -15,4 +15,5 @@
 @property (strong, nonatomic) id<BidCollectionItemDelegate>bidItemDelegate;
 - (void)setInfo:(id)info;
 - (NSNumber*)getRecordId;
+- (NSNumber *)getProjectRecordId;
 @end

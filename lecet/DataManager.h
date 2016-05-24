@@ -21,9 +21,11 @@
 
 //API BIDS
 - (void)bids:(NSDate*)dateFilter success:(APIBlock)success failure:(APIBlock)failure;
-- (void)bidDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 
 //API PROJECTS
 - (void)happeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure;
 
+//MISC
+- (void)featureNotAvailable:(UIViewController*)controller;
 @end

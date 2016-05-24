@@ -10,7 +10,12 @@
 
 #import "BaseViewClass.h"
 
+@protocol PariticipantsDelegate <NSObject>
+- (void)tappedParticipant:(id)object;
+@end
+
 @interface PariticpantsView : BaseViewClass
+@property (strong, nonatomic) id<PariticipantsDelegate>pariticipantsDelegate;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
 @end

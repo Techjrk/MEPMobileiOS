@@ -148,13 +148,13 @@
     NSInteger lastWeekRow = componentsLastDay.weekdayOrdinal;
     NSInteger lastWeekDay = componentsLastDay.weekday;
     
-    int daysOver = 0;
+    //int daysOver = 0;
     for (int i = 0; i< lastDay; i++) {
         
         NSString *yearMonthDay = [NSString stringWithFormat:@"%li-%02d-%02d",(long)componentsFirstDay.year, (int)componentsFirstDay.month, i +1 ];
         
         dayArray[i+startDay] = @{kItemActive:[NSNumber numberWithBool:YES], kItemDay:@(i + 1), kItemTag:yearMonthDay};
-        daysOver = i;
+        //daysOver = i;
     }
     
     NSInteger addedDay = 1;

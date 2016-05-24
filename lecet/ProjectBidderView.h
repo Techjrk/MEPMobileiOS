@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewClass.h"
+
+@protocol ProjectBidderDelegate <NSObject>
+
+- (void)tappedProjectBidder:(id)object;
+
+@end
 @interface ProjectBidderView : BaseViewClass
+@property (strong, nonatomic) id<ProjectBidderDelegate>projectBidderDelegate;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
 @end

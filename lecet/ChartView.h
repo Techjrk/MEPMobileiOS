@@ -15,4 +15,5 @@
 
 @interface ChartView : BaseViewClass
 @property (strong, nonatomic) id<ChartViewDelegate>chartViewDelegate;
+- (void)setSegmentItems:(NSMutableDictionary*)items;
 @end

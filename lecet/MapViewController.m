@@ -89,6 +89,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (!isMapLoaded) {
         isMapLoaded = YES;
         _button.hidden = NO;

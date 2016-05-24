@@ -10,11 +10,14 @@
 
 #import "bidItemViewConstants.h"
 #import <MapKit/MapKit.h>
-#import "DB_BidRecent.h"
+#import "DB_Bid.h"
+#import "DB_Project.h"
+#import "DB_Company.h"
 
 
 @interface BidItemView()<MKMapViewDelegate>{
     NSNumber *recordId;
+    NSNumber *projectId;
 }
 @property (weak, nonatomic) IBOutlet UIView *groupDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
@@ -66,31 +69,34 @@
 }
 
 - (void)setInfo:(id)info {
-    DB_BidRecent *item = info;
+    DB_Bid *item = info;
     
-    recordId = item.bidId;
-    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidCreateDate];
+    recordId = item.recordId;
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.createDate];
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    CGFloat estlow = 0;
     
-    if (item.estLow == nil) {
-        estlow = [item.estLow floatValue];
-    } else {
-        estlow = item.estLow.floatValue;
+    DB_Project *project = item.relationshipProject;
+    projectId = project.recordId;
+    
+    CGFloat estlow = 0;
+    if (project.estLow != nil) {
+        estlow = project.estLow.floatValue;
     }
     NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
     _labelAmount.text = [NSString stringWithFormat:@"$ %@", estLow ];
     
-    _labelBidName.text = item.companyName;
+    DB_Company *company = item.relationshipCompany;
     
-    _labelBidService.text = item.title;
-    _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", item.county, item.state];
+    _labelBidName.text = company.name;
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([item.geocodeLat floatValue], [item.geocodeLng floatValue]);
+    _labelBidService.text = item.relationshipProject.title;
+    _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", project.county, project.state];
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([project.geocodeLat floatValue], [project.geocodeLng floatValue]);
     
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
     MKCoordinateRegion region = {coordinate, span};
@@ -135,6 +141,10 @@
 
 - (NSNumber *)getRecordId {
     return recordId;
+}
+
+- (NSNumber *)getProjectRecordId {
+    return projectId;
 }
 
 @end

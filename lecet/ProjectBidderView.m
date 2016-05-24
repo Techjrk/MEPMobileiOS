@@ -22,6 +22,8 @@
 @end
 
 @implementation ProjectBidderView
+@synthesize projectBidderDelegate;
+
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
@@ -96,7 +98,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.projectBidderDelegate tappedProjectBidder:nil];
 }
 
 #pragma mark - View
