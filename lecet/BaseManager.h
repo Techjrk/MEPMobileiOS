@@ -33,6 +33,7 @@ typedef void(^APIBlock)(id object);
 //MISC
 - (void)startMonitoring;
 - (BOOL)connected;
+- (UIViewController*)getActiveViewController;
 
 //HTTP
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;

@@ -403,7 +403,7 @@
     [self.navigationController pushViewController:controller animated:YES];
      */
 
-    [[DataManager sharedManager] featureNotAvailable:self];
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 - (void)showProjectDetails:(id)record fromRect:(CGRect)rect {
@@ -459,19 +459,21 @@
 - (void)showOrHideDropDownMenuMore{
     if (isDropDownMenuMoreHidden) {
         
-        isDropDownMenuMoreHidden = NO;
         
         [_dropDownMenu setHidden:NO];
         [_dimDropDownMenuBackgroundView setHidden:NO];
-        
         _dimDropDownMenuBackgroundView.alpha  = 0.0f;
         _dropDownMenu.alpha = 0.0f;
-        [UIView beginAnimations:@"fadeIn" context:nil];
-        [UIView setAnimationDuration:1.0];
-        _dropDownMenu.alpha = 1.0f;
-        _dimDropDownMenuBackgroundView.alpha  = 1.0f;
         
-        
+        [UIView animateWithDuration:1.0 animations:^{
+            _dropDownMenu.alpha = 1.0f;
+            _dimDropDownMenuBackgroundView.alpha  = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isDropDownMenuMoreHidden = NO;
+                
+            }
+        }];
         
     }else{
         [self hideDropDownMenu];
@@ -495,13 +497,20 @@
     
     _dropDownMenu.alpha = 1.0f;
     
+    [UIView animateWithDuration:1.0 animations:^{
+        _dropDownMenu.alpha = 0.0f;
+        _dimDropDownMenuBackgroundView.alpha  = 0.0f;
+        
+    } completion:^(BOOL finished) {
+
+        if (finished) {
+            isDropDownMenuMoreHidden = YES;
+
+        }
+    }];
+    //[UIView beginAnimations:@"fadeOut" context:nil];
+    //[UIView setAnimationDuration:1.0];
     
-    [UIView beginAnimations:@"fadeOut" context:nil];
-    [UIView setAnimationDuration:1.0];
-    _dropDownMenu.alpha = 0.0f;
-    _dimDropDownMenuBackgroundView.alpha  = 0.0f;
-    
-    isDropDownMenuMoreHidden = YES;
 
 }
 

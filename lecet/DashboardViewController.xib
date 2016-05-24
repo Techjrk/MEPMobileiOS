@@ -11,12 +11,8 @@
                 <outlet property="bidsCollectionView" destination="9vD-FZ-MFE" id="NdO-Vh-sYu"/>
                 <outlet property="calendarView" destination="Tqv-Ad-z1n" id="z1N-ph-ePi"/>
                 <outlet property="chartRecentlyMade" destination="qh1-Qr-RKn" id="c7B-Ph-C1p"/>
-
                 <outlet property="dimDropDownMenuBackgroundView" destination="da7-Bm-X3z" id="avB-NP-u9B"/>
                 <outlet property="dropDownMenu" destination="NT8-yS-9oR" id="eLs-gZ-t7j"/>
-
-                <outlet property="dropDownMenu" destination="U1Y-ri-10Q" id="7VC-uH-dqf"/>
-
                 <outlet property="menuHeader" destination="88p-eh-KC7" id="i2K-z6-V80"/>
                 <outlet property="pageControl" destination="nAH-JD-F9h" id="dzW-gM-lwI"/>
                 <outlet property="scrollPageView" destination="l96-VF-778" id="CIo-no-CG8"/>
@@ -136,6 +132,7 @@
                 <constraint firstAttribute="trailing" secondItem="9vD-FZ-MFE" secondAttribute="trailing" id="4O2-17-6IE"/>
                 <constraint firstItem="88p-eh-KC7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.125" id="4O4-vz-NUq"/>
                 <constraint firstItem="9vD-FZ-MFE" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="8FR-th-ngd"/>
+                <constraint firstAttribute="trailing" secondItem="acj-AW-bxr" secondAttribute="trailing" id="9Ma-0B-JBR"/>
                 <constraint firstItem="9vD-FZ-MFE" firstAttribute="top" secondItem="qh1-Qr-RKn" secondAttribute="bottom" id="9VC-Gh-etf"/>
                 <constraint firstItem="acj-AW-bxr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AdI-Sv-X1h"/>
                 <constraint firstItem="l96-VF-778" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Bc0-Z8-7fO"/>
@@ -149,6 +146,7 @@
                 <constraint firstItem="NT8-yS-9oR" firstAttribute="leading" secondItem="88p-eh-KC7" secondAttribute="leading" id="Sn9-Dn-FpC"/>
                 <constraint firstAttribute="trailing" secondItem="da7-Bm-X3z" secondAttribute="trailing" id="YHx-8a-PXY"/>
                 <constraint firstItem="l96-VF-778" firstAttribute="top" secondItem="88p-eh-KC7" secondAttribute="bottom" id="YpP-jZ-3mu"/>
+                <constraint firstAttribute="bottom" secondItem="acj-AW-bxr" secondAttribute="bottom" id="bI8-lE-AMN"/>
                 <constraint firstItem="9vD-FZ-MFE" firstAttribute="top" secondItem="nAH-JD-F9h" secondAttribute="bottom" id="bzU-YY-oF9"/>
                 <constraint firstItem="nAH-JD-F9h" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="d20-Jg-uUR"/>
                 <constraint firstItem="l96-VF-778" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.458" id="fIp-lH-hiV"/>

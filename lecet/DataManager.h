@@ -27,6 +27,7 @@
 - (void)happeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC
-- (void)featureNotAvailable:(UIViewController*)controller;
-- (void)showBusyScreen:(UIViewController*)controller;
+- (void)featureNotAvailable;
+- (void)showBusyScreen;
+- (void)promptMessage:(NSString*)message;
 @end

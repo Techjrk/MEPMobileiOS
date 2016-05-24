@@ -186,22 +186,33 @@
     return isConnected ;
 }
 
-- (void)noInternet {
-    
+- (UIViewController*)getActiveViewController {
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     
-    if (isNoInternetShown) {
-        isNoInternetShown = YES;
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"No Internet!" preferredStyle:UIAlertControllerStyleAlert];
+    UIViewController *controller = app.navController.presentedViewController;
+    if (controller == nil) {
+        controller = app.navController.topViewController;
+    }
+    
+    return controller;
+}
+
+
+- (void)noInternet {
         
-        UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+    if (!isNoInternetShown) {
+        isNoInternetShown = YES;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedLanguage(@"ERROR") message:NSLocalizedLanguage(@"INTERNET_DISCONNECTED") preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_CLOSE")
                                                               style:UIAlertActionStyleDestructive
                                                             handler:^(UIAlertAction *action) {
                                                                 isNoInternetShown = NO;
                                                             }];
         
         [alert addAction:closeAction];
-        [app.navController presentViewController:alert animated:YES completion:nil];
+        
+        [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
     }
     
 }

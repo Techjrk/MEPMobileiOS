@@ -466,7 +466,8 @@
 
 #pragma mark - MISC FEATURE
 
-- (void)featureNotAvailable:(UIViewController*)controller {
+
+- (void)featureNotAvailable {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature not available yet!" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
@@ -476,16 +477,35 @@
                                                         }];
     
     [alert addAction:closeAction];
-    [controller presentViewController:alert animated:YES completion:nil];
+    
+
+    [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
 
 }
 
-- (void)showBusyScreen:(UIViewController*)controller {
+- (void)showBusyScreen {
     
     BusyViewController *screen = [BusyViewController new];
     screen.modalPresentationStyle = UIModalPresentationCustom;
-    [controller presentViewController:screen animated:NO completion:nil];
+    [[self getActiveViewController] presentViewController:screen animated:NO completion:nil];
     
 }
+
+- (void)promptMessage:(NSString*)message {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_CLOSE")
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                           
+                                                        }];
+    
+    [alert addAction:closeAction];
+    
+    [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
+    
+}
+
 
 @end

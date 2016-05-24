@@ -63,6 +63,7 @@
    
     NSAttributedString *title = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"LOGIN_SIGNUP") attributes:@{NSFontAttributeName:LOGIN_SIGNUP_FONT, NSForegroundColorAttributeName:LOGIN_SIGNUP_COLOR, NSUnderlineStyleAttributeName:[NSNumber numberWithBool:YES]}];
     [_buttonSignUp setAttributedTitle:title forState:UIControlStateNormal];
+    
     if (isDebug) {
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
@@ -96,6 +97,22 @@
     
     //[[DataManager sharedManager] showBusyScreen:self];
     
+    NSString *email = [_textFieldEmail text];
+    NSString *passsword = [_textFieldPassword text];
+    
+    if (email.length == 0 | passsword.length == 0) {
+        
+        if (email.length == 0) {
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_REQUIRED_EMAIL")];
+            [_textFieldEmail becomeFirstResponder];
+        } else {
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_REQUIRED_PASSWORD")];
+            [_textFieldPassword becomeFirstResponder];
+        }
+        
+        return;
+    }
+    
     [[DataManager sharedManager] userLogin:[_textFieldEmail text] password:[_textFieldPassword text] success:^(id object) {
         NSString *token = object[@"id"];
         
@@ -104,11 +121,9 @@
         [self dismissViewControllerAnimated:YES completion:^{
             [self.loginDelegate login];
         }];
-        
     } failure:^(id object) {
-        
+        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
     }];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -126,7 +141,6 @@
                 _constraintTopSpace.constant = 0;
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
-                
             }];
         }
     }];
