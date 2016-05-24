@@ -103,6 +103,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [UIView animateWithDuration:0.5 animations:^{
         _blurView.alpha = 1;
         [self.view layoutIfNeeded];
@@ -120,6 +121,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [_textFieldEmail becomeFirstResponder];
 }
 
