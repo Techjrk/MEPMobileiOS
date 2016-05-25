@@ -73,6 +73,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *dimProjectDetailStateView;
 
+@property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
+
 @end
 
 @implementation ProjectDetailViewController

@@ -53,8 +53,6 @@
 
 @property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
 
-
-
 @end
 
 @implementation DashboardViewController
@@ -524,7 +522,7 @@
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
     
     
-    
+    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap Menu = %u",menuDropDownItem]];
     
     
 }
