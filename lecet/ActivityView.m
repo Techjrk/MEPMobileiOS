@@ -8,11 +8,24 @@
 
 #import "ActivityView.h"
 
+@interface ActivityView(){
+}
+@end
+
 @implementation ActivityView
 @dynamic layerColor;
 @dynamic startAngle;
 @dynamic endAngle;
 @dynamic currentAngle;
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setNeedsDisplay];
+    }
+    return self;
+}
+
 
 - (void)drawInContext:(CGContextRef)context {
     CGFloat radius = MIN(kDeviceWidth, kDeviceHeight) * 0.1;
@@ -41,6 +54,7 @@
     
     CGContextAddPath(context, strokedArc);
     
+    ;
     CGContextSetFillColorWithColor(context, self.layerColor.CGColor);
     CGContextSetStrokeColorWithColor(context, self.layerColor.CGColor);
     CGContextDrawPath(context, kCGPathFillStroke);
@@ -51,18 +65,20 @@
 
 }
 
+/*
 - (id<CAAction>)actionForKey:(NSString *)event {
     
-    if ([event isEqualToString:@"endAngle"]) {
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-        animation.duration = 3.0;
-        animation.fromValue = @(self.endAngle);
-        return animation;
+    if ([self presentationLayer]!= nil) {
+        if ([event isEqualToString:@"layerColor"]) {
+            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
+            animation.toValue = [[self presentationLayer] valueForKey:event];
+            return animation;
+        }
     }
     
     return [super actionForKey:event];
 }
+*/
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
@@ -70,12 +86,19 @@
     {
         return YES;
     }
-    return [super needsDisplayForKey:key];
+
+  
+return [super needsDisplayForKey:key];
 }
+
 
 - (void)display {
     [super display];
-
 }
 
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    [super animationDidStop:anim finished:flag];
+    self.endAngle = 360;
+    [self setNeedsDisplay];
+}
 @end

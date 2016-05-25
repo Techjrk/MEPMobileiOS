@@ -91,7 +91,7 @@
         
         for (DB_Bid *item in currentBidItems) {
             
-            NSString *tag = [NSString stringWithFormat:@"%li", item.relationshipProject.projectGroupId.integerValue];
+            NSString *tag = [NSString stringWithFormat:@"%li", (long)item.relationshipProject.projectGroupId.integerValue];
             NSMutableDictionary *itemDict = segment[tag];
             
             if (itemDict == nil) {

@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityView : CALayer
-@property (strong, nonatomic) UIColor *layerColor;
-@property (nonatomic, assign) CGFloat startAngle;
-@property (nonatomic, assign) CGFloat currentAngle;
-@property (nonatomic, assign) CGFloat endAngle;
+@property UIColor *layerColor;
+@property CGFloat startAngle;
+@property CGFloat currentAngle;
+@property CGFloat endAngle;
 @end

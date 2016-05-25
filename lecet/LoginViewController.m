@@ -95,8 +95,8 @@
 
 - (IBAction)tappedButtonLogin:(id)sender {
     
-    //[[DataManager sharedManager] showBusyScreen:self];
-    
+    [[DataManager sharedManager] showBusyScreen];
+    /*
     NSString *email = [_textFieldEmail text];
     NSString *passsword = [_textFieldPassword text];
     
@@ -124,6 +124,7 @@
     } failure:^(id object) {
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
     }];
+     */
 }
 
 - (void)viewDidAppear:(BOOL)animated {
