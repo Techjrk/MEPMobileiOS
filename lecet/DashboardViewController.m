@@ -58,8 +58,6 @@
 
 @property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
 
-
-
 @end
 
 @implementation DashboardViewController
@@ -543,7 +541,7 @@
     
     _dropDownMenu.alpha = 1.0f;
     
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
         _dropDownMenu.alpha = 0.0f;
         _dimDropDownMenuBackgroundView.alpha  = 0.0f;
         
@@ -565,7 +563,7 @@
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
     
     
-    
+    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap Menu = %u",menuDropDownItem]];
     
     
 }

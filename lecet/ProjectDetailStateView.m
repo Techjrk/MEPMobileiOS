@@ -9,7 +9,7 @@
 #import "ProjectDetailStateView.h"
 
 #import "projectDetailStateConstants.h"
-#import "Utilities.h"
+
 
 @interface ProjectDetailStateView ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonHideProject;
@@ -23,6 +23,10 @@
 @implementation ProjectDetailStateView
 
 - (void)awakeFromNib{
+    
+    
+    self.layer.cornerRadius = 5.0f;
+    self.layer.masksToBounds = YES;
     
     _buttonHideProject.tag = ProjectDetailStateHideProject;
     _buttonCancel.tag = ProjectDetailStateCancel;
@@ -46,7 +50,7 @@
     
     
     
-      [self drawShadow];
+      //[self drawShadow];
     
 }
 
@@ -67,7 +71,7 @@
     
     
     
-    [self.layer setCornerRadius:5.0f];
+    [self.view.layer setCornerRadius:5.0f];
     
 }
 

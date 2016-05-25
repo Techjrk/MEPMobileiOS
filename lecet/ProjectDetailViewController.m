@@ -73,9 +73,12 @@
 
 @property (weak, nonatomic) IBOutlet UIView *dimProjectDetailStateView;
 
+@property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
+
 @end
 
 @implementation ProjectDetailViewController
+static const float animationDurationForDropDowMenu = 1.0f;
 
 @synthesize previousRect;
 
@@ -113,6 +116,11 @@
     //ProjectDetailStateView
     isProjectDetailStateHidden = YES;
     _projectDetailStateView.projectDetailStateDelegate = self;
+    
+    
+    
+    
+    [self addTappedGestureForDimBackground];
 
     
 }
@@ -267,12 +275,12 @@
 
 }
 
-#pragma mark - Share List Method and Delegate
+#pragma mark - Delegate and Share List Method
 
 
 - (void)tappedDropDownShareList:(DropDownShareListItem)shareListItem{
     
-    
+    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",shareListItem]];
     
 }
 
@@ -281,13 +289,25 @@
     if (isDropDownSharelistHidden) {
         
         isDropDownSharelistHidden = NO;
-    
         [_dropDownShareListView setHidden:NO];
-    
+        [_dimProjectMenuContainerView setHidden:NO];
+        
+        _dropDownShareListView.alpha  = 0.0f;
+        _dimProjectMenuContainerView.alpha = 0.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _dropDownShareListView.alpha  = 1.0f;
+            _dimProjectMenuContainerView.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isDropDownSharelistHidden = NO;
+                
+            }
+        }];
+
     }else{
         
-        isDropDownSharelistHidden = YES;
-        [_dropDownShareListView setHidden:YES];
+        [self hideDropDownShareList];
         
     }
     
@@ -302,24 +322,37 @@
 
 
 
-#pragma mark - Proejct List Delegate and Method
+#pragma mark - Project List Delegate and Method
 
 - (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem{
     
-    
+    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",projectListItem]];
 }
-
 
 - (void)showOrHideDropDownProjectListMenu{
     if (isDropDownProjectListHidden) {
         
         isDropDownProjectListHidden = NO;
         [_dropDownProjectListView setHidden:NO];
+        [_dimProjectMenuContainerView setHidden:NO];
+        
+        _dropDownProjectListView.alpha  = 0.0f;
+        _dimProjectMenuContainerView.alpha = 0.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _dropDownProjectListView.alpha  = 1.0f;
+            _dimProjectMenuContainerView.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isDropDownProjectListHidden = NO;
+                
+            }
+        }];
+
         
     }else{
-        
-        isDropDownProjectListHidden = YES;
-        [_dropDownProjectListView setHidden:YES];
+    
+        [self hideDropDownProjectList];
         
     }
     
@@ -342,7 +375,25 @@
     
     
     if (projectDetailStteItem == ProjectDetailStateCancel) {
-        [self hideProjectDetailStateView];
+        
+        _projectDetailStateView.alpha  = 1.0f;
+        _dimProjectDetailStateView.alpha = 1.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _projectDetailStateView.alpha  = 0.0f;
+            _dimProjectDetailStateView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                
+                [self hideProjectDetailStateView];
+                
+            }
+        }];
+
+        
+    }else{
+         [[DataManager sharedManager] promptMessage:@"Hide Project been Tapped"];
+        
     }
     
 }
@@ -351,17 +402,43 @@
 - (void)showOrHideDropDownProjectDetailState{
     if (isProjectDetailStateHidden) {
         
-        isProjectDetailStateHidden = NO;
+        _projectDetailStateView.alpha  = 0.0f;
+        _dimProjectDetailStateView.alpha = 0.0f;
         [_projectDetailStateView setHidden:NO];
         [_dimProjectDetailStateView setHidden:NO];
         
-        
+    
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _projectDetailStateView.alpha  = 1.0f;
+            _dimProjectDetailStateView.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isProjectDetailStateHidden = NO;
+                
+            }
+        }];
+
+
         
     }else{
         
-        isProjectDetailStateHidden = YES;
-        [_projectDetailStateView setHidden:YES];
-        [_dimProjectDetailStateView setHidden:YES];
+        
+        _projectDetailStateView.alpha  = 1.0f;
+        _dimProjectDetailStateView.alpha = 1.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _projectDetailStateView.alpha  = 0.0f;
+            _dimProjectDetailStateView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+           
+                [self hideProjectDetailStateView];
+                
+            }
+        }];
+
+        
+        
         
     }
     
@@ -384,12 +461,54 @@
     tapped.numberOfTapsRequired = 1;
     [_projectDetailStateView addGestureRecognizer:tapped];
     
+    [[Utilities sharedIntances] addTappGesture:@selector(hideAllDropDownMenu) numberOfTapped:1 targetView:_dimProjectMenuContainerView target:self];
     
 }
 
 
+- (void)hideAllDropDownMenu{
+    
+    
+    
+    UIView *viewThatIsVisible;
+    
+    
+    if (!isDropDownProjectListHidden) {
+        
+        viewThatIsVisible = _dropDownProjectListView;
+    }
+        
+    if (!isDropDownSharelistHidden){
+        
+        viewThatIsVisible = _dropDownShareListView;
+    }
+    if (!isProjectDetailStateHidden){
+        
+        viewThatIsVisible = _projectDetailStateView;
+    }
+    
+    
+    [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+        viewThatIsVisible.alpha  = 0.0f;
+        _dimProjectDetailStateView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            
+            [self hideDropDownShareList];
+            [self hideDropDownProjectList];
+            [self hideProjectDetailStateView];
+            [_dimProjectMenuContainerView setHidden:YES];
+            
+        }
+    }];
 
-
+    
+    
+    
+    
+    
+    
+}
 
 
 - (void)tappedProjectBidder:(id)object {

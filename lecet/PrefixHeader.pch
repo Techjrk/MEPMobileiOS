@@ -13,7 +13,7 @@
 #import <UIKit/UIScreen.h>
 #import "DataManager.h"
 #import "constants.h"
-
+#import "Utilities.h"
 #import "DerivedNSManagedObject.h"
 
 #endif /* PrefixHeader_pch */

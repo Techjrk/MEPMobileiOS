@@ -8,7 +8,7 @@
 
 #import "DropDownProjectList.h"
 #import "dropDownProjectListConstant.h"
-#import "Utilities.h"
+
 
 @interface DropDownProjectList ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonTrainAndMetros;
@@ -104,19 +104,21 @@
 
 
 - (void)drawShadow{
+ 
     CGRect screenRect = self.bounds;
     
     CGRect customDimRect = screenRect;
-
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
-
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
-    self.layer.shadowOpacity = 0.5f;
-    self.layer.shadowPath = shadowPath.CGPath;
     
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
+    
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.view.layer.shadowOpacity = 0.5f;
+    self.view.layer.shadowPath = shadowPath.CGPath;
 
     [self.view.layer setCornerRadius:5.0f];
+    
+    
     
     
 }
