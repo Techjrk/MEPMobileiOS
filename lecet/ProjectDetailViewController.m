@@ -470,11 +470,45 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 - (void)hideAllDropDownMenu{
     
-    [self hideDropDownShareList];
-    [self hideDropDownProjectList];
-    [self hideProjectDetailStateView];
     
-    [_dimProjectMenuContainerView setHidden:YES];
+    
+    UIView *viewThatIsVisible;
+    
+    
+    if (!isDropDownProjectListHidden) {
+        
+        viewThatIsVisible = _dropDownProjectListView;
+    }
+        
+    if (!isDropDownSharelistHidden){
+        
+        viewThatIsVisible = _dropDownShareListView;
+    }
+    if (!isProjectDetailStateHidden){
+        
+        viewThatIsVisible = _projectDetailStateView;
+    }
+    
+    
+    [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+        viewThatIsVisible.alpha  = 0.0f;
+        _dimProjectDetailStateView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            
+            [self hideDropDownShareList];
+            [self hideDropDownProjectList];
+            [self hideProjectDetailStateView];
+            [_dimProjectMenuContainerView setHidden:YES];
+            
+        }
+    }];
+
+    
+    
+    
+    
+    
     
 }
 
