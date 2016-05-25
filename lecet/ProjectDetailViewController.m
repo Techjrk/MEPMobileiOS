@@ -391,6 +391,8 @@ static const float animationDurationForDropDowMenu = 1.0f;
                 
             }
         }];
+        
+        [_projectState clearSelection];
 
         
     }else{
@@ -471,7 +473,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 - (void)hideAllDropDownMenu{
     
     
-    
+    [_projectState clearSelection];
     UIView *viewThatIsVisible;
     
     

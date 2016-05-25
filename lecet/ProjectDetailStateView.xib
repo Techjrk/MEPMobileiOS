@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="305" height="155"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are about to hide this project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-Bw-wuj">
-                    <rect key="frame" x="15" y="15" width="275" height="33"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are about to hide this project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-Bw-wuj">
+                    <rect key="frame" x="20" y="15" width="265" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="bkl-WN-5vn"/>
                     </constraints>
@@ -65,8 +65,8 @@
                 <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="8Mp-Bw-wuj" secondAttribute="centerX" id="Mfh-67-OBJ"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Ovy-8A-sRh"/>
                 <constraint firstAttribute="bottom" secondItem="EMs-8v-WGi" secondAttribute="bottom" constant="12" id="W9v-xg-Tlx"/>
-                <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="eZ7-dL-8z8"/>
-                <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="15" id="rQQ-yc-knS"/>
+                <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eZ7-dL-8z8"/>
+                <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="20" id="rQQ-yc-knS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
