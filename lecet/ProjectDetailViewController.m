@@ -78,6 +78,7 @@
 @end
 
 @implementation ProjectDetailViewController
+static const float animationDurationForDropDowMenu = 1.0f;
 
 @synthesize previousRect;
 
@@ -115,6 +116,11 @@
     //ProjectDetailStateView
     isProjectDetailStateHidden = YES;
     _projectDetailStateView.projectDetailStateDelegate = self;
+    
+    
+    
+    
+    [self addTappedGestureForDimBackground];
 
     
 }
@@ -271,11 +277,12 @@
 
 }
 
-#pragma mark - Share List Method and Delegate
+#pragma mark - Delegate and Share List Method
 
 
 - (void)tappedDropDownShareList:(DropDownShareListItem)shareListItem{
     
+    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",shareListItem]];
     
     
 }
@@ -285,13 +292,29 @@
     if (isDropDownSharelistHidden) {
         
         isDropDownSharelistHidden = NO;
-    
         [_dropDownShareListView setHidden:NO];
-    
+        [_dimProjectMenuContainerView setHidden:NO];
+        
+        
+        _dropDownShareListView.alpha  = 0.0f;
+        _dimProjectMenuContainerView.alpha = 0.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _dropDownShareListView.alpha  = 1.0f;
+            _dimProjectMenuContainerView.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isDropDownSharelistHidden = NO;
+                
+            }
+        }];
+
+        
+        
+        
     }else{
         
-        isDropDownSharelistHidden = YES;
-        [_dropDownShareListView setHidden:YES];
+        [self hideDropDownShareList];
         
     }
     
@@ -361,6 +384,10 @@
         
         
         
+        
+        
+        
+        
     }else{
         
         isProjectDetailStateHidden = YES;
@@ -388,9 +415,21 @@
     tapped.numberOfTapsRequired = 1;
     [_projectDetailStateView addGestureRecognizer:tapped];
     
+
+    [[Utilities sharedIntances] addTappGesture:@selector(hideAllDropDownMenu) numberOfTapped:1 targetView:_dimProjectMenuContainerView target:self];
     
 }
 
+
+- (void)hideAllDropDownMenu{
+    
+    [self hideDropDownShareList];
+    [self hideDropDownProjectList];
+    [self hideProjectDetailStateView];
+    
+    [_dimProjectMenuContainerView setHidden:YES];
+    
+}
 
 
 

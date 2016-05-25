@@ -30,6 +30,8 @@
 #import "ChartView.h"
 #import "chartConstants.h"
 
+
+
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate,DropDownMenuDelegate>{
 
     NSDate *currentDate;
@@ -58,6 +60,8 @@
 @implementation DashboardViewController
 #define kCellIdentifier         @"kCellIdentifier"
 #define kCellIdentifierSoon     @"kCellIdentifierSoon"
+static const float animationDurationForDropDowMenu = 1.0f;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -500,7 +504,7 @@
     
     _dropDownMenu.alpha = 1.0f;
     
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
         _dropDownMenu.alpha = 0.0f;
         _dimDropDownMenuBackgroundView.alpha  = 0.0f;
         
