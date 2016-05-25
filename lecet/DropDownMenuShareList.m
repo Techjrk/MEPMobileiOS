@@ -8,7 +8,7 @@
 
 #import "DropDownMenuShareList.h"
 #import "dropDownShareListConstant.h"
-#import "Utilities.h"
+
 
 @interface DropDownMenuShareList ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonSendByEmail;

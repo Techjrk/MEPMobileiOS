@@ -9,7 +9,7 @@
 #import "ProjectDetailStateView.h"
 
 #import "projectDetailStateConstants.h"
-#import "Utilities.h"
+
 
 @interface ProjectDetailStateView ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonHideProject;
