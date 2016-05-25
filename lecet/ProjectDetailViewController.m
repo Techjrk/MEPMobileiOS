@@ -167,9 +167,7 @@
     [_fieldAddress setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADDRESS") line1Text:address line2Text:nil];
     
     
-    NSString *projectType = [NSString stringWithFormat:@"%@ %@ %@", project.primaryProjectTypeTitle==nil?@"":project.primaryProjectTypeTitle, project.projectCategoryTitle==nil?@"":project.projectCategoryTitle, project.projectGroupTitle==nil?@"":project.projectGroupTitle];
-    
-    [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:projectType line2Text:nil];
+    [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:[project getProjectType] line2Text:nil];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];

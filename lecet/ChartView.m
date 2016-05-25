@@ -67,9 +67,28 @@
 }
 
 - (void)setSegmentItems:(NSMutableDictionary*)items {
+    _buttonHousing.enabled = NO;
+    _buttonBuilding.enabled = NO;
+    _buttonEngineering.enabled = NO;
+    _buttonUtilities.enabled = NO;
+    
     for (NSString *key in items) {
         NSDictionary *item = items[key];
-        [_piechart addPieItem:item[CHART_SEGMENT_TAG] percent:item[CHART_SEGMENT_PERCENTAGE] legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
+        
+        NSString *tag = item[CHART_SEGMENT_TAG];
+        NSNumber *percent = item[CHART_SEGMENT_PERCENTAGE];
+        
+        if ([tag isEqualToString:kTagNameHousing]) {
+            _buttonHousing.enabled = YES;
+        } else if ([tag isEqualToString:kTagNameBuilding]) {
+            _buttonBuilding.enabled = YES;
+        } else if ([tag isEqualToString:kTagNameEngineering]) {
+            _buttonEngineering.enabled = YES;
+        } else {
+            _buttonUtilities.enabled = YES;
+        }
+        
+        [_piechart addPieItem:tag percent:percent legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
         [_piechart setNeedsDisplay];
     }
     

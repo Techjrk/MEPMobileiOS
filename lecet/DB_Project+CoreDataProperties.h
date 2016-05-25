@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/24/16.
+//  Created by Harry Herrys Camigla on 5/25/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -71,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *isHappenSoon;
 @property (nullable, nonatomic, retain) NSString *bidYearMonthDay;
 @property (nullable, nonatomic, retain) NSString *bidYearMonth;
+@property (nullable, nonatomic, retain) NSNumber *isRecentUpdate;
+@property (nullable, nonatomic, retain) NSString *isRecentAdded;
 @property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
 
 @end

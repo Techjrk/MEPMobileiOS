@@ -79,7 +79,7 @@
     
     _labelBidService.text = item.title;
     _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", item.county, item.state];
-    
+    _labelBidType.text = [item getProjectType];
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([item.geocodeLat floatValue], [item.geocodeLng floatValue]);
     
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
