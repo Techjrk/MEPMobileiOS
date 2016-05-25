@@ -19,6 +19,7 @@
     });
     return _sharedObject;
     
+    
 }
 
 
@@ -89,6 +90,7 @@
     return shadowPath;
     
 }
+
 
 
 -(UIBezierPath *)drawShadowPathFrame:(CGRect)frame{
