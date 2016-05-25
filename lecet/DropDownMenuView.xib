@@ -18,17 +18,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="366" height="218"/>
+            <rect key="frame" x="0.0" y="0.0" width="366" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-HD-aR3">
-                    <rect key="frame" x="20" y="71" width="325" height="5"/>
+                    <rect key="frame" x="20" y="73" width="325" height="5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="5" id="CvA-cs-WJZ"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdh-pK-ZjY">
-                    <rect key="frame" x="24" y="87" width="334" height="123"/>
+                    <rect key="frame" x="24" y="87" width="334" height="125"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eau-je-pvb">
                             <rect key="frame" x="0.0" y="43" width="207" height="29"/>
@@ -65,7 +65,7 @@
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03O-Pw-ctF">
-                    <rect key="frame" x="23" y="15" width="335" height="46"/>
+                    <rect key="frame" x="23" y="15" width="335" height="48"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape" translatesAutoresizingMaskIntoConstraints="NO" id="8rT-iY-DGg">
                             <rect key="frame" x="0.0" y="3" width="35" height="35"/>
@@ -75,13 +75,13 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kate Bailey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ua-K9-nLW">
-                            <rect key="frame" x="43" y="0.0" width="80.5" height="20"/>
+                            <rect key="frame" x="43" y="0.0" width="81" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kbailey@lecet.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-ob-uHa">
-                            <rect key="frame" x="43" y="22" width="129" height="20"/>
+                            <rect key="frame" x="43" y="23" width="129" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.62352941176470589" green="0.64313725490196072" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                         <constraint firstItem="8ua-K9-nLW" firstAttribute="leading" secondItem="8rT-iY-DGg" secondAttribute="trailing" constant="8" id="XBR-od-0dY"/>
                         <constraint firstItem="vIj-ob-uHa" firstAttribute="top" secondItem="8ua-K9-nLW" secondAttribute="bottom" constant="2" id="iHs-Rt-vSI"/>
                         <constraint firstItem="8rT-iY-DGg" firstAttribute="top" secondItem="03O-Pw-ctF" secondAttribute="top" constant="3" id="jPm-IS-yqC"/>
-                        <constraint firstAttribute="bottom" secondItem="8rT-iY-DGg" secondAttribute="bottom" constant="8" id="mzD-Kq-lsN"/>
+                        <constraint firstAttribute="bottom" secondItem="8rT-iY-DGg" secondAttribute="bottom" constant="10" id="mzD-Kq-lsN"/>
                         <constraint firstItem="vIj-ob-uHa" firstAttribute="leading" secondItem="8rT-iY-DGg" secondAttribute="trailing" constant="8" id="ndR-Ie-SyN"/>
                         <constraint firstItem="8rT-iY-DGg" firstAttribute="leading" secondItem="03O-Pw-ctF" secondAttribute="leading" id="o8i-YF-V8y"/>
                         <constraint firstAttribute="bottom" secondItem="vIj-ob-uHa" secondAttribute="bottom" constant="4" id="ub9-Wb-pIK">
@@ -118,6 +118,11 @@
                 <constraint firstItem="jdh-pK-ZjY" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" id="zW3-EW-Ju0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="jjP-B3-Fce"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="285" y="229"/>
         </view>
     </objects>
