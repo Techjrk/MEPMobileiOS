@@ -333,7 +333,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 - (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem{
     
-    
+    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",projectListItem]];
 }
 
 
@@ -342,11 +342,27 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
         isDropDownProjectListHidden = NO;
         [_dropDownProjectListView setHidden:NO];
+        [_dimProjectMenuContainerView setHidden:NO];
+        
+        
+        
+        _dropDownProjectListView.alpha  = 0.0f;
+        _dimProjectMenuContainerView.alpha = 0.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _dropDownProjectListView.alpha  = 1.0f;
+            _dimProjectMenuContainerView.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isDropDownProjectListHidden = NO;
+                
+            }
+        }];
+
         
     }else{
-        
-        isDropDownProjectListHidden = YES;
-        [_dropDownProjectListView setHidden:YES];
+    
+        [self hideDropDownProjectList];
         
     }
     
@@ -381,12 +397,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         isProjectDetailStateHidden = NO;
         [_projectDetailStateView setHidden:NO];
         [_dimProjectDetailStateView setHidden:NO];
-        
-        
-        
-        
-        
-        
         
     }else{
         
