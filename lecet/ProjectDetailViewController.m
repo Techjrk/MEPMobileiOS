@@ -284,7 +284,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",shareListItem]];
     
-    
 }
 
 
@@ -294,7 +293,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         isDropDownSharelistHidden = NO;
         [_dropDownShareListView setHidden:NO];
         [_dimProjectMenuContainerView setHidden:NO];
-        
         
         _dropDownShareListView.alpha  = 0.0f;
         _dimProjectMenuContainerView.alpha = 0.0f;
@@ -309,9 +307,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
             }
         }];
 
-        
-        
-        
     }else{
         
         [self hideDropDownShareList];
@@ -329,13 +324,12 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 
 
-#pragma mark - Proejct List Delegate and Method
+#pragma mark - Project List Delegate and Method
 
 - (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem{
     
     [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",projectListItem]];
 }
-
 
 - (void)showOrHideDropDownProjectListMenu{
     if (isDropDownProjectListHidden) {
@@ -343,8 +337,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         isDropDownProjectListHidden = NO;
         [_dropDownProjectListView setHidden:NO];
         [_dimProjectMenuContainerView setHidden:NO];
-        
-        
         
         _dropDownProjectListView.alpha  = 0.0f;
         _dimProjectMenuContainerView.alpha = 0.0f;
@@ -385,7 +377,25 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     
     if (projectDetailStteItem == ProjectDetailStateCancel) {
-        [self hideProjectDetailStateView];
+        
+        _projectDetailStateView.alpha  = 1.0f;
+        _dimProjectDetailStateView.alpha = 1.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _projectDetailStateView.alpha  = 0.0f;
+            _dimProjectDetailStateView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                
+                [self hideProjectDetailStateView];
+                
+            }
+        }];
+
+        
+    }else{
+         [[DataManager sharedManager] promptMessage:@"Hide Project been Tapped"];
+        
     }
     
 }
@@ -394,15 +404,43 @@ static const float animationDurationForDropDowMenu = 1.0f;
 - (void)showOrHideDropDownProjectDetailState{
     if (isProjectDetailStateHidden) {
         
-        isProjectDetailStateHidden = NO;
+        _projectDetailStateView.alpha  = 0.0f;
+        _dimProjectDetailStateView.alpha = 0.0f;
         [_projectDetailStateView setHidden:NO];
         [_dimProjectDetailStateView setHidden:NO];
         
+    
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _projectDetailStateView.alpha  = 1.0f;
+            _dimProjectDetailStateView.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                isProjectDetailStateHidden = NO;
+                
+            }
+        }];
+
+
+        
     }else{
         
-        isProjectDetailStateHidden = YES;
-        [_projectDetailStateView setHidden:YES];
-        [_dimProjectDetailStateView setHidden:YES];
+        
+        _projectDetailStateView.alpha  = 1.0f;
+        _dimProjectDetailStateView.alpha = 1.0f;
+        
+        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
+            _projectDetailStateView.alpha  = 0.0f;
+            _dimProjectDetailStateView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            if (finished) {
+           
+                [self hideProjectDetailStateView];
+                
+            }
+        }];
+
+        
+        
         
     }
     
@@ -425,7 +463,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     tapped.numberOfTapsRequired = 1;
     [_projectDetailStateView addGestureRecognizer:tapped];
     
-
     [[Utilities sharedIntances] addTappGesture:@selector(hideAllDropDownMenu) numberOfTapped:1 targetView:_dimProjectMenuContainerView target:self];
     
 }
@@ -440,9 +477,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     [_dimProjectMenuContainerView setHidden:YES];
     
 }
-
-
-
 
 
 - (void)tappedProjectBidder:(id)object {

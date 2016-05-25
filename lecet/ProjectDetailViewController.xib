@@ -269,18 +269,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                     <subviews>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAk-VJ-a0r" customClass="ProjectDetailStateView">
-                            <rect key="frame" x="27" y="206" width="321" height="155"/>
+                            <rect key="frame" x="22" y="206" width="331" height="160"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="155" id="cTt-Of-Cz6"/>
+                                <constraint firstAttribute="height" constant="160" id="cTt-Of-Cz6"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="leading" secondItem="LY7-cO-8uH" secondAttribute="leading" constant="27" id="4Lr-jm-4HQ"/>
+                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="leading" secondItem="LY7-cO-8uH" secondAttribute="leading" constant="22" id="4Lr-jm-4HQ"/>
                         <constraint firstItem="JAk-VJ-a0r" firstAttribute="top" secondItem="LY7-cO-8uH" secondAttribute="top" constant="206" id="Zuq-p7-yU1"/>
-                        <constraint firstAttribute="trailing" secondItem="JAk-VJ-a0r" secondAttribute="trailing" constant="27" id="kt9-Ad-bA7"/>
+                        <constraint firstAttribute="trailing" secondItem="JAk-VJ-a0r" secondAttribute="trailing" constant="22" id="kt9-Ad-bA7"/>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jin-vn-rnY">
