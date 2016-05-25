@@ -19,4 +19,9 @@
 
 //ShadowPath
 -(UIBezierPath *)drawShadowPath;
+
+
+
+//Add Gesture
+- (void)addTappGesture:(SEL)sel numberOfTapped:(int)tapNumber targetView:(id)targetView target:(id)target;
 @end

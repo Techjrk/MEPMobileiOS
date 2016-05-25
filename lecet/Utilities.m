@@ -112,4 +112,14 @@
 }
 
 
+// Add Gesture
+- (void)addTappGesture:(SEL)sel numberOfTapped:(int)tapNumber targetView:(id)targetView target:(id)target{
+    
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:target action:sel];
+    tapped.numberOfTapsRequired = tapNumber;
+    [targetView addGestureRecognizer:tapped];
+}
+
+
+
 @end
