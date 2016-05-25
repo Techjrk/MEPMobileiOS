@@ -65,6 +65,9 @@
 #define kCellIdentifierSoon     @"kCellIdentifierSoon"
 #define kCellIdentifierRecent   @"kCellIdentifierRecent"
 #define kCategory               @[@(101), @(102), @(103), @(105)]
+static const float animationDurationForDropDowMenu = 1.0f;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
