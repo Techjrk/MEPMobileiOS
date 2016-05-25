@@ -120,6 +120,7 @@
         
         [self dismissViewControllerAnimated:YES completion:^{
             [self.loginDelegate login];
+            
         }];
     } failure:^(id object) {
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
@@ -153,7 +154,6 @@
 }
 
 - (IBAction)tappedButtonSignUp:(id)sender {
-    
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LOGIN_SIGNUP_URL]];
 }
 @end

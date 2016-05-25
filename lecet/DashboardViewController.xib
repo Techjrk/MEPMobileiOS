@@ -11,6 +11,7 @@
                 <outlet property="bidsCollectionView" destination="9vD-FZ-MFE" id="NdO-Vh-sYu"/>
                 <outlet property="calendarView" destination="Tqv-Ad-z1n" id="z1N-ph-ePi"/>
                 <outlet property="chartRecentlyMade" destination="qh1-Qr-RKn" id="c7B-Ph-C1p"/>
+                <outlet property="chartRecentlyUpdated" destination="pQz-W0-2rL" id="rbg-Dk-CZp"/>
                 <outlet property="dimDropDownMenuBackgroundView" destination="da7-Bm-X3z" id="avB-NP-u9B"/>
                 <outlet property="dropDownMenu" destination="NT8-yS-9oR" id="eLs-gZ-t7j"/>
                 <outlet property="dropDownMenuViewHeight" destination="vym-cW-sPJ" id="RgK-sy-Sfy"/>

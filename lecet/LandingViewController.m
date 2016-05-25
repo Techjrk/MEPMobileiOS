@@ -51,8 +51,15 @@
 }
 
 - (void)login {
-    DashboardViewController *controller = [DashboardViewController new];
-    [self.navigationController pushViewController:controller animated:YES];
+    
+    NSDate *currentDate = [DerivedNSManagedObject dateFromDayString:@"2015-11-01"];
+    
+    [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
+        DashboardViewController *controller = [DashboardViewController new];
+        [self.navigationController pushViewController:controller animated:YES];
+    } failure:^(id object) {
+    }];
+
 }
 
 @end

@@ -108,6 +108,10 @@
 		B796160E1CF437720089BC32 /* BusyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B796160C1CF437720089BC32 /* BusyViewController.m */; };
 		B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B796160D1CF437720089BC32 /* BusyViewController.xib */; };
 		B79616121CF4400B0089BC32 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616111CF4400B0089BC32 /* ActivityView.m */; };
+		B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616141CF5C6340089BC32 /* BidItemRecent.m */; };
+		B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79616161CF5C6440089BC32 /* BidItemRecent.xib */; };
+		B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616191CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m */; };
+		B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B796161A1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -337,6 +341,13 @@
 		B796160D1CF437720089BC32 /* BusyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusyViewController.xib; sourceTree = "<group>"; };
 		B79616101CF4400B0089BC32 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
 		B79616111CF4400B0089BC32 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
+		B79616131CF5C6340089BC32 /* BidItemRecent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidItemRecent.h; sourceTree = "<group>"; };
+		B79616141CF5C6340089BC32 /* BidItemRecent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidItemRecent.m; sourceTree = "<group>"; };
+		B79616161CF5C6440089BC32 /* BidItemRecent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidItemRecent.xib; sourceTree = "<group>"; };
+		B79616181CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitItemRecentCollectionViewCell.h; sourceTree = "<group>"; };
+		B79616191CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitItemRecentCollectionViewCell.m; sourceTree = "<group>"; };
+		B796161A1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BitItemRecentCollectionViewCell.xib; sourceTree = "<group>"; };
+		B796161D1CF5CCDE0089BC32 /* bidItemRecentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bidItemRecentConstants.h; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -620,6 +631,9 @@
 				B7E104511CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.h */,
 				B7E104521CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m */,
 				B7E104531CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib */,
+				B79616181CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.h */,
+				B79616191CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m */,
+				B796161A1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -714,6 +728,9 @@
 				B796160D1CF437720089BC32 /* BusyViewController.xib */,
 				B79616101CF4400B0089BC32 /* ActivityView.h */,
 				B79616111CF4400B0089BC32 /* ActivityView.m */,
+				B79616131CF5C6340089BC32 /* BidItemRecent.h */,
+				B79616141CF5C6340089BC32 /* BidItemRecent.m */,
+				B79616161CF5C6440089BC32 /* BidItemRecent.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -760,6 +777,7 @@
 				B7E1044F1CECA2E300EAD8E7 /* projectBidListConstants.h */,
 				B7E104501CECA6D000EAD8E7 /* associatedProjectsConstants.h */,
 				B7E1045B1CECEC7F00EAD8E7 /* contactFieldConstants.h */,
+				B796161D1CF5CCDE0089BC32 /* bidItemRecentConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -988,6 +1006,7 @@
 				B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */,
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
 				B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */,
+				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
@@ -1018,6 +1037,7 @@
 				B6972B7E1CF327940092D5CD /* DropDownMenuShareList.xib in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
+				B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
@@ -1072,6 +1092,7 @@
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
+				B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
@@ -1136,6 +1157,7 @@
 				B771C6051CEB6C50004A628A /* AssociatedBidView.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
+				B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */,
 				B707BC401CEF0B960003C836 /* LandingViewController.m in Sources */,
 				B7F10A161CDB3E3300847FA3 /* AFURLResponseSerialization.m in Sources */,
 			);

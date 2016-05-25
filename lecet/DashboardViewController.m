@@ -9,11 +9,8 @@
 #import "DashboardViewController.h"
 
 #import "dashboardConstants.h"
-#import "BidItemCollectionViewCell.h"
-#import "BidSoonItemCollectionViewCell.h"
 #import "CustomCalendar.h"
 #import "CalendarItem.h"
-#import "CalendarItemCollectionViewCell.h"
 #import "DB_BidSoon.h"
 #import "DB_BidRecent.h"
 #import "DB_Bid.h"
@@ -21,23 +18,28 @@
 #import "MenuHeaderView.h"
 #import "BidItemView.h"
 #import "BidSoonItem.h"
+#import "BidItemRecent.h"
 #import "DropDownMenuView.h"
 
+#import "BidItemCollectionViewCell.h"
+#import "BidSoonItemCollectionViewCell.h"
+#import "CalendarItemCollectionViewCell.h"
+#import "BitItemRecentCollectionViewCell.h"
 
 #import "ProjectDetailViewController.h"
 #import "CompanyDetailViewController.h"
+
 #import "PushZoomAnimator.h"
 #import "ChartView.h"
 #import "chartConstants.h"
 
-
-
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate,DropDownMenuDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate,DropDownMenuDelegate, BitItemRecentDelegate>{
 
     NSDate *currentDate;
     NSInteger currentPage;
-    NSMutableArray *bidItemsSoon;
-    NSMutableArray *bidItemsRecent;
+    NSMutableArray *bidItemsRecentlyMade;
+    NSMutableArray *bidItemsHappeningSoon;
+    NSMutableArray *bidItemsRecentlyUpdated;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
     BOOL isDropDownMenuMoreHidden;
@@ -45,6 +47,7 @@
     CGRect originatingFrame;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
+@property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
@@ -61,17 +64,21 @@
 @implementation DashboardViewController
 #define kCellIdentifier         @"kCellIdentifier"
 #define kCellIdentifierSoon     @"kCellIdentifierSoon"
+#define kCellIdentifierRecent   @"kCellIdentifierRecent"
+#define kCategory               @[@(101), @(102), @(103), @(105)]
 static const float animationDurationForDropDowMenu = 1.0f;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    bidItemsHappeningSoon = [NSMutableArray new];
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
     
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BidItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BidSoonItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierSoon];
+    [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BitItemRecentCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierRecent];
 
     _bidsCollectionView.backgroundColor = DASHBOARD_BIDS_BG_COLOR;
     
@@ -83,82 +90,20 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _bidsCollectionView.delegate = self;
     _bidsCollectionView.dataSource = self;
     _chartRecentlyMade.chartViewDelegate = self;
-    
-    NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
-    [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.projectGroupId IN %@", @[@(101), @(102), @(103), @(105)]];
-        bidItemsRecent = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
-        
-        currentBidItems = bidItemsRecent;
-        
-        for (DB_Bid *item in currentBidItems) {
-            
-            NSString *tag = [NSString stringWithFormat:@"%li", (long)item.relationshipProject.projectGroupId.integerValue];
-            NSMutableDictionary *itemDict = segment[tag];
-            
-            if (itemDict == nil) {
-                itemDict = [@{CHART_SEGMENT_COUNT:@(0)} mutableCopy];
-            }
-            NSNumber *number = itemDict[CHART_SEGMENT_COUNT];
-            itemDict[CHART_SEGMENT_COUNT] = @(number.integerValue + 1);
-            segment[tag] = itemDict;
-            
-        }
-        
-        NSInteger itemCount = currentBidItems.count;
-        for (NSString *key in segment.allKeys) {
-            NSMutableDictionary *item = segment[key];
-            NSNumber *number = item[CHART_SEGMENT_COUNT];
-            switch (key.integerValue) {
-                case 101:{
-                    item[CHART_SEGMENT_TAG] = kTagNameEngineering;
-                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_ENGINEERING_COLOR;;
-                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_engineering"];
-                    break;
-                }
-                case 102: {
-                    item[CHART_SEGMENT_TAG] = kTagNameBuilding;
-                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_BUILDING_COLOR;;
-                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_building"];
-                    break;
-                }
-                case 103: {
-                    item[CHART_SEGMENT_TAG] = kTagNameHousing;
-                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_HOUSING_COLOR;;
-                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_housing"];
-                    break;
-                }
-                case 105: {
-                    item[CHART_SEGMENT_TAG] = kTagNameUtilities;
-                    item[CHART_SEGMENT_COLOR] = CHART_BUTTON_UTILITIES_COLOR;
-                    item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_utilities"];
-                    break;
-                }
-            }
-    
-            NSNumber *percentage = @((number.floatValue/itemCount)*100.0);
-            item[CHART_SEGMENT_PERCENTAGE] = percentage;
-            
-        }
-        
-        [_chartRecentlyMade setSegmentItems:segment];
-        [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
+    _chartRecentlyUpdated.chartViewDelegate = self;
 
-        [_bidsCollectionView reloadData];
-    } failure:^(id object) {
-        
-    }];
-     
+    currentBidItems = [self loadBidsRecentlyMade];
+    [self requestBidsHappeningSoon];
+    [self requestBidRecentlyUpdated];
     
+    [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
+    
+    [_bidsCollectionView reloadData];
+
     [_calendarView reloadData];
-    
-    [self loadBidItems];
  
     _pageControl.numberOfPages = 4;
     _menuHeader.menuHeaderDelegate = self;
-    
-    
     
     //DropDownMenuMore
     _dropDownMenu.dropDownMenuDelegate = self;
@@ -167,43 +112,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [self layoutDropDownMenuChange];
     
-
-}
-
-- (void)loadBidItems {
-
-    _calendarView.customCalendarDelegate = nil;
-    
-    if (bidMarker == nil) {
-        bidMarker = [[NSMutableDictionary alloc] init];
-    }
-    [bidMarker removeAllObjects];
-    
-
-    if (bidItemsSoon == nil) {
-        bidItemsSoon = [[NSMutableArray alloc] init];
-    }
-    [bidItemsSoon removeAllObjects];
-
-    [[DataManager sharedManager] bidsHappeningSoon:-300 success:^(id object) {
-        
-        NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND bidYearMonth == %@",yearMonth];
-        bidItemsSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:NO] mutableCopy];
-
-        for (DB_Project *item in bidItemsSoon) {
-            bidMarker[item.bidYearMonthDay] = @"";
-        }
-
-        _calendarView.customCalendarDelegate = self;
-
-        [_calendarView reloadData];
-        
-        
-    } failure:^(id object) {
-        
-    }];
 
 }
 
@@ -216,6 +124,139 @@ static const float animationDurationForDropDowMenu = 1.0f;
     return UIStatusBarStyleLightContent;
 }
 
+#pragma mark - CHART ROUTINES
+
+- (void)createSegmentTagForChart:(NSMutableDictionary*)segment count:(NSInteger)count {
+    for (NSString *key in segment.allKeys) {
+        NSMutableDictionary *item = segment[key];
+        NSNumber *number = item[CHART_SEGMENT_COUNT];
+        switch (key.integerValue) {
+            case 101:{
+                item[CHART_SEGMENT_TAG] = kTagNameEngineering;
+                item[CHART_SEGMENT_COLOR] = CHART_BUTTON_ENGINEERING_COLOR;;
+                item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_engineering"];
+                break;
+            }
+            case 102: {
+                item[CHART_SEGMENT_TAG] = kTagNameBuilding;
+                item[CHART_SEGMENT_COLOR] = CHART_BUTTON_BUILDING_COLOR;;
+                item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_building"];
+                break;
+            }
+            case 103: {
+                item[CHART_SEGMENT_TAG] = kTagNameHousing;
+                item[CHART_SEGMENT_COLOR] = CHART_BUTTON_HOUSING_COLOR;;
+                item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_housing"];
+                break;
+            }
+            case 105: {
+                item[CHART_SEGMENT_TAG] = kTagNameUtilities;
+                item[CHART_SEGMENT_COLOR] = CHART_BUTTON_UTILITIES_COLOR;
+                item[CHART_SEGMENT_IMAGE] = [UIImage imageNamed:@"icon_utilities"];
+                break;
+            }
+        }
+        
+        NSNumber *percentage = @((number.floatValue/count)*100.0);
+        item[CHART_SEGMENT_PERCENTAGE] = percentage;
+        
+    }
+
+}
+
+- (NSMutableArray*)loadBidsRecentlyMade {
+    NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.projectGroupId IN %@", kCategory];
+    bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+    
+    for (DB_Bid *item in bidItemsRecentlyMade) {
+        
+        NSString *tag = [NSString stringWithFormat:@"%li", (long)item.relationshipProject.projectGroupId.integerValue];
+        NSMutableDictionary *itemDict = segment[tag];
+        
+        if (itemDict == nil) {
+            itemDict = [@{CHART_SEGMENT_COUNT:@(0)} mutableCopy];
+        }
+        NSNumber *number = itemDict[CHART_SEGMENT_COUNT];
+        itemDict[CHART_SEGMENT_COUNT] = @(number.integerValue + 1);
+        segment[tag] = itemDict;
+        
+    }
+    
+    [self createSegmentTagForChart:segment count:bidItemsRecentlyMade.count];
+    [_chartRecentlyMade setSegmentItems:segment];
+
+    return bidItemsRecentlyMade;
+}
+
+- (NSMutableArray*)requestBidsHappeningSoon {
+
+    _calendarView.customCalendarDelegate = nil;
+
+    [[DataManager sharedManager] bidsHappeningSoon:-300 success:^(id object) {
+        [self loadBidsHappeningSoon];
+        _calendarView.customCalendarDelegate = self;
+        [_calendarView reloadData];
+
+    } failure:^(id object) {
+        
+    }];
+
+    return bidItemsHappeningSoon;
+}
+
+- (NSMutableArray*)loadBidsHappeningSoon {
+    if (bidMarker == nil) {
+        bidMarker = [[NSMutableDictionary alloc] init];
+    }
+    [bidMarker removeAllObjects];
+    [bidItemsHappeningSoon removeAllObjects];
+
+    NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND bidYearMonth == %@",yearMonth];
+    bidItemsHappeningSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:NO] mutableCopy];
+    
+    for (DB_Project *item in bidItemsHappeningSoon) {
+        bidMarker[item.bidYearMonthDay] = @"";
+    }
+
+    return bidItemsHappeningSoon;
+}
+
+- (void)requestBidRecentlyUpdated {
+    [[DataManager sharedManager] bidsRecentlyUpdated:300 success:^(id object) {
+        [self loadBidsRecentlyUpdated];
+    } failure:^(id object) {
+        
+    }];
+}
+
+- (NSMutableArray*)loadBidsRecentlyUpdated {
+    NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND projectGroupId IN %@", kCategory];
+    bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    
+    
+    for (DB_Project *item in bidItemsRecentlyUpdated) {
+        
+        NSString *tag = [NSString stringWithFormat:@"%li", (long)item.projectGroupId.integerValue];
+        NSMutableDictionary *itemDict = segment[tag];
+        
+        if (itemDict == nil) {
+            itemDict = [@{CHART_SEGMENT_COUNT:@(0)} mutableCopy];
+        }
+        NSNumber *number = itemDict[CHART_SEGMENT_COUNT];
+        itemDict[CHART_SEGMENT_COUNT] = @(number.integerValue + 1);
+        segment[tag] = itemDict;
+        
+    }
+    
+    [self createSegmentTagForChart:segment count:bidItemsRecentlyUpdated.count];
+    [_chartRecentlyUpdated setSegmentItems:segment];
+    return bidItemsRecentlyUpdated;
+}
+
 
 #pragma mark - UICollectionView source and delegate
 
@@ -224,7 +265,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     UICollectionViewCell *cell;
     
     switch (currentPage) {
-        case 0 : case 2 :case 3: {
+        case 0 : {
             BidItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
             
             NSMutableArray *array = (NSMutableArray*)currentBidItems;
@@ -233,7 +274,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
             cell = cellItem;
             break;
         }
-        default: {
+        case 1: {
             BidSoonItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierSoon forIndexPath:indexPath];
             
             NSMutableArray *array = (NSMutableArray*)currentBidItems;
@@ -241,12 +282,20 @@ static const float animationDurationForDropDowMenu = 1.0f;
             cellItem.bidSoonCollectionItemDelegate = self;
             cell = cellItem;
             break;
+           break;
+        }
+        default: {
+            BitItemRecentCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierRecent forIndexPath:indexPath];
+            
+            NSMutableArray *array = (NSMutableArray*)currentBidItems;
+            [cellItem setInfo:array[indexPath.row]];
+            cellItem.bitItemRecentDelegate = self;
+            cell = cellItem;
+            break;
         }
     }
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
-    //[cell contentView].layer.shouldRasterize = YES;
-    //cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
 }
@@ -318,7 +367,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
         currentBidItems = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
 
     } else {
-        currentBidItems = bidItemsSoon;
+        currentBidItems = bidItemsHappeningSoon;
     }
     
     [_bidsCollectionView reloadData];
@@ -349,24 +398,30 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
         switch (currentPage) {
             case 0: {
-                currentBidItems = bidItemsRecent;
+                currentBidItems = bidItemsRecentlyMade;
                 [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
                 break;
             }
             case 1: {
                 [_calendarView clearSelection];
-                currentBidItems = bidItemsSoon;
+                
+                [self loadBidsHappeningSoon];
+                currentBidItems = bidItemsHappeningSoon;
+
+                _calendarView.customCalendarDelegate = self;
+                [_calendarView reloadData];
+
                 [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_SOON_TEXT"), currentBidItems.count ]];
                 break;
             }
             case 2: {
                 
-                currentBidItems = bidItemsRecent;
+                currentBidItems = [NSMutableArray new];
                 [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT"), currentBidItems.count ]];
                 break;
             }
             case 3: {
-                currentBidItems = bidItemsRecent;
+                currentBidItems = [self loadBidsRecentlyUpdated];
                 [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"), currentBidItems.count ]];
                 break;
                 
@@ -405,16 +460,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
     }];
 
-    //[self showProjectDetails:[item getRecordId] fromRect:cell.frame];
-    /*
-    CompanyDetailViewController *controller = [CompanyDetailViewController new];
-    controller.view.hidden = NO;
-    [controller setInfo:nil];
-    shouldUsePushZoomAnimation = NO;
-    [self.navigationController pushViewController:controller animated:YES];
-     */
-
-    //[[DataManager sharedManager] featureNotAvailable];
 }
 
 - (void)showProjectDetails:(id)record fromRect:(CGRect)rect {
@@ -436,23 +481,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [self.navigationController pushViewController:detail animated:YES];
     
-    //shouldUsePushZoomAnimation = NO;
-    /*
-    detail.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    detail.view.hidden = YES;
-    detail.previousRect = rect;
-    
-    [self.navigationController presentViewController:detail animated:NO completion:^{
-        detail.view.frame = rect;
-        detail.view.hidden = NO;
-        [UIView animateWithDuration:0.2 animations:^{
-            detail.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
-            [detail.view setNeedsDisplay];
-        } completion:^(BOOL finished) {
-            
-        }];
-    }];
-    */
     
 }
 
@@ -462,6 +490,18 @@ static const float animationDurationForDropDowMenu = 1.0f;
         [self showOrHideDropDownMenuMore];
     }
     
+}
+
+- (void)tappedBitItemRecent:(id)object {
+    BidItemRecent *item = object;
+    BitItemRecentCollectionViewCell * cell = (BitItemRecentCollectionViewCell*)[[item superview] superview];
+    
+    [[DataManager sharedManager] projectDetail:[item getRecordId] success:^(id object) {
+        [self showProjectDetails:object fromRect:cell.frame];
+    } failure:^(id object) {
+        
+    }];
+
 }
 
 
@@ -563,47 +603,69 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 #pragma mark - ChartView Delegate
 
+- (void)displayChartItemsForRecentlyMade:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
+    if (itemTag != nil) {
+        NSPredicate *predicate =nil;
+        
+        if (hasFocus) {
+            
+            NSInteger category = 0;
+            if([itemTag isEqualToString:@"01_HOUSING"]) {
+                category = 103;
+            } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
+                category = 101;
+            } else if ([itemTag isEqualToString:@"03_BUILDING"]){
+                category = 102;
+            } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
+                category = 105;
+            }
+            
+            predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li", category];
+        }
+        
+        bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+        
+        currentBidItems = bidItemsRecentlyMade;
+        
+        [_bidsCollectionView reloadData];
+    }
+}
+
+- (void)displayChartItemsForRecentlyUpdated:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
+    if (itemTag != nil) {
+        NSPredicate *predicate =nil;
+        
+        if (hasFocus) {
+            
+            NSInteger category = 0;
+            if([itemTag isEqualToString:@"01_HOUSING"]) {
+                category = 103;
+            } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
+                category = 101;
+            } else if ([itemTag isEqualToString:@"03_BUILDING"]){
+                category = 102;
+            } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
+                category = 105;
+            }
+            
+            predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li", category];
+        }
+        
+        bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        
+        currentBidItems = bidItemsRecentlyUpdated;
+        
+        [_bidsCollectionView reloadData];
+    }
+}
+
+
 - (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
     
     if ([chart isEqual:_chartRecentlyMade]) {
-        
-        if (itemTag != nil) {
-            NSPredicate *predicate =nil;
-            
-            if (hasFocus) {
-                
-                NSInteger category = 0;
-                if([itemTag isEqualToString:@"01_HOUSING"]) {
-                    category = 103;
-                } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
-                    category = 101;
-                } else if ([itemTag isEqualToString:@"03_BUILDING"]){
-                    category = 102;
-                } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
-                    category = 105;
-                }
-                
-                predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li", category];
-            }
-            
-            bidItemsRecent = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
-            
-            currentBidItems = bidItemsRecent;
-            
-            [_bidsCollectionView reloadData];
-        } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"No record found!" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
-                                                     style:UIAlertActionStyleDestructive
-                                                   handler:^(UIAlertAction *action) {
-                        
-                                                   }];
-            
-            [alert addAction:closeAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-
+        [self displayChartItemsForRecentlyMade:itemTag hasFocus:hasFocus];
+    } else if([chart isEqual:_chartRecentlyUpdated]) {
+        [self displayChartItemsForRecentlyUpdated:itemTag hasFocus:hasFocus];
     }
 }
 

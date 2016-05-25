@@ -194,6 +194,8 @@
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isHappenSoon" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isRecentAdded" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRecentUpdate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
@@ -226,7 +228,7 @@
     <elements>
         <element name="DB_BidRecent" positionX="-54" positionY="144" width="128" height="1140"/>
         <element name="DB_BidSoon" positionX="-63" positionY="-18" width="128" height="735"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="900"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="930"/>
         <element name="DB_Company" positionX="-45" positionY="144" width="128" height="330"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="150"/>

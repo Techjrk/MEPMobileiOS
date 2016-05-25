@@ -55,21 +55,33 @@
     _labelUtilities.font = CHART_BUTTON_GROUP_LABEL_FONT;
     _labelUtilities.textColor = CHART_BUTTON_UTILITIES_COLOR;
     
-/*
-    [_piechart addPieItem:kTagNameHousing percent:@(25) legendColor:CHART_BUTTON_HOUSING_COLOR focusImage:[UIImage imageNamed:@"icon_housing"] ];
-    [_piechart addPieItem:kTagNameEngineering percent:@(25) legendColor:CHART_BUTTON_ENGINEERING_COLOR focusImage:[UIImage imageNamed:@"icon_engineering"] ];
-    [_piechart addPieItem:kTagNameBuilding percent:@(25) legendColor:CHART_BUTTON_BUILDING_COLOR focusImage:[UIImage imageNamed:@"icon_building"] ];
-    [_piechart addPieItem:kTagNameUtilities percent:@(25) legendColor:CHART_BUTTON_UTILITIES_COLOR focusImage:[UIImage imageNamed:@"icon_utilities"] ];
- */
-    
     _piechart.customPieChartDelegate = self;
     
 }
 
 - (void)setSegmentItems:(NSMutableDictionary*)items {
+    _buttonHousing.enabled = NO;
+    _buttonBuilding.enabled = NO;
+    _buttonEngineering.enabled = NO;
+    _buttonUtilities.enabled = NO;
+    
     for (NSString *key in items) {
         NSDictionary *item = items[key];
-        [_piechart addPieItem:item[CHART_SEGMENT_TAG] percent:item[CHART_SEGMENT_PERCENTAGE] legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
+        
+        NSString *tag = item[CHART_SEGMENT_TAG];
+        NSNumber *percent = item[CHART_SEGMENT_PERCENTAGE];
+        
+        if ([tag isEqualToString:kTagNameHousing]) {
+            _buttonHousing.enabled = YES;
+        } else if ([tag isEqualToString:kTagNameBuilding]) {
+            _buttonBuilding.enabled = YES;
+        } else if ([tag isEqualToString:kTagNameEngineering]) {
+            _buttonEngineering.enabled = YES;
+        } else {
+            _buttonUtilities.enabled = YES;
+        }
+        
+        [_piechart addPieItem:tag percent:percent legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
         [_piechart setNeedsDisplay];
     }
     

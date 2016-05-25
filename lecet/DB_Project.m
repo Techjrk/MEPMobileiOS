@@ -10,6 +10,9 @@
 
 @implementation DB_Project
 
-// Insert code here to add functionality to your managed object subclass
+- (NSString *)getProjectType {
+    NSString *projectType = [NSString stringWithFormat:@"%@ %@ %@", self.primaryProjectTypeTitle==nil?@"":self.primaryProjectTypeTitle, self.projectCategoryTitle==nil?@"":self.projectCategoryTitle, self.projectGroupTitle==nil?@"":self.projectGroupTitle];
 
+    return projectType;
+}
 @end
