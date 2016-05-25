@@ -55,13 +55,6 @@
     _labelUtilities.font = CHART_BUTTON_GROUP_LABEL_FONT;
     _labelUtilities.textColor = CHART_BUTTON_UTILITIES_COLOR;
     
-/*
-    [_piechart addPieItem:kTagNameHousing percent:@(25) legendColor:CHART_BUTTON_HOUSING_COLOR focusImage:[UIImage imageNamed:@"icon_housing"] ];
-    [_piechart addPieItem:kTagNameEngineering percent:@(25) legendColor:CHART_BUTTON_ENGINEERING_COLOR focusImage:[UIImage imageNamed:@"icon_engineering"] ];
-    [_piechart addPieItem:kTagNameBuilding percent:@(25) legendColor:CHART_BUTTON_BUILDING_COLOR focusImage:[UIImage imageNamed:@"icon_building"] ];
-    [_piechart addPieItem:kTagNameUtilities percent:@(25) legendColor:CHART_BUTTON_UTILITIES_COLOR focusImage:[UIImage imageNamed:@"icon_utilities"] ];
- */
-    
     _piechart.customPieChartDelegate = self;
     
 }

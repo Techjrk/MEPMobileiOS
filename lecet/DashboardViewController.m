@@ -593,47 +593,69 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 #pragma mark - ChartView Delegate
 
+- (void)displayChartItemsForRecentlyMade:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
+    if (itemTag != nil) {
+        NSPredicate *predicate =nil;
+        
+        if (hasFocus) {
+            
+            NSInteger category = 0;
+            if([itemTag isEqualToString:@"01_HOUSING"]) {
+                category = 103;
+            } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
+                category = 101;
+            } else if ([itemTag isEqualToString:@"03_BUILDING"]){
+                category = 102;
+            } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
+                category = 105;
+            }
+            
+            predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li", category];
+        }
+        
+        bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+        
+        currentBidItems = bidItemsRecentlyMade;
+        
+        [_bidsCollectionView reloadData];
+    }
+}
+
+- (void)displayChartItemsForRecentlyUpdated:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
+    if (itemTag != nil) {
+        NSPredicate *predicate =nil;
+        
+        if (hasFocus) {
+            
+            NSInteger category = 0;
+            if([itemTag isEqualToString:@"01_HOUSING"]) {
+                category = 103;
+            } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
+                category = 101;
+            } else if ([itemTag isEqualToString:@"03_BUILDING"]){
+                category = 102;
+            } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
+                category = 105;
+            }
+            
+            predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li", category];
+        }
+        
+        bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        
+        currentBidItems = bidItemsRecentlyUpdated;
+        
+        [_bidsCollectionView reloadData];
+    }
+}
+
+
 - (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
     
     if ([chart isEqual:_chartRecentlyMade]) {
-        
-        if (itemTag != nil) {
-            NSPredicate *predicate =nil;
-            
-            if (hasFocus) {
-                
-                NSInteger category = 0;
-                if([itemTag isEqualToString:@"01_HOUSING"]) {
-                    category = 103;
-                } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
-                    category = 101;
-                } else if ([itemTag isEqualToString:@"03_BUILDING"]){
-                    category = 102;
-                } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
-                    category = 105;
-                }
-                
-                predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li", category];
-            }
-            
-            bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
-            
-            currentBidItems = bidItemsRecentlyMade;
-            
-            [_bidsCollectionView reloadData];
-        } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"No record found!" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
-                                                     style:UIAlertActionStyleDestructive
-                                                   handler:^(UIAlertAction *action) {
-                        
-                                                   }];
-            
-            [alert addAction:closeAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-
+        [self displayChartItemsForRecentlyMade:itemTag hasFocus:hasFocus];
+    } else if([chart isEqual:_chartRecentlyUpdated]) {
+        [self displayChartItemsForRecentlyUpdated:itemTag hasFocus:hasFocus];
     }
 }
 

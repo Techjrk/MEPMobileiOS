@@ -74,6 +74,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
         CGPoint touchLocation = [touch locationInView:self.view];
         for (id sublayer in self.view.layer.sublayers) {
@@ -81,11 +84,12 @@
                 CustomPieChartLayer *chartLayer = sublayer;
                 if (CGPathContainsPoint(chartLayer.piePath, 0, touchLocation, YES)) {
                     [chartLayer layerTapped];
-                    
+                    return;
                 }
             }
         }
     }
+    
 }
 
 - (void)tappedPieSegmentLayer:(id)object hasFocus:(BOOL)hasFocus{
@@ -97,7 +101,7 @@
     }
     
     CustomPieChartLayer *layer = object;
-    [layer setSegmentFocus:hasFocus hasLayerFocus:hasFocus];
+    [layer setSegmentFocus:hasFocus hasLayerFocus:NO];
     
     [self.customPieChartDelegate tappedPieSegment:object chartView:self.customPieChartDelegate];
 }

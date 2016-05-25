@@ -102,7 +102,7 @@
     } else {
         self.focusImageView.image = nil;
     }
-    [self setNeedsDisplay];
+   [self setNeedsDisplay];
 
 }
 
