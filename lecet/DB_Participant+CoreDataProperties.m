@@ -2,7 +2,7 @@
 //  DB_Participant+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/25/16.
+//  Created by Harry Herrys Camigla on 5/26/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -32,6 +32,8 @@
 @dynamic companyId;
 @dynamic createdAt;
 @dynamic updatedAt;
+@dynamic contactId;
+@dynamic contactTypeGroup;
 @dynamic relationshipProject;
 
 @end

@@ -53,7 +53,7 @@
 }
 
 - (void)layoutSubviews {
-    UILabel *label = _labelLine2.text != nil? _labelLine2:_labelLine1;
+    UILabel *label = _labelLine2.text != nil | _labelLine2.text.length == 0? _labelLine2:_labelLine1;
     heightConstraint.constant = label.frame.origin.y+ label.frame.size.height + (kDeviceHeight * 0.008);
 }
 @end

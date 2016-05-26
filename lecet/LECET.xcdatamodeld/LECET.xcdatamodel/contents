@@ -171,6 +171,8 @@
         <attribute name="ckmsSiteId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cnCompanysiteUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="contactId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="contactTypeGroup" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="county" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
@@ -255,6 +257,6 @@
         <element name="DB_Company" positionX="-45" positionY="144" width="128" height="330"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="150"/>
-        <element name="DB_Participant" positionX="0" positionY="171" width="128" height="345"/>
+        <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
     </elements>
 </model>

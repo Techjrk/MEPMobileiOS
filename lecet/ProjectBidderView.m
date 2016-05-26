@@ -82,7 +82,7 @@
     
     CGSize size;
     
-    cellHeight = kDeviceHeight * 0.085;
+    cellHeight = kDeviceHeight * 0.09;
     size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
     return size;
 }
