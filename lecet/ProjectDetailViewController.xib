@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectDetailViewController">
             <connections>
                 <outlet property="constraintContentHeight" destination="xTa-ci-of5" id="Nlk-3M-6Eu"/>
+                <outlet property="constraintDropDownShareHeight" destination="s9B-rb-7wz" id="pNa-uE-dTh"/>
                 <outlet property="constraintFieldAddress" destination="ELw-OG-eb0" id="ZVK-Cy-Z25"/>
                 <outlet property="constraintFieldCounty" destination="qU4-h6-eKJ" id="URF-Zb-vSH"/>
                 <outlet property="constraintFieldEstLow" destination="cWA-di-JNi" id="KCg-rW-rUV"/>

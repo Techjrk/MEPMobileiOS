@@ -9,6 +9,13 @@
             <connections>
                 <outlet property="buttonCopyLink" destination="FtH-Ni-7Ho" id="k4M-ux-JZE"/>
                 <outlet property="buttonSendByEmail" destination="SjU-Gu-yqW" id="l4s-oq-8a3"/>
+                <outlet property="constraintCopyButtonTop" destination="04a-Jq-xgK" id="qUn-V7-KdU"/>
+                <outlet property="constraintEmailAndLinkLeading" destination="cvB-yD-IY6" id="cnl-tQ-JAN"/>
+                <outlet property="constraintEmailButtonTop" destination="C6j-ny-ewq" id="JYr-R3-sRc"/>
+                <outlet property="constraintEmailImageBottom" destination="SRW-dS-US7" id="kLw-Zc-P2D"/>
+                <outlet property="constraintEmailImageTop" destination="SAq-YA-gqZ" id="mp7-9S-bkJ"/>
+                <outlet property="constraintEmailLeading" destination="kEk-hd-sr3" id="Swv-hY-7ZC"/>
+                <outlet property="constraintLinkImageTop" destination="c51-dV-So3" id="2QE-sn-86h"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,8 +54,8 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="FtH-Ni-7Ho" firstAttribute="top" secondItem="5BY-PE-COe" secondAttribute="bottom" constant="6" id="04a-Jq-xgK"/>
                 <constraint firstItem="SjU-Gu-yqW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="11" id="C6j-ny-ewq"/>
-                <constraint firstItem="FtH-Ni-7Ho" firstAttribute="top" secondItem="5BY-PE-COe" secondAttribute="bottom" constant="6" id="CTV-wk-FFN"/>
                 <constraint firstItem="5BY-PE-COe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="17" id="CqC-Kb-Bkt"/>
                 <constraint firstAttribute="bottom" secondItem="xwe-Ia-HxN" secondAttribute="bottom" constant="11" id="FkQ-oh-92P"/>
                 <constraint firstAttribute="trailing" secondItem="5BY-PE-COe" secondAttribute="trailing" constant="9" id="GYe-U9-Ma2"/>

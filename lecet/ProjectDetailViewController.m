@@ -78,6 +78,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPrjectDetailStateHeight;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintProjectDetailStateTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDropDownShareHeight;
 
 @end
 
@@ -176,11 +177,9 @@ static const float animationDurationForDropDowMenu = 1.0f;
     NSString *projectId = [NSString stringWithFormat:@"%@ %@", project.dodgeNumber, (project.dodgeVersion == nil ? @"":[NSString stringWithFormat:@"(v%@)", project.dodgeVersion]) ];
     [_fieldProjectId setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_ID") line1Text:projectId line2Text:nil];
 
-    
     NSString *address = [NSString stringWithFormat:@"%@, %@ %@", address1, project.state, project.zip5];
     
     [_fieldAddress setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADDRESS") line1Text:address line2Text:nil];
-    
     
     [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:[project getProjectType] line2Text:nil];
     
@@ -473,13 +472,20 @@ static const float animationDurationForDropDowMenu = 1.0f;
     if (isiPhone4) {
         _constraintPrjectDetailStateHeight.constant = 140;
         _constraintProjectDetailStateTop.constant = 150;
+        
+        //Share List
+        _constraintDropDownShareHeight.constant = 90;
     }
     
     
     if (isiPhone5) {
-        
+        //Project List
         _constraintPrjectDetailStateHeight.constant = 140;
         _constraintProjectDetailStateTop.constant = 172;
+        
+        
+        //Share List
+        _constraintDropDownShareHeight.constant = 90;
         
         
     }
