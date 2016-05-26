@@ -57,6 +57,7 @@
 @property (weak,nonatomic) IBOutlet DropDownMenuView* dropDownMenu;
 
 @property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropDownMenuViewHeight;
 
 @end
 
@@ -108,6 +109,9 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _dropDownMenu.dropDownMenuDelegate = self;
     isDropDownMenuMoreHidden = YES;
     [self addTappedGestureForDimBackground];
+    
+    [self layoutDropDownMenuChange];
+    
 
 }
 
@@ -569,6 +573,12 @@ static const float animationDurationForDropDowMenu = 1.0f;
     [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap Menu = %u",menuDropDownItem]];
     
     
+}
+
+- (void)layoutDropDownMenuChange{
+    if (isiPhone5) {
+        _dropDownMenuViewHeight.constant = 218;
+    }
 }
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {

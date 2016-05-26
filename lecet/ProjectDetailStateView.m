@@ -34,7 +34,7 @@
     _buttonHideProject.backgroundColor = PROJECTDETAIL_HIDEPROJECT_BUTTON_BG_COLOR;
     
     [_buttonHideProject setTitleColor:PROJECTDETAIL_HIDEPROJECT_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    
+    _buttonHideProject.titleLabel.font = PROJECTDETAIL_HIDEPROJECT_BUTTON_FONT;
     
     _buttonCancel.titleLabel.font = PROJECTDETAIL_CANCEL_BUTTON_FONT;
     [_buttonCancel setTitleColor:PROJECTDETAIL_CANCEL_BUTTON_FONT_COLOR forState:UIControlStateNormal];
@@ -47,6 +47,7 @@
     _labelTitleForDetailState.font = PROJECTDETAIL_TITLE_LABEL_FONT;
     
     _labelTitleForDetailState.text = NSLocalizedLanguage(@"PROJECTDETAILSATE_TITLE_LABEL_TEXT");
+    
     
     
     

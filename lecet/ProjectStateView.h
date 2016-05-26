@@ -21,4 +21,6 @@ typedef enum {
 
 @interface ProjectStateView : BaseViewClass
 @property (strong, nonatomic) id<ProjectStateViewDelegate>projectStateViewDelegate;
+- (void)clearSelection;
+
 @end

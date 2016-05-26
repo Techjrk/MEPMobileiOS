@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="305" height="155"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are about to hide this project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-Bw-wuj">
-                    <rect key="frame" x="15" y="15" width="275" height="33"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are about to hide this project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-Bw-wuj">
+                    <rect key="frame" x="20" y="15" width="265" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="bkl-WN-5vn"/>
                     </constraints>
@@ -28,12 +28,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-NK-j23">
-                    <rect key="frame" x="80" y="69" width="145" height="32"/>
+                    <rect key="frame" x="90" y="66" width="125" height="35"/>
                     <color key="backgroundColor" red="0.0" green="0.2470588235" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="32" id="oJ0-Db-CnE"/>
+                        <constraint firstAttribute="height" constant="35" id="oJ0-Db-CnE"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="HIDE PROJECT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -47,7 +47,7 @@
                         <constraint firstAttribute="width" constant="72" id="PjL-d8-9Vt"/>
                         <constraint firstAttribute="height" constant="32" id="otT-EC-Wuq"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <state key="normal" title="CANCEL">
                         <color key="titleColor" red="0.0" green="0.24705882352941178" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -58,15 +58,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="CxY-NK-j23" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="Cb8-kA-d3s"/>
+                <constraint firstItem="CxY-NK-j23" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="90" id="Cb8-kA-d3s"/>
                 <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="EMs-8v-WGi" secondAttribute="centerX" id="Faj-h5-zXM"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GYl-jy-l1J"/>
                 <constraint firstItem="EMs-8v-WGi" firstAttribute="top" secondItem="CxY-NK-j23" secondAttribute="bottom" constant="10" id="LZc-9S-m7p"/>
                 <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="8Mp-Bw-wuj" secondAttribute="centerX" id="Mfh-67-OBJ"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Ovy-8A-sRh"/>
                 <constraint firstAttribute="bottom" secondItem="EMs-8v-WGi" secondAttribute="bottom" constant="12" id="W9v-xg-Tlx"/>
-                <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="eZ7-dL-8z8"/>
-                <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="15" id="rQQ-yc-knS"/>
+                <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eZ7-dL-8z8"/>
+                <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="20" id="rQQ-yc-knS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

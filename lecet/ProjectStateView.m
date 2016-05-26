@@ -22,9 +22,12 @@
 - (void)awakeFromNib {
     [self clearSelection];
     
-    [self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE];
+    
+    //[self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE];
     [_buttonShare setTitle:NSLocalizedLanguage(@"PROJECT_STATE_SHARE") forState:UIControlStateNormal];
     [_buttonHide setTitle:NSLocalizedLanguage(@"PROJECT_STATE_HIDE") forState:UIControlStateNormal];
+    [_buttonTrack setTitle:NSLocalizedLanguage(@"PROJECT_STATE_TRACK") forState:UIControlStateNormal];
+    
     
     self.layer.shadowColor = [PROJECT_STATE_BUTTON_SHADOW_COLOR colorWithAlphaComponent:0.5].CGColor;
     self.layer.shadowRadius = 2;
@@ -81,10 +84,12 @@
         }
     } else {
         if (!isSelected) {
-            [self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE];
+            //[self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE];
+            [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
             button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_ACTIVE;
         } else {
-            [self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED];
+            //[self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED];
+            [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED forState:UIControlStateNormal];
             button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_SELECTED;
         }
     }

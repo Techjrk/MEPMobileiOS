@@ -14,6 +14,7 @@
                 <outlet property="chartRecentlyUpdated" destination="pQz-W0-2rL" id="rbg-Dk-CZp"/>
                 <outlet property="dimDropDownMenuBackgroundView" destination="da7-Bm-X3z" id="avB-NP-u9B"/>
                 <outlet property="dropDownMenu" destination="NT8-yS-9oR" id="eLs-gZ-t7j"/>
+                <outlet property="dropDownMenuViewHeight" destination="vym-cW-sPJ" id="RgK-sy-Sfy"/>
                 <outlet property="menuHeader" destination="88p-eh-KC7" id="i2K-z6-V80"/>
                 <outlet property="pageControl" destination="nAH-JD-F9h" id="dzW-gM-lwI"/>
                 <outlet property="scrollPageView" destination="l96-VF-778" id="CIo-no-CG8"/>
@@ -115,14 +116,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="NT8-yS-9oR" secondAttribute="trailing" constant="9" id="0Ur-h8-oSc"/>
                         <constraint firstItem="NT8-yS-9oR" firstAttribute="leading" secondItem="da7-Bm-X3z" secondAttribute="leading" constant="5" id="6kJ-GF-W2v"/>
-                        <constraint firstItem="NT8-yS-9oR" firstAttribute="top" secondItem="da7-Bm-X3z" secondAttribute="top" multiplier="0.125" constant="70" id="7oP-5F-Zsn"/>
-                        <constraint firstItem="NT8-yS-9oR" firstAttribute="leading" secondItem="da7-Bm-X3z" secondAttribute="leading" constant="3" id="83a-Zk-ILc"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="83a-Zk-ILc"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -143,6 +137,7 @@
                 <constraint firstAttribute="bottom" secondItem="da7-Bm-X3z" secondAttribute="bottom" id="LWv-8V-Y9R"/>
                 <constraint firstItem="da7-Bm-X3z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M3Z-21-CFj"/>
                 <constraint firstAttribute="bottom" secondItem="9vD-FZ-MFE" secondAttribute="bottom" id="RNc-nR-MNz"/>
+                <constraint firstItem="NT8-yS-9oR" firstAttribute="top" secondItem="88p-eh-KC7" secondAttribute="top" constant="70" id="SND-Sg-PyE"/>
                 <constraint firstItem="88p-eh-KC7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SQW-xt-oFj"/>
                 <constraint firstItem="NT8-yS-9oR" firstAttribute="leading" secondItem="88p-eh-KC7" secondAttribute="leading" id="Sn9-Dn-FpC"/>
                 <constraint firstAttribute="trailing" secondItem="da7-Bm-X3z" secondAttribute="trailing" id="YHx-8a-PXY"/>
