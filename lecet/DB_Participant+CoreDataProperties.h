@@ -2,7 +2,7 @@
 //  DB_Participant+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/25/16.
+//  Created by Harry Herrys Camigla on 5/26/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *companyId;
 @property (nullable, nonatomic, retain) NSString *createdAt;
 @property (nullable, nonatomic, retain) NSString *updatedAt;
+@property (nullable, nonatomic, retain) NSNumber *contactId;
+@property (nullable, nonatomic, retain) NSString *contactTypeGroup;
 @property (nullable, nonatomic, retain) DB_Project *relationshipProject;
 
 @end

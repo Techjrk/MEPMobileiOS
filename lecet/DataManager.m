@@ -218,7 +218,7 @@
     NSDictionary *participants = project[@"contacts"];
     if (participants != nil) {
         for (NSDictionary *participant in participants) {
-            //[self saveManageObjectBid:bidItem].relationshipProject = record;
+            [self saveManageObjectParticipant:participant].relationshipProject = record;
         }
     }
 
@@ -238,13 +238,13 @@
     }
 
     record.recordId = recordId;
-    record.name = [DB_Contact objectOrNil:contact[@"name"]];
-    record.title = [DB_Contact objectOrNil:contact[@"title"]];
-    record.email = [DB_Contact objectOrNil:contact[@"email"]];
-    record.ckmsContactId = [DB_Contact objectOrNil:contact[@"ckmsContactId"]];
-    record.phoneNumber = [DB_Contact objectOrNil:contact[@"phoneNumber"]];
-    record.faxNumber = [DB_Contact objectOrNil:contact[@"faxNumber"]];
-    record.companyId = [DB_Contact objectOrNil:contact[@"companyId"]];
+    record.name = [DerivedNSManagedObject objectOrNil:contact[@"name"]];
+    record.title = [DerivedNSManagedObject objectOrNil:contact[@"title"]];
+    record.email = [DerivedNSManagedObject objectOrNil:contact[@"email"]];
+    record.ckmsContactId = [DerivedNSManagedObject objectOrNil:contact[@"ckmsContactId"]];
+    record.phoneNumber = [DerivedNSManagedObject objectOrNil:contact[@"phoneNumber"]];
+    record.faxNumber = [DerivedNSManagedObject objectOrNil:contact[@"faxNumber"]];
+    record.companyId = [DerivedNSManagedObject objectOrNil:contact[@"companyId"]];
     
     return record;
 }
@@ -260,26 +260,71 @@
     }
     
     record.recordId = recordId;
-    record.name = [DB_Company objectOrNil:company[@"name"]];
-    record.address1 = [DB_Company objectOrNil:company[@"address1"]];
-    record.address2 = [DB_Company objectOrNil:company[@"address2"]];
-    record.county = [DB_Company objectOrNil:company[@"county"]];
-    record.fipsCounty = [DB_Company objectOrNil:company[@"fipsCounty"]];
-    record.city = [DB_Company objectOrNil:company[@"city"]];
-    record.state = [DB_Company objectOrNil:company[@"state"]];
-    record.zip5 = [DB_Company objectOrNil:company[@"zip5"]];
-    record.zipPlus4 = [DB_Company objectOrNil:company[@"zipPlus4"]];
-    record.country = [DB_Company objectOrNil:company[@"country"]];
-    record.ckmsSiteId = [DB_Company objectOrNil:company[@"ckmsSiteId"]];
-    record.cnCompanysiteUrl = [DB_Company objectOrNil:company[@"cnCompanysiteUrl"]];
-    record.wwwUrl = [DB_Company objectOrNil:company[@"wwwUrl"]];
-    record.dcisFactorCntctCode = [DB_Company objectOrNil:company[@"dcisFactorCntctCode"]];
-    record.dcisFactorCode = [DB_Company objectOrNil:company[@"dcisFactorCode"]];
-    record.createdAt = [DB_Company objectOrNil:company[@"createdAt"]];
-    record.updatedAt = [DB_Company objectOrNil:company[@"updatedAt"]];
+    record.name = [DerivedNSManagedObject objectOrNil:company[@"name"]];
+    record.address1 = [DerivedNSManagedObject objectOrNil:company[@"address1"]];
+    record.address2 = [DerivedNSManagedObject objectOrNil:company[@"address2"]];
+    record.county = [DerivedNSManagedObject objectOrNil:company[@"county"]];
+    record.fipsCounty = [DerivedNSManagedObject objectOrNil:company[@"fipsCounty"]];
+    record.city = [DerivedNSManagedObject objectOrNil:company[@"city"]];
+    record.state = [DerivedNSManagedObject objectOrNil:company[@"state"]];
+    record.zip5 = [DerivedNSManagedObject objectOrNil:company[@"zip5"]];
+    record.zipPlus4 = [DerivedNSManagedObject objectOrNil:company[@"zipPlus4"]];
+    record.country = [DerivedNSManagedObject objectOrNil:company[@"country"]];
+    record.ckmsSiteId = [DerivedNSManagedObject objectOrNil:company[@"ckmsSiteId"]];
+    record.cnCompanysiteUrl = [DerivedNSManagedObject objectOrNil:company[@"cnCompanysiteUrl"]];
+    record.wwwUrl = [DerivedNSManagedObject objectOrNil:company[@"wwwUrl"]];
+    record.dcisFactorCntctCode = [DerivedNSManagedObject objectOrNil:company[@"dcisFactorCntctCode"]];
+    record.dcisFactorCode = [DerivedNSManagedObject objectOrNil:company[@"dcisFactorCode"]];
+    record.createdAt = [DerivedNSManagedObject objectOrNil:company[@"createdAt"]];
+    record.updatedAt = [DerivedNSManagedObject objectOrNil:company[@"updatedAt"]];
 
     return record;
 }
+
+- (DB_Participant*)saveManageObjectParticipant:(NSDictionary*)participant {
+
+    NSNumber *recordId = participant[@"id"];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+    DB_Participant *record = [DB_Participant fetchObjectForPredicate:predicate key:nil ascending:NO];
+    
+    if (record == nil) {
+        record = [DB_Participant createEntity];
+    }
+    
+    record.recordId = recordId;
+    record.companyId = [DerivedNSManagedObject objectOrNil:participant[@"companyId"]];
+    record.contactId =  [DerivedNSManagedObject objectOrNil:participant[@"contactId"]];
+    
+    NSDictionary *contactType = participant[@"contactType"];
+    if (contactType != nil) {
+        record.contactTypeGroup = [DerivedNSManagedObject objectOrNil:contactType[@"group"]];
+    }
+    
+    NSDictionary *company = participant[@"company"];
+    if (company != nil) {
+        record.name = [DerivedNSManagedObject objectOrNil:company[@"name"]];
+        record.address1 = [DerivedNSManagedObject objectOrNil:company[@"address1"]];
+        record.address2 = [DerivedNSManagedObject objectOrNil:company[@"address2"]];
+        record.county = [DerivedNSManagedObject objectOrNil:company[@"county"]];
+        record.fipsCounty = [DerivedNSManagedObject objectOrNil:company[@"fipsCounty"]];
+        record.city = [DerivedNSManagedObject objectOrNil:company[@"city"]];
+        record.state = [DerivedNSManagedObject objectOrNil:company[@"state"]];
+        record.zip5 = [DerivedNSManagedObject objectOrNil:company[@"zip5"]];
+        record.zipPlus4 = [DerivedNSManagedObject objectOrNil:company[@"zipPlus4"]];
+        record.ckmsSiteId = [DerivedNSManagedObject objectOrNil:company[@"ckmsSiteId"]];
+        record.cnCompanysiteUrl = [DerivedNSManagedObject objectOrNil:company[@"cnCompanysiteUrl"]];
+        record.wwwUrl = [DerivedNSManagedObject objectOrNil:company[@"wwwUrl"]];
+        record.dcisFactorCntctCode = [DerivedNSManagedObject objectOrNil:company[@"dcisFactorCntctCode"]];
+        record.dcisFactorCode = [DerivedNSManagedObject objectOrNil:company[@"dcisFactorCode"]];
+        record.createdAt = [DerivedNSManagedObject objectOrNil:company[@"createdAt"]];
+        record.county = [DerivedNSManagedObject objectOrNil:company[@"county"]];
+    }
+    
+    return record;
+}
+
+#pragma mark - HTTP REQUEST
 
 - (void)bidsRecentlyMade:(NSDate *)dateFilter  success:(APIBlock)success failure:(APIBlock)failure {
     

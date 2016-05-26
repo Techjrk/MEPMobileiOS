@@ -11,8 +11,7 @@
 #import "SectionTitleView.h"
 #import "ParticipantCollectionViewCell.h"
 
-#import "DB_Bid.h"
-#import "DB_Company.h"
+#import "DB_Participant.h"
 
 @interface PariticpantsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSLayoutConstraint *constraintHeight;
@@ -55,9 +54,9 @@
     
     ParticipantCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    DB_Bid *bidItem = collectionItems[indexPath.row];
+    DB_Participant *participantItem = collectionItems[indexPath.row];
     
-    [cell setItem:@"$ 0" line1:bidItem.relationshipCompany.name line2:[bidItem.relationshipCompany address]];
+    [cell setItem:participantItem.contactTypeGroup line1:participantItem.name line2:[participantItem address]];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
@@ -81,7 +80,7 @@
     
     CGSize size;
     
-    cellHeight = kDeviceHeight * 0.085;
+    cellHeight = kDeviceHeight * 0.09;
     size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
     return size;
 }

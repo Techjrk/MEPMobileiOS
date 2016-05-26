@@ -192,8 +192,11 @@ static const float animationDurationForDropDowMenu = 1.0f;
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
     NSMutableArray *bidItems = [[project.relationshipBid allObjects] mutableCopy];
-    [_participantsView setItems:bidItems];
     [_projectBidder setItems:bidItems];
+
+    NSMutableArray *participants = [[project.relationshipParticipants allObjects] mutableCopy];
+    
+    [_participantsView setItems:participants];
 }
 
 - (void)viewWillLayoutSubviews {

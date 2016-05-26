@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -27,19 +28,19 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="342-wy-H76">
-                    <rect key="frame" x="111" y="14.5" width="206" height="20.5"/>
+                    <rect key="frame" x="127" y="14.5" width="190" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbt-jK-ykX">
-                    <rect key="frame" x="111" y="35" width="206" height="20.5"/>
+                    <rect key="frame" x="127" y="35" width="190" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-Qb-d37">
-                    <rect key="frame" x="0.0" y="14" width="111" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-Qb-d37">
+                    <rect key="frame" x="0.0" y="14" width="127" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -60,7 +61,7 @@
                 <constraint firstItem="Wbt-jK-ykX" firstAttribute="width" secondItem="342-wy-H76" secondAttribute="width" id="AqD-pM-1XJ"/>
                 <constraint firstItem="mPe-Qb-d37" firstAttribute="height" secondItem="342-wy-H76" secondAttribute="height" id="GsR-sX-1Pj"/>
                 <constraint firstItem="Wbt-jK-ykX" firstAttribute="top" secondItem="342-wy-H76" secondAttribute="bottom" id="Ku2-Pj-kHb"/>
-                <constraint firstItem="342-wy-H76" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.65" id="N13-3T-Zny"/>
+                <constraint firstItem="342-wy-H76" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="N13-3T-Zny"/>
                 <constraint firstAttribute="trailing" secondItem="Wbt-jK-ykX" secondAttribute="trailing" id="PaL-Ld-kHN"/>
                 <constraint firstAttribute="bottom" secondItem="PGu-Bh-yzb" secondAttribute="bottom" id="Qfj-6w-0Ic"/>
                 <constraint firstItem="342-wy-H76" firstAttribute="leading" secondItem="mPe-Qb-d37" secondAttribute="trailing" id="Ulq-ia-F6f"/>
