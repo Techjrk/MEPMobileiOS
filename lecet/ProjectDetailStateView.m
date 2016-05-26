@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonHideProject;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitleForDetailState;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonHideProjectHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHideProjectLeading;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCancelHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCancelButtonBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHideButtom;
 
 - (IBAction)tappedProjectDetailState:(id)sender;
 
@@ -53,6 +58,8 @@
     
       //[self drawShadow];
     
+    
+    [self setAutoLayoutInIncompatibleDevice];
 }
 
 
@@ -88,6 +95,31 @@
     UIButton *button = sender;
     
     [_projectDetailStateDelegate tappedProjectDetailState:(ProjectDetailStateItem)button.tag];
+    
+    
+    
+}
+
+
+
+- (void)setAutoLayoutInIncompatibleDevice{
+    if (isiPhone4) {
+        
+        _constraintButtonHideProjectHeight.constant = 25;
+        _constraintHideProjectLeading.constant = 70;
+        _constraintCancelHeight.constant = 27;
+        _constraintCancelButtonBottom.constant = 17;
+        _constraintHideButtom.constant = 10;
+    }
+    
+    
+    if (isiPhone5) {
+        
+        _constraintButtonHideProjectHeight.constant = 30;
+        _constraintHideProjectLeading.constant = 60;
+        _constraintCancelButtonBottom.constant = 15;
+        _constraintCancelHeight.constant = 22;
+    }
     
     
     

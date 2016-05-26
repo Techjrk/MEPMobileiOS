@@ -19,6 +19,8 @@
                 <outlet property="constraintFieldProjectID" destination="Qbt-eR-sPJ" id="RAJ-pJ-8BI"/>
                 <outlet property="constraintFieldProjectType" destination="58K-WT-52Z" id="uKI-W0-y3f"/>
                 <outlet property="constraintFieldStage" destination="I7u-mG-4HD" id="YT7-LQ-hbP"/>
+                <outlet property="constraintPrjectDetailStateHeight" destination="8cc-oS-k6C" id="Q5l-dZ-5YK"/>
+                <outlet property="constraintProjectDetailStateTop" destination="qsy-eM-cMp" id="D05-LH-GUe"/>
                 <outlet property="containerView" destination="Y8l-w9-9Lk" id="d5y-HW-kdp"/>
                 <outlet property="dimProjectDetailStateView" destination="LY7-cO-8uH" id="bnf-8B-x1g"/>
                 <outlet property="dimProjectMenuContainerView" destination="Jin-vn-rnY" id="TfF-ko-Hb2"/>
@@ -269,18 +271,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                     <subviews>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAk-VJ-a0r" customClass="ProjectDetailStateView">
-                            <rect key="frame" x="30" y="206" width="315" height="165"/>
+                            <rect key="frame" x="30" y="206" width="315" height="160"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="165" id="cTt-Of-Cz6"/>
+                                <constraint firstAttribute="height" constant="160" id="8cc-oS-k6C"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="leading" secondItem="LY7-cO-8uH" secondAttribute="leading" constant="30" id="4Lr-jm-4HQ"/>
-                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="top" secondItem="LY7-cO-8uH" secondAttribute="top" constant="206" id="Zuq-p7-yU1"/>
-                        <constraint firstAttribute="trailing" secondItem="JAk-VJ-a0r" secondAttribute="trailing" constant="30" id="kt9-Ad-bA7"/>
+                        <constraint firstAttribute="trailing" secondItem="JAk-VJ-a0r" secondAttribute="trailing" constant="30" id="WoD-e2-y9t"/>
+                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="top" secondItem="LY7-cO-8uH" secondAttribute="top" constant="206" id="qsy-eM-cMp"/>
+                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="leading" secondItem="LY7-cO-8uH" secondAttribute="leading" constant="30" id="x6D-xY-R7w"/>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jin-vn-rnY">

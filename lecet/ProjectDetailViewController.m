@@ -75,6 +75,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPrjectDetailStateHeight;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintProjectDetailStateTop;
+
 @end
 
 @implementation ProjectDetailViewController
@@ -122,6 +126,9 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [self addTappedGestureForDimBackground];
 
+    [self setAutoLayConstraintInIncompatibleDevice];
+    
+    
     
 }
 
@@ -458,6 +465,26 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 
+- (void)setAutoLayConstraintInIncompatibleDevice{
+    
+    if (isiPhone4) {
+        _constraintPrjectDetailStateHeight.constant = 140;
+        _constraintProjectDetailStateTop.constant = 150;
+    }
+    
+    
+    if (isiPhone5) {
+        
+        _constraintPrjectDetailStateHeight.constant = 140;
+        _constraintProjectDetailStateTop.constant = 172;
+        
+        
+    }
+    
+    
+}
+
+
 - (void)addTappedGestureForDimBackground{
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectDetailStateView)];
@@ -505,11 +532,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         }
     }];
 
-    
-    
-    
-    
-    
     
 }
 

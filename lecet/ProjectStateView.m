@@ -73,6 +73,18 @@
     
     BOOL isSelected = button.selected;
     button.selected = NO;
+    
+    button.titleLabel.font = PROJECT_STATE_BUTTON_TEXT_FONT;
+    if (!isSelected) {
+        [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
+        button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_ACTIVE;
+    } else {
+        [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED forState:UIControlStateNormal];
+        button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_SELECTED;
+    }
+
+    
+/*
     if (![button isEqual:_buttonTrack]) {
         button.titleLabel.font = PROJECT_STATE_BUTTON_TEXT_FONT;
         if (!isSelected) {
@@ -93,6 +105,8 @@
             button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_SELECTED;
         }
     }
+ 
+ */
     
     button.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     button.layer.borderWidth = 0.5;

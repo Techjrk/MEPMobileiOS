@@ -9,6 +9,11 @@
             <connections>
                 <outlet property="buttonCancel" destination="EMs-8v-WGi" id="cfK-g7-Aql"/>
                 <outlet property="buttonHideProject" destination="CxY-NK-j23" id="cys-Wa-V7Q"/>
+                <outlet property="constraintButtonHideProjectHeight" destination="oJ0-Db-CnE" id="rMj-LY-ZGL"/>
+                <outlet property="constraintCancelButtonBottom" destination="W9v-xg-Tlx" id="7IM-2V-wIF"/>
+                <outlet property="constraintCancelHeight" destination="otT-EC-Wuq" id="OXY-eb-zt7"/>
+                <outlet property="constraintHideButtom" destination="LZc-9S-m7p" id="SIz-XB-AOY"/>
+                <outlet property="constraintHideProjectLeading" destination="Cb8-kA-d3s" id="zyu-oS-Vzo"/>
                 <outlet property="labelTitleForDetailState" destination="8Mp-Bw-wuj" id="U6h-aH-VbI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-NK-j23">
-                    <rect key="frame" x="90" y="66" width="125" height="35"/>
+                    <rect key="frame" x="83" y="64" width="139" height="35"/>
                     <color key="backgroundColor" red="0.0" green="0.2470588235" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="oJ0-Db-CnE"/>
@@ -42,7 +47,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMs-8v-WGi">
-                    <rect key="frame" x="117" y="111" width="72" height="32"/>
+                    <rect key="frame" x="117" y="109" width="72" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="72" id="PjL-d8-9Vt"/>
                         <constraint firstAttribute="height" constant="32" id="otT-EC-Wuq"/>
@@ -58,13 +63,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="CxY-NK-j23" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="90" id="Cb8-kA-d3s"/>
+                <constraint firstItem="CxY-NK-j23" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="83" id="Cb8-kA-d3s"/>
                 <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="EMs-8v-WGi" secondAttribute="centerX" id="Faj-h5-zXM"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GYl-jy-l1J"/>
                 <constraint firstItem="EMs-8v-WGi" firstAttribute="top" secondItem="CxY-NK-j23" secondAttribute="bottom" constant="10" id="LZc-9S-m7p"/>
                 <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="8Mp-Bw-wuj" secondAttribute="centerX" id="Mfh-67-OBJ"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Ovy-8A-sRh"/>
-                <constraint firstAttribute="bottom" secondItem="EMs-8v-WGi" secondAttribute="bottom" constant="12" id="W9v-xg-Tlx"/>
+                <constraint firstAttribute="bottom" secondItem="EMs-8v-WGi" secondAttribute="bottom" constant="14" id="W9v-xg-Tlx"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eZ7-dL-8z8"/>
                 <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="20" id="rQQ-yc-knS"/>
             </constraints>
