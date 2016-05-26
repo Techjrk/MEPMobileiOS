@@ -11,6 +11,9 @@
 #import "SectionTitleView.h"
 #import "ProjectBiddersCollectionViewCell.h"
 
+#import "DB_Bid.h"
+#import "DB_Company.h"
+
 @interface ProjectBidderView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSLayoutConstraint *constraintHeight;
     NSMutableArray *collectionItems;
@@ -52,7 +55,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProjectBiddersCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    [cell setItem:@"$ 10,000" line1:@"Abhe & Svoboda, Inc" line2:@"Prior Lake, MN"];
+    
+    DB_Bid *bidItem = collectionItems[indexPath.row];
+    
+    [cell setItem:@"$ 10,000" line1:bidItem.relationshipCompany.name line2:[bidItem.relationshipCompany address]];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     

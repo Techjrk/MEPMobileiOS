@@ -10,6 +10,9 @@
 
 @implementation DB_Company
 
-// Insert code here to add functionality to your managed object subclass
+- (NSString *)address {
+    
+    return [NSString stringWithFormat:@"%@, %@", self.county, self.state];
+}
 
 @end

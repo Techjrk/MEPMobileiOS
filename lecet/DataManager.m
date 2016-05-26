@@ -15,6 +15,7 @@
 #import "DB_Company.h"
 #import "DB_Contact.h"
 #import "DB_Project.h"
+#import "DB_Participant.h"
 
 #import "AppDelegate.h"
 #import "BusyViewController.h"
@@ -91,14 +92,25 @@
         record = [DB_Bid createEntity];
     }
     
-    record.isRecentMade = [NSNumber numberWithBool:YES];
     record.recordId = recordId;
     record.awardInd = [NSNumber numberWithBool:[bid[@"awardInd"] boolValue]];
     record.createDate = bid[@"createDate"];
     
-    record.relationshipProject = [self saveManageObjectProject:bid[@"project"]];
-    record.relationshipContact = [self saveManageObjectContact:bid[@"contact"]];
-    record.relationshipCompany = [self saveManageObjectCompany:bid[@"company"]];
+    
+    NSDictionary *project = bid[@"project"];
+    if (project != nil) {
+        record.relationshipProject = [self saveManageObjectProject:project];
+    }
+    
+    NSDictionary *contact = bid[@"contact"];
+    if (contact != nil) {
+        record.relationshipContact = [self saveManageObjectContact:bid[@"contact"]];
+    }
+    
+    NSDictionary *company = bid[@"company"];
+    if (company != nil) {
+        record.relationshipCompany = [self saveManageObjectCompany:company];
+    }
     
     return record;
 }
@@ -195,6 +207,21 @@
         record.projectGroupId = projectGroup[@"id"];
         record.projectGroupTitle = projectGroup[@"title"];
     }
+    
+    NSDictionary *bids = project[@"bids"];
+    if (bids != nil) {
+        for (NSDictionary *bidItem in bids) {
+            [self saveManageObjectBid:bidItem].relationshipProject = record;
+        }
+    }
+    
+    NSDictionary *participants = project[@"contacts"];
+    if (participants != nil) {
+        for (NSDictionary *participant in participants) {
+            //[self saveManageObjectBid:bidItem].relationshipProject = record;
+        }
+    }
+
 
     return record;
 }
@@ -274,7 +301,8 @@
         }
         for (NSDictionary *item in object) {
             
-            [self saveManageObjectBid:item];
+            [self saveManageObjectBid:item].isRecentMade = [NSNumber numberWithBool:YES];
+            
         }
 
         [self saveContext];
@@ -287,7 +315,7 @@
 
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]&projectGroup"];
+    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]&projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
         

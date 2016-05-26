@@ -10,6 +10,4 @@
 
 @implementation DB_Contact
 
-// Insert code here to add functionality to your managed object subclass
-
 @end

@@ -72,5 +72,6 @@
 @dynamic isRecentUpdate;
 @dynamic isRecentAdded;
 @dynamic relationshipBid;
+@dynamic relationshipParticipants;
 
 @end

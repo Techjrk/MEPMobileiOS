@@ -74,6 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *isRecentUpdate;
 @property (nullable, nonatomic, retain) NSString *isRecentAdded;
 @property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
+@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *relationshipParticipants;
 
 @end
 
@@ -83,6 +84,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeRelationshipBidObject:(DB_Bid *)value;
 - (void)addRelationshipBid:(NSSet<DB_Bid *> *)values;
 - (void)removeRelationshipBid:(NSSet<DB_Bid *> *)values;
+
+- (void)addRelationshipParticipantsObject:(NSManagedObject *)value;
+- (void)removeRelationshipParticipantsObject:(NSManagedObject *)value;
+- (void)addRelationshipParticipants:(NSSet<NSManagedObject *> *)values;
+- (void)removeRelationshipParticipants:(NSSet<NSManagedObject *> *)values;
 
 @end
 

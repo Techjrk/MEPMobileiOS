@@ -11,6 +11,9 @@
 #import "SectionTitleView.h"
 #import "ParticipantCollectionViewCell.h"
 
+#import "DB_Bid.h"
+#import "DB_Company.h"
+
 @interface PariticpantsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSLayoutConstraint *constraintHeight;
     NSMutableArray *collectionItems;
@@ -50,9 +53,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
     ParticipantCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    [cell setItem:@"Architect" line1:@"South Tahoe Public Utility District" line2:@"South Lake Tahoe, CA"];
+    
+    DB_Bid *bidItem = collectionItems[indexPath.row];
+    
+    [cell setItem:@"$ 0" line1:bidItem.relationshipCompany.name line2:[bidItem.relationshipCompany address]];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
