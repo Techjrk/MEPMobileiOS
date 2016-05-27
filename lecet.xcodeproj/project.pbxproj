@@ -354,6 +354,8 @@
 		B796161F1CF600460089BC32 /* DB_Participant+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Participant+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B79616201CF600460089BC32 /* DB_Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Participant.h; sourceTree = "<group>"; };
 		B79616211CF600460089BC32 /* DB_Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Participant.m; sourceTree = "<group>"; };
+		B79616471CF841C20089BC32 /* participantsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = participantsConstants.h; sourceTree = "<group>"; };
+		B79616481CF85DA00089BC32 /* projectBidderConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectBidderConstants.h; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -784,6 +786,8 @@
 				B7E104501CECA6D000EAD8E7 /* associatedProjectsConstants.h */,
 				B7E1045B1CECEC7F00EAD8E7 /* contactFieldConstants.h */,
 				B796161D1CF5CCDE0089BC32 /* bidItemRecentConstants.h */,
+				B79616471CF841C20089BC32 /* participantsConstants.h */,
+				B79616481CF85DA00089BC32 /* projectBidderConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";

@@ -10,7 +10,7 @@
 
 #import "SectionTitleView.h"
 #import "ProjectBiddersCollectionViewCell.h"
-
+#import "projectBidderConstants.h"
 #import "DB_Bid.h"
 #import "DB_Company.h"
 
@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet SectionTitleView *titleView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
+- (IBAction)tappedButtonSeeAll:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintButtonSeeAll;
 @end
 
 @implementation ProjectBidderView
@@ -33,6 +36,9 @@
     [super awakeFromNib];
     [_titleView setTitle:NSLocalizedLanguage(@"PROJECTBIDDER_VIEW_TITLE")];
     _constraintTitleHeight.constant = kDeviceHeight * 0.05;
+
+    [_buttonSeeAll setTitleColor:PROJECTBIDDERS_COLOR forState:UIControlStateNormal];
+    _buttonSeeAll.titleLabel.font = PROJECTBIDDERS_FONT;
 
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectBiddersCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 
@@ -46,6 +52,11 @@
     collectionItems = items;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    
+    _contraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.06):0;
+    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECTBIDDER_VIEW_BIDDERS"), items.count ]forState:UIControlStateNormal];
+
+    
     [_collectionView reloadData];
 }
 
@@ -73,7 +84,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     NSInteger count = collectionItems.count;
-    return count;
+    return count>3?3:count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -111,7 +122,9 @@
 
 - (void)layoutSubviews {
     if (cellHeight>0) {
-        constraintHeight.constant = collectionItems.count * cellHeight + _titleView.frame.size.height;
+        
+        NSInteger count = collectionItems.count>3?3:collectionItems.count;
+        constraintHeight.constant = (count * cellHeight) + _titleView.frame.size.height + _buttonSeeAll.frame.size.height;
     }
 }
 
@@ -121,4 +134,7 @@
     [super removeFromSuperview];
 }
 
+- (IBAction)tappedButtonSeeAll:(id)sender {
+    
+}
 @end
