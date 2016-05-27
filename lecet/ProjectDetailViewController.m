@@ -231,7 +231,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 - (void)selectedStateViewItem:(StateView)stateView {
     
-    
     if (stateView == StateViewShare) {
         
         [self showOrHideDropDownShareListMenu];
@@ -250,7 +249,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
         
     }
-    
     
     
     

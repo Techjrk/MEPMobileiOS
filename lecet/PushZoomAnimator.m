@@ -42,7 +42,7 @@
         controller.view.frame = endRect;
         
     } completion:^(BOOL finished) {
-        [[UIApplication sharedApplication].keyWindow addSubview:toViewController.view];
+        //[[UIApplication sharedApplication].keyWindow addSubview:toViewController.view];
         if (finished) {
             [transitionContext completeTransition:finished];
         }

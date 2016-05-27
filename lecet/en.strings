@@ -55,9 +55,11 @@
 
 //ParticipantsView.xib
 "PARTICIPANTS_VIEW_TITLE"                   =               "Participants";
+"PARTICIPANTS_VIEW_PARTICIPANTS"            =               "View All %li Participants";
 
 //ProjectBidderView.xib
 "PROJECTBIDDER_VIEW_TITLE"                  =               "Project Bidders";
+"PROJECTBIDDER_VIEW_BIDDERS"                =               "View All %li Bidders";
 
 
 //DropDownMenu.xib

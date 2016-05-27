@@ -10,7 +10,7 @@
 
 #import "SectionTitleView.h"
 #import "ParticipantCollectionViewCell.h"
-
+#import "participantsConstants.h"
 #import "DB_Participant.h"
 
 @interface PariticpantsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet SectionTitleView *titleView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
+- (IBAction)tappedButtonSeeAll:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonSeeAll;
 @end
 
 @implementation PariticpantsView
@@ -32,7 +35,9 @@
     [super awakeFromNib];
     [_titleView setTitle:NSLocalizedLanguage(@"PARTICIPANTS_VIEW_TITLE")];
     _constraintTitleHeight.constant = kDeviceHeight * 0.05;
-    
+
+    [_buttonSeeAll setTitleColor:PARTICIPANTS_COLOR forState:UIControlStateNormal];
+    _buttonSeeAll.titleLabel.font = PARTICIPANTS_FONT;
     [_collectionView registerNib:[UINib nibWithNibName:[[ParticipantCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 
 }
@@ -45,6 +50,10 @@
     collectionItems = items;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    
+    _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.06):0;
+    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PARTICIPANTS_VIEW_PARTICIPANTS"), items.count ]forState:UIControlStateNormal];
+
     [_collectionView reloadData];
 }
 
@@ -71,7 +80,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     NSInteger count = collectionItems.count;
-    return count;
+    return count>3?3:count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -108,8 +117,11 @@
 
 - (void)layoutSubviews {
     if (cellHeight>0) {
-        constraintHeight.constant = collectionItems.count * cellHeight + _titleView.frame.size.height + (kDeviceHeight * 0.028);
+        NSInteger count = collectionItems.count>3?3:collectionItems.count;
+        constraintHeight.constant = count * cellHeight + _titleView.frame.size.height + _buttonSeeAll.frame.size.height;
     }
 }
 
+- (IBAction)tappedButtonSeeAll:(id)sender {
+}
 @end
