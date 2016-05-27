@@ -33,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-NK-j23">
-                    <rect key="frame" x="83" y="64" width="139" height="35"/>
+                    <rect key="frame" x="83" y="67" width="139" height="35"/>
                     <color key="backgroundColor" red="0.0" green="0.2470588235" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="oJ0-Db-CnE"/>
@@ -47,7 +47,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMs-8v-WGi">
-                    <rect key="frame" x="117" y="109" width="72" height="32"/>
+                    <rect key="frame" x="117" y="112" width="72" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="72" id="PjL-d8-9Vt"/>
                         <constraint firstAttribute="height" constant="32" id="otT-EC-Wuq"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="EMs-8v-WGi" firstAttribute="top" secondItem="CxY-NK-j23" secondAttribute="bottom" constant="10" id="LZc-9S-m7p"/>
                 <constraint firstItem="CxY-NK-j23" firstAttribute="centerX" secondItem="8Mp-Bw-wuj" secondAttribute="centerX" id="Mfh-67-OBJ"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Ovy-8A-sRh"/>
-                <constraint firstAttribute="bottom" secondItem="EMs-8v-WGi" secondAttribute="bottom" constant="14" id="W9v-xg-Tlx"/>
+                <constraint firstAttribute="bottom" secondItem="EMs-8v-WGi" secondAttribute="bottom" constant="11" id="W9v-xg-Tlx"/>
                 <constraint firstItem="8Mp-Bw-wuj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eZ7-dL-8z8"/>
                 <constraint firstAttribute="trailing" secondItem="8Mp-Bw-wuj" secondAttribute="trailing" constant="20" id="rQQ-yc-knS"/>
             </constraints>
