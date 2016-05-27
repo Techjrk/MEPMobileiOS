@@ -117,7 +117,7 @@
         
         _constraintButtonHideProjectHeight.constant = 30;
         _constraintHideProjectLeading.constant = 60;
-        _constraintCancelButtonBottom.constant = 15;
+        _constraintCancelButtonBottom.constant = 12;
         _constraintCancelHeight.constant = 22;
     }
     
