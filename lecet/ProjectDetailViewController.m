@@ -24,10 +24,13 @@
 
 #import "DropDownMenuShareList.h"
 #import "DropDownProjectList.h"
-#import "ProjectDetailStateView.h"
+
 
 #import "DB_Project.h"
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,DropDownProjectListDelegate,ProjectDetailStateDelegate,PariticipantsDelegate, ProjectBidderDelegate>{
+
+#import "ProjectDetailStateViewController.h"
+
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,DropDownProjectListDelegate,PariticipantsDelegate, ProjectBidderDelegate>{
 
 
 
@@ -69,15 +72,10 @@
 
 @property (weak,nonatomic) IBOutlet DropDownProjectList *dropDownProjectListView;
 
-@property (weak,nonatomic) IBOutlet ProjectDetailStateView * projectDetailStateView;
-
-@property (weak, nonatomic) IBOutlet UIView *dimProjectDetailStateView;
 
 @property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPrjectDetailStateHeight;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintProjectDetailStateTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDropDownShareHeight;
 
 @end
@@ -118,12 +116,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _dropDownProjectListView.dropDownProjectListDelegate = self;
     isDropDownProjectListHidden = YES;
     
-    //ProjectDetailStateView
-    isProjectDetailStateHidden = YES;
-    _projectDetailStateView.projectDetailStateDelegate = self;
-    
-    
-    
+
     
     [self addTappedGestureForDimBackground];
 
@@ -243,9 +236,14 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
     }else if (stateView == StateViewHide){
         
+        
+        /*
         [self hideDropDownProjectList];
         [self hideDropDownShareList];
         [self showOrHideDropDownProjectDetailState];
+        */
+        
+        [self tappedProjectDetailStateHide];
         
         
     }
@@ -362,7 +360,9 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
     }else{
     
-        [self hideDropDownProjectList];
+        //[self hideDropDownProjectList];
+        
+        
         
     }
     
@@ -381,108 +381,32 @@ static const float animationDurationForDropDowMenu = 1.0f;
 #pragma mark - Project Detail State Delegate
 
 
-- (void)tappedProjectDetailState:(ProjectDetailStateItem)projectDetailStteItem{
+- (void)tappedProjectDetailStateHide{
+    ProjectDetailStateViewController *controller = [ProjectDetailStateViewController new];
     
+    //controller.view.hidden = NO;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
-    if (projectDetailStteItem == ProjectDetailStateCancel) {
-        
-        _projectDetailStateView.alpha  = 1.0f;
-        _dimProjectDetailStateView.alpha = 1.0f;
-        
-        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-            _projectDetailStateView.alpha  = 0.0f;
-            _dimProjectDetailStateView.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                
-                [self hideProjectDetailStateView];
-                
-            }
-        }];
-        
-        [_projectState clearSelection];
-
-        
-    }else{
-         [[DataManager sharedManager] promptMessage:@"Hide Project been Tapped"];
-        
-    }
+    [self presentViewController:controller animated:YES completion:nil];
     
 }
 
 
-- (void)showOrHideDropDownProjectDetailState{
-    if (isProjectDetailStateHidden) {
-        
-        _projectDetailStateView.alpha  = 0.0f;
-        _dimProjectDetailStateView.alpha = 0.0f;
-        [_projectDetailStateView setHidden:NO];
-        [_dimProjectDetailStateView setHidden:NO];
-        
-    
-        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-            _projectDetailStateView.alpha  = 1.0f;
-            _dimProjectDetailStateView.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                isProjectDetailStateHidden = NO;
-                
-            }
-        }];
 
 
-        
-    }else{
-        
-        
-        _projectDetailStateView.alpha  = 1.0f;
-        _dimProjectDetailStateView.alpha = 1.0f;
-        
-        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-            _projectDetailStateView.alpha  = 0.0f;
-            _dimProjectDetailStateView.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            if (finished) {
-           
-                [self hideProjectDetailStateView];
-                
-            }
-        }];
-
-        
-        
-        
-    }
-    
-}
-
-
-- (void)hideProjectDetailStateView{
-    
-    isProjectDetailStateHidden = YES;
-    [_projectDetailStateView setHidden:YES];
-    [_dimProjectDetailStateView setHidden:YES];
-
-    
-}
 
 
 - (void)setAutoLayConstraintInIncompatibleDevice{
     
     if (isiPhone4) {
-        _constraintPrjectDetailStateHeight.constant = 140;
-        _constraintProjectDetailStateTop.constant = 150;
-        
         //Share List
         _constraintDropDownShareHeight.constant = 90;
     }
     
     
     if (isiPhone5) {
-        //Project List
-        _constraintPrjectDetailStateHeight.constant = 140;
-        _constraintProjectDetailStateTop.constant = 172;
-        
+
         
         //Share List
         _constraintDropDownShareHeight.constant = 90;
@@ -496,10 +420,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 - (void)addTappedGestureForDimBackground{
     
-    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectDetailStateView)];
-    tapped.numberOfTapsRequired = 1;
-    [_projectDetailStateView addGestureRecognizer:tapped];
-    
+
     [[Utilities sharedIntances] addTappGesture:@selector(hideAllDropDownMenu) numberOfTapped:1 targetView:_dimProjectMenuContainerView target:self];
     
 }
@@ -521,21 +442,16 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
         viewThatIsVisible = _dropDownShareListView;
     }
-    if (!isProjectDetailStateHidden){
-        
-        viewThatIsVisible = _projectDetailStateView;
-    }
-    
     
     [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
         viewThatIsVisible.alpha  = 0.0f;
-        _dimProjectDetailStateView.alpha = 0.0f;
+
     } completion:^(BOOL finished) {
         if (finished) {
             
             [self hideDropDownShareList];
             [self hideDropDownProjectList];
-            [self hideProjectDetailStateView];
+  
             [_dimProjectMenuContainerView setHidden:YES];
             
         }

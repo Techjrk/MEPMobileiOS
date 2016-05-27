@@ -104,10 +104,6 @@
     
 }
 
-
-
-
-
 - (void)adjustConstraintForIncompatibleDevies{
     
     if (isiPhone5 || isiPhone4) {
@@ -118,8 +114,6 @@
         _constraintEmailImageBottom.constant = 6;
         
     }
-    
-        
     
 }
 

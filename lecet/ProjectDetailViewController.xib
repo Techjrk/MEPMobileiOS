@@ -20,10 +20,7 @@
                 <outlet property="constraintFieldProjectID" destination="Qbt-eR-sPJ" id="RAJ-pJ-8BI"/>
                 <outlet property="constraintFieldProjectType" destination="58K-WT-52Z" id="uKI-W0-y3f"/>
                 <outlet property="constraintFieldStage" destination="I7u-mG-4HD" id="YT7-LQ-hbP"/>
-                <outlet property="constraintPrjectDetailStateHeight" destination="8cc-oS-k6C" id="Q5l-dZ-5YK"/>
-                <outlet property="constraintProjectDetailStateTop" destination="qsy-eM-cMp" id="D05-LH-GUe"/>
                 <outlet property="containerView" destination="Y8l-w9-9Lk" id="d5y-HW-kdp"/>
-                <outlet property="dimProjectDetailStateView" destination="LY7-cO-8uH" id="bnf-8B-x1g"/>
                 <outlet property="dimProjectMenuContainerView" destination="Jin-vn-rnY" id="TfF-ko-Hb2"/>
                 <outlet property="dropDownProjectListView" destination="Aj4-dO-diT" id="Ht6-Kq-r5i"/>
                 <outlet property="dropDownShareListView" destination="OqE-4m-T6K" id="K9A-Lm-an7"/>
@@ -37,7 +34,6 @@
                 <outlet property="notesView" destination="ZiS-Ms-5tj" id="MYk-At-TZP"/>
                 <outlet property="participantsView" destination="Yvc-qB-JBc" id="nDW-VE-IWm"/>
                 <outlet property="projectBidder" destination="wye-8d-g1S" id="4MN-n6-rmS"/>
-                <outlet property="projectDetailStateView" destination="JAk-VJ-a0r" id="p8e-6u-wVy"/>
                 <outlet property="projectState" destination="dXA-h2-8gS" id="zkk-o1-kVs"/>
                 <outlet property="scrollView" destination="sxs-xz-Nnu" id="m0e-gQ-s6Q"/>
                 <outlet property="seeAllView" destination="y8n-K4-TIP" id="k8C-Xf-1i4"/>
@@ -252,24 +248,6 @@
                         </mask>
                     </variation>
                 </scrollView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LY7-cO-8uH">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
-                    <subviews>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAk-VJ-a0r" customClass="ProjectDetailStateView">
-                            <rect key="frame" x="30" y="206" width="315" height="160"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="160" id="8cc-oS-k6C"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="JAk-VJ-a0r" secondAttribute="trailing" constant="30" id="WoD-e2-y9t"/>
-                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="top" secondItem="LY7-cO-8uH" secondAttribute="top" constant="206" id="qsy-eM-cMp"/>
-                        <constraint firstItem="JAk-VJ-a0r" firstAttribute="leading" secondItem="LY7-cO-8uH" secondAttribute="leading" constant="30" id="x6D-xY-R7w"/>
-                    </constraints>
-                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jin-vn-rnY">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                     <subviews>
@@ -307,14 +285,10 @@
                 <constraint firstAttribute="trailing" secondItem="Jin-vn-rnY" secondAttribute="trailing" id="FCO-rw-onv"/>
                 <constraint firstItem="Gws-3k-Zp2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="KrY-HO-pbe"/>
                 <constraint firstItem="YnS-qN-9py" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="MbD-eT-wJR"/>
-                <constraint firstItem="LY7-cO-8uH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N2n-rl-9fc"/>
-                <constraint firstAttribute="bottom" secondItem="LY7-cO-8uH" secondAttribute="bottom" id="PoV-Dq-Bpa"/>
                 <constraint firstItem="0xf-0o-iWM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="PrN-4p-Zrv"/>
                 <constraint firstItem="y8n-K4-TIP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="StU-Ai-CAL"/>
-                <constraint firstAttribute="trailing" secondItem="LY7-cO-8uH" secondAttribute="trailing" id="Uoo-2D-BoV"/>
                 <constraint firstItem="Y8l-w9-9Lk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Zim-is-DAl"/>
                 <constraint firstItem="sxs-xz-Nnu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bXH-D7-n7Z"/>
-                <constraint firstItem="LY7-cO-8uH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bbB-l9-xP7"/>
                 <constraint firstItem="Jin-vn-rnY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bk6-ak-GYW"/>
                 <constraint firstItem="Cx4-Ns-3v6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.02" id="cB4-fL-Llz"/>
                 <constraint firstItem="dXA-h2-8gS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.055" id="cGb-uz-EdI"/>
