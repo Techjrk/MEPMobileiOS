@@ -48,15 +48,17 @@
 
 - (void)setItems:(NSMutableArray*)items {
     collectionItems = items;
+    
+    constraintHeight.constant = 0;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     
-    _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.06):0;
+    _constraintButtonSeeAll.constant = items.count>3? (kDeviceHeight * 0.06):(kDeviceHeight * 0.02);
     _buttonSeeAll.enabled = items.count>3;
     if (_buttonSeeAll.enabled) {
         [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PARTICIPANTS_VIEW_PARTICIPANTS"), items.count ]forState:UIControlStateNormal];
     }else {
-        [_buttonSeeAll setTitle:@"" forState:UIControlStateNormal];
+        _buttonSeeAll.hidden = YES;
     }
 
     [_collectionView reloadData];
@@ -123,7 +125,9 @@
 #pragma mark - View
 
 - (void)layoutSubviews {
-    if (cellHeight>0) {
+    if (collectionItems.count == 0) {
+        constraintHeight.constant = 0;
+    } else if (cellHeight>0) {
         NSInteger count = collectionItems.count>3?3:collectionItems.count;
         constraintHeight.constant = count * cellHeight + _titleView.frame.size.height + _buttonSeeAll.frame.size.height;
     }

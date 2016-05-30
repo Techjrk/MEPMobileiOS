@@ -48,9 +48,14 @@
     collectionItems = items;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    constraintHeight.constant = 0;
+    _constraintButtonSeeAll.constant = items.count>3?(kDeviceHeight * 0.04):0;
     
-    _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.04):0;
-    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"ASSOCIATED_PROJECTS_ALL"), items.count ]forState:UIControlStateNormal];
+    if (_constraintButtonSeeAll.constant == 0) {
+        _buttonSeeAll.hidden = YES;
+    } else {
+        [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"ASSOCIATED_PROJECTS_ALL"), items.count ]forState:UIControlStateNormal];
+    }
 
     [_collectionView reloadData];
 }

@@ -16,4 +16,6 @@
 @interface ChartView : BaseViewClass
 @property (strong, nonatomic) id<ChartViewDelegate>chartViewDelegate;
 - (void)setSegmentItems:(NSMutableDictionary*)items;
+- (void)hideLeftButton:(BOOL)hide;
+- (void)hideRightButton:(BOOL)hide;
 @end

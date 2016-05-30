@@ -27,6 +27,7 @@
 
 #import "DB_Project.h"
 #import "DB_Company.h"
+#import "DB_Participant.h"
 #import "ProjectDetailStateViewController.h"
 
 @interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,DropDownProjectListDelegate,PariticipantsDelegate, ProjectBidderDelegate>{
@@ -189,11 +190,10 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
-    NSMutableArray *bidItems = [[project.relationshipBid allObjects] mutableCopy];
+    NSMutableArray *bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
     [_projectBidder setItems:bidItems];
-
-    NSMutableArray *participants = [[project.relationshipParticipants allObjects] mutableCopy];
-    
+ 
+    NSMutableArray *participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];
     [_participantsView setItems:participants];
 }
 
@@ -273,12 +273,12 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (void)tappedParticipant:(id)object {
-    DB_Company *record = object;
+    DB_Participant *record = object;
     
-    [[DataManager sharedManager] companyDetail:record.recordId success:^(id object) {
+    [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         CompanyDetailViewController *controller = [CompanyDetailViewController new];
         controller.view.hidden = NO;
-        [controller setInfo:record];
+        [controller setInfo:object];
         [self.navigationController pushViewController:controller animated:YES];
     } failure:^(id object) {
         

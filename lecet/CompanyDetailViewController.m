@@ -112,14 +112,25 @@
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
 
-    NSArray *contactItem = @[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}];
+    
+    NSMutableArray *contactItem = [NSMutableArray new];
+    //NSArray *contactItem = @[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}];
 
-    [_fieldCompanyState setItems:[contactItem mutableCopy]];
-    [_fieldAssociatedProjects setItems:[@[@"", @"", @"", @"", @"", @""]mutableCopy]];
+    if ( record.wwwUrl != nil ) {
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:record.wwwUrl}];
+    }
+    
+    [_fieldCompanyState setItems:contactItem];
+
+    NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
+    [_fieldAssociatedProjects setItems:associatedProjects];
     
     
-    [_fieldContacts setItems:[@[@"", @"", @"", @""]mutableCopy]];
-    [_fieldProjectBidList setItems:[@[@"", @"", @"", @""]mutableCopy]];
+    NSMutableArray *contacts = [record.relationshipCompanyContact allObjects]!= nil? [[record.relationshipCompanyContact allObjects] mutableCopy ]:[NSMutableArray new];
+    [_fieldContacts setItems:contacts];
+    
+    NSMutableArray *bidList = [@[@"", @"", @"", @""]mutableCopy];
+    [_fieldProjectBidList setItems:bidList];
     
 }
 

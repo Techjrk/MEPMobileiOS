@@ -58,6 +58,7 @@
 - (void)setItems:(NSMutableArray*)items {
     collectionItems = items;
     cellHeight = 0;
+    constraintHeight.constant = 0;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     
@@ -131,10 +132,9 @@
     
     if (cellHeight>0) {
         NSInteger itemCount = collectionItems.count;
-        
-        CGFloat f = (itemCount * cellHeight) + _buttonTrack.frame.size.height;
         constraintHeight.constant = (itemCount * cellHeight) + _buttonTrack.frame.size.height;
-        f = f;
+    } else {
+        constraintHeight.constant = _buttonTrack.frame.size.height;
     }
 }
 

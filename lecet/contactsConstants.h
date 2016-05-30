@@ -22,4 +22,8 @@
 
 #define CONTACT_SHADOW_COLOR                    RGB(0, 0, 0)
 
+#define CONTACTS_LIST_BUTTON_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define CONTACTS_LIST_BUTTON_COLOR              RGB(121, 120, 120)
+
+
 #endif /* contactsConstants_h */

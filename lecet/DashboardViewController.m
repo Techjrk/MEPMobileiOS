@@ -115,6 +115,8 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [self layoutDropDownMenuChange];
     
+    [_chartRecentlyMade hideLeftButton:YES];
+    [_chartRecentlyUpdated hideRightButton:YES];
 
 }
 

@@ -61,6 +61,8 @@
 "PROJECTBIDDER_VIEW_TITLE"                  =               "Project Bidders";
 "PROJECTBIDDER_VIEW_BIDDERS"                =               "View All %li Bidders";
 
+//ContactsView.xib
+"PROJECT_CONTACTS_VIEW_ALL"                 =               "View All %li Contacts";
 
 //DropDownMenu.xib
 "DROPDOWNMENU_MYPROFILE_BUTTON_TEXT"        =               "My Profile";

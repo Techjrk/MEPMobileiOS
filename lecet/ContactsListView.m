@@ -10,6 +10,9 @@
 
 #import "SectionTitleView.h"
 #import "ContactItemCollectionViewCell.h"
+#import "DB_CompanyContact.h"
+#import "contactsConstants.h"
+#import "DB_Company.h"
 
 @interface ContactsListView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;
@@ -21,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSpacerHeight;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSeeAllHeight;
 @end
 
 @implementation ContactsListView
@@ -31,6 +36,10 @@
     _constraintTitleHeight.constant = kDeviceHeight * 0.05;
     _constraintSpacerHeight.constant = kDeviceHeight * 0.015;
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    
+    [_buttonSeeAll setTitleColor:CONTACTS_LIST_BUTTON_COLOR forState:UIControlStateNormal];
+    _buttonSeeAll.titleLabel.font = CONTACTS_LIST_BUTTON_FONT;
+
 }
 
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint {
@@ -39,6 +48,16 @@
 
 - (void)setItems:(NSMutableArray*)items {
     collectionItems = items;
+    constraintHeight.constant = 0;
+    
+    _constraintSeeAllHeight.constant = items.count>3? (kDeviceHeight * 0.04):0;
+    
+    if (_constraintSeeAllHeight.constant == 0) {
+        _buttonSeeAll.hidden = YES;
+    } else {
+        [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECT_CONTACTS_VIEW_ALL"), items.count ]forState:UIControlStateNormal];
+    }
+
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView reloadData];
@@ -49,7 +68,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ContactItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    //[cell setItem:@"$ 10,000" line1:@"Abhe & Svoboda, Inc" line2:@"Prior Lake, MN"];
+    
+    //DB_CompanyContact *item = collectionItems[indexPath.row];
+
+    
+    //[cell setItemInfo:@{CONTACT_NAME:item.name, CONTACT_COMPANY:item.relationshipCompany.name}];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
@@ -63,7 +86,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    NSInteger count = collectionItems.count;
+    NSInteger count = collectionItems.count>3?3:collectionItems.count;
     return count;
 }
 
@@ -103,7 +126,8 @@
 
 - (void)layoutSubviews {
     if (cellHeight>0) {
-        constraintHeight.constant = (collectionItems.count * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _viewSpacer.frame.size.height;
+        NSInteger count = collectionItems.count>3?3:collectionItems.count;
+        constraintHeight.constant = (count * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _viewSpacer.frame.size.height + _buttonSeeAll.frame.size.height;
     }
 }
 
