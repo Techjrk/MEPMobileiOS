@@ -30,10 +30,9 @@
     _labelHeader.textColor = MENUHEADER_LABEL_HEADER_COLOR;
 
     
-    _labelCount.font = MENUHEADER_LABEL_COUNT_FONT;
-    //_labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), 12];
-    _labelCount.text = @"";
+    _labelCount.font = MENUHEADER_LABEL_TEXT_FONT;
     _labelCount.textColor = MENUHEADER_LABEL_COUNT_COLOR;
+    _labelCount.text = @"";
     
     _buttonNear.tag = MenuHeaderNear;
     _buttonTracking.tag = MenuHeaderTrack;
@@ -42,8 +41,12 @@
 
 }
 
-- (void)setTitle:(NSString*)title {
-    _labelCount.text = title;
+- (void)setTitleFromCount:(NSInteger)count title:(NSString*)title {
+    NSMutableAttributedString *titleCount = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%li ", count] attributes:@{NSFontAttributeName:MENUHEADER_LABEL_NUMBER_FONT, NSForegroundColorAttributeName:MENUHEADER_LABEL_COUNT_COLOR}];
+    
+    [titleCount appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:@{NSFontAttributeName:MENUHEADER_LABEL_TEXT_FONT, NSForegroundColorAttributeName:MENUHEADER_LABEL_COUNT_COLOR}]];
+    
+    _labelCount.attributedText = titleCount;
     
 }
 - (IBAction)tappedButtonMenu:(id)sender {

@@ -99,8 +99,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     [self requestBidRecentlyUpdated];
     [self requestBidRecentlyAdded];
     
-    [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
-    
+    [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT")];
     [_bidsCollectionView reloadData];
 
     [_calendarView reloadData];
@@ -439,7 +438,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
         switch (currentPage) {
             case 0: {
                 currentBidItems = bidItemsRecentlyMade;
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
+                [_menuHeader setTitleFromCount:currentBidItems.count  title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT")];
                 break;
             }
             case 1: {
@@ -451,18 +450,22 @@ static const float animationDurationForDropDowMenu = 1.0f;
                 _calendarView.customCalendarDelegate = self;
                 [_calendarView reloadData];
 
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_SOON_TEXT"), currentBidItems.count ]];
+                [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_SOON_TEXT")];
                 break;
             }
             case 2: {
                 
                 currentBidItems = bidItemsRecentlyAdded;
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT"), currentBidItems.count ]];
+                
+                [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT")];
+                
                 break;
             }
             case 3: {
                 currentBidItems = [self loadBidsRecentlyUpdated];
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"), currentBidItems.count ]];
+                
+                [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_UPDATED_TEXT")];
+                
                 break;
                 
             }
