@@ -39,6 +39,7 @@
     NSInteger currentPage;
     NSMutableArray *bidItemsRecentlyMade;
     NSMutableArray *bidItemsHappeningSoon;
+    NSMutableArray *bidItemsRecentlyAdded;
     NSMutableArray *bidItemsRecentlyUpdated;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
@@ -48,6 +49,7 @@
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
+@property (weak, nonatomic) IBOutlet ChartView *chartRecentlyAdded;
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
@@ -95,6 +97,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     currentBidItems = [self loadBidsRecentlyMade];
     [self requestBidsHappeningSoon];
     [self requestBidRecentlyUpdated];
+    [self requestBidRecentlyAdded];
     
     [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
     
@@ -232,6 +235,15 @@ static const float animationDurationForDropDowMenu = 1.0f;
     }];
 }
 
+- (void)requestBidRecentlyAdded {
+    [[DataManager sharedManager] bidsRecentlyAddedLimit:@(100) success:^(id object) {
+        [self loadBidsRecentlyAdded];
+    } failure:^(id object) {
+        
+    }];
+}
+
+
 - (NSMutableArray*)loadBidsRecentlyUpdated {
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND projectGroupId IN %@", kCategory];
@@ -256,6 +268,32 @@ static const float animationDurationForDropDowMenu = 1.0f;
     [_chartRecentlyUpdated setSegmentItems:segment];
     return bidItemsRecentlyUpdated;
 }
+
+- (NSMutableArray*)loadBidsRecentlyAdded {
+    NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND projectGroupId IN %@", kCategory];
+    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    
+    
+    for (DB_Project *item in bidItemsRecentlyAdded) {
+        
+        NSString *tag = [NSString stringWithFormat:@"%li", (long)item.projectGroupId.integerValue];
+        NSMutableDictionary *itemDict = segment[tag];
+        
+        if (itemDict == nil) {
+            itemDict = [@{CHART_SEGMENT_COUNT:@(0)} mutableCopy];
+        }
+        NSNumber *number = itemDict[CHART_SEGMENT_COUNT];
+        itemDict[CHART_SEGMENT_COUNT] = @(number.integerValue + 1);
+        segment[tag] = itemDict;
+        
+    }
+    
+    [self createSegmentTagForChart:segment count:bidItemsRecentlyAdded.count];
+    [_chartRecentlyAdded setSegmentItems:segment];
+    return bidItemsRecentlyAdded;
+}
+
 
 
 #pragma mark - UICollectionView source and delegate
@@ -416,7 +454,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
             }
             case 2: {
                 
-                currentBidItems = [NSMutableArray new];
+                currentBidItems = bidItemsRecentlyAdded;
                 [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT"), currentBidItems.count ]];
                 break;
             }

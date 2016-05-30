@@ -2,7 +2,7 @@
 //  DB_Company+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/23/16.
+//  Created by Harry Herrys Camigla on 5/27/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -33,7 +33,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *recordId;
 @property (nullable, nonatomic, retain) NSString *createdAt;
 @property (nullable, nonatomic, retain) NSString *updatedAt;
-@property (nullable, nonatomic, retain) NSManagedObject *relationshipBid;
+@property (nullable, nonatomic, retain) DB_Bid *relationshipBid;
+@property (nullable, nonatomic, retain) NSSet<DB_CompanyContact *> *relationshipCompanyContact;
+
+@end
+
+@interface DB_Company (CoreDataGeneratedAccessors)
+
+- (void)addRelationshipCompanyContactObject:(DB_CompanyContact *)value;
+- (void)removeRelationshipCompanyContactObject:(DB_CompanyContact *)value;
+- (void)addRelationshipCompanyContact:(NSSet<DB_CompanyContact *> *)values;
+- (void)removeRelationshipCompanyContact:(NSSet<DB_CompanyContact *> *)values;
 
 @end
 

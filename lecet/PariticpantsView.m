@@ -52,7 +52,12 @@
     _collectionView.dataSource = self;
     
     _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.06):0;
-    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PARTICIPANTS_VIEW_PARTICIPANTS"), items.count ]forState:UIControlStateNormal];
+    _buttonSeeAll.enabled = items.count>3;
+    if (_buttonSeeAll.enabled) {
+        [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PARTICIPANTS_VIEW_PARTICIPANTS"), items.count ]forState:UIControlStateNormal];
+    }else {
+        [_buttonSeeAll setTitle:@"" forState:UIControlStateNormal];
+    }
 
     [_collectionView reloadData];
 }
@@ -110,7 +115,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.pariticipantsDelegate tappedParticipant:nil];
+    DB_Participant *participantItem = collectionItems[indexPath.row];
+
+    [self.pariticipantsDelegate tappedParticipant:participantItem];
 }
 
 #pragma mark - View

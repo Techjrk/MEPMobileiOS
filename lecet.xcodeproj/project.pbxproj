@@ -116,6 +116,8 @@
 		B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B796161A1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib */; };
 		B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B796161F1CF600460089BC32 /* DB_Participant+CoreDataProperties.m */; };
 		B79616231CF600460089BC32 /* DB_Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616211CF600460089BC32 /* DB_Participant.m */; };
+		B796164D1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */; };
+		B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -361,6 +363,10 @@
 		B79616211CF600460089BC32 /* DB_Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Participant.m; sourceTree = "<group>"; };
 		B79616471CF841C20089BC32 /* participantsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = participantsConstants.h; sourceTree = "<group>"; };
 		B79616481CF85DA00089BC32 /* projectBidderConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectBidderConstants.h; sourceTree = "<group>"; };
+		B79616491CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_CompanyContact+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_CompanyContact+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B796164B1CF892DF0089BC32 /* DB_CompanyContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_CompanyContact.h; sourceTree = "<group>"; };
+		B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_CompanyContact.m; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -862,6 +868,10 @@
 			isa = PBXGroup;
 			children = (
 				B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */,
+				B79616491CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.h */,
+				B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */,
+				B796164B1CF892DF0089BC32 /* DB_CompanyContact.h */,
+				B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */,
 				B796161E1CF600460089BC32 /* DB_Participant+CoreDataProperties.h */,
 				B796161F1CF600460089BC32 /* DB_Participant+CoreDataProperties.m */,
 				B79616201CF600460089BC32 /* DB_Participant.h */,
@@ -1143,6 +1153,7 @@
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
+				B796164D1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
@@ -1173,6 +1184,7 @@
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
+				B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */,
 				B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */,
 				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
 				B6972B831CF327AF0092D5CD /* DropDownProjectList.m in Sources */,

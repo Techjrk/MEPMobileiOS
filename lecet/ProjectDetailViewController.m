@@ -25,9 +25,8 @@
 #import "DropDownMenuShareList.h"
 #import "DropDownProjectList.h"
 
-
 #import "DB_Project.h"
-
+#import "DB_Company.h"
 #import "ProjectDetailStateViewController.h"
 
 @interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,DropDownProjectListDelegate,PariticipantsDelegate, ProjectBidderDelegate>{
@@ -248,7 +247,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     }
     
     
-    
+
     
     
 }
@@ -274,10 +273,16 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (void)tappedParticipant:(id)object {
-    CompanyDetailViewController *controller = [CompanyDetailViewController new];
-    controller.view.hidden = NO;
-    [controller setInfo:nil];
-    [self.navigationController pushViewController:controller animated:YES];
+    DB_Company *record = object;
+    
+    [[DataManager sharedManager] companyDetail:record.recordId success:^(id object) {
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:record];
+        [self.navigationController pushViewController:controller animated:YES];
+    } failure:^(id object) {
+        
+    }];
 
 }
 
@@ -460,10 +465,17 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 
 - (void)tappedProjectBidder:(id)object {
-    CompanyDetailViewController *controller = [CompanyDetailViewController new];
-    controller.view.hidden = NO;
-    [controller setInfo:nil];
-    [self.navigationController pushViewController:controller animated:YES];
+    DB_Bid *bid = object;
+    
+    [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:object];
+        [self.navigationController pushViewController:controller animated:YES];
+    } failure:^(id object) {
+        
+    }];
+
     
 }
 

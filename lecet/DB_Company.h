@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DB_CompanyContact, DB_Bid;
+
 @interface DB_Company : DerivedNSManagedObject
 
 - (NSString *)address;

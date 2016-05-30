@@ -54,9 +54,13 @@
     _collectionView.dataSource = self;
     
     _contraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.06):0;
-    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECTBIDDER_VIEW_BIDDERS"), items.count ]forState:UIControlStateNormal];
+    _buttonSeeAll.enabled = items.count>3;
+    if (_buttonSeeAll.enabled) {
+        [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECTBIDDER_VIEW_BIDDERS"), items.count ]forState:UIControlStateNormal];
+    } else {
+        [_buttonSeeAll setTitle:@"" forState:UIControlStateNormal];
+    }
 
-    
     [_collectionView reloadData];
 }
 
@@ -115,7 +119,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.projectBidderDelegate tappedProjectBidder:nil];
+    [self.projectBidderDelegate tappedProjectBidder:collectionItems[indexPath.row]];
 }
 
 #pragma mark - View

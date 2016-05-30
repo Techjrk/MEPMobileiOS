@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/25/16.
+//  Created by Harry Herrys Camigla on 5/30/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
