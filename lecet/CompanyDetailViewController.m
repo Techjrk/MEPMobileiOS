@@ -24,7 +24,7 @@
 #import "DB_Bid.h"
 #import "DB_Contact.h"
 
-@interface CompanyDetailViewController ()<CompanyHeaderDelegate>{
+@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate>{
     BOOL isShownContentAdjusted;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -58,6 +58,7 @@
     self.view.hidden = YES;
     
     _companyHeader.companyCampanyHeaderDelegate = self;
+    _fieldCompanyState.companyStateDelegate = self;
     _containerView.backgroundColor = COMPANY_DETAIL_CONTAINER_BG_COLOR;
     [_fieldAddress changeConstraintHeight:_constraintFieldAddress];
     [_fieldTotalProjects changeConstraintHeight:_constraintFieldTotalProjects];
@@ -113,12 +114,15 @@
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
 
     
+    NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
+
+    /*
     NSMutableArray *contactItem = [NSMutableArray new];
-    //NSArray *contactItem = @[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}];
 
     if ( record.wwwUrl != nil ) {
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:record.wwwUrl}];
     }
+     */
     
     [_fieldCompanyState setItems:contactItem];
 
@@ -143,6 +147,42 @@
     MapViewController *map = [MapViewController new];
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];
+}
+
+- (void)tappedCompanyState:(CompanyState)companyState {
+    [[DataManager sharedManager] featureNotAvailable];
+}
+
+- (void)tappedCompnayStateContact:(id)object {
+    NSNumber *fieldType = object[CONTACT_FIELD_TYPE];
+    NSString *fieldData = object[CONTACT_FIELD_DATA];
+    
+    switch (fieldType.integerValue) {
+        case ContactFieldTypePhone:{
+            
+            fieldData = [[fieldData stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]]];
+            break;
+        }
+         
+        case ContactFieldTypeWeb:{
+            NSString *field = [fieldData uppercaseString];
+            if (![field hasPrefix:@"HTTP://"]) {
+                fieldData = [@"http://" stringByAppendingString:fieldData];
+            }
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fieldData]];
+
+            break;
+        }
+            
+        case ContactFieldTypeEmail: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"mailto:" stringByAppendingString:fieldData]]];
+
+            break;
+        }
+    }
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {

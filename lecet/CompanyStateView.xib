@@ -8,8 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyStateView">
             <connections>
-                <outlet property="buttonShare" destination="af0-Fy-mev" id="PL8-jt-hUD"/>
-                <outlet property="buttonTrack" destination="AHr-5a-1Vx" id="IQ5-gQ-CXw"/>
+                <outlet property="buttonShare" destination="af0-Fy-mev" id="DYu-d4-wRK"/>
+                <outlet property="buttonTrack" destination="AHr-5a-1Vx" id="d8S-vc-9V9"/>
                 <outlet property="collectionView" destination="86y-Xa-rLJ" id="35W-xI-oNn"/>
                 <outlet property="constraintButtonHeight" destination="qZT-qz-VLL" id="aKM-aa-Sua"/>
             </connections>
@@ -25,6 +25,9 @@
                         <constraint firstAttribute="height" constant="30" id="qZT-qz-VLL"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="6zZ-jl-msl"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="af0-Fy-mev">
                     <rect key="frame" x="179" y="0.0" width="179" height="30"/>
@@ -37,6 +40,9 @@
                             <exclude reference="RLx-6W-iu2"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="XKv-oL-220"/>
+                    </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="86y-Xa-rLJ">
                     <rect key="frame" x="0.0" y="30" width="358" height="164"/>
