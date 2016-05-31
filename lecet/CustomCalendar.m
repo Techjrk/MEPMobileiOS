@@ -130,10 +130,8 @@
     currentDate = calendarDate;
     
     NSDateComponents *componentsBase = [[DataManager sharedManager] getDateComponents:calendarDate];
-    //[componentsBase setDay:1];
 
     NSDate *firstDayOfMonthDate = [[DataManager sharedManager] getDateFirstDay:calendarDate];
-    //NSDate *firstDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: componentsBase];
     
     NSDateComponents *componentsFirstDay = [[DataManager sharedManager] getDateComponents:firstDayOfMonthDate];
     NSInteger startDay = componentsFirstDay.weekday - 1;
@@ -149,7 +147,6 @@
     NSInteger lastWeekRow = componentsLastDay.weekdayOrdinal;
     NSInteger lastWeekDay = componentsLastDay.weekday;
     
-    //int daysOver = 0;
     for (int i = 0; i< lastDay; i++) {
         
         NSString *yearMonthDay = [NSString stringWithFormat:@"%li-%02d-%02d",(long)componentsFirstDay.year, (int)componentsFirstDay.month, i +1 ];

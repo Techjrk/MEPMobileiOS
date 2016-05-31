@@ -83,31 +83,6 @@
         button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_SELECTED;
     }
 
-    
-/*
-    if (![button isEqual:_buttonTrack]) {
-        button.titleLabel.font = PROJECT_STATE_BUTTON_TEXT_FONT;
-        if (!isSelected) {
-            [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
-            button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_ACTIVE;
-        } else {
-            [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED forState:UIControlStateNormal];
-            button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_SELECTED;
-        }
-    } else {
-        if (!isSelected) {
-            //[self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE];
-            [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
-            button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_ACTIVE;
-        } else {
-            //[self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED];
-            [button setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED forState:UIControlStateNormal];
-            button.backgroundColor = PROJECT_STATE_BUTTON_BG_COLOR_SELECTED;
-        }
-    }
- 
- */
-    
     button.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     button.layer.borderWidth = 0.5;
     button.layer.masksToBounds = YES;
@@ -117,8 +92,8 @@
     _buttonTrack.selected = [_buttonTrack isEqual:button];
     _buttonShare.selected = [_buttonShare isEqual:button];
     _buttonHide.selected = [_buttonHide isEqual:button];
+  
     [self setupSelection];
-    
     [self.projectStateViewDelegate selectedStateViewItem:(StateView)button.tag];
     
 }

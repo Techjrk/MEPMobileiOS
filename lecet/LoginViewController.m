@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 
 #import "CustomTextField.h"
-
 #import "loginConstants.h"
 
 @interface LoginViewController ()
@@ -19,14 +18,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonLogin;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *blurView;
-- (IBAction)tappedButtonLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopSpace;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSignUp;
+
 - (IBAction)tappedButtonSignUp:(id)sender;
+- (IBAction)tappedButtonLogin:(id)sender;
 @end
 
 @implementation LoginViewController
 @synthesize loginDelegate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -37,18 +38,15 @@
     UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"LAUNCHSCREEN"];
     controller.view.frame = self.view.frame;
     [self.view addSubview:controller.view];
-    
     [self.view sendSubviewToBack:controller.view];
- 
     [self addBlurEffect:_blurView];
+
     _blurView.alpha = 0;
     _scrollView.alpha = 0;
     
     _constraintTopSpace.constant = kDeviceHeight * 0.3;
-
     
     [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
-    
     [_textFieldPassword setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_PASSWORD")];
     [_textFieldPassword setSecure:YES];
     
@@ -70,8 +68,8 @@
     }
 }
 
-
 - (void)addBlurEffect:(UIView*)view {
+    
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     blurEffectView.frame = view.frame;
@@ -95,8 +93,6 @@
 
 - (IBAction)tappedButtonLogin:(id)sender {
     
-    //[[DataManager sharedManager] showBusyScreen];
-    
     NSString *email = [_textFieldEmail text];
     NSString *passsword = [_textFieldPassword text];
     
@@ -109,7 +105,6 @@
             [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_REQUIRED_PASSWORD")];
             [_textFieldPassword becomeFirstResponder];
         }
-        
         return;
     }
     
@@ -125,7 +120,6 @@
     } failure:^(id object) {
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
     }];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -150,10 +144,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [_textFieldEmail becomeFirstResponder];
 }
 
 - (IBAction)tappedButtonSignUp:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LOGIN_SIGNUP_URL]];
 }
+
 @end

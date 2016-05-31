@@ -49,8 +49,10 @@
     _labelCount.attributedText = titleCount;
     
 }
+
 - (IBAction)tappedButtonMenu:(id)sender {
     UIButton *button = sender;
     [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)button.tag];
 }
+
 @end

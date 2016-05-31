@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelPlaceholder;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
-
 @end
 
 @implementation CustomTextField
@@ -37,8 +36,6 @@
 -(void)setPlaceHolder:(NSString *)placeHolder {
     _labelPlaceholder.text = placeHolder;
     _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSForegroundColorAttributeName:CUSTOM_TEXTFIELD_FIELD_COLOR, NSFontAttributeName:CUSTOM_TEXTFIELD_FIELD_FONT}];
-
-    
 }
 
 - (void)textFieldChanged:(UITextField *)textField

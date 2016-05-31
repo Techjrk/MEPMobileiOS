@@ -7,9 +7,9 @@
 //
 
 #import "ProjectDetailViewController.h"
+
 #import "ProjectHeaderView.h"
 #import "ProjectStateView.h"
-
 #import "projectHeaderConstants.h"
 #import "projectDetailConstants.h"
 #import "CustomEntryField.h"
@@ -20,8 +20,6 @@
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
 #import "CompanyDetailViewController.h"
-
-
 #import "DropDownMenuShareList.h"
 
 
@@ -47,13 +45,21 @@
     BOOL isDropDownSharelistHidden;
     BOOL isDropDownProjectListHidden;
     BOOL isProjectDetailStateHidden;
-    
 }
+
+//Views
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet ProjectStateView *projectState;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-- (IBAction)tappedBackButton:(id)sender;
+@property (weak, nonatomic) IBOutlet SeeAllView *seeAllView;
+@property (weak, nonatomic) IBOutlet NotesView *notesView;
+@property (weak, nonatomic) IBOutlet PariticpantsView *participantsView;
+@property (weak, nonatomic) IBOutlet ProjectBidderView *projectBidder;
+@property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
+@property (weak,nonatomic) IBOutlet DropDownProjectList *dropDownProjectListView;
+@property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
+
 //Fields
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldCounty;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldProjectId;
@@ -61,6 +67,8 @@
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldProjectType;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldEstLow;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldStage;
+
+//Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldCounty;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectID;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAddress;
@@ -69,11 +77,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldStage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContentHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldNotes;
-@property (weak, nonatomic) IBOutlet SeeAllView *seeAllView;
-@property (weak, nonatomic) IBOutlet NotesView *notesView;
-@property (weak, nonatomic) IBOutlet PariticpantsView *participantsView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldParticipants;
-@property (weak, nonatomic) IBOutlet ProjectBidderView *projectBidder;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidder;
 
 @property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
@@ -86,8 +90,8 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDropDownShareHeight;
 
-
-
+//Actions
+- (IBAction)tappedBackButton:(id)sender;
 @end
 
 @implementation ProjectDetailViewController
@@ -97,6 +101,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.hidden = YES;
     _containerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _headerView.projectHeaderDelegate = self;
@@ -114,35 +119,21 @@ static const float animationDurationForDropDowMenu = 0.35f;
     _participantsView.pariticipantsDelegate = self;
     _projectState.projectStateViewDelegate = self;
     
-    
-    
     //ShareList
     _dropDownShareListView.dropDownShareListDelegate = self;
     isDropDownSharelistHidden = YES;
-    
-    
     
     //ProjectList
     //_dropDownProjectListView.dropDownProjectListDelegate = self;
     //isDropDownProjectListHidden = YES;
     
     
-
-    
     [self addTappedGestureForDimBackground];
-
     [self setAutoLayConstraintInIncompatibleDevice];
-    
-    
-    
-   
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -154,22 +145,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
 }
 
 - (IBAction)tappedBackButton:(id)sender {
-    
-    if (self.navigationController != nil) {
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.view.frame = self.previousRect;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                [self dismissViewControllerAnimated:NO completion:^{
-                    
-                }];
-                
-            }
-        }];
-    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)detailsFromProject:(DB_Project*)record {
@@ -185,7 +161,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
     [_fieldProjectId setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_ID") line1Text:projectId line2Text:nil];
 
     NSString *address = [NSString stringWithFormat:@"%@, %@ %@", address1, project.state, project.zip5];
-    
     [_fieldAddress setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADDRESS") line1Text:address line2Text:nil];
     
     [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:[project getProjectType] line2Text:nil];
@@ -211,12 +186,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
     [_participantsView setItems:participants];
 }
 
-- (void)viewWillLayoutSubviews {
-}
-
-- (void)viewDidLayoutSubviews {
-    //[self layoutContentView];
-}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -255,11 +224,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
         [self tappedProjectDetailStateHideButton];
         
     }
-    
-    
-
-    
-    
 }
 
 - (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
@@ -267,7 +231,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];
 }
-
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
     PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
@@ -298,18 +261,14 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 #pragma mark - Delegate and Share List Method
 
-
 - (void)tappedDropDownShareList:(DropDownShareListItem)shareListItem{
     
     [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
     
 }
 
-
 - (void)showOrHideDropDownShareListMenu{
     if (isDropDownSharelistHidden) {
-        
-        
         
         isDropDownSharelistHidden = NO;
         [_dropDownShareListView setHidden:NO];
@@ -336,14 +295,11 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
 }
 
-
 - (void)hideDropDownShareList{
     
     isDropDownSharelistHidden = YES;
     [_dropDownShareListView setHidden:YES];
 }
-
-
 
 #pragma mark - Project List Delegate and Method
 
@@ -391,13 +347,10 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
 }
 
-
 - (void)tappedDismissed{
     
     [_projectState clearSelection];
 }
-
-
 
 - (void)setAutoLayConstraintInIncompatibleDevice{
     
@@ -406,27 +359,20 @@ static const float animationDurationForDropDowMenu = 0.35f;
         _constraintDropDownShareHeight.constant = 90;
     }
     
-    
     if (isiPhone5) {
         //Share List
         _constraintDropDownShareHeight.constant = 90;
         
     }
-    
-    
 }
-
 
 - (void)addTappedGestureForDimBackground{
     
-
     [[Utilities sharedIntances] addTappGesture:@selector(hideAllDropDownMenu) numberOfTapped:1 targetView:_dimProjectMenuContainerView target:self];
     
 }
 
-
 - (void)hideAllDropDownMenu{
-    
     
     [_projectState clearSelection];
     UIView *viewThatIsVisible;
@@ -451,10 +397,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
             
         }
     }];
-
-    
 }
-
 
 - (void)tappedProjectBidder:(id)object {
     DB_Bid *bid = object;
@@ -467,8 +410,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
     } failure:^(id object) {
         
     }];
-
-    
 }
 
 @end

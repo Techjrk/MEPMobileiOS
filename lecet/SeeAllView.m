@@ -12,7 +12,6 @@
 
 @interface SeeAllView()
 @property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
-
 @end
 
 @implementation SeeAllView

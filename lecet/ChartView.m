@@ -23,12 +23,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonEngineering;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBuilding;
 @property (weak, nonatomic) IBOutlet UIButton *buttonUtilities;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLeft;
+@property (weak, nonatomic) IBOutlet UIButton *buttonRight;
 - (IBAction)tappedButtonHousing:(id)sender;
 - (IBAction)tappedButtonEngineering:(id)sender;
 - (IBAction)tappedButtonBuilding:(id)sender;
 - (IBAction)tappedButtonUtilities:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *buttonLeft;
-@property (weak, nonatomic) IBOutlet UIButton *buttonRight;
 - (IBAction)tappedButton:(id)sender;
 @end
 

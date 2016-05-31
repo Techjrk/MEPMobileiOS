@@ -10,5 +10,4 @@
 #import "BaseViewClass.h"
 
 @interface SeeAllView : BaseViewClass
-
 @end

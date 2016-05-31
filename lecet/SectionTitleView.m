@@ -26,4 +26,5 @@
 - (void)setTitle:(NSString*)title {
     _labelTitle.text = title;
 }
+
 @end

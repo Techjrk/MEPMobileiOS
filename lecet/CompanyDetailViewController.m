@@ -27,27 +27,31 @@
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate>{
     BOOL isShownContentAdjusted;
 }
+//Views
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContentHeight;
 @property (weak, nonatomic) IBOutlet CompanyHeaderView *companyHeader;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldAddress;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAddress;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldTotalProjects;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTotalProjects;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldTotalValuation;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTotalValuation;
 @property (weak, nonatomic) IBOutlet AssociatedProjectsView *fieldAssociatedProjects;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAssociatedProjects;
 @property (weak, nonatomic) IBOutlet NotesView *fieldNotes;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldNotes;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewSpacer;
 @property (weak, nonatomic) IBOutlet ContactsListView *fieldContacts;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldContacts;
 @property (weak, nonatomic) IBOutlet ProjectBidListView *fieldProjectBidList;
+@property (weak, nonatomic) IBOutlet CompanyStateView *fieldCompanyState;
+
+//Constraints
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContentHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAddress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTotalProjects;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTotalValuation;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAssociatedProjects;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldNotes;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldContacts;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidList;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldCompanyState;
-@property (weak, nonatomic) IBOutlet CompanyStateView *fieldCompanyState;
+
+//Actions
 - (IBAction)tappedButtonBack:(id)sender;
 @end
 
@@ -55,8 +59,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.hidden = YES;
     
+    self.view.hidden = YES;
     _companyHeader.companyCampanyHeaderDelegate = self;
     _fieldCompanyState.companyStateDelegate = self;
     _containerView.backgroundColor = COMPANY_DETAIL_CONTAINER_BG_COLOR;
@@ -69,10 +73,6 @@
     [_fieldProjectBidList changeConstraintHeight:_constraintFieldProjectBidList];
     [_fieldCompanyState changeConstraintHeight:_constraintFieldCompanyState];
     
-}
-
-- (void)viewDidLayoutSubviews {
-    //[self layoutContentView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -93,9 +93,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -113,7 +111,6 @@
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
 
-    
     NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
 
     /*
@@ -128,7 +125,6 @@
 
     NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
     [_fieldAssociatedProjects setItems:associatedProjects];
-    
     
     NSMutableArray *contacts = [record.relationshipCompanyContact allObjects]!= nil? [[record.relationshipCompanyContact allObjects] mutableCopy ]:[NSMutableArray new];
     [_fieldContacts setItems:contacts];
