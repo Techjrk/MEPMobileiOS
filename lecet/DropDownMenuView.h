@@ -32,6 +32,12 @@ typedef enum  {
 
 @property (nonatomic,assign) id<DropDownMenuDelegate> dropDownMenuDelegate;
 
+
+
+- (void)setUserName:(NSString *)username;
+
+- (void)setEmailAddress:(NSString *)emailAddress;
+
 @end
 
 

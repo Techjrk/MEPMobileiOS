@@ -20,6 +20,8 @@
 		B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */; };
 		B6EA88B41CF439F400BB3180 /* ProjectDetailStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EA88B21CF439F400BB3180 /* ProjectDetailStateView.m */; };
 		B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EA88B31CF439F400BB3180 /* ProjectDetailStateView.xib */; };
+		B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */; };
+		B6FD33FF1CFDC971005B00A8 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
 		B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551F1CD0C56A0050CF8A /* AppDelegate.m */; };
 		B70155231CD0C56A0050CF8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155221CD0C56A0050CF8A /* ViewController.m */; };
@@ -195,6 +197,9 @@
 		B6EA88B11CF439F400BB3180 /* ProjectDetailStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateView.h; sourceTree = "<group>"; };
 		B6EA88B21CF439F400BB3180 /* ProjectDetailStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateView.m; sourceTree = "<group>"; };
 		B6EA88B31CF439F400BB3180 /* ProjectDetailStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDetailStateView.xib; sourceTree = "<group>"; };
+		B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
+		B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
+		B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
 		B70155181CD0C56A0050CF8A /* Lecet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lecet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -561,6 +566,16 @@
 			name = MoreMenu;
 			sourceTree = "<group>";
 		};
+		B6FD33FA1CFDC958005B00A8 /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */,
+				B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */,
+				B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */,
+			);
+			name = ProjectList;
+			sourceTree = "<group>";
+		};
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +635,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6FD33FA1CFDC958005B00A8 /* ProjectList */,
 				B6CF764C1CF868F800BF6C69 /* ProjectDetailState */,
 				B70155361CD0C77B0050CF8A /* SplashViewController.h */,
 				B70155371CD0C77B0050CF8A /* SplashViewController.m */,
@@ -1116,6 +1132,7 @@
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
 				B7E104391CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib in Resources */,
+				B6FD33FF1CFDC971005B00A8 /* ProjectListViewController.xib in Resources */,
 				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
@@ -1169,6 +1186,7 @@
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
+				B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,

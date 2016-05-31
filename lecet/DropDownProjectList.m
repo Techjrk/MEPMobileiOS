@@ -114,9 +114,29 @@
 
 - (void)drawShadow{
  
-    CGRect screenRect = self.bounds;
+    CGRect screenRect = self.view.frame;
     
     CGRect customDimRect = screenRect;
+    
+    
+    if (isiPhone5) {
+        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.2f);
+        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.2f);
+    }
+    if (isiPhone6) {
+      
+        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.08f);
+        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.08f);
+    }
+    
+    if(isiPhone4){
+        
+        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.3f);
+        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.2f);
+        
+    }
+    
+    
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
     
@@ -126,10 +146,6 @@
     self.view.layer.shadowPath = shadowPath.CGPath;
 
     [self.view.layer setCornerRadius:5.0f];
-    
-    
-    
-    
 }
 
 - (IBAction)tappedDropDownProjectList:(id)sender{

@@ -23,7 +23,7 @@
 
 
 #import "DropDownMenuShareList.h"
-#import "DropDownProjectList.h"
+
 
 
 
@@ -33,11 +33,12 @@
 #import "ProjectDetailStateViewController.h"
 
 
+#import "ProjectListViewController.h"
 
 
 
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,DropDownProjectListDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate>{
 
 
 
@@ -77,7 +78,7 @@
 
 @property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
 
-@property (weak,nonatomic) IBOutlet DropDownProjectList *dropDownProjectListView;
+
 
 
 @property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
@@ -122,8 +123,9 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
     
     //ProjectList
-    _dropDownProjectListView.dropDownProjectListDelegate = self;
-    isDropDownProjectListHidden = YES;
+    //_dropDownProjectListView.dropDownProjectListDelegate = self;
+    //isDropDownProjectListHidden = YES;
+    
     
 
     
@@ -237,16 +239,16 @@ static const float animationDurationForDropDowMenu = 0.35f;
     if (stateView == StateViewShare) {
         
         [self showOrHideDropDownShareListMenu];
-        [self hideDropDownProjectList];
+   
         
     }else if (stateView == StateViewTrack){
         
         
-        [self showOrHideDropDownProjectListMenu];
-        [self hideDropDownShareList];
-       
+      
         
-        //[self tappedProjectList];
+        [self tappedProjectTrackListButton];
+        
+
        
     }else if (stateView == StateViewHide){
  
@@ -345,56 +347,28 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 #pragma mark - Project List Delegate and Method
 
--(void)selectedDropDownProjectList:(NSIndexPath *)indexPath{
+-(void)tappedDismissedProjectTrackList{
     
-    
-    //FEATURENOTAVAILABLE
+    [_projectState clearSelection];
+}
 
-    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
+- (void)tappedProjectTrackListButton{
     
+
     
+    ProjectListViewController *controller = [ProjectListViewController new];
+    //controller.view.hidden = NO;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
+    [controller setProjectStateViewFrame:_projectState];
+    
+    controller.projectTrackListViewControllerDelegate = self;
+    
+    [self presentViewController:controller  animated:YES completion:nil];
     
 }
 
-- (void)showOrHideDropDownProjectListMenu{
-    if (isDropDownProjectListHidden) {
-        
-        isDropDownProjectListHidden = NO;
-        [_dropDownProjectListView setHidden:NO];
-        [_dimProjectMenuContainerView setHidden:NO];
-        
-        _dropDownProjectListView.alpha  = 0.0f;
-        _dimProjectMenuContainerView.alpha = 0.0f;
-        
-        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-            _dropDownProjectListView.alpha  = 1.0f;
-            _dimProjectMenuContainerView.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                isDropDownProjectListHidden = NO;
-                
-            }
-        }];
-
-        
-    }else{
-    
-        //[self hideDropDownProjectList];
-        
-        
-        
-    }
-    
-}
-
-
-- (void)hideDropDownProjectList{
-    
-    
-    isDropDownProjectListHidden = YES;
-    [_dropDownProjectListView setHidden:YES];
-    
-}
 
 
 
@@ -402,9 +376,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 
 #pragma mark - Project Detail State ViewController Methods And Delegate
-
-
-
 
 - (void)tappedProjectDetailStateHideButton{
     ProjectDetailStateViewController *controller = [[ProjectDetailStateViewController alloc] initWithNibName:@"ProjectDetailStateViewController" bundle:nil];
@@ -414,7 +385,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     controller.projectDetailStateViewControllerDelegate = self;
     
-    [self presentViewController:controller animated:YES completion:nil];
+    [self presentViewController:controller  animated:YES completion:nil];
     
   
     
@@ -461,11 +432,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
     UIView *viewThatIsVisible;
     
     
-    if (!isDropDownProjectListHidden) {
-        
-        viewThatIsVisible = _dropDownProjectListView;
-    }
-        
+    
     if (!isDropDownSharelistHidden){
         
         viewThatIsVisible = _dropDownShareListView;
@@ -478,7 +445,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
         if (finished) {
             
             [self hideDropDownShareList];
-            [self hideDropDownProjectList];
+     
   
             [_dimProjectMenuContainerView setHidden:YES];
             

@@ -137,4 +137,28 @@
 
 
 
+- (void)setUserName:(NSString *)username{
+    
+    _userNameLabel.text = username;
+    
+}
+
+
+- (void)setEmailAddress:(NSString *)emailAddress{
+    
+    _emailAddressLabel.text = emailAddress;
+    ;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 @end
