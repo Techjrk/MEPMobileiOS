@@ -192,5 +192,7 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
+    
+    [self.customCalendarDelegate tappedCalendarNavButton:[sender isEqual:_buttonLeft]?CalendarButtonLeft:CalendarButtonRight];
 }
 @end

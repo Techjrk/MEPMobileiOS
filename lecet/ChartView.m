@@ -134,6 +134,9 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
+    
+    [self.chartViewDelegate tappedChartNavButton:[sender isEqual:_buttonLeft]?ChartButtonLeft:ChartButtonRight];
+    
 }
 
 - (void)hideLeftButton:(BOOL)hide {

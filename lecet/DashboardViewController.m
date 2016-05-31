@@ -93,6 +93,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _bidsCollectionView.dataSource = self;
     _chartRecentlyMade.chartViewDelegate = self;
     _chartRecentlyUpdated.chartViewDelegate = self;
+    _chartRecentlyAdded.chartViewDelegate = self;
 
     currentBidItems = [self loadBidsRecentlyMade];
     [self requestBidsHappeningSoon];
@@ -474,11 +475,17 @@ static const float animationDurationForDropDowMenu = 1.0f;
         [_bidsCollectionView reloadData];
         
     }
+    
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self pageChanged];
 }
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    [self pageChanged];
+}
+
 
 # pragma mark - BID COLLECTION DELEGATE
 
@@ -712,5 +719,38 @@ static const float animationDurationForDropDowMenu = 1.0f;
     }
 }
 
+- (void)tappedChartNavButton:(ChartButton)charButton {
+   /* NSInteger currentPageOffset = _scrollPageView.contentOffset.x;
+    if (charButton == ChartButtonLeft) {
+        
+        if (currentPageOffset>kDeviceWidth) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset-kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+    } else {
+        if (currentPageOffset<_scrollPageView.contentSize.width) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset+kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+        
+    }
+    */
+    [self scrollDisplayView:charButton == ChartButtonLeft];
+}
+
+- (void)tappedCalendarNavButton:(CalendarButton)calendarButton {
+    [self scrollDisplayView:calendarButton == CalendarButtonLeft];
+}
+
+- (void)scrollDisplayView:(BOOL)isLeft {
+    NSInteger currentPageOffset = _scrollPageView.contentOffset.x;
+    if (isLeft) {
+        if (currentPageOffset>=kDeviceWidth) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset-kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+    } else {
+        if (currentPageOffset<_scrollPageView.contentSize.width) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset+kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+    }
+}
 
 @end
