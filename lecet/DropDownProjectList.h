@@ -9,19 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-
+/*
 typedef enum  {
     DropDownProjectTrainAndMetros = 0,
     DropDownProjectRailways = 1,
     DropDownProjectAnotherList = 2,
     DropDownProjectHighValues = 3,
 } DropDownProjectListItem;
-
+*/
 
 @protocol DropDownProjectListDelegate <NSObject>
 
 @required
-- (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem;
+//- (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem;
+
+-(void)selectedDropDownProjectList:(NSIndexPath *)indexPath;
 
 @end
 
@@ -29,16 +31,11 @@ typedef enum  {
 @interface DropDownProjectList : BaseViewClass
 
 
-@property (weak, nonatomic) IBOutlet UILabel *labelNumberOfProjectsTrainsAndMetros;
 
-@property (weak, nonatomic) IBOutlet UILabel *labelNumberOfProjectsRailways;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelNumberOfProjectsAnotherList;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelNumberOfProjectHighValues;
 
 @property (nonatomic,assign) id<DropDownProjectListDelegate> dropDownProjectListDelegate;
 
+- (void)reloadData;
 
 
 

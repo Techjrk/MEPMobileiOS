@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+
+
+
+
+@protocol ProjectDetailStateViewControllerDelegate <NSObject>
+@required
+- (void)tappedDismissed;
+
+@end
 @interface ProjectDetailStateViewController : UIViewController
+
+
+@property (nonatomic,assign) id<ProjectDetailStateViewControllerDelegate> projectDetailStateViewControllerDelegate;
 
 @end
