@@ -407,7 +407,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 
 - (void)tappedProjectDetailStateHideButton{
-    ProjectDetailStateViewController *controller = [ProjectDetailStateViewController new];
+    ProjectDetailStateViewController *controller = [[ProjectDetailStateViewController alloc] initWithNibName:@"ProjectDetailStateViewController" bundle:nil];
     
     //controller.view.hidden = NO;
     controller.modalPresentationStyle = UIModalPresentationCustom;
@@ -415,6 +415,8 @@ static const float animationDurationForDropDowMenu = 0.35f;
     controller.projectDetailStateViewControllerDelegate = self;
     
     [self presentViewController:controller animated:YES completion:nil];
+    
+  
     
 }
 
