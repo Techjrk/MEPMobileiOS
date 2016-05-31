@@ -10,7 +10,18 @@
 
 #import "BaseViewClass.h"
 
+typedef enum : NSUInteger {
+    CompanyStateTrack = 0,
+    CompanyStateShare = 1
+} CompanyState;
+
+@protocol CompanyStateDelegate <NSObject>
+- (void)tappedCompanyState:(CompanyState)companyState;
+- (void)tappedCompnayStateContact:(id)object;
+@end
+
 @interface CompanyStateView : BaseViewClass
+@property (strong, nonatomic) id<CompanyStateDelegate>companyStateDelegate;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
 @end

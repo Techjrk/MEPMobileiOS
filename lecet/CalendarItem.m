@@ -58,6 +58,9 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
+    if(self.itemTag == nil){
+        state = CalendarItemStateInActive;
+    }
     
     if ((state == CalendarItemStateActive) | (state == CalendarItemStateInActive)) {
         if (state == CalendarItemStateActive) {

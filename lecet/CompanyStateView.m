@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonShare;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation CompanyStateView
@@ -119,7 +120,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.companyStateDelegate tappedCompnayStateContact:collectionItems[indexPath.row]];
 }
 
 #pragma mark - View
@@ -127,15 +128,18 @@
 - (void)layoutSubviews {
     
     if (cellHeight == 0) {
-        cellHeight = (collectionItems.count) * (kDeviceHeight * 0.07);
+        cellHeight = (kDeviceHeight * 0.07);
     }
     
     if (cellHeight>0) {
         NSInteger itemCount = collectionItems.count;
-        constraintHeight.constant = (itemCount * cellHeight) + _buttonTrack.frame.size.height;
+        constraintHeight.constant = (itemCount * cellHeight) + _constraintButtonHeight.constant;
     } else {
-        constraintHeight.constant = _buttonTrack.frame.size.height;
+        constraintHeight.constant = _constraintButtonHeight.constant;
     }
 }
 
+- (IBAction)tappedButton:(id)sender {
+    [self.companyStateDelegate tappedCompanyState:[sender isEqual:_buttonTrack]?CompanyStateTrack:CompanyStateShare];
+}
 @end

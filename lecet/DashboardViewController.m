@@ -538,6 +538,8 @@ static const float animationDurationForDropDowMenu = 1.0f;
  
     if (menuHeaderItem == MenuHeaderMore) {
         [self showOrHideDropDownMenuMore];
+    } else {
+        [[DataManager sharedManager] featureNotAvailable];
     }
     
 }
