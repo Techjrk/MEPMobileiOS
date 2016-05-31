@@ -11,6 +11,8 @@
                 <outlet property="buttonBuilding" destination="Rjp-it-I22" id="PYj-A0-YJD"/>
                 <outlet property="buttonEngineering" destination="Vvv-KH-KlX" id="Jhn-ST-eid"/>
                 <outlet property="buttonHousing" destination="3SA-5R-5dZ" id="hy6-Yv-iXj"/>
+                <outlet property="buttonLeft" destination="eaF-kj-rAP" id="WQT-v9-ZJe"/>
+                <outlet property="buttonRight" destination="m1X-xJ-3Pv" id="NGX-DS-roR"/>
                 <outlet property="buttonUtilities" destination="fn1-XM-Jll" id="JKC-TQ-ZdW"/>
                 <outlet property="chartButtonGroup" destination="ulA-L3-yo0" id="oIY-4y-3Vu"/>
                 <outlet property="labelBuilding" destination="p3J-0v-EAQ" id="ocN-Ja-fIp"/>
@@ -38,7 +40,7 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_housing" translatesAutoresizingMaskIntoConstraints="NO" id="VmW-8S-1jj">
-                                    <rect key="frame" x="33.5" y="0.0" width="25" height="49"/>
+                                    <rect key="frame" x="33" y="0.0" width="25" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGy-rx-0Pm">
                                     <rect key="frame" x="0.0" y="35" width="92" height="35"/>
@@ -81,7 +83,7 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_engineering" translatesAutoresizingMaskIntoConstraints="NO" id="hfc-GH-IF0">
-                                    <rect key="frame" x="33.5" y="0.0" width="25.5" height="49"/>
+                                    <rect key="frame" x="33" y="0.0" width="25.5" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFy-If-i96">
                                     <rect key="frame" x="0.0" y="35" width="92" height="35"/>
@@ -124,7 +126,7 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_building" translatesAutoresizingMaskIntoConstraints="NO" id="92l-yt-cvm">
-                                    <rect key="frame" x="35.5" y="0.0" width="22.5" height="49"/>
+                                    <rect key="frame" x="35" y="0.0" width="22.5" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3J-0v-EAQ">
                                     <rect key="frame" x="0.0" y="35" width="92" height="35"/>
@@ -167,7 +169,7 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_utilities" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-Ib-PWh">
-                                    <rect key="frame" x="37.5" y="0.0" width="18" height="49"/>
+                                    <rect key="frame" x="37" y="0.0" width="18" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-p9-hDo">
                                     <rect key="frame" x="0.0" y="35" width="92" height="35"/>
@@ -225,26 +227,66 @@
                     <rect key="frame" x="0.0" y="0.0" width="399" height="248"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZyT-ee-GDI">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="149.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaF-kj-rAP">
+                    <rect key="frame" x="0.0" y="149.5" width="32" height="28.5"/>
+                    <state key="normal" image="icon_arrowLeft"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="zMc-8z-W4h"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1X-xJ-3Pv">
+                    <rect key="frame" x="367" y="149.5" width="32" height="28.5"/>
+                    <state key="normal" image="icon_arrowRight"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="tld-Jw-prv"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="VmM-vc-KJU" secondAttribute="trailing" id="2r8-oa-Afs"/>
+                <constraint firstItem="ZyT-ee-GDI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6Eh-UO-dd4"/>
                 <constraint firstItem="VmM-vc-KJU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6JB-cL-Rrp"/>
                 <constraint firstAttribute="bottom" secondItem="ulA-L3-yo0" secondAttribute="bottom" id="9wH-MX-qis"/>
+                <constraint firstItem="ZyT-ee-GDI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AnB-Wa-v9r"/>
                 <constraint firstItem="ulA-L3-yo0" firstAttribute="top" secondItem="VmM-vc-KJU" secondAttribute="bottom" id="FDc-SD-ISf"/>
                 <constraint firstItem="VmM-vc-KJU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GDs-oa-shp"/>
+                <constraint firstItem="m1X-xJ-3Pv" firstAttribute="height" secondItem="eaF-kj-rAP" secondAttribute="height" id="LnP-iy-3zQ"/>
+                <constraint firstItem="eaF-kj-rAP" firstAttribute="top" secondItem="ZyT-ee-GDI" secondAttribute="bottom" id="Utb-6G-eUO"/>
                 <constraint firstItem="ulA-L3-yo0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.92" id="VJO-p9-cmR"/>
+                <constraint firstItem="m1X-xJ-3Pv" firstAttribute="centerY" secondItem="eaF-kj-rAP" secondAttribute="centerY" id="ZXX-vr-gHt"/>
+                <constraint firstItem="eaF-kj-rAP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.08" id="f2b-nJ-LHh"/>
+                <constraint firstItem="eaF-kj-rAP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fWg-AO-1ic"/>
+                <constraint firstItem="ZyT-ee-GDI" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.1" id="fxw-e9-z9E"/>
                 <constraint firstItem="ulA-L3-yo0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jZO-AP-tly"/>
                 <constraint firstItem="ulA-L3-yo0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.22" id="jZy-bg-c63"/>
+                <constraint firstItem="eaF-kj-rAP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lcy-tY-KFb"/>
+                <constraint firstItem="m1X-xJ-3Pv" firstAttribute="width" secondItem="eaF-kj-rAP" secondAttribute="width" id="m8F-0X-RAd"/>
+                <constraint firstItem="eaF-kj-rAP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.09" id="oxv-JZ-xUb"/>
+                <constraint firstItem="ZyT-ee-GDI" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.47" id="rgZ-hf-xaz"/>
+                <constraint firstItem="m1X-xJ-3Pv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rif-Qa-h6v"/>
+                <constraint firstAttribute="trailing" secondItem="m1X-xJ-3Pv" secondAttribute="trailing" id="viS-7j-Qcy"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="fWg-AO-1ic"/>
+                    <exclude reference="rif-Qa-h6v"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="154.5" y="167"/>
         </view>
     </objects>
     <resources>
+        <image name="icon_arrowLeft" width="10" height="24"/>
+        <image name="icon_arrowRight" width="10" height="24"/>
         <image name="icon_building" width="21" height="21"/>
         <image name="icon_engineering" width="22" height="24"/>
         <image name="icon_housing" width="23" height="20"/>

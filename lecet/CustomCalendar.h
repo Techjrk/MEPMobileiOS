@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+typedef enum : NSUInteger {
+    CalendarButtonLeft = 0,
+    CalendarButtonRight = 1,
+} CalendarButton;
+
 @protocol CustomCalendarDelegate<NSObject>
 - (void)tappedItem:(id)object;
 - (void)calendarItemWillDisplay:(id)object;
+- (void)tappedCalendarNavButton:(CalendarButton)calendarButton;
 @end
 
 @interface CustomCalendar : BaseViewClass

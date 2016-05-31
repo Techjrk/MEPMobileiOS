@@ -37,7 +37,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GaB-R9-aST">
-                    <rect key="frame" x="0.0" y="70" width="458" height="103"/>
+                    <rect key="frame" x="0.0" y="70" width="458" height="123"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="abK-y1-CO0">
                         <size key="itemSize" width="50" height="50"/>
@@ -46,10 +46,6 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0z-tz-cnP">
-                    <rect key="frame" x="13.5" y="173" width="431" height="20"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZB-bi-2Qx">
                     <rect key="frame" x="91.5" y="193" width="275" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -64,24 +60,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ZZB-bi-2Qx" firstAttribute="top" secondItem="GaB-R9-aST" secondAttribute="bottom" id="0iy-QM-T7u"/>
+                <constraint firstItem="ZZB-bi-2Qx" firstAttribute="centerX" secondItem="GaB-R9-aST" secondAttribute="centerX" id="3HG-ZW-E1R"/>
                 <constraint firstItem="LEw-t2-cqU" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.94" id="C09-9n-gmr"/>
                 <constraint firstItem="LEw-t2-cqU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CZj-mH-cPz"/>
-                <constraint firstItem="D0z-tz-cnP" firstAttribute="width" secondItem="P5r-1L-UrN" secondAttribute="width" id="D8g-4M-WBd"/>
                 <constraint firstItem="P5r-1L-UrN" firstAttribute="width" secondItem="LEw-t2-cqU" secondAttribute="width" id="GbC-RY-qPK"/>
                 <constraint firstItem="P5r-1L-UrN" firstAttribute="top" secondItem="LEw-t2-cqU" secondAttribute="bottom" id="HZ3-dq-eqo"/>
                 <constraint firstAttribute="bottom" secondItem="GaB-R9-aST" secondAttribute="bottom" constant="50" id="MYN-Mm-AGP"/>
                 <constraint firstItem="P5r-1L-UrN" firstAttribute="centerX" secondItem="LEw-t2-cqU" secondAttribute="centerX" id="S1F-FC-ftN"/>
-                <constraint firstItem="ZZB-bi-2Qx" firstAttribute="top" secondItem="D0z-tz-cnP" secondAttribute="bottom" id="UET-Bu-bBl"/>
                 <constraint firstItem="GaB-R9-aST" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V9k-0a-abh"/>
                 <constraint firstItem="ZZB-bi-2Qx" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="VUe-ng-PMl"/>
-                <constraint firstItem="ZZB-bi-2Qx" firstAttribute="centerX" secondItem="D0z-tz-cnP" secondAttribute="centerX" id="WVs-rP-7jO"/>
                 <constraint firstItem="LEw-t2-cqU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yrs-re-sex"/>
-                <constraint firstItem="D0z-tz-cnP" firstAttribute="height" secondItem="P5r-1L-UrN" secondAttribute="height" id="bfI-a7-Yjf"/>
-                <constraint firstItem="D0z-tz-cnP" firstAttribute="top" secondItem="GaB-R9-aST" secondAttribute="bottom" id="gE1-sL-7Uy"/>
                 <constraint firstAttribute="trailing" secondItem="GaB-R9-aST" secondAttribute="trailing" id="lak-Vf-bIW"/>
                 <constraint firstAttribute="bottom" secondItem="ZZB-bi-2Qx" secondAttribute="bottom" id="mwR-dX-Yw7"/>
                 <constraint firstItem="GaB-R9-aST" firstAttribute="top" secondItem="P5r-1L-UrN" secondAttribute="bottom" id="sFs-Vn-R2O"/>
-                <constraint firstItem="D0z-tz-cnP" firstAttribute="centerX" secondItem="GaB-R9-aST" secondAttribute="centerX" id="vEF-jn-aLh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

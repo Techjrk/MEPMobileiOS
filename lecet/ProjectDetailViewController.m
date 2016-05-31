@@ -28,7 +28,8 @@
 
 
 #import "DB_Project.h"
-
+#import "DB_Company.h"
+#import "DB_Participant.h"
 #import "ProjectDetailStateViewController.h"
 
 
@@ -201,11 +202,10 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
-    NSMutableArray *bidItems = [[project.relationshipBid allObjects] mutableCopy];
+    NSMutableArray *bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
     [_projectBidder setItems:bidItems];
-
-    NSMutableArray *participants = [[project.relationshipParticipants allObjects] mutableCopy];
-    
+ 
+    NSMutableArray *participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];
     [_participantsView setItems:participants];
 }
 
@@ -255,7 +255,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
     }
     
     
-    
+
     
     
 }
@@ -281,10 +281,16 @@ static const float animationDurationForDropDowMenu = 0.35f;
 }
 
 - (void)tappedParticipant:(id)object {
-    CompanyDetailViewController *controller = [CompanyDetailViewController new];
-    controller.view.hidden = NO;
-    [controller setInfo:nil];
-    [self.navigationController pushViewController:controller animated:YES];
+    DB_Participant *record = object;
+    
+    [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:object];
+        [self.navigationController pushViewController:controller animated:YES];
+    } failure:^(id object) {
+        
+    }];
 
 }
 
@@ -479,10 +485,17 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 
 - (void)tappedProjectBidder:(id)object {
-    CompanyDetailViewController *controller = [CompanyDetailViewController new];
-    controller.view.hidden = NO;
-    [controller setInfo:nil];
-    [self.navigationController pushViewController:controller animated:YES];
+    DB_Bid *bid = object;
+    
+    [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:object];
+        [self.navigationController pushViewController:controller animated:YES];
+    } failure:^(id object) {
+        
+    }];
+
     
 }
 

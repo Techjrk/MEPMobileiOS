@@ -7,12 +7,20 @@
 //
 
 #import "ContactItemCollectionViewCell.h"
+#import "ContactsView.h"
 
+@interface ContactItemCollectionViewCell()
+@property (weak, nonatomic) IBOutlet ContactsView *contactView;
+@end
 @implementation ContactItemCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setItemInfo:(id)info {
+    [_contactView setInfo:info];
 }
 
 @end

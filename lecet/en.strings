@@ -23,10 +23,10 @@
 
 //MenuHeaderView.xib
 "MENUHEADER_LABEL_HEADER_TEXT"              =               "BIDS";
-"MENUHEADER_LABEL_COUNT_MADE_TEXT"          =               "%li RECENTLY MADE";
-"MENUHEADER_LABEL_COUNT_SOON_TEXT"          =               "%li HAPPENING SOON";
-"MENUHEADER_LABEL_COUNT_ADDED_TEXT"         =               "%li RECENTLY ADDED";
-"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"       =               "%li RECENTLY UPDATED";
+"MENUHEADER_LABEL_COUNT_MADE_TEXT"          =               "RECENTLY MADE";
+"MENUHEADER_LABEL_COUNT_SOON_TEXT"          =               "HAPPENING SOON";
+"MENUHEADER_LABEL_COUNT_ADDED_TEXT"         =               "RECENTLY ADDED";
+"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"       =               "RECENTLY UPDATED";
 
 //ChartView.xib
 "CHART_VIEW_LABEL_HOUSING"                  =               "HOUSING";
@@ -61,6 +61,8 @@
 "PROJECTBIDDER_VIEW_TITLE"                  =               "Project Bidders";
 "PROJECTBIDDER_VIEW_BIDDERS"                =               "View All %li Bidders";
 
+//ContactsView.xib
+"PROJECT_CONTACTS_VIEW_ALL"                 =               "View All %li Contacts";
 
 //DropDownMenu.xib
 "DROPDOWNMENU_MYPROFILE_BUTTON_TEXT"        =               "My Profile";

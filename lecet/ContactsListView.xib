@@ -8,7 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactsListView">
             <connections>
+                <outlet property="buttonSeeAll" destination="tG2-EN-LWu" id="Xkv-pc-KyX"/>
                 <outlet property="collectionView" destination="uCb-uL-fPI" id="Mdi-my-2Kd"/>
+                <outlet property="constraintSeeAllHeight" destination="fvl-6u-tH1" id="XVs-o6-Hf9"/>
                 <outlet property="constraintSpacerHeight" destination="8m5-vD-bds" id="PTT-sv-Zu8"/>
                 <outlet property="constraintTitleHeight" destination="xyP-2E-szA" id="daD-Pm-Af3"/>
                 <outlet property="titleView" destination="qFg-49-VJi" id="xTN-tb-Zbd"/>
@@ -17,7 +19,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="195"/>
+            <rect key="frame" x="0.0" y="0.0" width="359" height="258"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-49-VJi" customClass="SectionTitleView">
@@ -28,7 +30,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uCb-uL-fPI">
-                    <rect key="frame" x="0.0" y="94" width="359" height="101"/>
+                    <rect key="frame" x="0.0" y="94" width="359" height="134"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Obp-0j-QUQ">
                         <size key="itemSize" width="50" height="50"/>
@@ -38,12 +40,19 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dB8-hI-1ZM">
-                    <rect key="frame" x="10.5" y="74" width="337" height="20"/>
+                    <rect key="frame" x="11" y="74" width="337" height="20"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="8m5-vD-bds"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tG2-EN-LWu">
+                    <rect key="frame" x="71.5" y="228" width="215" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="fvl-6u-tH1"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -53,13 +62,16 @@
                 <constraint firstItem="qFg-49-VJi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="89D-Mx-MxY"/>
                 <constraint firstItem="qFg-49-VJi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8Qs-i5-arr"/>
                 <constraint firstItem="uCb-uL-fPI" firstAttribute="top" secondItem="qFg-49-VJi" secondAttribute="bottom" constant="50" id="DS7-p3-Apj"/>
+                <constraint firstItem="tG2-EN-LWu" firstAttribute="centerX" secondItem="uCb-uL-fPI" secondAttribute="centerX" id="EZT-iF-qam"/>
+                <constraint firstAttribute="bottom" secondItem="tG2-EN-LWu" secondAttribute="bottom" id="KuE-aQ-Xc3"/>
+                <constraint firstItem="tG2-EN-LWu" firstAttribute="top" secondItem="uCb-uL-fPI" secondAttribute="bottom" id="UzU-86-dd1"/>
                 <constraint firstItem="uCb-uL-fPI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VHv-p6-puc"/>
+                <constraint firstItem="tG2-EN-LWu" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="ZpF-Nw-2PY"/>
                 <constraint firstItem="uCb-uL-fPI" firstAttribute="top" secondItem="dB8-hI-1ZM" secondAttribute="bottom" id="a6A-FU-QIR"/>
                 <constraint firstItem="dB8-hI-1ZM" firstAttribute="top" secondItem="qFg-49-VJi" secondAttribute="bottom" id="afR-37-TJ6"/>
                 <constraint firstAttribute="trailing" secondItem="uCb-uL-fPI" secondAttribute="trailing" id="atp-8d-Jry"/>
                 <constraint firstItem="qFg-49-VJi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gTQ-KQ-2HC"/>
                 <constraint firstItem="dB8-hI-1ZM" firstAttribute="width" secondItem="qFg-49-VJi" secondAttribute="width" id="gXO-Hq-oOf"/>
-                <constraint firstAttribute="bottom" secondItem="uCb-uL-fPI" secondAttribute="bottom" id="yVs-Ik-LYW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -72,7 +84,7 @@
                     <exclude reference="DS7-p3-Apj"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="159.5" y="109.5"/>
+            <point key="canvasLocation" x="159.5" y="141"/>
         </view>
     </objects>
 </document>

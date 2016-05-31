@@ -20,6 +20,9 @@
 #import "contactFieldConstants.h"
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
+#import "DB_Company.h"
+#import "DB_Bid.h"
+#import "DB_Contact.h"
 
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate>{
     BOOL isShownContentAdjusted;
@@ -102,18 +105,33 @@
 }
 
 - (void)setInfo:(id)info {
+    DB_Company *record = info;
     
-    [_companyHeader setHeaderInfo:@{COMPANY_TITLE:@"Jay Dee Contractor, Inc.", COMPANY_GEOCODE_LAT:@" 47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266"}];
-    [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:@"38881 Schoolcraft Rd\nLivonia, MI 48150-1033" line2Text:nil];
+    [_companyHeader setHeaderInfo:@{COMPANY_TITLE:record.name, COMPANY_GEOCODE_LAT:@" 47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266"}];
+    [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record address] line2Text:nil];
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
-    [_fieldAssociatedProjects setItems:[@[@"", @"", @"", @"", @"", @""]mutableCopy]];
-    [_fieldContacts setItems:[@[@"", @"", @"", @""]mutableCopy]];
-    [_fieldProjectBidList setItems:[@[@"", @"", @"", @""]mutableCopy]];
-    
-    NSArray *contactItem = @[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}];
-    [_fieldCompanyState setItems:[contactItem mutableCopy]];
 
+    
+    NSMutableArray *contactItem = [NSMutableArray new];
+    //NSArray *contactItem = @[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}];
+
+    if ( record.wwwUrl != nil ) {
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:record.wwwUrl}];
+    }
+    
+    [_fieldCompanyState setItems:contactItem];
+
+    NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
+    [_fieldAssociatedProjects setItems:associatedProjects];
+    
+    
+    NSMutableArray *contacts = [record.relationshipCompanyContact allObjects]!= nil? [[record.relationshipCompanyContact allObjects] mutableCopy ]:[NSMutableArray new];
+    [_fieldContacts setItems:contacts];
+    
+    NSMutableArray *bidList = [@[@"", @"", @"", @""]mutableCopy];
+    [_fieldProjectBidList setItems:bidList];
+    
 }
 
 - (IBAction)tappedButtonBack:(id)sender {

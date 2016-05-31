@@ -152,6 +152,18 @@
         <attribute name="zip5" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipPlus4" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relationshipBid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Bid" inverseName="relationshipCompany" inverseEntity="DB_Bid" syncable="YES"/>
+        <relationship name="relationshipCompanyContact" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_CompanyContact" inverseName="relationshipCompany" inverseEntity="DB_CompanyContact" syncable="YES"/>
+    </entity>
+    <entity name="DB_CompanyContact" representedClassName="DB_CompanyContact" syncable="YES">
+        <attribute name="ckmsContactId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="faxNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Company" inverseName="relationshipCompanyContact" inverseEntity="DB_Company" syncable="YES"/>
     </entity>
     <entity name="DB_Contact" representedClassName="DB_Contact" syncable="YES">
         <attribute name="ckmsContactId" optional="YES" attributeType="String" syncable="YES"/>
@@ -218,7 +230,7 @@
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isHappenSoon" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isRecentAdded" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRecentAdded" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isRecentUpdate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
@@ -254,9 +266,10 @@
         <element name="DB_BidRecent" positionX="-54" positionY="144" width="128" height="1140"/>
         <element name="DB_BidSoon" positionX="-63" positionY="-18" width="128" height="735"/>
         <element name="DB_Project" positionX="-54" positionY="135" width="128" height="945"/>
-        <element name="DB_Company" positionX="-45" positionY="144" width="128" height="330"/>
+        <element name="DB_Company" positionX="-45" positionY="144" width="128" height="345"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="150"/>
         <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
+        <element name="DB_CompanyContact" positionX="18" positionY="180" width="128" height="180"/>
     </elements>
 </model>

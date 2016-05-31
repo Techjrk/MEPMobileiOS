@@ -27,6 +27,9 @@
 - (IBAction)tappedButtonEngineering:(id)sender;
 - (IBAction)tappedButtonBuilding:(id)sender;
 - (IBAction)tappedButtonUtilities:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLeft;
+@property (weak, nonatomic) IBOutlet UIButton *buttonRight;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation ChartView
@@ -35,6 +38,9 @@
 
     [super awakeFromNib];
     
+    _buttonLeft.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _buttonRight.imageView.contentMode = UIViewContentModeScaleAspectFit;
+
     _chartButtonGroup.backgroundColor = CHART_BUTTON_GROUP_BG_COLOR;
     _chartButtonGroup.layer.cornerRadius = 4.0;
     _chartButtonGroup.layer.masksToBounds = YES;
@@ -125,6 +131,20 @@
     }
     
     [self.chartViewDelegate selectedItemChart:layer.tagName chart:self hasfocus:[layer segmentHasFocus]];
+}
+
+- (IBAction)tappedButton:(id)sender {
+    
+    [self.chartViewDelegate tappedChartNavButton:[sender isEqual:_buttonLeft]?ChartButtonLeft:ChartButtonRight];
+    
+}
+
+- (void)hideLeftButton:(BOOL)hide {
+    _buttonLeft.hidden = hide;
+}
+
+- (void)hideRightButton:(BOOL)hide {
+    _buttonRight.hidden = hide;
 }
 
 @end

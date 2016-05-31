@@ -57,6 +57,8 @@
 
 - (void)setItems:(NSMutableArray*)items {
     collectionItems = items;
+    cellHeight = 0;
+    constraintHeight.constant = 0;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     
@@ -123,9 +125,16 @@
 #pragma mark - View
 
 - (void)layoutSubviews {
+    
+    if (cellHeight == 0) {
+        cellHeight = (collectionItems.count) * (kDeviceHeight * 0.07);
+    }
+    
     if (cellHeight>0) {
         NSInteger itemCount = collectionItems.count;
-        constraintHeight.constant = (itemCount * cellHeight) + _buttonTrack.frame.size.height + _buttonTrack.frame.origin.y;
+        constraintHeight.constant = (itemCount * cellHeight) + _buttonTrack.frame.size.height;
+    } else {
+        constraintHeight.constant = _buttonTrack.frame.size.height;
     }
 }
 

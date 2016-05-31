@@ -39,6 +39,7 @@
     NSInteger currentPage;
     NSMutableArray *bidItemsRecentlyMade;
     NSMutableArray *bidItemsHappeningSoon;
+    NSMutableArray *bidItemsRecentlyAdded;
     NSMutableArray *bidItemsRecentlyUpdated;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
@@ -48,6 +49,7 @@
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
+@property (weak, nonatomic) IBOutlet ChartView *chartRecentlyAdded;
 @property (weak, nonatomic) IBOutlet UICollectionView *bidsCollectionView;
 @property (weak, nonatomic) IBOutlet CustomCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
@@ -91,13 +93,14 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _bidsCollectionView.dataSource = self;
     _chartRecentlyMade.chartViewDelegate = self;
     _chartRecentlyUpdated.chartViewDelegate = self;
+    _chartRecentlyAdded.chartViewDelegate = self;
 
     currentBidItems = [self loadBidsRecentlyMade];
     [self requestBidsHappeningSoon];
     [self requestBidRecentlyUpdated];
+    [self requestBidRecentlyAdded];
     
-    [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
-    
+    [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT")];
     [_bidsCollectionView reloadData];
 
     [_calendarView reloadData];
@@ -112,6 +115,8 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     [self layoutDropDownMenuChange];
     
+    [_chartRecentlyMade hideLeftButton:YES];
+    [_chartRecentlyUpdated hideRightButton:YES];
 
 }
 
@@ -232,6 +237,15 @@ static const float animationDurationForDropDowMenu = 1.0f;
     }];
 }
 
+- (void)requestBidRecentlyAdded {
+    [[DataManager sharedManager] bidsRecentlyAddedLimit:@(100) success:^(id object) {
+        [self loadBidsRecentlyAdded];
+    } failure:^(id object) {
+        
+    }];
+}
+
+
 - (NSMutableArray*)loadBidsRecentlyUpdated {
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND projectGroupId IN %@", kCategory];
@@ -256,6 +270,32 @@ static const float animationDurationForDropDowMenu = 1.0f;
     [_chartRecentlyUpdated setSegmentItems:segment];
     return bidItemsRecentlyUpdated;
 }
+
+- (NSMutableArray*)loadBidsRecentlyAdded {
+    NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND projectGroupId IN %@", kCategory];
+    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    
+    
+    for (DB_Project *item in bidItemsRecentlyAdded) {
+        
+        NSString *tag = [NSString stringWithFormat:@"%li", (long)item.projectGroupId.integerValue];
+        NSMutableDictionary *itemDict = segment[tag];
+        
+        if (itemDict == nil) {
+            itemDict = [@{CHART_SEGMENT_COUNT:@(0)} mutableCopy];
+        }
+        NSNumber *number = itemDict[CHART_SEGMENT_COUNT];
+        itemDict[CHART_SEGMENT_COUNT] = @(number.integerValue + 1);
+        segment[tag] = itemDict;
+        
+    }
+    
+    [self createSegmentTagForChart:segment count:bidItemsRecentlyAdded.count];
+    [_chartRecentlyAdded setSegmentItems:segment];
+    return bidItemsRecentlyAdded;
+}
+
 
 
 #pragma mark - UICollectionView source and delegate
@@ -399,7 +439,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
         switch (currentPage) {
             case 0: {
                 currentBidItems = bidItemsRecentlyMade;
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT"), currentBidItems.count ]];
+                [_menuHeader setTitleFromCount:currentBidItems.count  title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT")];
                 break;
             }
             case 1: {
@@ -411,18 +451,22 @@ static const float animationDurationForDropDowMenu = 1.0f;
                 _calendarView.customCalendarDelegate = self;
                 [_calendarView reloadData];
 
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_SOON_TEXT"), currentBidItems.count ]];
+                [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_SOON_TEXT")];
                 break;
             }
             case 2: {
                 
-                currentBidItems = [NSMutableArray new];
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT"), currentBidItems.count ]];
+                currentBidItems = bidItemsRecentlyAdded;
+                
+                [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT")];
+                
                 break;
             }
             case 3: {
                 currentBidItems = [self loadBidsRecentlyUpdated];
-                [_menuHeader setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_UPDATED_TEXT"), currentBidItems.count ]];
+                
+                [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_UPDATED_TEXT")];
+                
                 break;
                 
             }
@@ -431,11 +475,17 @@ static const float animationDurationForDropDowMenu = 1.0f;
         [_bidsCollectionView reloadData];
         
     }
+    
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self pageChanged];
 }
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    [self pageChanged];
+}
+
 
 # pragma mark - BID COLLECTION DELEGATE
 
@@ -669,5 +719,38 @@ static const float animationDurationForDropDowMenu = 1.0f;
     }
 }
 
+- (void)tappedChartNavButton:(ChartButton)charButton {
+   /* NSInteger currentPageOffset = _scrollPageView.contentOffset.x;
+    if (charButton == ChartButtonLeft) {
+        
+        if (currentPageOffset>kDeviceWidth) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset-kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+    } else {
+        if (currentPageOffset<_scrollPageView.contentSize.width) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset+kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+        
+    }
+    */
+    [self scrollDisplayView:charButton == ChartButtonLeft];
+}
+
+- (void)tappedCalendarNavButton:(CalendarButton)calendarButton {
+    [self scrollDisplayView:calendarButton == CalendarButtonLeft];
+}
+
+- (void)scrollDisplayView:(BOOL)isLeft {
+    NSInteger currentPageOffset = _scrollPageView.contentOffset.x;
+    if (isLeft) {
+        if (currentPageOffset>=kDeviceWidth) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset-kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+    } else {
+        if (currentPageOffset<_scrollPageView.contentSize.width) {
+            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset+kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
+        }
+    }
+}
 
 @end

@@ -50,10 +50,16 @@
 
 - (void)setItems:(NSMutableArray*)items {
     collectionItems = items;
+    constraintHeight.constant = 0;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.04):0;
-    [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECT_BIDS_VIEW_ALL"), items.count ]forState:UIControlStateNormal];
+    _constraintButtonSeeAll.constant = items.count>3? (kDeviceHeight * 0.04):0;
+    
+    if (_constraintButtonSeeAll.constant == 0 ) {
+        _buttonSeeAll.hidden = YES;
+    } else {
+        [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECT_BIDS_VIEW_ALL"), items.count ]forState:UIControlStateNormal];
+    }
     
     [_collectionView reloadData];
 }
@@ -119,9 +125,12 @@
 #pragma mark - View
 
 - (void)layoutSubviews {
+    
+    cellHeight = kDeviceHeight * 0.15;
+
     if (cellHeight>0) {
         NSInteger itemCount = collectionItems.count>3?3:collectionItems.count;
-        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _constraintSpacerHeight.constant + _constraintButtonSeeAll.constant;
+        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _viewSpacer.frame.size.height + _buttonSeeAll.frame.size.height;
     }
 }
 

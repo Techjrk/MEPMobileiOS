@@ -22,5 +22,5 @@ typedef enum  {
 
 @interface MenuHeaderView : BaseViewClass
 @property (strong, nonatomic) id<MenuHeaderDelegate>menuHeaderDelegate;
-- (void)setTitle:(NSString*)title;
+- (void)setTitleFromCount:(NSInteger)count title:(NSString*)title;
 @end

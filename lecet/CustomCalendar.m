@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *labelMonth;
 @property (weak, nonatomic) IBOutlet UIView *monthConatinerView;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation CustomCalendar
@@ -190,4 +191,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:CALENDAR_CLEAR_SELECTION object:self];
 }
 
+- (IBAction)tappedButton:(id)sender {
+    
+    [self.customCalendarDelegate tappedCalendarNavButton:[sender isEqual:_buttonLeft]?CalendarButtonLeft:CalendarButtonRight];
+}
 @end

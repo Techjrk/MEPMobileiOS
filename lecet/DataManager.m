@@ -16,6 +16,7 @@
 #import "DB_Contact.h"
 #import "DB_Project.h"
 #import "DB_Participant.h"
+#import "DB_CompanyContact.h"
 
 #import "AppDelegate.h"
 #import "BusyViewController.h"
@@ -25,7 +26,9 @@
 #define kUrlBidsRecentlyMade                @"Bids/"
 #define kUrlBidsHappeningSoon               @"Projects/search"
 #define kUrlBidsRecentlyUpdated             @"Projects/search"
+#define kUrlBidsRecentlyAdded               @"Projects?"
 #define kUrlProjectDetail                   @"Projects/%li?"
+#define kUrlCompanyDetail                   @"Companies/%li?"
 
 @interface DataManager()
 @end
@@ -277,6 +280,31 @@
     record.dcisFactorCode = [DerivedNSManagedObject objectOrNil:company[@"dcisFactorCode"]];
     record.createdAt = [DerivedNSManagedObject objectOrNil:company[@"createdAt"]];
     record.updatedAt = [DerivedNSManagedObject objectOrNil:company[@"updatedAt"]];
+    
+    NSArray *contacts = company[@"contacts"];
+    if (contacts != nil) {
+        for (NSDictionary *item in contacts) {
+            
+            NSNumber *number = item[@"id"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", number.integerValue];
+            
+            DB_CompanyContact *itemContact = [DB_CompanyContact fetchObjectForPredicate:predicate key:nil ascending:YES];
+            
+            if (itemContact == nil) {
+                itemContact = [DB_CompanyContact createEntity];
+            }
+            
+            itemContact.recordId = number;
+            itemContact.name = [DerivedNSManagedObject objectOrNil:item[@"name"]];
+            itemContact.title = [DerivedNSManagedObject objectOrNil:item[@"title"]];
+            itemContact.email = [DerivedNSManagedObject objectOrNil:item[@"email"]];
+            itemContact.ckmsContactId = [DerivedNSManagedObject objectOrNil:item[@"ckmsContactId"]];
+            itemContact.phoneNumber = [DerivedNSManagedObject objectOrNil:item[@"phoneNumber"]];
+            itemContact.faxNumber = [DerivedNSManagedObject objectOrNil:item[@"faxNumber"]];
+            itemContact.companyId = [DerivedNSManagedObject objectOrNil:item[@"companyId"]];
+            itemContact.relationshipCompany = record;
+        }
+    }
 
     return record;
 }
@@ -404,6 +432,34 @@
 
 }
 
+- (void)bidsRecentlyAddedLimit:(NSNumber*)limit success:(APIBlock)success failure:(APIBlock)failure {
+    NSDictionary *filter =@{@"filter[limit]":[NSString stringWithFormat:@"%li",(long)limit.integerValue], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup"};
+    
+    [self HTTP_GET:[self url:kUrlBidsRecentlyAdded] parameters:filter success:^(id object) {
+        
+        NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
+        if (currrentRecords != nil) {
+            for (DB_Project *item in currrentRecords) {
+                item.isRecentAdded = [NSNumber numberWithBool:NO];
+            }
+        }
+        
+        NSArray *results = object;
+        
+        for (NSDictionary *item in results) {
+            [self saveManageObjectProject:item].isRecentAdded = [NSNumber numberWithBool:YES];;
+        }
+        [self saveContext];
+        
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+ 
+}
+
+
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     NSDictionary *filter =@{@"filter[searchFilter][updatedInLast]":[NSString stringWithFormat:@"%li",(long)numberOfDays],
                             @"filter[order]":@"lastPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
@@ -429,6 +485,19 @@
         failure(object);
     } authenticated:YES];
 
+}
+
+- (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    NSDictionary *filter = @{@"filter[include]":@"contacts"};
+    [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, recordId.integerValue]] parameters:filter success:^(id object) {
+        
+        DB_Company *item = [self saveManageObjectCompany:object];
+        
+        [self saveContext];
+        success(item);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
 }
 
 #pragma mark - MISC FEATURE
