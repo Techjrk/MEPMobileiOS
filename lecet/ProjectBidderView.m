@@ -142,6 +142,6 @@
 }
 
 - (IBAction)tappedButtonSeeAll:(id)sender {
-    
+    [[DataManager sharedManager] featureNotAvailable];
 }
 @end

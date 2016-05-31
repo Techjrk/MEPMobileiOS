@@ -52,6 +52,9 @@
                         <constraint firstAttribute="height" constant="30" id="fvl-6u-tH1"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedButtonSeeAll:" destination="-1" eventType="touchUpInside" id="PBv-eN-Xn5"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -119,7 +119,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 #pragma mark - View
@@ -135,5 +135,6 @@
 }
 
 - (IBAction)tappedButtonSeeAll:(id)sender {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 @end

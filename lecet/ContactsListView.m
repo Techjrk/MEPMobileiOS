@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSpacerHeight;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSeeAllHeight;
+- (IBAction)tappedButtonSeeAll:(id)sender;
 @end
 
 @implementation ContactsListView
@@ -119,7 +120,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 #pragma mark - View
@@ -131,4 +132,7 @@
     }
 }
 
+- (IBAction)tappedButtonSeeAll:(id)sender {
+    [[DataManager sharedManager] featureNotAvailable];
+}
 @end
