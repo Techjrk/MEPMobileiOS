@@ -20,15 +20,12 @@
 #import "BidSoonItem.h"
 #import "BidItemRecent.h"
 #import "DropDownMenuView.h"
-
 #import "BidItemCollectionViewCell.h"
 #import "BidSoonItemCollectionViewCell.h"
 #import "CalendarItemCollectionViewCell.h"
 #import "BitItemRecentCollectionViewCell.h"
-
 #import "ProjectDetailViewController.h"
 #import "CompanyDetailViewController.h"
-
 #import "PushZoomAnimator.h"
 #import "ChartView.h"
 #import "chartConstants.h"
@@ -55,12 +52,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet MenuHeaderView *menuHeader;
-
 @property (weak,nonatomic) IBOutlet DropDownMenuView* dropDownMenu;
-
 @property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropDownMenuViewHeight;
-
 @end
 
 @implementation DashboardViewController
@@ -70,7 +64,6 @@
 #define kCategory               @[@(101), @(102), @(103), @(105)]
 static const float animationDurationForDropDowMenu = 1.0f;
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -78,12 +71,9 @@ static const float animationDurationForDropDowMenu = 1.0f;
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
     
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BidItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BidSoonItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierSoon];
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BitItemRecentCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierRecent];
-
     _bidsCollectionView.backgroundColor = DASHBOARD_BIDS_BG_COLOR;
-    
     currentDate = [DerivedNSManagedObject dateFromDayString:@"2015-11-01"];
     [_calendarView setCalendarDate:currentDate];
     
@@ -112,7 +102,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _dropDownMenu.dropDownMenuDelegate = self;
     isDropDownMenuMoreHidden = YES;
     [self addTappedGestureForDimBackground];
-    
     [self layoutDropDownMenuChange];
     
     [_chartRecentlyMade hideLeftButton:YES];
@@ -122,7 +111,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -164,12 +152,11 @@ static const float animationDurationForDropDowMenu = 1.0f;
         
         NSNumber *percentage = @((number.floatValue/count)*100.0);
         item[CHART_SEGMENT_PERCENTAGE] = percentage;
-        
     }
-
 }
 
 - (NSMutableArray*)loadBidsRecentlyMade {
+    
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.projectGroupId IN %@", kCategory];
     bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
@@ -211,6 +198,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (NSMutableArray*)loadBidsHappeningSoon {
+    
     if (bidMarker == nil) {
         bidMarker = [[NSMutableDictionary alloc] init];
     }
@@ -230,6 +218,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (void)requestBidRecentlyUpdated {
+    
     [[DataManager sharedManager] bidsRecentlyUpdated:300 success:^(id object) {
         [self loadBidsRecentlyUpdated];
     } failure:^(id object) {
@@ -238,6 +227,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (void)requestBidRecentlyAdded {
+    
     [[DataManager sharedManager] bidsRecentlyAddedLimit:@(100) success:^(id object) {
         [self loadBidsRecentlyAdded];
     } failure:^(id object) {
@@ -247,6 +237,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 
 - (NSMutableArray*)loadBidsRecentlyUpdated {
+    
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND projectGroupId IN %@", kCategory];
     bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
@@ -272,10 +263,10 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (NSMutableArray*)loadBidsRecentlyAdded {
+    
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND projectGroupId IN %@", kCategory];
     bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
-    
     
     for (DB_Project *item in bidItemsRecentlyAdded) {
         
@@ -351,7 +342,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     
     if (currentBidItems != nil) {
         count = currentBidItems.count;
-
     }
     
     return count;
@@ -562,7 +552,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
 - (void)showOrHideDropDownMenuMore{
     if (isDropDownMenuMoreHidden) {
         
-        
         [_dropDownMenu setHidden:NO];
         [_dimDropDownMenuBackgroundView setHidden:NO];
         _dimDropDownMenuBackgroundView.alpha  = 0.0f;
@@ -574,7 +563,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
         } completion:^(BOOL finished) {
             if (finished) {
                 isDropDownMenuMoreHidden = NO;
-                
             }
         }];
         
@@ -591,7 +579,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDropDownMenu)];
     tapped.numberOfTapsRequired = 1;
     [_dimDropDownMenuBackgroundView addGestureRecognizer:tapped];
-    
     
 }
 
@@ -611,20 +598,14 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
         }
     }];
-    //[UIView beginAnimations:@"fadeOut" context:nil];
-    //[UIView setAnimationDuration:1.0];
     
-
 }
 
 #pragma mark - Drop Down Menu Delegate
 
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
     
-    
     [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap Menu = %u",menuDropDownItem]];
-    
-    
 }
 
 - (void)layoutDropDownMenuChange{
@@ -722,19 +703,6 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (void)tappedChartNavButton:(ChartButton)charButton {
-   /* NSInteger currentPageOffset = _scrollPageView.contentOffset.x;
-    if (charButton == ChartButtonLeft) {
-        
-        if (currentPageOffset>kDeviceWidth) {
-            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset-kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
-        }
-    } else {
-        if (currentPageOffset<_scrollPageView.contentSize.width) {
-            [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset+kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
-        }
-        
-    }
-    */
     [self scrollDisplayView:charButton == ChartButtonLeft];
 }
 
@@ -743,6 +711,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 }
 
 - (void)scrollDisplayView:(BOOL)isLeft {
+
     NSInteger currentPageOffset = _scrollPageView.contentOffset.x;
     if (isLeft) {
         if (currentPageOffset>=kDeviceWidth) {

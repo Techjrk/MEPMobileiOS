@@ -10,8 +10,8 @@
 #import "BaseViewClass.h"
 
 @interface CustomTextField : BaseViewClass
-- (void) setPlaceHolder:(NSString*)placeHolder;
 - (NSString*)text;
 - (void)setText:(NSString*)text;
 - (void)setSecure:(BOOL)secure;
+- (void) setPlaceHolder:(NSString*)placeHolder;
 @end

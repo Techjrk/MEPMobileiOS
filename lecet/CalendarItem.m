@@ -20,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIView *contentRound;
 @property (weak, nonatomic) IBOutlet UIView *contenInner;
 @property (weak, nonatomic) IBOutlet UILabel *labelItem;
-- (IBAction)tappedButtonItem:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *itemButton;
+- (IBAction)tappedButtonItem:(id)sender;
 @end
 
 @implementation CalendarItem

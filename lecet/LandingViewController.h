@@ -11,5 +11,4 @@
 #import "BaseViewController.h"
 
 @interface LandingViewController : BaseViewController
-
 @end

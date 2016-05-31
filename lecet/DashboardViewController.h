@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface DashboardViewController : BaseViewController
 
+@interface DashboardViewController : BaseViewController
 @end

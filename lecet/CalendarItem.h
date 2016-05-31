@@ -23,9 +23,9 @@ typedef enum  {
 @interface CalendarItem : BaseViewClass
 @property (nonatomic) CalendarItemState itemState;
 @property (weak, nonatomic) id<CalendarItemDelegate> calendarItemDelegate;
--(void)setInitialState:(CalendarItemState)state;
 - (CalendarItemState)getState;
 - (CalendarItemState)getInitialState;
-- (void)setItemInfo:(id)info;
 - (NSString*)itemTag;
+- (void)setItemInfo:(id)info;
+-(void)setInitialState:(CalendarItemState)state;
 @end

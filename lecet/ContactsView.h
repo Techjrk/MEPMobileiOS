@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+
 @interface ContactsView : BaseViewClass
 - (void)setInfo:(id)info;
 @end

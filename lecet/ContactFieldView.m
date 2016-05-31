@@ -50,4 +50,5 @@
     _label.attributedText = [[NSAttributedString alloc] initWithString:infoDict[CONTACT_FIELD_DATA] attributes:@{NSFontAttributeName:CONTACT_FIELD_LABEL_FONT, NSForegroundColorAttributeName:CONTACT_FIELD_LABEL_COLOR, NSUnderlineStyleAttributeName:[NSNumber numberWithBool:YES]}];
     _imageView.image = image;
 }
+
 @end

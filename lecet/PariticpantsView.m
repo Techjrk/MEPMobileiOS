@@ -22,8 +22,8 @@
 @property (weak, nonatomic) IBOutlet SectionTitleView *titleView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
-- (IBAction)tappedButtonSeeAll:(id)sender;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonSeeAll;
+- (IBAction)tappedButtonSeeAll:(id)sender;
 @end
 
 @implementation PariticpantsView
@@ -136,4 +136,5 @@
 - (IBAction)tappedButtonSeeAll:(id)sender {
     [[DataManager sharedManager] featureNotAvailable];
 }
+
 @end

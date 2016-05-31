@@ -142,4 +142,5 @@
 - (IBAction)tappedButton:(id)sender {
     [self.companyStateDelegate tappedCompanyState:[sender isEqual:_buttonTrack]?CompanyStateTrack:CompanyStateShare];
 }
+
 @end

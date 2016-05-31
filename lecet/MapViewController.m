@@ -16,9 +16,8 @@
     BOOL isMapLoaded;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-- (IBAction)tappedButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *button;
-
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation MapViewController
@@ -30,7 +29,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)UpdateLocation {

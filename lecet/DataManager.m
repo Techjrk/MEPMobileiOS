@@ -504,7 +504,7 @@
 
 
 - (void)featureNotAvailable {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature will be available in next sprint!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature will be available in future sprint!" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
                                                           style:UIAlertActionStyleDestructive

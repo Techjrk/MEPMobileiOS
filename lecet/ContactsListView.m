@@ -70,10 +70,9 @@
     
     ContactItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    //DB_CompanyContact *item = collectionItems[indexPath.row];
-
+    DB_CompanyContact *item = collectionItems[indexPath.row];
     
-    //[cell setItemInfo:@{CONTACT_NAME:item.name, CONTACT_COMPANY:item.relationshipCompany.name}];
+    [cell setItemInfo:@{CONTACT_NAME:item.name, CONTACT_COMPANY:item.relationshipCompany.name}];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
@@ -135,4 +134,5 @@
 - (IBAction)tappedButtonSeeAll:(id)sender {
     [[DataManager sharedManager] featureNotAvailable];
 }
+
 @end
