@@ -15,8 +15,6 @@
 		B6972B7E1CF327940092D5CD /* DropDownMenuShareList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6972B7C1CF327940092D5CD /* DropDownMenuShareList.xib */; };
 		B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */; };
 		B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */; };
-		B6CF76501CF881AC00BF6C69 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF764E1CF881AC00BF6C69 /* ProjectListViewController.m */; };
-		B6CF76511CF881AC00BF6C69 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CF764F1CF881AC00BF6C69 /* ProjectListViewController.xib */; };
 		B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032E71CF2ED0F00D3D02C /* Utilities.m */; };
 		B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032EB1CF2ED4200D3D02C /* DropDownMenuView.m */; };
 		B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */; };
@@ -120,7 +118,6 @@
 		B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B796161A1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib */; };
 		B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B796161F1CF600460089BC32 /* DB_Participant+CoreDataProperties.m */; };
 		B79616231CF600460089BC32 /* DB_Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616211CF600460089BC32 /* DB_Participant.m */; };
-		B796164D1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */; };
 		B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
@@ -190,9 +187,6 @@
 		B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateViewController.m; sourceTree = "<group>"; };
 		B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailStateViewController.xib; sourceTree = "<group>"; };
 		B6CF764B1CF868E100BF6C69 /* ProjectDetailStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateViewController.h; sourceTree = "<group>"; };
-		B6CF764D1CF881AC00BF6C69 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
-		B6CF764E1CF881AC00BF6C69 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
-		B6CF764F1CF881AC00BF6C69 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
 		B6E032E61CF2ED0F00D3D02C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		B6E032E71CF2ED0F00D3D02C /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		B6E032EA1CF2ED4200D3D02C /* DropDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuView.h; sourceTree = "<group>"; };
@@ -538,16 +532,6 @@
 			name = ProjectDetailState;
 			sourceTree = "<group>";
 		};
-		B6CF76521CF881B200BF6C69 /* ProjectList */ = {
-			isa = PBXGroup;
-			children = (
-				B6CF764D1CF881AC00BF6C69 /* ProjectListViewController.h */,
-				B6CF764E1CF881AC00BF6C69 /* ProjectListViewController.m */,
-				B6CF764F1CF881AC00BF6C69 /* ProjectListViewController.xib */,
-			);
-			name = ProjectList;
-			sourceTree = "<group>";
-		};
 		B6E032E41CF2ECB200D3D02C /* DropDownMore */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,7 +620,6 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B6CF76521CF881B200BF6C69 /* ProjectList */,
 				B6CF764C1CF868F800BF6C69 /* ProjectDetailState */,
 				B70155361CD0C77B0050CF8A /* SplashViewController.h */,
 				B70155371CD0C77B0050CF8A /* SplashViewController.m */,
@@ -1091,7 +1074,6 @@
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
 				B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */,
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
-				B6CF76511CF881AC00BF6C69 /* ProjectListViewController.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
@@ -1189,7 +1171,6 @@
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
-				B6CF76501CF881AC00BF6C69 /* ProjectListViewController.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,

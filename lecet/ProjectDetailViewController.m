@@ -299,7 +299,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 - (void)tappedDropDownShareList:(DropDownShareListItem)shareListItem{
     
-    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %u",shareListItem]];
+    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
     
 }
 
@@ -347,7 +347,10 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 -(void)selectedDropDownProjectList:(NSIndexPath *)indexPath{
     
-    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap  = %ld",(long)indexPath.row]];
+    
+    //FEATURENOTAVAILABLE
+
+    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
     
     
     
