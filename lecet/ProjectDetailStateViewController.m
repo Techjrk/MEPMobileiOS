@@ -88,7 +88,7 @@
         
     }else{
         
-        [[DataManager sharedManager] promptMessage:@"Hide Project been Tapped"];
+        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
         
     }
 
