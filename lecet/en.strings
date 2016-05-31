@@ -97,6 +97,7 @@
 "DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT"       =               "Another List";
 "DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT"        =               "High Values";
 "DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT"     =               "Select a Tracking List";
+"DROPDOWNPROJECTLIST_NUMBERS_OF_PROJECT_LABEL_TEXT"     =               "Projects";
 
 
 

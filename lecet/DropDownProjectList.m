@@ -8,13 +8,17 @@
 
 #import "DropDownProjectList.h"
 #import "dropDownProjectListConstant.h"
+#import "ProjectListCVCell.h"
+
+@interface DropDownProjectList ()<UICollectionViewDelegate, UICollectionViewDataSource>{
+    
+}
+
+@property (strong,nonatomic) NSDictionary *projects;
 
 
-@interface DropDownProjectList ()
-@property (weak, nonatomic) IBOutlet UIButton *buttonTrainAndMetros;
-@property (weak, nonatomic) IBOutlet UIButton *buttonRailways;
-@property (weak, nonatomic) IBOutlet UIButton *buttonAnotherList;
-@property (weak, nonatomic) IBOutlet UIButton *buttonHighValues;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
 
@@ -27,49 +31,14 @@
 @end
 
 @implementation DropDownProjectList
-
+#define kCellIdentifier     @"kCellIdentifier"
 
 - (void)awakeFromNib{
-    _buttonTrainAndMetros.tag =DropDownProjectTrainAndMetros;
-    _buttonRailways.tag  = DropDownProjectRailways;
-    _buttonAnotherList.tag = DropDownProjectAnotherList;
-    _buttonHighValues.tag = DropDownProjectHighValues;
     
-    _buttonTrainAndMetros.titleLabel.font = DROPDOWN_PROJECTLIST_BUTTON_TRAINANDMETROS_FONT;
-    _buttonRailways.titleLabel.font = DROPDOWN_PROJECTLIST_BUTTON_RAILWAYS_FONT;
-    _buttonAnotherList.titleLabel.font = DROPDOWN_PROJECTLIST_BUTTON_ANOTHERLIST_FONT;
-    _buttonHighValues.titleLabel.font = DROPDOWN_PROJECTLIST_BUTTON_HIGHVALUES_FONT;
+
     
-    
-    [_buttonTrainAndMetros setTitleColor:DROPDOWN_PROJECTLIST_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    [_buttonRailways setTitleColor:DROPDOWN_PROJECTLIST_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    [_buttonAnotherList setTitleColor:DROPDOWN_PROJECTLIST_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    [_buttonHighValues setTitleColor:DROPDOWN_PROJECTLIST_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    
-    
-    _labelNumberOfProjectsTrainsAndMetros.font = DROPDOWN_PROJECTLIST_LABEL_TRAINANDMETROS_FONT;
-    _labelNumberOfProjectsRailways.font = DROPDOWN_PROJECTLIST_LABEL_RAILWAYS_FONT;
-    _labelNumberOfProjectsAnotherList.font = DROPDOWN_PROJECTLIST_BUTTON_ANOTHERLIST_FONT;
-    _labelNumberOfProjectHighValues.font = DROPDOWN_PROJECTLIST_BUTTON_HIGHVALUES_FONT;
     _labelSelecTracking.font = DROPDOWN_PROJECTLIST_LABEL_SELECTTRACKING_FONT;
-    
-    
-    _labelNumberOfProjectsTrainsAndMetros.textColor = DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR;
-    _labelNumberOfProjectsRailways.textColor = DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR;
-    _labelNumberOfProjectsAnotherList.textColor = DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR;
-    _labelNumberOfProjectHighValues.textColor = DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR;
-    
-    
-    
-    
-    
-    [_buttonTrainAndMetros setTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT") forState:UIControlStateNormal];
-    [_buttonRailways setTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT") forState:UIControlStateNormal];
-    [_buttonAnotherList setTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT") forState:UIControlStateNormal];
-    [_buttonHighValues setTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT") forState:UIControlStateNormal];
-    
     _labelSelecTracking.text = NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT");
-    
     
     _selectTrackingListView.backgroundColor = DROPDOWN_PROJECTLIST_VIEW_SELECTTRACKINGLIST_BG_COLOR;
     
@@ -78,8 +47,48 @@
     
     [self drawShadow];
     
+    
+    
+    [_collectionView registerNib:[UINib nibWithNibName:[[ProjectListCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    
+    
+    [_collectionView setBackgroundColor:DROPDOWN_PROJECTLIST_COLLECTIONVIEW_BG_COLOR];
+    
+    _collectionView.bounces = NO;
+    
+    
+    [self setProjects];
+    
 }
 
+
+
+- (void)setProjects{
+    
+    NSArray *tempPorjectList = @[NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT"),NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT"),NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT"),NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT")];
+    
+    
+    NSArray *tempNumberOfProjects = @[@17,@7,@13,@132];
+    
+    NSDictionary *parameter = @{@"projectList":tempPorjectList,
+                                @"numberOfProjects":tempNumberOfProjects};
+    
+    
+    
+    _projects = parameter;
+    
+}
+
+
+
+- (void)reloadData{
+    
+    [_collectionView reloadData];
+    
+
+}
 
 - (void)drawTopTriangle{
     
@@ -125,13 +134,85 @@
 
 - (IBAction)tappedDropDownProjectList:(id)sender{
     
-    UIButton *button = sender;
-    [_dropDownProjectListDelegate tappedDropDownProjectList:(DropDownProjectListItem)button.tag];
+  //  UIButton *button = sender;
+  //  [_dropDownProjectListDelegate tappedDropDownProjectList:(DropDownProjectListItem)button.tag];
     
 }
 
 
 
 
+#pragma mark - UICollectionView source and delegate
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ProjectListCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    
+    
+
+    NSArray *titleArray = _projects[@"projectList"];
+    NSString *title = [titleArray objectAtIndex:indexPath.row];
+    [cell.buttonProjectTrackList setTitle:title forState:UIControlStateNormal];
+    
+    
+    NSArray *totalProjects = _projects[@"numberOfProjects"];
+    NSString *totalProject = [totalProjects objectAtIndex:indexPath.row];
+    
+    cell.labelNumberOfProject.text = [NSString stringWithFormat:@"%@ %@",totalProject,NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_NUMBERS_OF_PROJECT_LABEL_TEXT")];
+    
+    
+    
+    return cell;
+}
+
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return [_projects[@"projectList"] count];
+}
+
+#pragma mark - UIollection Delegate
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize size;
+    
+    CGFloat cellWidth =  collectionView.frame.size.width;
+    CGFloat cellHeight = collectionView.frame.size.height / 4;
+    size = CGSizeMake( cellWidth, cellHeight);
+    return size;
+}
+
+/*
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
+{
+    return UIEdgeInsetsZero;
+}
+*/
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.5f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [_dropDownProjectListDelegate selectedDropDownProjectList:indexPath];
+    
+}
 
 @end

@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */; };
+		B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */; };
+		B623B2121CFC9B9D00793D67 /* DropDownProjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B2101CFC9B9D00793D67 /* DropDownProjectList.m */; };
+		B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B2111CFC9B9D00793D67 /* DropDownProjectList.xib */; };
 		B6972B7D1CF327940092D5CD /* DropDownMenuShareList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6972B7B1CF327940092D5CD /* DropDownMenuShareList.m */; };
 		B6972B7E1CF327940092D5CD /* DropDownMenuShareList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6972B7C1CF327940092D5CD /* DropDownMenuShareList.xib */; };
-		B6972B831CF327AF0092D5CD /* DropDownProjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6972B811CF327AF0092D5CD /* DropDownProjectList.m */; };
-		B6972B841CF327AF0092D5CD /* DropDownProjectList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6972B821CF327AF0092D5CD /* DropDownProjectList.xib */; };
 		B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */; };
 		B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */; };
+		B6CF76501CF881AC00BF6C69 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF764E1CF881AC00BF6C69 /* ProjectListViewController.m */; };
+		B6CF76511CF881AC00BF6C69 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CF764F1CF881AC00BF6C69 /* ProjectListViewController.xib */; };
 		B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032E71CF2ED0F00D3D02C /* Utilities.m */; };
 		B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032EB1CF2ED4200D3D02C /* DropDownMenuView.m */; };
 		B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */; };
@@ -169,19 +173,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B623B2081CFC9A7B00793D67 /* projectTListCellConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTListCellConstant.h; sourceTree = "<group>"; };
+		B623B20A1CFC9AC900793D67 /* ProjectListCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListCVCell.h; sourceTree = "<group>"; };
+		B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListCVCell.m; sourceTree = "<group>"; };
+		B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListCVCell.xib; sourceTree = "<group>"; };
+		B623B20F1CFC9B9D00793D67 /* DropDownProjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownProjectList.h; sourceTree = "<group>"; };
+		B623B2101CFC9B9D00793D67 /* DropDownProjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownProjectList.m; sourceTree = "<group>"; };
+		B623B2111CFC9B9D00793D67 /* DropDownProjectList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownProjectList.xib; sourceTree = "<group>"; };
 		B6972B781CF2F2E20092D5CD /* dropDownMenuConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dropDownMenuConstants.h; sourceTree = "<group>"; };
 		B6972B7A1CF327940092D5CD /* DropDownMenuShareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuShareList.h; sourceTree = "<group>"; };
 		B6972B7B1CF327940092D5CD /* DropDownMenuShareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenuShareList.m; sourceTree = "<group>"; };
 		B6972B7C1CF327940092D5CD /* DropDownMenuShareList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownMenuShareList.xib; sourceTree = "<group>"; };
-		B6972B801CF327AF0092D5CD /* DropDownProjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownProjectList.h; sourceTree = "<group>"; };
-		B6972B811CF327AF0092D5CD /* DropDownProjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownProjectList.m; sourceTree = "<group>"; };
-		B6972B821CF327AF0092D5CD /* DropDownProjectList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownProjectList.xib; sourceTree = "<group>"; };
 		B6972B851CF327CC0092D5CD /* dropDownProjectListConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dropDownProjectListConstant.h; sourceTree = "<group>"; };
 		B6972B861CF327CC0092D5CD /* dropDownShareListConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dropDownShareListConstant.h; sourceTree = "<group>"; };
 		B6972B871CF327CC0092D5CD /* projectDetailStateConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectDetailStateConstants.h; sourceTree = "<group>"; };
 		B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateViewController.m; sourceTree = "<group>"; };
 		B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailStateViewController.xib; sourceTree = "<group>"; };
 		B6CF764B1CF868E100BF6C69 /* ProjectDetailStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateViewController.h; sourceTree = "<group>"; };
+		B6CF764D1CF881AC00BF6C69 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
+		B6CF764E1CF881AC00BF6C69 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
+		B6CF764F1CF881AC00BF6C69 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
 		B6E032E61CF2ED0F00D3D02C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		B6E032E71CF2ED0F00D3D02C /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		B6E032EA1CF2ED4200D3D02C /* DropDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuView.h; sourceTree = "<group>"; };
@@ -477,6 +488,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B623B2091CFC9AB700793D67 /* ProjectListCell */ = {
+			isa = PBXGroup;
+			children = (
+				B623B20A1CFC9AC900793D67 /* ProjectListCVCell.h */,
+				B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */,
+				B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */,
+			);
+			name = ProjectListCell;
+			sourceTree = "<group>";
+		};
 		B6972B791CF3278A0092D5CD /* ShareList */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,9 +511,9 @@
 		B6972B7F1CF327A20092D5CD /* ProejctList */ = {
 			isa = PBXGroup;
 			children = (
-				B6972B801CF327AF0092D5CD /* DropDownProjectList.h */,
-				B6972B811CF327AF0092D5CD /* DropDownProjectList.m */,
-				B6972B821CF327AF0092D5CD /* DropDownProjectList.xib */,
+				B623B20F1CFC9B9D00793D67 /* DropDownProjectList.h */,
+				B623B2101CFC9B9D00793D67 /* DropDownProjectList.m */,
+				B623B2111CFC9B9D00793D67 /* DropDownProjectList.xib */,
 			);
 			name = ProejctList;
 			sourceTree = "<group>";
@@ -515,6 +536,16 @@
 				B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */,
 			);
 			name = ProjectDetailState;
+			sourceTree = "<group>";
+		};
+		B6CF76521CF881B200BF6C69 /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				B6CF764D1CF881AC00BF6C69 /* ProjectListViewController.h */,
+				B6CF764E1CF881AC00BF6C69 /* ProjectListViewController.m */,
+				B6CF764F1CF881AC00BF6C69 /* ProjectListViewController.xib */,
+			);
+			name = ProjectList;
 			sourceTree = "<group>";
 		};
 		B6E032E41CF2ECB200D3D02C /* DropDownMore */ = {
@@ -605,6 +636,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6CF76521CF881B200BF6C69 /* ProjectList */,
 				B6CF764C1CF868F800BF6C69 /* ProjectDetailState */,
 				B70155361CD0C77B0050CF8A /* SplashViewController.h */,
 				B70155371CD0C77B0050CF8A /* SplashViewController.m */,
@@ -634,6 +666,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B623B2091CFC9AB700793D67 /* ProjectListCell */,
 				B76C69691CD75AEF009E9F15 /* BidItemCollectionViewCell.h */,
 				B76C696A1CD75AEF009E9F15 /* BidItemCollectionViewCell.m */,
 				B76C696B1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib */,
@@ -777,6 +810,7 @@
 		B76C69351CD22413009E9F15 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
+				B623B2081CFC9A7B00793D67 /* projectTListCellConstant.h */,
 				B6972B851CF327CC0092D5CD /* dropDownProjectListConstant.h */,
 				B6972B861CF327CC0092D5CD /* dropDownShareListConstant.h */,
 				B6972B871CF327CC0092D5CD /* projectDetailStateConstants.h */,
@@ -1055,7 +1089,9 @@
 				B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */,
 				B707BC411CEF0B960003C836 /* LandingViewController.xib in Resources */,
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
+				B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */,
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
+				B6CF76511CF881AC00BF6C69 /* ProjectListViewController.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
@@ -1068,7 +1104,6 @@
 				B771C6071CEB6C65004A628A /* AssociatedBidView.xib in Resources */,
 				B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */,
 				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
-				B6972B841CF327AF0092D5CD /* DropDownProjectList.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
 				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
@@ -1092,6 +1127,7 @@
 				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
+				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
@@ -1153,7 +1189,7 @@
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
-				B796164D1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m in Sources */,
+				B6CF76501CF881AC00BF6C69 /* ProjectListViewController.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
@@ -1187,13 +1223,14 @@
 				B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */,
 				B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */,
 				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
-				B6972B831CF327AF0092D5CD /* DropDownProjectList.m in Sources */,
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B623B2121CFC9B9D00793D67 /* DropDownProjectList.m in Sources */,
 				B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */,
 				B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */,
+				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,

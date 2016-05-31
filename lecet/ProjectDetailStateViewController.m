@@ -63,25 +63,21 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    [_projectDetailStateViewControllerDelegate tappedDismissed];
 }
 
 - (void)setAutoLayConstraintInIncompatibleDevice{
     
     if (isiPhone4) {
-
         
         //Share List
         _constraintDetailStateViewHeight.constant = 20;
+        
     }
-    
-    
-    
     
 }
 
-
-#pragma mark - Project Detail State Delegate
-
+#pragma mark - Project Detail State View Delegate
 
 - (void)tappedProjectDetailState:(ProjectDetailStateItem)projectDetailStteItesm{
 
