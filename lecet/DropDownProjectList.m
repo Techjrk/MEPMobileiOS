@@ -15,13 +15,7 @@
 }
 
 @property (strong,nonatomic) NSDictionary *projects;
-
-
-
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
-
-
 @property (weak, nonatomic) IBOutlet UILabel *labelSelecTracking;
 @property (weak, nonatomic) IBOutlet UIView *selectTrackingListView;
 
@@ -34,36 +28,24 @@
 #define kCellIdentifier     @"kCellIdentifier"
 
 - (void)awakeFromNib{
-    
 
-    
     _labelSelecTracking.font = DROPDOWN_PROJECTLIST_LABEL_SELECTTRACKING_FONT;
     _labelSelecTracking.text = NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT");
-    
     _selectTrackingListView.backgroundColor = DROPDOWN_PROJECTLIST_VIEW_SELECTTRACKINGLIST_BG_COLOR;
-    
     
     [self drawTopTriangle];
     
     [self drawShadow];
     
-    
-    
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectListCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    
-    
     [_collectionView setBackgroundColor:DROPDOWN_PROJECTLIST_COLLECTIONVIEW_BG_COLOR];
-    
     _collectionView.bounces = NO;
-    
     
     [self setProjects];
     
 }
-
-
 
 - (void)setProjects{
     
@@ -75,18 +57,13 @@
     NSDictionary *parameter = @{@"projectList":tempPorjectList,
                                 @"numberOfProjects":tempNumberOfProjects};
     
-    
-    
     _projects = parameter;
     
 }
 
-
-
 - (void)reloadData{
     
     [_collectionView reloadData];
-    
 
 }
 
@@ -109,9 +86,6 @@
     
 }
 
-
-
-
 - (void)drawShadow{
  
     CGRect screenRect = self.view.frame;
@@ -120,8 +94,8 @@
     
     
     if (isiPhone5) {
-        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.2f);
-        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.2f);
+        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.22f);
+        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.22f);
     }
     if (isiPhone6) {
       
@@ -136,8 +110,6 @@
         
     }
     
-    
-    
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
     
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -148,35 +120,20 @@
     [self.view.layer setCornerRadius:5.0f];
 }
 
-- (IBAction)tappedDropDownProjectList:(id)sender{
-    
-  //  UIButton *button = sender;
-  //  [_dropDownProjectListDelegate tappedDropDownProjectList:(DropDownProjectListItem)button.tag];
-    
-}
-
-
-
-
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProjectListCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    
-
     NSArray *titleArray = _projects[@"projectList"];
     NSString *title = [titleArray objectAtIndex:indexPath.row];
     [cell.buttonProjectTrackList setTitle:title forState:UIControlStateNormal];
-    
     
     NSArray *totalProjects = _projects[@"numberOfProjects"];
     NSString *totalProject = [totalProjects objectAtIndex:indexPath.row];
     
     cell.labelNumberOfProject.text = [NSString stringWithFormat:@"%@ %@",totalProject,NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_NUMBERS_OF_PROJECT_LABEL_TEXT")];
-    
-    
     
     return cell;
 }
@@ -205,13 +162,6 @@
     return size;
 }
 
-/*
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
-{
-    return UIEdgeInsetsZero;
-}
-*/
-
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     return 0.5f;
@@ -221,9 +171,6 @@
 {
     return 0;
 }
-
-
-
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     

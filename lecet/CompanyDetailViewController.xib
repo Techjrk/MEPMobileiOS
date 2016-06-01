@@ -127,7 +127,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Pd-Mk-ari">
-                                    <rect key="frame" x="16.5" y="1050" width="380" height="11"/>
+                                    <rect key="frame" x="17" y="1050" width="380" height="11"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-Ds-Qsl" customClass="ProjectBidListView">

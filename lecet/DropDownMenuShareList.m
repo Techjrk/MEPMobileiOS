@@ -32,23 +32,13 @@
     
     _buttonSendByEmail.tag = DropDownSendByEmail;
     _buttonCopyLink.tag = DropDownCopyLink;
-    
     _buttonSendByEmail.titleLabel.font = DROPDOWN_SHARELIST_BUTTON_SENDBYEMAIL_FONT;
     _buttonCopyLink.titleLabel.font = DROPDOWN_SHARELIST_BUTTON_COPYLINK_FONT;
-    
     [_buttonSendByEmail setTitle:NSLocalizedLanguage(@"DROPDOWNSHARELIST_SENDBYEMAIL_BUTTON_TEXT") forState:UIControlStateNormal];
- 
-    
     [_buttonCopyLink setTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_COPYLINK_BUTTON_TEXT") forState:UIControlStateNormal];
     
-    
-    
     [self drawTopTriangle];
-    
     [self drawShadow];
-    
-    
-    
     [self adjustConstraintForIncompatibleDevies];
 }
 
@@ -61,12 +51,9 @@
     
     int height = 0;
     
-    //float widthNeedToAdd = screenWidth * 0.021f;
     float width = (screenWidth / 2) +12;
     int triangleTopDirection = -1;
-    
     int triangleSize =  9;
-    
     
     UIColor *bgColor = [UIColor whiteColor];
     CAShapeLayer *triangleTop = [[Utilities sharedIntances] drawDropDownTopTriangle:width backgroundColor:bgColor triangleTopDirection:triangleTopDirection heightPlacement:height sizeOfTriangle:triangleSize];
@@ -81,21 +68,20 @@
     
     CGRect customDimRect = screenRect;
     
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
     
+    if (isiPhone5) {
+        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.14f);
+        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.14f);
+    }
+
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
     self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+    self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.layer.shadowOpacity = 0.5f;
     self.layer.shadowPath = shadowPath.CGPath;
-    
-  
-    
     [self.layer setCornerRadius:5.0f];
 
 }
-
-
-
 
 -(IBAction)tappedDropDonwShareList:(id)sender{
     
