@@ -57,7 +57,6 @@
 @property (weak, nonatomic) IBOutlet PariticpantsView *participantsView;
 @property (weak, nonatomic) IBOutlet ProjectBidderView *projectBidder;
 @property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
-@property (weak,nonatomic) IBOutlet DropDownProjectList *dropDownProjectListView;
 @property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
 
 //Fields
@@ -80,12 +79,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldParticipants;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidder;
 
-@property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
 
-
-
-
-@property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDropDownShareHeight;
@@ -127,6 +121,8 @@ static const float animationDurationForDropDowMenu = 0.35f;
     //_dropDownProjectListView.dropDownProjectListDelegate = self;
     //isDropDownProjectListHidden = YES;
     
+    
+
     
     [self addTappedGestureForDimBackground];
     [self setAutoLayConstraintInIncompatibleDevice];
