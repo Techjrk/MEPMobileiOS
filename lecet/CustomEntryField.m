@@ -46,6 +46,7 @@
     _labelName.text = title;
     _labelLine1.text = line1Text;
     _labelLine2.text = line2Text;
+    
 }
 
 -(void)changeConstraintHeight:(NSLayoutConstraint *)constraint {
@@ -53,7 +54,8 @@
 }
 
 - (void)layoutSubviews {
-    UILabel *label = _labelLine2.text != nil | _labelLine2.text.length == 0? _labelLine2:_labelLine1;
+    UILabel *label = _labelLine2.text == nil | _labelLine2.text.length == 0? _labelLine1:_labelLine2;
+    [label sizeToFit];
     heightConstraint.constant = label.frame.origin.y+ label.frame.size.height + (kDeviceHeight * 0.008);
 }
 
