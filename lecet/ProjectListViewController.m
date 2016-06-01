@@ -171,7 +171,7 @@
     
     //FEATURENOTAVAILABLE
     
-    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
+    [[DataManager sharedManager] featureNotAvailable];
     
 }
 
