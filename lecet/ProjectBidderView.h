@@ -12,6 +12,7 @@
 
 @protocol ProjectBidderDelegate <NSObject>
 - (void)tappedProjectBidder:(id)object;
+- (void)tappedProjectBidSeeAll:(id)object;
 @end
 
 @interface ProjectBidderView : BaseViewClass

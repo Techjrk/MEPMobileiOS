@@ -24,8 +24,9 @@
 #import "DB_Bid.h"
 #import "DB_Contact.h"
 
-@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate>{
+@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate>{
     BOOL isShownContentAdjusted;
+    NSNumber *companyRecordId;
 }
 //Views
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -72,6 +73,7 @@
     [_fieldContacts changeConstraintHeight:_constraintFieldContacts];
     [_fieldProjectBidList changeConstraintHeight:_constraintFieldProjectBidList];
     [_fieldCompanyState changeConstraintHeight:_constraintFieldCompanyState];
+    _fieldProjectBidList.projectBidListDelegate = self;
     
 }
 
@@ -106,6 +108,7 @@
 - (void)setInfo:(id)info {
     DB_Company *record = info;
     
+    companyRecordId = record.recordId;
     [_companyHeader setHeaderInfo:@{COMPANY_TITLE:record.name, COMPANY_GEOCODE_LAT:@" 47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266"}];
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record address] line2Text:nil];
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
@@ -179,6 +182,21 @@
             break;
         }
     }
+}
+
+- (void)tappedProjectItemBidSeeAll:(id)object {
+    [[DataManager sharedManager] companyProjectBids:companyRecordId success:^(id object) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
+    
+        NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+        
+        //
+        // PUT CODE HERE
+        //
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {

@@ -304,4 +304,7 @@
     }];
 }
 
+- (void)tappedProjectBidSeeAll:(id)object {
+}
+
 @end

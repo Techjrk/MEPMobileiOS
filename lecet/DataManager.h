@@ -26,9 +26,11 @@
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)companyProjectBids:(NSNumber*)companyId success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC
 - (void)featureNotAvailable;
 - (void)showBusyScreen;
 - (void)promptMessage:(NSString*)message;
+
 @end

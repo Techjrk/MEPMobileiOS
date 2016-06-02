@@ -142,6 +142,7 @@
 }
 
 - (IBAction)tappedButtonSeeAll:(id)sender {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.projectBidderDelegate tappedProjectBidSeeAll:self];
 }
+
 @end
