@@ -23,6 +23,7 @@
 #import "DB_Company.h"
 #import "DB_Bid.h"
 #import "DB_Contact.h"
+#import "ProjectSortViewController.h"
 
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate>{
     BOOL isShownContentAdjusted;
@@ -154,7 +155,11 @@
 }
 
 - (void)tappedCompanyState:(CompanyState)companyState {
-    [[DataManager sharedManager] featureNotAvailable];
+  //  [[DataManager sharedManager] featureNotAvailable];
+    
+    [self showSortList];
+    
+    
 }
 
 - (void)tappedCompnayStateContact:(id)object {
@@ -218,6 +223,17 @@
 #pragma mark - ProjectList Bidder Dlegate
 -(void)tappedProjectItemBidder:(id)object{
     
+ 
+    
+}
+
+
+
+- (void)showSortList{
+    ProjectSortViewController *controller = [ProjectSortViewController new];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:controller  animated:YES completion:nil];
 }
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "ProjectSortViewController.h"
+#import "ProjectSortView.h"
+
 
 @interface ProjectSortViewController ()
+@property (weak, nonatomic) IBOutlet ProjectSortView *projectStateView;
 
 @end
 
@@ -17,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self addTappedGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +38,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void)addTappedGesture{
+    
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
+    tapped.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapped];
+    
+}
+
+
+- (void)dismissDropDownViewController{
+    
+    [self dismissViewControllerAnimated:YES completion:Nil];
+    
+}
 
 @end

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectSortViewController">
             <connections>
+                <outlet property="projectStateView" destination="QOK-LC-JAO" id="IcB-WK-nFj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +16,41 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEz-wA-GYZ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gou-qo-aRc">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOK-LC-JAO" customClass="ProjectSortView">
+                            <rect key="frame" x="8" y="73" width="584" height="272"/>
+                            <color key="backgroundColor" red="1" green="0.45008482799999999" blue="0.39555021239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="QOK-LC-JAO" firstAttribute="height" secondItem="jEz-wA-GYZ" secondAttribute="height" multiplier="0.452" id="1vk-g7-ltB"/>
+                        <constraint firstItem="gou-qo-aRc" firstAttribute="top" secondItem="jEz-wA-GYZ" secondAttribute="top" id="7pV-Hz-70M"/>
+                        <constraint firstAttribute="trailing" secondItem="QOK-LC-JAO" secondAttribute="trailing" constant="8" id="EWX-IV-caN"/>
+                        <constraint firstAttribute="trailing" secondItem="gou-qo-aRc" secondAttribute="trailing" id="M1S-4f-jFD"/>
+                        <constraint firstItem="QOK-LC-JAO" firstAttribute="top" secondItem="gou-qo-aRc" secondAttribute="bottom" constant="8" id="R6x-i4-bFo"/>
+                        <constraint firstItem="gou-qo-aRc" firstAttribute="height" secondItem="jEz-wA-GYZ" secondAttribute="height" multiplier="0.109" id="dyM-xm-RKz"/>
+                        <constraint firstItem="gou-qo-aRc" firstAttribute="leading" secondItem="jEz-wA-GYZ" secondAttribute="leading" id="lTx-cP-hH0"/>
+                        <constraint firstItem="QOK-LC-JAO" firstAttribute="leading" secondItem="jEz-wA-GYZ" secondAttribute="leading" constant="8" id="tut-Hd-Yto"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jEz-wA-GYZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7Zm-hV-1kF"/>
+                <constraint firstItem="jEz-wA-GYZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JyT-az-AB6"/>
+                <constraint firstAttribute="trailing" secondItem="jEz-wA-GYZ" secondAttribute="trailing" id="cbg-Io-RWz"/>
+                <constraint firstAttribute="bottom" secondItem="jEz-wA-GYZ" secondAttribute="bottom" id="kaj-Cb-OIs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="410" y="411"/>
         </view>
     </objects>
 </document>
