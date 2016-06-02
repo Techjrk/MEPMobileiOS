@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[DataManager sharedManager] startMonitoring];
     [self enableTapGesture:YES];
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
@@ -110,8 +109,12 @@
     
     [[DataManager sharedManager] userLogin:[_textFieldEmail text] password:[_textFieldPassword text] success:^(id object) {
         NSString *token = object[@"id"];
+        NSNumber *userId = object[@"userId"];
         
         [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
+
+        [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
+
         
         [self dismissViewControllerAnimated:YES completion:^{
             [self.loginDelegate login];

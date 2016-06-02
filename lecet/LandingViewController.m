@@ -25,6 +25,17 @@
     UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"LAUNCHSCREEN"];
     controller.view.frame = self.view.frame;
     [self.view addSubview:controller.view];
+    
+    if (isDebug) {
+        [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:@"" serviceName:kKeychainServiceName];
+   }
+ 
+    NSString *isLoginPersisted = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
+
+    if (isLoginPersisted != nil & isLoginPersisted.length>0) {
+        isLogin = YES;
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(login) userInfo:nil repeats:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +55,7 @@
 }
 
 - (void)showLogin {
+    
     LoginViewController *controller = [LoginViewController new];
     controller.loginDelegate = self;
     [self presentViewController:controller animated:NO completion:nil];

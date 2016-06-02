@@ -30,6 +30,7 @@
 #define kUrlProjectDetail                   @"Projects/%li?"
 #define kUrlCompanyDetail                   @"Companies/%li?"
 #define kUrlCompanyBids                     @"Bids/"
+#define kUrlUserInfo                        @"LecetUsers/%li?"
 
 @interface DataManager()
 @end
@@ -522,6 +523,17 @@
         failure(object);
     } authenticated:YES];
     
+}
+
+- (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure{
+    
+    NSString *url = [self url:[NSString stringWithFormat:kUrlUserInfo, userId.integerValue ]];
+    
+    [self HTTP_GET:url parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
 }
 
 #pragma mark - MISC FEATURE
