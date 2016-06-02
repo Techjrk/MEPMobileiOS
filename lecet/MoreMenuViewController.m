@@ -8,9 +8,11 @@
 
 #import "MoreMenuViewController.h"
 #import "DropDownMenuView.h"
+#import "TriangleView.h"
 
 @interface MoreMenuViewController ()<DropDownMenuDelegate>
 @property (weak, nonatomic) IBOutlet DropDownMenuView *dropDownMoreMenuView;
+@property (weak, nonatomic) IBOutlet TriangleView *triangleView;
 
 @end
 
@@ -18,10 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     //DropDownMenuMore
     _dropDownMoreMenuView.dropDownMenuDelegate = self;
+    [_triangleView setObjectColor:[UIColor whiteColor]];
     [self addTappedGesture];
 }
 
@@ -29,17 +31,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 - (void)addTappedGesture{
     

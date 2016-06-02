@@ -127,6 +127,7 @@
 		B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B796161F1CF600460089BC32 /* DB_Participant+CoreDataProperties.m */; };
 		B79616231CF600460089BC32 /* DB_Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616211CF600460089BC32 /* DB_Participant.m */; };
 		B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */; };
+		B79616511D004D7A0089BC32 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616501D004D7A0089BC32 /* TriangleView.m */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -392,6 +393,8 @@
 		B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_CompanyContact+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B796164B1CF892DF0089BC32 /* DB_CompanyContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_CompanyContact.h; sourceTree = "<group>"; };
 		B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_CompanyContact.m; sourceTree = "<group>"; };
+		B796164F1D004D7A0089BC32 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
+		B79616501D004D7A0089BC32 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -911,6 +914,8 @@
 		B76C69471CD24906009E9F15 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				B796164F1D004D7A0089BC32 /* TriangleView.h */,
+				B79616501D004D7A0089BC32 /* TriangleView.m */,
 				B76C69481CD2491F009E9F15 /* BaseViewClass.h */,
 				B76C69491CD2491F009E9F15 /* BaseViewClass.m */,
 				B76C694B1CD24BDC009E9F15 /* BaseViewController.h */,
@@ -1219,6 +1224,7 @@
 				B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */,
 				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
+				B79616511D004D7A0089BC32 /* TriangleView.m in Sources */,
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */,

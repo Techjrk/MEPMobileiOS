@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreMenuViewController">
             <connections>
                 <outlet property="dropDownMoreMenuView" destination="H7B-HY-oPQ" id="yJ8-Ts-LTN"/>
+                <outlet property="triangleView" destination="U97-Ic-DMC" id="hd8-TU-57E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,29 +19,67 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvS-it-Trd">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7B-HY-oPQ" customClass="DropDownMenuView">
-                    <rect key="frame" x="9" y="65" width="582" height="204"/>
+                    <rect key="frame" x="7.5" y="67.5" width="585" height="198"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U97-Ic-DMC" customClass="TriangleView">
+                    <rect key="frame" x="528.5" y="56.5" width="48" height="11"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc4-z7-DcU">
+                    <rect key="frame" x="576.5" y="56.5" width="16" height="11"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="H7B-HY-oPQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.34" id="19y-RI-hsI"/>
+                <constraint firstItem="Hc4-z7-DcU" firstAttribute="trailing" secondItem="H7B-HY-oPQ" secondAttribute="trailing" id="0tL-Em-Bmq"/>
+                <constraint firstItem="H7B-HY-oPQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.33" id="19y-RI-hsI"/>
+                <constraint firstItem="H7B-HY-oPQ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.975" id="5TK-19-noc"/>
                 <constraint firstItem="PvS-it-Trd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7z9-EJ-78K"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.018" id="8H3-c0-Gb8"/>
                 <constraint firstAttribute="trailing" secondItem="H7B-HY-oPQ" secondAttribute="trailing" constant="9" id="Bxs-cQ-dwG"/>
+                <constraint firstItem="Hc4-z7-DcU" firstAttribute="leading" secondItem="U97-Ic-DMC" secondAttribute="leading" id="DpR-Fe-t7c"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="leading" secondItem="H7B-HY-oPQ" secondAttribute="leading" id="EsN-4m-Y3i"/>
                 <constraint firstAttribute="trailing" secondItem="PvS-it-Trd" secondAttribute="trailing" id="GSg-1s-gJP"/>
+                <constraint firstItem="Hc4-z7-DcU" firstAttribute="leading" secondItem="U97-Ic-DMC" secondAttribute="trailing" id="H0J-Sg-YAM"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="trailing" secondItem="H7B-HY-oPQ" secondAttribute="trailing" id="H3D-Cn-dJP"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="leading" secondItem="H7B-HY-oPQ" secondAttribute="leading" id="Im7-HD-pHR"/>
                 <constraint firstItem="PvS-it-Trd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Pvu-KM-LiR"/>
-                <constraint firstItem="PvS-it-Trd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.125" id="hDu-cJ-IHZ"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="leading" secondItem="H7B-HY-oPQ" secondAttribute="trailing" id="TN6-UY-yYJ"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="top" secondItem="PvS-it-Trd" secondAttribute="bottom" id="U4V-KA-vSf"/>
+                <constraint firstItem="Hc4-z7-DcU" firstAttribute="top" secondItem="U97-Ic-DMC" secondAttribute="top" id="Z2B-JR-Gx3"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.08" id="aSx-hw-9qq"/>
+                <constraint firstItem="U97-Ic-DMC" firstAttribute="trailing" secondItem="Hc4-z7-DcU" secondAttribute="trailing" id="aUZ-Yq-Nqe"/>
+                <constraint firstItem="Hc4-z7-DcU" firstAttribute="height" secondItem="U97-Ic-DMC" secondAttribute="height" id="bJ0-nx-NXj"/>
+                <constraint firstItem="H7B-HY-oPQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="euo-U0-YKY"/>
+                <constraint firstItem="PvS-it-Trd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.094" id="hDu-cJ-IHZ"/>
                 <constraint firstItem="H7B-HY-oPQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="j2z-Lt-q92"/>
-                <constraint firstItem="H7B-HY-oPQ" firstAttribute="top" secondItem="PvS-it-Trd" secondAttribute="bottom" constant="-10" id="k48-GN-hoj"/>
+                <constraint firstItem="H7B-HY-oPQ" firstAttribute="top" secondItem="PvS-it-Trd" secondAttribute="bottom" id="k48-GN-hoj"/>
+                <constraint firstItem="H7B-HY-oPQ" firstAttribute="top" secondItem="U97-Ic-DMC" secondAttribute="bottom" id="tQa-iE-HmM"/>
                 <constraint firstItem="PvS-it-Trd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="txo-WU-eue"/>
+                <constraint firstItem="Hc4-z7-DcU" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.027" id="vNv-u4-pMY"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="Pvu-KM-LiR"/>
+                    <exclude reference="Bxs-cQ-dwG"/>
+                    <exclude reference="j2z-Lt-q92"/>
+                    <exclude reference="k48-GN-hoj"/>
+                    <exclude reference="EsN-4m-Y3i"/>
+                    <exclude reference="H3D-Cn-dJP"/>
+                    <exclude reference="Im7-HD-pHR"/>
+                    <exclude reference="TN6-UY-yYJ"/>
+                    <exclude reference="aUZ-Yq-Nqe"/>
+                    <exclude reference="DpR-Fe-t7c"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="365" y="334"/>
