@@ -20,30 +20,19 @@
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
 #import "CompanyDetailViewController.h"
-#import "DropDownMenuShareList.h"
-
-
-
 
 #import "DB_Project.h"
 #import "DB_Company.h"
 #import "DB_Participant.h"
+
 #import "ProjectDetailStateViewController.h"
-
-
 #import "ProjectListViewController.h"
+#import "ProjectShareViewController.h"
 
-
-
-
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,DropDownShareListDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate>{
-
-
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate>{
 
 
     BOOL isShownContentAdjusted;
-    BOOL isDropDownSharelistHidden;
-    BOOL isDropDownProjectListHidden;
     BOOL isProjectDetailStateHidden;
 }
 
@@ -56,8 +45,6 @@
 @property (weak, nonatomic) IBOutlet NotesView *notesView;
 @property (weak, nonatomic) IBOutlet PariticpantsView *participantsView;
 @property (weak, nonatomic) IBOutlet ProjectBidderView *projectBidder;
-@property (weak,nonatomic) IBOutlet DropDownMenuShareList *dropDownShareListView;
-@property (weak, nonatomic) IBOutlet UIView *dimProjectMenuContainerView;;
 
 //Fields
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldCounty;
@@ -80,16 +67,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidder;
 
 
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDropDownShareHeight;
-
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
 @end
 
 @implementation ProjectDetailViewController
-static const float animationDurationForDropDowMenu = 0.35f;
 
 @synthesize previousRect;
 
@@ -113,19 +95,9 @@ static const float animationDurationForDropDowMenu = 0.35f;
     _participantsView.pariticipantsDelegate = self;
     _projectState.projectStateViewDelegate = self;
     
-    //ShareList
-    _dropDownShareListView.dropDownShareListDelegate = self;
-    isDropDownSharelistHidden = YES;
-    
-    //ProjectList
-    //_dropDownProjectListView.dropDownProjectListDelegate = self;
-    //isDropDownProjectListHidden = YES;
-    
-    
 
     
-    [self addTappedGestureForDimBackground];
-    [self setAutoLayConstraintInIncompatibleDevice];
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -203,8 +175,9 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
     if (stateView == StateViewShare) {
         
-        [self showOrHideDropDownShareListMenu];
-   
+        //[self showOrHideDropDownShareListMenu];
+        [self showShareListMenu];
+        
         
     }else if (stateView == StateViewTrack){
         
@@ -262,44 +235,22 @@ static const float animationDurationForDropDowMenu = 0.35f;
 
 #pragma mark - Delegate and Share List Method
 
-- (void)tappedDropDownShareList:(DropDownShareListItem)shareListItem{
+-(void)tappedDismissedProjectShareList{
     
-    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"FEATURENOTAVAILABLE")];
-    
+    [_projectState clearSelection];
 }
 
-- (void)showOrHideDropDownShareListMenu{
-    if (isDropDownSharelistHidden) {
-        
-        isDropDownSharelistHidden = NO;
-        [_dropDownShareListView setHidden:NO];
-        [_dimProjectMenuContainerView setHidden:NO];
-        
-        _dropDownShareListView.alpha  = 0.0f;
-        _dimProjectMenuContainerView.alpha = 0.0f;
-        
-        [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-            _dropDownShareListView.alpha  = 1.0f;
-            _dimProjectMenuContainerView.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                isDropDownSharelistHidden = NO;
-                
-            }
-        }];
 
-    }else{
-        
-        [self hideDropDownShareList];
-        
-    }
+- (void)showShareListMenu{
     
-}
-
-- (void)hideDropDownShareList{
+    ProjectShareViewController *controller = [ProjectShareViewController new];
     
-    isDropDownSharelistHidden = YES;
-    [_dropDownShareListView setHidden:YES];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.projectShareListViewControllerDelegate = self;
+    [controller setProjectState:_projectState];
+    [self presentViewController:controller  animated:YES completion:nil];
+    
 }
 
 #pragma mark - Project List Delegate and Method
@@ -326,12 +277,6 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
 }
 
-
-
-
-
-
-
 #pragma mark - Project Detail State ViewController Methods And Delegate
 
 - (void)tappedProjectDetailStateHideButton{
@@ -344,60 +289,11 @@ static const float animationDurationForDropDowMenu = 0.35f;
     
     [self presentViewController:controller  animated:YES completion:nil];
     
-  
-    
 }
 
 - (void)tappedDismissed{
     
     [_projectState clearSelection];
-}
-
-- (void)setAutoLayConstraintInIncompatibleDevice{
-    
-    if (isiPhone4) {
-        //Share List
-        _constraintDropDownShareHeight.constant = 90;
-    }
-    
-    if (isiPhone5) {
-        //Share List
-        _constraintDropDownShareHeight.constant = 90;
-        
-    }
-}
-
-- (void)addTappedGestureForDimBackground{
-    
-    [[Utilities sharedIntances] addTappGesture:@selector(hideAllDropDownMenu) numberOfTapped:1 targetView:_dimProjectMenuContainerView target:self];
-    
-}
-
-- (void)hideAllDropDownMenu{
-    
-    [_projectState clearSelection];
-    UIView *viewThatIsVisible;
-    
-    
-    
-    if (!isDropDownSharelistHidden){
-        
-        viewThatIsVisible = _dropDownShareListView;
-    }
-    
-    [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-        viewThatIsVisible.alpha  = 0.0f;
-
-    } completion:^(BOOL finished) {
-        if (finished) {
-            
-            [self hideDropDownShareList];
-     
-  
-            [_dimProjectMenuContainerView setHidden:YES];
-            
-        }
-    }];
 }
 
 - (void)tappedProjectBidder:(id)object {
