@@ -213,4 +213,12 @@
 }
 
 
+
+
+
+#pragma mark - ProjectList Bidder Dlegate
+-(void)tappedProjectItemBidder:(id)object{
+    
+}
+
 @end
