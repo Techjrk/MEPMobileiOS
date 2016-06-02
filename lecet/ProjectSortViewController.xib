@@ -8,7 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectSortViewController">
             <connections>
-                <outlet property="projectStateView" destination="QOK-LC-JAO" id="IcB-WK-nFj"/>
+                <outlet property="backGroundView" destination="jEz-wA-GYZ" id="obD-h5-rSj"/>
+                <outlet property="projectSortView" destination="QOK-LC-JAO" id="AFR-VC-Uhb"/>
+                <outlet property="triangleView" destination="Dn3-Yq-wb4" id="CkW-i7-n0g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,20 +27,28 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOK-LC-JAO" customClass="ProjectSortView">
-                            <rect key="frame" x="8" y="73" width="584" height="272"/>
+                            <rect key="frame" x="5" y="73" width="590" height="246"/>
                             <color key="backgroundColor" red="1" green="0.45008482799999999" blue="0.39555021239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dn3-Yq-wb4" customClass="TriangleView">
+                            <rect key="frame" x="528" y="62" width="48" height="11"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="QOK-LC-JAO" firstAttribute="height" secondItem="jEz-wA-GYZ" secondAttribute="height" multiplier="0.452" id="1vk-g7-ltB"/>
+                        <constraint firstItem="QOK-LC-JAO" firstAttribute="height" secondItem="jEz-wA-GYZ" secondAttribute="height" multiplier="0.41" id="1vk-g7-ltB"/>
+                        <constraint firstItem="Dn3-Yq-wb4" firstAttribute="width" secondItem="jEz-wA-GYZ" secondAttribute="width" multiplier="0.08" id="3xA-jg-TGU"/>
                         <constraint firstItem="gou-qo-aRc" firstAttribute="top" secondItem="jEz-wA-GYZ" secondAttribute="top" id="7pV-Hz-70M"/>
-                        <constraint firstAttribute="trailing" secondItem="QOK-LC-JAO" secondAttribute="trailing" constant="8" id="EWX-IV-caN"/>
+                        <constraint firstAttribute="trailing" secondItem="QOK-LC-JAO" secondAttribute="trailing" constant="5" id="EWX-IV-caN"/>
                         <constraint firstAttribute="trailing" secondItem="gou-qo-aRc" secondAttribute="trailing" id="M1S-4f-jFD"/>
                         <constraint firstItem="QOK-LC-JAO" firstAttribute="top" secondItem="gou-qo-aRc" secondAttribute="bottom" constant="8" id="R6x-i4-bFo"/>
+                        <constraint firstItem="QOK-LC-JAO" firstAttribute="top" secondItem="Dn3-Yq-wb4" secondAttribute="bottom" id="Ybm-Ik-Bib"/>
                         <constraint firstItem="gou-qo-aRc" firstAttribute="height" secondItem="jEz-wA-GYZ" secondAttribute="height" multiplier="0.109" id="dyM-xm-RKz"/>
+                        <constraint firstAttribute="trailing" secondItem="Dn3-Yq-wb4" secondAttribute="trailing" constant="24" id="hQ4-PL-bMz"/>
+                        <constraint firstItem="Dn3-Yq-wb4" firstAttribute="height" secondItem="jEz-wA-GYZ" secondAttribute="height" multiplier="0.018" id="hYq-BU-yv2"/>
                         <constraint firstItem="gou-qo-aRc" firstAttribute="leading" secondItem="jEz-wA-GYZ" secondAttribute="leading" id="lTx-cP-hH0"/>
-                        <constraint firstItem="QOK-LC-JAO" firstAttribute="leading" secondItem="jEz-wA-GYZ" secondAttribute="leading" constant="8" id="tut-Hd-Yto"/>
+                        <constraint firstItem="QOK-LC-JAO" firstAttribute="leading" secondItem="jEz-wA-GYZ" secondAttribute="leading" constant="5" id="tut-Hd-Yto"/>
                     </constraints>
                 </view>
             </subviews>

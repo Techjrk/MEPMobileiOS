@@ -89,8 +89,6 @@
 "COMPANY_STATE_TRACK"                       =               "Track";
 "COMPANY_STATE_SHARE"                       =               "Share";
 
-
-
 //DropDownProjectList.xib
 "DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT"    =               "Trains and Metros";
 "DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT"          =               "Railways";
@@ -99,20 +97,28 @@
 "DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT"     =               "Select a Tracking List";
 "DROPDOWNPROJECTLIST_NUMBERS_OF_PROJECT_LABEL_TEXT"     =               "Projects";
 
-
-
 //DropDownMenuShareList.xib
 "DROPDOWNSHARELIST_SENDBYEMAIL_BUTTON_TEXT"         =               "Send by Email";
 "DROPDOWNPROJECTLIST_COPYLINK_BUTTON_TEXT"          =               "Copy Link";
 
-
 //ProjectDetailState.xib
 "PROJECTDETAILSATE_HIDEPROJECT_BUTTON_TEXT"         =               "HIDE PROJECT";
 "PROJECTDETAILSATE_CANCEL_BUTTON_TEXT"              =               "CANCEL";
-"PROJECTDETAILSATE_TITLE_LABEL_TEXT"              =               "You are about to hide this project";
+"PROJECTDETAILSATE_TITLE_LABEL_TEXT"                =               "You are about to hide this project";
+
+//ProjectSortView.h
+"PROJECTSORT_TITLE_LABEL_TEXT"                      =               "Sort By";
+
+"PROJECTSORT_BID_DATE_TEXT"                         =               "Last Updated";
+"PROJECTSORT_LAST_UPDATED_TEXT"                     =               "Last Updated";
+"PROJECTSORT_DATE_ADDED_TEXT"                       =               "Date Added";
+"PROJECTSORT_HIGH_TO_LOW_TEXT"                      =            "Value: High to Low";
+"PROJECTSORT_LOW_TO_HIGH_TEXT"                      =            "Value: Low to High";
 
 
-"FEATURENOTAVAILABLE" = "Feature will be available in next sprint!";
+
+
+
 
 
 

@@ -9,6 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+
+
+typedef enum  {
+    ProjectSortBidDate = 0,
+    ProjectSortLastUpdated = 1,
+    ProjectSortDateAdded = 2,
+    ProjectSortHightToLow = 3,
+    ProjectSortLowToHigh = 4,
+    
+} ProjectSortItems;
+
+
+@protocol ProjectSortViewDelegate <NSObject>
+
+@required
+-(void)selectedProjectSort:(ProjectSortItems)projectSortItem;
+
+@end
+
+
 @interface ProjectSortView : BaseViewClass
+@property (nonatomic,assign) id<ProjectSortViewDelegate> projectSortViewDelegate;
 
 @end

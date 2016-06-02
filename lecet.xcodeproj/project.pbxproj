@@ -23,6 +23,10 @@
 		B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66591111CFECA6B00CFD10C /* MoreMenuViewController.xib */; };
 		B66591181CFF0C8800CFD10C /* ProjectShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66591161CFF0C8800CFD10C /* ProjectShareViewController.m */; };
 		B66591191CFF0C8800CFD10C /* ProjectShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66591171CFF0C8800CFD10C /* ProjectShareViewController.xib */; };
+		B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66DF8161D0076000071A6B5 /* ContactDetailViewController.m */; };
+		B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66DF8171D0076000071A6B5 /* ContactDetailViewController.xib */; };
+		B66DF81F1D007D000071A6B5 /* ProjectBidsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */; };
+		B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */; };
 		B6972B7D1CF327940092D5CD /* DropDownMenuShareList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6972B7B1CF327940092D5CD /* DropDownMenuShareList.m */; };
 		B6972B7E1CF327940092D5CD /* DropDownMenuShareList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6972B7C1CF327940092D5CD /* DropDownMenuShareList.xib */; };
 		B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */; };
@@ -211,6 +215,12 @@
 		B66591151CFF0C8800CFD10C /* ProjectShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectShareViewController.h; sourceTree = "<group>"; };
 		B66591161CFF0C8800CFD10C /* ProjectShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectShareViewController.m; sourceTree = "<group>"; };
 		B66591171CFF0C8800CFD10C /* ProjectShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectShareViewController.xib; sourceTree = "<group>"; };
+		B66DF8151D0076000071A6B5 /* ContactDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailViewController.h; sourceTree = "<group>"; };
+		B66DF8161D0076000071A6B5 /* ContactDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailViewController.m; sourceTree = "<group>"; };
+		B66DF8171D0076000071A6B5 /* ContactDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactDetailViewController.xib; sourceTree = "<group>"; };
+		B66DF81C1D007D000071A6B5 /* ProjectBidsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidsListViewController.h; sourceTree = "<group>"; };
+		B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidsListViewController.m; sourceTree = "<group>"; };
+		B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidsListViewController.xib; sourceTree = "<group>"; };
 		B6972B781CF2F2E20092D5CD /* dropDownMenuConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dropDownMenuConstants.h; sourceTree = "<group>"; };
 		B6972B7A1CF327940092D5CD /* DropDownMenuShareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuShareList.h; sourceTree = "<group>"; };
 		B6972B7B1CF327940092D5CD /* DropDownMenuShareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenuShareList.m; sourceTree = "<group>"; };
@@ -591,6 +601,26 @@
 			name = ProjectShare;
 			sourceTree = "<group>";
 		};
+		B66DF81A1D0076080071A6B5 /* ContactDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B66DF8151D0076000071A6B5 /* ContactDetailViewController.h */,
+				B66DF8161D0076000071A6B5 /* ContactDetailViewController.m */,
+				B66DF8171D0076000071A6B5 /* ContactDetailViewController.xib */,
+			);
+			name = ContactDetail;
+			sourceTree = "<group>";
+		};
+		B66DF81B1D007CCA0071A6B5 /* ProjectBidsList */ = {
+			isa = PBXGroup;
+			children = (
+				B66DF81C1D007D000071A6B5 /* ProjectBidsListViewController.h */,
+				B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */,
+				B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */,
+			);
+			name = ProjectBidsList;
+			sourceTree = "<group>";
+		};
 		B6972B791CF3278A0092D5CD /* ShareList */ = {
 			isa = PBXGroup;
 			children = (
@@ -729,6 +759,8 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B66DF81B1D007CCA0071A6B5 /* ProjectBidsList */,
+				B66DF81A1D0076080071A6B5 /* ContactDetail */,
 				B64474681D0043390001B244 /* ProjectSort */,
 				B66544B81D002C2F0033732F /* Associated Projects */,
 				B66591141CFF0C5300CFD10C /* ProjectShare */,
@@ -1219,6 +1251,7 @@
 				B6972B7E1CF327940092D5CD /* DropDownMenuShareList.xib in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
+				B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */,
 				B64474731D00449B0001B244 /* ProjectSortCVCell.xib in Resources */,
 				B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
@@ -1238,6 +1271,7 @@
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
+				B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
 				B7E104391CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib in Resources */,
@@ -1285,6 +1319,7 @@
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
+				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
@@ -1313,6 +1348,7 @@
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,
 				B7E1044D1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m in Sources */,
 				B644747A1D0047F10001B244 /* ProjectSortView.m in Sources */,
+				B66DF81F1D007D000071A6B5 /* ProjectBidsListViewController.m in Sources */,
 				B7E1043C1CEC74E900EAD8E7 /* ContactsListView.m in Sources */,
 				B7F10A151CDB3E3300847FA3 /* AFURLRequestSerialization.m in Sources */,
 				B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */,

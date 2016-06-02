@@ -7,7 +7,7 @@
 //
 
 #import "ProjectSortCVCell.h"
-
+#import "projectSortConstant.h"
 
 @interface ProjectSortCVCell (){
     
@@ -21,6 +21,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    
+    [self setBackgroundColor:[UIColor whiteColor]];
+    
+    [_labelTitle setFont:PROJECTSORT_CELL_LABEL_FONT];
+    [_labelTitle setTextColor:PROJECTSORT_CELL_LABEL_FONT_COLOR];
+    
 }
 
 @end

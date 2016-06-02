@@ -20,10 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1A-yZ-JY2">
-                    <rect key="frame" x="0.0" y="0.0" width="366" height="63"/>
+                    <rect key="frame" x="0.0" y="0.0" width="366" height="55"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoe-Hf-qQb">
-                            <rect key="frame" x="8" y="21" width="350" height="21"/>
+                            <rect key="frame" x="10" y="17" width="348" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -31,13 +31,13 @@
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Zoe-Hf-qQb" firstAttribute="leading" secondItem="K1A-yZ-JY2" secondAttribute="leading" constant="8" id="Eb6-Xe-ChD"/>
+                        <constraint firstItem="Zoe-Hf-qQb" firstAttribute="leading" secondItem="K1A-yZ-JY2" secondAttribute="leading" constant="10" id="Eb6-Xe-ChD"/>
                         <constraint firstItem="Zoe-Hf-qQb" firstAttribute="centerY" secondItem="K1A-yZ-JY2" secondAttribute="centerY" id="Trs-DL-MNT"/>
                         <constraint firstAttribute="trailing" secondItem="Zoe-Hf-qQb" secondAttribute="trailing" constant="8" id="thd-l2-xEV"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9Ms-TC-LWb">
-                    <rect key="frame" x="8" y="63" width="350" height="209"/>
+                    <rect key="frame" x="8" y="55" width="350" height="217"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZRa-6h-Hbm">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,7 +55,7 @@
                 <constraint firstItem="K1A-yZ-JY2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eg0-X6-vfF"/>
                 <constraint firstItem="9Ms-TC-LWb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="fwW-GF-Z2M"/>
                 <constraint firstAttribute="trailing" secondItem="9Ms-TC-LWb" secondAttribute="trailing" constant="8" id="qyo-JA-Qdf"/>
-                <constraint firstItem="K1A-yZ-JY2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.23" id="ydq-CQ-82x"/>
+                <constraint firstItem="K1A-yZ-JY2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="ydq-CQ-82x"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="353" y="181"/>

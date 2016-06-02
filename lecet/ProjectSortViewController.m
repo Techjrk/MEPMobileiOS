@@ -8,10 +8,13 @@
 
 #import "ProjectSortViewController.h"
 #import "ProjectSortView.h"
+#import "TriangleView.h"
 
+@interface ProjectSortViewController ()<ProjectSortViewDelegate>
+@property (weak, nonatomic) IBOutlet ProjectSortView *projectSortView;
 
-@interface ProjectSortViewController ()
-@property (weak, nonatomic) IBOutlet ProjectSortView *projectStateView;
+@property (weak, nonatomic) IBOutlet TriangleView *triangleView;
+@property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @end
 
@@ -20,13 +23,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [_triangleView setObjectColor:[UIColor whiteColor]];
     [self addTappedGesture];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Project Sort View Delegate
+-(void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+    
+    [[DataManager sharedManager] featureNotAvailable];
+    
 }
 
 /*
@@ -44,7 +55,7 @@
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
     tapped.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:tapped];
+    [_backGroundView addGestureRecognizer:tapped];
     
 }
 
@@ -54,5 +65,6 @@
     [self dismissViewControllerAnimated:YES completion:Nil];
     
 }
+
 
 @end
