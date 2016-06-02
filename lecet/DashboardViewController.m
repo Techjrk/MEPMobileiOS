@@ -19,7 +19,6 @@
 #import "BidItemView.h"
 #import "BidSoonItem.h"
 #import "BidItemRecent.h"
-#import "DropDownMenuView.h"
 #import "BidItemCollectionViewCell.h"
 #import "BidSoonItemCollectionViewCell.h"
 #import "CalendarItemCollectionViewCell.h"
@@ -29,8 +28,8 @@
 #import "PushZoomAnimator.h"
 #import "ChartView.h"
 #import "chartConstants.h"
-
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate,DropDownMenuDelegate, BitItemRecentDelegate>{
+#import "MoreMenuViewController.h"
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate>{
 
     NSDate *currentDate;
     NSInteger currentPage;
@@ -40,7 +39,6 @@
     NSMutableArray *bidItemsRecentlyUpdated;
     NSMutableArray *currentBidItems;
     NSMutableDictionary *bidMarker;
-    BOOL isDropDownMenuMoreHidden;
     BOOL shouldUsePushZoomAnimation;
     CGRect originatingFrame;
 }
@@ -52,9 +50,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet MenuHeaderView *menuHeader;
-@property (weak,nonatomic) IBOutlet DropDownMenuView* dropDownMenu;
 @property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropDownMenuViewHeight;
 @end
 
 @implementation DashboardViewController
@@ -62,7 +58,6 @@
 #define kCellIdentifierSoon     @"kCellIdentifierSoon"
 #define kCellIdentifierRecent   @"kCellIdentifierRecent"
 #define kCategory               @[@(101), @(102), @(103), @(105)]
-static const float animationDurationForDropDowMenu = 1.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,11 +93,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
     _pageControl.numberOfPages = 4;
     _menuHeader.menuHeaderDelegate = self;
     
-    //DropDownMenuMore
-    _dropDownMenu.dropDownMenuDelegate = self;
-    isDropDownMenuMoreHidden = YES;
-    [self addTappedGestureForDimBackground];
-    [self layoutDropDownMenuChange];
+
     
     [_chartRecentlyMade hideLeftButton:YES];
     [_chartRecentlyUpdated hideRightButton:YES];
@@ -527,7 +518,7 @@ static const float animationDurationForDropDowMenu = 1.0f;
 - (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
  
     if (menuHeaderItem == MenuHeaderMore) {
-        [self showOrHideDropDownMenuMore];
+        [self showDropDownMenu];
     } else {
         [[DataManager sharedManager] featureNotAvailable];
     }
@@ -549,70 +540,19 @@ static const float animationDurationForDropDowMenu = 1.0f;
 
 #pragma mark - DropDown Menu More
 
-- (void)showOrHideDropDownMenuMore{
-    if (isDropDownMenuMoreHidden) {
+- (void)showDropDownMenu{
+   
+        MoreMenuViewController *controller  = [MoreMenuViewController new];
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:controller  animated:YES completion:nil];
         
-        [_dropDownMenu setHidden:NO];
-        [_dimDropDownMenuBackgroundView setHidden:NO];
-        _dimDropDownMenuBackgroundView.alpha  = 0.0f;
-        _dropDownMenu.alpha = 0.0f;
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            _dropDownMenu.alpha = 1.0f;
-            _dimDropDownMenuBackgroundView.alpha  = 1.0f;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                isDropDownMenuMoreHidden = NO;
-            }
-        }];
-        
-    }else{
-        [self hideDropDownMenu];
-        //[_dropDownMenu setHidden:YES];
-        
-    }
-    
-}
 
-- (void)addTappedGestureForDimBackground{
-    
-    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDropDownMenu)];
-    tapped.numberOfTapsRequired = 1;
-    [_dimDropDownMenuBackgroundView addGestureRecognizer:tapped];
-    
 }
 
 
-- (void)hideDropDownMenu{
-    
-    _dropDownMenu.alpha = 1.0f;
-    
-    [UIView animateWithDuration:animationDurationForDropDowMenu animations:^{
-        _dropDownMenu.alpha = 0.0f;
-        _dimDropDownMenuBackgroundView.alpha  = 0.0f;
-        
-    } completion:^(BOOL finished) {
 
-        if (finished) {
-            isDropDownMenuMoreHidden = YES;
 
-        }
-    }];
-    
-}
-
-#pragma mark - Drop Down Menu Delegate
-
-- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
-    
-    [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"Tap Menu = %u",menuDropDownItem]];
-}
-
-- (void)layoutDropDownMenuChange{
-    if (isiPhone5) {
-        _dropDownMenuViewHeight.constant = 218;
-    }
-}
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;

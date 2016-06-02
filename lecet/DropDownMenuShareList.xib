@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtH-Ni-7Ho">
-                    <rect key="frame" x="59" y="67" width="98" height="30"/>
+                    <rect key="frame" x="59" y="67" width="298" height="30"/>
                     <state key="normal" title="Copy Link">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -43,7 +43,7 @@
                     <rect key="frame" x="17" y="52" width="340" height="9"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjU-Gu-yqW">
-                    <rect key="frame" x="55" y="11" width="98" height="30"/>
+                    <rect key="frame" x="55" y="11" width="302" height="30"/>
                     <state key="normal" title="Send By Email">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -55,6 +55,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="FtH-Ni-7Ho" firstAttribute="top" secondItem="5BY-PE-COe" secondAttribute="bottom" constant="6" id="04a-Jq-xgK"/>
+                <constraint firstAttribute="trailing" secondItem="FtH-Ni-7Ho" secondAttribute="trailing" constant="9" id="0kL-xd-HFA"/>
                 <constraint firstItem="SjU-Gu-yqW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="11" id="C6j-ny-ewq"/>
                 <constraint firstItem="5BY-PE-COe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="17" id="CqC-Kb-Bkt"/>
                 <constraint firstAttribute="bottom" secondItem="xwe-Ia-HxN" secondAttribute="bottom" constant="11" id="FkQ-oh-92P"/>
@@ -62,12 +63,13 @@
                 <constraint firstItem="xwe-Ia-HxN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="P1F-dC-VI1"/>
                 <constraint firstItem="WZ2-ZY-hOa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="17" id="SAq-YA-gqZ"/>
                 <constraint firstItem="5BY-PE-COe" firstAttribute="top" secondItem="WZ2-ZY-hOa" secondAttribute="bottom" constant="10" id="SRW-dS-US7"/>
+                <constraint firstAttribute="trailing" secondItem="SjU-Gu-yqW" secondAttribute="trailing" constant="9" id="Wwy-CI-zU0"/>
                 <constraint firstItem="xwe-Ia-HxN" firstAttribute="top" secondItem="5BY-PE-COe" secondAttribute="bottom" constant="12" id="c51-dV-So3"/>
                 <constraint firstItem="FtH-Ni-7Ho" firstAttribute="leading" secondItem="xwe-Ia-HxN" secondAttribute="trailing" constant="12" id="cc6-M4-nVD"/>
                 <constraint firstItem="SjU-Gu-yqW" firstAttribute="leading" secondItem="WZ2-ZY-hOa" secondAttribute="trailing" constant="8" id="cvB-yD-IY6"/>
                 <constraint firstItem="WZ2-ZY-hOa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="kEk-hd-sr3"/>
                 <constraint firstItem="5BY-PE-COe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kL0-m0-WJX"/>
-                <constraint firstItem="FtH-Ni-7Ho" firstAttribute="width" secondItem="SjU-Gu-yqW" secondAttribute="width" id="lBR-m3-XKF"/>
+                <constraint firstItem="FtH-Ni-7Ho" firstAttribute="width" secondItem="SjU-Gu-yqW" secondAttribute="width" constant="-4" id="lBR-m3-XKF"/>
                 <constraint firstItem="FtH-Ni-7Ho" firstAttribute="height" secondItem="SjU-Gu-yqW" secondAttribute="height" id="mwQ-vr-dF2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

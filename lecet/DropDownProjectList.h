@@ -21,18 +21,12 @@ typedef enum  {
 @protocol DropDownProjectListDelegate <NSObject>
 
 @required
-//- (void)tappedDropDownProjectList:(DropDownProjectListItem)projectListItem;
-
 -(void)selectedDropDownProjectList:(NSIndexPath *)indexPath;
 
 @end
 
 
 @interface DropDownProjectList : BaseViewClass
-
-
-
-
 @property (nonatomic,assign) id<DropDownProjectListDelegate> dropDownProjectListDelegate;
 
 - (void)reloadData;
