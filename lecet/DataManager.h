@@ -10,6 +10,7 @@
 
 #define kKeychainServiceName            @"lecet_api"
 #define kKeychainAccessToken            @"access_token"
+#define kKeychainUserId                 @"userId"
 
 @interface DataManager : BaseManager
 // DATE
@@ -27,6 +28,8 @@
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyProjectBids:(NSNumber*)companyId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)contactInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC
 - (void)featureNotAvailable;

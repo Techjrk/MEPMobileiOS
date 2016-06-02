@@ -29,6 +29,7 @@
 #import "ChartView.h"
 #import "chartConstants.h"
 #import "MoreMenuViewController.h"
+
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate>{
 
     NSDate *currentDate;
@@ -541,18 +542,22 @@
 #pragma mark - DropDown Menu More
 
 - (void)showDropDownMenu{
-   
+    
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+
+    [[DataManager sharedManager] userInformation:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
+
         MoreMenuViewController *controller  = [MoreMenuViewController new];
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [controller setInfo:object];
         [self presentViewController:controller  animated:YES completion:nil];
         
+    } failure:^(id object) {
+        
+    }];
 
 }
-
-
-
-
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;

@@ -16,28 +16,15 @@ typedef enum  {
     DropDownMenuSettings = 2,
 } DropDownMenuItem;
 
-
-
-
 @protocol DropDownMenuDelegate <NSObject>
 @required
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem;
-
 @end
 
-
 @interface DropDownMenuView : BaseViewClass
-
-
-
 @property (nonatomic,assign) id<DropDownMenuDelegate> dropDownMenuDelegate;
-
-
-
 - (void)setUserName:(NSString *)username;
-
 - (void)setEmailAddress:(NSString *)emailAddress;
-
 @end
 
 

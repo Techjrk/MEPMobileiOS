@@ -27,6 +27,7 @@
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
 
+    [[DataManager sharedManager] startMonitoring];
 
     [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
     

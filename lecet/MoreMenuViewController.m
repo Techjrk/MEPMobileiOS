@@ -10,7 +10,9 @@
 #import "DropDownMenuView.h"
 #import "TriangleView.h"
 
-@interface MoreMenuViewController ()<DropDownMenuDelegate>
+@interface MoreMenuViewController ()<DropDownMenuDelegate>{
+    NSDictionary *infoDict;
+}
 @property (weak, nonatomic) IBOutlet DropDownMenuView *dropDownMoreMenuView;
 @property (weak, nonatomic) IBOutlet TriangleView *triangleView;
 
@@ -24,6 +26,11 @@
     //DropDownMenuMore
     _dropDownMoreMenuView.dropDownMenuDelegate = self;
     [_triangleView setObjectColor:[UIColor whiteColor]];
+    
+    NSString *fullName = [NSString stringWithFormat:@"%@ %@", infoDict[@"first_name"], infoDict[@"last_name"]];
+    [_dropDownMoreMenuView setEmailAddress:infoDict[@"email"]];
+    [_dropDownMoreMenuView setUserName:fullName];
+
     [self addTappedGesture];
 }
 
@@ -40,14 +47,11 @@
     
 }
 
-
 - (void)dismissDropDownViewController{
 
     [self dismissViewControllerAnimated:YES completion:Nil];
 
 }
-
-
 
 #pragma mark - DropDown MenuView Delegate
 
@@ -56,6 +60,8 @@
     [[DataManager sharedManager] featureNotAvailable];
 }
 
-
+- (void)setInfo:(id)info {
+    infoDict = info;
+}
 
 @end
