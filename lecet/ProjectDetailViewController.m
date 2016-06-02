@@ -218,10 +218,15 @@
     DB_Participant *record = object;
     
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
-        CompanyDetailViewController *controller = [CompanyDetailViewController new];
-        controller.view.hidden = NO;
-        [controller setInfo:object];
-        [self.navigationController pushViewController:controller animated:YES];
+        id returnObject = object;
+        [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
+            CompanyDetailViewController *controller = [CompanyDetailViewController new];
+            controller.view.hidden = NO;
+            [controller setInfo:returnObject];
+            [self.navigationController pushViewController:controller animated:YES];
+        } failure:^(id object) {
+            
+        }];
     } failure:^(id object) {
         
     }];
@@ -295,16 +300,24 @@
     DB_Bid *bid = object;
     
     [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
-        CompanyDetailViewController *controller = [CompanyDetailViewController new];
-        controller.view.hidden = NO;
-        [controller setInfo:object];
-        [self.navigationController pushViewController:controller animated:YES];
+        id returnObject = object;
+        [[DataManager sharedManager] companyProjectBids:bid.relationshipCompany.recordId success:^(id object) {
+
+            CompanyDetailViewController *controller = [CompanyDetailViewController new];
+            controller.view.hidden = NO;
+            [controller setInfo:returnObject];
+            [self.navigationController pushViewController:controller animated:YES];
+        
+        } failure:^(id object) {
+            
+        }];
     } failure:^(id object) {
         
     }];
 }
 
 - (void)tappedProjectBidSeeAll:(id)object {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 @end

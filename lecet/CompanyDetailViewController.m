@@ -132,7 +132,12 @@
     NSMutableArray *contacts = [record.relationshipCompanyContact allObjects]!= nil? [[record.relationshipCompanyContact allObjects] mutableCopy ]:[NSMutableArray new];
     [_fieldContacts setItems:contacts];
     
-    NSMutableArray *bidList = [@[@"", @"", @"", @""]mutableCopy];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
+    
+    NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+
+    
+    NSMutableArray *bidList = [fetchRecord mutableCopy];
     [_fieldProjectBidList setItems:bidList];
     
 }
@@ -185,18 +190,12 @@
 }
 
 - (void)tappedProjectItemBidSeeAll:(id)object {
-    [[DataManager sharedManager] companyProjectBids:companyRecordId success:^(id object) {
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
     
-        NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
-        
-        //
-        // PUT CODE HERE
-        //
-    } failure:^(id object) {
-        
-    }];
+    NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+    //
+    //PUT CODE HERE
+    //
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {

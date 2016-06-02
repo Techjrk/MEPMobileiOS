@@ -15,4 +15,32 @@
 
     return projectType;
 }
+
+- (NSString *)address {
+    
+    return [NSString stringWithFormat:@"%@, %@", self.county, self.state];
+}
+
+- (NSString*)bidAmountWithCurrency {
+
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+
+    CGFloat estlow = 0;
+    if (self.estLow != nil) {
+        estlow = self.estLow.floatValue;
+    }
+    NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
+    NSString *currency = self.currencyType == nil?@"$":self.currencyType;
+    return [NSString stringWithFormat:@"%@ %@", currency, estLow ];
+    
+}
+
+- (NSString*)bidDateString {
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.bidDate];
+    return [DerivedNSManagedObject monthDayStringFromDate:date];
+
+}
+
 @end
