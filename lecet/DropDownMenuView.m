@@ -9,33 +9,18 @@
 #import "DropDownMenuView.h"
 #import "dropDownMenuConstants.h"
 
-
-
-@interface DropDownMenuView (){
-    
-    
-    
-}
-
+@interface DropDownMenuView ()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailAddressLabel;
-
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonMyProfile;
 @property (weak, nonatomic) IBOutlet UIButton *buttonHiddenProjects;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSettings;
-
 @property (weak, nonatomic) IBOutlet UIView *leftSideView;
 @property (weak, nonatomic) IBOutlet UIView *rightSideView;
-
 - (IBAction)tappedDropDownButtonMenu:(id)sender;
-
 @end
 
-
-
 @implementation DropDownMenuView
-
 
 -(void)awakeFromNib{
     
@@ -70,12 +55,7 @@
 
     //[self cornerRadius];
     
-
-    
 }
-
-
-
 
 - (IBAction)tappedDropDownButtonMenu:(id)sender{
     
@@ -123,10 +103,6 @@
 
 - (void)cornerRadius{
     
-    
-  
-    
-
     CGRect frame = _leftSideView.bounds;
     frame.size.height = frame.size.height + 6;
     
@@ -154,23 +130,15 @@
  
 }
 
-
-
-
-
-
-
 - (void)setUserName:(NSString *)username{
     
     _userNameLabel.text = username;
     
 }
 
-
 - (void)setEmailAddress:(NSString *)emailAddress{
     
     _emailAddressLabel.text = emailAddress;
-    ;
     
 }
 
