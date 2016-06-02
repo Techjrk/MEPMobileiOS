@@ -10,7 +10,13 @@
 
 #import "BaseViewClass.h"
 
+@protocol ProjectBidListDelegate <NSObject>
+- (void)tappedProjectItemBidder:(id)object;
+- (void)tappedProjectItemBidSeeAll:(id)object;
+@end
+
 @interface ProjectBidListView : BaseViewClass
+@property (strong, nonatomic) id<ProjectBidListDelegate>projectBidListDelegate;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
 @end

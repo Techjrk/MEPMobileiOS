@@ -408,4 +408,7 @@ static const float animationDurationForDropDowMenu = 0.35f;
     }];
 }
 
+- (void)tappedProjectBidSeeAll:(id)object {
+}
+
 @end

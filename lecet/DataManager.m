@@ -29,6 +29,7 @@
 #define kUrlBidsRecentlyAdded               @"Projects?"
 #define kUrlProjectDetail                   @"Projects/%li?"
 #define kUrlCompanyDetail                   @"Companies/%li?"
+#define kUrlCompanyBids                     @"Bids/"
 
 @interface DataManager()
 @end
@@ -459,7 +460,6 @@
  
 }
 
-
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     NSDictionary *filter =@{@"filter[searchFilter][updatedInLast]":[NSString stringWithFormat:@"%li",(long)numberOfDays],
                             @"filter[order]":@"lastPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
@@ -498,6 +498,30 @@
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
+}
+
+- (void)companyProjectBids:(NSNumber*)companyId success:(APIBlock)success failure:(APIBlock)failure {
+    NSDictionary *parameter = @{@"filter[include][0][project][primaryProjectType][projectCategory]":@"projectGroup",
+                                @"filter[include][1]":@"company",
+                                @"filter[include][2]":@"contact",
+                                @"filter[order]":@"createDate DESC",
+                                @"filter[where][companyId]":companyId};
+    
+    NSString *url = [self url:kUrlCompanyBids];
+    
+    [self HTTP_GET:url parameters:parameter success:^(id object) {
+        
+        for (NSDictionary *item in object) {
+            [self saveManageObjectBid:item];
+        }
+        
+        [self saveContext];
+        
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
 }
 
 #pragma mark - MISC FEATURE
