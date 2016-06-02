@@ -51,7 +51,7 @@
                 <constraint firstItem="mfx-00-d5L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" priority="250" id="zt4-9D-aPC"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-            <point key="canvasLocation" x="228" y="437"/>
+            <point key="canvasLocation" x="189" y="404"/>
         </view>
     </objects>
 </document>

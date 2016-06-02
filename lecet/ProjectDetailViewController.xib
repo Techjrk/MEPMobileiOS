@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectDetailViewController">
             <connections>
                 <outlet property="constraintContentHeight" destination="xTa-ci-of5" id="Nlk-3M-6Eu"/>
-                <outlet property="constraintDropDownShareHeight" destination="s9B-rb-7wz" id="pNa-uE-dTh"/>
                 <outlet property="constraintFieldAddress" destination="ELw-OG-eb0" id="ZVK-Cy-Z25"/>
                 <outlet property="constraintFieldCounty" destination="qU4-h6-eKJ" id="URF-Zb-vSH"/>
                 <outlet property="constraintFieldEstLow" destination="cWA-di-JNi" id="KCg-rW-rUV"/>
@@ -21,8 +20,6 @@
                 <outlet property="constraintFieldProjectType" destination="58K-WT-52Z" id="uKI-W0-y3f"/>
                 <outlet property="constraintFieldStage" destination="I7u-mG-4HD" id="YT7-LQ-hbP"/>
                 <outlet property="containerView" destination="Y8l-w9-9Lk" id="d5y-HW-kdp"/>
-                <outlet property="dimProjectMenuContainerView" destination="Jin-vn-rnY" id="TfF-ko-Hb2"/>
-                <outlet property="dropDownShareListView" destination="OqE-4m-T6K" id="K9A-Lm-an7"/>
                 <outlet property="fieldAddress" destination="GIa-A5-s8D" id="s9M-R6-wec"/>
                 <outlet property="fieldCounty" destination="rzV-o1-dcv" id="Zcy-hw-6Vs"/>
                 <outlet property="fieldEstLow" destination="0xf-0o-iWM" id="4QH-EH-6h5"/>
@@ -84,7 +81,7 @@
                                         <constraint firstAttribute="height" constant="30" id="qU4-h6-eKJ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-3k-Zp2" customClass="CustomEntryField">
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-3k-Zp2" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="446" width="319" height="70"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -247,41 +244,20 @@
                         </mask>
                     </variation>
                 </scrollView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jin-vn-rnY">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
-                    <subviews>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OqE-4m-T6K" customClass="DropDownMenuShareList">
-                            <rect key="frame" x="6" y="411" width="363" height="112"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="112" id="s9B-rb-7wz"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="OqE-4m-T6K" secondAttribute="trailing" constant="6" id="cse-Fb-rXW"/>
-                        <constraint firstItem="OqE-4m-T6K" firstAttribute="leading" secondItem="Jin-vn-rnY" secondAttribute="leading" constant="6" id="x9F-ID-wHG"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="rzV-o1-dcv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="1cS-He-uSw"/>
                 <constraint firstItem="ABx-A0-JKU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="2Zi-Ur-s5e"/>
-                <constraint firstAttribute="bottom" secondItem="Jin-vn-rnY" secondAttribute="bottom" id="3Qm-qn-dhc"/>
                 <constraint firstAttribute="bottom" secondItem="sxs-xz-Nnu" secondAttribute="bottom" id="8by-4x-5c1"/>
                 <constraint firstItem="GIa-A5-s8D" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="Bv4-1N-dcg"/>
-                <constraint firstItem="Jin-vn-rnY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Cez-jF-7CR"/>
                 <constraint firstItem="67k-zk-hsU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="Ebm-2y-LUa"/>
-                <constraint firstAttribute="trailing" secondItem="Jin-vn-rnY" secondAttribute="trailing" id="FCO-rw-onv"/>
                 <constraint firstItem="Gws-3k-Zp2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="KrY-HO-pbe"/>
                 <constraint firstItem="YnS-qN-9py" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="MbD-eT-wJR"/>
                 <constraint firstItem="0xf-0o-iWM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="PrN-4p-Zrv"/>
                 <constraint firstItem="y8n-K4-TIP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="StU-Ai-CAL"/>
                 <constraint firstItem="Y8l-w9-9Lk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Zim-is-DAl"/>
                 <constraint firstItem="sxs-xz-Nnu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bXH-D7-n7Z"/>
-                <constraint firstItem="Jin-vn-rnY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bk6-ak-GYW"/>
                 <constraint firstItem="Cx4-Ns-3v6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.02" id="cB4-fL-Llz"/>
                 <constraint firstItem="dXA-h2-8gS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.055" id="cGb-uz-EdI"/>
                 <constraint firstItem="Y8l-w9-9Lk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="eca-wv-bGj"/>
@@ -290,7 +266,6 @@
                 <constraint firstAttribute="trailing" secondItem="sxs-xz-Nnu" secondAttribute="trailing" id="nyc-Rp-XlA"/>
                 <constraint firstItem="NMG-zi-PLJ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.02" id="qgf-b6-MUb"/>
                 <constraint firstItem="OeP-sj-2hU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="vUT-cq-nnt"/>
-                <constraint firstItem="OqE-4m-T6K" firstAttribute="top" secondItem="dXA-h2-8gS" secondAttribute="top" constant="47" id="wUv-3j-Chd"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
