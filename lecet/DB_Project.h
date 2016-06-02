@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DB_Project : DerivedNSManagedObject
 
 - (NSString*)getProjectType;
+- (NSString*)address;
+- (NSString*)bidAmountWithCurrency;
+- (NSString*)bidDateString;
 
 @end
 

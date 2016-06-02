@@ -12,6 +12,8 @@
 #import "ProjectBidItemCollectionViewCell.h"
 #import "projectBidListConstants.h"
 #import "projectBidConstants.h"
+#import "DB_Bid.h"
+#import "DB_Project.h"
 
 @interface ProjectBidListView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;
@@ -70,7 +72,9 @@
     
     ProjectBidItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    NSDictionary *dict = @{PROJECT_BID_NAME:@"Maline Creek CSO 051 & 052 Storage Facility", PROJECT_BID_LOCATION:@"Saint Louis, MO", PROJECT_BID_AMOUNT:@"$82,828,282", PROJECT_BID_DATE:@"1/15/2016"};
+    DB_Bid *bid = collectionItems[indexPath.row];
+    DB_Project *project = bid.relationshipProject;
+    NSDictionary *dict = @{PROJECT_BID_NAME:project.title, PROJECT_BID_LOCATION:[project address], PROJECT_BID_AMOUNT:[project bidAmountWithCurrency], PROJECT_BID_DATE:[project bidDateString]};
 
     [cell setInfo:dict];
     [[cell contentView] setFrame:[cell bounds]];
@@ -128,9 +132,11 @@
     
     cellHeight = kDeviceHeight * 0.15;
 
-    if (cellHeight>0) {
+    if (cellHeight>0 & collectionItems.count>0) {
         NSInteger itemCount = collectionItems.count>3?3:collectionItems.count;
         constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _viewSpacer.frame.size.height + _buttonSeeAll.frame.size.height;
+    } else {
+        constraintHeight.constant = 0;
     }
 }
 
