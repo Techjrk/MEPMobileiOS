@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectTabView">
+            <connections>
+                <outlet property="bottomLineView" destination="Hsx-LM-lzF" id="D39-ow-bT2"/>
+                <outlet property="buttonPast" destination="PZV-il-rcg" id="Cqh-UY-vn4"/>
+                <outlet property="buttonUpcoming" destination="8iW-8P-BFV" id="WRo-WK-8J0"/>
+                <outlet property="constraintLeftSideLeadingSpace" destination="QN3-Gv-fZ6" id="Tn3-1r-yk2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsx-LM-lzF">
+                    <rect key="frame" x="47" y="42" width="93" height="3"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iW-8P-BFV">
+                    <rect key="frame" x="0.0" y="0.0" width="187" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.45008482799999999" blue="0.39555021239999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="xdX-u5-hUO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZV-il-rcg">
+                    <rect key="frame" x="188" y="0.0" width="187" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.45008482799999999" blue="0.39555021239999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="tfE-p5-sfE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PZV-il-rcg" firstAttribute="width" secondItem="8iW-8P-BFV" secondAttribute="width" id="01t-9R-dJM"/>
+                <constraint firstItem="8iW-8P-BFV" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.84" id="3AV-wY-XQc"/>
+                <constraint firstItem="8iW-8P-BFV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FFF-cu-GDT"/>
+                <constraint firstAttribute="bottom" secondItem="Hsx-LM-lzF" secondAttribute="bottom" id="OMb-lF-56V"/>
+                <constraint firstItem="Hsx-LM-lzF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="47" id="QN3-Gv-fZ6"/>
+                <constraint firstAttribute="trailing" secondItem="PZV-il-rcg" secondAttribute="trailing" id="TiH-lE-DSe"/>
+                <constraint firstItem="8iW-8P-BFV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.497" id="dSi-qt-aYv"/>
+                <constraint firstItem="PZV-il-rcg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dvm-Xh-YIM"/>
+                <constraint firstItem="PZV-il-rcg" firstAttribute="height" secondItem="8iW-8P-BFV" secondAttribute="height" id="etr-wi-r0u"/>
+                <constraint firstItem="8iW-8P-BFV" firstAttribute="height" secondItem="Hsx-LM-lzF" secondAttribute="height" multiplier="10" id="hxn-oV-gca"/>
+                <constraint firstItem="8iW-8P-BFV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uMh-RA-7PB"/>
+                <constraint firstItem="Hsx-LM-lzF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="uSe-k3-WaU"/>
+                <constraint firstItem="Hsx-LM-lzF" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.25" id="xmk-aT-p0g"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="hxn-oV-gca"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="82.5" y="103.5"/>
+        </view>
+    </objects>
+</document>

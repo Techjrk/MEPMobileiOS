@@ -7,8 +7,27 @@
 //
 
 #import "ProjectBidsListViewController.h"
+#import "ProjectNavigationBarView.h"
+#import "ProjectTabView.h"
+#import "ProjectAllBidsView.h"
 
-@interface ProjectBidsListViewController ()
+#import "ProjectSortViewController.h"
+
+
+
+
+@interface ProjectBidsListViewController ()<ProjectNavViewDelegate>{
+    
+    NSMutableArray *bidList;
+    
+}
+
+@property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavigationView;
+
+@property (weak, nonatomic) IBOutlet ProjectTabView *projectTabView;
+@property (weak, nonatomic) IBOutlet ProjectAllBidsView *projectAllBidsView;
+
+
 
 @end
 
@@ -17,6 +36,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _projectNavigationView.projectNavViewDelegate = self;
+    
+  
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [_projectAllBidsView setItems:bidList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +59,49 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+#pragma mark - ProjectNav Delegate
+
+- (void)tappedProjectNav:(ProjectNavItem)projectNavItem{
+    
+    if (projectNavItem == ProjectNavReOrder) {
+        
+        [self tappedReOrderButton];
+        
+    }
+    if (projectNavItem == ProjectNavBackButton) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+        
+}
+
+-(void)tappedReOrderButton{
+    ProjectSortViewController *controller = [ProjectSortViewController new];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:controller  animated:YES completion:nil];
+}
+
+
+
+#pragma mark - Project Bids Delegate
+-(void)setInfoForProjectBids:(NSArray *)bids{
+    
+    bidList = [bids mutableCopy];
+  
+}
+
+
+-(void)tappedProjectItemBidder:(id)object{
+    
+}
+-(void)tappedProjectItemBidSeeAll:(id)object{
+    
+}
+
+
+
 
 @end

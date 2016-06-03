@@ -23,6 +23,7 @@
 #import "DB_Company.h"
 #import "DB_Bid.h"
 #import "DB_Contact.h"
+#import "ProjectBidsListViewController.h"
 
 
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate>{
@@ -197,6 +198,8 @@
     //
     //PUT CODE HERE
     //
+    
+    [self tappedProjectBidsList:fetchRecord];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
@@ -223,6 +226,20 @@
     
 }
 
+
+
+- (void)tappedProjectBidsList:(NSArray *)fetchRecord{
+    ProjectBidsListViewController *controller = [ProjectBidsListViewController new];
+    
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
+    //NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+    [controller setInfoForProjectBids:fetchRecord];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+- (IBAction)tappedProjectBids:(id)sender {
+    
+}
 
 
 

@@ -31,8 +31,7 @@
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView setBackgroundColor:PROJECTSORT_LINE_COLOR];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
+
     _collectionView.bounces = NO;
     
     [self.layer setCornerRadius:5.0f];

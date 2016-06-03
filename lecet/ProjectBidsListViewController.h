@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ProjectBidsListViewController : UIViewController
+
+@interface ProjectBidsListViewController : BaseViewController
+
+-(void)setInfoForProjectBids:(NSArray *)bids;
 
 @end
