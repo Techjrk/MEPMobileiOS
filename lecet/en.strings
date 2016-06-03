@@ -111,3 +111,15 @@
 "SHARE_LOCATION_BUTTON_SHARE"               =               "SHARE MY LOCATION";
 "SHARE_LOCATION_BUTTON_CANCEL"              =               "CANCEL";
 
+//ProjectTabView.xib
+"PROJECTTAB_UPCOMING_TEXT"                          =            "Upcoming";
+"PROJECTTAB_PAST_TEXT"                          =            "Past";
+
+
+
+
+
+
+
+
+

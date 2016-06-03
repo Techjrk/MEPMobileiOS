@@ -1052,6 +1052,9 @@
 				B79616481CF85DA00089BC32 /* projectBidderConstants.h */,
 				B79616571D018E6C0089BC32 /* projectsNearMeConstants.h */,
 				B73EFA831D01B92C00C6B3B2 /* shareLocationConstants.h */,
+				B64474751D00466B0001B244 /* projectSortConstant.h */,
+				B6F56D7F1D01767D009B81F5 /* projectTabConstant.h */,
+				B6F56D861D0191FC009B81F5 /* projectNavigationBarConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
