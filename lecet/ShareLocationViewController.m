@@ -25,7 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self enableTapGesture:YES];
+    
     self.view.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
     [self addBlurEffect:_blurView];
     _container.layer.cornerRadius =  kDeviceWidth * 0.0106;
@@ -62,7 +64,14 @@
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIView* view = sender.view;
+    CGPoint loc = [sender locationInView:view];
+    UIView* subview = [view hitTest:loc withEvent:nil];
+    if ([subview isEqual:_blurView]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+     
 }
 
 - (void)addBlurEffect:(UIView*)view {
@@ -71,16 +80,18 @@
     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     blurEffectView.frame = view.frame;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    blurEffectView.userInteractionEnabled = NO;
     
     UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
     UIVisualEffectView *vibrancyEffectView = [[UIVisualEffectView alloc]initWithEffect:vibrancyEffect];
     vibrancyEffectView.frame = self.view.frame;
     vibrancyEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    vibrancyEffectView.userInteractionEnabled = NO;
     
     view.backgroundColor = [UIColor clearColor];
     [view addSubview:blurEffectView];
     [view addSubview:vibrancyEffectView];
-    //view.alpha = 0.85;
+
 }
 
 - (IBAction)tappedButtonShare:(id)sender {
