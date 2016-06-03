@@ -69,11 +69,13 @@
     CGRect customDimRect = screenRect;
     
     
-    if (isiPhone5) {
-        customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.14f);
-        customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.14f);
-    }
+    //if (isiPhone5) {
+     //   customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.14f);
+     //   customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.14f);
+   // }
 
+    customDimRect.size.height = 0;
+    customDimRect.size.width = 0;
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
