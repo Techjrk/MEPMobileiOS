@@ -57,6 +57,10 @@
 		B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF801CEA0BD40035A6D9 /* PariticpantsView.xib */; };
 		B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF831CEA0BEE0035A6D9 /* NotesView.m */; };
 		B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */; };
+		B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */; };
+		B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */; };
+		B73EFA861D01C2E200C6B3B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA851D01C2E200C6B3B2 /* LocationManager.m */; };
+		B73EFA881D01C31800C6B3B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B73EFA871D01C31800C6B3B2 /* CoreLocation.framework */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -269,6 +273,13 @@
 		B70FDF831CEA0BEE0035A6D9 /* NotesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesView.m; sourceTree = "<group>"; };
 		B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesView.xib; sourceTree = "<group>"; };
 		B70FDF871CEA0F570035A6D9 /* notesConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = notesConstants.h; sourceTree = "<group>"; };
+		B73EFA7E1D01AE0F00C6B3B2 /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareLocationViewController.h; sourceTree = "<group>"; };
+		B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareLocationViewController.m; sourceTree = "<group>"; };
+		B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareLocationViewController.xib; sourceTree = "<group>"; };
+		B73EFA831D01B92C00C6B3B2 /* shareLocationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shareLocationConstants.h; sourceTree = "<group>"; };
+		B73EFA841D01C2E200C6B3B2 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		B73EFA851D01C2E200C6B3B2 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		B73EFA871D01C31800C6B3B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -501,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73EFA881D01C31800C6B3B2 /* CoreLocation.framework in Frameworks */,
 				B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */,
 				B76C69341CD21CFD009E9F15 /* MapKit.framework in Frameworks */,
 				B76C69321CD21CF6009E9F15 /* CoreGraphics.framework in Frameworks */,
@@ -633,6 +645,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B73EFA871D01C31800C6B3B2 /* CoreLocation.framework */,
 				B79615E81CF0B2FC0089BC32 /* HockeySDK.embeddedframework */,
 				B76C69331CD21CFD009E9F15 /* MapKit.framework */,
 				B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */,
@@ -718,6 +731,9 @@
 				B79616521D01840D0089BC32 /* ProjectsNearMeViewController.h */,
 				B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */,
 				B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */,
+				B73EFA7E1D01AE0F00C6B3B2 /* ShareLocationViewController.h */,
+				B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */,
+				B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -904,6 +920,7 @@
 				B79616471CF841C20089BC32 /* participantsConstants.h */,
 				B79616481CF85DA00089BC32 /* projectBidderConstants.h */,
 				B79616571D018E6C0089BC32 /* projectsNearMeConstants.h */,
+				B73EFA831D01B92C00C6B3B2 /* shareLocationConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -930,6 +947,8 @@
 				B76C69491CD2491F009E9F15 /* BaseViewClass.m */,
 				B76C694B1CD24BDC009E9F15 /* BaseViewController.h */,
 				B76C694C1CD24BDC009E9F15 /* BaseViewController.m */,
+				B73EFA841D01C2E200C6B3B2 /* LocationManager.h */,
+				B73EFA851D01C2E200C6B3B2 /* LocationManager.m */,
 			);
 			name = BaseClass;
 			sourceTree = "<group>";
@@ -1192,6 +1211,7 @@
 				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
+				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
 				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
@@ -1216,6 +1236,7 @@
 				B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
+				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,
 				B7E104541CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B6972B7D1CF327940092D5CD /* DropDownMenuShareList.m in Sources */,
@@ -1309,6 +1330,7 @@
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B6EA88B41CF439F400BB3180 /* ProjectDetailStateView.m in Sources */,
 				B771C6051CEB6C50004A628A /* AssociatedBidView.m in Sources */,
+				B73EFA861D01C2E200C6B3B2 /* LocationManager.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
 				B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */,

@@ -89,31 +89,26 @@
 "COMPANY_STATE_TRACK"                       =               "Track";
 "COMPANY_STATE_SHARE"                       =               "Share";
 
-
-
 //DropDownProjectList.xib
-"DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT"    =               "Trains and Metros";
-"DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT"          =               "Railways";
-"DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT"       =               "Another List";
-"DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT"        =               "High Values";
-"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT"     =               "Select a Tracking List";
-"DROPDOWNPROJECTLIST_NUMBERS_OF_PROJECT_LABEL_TEXT"     =               "Projects";
-
-
+"DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT"    =       "Trains and Metros";
+"DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT"          =       "Railways";
+"DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT"       =       "Another List";
+"DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT"        =       "High Values";
+"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT"     =       "Select a Tracking List";
+"DROPDOWNPROJECTLIST_NUMBERS_OF_PROJECT_LABEL_TEXT" =       "Projects";
 
 //DropDownMenuShareList.xib
-"DROPDOWNSHARELIST_SENDBYEMAIL_BUTTON_TEXT"         =               "Send by Email";
-"DROPDOWNPROJECTLIST_COPYLINK_BUTTON_TEXT"          =               "Copy Link";
+"DROPDOWNSHARELIST_SENDBYEMAIL_BUTTON_TEXT"         =       "Send by Email";
+"DROPDOWNPROJECTLIST_COPYLINK_BUTTON_TEXT"          =       "Copy Link";
 
 
 //ProjectDetailState.xib
-"PROJECTDETAILSATE_HIDEPROJECT_BUTTON_TEXT"         =               "HIDE PROJECT";
-"PROJECTDETAILSATE_CANCEL_BUTTON_TEXT"              =               "CANCEL";
-"PROJECTDETAILSATE_TITLE_LABEL_TEXT"              =               "You are about to hide this project";
+"PROJECTDETAILSATE_HIDEPROJECT_BUTTON_TEXT"         =       "HIDE PROJECT";
+"PROJECTDETAILSATE_CANCEL_BUTTON_TEXT"              =       "CANCEL";
+"PROJECTDETAILSATE_TITLE_LABEL_TEXT"                =         "You are about to hide this project";
 
-
-"FEATURENOTAVAILABLE" = "Feature will be available in next sprint!";
-
-
-
+//ShareLocationViewController.xib
+"SHARE_LOCATION_MSG"                        =               "This feature is only available\nwhen you share your location\nwith this app.Please tap OK\nwhen prompted.";
+"SHARE_LOCATION_BUTTON_SHARE"               =               "SHARE MY LOCATION";
+"SHARE_LOCATION_BUTTON_CANCEL"              =               "CANCEL";
 

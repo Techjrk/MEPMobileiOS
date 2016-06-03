@@ -8,11 +8,16 @@
 
 #import "BaseManager.h"
 
+#import "LocationManager.h"
+
 #define kKeychainServiceName            @"lecet_api"
 #define kKeychainAccessToken            @"access_token"
 #define kKeychainUserId                 @"userId"
 
 @interface DataManager : BaseManager
+//PROPERTIES
+@property (strong, nonatomic) LocationManager *locationManager;
+
 // DATE
 - (NSDateComponents*)getDateComponents:(NSDate*)date;
 - (NSDate*)getDateFirstDay:(NSDate*) date;

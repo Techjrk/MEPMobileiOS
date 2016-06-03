@@ -9,8 +9,11 @@
 #import "ProjectsNearMeViewController.h"
 
 #import "projectsNearMeConstants.h"
+#import "ShareLocationViewController.h"
 
-@interface ProjectsNearMeViewController ()
+@interface ProjectsNearMeViewController (){
+    BOOL isFirstLaunch;
+}
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
@@ -56,5 +59,14 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if (!isFirstLaunch) {
+        isFirstLaunch = YES;
+        ShareLocationViewController *controller = [ShareLocationViewController new];
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
 
 @end

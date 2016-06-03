@@ -11,4 +11,5 @@
 @interface BaseViewController : UIViewController
 - (void)enableTapGesture:(BOOL)enable;
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation;
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender;
 @end

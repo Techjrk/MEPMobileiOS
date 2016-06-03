@@ -36,6 +36,16 @@
 @interface DataManager()
 @end
 @implementation DataManager
+@synthesize locationManager;
+
+
++ (id)sharedManager {
+    DataManager *manager = [super sharedManager];
+    if (manager.locationManager == nil) {
+        manager.locationManager = [[LocationManager alloc] init];
+    }
+    return manager;
+}
 
 #pragma mark Date Function
 
