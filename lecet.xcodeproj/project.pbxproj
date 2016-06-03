@@ -77,6 +77,7 @@
 		B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */; };
 		B73EFA861D01C2E200C6B3B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA851D01C2E200C6B3B2 /* LocationManager.m */; };
 		B73EFA881D01C31800C6B3B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B73EFA871D01C31800C6B3B2 /* CoreLocation.framework */; };
+		B73EFA891D01D77A00C6B3B2 /* ProjectsNearMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -148,7 +149,6 @@
 		B79616231CF600460089BC32 /* DB_Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616211CF600460089BC32 /* DB_Participant.m */; };
 		B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */; };
 		B79616511D004D7A0089BC32 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616501D004D7A0089BC32 /* TriangleView.m */; };
-		B79616551D01840D0089BC32 /* ProjectsNearMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */; };
 		B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
@@ -1435,6 +1435,7 @@
 				B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */,
 				B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */,
 				B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */,
+				B73EFA891D01D77A00C6B3B2 /* ProjectsNearMeViewController.m in Sources */,
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,
 				B7E1044D1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.m in Sources */,
 				B644747A1D0047F10001B244 /* ProjectSortView.m in Sources */,
