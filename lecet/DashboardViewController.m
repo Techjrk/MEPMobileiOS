@@ -29,6 +29,7 @@
 #import "ChartView.h"
 #import "chartConstants.h"
 #import "MoreMenuViewController.h"
+#import "ProjectsNearMeViewController.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate>{
 
@@ -518,12 +519,25 @@
 
 - (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
  
-    if (menuHeaderItem == MenuHeaderMore) {
-        [self showDropDownMenu];
-    } else {
-        [[DataManager sharedManager] featureNotAvailable];
+    switch (menuHeaderItem) {
+        case MenuHeaderNear:{
+            
+            shouldUsePushZoomAnimation = NO;
+            [self.navigationController pushViewController:[ProjectsNearMeViewController new] animated:YES];
+            
+            break;
+        }
+        case MenuHeaderTrack: {
+            break;
+        }
+        case MenuHeaderSearch:{
+            break;
+        }
+        case MenuHeaderMore:{
+            [self showDropDownMenu];
+            break;
+        }
     }
-    
 }
 
 - (void)tappedBitItemRecent:(id)object {
