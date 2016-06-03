@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectBidsListViewController">
+            <connections>
+                <outlet property="projectAllBidsView" destination="PBd-H2-xtY" id="h3G-Xv-0zP"/>
+                <outlet property="projectNavigationView" destination="Yra-XI-bzI" id="75h-hi-hes"/>
+                <outlet property="projectTabView" destination="V8o-Rv-Wqa" id="GrV-bY-kfp"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSs-q1-XYS" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8o-Rv-Wqa" customClass="ProjectTabView">
+                            <rect key="frame" x="0.0" y="70" width="600" height="42"/>
+                            <color key="backgroundColor" red="1" green="0.45008482799999999" blue="0.39555021239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBd-H2-xtY" customClass="ProjectAllBidsView">
+                            <rect key="frame" x="0.0" y="117" width="600" height="483"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yra-XI-bzI" customClass="ProjectNavigationBarView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="V8o-Rv-Wqa" firstAttribute="leading" secondItem="MSs-q1-XYS" secondAttribute="leading" id="1SL-Ok-dzp"/>
+                        <constraint firstItem="V8o-Rv-Wqa" firstAttribute="top" secondItem="Yra-XI-bzI" secondAttribute="bottom" id="5og-BF-jNf"/>
+                        <constraint firstItem="PBd-H2-xtY" firstAttribute="top" secondItem="V8o-Rv-Wqa" secondAttribute="bottom" constant="5" id="6Y7-1f-EJu"/>
+                        <constraint firstItem="Yra-XI-bzI" firstAttribute="height" secondItem="MSs-q1-XYS" secondAttribute="height" multiplier="0.118" id="LKL-b2-Tdh"/>
+                        <constraint firstItem="PBd-H2-xtY" firstAttribute="leading" secondItem="MSs-q1-XYS" secondAttribute="leading" id="NAa-nb-679"/>
+                        <constraint firstItem="Yra-XI-bzI" firstAttribute="leading" secondItem="MSs-q1-XYS" secondAttribute="leading" id="UOO-as-ItI"/>
+                        <constraint firstItem="Yra-XI-bzI" firstAttribute="top" secondItem="MSs-q1-XYS" secondAttribute="top" id="eQw-lA-tNK"/>
+                        <constraint firstAttribute="trailing" secondItem="Yra-XI-bzI" secondAttribute="trailing" id="kbb-tl-7lC"/>
+                        <constraint firstAttribute="trailing" secondItem="PBd-H2-xtY" secondAttribute="trailing" id="kcd-MZ-YTl"/>
+                        <constraint firstItem="V8o-Rv-Wqa" firstAttribute="top" secondItem="MSs-q1-XYS" secondAttribute="top" id="kxt-oa-TjF"/>
+                        <constraint firstAttribute="bottom" secondItem="PBd-H2-xtY" secondAttribute="bottom" id="nbK-Xm-Gjr"/>
+                        <constraint firstAttribute="trailing" secondItem="V8o-Rv-Wqa" secondAttribute="trailing" id="vh1-Rx-Z1x"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="kxt-oa-TjF"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="MSs-q1-XYS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OQ3-kM-qwf"/>
+                <constraint firstItem="V8o-Rv-Wqa" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="RwY-ql-LID"/>
+                <constraint firstAttribute="bottom" secondItem="MSs-q1-XYS" secondAttribute="bottom" id="gKq-6D-zZe"/>
+                <constraint firstItem="MSs-q1-XYS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jIa-lB-ykt"/>
+                <constraint firstAttribute="trailing" secondItem="MSs-q1-XYS" secondAttribute="trailing" id="um2-ge-0bv"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -34,7 +34,6 @@
     _selectTrackingListView.backgroundColor = DROPDOWN_PROJECTLIST_VIEW_SELECTTRACKINGLIST_BG_COLOR;
     
     [self drawTopTriangle];
-    
     [self drawShadow];
     
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectListCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
