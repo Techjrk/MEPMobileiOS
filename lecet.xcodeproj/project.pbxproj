@@ -128,6 +128,8 @@
 		B79616231CF600460089BC32 /* DB_Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616211CF600460089BC32 /* DB_Participant.m */; };
 		B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */; };
 		B79616511D004D7A0089BC32 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616501D004D7A0089BC32 /* TriangleView.m */; };
+		B79616551D01840D0089BC32 /* ProjectsNearMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */; };
+		B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -395,6 +397,10 @@
 		B796164C1CF892DF0089BC32 /* DB_CompanyContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_CompanyContact.m; sourceTree = "<group>"; };
 		B796164F1D004D7A0089BC32 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		B79616501D004D7A0089BC32 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
+		B79616521D01840D0089BC32 /* ProjectsNearMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsNearMeViewController.h; sourceTree = "<group>"; };
+		B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsNearMeViewController.m; sourceTree = "<group>"; };
+		B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsNearMeViewController.xib; sourceTree = "<group>"; };
+		B79616571D018E6C0089BC32 /* projectsNearMeConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectsNearMeConstants.h; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -709,6 +715,9 @@
 				B707BC3D1CEF0B960003C836 /* LandingViewController.h */,
 				B707BC3E1CEF0B960003C836 /* LandingViewController.m */,
 				B707BC3F1CEF0B960003C836 /* LandingViewController.xib */,
+				B79616521D01840D0089BC32 /* ProjectsNearMeViewController.h */,
+				B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */,
+				B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -894,6 +903,7 @@
 				B796161D1CF5CCDE0089BC32 /* bidItemRecentConstants.h */,
 				B79616471CF841C20089BC32 /* participantsConstants.h */,
 				B79616481CF85DA00089BC32 /* projectBidderConstants.h */,
+				B79616571D018E6C0089BC32 /* projectsNearMeConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1159,6 +1169,7 @@
 				B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */,
 				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
+				B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */,
 				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
@@ -1209,6 +1220,7 @@
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B6972B7D1CF327940092D5CD /* DropDownMenuShareList.m in Sources */,
 				B7637A3F1CEA4A9900F0FA2F /* ProjectBidderView.m in Sources */,
+				B79616551D01840D0089BC32 /* ProjectsNearMeViewController.m in Sources */,
 				B796160E1CF437720089BC32 /* BusyViewController.m in Sources */,
 				B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */,
 				B7F10A1D1CDB3E3300847FA3 /* UIImageView+AFNetworking.m in Sources */,
