@@ -318,6 +318,11 @@
             itemContact.relationshipCompany = record;
         }
     }
+    
+    NSDictionary *associatedProjects = company[@"projects"];
+    if (associatedProjects != nil) {
+        
+    }
 
     return record;
 }
@@ -500,7 +505,7 @@
 }
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
-    NSDictionary *filter = @{@"filter[include]":@"contacts"};
+    NSDictionary *filter = @{@"filter[include][0]":@"contacts", @"filter[include][1][projects]":@"projectStage", @"filter[include][2][projects][primaryProjectType][projectCategory]":@"projectGroup"};
     [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:filter success:^(id object) {
         
         DB_Company *item = [self saveManageObjectCompany:object];
