@@ -49,7 +49,7 @@
         }
         case ContactFieldTypeAccount:{
             image = [UIImage imageNamed:@"Shape"];
-            _constraintImageHeight.constant = (kDeviceHeight * 0.005);
+            _constraintImageHeight.constant = (kDeviceHeight * 0.01);
             break;
         }
         case ContactFieldTypeLocation:{
