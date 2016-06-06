@@ -11,5 +11,6 @@
 #import "BaseViewClass.h"
 
 @interface NotesView : BaseViewClass
+- (void)setNotes:(id)notes;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 @end
