@@ -54,9 +54,10 @@
    
     NSMutableArray *contactItem = [NSMutableArray new];
     
-    if (recordCompany.name) {
-        NSString *title = [self determineIfTitleIsEmpty:record.title];
-        NSString *accountTitleAndName = [NSString stringWithFormat:@"%@ %@",title,recordCompany.name];
+    if (record.title) {
+        
+
+        NSString *accountTitleAndName = [NSString stringWithFormat:@"%@ at %@",record.title,recordCompany.name];
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeAccount ], CONTACT_FIELD_DATA:accountTitleAndName}];
     }
     if (recordCompany.address1) {
@@ -72,7 +73,6 @@
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:record.email}];
     }
     
-    
     contactDetails = contactItem;
     
 }
@@ -87,6 +87,7 @@
     }
     
 }
+
 
 #pragma mark - Contact Nav Delegate
 - (void)tappedContactNavBackButton {
