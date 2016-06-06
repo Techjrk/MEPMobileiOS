@@ -1146,6 +1146,7 @@
 				B6F56D7F1D01767D009B81F5 /* projectTabConstant.h */,
 				B6F56D861D0191FC009B81F5 /* projectNavigationBarConstant.h */,
 				B73EFA8F1D0309C400C6B3B2 /* goToSettingsConstants.h */,
+				B6F574CE1D02191F003AA33D /* contactNavBarConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";

@@ -120,6 +120,7 @@
 "GOTO_SETTINGS_BUTTON_SETTINGS_TEXT"        =               "GO TO SETTINGS";
 "GOTO_SETTINGS_BUTTON_CANCEL_TEXT"          =               "CANCEL";
 
+
 //ProjectSortView.xib
 "PROJECTSORT_TITLE_LABEL_TEXT"              =           "Sort by";
 "PROJECTSORT_BID_DATE_TEXT"                 =           "Bid Date";
@@ -135,5 +136,4 @@
 
 //ContactAllListViewController.h
 "CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
-
 

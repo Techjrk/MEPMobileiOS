@@ -68,6 +68,8 @@ static const float animationDuration = 0.25f;
                 [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
             }
         }
+        [[DataManager sharedManager] featureNotAvailable];
+        [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
     }];
     
 }
