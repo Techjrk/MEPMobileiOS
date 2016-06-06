@@ -14,7 +14,7 @@
 #import "DB_CompanyContact.h"
 #import "DB_Company.h"
 
-@interface ContactDetailViewController()<ContactNavViewDelegate>{
+@interface ContactDetailViewController()<ContactNavViewDelegate,ContactDetailViewDelegate>{
     NSMutableArray *contactDetails;
     NSString *name;
     
@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view from its nib.
     
     _contactNavBarView.contactNavViewDelegate =self;
+    _contactDetailView.contactDetailViewDelegate = self;
 }
 
 
@@ -93,4 +94,43 @@
 - (void)tappedContactNavBackButton {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+#pragma mark - ContactView Delegate
+- (void)selectedContactDetails:(id)item {
+    
+    NSNumber *fieldType = item[CONTACT_FIELD_TYPE];
+    NSString *fieldData = item[CONTACT_FIELD_DATA];
+    
+    switch (fieldType.integerValue) {
+        case ContactFieldTypePhone:{
+            
+            fieldData = [[fieldData stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]]];
+            break;
+        }
+            
+        case ContactFieldTypeWeb:{
+            NSString *field = [fieldData uppercaseString];
+            if (![field hasPrefix:@"HTTP://"]) {
+                fieldData = [@"http://" stringByAppendingString:fieldData];
+            }
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fieldData]];
+            
+            break;
+        }
+            
+        case ContactFieldTypeEmail: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"mailto:" stringByAppendingString:fieldData]]];
+            
+            break;
+        }
+    }
+
+    
+}
+
+
 @end

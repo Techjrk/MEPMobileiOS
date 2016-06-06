@@ -96,7 +96,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-   
+    [_contactDetailViewDelegate selectedContactDetails:collectionItems[indexPath.row]];
 }
 
 @end

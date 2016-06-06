@@ -9,7 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-@interface ContactDetailView : BaseViewClass
 
+@protocol ContactDetailViewDelegate <NSObject>
+@required
+
+- (void)selectedContactDetails:(id)item;
+
+@end
+
+
+@interface ContactDetailView : BaseViewClass
 - (void)setItems:(NSMutableArray*)items;
+@property (nonatomic,assign) id<ContactDetailViewDelegate> contactDetailViewDelegate;
+
+
+
+
 @end
