@@ -10,8 +10,9 @@
 
 #import "projectsNearMeConstants.h"
 #import "ShareLocationViewController.h"
+#import "GoToSettingsViewController.h"
 
-@interface ProjectsNearMeViewController (){
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate>{
     BOOL isFirstLaunch;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -65,8 +66,20 @@
         ShareLocationViewController *controller = [ShareLocationViewController new];
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:controller animated:YES completion:nil];
+        controller.shareLocationDelegate = self;
+        [self presentViewController:controller animated:NO completion:nil];
     }
+}
+
+- (void)tappedButtonShareLocation:(id)object {
+    [[[DataManager sharedManager] locationManager] requestAlways];
+}
+
+-(void)tappedButtonShareCancel:(id)object {
+    GoToSettingsViewController *controller = [GoToSettingsViewController new];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:controller animated:NO completion:nil];
 }
 
 @end

@@ -1,35 +1,37 @@
 //
-//  ShareLocationViewController.m
+//  GoToSettingsViewController.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 6/3/16.
+//  Created by Harry Herrys Camigla on 6/4/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "ShareLocationViewController.h"
+#import "GoToSettingsViewController.h"
 
-#import "shareLocationConstants.h"
+#import "goToSettingsConstants.h"
 
-@interface ShareLocationViewController ()
+@interface GoToSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIView *blurView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIView *container;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSettings;
 @property (weak, nonatomic) IBOutlet UILabel *labelMsg;
-@property (weak, nonatomic) IBOutlet UIButton *buttonShareLocation;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
-- (IBAction)tappedButtonShare:(id)sender;
+- (IBAction)tappedButtonSettings:(id)sender;
 - (IBAction)tappedButtonCancel:(id)sender;
+
 @end
 
-@implementation ShareLocationViewController
-@synthesize shareLocationDelegate;
+@implementation GoToSettingsViewController
+@synthesize goToSettingsDelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self enableTapGesture:YES];
-    
+
     self.view.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
+
     [self addBlurEffect:_blurView];
     _container.layer.cornerRadius =  kDeviceWidth * 0.0106;
     _container.layer.masksToBounds = YES;
@@ -38,30 +40,25 @@
     _containerView.layer.shadowRadius = 4;
     _containerView.layer.shadowOffset = CGSizeMake(2, 4);
     _containerView.layer.shadowOpacity = 0.25;
-
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.minimumLineHeight = SHARE_LOCATION_BUTTON_SHARE_FONT.lineHeight;
-    paragraphStyle.maximumLineHeight = SHARE_LOCATION_BUTTON_SHARE_FONT.lineHeight;
-    paragraphStyle.lineSpacing = SHARE_LOCATION_BUTTON_SHARE_FONT.lineHeight * 0.3;
+    paragraphStyle.minimumLineHeight = GOTO_SETTINGS_BUTTON_SETTINGS_FONT.lineHeight;
+    paragraphStyle.maximumLineHeight = GOTO_SETTINGS_BUTTON_SETTINGS_FONT.lineHeight;
+    paragraphStyle.lineSpacing = GOTO_SETTINGS_BUTTON_SETTINGS_FONT.lineHeight * 0.3;
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    NSAttributedString *msg = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"SHARE_LOCATION_MSG") attributes:@{NSFontAttributeName:SHARE_LOCATION_MSG_FONT, NSForegroundColorAttributeName:SHARE_LOCATION_MSG_COLOR, NSParagraphStyleAttributeName:paragraphStyle}];
+    NSAttributedString *msg = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"GOTO_SETTINGS_MSG") attributes:@{NSFontAttributeName:GOTO_SETTINGS_MSG_FONT, NSForegroundColorAttributeName:GOTO_SETTINGS_MSG_COLOR, NSParagraphStyleAttributeName:paragraphStyle}];
     _labelMsg.attributedText = msg ;
     
-    [_buttonShareLocation setTitle:NSLocalizedLanguage(@"SHARE_LOCATION_BUTTON_SHARE") forState:UIControlStateNormal];
-    [_buttonShareLocation setTitleColor:SHARE_LOCATION_BUTTON_SHARE_COLOR forState:UIControlStateNormal];
-    _buttonShareLocation.titleLabel.font = SHARE_LOCATION_BUTTON_SHARE_FONT;
-    _buttonShareLocation.backgroundColor = SHARE_LOCATION_BUTTON_SHARE_BG_COLOR;
+    [_buttonSettings setTitle:NSLocalizedLanguage(@"GOTO_SETTINGS_BUTTON_SETTINGS_TEXT") forState:UIControlStateNormal];
+    [_buttonSettings setTitleColor:GOTO_SETTINGS_BUTTON_SETTINGS_COLOR forState:UIControlStateNormal];
+    _buttonSettings.titleLabel.font = GOTO_SETTINGS_BUTTON_SETTINGS_FONT;
+    _buttonSettings.backgroundColor = GOTO_SETTINGS_BUTTON_SETTINGS_BG_COLOR;
     
-    [_buttonCancel setTitle:NSLocalizedLanguage(@"SHARE_LOCATION_BUTTON_CANCEL") forState:UIControlStateNormal];
-    [_buttonCancel setTitleColor:SHARE_LOCATION_BUTTON_CANCEL_COLOR forState:UIControlStateNormal];
-    _buttonCancel.titleLabel.font = SHARE_LOCATION_BUTTON_CANCEL_FONT;
-    
-}
+    [_buttonCancel setTitle:NSLocalizedLanguage(@"GOTO_SETTINGS_BUTTON_CANCEL_TEXT") forState:UIControlStateNormal];
+    [_buttonCancel setTitleColor:GOTO_SETTINGS_BUTTON_CANCEL_COLOR forState:UIControlStateNormal];
+    _buttonCancel.titleLabel.font = GOTO_SETTINGS_BUTTON_CANCEL_FONT;
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
@@ -72,7 +69,11 @@
     if ([subview isEqual:_blurView]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-     
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 - (void)addBlurEffect:(UIView*)view {
@@ -92,17 +93,14 @@
     view.backgroundColor = [UIColor clearColor];
     [view addSubview:blurEffectView];
     [view addSubview:vibrancyEffectView];
-
+    
 }
 
-- (IBAction)tappedButtonShare:(id)sender {
-    [self.shareLocationDelegate tappedButtonShareLocation:self];
+- (IBAction)tappedButtonSettings:(id)sender {
 }
 
 - (IBAction)tappedButtonCancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.shareLocationDelegate tappedButtonShareCancel:self];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

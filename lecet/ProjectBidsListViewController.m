@@ -73,4 +73,12 @@
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return YES;
+}
+
 @end

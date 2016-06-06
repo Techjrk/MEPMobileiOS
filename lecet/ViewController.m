@@ -24,4 +24,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return YES;
+}
+
 @end

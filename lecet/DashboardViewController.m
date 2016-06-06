@@ -95,8 +95,6 @@
     _pageControl.numberOfPages = 4;
     _menuHeader.menuHeaderDelegate = self;
     
-
-    
     [_chartRecentlyMade hideLeftButton:YES];
     [_chartRecentlyUpdated hideRightButton:YES];
 
@@ -565,7 +563,7 @@
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [controller setInfo:object];
-        [self presentViewController:controller  animated:YES completion:nil];
+        [self presentViewController:controller  animated:NO completion:nil];
         
     } failure:^(id object) {
         

@@ -112,10 +112,13 @@
 "SHARE_LOCATION_BUTTON_CANCEL"              =               "CANCEL";
 
 //ProjectTabView.xib
-"PROJECTTAB_UPCOMING_TEXT"                          =            "Upcoming";
-"PROJECTTAB_PAST_TEXT"                          =            "Past";
+"PROJECTTAB_UPCOMING_TEXT"                  =               "Upcoming";
+"PROJECTTAB_PAST_TEXT"                      =               "Past";
 
-
+//GoToSettingsViewController.xib
+"GOTO_SETTINGS_MSG"                         =               "This feature is only available\nwhen you share your location\nwith this app.";
+"GOTO_SETTINGS_BUTTON_SETTINGS_TEXT"        =               "GO TO SETTINGS";
+"GOTO_SETTINGS_BUTTON_CANCEL_TEXT"          =               "CANCEL";
 
 
 

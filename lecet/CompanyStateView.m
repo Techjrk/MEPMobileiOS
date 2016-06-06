@@ -37,10 +37,12 @@
     [self configureView:_buttonTrack];
     [_buttonTrack setTitleColor:COMPANY_STATE_BUTTON_COLOR forState:UIControlStateNormal];
     [_buttonTrack setTitle:NSLocalizedLanguage(@"COMPANY_STATE_TRACK") forState:UIControlStateNormal];
+    _buttonTrack.titleLabel.font = COMPANY_STATE_BUTTON_FONT;
     
     [self configureView:_buttonShare];
     [_buttonShare setTitleColor:COMPANY_STATE_BUTTON_COLOR forState:UIControlStateNormal];
     [_buttonShare setTitle:NSLocalizedLanguage(@"COMPANY_STATE_SHARE") forState:UIControlStateNormal];
+    _buttonShare.titleLabel.font = COMPANY_STATE_BUTTON_FONT;
     
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactFieldCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 

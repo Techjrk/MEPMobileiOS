@@ -39,6 +39,9 @@
 
 - (NSString*)bidDateString {
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.bidDate];
+    if (date == nil) {
+        return  @"";
+    }
     return [DerivedNSManagedObject monthDayStringFromDate:date];
 
 }

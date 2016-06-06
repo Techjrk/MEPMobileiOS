@@ -8,7 +8,18 @@
 
 #import "LocationManager.h"
 
+@interface LocationManager()<CLLocationManagerDelegate>
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@end
+
 @implementation LocationManager
+
+- (instancetype)init {
+    self = [super init];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    return self;
+}
 
 + (void)isLocationServiceCanBeEnabled:(StatusBlock)block {
     
@@ -16,6 +27,36 @@
     BOOL canBeEnabled = (status != kCLAuthorizationStatusRestricted) & (status !=  kCLAuthorizationStatusDenied);
 
     block(canBeEnabled, status);
+}
+
+- (void)requestAlways {
+    [self.locationManager requestAlwaysAuthorization];
+}
+
+- (void)requestWhenInUse {
+    [self.locationManager requestWhenInUseAuthorization];
+}
+
+- (BOOL)locationServiceEnabled {
+    return [[self.locationManager class] locationServicesEnabled];
+}
+
+-(void)startUpdatingLocation {
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
 }
 
 @end
