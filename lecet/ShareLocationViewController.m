@@ -96,7 +96,10 @@
 }
 
 - (IBAction)tappedButtonShare:(id)sender {
-    [self.shareLocationDelegate tappedButtonShareLocation:self];
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.shareLocationDelegate tappedButtonShareLocation:self];
+    }]
+    ;
 }
 
 - (IBAction)tappedButtonCancel:(id)sender {

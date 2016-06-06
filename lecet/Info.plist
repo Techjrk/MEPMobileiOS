@@ -49,6 +49,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>&quot;LECET MEP&quot; Would like to Use Your Current Location</string>
+	<string></string>
 </dict>
 </plist>

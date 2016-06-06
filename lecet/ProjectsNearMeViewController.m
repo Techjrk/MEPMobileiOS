@@ -12,7 +12,7 @@
 #import "ShareLocationViewController.h"
 #import "GoToSettingsViewController.h"
 
-@interface ProjectsNearMeViewController ()<ShareLocationDelegate>{
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate>{
     BOOL isFirstLaunch;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -41,6 +41,17 @@
     _textFieldSearch.font = PROJECTS_TEXTFIELD_TEXT_FONT;
     [_textFieldSearch setTintColor:[UIColor whiteColor]];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationAppBecomeActive:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
+    
+}
+
+- (void)NotificationAppBecomeActive:(NSNotification*)notification {
+    [self viewWasLaunced];
+}
+
+- (void)NotificationLocationDenied:(NSNotification*)notification {
+    [self gotoSettings];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,26 +71,64 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWasLaunced {
     if (!isFirstLaunch) {
         isFirstLaunch = YES;
-        ShareLocationViewController *controller = [ShareLocationViewController new];
-        controller.modalPresentationStyle = UIModalPresentationCustom;
-        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        controller.shareLocationDelegate = self;
-        [self presentViewController:controller animated:NO completion:nil];
+        switch ([[DataManager sharedManager] locationManager].currentStatus) {
+            case kCLAuthorizationStatusNotDetermined:{
+                [self showShareLocation];
+                break;
+            }
+            case kCLAuthorizationStatusDenied : {
+                [self gotoSettings];
+            }
+            default: {
+                break;
+            }
+        }
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self viewWasLaunced];
 }
 
 - (void)tappedButtonShareLocation:(id)object {
     [[[DataManager sharedManager] locationManager] requestAlways];
 }
 
--(void)tappedButtonShareCancel:(id)object {
+- (void)gotoSettings {
     GoToSettingsViewController *controller = [GoToSettingsViewController new];
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.goToSettingsDelegate = self;
     [self presentViewController:controller animated:NO completion:nil];
+    
+}
+
+- (void)showShareLocation {
+    ShareLocationViewController *controller = [ShareLocationViewController new];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.shareLocationDelegate = self;
+    [self presentViewController:controller animated:NO completion:nil];
+
+}
+
+-(void)tappedButtonShareCancel:(id)object {
+    [self gotoSettings];
+}
+
+-(void)tappedButtonGotoSettingsCancel:(id)object {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)tappedButtonGotoSettings:(id)object {
+    
+    if ([[DataManager sharedManager] locationManager].currentStatus != kCLAuthorizationStatusAuthorizedAlways) {
+        isFirstLaunch = NO;
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
 }
 
 @end
