@@ -63,4 +63,7 @@ NSLocalizedLanguage(NSString *key){
 #define FONT_NAME_LATO_HEAVY                     @"Lato-Heavy"
 #define FONT_NAME_AWESOME                        @"FontAwesome"
 
+#define NOTIFICATION_APP_BECOME_ACTIVE           @"NOTIFICATION_APP_BECOME_ACTIVE"
+#define NOTIFICATION_LOCATION_DENIED             @"NOTIFICATION_LOCATION_DENIED"
+
 #endif /* constants_h */

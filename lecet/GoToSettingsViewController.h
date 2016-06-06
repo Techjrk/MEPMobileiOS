@@ -11,8 +11,8 @@
 #import "BaseViewController.h"
 
 @protocol GoToSettingsDelegate <NSObject>
-- (void)tappedButtonShareLocation:(id)object;
-- (void)tappedButtonShareCancel:(id)object;
+- (void)tappedButtonGotoSettings:(id)object;
+- (void)tappedButtonGotoSettingsCancel:(id)object;
 @end
 
 @interface GoToSettingsViewController : BaseViewController

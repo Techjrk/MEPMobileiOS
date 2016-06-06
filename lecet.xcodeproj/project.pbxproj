@@ -293,7 +293,7 @@
 		B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
 		B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
 		B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
-		B70155181CD0C56A0050CF8A /* Lecet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lecet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70155181CD0C56A0050CF8A /* Lecet MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecet MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B701551F1CD0C56A0050CF8A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -863,7 +863,7 @@
 		B70155191CD0C56A0050CF8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B70155181CD0C56A0050CF8A /* Lecet.app */,
+				B70155181CD0C56A0050CF8A /* Lecet MEP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1341,7 +1341,7 @@
 			);
 			name = lecet;
 			productName = lecet;
-			productReference = B70155181CD0C56A0050CF8A /* Lecet.app */;
+			productReference = B70155181CD0C56A0050CF8A /* Lecet MEP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1694,7 +1694,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
-				PRODUCT_NAME = Lecet;
+				PRODUCT_NAME = "Lecet MEP";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1715,7 +1715,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
-				PRODUCT_NAME = Lecet;
+				PRODUCT_NAME = "Lecet MEP";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

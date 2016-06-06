@@ -519,7 +519,7 @@
  
     switch (menuHeaderItem) {
         case MenuHeaderNear:{
-            
+
             shouldUsePushZoomAnimation = NO;
             [self.navigationController pushViewController:[ProjectsNearMeViewController new] animated:YES];
             

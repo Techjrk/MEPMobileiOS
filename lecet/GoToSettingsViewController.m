@@ -97,10 +97,15 @@
 }
 
 - (IBAction)tappedButtonSettings:(id)sender {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.goToSettingsDelegate tappedButtonGotoSettings:nil];
+    }];
 }
 
 - (IBAction)tappedButtonCancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.goToSettingsDelegate tappedButtonGotoSettingsCancel:nil];
+    }];
 }
 
 @end

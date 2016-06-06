@@ -13,6 +13,7 @@
 @end
 
 @implementation LocationManager
+@synthesize currentStatus;
 
 - (instancetype)init {
     self = [super init];
@@ -56,7 +57,11 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    currentStatus = status;
     
+    if (status == kCLAuthorizationStatusDenied) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOCATION_DENIED object:nil];
+    }
 }
 
 @end
