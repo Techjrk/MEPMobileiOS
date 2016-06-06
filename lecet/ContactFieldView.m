@@ -46,6 +46,16 @@
             _constraintImageHeight.constant = (kDeviceHeight * 0.005);
             break;
         }
+        case ContactFieldTypeAccount:{
+            image = [UIImage imageNamed:@"Shape"];
+            _constraintImageHeight.constant = (kDeviceHeight * 0.005);
+            break;
+        }
+        case ContactFieldTypeLocation:{
+            image = [UIImage imageNamed:@"icon_pin"];
+            _constraintImageHeight.constant = (kDeviceHeight * 0.005);
+            break;
+        }
     }
     _label.attributedText = [[NSAttributedString alloc] initWithString:infoDict[CONTACT_FIELD_DATA] attributes:@{NSFontAttributeName:CONTACT_FIELD_LABEL_FONT, NSForegroundColorAttributeName:CONTACT_FIELD_LABEL_COLOR, NSUnderlineStyleAttributeName:[NSNumber numberWithBool:YES]}];
     _imageView.image = image;

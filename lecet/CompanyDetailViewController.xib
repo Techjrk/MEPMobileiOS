@@ -206,13 +206,6 @@
                         <constraint firstItem="rd0-N9-fxn" firstAttribute="leading" secondItem="0uK-Xt-6PA" secondAttribute="leading" id="hPF-6v-DbF"/>
                     </constraints>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OO-Pe-jGQ">
-                    <rect key="frame" x="184" y="353" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
-                    <connections>
-                        <action selector="tapped:" destination="-1" eventType="touchUpInside" id="4AM-ud-8Zu"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -222,10 +215,8 @@
                 <constraint firstItem="0uK-Xt-6PA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Dzx-TN-W5q"/>
                 <constraint firstItem="bvz-gO-dNK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.02" id="FGM-Pz-ZLq"/>
                 <constraint firstAttribute="bottom" secondItem="0uK-Xt-6PA" secondAttribute="bottom" id="FJC-3N-HMf"/>
-                <constraint firstItem="1OO-Pe-jGQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="USO-Gp-M20"/>
                 <constraint firstItem="rd0-N9-fxn" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ejU-GM-pg8"/>
                 <constraint firstAttribute="trailing" secondItem="0uK-Xt-6PA" secondAttribute="trailing" id="gdk-nd-hkt"/>
-                <constraint firstItem="1OO-Pe-jGQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gi2-H9-bKw"/>
                 <constraint firstItem="uGZ-7L-Kjt" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.03" id="m7N-XO-4Fk"/>
                 <constraint firstItem="Ne9-Gr-rYD" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.02" id="ojo-2L-qkU"/>
                 <constraint firstItem="Dau-Ib-sPO" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="qj9-ti-mAk"/>

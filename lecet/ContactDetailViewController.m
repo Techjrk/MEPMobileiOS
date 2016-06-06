@@ -8,9 +8,11 @@
 
 #import "ContactDetailViewController.h"
 #import "ContactNavBarView.h"
-#import "DB_CompanyContact.h"
-#import "contactFieldConstants.h"
 #import "ContactDetailView.h"
+#import "contactFieldConstants.h"
+
+#import "DB_CompanyContact.h"
+#import "DB_Company.h"
 
 @interface ContactDetailViewController()<ContactNavViewDelegate>{
     NSMutableArray *contactDetails;
@@ -46,22 +48,43 @@
 - (void)setCompanyContactDetails:(id)item {
     
     DB_CompanyContact *record = item;
-    
-    /*
-    NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
-    */
-    
-    //@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}
-    
-    
+    DB_Company *recordCompany = record.relationshipCompany;
+
     name = record.name;
-    NSLog(@"Email = %@",record.email);
+   
+    NSMutableArray *contactItem = [NSMutableArray new];
     
-    NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:record.phoneNumber}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:record.email}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
+    if (recordCompany.name) {
+        NSString *title = [self determineIfTitleIsEmpty:record.title];
+        NSString *accountTitleAndName = [NSString stringWithFormat:@"%@ %@",title,recordCompany.name];
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeAccount ], CONTACT_FIELD_DATA:accountTitleAndName}];
+    }
+    if (recordCompany.address1) {
+        NSString *contactAddressInfo = [NSString stringWithFormat:@"%@ %@, %@ %@",recordCompany.address1,recordCompany.city,recordCompany.state,recordCompany.zipPlus4];
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeLocation ], CONTACT_FIELD_DATA:contactAddressInfo}];
+    }
+    if (record.phoneNumber) {
+    
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:record.phoneNumber}];
+    }
+    if (record.email) {
+        
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:record.email}];
+    }
+    
     
     contactDetails = contactItem;
     
+}
+
+
+- (NSString *)determineIfTitleIsEmpty:(NSString *)title {
     
+    if (title) {
+        return [NSString stringWithFormat:@"%@ at",title];
+    }else{
+        return @"";
+    }
     
 }
 
