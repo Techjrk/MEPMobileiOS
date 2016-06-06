@@ -29,7 +29,6 @@
     _labelHeader.text = NSLocalizedLanguage(@"MENUHEADER_LABEL_HEADER_TEXT");
     _labelHeader.textColor = MENUHEADER_LABEL_HEADER_COLOR;
 
-    
     _labelCount.font = MENUHEADER_LABEL_TEXT_FONT;
     _labelCount.textColor = MENUHEADER_LABEL_COUNT_COLOR;
     _labelCount.text = @"";
@@ -42,7 +41,7 @@
 }
 
 - (void)setTitleFromCount:(NSInteger)count title:(NSString*)title {
-    NSMutableAttributedString *titleCount = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%li ", count] attributes:@{NSFontAttributeName:MENUHEADER_LABEL_NUMBER_FONT, NSForegroundColorAttributeName:MENUHEADER_LABEL_COUNT_COLOR}];
+    NSMutableAttributedString *titleCount = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%li ", (long)count] attributes:@{NSFontAttributeName:MENUHEADER_LABEL_NUMBER_FONT, NSForegroundColorAttributeName:MENUHEADER_LABEL_COUNT_COLOR}];
     
     [titleCount appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:@{NSFontAttributeName:MENUHEADER_LABEL_TEXT_FONT, NSForegroundColorAttributeName:MENUHEADER_LABEL_COUNT_COLOR}]];
     
