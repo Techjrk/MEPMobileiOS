@@ -14,7 +14,9 @@
 typedef enum {
     ContactFieldTypePhone = 0,
     ContactFieldTypeEmail = 1,
-    ContactFieldTypeWeb = 2
+    ContactFieldTypeWeb = 2,
+    ContactFieldTypeAccount = 3,
+    ContactFieldTypeLocation = 4
 } ContactFieldType;
 
 #define CONTACT_FIELD_TYPE                      @"CONTACT_FIELD_TYPE"

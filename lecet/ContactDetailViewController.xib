@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactDetailViewController">
             <connections>
+                <outlet property="contactDetailView" destination="Qvu-db-Kdk" id="alB-Rn-OkJ"/>
                 <outlet property="contactNavBarView" destination="yUy-zz-FH5" id="JCP-ag-TJz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,9 +18,9 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-db-Kdk">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-db-Kdk" customClass="ContactDetailView">
                     <rect key="frame" x="0.0" y="71" width="600" height="529"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUy-zz-FH5" customClass="ContactNavBarView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>

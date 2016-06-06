@@ -9,12 +9,16 @@
 #import "ContactDetailViewController.h"
 #import "ContactNavBarView.h"
 #import "DB_CompanyContact.h"
+#import "contactFieldConstants.h"
+#import "ContactDetailView.h"
 
 @interface ContactDetailViewController()<ContactNavViewDelegate>{
-    DB_CompanyContact *contactDetails;
+    NSMutableArray *contactDetails;
+    NSString *name;
     
 }
 @property (weak, nonatomic) IBOutlet ContactNavBarView *contactNavBarView;
+@property (weak, nonatomic) IBOutlet ContactDetailView *contactDetailView;
 
 @end
 
@@ -29,7 +33,8 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [_contactNavBarView setNameTitle:name];
+    [_contactDetailView setItems:contactDetails];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +45,24 @@
 
 - (void)setCompanyContactDetails:(id)item {
     
-    contactDetails = item;
+    DB_CompanyContact *record = item;
+    
+    /*
+    NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
+    */
+    
+    //@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}
+    
+    
+    name = record.name;
+    NSLog(@"Email = %@",record.email);
+    
+    NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:record.phoneNumber}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:record.email}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
+    
+    contactDetails = contactItem;
+    
+    
+    
 }
 
 #pragma mark - Contact Nav Delegate
