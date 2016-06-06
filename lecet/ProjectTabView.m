@@ -10,26 +10,17 @@
 #import "projectTabConstant.h"
 
 @interface ProjectTabView (){
-    
-    
-    float originalConstantValue;
+    BOOL isShown;
 }
 @property (weak, nonatomic) IBOutlet UIView *bottomLineView;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeftSideLeadingSpace;
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonUpcoming;
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonPast;
-
 @end
-
-
-
 
 @implementation ProjectTabView
 
-static const float animationDuration = 1.0f;
+static const float animationDuration = 0.25f;
 
 - (void)awakeFromNib {
     
@@ -42,7 +33,6 @@ static const float animationDuration = 1.0f;
     _buttonPast.titleLabel.font = PRODJECT_TAB_BUTTON_FONT;
     [_buttonPast setTitleColor:PRODJECT_TAB_BUTTON_FONT_COLOR forState:UIControlStateNormal];
     
-    
     NSString *upcomingText = [NSString stringWithFormat:@"12 %@",NSLocalizedLanguage(@"PROJECTTAB_UPCOMING_TEXT")];
     NSString *pastText = [NSString stringWithFormat:@"64 %@",NSLocalizedLanguage(@"PROJECTTAB_PAST_TEXT")];
     [_buttonUpcoming setTitle:upcomingText forState:UIControlStateNormal];
@@ -53,48 +43,44 @@ static const float animationDuration = 1.0f;
     [_buttonPast setBackgroundColor:[UIColor clearColor]];
     [_bottomLineView setBackgroundColor:PROJECT_TAB_SLIDING_VIEW_BG_COLOR];
     [self.view setBackgroundColor:[PROJECT_TAB_VIEW_BG_COLOR colorWithAlphaComponent:45.0f]];
+    
+    [self tappedButton:_buttonUpcoming];
    
-    originalConstantValue = _constraintLeftSideLeadingSpace.constant;
 }
-
-
 
 - (IBAction)tappedButton:(id)sender {
 
-
     UIButton *button = sender;
     
-    float constantForConstraint = 0.0f;
-    
-    if (button.tag == ProjectTabPast) {
-        
-        CGRect frame = self.frame;
-        CGRect frameButtonView = _buttonPast.frame;
-        constantForConstraint = (frame.size.width/2) + ((frameButtonView.size.width/2) * 0.5f);
-    }
-    if (button.tag == ProjectTabUpcoming) {
-        
-        
-        constantForConstraint = originalConstantValue;
-    }
+    CGRect buttonRect = button.frame;
+    CGFloat lineWidth = _bottomLineView.frame.size.width;
+
+    float constantForConstraint = buttonRect.origin.x + ((buttonRect.size.width - lineWidth)/2.0);
     
     [UIView animateWithDuration:animationDuration animations:^{
         
         _constraintLeftSideLeadingSpace.constant = constantForConstraint;
-        [self.view setNeedsLayout];
         [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {
+        if (finished) {
+            if (isShown) {
+                [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
+            }
+        }
         [[DataManager sharedManager] featureNotAvailable];
         [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
     }];
-
     
 }
 
-
-
-
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (!isShown) {
+        [self tappedButton:_buttonUpcoming];
+        isShown = YES;
+    }
+}
 
 
 @end

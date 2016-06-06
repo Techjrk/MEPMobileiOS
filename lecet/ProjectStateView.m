@@ -22,8 +22,6 @@
 - (void)awakeFromNib {
     [self clearSelection];
     
-    
-    //[self setButtonTackTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE];
     [_buttonShare setTitle:NSLocalizedLanguage(@"PROJECT_STATE_SHARE") forState:UIControlStateNormal];
     [_buttonHide setTitle:NSLocalizedLanguage(@"PROJECT_STATE_HIDE") forState:UIControlStateNormal];
     [_buttonTrack setTitle:NSLocalizedLanguage(@"PROJECT_STATE_TRACK") forState:UIControlStateNormal];
@@ -39,21 +37,6 @@
     _buttonShare.tag = StateViewShare;
     _buttonHide.tag = StateViewHide;
 
-}
-
-- (void)setButtonTackTitleColor:(UIColor*)color {
-    
-    [UIView performWithoutAnimation:^{
-        NSAttributedString *caret = [[NSAttributedString alloc] initWithString:PROJECT_STATE_CARET_DOWN_TEXT attributes:@{NSFontAttributeName:PROJECT_STATE_CARET_DOWN_FONT, NSForegroundColorAttributeName:color}];
-        
-        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",NSLocalizedLanguage(@"PROJECT_STATE_TRACK")] attributes:@{NSFontAttributeName: PROJECT_STATE_BUTTON_TEXT_FONT, NSForegroundColorAttributeName:color}];
-        
-        [title appendAttributedString:caret];
-        
-        [_buttonTrack setAttributedTitle:title forState:UIControlStateNormal];
-        [_buttonTrack layoutIfNeeded];
-    }];
-    
 }
 
 - (void)clearSelection {

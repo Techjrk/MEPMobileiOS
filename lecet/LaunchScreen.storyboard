@@ -16,17 +16,17 @@
                         <viewControllerLayoutGuide type="bottom" id="7t2-qe-YmW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IsC-Yk-6ca">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_splashBG" translatesAutoresizingMaskIntoConstraints="NO" id="vuG-I3-2Ce">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="736"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_app" translatesAutoresizingMaskIntoConstraints="NO" id="iXu-NV-a9T">
-                                <rect key="frame" x="46" y="120" width="510" height="240"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_app" translatesAutoresizingMaskIntoConstraints="NO" id="iXu-NV-a9T">
+                                <rect key="frame" x="31" y="147" width="352" height="294.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXe-Ny-eYs">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -50,6 +50,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsR-gJ-IJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

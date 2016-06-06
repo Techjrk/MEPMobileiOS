@@ -55,7 +55,7 @@
     constraintHeight.constant = 0;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    _constraintButtonSeeAll.constant = items.count>3? (kDeviceHeight * 0.04):0;
+    _constraintButtonSeeAll.constant = items.count>0? (kDeviceHeight * 0.04):0;
     
     if (_constraintButtonSeeAll.constant == 0 ) {
         _buttonSeeAll.hidden = YES;

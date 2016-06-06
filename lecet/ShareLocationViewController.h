@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
+@protocol ShareLocationDelegate <NSObject>
+- (void)tappedButtonShareLocation:(id)object;
+- (void)tappedButtonShareCancel:(id)object;
+@end
 
 @interface ShareLocationViewController : BaseViewController
+@property (strong, nonatomic) id<ShareLocationDelegate>shareLocationDelegate;
 @end

@@ -501,7 +501,7 @@
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     NSDictionary *filter = @{@"filter[include]":@"contacts"};
-    [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, recordId.integerValue]] parameters:filter success:^(id object) {
+    [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:filter success:^(id object) {
         
         DB_Company *item = [self saveManageObjectCompany:object];
         
@@ -538,7 +538,7 @@
 
 - (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure{
     
-    NSString *url = [self url:[NSString stringWithFormat:kUrlUserInfo, userId.integerValue ]];
+    NSString *url = [self url:[NSString stringWithFormat:kUrlUserInfo, (long)userId.integerValue ]];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
         success(object);
@@ -548,7 +548,7 @@
 }
 
 - (void)contactInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure{
-    NSString *url = [self url:[NSString stringWithFormat:kUrlContactInfo, userId.integerValue ]];
+    NSString *url = [self url:[NSString stringWithFormat:kUrlContactInfo, (long)userId.integerValue ]];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
         success(object);
