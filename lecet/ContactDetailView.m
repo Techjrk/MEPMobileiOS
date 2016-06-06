@@ -33,6 +33,7 @@
 
 
 - (void)setItems:(NSMutableArray*)items {
+    
     collectionItems = items;
     cellHeight = 0;
     constraintHeight.constant = 0;

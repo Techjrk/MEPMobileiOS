@@ -19,5 +19,6 @@
 
 @interface ContactNavBarView : BaseViewClass
 @property (nonatomic,assign) id<ContactNavViewDelegate> contactNavViewDelegate;
+- (void)setNameTitle:(NSString *)name;
 
 @end
