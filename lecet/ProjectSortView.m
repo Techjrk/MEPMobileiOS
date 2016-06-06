@@ -8,7 +8,7 @@
 
 #import "ProjectSortView.h"
 #import "ProjectSortCVCell.h"
-#import "projectSortConstant.h"
+
 
 @interface ProjectSortView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
  
@@ -107,8 +107,8 @@
     return 0;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [[DataManager sharedManager] featureNotAvailable];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
     [_projectSortViewDelegate selectedProjectSort:(ProjectSortItems)indexPath.row];
     
 }

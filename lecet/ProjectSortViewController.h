@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "projectSortConstant.h"
+
+
+
+@protocol ProjectSortViewControllerDelegate <NSObject>
+@required
+-(void)selectedProjectSort:(ProjectSortItems)projectSortItem;
+@end
 
 @interface ProjectSortViewController : UIViewController
+@property (nonatomic,assign) id<ProjectSortViewControllerDelegate> projectSortViewControllerDelegate;
 
 @end

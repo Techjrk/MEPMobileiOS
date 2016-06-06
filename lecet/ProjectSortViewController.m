@@ -7,11 +7,10 @@
 //
 
 #import "ProjectSortViewController.h"
-#import "ProjectSortView.h"
 #import "TriangleView.h"
-#import "projectSortConstant.h"
+#import "ProjectSortView.h"
 
-@interface ProjectSortViewController ()<ProjectSortViewDelegate>
+@interface ProjectSortViewController ()<ProjectSortViewDelegate,ProjectSortViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectSortView *projectSortView;
 
 @property (weak, nonatomic) IBOutlet TriangleView *triangleView;
@@ -27,6 +26,8 @@
     // Do any additional setup after loading the view from its nib.
     [_triangleView setObjectColor:PROJECTSORT_TITLEVIEW_BG_COLOR];
     [self addTappedGesture];
+    _projectSortView.projectSortViewDelegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +39,7 @@
 #pragma mark - Project Sort View Delegate
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem {
     
-    [[DataManager sharedManager] featureNotAvailable];
+    [_projectSortViewControllerDelegate selectedProjectSort:projectSortItem];
     
 }
 
@@ -54,12 +55,12 @@
     [_tempNavigationBar addGestureRecognizer:tappedNav];
 }
 
-
 - (void)dismissDropDownViewController {
     
     [self dismissViewControllerAnimated:YES completion:Nil];
     
 }
+
 
 
 @end
