@@ -13,7 +13,7 @@
 #import "ProjectAllBidsView.h"
 #import "ProjectSortViewController.h"
 
-@interface ProjectBidsListViewController ()<ProjectNavViewDelegate>{
+@interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate>{
     NSMutableArray *bidList;
     NSString *companyName;
 }
@@ -49,9 +49,7 @@
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     
     if (projectNavItem == ProjectNavReOrder) {
-        
         [self tappedReOrderButton];
-        
     }
     if (projectNavItem == ProjectNavBackButton) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -60,17 +58,23 @@
 
 - (void)tappedReOrderButton {
     ProjectSortViewController *controller = [ProjectSortViewController new];
+    controller.projectSortViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:YES completion:nil];
 }
+#pragma mark - ProjectSortViewController Delegate
+- (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+    if (projectSortItem == ProjectSortBidDate) {
+        [[DataManager sharedManager] featureNotAvailable];
+    }
+}
+
 
 #pragma mark - Project Bids Delegate
 
 - (void)setInfoForProjectBids:(NSArray *)bids {
-    
     bidList = [bids mutableCopy];
-  
 }
 
 -(void)tappedProjectItemBidder:(id)object{

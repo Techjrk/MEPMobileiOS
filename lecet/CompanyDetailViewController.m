@@ -267,7 +267,6 @@
 }
 
 - (void)tappededSeeAllContactsProject {
-    
     [self tappedToSeeAllContact:self];
 }
 

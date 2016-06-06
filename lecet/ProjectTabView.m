@@ -43,8 +43,6 @@ static const float animationDuration = 0.25f;
     [_buttonPast setBackgroundColor:[UIColor clearColor]];
     [_bottomLineView setBackgroundColor:PROJECT_TAB_SLIDING_VIEW_BG_COLOR];
     [self.view setBackgroundColor:[PROJECT_TAB_VIEW_BG_COLOR colorWithAlphaComponent:45.0f]];
-    
-    [self tappedButton:_buttonUpcoming];
    
 }
 
@@ -65,11 +63,12 @@ static const float animationDuration = 0.25f;
     } completion:^(BOOL finished) {
         if (finished) {
             if (isShown) {
+                [[DataManager sharedManager] featureNotAvailable];
                 [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
             }
         }
-        [[DataManager sharedManager] featureNotAvailable];
-        [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
+        
+ 
     }];
     
 }
