@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CDAssociatedProjectViewController : UIViewController
-
+-(void)setInfoForAssociatedProjects:(NSMutableArray *)associatedProjects;
+- (void)setContractorName:(NSString *)name;
 @end

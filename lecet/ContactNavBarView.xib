@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactNavBarView">
+            <connections>
+                <outlet property="labelContactTitle" destination="rYw-aQ-3t6" id="abJ-ee-TEP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="520" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHR-Vh-tWO">
+                    <rect key="frame" x="0.0" y="0.0" width="520" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R61-gS-cNP">
+                    <rect key="frame" x="0.0" y="21" width="76" height="49"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="icon_arrowLeft"/>
+                    <connections>
+                        <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="miv-yH-cSQ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYw-aQ-3t6">
+                    <rect key="frame" x="78" y="21" width="364" height="49"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XHR-Vh-tWO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="371-OP-2Ra"/>
+                <constraint firstAttribute="bottom" secondItem="R61-gS-cNP" secondAttribute="bottom" id="8wI-LM-g6T"/>
+                <constraint firstAttribute="trailing" secondItem="XHR-Vh-tWO" secondAttribute="trailing" id="FTE-PO-ndO"/>
+                <constraint firstItem="R61-gS-cNP" firstAttribute="top" secondItem="XHR-Vh-tWO" secondAttribute="bottom" id="ICt-Ca-o9U"/>
+                <constraint firstItem="rYw-aQ-3t6" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.7" id="KKq-a7-gN8"/>
+                <constraint firstItem="R61-gS-cNP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OEX-TS-hzx"/>
+                <constraint firstItem="rYw-aQ-3t6" firstAttribute="top" secondItem="XHR-Vh-tWO" secondAttribute="bottom" id="RR4-Tx-NBi"/>
+                <constraint firstItem="rYw-aQ-3t6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SfX-c2-7AJ"/>
+                <constraint firstItem="XHR-Vh-tWO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="amo-uV-HBZ"/>
+                <constraint firstItem="XHR-Vh-tWO" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="fwx-0D-8E4"/>
+                <constraint firstAttribute="bottom" secondItem="rYw-aQ-3t6" secondAttribute="bottom" id="jtX-NQ-r4m"/>
+                <constraint firstItem="R61-gS-cNP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.145" id="nMh-dp-a7o"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="460" y="156"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_arrowLeft" width="10" height="24"/>
+    </resources>
+</document>

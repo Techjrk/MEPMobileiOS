@@ -1,40 +1,43 @@
 //
-//  CDAssociatedProjectViewController.m
+//  ContactAllListViewController.m
 //  lecet
 //
-//  Created by Michael San Minay on 02/06/2016.
+//  Created by Michael San Minay on 05/06/2016.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "CDAssociatedProjectViewController.h"
-#import "ProjectNavigationBarView.h"
-#import "ProjectSortViewController.h"
-#import "ProjectAllAssociatedProjectView.h"
+#import "ContactAllListViewController.h"
 
-@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate>{
-    NSMutableArray *associatedProjectList;
-    NSString *companyName;
+#import "ContactAllListView.h"
+#import "ProjectNavigationBarView.h"
+#import "ProjectAllBidsView.h"
+#import "ProjectSortViewController.h"
+
+@interface ContactAllListViewController ()<ProjectNavViewDelegate>{
+    
+    NSMutableArray *contactList;
+    
 }
+@property (weak, nonatomic) IBOutlet ContactAllListView *contactAllListView;
+
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
-@property (weak, nonatomic) IBOutlet ProjectAllAssociatedProjectView *projectAllAssociatedProjectListView;
 
 @end
 
-@implementation CDAssociatedProjectViewController
+@implementation ContactAllListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     _projectNavBarView.projectNavViewDelegate = self;
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_projectNavBarView setContractorName:companyName];
-    [_projectNavBarView setProjectTitle:NSLocalizedLanguage(@"ASSOCIATE_ALL_LIST_PROJECT")];
-    [_projectAllAssociatedProjectListView setItems:associatedProjectList];
-
+    //CONTACT_ALL_LIST_NAVBAR_TITLE
+    [_projectNavBarView setProjectTitle:@""];
+    [_projectNavBarView setContractorName:NSLocalizedLanguage(@"CONTACT_ALL_LIST_NAVBAR_TITLE")];
+    [_contactAllListView setItems:contactList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,9 +45,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setContractorName:(NSString *)name {
-    companyName = name;
+- (void)setInfoForContactList:(NSMutableArray *)contacts {
+    
+    contactList = contacts;
 }
+
 
 #pragma mark - ProjectNav Delegate
 
@@ -65,11 +70,6 @@
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:YES completion:nil];
-}
-
-
--(void)setInfoForAssociatedProjects:(NSMutableArray *)associatedProjects {
-    associatedProjectList = associatedProjects;
 }
 
 

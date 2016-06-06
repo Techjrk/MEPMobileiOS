@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactAllListViewController">
+            <connections>
+                <outlet property="contactAllListView" destination="Ty5-be-pmV" id="VVL-D2-WKa"/>
+                <outlet property="projectNavBarView" destination="EYw-Br-rWW" id="2zi-8e-1WZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-2i-KOI" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-Br-rWW" customClass="ProjectNavigationBarView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ty5-be-pmV" customClass="ContactAllListView">
+                            <rect key="frame" x="8" y="81" width="584" height="519"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Ty5-be-pmV" secondAttribute="trailing" constant="8" id="7Xp-5t-ISB"/>
+                        <constraint firstItem="EYw-Br-rWW" firstAttribute="top" secondItem="LbJ-2i-KOI" secondAttribute="top" id="BeM-7U-OKZ"/>
+                        <constraint firstAttribute="trailing" secondItem="EYw-Br-rWW" secondAttribute="trailing" id="GW2-aq-dtv"/>
+                        <constraint firstItem="Ty5-be-pmV" firstAttribute="leading" secondItem="LbJ-2i-KOI" secondAttribute="leading" constant="8" id="QbO-Oy-aCh"/>
+                        <constraint firstItem="EYw-Br-rWW" firstAttribute="leading" secondItem="LbJ-2i-KOI" secondAttribute="leading" id="Ud0-Pc-JUP"/>
+                        <constraint firstItem="Ty5-be-pmV" firstAttribute="top" secondItem="EYw-Br-rWW" secondAttribute="bottom" constant="10" id="kCi-5l-nrl"/>
+                        <constraint firstAttribute="bottom" secondItem="Ty5-be-pmV" secondAttribute="bottom" id="xXr-OY-JtE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="LbJ-2i-KOI" secondAttribute="bottom" id="802-WR-Aa0"/>
+                <constraint firstAttribute="trailing" secondItem="LbJ-2i-KOI" secondAttribute="trailing" id="ObV-zx-NLG"/>
+                <constraint firstItem="EYw-Br-rWW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="UIh-Us-QMF"/>
+                <constraint firstItem="LbJ-2i-KOI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XQX-Qm-cvO"/>
+                <constraint firstItem="LbJ-2i-KOI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iPg-aw-Wv7"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

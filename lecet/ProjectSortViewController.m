@@ -9,12 +9,14 @@
 #import "ProjectSortViewController.h"
 #import "ProjectSortView.h"
 #import "TriangleView.h"
+#import "projectSortConstant.h"
 
 @interface ProjectSortViewController ()<ProjectSortViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectSortView *projectSortView;
 
 @property (weak, nonatomic) IBOutlet TriangleView *triangleView;
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
+@property (weak, nonatomic) IBOutlet UIView *tempNavigationBar;
 
 @end
 
@@ -23,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [_triangleView setObjectColor:[UIColor whiteColor]];
+    [_triangleView setObjectColor:PROJECTSORT_TITLEVIEW_BG_COLOR];
     [self addTappedGesture];
 }
 
@@ -34,33 +36,26 @@
 
 
 #pragma mark - Project Sort View Delegate
--(void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+- (void)selectedProjectSort:(ProjectSortItems)projectSortItem {
     
     [[DataManager sharedManager] featureNotAvailable];
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-- (void)addTappedGesture{
+- (void)addTappedGesture {
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
     tapped.numberOfTapsRequired = 1;
     [_backGroundView addGestureRecognizer:tapped];
     
+    
+    UITapGestureRecognizer *tappedNav = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
+    tappedNav.numberOfTapsRequired = 1;
+    [_tempNavigationBar addGestureRecognizer:tappedNav];
 }
 
 
-- (void)dismissDropDownViewController{
+- (void)dismissDropDownViewController {
     
     [self dismissViewControllerAnimated:YES completion:Nil];
     

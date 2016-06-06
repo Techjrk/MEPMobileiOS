@@ -22,7 +22,7 @@
 
 static const float animationDuration = 0.25f;
 
--(void)awakeFromNib{
+- (void)awakeFromNib {
     
     _buttonUpcoming.tag = ProjectTabUpcoming;
     _buttonPast.tag = ProjectTabPast;

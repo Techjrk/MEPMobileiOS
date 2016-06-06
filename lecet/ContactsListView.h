@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "BaseViewClass.h"
+
+@protocol ContactListViewDelegate <NSObject>
+@required
+- (void)tappededSeeAllContactsProject;
+- (void)selectedContact:(id)item;
+
+@end
+
+
 
 @interface ContactsListView : BaseViewClass
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
+@property (nonatomic,assign) id<ContactListViewDelegate> contactListViewDelegate;
 @end

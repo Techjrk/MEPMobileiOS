@@ -3,10 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CDAssociatedProjectViewController">
             <connections>
+                <outlet property="projectAllAssociatedProjectListView" destination="P2E-Jm-Vc2" id="nua-cs-abb"/>
+                <outlet property="projectNavBarView" destination="ZGq-9S-ceK" id="sge-qn-d3W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,11 +20,31 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxm-8e-NBB" customClass="RadialBackgroundView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGq-9S-ceK" customClass="ProjectNavigationBarView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-Jm-Vc2" customClass="ProjectAllAssociatedProjectView">
+                            <rect key="frame" x="8" y="81" width="584" height="519"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="P2E-Jm-Vc2" firstAttribute="top" secondItem="ZGq-9S-ceK" secondAttribute="bottom" constant="10" id="8DS-Ij-bLd"/>
+                        <constraint firstAttribute="trailing" secondItem="ZGq-9S-ceK" secondAttribute="trailing" id="EAX-Xu-FlW"/>
+                        <constraint firstItem="ZGq-9S-ceK" firstAttribute="leading" secondItem="rxm-8e-NBB" secondAttribute="leading" id="GEK-5O-Wxu"/>
+                        <constraint firstAttribute="bottom" secondItem="P2E-Jm-Vc2" secondAttribute="bottom" id="R3U-6V-GgK"/>
+                        <constraint firstItem="P2E-Jm-Vc2" firstAttribute="leading" secondItem="rxm-8e-NBB" secondAttribute="leading" constant="8" id="XgL-CF-O8c"/>
+                        <constraint firstAttribute="trailing" secondItem="P2E-Jm-Vc2" secondAttribute="trailing" constant="8" id="aFN-iQ-a7X"/>
+                        <constraint firstItem="ZGq-9S-ceK" firstAttribute="top" secondItem="rxm-8e-NBB" secondAttribute="top" id="t4p-xX-fKr"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ZGq-9S-ceK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="4cK-RZ-VAn"/>
                 <constraint firstAttribute="bottom" secondItem="rxm-8e-NBB" secondAttribute="bottom" id="U9R-9W-Zo7"/>
                 <constraint firstItem="rxm-8e-NBB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cME-gx-VKf"/>
                 <constraint firstAttribute="trailing" secondItem="rxm-8e-NBB" secondAttribute="trailing" id="eUB-QI-21K"/>
