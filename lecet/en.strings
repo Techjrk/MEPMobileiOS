@@ -112,14 +112,25 @@
 "SHARE_LOCATION_BUTTON_CANCEL"              =               "CANCEL";
 
 //ProjectTabView.xib
-"PROJECTTAB_UPCOMING_TEXT"                          =            "Upcoming";
-"PROJECTTAB_PAST_TEXT"                          =            "Past";
+"PROJECTTAB_UPCOMING_TEXT"                  =            "Upcoming";
+"PROJECTTAB_PAST_TEXT"                      =            "Past";
 
 
 
+//ProjectSortView.xib
+"PROJECTSORT_TITLE_LABEL_TEXT"              =           "Sort by";
+"PROJECTSORT_BID_DATE_TEXT"                 =           "Bid Date";
+"PROJECTSORT_LAST_UPDATED_TEXT"             =           "Last Updated";
+"PROJECTSORT_DATE_ADDED_TEXT"               =           "Date Added";
+"PROJECTSORT_HIGH_TO_LOW_TEXT"              =           "Value:High to Low";
+"PROJECTSORT_LOW_TO_HIGH_TEXT"              =           "Value: Low to High";
 
 
+//CDAssociatedProjectViewController.h
+"ASSOCIATE_ALL_LIST_PROJECT"                =          "ASSOCIATED PROJECTS";
 
 
+//ContactAllListViewController.h
+"CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
 
 

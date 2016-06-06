@@ -108,7 +108,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
+    [[DataManager sharedManager] featureNotAvailable];
     [_projectSortViewDelegate selectedProjectSort:(ProjectSortItems)indexPath.row];
     
 }

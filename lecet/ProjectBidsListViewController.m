@@ -15,6 +15,7 @@
 
 @interface ProjectBidsListViewController ()<ProjectNavViewDelegate>{
     NSMutableArray *bidList;
+    NSString *companyName;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavigationView;
 @property (weak, nonatomic) IBOutlet ProjectTabView *projectTabView;
@@ -29,11 +30,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    [_projectNavigationView setContractorName:companyName];
     [_projectAllBidsView setItems:bidList];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)setContractorName:(NSString *)name {
+    companyName =name;
+    
 }
 
 #pragma mark - ProjectNav Delegate

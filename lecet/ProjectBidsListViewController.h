@@ -12,6 +12,7 @@
 
 @interface ProjectBidsListViewController : BaseViewController
 
--(void)setInfoForProjectBids:(NSArray *)bids;
+- (void)setInfoForProjectBids:(NSArray *)bids;
+- (void)setContractorName:(NSString *)name;
 
 @end

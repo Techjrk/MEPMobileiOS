@@ -24,11 +24,16 @@
 #import "DB_Bid.h"
 #import "DB_Contact.h"
 #import "ProjectBidsListViewController.h"
+#import "CDAssociatedProjectViewController.h"
+#import "ContactAllListViewController.h"
+#import "ContactDetailViewController.h"
 
 
-@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate>{
+@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate,AssociatedProjectDelegate,ContactListViewDelegate>{
     BOOL isShownContentAdjusted;
     NSNumber *companyRecordId;
+    NSMutableArray *contactAllList;
+    NSString *companyName;
 }
 //Views
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -76,6 +81,8 @@
     [_fieldProjectBidList changeConstraintHeight:_constraintFieldProjectBidList];
     [_fieldCompanyState changeConstraintHeight:_constraintFieldCompanyState];
     _fieldProjectBidList.projectBidListDelegate = self;
+    _fieldAssociatedProjects.associatedProjectDelegate = self;
+    _fieldContacts.contactListViewDelegate = self;
     
 }
 
@@ -110,6 +117,7 @@
 - (void)setInfo:(id)info {
     DB_Company *record = info;
     
+    companyName = record.name;
     companyRecordId = record.recordId;
     [_companyHeader setHeaderInfo:@{COMPANY_TITLE:record.name, COMPANY_GEOCODE_LAT:@" 47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266"}];
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record address] line2Text:nil];
@@ -132,6 +140,8 @@
     [_fieldAssociatedProjects setItems:associatedProjects];
     
     NSMutableArray *contacts = [record.relationshipCompanyContact allObjects]!= nil? [[record.relationshipCompanyContact allObjects] mutableCopy ]:[NSMutableArray new];
+    
+    contactAllList = contacts;
     [_fieldContacts setItems:contacts];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
@@ -220,6 +230,7 @@
 - (void)tappedProjectBidsList:(NSArray *)fetchRecord{
  
     ProjectBidsListViewController *controller = [ProjectBidsListViewController new];
+    [controller setContractorName:companyName];
     [controller setInfoForProjectBids:fetchRecord];
     [self.navigationController pushViewController:controller animated:YES];
     
@@ -228,5 +239,46 @@
 - (IBAction)tappedProjectBids:(id)sender {
     
 }
+
+#pragma mark - Associated Project Delegate
+
+- (void)tappededSeeAllAssociateProject {
+    CDAssociatedProjectViewController *controller = [CDAssociatedProjectViewController new];
+    NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
+    [controller setContractorName:companyName];
+    [controller setInfoForAssociatedProjects:associatedProjects];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+
+#pragma mark - ContactListView Delegate
+- (void)selectedContact:(id)item {
+    ContactDetailViewController *controller = [ContactDetailViewController new];
+    [controller setCompanyContactDetails:item];
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)tappededSeeAllContactsProject {
+    
+    [self tappedToSeeAllContact:self];
+}
+
+
+#pragma mark - ContactAll List ViewController Method
+- (IBAction)tappedToSeeAllContact:(id)sender {
+    ContactAllListViewController *controller = [ContactAllListViewController new];
+    [controller setInfoForContactList:contactAllList];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)tapped:(id)sender {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
+    
+    NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+    [self tappedProjectBidsList:fetchRecord];
+}
+
 
 @end

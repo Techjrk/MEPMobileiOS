@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60359531D01F2CA006E5231 /* ContactNavBarView.m */; };
+		B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60359541D01F2CA006E5231 /* ContactNavBarView.xib */; };
 		B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */; };
 		B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */; };
 		B623B2121CFC9B9D00793D67 /* DropDownProjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B2101CFC9B9D00793D67 /* DropDownProjectList.m */; };
@@ -36,12 +38,20 @@
 		B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */; };
 		B6EA88B41CF439F400BB3180 /* ProjectDetailStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EA88B21CF439F400BB3180 /* ProjectDetailStateView.m */; };
 		B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EA88B31CF439F400BB3180 /* ProjectDetailStateView.xib */; };
+		B6EFFE911D0455CF00727323 /* ContactAllListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EFFE8F1D0455CF00727323 /* ContactAllListView.m */; };
+		B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE901D0455CF00727323 /* ContactAllListView.xib */; };
+		B6EFFE971D04592A00727323 /* ContactAllListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EFFE951D04592A00727323 /* ContactAllListViewController.m */; };
+		B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE961D04592A00727323 /* ContactAllListViewController.xib */; };
+		B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EFFE9B1D0490A000727323 /* ContactDetailView.m */; };
+		B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE9C1D0490A000727323 /* ContactDetailView.xib */; };
 		B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F56D821D018699009B81F5 /* ProjectNavigationBarView.m */; };
 		B6F56D851D018699009B81F5 /* ProjectNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F56D831D018699009B81F5 /* ProjectNavigationBarView.xib */; };
 		B6F56D8B1D01B752009B81F5 /* ProjectAllBidsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F56D891D01B752009B81F5 /* ProjectAllBidsView.m */; };
 		B6F56D8C1D01B752009B81F5 /* ProjectAllBidsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F56D8A1D01B752009B81F5 /* ProjectAllBidsView.xib */; };
 		B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F7DD391D00A4DA00B86B9D /* ProjectTabView.m */; };
 		B6F7DD3C1D00A4DA00B86B9D /* ProjectTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F7DD3A1D00A4DA00B86B9D /* ProjectTabView.xib */; };
+		B6FC235C1D042D3800296386 /* ProjectAllAssociatedProjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */; };
+		B6FC235D1D042D3800296386 /* ProjectAllAssociatedProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */; };
 		B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */; };
 		B6FD33FF1CFDC971005B00A8 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
@@ -201,6 +211,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B60359521D01F2CA006E5231 /* ContactNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactNavBarView.h; sourceTree = "<group>"; };
+		B60359531D01F2CA006E5231 /* ContactNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactNavBarView.m; sourceTree = "<group>"; };
+		B60359541D01F2CA006E5231 /* ContactNavBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactNavBarView.xib; sourceTree = "<group>"; };
 		B623B2081CFC9A7B00793D67 /* projectTListCellConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTListCellConstant.h; sourceTree = "<group>"; };
 		B623B20A1CFC9AC900793D67 /* ProjectListCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListCVCell.h; sourceTree = "<group>"; };
 		B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListCVCell.m; sourceTree = "<group>"; };
@@ -251,6 +264,15 @@
 		B6EA88B11CF439F400BB3180 /* ProjectDetailStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateView.h; sourceTree = "<group>"; };
 		B6EA88B21CF439F400BB3180 /* ProjectDetailStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateView.m; sourceTree = "<group>"; };
 		B6EA88B31CF439F400BB3180 /* ProjectDetailStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDetailStateView.xib; sourceTree = "<group>"; };
+		B6EFFE8E1D0455CF00727323 /* ContactAllListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactAllListView.h; sourceTree = "<group>"; };
+		B6EFFE8F1D0455CF00727323 /* ContactAllListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactAllListView.m; sourceTree = "<group>"; };
+		B6EFFE901D0455CF00727323 /* ContactAllListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactAllListView.xib; sourceTree = "<group>"; };
+		B6EFFE941D04592A00727323 /* ContactAllListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactAllListViewController.h; sourceTree = "<group>"; };
+		B6EFFE951D04592A00727323 /* ContactAllListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactAllListViewController.m; sourceTree = "<group>"; };
+		B6EFFE961D04592A00727323 /* ContactAllListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactAllListViewController.xib; sourceTree = "<group>"; };
+		B6EFFE9A1D0490A000727323 /* ContactDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailView.h; sourceTree = "<group>"; };
+		B6EFFE9B1D0490A000727323 /* ContactDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailView.m; sourceTree = "<group>"; };
+		B6EFFE9C1D0490A000727323 /* ContactDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactDetailView.xib; sourceTree = "<group>"; };
 		B6F56D7F1D01767D009B81F5 /* projectTabConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTabConstant.h; sourceTree = "<group>"; };
 		B6F56D811D018699009B81F5 /* ProjectNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNavigationBarView.h; sourceTree = "<group>"; };
 		B6F56D821D018699009B81F5 /* ProjectNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNavigationBarView.m; sourceTree = "<group>"; };
@@ -259,9 +281,13 @@
 		B6F56D881D01B752009B81F5 /* ProjectAllBidsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectAllBidsView.h; sourceTree = "<group>"; };
 		B6F56D891D01B752009B81F5 /* ProjectAllBidsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectAllBidsView.m; sourceTree = "<group>"; };
 		B6F56D8A1D01B752009B81F5 /* ProjectAllBidsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectAllBidsView.xib; sourceTree = "<group>"; };
+		B6F574CE1D02191F003AA33D /* contactNavBarConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = contactNavBarConstant.h; sourceTree = "<group>"; };
 		B6F7DD381D00A4DA00B86B9D /* ProjectTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabView.h; sourceTree = "<group>"; };
 		B6F7DD391D00A4DA00B86B9D /* ProjectTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabView.m; sourceTree = "<group>"; };
 		B6F7DD3A1D00A4DA00B86B9D /* ProjectTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTabView.xib; sourceTree = "<group>"; };
+		B6FC23591D042D3800296386 /* ProjectAllAssociatedProjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectAllAssociatedProjectView.h; sourceTree = "<group>"; };
+		B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectAllAssociatedProjectView.m; sourceTree = "<group>"; };
+		B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectAllAssociatedProjectView.xib; sourceTree = "<group>"; };
 		B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
 		B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
 		B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
@@ -566,6 +592,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B60359571D01F2DC006E5231 /* ContactNavBar */ = {
+			isa = PBXGroup;
+			children = (
+				B60359521D01F2CA006E5231 /* ContactNavBarView.h */,
+				B60359531D01F2CA006E5231 /* ContactNavBarView.m */,
+				B60359541D01F2CA006E5231 /* ContactNavBarView.xib */,
+			);
+			name = ContactNavBar;
+			sourceTree = "<group>";
+		};
 		B623B2091CFC9AB700793D67 /* ProjectListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,6 +761,36 @@
 			name = MoreMenu;
 			sourceTree = "<group>";
 		};
+		B6EFFE8D1D04557F00727323 /* ContactAllListView */ = {
+			isa = PBXGroup;
+			children = (
+				B6EFFE8E1D0455CF00727323 /* ContactAllListView.h */,
+				B6EFFE8F1D0455CF00727323 /* ContactAllListView.m */,
+				B6EFFE901D0455CF00727323 /* ContactAllListView.xib */,
+			);
+			name = ContactAllListView;
+			sourceTree = "<group>";
+		};
+		B6EFFE931D04590400727323 /* ContactAllList */ = {
+			isa = PBXGroup;
+			children = (
+				B6EFFE941D04592A00727323 /* ContactAllListViewController.h */,
+				B6EFFE951D04592A00727323 /* ContactAllListViewController.m */,
+				B6EFFE961D04592A00727323 /* ContactAllListViewController.xib */,
+			);
+			name = ContactAllList;
+			sourceTree = "<group>";
+		};
+		B6EFFE991D048FAA00727323 /* ContactDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				B6EFFE9A1D0490A000727323 /* ContactDetailView.h */,
+				B6EFFE9B1D0490A000727323 /* ContactDetailView.m */,
+				B6EFFE9C1D0490A000727323 /* ContactDetailView.xib */,
+			);
+			name = ContactDetailView;
+			sourceTree = "<group>";
+		};
 		B6F56D801D0184CD009B81F5 /* ProjectNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,6 +819,16 @@
 				B6F7DD3A1D00A4DA00B86B9D /* ProjectTabView.xib */,
 			);
 			name = ProjectTabs;
+			sourceTree = "<group>";
+		};
+		B6FC23581D042CEC00296386 /* ProjectAllAssociatedProject */ = {
+			isa = PBXGroup;
+			children = (
+				B6FC23591D042D3800296386 /* ProjectAllAssociatedProjectView.h */,
+				B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */,
+				B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */,
+			);
+			name = ProjectAllAssociatedProject;
 			sourceTree = "<group>";
 		};
 		B6FD33FA1CFDC958005B00A8 /* ProjectList */ = {
@@ -825,6 +901,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6EFFE931D04590400727323 /* ContactAllList */,
 				B66DF81B1D007CCA0071A6B5 /* ProjectBidsList */,
 				B66DF81A1D0076080071A6B5 /* ContactDetail */,
 				B64474681D0043390001B244 /* ProjectSort */,
@@ -906,6 +983,10 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B6EFFE991D048FAA00727323 /* ContactDetailView */,
+				B6EFFE8D1D04557F00727323 /* ContactAllListView */,
+				B6FC23581D042CEC00296386 /* ProjectAllAssociatedProject */,
+				B60359571D01F2DC006E5231 /* ContactNavBar */,
 				B6F56D871D01B72B009B81F5 /* ProjectAllBids */,
 				B6F56D801D0184CD009B81F5 /* ProjectNavigationBar */,
 				B6F7DD371D00A48F00B86B9D /* ProjectTabs */,
@@ -1055,6 +1136,7 @@
 				B64474751D00466B0001B244 /* projectSortConstant.h */,
 				B6F56D7F1D01767D009B81F5 /* projectTabConstant.h */,
 				B6F56D861D0191FC009B81F5 /* projectNavigationBarConstant.h */,
+				B6F574CE1D02191F003AA33D /* contactNavBarConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1308,12 +1390,14 @@
 				B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */,
 				B707BC411CEF0B960003C836 /* LandingViewController.xib in Resources */,
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
+				B6FC235D1D042D3800296386 /* ProjectAllAssociatedProjectView.xib in Resources */,
 				B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */,
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
 				B6F7DD3C1D00A4DA00B86B9D /* ProjectTabView.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
+				B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
@@ -1328,6 +1412,7 @@
 				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
 				B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */,
+				B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */,
 				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
@@ -1335,6 +1420,7 @@
 				B7E1043E1CEC74FE00EAD8E7 /* ContactsListView.xib in Resources */,
 				B6972B7E1CF327940092D5CD /* DropDownMenuShareList.xib in Resources */,
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
+				B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
 				B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */,
 				B64474731D00449B0001B244 /* ProjectSortCVCell.xib in Resources */,
@@ -1349,6 +1435,7 @@
 				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
+				B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */,
 				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
@@ -1399,6 +1486,7 @@
 				B79616121CF4400B0089BC32 /* ActivityView.m in Sources */,
 				B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */,
 				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
+				B6EFFE971D04592A00727323 /* ContactAllListViewController.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
 				B79616511D004D7A0089BC32 /* TriangleView.m in Sources */,
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
@@ -1406,6 +1494,7 @@
 				B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */,
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
+				B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
@@ -1424,9 +1513,11 @@
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
+				B6FC235C1D042D3800296386 /* ProjectAllAssociatedProjectView.m in Sources */,
 				B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */,
 				B7F10A1A1CDB3E3300847FA3 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
+				B6EFFE911D0455CF00727323 /* ContactAllListView.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
@@ -1454,6 +1545,7 @@
 				B7F10A2E1CDB577800847FA3 /* DataManager.m in Sources */,
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
 				B66544BC1D002CBD0033732F /* CDAssociatedProjectViewController.m in Sources */,
+				B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */,
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,

@@ -10,7 +10,17 @@
 
 #import "BaseViewClass.h"
 
+@protocol AssociatedProjectDelegate <NSObject>
+@required
+- (void)tappededSeeAllAssociateProject;
+
+@end
+
+
 @interface AssociatedProjectsView : BaseViewClass
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
+
+@property (nonatomic,assign) id<AssociatedProjectDelegate> associatedProjectDelegate;
+
 @end

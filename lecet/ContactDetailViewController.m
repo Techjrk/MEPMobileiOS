@@ -7,8 +7,14 @@
 //
 
 #import "ContactDetailViewController.h"
+#import "ContactNavBarView.h"
+#import "DB_CompanyContact.h"
 
-@interface ContactDetailViewController ()
+@interface ContactDetailViewController()<ContactNavViewDelegate>{
+    DB_CompanyContact *contactDetails;
+    
+}
+@property (weak, nonatomic) IBOutlet ContactNavBarView *contactNavBarView;
 
 @end
 
@@ -17,6 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _contactNavBarView.contactNavViewDelegate =self;
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +37,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setCompanyContactDetails:(id)item {
+    
+    contactDetails = item;
 }
-*/
 
+#pragma mark - Contact Nav Delegate
+- (void)tappedContactNavBackButton {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

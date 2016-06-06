@@ -10,4 +10,6 @@
 
 @interface ContactDetailViewController : UIViewController
 
+
+- (void)setCompanyContactDetails:(id)item;
 @end

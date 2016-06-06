@@ -1,44 +1,33 @@
 //
-//  AssociatedProjectsView.m
+//  ProjectAllAssociatedProjectView.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/17/16.
+//  Created by Michael San Minay on 05/06/2016.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "AssociatedProjectsView.h"
-
-#import "SectionTitleView.h"
+#import "ProjectAllAssociatedProjectView.h"
 #import "AssociatedBidCollectionViewCell.h"
 #import "associatedProjectsConstants.h"
 #import "associatedBidConstants.h"
 
-@interface AssociatedProjectsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
+@interface ProjectAllAssociatedProjectView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
 }
-@property (weak, nonatomic) IBOutlet SectionTitleView *titleView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSpacerHeight;
-@property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonSeeAll;
-- (IBAction)tappedButtonSeeAll:(id)sender;
+
 @end
 
-@implementation AssociatedProjectsView
+@implementation ProjectAllAssociatedProjectView
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
-    [_titleView setTitle:NSLocalizedLanguage(@"ASSOCIATED_PROJECTS_TITLE")];
-    _constraintTitleHeight.constant = kDeviceHeight * 0.05;
-    _constraintSpacerHeight.constant = kDeviceHeight * 0.015;
-    _constraintButtonSeeAll.constant = 0;
-    [_buttonSeeAll setTitleColor:ASSOCIATED_PROJECTS_BUTTON_COLOR forState:UIControlStateNormal];
-    _buttonSeeAll.titleLabel.font = ASSOCIATED_PROJECTS_BUTTON_FONT;
+
     [_collectionView registerNib:[UINib nibWithNibName:[[AssociatedBidCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 }
+
 
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint {
     constraintHeight = constraint;
@@ -49,14 +38,6 @@
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     constraintHeight.constant = 0;
-    _constraintButtonSeeAll.constant = items.count>3?(kDeviceHeight * 0.04):0;
-    
-    if (_constraintButtonSeeAll.constant == 0) {
-        _buttonSeeAll.hidden = YES;
-    } else {
-        [_buttonSeeAll setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"ASSOCIATED_PROJECTS_ALL"), items.count ]forState:UIControlStateNormal];
-    }
-
     [_collectionView reloadData];
 }
 
@@ -81,7 +62,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    NSInteger count = collectionItems.count>3?3:collectionItems.count;
+    NSInteger count = collectionItems.count;
     return count;
 }
 
@@ -115,21 +96,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [[DataManager sharedManager] featureNotAvailable];
-}
-
-#pragma mark - View
-
-- (void)layoutSubviews {
-    if (cellHeight>0) {
-        NSInteger itemCount = collectionItems.count>3?3:collectionItems.count;
-        constraintHeight.constant = (itemCount * cellHeight) + _titleView.frame.size.height + _titleView.frame.origin.y + _constraintSpacerHeight.constant + _constraintButtonSeeAll.constant;
-    }
-}
-
-- (IBAction)tappedButtonSeeAll:(id)sender {
-    
-    [_associatedProjectDelegate tappededSeeAllAssociateProject];
-    
 }
 
 @end

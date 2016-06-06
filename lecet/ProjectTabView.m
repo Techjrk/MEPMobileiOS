@@ -31,7 +31,7 @@
 
 static const float animationDuration = 1.0f;
 
--(void)awakeFromNib{
+- (void)awakeFromNib {
     
     _buttonUpcoming.tag = ProjectTabUpcoming;
     _buttonPast.tag = ProjectTabPast;
@@ -85,6 +85,7 @@ static const float animationDuration = 1.0f;
         [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {
+        [[DataManager sharedManager] featureNotAvailable];
         [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
     }];
 
