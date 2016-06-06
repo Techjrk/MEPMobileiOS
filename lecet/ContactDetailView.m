@@ -8,6 +8,7 @@
 
 #import "ContactDetailView.h"
 #import "ContactFieldCollectionViewCell.h"
+#import "contactDetailViewConstant.h"
 
 @interface ContactDetailView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;
@@ -23,12 +24,16 @@
 
 - (void)awakeFromNib {
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactFieldCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    
+    //[self setBackgroundColor:CONTACT_VIEW_BG_COLOR];
 }
 
 - (void)configureView:(UIView*)view {
-    view.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
-    view.layer.borderWidth = 0.5;
-    view.layer.masksToBounds = YES;
+    CGFloat borderWidth = 1.0;
+    UIView* mask = [[UIView alloc] initWithFrame:CGRectMake(borderWidth, view.frame.size.height - borderWidth, view.frame.size.width, 1)];
+    mask.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
+    [view addSubview:mask];
+
 }
 
 

@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-db-Kdk" customClass="ContactDetailView">
-                    <rect key="frame" x="8" y="51" width="584" height="549"/>
+                    <rect key="frame" x="8" y="56" width="584" height="544"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUy-zz-FH5" customClass="ContactNavBarView">
@@ -31,7 +31,7 @@
             <constraints>
                 <constraint firstItem="Qvu-db-Kdk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="H66-fY-Y8f"/>
                 <constraint firstItem="yUy-zz-FH5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KgR-dG-IX2"/>
-                <constraint firstItem="Qvu-db-Kdk" firstAttribute="top" secondItem="yUy-zz-FH5" secondAttribute="bottom" constant="-20" id="Rwn-4k-1C3"/>
+                <constraint firstItem="Qvu-db-Kdk" firstAttribute="top" secondItem="yUy-zz-FH5" secondAttribute="bottom" constant="-15" id="Rwn-4k-1C3"/>
                 <constraint firstItem="yUy-zz-FH5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VKj-CA-ekS"/>
                 <constraint firstAttribute="trailing" secondItem="yUy-zz-FH5" secondAttribute="trailing" id="WL9-7B-wMx"/>
                 <constraint firstItem="yUy-zz-FH5" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="mFn-1a-YLU"/>
