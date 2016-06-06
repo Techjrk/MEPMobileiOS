@@ -65,11 +65,20 @@
     
 }
 
+- (void)enableButton:(UIButton*)button enabled:(BOOL)enabled {
+    button.enabled = enabled;
+    if (button.enabled) {
+        button.backgroundColor = [UIColor clearColor];
+    } else {
+        button.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
+    }
+}
+
 - (void)setSegmentItems:(NSMutableDictionary*)items {
-    _buttonHousing.enabled = NO;
-    _buttonBuilding.enabled = NO;
-    _buttonEngineering.enabled = NO;
-    _buttonUtilities.enabled = NO;
+    [self enableButton:_buttonHousing enabled:NO];
+    [self enableButton:_buttonBuilding enabled:NO];
+    [self enableButton:_buttonEngineering enabled:NO];
+    [self enableButton:_buttonUtilities enabled:NO];
     
     for (NSString *key in items) {
         NSDictionary *item = items[key];
@@ -78,13 +87,13 @@
         NSNumber *percent = item[CHART_SEGMENT_PERCENTAGE];
         
         if ([tag isEqualToString:kTagNameHousing]) {
-            _buttonHousing.enabled = YES;
+            [self enableButton:_buttonHousing enabled:YES];
         } else if ([tag isEqualToString:kTagNameBuilding]) {
-            _buttonBuilding.enabled = YES;
+            [self enableButton:_buttonBuilding enabled:YES];
         } else if ([tag isEqualToString:kTagNameEngineering]) {
-            _buttonEngineering.enabled = YES;
+            [self enableButton:_buttonEngineering enabled:YES];
         } else {
-            _buttonUtilities.enabled = YES;
+            [self enableButton:_buttonUtilities enabled:YES];
         }
         
         [_piechart addPieItem:tag percent:percent legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
@@ -92,6 +101,7 @@
     }
     
     [self setNeedsLayout];
+    [self setupButtonAlpha];
 }
 
 - (IBAction)tappedButtonHousing:(id)sender {
@@ -110,24 +120,59 @@
     [_piechart tappedPieSegmentByTagName:kTagNameUtilities];
 }
 
+- (void)changeButtonAlpha:(UIButton*)button alhpa:(CGFloat)alpha {
+    UIView *parentView = [button superview];
+    UIImageView *imageView = [parentView viewWithTag:1];
+    if (imageView != nil) {
+        imageView.alpha = button.enabled?alpha:0.3;
+    }
+    
+    UILabel *label = [parentView viewWithTag:2];
+    if (label != nil) {
+        label.alpha = button.enabled?alpha:0.3;
+    }
+}
+
+- (void)setupButtonAlpha {
+    [self changeButtonAlpha:_buttonHousing alhpa:1.0];
+    [self changeButtonAlpha:_buttonEngineering alhpa:1.0];
+    [self changeButtonAlpha:_buttonBuilding alhpa:1.0];
+    [self changeButtonAlpha:_buttonUtilities alhpa:1.0];
+}
+
 - (void)tappedPieSegment:(id)object chartView:(id)charView{
     CustomPieChartLayer *layer = object;
     
-    _buttonHousing.backgroundColor = [UIColor clearColor];
-    _buttonEngineering.backgroundColor = [UIColor clearColor];
-    _buttonBuilding.backgroundColor = [UIColor clearColor];
-    _buttonUtilities.backgroundColor = [UIColor clearColor];
+    _buttonHousing.backgroundColor = _buttonHousing.enabled?[UIColor clearColor]:_buttonHousing.backgroundColor;
+    _buttonEngineering.backgroundColor = _buttonEngineering.enabled?[UIColor clearColor]:_buttonEngineering.backgroundColor;
+    _buttonBuilding.backgroundColor = _buttonBuilding.enabled?[UIColor clearColor]:_buttonBuilding.backgroundColor;
+    _buttonUtilities.backgroundColor = _buttonUtilities.enabled?[UIColor clearColor]:_buttonUtilities.backgroundColor;
+    
+    
     if ([layer segmentHasFocus]) {
+        
+        CGFloat alpha = 0.3;
+        [self changeButtonAlpha:_buttonHousing alhpa:alpha];
+        [self changeButtonAlpha:_buttonEngineering alhpa:alpha];
+        [self changeButtonAlpha:_buttonBuilding alhpa:alpha];
+        [self changeButtonAlpha:_buttonUtilities alhpa:alpha];
+        
         NSString *tagName = layer.tagName;
         if ([tagName isEqualToString:kTagNameHousing]) {
+            [self changeButtonAlpha:_buttonHousing alhpa:1.0];
             _buttonHousing.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
         } else if([tagName isEqualToString:kTagNameEngineering]) {
+            [self changeButtonAlpha:_buttonEngineering alhpa:1.0];
             _buttonEngineering.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
         } else if([tagName isEqualToString:kTagNameBuilding]) {
+            [self changeButtonAlpha:_buttonBuilding alhpa:1.0];
             _buttonBuilding.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
         } else {
+            [self changeButtonAlpha:_buttonUtilities alhpa:1.0];
             _buttonUtilities.backgroundColor = CHART_BUTTON_SELECTED_COLOR;
         }
+    } else {
+        [self setupButtonAlpha];
     }
     
     [self.chartViewDelegate selectedItemChart:layer.tagName chart:self hasfocus:[layer segmentHasFocus]];
