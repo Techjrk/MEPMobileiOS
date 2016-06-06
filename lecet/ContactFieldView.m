@@ -70,12 +70,14 @@
         attributedText = [[NSMutableAttributedString alloc] initWithString:infoDict[CONTACT_FIELD_DATA] attributes:@{NSFontAttributeName:CONTACT_FIELD_LABEL_FONT, NSForegroundColorAttributeName:CONTACT_FIELD_LABEL_COLOR}];
         [attributedText addAttribute:NSForegroundColorAttributeName value:CONTACT_COMPANY_NAME_FIELD_FONT_COLOR range:NSMakeRange(title.length + separatorString.length, compnayName.length)];
         _label.numberOfLines = 0;
+        _label.adjustsFontSizeToFitWidth = YES;
         
     
     }else if (fieldType == ContactFieldTypeLocation) {
         
         attributedText = [[NSMutableAttributedString alloc] initWithString:infoDict[CONTACT_FIELD_DATA] attributes:@{NSFontAttributeName:CONTACT_FIELD_LABEL_FONT, NSForegroundColorAttributeName:CONTACT_FIELD_LABEL_COLOR}];
         _label.numberOfLines = 0;
+        _label.adjustsFontSizeToFitWidth = YES;
     }
     
     else{

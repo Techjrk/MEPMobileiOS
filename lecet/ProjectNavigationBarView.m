@@ -26,31 +26,24 @@
     _labelProjectTitle.font = PRODJECT_NAV_PROJECTTITLE_LABEL_FONT;
     _labelProjectTitle.textColor = PRODJECT_NAV_PROJECTTITLE_LABEL_FONT_COLOR;
     
+    _labelContractorName.numberOfLines = 0;
+    _labelProjectTitle.numberOfLines = 0;
+    _labelContractorName.adjustsFontSizeToFitWidth = YES;
+    
     _backButton.tag = ProjectNavBackButton;
     _reOrderButton.tag = ProjectNavReOrder;
     
 }
-
-
-
-- (void)setContractorName:(NSString *)contractorName{
-    
+- (void)setContractorName:(NSString *)contractorName {
     _labelContractorName.text = contractorName;
     
 }
-
-- (void)setProjectTitle:(NSString *)projectTitle{
-    
+- (void)setProjectTitle:(NSString *)projectTitle {
     _labelProjectTitle.text = projectTitle;
-    
 }
-
-
-- (IBAction)tappedNavButton:(id)sender{
+- (IBAction)tappedNavButton:(id)sender {
     UIButton *button = sender;
-    
     [_projectNavViewDelegate tappedProjectNav:(ProjectNavItem)button.tag];
-    
 }
 
 @end

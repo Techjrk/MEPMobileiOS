@@ -68,7 +68,6 @@ static const float animationDuration = 0.25f;
             }
         }
         
- 
     }];
     
 }
