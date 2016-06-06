@@ -34,6 +34,7 @@
     NSNumber *companyRecordId;
     NSMutableArray *contactAllList;
     NSString *companyName;
+    BOOL usePushZoom;
 }
 //Views
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -124,18 +125,18 @@
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
 
-    NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
+    //NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
 
-    /*
+    
     NSMutableArray *contactItem = [NSMutableArray new];
 
     if ( record.wwwUrl != nil ) {
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:record.wwwUrl}];
     }
-     */
     
     [_fieldCompanyState setItems:contactItem];
 
+    [_fieldNotes setNotes:nil];
     NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
     [_fieldAssociatedProjects setItems:associatedProjects];
     
@@ -160,6 +161,7 @@
 }
 
 - (void)tappedCompanyMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
+    usePushZoom = YES;
     MapViewController *map = [MapViewController new];
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];
@@ -209,16 +211,19 @@
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
-    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
-    animator.willPop = operation!=UINavigationControllerOperationPush;
-    if (!animator.willPop){
-        animator.startRect = [_companyHeader mapFrame];
-        animator.endRect = self.view.frame;
-    } else {
-        animator.startRect = self.view.frame;
-        animator.endRect = [_companyHeader mapFrame];
+    if (usePushZoom) {
+        PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+        animator.willPop = operation!=UINavigationControllerOperationPush;
+        if (!animator.willPop){
+            animator.startRect = [_companyHeader mapFrame];
+            animator.endRect = self.view.frame;
+        } else {
+            animator.startRect = self.view.frame;
+            animator.endRect = [_companyHeader mapFrame];
+        }
+        return animator;
     }
-    return animator;
+    return nil;
 }
 
 #pragma mark - ProjectList Bidder Dlegate
@@ -228,7 +233,7 @@
 }
 
 - (void)tappedProjectBidsList:(NSArray *)fetchRecord{
- 
+    usePushZoom = NO;
     ProjectBidsListViewController *controller = [ProjectBidsListViewController new];
     [controller setContractorName:companyName];
     [controller setInfoForProjectBids:fetchRecord];
@@ -243,6 +248,7 @@
 #pragma mark - Associated Project Delegate
 
 - (void)tappededSeeAllAssociateProject {
+    usePushZoom = NO;
     CDAssociatedProjectViewController *controller = [CDAssociatedProjectViewController new];
     NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
     [controller setContractorName:companyName];
@@ -253,6 +259,7 @@
 
 #pragma mark - ContactListView Delegate
 - (void)selectedContact:(id)item {
+    usePushZoom = NO;
     ContactDetailViewController *controller = [ContactDetailViewController new];
     [controller setCompanyContactDetails:item];
     [self.navigationController pushViewController:controller animated:YES];
@@ -267,6 +274,7 @@
 
 #pragma mark - ContactAll List ViewController Method
 - (IBAction)tappedToSeeAllContact:(id)sender {
+    usePushZoom = NO;
     ContactAllListViewController *controller = [ContactAllListViewController new];
     [controller setInfoForContactList:contactAllList];
     [self.navigationController pushViewController:controller animated:YES];

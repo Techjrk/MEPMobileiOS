@@ -38,8 +38,17 @@
 }
 
 - (void)layoutSubviews {
-    constraintHeight.constant = _notesView.contentSize.height + _titleView.frame.size.height;
+    [_notesView layoutIfNeeded];
+    if (_notesView.text.length>0) {
+        constraintHeight.constant = _notesView.contentSize.height + _titleView.frame.size.height;
+    } else {
+        constraintHeight.constant = 0;
+    }
     
+}
+
+- (void)setNotes:(id)notes {
+    _notesView.text = notes;
 }
 
 @end

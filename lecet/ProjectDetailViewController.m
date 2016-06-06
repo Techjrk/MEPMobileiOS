@@ -31,9 +31,9 @@
 
 @interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate>{
 
-
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
+    BOOL usePushZoom;
 }
 
 //Views
@@ -133,6 +133,7 @@
     
     [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:[project getProjectType] line2Text:nil];
     
+    [_notesView setNotes:project.notes];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
@@ -196,27 +197,32 @@
 }
 
 - (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng {
+    usePushZoom = YES;
     MapViewController *map = [MapViewController new];
     [map setLocationLat:lat lng:lng];
     [self.navigationController pushViewController:map animated:YES];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
-    PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
-    animator.willPop = operation!=UINavigationControllerOperationPush;
-    if (!animator.willPop){
-        animator.startRect = [_headerView mapFrame];
-        animator.endRect = self.view.frame;
-    } else {
-        animator.startRect = self.view.frame;
-        animator.endRect = [_headerView mapFrame];
+    
+    if (usePushZoom) {
+        PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
+        animator.willPop = operation!=UINavigationControllerOperationPush;
+        if (!animator.willPop){
+            animator.startRect = [_headerView mapFrame];
+            animator.endRect = self.view.frame;
+        } else {
+            animator.startRect = self.view.frame;
+            animator.endRect = [_headerView mapFrame];
+        }
+        return animator;
     }
-    return animator;
+    return nil;
 }
 
 - (void)tappedParticipant:(id)object {
     DB_Participant *record = object;
-    
+    usePushZoom = NO;
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
@@ -298,7 +304,7 @@
 
 - (void)tappedProjectBidder:(id)object {
     DB_Bid *bid = object;
-    
+    usePushZoom = NO;
     [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:bid.relationshipCompany.recordId success:^(id object) {
