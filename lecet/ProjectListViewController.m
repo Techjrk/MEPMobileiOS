@@ -34,120 +34,80 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     [self addTappedGesture];
-    
     _dropDownProjectListView.dropDownProjectListDelegate = self;
 
 }
 
-
-- (void)viewWillAppear:(BOOL)animated{
-    
-  //  [_tempProjectStateView setFrame:CGRectMake(10, 70, 300, 40)];
+- (void)viewWillAppear:(BOOL)animated {
     
 }
 
+- (void)viewDidLayoutSubviews {
 
--(void)viewDidLayoutSubviews{
-
-    
     [_tempProjectStateView setFrame:projectStateViewFrame];
     [_dropDownProjectListView setFrame:dropDonwProjectListFrame];
     
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
--(void)setProjectStateViewFrame:(UIView *)stateView{
+- (void)setProjectStateViewFrame:(UIView *)stateView {
     
     CGPoint viewCenter = CGPointMake(stateView.bounds.origin.x + stateView.bounds.size.width/2,
                                        stateView.bounds.origin.y + stateView.bounds.size.height/ 2);
     CGPoint p = [stateView convertPoint:viewCenter toView:self.view];
-    
-    
     CGRect frame = stateView.frame;
     projectStateViewFrame = frame;
     dropDonwProjectListFrame = _dropDownProjectListView.frame;
     
     if (isiPhone6Plus) {
 
-       
-        
         if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
-        
             projectStateViewFrame.origin.y = p.y - (p.y * 0.67f);
-        
             dropDonwProjectListFrame.origin.y = (projectStateViewFrame.origin.y + projectStateViewFrame.size.height) ;
         }else{
-            
             projectStateViewFrame.origin.y = p.y;
             dropDonwProjectListFrame.origin.y = (projectStateViewFrame.origin.y + projectStateViewFrame.size.height) - 5;
-            
         }
-    
-        
-        
     }
     
     if (isiPhone5 || isiPhone6) {
         
         if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
-            
             projectStateViewFrame.origin.y = p.y - (p.y * 0.5f);
-            
             dropDonwProjectListFrame.origin.y = (projectStateViewFrame.origin.y + projectStateViewFrame.size.height) - 5;
-            
             
         }else{
-            
             projectStateViewFrame.origin.y = p.y;
             dropDonwProjectListFrame.origin.y = (projectStateViewFrame.origin.y + projectStateViewFrame.size.height) - 5;
-            
         }
-        
-        
-        
     }
     
     if (isiPhone4) {
         
         if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
-            
             projectStateViewFrame.origin.y = p.y - (p.y * 0.5f);
-            
             dropDonwProjectListFrame.origin.y = (projectStateViewFrame.origin.y + projectStateViewFrame.size.height) - 2;
             
-            
-        }else{
-            
+        }else {
             projectStateViewFrame.origin.y = p.y;
-            
             dropDonwProjectListFrame.origin.y = (projectStateViewFrame.origin.y + projectStateViewFrame.size.height) - 2;
-            
-            
         }
         
     }
     
-    
-    
-    
 }
 
 
-- (void)addTappedGesture{
+- (void)addTappedGesture {
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectTrackList)];
     tapped.numberOfTapsRequired = 1;
     [_viewBackground addGestureRecognizer:tapped];
-    
     
     UITapGestureRecognizer *tappedHiddenProjectState = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectTrackList)];
     tappedHiddenProjectState.numberOfTapsRequired = 1;
@@ -155,11 +115,9 @@
     
 }
 
-- (void)hideProjectTrackList{
-    
+- (void)hideProjectTrackList {
     
     [self dismissViewControllerAnimated:YES completion:Nil];
-
     [_projectTrackListViewControllerDelegate tappedDismissedProjectTrackList];
 }
 
@@ -167,26 +125,8 @@
 
 #pragma mark - DropDownProlist Delegate
 
-- (void)selectedDropDownProjectList:(NSIndexPath *)indexPath{
-    
-    //FEATURENOTAVAILABLE
-    
+- (void)selectedDropDownProjectList:(NSIndexPath *)indexPath {
     [[DataManager sharedManager] featureNotAvailable];
     
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
-
 @end

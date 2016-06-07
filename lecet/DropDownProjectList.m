@@ -10,24 +10,19 @@
 #import "dropDownProjectListConstant.h"
 #import "ProjectListCVCell.h"
 
-@interface DropDownProjectList ()<UICollectionViewDelegate, UICollectionViewDataSource>{
-    
-}
+@interface DropDownProjectList ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong,nonatomic) NSDictionary *projects;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *labelSelecTracking;
 @property (weak, nonatomic) IBOutlet UIView *selectTrackingListView;
 
-
-
-
 @end
 
 @implementation DropDownProjectList
 #define kCellIdentifier     @"kCellIdentifier"
 
-- (void)awakeFromNib{
+- (void)awakeFromNib {
 
     _labelSelecTracking.font = DROPDOWN_PROJECTLIST_LABEL_SELECTTRACKING_FONT;
     _labelSelecTracking.text = NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT");
@@ -46,13 +41,12 @@
     
 }
 
-- (void)setProjects{
+- (void)setProjects {
     
     NSArray *tempPorjectList = @[NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TRAINANDMETROS_BUTTON_TEXT"),NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_RAILWAYS_BUTTON_TEXT"),NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_ANOTHERLIST_BUTTON_TEXT"),NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_HIGHVALUES_BUTTON_TEXT")];
     
     
     NSArray *tempNumberOfProjects = @[@17,@7,@13,@132];
-    
     NSDictionary *parameter = @{@"projectList":tempPorjectList,
                                 @"numberOfProjects":tempNumberOfProjects};
     
@@ -60,13 +54,11 @@
     
 }
 
-- (void)reloadData{
-    
+- (void)reloadData {
     [_collectionView reloadData];
-
 }
 
-- (void)drawTopTriangle{
+- (void)drawTopTriangle {
     
     //Screen Size for Y axiz
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -85,12 +77,10 @@
     
 }
 
-- (void)drawShadow{
+- (void)drawShadow {
  
     CGRect screenRect = self.view.frame;
-    
     CGRect customDimRect = screenRect;
-    
     
     if (isiPhone5) {
         customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.22f);
@@ -124,7 +114,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProjectListCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
     NSArray *titleArray = _projects[@"projectList"];
     NSString *title = [titleArray objectAtIndex:indexPath.row];
     [cell.buttonProjectTrackList setTitle:title forState:UIControlStateNormal];
@@ -136,8 +125,6 @@
     
     return cell;
 }
-
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;

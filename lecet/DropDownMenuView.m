@@ -55,20 +55,17 @@
 }
 
 - (IBAction)tappedDropDownButtonMenu:(id)sender{
-    
     UIButton *button = sender;
     [_dropDownMenuDelegate tappedDropDownMenu:(DropDownMenuItem)button.tag];
     
 }
 
-- (void)setUserName:(NSString *)username{
-    
+- (void)setUserName:(NSString *)username {
     _userNameLabel.text = username;
     
 }
 
-- (void)setEmailAddress:(NSString *)emailAddress{
-    
+- (void)setEmailAddress:(NSString *)emailAddress {
     _emailAddressLabel.text = emailAddress;
     
 }

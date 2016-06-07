@@ -26,10 +26,6 @@ typedef enum  {
 
 
 @interface ProjectDetailStateView : BaseViewClass
-
-
-
-
 @property (nonatomic,assign) id<ProjectDetailStateDelegate> projectDetailStateDelegate;
 
 

@@ -12,11 +12,9 @@
 @protocol ProjectShareListViewControllerDelegate <NSObject>
 @required
 - (void)tappedDismissedProjectShareList;
-
 @end
 
 @interface ProjectShareViewController : UIViewController
-
 @property (nonatomic,assign) id<ProjectShareListViewControllerDelegate> projectShareListViewControllerDelegate;
 -(void)setProjectState:(UIView *)stateView;
 

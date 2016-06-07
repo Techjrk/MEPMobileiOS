@@ -12,16 +12,9 @@
 @protocol ProjectTrackListViewControllerDelegate <NSObject>
 @required
 - (void)tappedDismissedProjectTrackList;
-
 @end
 
-
 @interface ProjectListViewController : UIViewController
-
-
-
 @property (nonatomic,assign) id<ProjectTrackListViewControllerDelegate> projectTrackListViewControllerDelegate;
-
 -(void)setProjectStateViewFrame:(UIView *)stateView;
-
 @end

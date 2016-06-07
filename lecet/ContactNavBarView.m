@@ -22,16 +22,12 @@
     _labelContactTitle.font = CONTACT_NAV_TITLE_LABEL_FONT;
     _labelContactTitle.textColor = CONTACT_NAV_TITLE_LABEL_FONT_COLOR;
     [self.view setBackgroundColor:CONTACT_NAV_VIEW_BG_COLOR];
-    
 }
-
 - (IBAction)tappedBackButton:(id)sender {
-    
     [_contactNavViewDelegate tappedContactNavBackButton];
 }
 
 - (void)setNameTitle:(NSString *)name {
-    
     _labelContactTitle.text = name;
 }
 

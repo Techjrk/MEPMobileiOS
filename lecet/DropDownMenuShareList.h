@@ -16,9 +16,6 @@ typedef enum  {
     DropDownCopyLink = 1,
 } DropDownShareListItem;
 
-
-
-
 @protocol DropDownShareListDelegate <NSObject>
 
 @required
@@ -26,7 +23,6 @@ typedef enum  {
 
 @end
 @interface DropDownMenuShareList : BaseViewClass
-
 @property (nonatomic,assign) id<DropDownShareListDelegate> dropDownShareListDelegate;
 
 @end

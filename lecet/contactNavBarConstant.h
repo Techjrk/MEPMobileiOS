@@ -9,7 +9,6 @@
 #ifndef contactNavBarConstant_h
 #define contactNavBarConstant_h
 
-
 #define CONTACT_NAV_TITLE_LABEL_FONT fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define CONTACT_NAV_TITLE_LABEL_FONT_COLOR RGB(255,255,255)
 #define CONTACT_NAV_VIEW_BG_COLOR RGB(5, 35, 74)

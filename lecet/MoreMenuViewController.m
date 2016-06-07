@@ -10,7 +10,7 @@
 #import "DropDownMenuView.h"
 #import "TriangleView.h"
 
-@interface MoreMenuViewController ()<DropDownMenuDelegate>{
+@interface MoreMenuViewController ()<DropDownMenuDelegate> {
     NSDictionary *infoDict;
 }
 @property (weak, nonatomic) IBOutlet DropDownMenuView *dropDownMoreMenuView;
@@ -39,7 +39,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addTappedGesture{
+- (void)addTappedGesture {
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
     tapped.numberOfTapsRequired = 1;
@@ -47,15 +47,14 @@
     
 }
 
-- (void)dismissDropDownViewController{
+- (void)dismissDropDownViewController {
 
     [self dismissViewControllerAnimated:YES completion:Nil];
 
 }
 
 #pragma mark - DropDown MenuView Delegate
-
-- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
+- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem {
     
     [[DataManager sharedManager] featureNotAvailable];
 }

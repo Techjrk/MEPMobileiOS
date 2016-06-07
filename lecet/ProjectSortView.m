@@ -24,9 +24,7 @@
 @implementation ProjectSortView
 #define kCellIdentifier     @"kCellIdentifier"
 
-
-
--(void)awakeFromNib{
+-(void)awakeFromNib {
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectSortCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -49,13 +47,12 @@
 }
 
 
-- (void)setProjectSortDataItem{
+- (void)setProjectSortDataItem {
     projectSortDataItems= @[NSLocalizedLanguage(@"PROJECTSORT_BID_DATE_TEXT"),
                             NSLocalizedLanguage(@"PROJECTSORT_LAST_UPDATED_TEXT"),
                             NSLocalizedLanguage(@"PROJECTSORT_DATE_ADDED_TEXT"),
                             NSLocalizedLanguage(@"PROJECTSORT_HIGH_TO_LOW_TEXT"),
                             NSLocalizedLanguage(@"PROJECTSORT_LOW_TO_HIGH_TEXT")];
-    
     
 }
 
@@ -65,8 +62,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProjectSortCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
-    
     NSString *title = [projectSortDataItems objectAtIndex:indexPath.row];
     cell.labelTitle.text = title;
     
@@ -80,7 +75,6 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return [projectSortDataItems count];
 }
 
@@ -90,7 +84,6 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGSize size;
-    
     CGFloat cellWidth =  collectionView.frame.size.width;
     CGFloat cellHeight = collectionView.frame.size.height / 5;
     size = CGSizeMake( cellWidth, cellHeight);
@@ -108,7 +101,6 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
     [_projectSortViewDelegate selectedProjectSort:(ProjectSortItems)indexPath.row];
     
 }

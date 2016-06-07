@@ -30,7 +30,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
     [_projectNavigationView setContractorName:companyName];
     [_projectAllBidsView setItems:bidList];
 }
@@ -70,18 +69,16 @@
     }
 }
 
-
 #pragma mark - Project Bids Delegate
-
 - (void)setInfoForProjectBids:(NSArray *)bids {
     bidList = [bids mutableCopy];
 }
 
--(void)tappedProjectItemBidder:(id)object{
+- (void)tappedProjectItemBidder:(id)object {
     
 }
 
--(void)tappedProjectItemBidSeeAll:(id)object{
+- (void)tappedProjectItemBidSeeAll:(id)object {
     
 }
 
