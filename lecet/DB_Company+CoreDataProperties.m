@@ -2,7 +2,7 @@
 //  DB_Company+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 5/27/16.
+//  Created by Harry Herrys Camigla on 6/7/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,25 +13,26 @@
 
 @implementation DB_Company (CoreDataProperties)
 
-@dynamic name;
 @dynamic address1;
 @dynamic address2;
-@dynamic county;
-@dynamic fipsCounty;
 @dynamic city;
-@dynamic state;
-@dynamic zip5;
-@dynamic zipPlus4;
-@dynamic country;
 @dynamic ckmsSiteId;
 @dynamic cnCompanysiteUrl;
-@dynamic wwwUrl;
+@dynamic country;
+@dynamic county;
+@dynamic createdAt;
 @dynamic dcisFactorCntctCode;
 @dynamic dcisFactorCode;
+@dynamic fipsCounty;
+@dynamic name;
 @dynamic recordId;
-@dynamic createdAt;
+@dynamic state;
 @dynamic updatedAt;
+@dynamic wwwUrl;
+@dynamic zip5;
+@dynamic zipPlus4;
 @dynamic relationshipBid;
 @dynamic relationshipCompanyContact;
+@dynamic relationshipAssociatedProjects;
 
 @end

@@ -12,6 +12,7 @@
 #import "AssociatedBidCollectionViewCell.h"
 #import "associatedProjectsConstants.h"
 #import "associatedBidConstants.h"
+#import "DB_Project.h"
 
 @interface AssociatedProjectsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;
@@ -66,7 +67,8 @@
     
     AssociatedBidCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    NSDictionary *dict = @{ASSOCIATED_BID_NAME:@"Blacklick Creek Sanitary Interceptor Sewer", ASSOCIATED_BID_LOCATION:@"Columbus, OH"};
+    DB_Project *project = collectionItems[indexPath.row];
+    NSDictionary *dict = @{ASSOCIATED_BID_NAME:project.title, ASSOCIATED_BID_LOCATION:[project address], ASSOCIATED_BID_DESIGNATION:project.unionDesignation != nil?project.unionDesignation:@""};
     [cell setInfo:dict];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];

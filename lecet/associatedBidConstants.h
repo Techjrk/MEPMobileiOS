@@ -13,6 +13,7 @@
 
 #define ASSOCIATED_BID_NAME                             @"ASSOCIATED_BID_NAME"
 #define ASSOCIATED_BID_LOCATION                         @"ASSOCIATED_BID_LOCATION"
+#define ASSOCIATED_BID_DESIGNATION                      @"ASSOCIATED_BID_DESIGNATION"
 
 
 #define ASSOCIATED_BID_LABEL_PROJECT_FONT               fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)

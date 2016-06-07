@@ -52,6 +52,13 @@
     
     _labelProject.text = infoDict[ASSOCIATED_BID_NAME];
     _labelLocation.text = infoDict[ASSOCIATED_BID_LOCATION];
+    
+    NSString *designation = infoDict[ASSOCIATED_BID_DESIGNATION];
+    _labelTag.hidden = YES;
+    if (designation != nil & designation.length>0) {
+        _labelTag.text = designation;
+        _labelTag.hidden = NO;
+    }
 }
 
 @end

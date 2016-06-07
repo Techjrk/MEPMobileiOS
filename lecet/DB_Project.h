@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DB_Bid, DB_Participant;
+@class DB_Bid, DB_Participant, DB_Company;
 
 NS_ASSUME_NONNULL_BEGIN
 
