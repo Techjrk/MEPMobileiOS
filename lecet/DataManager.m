@@ -112,6 +112,10 @@
     record.awardInd = [NSNumber numberWithBool:[bid[@"awardInd"] boolValue]];
     record.createDate = bid[@"createDate"];
     
+    NSNumber *amount = [DerivedNSManagedObject objectOrNil:bid[@"amount"]];
+    if (amount != nil) {
+        record.amount = [NSNumber numberWithFloat:amount.floatValue];
+    }
     
     NSDictionary *project = bid[@"project"];
     if (project != nil) {
