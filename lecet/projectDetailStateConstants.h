@@ -16,7 +16,6 @@
 #define PROJECTDETAIL_CANCEL_BUTTON_FONT_COLOR      RGB(0, 63, 144)
 
 #define PROJECTDETAIL_TITLE_LABEL_FONT              fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 13)
-
 #define PROJECTDETAIL_TITLE_LABEL_FONT_COLOR        RGB(33, 33, 33)
 
 #endif /* projectDetailStateConstants_h */

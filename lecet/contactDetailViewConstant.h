@@ -8,6 +8,7 @@
 
 #ifndef contactDetailViewConstant_h
 #define contactDetailViewConstant_h
+
 #define CONTACT_VIEW_BG_COLOR RGB(193, 193, 193)
 
 #endif /* contactDetailViewConstant_h */

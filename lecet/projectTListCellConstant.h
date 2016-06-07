@@ -11,7 +11,6 @@
 #define DROPDOWN_PROJECTLISTCELL_BUTTON_FONT_COLOR                  RGB(72, 72, 72)
 #define DROPDOWN_PROJECTLISTCELL_BUTTON_FONT           fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 13)
 
-
 #define DROPDOWN_PROJECTLISTCELL_LABEL_FONT          fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR                   RGB(136, 136, 136)
 #endif /* projectTrackListConstant_h */
