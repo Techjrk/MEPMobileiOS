@@ -72,8 +72,12 @@
     ProjectBiddersCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     DB_Bid *bidItem = collectionItems[indexPath.row];
-    
-    [cell setItem:@"$ 10,000" line1:bidItem.relationshipCompany.name line2:[bidItem.relationshipCompany address]];
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+
+    NSString *estLow = bidItem.amount != nil?[formatter stringFromNumber:[NSNumber numberWithFloat:bidItem.amount.floatValue]]: @"0";
+
+    [cell setItem:[NSString stringWithFormat:@"$ %@",estLow] line1:bidItem.relationshipCompany.name line2:[bidItem.relationshipCompany address]];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
