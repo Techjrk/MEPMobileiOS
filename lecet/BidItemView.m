@@ -75,10 +75,6 @@
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.createDate];
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];
     
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    
-    
     DB_Project *project = item.relationshipProject;
     projectId = project.recordId;
     
@@ -86,6 +82,9 @@
     if (project.estLow != nil) {
         estlow = project.estLow.floatValue;
     }
+
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
     _labelAmount.text = [NSString stringWithFormat:@"$ %@", estLow ];
     

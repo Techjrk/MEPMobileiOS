@@ -151,6 +151,7 @@
         <attribute name="wwwUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip5" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipPlus4" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipAssociatedProjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_Project" inverseName="relationshipCompany" inverseEntity="DB_Project" syncable="YES"/>
         <relationship name="relationshipBid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Bid" inverseName="relationshipCompany" inverseEntity="DB_Bid" syncable="YES"/>
         <relationship name="relationshipCompanyContact" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_CompanyContact" inverseName="relationshipCompany" inverseEntity="DB_CompanyContact" syncable="YES"/>
     </entity>
@@ -257,19 +258,21 @@
         <attribute name="targetFinishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetStartDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unionDesignation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip5" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipPlus4" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relationshipBid" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_Bid" inverseName="relationshipProject" inverseEntity="DB_Bid" syncable="YES"/>
+        <relationship name="relationshipCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Company" inverseName="relationshipAssociatedProjects" inverseEntity="DB_Company" syncable="YES"/>
         <relationship name="relationshipParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_Participant" inverseName="relationshipProject" inverseEntity="DB_Participant" syncable="YES"/>
     </entity>
     <elements>
+        <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="150"/>
         <element name="DB_BidRecent" positionX="-54" positionY="144" width="128" height="1140"/>
         <element name="DB_BidSoon" positionX="-63" positionY="-18" width="128" height="735"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="945"/>
-        <element name="DB_Company" positionX="-45" positionY="144" width="128" height="345"/>
-        <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
-        <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="150"/>
-        <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
+        <element name="DB_Company" positionX="-45" positionY="144" width="128" height="360"/>
         <element name="DB_CompanyContact" positionX="18" positionY="180" width="128" height="180"/>
+        <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
+        <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="975"/>
     </elements>
 </model>

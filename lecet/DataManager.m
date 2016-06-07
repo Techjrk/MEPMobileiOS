@@ -142,7 +142,6 @@
         record = [DB_Project createEntity];
     }
 
-    //record.isHappenSoon = [NSNumber numberWithBool:YES];
     record.recordId = @([recordId integerValue]);
     record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
@@ -319,9 +318,12 @@
         }
     }
     
-    NSDictionary *associatedProjects = company[@"projects"];
+    NSArray *associatedProjects = company[@"projects"];
     if (associatedProjects != nil) {
-        
+     
+        for (NSDictionary *project in associatedProjects) {
+            [record addRelationshipAssociatedProjectsObject:[self saveManageObjectProject:project]];
+        }
     }
 
     return record;
@@ -378,7 +380,8 @@
                                 @"filter[include][1]":@"company",
                                 @"filter[include][2]":@"contact",
                                 @"filter[order]":@"createDate DESC",
-                                @"filter[limit]":@"100"};
+                                @"filter[limit]":@"100",
+                                @"filter[where][rank]":@"1"};
     
     NSString *url = [self url:kUrlBidsRecentlyMade];
     
@@ -564,7 +567,6 @@
 }
 
 #pragma mark - MISC FEATURE
-
 
 - (void)featureNotAvailable {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Feature will be available in future sprint!" preferredStyle:UIAlertControllerStyleAlert];

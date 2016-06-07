@@ -101,6 +101,7 @@
         [manager GET:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self connectionError:error];
             failure(error);
         }];
     }
@@ -120,6 +121,7 @@
         [manager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self connectionError:error];
             failure(error);
         }];
     }
@@ -140,6 +142,7 @@
         [manager PUT:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self connectionError:error];
             failure(error);
         }];
     }
@@ -160,6 +163,7 @@
         [manager DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self connectionError:error];
             failure(error);
         }];
     }
@@ -214,6 +218,26 @@
         
         [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
     }
+    
+}
+
+- (void)connectionError:(NSError*)error {
+    
+    NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Error Code : %li", (long)response.statusCode] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:closeAction];
+    
+    
+    [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
     
 }
 

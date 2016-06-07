@@ -23,6 +23,7 @@
 #import "DB_Company.h"
 #import "DB_Bid.h"
 #import "DB_Contact.h"
+#import "DB_Project.h"
 #import "ProjectBidsListViewController.h"
 #import "CDAssociatedProjectViewController.h"
 #import "ContactAllListViewController.h"
@@ -35,6 +36,7 @@
     NSMutableArray *contactAllList;
     NSString *companyName;
     BOOL usePushZoom;
+    NSMutableArray *associatedProjects;
 }
 //Views
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -122,8 +124,22 @@
     companyRecordId = record.recordId;
     [_companyHeader setHeaderInfo:@{COMPANY_TITLE:record.name, COMPANY_GEOCODE_LAT:@" 47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266"}];
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record address] line2Text:nil];
-    [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
-    [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
+    
+    
+    associatedProjects = [record.relationshipAssociatedProjects allObjects] != nil? [[record.relationshipAssociatedProjects allObjects] mutableCopy]:[NSMutableArray new];
+    CGFloat valuation = 0;
+    for (DB_Project *project in associatedProjects) {
+        valuation +=(project.estLow!=nil?project.estLow.floatValue:0);
+    }
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:valuation]];
+    
+    NSInteger associatedProjectCount = associatedProjects!=nil?associatedProjects.count:0;
+    
+    [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:[NSString stringWithFormat:@"%li",(long)associatedProjectCount] line2Text:nil];
+    [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:[NSString stringWithFormat:@"$ %@",estLow] line2Text:nil];
     
     NSMutableArray *contactItem = [NSMutableArray new];
 
@@ -149,7 +165,7 @@
     [_fieldCompanyState setItems:contactItem];
 
     [_fieldNotes setNotes:nil];
-    NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
+    
     [_fieldAssociatedProjects setItems:associatedProjects];
     
     NSMutableArray *contacts = [record.relationshipCompanyContact allObjects]!= nil? [[record.relationshipCompanyContact allObjects] mutableCopy ]:[NSMutableArray new];
@@ -262,7 +278,6 @@
 - (void)tappededSeeAllAssociateProject {
     usePushZoom = NO;
     CDAssociatedProjectViewController *controller = [CDAssociatedProjectViewController new];
-    NSMutableArray *associatedProjects = [@[@"", @"", @"", @""]mutableCopy];
     [controller setContractorName:companyName];
     [controller setInfoForAssociatedProjects:associatedProjects];
     [self.navigationController pushViewController:controller animated:YES];

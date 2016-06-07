@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DB_CompanyContact, DB_Bid;
+@class DB_CompanyContact, DB_Bid, DB_Project;
 
 @interface DB_Company : DerivedNSManagedObject
 
