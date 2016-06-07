@@ -71,5 +71,8 @@
     associatedProjectList = associatedProjects;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 @end
