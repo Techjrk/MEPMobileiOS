@@ -11,12 +11,14 @@
 #import "ProjectSortViewController.h"
 #import "ProjectAllAssociatedProjectView.h"
 
-@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate>{
-    NSMutableArray *associatedProjectList;
+@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate>{
     NSString *companyName;
+    NSMutableArray *associatedProjectList;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
 @property (weak, nonatomic) IBOutlet ProjectAllAssociatedProjectView *projectAllAssociatedProjectListView;
+
+//@property (strong,nonatomic) NSMutableArray *associatedProjectList;
 
 @end
 
@@ -26,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _projectNavBarView.projectNavViewDelegate = self;
+
     
 }
 
@@ -61,6 +64,7 @@
 
 - (void)tappedReOrderButton {
     ProjectSortViewController *controller = [ProjectSortViewController new];
+    controller.projectSortViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:YES completion:nil];
@@ -73,6 +77,41 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - ProjectSortView Delegate
+- (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+    NSArray *sorted;
+    
+    if (projectSortItem == ProjectSortBidDate) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"bidDate" ascending:NO];
+        
+    }
+    if (projectSortItem == ProjectSortLastUpdated) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"lastPublishDate" ascending:NO];
+    }
+
+    if (projectSortItem == ProjectSortDateAdded) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"firstPublishDate" ascending:NO];
+        
+    }
+    if (projectSortItem == ProjectSortHightToLow) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"estLow" ascending:NO];
+    }
+    if (projectSortItem == ProjectSortLowToHigh) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"estLow" ascending:YES];
+    }
+    
+    associatedProjectList = [sorted mutableCopy];
+    [_projectAllAssociatedProjectListView setItems:associatedProjectList];
+    
+}
+
+- (NSArray *)sortedAssociateProjectsDescriptorKey:(NSString *)keyString ascending:(BOOL)asc {
+    NSArray *bids = [associatedProjectList mutableCopy];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:keyString ascending:asc];
+    NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    return sorted;
 }
 
 @end

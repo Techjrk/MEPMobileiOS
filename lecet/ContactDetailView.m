@@ -83,7 +83,6 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    
     return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
 }
 
@@ -97,9 +96,9 @@
     return 0;
 }
 
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [_contactDetailViewDelegate selectedContactDetails:collectionItems[indexPath.row]];
 }
+
 
 @end

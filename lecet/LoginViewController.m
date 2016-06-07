@@ -44,7 +44,7 @@
     _scrollView.alpha = 0;
     
     _constraintTopSpace.constant = kDeviceHeight * 0.3;
-    
+
     [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
     [_textFieldPassword setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_PASSWORD")];
     [_textFieldPassword setSecure:YES];
@@ -114,7 +114,6 @@
         [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
 
         [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
-
         
         [self dismissViewControllerAnimated:YES completion:^{
             [self.loginDelegate login];

@@ -28,7 +28,7 @@
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectSortCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    [_collectionView setBackgroundColor:PROJECTSORT_LINE_COLOR];
+    //[_collectionView setBackgroundColor:PROJECTSORT_LINE_COLOR];
 
     _collectionView.bounces = NO;
     
@@ -62,13 +62,21 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProjectSortCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    [self configureView:cell];
     NSString *title = [projectSortDataItems objectAtIndex:indexPath.row];
     cell.labelTitle.text = title;
+    
     
     return cell;
 }
 
-
+- (void)configureView:(UIView*)view {
+    CGFloat borderWidth = 1.0;
+    UIView* mask = [[UIView alloc] initWithFrame:CGRectMake(borderWidth, view.frame.size.height - borderWidth, view.frame.size.width, 1)];
+    mask.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
+    [view addSubview:mask];
+    
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -92,8 +100,10 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0.5f;
+    //return 0.5f;
+    return 0;
 }
+
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
