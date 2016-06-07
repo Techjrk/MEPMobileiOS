@@ -62,16 +62,23 @@
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:YES completion:nil];
 }
+
 #pragma mark - ProjectSortViewController Delegate
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
     if (projectSortItem == ProjectSortBidDate) {
-        [[DataManager sharedManager] featureNotAvailable];
+        
+        NSArray *bids = [bidList mutableCopy];
+        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createDate" ascending:NO];
+        NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+        NSLog(@"Test Sorting = %@",sorted);
+        
     }
 }
 
 #pragma mark - Project Bids Delegate
 - (void)setInfoForProjectBids:(NSArray *)bids {
     bidList = [bids mutableCopy];
+    
 }
 
 - (void)tappedProjectItemBidder:(id)object {
