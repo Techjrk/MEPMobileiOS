@@ -24,8 +24,6 @@
 
 - (void)awakeFromNib {
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactFieldCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    
-    //[self setBackgroundColor:CONTACT_VIEW_BG_COLOR];
 }
 
 - (void)configureView:(UIView*)view {
