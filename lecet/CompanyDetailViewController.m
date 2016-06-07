@@ -27,7 +27,7 @@
 #import "CDAssociatedProjectViewController.h"
 #import "ContactAllListViewController.h"
 #import "ContactDetailViewController.h"
-
+#import "DB_CompanyContact.h"
 
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate,AssociatedProjectDelegate,ContactListViewDelegate>{
     BOOL isShownContentAdjusted;
@@ -124,12 +124,24 @@
     [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record address] line2Text:nil];
     [_fieldTotalProjects setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_PROJECTS") line1Text:@"2" line2Text:nil];
     [_fieldTotalValuation setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_TOTAL_VALUATION") line1Text:@"$ 1,128,000" line2Text:nil];
-
-    //NSMutableArray *contactItem = [@[ @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:@"(734) 591-3400"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:@"companyinfo@jaydeecontr.com"}, @{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:@"www.jaydeecontr.com"}] mutableCopy];
-
     
     NSMutableArray *contactItem = [NSMutableArray new];
 
+    NSArray *contactsArray = [record.relationshipCompanyContact allObjects];
+    
+    if (contactsArray != nil & contactsArray.count>0) {
+        DB_CompanyContact *contact = contactsArray[0];
+        
+        if (contact.phoneNumber != nil) {
+            [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone], CONTACT_FIELD_DATA:contact.phoneNumber}];
+        }
+        
+        if (contact.email != nil) {
+            [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail], CONTACT_FIELD_DATA:contact.email}];
+            
+        }
+    }
+    
     if ( record.wwwUrl != nil ) {
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeWeb], CONTACT_FIELD_DATA:record.wwwUrl}];
     }

@@ -477,7 +477,6 @@
     [[DataManager sharedManager] projectDetail:[item getProjectRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
     } failure:^(id object) {
-        
     }];
 }
 
@@ -648,7 +647,6 @@
         [_bidsCollectionView reloadData];
     }
 }
-
 
 - (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
     

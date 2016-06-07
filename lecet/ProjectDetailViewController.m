@@ -176,18 +176,11 @@
     
     if (stateView == StateViewShare) {
         
-        //[self showOrHideDropDownShareListMenu];
         [self showShareListMenu];
-        
         
     }else if (stateView == StateViewTrack){
         
-        
-      
-        
         [self tappedProjectTrackListButton];
-        
-
        
     }else if (stateView == StateViewHide){
  
@@ -318,7 +311,7 @@
             
         }];
     } failure:^(id object) {
-        
+
     }];
 }
 

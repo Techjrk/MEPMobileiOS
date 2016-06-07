@@ -57,12 +57,11 @@
     
     if (record.title) {
         
-
         NSString *accountTitleAndName = [NSString stringWithFormat:@"%@ at %@",record.title,recordCompany.name];
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeAccount ], CONTACT_FIELD_DATA:accountTitleAndName}];
     }
     if (recordCompany.address1) {
-        NSString *contactAddressInfo = [NSString stringWithFormat:@"%@ %@, %@ %@",recordCompany.address1,recordCompany.city,recordCompany.state,recordCompany.zipPlus4];
+        NSString *contactAddressInfo = [NSString stringWithFormat:@"%@\n%@, %@ %@",recordCompany.address1,recordCompany.city,recordCompany.state,recordCompany.zipPlus4];
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeLocation ], CONTACT_FIELD_DATA:contactAddressInfo}];
     }
     if (record.phoneNumber) {
@@ -129,8 +128,11 @@
             break;
         }
     }
-
     
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 
