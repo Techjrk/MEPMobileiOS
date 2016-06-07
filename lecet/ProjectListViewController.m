@@ -20,12 +20,8 @@
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintProjectListTop;
 @property (weak, nonatomic) IBOutlet UIView *tempProjectStateView;
-
 @property (weak, nonatomic) IBOutlet UIView *viewBackground;
-
 @property (weak,nonatomic) IBOutlet DropDownProjectList *dropDownProjectListView;
-
-
 
 @end
 
@@ -37,10 +33,6 @@
     [self addTappedGesture];
     _dropDownProjectListView.dropDownProjectListDelegate = self;
 
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    
 }
 
 - (void)viewDidLayoutSubviews {
@@ -116,12 +108,9 @@
 }
 
 - (void)hideProjectTrackList {
-    
     [self dismissViewControllerAnimated:YES completion:Nil];
     [_projectTrackListViewControllerDelegate tappedDismissedProjectTrackList];
 }
-
-
 
 #pragma mark - DropDownProlist Delegate
 
