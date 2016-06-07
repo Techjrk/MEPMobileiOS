@@ -10,12 +10,7 @@
 #import "projectTListCellConstant.h"
 
 
-@interface ProjectListCVCell (){
-    
-}
-
-
-
+@interface ProjectListCVCell ()
 @end
 
 @implementation ProjectListCVCell
@@ -23,7 +18,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
     
     [self setBackgroundColor:[UIColor whiteColor]];
     _buttonProjectTrackList.titleLabel.font = DROPDOWN_PROJECTLISTCELL_BUTTON_FONT;

@@ -13,22 +13,12 @@
 @interface DropDownMenuShareList ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonSendByEmail;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCopyLink;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEmailButtonTop;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEmailAndLinkLeading;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEmailLeading;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEmailImageTop;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLinkImageTop;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCopyButtonTop;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEmailImageBottom;
-
 
 @end
 
 @implementation DropDownMenuShareList
 
-
-
-- (void)awakeFromNib{
+- (void)awakeFromNib {
     
     _buttonSendByEmail.tag = DropDownSendByEmail;
     _buttonCopyLink.tag = DropDownCopyLink;
@@ -39,12 +29,11 @@
     
     [self drawTopTriangle];
     [self drawShadow];
-    [self adjustConstraintForIncompatibleDevies];
+
 }
 
 - (void)drawTopTriangle{
-    
-    
+
     //Screen Size for Y axiz
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
@@ -62,17 +51,9 @@
     
 }
 
-- (void)drawShadow{
-    
+- (void)drawShadow {
     CGRect screenRect = self.bounds;
-    
     CGRect customDimRect = screenRect;
-    
-    
-    //if (isiPhone5) {
-     //   customDimRect.size.height = screenRect.size.height - (screenRect.size.height * 0.14f);
-     //   customDimRect.size.width = screenRect.size.width - (screenRect.size.width * 0.14f);
-   // }
 
     customDimRect.size.height = 0;
     customDimRect.size.width = 0;
@@ -85,23 +66,9 @@
 
 }
 
--(IBAction)tappedDropDonwShareList:(id)sender{
-    
+- (IBAction)tappedDropDonwShareList:(id)sender {
     UIButton *button = sender;
     [_dropDownShareListDelegate tappedDropDownShareList:(DropDownShareListItem)button.tag];
-    
-}
-
-- (void)adjustConstraintForIncompatibleDevies{
-    
-    if (isiPhone5 || isiPhone4) {
-        _constraintEmailButtonTop.constant = 5;
-        _constraintEmailImageTop.constant = 12;
-        _constraintLinkImageTop.constant = 5;
-        _constraintCopyButtonTop.constant = 0;
-        _constraintEmailImageBottom.constant = 6;
-        
-    }
     
 }
 

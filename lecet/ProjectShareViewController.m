@@ -29,15 +29,12 @@
 }
 
 
--(void)viewDidLayoutSubviews{
+-(void)viewDidLayoutSubviews {
     
     [_tempProjectStateView setFrame:projectStateViewFrame];
-  //  [_shareListView setFrame:dropDonwShareListFrame];
     
     CGRect frame = _shareListView.frame;
-    
     frame.origin.y = dropDonwShareListFrame.origin.y;
-    
     [_shareListView setFrame:frame];
     
 }

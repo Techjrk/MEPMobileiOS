@@ -38,17 +38,13 @@
 
 #pragma mark - Project Sort View Delegate
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem {
-    
     [_projectSortViewControllerDelegate selectedProjectSort:projectSortItem];
-    
 }
 
 - (void)addTappedGesture {
-    
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
     tapped.numberOfTapsRequired = 1;
     [_backGroundView addGestureRecognizer:tapped];
-    
     
     UITapGestureRecognizer *tappedNav = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
     tappedNav.numberOfTapsRequired = 1;
@@ -56,7 +52,6 @@
 }
 
 - (void)dismissDropDownViewController {
-    
     [self dismissViewControllerAnimated:YES completion:Nil];
     
 }

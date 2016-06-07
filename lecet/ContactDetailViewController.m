@@ -34,7 +34,6 @@
     _contactDetailView.contactDetailViewDelegate = self;
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
     [_contactNavBarView setNameTitle:name];
     [_contactDetailView setItems:contactDetails];
@@ -44,7 +43,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (void)setCompanyContactDetails:(id)item {
     
@@ -56,8 +54,6 @@
     NSMutableArray *contactItem = [NSMutableArray new];
     
     if (record.title) {
-        
-
         NSString *accountTitleAndName = [NSString stringWithFormat:@"%@ at %@",record.title,recordCompany.name];
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeAccount ], CONTACT_FIELD_DATA:accountTitleAndName}];
     }

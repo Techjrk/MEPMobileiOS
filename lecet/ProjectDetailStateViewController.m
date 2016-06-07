@@ -10,9 +10,7 @@
 #import "ProjectDetailStateView.h"
 
 
-@interface ProjectDetailStateViewController ()<ProjectDetailStateDelegate>{
-    
-}
+@interface ProjectDetailStateViewController ()<ProjectDetailStateDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDetailStateViewHeight;
 @property (weak, nonatomic) IBOutlet ProjectDetailStateView *projectDetailSateView;
 
@@ -28,8 +26,6 @@
     _projectDetailSateView.projectDetailStateDelegate = self;
     
     [self addTappedGesture];
-    
-    
     [self setAutoLayConstraintInIncompatibleDevice];
 }
 
@@ -38,19 +34,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
-- (void)addTappedGesture{
+- (void)addTappedGesture {
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectDetailState)];
     tapped.numberOfTapsRequired = 1;
@@ -58,18 +42,14 @@
     
 }
 
-- (void)hideProjectDetailState{
-    
-    
+- (void)hideProjectDetailState {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
     [_projectDetailStateViewControllerDelegate tappedDismissed];
 }
 
-- (void)setAutoLayConstraintInIncompatibleDevice{
+- (void)setAutoLayConstraintInIncompatibleDevice {
     
     if (isiPhone4) {
-        
         //Share List
         _constraintDetailStateViewHeight.constant = 20;
         
@@ -78,21 +58,12 @@
 }
 
 #pragma mark - Project Detail State View Delegate
-
-- (void)tappedProjectDetailState:(ProjectDetailStateItem)projectDetailStteItesm{
+- (void)tappedProjectDetailState:(ProjectDetailStateItem)projectDetailStteItesm {
 
     if (projectDetailStteItesm == ProjectDetailStateCancel) {
-        
         [self hideProjectDetailState];
-        
-        
     }else{
-        
         [[DataManager sharedManager] featureNotAvailable];
-        
     }
-
 }
-
-
 @end

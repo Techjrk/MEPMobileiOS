@@ -67,9 +67,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     CGSize size;
-    
     cellHeight = kDeviceHeight * 0.13;
     size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
     return size;
@@ -77,7 +75,6 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    
     return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
 }
 
@@ -90,7 +87,6 @@
 {
     return 0;
 }
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [[DataManager sharedManager] featureNotAvailable];

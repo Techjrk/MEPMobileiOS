@@ -14,9 +14,7 @@
 #import "ProjectSortViewController.h"
 
 @interface ContactAllListViewController ()<ProjectNavViewDelegate>{
-    
     NSMutableArray *contactList;
-    
 }
 @property (weak, nonatomic) IBOutlet ContactAllListView *contactAllListView;
 
@@ -56,9 +54,7 @@
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     
     if (projectNavItem == ProjectNavReOrder) {
-        
         [self tappedReOrderButton];
-        
     }
     if (projectNavItem == ProjectNavBackButton) {
         [self.navigationController popViewControllerAnimated:YES];
