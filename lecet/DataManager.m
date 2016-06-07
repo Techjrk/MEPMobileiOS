@@ -32,6 +32,7 @@
 #define kUrlCompanyBids                     @"Bids/"
 #define kUrlUserInfo                        @"LecetUsers/%li?"
 #define kUrlContactInfo                     @"Contacts/%li?"
+#define kUrlProjectsNear                    @"Projects/near"
 
 @interface DataManager()
 @end
@@ -563,6 +564,17 @@
     NSString *url = [self url:[NSString stringWithFormat:kUrlContactInfo, (long)userId.integerValue ]];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng]};
+    [self HTTP_GET:[self url:kUrlProjectsNear] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

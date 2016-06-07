@@ -35,6 +35,7 @@
 - (void)companyProjectBids:(NSNumber*)companyId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)contactInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC
 - (void)featureNotAvailable;

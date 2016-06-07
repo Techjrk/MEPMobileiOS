@@ -26,7 +26,6 @@
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-
     CGFloat estlow = 0;
     if (self.estLow != nil) {
         estlow = self.estLow.floatValue;
