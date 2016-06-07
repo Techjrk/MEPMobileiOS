@@ -11,12 +11,13 @@
 #import "ProjectSortViewController.h"
 #import "ProjectAllAssociatedProjectView.h"
 
-@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate>{
-    NSMutableArray *associatedProjectList;
+@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate>{
     NSString *companyName;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
 @property (weak, nonatomic) IBOutlet ProjectAllAssociatedProjectView *projectAllAssociatedProjectListView;
+
+@property (strong,nonatomic) NSMutableArray *associatedProjectList;
 
 @end
 
@@ -26,13 +27,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _projectNavBarView.projectNavViewDelegate = self;
+
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [_projectNavBarView setContractorName:companyName];
     [_projectNavBarView setProjectTitle:NSLocalizedLanguage(@"ASSOCIATE_ALL_LIST_PROJECT")];
-    [_projectAllAssociatedProjectListView setItems:associatedProjectList];
+    [_projectAllAssociatedProjectListView setItems:_associatedProjectList];
 
 }
 
@@ -61,6 +63,7 @@
 
 - (void)tappedReOrderButton {
     ProjectSortViewController *controller = [ProjectSortViewController new];
+    controller.projectSortViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:YES completion:nil];
@@ -68,11 +71,26 @@
 
 
 -(void)setInfoForAssociatedProjects:(NSMutableArray *)associatedProjects {
-    associatedProjectList = associatedProjects;
+    _associatedProjectList = associatedProjects;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
+
+#pragma mark - ProjectSortView Delegate
+- (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+    if (projectSortItem == ProjectSortBidDate) {
+        NSArray *bids = [_associatedProjectList mutableCopy];
+        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"bidDate" ascending:NO];
+        NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+        [_associatedProjectList removeAllObjects];
+        _associatedProjectList = [sorted mutableCopy];
+        
+        [_projectAllAssociatedProjectListView setItems:_associatedProjectList];
+    }
+    
+}
+
 
 @end
