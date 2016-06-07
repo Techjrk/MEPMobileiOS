@@ -13,11 +13,12 @@
 
 @interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate>{
     NSString *companyName;
+    NSMutableArray *associatedProjectList;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
 @property (weak, nonatomic) IBOutlet ProjectAllAssociatedProjectView *projectAllAssociatedProjectListView;
 
-@property (strong,nonatomic) NSMutableArray *associatedProjectList;
+//@property (strong,nonatomic) NSMutableArray *associatedProjectList;
 
 @end
 
@@ -34,7 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [_projectNavBarView setContractorName:companyName];
     [_projectNavBarView setProjectTitle:NSLocalizedLanguage(@"ASSOCIATE_ALL_LIST_PROJECT")];
-    [_projectAllAssociatedProjectListView setItems:_associatedProjectList];
+    [_projectAllAssociatedProjectListView setItems:associatedProjectList];
 
 }
 
@@ -71,7 +72,7 @@
 
 
 -(void)setInfoForAssociatedProjects:(NSMutableArray *)associatedProjects {
-    _associatedProjectList = associatedProjects;
+    associatedProjectList = associatedProjects;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -80,17 +81,37 @@
 
 #pragma mark - ProjectSortView Delegate
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+    NSArray *sorted;
+    
     if (projectSortItem == ProjectSortBidDate) {
-        NSArray *bids = [_associatedProjectList mutableCopy];
-        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"bidDate" ascending:NO];
-        NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-        [_associatedProjectList removeAllObjects];
-        _associatedProjectList = [sorted mutableCopy];
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"bidDate" ascending:NO];
         
-        [_projectAllAssociatedProjectListView setItems:_associatedProjectList];
     }
+    if (projectSortItem == ProjectSortLastUpdated) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"lastPublishDate" ascending:NO];
+    }
+
+    if (projectSortItem == ProjectSortDateAdded) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"firstPublishDate" ascending:NO];
+        
+    }
+    if (projectSortItem == ProjectSortHightToLow) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"estLow" ascending:NO];
+    }
+    if (projectSortItem == ProjectSortLowToHigh) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"estLow" ascending:YES];
+    }
+    
+    associatedProjectList = [sorted mutableCopy];
+    [_projectAllAssociatedProjectListView setItems:associatedProjectList];
     
 }
 
+- (NSArray *)sortedAssociateProjectsDescriptorKey:(NSString *)keyString ascending:(BOOL)asc {
+    NSArray *bids = [associatedProjectList mutableCopy];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:keyString ascending:asc];
+    NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    return sorted;
+}
 
 @end

@@ -34,6 +34,9 @@
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
     BOOL usePushZoom;
+    NSMutableArray *bidItems;
+    NSString *projectTitle;
+    
 }
 
 //Views
@@ -119,7 +122,7 @@
 - (void)detailsFromProject:(DB_Project*)record {
     
     DB_Project *project = record;
-    
+    projectTitle = project.title;
     NSString *address1 = project.address1 == nil ? @"": project.address1;
     [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
     
@@ -148,7 +151,7 @@
     
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
-    NSMutableArray *bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
+    bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
     [_projectBidder setItems:bidItems];
  
     NSMutableArray *participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];

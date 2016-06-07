@@ -309,7 +309,6 @@
 - (IBAction)tapped:(id)sender {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
-    
     NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
     [self tappedProjectBidsList:fetchRecord];
 }
