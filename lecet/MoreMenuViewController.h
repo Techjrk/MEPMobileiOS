@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "dropDownMenuConstants.h"
+
+@protocol MoreMenuViewControllerDelegate <NSObject>
+@required
+- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem;
+@end
 
 @interface MoreMenuViewController : UIViewController
+@property (nonatomic,assign) id<MoreMenuViewControllerDelegate> moreMenuViewControllerDelegate;
 - (void)setInfo:(id)info;
 @end

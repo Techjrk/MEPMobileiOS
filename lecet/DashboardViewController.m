@@ -30,8 +30,9 @@
 #import "chartConstants.h"
 #import "MoreMenuViewController.h"
 #import "ProjectsNearMeViewController.h"
+#import "ChangePasswordViewController.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate>{
 
     NSDate *currentDate;
     NSInteger currentPage;
@@ -550,7 +551,13 @@
 }
 
 
-#pragma mark - DropDown Menu More
+#pragma mark - DropDown Menu More Delegate and Method
+- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
+    
+    ChangePasswordViewController *controller = [ChangePasswordViewController new];
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+    
+}
 
 - (void)showDropDownMenu{
     
@@ -559,10 +566,13 @@
     [[DataManager sharedManager] userInformation:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
 
         MoreMenuViewController *controller  = [MoreMenuViewController new];
+        controller.moreMenuViewControllerDelegate = self;
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [controller setInfo:object];
-        [self presentViewController:controller  animated:NO completion:nil];
+        [self.navigationController presentViewController:controller  animated:NO completion:nil];
+        
+        
         
     } failure:^(id object) {
         

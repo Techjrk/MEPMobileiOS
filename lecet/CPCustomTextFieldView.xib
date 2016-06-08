@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPCustomTextFieldView">
+            <connections>
+                <outlet property="leftTitleLabel" destination="8OI-Jr-DFx" id="Yhx-hy-IVA"/>
+                <outlet property="textField" destination="lfX-UV-leN" id="Qi6-PT-aEc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="562" height="69"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OI-Jr-DFx">
+                    <rect key="frame" x="0.0" y="0.0" width="92" height="69"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TEXT" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lfX-UV-leN">
+                    <rect key="frame" x="92" y="0.0" width="470" height="69"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="lfX-UV-leN" secondAttribute="bottom" id="1TV-is-18O"/>
+                <constraint firstItem="8OI-Jr-DFx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.165" id="G2Q-JD-YfQ"/>
+                <constraint firstAttribute="bottom" secondItem="8OI-Jr-DFx" secondAttribute="bottom" id="IDr-qx-t3p"/>
+                <constraint firstItem="8OI-Jr-DFx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="T8N-N6-ABj"/>
+                <constraint firstAttribute="trailing" secondItem="lfX-UV-leN" secondAttribute="trailing" id="Z3w-0S-oa1"/>
+                <constraint firstItem="8OI-Jr-DFx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fUq-b4-z0m"/>
+                <constraint firstItem="lfX-UV-leN" firstAttribute="leading" secondItem="8OI-Jr-DFx" secondAttribute="trailing" id="jUX-65-aGk"/>
+                <constraint firstItem="lfX-UV-leN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vD6-Os-tdY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="271" y="205.5"/>
+        </view>
+    </objects>
+</document>

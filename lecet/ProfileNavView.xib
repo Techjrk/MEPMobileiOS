@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileNavView">
+            <connections>
+                <outlet property="leftNavButton" destination="nQU-wd-eDJ" id="H0f-To-qva"/>
+                <outlet property="profileNavTitleLabel" destination="rc3-tC-Je6" id="4ur-a7-F9A"/>
+                <outlet property="rightNavButton" destination="Eqh-5F-ZP9" id="VFZ-Cl-5SS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="572" height="83"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvO-zD-1Qf">
+                    <rect key="frame" x="0.0" y="0.0" width="572" height="25"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-wd-eDJ">
+                    <rect key="frame" x="0.0" y="25" width="83" height="58"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="icon_arrowLeft"/>
+                    <connections>
+                        <action selector="tappedProfileNavButton:" destination="-1" eventType="touchUpInside" id="0de-2n-Txi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-5F-ZP9">
+                    <rect key="frame" x="489" y="25" width="83" height="58"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Save"/>
+                    <connections>
+                        <action selector="tappedProfileNavButton:" destination="-1" eventType="touchUpInside" id="tXD-sy-eIo"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfY-q8-MFF">
+                    <rect key="frame" x="83" y="25" width="406" height="58"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc3-tC-Je6">
+                            <rect key="frame" x="0.0" y="0.0" width="406" height="58"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="rc3-tC-Je6" secondAttribute="bottom" id="1ze-gV-YL4"/>
+                        <constraint firstAttribute="trailing" secondItem="rc3-tC-Je6" secondAttribute="trailing" id="74C-ky-GRq"/>
+                        <constraint firstItem="rc3-tC-Je6" firstAttribute="top" secondItem="LfY-q8-MFF" secondAttribute="top" id="dAI-ov-8pU"/>
+                        <constraint firstItem="rc3-tC-Je6" firstAttribute="leading" secondItem="LfY-q8-MFF" secondAttribute="leading" id="wHp-aS-IoE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Eqh-5F-ZP9" firstAttribute="top" secondItem="nvO-zD-1Qf" secondAttribute="bottom" id="4JQ-qB-Ri5"/>
+                <constraint firstItem="Eqh-5F-ZP9" firstAttribute="width" secondItem="nQU-wd-eDJ" secondAttribute="width" id="78N-AD-vmD"/>
+                <constraint firstItem="LfY-q8-MFF" firstAttribute="top" secondItem="nvO-zD-1Qf" secondAttribute="bottom" id="C1E-Fk-Ag1"/>
+                <constraint firstAttribute="bottom" secondItem="LfY-q8-MFF" secondAttribute="bottom" id="G0I-Xe-GI8"/>
+                <constraint firstItem="nvO-zD-1Qf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JOO-B1-FB3"/>
+                <constraint firstItem="nQU-wd-eDJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L1r-Dr-rRN"/>
+                <constraint firstItem="nvO-zD-1Qf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="gUN-s5-Zzq"/>
+                <constraint firstAttribute="trailing" secondItem="Eqh-5F-ZP9" secondAttribute="trailing" id="jWt-00-qD6"/>
+                <constraint firstItem="LfY-q8-MFF" firstAttribute="leading" secondItem="nQU-wd-eDJ" secondAttribute="trailing" id="jYO-Qu-Scq"/>
+                <constraint firstAttribute="bottom" secondItem="Eqh-5F-ZP9" secondAttribute="bottom" id="nqK-la-l2O"/>
+                <constraint firstItem="Eqh-5F-ZP9" firstAttribute="leading" secondItem="LfY-q8-MFF" secondAttribute="trailing" id="rfe-IK-Vhm"/>
+                <constraint firstItem="nQU-wd-eDJ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.145" id="ro8-f5-OGP"/>
+                <constraint firstItem="nvO-zD-1Qf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sJU-iF-snY"/>
+                <constraint firstAttribute="bottom" secondItem="nQU-wd-eDJ" secondAttribute="bottom" id="tb1-EZ-gH3"/>
+                <constraint firstItem="nQU-wd-eDJ" firstAttribute="top" secondItem="nvO-zD-1Qf" secondAttribute="bottom" id="vMp-LN-XiX"/>
+                <constraint firstAttribute="trailing" secondItem="nvO-zD-1Qf" secondAttribute="trailing" id="vqm-7w-AVZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="614" y="129.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_arrowLeft" width="10" height="24"/>
+    </resources>
+</document>

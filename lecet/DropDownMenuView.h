@@ -8,13 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
-
-
-typedef enum  {
-    DropDownMenuMyProfile = 0,
-    DropDownMenuHiddenProjects = 1,
-    DropDownMenuSettings = 2,
-} DropDownMenuItem;
+#import "dropDownMenuConstants.h"
 
 @protocol DropDownMenuDelegate <NSObject>
 @required

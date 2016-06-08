@@ -30,7 +30,6 @@
     NSString *fullName = [NSString stringWithFormat:@"%@ %@", infoDict[@"first_name"], infoDict[@"last_name"]];
     [_dropDownMoreMenuView setEmailAddress:infoDict[@"email"]];
     [_dropDownMoreMenuView setUserName:fullName];
-
     [self addTappedGesture];
 }
 
@@ -48,15 +47,16 @@
 }
 
 - (void)dismissDropDownViewController {
-
     [self dismissViewControllerAnimated:YES completion:Nil];
-
 }
 
 #pragma mark - DropDown MenuView Delegate
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem {
     
-    [[DataManager sharedManager] featureNotAvailable];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [_moreMenuViewControllerDelegate tappedDropDownMenu:menuDropDownItem];
+    }];
+    
 }
 
 - (void)setInfo:(id)info {
