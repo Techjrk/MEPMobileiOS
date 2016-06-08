@@ -105,6 +105,8 @@
     associatedProjectList = [sorted mutableCopy];
     [_projectAllAssociatedProjectListView setItems:associatedProjectList];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (NSArray *)sortedAssociateProjectsDescriptorKey:(NSString *)keyString ascending:(BOOL)asc {

@@ -20,4 +20,9 @@
 
 #define DROPDOWN_MENU_BUTTON_FONT_COLOR                 RGB(72, 72, 72)
 #define DROPDOWN_MENU_VIEW_BG_COLOR                 RGB(193, 193, 193)
+typedef enum  {
+    DropDownMenuMyProfile = 0,
+    DropDownMenuHiddenProjects = 1,
+    DropDownMenuSettings = 2,
+} DropDownMenuItem;
 #endif /* dropDownMenuConstants_h */
