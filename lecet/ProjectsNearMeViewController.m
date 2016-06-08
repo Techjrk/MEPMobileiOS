@@ -11,22 +11,33 @@
 #import "projectsNearMeConstants.h"
 #import "ShareLocationViewController.h"
 #import "GoToSettingsViewController.h"
+#import "ProjectAnnotationView.h"
+#import "ProjectPointAnnotation.h"
+#import "CallOutViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate>{
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate>{
     BOOL isFirstLaunch;
+    NSMutableArray *mapItems;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)tappedButtonback:(id)sender;
 @end
 
 @implementation ProjectsNearMeViewController
 
+float MilesToMeters(float miles) {
+    return 1609.344f * miles;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self enableTapGesture:YES];
     
+    mapItems = [NSMutableArray new];
     _textFieldSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _textFieldSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
     _textFieldSearch.layer.masksToBounds = YES;
@@ -42,8 +53,11 @@
     [_textFieldSearch setTintColor:[UIColor whiteColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationAppBecomeActive:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_LOCATION_DENIED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationAllowed:) name:NOTIFICATION_LOCATION_ALLOWED object:nil];
+    if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
+        [self loadProjects:5];
+    }
 }
 
 - (void)NotificationAppBecomeActive:(NSNotification*)notification {
@@ -52,6 +66,41 @@
 
 - (void)NotificationLocationDenied:(NSNotification*)notification {
     [self gotoSettings];
+}
+
+- (void)NotificationLocationAllowed:(NSNotification*)notification {
+    [self loadProjects:5];
+}
+
+- (void)loadProjects:(int)distance {
+    
+    CGFloat lat = 39.65718;
+    CGFloat lng = -83.90974;
+    
+    [mapItems removeAllObjects];
+    [_mapView removeAnnotations:_mapView.annotations];
+
+    [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:nil success:^(id object) {
+        
+        NSArray *result = object[@"results"];
+        if (result != nil & result.count>0) {
+        
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+
+            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(distance), MilesToMeters(distance));
+            
+            [_mapView setRegion:region];
+
+            [mapItems addObjectsFromArray:result];
+            [self addItemsToMap];
+        } else {
+            if (distance == 5) {
+                [self loadProjects:100];
+            }
+        }
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,4 +180,59 @@
     }
 }
 
+#pragma mark - Map Routines
+
+- (void)addItemsToMap {
+    for (NSDictionary *item in mapItems) {
+        [self addAnnotationCargo:item];
+    }
+}
+
+- (void)addAnnotationCargo:(id)cargo{
+    NSDictionary *geoCode = cargo[@"geocode"];
+    
+    CGFloat lat = [geoCode[@"lat"] floatValue];
+    CGFloat lng = [geoCode[@"lng"] floatValue];
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+    ProjectPointAnnotation *annotation = [[ProjectPointAnnotation alloc] init];
+    annotation.cargo = cargo;
+    [annotation setCoordinate:coordinate];
+    [_mapView addAnnotation:annotation];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (ProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[ProjectAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = YES;
+        userAnnotationView.canShowCallout = YES;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+    }
+    
+    return userAnnotationView;
+    
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender {
+    UIView *view = sender.view;
+    CGPoint point = [sender locationInView:view];
+    UIView* subview = [view hitTest:point withEvent:nil];
+
+    if ([subview class] == [ProjectAnnotationView class]) {
+        CallOutViewController *controller = [CallOutViewController new];
+        
+        controller.popoverPresentationController.sourceView = subview;
+        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, subview.frame.size.width, subview.frame.size.height);
+        
+        [self.navigationController presentViewController:controller animated:NO completion:nil];
+    }
+}
 @end

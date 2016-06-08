@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectsNearMeViewController">
             <connections>
                 <outlet property="buttonBack" destination="R5M-wU-TD7" id="6Nz-Lm-EJ8"/>
+                <outlet property="mapView" destination="c4p-uc-d1n" id="MHH-7K-hkV"/>
                 <outlet property="textFieldSearch" destination="4X6-5H-z1L" id="CEQ-c7-b4P"/>
                 <outlet property="topHeaderView" destination="AoB-Hl-8B6" id="jtb-ZG-7Iu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -59,6 +60,9 @@
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="c4p-uc-d1n">
                     <rect key="frame" x="0.0" y="84.5" width="414" height="651.5"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="bg0-y1-qB8"/>
+                    </connections>
                 </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
