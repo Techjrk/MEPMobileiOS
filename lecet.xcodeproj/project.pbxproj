@@ -90,6 +90,12 @@
 		B73EFA891D01D77A00C6B3B2 /* ProjectsNearMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */; };
 		B73EFA8D1D0301AC00C6B3B2 /* GoToSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA8B1D0301AC00C6B3B2 /* GoToSettingsViewController.m */; };
 		B73EFA8E1D0301AC00C6B3B2 /* GoToSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA8C1D0301AC00C6B3B2 /* GoToSettingsViewController.xib */; };
+		B73EFA921D080B1800C6B3B2 /* ProjectAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA911D080B1800C6B3B2 /* ProjectAnnotationView.m */; };
+		B73EFA951D080CAF00C6B3B2 /* ProjectPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA941D080CAF00C6B3B2 /* ProjectPointAnnotation.m */; };
+		B73EFAA01D08441E00C6B3B2 /* CallOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA9E1D08441E00C6B3B2 /* CallOutViewController.m */; };
+		B73EFAA11D08441E00C6B3B2 /* CallOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA9F1D08441E00C6B3B2 /* CallOutViewController.xib */; };
+		B73EFAA41D0847C100C6B3B2 /* CustomCallOut.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAA31D0847C100C6B3B2 /* CustomCallOut.m */; };
+		B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAA51D0847D200C6B3B2 /* CustomCallOut.xib */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -356,6 +362,17 @@
 		B73EFA8B1D0301AC00C6B3B2 /* GoToSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoToSettingsViewController.m; sourceTree = "<group>"; };
 		B73EFA8C1D0301AC00C6B3B2 /* GoToSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoToSettingsViewController.xib; sourceTree = "<group>"; };
 		B73EFA8F1D0309C400C6B3B2 /* goToSettingsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = goToSettingsConstants.h; sourceTree = "<group>"; };
+		B73EFA901D080B1800C6B3B2 /* ProjectAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectAnnotationView.h; sourceTree = "<group>"; };
+		B73EFA911D080B1800C6B3B2 /* ProjectAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectAnnotationView.m; sourceTree = "<group>"; };
+		B73EFA931D080CAF00C6B3B2 /* ProjectPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectPointAnnotation.h; sourceTree = "<group>"; };
+		B73EFA941D080CAF00C6B3B2 /* ProjectPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectPointAnnotation.m; sourceTree = "<group>"; };
+		B73EFA9D1D08441E00C6B3B2 /* CallOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallOutViewController.h; sourceTree = "<group>"; };
+		B73EFA9E1D08441E00C6B3B2 /* CallOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallOutViewController.m; sourceTree = "<group>"; };
+		B73EFA9F1D08441E00C6B3B2 /* CallOutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallOutViewController.xib; sourceTree = "<group>"; };
+		B73EFAA21D0847C100C6B3B2 /* CustomCallOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCallOut.h; sourceTree = "<group>"; };
+		B73EFAA31D0847C100C6B3B2 /* CustomCallOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCallOut.m; sourceTree = "<group>"; };
+		B73EFAA51D0847D200C6B3B2 /* CustomCallOut.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCallOut.xib; sourceTree = "<group>"; };
+		B73EFAA71D084C0500C6B3B2 /* customCallOutConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customCallOutConstants.h; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -947,6 +964,9 @@
 				B73EFA8A1D0301AC00C6B3B2 /* GoToSettingsViewController.h */,
 				B73EFA8B1D0301AC00C6B3B2 /* GoToSettingsViewController.m */,
 				B73EFA8C1D0301AC00C6B3B2 /* GoToSettingsViewController.xib */,
+				B73EFA9D1D08441E00C6B3B2 /* CallOutViewController.h */,
+				B73EFA9E1D08441E00C6B3B2 /* CallOutViewController.m */,
+				B73EFA9F1D08441E00C6B3B2 /* CallOutViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1091,6 +1111,9 @@
 				B79616131CF5C6340089BC32 /* BidItemRecent.h */,
 				B79616141CF5C6340089BC32 /* BidItemRecent.m */,
 				B79616161CF5C6440089BC32 /* BidItemRecent.xib */,
+				B73EFAA21D0847C100C6B3B2 /* CustomCallOut.h */,
+				B73EFAA31D0847C100C6B3B2 /* CustomCallOut.m */,
+				B73EFAA51D0847D200C6B3B2 /* CustomCallOut.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1149,6 +1172,7 @@
 				B73EFA8F1D0309C400C6B3B2 /* goToSettingsConstants.h */,
 				B6F574CE1D02191F003AA33D /* contactNavBarConstant.h */,
 				B61F68231D05A47F00D249F4 /* contactDetailViewConstant.h */,
+				B73EFAA71D084C0500C6B3B2 /* customCallOutConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1177,6 +1201,10 @@
 				B76C694C1CD24BDC009E9F15 /* BaseViewController.m */,
 				B73EFA841D01C2E200C6B3B2 /* LocationManager.h */,
 				B73EFA851D01C2E200C6B3B2 /* LocationManager.m */,
+				B73EFA901D080B1800C6B3B2 /* ProjectAnnotationView.h */,
+				B73EFA911D080B1800C6B3B2 /* ProjectAnnotationView.m */,
+				B73EFA931D080CAF00C6B3B2 /* ProjectPointAnnotation.h */,
+				B73EFA941D080CAF00C6B3B2 /* ProjectPointAnnotation.m */,
 			);
 			name = BaseClass;
 			sourceTree = "<group>";
@@ -1394,6 +1422,7 @@
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
 				B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */,
 				B644746D1D00437E0001B244 /* ProjectSortViewController.xib in Resources */,
+				B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */,
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
@@ -1419,6 +1448,7 @@
 				B76C69811CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib in Resources */,
 				B771C6071CEB6C65004A628A /* AssociatedBidView.xib in Resources */,
 				B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */,
+				B73EFAA11D08441E00C6B3B2 /* CallOutViewController.xib in Resources */,
 				B66544BD1D002CBD0033732F /* CDAssociatedProjectViewController.xib in Resources */,
 				B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */,
 				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
@@ -1484,6 +1514,7 @@
 				B7E104541CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B6972B7D1CF327940092D5CD /* DropDownMenuShareList.m in Sources */,
+				B73EFA921D080B1800C6B3B2 /* ProjectAnnotationView.m in Sources */,
 				B7637A3F1CEA4A9900F0FA2F /* ProjectBidderView.m in Sources */,
 				B6F56D8B1D01B752009B81F5 /* ProjectAllBidsView.m in Sources */,
 				B796160E1CF437720089BC32 /* BusyViewController.m in Sources */,
@@ -1513,6 +1544,7 @@
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */,
+				B73EFA951D080CAF00C6B3B2 /* ProjectPointAnnotation.m in Sources */,
 				B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
@@ -1522,6 +1554,7 @@
 				B64474721D00449B0001B244 /* ProjectSortCVCell.m in Sources */,
 				B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */,
 				B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */,
+				B73EFAA41D0847C100C6B3B2 /* CustomCallOut.m in Sources */,
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
 				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
@@ -1550,6 +1583,7 @@
 				B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */,
 				B7F10A171CDB3E3300847FA3 /* AFURLSessionManager.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
+				B73EFAA01D08441E00C6B3B2 /* CallOutViewController.m in Sources */,
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
 				B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */,
 				B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */,

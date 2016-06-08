@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomCallOut">
+            <connections>
+                <outlet property="container" destination="0gC-Z7-g9Y" id="ZQc-iw-86U"/>
+                <outlet property="containerView" destination="dOC-v1-H5d" id="6R0-8C-R7J"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="254" height="221"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gC-Z7-g9Y">
+                    <rect key="frame" x="0.0" y="-0.5" width="254" height="221"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOC-v1-H5d">
+                            <rect key="frame" x="0.0" y="0.0" width="254" height="221"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dOC-v1-H5d" secondAttribute="trailing" id="Ei7-ow-4Ux"/>
+                        <constraint firstItem="dOC-v1-H5d" firstAttribute="leading" secondItem="0gC-Z7-g9Y" secondAttribute="leading" id="IQQ-aF-hfp"/>
+                        <constraint firstItem="dOC-v1-H5d" firstAttribute="top" secondItem="0gC-Z7-g9Y" secondAttribute="top" id="KkA-79-nof"/>
+                        <constraint firstAttribute="bottom" secondItem="dOC-v1-H5d" secondAttribute="bottom" id="xiV-MV-fiP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="0gC-Z7-g9Y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8zC-s0-Zai"/>
+                <constraint firstItem="0gC-Z7-g9Y" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="I7j-gD-rfG"/>
+                <constraint firstItem="0gC-Z7-g9Y" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="c4E-nz-Yr3"/>
+                <constraint firstItem="0gC-Z7-g9Y" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="faY-42-YOU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="99" y="7.5"/>
+        </view>
+    </objects>
+</document>
