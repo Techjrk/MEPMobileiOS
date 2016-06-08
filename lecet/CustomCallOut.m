@@ -16,21 +16,17 @@
 }
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *containerBidStatus;
+@property (weak, nonatomic) IBOutlet UIView *containerCompany;
 @end
 
 @implementation CustomCallOut
 
 - (void)awakeFromNib {
     
-    _containerView.layer.cornerRadius = kDeviceWidth * 0.016;
-    _containerView.layer.masksToBounds = YES;
+    _containerBidStatus.backgroundColor = CALLOUT_BID_STATUS_CLOSE_COLOR;
+    _containerCompany.backgroundColor = CALLOUT_COMPANY_COLOR;
     
-    _container.layer.shadowColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.5].CGColor;
-    _container.layer.shadowRadius = 2;
-    _container.layer.shadowOpacity = 1.0;
-    _container.layer.shadowOffset = CGSizeMake(2, 2);
-    _container.layer.masksToBounds = NO;
-
 }
 
 @end

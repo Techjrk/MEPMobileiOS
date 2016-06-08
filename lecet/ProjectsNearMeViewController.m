@@ -226,6 +226,8 @@ float MilesToMeters(float miles) {
     CGPoint point = [sender locationInView:view];
     UIView* subview = [view hitTest:point withEvent:nil];
 
+    [super handleSingleTap:sender];
+
     if ([subview class] == [ProjectAnnotationView class]) {
         CallOutViewController *controller = [CallOutViewController new];
         
@@ -235,4 +237,5 @@ float MilesToMeters(float miles) {
         [self.navigationController presentViewController:controller animated:NO completion:nil];
     }
 }
+
 @end
