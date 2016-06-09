@@ -562,12 +562,11 @@
             break;
         }
         case DropDownMenuHiddenProjects: {
-            ChangePasswordViewController *controller = [ChangePasswordViewController new];
-            [self.navigationController presentViewController:controller animated:YES completion:nil];
-            
             break;
         }
         case DropDownMenuSettings:{
+            ChangePasswordViewController *controller = [ChangePasswordViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         }
     }
@@ -586,7 +585,7 @@
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [controller setInfo:object];
-        [self.navigationController presentViewController:controller  animated:NO completion:nil];
+        [self presentViewController:controller  animated:NO completion:nil];
         
     } failure:^(id object) {
         

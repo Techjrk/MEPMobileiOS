@@ -26,11 +26,7 @@
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     controller.view.frame = self.view.frame;
     [self.view addSubview:controller.view];
-    
-    if (isDebug) {
-        [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:@"" serviceName:kKeychainServiceName];
-   }
- 
+     
     NSString *isLoginPersisted = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
 
     if (isLoginPersisted != nil & isLoginPersisted.length>0) {
