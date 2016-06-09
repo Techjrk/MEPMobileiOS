@@ -35,7 +35,11 @@
     [_profileNavViewDelegate tappedProfileNav:(ProfileNavItem)button.tag];
 }
 
-- (void)setNavTitleLabel:(NSString *)name{
+- (void)setNavTitleLabel:(NSString *)name {
     _profileNavTitleLabel.text = name;
+}
+
+- (void)hideSaveButton:(BOOL)hide {
+    [_rightNavButton setHidden:hide];
 }
 @end

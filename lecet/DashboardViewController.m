@@ -30,8 +30,7 @@
 #import "chartConstants.h"
 #import "MoreMenuViewController.h"
 #import "ProjectsNearMeViewController.h"
-#import "ChangePasswordViewController.h"
-
+#import "SettingsViewController.h"
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate>{
 
     NSDate *currentDate;
@@ -562,12 +561,16 @@
             break;
         }
         case DropDownMenuHiddenProjects: {
-            ChangePasswordViewController *controller = [ChangePasswordViewController new];
-            [self.navigationController presentViewController:controller animated:YES completion:nil];
             
             break;
         }
         case DropDownMenuSettings:{
+            SettingsViewController *controller = [SettingsViewController new];
+            
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+            [navController.navigationBar setHidden:YES];
+            [self.navigationController presentViewController:navController animated:YES completion:nil];
+            
             break;
         }
     }

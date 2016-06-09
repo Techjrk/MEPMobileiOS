@@ -130,15 +130,15 @@
 "PROJECTSORT_LOW_TO_HIGH_TEXT"              =           "Value: Low to High";
 
 
-//CDAssociatedProjectViewController.h
+//CDAssociatedProjectViewController.xib
 "ASSOCIATE_ALL_LIST_PROJECT"                =          "ASSOCIATED PROJECTS";
 
 
-//ContactAllListViewController.h
+//ContactAllListViewController.xib
 "CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
 
 
-//ChangePasswordViewController.h
+//ChangePasswordViewController.xib
 "CHANGEPASSWORD_NAV_TITLE"                  =          "Change Password";
 
 
@@ -150,4 +150,15 @@
 "CPASSWORD_PLACEHOLDER_NEW"                  =           "At least 6 characters";
 "CPASSWORD_PLACEHOLDER_CONFIRM"              =           "Confirm new password";
 
+//SettingViewController.xib
+"SETTINGS_NAV_TITLE"                        =           "Settings";
+
+//SettingCollectionViewCell.xib
+"SETTING_CVCELL_SIGNOUT"                    =           "Sign out";
+
+//SettingCPView.xib
+"SETTING_CPVIEW_TEXT"                       =           "Change Password";
+
+//SettingNotificationView.xib
+"SETTING_NOTIFICATIONS_TEXT"                =           "Notifications";
 

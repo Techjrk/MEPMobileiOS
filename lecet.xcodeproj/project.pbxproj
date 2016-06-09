@@ -15,6 +15,14 @@
 		B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B2111CFC9B9D00793D67 /* DropDownProjectList.xib */; };
 		B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411B9D1D096729002B6E88 /* SettingsViewController.m */; };
 		B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411B9E1D096729002B6E88 /* SettingsViewController.xib */; };
+		B6411BA51D096892002B6E88 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411BA31D096892002B6E88 /* SettingsView.m */; };
+		B6411BA61D096892002B6E88 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411BA41D096892002B6E88 /* SettingsView.xib */; };
+		B6411BAB1D096E1B002B6E88 /* SettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411BA91D096E1B002B6E88 /* SettingCollectionViewCell.m */; };
+		B6411BAC1D096E1B002B6E88 /* SettingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411BAA1D096E1B002B6E88 /* SettingCollectionViewCell.xib */; };
+		B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411BAF1D0973F0002B6E88 /* SettingsNotificationsView.m */; };
+		B6411BB21D0973F0002B6E88 /* SettingsNotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411BB01D0973F0002B6E88 /* SettingsNotificationsView.xib */; };
+		B6411BB71D097426002B6E88 /* SettingsCPView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411BB51D097426002B6E88 /* SettingsCPView.m */; };
+		B6411BB81D097426002B6E88 /* SettingsCPView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411BB61D097426002B6E88 /* SettingsCPView.xib */; };
 		B644746C1D00437E0001B244 /* ProjectSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B644746A1D00437E0001B244 /* ProjectSortViewController.m */; };
 		B644746D1D00437E0001B244 /* ProjectSortViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B644746B1D00437E0001B244 /* ProjectSortViewController.xib */; };
 		B64474721D00449B0001B244 /* ProjectSortCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64474701D00449B0001B244 /* ProjectSortCVCell.m */; };
@@ -249,6 +257,19 @@
 		B6411B9C1D096729002B6E88 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B6411B9D1D096729002B6E88 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B6411B9E1D096729002B6E88 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		B6411BA21D096892002B6E88 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
+		B6411BA31D096892002B6E88 /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
+		B6411BA41D096892002B6E88 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		B6411BA81D096E1B002B6E88 /* SettingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCollectionViewCell.h; sourceTree = "<group>"; };
+		B6411BA91D096E1B002B6E88 /* SettingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCollectionViewCell.m; sourceTree = "<group>"; };
+		B6411BAA1D096E1B002B6E88 /* SettingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6411BAE1D0973F0002B6E88 /* SettingsNotificationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsNotificationsView.h; sourceTree = "<group>"; };
+		B6411BAF1D0973F0002B6E88 /* SettingsNotificationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsNotificationsView.m; sourceTree = "<group>"; };
+		B6411BB01D0973F0002B6E88 /* SettingsNotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsNotificationsView.xib; sourceTree = "<group>"; };
+		B6411BB41D097426002B6E88 /* SettingsCPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCPView.h; sourceTree = "<group>"; };
+		B6411BB51D097426002B6E88 /* SettingsCPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCPView.m; sourceTree = "<group>"; };
+		B6411BB61D097426002B6E88 /* SettingsCPView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCPView.xib; sourceTree = "<group>"; };
+		B6411BB91D0979D8002B6E88 /* SettingConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingConstant.h; sourceTree = "<group>"; };
 		B64474691D00437E0001B244 /* ProjectSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSortViewController.h; sourceTree = "<group>"; };
 		B644746A1D00437E0001B244 /* ProjectSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSortViewController.m; sourceTree = "<group>"; };
 		B644746B1D00437E0001B244 /* ProjectSortViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectSortViewController.xib; sourceTree = "<group>"; };
@@ -690,6 +711,46 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		B6411BA11D096874002B6E88 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				B6411BA21D096892002B6E88 /* SettingsView.h */,
+				B6411BA31D096892002B6E88 /* SettingsView.m */,
+				B6411BA41D096892002B6E88 /* SettingsView.xib */,
+			);
+			name = SettingsView;
+			sourceTree = "<group>";
+		};
+		B6411BA71D096DEE002B6E88 /* SettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				B6411BA81D096E1B002B6E88 /* SettingCollectionViewCell.h */,
+				B6411BA91D096E1B002B6E88 /* SettingCollectionViewCell.m */,
+				B6411BAA1D096E1B002B6E88 /* SettingCollectionViewCell.xib */,
+			);
+			name = SettingCell;
+			sourceTree = "<group>";
+		};
+		B6411BAD1D0973A6002B6E88 /* SettingNoticationsView */ = {
+			isa = PBXGroup;
+			children = (
+				B6411BAE1D0973F0002B6E88 /* SettingsNotificationsView.h */,
+				B6411BAF1D0973F0002B6E88 /* SettingsNotificationsView.m */,
+				B6411BB01D0973F0002B6E88 /* SettingsNotificationsView.xib */,
+			);
+			name = SettingNoticationsView;
+			sourceTree = "<group>";
+		};
+		B6411BB31D0973F5002B6E88 /* SettingsCPView */ = {
+			isa = PBXGroup;
+			children = (
+				B6411BB41D097426002B6E88 /* SettingsCPView.h */,
+				B6411BB51D097426002B6E88 /* SettingsCPView.m */,
+				B6411BB61D097426002B6E88 /* SettingsCPView.xib */,
+			);
+			name = SettingsCPView;
+			sourceTree = "<group>";
+		};
 		B64474681D0043390001B244 /* ProjectSort */ = {
 			isa = PBXGroup;
 			children = (
@@ -1101,6 +1162,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B6411BA71D096DEE002B6E88 /* SettingCell */,
 				B68337331D0830E1004226D3 /* ChangePasswordCell */,
 				B644746E1D00443A0001B244 /* ProjectSortCell */,
 				B623B2091CFC9AB700793D67 /* ProjectListCell */,
@@ -1141,6 +1203,9 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B6411BB31D0973F5002B6E88 /* SettingsCPView */,
+				B6411BAD1D0973A6002B6E88 /* SettingNoticationsView */,
+				B6411BA11D096874002B6E88 /* SettingsView */,
 				B68337261D0820E9004226D3 /* ChangePasswordCTextField */,
 				B683371A1D081A1E004226D3 /* ChangePassword */,
 				B68337121D080D02004226D3 /* ProfileNavView */,
@@ -1309,6 +1374,7 @@
 				B73EFAA71D084C0500C6B3B2 /* customCallOutConstants.h */,
 				B68337391D08846F004226D3 /* changePasswordVCConstant.h */,
 				B683373A1D088653004226D3 /* changePasswordViewConstant.h */,
+				B6411BB91D0979D8002B6E88 /* SettingConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1557,6 +1623,7 @@
 				B6F56D8C1D01B752009B81F5 /* ProjectAllBidsView.xib in Resources */,
 				B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */,
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
+				B6411BA61D096892002B6E88 /* SettingsView.xib in Resources */,
 				B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */,
 				B644746D1D00437E0001B244 /* ProjectSortViewController.xib in Resources */,
 				B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */,
@@ -1572,6 +1639,7 @@
 				B6FC235D1D042D3800296386 /* ProjectAllAssociatedProjectView.xib in Resources */,
 				B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */,
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
+				B6411BAC1D096E1B002B6E88 /* SettingCollectionViewCell.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
 				B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */,
@@ -1594,6 +1662,7 @@
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
 				B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */,
 				B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */,
+				B6411BB21D0973F0002B6E88 /* SettingsNotificationsView.xib in Resources */,
 				B683370C1D080BB8004226D3 /* ProfileDetailView.xib in Resources */,
 				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
@@ -1628,6 +1697,7 @@
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 				B68337111D080CFA004226D3 /* ProfileNavView.xib in Resources */,
+				B6411BB81D097426002B6E88 /* SettingsCPView.xib in Resources */,
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
 				B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
@@ -1668,6 +1738,7 @@
 				B7F10A1F1CDB3E3300847FA3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				B79616081CF431000089BC32 /* RadialBackgroundView.m in Sources */,
 				B7F10A2B1CDB42FA00847FA3 /* DerivedNSManagedObject.m in Sources */,
+				B6411BA51D096892002B6E88 /* SettingsView.m in Sources */,
 				B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */,
 				B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */,
 				B771C6011CEB6C28004A628A /* AssociatedBidCollectionViewCell.m in Sources */,
@@ -1716,6 +1787,7 @@
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
+				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
 				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
 				B683371E1D081BD0004226D3 /* ChangePasswordView.m in Sources */,
 				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
@@ -1737,6 +1809,7 @@
 				B683372A1D082154004226D3 /* CPCustomTextFieldView.m in Sources */,
 				B73EFAA01D08441E00C6B3B2 /* CallOutViewController.m in Sources */,
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
+				B6411BB71D097426002B6E88 /* SettingsCPView.m in Sources */,
 				B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */,
 				B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */,
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
@@ -1763,6 +1836,7 @@
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
 				B623B2121CFC9B9D00793D67 /* DropDownProjectList.m in Sources */,
 				B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */,
+				B6411BAB1D096E1B002B6E88 /* SettingCollectionViewCell.m in Sources */,
 				B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */,
 				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
