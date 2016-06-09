@@ -16,15 +16,13 @@ typedef enum  {
 } ProjectNavItem;
 
 @protocol ProjectNavViewDelegate <NSObject>
-
 @required
 -(void)tappedProjectNav:(ProjectNavItem)projectNavItem;
-
 @end
-@interface ProjectNavigationBarView : BaseViewClass
 
+@interface ProjectNavigationBarView : BaseViewClass
+@property (nonatomic,assign) id<ProjectNavViewDelegate> projectNavViewDelegate;
 - (void)setContractorName:(NSString *)contractorName;
 - (void)setProjectTitle:(NSString *)projectTitle;
-@property (nonatomic,assign) id<ProjectNavViewDelegate> projectNavViewDelegate;
-
+- (void)hideReorderButton:(BOOL)hidden;
 @end

@@ -12,6 +12,7 @@
 
 @protocol PariticipantsDelegate <NSObject>
 - (void)tappedParticipant:(id)object;
+- (void)tappedParticipantSeeAll;
 @end
 
 @interface PariticpantsView : BaseViewClass

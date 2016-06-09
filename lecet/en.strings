@@ -156,4 +156,8 @@
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR"    =               "No projects found near your location";
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH"  =               "No projects found using your searched location";
 
+//BidderListViewController.xib
+"BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
 
+//ParticipantsListViewController.xib
+"PARITICPANT_LIST_BOTTOM_LABEL"             =               "PARTICIPANTS";
