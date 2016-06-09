@@ -32,7 +32,7 @@
 #pragma mark - Nav View Delegate
 
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

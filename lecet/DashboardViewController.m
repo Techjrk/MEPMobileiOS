@@ -558,7 +558,7 @@
         case DropDownMenuMyProfile:{
             
             MyProfileViewController *controller = [MyProfileViewController new];
-            [self.navigationController presentViewController:controller animated:YES completion:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             
             break;
         }
@@ -567,11 +567,7 @@
             break;
         }
         case DropDownMenuSettings:{
-            SettingsViewController *controller = [SettingsViewController new];
-            
-            //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-            //[navController.navigationBar setHidden:YES];
-            //[self.navigationController presentViewController:navController animated:YES completion:nil];
+            SettingsViewController *controller = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }

@@ -319,6 +319,7 @@
 		B6411BF21D09CF4B002B6E88 /* ParticipantsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantsListViewController.h; sourceTree = "<group>"; };
 		B6411BF31D09CF4B002B6E88 /* ParticipantsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantsListViewController.m; sourceTree = "<group>"; };
 		B6411BF41D09CF4B002B6E88 /* ParticipantsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantsListViewController.xib; sourceTree = "<group>"; };
+		B6411BF71D09D353002B6E88 /* myProfileConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myProfileConstant.h; sourceTree = "<group>"; };
 		B64474691D00437E0001B244 /* ProjectSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSortViewController.h; sourceTree = "<group>"; };
 		B644746A1D00437E0001B244 /* ProjectSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSortViewController.m; sourceTree = "<group>"; };
 		B644746B1D00437E0001B244 /* ProjectSortViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectSortViewController.xib; sourceTree = "<group>"; };
@@ -1497,6 +1498,7 @@
 				B68337391D08846F004226D3 /* changePasswordVCConstant.h */,
 				B683373A1D088653004226D3 /* changePasswordViewConstant.h */,
 				B6411BB91D0979D8002B6E88 /* SettingConstant.h */,
+				B6411BF71D09D353002B6E88 /* myProfileConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
