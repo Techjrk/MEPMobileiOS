@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  MyProfileHeaderView.h
 //  lecet
 //
 //  Created by Michael San Minay on 09/06/2016.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
-
-@interface SettingsViewController : BaseViewController
+#import "BaseViewClass.h"
+@interface MyProfileHeaderView : BaseViewClass
 
 @end

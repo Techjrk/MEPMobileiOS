@@ -42,7 +42,7 @@
     
     switch (profileNavItem) {
         case ProfileNavItemBackButton:{
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         }
         case ProfileNavItemSaveButton:{
@@ -51,6 +51,7 @@
         }
     }
 }
+
 
 #pragma mark - Setting View Delegate
 
@@ -63,8 +64,9 @@
     switch (items) {
         case SettingItemsChangePassword:{
             ChangePasswordViewController *controller = [ChangePasswordViewController new];
-            [self.navigationController presentViewController:controller animated:YES completion:nil];
-        
+
+            [self.navigationController pushViewController:controller animated:YES];
+            
             break;
         }
         case SettingItemsSignOut:{
@@ -73,6 +75,10 @@
         }
     }
     
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end
