@@ -27,8 +27,7 @@
 }
 
 -(void)setPlaceHolder:(NSString *)placeHolder {
-
-    _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSForegroundColorAttributeName:CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT_COLOR, NSFontAttributeName:CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT}];
+    _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSForegroundColorAttributeName:[CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT_COLOR colorWithAlphaComponent:0.5f], NSFontAttributeName:CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT}];
 }
 
 - (void)textFieldChanged:(UITextField *)textField
@@ -42,6 +41,10 @@
 
 - (void)setText:(NSString *)text {
     _textField.text = text;
+}
+
+- (void)setLefTitleText:(NSString *)title {
+    _leftTitleLabel.text = title;
 }
 
 - (void)setSecure:(BOOL)secure {

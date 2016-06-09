@@ -13,4 +13,7 @@
 - (NSString *)text;
 - (void)setText:(NSString *)text;
 - (void)setSecure:(BOOL)secure;
+- (void)setLefTitleText:(NSString *)title;
+-(void)setPlaceHolder:(NSString *)placeHolder;
+
 @end

@@ -22,11 +22,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="92" height="69"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TEXT" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lfX-UV-leN">
-                    <rect key="frame" x="92" y="0.0" width="470" height="69"/>
+                    <rect key="frame" x="107" y="0.0" width="455" height="69"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -40,7 +40,7 @@
                 <constraint firstItem="8OI-Jr-DFx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="T8N-N6-ABj"/>
                 <constraint firstAttribute="trailing" secondItem="lfX-UV-leN" secondAttribute="trailing" id="Z3w-0S-oa1"/>
                 <constraint firstItem="8OI-Jr-DFx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fUq-b4-z0m"/>
-                <constraint firstItem="lfX-UV-leN" firstAttribute="leading" secondItem="8OI-Jr-DFx" secondAttribute="trailing" id="jUX-65-aGk"/>
+                <constraint firstItem="lfX-UV-leN" firstAttribute="leading" secondItem="8OI-Jr-DFx" secondAttribute="trailing" constant="15" id="jUX-65-aGk"/>
                 <constraint firstItem="lfX-UV-leN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vD6-Os-tdY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

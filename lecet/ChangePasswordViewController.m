@@ -10,6 +10,7 @@
 #import "ProfileNavView.h"
 #import "ChangePasswordView.h"
 #import "ProfileNavView.h"
+#import "changePasswordVCConstant.h"
 
 @interface ChangePasswordViewController ()<ProfileNavViewDelegate>{
     
@@ -25,6 +26,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _profileNavView.profileNavViewDelegate = self;
+    [self.view setBackgroundColor:CHANGEPASSWORD_VC_BG_COLOR];
+    _profileNavView.profileNavViewDelegate = self;
+    [_profileNavView setNavTitleLabel:NSLocalizedLanguage(@"CHANGEPASSWORD_NAV_TITLE")];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +40,16 @@
 
 #pragma mark - ProfileNav Delegate
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (profileNavItem == ProfileNavItemSaveButton) {
+        
+        NSString *currentPassword = [_chnagePasswordView getCurrentPasswordText];
+        NSString *newPassword = [_chnagePasswordView getNewPasswordText];
+        NSString *confirmPassword = [_chnagePasswordView getConfirmPasswordText];
+        
+    }else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 @end
