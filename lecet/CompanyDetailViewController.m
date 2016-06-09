@@ -29,6 +29,7 @@
 #import "ContactAllListViewController.h"
 #import "ContactDetailViewController.h"
 #import "DB_CompanyContact.h"
+#import "ProjectDetailViewController.h"
 
 @interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate,AssociatedProjectDelegate,ContactListViewDelegate>{
     BOOL isShownContentAdjusted;
@@ -257,7 +258,11 @@
 #pragma mark - ProjectList Bidder Dlegate
 
 -(void)tappedProjectItemBidder:(id)object{
-    
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    detail.view.hidden = NO;
+    DB_Bid *bid = object;
+    [detail detailsFromProject:bid.relationshipProject];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)tappedProjectBidsList:(NSArray *)fetchRecord{
@@ -266,10 +271,6 @@
     [controller setContractorName:companyName];
     [controller setInfoForProjectBids:fetchRecord];
     [self.navigationController pushViewController:controller animated:YES];
-    
-}
-
-- (IBAction)tappedProjectBids:(id)sender {
     
 }
 
@@ -284,7 +285,16 @@
     
 }
 
+- (void)tappedAssociatedProject:(id)object {
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    detail.view.hidden = NO;
+    DB_Project *project = object;
+    [detail detailsFromProject:project];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
 #pragma mark - ContactListView Delegate
+
 - (void)selectedContact:(id)item {
     usePushZoom = NO;
     ContactDetailViewController *controller = [ContactDetailViewController new];

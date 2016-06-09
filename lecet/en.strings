@@ -160,9 +160,13 @@
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR"    =               "No projects found near your location";
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH"  =               "No projects found using your searched location";
 
+//BidderListViewController.xib
+"BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
 //SettingCollectionViewCell.xib
 "SETTING_CVCELL_SIGNOUT"                    =           "Sign out";
 
+//ParticipantsListViewController.xib
+"PARITICPANT_LIST_BOTTOM_LABEL"             =               "PARTICIPANTS";
 //SettingCPView.xib
 "SETTING_CPVIEW_TEXT"                       =           "Change Password";
 

@@ -12,8 +12,9 @@
 #import "ProjectTabView.h"
 #import "ProjectAllBidsView.h"
 #import "ProjectSortViewController.h"
+#import "ProjectDetailViewController.h"
 
-@interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate>{
+@interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate, ProjectAllBidsViewDelegate>{
     NSMutableArray *bidList;
     NSString *companyName;
 }
@@ -27,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _projectNavigationView.projectNavViewDelegate = self;
+    _projectAllBidsView.projectAllBidsViewDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,26 +77,29 @@
     }
 }
 
-#pragma mark - Project Bids Delegate
-- (void)setInfoForProjectBids:(NSArray *)bids {
-    bidList = [bids mutableCopy];
-    
-}
-
-- (void)tappedProjectItemBidder:(id)object {
-    
-}
-
-- (void)tappedProjectItemBidSeeAll:(id)object {
-    
-}
-
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;
+}
+
+#pragma mark - Project Bids Delegate
+- (void)setInfoForProjectBids:(NSArray *)bids {
+
+    bidList = [bids mutableCopy];
+    
+}
+
+- (void)selectedProjectAllBidItem:(id)object {
+
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    detail.view.hidden = NO;
+    DB_Bid *bid = object;
+    [detail detailsFromProject:bid.relationshipProject];
+    [self.navigationController pushViewController:detail animated:YES];
+
 }
 
 @end

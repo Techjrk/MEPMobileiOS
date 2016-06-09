@@ -45,7 +45,7 @@
                                         <action selector="tappedButtonShare:" destination="-1" eventType="touchUpInside" id="XPQ-Wl-9Tx"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-Tc-IIW">
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-Tc-IIW">
                                     <rect key="frame" x="52.5" y="196" width="225" height="50"/>
                                     <state key="normal" title="Button"/>
                                     <connections>

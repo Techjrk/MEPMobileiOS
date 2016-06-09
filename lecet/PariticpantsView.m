@@ -134,7 +134,7 @@
 }
 
 - (IBAction)tappedButtonSeeAll:(id)sender {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.pariticipantsDelegate tappedParticipantSeeAll];
 }
 
 @end

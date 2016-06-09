@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol SeeAllViewDelegate <NSObject>
+- (void)tappedSeeAllView:(id)object;
+@end
+
 @interface SeeAllView : BaseViewClass
+@property (strong, nonatomic) id<SeeAllViewDelegate>seeAllViewDelegate;
 @end

@@ -125,7 +125,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.projectBidListDelegate tappedProjectItemBidder:collectionItems[indexPath.row]];
 }
 
 #pragma mark - View

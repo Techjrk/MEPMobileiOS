@@ -21,6 +21,7 @@
 + (nullable NSString *)monthDayStringFromDate:(nullable NSDate*)date;
 + (nullable NSString *)timeStringDate:(nullable NSDate *)date;
 + (nullable NSString *)yearMonthFromDate:(nullable NSDate *)date;
++ (nullable NSString *)shortDateStringFromDate:(nullable NSDate *)date;
 + (nullable id)objectOrNil:(nullable id)object;
 + (nonnull id)createEntity;
 + (nullable id)fetchObjectForPredicate:(nullable NSPredicate *)predicate key:(nullable NSString *)key ascending:(BOOL)ascending;

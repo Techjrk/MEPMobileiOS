@@ -30,6 +30,7 @@
 @end
 
 @implementation ContactsListView
+
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {

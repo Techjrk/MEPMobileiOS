@@ -11,7 +11,6 @@
 #import "projectBidConstants.h"
 #import "DB_Bid.h"
 #import "DB_Project.h"
-
 #import "ProjectSortCVCell.h"
 
 @interface ProjectAllBidsView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
@@ -19,10 +18,10 @@
     CGFloat cellHeight;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @end
 
 @implementation ProjectAllBidsView
+@synthesize projectAllBidsViewDelegate;
 
 #define kCellIdentifier             @"kCellIdentifier"
 
@@ -95,12 +94,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.projectAllBidsViewDelegate selectedProjectAllBidItem:collectionItems[indexPath.row]];
 }
-
-
-
-
 
 
 @end

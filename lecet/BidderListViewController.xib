@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BidderListViewController">
+            <connections>
+                <outlet property="collectionView" destination="Cu2-hJ-OcI" id="Rgf-pK-pu0"/>
+                <outlet property="topBar" destination="ekf-fZ-WRt" id="7d3-1x-Xbz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJY-3H-dNb" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekf-fZ-WRt" customClass="ProjectNavigationBarView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cu2-hJ-OcI">
+                            <rect key="frame" x="0.0" y="87" width="414" height="649"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mNC-p9-bl3">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="TBw-oX-Ix1"/>
+                                <outlet property="delegate" destination="-1" id="2e1-XT-ejf"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Cu2-hJ-OcI" firstAttribute="top" secondItem="ekf-fZ-WRt" secondAttribute="bottom" id="0MA-iw-fCR"/>
+                        <constraint firstItem="ekf-fZ-WRt" firstAttribute="height" secondItem="aJY-3H-dNb" secondAttribute="height" multiplier="0.118" id="5oW-4x-qya"/>
+                        <constraint firstItem="ekf-fZ-WRt" firstAttribute="leading" secondItem="aJY-3H-dNb" secondAttribute="leading" id="7hW-sg-VUW"/>
+                        <constraint firstAttribute="bottom" secondItem="Cu2-hJ-OcI" secondAttribute="bottom" id="FMh-Zb-C7Y"/>
+                        <constraint firstAttribute="trailing" secondItem="Cu2-hJ-OcI" secondAttribute="trailing" id="OER-Rc-Lrk"/>
+                        <constraint firstItem="Cu2-hJ-OcI" firstAttribute="leading" secondItem="aJY-3H-dNb" secondAttribute="leading" id="lJ7-Q6-Rye"/>
+                        <constraint firstAttribute="trailing" secondItem="ekf-fZ-WRt" secondAttribute="trailing" id="yBm-H2-RwA"/>
+                        <constraint firstItem="ekf-fZ-WRt" firstAttribute="top" secondItem="aJY-3H-dNb" secondAttribute="top" id="yRQ-mJ-7cr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aJY-3H-dNb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hgm-9N-ceh"/>
+                <constraint firstItem="aJY-3H-dNb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MVC-WU-qnA"/>
+                <constraint firstAttribute="trailing" secondItem="aJY-3H-dNb" secondAttribute="trailing" id="qlv-lW-Wkt"/>
+                <constraint firstAttribute="bottom" secondItem="aJY-3H-dNb" secondAttribute="bottom" id="wOC-qN-tYa"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

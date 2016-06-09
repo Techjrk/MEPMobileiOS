@@ -33,16 +33,22 @@
     _reOrderButton.tag = ProjectNavReOrder;
     
 }
+
 - (void)setContractorName:(NSString *)contractorName {
     _labelContractorName.text = contractorName;
     
 }
+
 - (void)setProjectTitle:(NSString *)projectTitle {
     _labelProjectTitle.text = projectTitle;
 }
+
 - (IBAction)tappedNavButton:(id)sender {
     UIButton *button = sender;
     [_projectNavViewDelegate tappedProjectNav:(ProjectNavItem)button.tag];
 }
 
+- (void)hideReorderButton:(BOOL)hidden {
+    _reOrderButton.hidden = hidden;
+}
 @end

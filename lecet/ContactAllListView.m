@@ -22,6 +22,8 @@
 @end
 
 @implementation ContactAllListView
+@synthesize contactAllListViewDelegate;
+
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
@@ -89,11 +91,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+
+    [self.contactAllListViewDelegate selectedContact:collectionItems[indexPath.row]];
+
 }
-
-
-
-
 
 @end

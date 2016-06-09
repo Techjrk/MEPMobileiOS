@@ -116,7 +116,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.associatedProjectDelegate tappedAssociatedProject:collectionItems[indexPath.row]];
 }
 
 #pragma mark - View
@@ -129,9 +129,7 @@
 }
 
 - (IBAction)tappedButtonSeeAll:(id)sender {
-    
     [_associatedProjectDelegate tappededSeeAllAssociateProject];
-    
 }
 
 @end

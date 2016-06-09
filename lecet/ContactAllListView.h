@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol ContactAllListViewDelegate <NSObject>
+- (void)selectedContact:(id)object;
+@end
+
 @interface ContactAllListView : BaseViewClass
-
-
+@property (strong, nonatomic) id<ContactAllListViewDelegate>contactAllListViewDelegate;
 - (void)setItems:(NSMutableArray*)items;
 @end

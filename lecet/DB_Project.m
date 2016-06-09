@@ -41,7 +41,7 @@
     if (date == nil) {
         return  @"";
     }
-    return [DerivedNSManagedObject monthDayStringFromDate:date];
+    return [DerivedNSManagedObject shortDateStringFromDate:date];
 
 }
 

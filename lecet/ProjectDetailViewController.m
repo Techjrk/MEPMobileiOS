@@ -28,13 +28,16 @@
 #import "ProjectDetailStateViewController.h"
 #import "ProjectListViewController.h"
 #import "ProjectShareViewController.h"
+#import "BidderListViewController.h"
+#import "ParticipantsListViewController.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate, SeeAllViewDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
     BOOL usePushZoom;
     NSMutableArray *bidItems;
+    NSMutableArray *participants;
     NSString *projectTitle;
     
 }
@@ -97,10 +100,8 @@
     _projectBidder.projectBidderDelegate = self;
     _participantsView.pariticipantsDelegate = self;
     _projectState.projectStateViewDelegate = self;
+    _seeAllView.seeAllViewDelegate = self;
     
-
-    
- 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,7 +155,7 @@
     bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
     [_projectBidder setItems:bidItems];
  
-    NSMutableArray *participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];
+    participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];
     [_participantsView setItems:participants];
 }
 
@@ -235,6 +236,19 @@
 
 }
 
+- (void)tappedParticipantSeeAll {
+    usePushZoom = NO;
+    ParticipantsListViewController *controller = [ParticipantsListViewController new];
+    controller.collectionItems = participants;
+    controller.projectName = projectTitle;
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)tappedSeeAllView:(id)object {
+    [[DataManager sharedManager] featureNotAvailable];
+}
+
 #pragma mark - Delegate and Share List Method
 
 -(void)tappedDismissedProjectShareList{
@@ -264,17 +278,12 @@
 
 - (void)tappedProjectTrackListButton{
     
-
-    
     ProjectListViewController *controller = [ProjectListViewController new];
-    //controller.view.hidden = NO;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 
     [controller setProjectStateViewFrame:_projectState];
-    
     controller.projectTrackListViewControllerDelegate = self;
-    
     [self presentViewController:controller  animated:YES completion:nil];
     
 }
@@ -284,7 +293,6 @@
 - (void)tappedProjectDetailStateHideButton{
     ProjectDetailStateViewController *controller = [[ProjectDetailStateViewController alloc] initWithNibName:@"ProjectDetailStateViewController" bundle:nil];
     
-    //controller.view.hidden = NO;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     controller.projectDetailStateViewControllerDelegate = self;
@@ -319,7 +327,11 @@
 }
 
 - (void)tappedProjectBidSeeAll:(id)object {
-    [[DataManager sharedManager] featureNotAvailable];
+    usePushZoom = NO;
+    BidderListViewController *controller = [BidderListViewController new];
+    controller.collectionItems = bidItems;
+    controller.projectName = projectTitle;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

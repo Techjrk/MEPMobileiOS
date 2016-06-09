@@ -13,10 +13,7 @@
 @required
 - (void)tappededSeeAllContactsProject;
 - (void)selectedContact:(id)item;
-
 @end
-
-
 
 @interface ContactsListView : BaseViewClass
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
