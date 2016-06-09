@@ -61,7 +61,7 @@
 }
 
 - (CGSize)preferredContentSize {
-    return CGSizeMake(kDeviceWidth * 0.5, kDeviceHeight * 0.29);
+    return CGSizeMake(kDeviceWidth * 0.44, kDeviceHeight * 0.242);
 }
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
