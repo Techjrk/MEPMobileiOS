@@ -7,8 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CallOutViewController">
             <connections>
-                <outlet property="constraintLeading" destination="dOV-Jd-gp4" id="fLv-sD-oGs"/>
-                <outlet property="constraintTop" destination="c8h-bN-eqB" id="hjv-0l-LsO"/>
+                <outlet property="callOut" destination="T17-58-9dD" id="w96-cv-ImM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,8 +24,8 @@
             <constraints>
                 <constraint firstItem="T17-58-9dD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="AA0-3T-cMy"/>
                 <constraint firstItem="T17-58-9dD" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="VRH-cX-mMH"/>
-                <constraint firstItem="T17-58-9dD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="c8h-bN-eqB"/>
-                <constraint firstItem="T17-58-9dD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dOV-Jd-gp4"/>
+                <constraint firstItem="T17-58-9dD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hcu-bE-9r6"/>
+                <constraint firstItem="T17-58-9dD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="m22-9j-DUo"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

@@ -11,4 +11,5 @@
 #import "BaseViewController.h"
 @interface CallOutViewController : BaseViewController
 @property (strong, nonatomic) UIView *sourceView;
+- (void)setInfo:(id)info;
 @end

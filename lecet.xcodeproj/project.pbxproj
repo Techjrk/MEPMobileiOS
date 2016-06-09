@@ -106,10 +106,10 @@
 		B73EFA8E1D0301AC00C6B3B2 /* GoToSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA8C1D0301AC00C6B3B2 /* GoToSettingsViewController.xib */; };
 		B73EFA921D080B1800C6B3B2 /* ProjectAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA911D080B1800C6B3B2 /* ProjectAnnotationView.m */; };
 		B73EFA951D080CAF00C6B3B2 /* ProjectPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA941D080CAF00C6B3B2 /* ProjectPointAnnotation.m */; };
-		B73EFAA01D08441E00C6B3B2 /* CallOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA9E1D08441E00C6B3B2 /* CallOutViewController.m */; };
 		B73EFAA11D08441E00C6B3B2 /* CallOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA9F1D08441E00C6B3B2 /* CallOutViewController.xib */; };
 		B73EFAA41D0847C100C6B3B2 /* CustomCallOut.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAA31D0847C100C6B3B2 /* CustomCallOut.m */; };
 		B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAA51D0847D200C6B3B2 /* CustomCallOut.xib */; };
+		B73EFAB11D09546B00C6B3B2 /* CallOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA9E1D08441E00C6B3B2 /* CallOutViewController.m */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -409,7 +409,7 @@
 		B73EFAA21D0847C100C6B3B2 /* CustomCallOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCallOut.h; sourceTree = "<group>"; };
 		B73EFAA31D0847C100C6B3B2 /* CustomCallOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCallOut.m; sourceTree = "<group>"; };
 		B73EFAA51D0847D200C6B3B2 /* CustomCallOut.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCallOut.xib; sourceTree = "<group>"; };
-		B73EFAA71D084C0500C6B3B2 /* customCallOutConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customCallOutConstants.h; sourceTree = "<group>"; };
+		B73EFAB21D096A9600C6B3B2 /* customCallOutConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customCallOutConstants.h; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1288,6 +1288,7 @@
 				B61F68231D05A47F00D249F4 /* contactDetailViewConstant.h */,
 				B68337131D0816B5004226D3 /* profileNavViewConstant.h */,
 				B683372C1D082D81004226D3 /* cpCustomtextFieldConstant.h */,
+				B73EFAB21D096A9600C6B3B2 /* customCallOutConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1664,6 +1665,7 @@
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */,
 				B68337241D081C3F004226D3 /* ChangePasswordViewController.m in Sources */,
+				B73EFAB11D09546B00C6B3B2 /* CallOutViewController.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,

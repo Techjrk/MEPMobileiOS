@@ -120,20 +120,23 @@
 "GOTO_SETTINGS_BUTTON_SETTINGS_TEXT"        =               "GO TO SETTINGS";
 "GOTO_SETTINGS_BUTTON_CANCEL_TEXT"          =               "CANCEL";
 
-
 //ProjectSortView.xib
-"PROJECTSORT_TITLE_LABEL_TEXT"              =           "Sort by";
-"PROJECTSORT_BID_DATE_TEXT"                 =           "Bid Date";
-"PROJECTSORT_LAST_UPDATED_TEXT"             =           "Last Updated";
-"PROJECTSORT_DATE_ADDED_TEXT"               =           "Date Added";
-"PROJECTSORT_HIGH_TO_LOW_TEXT"              =           "Value:High to Low";
-"PROJECTSORT_LOW_TO_HIGH_TEXT"              =           "Value: Low to High";
-
+"PROJECTSORT_TITLE_LABEL_TEXT"              =               "Sort by";
+"PROJECTSORT_BID_DATE_TEXT"                 =               "Bid Date";
+"PROJECTSORT_LAST_UPDATED_TEXT"             =               "Last Updated";
+"PROJECTSORT_DATE_ADDED_TEXT"               =               "Date Added";
+"PROJECTSORT_HIGH_TO_LOW_TEXT"              =               "Value:High to Low";
+"PROJECTSORT_LOW_TO_HIGH_TEXT"              =               "Value: Low to High";
 
 //CDAssociatedProjectViewController.h
-"ASSOCIATE_ALL_LIST_PROJECT"                =          "ASSOCIATED PROJECTS";
-
+"ASSOCIATE_ALL_LIST_PROJECT"                =               "ASSOCIATED PROJECTS";
 
 //ContactAllListViewController.h
-"CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
+"CONTACT_ALL_LIST_NAVBAR_TITLE"             =               "CONTACTS";
+
+//CustomCallOut.xib
+"CALLOUT_PRE_BID"                           =               "PRE-BID";
+"CALLOUT_POST_BID"                          =               "POST BID";
+"CALLOUT_GET_DIRECTION"                     =               "Get Directions";
+
 

@@ -10,5 +10,5 @@
 
 #import "BaseViewClass.h"
 @interface CustomCallOut : BaseViewClass
-
+- (void)setInfo:(id)info;
 @end

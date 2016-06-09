@@ -14,6 +14,7 @@
 #import "ProjectAnnotationView.h"
 #import "ProjectPointAnnotation.h"
 #import "CallOutViewController.h"
+#import "ProjectPointAnnotation.h"
 #import <MapKit/MapKit.h>
 
 @interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate>{
@@ -231,9 +232,12 @@ float MilesToMeters(float miles) {
     if ([subview class] == [ProjectAnnotationView class]) {
         CallOutViewController *controller = [CallOutViewController new];
         
+        ProjectAnnotationView *annotationView = (ProjectAnnotationView*)subview;
+        ProjectPointAnnotation *annotation =  (ProjectPointAnnotation*)annotationView.annotation;
+        
         controller.popoverPresentationController.sourceView = subview;
         controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, subview.frame.size.width, subview.frame.size.height);
-        
+        [controller setInfo:annotation.cargo];
         [self.navigationController presentViewController:controller animated:NO completion:nil];
     }
 }
