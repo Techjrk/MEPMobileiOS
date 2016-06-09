@@ -526,14 +526,22 @@
             break;
         }
         case MenuHeaderTrack: {
+
+            [[DataManager sharedManager] featureNotAvailable];
             break;
+        
         }
         case MenuHeaderSearch:{
+          
+            [[DataManager sharedManager] featureNotAvailable];
             break;
+        
         }
         case MenuHeaderMore:{
+            
             [self showDropDownMenu];
             break;
+        
         }
     }
 }
@@ -557,13 +565,14 @@
     switch (menuDropDownItem) {
         case DropDownMenuMyProfile:{
             
+            /*
             MyProfileViewController *controller = [MyProfileViewController new];
             [self.navigationController pushViewController:controller animated:YES];
             
             break;
         }
         case DropDownMenuHiddenProjects: {
-            
+            [[DataManager sharedManager] featureNotAvailable];
             break;
         }
         case DropDownMenuSettings:{
