@@ -162,6 +162,17 @@
 
 //BidderListViewController.xib
 "BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
+//SettingCollectionViewCell.xib
+"SETTING_CVCELL_SIGNOUT"                    =           "Sign out";
 
 //ParticipantsListViewController.xib
 "PARITICPANT_LIST_BOTTOM_LABEL"             =               "PARTICIPANTS";
+//SettingCPView.xib
+"SETTING_CPVIEW_TEXT"                       =           "Change Password";
+
+//SettingNotificationView.xib
+"SETTING_NOTIFICATIONS_TEXT"                =           "Notifications";
+
+//ProfileNavView.xib
+"PROFILE_NAV_RIGHT_BUTTON_TEXT"             =           "SAVE";
+
