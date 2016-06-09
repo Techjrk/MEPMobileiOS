@@ -565,21 +565,19 @@
     switch (menuDropDownItem) {
         case DropDownMenuMyProfile:{
             
+            /*
             MyProfileViewController *controller = [MyProfileViewController new];
             [self.navigationController presentViewController:controller animated:YES completion:nil];
-            
+            */
+            [[DataManager sharedManager] featureNotAvailable];
             break;
         }
         case DropDownMenuHiddenProjects: {
-            
+            [[DataManager sharedManager] featureNotAvailable];
             break;
         }
         case DropDownMenuSettings:{
             SettingsViewController *controller = [SettingsViewController new];
-            
-            //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-            //[navController.navigationBar setHidden:YES];
-            //[self.navigationController presentViewController:navController animated:YES completion:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }
