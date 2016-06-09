@@ -48,8 +48,8 @@
     
     DB_Bid *bid = collectionItems[indexPath.row];
     DB_Project *project = bid.relationshipProject;
-    NSDictionary *dict = @{PROJECT_BID_NAME:project.title, PROJECT_BID_LOCATION:[project address], PROJECT_BID_AMOUNT:[project bidAmountWithCurrency], PROJECT_BID_DATE:[project bidDateString]};
-    
+    NSDictionary *dict = @{PROJECT_BID_NAME:project.title, PROJECT_BID_LOCATION:[project address], PROJECT_BID_AMOUNT:[project bidAmountWithCurrency], PROJECT_BID_DATE:[project bidDateString], PROJECT_BID_GEOCODE_LAT:project.geocodeLat, PROJECT_BID_GEOCODE_LNG:project.geocodeLng};
+  
     [cell setInfo:dict];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];

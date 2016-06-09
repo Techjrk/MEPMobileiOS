@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "projectBidConstants.h"
 
-@interface ProjectBidView()
+@interface ProjectBidView()<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidName;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
@@ -50,6 +50,44 @@
     [amount appendAttributedString:[[NSAttributedString alloc] initWithString:infoDict[PROJECT_BID_DATE] attributes:@{NSFontAttributeName:PROJECT_BID_LABEL_DATE_FONT, NSForegroundColorAttributeName:PROJECT_BID_LABEL_DATE_COLOR} ]];
     
     _labelAmount.attributedText = amount;
+    
+    NSNumber *geoCodeLat = infoDict[PROJECT_BID_GEOCODE_LAT];
+    NSNumber *geoCodeLng = infoDict[PROJECT_BID_GEOCODE_LNG];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([geoCodeLat floatValue], [geoCodeLng floatValue]);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        
+    }
+    
+    return userAnnotationView;
+    
 }
 
 @end

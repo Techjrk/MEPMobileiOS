@@ -82,7 +82,6 @@
     if (project.estLow != nil) {
         estlow = project.estLow.floatValue;
     }
-
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];

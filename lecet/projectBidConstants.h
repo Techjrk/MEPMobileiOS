@@ -15,6 +15,8 @@
 #define PROJECT_BID_LOCATION                        @"PROJECT_BID_LOCATION"
 #define PROJECT_BID_AMOUNT                          @"PROJECT_BID_AMOUNT"
 #define PROJECT_BID_DATE                            @"PROJECT_BID_DATE"
+#define PROJECT_BID_GEOCODE_LAT                     @"PROJECT_BID_GEOCODE_LAT"
+#define PROJECT_BID_GEOCODE_LNG                     @"PROJECT_BID_GEOCODE_LNG"
 
 #define PROJECT_BID_SHADOW_COLOR                    RGB(0, 0, 0)
 
