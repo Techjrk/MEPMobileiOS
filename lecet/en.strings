@@ -128,6 +128,7 @@
 "PROJECTSORT_HIGH_TO_LOW_TEXT"              =               "Value:High to Low";
 "PROJECTSORT_LOW_TO_HIGH_TEXT"              =               "Value: Low to High";
 
+
 //CDAssociatedProjectViewController.xib
 "ASSOCIATE_ALL_LIST_PROJECT"                =          "ASSOCIATED PROJECTS";
 
@@ -143,7 +144,6 @@
 //ChangePasswordViewController.xib
 "CHANGEPASSWORD_NAV_TITLE"                  =          "Change Password";
 
-
 //ChangePasswordView.h
 "CPASSWORD_LEFT_TITLE_CURRENT"              =               "Current";
 "CPASSWORD_LEFT_TITLE_NEW"                  =               "New";
@@ -152,14 +152,13 @@
 "CPASSWORD_PLACEHOLDER_NEW"                 =               "At least 6 characters";
 "CPASSWORD_PLACEHOLDER_CONFIRM"             =               "Confirm new password";
 
+//SettingViewController.xib
+"SETTINGS_NAV_TITLE"                        =           "Settings";
 //ProjectsNearMeViewController.xib
 "PROJECTS_NEAR_LOCATION_EMPTY"              =               "Please enter a location to search";
 "PROJECTS_NEAR_LOCATION_INVALID"            =               "The location you entered is invalid";
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR"    =               "No projects found near your location";
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH"  =               "No projects found using your searched location";
-
-//SettingViewController.xib
-"SETTINGS_NAV_TITLE"                        =           "Settings";
 
 //SettingCollectionViewCell.xib
 "SETTING_CVCELL_SIGNOUT"                    =           "Sign out";
