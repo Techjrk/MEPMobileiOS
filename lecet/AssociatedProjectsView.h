@@ -13,14 +13,12 @@
 @protocol AssociatedProjectDelegate <NSObject>
 @required
 - (void)tappededSeeAllAssociateProject;
-
+- (void)tappedAssociatedProject:(id)object;
 @end
 
 
 @interface AssociatedProjectsView : BaseViewClass
+@property (nonatomic,assign) id<AssociatedProjectDelegate> associatedProjectDelegate;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
-
-@property (nonatomic,assign) id<AssociatedProjectDelegate> associatedProjectDelegate;
-
 @end

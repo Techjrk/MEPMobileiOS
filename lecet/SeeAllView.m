@@ -12,9 +12,11 @@
 
 @interface SeeAllView()
 @property (weak, nonatomic) IBOutlet UIButton *buttonSeeAll;
+- (IBAction)tappedButtonSeeAll:(id)sender;
 @end
 
 @implementation SeeAllView
+@synthesize seeAllViewDelegate;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -24,4 +26,10 @@
     
     [_buttonSeeAll setAttributedTitle:title forState:UIControlStateNormal];
 }
+
+
+- (IBAction)tappedButtonSeeAll:(id)sender {
+    [self.seeAllViewDelegate tappedSeeAllView:self];
+}
+
 @end

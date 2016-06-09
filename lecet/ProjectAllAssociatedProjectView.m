@@ -18,10 +18,11 @@
     CGFloat cellHeight;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @end
 
 @implementation ProjectAllAssociatedProjectView
+@synthesize projectAllAssociatedProjectViewDelegate;
+
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
@@ -97,7 +98,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.projectAllAssociatedProjectViewDelegate selectedAssociatedProjectItem:collectionItems[indexPath.row]];
 }
 
 @end

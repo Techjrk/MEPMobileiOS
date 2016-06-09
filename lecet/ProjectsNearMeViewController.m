@@ -21,6 +21,7 @@
     BOOL isFirstLaunch;
     NSMutableArray *mapItems;
     BOOL isSearchLocation;
+    BOOL showPrompt;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
@@ -39,6 +40,7 @@ float MilesToMeters(float miles) {
     [super viewDidLoad];
     [self enableTapGesture:YES];
     
+    showPrompt = YES;
     mapItems = [NSMutableArray new];
     _textFieldSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _textFieldSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
@@ -60,6 +62,28 @@ float MilesToMeters(float miles) {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
     }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self viewWasLaunced];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    showPrompt = NO;
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return YES;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)NotificationAppBecomeActive:(NSNotification*)notification {
@@ -100,10 +124,12 @@ float MilesToMeters(float miles) {
                 if (distance < 500) {
                     [self loadProjects:distance + (distance==5?95:100) coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
                 } else {
-                    if (isSearchLocation) {
-                        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH")];
-                    } else {
-                    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR")];
+                    if (showPrompt) {
+                        if (isSearchLocation) {
+                            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH")];
+                        } else {
+                            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR")];
+                        }
                     }
                 }
             }
@@ -115,21 +141,8 @@ float MilesToMeters(float miles) {
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)tappedButtonback:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (BOOL)automaticallyAdjustsScrollViewInsets {
-    return YES;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewWasLaunced {
@@ -148,10 +161,6 @@ float MilesToMeters(float miles) {
             }
         }
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [self viewWasLaunced];
 }
 
 - (void)tappedButtonShareLocation:(id)object {

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactAllListViewController : UIViewController
+#import "BaseViewController.h"
 
+@interface ContactAllListViewController : BaseViewController
 - (void)setInfoForContactList:(NSMutableArray *)contacts;
-
 @end

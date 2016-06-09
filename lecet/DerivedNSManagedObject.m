@@ -73,6 +73,13 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)shortDateStringFromDate:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    return [formatter stringFromDate:date];
+}
+
 + (NSString *)yearMonthFromDate:(NSDate *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

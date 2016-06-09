@@ -10,8 +10,9 @@
 #import "ProjectNavigationBarView.h"
 #import "ProjectSortViewController.h"
 #import "ProjectAllAssociatedProjectView.h"
+#import "ProjectDetailViewController.h"
 
-@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate>{
+@interface CDAssociatedProjectViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate, ProjectAllAssociatedProjectViewDelegate>{
     NSString *companyName;
     NSMutableArray *associatedProjectList;
 }
@@ -26,9 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     _projectNavBarView.projectNavViewDelegate = self;
-
+    _projectAllAssociatedProjectListView.projectAllAssociatedProjectViewDelegate = self;
     
 }
 
@@ -114,6 +114,14 @@
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:keyString ascending:asc];
     NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
     return sorted;
+}
+
+- (void)selectedAssociatedProjectItem:(id)object {
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    detail.view.hidden = NO;
+    DB_Project *project = object;
+    [detail detailsFromProject:project];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

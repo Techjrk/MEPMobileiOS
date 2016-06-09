@@ -12,27 +12,24 @@
 #import "ProjectNavigationBarView.h"
 #import "ProjectAllBidsView.h"
 #import "ProjectSortViewController.h"
+#import "ContactDetailViewController.h"
 
-@interface ContactAllListViewController ()<ProjectNavViewDelegate>{
+@interface ContactAllListViewController ()<ProjectNavViewDelegate, ContactAllListViewDelegate>{
     NSMutableArray *contactList;
 }
 @property (weak, nonatomic) IBOutlet ContactAllListView *contactAllListView;
-
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
-
 @end
 
 @implementation ContactAllListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     _projectNavBarView.projectNavViewDelegate = self;
-    
+    _contactAllListView.contactAllListViewDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    //CONTACT_ALL_LIST_NAVBAR_TITLE
     [_projectNavBarView setProjectTitle:@""];
     [_projectNavBarView setContractorName:NSLocalizedLanguage(@"CONTACT_ALL_LIST_NAVBAR_TITLE")];
     [_contactAllListView setItems:contactList];
@@ -41,6 +38,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)setInfoForContactList:(NSMutableArray *)contacts {
@@ -68,5 +69,10 @@
     [self presentViewController:controller  animated:YES completion:nil];
 }
 
+- (void)selectedContact:(id)object {
+    ContactDetailViewController *controller = [ContactDetailViewController new];
+    [controller setCompanyContactDetails:object];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 @end

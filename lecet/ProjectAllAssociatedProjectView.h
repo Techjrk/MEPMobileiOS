@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol ProjectAllAssociatedProjectViewDelegate <NSObject>
+- (void)selectedAssociatedProjectItem:(id)object;
+@end
 @interface ProjectAllAssociatedProjectView : BaseViewClass
-
-
+@property (strong, nonatomic) id<ProjectAllAssociatedProjectViewDelegate>projectAllAssociatedProjectViewDelegate;
 - (void)setItems:(NSMutableArray*)items;
 @end

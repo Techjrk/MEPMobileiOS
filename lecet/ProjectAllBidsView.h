@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol ProjectAllBidsViewDelegate <NSObject>
+- (void)selectedProjectAllBidItem:(id)object;
+@end
+
 @interface ProjectAllBidsView : BaseViewClass
-
-
+@property (strong, nonatomic) id<ProjectAllBidsViewDelegate>projectAllBidsViewDelegate;
 - (void)setItems:(NSMutableArray*)items;
-
-
 @end

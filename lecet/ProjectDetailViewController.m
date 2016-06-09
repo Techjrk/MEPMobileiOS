@@ -31,7 +31,7 @@
 #import "BidderListViewController.h"
 #import "ParticipantsListViewController.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate, SeeAllViewDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -100,6 +100,7 @@
     _projectBidder.projectBidderDelegate = self;
     _participantsView.pariticipantsDelegate = self;
     _projectState.projectStateViewDelegate = self;
+    _seeAllView.seeAllViewDelegate = self;
     
 }
 
@@ -242,6 +243,10 @@
     controller.projectName = projectTitle;
     [self.navigationController pushViewController:controller animated:YES];
 
+}
+
+- (void)tappedSeeAllView:(id)object {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 #pragma mark - Delegate and Share List Method
