@@ -525,14 +525,22 @@
             break;
         }
         case MenuHeaderTrack: {
+
+            [[DataManager sharedManager] featureNotAvailable];
             break;
+        
         }
         case MenuHeaderSearch:{
+          
+            [[DataManager sharedManager] featureNotAvailable];
             break;
+        
         }
         case MenuHeaderMore:{
+            
             [self showDropDownMenu];
             break;
+        
         }
     }
 }
