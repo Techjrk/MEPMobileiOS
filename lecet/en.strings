@@ -137,3 +137,17 @@
 //ContactAllListViewController.h
 "CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
 
+
+//ChangePasswordViewController.h
+"CHANGEPASSWORD_NAV_TITLE"                  =          "Change Password";
+
+
+//ChangePasswordView.h
+"CPASSWORD_LEFT_TITLE_CURRENT"              =           "Current";
+"CPASSWORD_LEFT_TITLE_NEW"                  =           "New";
+"CPASSWORD_LEFT_TITLE_CONFIRM"              =           "Confirm";
+"CPASSWORD_PLACEHOLDER_CURRENT"              =           "Your current password";
+"CPASSWORD_PLACEHOLDER_NEW"                  =           "At least 6 characters";
+"CPASSWORD_PLACEHOLDER_CONFIRM"              =           "Confirm new password";
+
+

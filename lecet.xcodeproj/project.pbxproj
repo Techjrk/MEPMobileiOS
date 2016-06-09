@@ -13,6 +13,8 @@
 		B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */; };
 		B623B2121CFC9B9D00793D67 /* DropDownProjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B2101CFC9B9D00793D67 /* DropDownProjectList.m */; };
 		B623B2131CFC9B9D00793D67 /* DropDownProjectList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B2111CFC9B9D00793D67 /* DropDownProjectList.xib */; };
+		B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411B9D1D096729002B6E88 /* SettingsViewController.m */; };
+		B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411B9E1D096729002B6E88 /* SettingsViewController.xib */; };
 		B644746C1D00437E0001B244 /* ProjectSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B644746A1D00437E0001B244 /* ProjectSortViewController.m */; };
 		B644746D1D00437E0001B244 /* ProjectSortViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B644746B1D00437E0001B244 /* ProjectSortViewController.xib */; };
 		B64474721D00449B0001B244 /* ProjectSortCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64474701D00449B0001B244 /* ProjectSortCVCell.m */; };
@@ -244,6 +246,9 @@
 		B623B20F1CFC9B9D00793D67 /* DropDownProjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownProjectList.h; sourceTree = "<group>"; };
 		B623B2101CFC9B9D00793D67 /* DropDownProjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownProjectList.m; sourceTree = "<group>"; };
 		B623B2111CFC9B9D00793D67 /* DropDownProjectList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownProjectList.xib; sourceTree = "<group>"; };
+		B6411B9C1D096729002B6E88 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		B6411B9D1D096729002B6E88 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		B6411B9E1D096729002B6E88 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		B64474691D00437E0001B244 /* ProjectSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSortViewController.h; sourceTree = "<group>"; };
 		B644746A1D00437E0001B244 /* ProjectSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSortViewController.m; sourceTree = "<group>"; };
 		B644746B1D00437E0001B244 /* ProjectSortViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectSortViewController.xib; sourceTree = "<group>"; };
@@ -292,6 +297,8 @@
 		B68337341D083102004226D3 /* ChnagePasswordCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChnagePasswordCollectionViewCell.h; sourceTree = "<group>"; };
 		B68337351D083102004226D3 /* ChnagePasswordCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChnagePasswordCollectionViewCell.m; sourceTree = "<group>"; };
 		B68337361D083102004226D3 /* ChnagePasswordCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChnagePasswordCollectionViewCell.xib; sourceTree = "<group>"; };
+		B68337391D08846F004226D3 /* changePasswordVCConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = changePasswordVCConstant.h; sourceTree = "<group>"; };
+		B683373A1D088653004226D3 /* changePasswordViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = changePasswordViewConstant.h; sourceTree = "<group>"; };
 		B6972B781CF2F2E20092D5CD /* dropDownMenuConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dropDownMenuConstants.h; sourceTree = "<group>"; };
 		B6972B7A1CF327940092D5CD /* DropDownMenuShareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuShareList.h; sourceTree = "<group>"; };
 		B6972B7B1CF327940092D5CD /* DropDownMenuShareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenuShareList.m; sourceTree = "<group>"; };
@@ -673,6 +680,16 @@
 			name = ProjectListCell;
 			sourceTree = "<group>";
 		};
+		B6411B9B1D0966DD002B6E88 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B6411B9C1D096729002B6E88 /* SettingsViewController.h */,
+				B6411B9D1D096729002B6E88 /* SettingsViewController.m */,
+				B6411B9E1D096729002B6E88 /* SettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		B64474681D0043390001B244 /* ProjectSort */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1049,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6411B9B1D0966DD002B6E88 /* Settings */,
 				B68337201D081C11004226D3 /* ChangePassword */,
 				B68337141D0817B7004226D3 /* ProfileDetail */,
 				B6EFFE931D04590400727323 /* ContactAllList */,
@@ -1288,6 +1306,9 @@
 				B61F68231D05A47F00D249F4 /* contactDetailViewConstant.h */,
 				B68337131D0816B5004226D3 /* profileNavViewConstant.h */,
 				B683372C1D082D81004226D3 /* cpCustomtextFieldConstant.h */,
+				B73EFAA71D084C0500C6B3B2 /* customCallOutConstants.h */,
+				B68337391D08846F004226D3 /* changePasswordVCConstant.h */,
+				B683373A1D088653004226D3 /* changePasswordViewConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1553,6 +1574,7 @@
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
 				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
+				B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */,
 				B6F7DD3C1D00A4DA00B86B9D /* ProjectTabView.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
 				B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */,
@@ -1663,6 +1685,7 @@
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */,
+				B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */,
 				B68337241D081C3F004226D3 /* ChangePasswordViewController.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
@@ -1712,6 +1735,7 @@
 				B7F10A171CDB3E3300847FA3 /* AFURLSessionManager.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B683372A1D082154004226D3 /* CPCustomTextFieldView.m in Sources */,
+				B73EFAA01D08441E00C6B3B2 /* CallOutViewController.m in Sources */,
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
 				B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */,
 				B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */,

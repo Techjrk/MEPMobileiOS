@@ -20,4 +20,20 @@
     // Initialization code
 }
 
+- (NSString *)getText{
+    return [_changePasswordView text];
+}
+
+- (void)setTitle:(NSString *)title {
+    [_changePasswordView setLefTitleText:title];
+}
+
+- (void)setPlaceHolderForTextField:(NSString *)placeHolderText {    
+    [_changePasswordView setPlaceHolder:placeHolderText];
+}
+
+- (void)setSecureTextField:(BOOL)secure {
+    [_changePasswordView setSecure:secure];
+}
+
 @end

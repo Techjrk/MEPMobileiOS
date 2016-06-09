@@ -11,4 +11,8 @@
 
 @interface ChangePasswordView : BaseViewClass
 
+- (NSString *)getCurrentPasswordText;
+- (NSString *)getNewPasswordText;
+- (NSString *)getConfirmPasswordText;
+
 @end

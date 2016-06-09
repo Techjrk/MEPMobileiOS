@@ -21,5 +21,6 @@ typedef enum  {
 
 @interface ProfileNavView : BaseViewClass
 @property (nonatomic,assign) id<ProfileNavViewDelegate> profileNavViewDelegate;
+- (void)setNavTitleLabel:(NSString *)name;
 
 @end

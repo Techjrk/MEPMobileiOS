@@ -552,10 +552,26 @@
 
 
 #pragma mark - DropDown Menu More Delegate and Method
-- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem{
+- (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem {
+
+    switch (menuDropDownItem) {
+        case DropDownMenuMyProfile:{
+            
+            [[DataManager sharedManager] featureNotAvailable];
+            
+            break;
+        }
+        case DropDownMenuHiddenProjects: {
+            ChangePasswordViewController *controller = [ChangePasswordViewController new];
+            [self.navigationController presentViewController:controller animated:YES completion:nil];
+            
+            break;
+        }
+        case DropDownMenuSettings:{
+            break;
+        }
+    }
     
-    ChangePasswordViewController *controller = [ChangePasswordViewController new];
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
     
 }
 
@@ -571,8 +587,6 @@
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [controller setInfo:object];
         [self.navigationController presentViewController:controller  animated:NO completion:nil];
-        
-        
         
     } failure:^(id object) {
         
