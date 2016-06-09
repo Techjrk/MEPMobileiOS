@@ -128,19 +128,21 @@
 "PROJECTSORT_HIGH_TO_LOW_TEXT"              =               "Value:High to Low";
 "PROJECTSORT_LOW_TO_HIGH_TEXT"              =               "Value: Low to High";
 
-//CDAssociatedProjectViewController.h
-"ASSOCIATE_ALL_LIST_PROJECT"                =               "ASSOCIATED PROJECTS";
 
-//ContactAllListViewController.h
-"CONTACT_ALL_LIST_NAVBAR_TITLE"             =               "CONTACTS";
+//CDAssociatedProjectViewController.xib
+"ASSOCIATE_ALL_LIST_PROJECT"                =          "ASSOCIATED PROJECTS";
+
+
+//ContactAllListViewController.xib
+"CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
 
 //CustomCallOut.xib
 "CALLOUT_PRE_BID"                           =               "PRE-BID";
 "CALLOUT_POST_BID"                          =               "POST BID";
 "CALLOUT_GET_DIRECTION"                     =               "Get Directions";
 
-//ChangePasswordViewController.h
-"CHANGEPASSWORD_NAV_TITLE"                  =               "Change Password";
+//ChangePasswordViewController.xib
+"CHANGEPASSWORD_NAV_TITLE"                  =          "Change Password";
 
 //ChangePasswordView.h
 "CPASSWORD_LEFT_TITLE_CURRENT"              =               "Current";
@@ -150,6 +152,8 @@
 "CPASSWORD_PLACEHOLDER_NEW"                 =               "At least 6 characters";
 "CPASSWORD_PLACEHOLDER_CONFIRM"             =               "Confirm new password";
 
+//SettingViewController.xib
+"SETTINGS_NAV_TITLE"                        =           "Settings";
 //ProjectsNearMeViewController.xib
 "PROJECTS_NEAR_LOCATION_EMPTY"              =               "Please enter a location to search";
 "PROJECTS_NEAR_LOCATION_INVALID"            =               "The location you entered is invalid";

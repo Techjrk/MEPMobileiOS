@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsNotificationsView">
+            <connections>
+                <outlet property="label" destination="ayj-GN-Wud" id="Jgh-ug-aeo"/>
+                <outlet property="switchButton" destination="MCT-Rf-pi8" id="ikr-3t-QC5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="551" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-GN-Wud">
+                    <rect key="frame" x="0.0" y="0.0" width="253" height="70"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MCT-Rf-pi8">
+                    <rect key="frame" x="502" y="19" width="51" height="31"/>
+                    <connections>
+                        <action selector="switchButtonClicked:" destination="-1" eventType="valueChanged" id="yVK-g5-Y0a"/>
+                    </connections>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="MCT-Rf-pi8" secondAttribute="trailing" id="HNJ-n6-w2X"/>
+                <constraint firstItem="MCT-Rf-pi8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="V6F-If-0ii"/>
+                <constraint firstItem="ayj-GN-Wud" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aSF-Ym-jEV"/>
+                <constraint firstItem="ayj-GN-Wud" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.46" id="b0C-sb-el6"/>
+                <constraint firstAttribute="bottom" secondItem="ayj-GN-Wud" secondAttribute="bottom" id="vKm-ml-Qjk"/>
+                <constraint firstItem="ayj-GN-Wud" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yA6-1N-Nkm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="446.5" y="128"/>
+        </view>
+    </objects>
+</document>

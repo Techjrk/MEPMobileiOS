@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SettingCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="67"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Mf-0j6">
+                        <rect key="frame" x="15" y="0.0" width="351" height="67"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZc-Zo-MP3" customClass="SettingsNotificationsView">
+                        <rect key="frame" x="15" y="0.0" width="351" height="67"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qcb-Av-U8w" customClass="SettingsCPView">
+                        <rect key="frame" x="15" y="0.0" width="351" height="67"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xmc-Mf-0j6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1CU-ll-j8h"/>
+                <constraint firstAttribute="trailing" secondItem="DZc-Zo-MP3" secondAttribute="trailing" constant="15" id="3vr-ow-Q8z"/>
+                <constraint firstAttribute="bottom" secondItem="Qcb-Av-U8w" secondAttribute="bottom" id="D4O-WN-4ab"/>
+                <constraint firstItem="Qcb-Av-U8w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Hcg-Ww-vLx"/>
+                <constraint firstAttribute="bottom" secondItem="DZc-Zo-MP3" secondAttribute="bottom" id="Hqh-hE-eCW"/>
+                <constraint firstItem="Qcb-Av-U8w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Jkn-Nb-0QZ"/>
+                <constraint firstAttribute="trailing" secondItem="xmc-Mf-0j6" secondAttribute="trailing" constant="15" id="NEJ-T3-s24"/>
+                <constraint firstItem="DZc-Zo-MP3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="REm-9v-a1b"/>
+                <constraint firstAttribute="trailing" secondItem="Qcb-Av-U8w" secondAttribute="trailing" constant="15" id="aTP-hb-b2U"/>
+                <constraint firstAttribute="bottom" secondItem="xmc-Mf-0j6" secondAttribute="bottom" id="nI5-0h-9Kq"/>
+                <constraint firstItem="DZc-Zo-MP3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="umW-7k-CYR"/>
+                <constraint firstItem="xmc-Mf-0j6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="xlB-R6-ID1"/>
+            </constraints>
+            <size key="customSize" width="381" height="67"/>
+            <connections>
+                <outlet property="changePasswordView" destination="Qcb-Av-U8w" id="Wd6-K8-evu"/>
+                <outlet property="labelSignOut" destination="xmc-Mf-0j6" id="5aT-wZ-uOK"/>
+                <outlet property="notificationView" destination="DZc-Zo-MP3" id="s9t-1j-dYo"/>
+            </connections>
+            <point key="canvasLocation" x="289.5" y="296.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -49,7 +49,7 @@
         
         [[DataManager sharedManager] featureNotAvailable];
     }else {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     
 }
