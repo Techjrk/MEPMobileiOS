@@ -589,7 +589,7 @@
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [controller setInfo:object];
-        [self.navigationController presentViewController:controller  animated:NO completion:nil];
+        [self presentViewController:controller  animated:NO completion:nil];
         
     } failure:^(id object) {
         

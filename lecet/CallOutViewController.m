@@ -8,13 +8,18 @@
 
 #import "CallOutViewController.h"
 
-@interface CallOutViewController ()<UIPopoverPresentationControllerDelegate>
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTop;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeading;
+#import "CustomCallOut.h"
+#import "ProjectAnnotationView.h"
+
+@interface CallOutViewController ()<UIPopoverPresentationControllerDelegate>{
+    NSDictionary *infoDict;
+}
+@property (weak, nonatomic) IBOutlet CustomCallOut *callOut;
 @end
 
 @implementation CallOutViewController
 @synthesize sourceView;
+@synthesize projectPin;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -25,7 +30,7 @@
 }
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-    return UIModalPresentationNone; //You have to specify this particular value in order to make it work on iPhone.
+    return UIModalPresentationNone;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,15 +39,33 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    _constraintTop.constant = sourceView.frame.origin.y;
-    _constraintLeading.constant = sourceView.frame.origin.x;
+    [_callOut setInfo:infoDict];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
+    ProjectAnnotationView *annotation = (ProjectAnnotationView*)self.projectPin;
+    annotation.image = annotation.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
+
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (CGSize)preferredContentSize {
+    return CGSizeMake(kDeviceWidth * 0.44, kDeviceHeight * 0.245);
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return YES;
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
@@ -56,16 +79,8 @@
 
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-- (CGSize)preferredContentSize {
-    return CGSizeMake(kDeviceWidth * 0.44, kDeviceHeight * 0.242);
-}
-
-- (BOOL)automaticallyAdjustsScrollViewInsets {
-    return YES;
+- (void)setInfo:(id)info {
+    infoDict = [info copy];
 }
 
 @end

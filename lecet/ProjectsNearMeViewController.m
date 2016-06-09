@@ -14,11 +14,13 @@
 #import "ProjectAnnotationView.h"
 #import "ProjectPointAnnotation.h"
 #import "CallOutViewController.h"
+#import "ProjectPointAnnotation.h"
 #import <MapKit/MapKit.h>
 
-@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate>{
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate>{
     BOOL isFirstLaunch;
     NSMutableArray *mapItems;
+    BOOL isSearchLocation;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
@@ -56,7 +58,7 @@ float MilesToMeters(float miles) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_LOCATION_DENIED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationAllowed:) name:NOTIFICATION_LOCATION_ALLOWED object:nil];
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
-        [self loadProjects:5];
+        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
     }
 }
 
@@ -69,38 +71,48 @@ float MilesToMeters(float miles) {
 }
 
 - (void)NotificationLocationAllowed:(NSNotification*)notification {
-    [self loadProjects:5];
+    [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
 }
 
-- (void)loadProjects:(int)distance {
+- (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate {
     
-    CGFloat lat = 39.65718;
-    CGFloat lng = -83.90974;
-    
-    [mapItems removeAllObjects];
-    [_mapView removeAnnotations:_mapView.annotations];
-
-    [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:nil success:^(id object) {
+    if (CLLocationCoordinate2DIsValid(coordinate)) {
+        CGFloat lat = coordinate.latitude;
+        CGFloat lng = coordinate.longitude;
         
-        NSArray *result = object[@"results"];
-        if (result != nil & result.count>0) {
-        
-            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+        [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:nil success:^(id object) {
 
-            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(distance), MilesToMeters(distance));
+            [mapItems removeAllObjects];
+            [_mapView removeAnnotations:_mapView.annotations];
             
-            [_mapView setRegion:region];
-
-            [mapItems addObjectsFromArray:result];
-            [self addItemsToMap];
-        } else {
-            if (distance == 5) {
-                [self loadProjects:100];
+            NSArray *result = object[@"results"];
+            if (result != nil & result.count>0) {
+                
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+                
+                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(distance), MilesToMeters(distance));
+                
+                [_mapView setRegion:region];
+                
+                [mapItems addObjectsFromArray:result];
+                [self addItemsToMap];
+            } else {
+                if (distance < 500) {
+                    [self loadProjects:distance + (distance==5?95:100) coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+                } else {
+                    if (isSearchLocation) {
+                        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH")];
+                    } else {
+                    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR")];
+                    }
+                }
             }
-        }
-    } failure:^(id object) {
-        
-    }];
+        } failure:^(id object) {
+            
+        }];
+    } else {
+        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -202,7 +214,7 @@ float MilesToMeters(float miles) {
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    MKAnnotationView *userAnnotationView = nil;
+    ProjectAnnotationView *userAnnotationView = nil;
     if (![annotation isKindOfClass:MKUserLocation.class])
     {
         userAnnotationView = (ProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
@@ -214,7 +226,7 @@ float MilesToMeters(float miles) {
         
         userAnnotationView.enabled = YES;
         userAnnotationView.canShowCallout = YES;
-        userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+        userAnnotationView.image = userAnnotationView.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
     }
     
     return userAnnotationView;
@@ -231,11 +243,56 @@ float MilesToMeters(float miles) {
     if ([subview class] == [ProjectAnnotationView class]) {
         CallOutViewController *controller = [CallOutViewController new];
         
+        ProjectAnnotationView *annotationView = (ProjectAnnotationView*)subview;
+        ProjectPointAnnotation *annotation =  (ProjectPointAnnotation*)annotationView.annotation;
+        
         controller.popoverPresentationController.sourceView = subview;
         controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, subview.frame.size.width, subview.frame.size.height);
-        
+        [controller setInfo:annotation.cargo];
+        annotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+        controller.projectPin = annotationView;
         [self.navigationController presentViewController:controller animated:NO completion:nil];
     }
 }
+
+- (void)searchForLocation {
+    NSString *location = _textFieldSearch.text;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     if (placemarks && placemarks.count > 0) {
+                         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+                         
+                         MKCoordinateRegion region = _mapView.region;
+                         region.center = [(CLCircularRegion *)placemark.region center];
+                         region.span.longitudeDelta /= 8.0;
+                         region.span.latitudeDelta /= 8.0;
+                         
+                         [self loadProjects:5 coordinate:region.center];
+                         
+                     } else if (error != nil) {
+                         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
+                     }
+                 }
+     ];
+
+}
+
+#pragma mark - TextField Delegate Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if (textField.text.length == 0) {
+        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_EMPTY")];
+    } else {
+        [textField resignFirstResponder];
+        isSearchLocation = YES;
+        [self searchForLocation];
+    }
+    return YES;
+}
+
+
 
 @end

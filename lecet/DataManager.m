@@ -573,7 +573,7 @@
 
 - (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng], @"dist":distance};
+    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng], @"dist":distance, @"filter[include][0]":@"projectStage", @"filter[include][1][contacts]":@"company"};
     [self HTTP_GET:[self url:kUrlProjectsNear] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {

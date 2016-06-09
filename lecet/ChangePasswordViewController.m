@@ -47,9 +47,15 @@
         NSString *newPassword = [_chnagePasswordView getNewPasswordText];
         NSString *confirmPassword = [_chnagePasswordView getConfirmPasswordText];
         
+        [[DataManager sharedManager] featureNotAvailable];
     }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 @end

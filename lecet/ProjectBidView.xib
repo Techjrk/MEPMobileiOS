@@ -23,8 +23,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="11.5" height="97"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ntQ-uB-eoi">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntQ-uB-eoi">
                     <rect key="frame" x="11.5" y="15" width="73.5" height="68"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="fYh-3E-HMy"/>
+                    </connections>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igB-iq-6dT">
                     <rect key="frame" x="85" y="37" width="11.5" height="23"/>

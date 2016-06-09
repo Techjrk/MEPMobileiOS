@@ -10,4 +10,5 @@
 
 @interface ProjectAnnotationView : MKAnnotationView
 @property (copy, nonatomic) id cargo;
+@property (nonatomic) BOOL isPreBid;
 @end

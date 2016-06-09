@@ -23,8 +23,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="11.5" height="97"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-Xs-vvI">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-Xs-vvI">
                     <rect key="frame" x="11" y="15" width="73.5" height="68"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="PDA-H0-gof"/>
+                    </connections>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfU-Al-kMC">
                     <rect key="frame" x="374" y="0.0" width="11.5" height="97"/>
