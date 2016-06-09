@@ -169,3 +169,6 @@
 //SettingNotificationView.xib
 "SETTING_NOTIFICATIONS_TEXT"                =           "Notifications";
 
+//ProfileNavView.xib
+"PROFILE_NAV_RIGHT_BUTTON_TEXT"             =           "SAVE";
+

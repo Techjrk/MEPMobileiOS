@@ -34,7 +34,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-5F-ZP9">
                     <rect key="frame" x="489" y="25" width="83" height="58"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Save"/>
+                    <state key="normal" title="SAVE"/>
                     <connections>
                         <action selector="tappedProfileNavButton:" destination="-1" eventType="touchUpInside" id="tXD-sy-eIo"/>
                     </connections>

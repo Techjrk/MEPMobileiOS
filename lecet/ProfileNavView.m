@@ -28,6 +28,7 @@
     
     _rightNavButton.titleLabel.font = PROFILE_NAV_SAVE_BUTTON_FONT;
     [_rightNavButton setTitleColor:PROFILE_NAV_SAVE_BUTTON_FONT_COLOR forState:UIControlStateNormal];
+    [_rightNavButton setTitle:NSLocalizedLanguage(@"PROFILE_NAV_RIGHT_BUTTON_TEXT") forState:UIControlStateNormal];
 }
 
 - (IBAction)tappedProfileNavButton:(id)sender {
@@ -42,4 +43,6 @@
 - (void)hideSaveButton:(BOOL)hide {
     [_rightNavButton setHidden:hide];
 }
+
+
 @end
