@@ -567,8 +567,9 @@
             
             /*
             MyProfileViewController *controller = [MyProfileViewController new];
-            [self.navigationController pushViewController:controller animated:YES];
-            
+            [self.navigationController presentViewController:controller animated:YES completion:nil];
+            */
+            [[DataManager sharedManager] featureNotAvailable];
             break;
         }
         case DropDownMenuHiddenProjects: {
