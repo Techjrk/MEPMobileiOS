@@ -31,6 +31,7 @@
 #import "MoreMenuViewController.h"
 #import "ProjectsNearMeViewController.h"
 #import "SettingsViewController.h"
+#import "MyProfileViewController.h"
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate>{
 
     NSDate *currentDate;
@@ -556,7 +557,8 @@
     switch (menuDropDownItem) {
         case DropDownMenuMyProfile:{
             
-            [[DataManager sharedManager] featureNotAvailable];
+            MyProfileViewController *controller = [MyProfileViewController new];
+            [self.navigationController presentViewController:controller animated:YES completion:nil];
             
             break;
         }
@@ -567,10 +569,10 @@
         case DropDownMenuSettings:{
             SettingsViewController *controller = [SettingsViewController new];
             
-            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-            [navController.navigationBar setHidden:YES];
-            [self.navigationController presentViewController:navController animated:YES completion:nil];
-            
+            //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+            //[navController.navigationBar setHidden:YES];
+            //[self.navigationController presentViewController:navController animated:YES completion:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         }
     }
