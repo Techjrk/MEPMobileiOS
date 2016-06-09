@@ -1306,7 +1306,9 @@
 				B61F68231D05A47F00D249F4 /* contactDetailViewConstant.h */,
 				B68337131D0816B5004226D3 /* profileNavViewConstant.h */,
 				B683372C1D082D81004226D3 /* cpCustomtextFieldConstant.h */,
-				B73EFAB21D096A9600C6B3B2 /* customCallOutConstants.h */,
+				B73EFAA71D084C0500C6B3B2 /* customCallOutConstants.h */,
+				B68337391D08846F004226D3 /* changePasswordVCConstant.h */,
+				B683373A1D088653004226D3 /* changePasswordViewConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
