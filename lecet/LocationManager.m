@@ -14,6 +14,7 @@
 
 @implementation LocationManager
 @synthesize currentStatus;
+@synthesize currentLocation;
 
 - (instancetype)init {
     self = [super init];
@@ -49,7 +50,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    
+    self.currentLocation = [locations lastObject];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

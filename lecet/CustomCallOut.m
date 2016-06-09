@@ -8,11 +8,13 @@
 
 #import "CustomCallOut.h"
 
+#import <MapKit/MapKit.h>
 #import "TriangleView.h"
 #import "customCallOutConstants.h"
 
 @interface CustomCallOut(){
     CGFloat cornerRadius;
+    CGFloat lat, lng;
 }
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -88,8 +90,22 @@
         }
     }
     
+    NSDictionary *geoCode = dict[@"geocode"];
+    if (geoCode != nil) {
+        lat = [geoCode[@"lat"] floatValue];
+        lng = [geoCode[@"lng"] floatValue];
+    }
 }
 
 - (IBAction)tappedButtonDirection:(id)sender {
+    
+    CLLocationCoordinate2D endingCoord = CLLocationCoordinate2DMake(lat, lng);
+    MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:endingCoord addressDictionary:nil];
+    MKMapItem *endingItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
+    
+    NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+    [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+    
+    [endingItem openInMapsWithLaunchOptions:launchOptions];
 }
 @end

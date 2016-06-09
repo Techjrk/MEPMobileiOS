@@ -9,6 +9,7 @@
 #import "CallOutViewController.h"
 
 #import "CustomCallOut.h"
+#import "ProjectAnnotationView.h"
 
 @interface CallOutViewController ()<UIPopoverPresentationControllerDelegate>{
     NSDictionary *infoDict;
@@ -18,6 +19,7 @@
 
 @implementation CallOutViewController
 @synthesize sourceView;
+@synthesize projectPin;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -46,14 +48,11 @@
 
 }
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)sender {
-    UIView *view = sender.view;
-    CGPoint point = [sender locationInView:view];
-    UIView* subview = [view hitTest:point withEvent:nil];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
-    if ([subview isEqual:self.view]) {
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }
+    ProjectAnnotationView *annotation = (ProjectAnnotationView*)self.projectPin;
+    annotation.image = annotation.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
 
 }
 
@@ -67,6 +66,17 @@
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender {
+    UIView *view = sender.view;
+    CGPoint point = [sender locationInView:view];
+    UIView* subview = [view hitTest:point withEvent:nil];
+    
+    if ([subview isEqual:self.view]) {
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+
 }
 
 - (void)setInfo:(id)info {

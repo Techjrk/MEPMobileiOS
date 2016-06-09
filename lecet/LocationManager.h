@@ -14,6 +14,7 @@ typedef void(^StatusBlock)(BOOL canBeEnabled, CLAuthorizationStatus status);
 
 @interface LocationManager : NSObject
 @property (nonatomic) CLAuthorizationStatus currentStatus;
+@property (strong, nonatomic) CLLocation *currentLocation;
 + (void)isLocationServiceCanBeEnabled:(StatusBlock)block;
 - (void)requestAlways;
 - (void)requestWhenInUse;

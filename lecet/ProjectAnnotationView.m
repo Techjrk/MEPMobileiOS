@@ -8,8 +8,24 @@
 
 #import "ProjectAnnotationView.h"
 
+#import "ProjectPointAnnotation.h"
+
 @implementation ProjectAnnotationView
 
 @synthesize cargo;
+
+- (BOOL)isPreBid {
+    
+    BOOL returnValue = YES;
+    ProjectPointAnnotation *projectPoint = (ProjectPointAnnotation*)self.annotation;
+    NSDictionary *dict = projectPoint.cargo;
+    NSDictionary *projectStage = dict[@"projectStage"];
+    if (projectStage != nil) {
+        NSNumber *bidId = projectStage[@"parentId"];
+        returnValue = bidId.integerValue == 102;
+    }
+
+    return returnValue;
+}
 
 @end
