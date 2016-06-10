@@ -32,7 +32,8 @@
 #import "ProjectsNearMeViewController.h"
 #import "SettingsViewController.h"
 #import "MyProfileViewController.h"
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate>{
+
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate>{
 
     NSDate *currentDate;
     NSInteger currentPage;
@@ -562,6 +563,7 @@
 #pragma mark - DropDown Menu More Delegate and Method
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem {
 
+    shouldUsePushZoomAnimation = NO;
     switch (menuDropDownItem) {
         case DropDownMenuMyProfile:{
             
@@ -578,6 +580,7 @@
         }
         case DropDownMenuSettings:{
             SettingsViewController *controller = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+            controller.settingsViewControllerDelegate = self;
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }
@@ -712,6 +715,10 @@
             [_scrollPageView scrollRectToVisible:CGRectMake(currentPageOffset+kDeviceWidth, 0, kDeviceWidth, _scrollPageView.frame.size.height) animated:YES];
         }
     }
+}
+
+- (void)tappedLogout {  
+    [self.dashboardViewControllerDelegate logout];
 }
 
 @end

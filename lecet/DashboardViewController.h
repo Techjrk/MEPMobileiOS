@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+@protocol DashboardViewControllerDelegate <NSObject>
+- (void)logout;
+@end
+
 @interface DashboardViewController : BaseViewController
+@property (strong, nonatomic)id<DashboardViewControllerDelegate>dashboardViewControllerDelegate;
 @end

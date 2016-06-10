@@ -98,7 +98,6 @@
     NSNumber *fieldType = item[CONTACT_FIELD_TYPE];
     NSString *fieldData = item[CONTACT_FIELD_DATA];
     
-    NSLog(@"Email = %ld",(long)fieldType.integerValue);
     switch (fieldType.integerValue) {
         case ContactFieldTypePhone:{
             

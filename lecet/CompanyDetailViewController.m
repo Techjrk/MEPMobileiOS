@@ -297,7 +297,8 @@
 
 - (void)selectedContact:(id)item {
     usePushZoom = NO;
-    ContactDetailViewController *controller = [ContactDetailViewController new];
+    //ContactDetailViewController *controller = [ContactDetailViewController new];
+    ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
     [controller setCompanyContactDetails:item];
     [self.navigationController pushViewController:controller animated:YES];
 
