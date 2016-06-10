@@ -220,6 +220,7 @@
 - (void)tappedParticipant:(id)object {
     DB_Participant *record = object;
     usePushZoom = NO;
+    _participantsView.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
@@ -227,11 +228,12 @@
             controller.view.hidden = NO;
             [controller setInfo:returnObject];
             [self.navigationController pushViewController:controller animated:YES];
+            _participantsView.userInteractionEnabled = YES;
         } failure:^(id object) {
-            
+            _participantsView.userInteractionEnabled = YES;
         }];
     } failure:^(id object) {
-        
+        _participantsView.userInteractionEnabled = YES;
     }];
 
 }
@@ -309,6 +311,7 @@
 - (void)tappedProjectBidder:(id)object {
     DB_Bid *bid = object;
     usePushZoom = NO;
+    _projectBidder.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:bid.relationshipCompany.recordId success:^(id object) {
@@ -317,12 +320,12 @@
             controller.view.hidden = NO;
             [controller setInfo:returnObject];
             [self.navigationController pushViewController:controller animated:YES];
-        
+            _projectBidder.userInteractionEnabled = YES;
         } failure:^(id object) {
-            
+            _projectBidder.userInteractionEnabled = YES;
         }];
     } failure:^(id object) {
-
+        _projectBidder.userInteractionEnabled = YES;
     }];
 }
 

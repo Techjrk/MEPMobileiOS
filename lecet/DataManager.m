@@ -24,8 +24,8 @@
 #define kbaseUrl                            @"http://lecet.dt-staging.com/api/"
 #define kUrlLogin                           @"LecetUsers/login"
 #define kUrlBidsRecentlyMade                @"Bids/"
-#define kUrlBidsHappeningSoon               @"Projects/search"
-#define kUrlBidsRecentlyUpdated             @"Projects/search"
+#define kUrlBidsHappeningSoon               @"Projects?"
+#define kUrlBidsRecentlyUpdated             @"Projects?"
 #define kUrlBidsRecentlyAdded               @"Projects?"
 #define kUrlProjectDetail                   @"Projects/%li?"
 #define kUrlCompanyDetail                   @"Companies/%li?"
@@ -446,7 +446,14 @@
 
 - (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure{
 
+    /*
     NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+     */
+    
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
+    
+    NSDictionary *filter =@{@"filter[where][bidDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][bidDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
+
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:filter success:^(id object) {
         
@@ -457,8 +464,8 @@
             }
         }
         
-        NSDictionary *results = object[@"results"];
-        
+        //NSDictionary *results = object[@"results"];
+        NSArray *results = object;
         for (NSDictionary *item in results) {
             [self saveManageObjectProject:item].isHappenSoon = [NSNumber numberWithBool:YES];;
         }
@@ -475,7 +482,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:currentDate daysAhead:-10];
     
-    NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
+    NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"1000"};
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyAdded] parameters:filter success:^(id object) {
         
@@ -502,8 +509,15 @@
 }
 
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
+    /*
     NSDictionary *filter =@{@"filter[searchFilter][updatedInLast]":[NSString stringWithFormat:@"%li",(long)numberOfDays],
                             @"filter[order]":@"lastPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+     */
+    
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-(numberOfDays)];
+    
+    NSDictionary *filter =@{@"filter[where][lastPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][lastPublishDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"1000"};
+
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:filter success:^(id object) {
         
@@ -514,8 +528,8 @@
             }
         }
         
-        NSDictionary *results = object[@"results"];
-        
+        //NSDictionary *results = object[@"results"];
+        NSDictionary *results = object;
         for (NSDictionary *item in results) {
             [self saveManageObjectProject:item].isRecentUpdate = [NSNumber numberWithBool:YES];;
         }
