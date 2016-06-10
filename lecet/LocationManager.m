@@ -50,7 +50,8 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    self.currentLocation = [locations lastObject];
+    self.currentLocation = [[locations lastObject] copy];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

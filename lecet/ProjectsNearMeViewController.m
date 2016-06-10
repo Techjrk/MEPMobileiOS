@@ -22,6 +22,7 @@
     NSMutableArray *mapItems;
     BOOL isSearchLocation;
     BOOL showPrompt;
+    BOOL isLocationCaptured;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
@@ -59,8 +60,11 @@ float MilesToMeters(float miles) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationAppBecomeActive:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_LOCATION_DENIED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationAllowed:) name:NOTIFICATION_LOCATION_ALLOWED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
-        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+        
+        [[[DataManager sharedManager] locationManager] startUpdatingLocation];
+        //[self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
     }
 }
 
@@ -95,7 +99,16 @@ float MilesToMeters(float miles) {
 }
 
 - (void)NotificationLocationAllowed:(NSNotification*)notification {
-    [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+    [[[DataManager sharedManager] locationManager] startUpdatingLocation];
+
+    //[self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+}
+
+- (void)NotificationGPSLocation:(NSNotification*)notification {
+    if (!isLocationCaptured) {
+        isLocationCaptured = YES;
+        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+    }
 }
 
 - (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate {
@@ -128,7 +141,7 @@ float MilesToMeters(float miles) {
                         if (isSearchLocation) {
                             //[[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH")];
                         } else {
-                            //[[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR")];
+                            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR")];
                         }
                     }
                 }
