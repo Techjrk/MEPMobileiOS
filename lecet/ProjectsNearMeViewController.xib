@@ -61,7 +61,7 @@
                         <constraint firstItem="4X6-5H-z1L" firstAttribute="leading" secondItem="R5M-wU-TD7" secondAttribute="trailing" id="uny-uz-2fh"/>
                     </constraints>
                 </view>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="c4p-uc-d1n">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4p-uc-d1n">
                     <rect key="frame" x="0.0" y="84.5" width="414" height="651.5"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="bg0-y1-qB8"/>
