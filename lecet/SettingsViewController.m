@@ -18,6 +18,7 @@
 @end
 
 @implementation SettingsViewController
+@synthesize settingsViewControllerDelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,14 +64,14 @@
     
     switch (items) {
         case SettingItemsChangePassword:{
-            ChangePasswordViewController *controller = [ChangePasswordViewController new];
+            ChangePasswordViewController *controller = [[ChangePasswordViewController alloc] initWithNibName:@"ChangePasswordViewController" bundle:nil];
 
             [self.navigationController pushViewController:controller animated:YES];
             
             break;
         }
         case SettingItemsSignOut:{
-            
+            [self.settingsViewControllerDelegate tappedLogout];
             break;
         }
     }

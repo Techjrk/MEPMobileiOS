@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 #import "DashboardViewController.h"
 
-@interface LandingViewController ()<LoginDelegate>{
+@interface LandingViewController ()<LoginDelegate, DashboardViewControllerDelegate>{
     BOOL isLogin;
 }
 @end
@@ -26,13 +26,22 @@
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     controller.view.frame = self.view.frame;
     [self.view addSubview:controller.view];
-     
-    NSString *isLoginPersisted = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
 
+    NSString *isLoginPersisted = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
     if (isLoginPersisted != nil & isLoginPersisted.length>0) {
         isLogin = YES;
         [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(login) userInfo:nil repeats:NO];
     }
+
+}
+
+- (void)presentLogin {
+
+    if (!isLogin) {
+        isLogin = YES;
+        [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,10 +54,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!isLogin) {
-        isLogin = YES;
-        [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
-    }
+    [self presentLogin];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,10 +75,19 @@
     
     [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
         DashboardViewController *controller = [DashboardViewController new];
+        controller.dashboardViewControllerDelegate = self;
         [self.navigationController pushViewController:controller animated:YES];
     } failure:^(id object) {
     }];
 
+}
+
+- (void)logout {
+    [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:@"" serviceName:kKeychainServiceName];
+
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    isLogin = NO;
+    [self presentLogin];
 }
 
 @end
