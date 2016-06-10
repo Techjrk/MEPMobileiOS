@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="3wv-im-Hdg">
             <objects>
-                <viewController storyboardIdentifier="LAUNCHSCREEN" id="Pvi-D3-6Wq" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LAUNCHSCREEN" modalPresentationStyle="currentContext" id="Pvi-D3-6Wq" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="n0k-z5-2qa"/>
                         <viewControllerLayoutGuide type="bottom" id="7t2-qe-YmW"/>

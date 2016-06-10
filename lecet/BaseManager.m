@@ -225,13 +225,15 @@
     
     NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
     
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Error Code : %li", (long)response.statusCode] preferredStyle:UIAlertControllerStyleAlert];
+    NSInteger errorCode = response.statusCode;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Error Code : %li", (long)errorCode] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
                                                           style:UIAlertActionStyleDestructive
                                                         handler:^(UIAlertAction *action) {
-                                                            
+                                                            if (errorCode == 401) {
+                                                                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UNAUTHORIZED object:nil];
+                                                            }
                                                         }];
     
     [alert addAction:closeAction];

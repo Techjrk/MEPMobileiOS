@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)getProjectType;
 - (NSString*)address;
+- (NSString*)fullAddress;
 - (NSString*)bidAmountWithCurrency;
 - (NSString*)bidDateString;
 
