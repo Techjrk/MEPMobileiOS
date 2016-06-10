@@ -94,7 +94,7 @@
 
 - (void)selectedProjectAllBidItem:(id)object {
 
-    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    ProjectDetailViewController *detail = [[ProjectDetailViewController alloc] initWithNibName:@"ProjectDetailViewController" bundle:nil];
     detail.view.hidden = NO;
     DB_Bid *bid = object;
     [detail detailsFromProject:bid.relationshipProject];

@@ -63,14 +63,14 @@
 }
 
 - (void)tappedReOrderButton {
-    ProjectSortViewController *controller = [ProjectSortViewController new];
+    ProjectSortViewController *controller = [[ProjectSortViewController alloc] initWithNibName:@"ProjectSortViewController" bundle:nil];
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:YES completion:nil];
 }
 
 - (void)selectedContact:(id)object {
-    ContactDetailViewController *controller = [ContactDetailViewController new];
+    ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
     [controller setCompanyContactDetails:object];
     [self.navigationController pushViewController:controller animated:YES];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "MyProfileHeaderView.h"
+#import "myProfileConstant.h"
 
 @interface MyProfileHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
@@ -18,8 +19,14 @@
 
 - (void)awakeFromNib {
     
+    _leftLabel.font = MYPROFILE_HEADER_LABEL_FONT;
+    _leftLabel.textColor = MYPROFILE_HEADER_LABEL_FONT_COLOR;
+    
+    _rightLabel.font = MYPROFILE_HEADER_LABEL_FONT;
+    _rightLabel.textColor = MYPROFILE_HEADER_LABEL_FONT_COLOR;
+    
+    [self.view setBackgroundColor:MYPROFILE_HEADER_BG_COLOR];
 }
-
 
 - (void)setLeftLabelText:(NSString *)text {
     _leftLabel.text = text;

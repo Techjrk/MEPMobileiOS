@@ -586,11 +586,11 @@
     switch (menuDropDownItem) {
         case DropDownMenuMyProfile:{
             
-            /*
-            MyProfileViewController *controller = [MyProfileViewController new];
-            [self.navigationController presentViewController:controller animated:YES completion:nil];
-            */
-            [[DataManager sharedManager] featureNotAvailable];
+            
+            MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            //[[DataManager sharedManager] featureNotAvailable];
             break;
         }
         case DropDownMenuHiddenProjects: {

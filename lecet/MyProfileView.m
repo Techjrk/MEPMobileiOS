@@ -17,7 +17,7 @@
     
 }
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewMyProfile;
 
 @end
 
@@ -26,10 +26,10 @@
 #define kCellIdentifierTextField        @"kCellIdentifierTextField"
 
 - (void)awakeFromNib {
-    [_collectionView registerNib:[UINib nibWithNibName:[[MyProfileHeaderCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    [_collectionView registerNib:[UINib nibWithNibName:[[MyProfileTextFieldCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierTextField];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
+    [_collectionViewMyProfile registerNib:[UINib nibWithNibName:[[MyProfileHeaderCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    [_collectionViewMyProfile registerNib:[UINib nibWithNibName:[[MyProfileTextFieldCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierTextField];
+    _collectionViewMyProfile.delegate = self;
+    _collectionViewMyProfile.dataSource = self;
     [self setHeaderIndex];
 }
 
@@ -74,7 +74,7 @@
     CGSize size;
     
     cellHeight = kDeviceHeight * 0.07;
-    size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
+    size = CGSizeMake( _collectionViewMyProfile.frame.size.width, cellHeight);
     return size;
 }
 
