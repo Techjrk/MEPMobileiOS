@@ -25,6 +25,7 @@
     _rightLabel.font = MYPROFILE_HEADER_LABEL_FONT;
     _rightLabel.textColor = MYPROFILE_HEADER_LABEL_FONT_COLOR;
     
+    [self.view setBackgroundColor:MYPROFILE_HEADER_BG_COLOR];
 }
 
 - (void)setLeftLabelText:(NSString *)text {

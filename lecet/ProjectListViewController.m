@@ -107,7 +107,7 @@
     
 }
 
-- (void)hideProjectTrackList {
+- (void)hideProjectTrackListPro {
     [self dismissViewControllerAnimated:YES completion:Nil];
     [_projectTrackListViewControllerDelegate tappedDismissedProjectTrackList];
 }
