@@ -125,7 +125,7 @@
 "PROJECTSORT_BID_DATE_TEXT"                 =               "Bid Date";
 "PROJECTSORT_LAST_UPDATED_TEXT"             =               "Last Updated";
 "PROJECTSORT_DATE_ADDED_TEXT"               =               "Date Added";
-"PROJECTSORT_HIGH_TO_LOW_TEXT"              =               "Value:High to Low";
+"PROJECTSORT_HIGH_TO_LOW_TEXT"              =               "Value: High to Low";
 "PROJECTSORT_LOW_TO_HIGH_TEXT"              =               "Value: Low to High";
 
 
