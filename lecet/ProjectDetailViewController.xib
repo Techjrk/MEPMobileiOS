@@ -74,49 +74,49 @@
                                     <rect key="frame" x="-1" y="402" width="375" height="14"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzV-o1-dcv" customClass="CustomEntryField">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzV-o1-dcv" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="416" width="319" height="30"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="qU4-h6-eKJ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-3k-Zp2" customClass="CustomEntryField">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-3k-Zp2" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="446" width="319" height="70"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="Qbt-eR-sPJ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-A5-s8D" customClass="CustomEntryField">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-A5-s8D" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="516" width="319" height="70"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70.5" id="ELw-OG-eb0"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-A0-JKU" customClass="CustomEntryField">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-A0-JKU" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="586" width="319" height="70"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="58K-WT-52Z"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xf-0o-iWM" customClass="CustomEntryField">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xf-0o-iWM" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="656" width="319" height="71"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70.5" id="cWA-di-JNi"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67k-zk-hsU" customClass="CustomEntryField">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67k-zk-hsU" customClass="CustomEntryField">
                                     <rect key="frame" x="27" y="727" width="319" height="70"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="I7u-mG-4HD"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-K4-TIP" customClass="SeeAllView">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-K4-TIP" customClass="SeeAllView">
                                     <rect key="frame" x="27" y="797" width="319" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
