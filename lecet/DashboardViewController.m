@@ -569,9 +569,7 @@
             
             
             MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
-            //MyProfileViewController *controller = [MyProfileViewController new];
-            
-            [self.navigationController presentViewController:controller animated:YES completion:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             
             //[[DataManager sharedManager] featureNotAvailable];
             break;
