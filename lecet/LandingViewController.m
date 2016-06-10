@@ -33,6 +33,7 @@
         [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(login) userInfo:nil repeats:NO];
     }
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUnAuthorized:) name:NOTIFICATION_UNAUTHORIZED object:nil];
 }
 
 - (void)presentLogin {
@@ -42,6 +43,10 @@
         [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
     }
 
+}
+
+- (void)notificationUnAuthorized:(NSNotification*)notification {
+    [self logout];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,7 +76,8 @@
 
 - (void)login {
     
-    NSDate *currentDate = [DerivedNSManagedObject dateFromDayString:@"2015-11-01"];
+    NSString *dateString = [DerivedNSManagedObject shortDateStringFromDate:[NSDate date]];
+    NSDate *currentDate = [DerivedNSManagedObject dateFromShortDateString:dateString];
     
     [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
         DashboardViewController *controller = [DashboardViewController new];

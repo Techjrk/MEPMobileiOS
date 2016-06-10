@@ -46,7 +46,7 @@
     recordId = item.recordId;
     
     _labelTitle.text = item.title;
-    _labelLocation.text = [NSString stringWithFormat:@"%@, %@", item.county, item.state];
+    _labelLocation.text = [item address];
     
     _labelType.text = [item getProjectType];
     

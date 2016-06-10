@@ -74,7 +74,8 @@
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BidSoonItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierSoon];
     [_bidsCollectionView registerNib:[UINib nibWithNibName:[[BitItemRecentCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierRecent];
     _bidsCollectionView.backgroundColor = DASHBOARD_BIDS_BG_COLOR;
-    currentDate = [DerivedNSManagedObject dateFromDayString:@"2015-11-01"];
+    
+    currentDate = [DerivedNSManagedObject dateFromDayString:[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]]];
     [_calendarView setCalendarDate:currentDate];
     
     currentPage = 0;
@@ -179,7 +180,7 @@
 
     _calendarView.customCalendarDelegate = nil;
 
-    [[DataManager sharedManager] bidsHappeningSoon:-300 success:^(id object) {
+    [[DataManager sharedManager] bidsHappeningSoon:30 success:^(id object) {
         [self loadBidsHappeningSoon];
         _calendarView.customCalendarDelegate = self;
         [_calendarView reloadData];
@@ -222,8 +223,14 @@
 
 - (void)requestBidRecentlyAdded {
     
-    [[DataManager sharedManager] bidsRecentlyAddedLimit:@(100) success:^(id object) {
+    isDoneLoadingRecentlyAdded = NO;
+    [[DataManager sharedManager] bidsRecentlyAddedLimit:currentDate success:^(id object) {
         [self loadBidsRecentlyAdded];
+        isDoneLoadingRecentlyAdded = YES;
+        
+        if (currentPage == 2) {
+            [self pageChangedForced:YES];
+        }
     } failure:^(id object) {
         
     }];
@@ -411,11 +418,11 @@
 
 #pragma mark ScrollView Delegate
 
-- (void)pageChanged {
+- (void)pageChangedForced:(BOOL)forced{
     
     int page = _scrollPageView.contentOffset.x / _scrollPageView.frame.size.width;
 
-    if (page != currentPage) {
+    if ((page != currentPage) | forced) {
         currentPage = page;
         
         _pageControl.currentPage = currentPage;
@@ -440,6 +447,9 @@
             }
             case 2: {
                 
+                if (bidItemsRecentlyAdded == nil) {
+                    bidItemsRecentlyAdded = [NSMutableArray new];
+                }
                 currentBidItems = bidItemsRecentlyAdded;
                 
                 [_menuHeader setTitleFromCount:currentBidItems.count title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_ADDED_TEXT")];
@@ -463,11 +473,11 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self pageChanged];
+    [self pageChangedForced:NO];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [self pageChanged];
+    [self pageChangedForced:NO];
 }
 
 
@@ -477,9 +487,12 @@
     BidItemView *item = object;
     BidItemCollectionViewCell *cell = (BidItemCollectionViewCell*)[[item superview] superview];
 
+    _bidsCollectionView.userInteractionEnabled = NO;
     [[DataManager sharedManager] projectDetail:[item getProjectRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
+        _bidsCollectionView.userInteractionEnabled = YES;
     } failure:^(id object) {
+        _bidsCollectionView.userInteractionEnabled = YES;
     }];
 }
 
@@ -487,10 +500,12 @@
     BidSoonItem *item = object;
     BidSoonItemCollectionViewCell * cell = (BidSoonItemCollectionViewCell*)[[item superview] superview];
     
+    _bidsCollectionView.userInteractionEnabled = NO;
     [[DataManager sharedManager] projectDetail:[item getRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
+        _bidsCollectionView.userInteractionEnabled = YES;
     } failure:^(id object) {
-        
+        _bidsCollectionView.userInteractionEnabled = YES;
     }];
 
 }
@@ -552,10 +567,12 @@
     BidItemRecent *item = object;
     BitItemRecentCollectionViewCell * cell = (BitItemRecentCollectionViewCell*)[[item superview] superview];
     
+    item.userInteractionEnabled = NO;
     [[DataManager sharedManager] projectDetail:[item getRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
+        item.userInteractionEnabled = YES;
     } failure:^(id object) {
-        
+        item.userInteractionEnabled = YES;
     }];
 
 }
@@ -635,7 +652,7 @@
 
 - (void)displayChartItemsForRecentlyMade:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
     if (itemTag != nil) {
-        NSPredicate *predicate =nil;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES"];
         
         if (hasFocus) {
             
@@ -650,7 +667,7 @@
                 category = 105;
             }
             
-            predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li", category];
+            predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li AND isRecentMade == YES", category];
         }
         
         bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
@@ -663,7 +680,7 @@
 
 - (void)displayChartItemsForRecentlyUpdated:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
     if (itemTag != nil) {
-        NSPredicate *predicate =nil;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES"];
         
         if (hasFocus) {
             
@@ -678,12 +695,40 @@
                 category = 105;
             }
             
-            predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li", category];
+            predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li AND isRecentUpdate == YES", category];
         }
         
         bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyUpdated;
+        
+        [_bidsCollectionView reloadData];
+    }
+}
+
+- (void)displayChartItemsForRecentlyAdded:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
+    if (itemTag != nil) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES"];
+        
+        if (hasFocus) {
+            
+            NSInteger category = 0;
+            if([itemTag isEqualToString:@"01_HOUSING"]) {
+                category = 103;
+            } else if ([itemTag isEqualToString:@"02_ENGINEERING"]){
+                category = 101;
+            } else if ([itemTag isEqualToString:@"03_BUILDING"]){
+                category = 102;
+            } else if ([itemTag isEqualToString:@"04_UTILITIES"]){
+                category = 105;
+            }
+            
+            predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li AND isRecentAdded == YES", category];
+        }
+        
+        bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        
+        currentBidItems = bidItemsRecentlyAdded;
         
         [_bidsCollectionView reloadData];
     }
@@ -695,6 +740,8 @@
         [self displayChartItemsForRecentlyMade:itemTag hasFocus:hasFocus];
     } else if([chart isEqual:_chartRecentlyUpdated]) {
         [self displayChartItemsForRecentlyUpdated:itemTag hasFocus:hasFocus];
+    } else {
+        [self displayChartItemsForRecentlyAdded:itemTag hasFocus:hasFocus];
     }
 }
 

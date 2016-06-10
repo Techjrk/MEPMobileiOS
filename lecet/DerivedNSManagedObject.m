@@ -80,6 +80,13 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSDate *)dateFromShortDateString:(NSString *)dateString
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    return [formatter dateFromString:dateString];
+}
+
 + (NSString *)yearMonthFromDate:(NSDate *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -105,6 +112,16 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSDate *) getDate:(NSDate *)fromDate daysAhead:(NSUInteger)days
+{
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    dateComponents.day = days;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *previousDate = [calendar dateByAddingComponents:dateComponents
+                                                     toDate:fromDate
+                                                    options:0];
+    return previousDate;
+}
 
 + (BOOL)isEmpty:(id)object {
     return (object == nil

@@ -17,8 +17,45 @@
 }
 
 - (NSString *)address {
+    NSString *addr = @"";
+    if (self.county != nil) {
+        addr = [addr stringByAppendingString:self.county];
+        
+        if (self.state != nil) {
+            addr = [addr stringByAppendingString:@", "];
+        }
+    }
     
-    return [NSString stringWithFormat:@"%@, %@", self.county, self.state];
+    if (self.state != nil) {
+        addr = [addr stringByAppendingString:self.state];
+    }
+    return addr;
+}
+
+- (NSString *)fullAddress {
+    NSString *fullAddr = @"";
+    if(self.address1 != nil) {
+        fullAddr = [fullAddr stringByAppendingString:self.address1];
+        
+        if (self.state != nil | self.zip5 != nil) {
+            fullAddr = [fullAddr stringByAppendingString:@", "];
+        }
+    }
+    
+    if (self.state != nil) {
+        fullAddr = [fullAddr stringByAppendingString:self.state];
+
+        if (self.zip5 != nil) {
+            fullAddr = [fullAddr stringByAppendingString:@" "];
+        }
+    }
+    
+    if (self.zip5 != nil) {
+        fullAddr = [fullAddr stringByAppendingString:self.zip5];
+ 
+    }
+    
+    return fullAddr;
 }
 
 - (NSString*)bidAmountWithCurrency {

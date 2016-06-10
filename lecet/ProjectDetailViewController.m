@@ -132,7 +132,7 @@
     NSString *projectId = [NSString stringWithFormat:@"%@ %@", project.dodgeNumber, (project.dodgeVersion == nil ? @"":[NSString stringWithFormat:@"(v%@)", project.dodgeVersion]) ];
     [_fieldProjectId setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_ID") line1Text:projectId line2Text:nil];
 
-    NSString *address = [NSString stringWithFormat:@"%@, %@ %@", address1, project.state, project.zip5];
+    NSString *address = [project fullAddress];
     [_fieldAddress setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADDRESS") line1Text:address line2Text:nil];
     
     [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:[project getProjectType] line2Text:nil];
@@ -220,6 +220,7 @@
 - (void)tappedParticipant:(id)object {
     DB_Participant *record = object;
     usePushZoom = NO;
+    _participantsView.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
@@ -227,11 +228,12 @@
             controller.view.hidden = NO;
             [controller setInfo:returnObject];
             [self.navigationController pushViewController:controller animated:YES];
+            _participantsView.userInteractionEnabled = YES;
         } failure:^(id object) {
-            
+            _participantsView.userInteractionEnabled = YES;
         }];
     } failure:^(id object) {
-        
+        _participantsView.userInteractionEnabled = YES;
     }];
 
 }
@@ -309,6 +311,7 @@
 - (void)tappedProjectBidder:(id)object {
     DB_Bid *bid = object;
     usePushZoom = NO;
+    _projectBidder.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:bid.relationshipCompany.recordId success:^(id object) {
@@ -317,12 +320,12 @@
             controller.view.hidden = NO;
             [controller setInfo:returnObject];
             [self.navigationController pushViewController:controller animated:YES];
-        
+            _projectBidder.userInteractionEnabled = YES;
         } failure:^(id object) {
-            
+            _projectBidder.userInteractionEnabled = YES;
         }];
     } failure:^(id object) {
-
+        _projectBidder.userInteractionEnabled = YES;
     }];
 }
 

@@ -24,8 +24,8 @@
 #define kbaseUrl                            @"http://lecet.dt-staging.com/api/"
 #define kUrlLogin                           @"LecetUsers/login"
 #define kUrlBidsRecentlyMade                @"Bids/"
-#define kUrlBidsHappeningSoon               @"Projects/search"
-#define kUrlBidsRecentlyUpdated             @"Projects/search"
+#define kUrlBidsHappeningSoon               @"Projects?"
+#define kUrlBidsRecentlyUpdated             @"Projects?"
 #define kUrlBidsRecentlyAdded               @"Projects?"
 #define kUrlProjectDetail                   @"Projects/%li?"
 #define kUrlCompanyDetail                   @"Companies/%li?"
@@ -138,15 +138,16 @@
 
 - (DB_Project*)saveManageObjectProject:(NSDictionary*)project {
     
-    NSNumber *recordId = project[@"id"];
+    NSNumber *recordId = [DerivedNSManagedObject objectOrNil:project[@"id"]];
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
-
+    
     DB_Project *record = [DB_Project fetchObjectForPredicate:predicate key:nil ascending:YES];
     
     if (record == nil) {
         record = [DB_Project createEntity];
     }
-
+    
     record.recordId = @([recordId integerValue]);
     record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
@@ -173,8 +174,16 @@
     record.fipsCounty = [DerivedNSManagedObject objectOrNil:project[@"fipsCounty"]];
     record.firstPublishDate = [DerivedNSManagedObject objectOrNil:project[@"firstPublishDate"]];
     record.geoLocationType = [DerivedNSManagedObject objectOrNil:project[@"geoLocationType"]];
-    record.geocodeLat = [DerivedNSManagedObject objectOrNil:project[@"geocode"][@"lat"]];
-    record.geocodeLng = [DerivedNSManagedObject objectOrNil:project[@"geocode"][@"lng"]];
+    
+    NSDictionary *geoCode = [DerivedNSManagedObject objectOrNil:project[@"geocode"]];
+    if (geoCode != nil) {
+        record.geocodeLat = [DerivedNSManagedObject objectOrNil:project[@"geocode"][@"lat"]];
+        record.geocodeLng = [DerivedNSManagedObject objectOrNil:project[@"geocode"][@"lng"]];
+    } else {
+        record.geocodeLat = @0;
+        record.geocodeLng = @0;
+    }
+    
     record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
     record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
     record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
@@ -203,29 +212,33 @@
         
         record.bidYearMonthDay = bidDateString;
         record.bidYearMonth = yearMonth;
-
+        
     }
     
-    NSDictionary *projectStage = project[@"projectStage"];
+    NSDictionary *projectStage = [DerivedNSManagedObject objectOrNil:project[@"projectStage"]];
     if (projectStage != nil) {
-        record.projectStageName = projectStage[@"name"];
-        record.projectStageId = projectStage[@"id"];
-        record.projectStageParentId = projectStage[@"parentId"];
+        record.projectStageName = [DerivedNSManagedObject objectOrNil:projectStage[@"name"]];
+        record.projectStageId = [DerivedNSManagedObject objectOrNil:projectStage[@"id"]];
+        record.projectStageParentId = [DerivedNSManagedObject objectOrNil:projectStage[@"parentId"]];
     }
     
-    NSDictionary *primaryProjectType = project[@"primaryProjectType"];
+    NSDictionary *primaryProjectType = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectType"]];
     if (primaryProjectType != nil) {
-        record.primaryProjectTypeTitle = primaryProjectType[@"title"];
+        record.primaryProjectTypeTitle = [DerivedNSManagedObject objectOrNil:primaryProjectType[@"title"]];
         record.primaryProjectTypeBuildingOrHighway = [DerivedNSManagedObject objectOrNil:primaryProjectType[@"buildingOrHighway"]];
-        record.primaryProjectTypeId = primaryProjectType[@"id"];
+        record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:primaryProjectType[@"id"]];
         
-        NSDictionary *category = primaryProjectType[@"projectCategory"];
-        record.projectCategoryId = category[@"id"];
-        record.projectCategoryTitle = category[@"title"];
+        NSDictionary *category = [DerivedNSManagedObject objectOrNil:primaryProjectType[@"projectCategory"]];
+        if (category != nil) {
+            record.projectCategoryId = [DerivedNSManagedObject objectOrNil:category[@"id"]];
+            record.projectCategoryTitle = category[@"title"];
+        }
         
-        NSDictionary *projectGroup = category[@"projectGroup"];
-        record.projectGroupId = projectGroup[@"id"];
-        record.projectGroupTitle = projectGroup[@"title"];
+        NSDictionary *projectGroup = [DerivedNSManagedObject objectOrNil:category[@"projectGroup"]];
+        if (projectGroup != nil) {
+            record.projectGroupId = [DerivedNSManagedObject objectOrNil:projectGroup[@"id"]];
+            record.projectGroupTitle = [DerivedNSManagedObject objectOrNil:projectGroup[@"title"]];
+        }
     }
     
     NSDictionary *bids = project[@"bids"];
@@ -241,8 +254,7 @@
             [self saveManageObjectParticipant:participant].relationshipProject = record;
         }
     }
-
-
+    
     return record;
 }
 
@@ -381,9 +393,12 @@
 
 - (void)bidsRecentlyMade:(NSDate *)dateFilter  success:(APIBlock)success failure:(APIBlock)failure {
     
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:dateFilter daysAhead:-30];
+    
     NSDictionary *parameter = @{@"filter[include][0][project][primaryProjectType][projectCategory]":@"projectGroup",
                                 @"filter[include][1]":@"company",
                                 @"filter[include][2]":@"contact",
+                                @"filter[where][createDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth],
                                 @"filter[order]":@"createDate DESC",
                                 @"filter[limit]":@"100",
                                 @"filter[where][rank]":@"1"};
@@ -431,10 +446,15 @@
 
 - (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure{
 
-    //NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+    /*
+    NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+     */
     
-    NSDictionary *filter =@{@"filter[searchFilter][biddingWithin][min]":@"2015-11-01", @"filter[searchFilter][biddingWithin][max]":@"2015-11-30",@"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
+    
+    NSDictionary *filter =@{@"filter[where][bidDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][bidDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
 
+    
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:filter success:^(id object) {
         
         NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
@@ -444,8 +464,8 @@
             }
         }
         
-        NSDictionary *results = object[@"results"];
-        
+        //NSDictionary *results = object[@"results"];
+        NSArray *results = object;
         for (NSDictionary *item in results) {
             [self saveManageObjectProject:item].isHappenSoon = [NSNumber numberWithBool:YES];;
         }
@@ -458,8 +478,11 @@
 
 }
 
-- (void)bidsRecentlyAddedLimit:(NSNumber*)limit success:(APIBlock)success failure:(APIBlock)failure {
-    NSDictionary *filter =@{@"filter[limit]":[NSString stringWithFormat:@"%li",(long)limit.integerValue], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup"};
+- (void)bidsRecentlyAddedLimit:(NSDate*)currentDate success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:currentDate daysAhead:-10];
+    
+    NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"1000"};
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyAdded] parameters:filter success:^(id object) {
         
@@ -486,8 +509,15 @@
 }
 
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
+    /*
     NSDictionary *filter =@{@"filter[searchFilter][updatedInLast]":[NSString stringWithFormat:@"%li",(long)numberOfDays],
                             @"filter[order]":@"lastPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+     */
+    
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-(numberOfDays)];
+    
+    NSDictionary *filter =@{@"filter[where][lastPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][lastPublishDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"1000"};
+
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:filter success:^(id object) {
         
@@ -498,8 +528,8 @@
             }
         }
         
-        NSDictionary *results = object[@"results"];
-        
+        //NSDictionary *results = object[@"results"];
+        NSDictionary *results = object;
         for (NSDictionary *item in results) {
             [self saveManageObjectProject:item].isRecentUpdate = [NSNumber numberWithBool:YES];;
         }
