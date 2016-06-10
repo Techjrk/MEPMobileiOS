@@ -46,6 +46,7 @@
     BOOL shouldUsePushZoomAnimation;
     CGRect originatingFrame;
     NSDictionary *profileInfo;
+    BOOL isDoneLoadingRecentlyAdded;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
