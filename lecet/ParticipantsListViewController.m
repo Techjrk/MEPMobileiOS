@@ -111,6 +111,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
    
     DB_Participant *record = self.collectionItems[indexPath.row];
+    _collectionView.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         id returnObject = object;
         [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
@@ -118,11 +119,12 @@
             controller.view.hidden = NO;
             [controller setInfo:returnObject];
             [self.navigationController pushViewController:controller animated:YES];
+            _collectionView.userInteractionEnabled = YES;
         } failure:^(id object) {
-            
+            _collectionView.userInteractionEnabled = YES;
         }];
     } failure:^(id object) {
-        
+        _collectionView.userInteractionEnabled = YES;
     }];
     
 }
