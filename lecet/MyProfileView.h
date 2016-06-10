@@ -11,4 +11,5 @@
 
 @interface MyProfileView : BaseViewClass
 
+- (void)setInfo:(id)info;
 @end

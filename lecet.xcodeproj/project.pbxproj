@@ -57,12 +57,8 @@
 		B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66DF8171D0076000071A6B5 /* ContactDetailViewController.xib */; };
 		B66DF81F1D007D000071A6B5 /* ProjectBidsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */; };
 		B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */; };
-		B683370B1D080BB8004226D3 /* ProfileDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68337091D080BB8004226D3 /* ProfileDetailView.m */; };
-		B683370C1D080BB8004226D3 /* ProfileDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B683370A1D080BB8004226D3 /* ProfileDetailView.xib */; };
 		B68337101D080CFA004226D3 /* ProfileNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = B683370E1D080CFA004226D3 /* ProfileNavView.m */; };
 		B68337111D080CFA004226D3 /* ProfileNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B683370F1D080CFA004226D3 /* ProfileNavView.xib */; };
-		B68337181D081802004226D3 /* ProfileDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68337161D081802004226D3 /* ProfileDetailViewController.m */; };
-		B68337191D081802004226D3 /* ProfileDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68337171D081802004226D3 /* ProfileDetailViewController.xib */; };
 		B683371E1D081BD0004226D3 /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = B683371C1D081BD0004226D3 /* ChangePasswordView.m */; };
 		B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B683371D1D081BD0004226D3 /* ChangePasswordView.xib */; };
 		B68337241D081C3F004226D3 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68337221D081C3E004226D3 /* ChangePasswordViewController.m */; };
@@ -345,16 +341,10 @@
 		B66DF81C1D007D000071A6B5 /* ProjectBidsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidsListViewController.h; sourceTree = "<group>"; };
 		B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidsListViewController.m; sourceTree = "<group>"; };
 		B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidsListViewController.xib; sourceTree = "<group>"; };
-		B68337081D080BB8004226D3 /* ProfileDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDetailView.h; sourceTree = "<group>"; };
-		B68337091D080BB8004226D3 /* ProfileDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDetailView.m; sourceTree = "<group>"; };
-		B683370A1D080BB8004226D3 /* ProfileDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileDetailView.xib; sourceTree = "<group>"; };
 		B683370D1D080CFA004226D3 /* ProfileNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavView.h; sourceTree = "<group>"; };
 		B683370E1D080CFA004226D3 /* ProfileNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavView.m; sourceTree = "<group>"; };
 		B683370F1D080CFA004226D3 /* ProfileNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileNavView.xib; sourceTree = "<group>"; };
 		B68337131D0816B5004226D3 /* profileNavViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = profileNavViewConstant.h; sourceTree = "<group>"; };
-		B68337151D081802004226D3 /* ProfileDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDetailViewController.h; sourceTree = "<group>"; };
-		B68337161D081802004226D3 /* ProfileDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDetailViewController.m; sourceTree = "<group>"; };
-		B68337171D081802004226D3 /* ProfileDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileDetailViewController.xib; sourceTree = "<group>"; };
 		B683371B1D081BD0004226D3 /* ChangePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordView.h; sourceTree = "<group>"; };
 		B683371C1D081BD0004226D3 /* ChangePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordView.m; sourceTree = "<group>"; };
 		B683371D1D081BD0004226D3 /* ChangePasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordView.xib; sourceTree = "<group>"; };
@@ -940,16 +930,6 @@
 			name = ProjectBidsList;
 			sourceTree = "<group>";
 		};
-		B68337071D080B25004226D3 /* ProfileDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				B68337081D080BB8004226D3 /* ProfileDetailView.h */,
-				B68337091D080BB8004226D3 /* ProfileDetailView.m */,
-				B683370A1D080BB8004226D3 /* ProfileDetailView.xib */,
-			);
-			name = ProfileDetailView;
-			sourceTree = "<group>";
-		};
 		B68337121D080D02004226D3 /* ProfileNavView */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,16 +938,6 @@
 				B683370F1D080CFA004226D3 /* ProfileNavView.xib */,
 			);
 			name = ProfileNavView;
-			sourceTree = "<group>";
-		};
-		B68337141D0817B7004226D3 /* ProfileDetail */ = {
-			isa = PBXGroup;
-			children = (
-				B68337151D081802004226D3 /* ProfileDetailViewController.h */,
-				B68337161D081802004226D3 /* ProfileDetailViewController.m */,
-				B68337171D081802004226D3 /* ProfileDetailViewController.xib */,
-			);
-			name = ProfileDetail;
 			sourceTree = "<group>";
 		};
 		B683371A1D081A1E004226D3 /* ChangePassword */ = {
@@ -1077,6 +1047,28 @@
 				B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */,
 			);
 			name = MoreMenu;
+			sourceTree = "<group>";
+		};
+		B6E4044D1D0AB2B000F82F1D /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B6411BD21D09B4B5002B6E88 /* MyProfileTextFieldView */,
+				B6411BCC1D09B2A1002B6E88 /* MyProfileHeaderView */,
+				B6411BC01D09ACCC002B6E88 /* MyProfileView */,
+			);
+			name = MyProfile;
+			sourceTree = "<group>";
+		};
+		B6E4044E1D0AB2CC00F82F1D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				B6411BB31D0973F5002B6E88 /* SettingsCPView */,
+				B6411BAD1D0973A6002B6E88 /* SettingNoticationsView */,
+				B6411BA11D096874002B6E88 /* SettingsView */,
+				B68337261D0820E9004226D3 /* ChangePasswordCTextField */,
+				B683371A1D081A1E004226D3 /* ChangePassword */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		B6EFFE8D1D04557F00727323 /* ContactAllListView */ = {
@@ -1231,7 +1223,6 @@
 				B6411BBA1D09ACA3002B6E88 /* My Profile */,
 				B6411B9B1D0966DD002B6E88 /* Settings */,
 				B68337201D081C11004226D3 /* ChangePassword */,
-				B68337141D0817B7004226D3 /* ProfileDetail */,
 				B6EFFE931D04590400727323 /* ContactAllList */,
 				B66DF81B1D007CCA0071A6B5 /* ProjectBidsList */,
 				B66DF81A1D0076080071A6B5 /* ContactDetail */,
@@ -1324,16 +1315,9 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				B6411BD21D09B4B5002B6E88 /* MyProfileTextFieldView */,
-				B6411BCC1D09B2A1002B6E88 /* MyProfileHeaderView */,
-				B6411BC01D09ACCC002B6E88 /* MyProfileView */,
-				B6411BB31D0973F5002B6E88 /* SettingsCPView */,
-				B6411BAD1D0973A6002B6E88 /* SettingNoticationsView */,
-				B6411BA11D096874002B6E88 /* SettingsView */,
-				B68337261D0820E9004226D3 /* ChangePasswordCTextField */,
-				B683371A1D081A1E004226D3 /* ChangePassword */,
+				B6E4044E1D0AB2CC00F82F1D /* Setting */,
+				B6E4044D1D0AB2B000F82F1D /* MyProfile */,
 				B68337121D080D02004226D3 /* ProfileNavView */,
-				B68337071D080B25004226D3 /* ProfileDetailView */,
 				B6EFFE991D048FAA00727323 /* ContactDetailView */,
 				B6EFFE8D1D04557F00727323 /* ContactAllListView */,
 				B6FC23581D042CEC00296386 /* ProjectAllAssociatedProject */,
@@ -1754,7 +1738,6 @@
 				B644746D1D00437E0001B244 /* ProjectSortViewController.xib in Resources */,
 				B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */,
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
-				B68337191D081802004226D3 /* ProfileDetailViewController.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
@@ -1792,7 +1775,6 @@
 				B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */,
 				B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */,
 				B6411BB21D0973F0002B6E88 /* SettingsNotificationsView.xib in Resources */,
-				B683370C1D080BB8004226D3 /* ProfileDetailView.xib in Resources */,
 				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
@@ -1857,7 +1839,6 @@
 				B73EFA8D1D0301AC00C6B3B2 /* GoToSettingsViewController.m in Sources */,
 				B644746C1D00437E0001B244 /* ProjectSortViewController.m in Sources */,
 				B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */,
-				B68337181D081802004226D3 /* ProfileDetailViewController.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,
@@ -1936,7 +1917,6 @@
 				B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */,
 				B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */,
 				B68337371D083102004226D3 /* ChnagePasswordCollectionViewCell.m in Sources */,
-				B683370B1D080BB8004226D3 /* ProfileDetailView.m in Sources */,
 				B73EFABB1D09ABC400C6B3B2 /* (null) in Sources */,
 				B73EFA891D01D77A00C6B3B2 /* ProjectsNearMeViewController.m in Sources */,
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,

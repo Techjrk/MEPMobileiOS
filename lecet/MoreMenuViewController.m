@@ -61,6 +61,7 @@
 
 - (void)setInfo:(id)info {
     infoDict = info;
+  
 }
 
 @end

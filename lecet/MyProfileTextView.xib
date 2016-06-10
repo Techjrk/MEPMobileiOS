@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qx-zl-Cph">
-                    <rect key="frame" x="0.0" y="0.0" width="504" height="56"/>
+                    <rect key="frame" x="10" y="0.0" width="484" height="56"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -26,8 +26,8 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="0Qx-zl-Cph" secondAttribute="bottom" id="5pg-zK-75N"/>
                 <constraint firstItem="0Qx-zl-Cph" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6sL-qd-Ved"/>
-                <constraint firstAttribute="trailing" secondItem="0Qx-zl-Cph" secondAttribute="trailing" id="hhu-2w-25o"/>
-                <constraint firstItem="0Qx-zl-Cph" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kio-YM-5Vl"/>
+                <constraint firstAttribute="trailing" secondItem="0Qx-zl-Cph" secondAttribute="trailing" constant="10" id="hhu-2w-25o"/>
+                <constraint firstItem="0Qx-zl-Cph" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="kio-YM-5Vl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="311" y="39"/>

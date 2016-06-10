@@ -22,4 +22,18 @@
     // Initialization code
 }
 
+
+- (void)setHeaderLeftTitle:(NSString *)title {
+    [_myProfileHeaderView setLeftLabelText:title];
+}
+
+- (void)setHeaderRightTitle:(NSString *)title {
+    [_myProfileHeaderView setRightLabelText:title];
+}
+
+- (void)hideRightLabel:(BOOL)hide {
+    [_myProfileHeaderView hideRightLabel:hide];
+}
+
+
 @end

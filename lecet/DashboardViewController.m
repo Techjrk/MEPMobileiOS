@@ -45,6 +45,7 @@
     NSMutableDictionary *bidMarker;
     BOOL shouldUsePushZoomAnimation;
     CGRect originatingFrame;
+    NSDictionary *profileInfo;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -568,10 +569,11 @@
         case DropDownMenuMyProfile:{
             
             
-            MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
-            [self.navigationController pushViewController:controller animated:YES];
+            //MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
+            //[controller setInfo:profileInfo];
+            //[self.navigationController pushViewController:controller animated:YES];
+            [[DataManager sharedManager] featureNotAvailable];
             
-            //[[DataManager sharedManager] featureNotAvailable];
             break;
         }
         case DropDownMenuHiddenProjects: {
@@ -595,11 +597,12 @@
 
     [[DataManager sharedManager] userInformation:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
 
+        profileInfo = object;
         MoreMenuViewController *controller  = [MoreMenuViewController new];
         controller.moreMenuViewControllerDelegate = self;
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [controller setInfo:object];
+        [controller setInfo:profileInfo];
         [self presentViewController:controller  animated:NO completion:nil];
         
     } failure:^(id object) {

@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileViewController">
             <connections>
+                <outlet property="myProfileView" destination="8n6-xn-8HP" id="Bck-FO-GUa"/>
                 <outlet property="profileNavView" destination="0AS-9q-jjX" id="qO8-RE-Suw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

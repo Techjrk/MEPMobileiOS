@@ -20,4 +20,9 @@
     // Initialization code
 }
 
+
+- (void)setText:(NSString *)text {
+    [_myProfileTextView setText:text];
+}
+
 @end

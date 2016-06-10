@@ -11,4 +11,7 @@
 
 @interface MyProfileTextView : BaseViewClass
 
+
+- (NSString *)text;
+- (void)setText:(NSString *)text;
 @end

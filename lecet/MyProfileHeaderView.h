@@ -10,4 +10,9 @@
 #import "BaseViewClass.h"
 @interface MyProfileHeaderView : BaseViewClass
 
+- (void)setLeftLabelText:(NSString *)text;
+- (void)setRightLabelText:(NSString *)text;
+- (void)hideRightLabel:(BOOL)hide;
+
+
 @end

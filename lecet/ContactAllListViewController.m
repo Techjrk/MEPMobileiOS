@@ -27,6 +27,7 @@
     [super viewDidLoad];
     _projectNavBarView.projectNavViewDelegate = self;
     _contactAllListView.contactAllListViewDelegate = self;
+    [_projectNavBarView hideReorderButton:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

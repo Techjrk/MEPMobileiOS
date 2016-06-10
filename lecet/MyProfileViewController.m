@@ -8,9 +8,14 @@
 
 #import "MyProfileViewController.h"
 #import "ProfileNavView.h"
+#import "MyProfileView.h"
 
-@interface MyProfileViewController ()<ProfileNavViewDelegate>
+@interface MyProfileViewController ()<ProfileNavViewDelegate> {
+    
+    id myProfileInfo;
+}
 @property (weak, nonatomic) IBOutlet ProfileNavView *profileNavView;
+@property (weak, nonatomic) IBOutlet MyProfileView *myProfileView;
 
 @end
 
@@ -24,6 +29,10 @@
     _profileNavView.profileNavViewDelegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [_myProfileView setInfo:myProfileInfo];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -33,6 +42,10 @@
 
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)setInfo:(id)info {
+    myProfileInfo = info;
 }
 
 @end

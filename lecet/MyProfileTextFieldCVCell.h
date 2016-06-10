@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyProfileTextFieldCVCell : UICollectionViewCell
+- (void)setText:(NSString *)text;
 
 @end

@@ -10,4 +10,8 @@
 
 @interface MyProfileHeaderCollectionViewCell : UICollectionViewCell
 
+- (void)setHeaderLeftTitle:(NSString *)title;
+- (void)setHeaderRightTitle:(NSString *)title;
+- (void)hideRightLabel:(BOOL)hide;
+
 @end

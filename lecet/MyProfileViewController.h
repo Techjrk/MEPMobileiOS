@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyProfileViewController : UIViewController
-
+- (void)setInfo:(id)info;
 @end
