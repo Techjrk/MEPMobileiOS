@@ -10,6 +10,29 @@
 #import "BaseViewClass.h"
 
 @interface MyProfileView : BaseViewClass
+- (void)setFirstName:(NSString *)text;
+- (void)setLastName:(NSString *)text;
+- (void)setEmailAddress:(NSString *)text;
+- (void)setTitle:(NSString *)text;
+- (void)setOrganization:(NSString *)text;
+- (void)setPhone:(NSString *)text;
+- (void)setFax:(NSString *)text;
+- (void)setStreetAddress:(NSString *)text;
+- (void)setCity:(NSString *)text;
+- (void)setState:(NSString *)text;
+- (void)setZIP:(NSString *)text;
+
+- (NSString *)getFirstName;
+- (NSString *)getLastName;
+- (NSString *)getEmail;
+- (NSString *)getTitle;
+- (NSString *)getOrganization;
+- (NSString *)getPhone;
+- (NSString *)getFax;
+- (NSString *)getStreetAddress;
+- (NSString *)getCity;
+- (NSString *)getState;
+- (NSString *)getZip;
 
 - (void)setInfo:(id)info;
 @end

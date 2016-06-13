@@ -100,13 +100,14 @@
     
     switch (fieldType.integerValue) {
         case ContactFieldTypePhone:{
-            
             fieldData = [[fieldData stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
-            
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]]];
             break;
         }
-            
+        case ContactFieldTypeAccount:{
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        }
         case ContactFieldTypeWeb:{
             NSString *field = [fieldData uppercaseString];
             if (![field hasPrefix:@"HTTP://"]) {

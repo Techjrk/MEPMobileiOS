@@ -7,10 +7,11 @@
 //
 
 #import "MyProfileView.h"
-#import "MyProfileHeaderCollectionViewCell.h"
-#import "MyProfileTextFieldCVCell.h"
 #import "myProfileConstant.h"
-@interface MyProfileView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
+#import "MyProfileCustomTextFieldView.h"
+#import "MyProfileOneTextFieldView.h"
+#import "MyProfileTwoTextFieldView.h"
+@interface MyProfileView (){
     NSDictionary *collectionItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
@@ -20,20 +21,57 @@
     NSDictionary *profileInfo;
     
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewMyProfile;
+@property (weak, nonatomic) IBOutlet MyProfileCustomTextFieldView *nameTextFieldview;
+@property (weak, nonatomic) IBOutlet MyProfileOneTextFieldView *emailAddressTextFieldView;
+@property (weak, nonatomic) IBOutlet MyProfileOneTextFieldView *titleTextFieldView;
+@property (weak, nonatomic) IBOutlet MyProfileOneTextFieldView *organizationTextFieldView;
+
+@property (weak, nonatomic) IBOutlet MyProfileTwoTextFieldView *phoneFaxTextFieldView;
+@property (weak, nonatomic) IBOutlet MyProfileOneTextFieldView *streetAddressTextFieldView;
+@property (weak, nonatomic) IBOutlet MyProfileOneTextFieldView *cityTextFieldView;
+@property (weak, nonatomic) IBOutlet MyProfileTwoTextFieldView *stateZipTextFieldView;
+
+
 
 @end
 
 @implementation MyProfileView
-#define kCellIdentifier                 @"kCellIdentifier"
-#define kCellIdentifierTextField        @"kCellIdentifierTextField"
+
 
 - (void)awakeFromNib {
-    [_collectionViewMyProfile registerNib:[UINib nibWithNibName:[[MyProfileHeaderCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    [_collectionViewMyProfile registerNib:[UINib nibWithNibName:[[MyProfileTextFieldCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierTextField];
 
-    [self setHeader];
+    [_containerView setBackgroundColor:MYPROFILE_CONTAINERVIEW_BG_COLOR];
+    [self.view setBackgroundColor:MYPROFILE_CONTAINERVIEW_BG_COLOR];
+    
+    [_nameTextFieldview setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_NAME")];
+    [_nameTextFieldview setHideTitleRightLabel:YES];
+    
+    [_emailAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_EMAIL_ADDRESS")];
+    [_emailAddressTextFieldView setHideTitleRightLabel:YES];
+    
+    [_titleTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_TITLE")];
+    [_titleTextFieldView setHideTitleRightLabel:YES];
+    
+    [_organizationTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ORGANIZATION")];
+    [_organizationTextFieldView setHideTitleRightLabel:YES];
+    
+    [_phoneFaxTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_PHONE")];
+    [_phoneFaxTextFieldView setHideTitleRightLabel:NO];
+    [_phoneFaxTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_FAX")];
+    
+    [_streetAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STREETADDRESS")];
+    [_streetAddressTextFieldView setHideTitleRightLabel:YES];
+    
+    [_cityTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_CITY")];
+    [_cityTextFieldView setHideTitleRightLabel:YES];
+    
+    [_stateZipTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STATE")];
+    [_stateZipTextFieldView setHideTitleRightLabel:NO];
+    [_stateZipTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ZIP")];
+    
 }
 
 - (void)setHeader{
@@ -60,145 +98,92 @@
     
 }
 
-#pragma mark - UICollectionView source and delegate
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    MyProfileHeaderCollectionViewCell *cellHeader = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    MyProfileTextFieldCVCell *celltextField = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierTextField forIndexPath:indexPath];
-
-        NSString *intToString = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-        if ([headerIndex containsObject:intToString]) {
-            [self setHeaderTitleForCell:cellHeader forIndexPath:indexPath];
-            return cellHeader;
-        }
-        
-            
-           // [self configureTextFieldViewCell:celltextField forIndexPath:indexPath];
-           // [self setTextFieldInfoCell:celltextField forIndexPath:indexPath];
-            if (indexPath.row == 1) {
-                [self addBottomBorderLineView:celltextField];
-            }
-            
-            
-            return celltextField;
-        
-
-
-    
-    
-}
-- (void)setHeaderTitleForCell:(id)cellHeader forIndexPath:(NSIndexPath *)indexPath{
-    MyProfileHeaderCollectionViewCell *cell = cellHeader;
-    NSString *leftTitle = [myProfileDataInfo objectAtIndex:indexPath.row];
-    if ([leftTitle isEqualToString:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_PHONE")]) {
-        [cell setHeaderRightTitle:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_FAX")];
-        [cell hideRightLabel:NO];
-    }
-    if ([leftTitle isEqualToString:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STATE")]) {
-        [cell setHeaderRightTitle:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ZIP")];
-        [cell hideRightLabel:NO];
-    }
-    [cell setHeaderLeftTitle:leftTitle];
-}
-
-- (void)setTextFieldInfoCell:(id)cellTextField forIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.row == 1) {
-        [self setTextAndCheckDataIfEmpty:cellTextField dictName:@"first_name"];
-    }
-    if (indexPath.row == 2) {
-        [self setTextAndCheckDataIfEmpty:cellTextField dictName:@"last_name"];
-    }
-    if (indexPath.row == 4) {
-        [self setTextAndCheckDataIfEmpty:cellTextField dictName:@"email"];
-    }
-    if (indexPath.row == 16) {
-        
-    }
-    
-}
-- (void)setTextAndCheckDataIfEmpty:(id)cellTextField dictName:(NSString *)dictName {
-    MyProfileTextFieldCVCell *cell = cellTextField;
-    
-        if ([DerivedNSManagedObject objectOrNil:profileInfo[dictName]]) {
-            [cell setText:profileInfo[dictName]];
-        }
-
-    
-}
-
-- (void)configureTextFieldViewCell:(UIView *)cell forIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.row == 1) {
-        [self addBottomBorderLineView:cell];
-    }
-    
-}
-
-- (void)addBottomBorderLineView:(UIView*)view {
-    CGFloat borderWidth = 1.0;
-    CGFloat borderSpacing = 15.0f;
-    UIView* mask = [[UIView alloc] initWithFrame:CGRectMake(borderSpacing, view.frame.size.height - borderWidth, view.frame.size.width - (borderSpacing *2), 1)];
-    mask.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
-    [view addSubview:mask];
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 17;
-
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CGSize size;
-    
-    cellHeight = kDeviceHeight * 0.07;
-    size = CGSizeMake( _collectionViewMyProfile.frame.size.width, cellHeight);
-    return size;
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
-{
-        return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
 
 - (void)setInfo:(id)info {
     profileInfo = info;
-    _collectionViewMyProfile.delegate = self;
-    _collectionViewMyProfile.dataSource = self;
-    [_collectionViewMyProfile reloadData];
- 
+    
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
-{
-    MyProfileHeaderCollectionViewCell *cellHeader = (MyProfileHeaderCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    MyProfileTextFieldCVCell *celltextField = (MyProfileTextFieldCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
- 
-    cellHeader = nil;
-    celltextField = nil;
+- (void)setFirstName:(NSString *)text {
+    [_nameTextFieldview setTextFieldOneText:text];
 }
 
+- (void)setLastName:(NSString *)text {
+    [_nameTextFieldview setTextFieldTwoText:text];
+}
+
+- (void)setEmailAddress:(NSString *)text {
+    [_emailAddressTextFieldView setTextFielText:text];
+}
+
+- (void)setTitle:(NSString *)text {
+    [_titleTextFieldView setTextFielText:text];
+}
+
+- (void)setOrganization:(NSString *)text {
+    [_organizationTextFieldView setTextFielText:text];
+}
+
+- (void)setPhone:(NSString *)text {
+    [_phoneFaxTextFieldView setTextFieldLeftText:text];
+}
+
+- (void)setFax:(NSString *)text {
+    [_phoneFaxTextFieldView setTextFielRightText:text];
+}
+
+- (void)setStreetAddress:(NSString *)text {
+    [_streetAddressTextFieldView setTextFielText:text];
+}
+
+- (void)setCity:(NSString *)text {
+    [_cityTextFieldView setTextFielText:text];
+}
+
+- (void)setState:(NSString *)text {
+    [_stateZipTextFieldView setTextFieldLeftText:text];
+}
+
+- (void)setZIP:(NSString *)text {
+    [_stateZipTextFieldView setTextFielRightText:text];
+}
+
+
+#pragma mark - Get Text
+
+- (NSString *)getFirstName {
+    return [_nameTextFieldview getTextOne];
+}
+- (NSString *)getLastName {
+    return [_nameTextFieldview getTextTwo];
+}
+- (NSString *)getEmail {
+    return [_emailAddressTextFieldView getText];
+}
+- (NSString *)getTitle {
+    return [_titleTextFieldView getText];
+}
+- (NSString *)getOrganization {
+    return [_organizationTextFieldView getText];
+}
+- (NSString *)getPhone {
+    return [_phoneFaxTextFieldView getTextLeft];
+}
+- (NSString *)getFax {
+    return [_phoneFaxTextFieldView getTextRight];
+}
+- (NSString *)getStreetAddress {
+    return [_streetAddressTextFieldView getText];
+}
+- (NSString *)getCity {
+    return [_cityTextFieldView getText];
+}
+- (NSString *)getState {
+    return [_stateZipTextFieldView getTextLeft];
+}
+- (NSString *)getZip {
+    return [_stateZipTextFieldView getTextRight];
+}
 
 @end

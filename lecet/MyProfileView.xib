@@ -3,11 +3,21 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileView">
             <connections>
-                <outlet property="collectionViewMyProfile" destination="lXS-lI-7hZ" id="dfc-KP-qac"/>
+                <outlet property="cityTextFieldView" destination="gpD-wQ-v92" id="n6G-64-kNz"/>
+                <outlet property="containerView" destination="imr-WE-h18" id="VnH-1n-R3V"/>
+                <outlet property="emailAddressTextFieldView" destination="90R-w7-Iqi" id="Yk4-B5-Vj3"/>
+                <outlet property="nameTextFieldview" destination="jRC-vm-9Jk" id="9v6-HI-5od"/>
+                <outlet property="organizationTextFieldView" destination="Pko-aJ-R90" id="xvS-gr-TIc"/>
+                <outlet property="phoneFaxTextFieldView" destination="0sb-D7-8en" id="uOx-12-25o"/>
+                <outlet property="scrollView" destination="otI-co-lNH" id="JOs-1U-H1Q"/>
+                <outlet property="stateZipTextFieldView" destination="uKW-sE-l8z" id="rSm-kV-buT"/>
+                <outlet property="streetAddressTextFieldView" destination="UFO-s8-BXZ" id="AS0-YA-frg"/>
+                <outlet property="titleTextFieldView" destination="heG-p3-AUu" id="zTC-Fr-Jbw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,24 +26,106 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lXS-lI-7hZ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otI-co-lNH">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g1Q-Ey-pNn">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imr-WE-h18">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-vm-9Jk" customClass="MyProfileCustomTextFieldView">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90R-w7-Iqi" customClass="MyProfileOneTextFieldView">
+                                    <rect key="frame" x="0.0" y="120" width="600" height="80"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heG-p3-AUu" customClass="MyProfileOneTextFieldView">
+                                    <rect key="frame" x="0.0" y="200" width="600" height="79"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pko-aJ-R90" customClass="MyProfileOneTextFieldView">
+                                    <rect key="frame" x="0.0" y="279" width="600" height="79"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-D7-8en" customClass="MyProfileTwoTextFieldView">
+                                    <rect key="frame" x="0.0" y="358" width="600" height="79"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFO-s8-BXZ" customClass="MyProfileOneTextFieldView">
+                                    <rect key="frame" x="0.0" y="437" width="600" height="79"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpD-wQ-v92" customClass="MyProfileOneTextFieldView">
+                                    <rect key="frame" x="0.0" y="516" width="600" height="79"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKW-sE-l8z" customClass="MyProfileTwoTextFieldView">
+                                    <rect key="frame" x="0.0" y="595" width="600" height="79"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="UFO-s8-BXZ" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="1kh-90-45o"/>
+                                <constraint firstItem="Pko-aJ-R90" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="2aC-tS-InM"/>
+                                <constraint firstItem="gpD-wQ-v92" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="3Ny-bM-c1m"/>
+                                <constraint firstAttribute="height" constant="800" id="7nG-vl-oYW"/>
+                                <constraint firstAttribute="trailing" secondItem="Pko-aJ-R90" secondAttribute="trailing" id="8yg-3i-I5x"/>
+                                <constraint firstAttribute="trailing" secondItem="gpD-wQ-v92" secondAttribute="trailing" id="Bld-MK-rgg"/>
+                                <constraint firstAttribute="trailing" secondItem="uKW-sE-l8z" secondAttribute="trailing" id="CRL-VG-wPs"/>
+                                <constraint firstItem="gpD-wQ-v92" firstAttribute="top" secondItem="UFO-s8-BXZ" secondAttribute="bottom" id="DqS-KX-jxK"/>
+                                <constraint firstItem="UFO-s8-BXZ" firstAttribute="top" secondItem="0sb-D7-8en" secondAttribute="bottom" id="Ebd-dJ-8V1"/>
+                                <constraint firstItem="heG-p3-AUu" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="Mok-UU-JKB"/>
+                                <constraint firstAttribute="trailing" secondItem="90R-w7-Iqi" secondAttribute="trailing" id="OSU-A2-IRt"/>
+                                <constraint firstAttribute="trailing" secondItem="UFO-s8-BXZ" secondAttribute="trailing" id="SNs-cT-00E"/>
+                                <constraint firstItem="jRC-vm-9Jk" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="VRH-lx-E1R"/>
+                                <constraint firstItem="Pko-aJ-R90" firstAttribute="top" secondItem="heG-p3-AUu" secondAttribute="bottom" id="XbK-tf-k53"/>
+                                <constraint firstAttribute="trailing" secondItem="0sb-D7-8en" secondAttribute="trailing" id="a9n-mD-b2q"/>
+                                <constraint firstItem="90R-w7-Iqi" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="dhf-QS-TaR"/>
+                                <constraint firstItem="0sb-D7-8en" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="g2M-PI-xEC"/>
+                                <constraint firstItem="0sb-D7-8en" firstAttribute="top" secondItem="Pko-aJ-R90" secondAttribute="bottom" id="ghD-ss-3wL"/>
+                                <constraint firstAttribute="trailing" secondItem="heG-p3-AUu" secondAttribute="trailing" id="i8w-FW-ou6"/>
+                                <constraint firstItem="uKW-sE-l8z" firstAttribute="top" secondItem="gpD-wQ-v92" secondAttribute="bottom" id="kWz-tw-bKS"/>
+                                <constraint firstAttribute="trailing" secondItem="jRC-vm-9Jk" secondAttribute="trailing" id="lgL-d2-R3H"/>
+                                <constraint firstItem="heG-p3-AUu" firstAttribute="top" secondItem="90R-w7-Iqi" secondAttribute="bottom" id="npO-te-lgW"/>
+                                <constraint firstItem="uKW-sE-l8z" firstAttribute="leading" secondItem="imr-WE-h18" secondAttribute="leading" id="q3h-r4-mrH"/>
+                                <constraint firstItem="90R-w7-Iqi" firstAttribute="top" secondItem="jRC-vm-9Jk" secondAttribute="bottom" id="y8h-sD-8WP"/>
+                                <constraint firstItem="jRC-vm-9Jk" firstAttribute="top" secondItem="imr-WE-h18" secondAttribute="top" id="yYA-vd-5Le"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="imr-WE-h18" secondAttribute="trailing" id="72d-Dd-CD0"/>
+                        <constraint firstItem="imr-WE-h18" firstAttribute="leading" secondItem="otI-co-lNH" secondAttribute="leading" id="M1a-U3-AKV"/>
+                        <constraint firstAttribute="bottom" secondItem="imr-WE-h18" secondAttribute="bottom" constant="-103" id="gD2-1U-E50"/>
+                        <constraint firstAttribute="width" secondItem="imr-WE-h18" secondAttribute="width" id="jOO-fM-4zh"/>
+                        <constraint firstItem="imr-WE-h18" firstAttribute="top" secondItem="otI-co-lNH" secondAttribute="top" id="rSW-Oc-ab8"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="lXS-lI-7hZ" secondAttribute="bottom" id="0BB-mX-3AA"/>
-                <constraint firstAttribute="trailing" secondItem="lXS-lI-7hZ" secondAttribute="trailing" id="TVj-tN-FUp"/>
-                <constraint firstItem="lXS-lI-7hZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ulF-Gq-shX"/>
-                <constraint firstItem="lXS-lI-7hZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wmW-LH-zMH"/>
+                <constraint firstItem="heG-p3-AUu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="2hW-0e-YYH"/>
+                <constraint firstItem="90R-w7-Iqi" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="47V-j0-jO2"/>
+                <constraint firstItem="jRC-vm-9Jk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="Rux-JM-mJU"/>
+                <constraint firstAttribute="trailing" secondItem="otI-co-lNH" secondAttribute="trailing" id="W8m-j1-75C"/>
+                <constraint firstItem="0sb-D7-8en" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="Za6-p8-Hwj"/>
+                <constraint firstItem="UFO-s8-BXZ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="cKd-Md-EPs"/>
+                <constraint firstItem="jRC-vm-9Jk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="cP4-k9-gkM"/>
+                <constraint firstItem="otI-co-lNH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dW9-Z6-pdF"/>
+                <constraint firstItem="uKW-sE-l8z" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="jax-5q-80u"/>
+                <constraint firstItem="otI-co-lNH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kV3-TK-YMY"/>
+                <constraint firstItem="gpD-wQ-v92" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="lJK-9M-6Rl"/>
+                <constraint firstItem="Pko-aJ-R90" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="mcC-It-HV1"/>
+                <constraint firstAttribute="bottom" secondItem="otI-co-lNH" secondAttribute="bottom" id="rU9-h7-T6k"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="cP4-k9-gkM"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="139" y="311.5"/>
         </view>
     </objects>
 </document>
