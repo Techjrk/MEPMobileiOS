@@ -132,11 +132,11 @@
 
 
 //CDAssociatedProjectViewController.xib
-"ASSOCIATE_ALL_LIST_PROJECT"                =          "ASSOCIATED PROJECTS";
+"ASSOCIATE_ALL_LIST_PROJECT"                =               "ASSOCIATED PROJECTS";
 
 
 //ContactAllListViewController.xib
-"CONTACT_ALL_LIST_NAVBAR_TITLE"             =          "CONTACTS";
+"CONTACT_ALL_LIST_NAVBAR_TITLE"             =               "CONTACTS";
 
 //CustomCallOut.xib
 "CALLOUT_PRE_BID"                           =               "PRE-BID";
@@ -144,7 +144,7 @@
 "CALLOUT_GET_DIRECTION"                     =               "Get Directions";
 
 //ChangePasswordViewController.xib
-"CHANGEPASSWORD_NAV_TITLE"                  =          "Change Password";
+"CHANGEPASSWORD_NAV_TITLE"                  =               "Change Password";
 
 //ChangePasswordView.h
 "CPASSWORD_LEFT_TITLE_CURRENT"              =               "Current";
@@ -167,40 +167,42 @@
 //BidderListViewController.xib
 "BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
 //SettingCollectionViewCell.xib
-"SETTING_CVCELL_SIGNOUT"                    =           "Sign out";
+"SETTING_CVCELL_SIGNOUT"                    =               "Sign out";
 
 //ParticipantsListViewController.xib
 "PARITICPANT_LIST_BOTTOM_LABEL"             =               "PARTICIPANTS";
 //SettingCPView.xib
-"SETTING_CPVIEW_TEXT"                       =           "Change Password";
+"SETTING_CPVIEW_TEXT"                       =               "Change Password";
 
 //SettingNotificationView.xib
-"SETTING_NOTIFICATIONS_TEXT"                =           "Notifications";
+"SETTING_NOTIFICATIONS_TEXT"                =               "Notifications";
 
 //ProfileNavView.xib
-"PROFILE_NAV_RIGHT_BUTTON_TEXT"             =           "SAVE";
+"PROFILE_NAV_RIGHT_BUTTON_TEXT"             =               "SAVE";
 
 //MyProfileView.xib
-"MYPROFILE_HEADER_TEXT_NAME"                =           "NAME";
-"MYPROFILE_HEADER_TEXT_EMAIL_ADDRESS"       =           "EMAIL ADDRESS";
-"MYPROFILE_HEADER_TEXT_TITLE"               =           "TITLE";
-"MYPROFILE_HEADER_TEXT_ORGANIZATION"        =           "ORGANIZATION";
-"MYPROFILE_HEADER_TEXT_PHONE"               =           "PHONE";
-"MYPROFILE_HEADER_TEXT_FAX"                 =           "FAX";
-"MYPROFILE_HEADER_TEXT_STREETADDRESS"       =           "STREET ADDRESS";
-"MYPROFILE_HEADER_TEXT_CITY"                =           "CITY";
-"MYPROFILE_HEADER_TEXT_STATE"               =           "STATE";
-"MYPROFILE_HEADER_TEXT_ZIP"                 =           "ZIP";
+"MYPROFILE_HEADER_TEXT_NAME"                =               "NAME";
+"MYPROFILE_HEADER_TEXT_EMAIL_ADDRESS"       =               "EMAIL ADDRESS";
+"MYPROFILE_HEADER_TEXT_TITLE"               =               "TITLE";
+"MYPROFILE_HEADER_TEXT_ORGANIZATION"        =               "ORGANIZATION";
+"MYPROFILE_HEADER_TEXT_PHONE"               =               "PHONE";
+"MYPROFILE_HEADER_TEXT_FAX"                 =               "FAX";
+"MYPROFILE_HEADER_TEXT_STREETADDRESS"       =               "STREET ADDRESS";
+"MYPROFILE_HEADER_TEXT_CITY"                =               "CITY";
+"MYPROFILE_HEADER_TEXT_STATE"               =               "STATE";
+"MYPROFILE_HEADER_TEXT_ZIP"                 =               "ZIP";
 
-"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME"                =      "FIRST NAME";
-"MYPROFILE_PLACEHOLDER_TEXT_LASTNAME"                =      "LAST NAME";
-"MYPROFILE_PLACEHOLDER_TEXT_EMAIL_ADDRESS"       =           "EMAIL ADDRESS";
-"MYPROFILE_PLACEHOLDER_TEXT_TITLE"               =           "TITLE";
-"MYPROFILE_PLACEHOLDER_TEXT_ORGANIZATION"        =           "ORGANIZATION";
-"MYPROFILE_PLACEHOLDER_TEXT_PHONE"               =           "PHONE";
-"MYPROFILE_PLACEHOLDER_TEXT_FAX"                 =           "FAX";
-"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS"       =           "STREET ADDRESS";
-"MYPROFILE_PLACEHOLDER_TEXT_CITY"                =           "CITY";
-"MYPROFILE_PLACEHOLDER_TEXT_STATE"               =           "STATE";
-"MYPROFILE_PLACEHOLDER_TEXT_ZIP"                 =           "ZIP";
+"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME"      =               "FIRST NAME";
+"MYPROFILE_PLACEHOLDER_TEXT_LASTNAME"       =               "LAST NAME";
+"MYPROFILE_PLACEHOLDER_TEXT_EMAIL_ADDRESS"  =               "EMAIL ADDRESS";
+"MYPROFILE_PLACEHOLDER_TEXT_TITLE"          =               "TITLE";
+"MYPROFILE_PLACEHOLDER_TEXT_ORGANIZATION"   =               "ORGANIZATION";
+"MYPROFILE_PLACEHOLDER_TEXT_PHONE"          =               "PHONE";
+"MYPROFILE_PLACEHOLDER_TEXT_FAX"            =               "FAX";
+"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS"  =               "STREET ADDRESS";
+"MYPROFILE_PLACEHOLDER_TEXT_CITY"           =               "CITY";
+"MYPROFILE_PLACEHOLDER_TEXT_STATE"          =               "STATE";
+"MYPROFILE_PLACEHOLDER_TEXT_ZIP"            =               "ZIP";
 
+//HiddenProjectsViewController.xib
+"HIDDEN_PROJECTS_TITLE"                     =               "Hidden Projects";

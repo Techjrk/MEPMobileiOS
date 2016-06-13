@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HiddenProjectsViewController">
+            <connections>
+                <outlet property="collectionView" destination="3uf-Jn-8sf" id="CQ2-l2-kgt"/>
+                <outlet property="countView" destination="3BR-QR-Cs0" id="bb8-L3-kOk"/>
+                <outlet property="topBar" destination="pbq-PZ-QXk" id="o1N-kB-gzY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxf-P5-0uc" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbq-PZ-QXk" customClass="ContactNavBarView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="84.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BR-QR-Cs0">
+                            <rect key="frame" x="0.0" y="84" width="414" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3uf-Jn-8sf">
+                            <rect key="frame" x="0.5" y="134.5" width="414" height="601.5"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dka-gU-ZTy">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="b3r-vp-0Gb"/>
+                                <outlet property="delegate" destination="-1" id="2Ym-Ak-RG5"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="pbq-PZ-QXk" secondAttribute="trailing" id="5RV-hz-afy"/>
+                        <constraint firstItem="pbq-PZ-QXk" firstAttribute="leading" secondItem="mxf-P5-0uc" secondAttribute="leading" id="9Ug-2H-zmr"/>
+                        <constraint firstItem="3uf-Jn-8sf" firstAttribute="leading" secondItem="mxf-P5-0uc" secondAttribute="leading" id="9aA-ab-Oqw"/>
+                        <constraint firstItem="pbq-PZ-QXk" firstAttribute="top" secondItem="mxf-P5-0uc" secondAttribute="top" id="JL4-gf-C1d"/>
+                        <constraint firstItem="3uf-Jn-8sf" firstAttribute="centerX" secondItem="3BR-QR-Cs0" secondAttribute="centerX" id="MD1-oB-Cn6"/>
+                        <constraint firstItem="pbq-PZ-QXk" firstAttribute="height" secondItem="mxf-P5-0uc" secondAttribute="height" multiplier="0.115" id="RFT-pe-pQN"/>
+                        <constraint firstItem="3BR-QR-Cs0" firstAttribute="height" secondItem="mxf-P5-0uc" secondAttribute="height" multiplier="0.068" id="Tyj-t2-aFf"/>
+                        <constraint firstAttribute="trailing" secondItem="3BR-QR-Cs0" secondAttribute="trailing" id="XLd-ob-bXq"/>
+                        <constraint firstAttribute="bottom" secondItem="3uf-Jn-8sf" secondAttribute="bottom" id="lbv-tt-46k"/>
+                        <constraint firstItem="3BR-QR-Cs0" firstAttribute="top" secondItem="pbq-PZ-QXk" secondAttribute="bottom" id="qFp-ac-VlS"/>
+                        <constraint firstAttribute="trailing" secondItem="3uf-Jn-8sf" secondAttribute="trailing" id="rbR-jj-FP0"/>
+                        <constraint firstItem="3uf-Jn-8sf" firstAttribute="trailing" secondItem="3BR-QR-Cs0" secondAttribute="trailing" id="tLc-Ik-KgK"/>
+                        <constraint firstItem="3uf-Jn-8sf" firstAttribute="top" secondItem="3BR-QR-Cs0" secondAttribute="bottom" id="vSh-rd-XaF"/>
+                        <constraint firstItem="3BR-QR-Cs0" firstAttribute="leading" secondItem="mxf-P5-0uc" secondAttribute="leading" id="xWX-gD-q9Y"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="9aA-ab-Oqw"/>
+                            <exclude reference="rbR-jj-FP0"/>
+                            <exclude reference="tLc-Ik-KgK"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mxf-P5-0uc" secondAttribute="trailing" id="8X1-jU-ae2"/>
+                <constraint firstItem="mxf-P5-0uc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fRd-VJ-o5L"/>
+                <constraint firstItem="mxf-P5-0uc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lSf-80-jrT"/>
+                <constraint firstAttribute="bottom" secondItem="mxf-P5-0uc" secondAttribute="bottom" id="nIT-XY-SzX"/>
+                <constraint firstItem="3uf-Jn-8sf" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="s3h-bG-ISF"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
