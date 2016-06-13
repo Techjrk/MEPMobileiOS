@@ -587,11 +587,9 @@
         case DropDownMenuMyProfile:{
             
             
-            //MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
-            //[controller setInfo:profileInfo];
-            //[self.navigationController pushViewController:controller animated:YES];
-            [[DataManager sharedManager] featureNotAvailable];
-            
+            MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
+            [controller setInfo:profileInfo];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         }
         case DropDownMenuHiddenProjects: {

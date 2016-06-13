@@ -30,7 +30,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_myProfileView setInfo:myProfileInfo];
+   
+    [self setTextFieldText];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,11 +42,50 @@
 #pragma mark - Nav View Delegate
 
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    switch (profileNavItem) {
+        case ProfileNavItemBackButton:
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+            
+        case ProfileNavItemSaveButton:
+            [self saveData];
+            break;
+    }
+    
+    
+}
+
+- (void)saveData {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 - (void)setInfo:(id)info {
     myProfileInfo = info;
+}
+
+- (void)setTextFieldText {
+
+    if ([DerivedNSManagedObject objectOrNil:myProfileInfo[@"first_name"]]) {
+        [_myProfileView setFirstName:myProfileInfo[@"first_name"]];
+    }
+
+    if ([DerivedNSManagedObject objectOrNil:myProfileInfo[@"last_name"]]) {
+        [_myProfileView setLastName:myProfileInfo[@"last_name"]];
+    }
+    
+    if ([DerivedNSManagedObject objectOrNil:myProfileInfo[@"email"]]) {
+        [_myProfileView setEmailAddress:myProfileInfo[@"email"]];
+    }
+    [_myProfileView setOrganization:@"Laborers-Employers CooperaMon and EducaMon Trust (LECET)"];
+    [_myProfileView setTitle:@"Director of Operations"];
+    [_myProfileView setPhone:@"(718) 501-1234"];
+    [_myProfileView setFax:@"(718) 432-9873"];
+    [_myProfileView setStreetAddress:@"905 16th St NW"];
+    [_myProfileView setCity:@"Washington"];
+    [_myProfileView setState:@"DC"];
+    [_myProfileView setZIP:@"20006"];
+    
 }
 
 @end

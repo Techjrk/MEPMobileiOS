@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileCustomTextFieldView">
+            <connections>
+                <outlet property="constraintHeight" destination="hqY-m3-pD7" id="fgw-nR-KNX"/>
+                <outlet property="lineView" destination="4aU-JH-Dai" id="JqX-cg-7En"/>
+                <outlet property="myProfileHeaderView" destination="jlD-tg-W6K" id="7bC-vM-jyE"/>
+                <outlet property="textFieldBelow" destination="u4K-u4-Lg3" id="VbH-gU-wIg"/>
+                <outlet property="textFieldOne" destination="sHI-uC-LdW" id="oTg-Cs-SbT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlD-tg-W6K" customClass="MyProfileHeaderView">
+                    <rect key="frame" x="0.0" y="0.0" width="366" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Emj-cI-8bZ">
+                    <rect key="frame" x="15" y="60" width="336" height="120"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHI-uC-LdW">
+                            <rect key="frame" x="0.0" y="0.0" width="336" height="60"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aU-JH-Dai">
+                            <rect key="frame" x="0.0" y="60" width="336" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="250" constant="1" id="wGO-gF-Gqr"/>
+                            </constraints>
+                        </view>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4K-u4-Lg3">
+                            <rect key="frame" x="0.0" y="60" width="336" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="4aU-JH-Dai" firstAttribute="height" secondItem="Emj-cI-8bZ" secondAttribute="height" multiplier="0.005" id="0ZG-a6-Q9z"/>
+                        <constraint firstItem="4aU-JH-Dai" firstAttribute="centerY" secondItem="Emj-cI-8bZ" secondAttribute="centerY" id="6qB-mG-dCB"/>
+                        <constraint firstItem="u4K-u4-Lg3" firstAttribute="top" secondItem="sHI-uC-LdW" secondAttribute="bottom" id="APk-XJ-oQt"/>
+                        <constraint firstItem="4aU-JH-Dai" firstAttribute="leading" secondItem="Emj-cI-8bZ" secondAttribute="leading" id="EEe-oG-fOD"/>
+                        <constraint firstItem="sHI-uC-LdW" firstAttribute="top" secondItem="Emj-cI-8bZ" secondAttribute="top" id="FZ3-Ti-oEB"/>
+                        <constraint firstAttribute="trailing" secondItem="u4K-u4-Lg3" secondAttribute="trailing" id="I54-5l-Opp"/>
+                        <constraint firstItem="u4K-u4-Lg3" firstAttribute="leading" secondItem="Emj-cI-8bZ" secondAttribute="leading" id="NOd-PR-xUu"/>
+                        <constraint firstItem="4aU-JH-Dai" firstAttribute="centerX" secondItem="Emj-cI-8bZ" secondAttribute="centerX" id="PCl-lw-ezo"/>
+                        <constraint firstItem="4aU-JH-Dai" firstAttribute="width" secondItem="Emj-cI-8bZ" secondAttribute="width" multiplier="0.8" id="Pp4-UF-9Wf"/>
+                        <constraint firstAttribute="trailing" secondItem="sHI-uC-LdW" secondAttribute="trailing" id="PwF-hE-k3r"/>
+                        <constraint firstAttribute="bottom" secondItem="u4K-u4-Lg3" secondAttribute="bottom" id="bnn-QT-Yl2"/>
+                        <constraint firstAttribute="trailing" secondItem="4aU-JH-Dai" secondAttribute="trailing" id="igF-RP-jAJ"/>
+                        <constraint firstItem="sHI-uC-LdW" firstAttribute="leading" secondItem="Emj-cI-8bZ" secondAttribute="leading" id="nZp-sP-RKk"/>
+                        <constraint firstItem="sHI-uC-LdW" firstAttribute="height" secondItem="Emj-cI-8bZ" secondAttribute="height" multiplier="0.5" id="t8b-bU-gER"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="0ZG-a6-Q9z"/>
+                            <exclude reference="Pp4-UF-9Wf"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jlD-tg-W6K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fht-T0-uH8"/>
+                <constraint firstItem="Emj-cI-8bZ" firstAttribute="top" secondItem="jlD-tg-W6K" secondAttribute="bottom" id="MZr-Ar-YMS"/>
+                <constraint firstItem="jlD-tg-W6K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VQP-hH-0cw"/>
+                <constraint firstItem="Emj-cI-8bZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Vu4-nI-cYU"/>
+                <constraint firstAttribute="bottom" secondItem="Emj-cI-8bZ" secondAttribute="bottom" id="Xhj-FR-mMH"/>
+                <constraint firstAttribute="trailing" secondItem="Emj-cI-8bZ" secondAttribute="trailing" constant="15" id="bsC-wY-Yjd"/>
+                <constraint firstAttribute="trailing" secondItem="jlD-tg-W6K" secondAttribute="trailing" id="gt5-JF-Ye7"/>
+                <constraint firstItem="jlD-tg-W6K" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.33" id="hqY-m3-pD7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="135" y="206"/>
+        </view>
+    </objects>
+</document>

@@ -26,7 +26,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-Jm-Vc2" customClass="ProjectAllAssociatedProjectView">
-                            <rect key="frame" x="8" y="81" width="584" height="519"/>
+                            <rect key="frame" x="10" y="81" width="580" height="519"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -36,8 +36,8 @@
                         <constraint firstAttribute="trailing" secondItem="ZGq-9S-ceK" secondAttribute="trailing" id="EAX-Xu-FlW"/>
                         <constraint firstItem="ZGq-9S-ceK" firstAttribute="leading" secondItem="rxm-8e-NBB" secondAttribute="leading" id="GEK-5O-Wxu"/>
                         <constraint firstAttribute="bottom" secondItem="P2E-Jm-Vc2" secondAttribute="bottom" id="R3U-6V-GgK"/>
-                        <constraint firstItem="P2E-Jm-Vc2" firstAttribute="leading" secondItem="rxm-8e-NBB" secondAttribute="leading" constant="8" id="XgL-CF-O8c"/>
-                        <constraint firstAttribute="trailing" secondItem="P2E-Jm-Vc2" secondAttribute="trailing" constant="8" id="aFN-iQ-a7X"/>
+                        <constraint firstItem="P2E-Jm-Vc2" firstAttribute="leading" secondItem="rxm-8e-NBB" secondAttribute="leading" constant="10" id="XgL-CF-O8c"/>
+                        <constraint firstAttribute="trailing" secondItem="P2E-Jm-Vc2" secondAttribute="trailing" constant="10" id="aFN-iQ-a7X"/>
                         <constraint firstItem="ZGq-9S-ceK" firstAttribute="top" secondItem="rxm-8e-NBB" secondAttribute="top" id="t4p-xX-fKr"/>
                     </constraints>
                 </view>
