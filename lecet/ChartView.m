@@ -62,7 +62,7 @@
     _labelUtilities.textColor = CHART_BUTTON_UTILITIES_COLOR;
     
     _piechart.customPieChartDelegate = self;
-    
+        
 }
 
 - (void)enableButton:(UIButton*)button enabled:(BOOL)enabled {

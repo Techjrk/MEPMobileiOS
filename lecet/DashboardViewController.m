@@ -568,12 +568,12 @@
     BidItemRecent *item = object;
     BitItemRecentCollectionViewCell * cell = (BitItemRecentCollectionViewCell*)[[item superview] superview];
     
-    item.userInteractionEnabled = NO;
+    _bidsCollectionView.userInteractionEnabled = NO;
     [[DataManager sharedManager] projectDetail:[item getRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
-        item.userInteractionEnabled = YES;
+        _bidsCollectionView.userInteractionEnabled = YES;
     } failure:^(id object) {
-        item.userInteractionEnabled = YES;
+        _bidsCollectionView.userInteractionEnabled = YES;
     }];
 
 }

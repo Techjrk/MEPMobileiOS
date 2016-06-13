@@ -23,8 +23,7 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
     self.backgroundColor = [UIColor clearColor];
-    self.opaque = NO;
-    self.layer.contentsScale = [UIScreen mainScreen].scale;
+    self.opaque = YES;
     pieItems = [[NSMutableDictionary alloc] init];
     
 }
