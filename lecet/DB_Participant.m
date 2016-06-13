@@ -12,7 +12,21 @@
 @implementation DB_Participant
 
 - (NSString *)address {
-    return [NSString stringWithFormat:@"%@, %@", self.county, self.state];
+    NSString *addr = @"";
+    
+    if (self.county != nil) {
+        addr = [addr stringByAppendingString:self.county];
+        
+        if (self.state != nil ) {
+            addr = [addr stringByAppendingString:@", "];
+        }
+    }
+    
+    if (self.state != nil) {
+        addr = [addr stringByAppendingString:self.state];
+    }
+    
+    return addr;
 }
 
 @end

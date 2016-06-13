@@ -86,6 +86,7 @@
     
     self.view.hidden = YES;
     _containerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
+    _scrollView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _headerView.projectHeaderDelegate = self;
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
