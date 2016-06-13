@@ -312,7 +312,7 @@
 #pragma mark - ContactAll List ViewController Method
 - (IBAction)tappedToSeeAllContact:(id)sender {
     usePushZoom = NO;
-    ContactAllListViewController *controller = [ContactAllListViewController new];
+    ContactAllListViewController *controller = [[ContactAllListViewController alloc] initWithNibName:@"ContactAllListViewController" bundle:nil];
     [controller setInfoForContactList:contactAllList];
     [self.navigationController pushViewController:controller animated:YES];
 }
