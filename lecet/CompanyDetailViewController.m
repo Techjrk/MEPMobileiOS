@@ -278,7 +278,7 @@
 
 - (void)tappededSeeAllAssociateProject {
     usePushZoom = NO;
-    CDAssociatedProjectViewController *controller = [CDAssociatedProjectViewController new];
+    CDAssociatedProjectViewController *controller = [[CDAssociatedProjectViewController alloc] initWithNibName:@"CDAssociatedProjectViewController" bundle:nil];
     [controller setContractorName:companyName];
     [controller setInfoForAssociatedProjects:associatedProjects];
     [self.navigationController pushViewController:controller animated:YES];
