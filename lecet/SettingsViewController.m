@@ -71,7 +71,26 @@
             break;
         }
         case SettingItemsSignOut:{
-            [self.settingsViewControllerDelegate tappedLogout];
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:NSLocalizedLanguage(@"SETTINGS_SIGNOUT") preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_YES")
+                                                                  style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction *action) {
+                                                                    [self.settingsViewControllerDelegate tappedLogout];
+                                                                }];
+            
+            [alert addAction:yesAction];
+
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_NO")
+                                                                  style:UIAlertActionStyleDestructive
+                                                                handler:^(UIAlertAction *action) {
+                                                                    
+                                                                }];
+            
+            [alert addAction:noAction];
+
+            [self presentViewController:alert animated:YES completion:nil];
             break;
         }
     }

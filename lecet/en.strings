@@ -10,7 +10,9 @@
 "ERROR"                                     =               "ERROR!";
 "ALERT"                                     =               "ALERT";
 "INTERNET_DISCONNECTED"                     =               "There was an error connecting to the internet.  Please verify that your WiFi or Mobile data is active";
-"BUTTON_CLOSE"                              =               "CLOSE";
+"BUTTON_CLOSE"                              =               "Close";
+"BUTTON_YES"                                =               "Yes";
+"BUTTON_NO"                                 =               "No";
 
 //LoginViewController.xib
 "LOGIN_BUTTON_TEXT"                         =               "LOGIN";
@@ -153,7 +155,9 @@
 "CPASSWORD_PLACEHOLDER_CONFIRM"             =               "Confirm new password";
 
 //SettingViewController.xib
-"SETTINGS_NAV_TITLE"                        =           "Settings";
+"SETTINGS_NAV_TITLE"                        =               "Settings";
+"SETTINGS_SIGNOUT"                          =               "Sign out from Lecet MEP";
+
 //ProjectsNearMeViewController.xib
 "PROJECTS_NEAR_LOCATION_EMPTY"              =               "Please enter a location to search";
 "PROJECTS_NEAR_LOCATION_INVALID"            =               "The location you entered is invalid";
