@@ -20,6 +20,7 @@
     NSMutableArray *myProfileDataInfo;
     NSDictionary *profileInfo;
     UIView *activeView;
+    UITextView *tempTextView;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -59,7 +60,6 @@
     
     [_organizationTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ORGANIZATION")];
     [_organizationTextFieldView setHideTitleRightLabel:YES];
-
     
     [_phoneFaxTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_PHONE")];
     [_phoneFaxTextFieldView setLeftTFKeyboard:UIKeyboardTypePhonePad];
@@ -131,8 +131,6 @@
     
 }
 
-
-
 - (void)setInfo:(id)info {
     profileInfo = info;
     
@@ -155,7 +153,12 @@
 }
 
 - (void)setOrganization:(NSString *)text {
+    
+    CGSize size = [self totalHeightContentInTextFieldView:text];
+    NSLayoutConstraint *height = _constraintOrganizationHeight;
+    _constraintOrganizationHeight.constant = height.constant + size.height ;
     [_organizationTextFieldView setTextFielText:text];
+    
 }
 
 - (void)setPhone:(NSString *)text {
@@ -248,6 +251,14 @@
     
     
 }
+- (CGSize)totalHeightContentInTextFieldView:(NSString *)text {
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(self.view.frame.size.width, FLT_MAX)];
+    
+    return size;
+}
+
 
 #pragma mark - KeyBoard
 - (void)keyboardDidShow:(NSNotification *)notification
@@ -273,5 +284,7 @@
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
 }
+
+
 
 @end
