@@ -18,4 +18,8 @@
 
 - (NSString *)getTextLeft;
 - (NSString *)getTextRight;
+
+
+- (void)setLeftTFKeyboard:(UIKeyboardType)keyboard;
+- (void)setRightTFKeyboard:(UIKeyboardType)keyboard;
 @end

@@ -13,6 +13,6 @@
 - (void)setHideTitleRightLabel:(BOOL)hide;
 - (void)setTextFielText:(NSString *)text;
 - (void)setSecureTextField:(BOOL)secure;
-
+- (void)setKeyBoard:(UIKeyboardType)keyBoard;
 - (NSString *)getText;
 @end

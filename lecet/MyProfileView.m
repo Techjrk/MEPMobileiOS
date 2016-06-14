@@ -51,6 +51,7 @@
     
     [_emailAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_EMAIL_ADDRESS")];
     [_emailAddressTextFieldView setHideTitleRightLabel:YES];
+    [_emailAddressTextFieldView setKeyBoard:UIKeyboardTypeEmailAddress];
     
     [_titleTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_TITLE")];
     [_titleTextFieldView setHideTitleRightLabel:YES];
@@ -59,8 +60,10 @@
     [_organizationTextFieldView setHideTitleRightLabel:YES];
     
     [_phoneFaxTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_PHONE")];
+    [_phoneFaxTextFieldView setLeftTFKeyboard:UIKeyboardTypePhonePad];
     [_phoneFaxTextFieldView setHideTitleRightLabel:NO];
     [_phoneFaxTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_FAX")];
+    [_phoneFaxTextFieldView setRightTFKeyboard:UIKeyboardTypePhonePad];
     
     [_streetAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STREETADDRESS")];
     [_streetAddressTextFieldView setHideTitleRightLabel:YES];
@@ -71,6 +74,7 @@
     [_stateZipTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STATE")];
     [_stateZipTextFieldView setHideTitleRightLabel:NO];
     [_stateZipTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ZIP")];
+    [_stateZipTextFieldView setRightTFKeyboard:UIKeyboardTypeNumberPad];
     
 }
 

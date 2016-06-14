@@ -43,4 +43,9 @@
 - (BOOL)becomeFirstResponder {
     return [_textFieldView becomeFirstResponder];
 }
+
+- (void)setKeyBoard:(UIKeyboardType)keyBoard {
+    [_textFieldView setKeyboardType:keyBoard];
+}
+
 @end

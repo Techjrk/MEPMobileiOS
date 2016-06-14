@@ -62,4 +62,10 @@
     _textFieldLeft.secureTextEntry = secure;
 }
 
+- (void)setLeftTFKeyboard:(UIKeyboardType)keyboard {
+    [_textFieldLeft setKeyboardType:keyboard];
+}
+- (void)setRightTFKeyboard:(UIKeyboardType)keyboard {
+    [_textFieldRight setKeyboardType:keyboard];
+}
 @end
