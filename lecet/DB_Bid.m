@@ -13,6 +13,20 @@
 
 @implementation DB_Bid
 
-// Insert code here to add functionality to your managed object subclass
+- (NSString*)bidAmountWithCurrency {
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    CGFloat amt = 0;
+    if (self.amount != nil) {
+        amt = self.amount.floatValue;
+    }
+    NSString *amtString = [formatter stringFromNumber:[NSNumber numberWithFloat:amt]];
+    
+    NSString *currency = self.relationshipProject.currencyType == nil?@"$":self.relationshipProject.currencyType;
+    return [NSString stringWithFormat:@"%@ %@", currency, amtString ];
+    
+}
 
 @end

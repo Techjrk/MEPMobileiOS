@@ -224,6 +224,7 @@
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dodgeNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="estHigh" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="estLow" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstPublishDate" optional="YES" attributeType="String" syncable="YES"/>
@@ -274,6 +275,6 @@
         <element name="DB_CompanyContact" positionX="18" positionY="180" width="128" height="180"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="975"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="990"/>
     </elements>
 </model>
