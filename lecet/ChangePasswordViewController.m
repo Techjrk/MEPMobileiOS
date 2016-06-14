@@ -29,7 +29,7 @@
     [self.view setBackgroundColor:CHANGEPASSWORD_VC_BG_COLOR];
     _profileNavView.profileNavViewDelegate = self;
     [_profileNavView setNavTitleLabel:NSLocalizedLanguage(@"CHANGEPASSWORD_NAV_TITLE")];
-    
+    [self enableTapGesture:YES];
     
 }
 
