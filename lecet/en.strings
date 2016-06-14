@@ -47,6 +47,7 @@
 "PROJECT_DETAIL_ADDRESS"                    =               "Address";
 "PROJECT_DETAIL_PROJECT_TYPE"               =               "Project Type(s)";
 "PROJECT_DETAIL_ESTLOW"                     =               "Est. Low";
+"PROJECT_DETAIL_ESTHIGH"                     =              "Est. High";
 "PROJECT_DETAIL_STAGE"                      =               "Stage";
 
 //SeeAllView.xib

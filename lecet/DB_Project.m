@@ -58,7 +58,7 @@
     return fullAddr;
 }
 
-- (NSString*)bidAmountWithCurrency {
+- (NSString*)estLowAmountWithCurrency {
 
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -72,6 +72,22 @@
     return [NSString stringWithFormat:@"%@ %@", currency, estLow ];
     
 }
+
+- (NSString*)estHighAmountWithCurrency {
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    CGFloat esthigh = 0;
+    if (self.estHigh != nil) {
+        esthigh = self.estHigh.floatValue;
+    }
+    NSString *estHigh = [formatter stringFromNumber:[NSNumber numberWithFloat:esthigh]];
+    NSString *currency = self.currencyType == nil?@"$":self.currencyType;
+    return [NSString stringWithFormat:@"%@ %@", currency, estHigh ];
+    
+}
+
 
 - (NSString*)bidDateString {
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.bidDate];

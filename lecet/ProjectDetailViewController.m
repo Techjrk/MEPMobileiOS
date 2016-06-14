@@ -59,6 +59,7 @@
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldProjectType;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldEstLow;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldStage;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldEstHigh;
 
 //Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldCounty;
@@ -71,6 +72,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldNotes;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldParticipants;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidder;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldEstHigh;
 
 
 //Actions
@@ -93,6 +95,7 @@
     [_fieldAddress changeConstraintHeight: _constraintFieldAddress];
     [_fieldProjectType changeConstraintHeight: _constraintFieldProjectType];
     [_fieldEstLow changeConstraintHeight: _constraintFieldEstLow];
+    [_fieldEstHigh changeConstraintHeight: _constraintFieldEstHigh];
     [_fieldStage changeConstraintHeight: _constraintFieldStage];
     [_notesView changeConstraintHeight:_constraintFieldNotes];
     [_participantsView changeConstraintHeight:_constraintFieldParticipants];
@@ -148,9 +151,10 @@
         estlowValue = [project.estLow floatValue];
     }
     
-    NSString *estLow = [NSString stringWithFormat:@"%@ %@", project.currencyType == nil? @"$":project.currencyType, [formatter stringFromNumber:[NSNumber numberWithFloat:estlowValue]]];
-    [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:estLow line2Text:nil];
-    
+    [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
+
+    [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
     bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
