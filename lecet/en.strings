@@ -47,11 +47,20 @@
 "PROJECT_DETAIL_ADDRESS"                    =               "Address";
 "PROJECT_DETAIL_PROJECT_TYPE"               =               "Project Type(s)";
 "PROJECT_DETAIL_ESTLOW"                     =               "Est. Low";
-"PROJECT_DETAIL_ESTHIGH"                     =              "Est. High";
+"PROJECT_DETAIL_ESTHIGH"                    =               "Est. High";
 "PROJECT_DETAIL_STAGE"                      =               "Stage";
+"PROJECT_DETAIL_DATE_ADDED"                 =               "Date Added";
+"PROJECT_DETAIL_BIDDATE"                    =               "Bid Date";
+"PROJECT_DETAIL_START_DATE"                 =               "Target Start Date";
+"PROJECT_DETAIL_FINISH_DATE"                =               "Target Finish Date";
+"PROJECT_DETAIL_LAST_UPDATE"                =               "Last Updated";
+"PROJECT_DETAIL_VALUE"                      =               "Value";
+"PROJECT_DETAIL_JURISDICTION"               =               "Jurisdiction";
+"PROJECT_DETAIL_B_OR_H"                     =               "B/H";
 
 //SeeAllView.xib
-"SEE_ALL_BUTTON_TITLE"                      =               "See All";
+"SEE_ALL_BUTTON_TITLE_SEE"                  =               "See All";
+"SEE_ALL_BUTTON_TITLE_HIDE"                 =               "Hide";
 
 //NotesView.xib
 "NOTES_VIEW_TITLE"                          =               "Notes";

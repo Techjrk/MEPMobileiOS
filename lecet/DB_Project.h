@@ -21,7 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString*)estLowAmountWithCurrency;
 - (NSString*)estHighAmountWithCurrency;
 - (NSString*)bidDateString;
-
+- (NSString*)dateAddedString;
+- (NSString*)startDateString;
+- (NSString*)finishDateString;
+- (NSString*)lastUpdateDateString;
 @end
 
 NS_ASSUME_NONNULL_END
