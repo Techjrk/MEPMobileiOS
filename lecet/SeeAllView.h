@@ -15,4 +15,5 @@
 
 @interface SeeAllView : BaseViewClass
 @property (strong, nonatomic) id<SeeAllViewDelegate>seeAllViewDelegate;
+@property (nonatomic) BOOL isExpanded;
 @end

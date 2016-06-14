@@ -11,8 +11,10 @@
 
 #import "constants.h"
 
+#define SEE_ALL_ANGLE_FONT                 fontNameWithSize(FONT_NAME_AWESOME, 12)
+
 #define SEE_ALL_ANGLE_DOWN_TEXT                 [NSString stringWithFormat:@"%C", 0xf107]
-#define SEE_ALL_ANGLE_DOWN_FONT                 fontNameWithSize(FONT_NAME_AWESOME, 12)
+#define SEE_ALL_ANGLE_UP_TEXT                   [NSString stringWithFormat:@"%C", 0xf106]
 
 #define SEE_ALL_BUTTON_TEXT_FONT                fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define SEE_ALL_BUTTON_TEXT_COLOR               RGB(121, 120, 120)

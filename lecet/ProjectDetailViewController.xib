@@ -11,23 +11,40 @@
             <connections>
                 <outlet property="constraintContentHeight" destination="xTa-ci-of5" id="Nlk-3M-6Eu"/>
                 <outlet property="constraintFieldAddress" destination="ELw-OG-eb0" id="ZVK-Cy-Z25"/>
+                <outlet property="constraintFieldBidDate" destination="8bK-Jq-edq" id="QMa-hg-q1f"/>
+                <outlet property="constraintFieldBuildingOrHighway" destination="bJ7-nD-FQs" id="K33-ri-s0M"/>
                 <outlet property="constraintFieldCounty" destination="qU4-h6-eKJ" id="URF-Zb-vSH"/>
+                <outlet property="constraintFieldDateAdded" destination="CwL-gA-jB0" id="UKb-ic-rgF"/>
                 <outlet property="constraintFieldEstHigh" destination="0nR-5N-6B1" id="Whg-XE-3y8"/>
                 <outlet property="constraintFieldEstLow" destination="cWA-di-JNi" id="KCg-rW-rUV"/>
+                <outlet property="constraintFieldJurisdiction" destination="8UI-eh-AOl" id="lvz-DI-R6o"/>
                 <outlet property="constraintFieldNotes" destination="ICC-rh-dXP" id="WnP-gj-X31"/>
                 <outlet property="constraintFieldParticipants" destination="6Rb-fb-JEk" id="AC4-Yp-UXQ"/>
                 <outlet property="constraintFieldProjectBidder" destination="qZv-w0-ZdH" id="VlZ-2g-vqW"/>
                 <outlet property="constraintFieldProjectID" destination="Qbt-eR-sPJ" id="RAJ-pJ-8BI"/>
                 <outlet property="constraintFieldProjectType" destination="58K-WT-52Z" id="uKI-W0-y3f"/>
                 <outlet property="constraintFieldStage" destination="I7u-mG-4HD" id="YT7-LQ-hbP"/>
+                <outlet property="constraintFieldValue" destination="ONY-Xg-qMt" id="B4B-DB-Sja"/>
+                <outlet property="constraintLastUpdated" destination="LKA-il-jS1" id="GMr-AG-KOc"/>
+                <outlet property="constraintSeeAllViewContainer" destination="ccF-5g-ayJ" id="Rbh-DN-C7m"/>
+                <outlet property="constraintTargerFinishDate" destination="LAa-S3-PTv" id="cji-nD-qP8"/>
+                <outlet property="constraintTargetStartDate" destination="LBD-Gw-e3T" id="Jxo-Ar-qcH"/>
                 <outlet property="containerView" destination="Y8l-w9-9Lk" id="d5y-HW-kdp"/>
                 <outlet property="fieldAddress" destination="GIa-A5-s8D" id="s9M-R6-wec"/>
+                <outlet property="fieldBidDate" destination="HRW-gl-hJ7" id="lB5-R6-a6D"/>
+                <outlet property="fieldBuildingOrHighway" destination="KNx-OK-Zns" id="0y6-Ha-6w4"/>
                 <outlet property="fieldCounty" destination="rzV-o1-dcv" id="Zcy-hw-6Vs"/>
+                <outlet property="fieldDateAdded" destination="YJd-Zd-6vt" id="1Bv-Y4-ZMY"/>
                 <outlet property="fieldEstHigh" destination="oR0-e6-B2F" id="Gxo-nb-grt"/>
                 <outlet property="fieldEstLow" destination="0xf-0o-iWM" id="4QH-EH-6h5"/>
+                <outlet property="fieldJurisdiction" destination="8i7-Ui-iiX" id="Fj1-gb-rqs"/>
+                <outlet property="fieldLastUpdated" destination="96U-w8-bxz" id="X0r-iM-Run"/>
                 <outlet property="fieldProjectId" destination="Gws-3k-Zp2" id="Twh-42-QGh"/>
                 <outlet property="fieldProjectType" destination="ABx-A0-JKU" id="kSC-lZ-eMn"/>
                 <outlet property="fieldStage" destination="67k-zk-hsU" id="D5g-yc-1jL"/>
+                <outlet property="fieldTargetFinishDate" destination="NjK-md-eX9" id="Ec0-Ub-ddf"/>
+                <outlet property="fieldTargetStartDate" destination="3gF-xe-jfg" id="8Jd-VC-39H"/>
+                <outlet property="fieldValue" destination="9rn-oQ-f46" id="n9o-bc-yj7"/>
                 <outlet property="headerView" destination="YnS-qN-9py" id="p78-Px-jlX"/>
                 <outlet property="notesView" destination="ZiS-Ms-5tj" id="MYk-At-TZP"/>
                 <outlet property="participantsView" destination="Yvc-qB-JBc" id="nDW-VE-IWm"/>
@@ -35,6 +52,7 @@
                 <outlet property="projectState" destination="dXA-h2-8gS" id="zkk-o1-kVs"/>
                 <outlet property="scrollView" destination="sxs-xz-Nnu" id="m0e-gQ-s6Q"/>
                 <outlet property="seeAllView" destination="y8n-K4-TIP" id="k8C-Xf-1i4"/>
+                <outlet property="seeAllViewContainer" destination="99K-F8-mee" id="YF1-0d-tSi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -125,26 +143,115 @@
                                         <constraint firstAttribute="height" constant="70" id="I7u-mG-4HD"/>
                                     </constraints>
                                 </view>
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99K-F8-mee">
+                                    <rect key="frame" x="27.5" y="867" width="319" height="490"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-Zd-6vt" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="CwL-gA-jB0"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRW-gl-hJ7" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="70" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="8bK-Jq-edq"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gF-xe-jfg" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="140" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="LBD-Gw-e3T"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NjK-md-eX9" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="210" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="LAa-S3-PTv"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96U-w8-bxz" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="280" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="LKA-il-jS1"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rn-oQ-f46" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="350" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="ONY-Xg-qMt"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i7-Ui-iiX" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="420" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="8UI-eh-AOl"/>
+                                            </constraints>
+                                        </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-OK-Zns" customClass="CustomEntryField">
+                                            <rect key="frame" x="0.0" y="490" width="319" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="bJ7-nD-FQs"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="3gF-xe-jfg" firstAttribute="centerX" secondItem="HRW-gl-hJ7" secondAttribute="centerX" id="1tq-CN-lvZ"/>
+                                        <constraint firstItem="KNx-OK-Zns" firstAttribute="top" secondItem="8i7-Ui-iiX" secondAttribute="bottom" id="8bg-Jx-0lf"/>
+                                        <constraint firstItem="3gF-xe-jfg" firstAttribute="top" secondItem="HRW-gl-hJ7" secondAttribute="bottom" id="99I-bH-U7l"/>
+                                        <constraint firstItem="KNx-OK-Zns" firstAttribute="width" secondItem="8i7-Ui-iiX" secondAttribute="width" id="AYL-wo-4yY"/>
+                                        <constraint firstItem="8i7-Ui-iiX" firstAttribute="width" secondItem="9rn-oQ-f46" secondAttribute="width" id="Agf-Px-D2Y"/>
+                                        <constraint firstItem="HRW-gl-hJ7" firstAttribute="width" secondItem="YJd-Zd-6vt" secondAttribute="width" id="GWv-t3-TPE"/>
+                                        <constraint firstItem="96U-w8-bxz" firstAttribute="top" secondItem="NjK-md-eX9" secondAttribute="bottom" id="GZY-Ha-4D0"/>
+                                        <constraint firstItem="9rn-oQ-f46" firstAttribute="centerX" secondItem="96U-w8-bxz" secondAttribute="centerX" id="Ht4-It-xsk"/>
+                                        <constraint firstItem="YJd-Zd-6vt" firstAttribute="width" secondItem="99K-F8-mee" secondAttribute="width" id="K9M-yE-6Ix"/>
+                                        <constraint firstItem="96U-w8-bxz" firstAttribute="width" secondItem="NjK-md-eX9" secondAttribute="width" id="Lvt-c4-ZqT"/>
+                                        <constraint firstItem="YJd-Zd-6vt" firstAttribute="top" secondItem="99K-F8-mee" secondAttribute="top" id="MEC-jO-0ub"/>
+                                        <constraint firstItem="8i7-Ui-iiX" firstAttribute="centerX" secondItem="9rn-oQ-f46" secondAttribute="centerX" id="Pc8-sJ-N0h"/>
+                                        <constraint firstItem="KNx-OK-Zns" firstAttribute="centerX" secondItem="8i7-Ui-iiX" secondAttribute="centerX" id="QbF-Qb-cMw"/>
+                                        <constraint firstItem="NjK-md-eX9" firstAttribute="centerX" secondItem="3gF-xe-jfg" secondAttribute="centerX" id="SFf-bF-hwf"/>
+                                        <constraint firstItem="YJd-Zd-6vt" firstAttribute="centerX" secondItem="99K-F8-mee" secondAttribute="centerX" id="U7e-co-AgL"/>
+                                        <constraint firstItem="96U-w8-bxz" firstAttribute="centerX" secondItem="NjK-md-eX9" secondAttribute="centerX" id="bwB-lQ-VhQ"/>
+                                        <constraint firstItem="9rn-oQ-f46" firstAttribute="top" secondItem="96U-w8-bxz" secondAttribute="bottom" id="cCP-su-112"/>
+                                        <constraint firstAttribute="height" constant="490" id="ccF-5g-ayJ"/>
+                                        <constraint firstItem="3gF-xe-jfg" firstAttribute="width" secondItem="HRW-gl-hJ7" secondAttribute="width" id="cql-Ul-5B7"/>
+                                        <constraint firstItem="NjK-md-eX9" firstAttribute="top" secondItem="3gF-xe-jfg" secondAttribute="bottom" id="fpv-sY-8UY"/>
+                                        <constraint firstItem="NjK-md-eX9" firstAttribute="width" secondItem="3gF-xe-jfg" secondAttribute="width" id="nmq-QG-T8a"/>
+                                        <constraint firstItem="9rn-oQ-f46" firstAttribute="width" secondItem="96U-w8-bxz" secondAttribute="width" id="pyH-XA-aiz"/>
+                                        <constraint firstItem="HRW-gl-hJ7" firstAttribute="top" secondItem="YJd-Zd-6vt" secondAttribute="bottom" id="vaL-lA-RHc"/>
+                                        <constraint firstItem="HRW-gl-hJ7" firstAttribute="centerX" secondItem="YJd-Zd-6vt" secondAttribute="centerX" id="wg3-jd-pkN"/>
+                                        <constraint firstItem="8i7-Ui-iiX" firstAttribute="top" secondItem="9rn-oQ-f46" secondAttribute="bottom" id="xfK-Da-vlF"/>
+                                    </constraints>
+                                </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-K4-TIP" customClass="SeeAllView">
-                                    <rect key="frame" x="28" y="867" width="319" height="49"/>
+                                    <rect key="frame" x="28" y="1357" width="319" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiS-Ms-5tj" customClass="NotesView">
-                                    <rect key="frame" x="28" y="916" width="319" height="128"/>
+                                    <rect key="frame" x="28" y="1406" width="319" height="128"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="ICC-rh-dXP"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-qB-JBc" customClass="PariticpantsView">
-                                    <rect key="frame" x="28" y="1044" width="319" height="128"/>
+                                    <rect key="frame" x="28" y="1534" width="319" height="128"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="6Rb-fb-JEk"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wye-8d-g1S" customClass="ProjectBidderView">
-                                    <rect key="frame" x="28" y="1172" width="319" height="100"/>
+                                    <rect key="frame" x="28" y="1662" width="319" height="100"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="qZv-w0-ZdH"/>
@@ -155,13 +262,15 @@
                             <constraints>
                                 <constraint firstItem="yhf-j2-imc" firstAttribute="width" secondItem="OeP-sj-2hU" secondAttribute="width" multiplier="0.12" id="07j-x4-Ltj"/>
                                 <constraint firstItem="ABx-A0-JKU" firstAttribute="width" secondItem="GIa-A5-s8D" secondAttribute="width" id="1Ia-e3-7UA"/>
+                                <constraint firstItem="99K-F8-mee" firstAttribute="centerX" secondItem="67k-zk-hsU" secondAttribute="centerX" id="29o-Tw-d9N"/>
                                 <constraint firstItem="0xf-0o-iWM" firstAttribute="centerX" secondItem="ABx-A0-JKU" secondAttribute="centerX" id="2Ir-1P-a2J"/>
                                 <constraint firstItem="Yvc-qB-JBc" firstAttribute="width" secondItem="ZiS-Ms-5tj" secondAttribute="width" id="38b-0k-Qs6"/>
-                                <constraint firstItem="y8n-K4-TIP" firstAttribute="top" secondItem="67k-zk-hsU" secondAttribute="bottom" id="3Pw-J8-2VG"/>
+                                <constraint firstItem="y8n-K4-TIP" firstAttribute="top" secondItem="67k-zk-hsU" secondAttribute="bottom" constant="200" id="3Pw-J8-2VG"/>
                                 <constraint firstItem="GIa-A5-s8D" firstAttribute="top" secondItem="Gws-3k-Zp2" secondAttribute="bottom" id="55A-x0-qta"/>
                                 <constraint firstItem="ABx-A0-JKU" firstAttribute="centerX" secondItem="GIa-A5-s8D" secondAttribute="centerX" id="5MI-ZD-iKC"/>
                                 <constraint firstItem="0xf-0o-iWM" firstAttribute="top" secondItem="oR0-e6-B2F" secondAttribute="bottom" id="6N1-IG-5fm"/>
                                 <constraint firstItem="GIa-A5-s8D" firstAttribute="centerX" secondItem="Gws-3k-Zp2" secondAttribute="centerX" id="6yN-Dd-Q16"/>
+                                <constraint firstItem="99K-F8-mee" firstAttribute="width" secondItem="67k-zk-hsU" secondAttribute="width" id="8Xv-2i-Jv5"/>
                                 <constraint firstItem="GIa-A5-s8D" firstAttribute="width" secondItem="Gws-3k-Zp2" secondAttribute="width" id="8YQ-Mb-cif"/>
                                 <constraint firstItem="NMG-zi-PLJ" firstAttribute="height" secondItem="Y8l-w9-9Lk" secondAttribute="height" id="Cd6-Zg-wF8"/>
                                 <constraint firstItem="Cx4-Ns-3v6" firstAttribute="height" secondItem="Y8l-w9-9Lk" secondAttribute="height" multiplier="0.02" id="D4a-Tr-PWR"/>
@@ -187,6 +296,7 @@
                                 <constraint firstItem="0xf-0o-iWM" firstAttribute="height" secondItem="Y8l-w9-9Lk" secondAttribute="height" multiplier="0.05" id="WAc-hQ-3to"/>
                                 <constraint firstItem="rzV-o1-dcv" firstAttribute="height" secondItem="Y8l-w9-9Lk" secondAttribute="height" multiplier="0.1" priority="250" id="WHN-Tu-fpm"/>
                                 <constraint firstItem="Yvc-qB-JBc" firstAttribute="centerX" secondItem="ZiS-Ms-5tj" secondAttribute="centerX" id="XFh-Fx-Tho"/>
+                                <constraint firstItem="y8n-K4-TIP" firstAttribute="top" secondItem="99K-F8-mee" secondAttribute="bottom" id="b9N-wi-cnT"/>
                                 <constraint firstItem="0xf-0o-iWM" firstAttribute="top" secondItem="oR0-e6-B2F" secondAttribute="bottom" id="bgg-aS-xkI"/>
                                 <constraint firstItem="YnS-qN-9py" firstAttribute="width" secondItem="Y8l-w9-9Lk" secondAttribute="width" id="bzi-eL-fPl"/>
                                 <constraint firstItem="0xf-0o-iWM" firstAttribute="width" secondItem="ABx-A0-JKU" secondAttribute="width" id="cdV-dR-BpD"/>
@@ -221,6 +331,7 @@
                                 <constraint firstItem="wye-8d-g1S" firstAttribute="top" secondItem="Yvc-qB-JBc" secondAttribute="bottom" id="xEE-Zt-oU0"/>
                                 <constraint firstItem="dXA-h2-8gS" firstAttribute="centerX" secondItem="NMG-zi-PLJ" secondAttribute="centerX" id="xIM-lM-gvE"/>
                                 <constraint firstAttribute="height" constant="1250" id="xTa-ci-of5"/>
+                                <constraint firstItem="99K-F8-mee" firstAttribute="top" secondItem="67k-zk-hsU" secondAttribute="bottom" id="xlA-Za-A9W"/>
                                 <constraint firstItem="y8n-K4-TIP" firstAttribute="centerX" secondItem="67k-zk-hsU" secondAttribute="centerX" id="zWr-fM-mBg"/>
                                 <constraint firstItem="ABx-A0-JKU" firstAttribute="height" secondItem="Y8l-w9-9Lk" secondAttribute="height" multiplier="0.05" id="zgJ-Gm-OHQ"/>
                             </constraints>
@@ -241,6 +352,7 @@
                                     <exclude reference="VH5-Cu-AAb"/>
                                     <exclude reference="fA7-Db-cT9"/>
                                     <exclude reference="m9E-Lw-GHC"/>
+                                    <exclude reference="3Pw-J8-2VG"/>
                                     <exclude reference="k22-Mb-Uoh"/>
                                     <exclude reference="mZ0-FT-fuA"/>
                                 </mask>

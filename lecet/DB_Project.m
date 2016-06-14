@@ -88,7 +88,6 @@
     
 }
 
-
 - (NSString*)bidDateString {
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.bidDate];
     if (date == nil) {
@@ -96,6 +95,38 @@
     }
     return [DerivedNSManagedObject shortDateStringFromDate:date];
 
+}
+
+- (NSString *)dateAddedString {
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.firstPublishDate];
+    if (date != nil) {
+        return  [DerivedNSManagedObject shortDateStringFromDate:date];
+    }
+    return nil;
+}
+
+- (NSString *)startDateString {
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.targetStartDate];
+    if (date != nil) {
+        return  [DerivedNSManagedObject shortDateStringFromDate:date];
+    }
+    return nil;
+}
+
+- (NSString *)finishDateString {
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.targetFinishDate];
+    if (date != nil) {
+        return  [DerivedNSManagedObject shortDateStringFromDate:date];
+    }
+    return nil;
+}
+
+- (NSString *)lastUpdateDateString {
+    NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:self.lastPublishDate];
+    if (date != nil) {
+        return  [DerivedNSManagedObject shortDateStringFromDate:date];
+    }
+    return nil;
 }
 
 @end

@@ -51,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet NotesView *notesView;
 @property (weak, nonatomic) IBOutlet PariticpantsView *participantsView;
 @property (weak, nonatomic) IBOutlet ProjectBidderView *projectBidder;
+@property (weak, nonatomic) IBOutlet UIView *seeAllViewContainer;
 
 //Fields
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldCounty;
@@ -58,8 +59,16 @@
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldAddress;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldProjectType;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldEstLow;
-@property (weak, nonatomic) IBOutlet CustomEntryField *fieldStage;
 @property (weak, nonatomic) IBOutlet CustomEntryField *fieldEstHigh;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldStage;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldDateAdded;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldBidDate;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldTargetStartDate;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldTargetFinishDate;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldLastUpdated;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldValue;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldJurisdiction;
+@property (weak, nonatomic) IBOutlet CustomEntryField *fieldBuildingOrHighway;
 
 //Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldCounty;
@@ -67,12 +76,21 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldAddress;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectType;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldEstLow;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldEstHigh;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldStage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContentHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldNotes;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldParticipants;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldProjectBidder;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldEstHigh;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSeeAllViewContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldDateAdded;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldBidDate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTargetStartDate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTargerFinishDate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLastUpdated;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldValue;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldJurisdiction;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldBuildingOrHighway;
 
 
 //Actions
@@ -96,10 +114,20 @@
     [_fieldProjectType changeConstraintHeight: _constraintFieldProjectType];
     [_fieldEstLow changeConstraintHeight: _constraintFieldEstLow];
     [_fieldEstHigh changeConstraintHeight: _constraintFieldEstHigh];
+    [_fieldDateAdded changeConstraintHeight:_constraintFieldDateAdded];
+    [_fieldBidDate changeConstraintHeight:_constraintFieldBidDate];
+    [_fieldTargetStartDate changeConstraintHeight:_constraintTargetStartDate];
+    [_fieldTargetFinishDate changeConstraintHeight:_constraintTargerFinishDate];
+    [_fieldLastUpdated changeConstraintHeight:_constraintLastUpdated];
+    [_fieldValue changeConstraintHeight:_constraintFieldValue];
+    [_fieldJurisdiction changeConstraintHeight:_constraintFieldJurisdiction];
+    [_fieldBuildingOrHighway changeConstraintHeight:_constraintFieldBuildingOrHighway];
     [_fieldStage changeConstraintHeight: _constraintFieldStage];
     [_notesView changeConstraintHeight:_constraintFieldNotes];
     [_participantsView changeConstraintHeight:_constraintFieldParticipants];
     [_projectBidder changeConstraintHeight:_constraintFieldProjectBidder];
+    
+    _constraintSeeAllViewContainer.constant = 0;
     
     _projectBidder.projectBidderDelegate = self;
     _participantsView.pariticipantsDelegate = self;
@@ -145,17 +173,27 @@
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    CGFloat estlowValue = 0;
-    
-    if (project.estLow != nil) {
-        estlowValue = [project.estLow floatValue];
-    }
-    
     [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
 
     [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
 
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
+    
+    [_fieldDateAdded setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_DATE_ADDED") line1Text:[project dateAddedString] line2Text:nil];
+    
+    [_fieldBidDate setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_BIDDATE") line1Text:[project bidDateString] line2Text:nil];
+    
+    [_fieldTargetStartDate setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_START_DATE") line1Text:[project startDateString] line2Text:nil];
+    
+    [_fieldTargetFinishDate setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_FINISH_DATE") line1Text:[project finishDateString] line2Text:nil];
+    
+    [_fieldLastUpdated setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_LAST_UPDATE") line1Text:[project lastUpdateDateString] line2Text:nil];
+    
+    [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"$ 0" line2Text:nil];
+    
+    [_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:project.ownerClass line2Text:nil];
+    
+    [_fieldBuildingOrHighway setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_B_OR_H") line1Text:project.primaryProjectTypeBuildingOrHighway line2Text:nil];
     
     bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
     [_projectBidder setItems:bidItems];
@@ -253,7 +291,15 @@
 }
 
 - (void)tappedSeeAllView:(id)object {
-    [[DataManager sharedManager] featureNotAvailable];
+    [UIView animateWithDuration:0.25 animations:^{
+        _constraintSeeAllViewContainer.constant = _seeAllView.isExpanded?_fieldBuildingOrHighway.frame.origin.y + _fieldBuildingOrHighway.frame.size.height : 0;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            isShownContentAdjusted = NO;
+            [self layoutContentView];
+        }
+    }];
 }
 
 #pragma mark - Delegate and Share List Method
