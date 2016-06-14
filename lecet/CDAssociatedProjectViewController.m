@@ -18,6 +18,7 @@
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
 @property (weak, nonatomic) IBOutlet ProjectAllAssociatedProjectView *projectAllAssociatedProjectListView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeftSpace;
 
 //@property (strong,nonatomic) NSMutableArray *associatedProjectList;
 
@@ -30,6 +31,8 @@
     _projectNavBarView.projectNavViewDelegate = self;
     _projectAllAssociatedProjectListView.projectAllAssociatedProjectViewDelegate = self;
     
+    CGRect viewFrame = self.view.frame;
+    _constraintLeftSpace.constant = viewFrame.size.width - (viewFrame.size.width * 0.988f);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

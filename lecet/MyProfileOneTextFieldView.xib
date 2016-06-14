@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileOneTextFieldView">
             <connections>
                 <outlet property="myProfileHeaderView" destination="CNX-H6-MNW" id="Ydl-td-yOI"/>
-                <outlet property="textFieldView" destination="ibR-i8-l12" id="56c-i1-Ydo"/>
+                <outlet property="textFieldView" destination="GR5-gK-Y0q" id="hb6-Bc-SfS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,25 +20,26 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-H6-MNW" customClass="MyProfileHeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="584" height="40"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ibR-i8-l12">
-                    <rect key="frame" x="15" y="40" width="554" height="40"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GR5-gK-Y0q">
+                    <rect key="frame" x="13" y="40" width="558" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="GR5-gK-Y0q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="8de-MT-EVw"/>
                 <constraint firstItem="CNX-H6-MNW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9YK-t6-CVb"/>
                 <constraint firstItem="CNX-H6-MNW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ENx-Se-0he"/>
+                <constraint firstAttribute="trailing" secondItem="GR5-gK-Y0q" secondAttribute="trailing" constant="13" id="Ljz-Ef-IJD"/>
                 <constraint firstItem="CNX-H6-MNW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Mrx-FR-03m"/>
-                <constraint firstItem="ibR-i8-l12" firstAttribute="height" secondItem="CNX-H6-MNW" secondAttribute="height" id="PIK-tL-7YP"/>
-                <constraint firstItem="ibR-i8-l12" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="YL0-kS-fEG"/>
+                <constraint firstAttribute="bottom" secondItem="GR5-gK-Y0q" secondAttribute="bottom" id="QJy-tr-jqR"/>
                 <constraint firstAttribute="trailing" secondItem="CNX-H6-MNW" secondAttribute="trailing" id="f06-nD-Olo"/>
-                <constraint firstItem="ibR-i8-l12" firstAttribute="top" secondItem="CNX-H6-MNW" secondAttribute="bottom" id="mSQ-8Z-cXW"/>
-                <constraint firstAttribute="trailing" secondItem="ibR-i8-l12" secondAttribute="trailing" constant="15" id="wnT-nX-sld"/>
+                <constraint firstItem="GR5-gK-Y0q" firstAttribute="top" secondItem="CNX-H6-MNW" secondAttribute="bottom" id="t8O-3c-uGn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="244" y="-26"/>
