@@ -58,7 +58,7 @@
 }
 
 - (void)tappedReOrderButton {
-    ProjectSortViewController *controller = [ProjectSortViewController new];
+    ProjectSortViewController *controller = [[ProjectSortViewController alloc] initWithNibName:@"ProjectSortViewController" bundle:nil];
     controller.projectSortViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

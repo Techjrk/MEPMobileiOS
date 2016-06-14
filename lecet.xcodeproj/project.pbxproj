@@ -271,6 +271,7 @@
 		B60359531D01F2CA006E5231 /* ContactNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactNavBarView.m; sourceTree = "<group>"; };
 		B60359541D01F2CA006E5231 /* ContactNavBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactNavBarView.xib; sourceTree = "<group>"; };
 		B61F68231D05A47F00D249F4 /* contactDetailViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = contactDetailViewConstant.h; sourceTree = "<group>"; };
+		B61F8BB01D0FFFA3009F70EF /* TextfieldViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldViewDelegate.h; sourceTree = "<group>"; };
 		B623B2081CFC9A7B00793D67 /* projectTListCellConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTListCellConstant.h; sourceTree = "<group>"; };
 		B623B20A1CFC9AC900793D67 /* ProjectListCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListCVCell.h; sourceTree = "<group>"; };
 		B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListCVCell.m; sourceTree = "<group>"; };
@@ -1069,6 +1070,7 @@
 		B6E4044D1D0AB2B000F82F1D /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
+				B61F8BB01D0FFFA3009F70EF /* TextfieldViewDelegate.h */,
 				B69C3AD21D0DBAE9003DD918 /* MyProfileTwoTextFiledView */,
 				B69C3ACC1D0DB284003DD918 /* MyProfileOneTextFieldView */,
 				B6A81E6A1D0C88920016B20F /* MyProfileCustomTextFieldView */,

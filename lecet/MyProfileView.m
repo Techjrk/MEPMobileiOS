@@ -11,7 +11,7 @@
 #import "MyProfileCustomTextFieldView.h"
 #import "MyProfileOneTextFieldView.h"
 #import "MyProfileTwoTextFieldView.h"
-@interface MyProfileView (){
+@interface MyProfileView ()<TextfieldViewDelegate>{
     NSDictionary *collectionItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
@@ -19,7 +19,7 @@
     NSArray *textFieldIndex;
     NSMutableArray *myProfileDataInfo;
     NSDictionary *profileInfo;
-    
+    UIView *activeView;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -51,6 +51,7 @@
     
     [_emailAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_EMAIL_ADDRESS")];
     [_emailAddressTextFieldView setHideTitleRightLabel:YES];
+    [_emailAddressTextFieldView setKeyBoard:UIKeyboardTypeEmailAddress];
     
     [_titleTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_TITLE")];
     [_titleTextFieldView setHideTitleRightLabel:YES];
@@ -59,8 +60,10 @@
     [_organizationTextFieldView setHideTitleRightLabel:YES];
     
     [_phoneFaxTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_PHONE")];
+    [_phoneFaxTextFieldView setLeftTFKeyboard:UIKeyboardTypePhonePad];
     [_phoneFaxTextFieldView setHideTitleRightLabel:NO];
     [_phoneFaxTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_FAX")];
+    [_phoneFaxTextFieldView setRightTFKeyboard:UIKeyboardTypePhonePad];
     
     [_streetAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STREETADDRESS")];
     [_streetAddressTextFieldView setHideTitleRightLabel:YES];
@@ -71,6 +74,28 @@
     [_stateZipTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STATE")];
     [_stateZipTextFieldView setHideTitleRightLabel:NO];
     [_stateZipTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ZIP")];
+    [_stateZipTextFieldView setRightTFKeyboard:UIKeyboardTypeNumberPad];
+    
+    
+    _nameTextFieldview.textFieldViewDelegate = self;
+    _emailAddressTextFieldView.textfieldViewDelegate = self;
+    _titleTextFieldView.textfieldViewDelegate = self;
+    _organizationTextFieldView.textfieldViewDelegate = self;
+    _phoneFaxTextFieldView.textFieldViewDelegate = self;
+    _streetAddressTextFieldView.textfieldViewDelegate = self;
+    _cityTextFieldView.textfieldViewDelegate = self;
+    _stateZipTextFieldView.textFieldViewDelegate = self;
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
 }
 
@@ -184,6 +209,61 @@
 }
 - (NSString *)getZip {
     return [_stateZipTextFieldView getTextRight];
+}
+
+#pragma mark - TextFieldChanged
+- (void)textFieldDidBeginEditing:(UIView *)view {
+    if (view == _nameTextFieldview) {
+        activeView = _nameTextFieldview;
+    }
+    if (view == _emailAddressTextFieldView) {
+        activeView = _emailAddressTextFieldView;
+    }
+    if (view == _titleTextFieldView) {
+        activeView = _titleTextFieldView;
+    }
+    if (view == _organizationTextFieldView) {
+        activeView = _organizationTextFieldView;
+    }
+    if (view == _phoneFaxTextFieldView) {
+        activeView = _phoneFaxTextFieldView;
+    }
+    if (view == _streetAddressTextFieldView) {
+        activeView = _streetAddressTextFieldView;
+    }
+    if (view == _cityTextFieldView) {
+        activeView = _cityTextFieldView;
+    }
+    if (view == _stateZipTextFieldView) {
+        activeView = _stateZipTextFieldView;
+    }
+    
+    
+}
+
+#pragma mark - KeyBoard
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    NSDictionary* info = [notification userInfo];
+    CGRect kbRect = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbRect.size.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbRect.size.height;
+    if (!CGRectContainsPoint(aRect, activeView.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:activeView.frame animated:YES];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification *)notification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 @end

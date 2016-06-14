@@ -13,10 +13,12 @@
 
 #import "DB_CompanyContact.h"
 #import "DB_Company.h"
+#import <MapKit/MapKit.h>
 
 @interface ContactDetailViewController()<ContactNavViewDelegate,ContactDetailViewDelegate>{
     NSMutableArray *contactDetails;
     NSString *name;
+    NSString *address;
     
 }
 @property (weak, nonatomic) IBOutlet ContactNavBarView *contactNavBarView;
@@ -59,6 +61,7 @@
     }
     if ([record fullAddress]) {
         NSString *contactAddressInfo = [record fullAddress];
+        address = contactAddressInfo;
         [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeLocation ], CONTACT_FIELD_DATA:contactAddressInfo}];
     }
     if (record.phoneNumber) {
@@ -108,6 +111,10 @@
             [self.navigationController popViewControllerAnimated:YES];
             break;
         }
+        case ContactFieldTypeLocation:{
+            [self searchForLocation];
+            break;
+        }
         case ContactFieldTypeWeb:{
             NSString *field = [fieldData uppercaseString];
             if (![field hasPrefix:@"HTTP://"]) {
@@ -130,6 +137,29 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)searchForLocation {
+    NSString *location = address;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     
+                     if (placemarks && placemarks.count > 0) {
+            
+                         CLPlacemark *result = [placemarks objectAtIndex:0];
+                         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:result];
+                         MKMapItem *endingItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+                         NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+                         [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+                         [endingItem openInMapsWithLaunchOptions:launchOptions];
+                         
+                     } else if (error != nil) {
+                         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
+                     }
+                 }
+     ];
+    
 }
 
 

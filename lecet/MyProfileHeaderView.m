@@ -26,6 +26,8 @@
     _rightLabel.textColor = MYPROFILE_HEADER_LABEL_FONT_COLOR;
     
     [self.view setBackgroundColor:MYPROFILE_HEADER_BG_COLOR];
+    
+    [self addtappGesture];
 }
 
 - (void)setLeftLabelText:(NSString *)text {
@@ -43,6 +45,16 @@
 - (void)hideRightLabel:(BOOL)hide {
     [_rightLabel setHidden:hide];
     
+}
+
+- (void)addtappGesture {
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedView)];
+    tapped.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapped];
+}
+
+- (void)tappedView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFYTODISMISSKEYBOARD object:nil];
 }
 
 @end

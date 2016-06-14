@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
-@interface MyProfileHeaderView : BaseViewClass
 
+@protocol MyProfileHeaderViewDelegate <NSObject>
+@optional
+- (void)tappedHeaderView;
+
+@end
+
+@interface MyProfileHeaderView : BaseViewClass
+@property (nonatomic,assign) id<MyProfileHeaderViewDelegate> myProfileHeaderViewDelegate;
 - (void)setLeftLabelText:(NSString *)text;
 - (void)setRightLabelText:(NSString *)text;
 - (void)hideRightLabel:(BOOL)hide;

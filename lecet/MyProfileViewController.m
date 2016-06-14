@@ -9,6 +9,7 @@
 #import "MyProfileViewController.h"
 #import "ProfileNavView.h"
 #import "MyProfileView.h"
+#import "myProfileConstant.h"
 
 @interface MyProfileViewController ()<ProfileNavViewDelegate> {
     
@@ -27,11 +28,14 @@
     
     [_profileNavView setNavTitleLabel:@"My Profile"];
     _profileNavView.profileNavViewDelegate = self;
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissedKeyboard ) name:NOTIFYTODISMISSKEYBOARD object:nil];
 }
-
 - (void)viewWillAppear:(BOOL)animated {
    
     [self setTextFieldText];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +89,11 @@
     [_myProfileView setCity:@"Washington"];
     [_myProfileView setState:@"DC"];
     [_myProfileView setZIP:@"20006"];
+    
+}
+
+- (void)dismissedKeyboard {
+    [self.view endEditing:YES];
     
 }
 

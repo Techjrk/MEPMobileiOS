@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
-
+#import "TextfieldViewDelegate.h"
 @interface MyProfileTwoTextFieldView : BaseViewClass
+@property (nonatomic,assign) id <TextfieldViewDelegate> textFieldViewDelegate;
+
 - (void)setTileLeftLabelText:(NSString *)title;
 - (void)setTileRightLabelText:(NSString *)title;
 - (void)setHideTitleRightLabel:(BOOL)hide;
@@ -18,4 +20,8 @@
 
 - (NSString *)getTextLeft;
 - (NSString *)getTextRight;
+
+
+- (void)setLeftTFKeyboard:(UIKeyboardType)keyboard;
+- (void)setRightTFKeyboard:(UIKeyboardType)keyboard;
 @end

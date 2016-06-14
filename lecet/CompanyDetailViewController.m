@@ -278,7 +278,7 @@
 
 - (void)tappededSeeAllAssociateProject {
     usePushZoom = NO;
-    CDAssociatedProjectViewController *controller = [CDAssociatedProjectViewController new];
+    CDAssociatedProjectViewController *controller = [[CDAssociatedProjectViewController alloc] initWithNibName:@"CDAssociatedProjectViewController" bundle:nil];
     [controller setContractorName:companyName];
     [controller setInfoForAssociatedProjects:associatedProjects];
     [self.navigationController pushViewController:controller animated:YES];
@@ -312,7 +312,7 @@
 #pragma mark - ContactAll List ViewController Method
 - (IBAction)tappedToSeeAllContact:(id)sender {
     usePushZoom = NO;
-    ContactAllListViewController *controller = [ContactAllListViewController new];
+    ContactAllListViewController *controller = [[ContactAllListViewController alloc] initWithNibName:@"ContactAllListViewController" bundle:nil];
     [controller setInfoForContactList:contactAllList];
     [self.navigationController pushViewController:controller animated:YES];
 }

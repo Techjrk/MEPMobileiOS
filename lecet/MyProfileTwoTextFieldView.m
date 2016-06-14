@@ -27,6 +27,9 @@
     [_textFieldLeft setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     [_textFieldRight setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     
+    [_textFieldLeft addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    [_textFieldRight addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    
 }
 - (BOOL)becomeFirstResponder {
     
@@ -61,5 +64,18 @@
 - (void)setSecureTextFieldLeft:(BOOL)secure {
     _textFieldLeft.secureTextEntry = secure;
 }
+
+- (void)setLeftTFKeyboard:(UIKeyboardType)keyboard {
+    [_textFieldLeft setKeyboardType:keyboard];
+}
+- (void)setRightTFKeyboard:(UIKeyboardType)keyboard {
+    [_textFieldRight setKeyboardType:keyboard];
+}
+- (void)textFieldDidBeginEditing
+{
+    [_textFieldViewDelegate textFieldDidBeginEditing:self];
+}
+
+
 
 @end
