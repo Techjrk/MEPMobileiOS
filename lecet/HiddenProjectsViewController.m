@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet ContactNavBarView *topBar;
 @property (weak, nonatomic) IBOutlet UIView *countView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *labelCount;
 @end
 
 @implementation HiddenProjectsViewController
@@ -32,6 +33,10 @@
     _collectionView.backgroundColor = [UIColor whiteColor];
     
     [_collectionView registerNib:[UINib nibWithNibName:[[HiddenProjectCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    
+    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"HIDDEN_PROJECT_COUNT"), self.collectionItems.count];
+    _labelCount.font = HIDDEN_PROJECTS_COUNT_FONT;
+    _labelCount.textColor = HIDDEN_PROJECTS_COUNT_COLOR;
     _topBar.contactNavViewDelegate = self;
 }
 
@@ -69,8 +74,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    NSInteger count = self.collectionItems.count>3?3:self.collectionItems.count;
-    return 3;
+    return self.collectionItems.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -102,7 +106,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 #pragma mark - Nav Delegate

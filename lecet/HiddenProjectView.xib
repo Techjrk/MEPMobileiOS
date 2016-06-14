@@ -8,6 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HiddenProjectView">
             <connections>
+                <outlet property="buttonUnhide" destination="f0M-cJ-CHV" id="7c0-B2-Aj3"/>
+                <outlet property="labelLocation" destination="bgY-bq-2G4" id="342-Wa-IFc"/>
+                <outlet property="labelTitle" destination="WqC-8l-OOB" id="Jg0-Rj-UmU"/>
                 <outlet property="lineView" destination="tZP-tE-JdT" id="2U3-o3-caP"/>
             </connections>
         </placeholder>
@@ -33,18 +36,21 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0M-cJ-CHV">
                     <rect key="frame" x="307.5" y="0.0" width="67.5" height="89"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedUnhideButton:" destination="-1" eventType="touchUpInside" id="bg5-Oe-gEe"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njG-YR-j0F">
                     <rect key="frame" x="54.5" y="0.0" width="6" height="89"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqC-8l-OOB">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jefferson Ave - Weston St - State..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqC-8l-OOB">
                     <rect key="frame" x="60.5" y="18.5" width="247" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgY-bq-2G4">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saint Louis, MO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgY-bq-2G4">
                     <rect key="frame" x="80.5" y="45" width="227" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

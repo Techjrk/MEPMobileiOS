@@ -599,6 +599,7 @@
         case DropDownMenuHiddenProjects: {
             
             HiddenProjectsViewController *controller = [HiddenProjectsViewController new];
+            controller.collectionItems = [@[@"", @"", @"", @""] mutableCopy];
             [self.navigationController pushViewController:controller animated:YES];
             break;
         
