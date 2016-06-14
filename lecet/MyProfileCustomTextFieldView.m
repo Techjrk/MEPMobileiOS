@@ -20,34 +20,26 @@
 
 @implementation MyProfileCustomTextFieldView
 
-
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [_textFieldOne addTarget:self action:@selector(textFieldOneChanged:) forControlEvents:UIControlEventEditingChanged];
-    [_textFieldBelow addTarget:self action:@selector(textFieldTwoChanged:) forControlEvents:UIControlEventEditingChanged];
+    [_textFieldOne addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    [_textFieldBelow addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
     _lineView.backgroundColor =[[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
     
     [_textFieldOne setFont:MYPROFILE_TEXTFIELD_FONT];
     [_textFieldBelow setFont:MYPROFILE_TEXTFIELD_FONT];
     [_textFieldOne setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     [_textFieldBelow setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
-    
-    
-  
+
 }
 
 -(void)setPlaceHolder:(NSString *)placeHolder {
     // _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSForegroundColorAttributeName:[CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT_COLOR colorWithAlphaComponent:0.5f], NSFontAttributeName:CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT}];
 }
 
-- (void)textFieldOneChanged:(UITextField *)textField
+- (void)textFieldDidBeginEditing
 {
-    
-}
-
-- (void)textFieldTwoChanged:(UITextField *)textField
-{
-    
+    [_textFieldViewDelegate textFieldDidBeginEditing:self];
 }
 
 - (NSString *)textOne {
@@ -97,7 +89,6 @@
 - (void)setTextFieldTwoText:(NSString *)text {
     _textFieldBelow.text = text;
   
-
 }
 - (NSString *)getTextOne {
     return _textFieldOne.text;
@@ -105,8 +96,6 @@
 - (NSString *)getTextTwo {
     return _textFieldBelow.text;
 }
-
-
 
 - (void)configureView:(UIView*)view {
     CGFloat borderWidth = 1.0;

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+#import "TextfieldViewDelegate.h"
+
+
 
 @interface MyProfileCustomTextFieldView : BaseViewClass
+@property (nonatomic,assign) id <TextfieldViewDelegate> textFieldViewDelegate;
 - (void)setTileLeftLabelText:(NSString *)title;
 - (void)setHideTitleRightLabel:(BOOL)hide;
 
@@ -18,4 +22,5 @@
 
 - (NSString *)getTextOne;
 - (NSString *)getTextTwo;
+
 @end

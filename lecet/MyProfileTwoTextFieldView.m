@@ -27,6 +27,9 @@
     [_textFieldLeft setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     [_textFieldRight setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     
+    [_textFieldLeft addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    [_textFieldRight addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    
 }
 - (BOOL)becomeFirstResponder {
     
@@ -68,4 +71,11 @@
 - (void)setRightTFKeyboard:(UIKeyboardType)keyboard {
     [_textFieldRight setKeyboardType:keyboard];
 }
+- (void)textFieldDidBeginEditing
+{
+    [_textFieldViewDelegate textFieldDidBeginEditing:self];
+}
+
+
+
 @end

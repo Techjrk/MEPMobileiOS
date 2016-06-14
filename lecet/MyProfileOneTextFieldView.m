@@ -19,6 +19,7 @@
 - (void)awakeFromNib {
     [_textFieldView setFont:MYPROFILE_TEXTFIELD_FONT];
     [_textFieldView setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
+    [_textFieldView addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
 }
 - (void)setTileLeftLabelText:(NSString *)title {
     [_myProfileHeaderView setLeftLabelText:title];
@@ -47,5 +48,11 @@
 - (void)setKeyBoard:(UIKeyboardType)keyBoard {
     [_textFieldView setKeyboardType:keyBoard];
 }
+
+- (void)textFieldDidBeginEditing
+{
+    [_textfieldViewDelegate textFieldDidBeginEditing:self];
+}
+
 
 @end
