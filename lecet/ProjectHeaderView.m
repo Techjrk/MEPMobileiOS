@@ -47,7 +47,7 @@
     geoCodeLat = [info[PROJECT_GEOCODE_LAT] floatValue];
     geoCodeLng = [info[PROJECT_GEOCODE_LNG] floatValue];
     
-    
+
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
 
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
@@ -66,7 +66,6 @@
             [_mapView addAnnotation:annotation];
         });
     });
-    
 
 }
 
