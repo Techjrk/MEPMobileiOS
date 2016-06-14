@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="collectionView" destination="3uf-Jn-8sf" id="CQ2-l2-kgt"/>
                 <outlet property="countView" destination="3BR-QR-Cs0" id="bb8-L3-kOk"/>
+                <outlet property="labelCount" destination="Hxh-7a-fea" id="xfo-id-Off"/>
                 <outlet property="topBar" destination="pbq-PZ-QXk" id="o1N-kB-gzY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,10 +29,24 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BR-QR-Cs0">
                             <rect key="frame" x="0.0" y="84" width="414" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxh-7a-fea">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Hxh-7a-fea" secondAttribute="trailing" id="3FA-Xy-JHU"/>
+                                <constraint firstAttribute="bottom" secondItem="Hxh-7a-fea" secondAttribute="bottom" id="LFF-Ar-dqe"/>
+                                <constraint firstItem="Hxh-7a-fea" firstAttribute="leading" secondItem="3BR-QR-Cs0" secondAttribute="leading" id="itK-ik-ZJe"/>
+                                <constraint firstItem="Hxh-7a-fea" firstAttribute="top" secondItem="3BR-QR-Cs0" secondAttribute="top" id="iym-nv-bT5"/>
+                            </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3uf-Jn-8sf">
-                            <rect key="frame" x="0.5" y="134.5" width="414" height="601.5"/>
+                            <rect key="frame" x="0.0" y="134" width="414" height="601.5"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dka-gU-ZTy">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>

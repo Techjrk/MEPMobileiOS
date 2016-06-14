@@ -206,3 +206,8 @@
 
 //HiddenProjectsViewController.xib
 "HIDDEN_PROJECTS_TITLE"                     =               "Hidden Projects";
+
+//HiddenProjectView.xib
+"HIDDEN_PROJECT_UNHIDE"                     =               "UNHIDE";
+"HIDDEN_PROJECT_HIDE"                       =               "HIDE";
+"HIDDEN_PROJECT_COUNT"                      =               "%li Hidden Projects";

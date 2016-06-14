@@ -13,4 +13,7 @@
 
 #define HIDDEN_PROJECTS_TOPVIEW_BG_COLOR            RGB(5, 35, 74)
 
+#define HIDDEN_PROJECTS_COUNT_FONT                  fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define HIDDEN_PROJECTS_COUNT_COLOR                 RGB(255, 255, 255)
+
 #endif /* hiddenProjectsConstants_h */
