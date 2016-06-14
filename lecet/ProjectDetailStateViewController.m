@@ -13,6 +13,8 @@
 @interface ProjectDetailStateViewController ()<ProjectDetailStateDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintDetailStateViewHeight;
 @property (weak, nonatomic) IBOutlet ProjectDetailStateView *projectDetailSateView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @end
 
@@ -27,6 +29,7 @@
     
     [self addTappedGesture];
     [self setAutoLayConstraintInIncompatibleDevice];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +41,11 @@
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectDetailState)];
     tapped.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:tapped];
+    [_topView addGestureRecognizer:tapped];
+    
+    UITapGestureRecognizer *tappedBG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectDetailState)];
+    tappedBG.numberOfTapsRequired = 1;
+    [_bgView addGestureRecognizer:tappedBG];
     
 }
 
