@@ -9,7 +9,7 @@
 #import "MyProfileCustomTextFieldView.h"
 #import "MyProfileHeaderView.h"
 #import "myProfileConstant.h"
-@interface MyProfileCustomTextFieldView ()
+@interface MyProfileCustomTextFieldView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldOne;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeight;
@@ -30,6 +30,9 @@
     [_textFieldBelow setFont:MYPROFILE_TEXTFIELD_FONT];
     [_textFieldOne setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     [_textFieldBelow setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
+    
+    _textFieldOne.delegate = self;
+    _textFieldBelow.delegate = self;
 
 }
 
@@ -106,7 +109,17 @@
 }
 
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if (textField == _textFieldOne) {
+        [_textFieldOne resignFirstResponder];
+    }
+    if (textField == _textFieldBelow) {
+        [_textFieldBelow resignFirstResponder];
+    }
+    
+    return NO;
+}
 
 
 

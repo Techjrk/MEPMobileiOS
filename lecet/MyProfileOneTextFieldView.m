@@ -9,7 +9,7 @@
 #import "MyProfileOneTextFieldView.h"
 #import "MyProfileHeaderView.h"
 #import "myProfileConstant.h"
-@interface MyProfileOneTextFieldView ()
+@interface MyProfileOneTextFieldView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldView;
 
@@ -20,6 +20,7 @@
     [_textFieldView setFont:MYPROFILE_TEXTFIELD_FONT];
     [_textFieldView setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
     [_textFieldView addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    _textFieldView.delegate = self;
 }
 - (void)setTileLeftLabelText:(NSString *)title {
     [_myProfileHeaderView setLeftLabelText:title];
@@ -31,6 +32,14 @@
 
 - (void)setTextFielText:(NSString *)text {
     _textFieldView.text = text;
+    
+    
+
+
+    CGRect frame;
+    frame = _textFieldView.frame;
+    frame.size.height = [_textFieldView intrinsicContentSize].height + 20;
+    _textFieldView.frame = frame;
 }
 
 - (void)setSecureTextField:(BOOL)secure {
@@ -54,5 +63,11 @@
     [_textfieldViewDelegate textFieldDidBeginEditing:self];
 }
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if (textField == _textFieldView) {
+        [_textFieldView resignFirstResponder];
+    }
+    return NO;
+}
 @end
