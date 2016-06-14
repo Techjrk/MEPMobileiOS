@@ -8,8 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectDetailStateViewController">
             <connections>
+                <outlet property="bgView" destination="OWS-Fr-unD" id="Ivq-TO-4ke"/>
                 <outlet property="constraintDetailStateViewHeight" destination="fBo-vL-uil" id="MGZ-kO-Mce"/>
                 <outlet property="projectDetailSateView" destination="XeG-oi-osZ" id="Wxk-7D-C6L"/>
+                <outlet property="topView" destination="5Lb-C6-S8i" id="e1x-Un-ywx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,6 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWS-Fr-unD">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XeG-oi-osZ" customClass="ProjectDetailStateView">
                     <rect key="frame" x="30" y="165" width="260" height="131"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,12 +35,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="OWS-Fr-unD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1VI-ax-8uY"/>
+                <constraint firstItem="OWS-Fr-unD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6q0-Uj-c7i"/>
                 <constraint firstItem="XeG-oi-osZ" firstAttribute="top" secondItem="5Lb-C6-S8i" secondAttribute="bottom" id="BLz-gg-1LK"/>
                 <constraint firstAttribute="trailing" secondItem="XeG-oi-osZ" secondAttribute="trailing" constant="30" id="SeZ-X3-hol"/>
                 <constraint firstItem="5Lb-C6-S8i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Xyc-ej-nuY"/>
                 <constraint firstItem="XeG-oi-osZ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.23" id="fBo-vL-uil"/>
                 <constraint firstItem="XeG-oi-osZ" firstAttribute="top" secondItem="5Lb-C6-S8i" secondAttribute="top" id="gPA-p9-sr5"/>
+                <constraint firstAttribute="trailing" secondItem="OWS-Fr-unD" secondAttribute="trailing" id="m2F-gP-hIH"/>
                 <constraint firstAttribute="trailing" secondItem="5Lb-C6-S8i" secondAttribute="trailing" id="mt7-P7-zqy"/>
+                <constraint firstAttribute="bottom" secondItem="OWS-Fr-unD" secondAttribute="bottom" id="nC7-uj-ZLu"/>
                 <constraint firstItem="XeG-oi-osZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="nyZ-kv-uUJ"/>
                 <constraint firstItem="XeG-oi-osZ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="q0P-cZ-wzr"/>
                 <constraint firstItem="5Lb-C6-S8i" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.29" id="vJb-3V-Z0E"/>
