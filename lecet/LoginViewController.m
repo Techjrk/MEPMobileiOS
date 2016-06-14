@@ -61,12 +61,13 @@
     NSAttributedString *title = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"LOGIN_SIGNUP") attributes:@{NSFontAttributeName:LOGIN_SIGNUP_FONT, NSForegroundColorAttributeName:LOGIN_SIGNUP_COLOR, NSUnderlineStyleAttributeName:[NSNumber numberWithBool:YES]}];
     [_buttonSignUp setAttributedTitle:title forState:UIControlStateNormal];
     
-    /*
-    if (isDebug) {
+    
+    NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
+    if ([processInfo containsObject:@"IS_DEBUG"]) {
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
     }
-     */
+     
 }
 
 - (void)addBlurEffect:(UIView*)view {
