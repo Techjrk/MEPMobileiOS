@@ -31,7 +31,9 @@
 
 - (instancetype)init{
     self = [super init];
-    
+    self.shouldRasterize = YES;
+    self.rasterizationScale = [UIScreen mainScreen].scale * 2.0;
+    self.opaque = NO;
     return self;
 }
 
@@ -64,11 +66,11 @@
                                    lineWidth,
                                    kCGLineCapButt,
                                    kCGLineJoinMiter,
-                                   10);
+                                   1);
 
     CGContextAddPath(context, strokedArc);
     
-    CGContextSetFlatness(context, 1.0);
+    //CGContextSetFlatness(context, 1.0);
     CGContextSetFillColorWithColor(context, self.layerColor.CGColor);
     CGContextSetStrokeColorWithColor(context, self.layerColor.CGColor);
     CGContextDrawPath(context, kCGPathFillStroke);

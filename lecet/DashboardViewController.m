@@ -32,6 +32,7 @@
 #import "ProjectsNearMeViewController.h"
 #import "SettingsViewController.h"
 #import "MyProfileViewController.h"
+#import "HiddenProjectsViewController.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate>{
 
@@ -568,12 +569,12 @@
     BidItemRecent *item = object;
     BitItemRecentCollectionViewCell * cell = (BitItemRecentCollectionViewCell*)[[item superview] superview];
     
-    item.userInteractionEnabled = NO;
+    _bidsCollectionView.userInteractionEnabled = NO;
     [[DataManager sharedManager] projectDetail:[item getRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
-        item.userInteractionEnabled = YES;
+        _bidsCollectionView.userInteractionEnabled = YES;
     } failure:^(id object) {
-        item.userInteractionEnabled = YES;
+        _bidsCollectionView.userInteractionEnabled = YES;
     }];
 
 }
@@ -583,27 +584,34 @@
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem {
 
     shouldUsePushZoomAnimation = NO;
+    
     switch (menuDropDownItem) {
-        case DropDownMenuMyProfile:{
             
+        case DropDownMenuMyProfile:{
             
             MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
             [controller setInfo:profileInfo];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+            
         }
+            
         case DropDownMenuHiddenProjects: {
-            [[DataManager sharedManager] featureNotAvailable];
+            
+            HiddenProjectsViewController *controller = [HiddenProjectsViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
+        
         }
+            
         case DropDownMenuSettings:{
             SettingsViewController *controller = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
             controller.settingsViewControllerDelegate = self;
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }
+            
     }
-    
     
 }
 
