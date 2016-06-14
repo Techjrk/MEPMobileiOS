@@ -31,6 +31,7 @@
     [_profileNavView setNavTitleLabel:NSLocalizedLanguage(@"CHANGEPASSWORD_NAV_TITLE")];
     [self enableTapGesture:YES];
     
+    
 }
 
 - (void)didReceiveMemoryWarning {

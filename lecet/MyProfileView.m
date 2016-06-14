@@ -211,7 +211,7 @@
     return [_stateZipTextFieldView getTextRight];
 }
 
-#pragma mark - TextFieldChanged
+#pragma mark - TextFieldViewDelegate Delegate
 - (void)textFieldDidBeginEditing:(UIView *)view {
     if (view == _nameTextFieldview) {
         activeView = _nameTextFieldview;

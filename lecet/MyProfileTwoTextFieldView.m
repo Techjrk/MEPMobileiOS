@@ -9,7 +9,7 @@
 #import "MyProfileTwoTextFieldView.h"
 #import "MyProfileHeaderView.h"
 #import "myProfileConstant.h"
-@interface MyProfileTwoTextFieldView ()
+@interface MyProfileTwoTextFieldView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldLeft;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldRight;
@@ -29,6 +29,9 @@
     
     [_textFieldLeft addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
     [_textFieldRight addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    _textFieldLeft.delegate = self;
+    _textFieldRight.delegate = self;
+    
     
 }
 - (BOOL)becomeFirstResponder {
@@ -76,6 +79,17 @@
     [_textFieldViewDelegate textFieldDidBeginEditing:self];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if (textField == _textFieldLeft) {
+        [_textFieldLeft resignFirstResponder];
+    }
+    if (textField == _textFieldRight) {
+        [_textFieldRight resignFirstResponder];
+    }
+    
+    return NO;
+}
 
 
 @end
