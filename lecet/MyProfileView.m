@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet MyProfileOneTextFieldView *cityTextFieldView;
 @property (weak, nonatomic) IBOutlet MyProfileTwoTextFieldView *stateZipTextFieldView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintOrganizationHeight;
 
 
 @end
@@ -97,6 +98,7 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+   // _constraintOrganizationHeight.constant = 100;
 }
 
 - (void)setHeader{
