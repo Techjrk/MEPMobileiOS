@@ -47,18 +47,26 @@
     geoCodeLat = [info[PROJECT_GEOCODE_LAT] floatValue];
     geoCodeLng = [info[PROJECT_GEOCODE_LNG] floatValue];
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
     
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
-    MKCoordinateRegion region = {coordinate, span};
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
+        
+        MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+        MKCoordinateRegion region = {coordinate, span};
+        
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        [annotation setCoordinate:coordinate];
+        
+        [_mapView removeAnnotations:_mapView.annotations];
+        
+        [_mapView setRegion:region];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_mapView addAnnotation:annotation];
+        });
+    });
     
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:coordinate];
-    
-    [_mapView removeAnnotations:_mapView.annotations];
-    
-    [_mapView setRegion:region];
-    [_mapView addAnnotation:annotation];
 
 }
 
