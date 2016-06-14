@@ -21,6 +21,8 @@
     [_textFieldView setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
 
     _textFieldView.delegate = self;
+    
+
 
 }
 - (void)setTileLeftLabelText:(NSString *)title {
@@ -72,6 +74,10 @@
     }
 
     return TRUE;
+}
+
+- (void)setScrollableEnabled:(BOOL)enabled {
+    [_textFieldView setScrollEnabled:enabled];
 }
 
 @end

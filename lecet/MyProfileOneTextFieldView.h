@@ -18,4 +18,5 @@
 - (void)setSecureTextField:(BOOL)secure;
 - (void)setKeyBoard:(UIKeyboardType)keyBoard;
 - (NSString *)getText;
+- (void)setScrollableEnabled:(BOOL)enabled;
 @end

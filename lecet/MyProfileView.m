@@ -59,6 +59,7 @@
     
     [_organizationTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_ORGANIZATION")];
     [_organizationTextFieldView setHideTitleRightLabel:YES];
+
     
     [_phoneFaxTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_PHONE")];
     [_phoneFaxTextFieldView setLeftTFKeyboard:UIKeyboardTypePhonePad];
@@ -98,7 +99,12 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-   // _constraintOrganizationHeight.constant = 100;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+
 }
 
 - (void)setHeader{
