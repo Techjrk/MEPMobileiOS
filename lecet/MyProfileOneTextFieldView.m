@@ -9,9 +9,11 @@
 #import "MyProfileOneTextFieldView.h"
 #import "MyProfileHeaderView.h"
 #import "myProfileConstant.h"
-@interface MyProfileOneTextFieldView ()<UITextViewDelegate>
+@interface MyProfileOneTextFieldView ()<UITextViewDelegate>{
+}
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextView *textFieldView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeaderHeight;
 
 @end
 
@@ -21,8 +23,7 @@
     [_textFieldView setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
 
     _textFieldView.delegate = self;
-    
-
+    _constraintHeaderHeight.constant = ((kDeviceHeight *0.1195) / 2);
 
 }
 - (void)setTileLeftLabelText:(NSString *)title {
@@ -67,17 +68,15 @@
 {
 
     if ([text isEqualToString:@"\n"]) {
-
         [textView resignFirstResponder];
-        
         return FALSE;
     }
-
     return TRUE;
 }
 
 - (void)setScrollableEnabled:(BOOL)enabled {
     [_textFieldView setScrollEnabled:enabled];
 }
+
 
 @end

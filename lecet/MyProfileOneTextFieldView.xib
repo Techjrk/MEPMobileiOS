@@ -3,11 +3,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileOneTextFieldView">
             <connections>
+                <outlet property="constraintHeaderHeight" destination="G16-C9-M9y" id="AmR-Zp-L9I"/>
                 <outlet property="myProfileHeaderView" destination="CNX-H6-MNW" id="Ydl-td-yOI"/>
                 <outlet property="textFieldView" destination="GR5-gK-Y0q" id="hb6-Bc-SfS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,6 +21,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-H6-MNW" customClass="MyProfileHeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="584" height="40"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="G16-C9-M9y"/>
+                    </constraints>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GR5-gK-Y0q">
                     <rect key="frame" x="13" y="40" width="558" height="40"/>
@@ -32,14 +35,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="CNX-H6-MNW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3NM-el-iil"/>
                 <constraint firstItem="GR5-gK-Y0q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="8de-MT-EVw"/>
-                <constraint firstItem="CNX-H6-MNW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9YK-t6-CVb"/>
-                <constraint firstItem="CNX-H6-MNW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ENx-Se-0he"/>
+                <constraint firstItem="GR5-gK-Y0q" firstAttribute="top" secondItem="CNX-H6-MNW" secondAttribute="bottom" id="CKt-30-Lk1"/>
+                <constraint firstAttribute="trailing" secondItem="CNX-H6-MNW" secondAttribute="trailing" id="Dfz-th-JOE"/>
                 <constraint firstAttribute="trailing" secondItem="GR5-gK-Y0q" secondAttribute="trailing" constant="13" id="Ljz-Ef-IJD"/>
-                <constraint firstItem="CNX-H6-MNW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Mrx-FR-03m"/>
                 <constraint firstAttribute="bottom" secondItem="GR5-gK-Y0q" secondAttribute="bottom" id="QJy-tr-jqR"/>
-                <constraint firstAttribute="trailing" secondItem="CNX-H6-MNW" secondAttribute="trailing" id="f06-nD-Olo"/>
-                <constraint firstItem="GR5-gK-Y0q" firstAttribute="top" secondItem="CNX-H6-MNW" secondAttribute="bottom" id="t8O-3c-uGn"/>
+                <constraint firstItem="CNX-H6-MNW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vZB-wo-nug"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="244" y="-26"/>
