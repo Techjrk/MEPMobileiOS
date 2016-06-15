@@ -252,7 +252,7 @@
     
 }
 - (CGSize)totalHeightContentInTextFieldView:(NSString *)text {
-    UITextView *textView = [[UITextView alloc] init];
+    UITextView *textView = [UITextView new];
     [textView setText:text];
     CGSize size = [textView sizeThatFits:CGSizeMake(self.view.frame.size.width, FLT_MAX)];
     
