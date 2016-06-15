@@ -103,6 +103,29 @@
     
     [_chartRecentlyMade hideLeftButton:YES];
     [_chartRecentlyUpdated hideRightButton:YES];
+    
+    NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
+    if ([processInfo containsObject:@"IS_DEBUG"]) {
+
+        /*
+        NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+
+        [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
+            
+        } failure:^(id object) {
+            
+        }];
+
+         */
+        
+        [[DataManager sharedManager] bidCalendarForYear:@(2016) month:@(6) success:^(id object) {
+            
+        } failure:^(id object) {
+            
+        }];
+        
+    }
+
 
 }
 

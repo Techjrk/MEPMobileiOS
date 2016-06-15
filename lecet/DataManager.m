@@ -37,6 +37,7 @@
 #define kUrlUserCompanyTrackList            @"LecetUsers/%li/companyTrackingLists"
 #define kUrlProjectAvailableTrackList       @"Projects/%li/availabletrackinglists"
 #define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
+#define kUrlBidCalendar                     @"Projects/bidcalendar"
 
 @interface DataManager()
 @end
@@ -617,18 +618,55 @@
 }
 
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
-    
+  
+    NSString *url = [NSString stringWithFormat:kUrlUserProjectTrackList, userId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
 }
 
 - (void)userCompanyTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlUserCompanyTrackList, userId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
     
 }
 
 - (void)projectAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlProjectAvailableTrackList, recordId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
     
 }
 
 - (void)companyAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlCompanyAvailableTrackList, recordId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)bidCalendarForYear:(NSNumber *)year month:(NSNumber *)month success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDictionary *parameter = @{@"month":month, @"year":year};
+
+    [self HTTP_GET:[self url:kUrlBidCalendar] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
     
 }
 

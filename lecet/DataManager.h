@@ -40,6 +40,7 @@
 - (void)userCompanyTrackingList:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectAvailableTrackingList:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyAvailableTrackingList:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)bidCalendarForYear:(NSNumber*)year month:(NSNumber*)month success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC
 - (void)featureNotAvailable;
