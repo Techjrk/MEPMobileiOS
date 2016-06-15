@@ -31,7 +31,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imr-WE-h18">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-vm-9Jk" customClass="MyProfileCustomTextFieldView">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -47,7 +47,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pko-aJ-R90" customClass="MyProfileOneTextFieldView">
                                     <rect key="frame" x="0.0" y="279" width="600" height="79"/>
-                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-D7-8en" customClass="MyProfileTwoTextFieldView">
                                     <rect key="frame" x="0.0" y="358" width="600" height="79"/>
@@ -94,6 +94,11 @@
                                 <constraint firstItem="90R-w7-Iqi" firstAttribute="top" secondItem="jRC-vm-9Jk" secondAttribute="bottom" id="y8h-sD-8WP"/>
                                 <constraint firstItem="jRC-vm-9Jk" firstAttribute="top" secondItem="imr-WE-h18" secondAttribute="top" id="yYA-vd-5Le"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="7nG-vl-oYW"/>
+                                </mask>
+                            </variation>
                         </view>
                     </subviews>
                     <constraints>
@@ -109,6 +114,7 @@
             <constraints>
                 <constraint firstItem="heG-p3-AUu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="2hW-0e-YYH"/>
                 <constraint firstItem="90R-w7-Iqi" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="47V-j0-jO2"/>
+                <constraint firstItem="imr-WE-h18" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1.5" id="LU7-Q2-evl"/>
                 <constraint firstItem="jRC-vm-9Jk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="Rux-JM-mJU"/>
                 <constraint firstAttribute="trailing" secondItem="otI-co-lNH" secondAttribute="trailing" id="W8m-j1-75C"/>
                 <constraint firstItem="0sb-D7-8en" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.132" id="Za6-p8-Hwj"/>
