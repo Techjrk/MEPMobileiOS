@@ -33,6 +33,10 @@
 #define kUrlUserInfo                        @"LecetUsers/%li?"
 #define kUrlContactInfo                     @"Contacts/%li?"
 #define kUrlProjectsNear                    @"Projects/near"
+#define kUrlUserProjectTrackList            @"LecetUsers/%li/projectTrackingLists"
+#define kUrlUserCompanyTrackList            @"LecetUsers/%li/companyTrackingLists"
+#define kUrlProjectAvailableTrackList       @"Projects/%li/availabletrackinglists"
+#define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
 
 @interface DataManager()
 @end
@@ -609,6 +613,22 @@
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
+    
+}
+
+- (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
+    
+}
+
+- (void)userCompanyTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
+    
+}
+
+- (void)projectAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    
+}
+
+- (void)companyAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
 }
 
