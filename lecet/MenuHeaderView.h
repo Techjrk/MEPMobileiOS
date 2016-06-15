@@ -17,7 +17,7 @@ typedef enum  {
 } MenuHeaderItem;
 
 @protocol MenuHeaderDelegate <NSObject>
-- (void)tappedMenu:(MenuHeaderItem)menuHeaderItem;
+- (void)tappedMenu:(MenuHeaderItem)menuHeaderItem forView:(UIView*)view;
 @end
 
 @interface MenuHeaderView : BaseViewClass

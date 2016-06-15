@@ -403,7 +403,7 @@
     NSDictionary *parameter = @{@"filter[include][0][project][primaryProjectType][projectCategory]":@"projectGroup",
                                 @"filter[include][1]":@"company",
                                 @"filter[include][2]":@"contact",
-                                @"filter[where][createDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth],
+                                @"filter[where][createDate][gt]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth],
                                 @"filter[order]":@"createDate DESC",
                                 @"filter[limit]":@"100",
                                 @"filter[where][rank]":@"1"};

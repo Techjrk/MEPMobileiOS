@@ -144,6 +144,16 @@
 		B73EFAC71D0EF41700C6B3B2 /* HiddenProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAC61D0EF41700C6B3B2 /* HiddenProjectView.xib */; };
 		B73EFACB1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAC91D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m */; };
 		B73EFACC1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFACA1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib */; };
+		B73EFAD11D11518700C6B3B2 /* PopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFACF1D11518700C6B3B2 /* PopupViewController.m */; };
+		B73EFAD21D11518700C6B3B2 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAD01D11518700C6B3B2 /* PopupViewController.xib */; };
+		B73EFAD51D117B4D00C6B3B2 /* CustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAD41D117B4D00C6B3B2 /* CustomCollectionView.m */; };
+		B73EFAD71D117B5C00C6B3B2 /* CustomCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAD61D117B5C00C6B3B2 /* CustomCollectionView.xib */; };
+		B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAD91D11945C00C6B3B2 /* TrackingListView.m */; };
+		B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFADB1D11946D00C6B3B2 /* TrackingListView.xib */; };
+		B73EFAE01D11990200C6B3B2 /* TrackingListCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFADE1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.m */; };
+		B73EFAE11D11990200C6B3B2 /* TrackingListCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFADF1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.xib */; };
+		B73EFAE51D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAE31D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m */; };
+		B73EFAE61D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAE41D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -495,6 +505,22 @@
 		B73EFAC91D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiddenProjectCollectionViewCell.m; sourceTree = "<group>"; };
 		B73EFACA1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HiddenProjectCollectionViewCell.xib; sourceTree = "<group>"; };
 		B73EFACD1D0EF90400C6B3B2 /* hiddenProjectCellConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hiddenProjectCellConstants.h; sourceTree = "<group>"; };
+		B73EFACE1D11518700C6B3B2 /* PopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupViewController.h; sourceTree = "<group>"; };
+		B73EFACF1D11518700C6B3B2 /* PopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupViewController.m; sourceTree = "<group>"; };
+		B73EFAD01D11518700C6B3B2 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
+		B73EFAD31D117B4D00C6B3B2 /* CustomCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionView.h; sourceTree = "<group>"; };
+		B73EFAD41D117B4D00C6B3B2 /* CustomCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionView.m; sourceTree = "<group>"; };
+		B73EFAD61D117B5C00C6B3B2 /* CustomCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCollectionView.xib; sourceTree = "<group>"; };
+		B73EFAD81D11945C00C6B3B2 /* TrackingListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingListView.h; sourceTree = "<group>"; };
+		B73EFAD91D11945C00C6B3B2 /* TrackingListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingListView.m; sourceTree = "<group>"; };
+		B73EFADB1D11946D00C6B3B2 /* TrackingListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingListView.xib; sourceTree = "<group>"; };
+		B73EFADD1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingListCellCollectionViewCell.h; sourceTree = "<group>"; };
+		B73EFADE1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingListCellCollectionViewCell.m; sourceTree = "<group>"; };
+		B73EFADF1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingListCellCollectionViewCell.xib; sourceTree = "<group>"; };
+		B73EFAE21D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B73EFAE31D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B73EFAE41D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = trackingItemCollectionConstants.h; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1289,6 +1315,9 @@
 				B73EFABD1D0ED11200C6B3B2 /* HiddenProjectsViewController.h */,
 				B73EFABE1D0ED11200C6B3B2 /* HiddenProjectsViewController.m */,
 				B73EFABF1D0ED11200C6B3B2 /* HiddenProjectsViewController.xib */,
+				B73EFACE1D11518700C6B3B2 /* PopupViewController.h */,
+				B73EFACF1D11518700C6B3B2 /* PopupViewController.m */,
+				B73EFAD01D11518700C6B3B2 /* PopupViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1333,6 +1362,12 @@
 				B73EFAC81D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.h */,
 				B73EFAC91D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m */,
 				B73EFACA1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib */,
+				B73EFADD1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.h */,
+				B73EFADE1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.m */,
+				B73EFADF1D11990200C6B3B2 /* TrackingListCellCollectionViewCell.xib */,
+				B73EFAE21D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.h */,
+				B73EFAE31D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m */,
+				B73EFAE41D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1447,6 +1482,12 @@
 				B73EFAC31D0EF3FB00C6B3B2 /* HiddenProjectView.h */,
 				B73EFAC41D0EF3FB00C6B3B2 /* HiddenProjectView.m */,
 				B73EFAC61D0EF41700C6B3B2 /* HiddenProjectView.xib */,
+				B73EFAD31D117B4D00C6B3B2 /* CustomCollectionView.h */,
+				B73EFAD41D117B4D00C6B3B2 /* CustomCollectionView.m */,
+				B73EFAD61D117B5C00C6B3B2 /* CustomCollectionView.xib */,
+				B73EFAD81D11945C00C6B3B2 /* TrackingListView.h */,
+				B73EFAD91D11945C00C6B3B2 /* TrackingListView.m */,
+				B73EFADB1D11946D00C6B3B2 /* TrackingListView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1513,6 +1554,7 @@
 				B6411BF71D09D353002B6E88 /* myProfileConstant.h */,
 				B73EFAC21D0EEFF300C6B3B2 /* hiddenProjectsConstants.h */,
 				B73EFACD1D0EF90400C6B3B2 /* hiddenProjectCellConstants.h */,
+				B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -1786,6 +1828,7 @@
 				B69C3AD11D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib in Resources */,
 				B6F7DD3C1D00A4DA00B86B9D /* ProjectTabView.xib in Resources */,
 				B69C3AD71D0DBB2C003DD918 /* MyProfileTwoTextFieldView.xib in Resources */,
+				B73EFAD71D117B5C00C6B3B2 /* CustomCollectionView.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
 				B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
@@ -1804,6 +1847,7 @@
 				B66544BD1D002CBD0033732F /* CDAssociatedProjectViewController.xib in Resources */,
 				B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */,
 				B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */,
+				B73EFAE11D11990200C6B3B2 /* TrackingListCellCollectionViewCell.xib in Resources */,
 				B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */,
 				B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */,
 				B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */,
@@ -1830,16 +1874,19 @@
 				B6411BBF1D09ACBF002B6E88 /* MyProfileViewController.xib in Resources */,
 				B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */,
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
+				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B6411BC51D09ACEF002B6E88 /* MyProfileView.xib in Resources */,
 				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
+				B73EFAD21D11518700C6B3B2 /* PopupViewController.xib in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
 				B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */,
 				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
 				B68337381D083102004226D3 /* ChnagePasswordCollectionViewCell.xib in Resources */,
+				B73EFAE61D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
@@ -1896,6 +1943,7 @@
 				B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */,
 				B771C6011CEB6C28004A628A /* AssociatedBidCollectionViewCell.m in Sources */,
 				B66591181CFF0C8800CFD10C /* ProjectShareViewController.m in Sources */,
+				B73EFAE01D11990200C6B3B2 /* TrackingListCellCollectionViewCell.m in Sources */,
 				B69C3AD61D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m in Sources */,
 				B7F10A201CDB3E3300847FA3 /* UIWebView+AFNetworking.m in Sources */,
 				B79616121CF4400B0089BC32 /* ActivityView.m in Sources */,
@@ -1923,6 +1971,7 @@
 				B7F10A181CDB3E3300847FA3 /* AFAutoPurgingImageCache.m in Sources */,
 				B70FDF6D1CE9B7160035A6D9 /* CustomEntryField.m in Sources */,
 				B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */,
+				B73EFAD51D117B4D00C6B3B2 /* CustomCollectionView.m in Sources */,
 				B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */,
 				B64474721D00449B0001B244 /* ProjectSortCVCell.m in Sources */,
 				B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */,
@@ -1943,6 +1992,7 @@
 				B6411BD01D09B2D8002B6E88 /* MyProfileHeaderView.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
+				B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
 				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
 				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
@@ -1982,6 +2032,7 @@
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
 				B79616011CF318D60089BC32 /* DB_Project.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
+				B73EFAD11D11518700C6B3B2 /* PopupViewController.m in Sources */,
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
 				B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */,
@@ -2001,6 +2052,7 @@
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,
+				B73EFAE51D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m in Sources */,
 				B69C3AD01D0DB2D3003DD918 /* MyProfileOneTextFieldView.m in Sources */,
 				B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */,
 				B73EFAB61D09985A00C6B3B2 /* (null) in Sources */,

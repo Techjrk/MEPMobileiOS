@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrackingListCellCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfF-o7-ry2" customClass="TrackingListView">
+                        <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KfF-o7-ry2" secondAttribute="bottom" id="2xO-fN-ou2"/>
+                <constraint firstAttribute="trailing" secondItem="KfF-o7-ry2" secondAttribute="trailing" id="YIs-gi-NY7"/>
+                <constraint firstItem="KfF-o7-ry2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yqd-RS-xsy"/>
+                <constraint firstItem="KfF-o7-ry2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zti-hE-O80"/>
+            </constraints>
+            <size key="customSize" width="147" height="50"/>
+            <connections>
+                <outlet property="listItem" destination="KfF-o7-ry2" id="mNx-um-fdu"/>
+            </connections>
+            <point key="canvasLocation" x="328.5" y="236"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -51,7 +51,7 @@
 
 - (IBAction)tappedButtonMenu:(id)sender {
     UIButton *button = sender;
-    [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)button.tag];
+    [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)button.tag forView:sender];
 }
 
 @end

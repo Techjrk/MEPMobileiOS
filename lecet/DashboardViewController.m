@@ -33,8 +33,11 @@
 #import "SettingsViewController.h"
 #import "MyProfileViewController.h"
 #import "HiddenProjectsViewController.h"
+#import "PopupViewController.h"
+#import "CustomCollectionView.h"
+#import "TrackingListCellCollectionViewCell.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate>{
 
     NSDate *currentDate;
     NSInteger currentPage;
@@ -48,6 +51,7 @@
     CGRect originatingFrame;
     NSDictionary *profileInfo;
     BOOL isDoneLoadingRecentlyAdded;
+    NSMutableDictionary *trackingListInfo;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -64,6 +68,8 @@
 #define kCellIdentifier         @"kCellIdentifier"
 #define kCellIdentifierSoon     @"kCellIdentifierSoon"
 #define kCellIdentifierRecent   @"kCellIdentifierRecent"
+#define kTrackListProject       @"kTrackListProject"
+#define kTrackListCompany       @"kTrackListCompany"
 #define kCategory               @[@(101), @(102), @(103), @(105)]
 
 - (void)viewDidLoad {
@@ -557,7 +563,7 @@
     
 }
 
-- (void)tappedMenu:(MenuHeaderItem)menuHeaderItem {
+- (void)tappedMenu:(MenuHeaderItem)menuHeaderItem forView:(UIView *)view{
  
     switch (menuHeaderItem) {
         case MenuHeaderNear:{
@@ -569,12 +575,41 @@
         }
         case MenuHeaderTrack: {
 
-            [[DataManager sharedManager] featureNotAvailable];
+            if (trackingListInfo == nil) {
+                trackingListInfo = [[NSMutableDictionary alloc] init];
+            }
+            
+            [trackingListInfo removeAllObjects];
+            
+            NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+
+            [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
+                
+                trackingListInfo[kTrackListProject] = object;
+                [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
+            
+                    trackingListInfo[kTrackListCompany] = object;
+                    PopupViewController *controller = [PopupViewController new];
+                    CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+                    rect.size.height =  rect.size.height * 0.85;
+                    controller.popupRect = rect;
+                    controller.popupWidth = 0.98;
+                    controller.isGreyedBackground = YES;
+                    controller.customCollectionViewDelegate = self;
+                    controller.modalPresentationStyle = UIModalPresentationCustom;
+                    [self presentViewController:controller animated:NO completion:nil];
+                    
+                } failure:^(id object) {
+                    
+                }];
+            } failure:^(id object) {
+                
+            }];
             break;
         
         }
         case MenuHeaderSearch:{
-          
+ 
             [[DataManager sharedManager] featureNotAvailable];
             break;
         
@@ -800,6 +835,44 @@
 
 - (void)tappedLogout {  
     [self.dashboardViewControllerDelegate logout];
+}
+
+#pragma mark - CustomCollectionView Delegate
+
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
+    [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+    
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath {
+    
+    
+    if ([cell isKindOfClass:[TrackingListCellCollectionViewCell class]]) {
+        TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+        [cellItem setInfo:trackingListInfo[indexPath.row ==0 ? kTrackListProject: kTrackListProject]];
+    }
+    
+}
+
+- (UICollectionViewCell *)collectionViewItemClassDeque:(NSIndexPath *)indexPath collectionView:(UICollectionView *)collectionView{
+    return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description] forIndexPath:indexPath];
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return 1;
+}
+
+- (NSInteger)collectionViewItemCount {
+    return 2;
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view {
+    return CGSizeMake(view.frame.size.width, kDeviceHeight * 0.15);
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath *)indexPath {
+    
 }
 
 @end
