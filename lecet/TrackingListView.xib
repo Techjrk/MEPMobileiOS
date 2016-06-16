@@ -11,6 +11,7 @@
                 <outlet property="buttonHeader" destination="bFr-EA-4pQ" id="oiB-Uc-hef"/>
                 <outlet property="collectionView" destination="QlE-fd-dxm" id="YCI-0t-etO"/>
                 <outlet property="constraintCollectionHeight" destination="EaG-p8-b7j" id="AYB-Ft-Lhy"/>
+                <outlet property="constraintHeaderHeight" destination="TKV-AT-CTv" id="55U-sY-ciq"/>
                 <outlet property="topView" destination="k9V-4I-gRv" id="edK-Yw-474"/>
             </connections>
         </placeholder>
@@ -23,17 +24,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="353" height="54"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFr-EA-4pQ">
-                            <rect key="frame" x="26.5" y="0.0" width="300" height="54"/>
+                            <rect key="frame" x="17.5" y="0.0" width="318" height="54"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="tappedButtonHeader:" destination="-1" eventType="touchUpInside" id="CuO-UJ-x4n"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="bFr-EA-4pQ" firstAttribute="width" secondItem="k9V-4I-gRv" secondAttribute="width" multiplier="0.85" id="2fI-DF-Asa"/>
+                        <constraint firstItem="bFr-EA-4pQ" firstAttribute="width" secondItem="k9V-4I-gRv" secondAttribute="width" multiplier="0.9" id="2fI-DF-Asa"/>
                         <constraint firstItem="bFr-EA-4pQ" firstAttribute="height" secondItem="k9V-4I-gRv" secondAttribute="height" id="Eks-P7-JF3"/>
+                        <constraint firstAttribute="height" constant="54" id="TKV-AT-CTv"/>
                         <constraint firstItem="bFr-EA-4pQ" firstAttribute="top" secondItem="k9V-4I-gRv" secondAttribute="top" id="VHi-P2-T27"/>
                         <constraint firstItem="bFr-EA-4pQ" firstAttribute="centerX" secondItem="k9V-4I-gRv" secondAttribute="centerX" id="ncr-0b-WYW"/>
                     </constraints>
@@ -55,12 +57,17 @@
                 <constraint firstItem="QlE-fd-dxm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ofy-s0-xin"/>
                 <constraint firstItem="k9V-4I-gRv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rbT-PC-W2R"/>
                 <constraint firstItem="k9V-4I-gRv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="uMP-Vd-XfN"/>
-                <constraint firstAttribute="bottom" secondItem="QlE-fd-dxm" secondAttribute="bottom" priority="250" id="zQy-aY-HiZ"/>
+                <constraint firstAttribute="bottom" secondItem="QlE-fd-dxm" secondAttribute="bottom" id="zQy-aY-HiZ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="uMP-Vd-XfN"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="249.5" y="-24.5"/>
         </view>
     </objects>

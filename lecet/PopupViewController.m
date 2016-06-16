@@ -38,6 +38,8 @@
         self.popupPlacementColor = [UIColor whiteColor];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationCollectionViewCellSizeChange:) name:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
+    
     [_popupPlacementTop setObjectColor:self.popupPlacementColor];
     _constraintPlacementTopLeading.constant = (self.popupRect.origin.x + (self.popupRect.size.width * 0.5)) - (_popupPlacementTop.frame.size.width * 0.5);
     _constraintPlacementTop.constant = self.popupRect.origin.y + (self.popupRect.size.height);
@@ -59,6 +61,7 @@
     }
     
     _container.customCollectionViewDelegate = self.customCollectionViewDelegate;
+    [_container setConstraintHeight:_constraintPopupHeight];
 
 }
 
@@ -88,5 +91,15 @@
     
 }
 
+- (void)notificationCollectionViewCellSizeChange:(NSNotificationCenter*)notification {
+    [_container reload];
+    [_container layoutSubviews];
+    [UIView animateWithDuration:0.2 animations:^{
+        _constraintPopupHeight.constant =[_container contentSize].height;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
 @end

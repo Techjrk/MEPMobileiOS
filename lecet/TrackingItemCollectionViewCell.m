@@ -21,9 +21,21 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _lineView.backgroundColor = TRACKING_ITEM_LINE_COLOR;
+    
+    _labelTitle.font = TRACKING_ITEM_TITLE_FONT;
+    _labelTitle.textColor = TRACKING_ITEM_TITLE_COLOR;
+    
+    _labelCount.font = TRACKING_ITEM_COUNT_FONT;
+    _labelCount.textColor = TRACKING_ITEM_COUNT_COLOR;
 }
 
 - (void)setInfo:(id)info {
+    _labelTitle.text = info[@"name"];
+    NSArray *projects = info[@"projectIds"];
     
+    if (projects == nil) {
+        projects = info[@"companyIds"];
+    }
+    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"),(long)projects.count];
 }
 @end

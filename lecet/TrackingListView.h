@@ -10,7 +10,14 @@
 
 #import "BaseViewClass.h"
 
+@protocol TrackingListViewDelegate <NSObject>
+- (void)tappedTrackingListItem:(id)object view:(UIView*)view;
+@end
+
 @interface TrackingListView : BaseViewClass
+@property (weak, nonatomic) id<TrackingListViewDelegate>trackingListViewDelegate;
+@property (strong, nonatomic) NSString *headerTitle;
 - (CGFloat)viewHeight;
 - (void)setInfo:(id)info;
+- (BOOL)isExpanded;
 @end

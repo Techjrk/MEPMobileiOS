@@ -16,13 +16,16 @@
 - (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView;
 - (NSInteger)collectionViewItemCount;
 - (NSInteger)collectionViewSectionCount;
-- (CGSize)collectionViewItemSize:(UIView*)view;
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo;
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath;
 - (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath;
 @end
 
 @interface CustomCollectionView : BaseViewClass
 @property (strong, nonatomic) id<CustomCollectionViewDelegate>customCollectionViewDelegate;
+@property (strong, nonatomic) id cargo;
 - (void)reload;
 - (void)registerCollectionItemClass:(Class)objectClass;
+- (void)setConstraintHeight:(NSLayoutConstraint*)constraint;
+- (CGSize)contentSize;
 @end
