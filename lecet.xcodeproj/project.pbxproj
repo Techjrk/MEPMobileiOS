@@ -1647,6 +1647,8 @@
 				B73EFACD1D0EF90400C6B3B2 /* hiddenProjectCellConstants.h */,
 				B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */,
 				B73EFAE81D12C25700C6B3B2 /* trackingListViewConstants.h */,
+				B651064C1D12B12500007759 /* companyTrackingListConstant.h */,
+				B651064D1D12B16C00007759 /* projComTrckingTabViewConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
