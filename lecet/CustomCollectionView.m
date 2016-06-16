@@ -10,11 +10,13 @@
 
 @interface CustomCollectionView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     BOOL isNibRegistered;
+    NSLayoutConstraint *heightConstraint;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
 
 @implementation CustomCollectionView
+@synthesize cargo;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -29,6 +31,7 @@
 - (void)reload {
     [_collectionView reloadData];
 }
+
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -61,13 +64,13 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [self.customCollectionViewDelegate collectionViewItemSize:self];
+    return [self.customCollectionViewDelegate collectionViewItemSize:self indexPath:indexPath cargo:self.cargo];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
     
-    return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -83,6 +86,25 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.customCollectionViewDelegate collectionViewDidSelectedItem:indexPath];
+}
+
+- (void)setConstraintHeight:(NSLayoutConstraint *)constraint {
+    heightConstraint = constraint;
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (heightConstraint!= nil) {
+        heightConstraint.constant = _collectionView.contentSize.height;
+    }
+
+}
+
+- (CGSize)contentSize {
+
+    return _collectionView.collectionViewLayout.collectionViewContentSize;
+
 }
 
 @end

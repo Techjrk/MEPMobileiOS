@@ -221,3 +221,10 @@
 "HIDDEN_PROJECT_UNHIDE"                     =               "UNHIDE";
 "HIDDEN_PROJECT_HIDE"                       =               "HIDE";
 "HIDDEN_PROJECT_COUNT"                      =               "%li Hidden Projects";
+
+//TrackingItemCollectionConstants.xib
+"TRACK_ITEM_COUNT"                          =               "%li Projects";
+
+//Dashboard Tracking Lists
+"PROJECT_TRACKING_LIST"                     =               "Project lists";
+"COMPANY_TRACKING_LIST"                     =               "Company lists";

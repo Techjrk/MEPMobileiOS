@@ -521,6 +521,7 @@
 		B73EFAE31D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B73EFAE41D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = trackingItemCollectionConstants.h; sourceTree = "<group>"; };
+		B73EFAE81D12C25700C6B3B2 /* trackingListViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = trackingListViewConstants.h; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1555,6 +1556,7 @@
 				B73EFAC21D0EEFF300C6B3B2 /* hiddenProjectsConstants.h */,
 				B73EFACD1D0EF90400C6B3B2 /* hiddenProjectCellConstants.h */,
 				B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */,
+				B73EFAE81D12C25700C6B3B2 /* trackingListViewConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";

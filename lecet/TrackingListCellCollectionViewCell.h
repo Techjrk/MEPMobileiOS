@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TrackingListView.h"
+
 @interface TrackingListCellCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) id<TrackingListViewDelegate>trackingListViewDelegate;
 - (CGFloat)cellHeight;
-- (void)setInfo:(id)info;
+- (void)setInfo:(id)info withTitle:(NSString*)title;
+- (id) cargo;
 @end

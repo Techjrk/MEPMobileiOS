@@ -36,8 +36,9 @@
 #import "PopupViewController.h"
 #import "CustomCollectionView.h"
 #import "TrackingListCellCollectionViewCell.h"
+#import "TrackingListView.h"
 
-@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate>{
+@interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate>{
 
     NSDate *currentDate;
     NSInteger currentPage;
@@ -52,6 +53,7 @@
     NSDictionary *profileInfo;
     BOOL isDoneLoadingRecentlyAdded;
     NSMutableDictionary *trackingListInfo;
+    TrackingListCellCollectionViewCell *trackList[2];
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -70,6 +72,7 @@
 #define kCellIdentifierRecent   @"kCellIdentifierRecent"
 #define kTrackListProject       @"kTrackListProject"
 #define kTrackListCompany       @"kTrackListCompany"
+#define kTrackList              @[kTrackListProject,kTrackListCompany]
 #define kCategory               @[@(101), @(102), @(103), @(105)]
 
 - (void)viewDidLoad {
@@ -576,6 +579,9 @@
         }
         case MenuHeaderTrack: {
 
+            trackList[0] = nil;
+            trackList[1] = nil;
+            
             if (trackingListInfo == nil) {
                 trackingListInfo = [[NSMutableDictionary alloc] init];
             }
@@ -586,10 +592,10 @@
 
             [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
                 
-                trackingListInfo[kTrackListProject] = object;
+                trackingListInfo[kTrackList[0]] = [object mutableCopy];
                 [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
             
-                    trackingListInfo[kTrackListCompany] = object;
+                    trackingListInfo[kTrackList[1]] = [object mutableCopy];
                     PopupViewController *controller = [PopupViewController new];
                     CGRect rect = [controller getViewPositionFromViewController:view controller:self];
                     rect.size.height =  rect.size.height * 0.85;
@@ -838,6 +844,14 @@
     [self.dashboardViewControllerDelegate logout];
 }
 
+#pragma mark - TrackingListView Delegate
+
+- (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    NSIndexPath *indexPath = object;
+    NSArray *trackList = trackingListInfo[indexPath.section==0 ? kTrackListProject: kTrackListProject];
+    NSDictionary *trackItemInfo = trackList[indexPath.row];
+}
+
 #pragma mark - CustomCollectionView Delegate
 
 - (void)collectionViewItemClassRegister:(id)customCollectionView {
@@ -848,10 +862,13 @@
 
 - (void)collectionViewPrepareItemForUse:(UICollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath {
     
-    
     if ([cell isKindOfClass:[TrackingListCellCollectionViewCell class]]) {
+    
         TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
-        [cellItem setInfo:trackingListInfo[indexPath.row ==0 ? kTrackListProject: kTrackListProject]];
+        trackList[indexPath.row] = cellItem;
+        cellItem.trackingListViewDelegate = self;
+        [cellItem setInfo:trackingListInfo[indexPath.row ==0 ? kTrackListProject: kTrackListProject] withTitle:NSLocalizedLanguage(indexPath.row ==0 ? @"PROJECT_TRACKING_LIST": @"COMPANY_TRACKING_LIST")];
+    
     }
     
 }
@@ -868,12 +885,27 @@
     return 2;
 }
 
-- (CGSize)collectionViewItemSize:(UIView*)view {
-    return CGSizeMake(view.frame.size.width, kDeviceHeight * 0.15);
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath *)indexPath cargo:(id)cargo{
+    NSArray *item = trackingListInfo[kTrackList[indexPath.row]];
+    
+    TrackingListCellCollectionViewCell *cellItem = trackList[indexPath.row];
+    CGFloat defaultHeight = kDeviceHeight * 0.08;
+    BOOL isExpanded = YES;
+    if (cellItem != nil) {
+        isExpanded =  [[cellItem cargo] boolValue];
+    }
+    
+    if (isExpanded) {
+        CGFloat cellHeight = kDeviceHeight * 0.06;
+        defaultHeight = defaultHeight+ (item.count*cellHeight);
+    }
+    
+    return CGSizeMake(view.frame.size.width, defaultHeight);
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath *)indexPath {
     
 }
+
 
 @end

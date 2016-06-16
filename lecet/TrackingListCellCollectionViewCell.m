@@ -8,8 +8,6 @@
 
 #import "TrackingListCellCollectionViewCell.h"
 
-#import "TrackingListView.h"
-
 @interface TrackingListCellCollectionViewCell()
 @property (weak, nonatomic) IBOutlet TrackingListView *listItem;
 @end
@@ -20,13 +18,20 @@
     [super awakeFromNib];
 }
 
-- (void)setInfo:(id)info {
+- (void)setInfo:(id)info withTitle:(NSString *)title{
+    _listItem.headerTitle = title;
     [_listItem setInfo:info];
 }
 
 - (CGFloat)cellHeight {
-
     return [_listItem viewHeight];
 }
 
+- (id)cargo {
+    return [NSNumber numberWithBool:_listItem.isExpanded];
+}
+
+- (void)setTrackingListViewDelegate:(id<TrackingListViewDelegate>)trackingListViewDelegate {
+    _listItem.trackingListViewDelegate = trackingListViewDelegate;
+}
 @end

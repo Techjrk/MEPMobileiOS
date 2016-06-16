@@ -619,7 +619,7 @@
 
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
   
-    NSString *url = [NSString stringWithFormat:kUrlUserProjectTrackList, userId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlUserProjectTrackList, (long)userId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
@@ -629,7 +629,7 @@
 }
 
 - (void)userCompanyTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
-    NSString *url = [NSString stringWithFormat:kUrlUserCompanyTrackList, userId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlUserCompanyTrackList, (long)userId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
@@ -639,7 +639,7 @@
 }
 
 - (void)projectAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
-    NSString *url = [NSString stringWithFormat:kUrlProjectAvailableTrackList, recordId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectAvailableTrackList, (long)recordId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
@@ -649,7 +649,7 @@
 }
 
 - (void)companyAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
-    NSString *url = [NSString stringWithFormat:kUrlCompanyAvailableTrackList, recordId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlCompanyAvailableTrackList, (long)recordId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
