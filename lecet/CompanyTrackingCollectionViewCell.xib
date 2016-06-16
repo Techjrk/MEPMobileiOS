@@ -15,16 +15,16 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Co-xd-jkp" customClass="CompanyTrackingView">
                         <rect key="frame" x="0.0" y="0.0" width="312" height="123"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="3Co-xd-jkp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0S8-tk-y8f"/>
-                <constraint firstItem="3Co-xd-jkp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qx2-ky-dyB"/>
-                <constraint firstAttribute="trailing" secondItem="3Co-xd-jkp" secondAttribute="trailing" id="kPe-Ki-aAQ"/>
-                <constraint firstAttribute="bottom" secondItem="3Co-xd-jkp" secondAttribute="bottom" id="qLb-nt-bJR"/>
+                <constraint firstAttribute="bottom" secondItem="3Co-xd-jkp" secondAttribute="bottom" id="1rY-F0-IE1"/>
+                <constraint firstItem="3Co-xd-jkp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QbM-ie-3KE"/>
+                <constraint firstAttribute="trailing" secondItem="3Co-xd-jkp" secondAttribute="trailing" id="c8n-cg-pJE"/>
+                <constraint firstItem="3Co-xd-jkp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="l7y-xM-EeQ"/>
             </constraints>
             <size key="customSize" width="312" height="123"/>
             <point key="canvasLocation" x="383" y="302.5"/>

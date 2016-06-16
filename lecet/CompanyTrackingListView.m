@@ -24,7 +24,8 @@
 - (void)awakeFromNib {
     
     [_collectionView registerNib:[UINib nibWithNibName:[[CompanyTrackingCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
 }
 
 - (void)setItems:(NSMutableArray*)items {
@@ -54,7 +55,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     //NSInteger count = collectionItems.count;
-    return 4;
+    return 20;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -73,7 +74,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 1;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section

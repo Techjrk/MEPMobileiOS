@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CompanyTrackingListViewController : UIViewController
+#import "BaseViewController.h"
+@interface CompanyTrackingListViewController : BaseViewController
 
 @end
