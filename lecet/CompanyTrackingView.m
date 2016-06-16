@@ -8,6 +8,7 @@
 
 #import "CompanyTrackingView.h"
 #import <MapKit/MapKit.h>
+#import "companyTrackingViewConstant.h"
 
 @interface CompanyTrackingView ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -21,5 +22,14 @@
 
 @implementation CompanyTrackingView
 
+- (void)awakeFromNib {
+    
+    _nameLabel.font = COMPANYTRACKINGVIEW_LABEL_NAME_FONT;
+    _nameLabel.textColor = COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR;
+    
+    _addressLabel.font = COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT;
+    _addressLabel.textColor = COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT_COLOR;
+    
+}
 
 @end

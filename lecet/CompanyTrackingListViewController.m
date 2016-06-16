@@ -7,8 +7,12 @@
 //
 
 #import "CompanyTrackingListViewController.h"
+#import "ProjectNavigationBarView.h"
+#import "ProjComTrackingTabView.h"
 
-@interface CompanyTrackingListViewController ()
+@interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate>
+@property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
+@property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
 
 @end
 
@@ -17,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _navBarView.projectNavViewDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +29,37 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Nav View Delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
+
+    switch (projectNavItem) {
+        case ProjectNavBackButton:{
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            break;
+        }
+        case ProjectNavReOrder:{
+            [[DataManager sharedManager] featureNotAvailable];
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
 }
-*/
+
+#pragma mark - Tab Delegate
+
+- (void)switchTabButtonStateChange:(BOOL)isOn {
+    [[DataManager sharedManager] featureNotAvailable];
+    
+}
+
+- (void)editTabButtonTapped {
+    [[DataManager sharedManager] featureNotAvailable];
+}
 
 @end

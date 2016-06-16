@@ -21,6 +21,9 @@
             <subviews>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8Z-W1-tTO">
                     <rect key="frame" x="15" y="4" width="51" height="31"/>
+                    <connections>
+                        <action selector="switchButtonChanged:" destination="-1" eventType="valueChanged" id="yR7-uR-WUt"/>
+                    </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK6-AZ-JHV">
                     <rect key="frame" x="69" y="0.0" width="145" height="40"/>
@@ -31,6 +34,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAP-Bh-XuQ">
                     <rect key="frame" x="439" y="0.0" width="89" height="40"/>
                     <state key="normal" title="EDIT"/>
+                    <connections>
+                        <action selector="tappedEditButton:" destination="-1" eventType="touchUpInside" id="sXo-R4-vN9"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

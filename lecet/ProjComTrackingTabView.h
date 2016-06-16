@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol ProjComTrackingTabViewDelegate <NSObject>
+- (void)switchTabButtonStateChange:(BOOL)isOn;
+- (void)editTabButtonTapped;
+@end
+
 @interface ProjComTrackingTabView : BaseViewClass
+@property (nonatomic,assign) id <ProjComTrackingTabViewDelegate> projComTrackingTabViewDelegate;
 
 @end
