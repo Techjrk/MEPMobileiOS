@@ -71,7 +71,7 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGSize size;
     cellHeight = kDeviceHeight * 0.13;
-    size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
+    size = CGSizeMake( kDeviceWidth * 0.98, cellHeight);
     return size;
 }
 

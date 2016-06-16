@@ -26,20 +26,28 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ty5-be-pmV" customClass="ContactAllListView">
-                            <rect key="frame" x="8" y="81" width="584" height="519"/>
+                            <rect key="frame" x="0.0" y="81" width="600" height="519"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Ty5-be-pmV" secondAttribute="trailing" constant="8" id="7Xp-5t-ISB"/>
+                        <constraint firstItem="Ty5-be-pmV" firstAttribute="centerX" secondItem="EYw-Br-rWW" secondAttribute="centerX" id="283-AK-SnL"/>
+                        <constraint firstAttribute="trailing" secondItem="Ty5-be-pmV" secondAttribute="trailing" id="7Xp-5t-ISB"/>
                         <constraint firstItem="EYw-Br-rWW" firstAttribute="top" secondItem="LbJ-2i-KOI" secondAttribute="top" id="BeM-7U-OKZ"/>
                         <constraint firstAttribute="trailing" secondItem="EYw-Br-rWW" secondAttribute="trailing" id="GW2-aq-dtv"/>
                         <constraint firstItem="Ty5-be-pmV" firstAttribute="leading" secondItem="LbJ-2i-KOI" secondAttribute="leading" constant="8" id="QbO-Oy-aCh"/>
                         <constraint firstItem="EYw-Br-rWW" firstAttribute="leading" secondItem="LbJ-2i-KOI" secondAttribute="leading" id="Ud0-Pc-JUP"/>
                         <constraint firstItem="Ty5-be-pmV" firstAttribute="top" secondItem="EYw-Br-rWW" secondAttribute="bottom" constant="10" id="kCi-5l-nrl"/>
+                        <constraint firstItem="Ty5-be-pmV" firstAttribute="width" secondItem="LbJ-2i-KOI" secondAttribute="width" id="qAc-Fw-38E"/>
                         <constraint firstAttribute="bottom" secondItem="Ty5-be-pmV" secondAttribute="bottom" id="xXr-OY-JtE"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="7Xp-5t-ISB"/>
+                            <exclude reference="QbO-Oy-aCh"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
