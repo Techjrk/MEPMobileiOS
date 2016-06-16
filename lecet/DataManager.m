@@ -712,5 +712,10 @@
     
 }
 
+- (BOOL)isDebugMode {
 
+    NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
+    return [processInfo containsObject:@"IS_DEBUG"];
+    
+}
 @end

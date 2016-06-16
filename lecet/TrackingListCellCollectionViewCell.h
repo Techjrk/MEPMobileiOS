@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TrackingListCellCollectionViewCell : UICollectionViewCell
+- (CGFloat)cellHeight;
 - (void)setInfo:(id)info;
 @end

@@ -20,9 +20,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    
-    
     _lineView.backgroundColor = TRACKING_ITEM_LINE_COLOR;
 }
 

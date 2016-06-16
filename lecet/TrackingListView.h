@@ -11,5 +11,6 @@
 #import "BaseViewClass.h"
 
 @interface TrackingListView : BaseViewClass
+- (CGFloat)viewHeight;
 - (void)setInfo:(id)info;
 @end

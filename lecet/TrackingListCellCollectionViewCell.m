@@ -24,4 +24,9 @@
     [_listItem setInfo:info];
 }
 
+- (CGFloat)cellHeight {
+
+    return [_listItem viewHeight];
+}
+
 @end

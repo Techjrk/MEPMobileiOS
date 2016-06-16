@@ -46,5 +46,6 @@
 - (void)featureNotAvailable;
 - (void)showBusyScreen;
 - (void)promptMessage:(NSString*)message;
+- (BOOL)isDebugMode;
 
 @end

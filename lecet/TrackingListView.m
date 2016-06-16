@@ -22,6 +22,7 @@
 @end
 
 @implementation TrackingListView
+#define cellHeight              kDeviceHeight * 0.1
 
 - (void)awakeFromNib {
     _collectionView.customCollectionViewDelegate = self;
@@ -33,6 +34,10 @@
 }
 
 - (IBAction)tappedButtonHeader:(id)sender {
+}
+
+- (CGFloat)viewHeight {
+    return _buttonHeader.frame.size.height + (infoDict.count * cellHeight);
 }
 
 #pragma mark - CustomCollectionView Delegate
@@ -48,7 +53,7 @@
 
 - (NSInteger)collectionViewItemCount {
  
-    return 4;
+    return infoDict.count;
 }
 
 - (NSInteger)collectionViewSectionCount {
@@ -56,7 +61,7 @@
 }
 
 - (CGSize)collectionViewItemSize:(UIView*)view {
-    return CGSizeZero;
+    return CGSizeMake(view.frame.size.width * 0.80, cellHeight);
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
