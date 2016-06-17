@@ -96,7 +96,8 @@
     [super layoutSubviews];
     
     if (heightConstraint!= nil) {
-        heightConstraint.constant = _collectionView.contentSize.height;
+        heightConstraint.constant = _collectionView.collectionViewLayout.collectionViewContentSize.height;
+        [_collectionView reloadData];
     }
 
 }

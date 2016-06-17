@@ -249,7 +249,7 @@
 
 - (void)requestBidRecentlyUpdated {
     
-    [[DataManager sharedManager] bidsRecentlyUpdated:300 success:^(id object) {
+    [[DataManager sharedManager] bidsRecentlyUpdated:30 success:^(id object) {
         [self loadBidsRecentlyUpdated];
     } failure:^(id object) {
         
@@ -900,7 +900,7 @@
         defaultHeight = defaultHeight+ (item.count*cellHeight);
     }
     
-    return CGSizeMake(view.frame.size.width, defaultHeight);
+    return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath *)indexPath {

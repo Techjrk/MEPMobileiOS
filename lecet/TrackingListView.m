@@ -31,6 +31,7 @@
 #define cellHeight              kDeviceHeight * 0.06
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _collectionView.customCollectionViewDelegate = self;
     _constraintHeaderHeight.constant = kDeviceHeight * 0.08;
     _topView.backgroundColor = TRACK_LIST_TOPBAR_BG_COLOR;

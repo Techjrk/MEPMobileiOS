@@ -36,11 +36,17 @@
                     <constraints>
                         <constraint firstItem="Yzr-0J-z4g" firstAttribute="top" secondItem="ain-BM-Bde" secondAttribute="top" id="171-gK-rCp"/>
                         <constraint firstItem="Yzr-0J-z4g" firstAttribute="leading" secondItem="ain-BM-Bde" secondAttribute="leading" id="2VC-jd-Jsg"/>
+                        <constraint firstItem="Yzr-0J-z4g" firstAttribute="width" secondItem="ain-BM-Bde" secondAttribute="width" id="EZI-5z-CUe"/>
                         <constraint firstAttribute="height" constant="500" id="YDR-1W-xO5"/>
                         <constraint firstAttribute="width" constant="240" id="bfh-lz-ocz"/>
                         <constraint firstAttribute="trailing" secondItem="Yzr-0J-z4g" secondAttribute="trailing" id="cSL-bH-NMD"/>
                         <constraint firstAttribute="bottom" secondItem="Yzr-0J-z4g" secondAttribute="bottom" id="q8z-dm-TdJ"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2VC-jd-Jsg"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZh-Sh-vxo" customClass="TriangleView">
                     <rect key="frame" x="0.0" y="71" width="33" height="17"/>

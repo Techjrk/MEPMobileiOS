@@ -485,7 +485,7 @@
 
 - (void)bidsRecentlyAddedLimit:(NSDate*)currentDate success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDate *previousMonth = [DerivedNSManagedObject getDate:currentDate daysAhead:-10];
+    NSDate *previousMonth = [DerivedNSManagedObject getDate:currentDate daysAhead:-30];
     
     NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
     
