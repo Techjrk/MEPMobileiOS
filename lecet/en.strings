@@ -228,3 +228,9 @@
 //Dashboard Tracking Lists
 "PROJECT_TRACKING_LIST"                     =               "Project lists";
 "COMPANY_TRACKING_LIST"                     =               "Company lists";
+
+//SelectMoveView.xib
+"SELECT_MOVE"                               =               "MOVE";
+"SELECT_REMOVE"                             =               "REMOVE";
+"SELECT_COUNT"                              =               "%li Selected";
+

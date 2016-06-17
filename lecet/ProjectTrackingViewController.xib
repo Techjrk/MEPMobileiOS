@@ -21,11 +21,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A65-Dp-w9P" customClass="SelectMoveView">
-                            <rect key="frame" x="0.0" y="662.5" width="414" height="73.5"/>
+                            <rect key="frame" x="0.0" y="670" width="414" height="66"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-wz-fIG">
-                            <rect key="frame" x="110" y="475" width="240" height="128"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-wz-fIG">
+                            <rect key="frame" x="0.0" y="136" width="414" height="534"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oHS-hR-sYZ">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -33,13 +33,24 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-L8-LUJ" customClass="ProjComTrackingTabView">
+                            <rect key="frame" x="0.0" y="84.5" width="414" height="51.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="A65-Dp-w9P" firstAttribute="height" secondItem="T2K-4I-Agb" secondAttribute="height" multiplier="0.1" id="ACe-m1-LyF"/>
+                        <constraint firstItem="xXT-L8-LUJ" firstAttribute="height" secondItem="T2K-4I-Agb" secondAttribute="height" multiplier="0.07" id="2AJ-GF-5qV"/>
+                        <constraint firstAttribute="trailing" secondItem="sEa-wz-fIG" secondAttribute="trailing" id="5CQ-zT-6cL"/>
+                        <constraint firstItem="A65-Dp-w9P" firstAttribute="height" secondItem="T2K-4I-Agb" secondAttribute="height" multiplier="0.09" id="ACe-m1-LyF"/>
+                        <constraint firstAttribute="trailing" secondItem="xXT-L8-LUJ" secondAttribute="trailing" id="EJE-ZS-CFu"/>
                         <constraint firstItem="A65-Dp-w9P" firstAttribute="leading" secondItem="T2K-4I-Agb" secondAttribute="leading" id="F6Y-ux-k5U"/>
                         <constraint firstAttribute="trailing" secondItem="A65-Dp-w9P" secondAttribute="trailing" id="UIV-E8-kuo"/>
                         <constraint firstAttribute="bottom" secondItem="A65-Dp-w9P" secondAttribute="bottom" id="UR3-76-Dvv"/>
+                        <constraint firstItem="sEa-wz-fIG" firstAttribute="top" secondItem="xXT-L8-LUJ" secondAttribute="bottom" id="fGQ-jz-W5y"/>
+                        <constraint firstItem="A65-Dp-w9P" firstAttribute="top" secondItem="sEa-wz-fIG" secondAttribute="bottom" id="qTZ-bK-hKR"/>
+                        <constraint firstItem="sEa-wz-fIG" firstAttribute="leading" secondItem="T2K-4I-Agb" secondAttribute="leading" id="xSn-hm-Su8"/>
+                        <constraint firstItem="xXT-L8-LUJ" firstAttribute="leading" secondItem="T2K-4I-Agb" secondAttribute="leading" id="xqV-W5-RAs"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xls-hf-owS" customClass="ProjectNavigationBarView">
@@ -54,6 +65,7 @@
                 <constraint firstItem="xls-hf-owS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="72l-TM-46t"/>
                 <constraint firstAttribute="trailing" secondItem="xls-hf-owS" secondAttribute="trailing" id="KlP-bg-Oij"/>
                 <constraint firstAttribute="bottom" secondItem="T2K-4I-Agb" secondAttribute="bottom" id="ZCy-fd-Yax"/>
+                <constraint firstItem="xXT-L8-LUJ" firstAttribute="top" secondItem="xls-hf-owS" secondAttribute="bottom" id="aJ8-33-hFv"/>
                 <constraint firstItem="xls-hf-owS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ck0-te-qAD"/>
                 <constraint firstItem="T2K-4I-Agb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gBG-Py-om8"/>
                 <constraint firstAttribute="trailing" secondItem="T2K-4I-Agb" secondAttribute="trailing" id="pe4-wY-0YL"/>
