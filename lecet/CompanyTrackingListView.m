@@ -51,7 +51,6 @@
 
 - (void)tempData {
     
-    
     NSArray *names = @[@"ERS Industrial Services Inc",@"Jay Dee Contractor, Inc",@"Myers & Sons Construction, LP",@"Slayden Construction Group Inc",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     NSArray *addressesOne = @[@"7215 NW 7th St",@"38881 Schoolcraft Rd",@"254 bowery St",@"174 Purchase Rd",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     NSArray *addressesTwo = @[@"Freemont, CA 10054",@"Livonia, MI 48150-101033",@"Sacramento, CA 21054-1201",@"Stayton, OR 10780",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
@@ -103,29 +102,16 @@
         size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
         
     }else {
-        
-        if (!firstLoad) {
-            
-            if (indexPath.row == tempTag) {
-                
-                NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
-                BOOL open = [flag isEqual:@"open"]?NO:YES;
-                
-                if (open) {
-                    cellHeightToExpand = 40.0f;
-                }else {
-                    //cellHeightToExpand = indexPath.row == tempTag?40:0;
-                    cellHeightToExpand = 0;
-                }
-                
-            }
-            
-            
+      
+         NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
+        if ([flag isEqualToString:@"open"]) {
+            cellHeightToExpand =40;
+             size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
+        }else
+        {
+            size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight/ 2) + 15);
         }
         
-        
-        
-        size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
     }
     
     
@@ -149,40 +135,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    /*
-    NSString *buttnSlected = [collectionItems[@"companyButtons"] objectAtIndex:indexPath.row];
-   
-    if ([buttnSlected isEqualToString:@"AddAcct"]) {
-        cellHeightToExpand = 40.f;
-        NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
-        [_collectionView reloadItemsAtIndexPaths:indexPaths];
-    }
-    
-    */
-    
-    
-    
-}
 
+}
 
 - (void)tappedButtonAtTag:(int)tag {
     firstLoad = NO;
     
     NSString *flag = [flagsClosedOpen objectAtIndex:tag];
-    NSLog(@"Current Flag = %@",flag);
-    NSString *flagTochange = [flag isEqual:@"closed"]?@"open":@"closed";
-    NSLog(@"New Flag = %@",flagTochange);
-    
+    NSString *flagTochange = [flag isEqualToString:@"closed"]?@"open":@"closed";
     [flagsClosedOpen replaceObjectAtIndex:tag withObject:flagTochange];
-    //NSString *newFlag = [flagsClosedOpen objectAtIndex:tag];
     
-    //cellHeightToExpand = [newFlag  isEqual: @"open"]?40:0;
     tempTag = tag;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
- 
 }
 
 
