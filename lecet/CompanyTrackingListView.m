@@ -51,7 +51,6 @@
 
 - (void)tempData {
     
-    
     NSArray *names = @[@"ERS Industrial Services Inc",@"Jay Dee Contractor, Inc",@"Myers & Sons Construction, LP",@"Slayden Construction Group Inc",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     NSArray *addressesOne = @[@"7215 NW 7th St",@"38881 Schoolcraft Rd",@"254 bowery St",@"174 Purchase Rd",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     NSArray *addressesTwo = @[@"Freemont, CA 10054",@"Livonia, MI 48150-101033",@"Sacramento, CA 21054-1201",@"Stayton, OR 10780",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
@@ -151,7 +150,6 @@
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
- 
 }
 
 
