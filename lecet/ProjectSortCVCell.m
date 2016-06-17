@@ -10,6 +10,7 @@
 #import "projectSortConstant.h"
 
 @interface ProjectSortCVCell ()
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end
 
@@ -21,7 +22,7 @@
     [self setBackgroundColor:[UIColor whiteColor]];
     [_labelTitle setFont:PROJECTSORT_CELL_LABEL_FONT];
     [_labelTitle setTextColor:PROJECTSORT_CELL_LABEL_FONT_COLOR];
-    
+    _lineView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
 }
 
 @end

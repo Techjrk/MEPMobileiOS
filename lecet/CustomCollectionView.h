@@ -11,6 +11,8 @@
 #import "BaseViewClass.h"
 
 @protocol CustomCollectionViewDelegate <NSObject>
+@optional
+- (UICollectionReusableView*)collectionSectionHeader:(UIView*)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
 @required
 - (void)collectionViewItemClassRegister:(id)customCollectionView;
 - (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView;
@@ -26,6 +28,7 @@
 @property (strong, nonatomic) id cargo;
 - (void)reload;
 - (void)registerCollectionItemClass:(Class)objectClass;
+- (void)registerSectionHeaderItemClass:(Class)objectClass;
 - (void)setConstraintHeight:(NSLayoutConstraint*)constraint;
 - (CGSize)contentSize;
 @end

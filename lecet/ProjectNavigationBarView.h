@@ -25,4 +25,5 @@ typedef enum  {
 - (void)setContractorName:(NSString *)contractorName;
 - (void)setProjectTitle:(NSString *)projectTitle;
 - (void)hideReorderButton:(BOOL)hidden;
+- (UIView*)reOrderButton;
 @end

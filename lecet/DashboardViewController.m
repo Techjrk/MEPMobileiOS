@@ -37,6 +37,7 @@
 #import "CustomCollectionView.h"
 #import "TrackingListCellCollectionViewCell.h"
 #import "TrackingListView.h"
+#import "ProjectTrackingViewController.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate>{
 
@@ -249,7 +250,7 @@
 
 - (void)requestBidRecentlyUpdated {
     
-    [[DataManager sharedManager] bidsRecentlyUpdated:300 success:^(id object) {
+    [[DataManager sharedManager] bidsRecentlyUpdated:30 success:^(id object) {
         [self loadBidsRecentlyUpdated];
     } failure:^(id object) {
         
@@ -847,9 +848,20 @@
 #pragma mark - TrackingListView Delegate
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DISMISS_POPUP object:nil];
     NSIndexPath *indexPath = object;
-    NSArray *trackList = trackingListInfo[indexPath.section==0 ? kTrackListProject: kTrackListProject];
-    NSDictionary *trackItemInfo = trackList[indexPath.row];
+    
+    BOOL isProject = [view isDescendantOfView:trackList[0]];
+    
+    NSArray *trackListArray = trackingListInfo[isProject ? kTrackListProject: kTrackListProject];
+    NSDictionary *trackItemInfo = trackListArray[indexPath.row];
+    
+    shouldUsePushZoomAnimation = NO;
+    
+    ProjectTrackingViewController *controller = [ProjectTrackingViewController new];
+    controller.cargo = trackItemInfo;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - CustomCollectionView Delegate
@@ -900,7 +912,7 @@
         defaultHeight = defaultHeight+ (item.count*cellHeight);
     }
     
-    return CGSizeMake(view.frame.size.width, defaultHeight);
+    return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath *)indexPath {
