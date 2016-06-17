@@ -8,6 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectTrackingViewController">
             <connections>
+                <outlet property="collectionView" destination="sEa-wz-fIG" id="3aa-5d-Ot8"/>
+                <outlet property="constraintEditViewHeight" destination="3Vj-ET-uqp" id="h6Y-wE-Zqt"/>
+                <outlet property="editView" destination="xXT-L8-LUJ" id="QWD-CJ-MUW"/>
                 <outlet property="topBar" destination="xls-hf-owS" id="9Ad-lh-mTE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,15 +26,23 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A65-Dp-w9P" customClass="SelectMoveView">
                             <rect key="frame" x="0.0" y="670" width="414" height="66"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="66" id="3Vj-ET-uqp"/>
+                            </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-wz-fIG">
                             <rect key="frame" x="0.0" y="136" width="414" height="534"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oHS-hR-sYZ">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="j2o-ju-x1P"/>
+                                <outlet property="delegate" destination="-1" id="Xax-bS-xti"/>
+                            </connections>
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-L8-LUJ" customClass="ProjComTrackingTabView">
                             <rect key="frame" x="0.0" y="84.5" width="414" height="51.5"/>
@@ -52,6 +63,11 @@
                         <constraint firstItem="sEa-wz-fIG" firstAttribute="leading" secondItem="T2K-4I-Agb" secondAttribute="leading" id="xSn-hm-Su8"/>
                         <constraint firstItem="xXT-L8-LUJ" firstAttribute="leading" secondItem="T2K-4I-Agb" secondAttribute="leading" id="xqV-W5-RAs"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ACe-m1-LyF"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xls-hf-owS" customClass="ProjectNavigationBarView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="84.5"/>
