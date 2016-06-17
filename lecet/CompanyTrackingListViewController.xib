@@ -8,6 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyTrackingListViewController">
             <connections>
+                <outlet property="navBarView" destination="ypW-Ke-3aN" id="dsw-ay-gTj"/>
+                <outlet property="tabBarView" destination="CyL-m4-10V" id="6yU-Lw-t4z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,9 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zT-FP-21U" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzV-ep-ugg" customClass="CompanyTrackingListView">
-                    <rect key="frame" x="0.0" y="114" width="600" height="486"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <rect key="frame" x="5" y="119" width="590" height="481"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypW-Ke-3aN" customClass="ProjectNavigationBarView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
@@ -34,13 +40,17 @@
                 <constraint firstItem="CyL-m4-10V" firstAttribute="top" secondItem="ypW-Ke-3aN" secondAttribute="bottom" id="0EP-kG-w5l"/>
                 <constraint firstAttribute="trailing" secondItem="ypW-Ke-3aN" secondAttribute="trailing" id="6Yg-TV-jUH"/>
                 <constraint firstAttribute="trailing" secondItem="CyL-m4-10V" secondAttribute="trailing" id="Etc-WA-4eR"/>
-                <constraint firstItem="bzV-ep-ugg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WhH-wn-254"/>
-                <constraint firstAttribute="trailing" secondItem="bzV-ep-ugg" secondAttribute="trailing" id="Zyn-zh-iqI"/>
+                <constraint firstItem="8zT-FP-21U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HHo-aI-kJ9"/>
+                <constraint firstItem="8zT-FP-21U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PqZ-27-EdH"/>
+                <constraint firstAttribute="bottom" secondItem="8zT-FP-21U" secondAttribute="bottom" id="RrI-1v-LBT"/>
+                <constraint firstItem="bzV-ep-ugg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="WhH-wn-254"/>
+                <constraint firstAttribute="trailing" secondItem="bzV-ep-ugg" secondAttribute="trailing" constant="5" id="Zyn-zh-iqI"/>
                 <constraint firstItem="ypW-Ke-3aN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b1q-OP-pxi"/>
+                <constraint firstAttribute="trailing" secondItem="8zT-FP-21U" secondAttribute="trailing" id="bgW-fu-aV2"/>
                 <constraint firstItem="ypW-Ke-3aN" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="m9w-Xg-geT"/>
                 <constraint firstItem="ypW-Ke-3aN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mdm-Dp-HQl"/>
                 <constraint firstItem="CyL-m4-10V" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="qOZ-xh-Fny"/>
-                <constraint firstItem="bzV-ep-ugg" firstAttribute="top" secondItem="CyL-m4-10V" secondAttribute="bottom" id="tIE-MB-IMa"/>
+                <constraint firstItem="bzV-ep-ugg" firstAttribute="top" secondItem="CyL-m4-10V" secondAttribute="bottom" constant="5" id="tIE-MB-IMa"/>
                 <constraint firstItem="CyL-m4-10V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uUq-Yo-dMo"/>
                 <constraint firstAttribute="bottom" secondItem="bzV-ep-ugg" secondAttribute="bottom" id="vR7-Mf-Dig"/>
             </constraints>

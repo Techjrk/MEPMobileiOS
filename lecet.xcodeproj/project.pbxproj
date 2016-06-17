@@ -367,6 +367,7 @@
 		B65106651D12DCA900007759 /* CompanyTrackingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyTrackingListViewController.h; sourceTree = "<group>"; };
 		B65106661D12DCA900007759 /* CompanyTrackingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyTrackingListViewController.m; sourceTree = "<group>"; };
 		B65106671D12DCA900007759 /* CompanyTrackingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyTrackingListViewController.xib; sourceTree = "<group>"; };
+		B651066A1D12F27700007759 /* companyTrackingViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = companyTrackingViewConstant.h; sourceTree = "<group>"; };
 		B66544B91D002CBD0033732F /* CDAssociatedProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAssociatedProjectViewController.h; sourceTree = "<group>"; };
 		B66544BA1D002CBD0033732F /* CDAssociatedProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAssociatedProjectViewController.m; sourceTree = "<group>"; };
 		B66544BB1D002CBD0033732F /* CDAssociatedProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CDAssociatedProjectViewController.xib; sourceTree = "<group>"; };
@@ -1671,6 +1672,7 @@
 				B73EFAC21D0EEFF300C6B3B2 /* hiddenProjectsConstants.h */,
 				B73EFACD1D0EF90400C6B3B2 /* hiddenProjectCellConstants.h */,
 				B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */,
+				B651066A1D12F27700007759 /* companyTrackingViewConstant.h */,
 				B73EFAE81D12C25700C6B3B2 /* trackingListViewConstants.h */,
 				B651064C1D12B12500007759 /* companyTrackingListConstant.h */,
 				B651064D1D12B16C00007759 /* projComTrckingTabViewConstant.h */,

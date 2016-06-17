@@ -21,13 +21,20 @@
 - (void)awakeFromNib {
     
     [_switchButton setOnTintColor:PROJCOMTRACKINGTAB_SWITCHBUTTON_BG_COLOR];
-    
     _label.font = PROJCOMTRACKINGTAB_LABEL_FONT;
     _label.textColor = PROJCOMTRACKINGTAB_LABEL_FONT_COLOR;
-    
     _rightButton.titleLabel.font = PROJCOMTRACKINGTAB_BUTTON_FONT;
     [_rightButton setTitleColor:PROJCOMTRACKINGTAB_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-
+    [self.view setBackgroundColor:PROJCOMTRACKINGTAB_VIEW_BG_COLOR];
     
 }
+
+- (IBAction)switchButtonChanged:(id)sender {
+    [_projComTrackingTabViewDelegate switchTabButtonStateChange:[_switchButton isOn]];
+}
+- (IBAction)tappedEditButton:(id)sender {
+    [_projComTrackingTabViewDelegate editTabButtonTapped];
+}
+
+
 @end

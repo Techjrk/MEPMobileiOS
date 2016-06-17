@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CompanyTrackingCollectionViewCellDelegate <NSObject>
+- (void)tappedButtonAtTag:(int)tag;
+@end
+
 @interface CompanyTrackingCollectionViewCell : UICollectionViewCell
+@property (nonatomic,assign) id <CompanyTrackingCollectionViewCellDelegate> companyTrackingCollectionViewCellDelegate;
+- (void)setTitleName:(NSString *)text;
+- (void)setAddressTop:(NSString *)text;
+- (void)setAddressBelow:(NSString *)text;
+- (void)setButtonLabelTitle:(NSString *)text;
+- (void)setButtontag:(int)tag;
 
 @end
