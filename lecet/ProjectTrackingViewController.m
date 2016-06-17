@@ -12,16 +12,22 @@
 #import "PopupViewController.h"
 #import "ProjectSortCVCell.h"
 #import "SectionHeaderCollectionViewCell.h"
+#import "ProjComTrackingTabView.h"
+#import "ProjectTrackItemCollectionViewCell.h"
 
-@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate>{
+@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>{
     NSArray *sortItems;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *topBar;
-
+@property (weak, nonatomic) IBOutlet ProjComTrackingTabView *editView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
 @end
 
 @implementation ProjectTrackingViewController
 @synthesize cargo;
+
+#define kCellIdentifier             @"kCellIdentifier"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +42,12 @@
                 NSLocalizedLanguage(@"PROJECTSORT_DATE_ADDED_TEXT"),
                 NSLocalizedLanguage(@"PROJECTSORT_HIGH_TO_LOW_TEXT"),
                 NSLocalizedLanguage(@"PROJECTSORT_LOW_TO_HIGH_TEXT")];
+    
+    _constraintEditViewHeight.constant = 0;
+    _editView.projComTrackingTabViewDelegate = self;
+    
+    [_collectionView registerNib:[UINib nibWithNibName:[[ProjectTrackItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+
 
 }
 
@@ -44,6 +56,19 @@
 }
 
 #pragma Custom Delegates
+
+- (void)switchTabButtonStateChange:(BOOL)isOn {
+    
+}
+
+- (void)editTabButtonTapped {
+    _constraintEditViewHeight.constant = kDeviceHeight * 0.09;
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
 -(void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     if (projectNavItem == ProjectNavBackButton) {
@@ -112,5 +137,61 @@
 
     }
 }
+
+#pragma mark - UICollectionView Delegate
+
+#pragma mark - UICollectionView source and delegate
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ProjectTrackItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];;
+    
+    [[cell contentView] setFrame:[cell bounds]];
+    [[cell contentView] layoutIfNeeded];
+    
+    return cell;
+}
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 5;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize size;
+    
+    CGFloat cellHeight = kDeviceHeight * 0.15;
+    size = CGSizeMake( kDeviceWidth, cellHeight);
+    return size;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
+{
+    return UIEdgeInsetsMake(0, kDeviceWidth * 0.025, 0, kDeviceWidth * 0.025);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return kDeviceWidth * 0.025;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 
 @end

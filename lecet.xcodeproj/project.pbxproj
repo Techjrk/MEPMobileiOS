@@ -170,6 +170,10 @@
 		B73EFB011D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAFF1D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.xib */; };
 		B73EFB041D1435AF00C6B3B2 /* SelectMoveView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFB031D1435AF00C6B3B2 /* SelectMoveView.m */; };
 		B73EFB061D1435C200C6B3B2 /* SelectMoveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB051D1435C200C6B3B2 /* SelectMoveView.xib */; };
+		B73EFB0A1D14546E00C6B3B2 /* ProjectTrackItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFB091D14546E00C6B3B2 /* ProjectTrackItemView.m */; };
+		B73EFB0C1D14548100C6B3B2 /* ProjectTrackItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB0B1D14548100C6B3B2 /* ProjectTrackItemView.xib */; };
+		B73EFB101D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */; };
+		B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -566,6 +570,12 @@
 		B73EFB031D1435AF00C6B3B2 /* SelectMoveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectMoveView.m; sourceTree = "<group>"; };
 		B73EFB051D1435C200C6B3B2 /* SelectMoveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMoveView.xib; sourceTree = "<group>"; };
 		B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = selectMoveViewConstants.h; sourceTree = "<group>"; };
+		B73EFB081D14546E00C6B3B2 /* ProjectTrackItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTrackItemView.h; sourceTree = "<group>"; };
+		B73EFB091D14546E00C6B3B2 /* ProjectTrackItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTrackItemView.m; sourceTree = "<group>"; };
+		B73EFB0B1D14548100C6B3B2 /* ProjectTrackItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTrackItemView.xib; sourceTree = "<group>"; };
+		B73EFB0D1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTrackItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTrackItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTrackItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1480,6 +1490,9 @@
 				B73EFAFD1D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.h */,
 				B73EFAFE1D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.m */,
 				B73EFAFF1D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.xib */,
+				B73EFB0D1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.h */,
+				B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */,
+				B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1605,6 +1618,9 @@
 				B73EFB021D1435AF00C6B3B2 /* SelectMoveView.h */,
 				B73EFB031D1435AF00C6B3B2 /* SelectMoveView.m */,
 				B73EFB051D1435C200C6B3B2 /* SelectMoveView.xib */,
+				B73EFB081D14546E00C6B3B2 /* ProjectTrackItemView.h */,
+				B73EFB091D14546E00C6B3B2 /* ProjectTrackItemView.m */,
+				B73EFB0B1D14548100C6B3B2 /* ProjectTrackItemView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1963,11 +1979,13 @@
 				B6411BD11D09B2D8002B6E88 /* MyProfileHeaderView.xib in Resources */,
 				B73EFB061D1435C200C6B3B2 /* SelectMoveView.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
+				B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */,
 				B76C69461CD2489B009E9F15 /* CustomTextField.xib in Resources */,
 				B66591191CFF0C8800CFD10C /* ProjectShareViewController.xib in Resources */,
 				B76C69811CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib in Resources */,
 				B771C6071CEB6C65004A628A /* AssociatedBidView.xib in Resources */,
 				B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */,
+				B73EFB0C1D14548100C6B3B2 /* ProjectTrackItemView.xib in Resources */,
 				B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */,
 				B73EFAA11D08441E00C6B3B2 /* CallOutViewController.xib in Resources */,
 				B66544BD1D002CBD0033732F /* CDAssociatedProjectViewController.xib in Resources */,
@@ -2088,6 +2106,7 @@
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */,
+				B73EFB0A1D14546E00C6B3B2 /* ProjectTrackItemView.m in Sources */,
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */,
@@ -2158,6 +2177,7 @@
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
+				B73EFB101D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m in Sources */,
 				B7F10A2E1CDB577800847FA3 /* DataManager.m in Sources */,
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
 				B66544BC1D002CBD0033732F /* CDAssociatedProjectViewController.m in Sources */,
