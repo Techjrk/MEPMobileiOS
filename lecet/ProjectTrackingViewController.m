@@ -49,15 +49,19 @@
     if (projectNavItem == ProjectNavBackButton) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        PopupViewController *controller = [PopupViewController new];
-        CGRect rect = [controller getViewPositionFromViewController:[_topBar reOrderButton] controller:self];
-        rect.size.height =  rect.size.height * 0.85;
-        controller.popupRect = rect;
-        controller.popupWidth = 0.98;
-        controller.isGreyedBackground = YES;
-        controller.customCollectionViewDelegate = self;
-        controller.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:controller animated:NO completion:nil];
+        if ([[DataManager sharedManager] isDebugMode]) {
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:[_topBar reOrderButton] controller:self];
+            rect.size.height =  rect.size.height * 0.85;
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+        } else {
+            [[DataManager sharedManager] featureNotAvailable];
+        }
         
     }
 }
@@ -95,7 +99,7 @@
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
-    
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 - (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
