@@ -9,6 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+@protocol CompanyTrackingViewDelegate <NSObject>
+@required
+- (void)tappedButtonAtTag:(int)tag;
+@end
+
 @interface CompanyTrackingView : BaseViewClass
+
+@property (nonatomic,assign) id <CompanyTrackingViewDelegate> companyTrackingViewDelegate;
+- (void)setName:(NSString *)name;
+- (void)setAddress:(NSString *)address;
+- (void)setAddressTwo:(NSString *)address;
+- (void)setButtonLabelTitle:(NSString *)text;
+- (void)setButtonTag:(int)tag;
 
 @end

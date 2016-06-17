@@ -27,6 +27,9 @@
                 <constraint firstItem="3Co-xd-jkp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="l7y-xM-EeQ"/>
             </constraints>
             <size key="customSize" width="312" height="123"/>
+            <connections>
+                <outlet property="companyTrackingView" destination="3Co-xd-jkp" id="0gv-Dz-N28"/>
+            </connections>
             <point key="canvasLocation" x="383" y="302.5"/>
         </collectionViewCell>
     </objects>
