@@ -565,6 +565,7 @@
 		B73EFB021D1435AF00C6B3B2 /* SelectMoveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectMoveView.h; sourceTree = "<group>"; };
 		B73EFB031D1435AF00C6B3B2 /* SelectMoveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectMoveView.m; sourceTree = "<group>"; };
 		B73EFB051D1435C200C6B3B2 /* SelectMoveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMoveView.xib; sourceTree = "<group>"; };
+		B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = selectMoveViewConstants.h; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1675,6 +1676,7 @@
 				B73EFAE81D12C25700C6B3B2 /* trackingListViewConstants.h */,
 				B651064C1D12B12500007759 /* companyTrackingListConstant.h */,
 				B651064D1D12B16C00007759 /* projComTrckingTabViewConstant.h */,
+				B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
