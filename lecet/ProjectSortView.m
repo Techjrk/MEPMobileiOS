@@ -62,20 +62,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProjectSortCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    [self configureView:cell];
     NSString *title = [projectSortDataItems objectAtIndex:indexPath.row];
     cell.labelTitle.text = title;
-    
-    
     return cell;
-}
-
-- (void)configureView:(UIView*)view {
-    CGFloat borderWidth = 1.0;
-    UIView* mask = [[UIView alloc] initWithFrame:CGRectMake(borderWidth, view.frame.size.height - borderWidth, view.frame.size.width, 1)];
-    mask.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
-    [view addSubview:mask];
-    
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

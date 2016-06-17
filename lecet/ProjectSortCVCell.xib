@@ -19,17 +19,28 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQI-bt-i2e">
+                        <rect key="frame" x="0.0" y="64" width="383" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ahH-Lo-CTZ"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="BNv-1D-h5x" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="CTz-He-yhb"/>
+                <constraint firstItem="CQI-bt-i2e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EWF-Vq-b9g"/>
                 <constraint firstItem="BNv-1D-h5x" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="G5d-6X-fMb"/>
+                <constraint firstAttribute="bottom" secondItem="CQI-bt-i2e" secondAttribute="bottom" id="GMF-O0-mog"/>
                 <constraint firstAttribute="trailing" secondItem="BNv-1D-h5x" secondAttribute="trailing" constant="8" id="HFT-1X-QtO"/>
+                <constraint firstAttribute="trailing" secondItem="CQI-bt-i2e" secondAttribute="trailing" id="cCB-wM-dL7"/>
             </constraints>
             <size key="customSize" width="383" height="65"/>
             <connections>
                 <outlet property="labelTitle" destination="BNv-1D-h5x" id="pSO-oQ-qAO"/>
+                <outlet property="lineView" destination="CQI-bt-i2e" id="HvA-xN-tks"/>
             </connections>
             <point key="canvasLocation" x="315.5" y="394.5"/>
         </collectionViewCell>

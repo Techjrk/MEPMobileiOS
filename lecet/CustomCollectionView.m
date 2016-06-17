@@ -28,9 +28,16 @@
 
 }
 
+- (void)registerSectionHeaderItemClass:(Class)objectClass {
+    
+    [_collectionView registerNib:[UINib nibWithNibName:[objectClass description] bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[objectClass description]];
+    
+}
+
 - (void)reload {
     [_collectionView reloadData];
 }
+
 
 #pragma mark - UICollectionView source and delegate
 
@@ -53,7 +60,7 @@
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return [self.customCollectionViewDelegate collectionViewSectionCount];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -90,6 +97,10 @@
 
 - (void)setConstraintHeight:(NSLayoutConstraint *)constraint {
     heightConstraint = constraint;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    return [self.customCollectionViewDelegate collectionSectionHeader:self viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
 }
 
 -(void)layoutSubviews {

@@ -51,4 +51,11 @@
 - (void)hideReorderButton:(BOOL)hidden {
     _reOrderButton.hidden = hidden;
 }
+
+- (UIView*)reOrderButton {
+
+    return _reOrderButton;
+
+}
+
 @end

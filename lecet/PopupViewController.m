@@ -9,7 +9,7 @@
 #import "PopupViewController.h"
 
 #import "TriangleView.h"
-@interface PopupViewController ()
+@interface PopupViewController ()<CustomCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TriangleView *popupPlacementTop;
 @property (weak, nonatomic) IBOutlet UIView *popupContainer;
 @property (weak, nonatomic) IBOutlet CustomCollectionView *container;
@@ -40,6 +40,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationCollectionViewCellSizeChange:) name:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
     
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(NotificationDismiss:) name:NOTIFICATION_DISMISS_POPUP object:nil];
+    
     [_popupPlacementTop setObjectColor:self.popupPlacementColor];
     _constraintPlacementTopLeading.constant = (self.popupRect.origin.x + (self.popupRect.size.width * 0.5)) - (_popupPlacementTop.frame.size.width * 0.5);
     _constraintPlacementTop.constant = self.popupRect.origin.y + (self.popupRect.size.height);
@@ -52,7 +54,7 @@
     _popupContainer.layer.shadowRadius = kDeviceWidth * 0.01;
     _popupContainer.backgroundColor = [UIColor clearColor];
     
-    _container.layer.cornerRadius = kDeviceWidth * 0.01;
+    _container.layer.cornerRadius = kDeviceWidth * 0.012;
     _container.layer.masksToBounds = YES;
     
     if (self.isGreyedBackground) {
@@ -60,7 +62,7 @@
         
     }
     
-    _container.customCollectionViewDelegate = self.customCollectionViewDelegate;
+    _container.customCollectionViewDelegate = self;
     [_container setConstraintHeight:_constraintPopupHeight];
 
 }
@@ -102,4 +104,39 @@
     }];
 }
 
+#pragma mark - CustomCollectionView Delegate
+
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    [self.customCollectionViewDelegate collectionViewItemClassRegister:customCollectionView];
+}
+
+- (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
+    return [self.customCollectionViewDelegate collectionViewItemClassDeque:indexPath collectionView:collectionView];
+}
+
+- (NSInteger)collectionViewItemCount {
+    return [self.customCollectionViewDelegate collectionViewItemCount];
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return [self.customCollectionViewDelegate collectionViewSectionCount];
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
+    return [self.customCollectionViewDelegate collectionViewItemSize:view indexPath:indexPath cargo:cargo];
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.customCollectionViewDelegate collectionViewDidSelectedItem:indexPath];
+    }];
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath{
+    [self.customCollectionViewDelegate collectionViewPrepareItemForUse:cell indexPath:indexPath];
+}
+
+- (void)NotificationDismiss:(NSNotification*)notification {
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
 @end
