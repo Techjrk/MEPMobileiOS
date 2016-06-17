@@ -11,4 +11,5 @@
 
 @interface CompanyTrackingListView : BaseViewClass
 
+- (void)switchButtonChange:(BOOL)isOn;
 @end
