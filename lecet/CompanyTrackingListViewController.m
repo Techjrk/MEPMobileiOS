@@ -10,6 +10,7 @@
 #import "ProjectNavigationBarView.h"
 #import "ProjComTrackingTabView.h"
 #import "CompanyTrackingListView.h"
+#import "CompanySortViewController.h"
 @interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
@@ -43,7 +44,12 @@
             break;
         }
         case ProjectNavReOrder:{
-            [[DataManager sharedManager] featureNotAvailable];
+            CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
+            
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
+            [self presentViewController:controller  animated:NO completion:nil];
             break;
         }
             

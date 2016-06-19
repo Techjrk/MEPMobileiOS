@@ -77,6 +77,12 @@
 		B69C3AD11D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69C3ACF1D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib */; };
 		B69C3AD61D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C3AD41D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m */; };
 		B69C3AD71D0DBB2C003DD918 /* MyProfileTwoTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69C3AD51D0DBB2C003DD918 /* MyProfileTwoTextFieldView.xib */; };
+		B6A74EED1D15DB55007CDFF3 /* CompanySortView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A74EEA1D15DB55007CDFF3 /* CompanySortView.m */; };
+		B6A74EEE1D15DB55007CDFF3 /* CompanySortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A74EEB1D15DB55007CDFF3 /* CompanySortView.xib */; };
+		B6A74EF41D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A74EF21D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m */; };
+		B6A74EF51D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A74EF31D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib */; };
+		B6A74EFA1D15DBD3007CDFF3 /* CompanySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A74EF81D15DBD3007CDFF3 /* CompanySortViewController.m */; };
+		B6A74EFB1D15DBD3007CDFF3 /* CompanySortViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A74EF91D15DBD3007CDFF3 /* CompanySortViewController.xib */; };
 		B6A81E681D0C888D0016B20F /* MyProfileCustomTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */; };
 		B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */; };
 		B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */; };
@@ -419,6 +425,17 @@
 		B69C3AD31D0DBB2C003DD918 /* MyProfileTwoTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileTwoTextFieldView.h; sourceTree = "<group>"; };
 		B69C3AD41D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileTwoTextFieldView.m; sourceTree = "<group>"; };
 		B69C3AD51D0DBB2C003DD918 /* MyProfileTwoTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileTwoTextFieldView.xib; sourceTree = "<group>"; };
+		B6A74EE91D15DB55007CDFF3 /* CompanySortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySortView.h; sourceTree = "<group>"; };
+		B6A74EEA1D15DB55007CDFF3 /* CompanySortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanySortView.m; sourceTree = "<group>"; };
+		B6A74EEB1D15DB55007CDFF3 /* CompanySortView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanySortView.xib; sourceTree = "<group>"; };
+		B6A74EEC1D15DB55007CDFF3 /* CompanySortDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySortDelegate.h; sourceTree = "<group>"; };
+		B6A74EEF1D15DB6F007CDFF3 /* companySortViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = companySortViewConstant.h; sourceTree = "<group>"; };
+		B6A74EF11D15DBAC007CDFF3 /* CompanySortCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySortCollectionViewCell.h; sourceTree = "<group>"; };
+		B6A74EF21D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanySortCollectionViewCell.m; sourceTree = "<group>"; };
+		B6A74EF31D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanySortCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6A74EF71D15DBD3007CDFF3 /* CompanySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanySortViewController.h; sourceTree = "<group>"; };
+		B6A74EF81D15DBD3007CDFF3 /* CompanySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanySortViewController.m; sourceTree = "<group>"; };
+		B6A74EF91D15DBD3007CDFF3 /* CompanySortViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanySortViewController.xib; sourceTree = "<group>"; };
 		B6A81E651D0C888D0016B20F /* MyProfileCustomTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileCustomTextFieldView.h; sourceTree = "<group>"; };
 		B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileCustomTextFieldView.m; sourceTree = "<group>"; };
 		B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileCustomTextFieldView.xib; sourceTree = "<group>"; };
@@ -1158,6 +1175,37 @@
 			name = MyProfileTwoTextFiledView;
 			sourceTree = "<group>";
 		};
+		B6A74EE81D15DB2F007CDFF3 /* CompanySort */ = {
+			isa = PBXGroup;
+			children = (
+				B6A74EE91D15DB55007CDFF3 /* CompanySortView.h */,
+				B6A74EEA1D15DB55007CDFF3 /* CompanySortView.m */,
+				B6A74EEB1D15DB55007CDFF3 /* CompanySortView.xib */,
+				B6A74EEC1D15DB55007CDFF3 /* CompanySortDelegate.h */,
+			);
+			name = CompanySort;
+			sourceTree = "<group>";
+		};
+		B6A74EF01D15DB96007CDFF3 /* CompanySortCell */ = {
+			isa = PBXGroup;
+			children = (
+				B6A74EF11D15DBAC007CDFF3 /* CompanySortCollectionViewCell.h */,
+				B6A74EF21D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m */,
+				B6A74EF31D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib */,
+			);
+			name = CompanySortCell;
+			sourceTree = "<group>";
+		};
+		B6A74EF61D15DBBA007CDFF3 /* CompanySort */ = {
+			isa = PBXGroup;
+			children = (
+				B6A74EF71D15DBD3007CDFF3 /* CompanySortViewController.h */,
+				B6A74EF81D15DBD3007CDFF3 /* CompanySortViewController.m */,
+				B6A74EF91D15DBD3007CDFF3 /* CompanySortViewController.xib */,
+			);
+			name = CompanySort;
+			sourceTree = "<group>";
+		};
 		B6A81E6A1D0C88920016B20F /* MyProfileCustomTextFieldView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1372,6 +1420,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6A74EF61D15DBBA007CDFF3 /* CompanySort */,
 				B65106611D12DC6100007759 /* CompanyTracking */,
 				B6411BF21D09CF4B002B6E88 /* ParticipantsListViewController.h */,
 				B6411BF31D09CF4B002B6E88 /* ParticipantsListViewController.m */,
@@ -1443,6 +1492,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B6A74EF01D15DB96007CDFF3 /* CompanySortCell */,
 				B651065B1D12D75700007759 /* CompanyTrackingCell */,
 				B6411BA71D096DEE002B6E88 /* SettingCell */,
 				B68337331D0830E1004226D3 /* ChangePasswordCell */,
@@ -1500,6 +1550,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B6A74EE81D15DB2F007CDFF3 /* CompanySort */,
 				B65106531D12B82200007759 /* CompanyTraking */,
 				B65106411D12AA5E00007759 /* ProjComTrackingTab */,
 				B6E4044E1D0AB2CC00F82F1D /* Setting */,
@@ -1637,6 +1688,7 @@
 		B76C69351CD22413009E9F15 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
+				B6A74EEF1D15DB6F007CDFF3 /* companySortViewConstant.h */,
 				B623B2081CFC9A7B00793D67 /* projectTListCellConstant.h */,
 				B6972B851CF327CC0092D5CD /* dropDownProjectListConstant.h */,
 				B6972B861CF327CC0092D5CD /* dropDownShareListConstant.h */,
@@ -1964,6 +2016,7 @@
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
 				B6411BAC1D096E1B002B6E88 /* SettingCollectionViewCell.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
+				B6A74EEE1D15DB55007CDFF3 /* CompanySortView.xib in Resources */,
 				B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */,
 				B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */,
 				B69C3AD11D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib in Resources */,
@@ -1976,6 +2029,7 @@
 				B73EFACC1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib in Resources */,
 				B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
+				B6A74EFB1D15DBD3007CDFF3 /* CompanySortViewController.xib in Resources */,
 				B6411BD11D09B2D8002B6E88 /* MyProfileHeaderView.xib in Resources */,
 				B73EFB061D1435C200C6B3B2 /* SelectMoveView.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
@@ -2043,6 +2097,7 @@
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
 				B68337111D080CFA004226D3 /* ProfileNavView.xib in Resources */,
 				B6411BB81D097426002B6E88 /* SettingsCPView.xib in Resources */,
+				B6A74EF51D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib in Resources */,
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
 				B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
@@ -2099,6 +2154,7 @@
 				B7F10A201CDB3E3300847FA3 /* UIWebView+AFNetworking.m in Sources */,
 				B79616121CF4400B0089BC32 /* ActivityView.m in Sources */,
 				B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */,
+				B6A74EED1D15DB55007CDFF3 /* CompanySortView.m in Sources */,
 				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
 				B6EFFE971D04592A00727323 /* ContactAllListViewController.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
@@ -2135,6 +2191,7 @@
 				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
+				B6A74EFA1D15DBD3007CDFF3 /* CompanySortViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
 				B6FC235C1D042D3800296386 /* ProjectAllAssociatedProjectView.m in Sources */,
 				B6411BF51D09CF4B002B6E88 /* ParticipantsListViewController.m in Sources */,
@@ -2205,6 +2262,7 @@
 				B6411BC41D09ACEF002B6E88 /* MyProfileView.m in Sources */,
 				B6411BAB1D096E1B002B6E88 /* SettingCollectionViewCell.m in Sources */,
 				B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */,
+				B6A74EF41D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m in Sources */,
 				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
