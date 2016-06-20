@@ -234,3 +234,8 @@
 "SELECT_REMOVE"                             =               "REMOVE";
 "SELECT_COUNT"                              =               "%li Selected";
 
+//CompanySortView.xib
+"SORT_LASTUPDATED"                          =               "Last Updated";
+"SORT_AlPHABETICAL"                         =               "Alphabetical";
+"SORT_TITLE"                                =               "Sort by";
+

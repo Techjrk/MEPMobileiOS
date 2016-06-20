@@ -34,13 +34,13 @@
     self.layer.masksToBounds = YES;
     
     
-    items = @[@"Last Updated",@"Alphabetical"];
+    items = @[NSLocalizedLanguage(@"SORT_LASTUPDATED"),NSLocalizedLanguage(@"SORT_AlPHABETICAL")];
     
     _labelTitle.font = COMPANYTRACKINGVIEW_LABEL_FONT;
     _labelTitle.textColor = COMPANYTRACKINGVIEW_LABEL_FONT_COLOR;
     [_topViewContainer setBackgroundColor:COMPANYTRACKINGVIEW_VIEW_BG_COLOR];
     
-    _labelTitle.text = @"Sort by";
+    _labelTitle.text = NSLocalizedLanguage(@"SORT_TITLE");
     
 }
 

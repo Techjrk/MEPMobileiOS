@@ -439,6 +439,7 @@
 		B6A81E651D0C888D0016B20F /* MyProfileCustomTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileCustomTextFieldView.h; sourceTree = "<group>"; };
 		B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileCustomTextFieldView.m; sourceTree = "<group>"; };
 		B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileCustomTextFieldView.xib; sourceTree = "<group>"; };
+		B6BDBAA91D17F83C001FB41C /* companySortViewCellConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = companySortViewCellConstant.h; sourceTree = "<group>"; };
 		B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateViewController.m; sourceTree = "<group>"; };
 		B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailStateViewController.xib; sourceTree = "<group>"; };
 		B6CF764B1CF868E100BF6C69 /* ProjectDetailStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateViewController.h; sourceTree = "<group>"; };
@@ -1745,6 +1746,7 @@
 				B651064C1D12B12500007759 /* companyTrackingListConstant.h */,
 				B651064D1D12B16C00007759 /* projComTrckingTabViewConstant.h */,
 				B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */,
+				B6BDBAA91D17F83C001FB41C /* companySortViewCellConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";

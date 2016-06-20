@@ -7,6 +7,7 @@
 //
 
 #import "CompanySortCollectionViewCell.h"
+#import "companySortViewCellConstant.h"
 
 @interface CompanySortCollectionViewCell() {
     
@@ -20,6 +21,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _labelTitle.font = COMPANYSORTVC_LABEL_FONT;
+    _labelTitle.textColor = COMPANYSORTVC_LABEL_FONT_COLOR;
 }
 
 - (void)setLabelTitleText:(NSString *)text {

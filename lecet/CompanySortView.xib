@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="336" height="83"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnr-yq-yEC">
-                            <rect key="frame" x="8" y="31" width="328" height="21"/>
+                            <rect key="frame" x="10" y="31" width="326" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -32,12 +32,12 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Xnr-yq-yEC" secondAttribute="trailing" id="D2i-9W-ewe"/>
-                        <constraint firstItem="Xnr-yq-yEC" firstAttribute="leading" secondItem="FDi-Rp-fBL" secondAttribute="leading" constant="8" id="Txc-ve-ult"/>
+                        <constraint firstItem="Xnr-yq-yEC" firstAttribute="leading" secondItem="FDi-Rp-fBL" secondAttribute="leading" constant="10" id="Txc-ve-ult"/>
                         <constraint firstItem="Xnr-yq-yEC" firstAttribute="centerY" secondItem="FDi-Rp-fBL" secondAttribute="centerY" id="bFM-CN-qkX"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XR7-9C-hs8">
-                    <rect key="frame" x="8" y="83" width="320" height="153"/>
+                    <rect key="frame" x="10" y="83" width="316" height="153"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cad-bT-egB">
                         <size key="itemSize" width="50" height="50"/>
@@ -53,9 +53,9 @@
                 <constraint firstItem="FDi-Rp-fBL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="53F-8j-Yy9"/>
                 <constraint firstItem="XR7-9C-hs8" firstAttribute="top" secondItem="FDi-Rp-fBL" secondAttribute="bottom" id="Hun-x3-uKj"/>
                 <constraint firstItem="FDi-Rp-fBL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UOw-eM-bh6"/>
-                <constraint firstItem="XR7-9C-hs8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="bpu-Bo-04V"/>
+                <constraint firstItem="XR7-9C-hs8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="bpu-Bo-04V"/>
                 <constraint firstAttribute="trailing" secondItem="FDi-Rp-fBL" secondAttribute="trailing" id="caR-YE-73d"/>
-                <constraint firstAttribute="trailing" secondItem="XR7-9C-hs8" secondAttribute="trailing" constant="8" id="fLz-Aw-fpd"/>
+                <constraint firstAttribute="trailing" secondItem="XR7-9C-hs8" secondAttribute="trailing" constant="10" id="fLz-Aw-fpd"/>
                 <constraint firstItem="FDi-Rp-fBL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.35" id="sTS-TF-wS9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

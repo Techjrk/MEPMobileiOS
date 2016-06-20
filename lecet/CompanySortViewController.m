@@ -27,7 +27,7 @@
     [self enableTapGesture:YES];
     [self addTappedGesture];
     
-    [_triangleView setObjectColor:[UIColor whiteColor]];
+    [_triangleView setObjectColor:COMPANYTRACKINGVIEW_VIEW_BG_COLOR];
 }
 
 - (void)didReceiveMemoryWarning {

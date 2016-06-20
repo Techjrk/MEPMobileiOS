@@ -75,20 +75,7 @@
 }
 
 - (void)setAddress:(NSString *)address {
-    /*
-    NSString * addressWithSpace = [NSString stringWithFormat:@" %@",address];
-    NSTextAttachment *attachment = [NSTextAttachment new];
-    attachment.image = [UIImage imageNamed:@"icon_bidLocation"];
-    
-    NSMutableAttributedString *stringWithAttachment = [[NSAttributedString attributedStringWithAttachment:attachment] mutableCopy];
-    NSAttributedString *attributed = [[NSAttributedString alloc] initWithString:addressWithSpace attributes:@{NSFontAttributeName:COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT, NSForegroundColorAttributeName:COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT_COLOR}];
-    [stringWithAttachment appendAttributedString:attributed];
-     _addressLabel.attributedText = stringWithAttachment;
-    */
-    
      _addressLabel.text = address;
-    
-    
 }
 
 - (void)setAddressTwo:(NSString *)address {
@@ -106,15 +93,11 @@
     UIButton *button = sender;
     int tag = (int)button.tag;
     [_companyTrackingViewDelegate tappedButtonAtTag:tag];
-
-    
-    
 }
 
 - (void)setButtonTag:(int)tag {
     [_buttonBelow setTag:tag];
 }
-
 
 - (void)setTextViewHidden:(BOOL)hide {
     [_textView setHidden:hide];
