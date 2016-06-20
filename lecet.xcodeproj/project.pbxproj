@@ -1775,6 +1775,8 @@
 				B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */,
 				B71B6BF61D17F04D00B916BA /* projectTrackingItemConstants.h */,
 				B71B6BFC1D1834BB00B916BA /* projectTrackEditConstants.h */,
+				B6BDBAA91D17F83C001FB41C /* companySortViewCellConstant.h */,
+				B6BDBAB01D17FFF0001FB41C /* editTabConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
