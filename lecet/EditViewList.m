@@ -27,7 +27,7 @@
 
 - (void)awakeFromNib {
     [self tempData];
-    
+    flagSelectedUnSelected = [NSMutableArray new];
     [collectionItems[@"companyName"] enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
         
         [flagSelectedUnSelected addObject:UnSelectedFlag];
@@ -133,7 +133,6 @@
     NSString *currentflag = [flagSelectedUnSelected objectAtIndex:tag];
     NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
     [flagSelectedUnSelected replaceObjectAtIndex:tag withObject:flagTochange];
-    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
