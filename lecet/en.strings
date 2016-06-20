@@ -239,3 +239,7 @@
 "SORT_AlPHABETICAL"                         =               "Alphabetical";
 "SORT_TITLE"                                =               "Sort by";
 
+//EditTabView.xib
+"EDIT_BUTTON_CANCEL"                        =               "CANCEL";
+"EDIT_BUTTON_DONE"                          =               "DONE";
+
