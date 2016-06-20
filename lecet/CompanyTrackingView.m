@@ -10,7 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "companyTrackingViewConstant.h"
 
-@interface CompanyTrackingView ()
+@interface CompanyTrackingView () {
+    
+    BOOL dataIsShown;
+
+
+}
+@property (weak, nonatomic) IBOutlet UIView *belowContainerView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -21,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonBelow;
 @property (weak, nonatomic) IBOutlet UIView *containerButtonView;
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIView *containerTextView;
+
 
 @end
 
@@ -43,9 +52,18 @@
     _containerButtonView.layer.masksToBounds = YES;
     
     
-    [self setName:@"ERS Industrial Services Inc"];
-    [self setAddress:@"38881 Schoolcraft Rd"];
-    [self setAddressTwo:@"Livonia, MI 48150-1033"];
+    [_textView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
+    _textView.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
+    _textView.font =    COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
+    
+    [_containerTextView.layer setCornerRadius:4.0f];
+    _containerTextView.layer.masksToBounds = YES;
+    
+    [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
+
+     [self.view layoutIfNeeded];
+    
+
     
 }
 
@@ -86,13 +104,18 @@
     UIButton *button = sender;
     int tag = (int)button.tag;
     [_companyTrackingViewDelegate tappedButtonAtTag:tag];
+
+    
     
 }
 
 - (void)setButtonTag:(int)tag {
-
     [_buttonBelow setTag:tag];
 }
 
+
+- (void)setTextViewHidden:(BOOL)hide {
+    [_textView setHidden:hide];
+}
 
 @end

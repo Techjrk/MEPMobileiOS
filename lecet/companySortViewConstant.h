@@ -16,4 +16,9 @@ typedef enum {
     
 }CompanySortItem;
 
+
+#define COMPANYTRACKINGVIEW_LABEL_FONT            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define COMPANYTRACKINGVIEW_LABEL_FONT_COLOR      RGB(34,34,34)
+
+#define COMPANYTRACKINGVIEW_VIEW_BG_COLOR      RGB(245,245,245)
 #endif /* companySortViewConstant_h */

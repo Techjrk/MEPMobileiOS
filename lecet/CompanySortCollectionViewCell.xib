@@ -14,9 +14,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-s8-Oz9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="2" y="0.0" width="318" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -26,7 +26,7 @@
                 <constraint firstAttribute="trailing" secondItem="YNk-s8-Oz9" secondAttribute="trailing" id="MpA-WX-mtM"/>
                 <constraint firstAttribute="bottom" secondItem="YNk-s8-Oz9" secondAttribute="bottom" id="Tid-UN-7GT"/>
                 <constraint firstItem="YNk-s8-Oz9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aLo-ue-2vD"/>
-                <constraint firstItem="YNk-s8-Oz9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xIq-De-esh"/>
+                <constraint firstItem="YNk-s8-Oz9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="xIq-De-esh"/>
             </constraints>
             <size key="customSize" width="320" height="50"/>
             <connections>

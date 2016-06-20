@@ -8,11 +8,13 @@
 
 #import "CompanySortViewController.h"
 #import "CompanySortView.h"
+#import "TriangleView.h"
 
 @interface CompanySortViewController ()<CompanySortDelegate>
 @property (weak, nonatomic) IBOutlet CompanySortView *companySortView;
 @property (weak, nonatomic) IBOutlet UIView *tempNavBar;
 @property (weak, nonatomic) IBOutlet UIView *backgrounView;
+@property (weak, nonatomic) IBOutlet TriangleView *triangleView;
 
 @end
 
@@ -24,6 +26,8 @@
     _companySortView.companySortDelegate = self;
     [self enableTapGesture:YES];
     [self addTappedGesture];
+    
+    [_triangleView setObjectColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {

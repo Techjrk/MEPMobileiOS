@@ -148,6 +148,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    
 
 }
 
@@ -161,6 +162,7 @@
     tempTag = tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
+    
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
 }

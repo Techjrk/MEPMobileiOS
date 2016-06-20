@@ -19,5 +19,5 @@
 - (void)setAddressBelow:(NSString *)text;
 - (void)setButtonLabelTitle:(NSString *)text;
 - (void)setButtontag:(int)tag;
-
+- (void)setTextViewHidden:(BOOL)hide;
 @end

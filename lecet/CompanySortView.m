@@ -13,7 +13,9 @@
     
     NSArray *items;
 }
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *topViewContainer;
 
 @end
 
@@ -33,6 +35,12 @@
     
     
     items = @[@"Last Updated",@"Alphabetical"];
+    
+    _labelTitle.font = COMPANYTRACKINGVIEW_LABEL_FONT;
+    _labelTitle.textColor = COMPANYTRACKINGVIEW_LABEL_FONT_COLOR;
+    [_topViewContainer setBackgroundColor:COMPANYTRACKINGVIEW_VIEW_BG_COLOR];
+    
+    _labelTitle.text = @"Sort by";
     
 }
 
