@@ -10,7 +10,9 @@
             <connections>
                 <outlet property="collectionView" destination="sEa-wz-fIG" id="3aa-5d-Ot8"/>
                 <outlet property="constraintEditViewHeight" destination="3Vj-ET-uqp" id="h6Y-wE-Zqt"/>
-                <outlet property="editView" destination="xXT-L8-LUJ" id="QWD-CJ-MUW"/>
+                <outlet property="editModeView" destination="wbn-81-rqB" id="fcg-dg-xnA"/>
+                <outlet property="editView" destination="z6V-KB-GLX" id="clg-FO-MPZ"/>
+                <outlet property="selectMoveView" destination="A65-Dp-w9P" id="2S3-Xt-ISz"/>
                 <outlet property="topBar" destination="xls-hf-owS" id="9Ad-lh-mTE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,9 +46,29 @@
                                 <outlet property="delegate" destination="-1" id="Xax-bS-xti"/>
                             </connections>
                         </collectionView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-L8-LUJ" customClass="ProjComTrackingTabView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-L8-LUJ">
                             <rect key="frame" x="0.0" y="84.5" width="414" height="51.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-81-rqB" customClass="EditTabView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-KB-GLX" customClass="ProjComTrackingTabView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="wbn-81-rqB" firstAttribute="leading" secondItem="xXT-L8-LUJ" secondAttribute="leading" id="2wr-iM-VNM"/>
+                                <constraint firstItem="z6V-KB-GLX" firstAttribute="leading" secondItem="xXT-L8-LUJ" secondAttribute="leading" id="GSu-4C-Ld3"/>
+                                <constraint firstAttribute="bottom" secondItem="z6V-KB-GLX" secondAttribute="bottom" id="Iyi-bu-Fah"/>
+                                <constraint firstAttribute="trailing" secondItem="z6V-KB-GLX" secondAttribute="trailing" id="a3F-bB-nPz"/>
+                                <constraint firstItem="z6V-KB-GLX" firstAttribute="top" secondItem="xXT-L8-LUJ" secondAttribute="top" id="oax-4Y-d2o"/>
+                                <constraint firstItem="wbn-81-rqB" firstAttribute="top" secondItem="xXT-L8-LUJ" secondAttribute="top" id="s7m-9Z-pfc"/>
+                                <constraint firstAttribute="bottom" secondItem="wbn-81-rqB" secondAttribute="bottom" id="uOV-Vg-S8A"/>
+                                <constraint firstAttribute="trailing" secondItem="wbn-81-rqB" secondAttribute="trailing" id="v77-NQ-BVF"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -237,6 +237,7 @@
 //Project Tracking List Update Type
 "PROJECT_UPDATE_NEW_BID"                    =               "A new bid has been placed";
 "PROJECT_UPDATE_NEW_NOTE"                   =               "A new note has been placed";
+
 //CompanySortView.xib
 "SORT_LASTUPDATED"                          =               "Last Updated";
 "SORT_AlPHABETICAL"                         =               "Alphabetical";
@@ -246,3 +247,5 @@
 "EDIT_BUTTON_CANCEL"                        =               "CANCEL";
 "EDIT_BUTTON_DONE"                          =               "DONE";
 
+//ProjectTrackingViewController.xib
+"PROJECT_TRACK_SELECTION_NONE"              =               "No item was selected from the project list";

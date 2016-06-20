@@ -18,6 +18,7 @@
 @end
 
 @implementation SelectMoveView
+@synthesize selectMoveViewDelegate;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -37,6 +38,8 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
+    UIButton *button = sender;
+    [self.selectMoveViewDelegate tappedMoveItem:sender shouldMove:[NSNumber numberWithBool:button.tag == 1]];
 
 }
 

@@ -30,7 +30,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_move" translatesAutoresizingMaskIntoConstraints="NO" id="bY1-ZO-lWr">
                             <rect key="frame" x="25" y="0.0" width="16.5" height="47"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfV-5i-Oxb">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfV-5i-Oxb">
                             <rect key="frame" x="0.0" y="0.0" width="67" height="72"/>
                             <connections>
                                 <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="9G1-9I-fnA"/>

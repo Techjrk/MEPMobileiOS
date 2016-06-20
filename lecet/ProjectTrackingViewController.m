@@ -16,15 +16,19 @@
 #import "ProjectTrackItemCollectionViewCell.h"
 #import "ProjectTrackItemView.h"
 #import "ProjectTrackEditCollectionViewCell.h"
+#import "EditTabView.h"
+#import "SelectMoveView.h"
 
-@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ProjectTrackItemViewDelegate>{
+@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ProjectTrackItemViewDelegate, EditTabViewDelegate, SelectMoveViewDelegate>{
     NSArray *sortItems;
     NSMutableDictionary *collectionItemsState;
     BOOL isInEditMode;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *topBar;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *editView;
+@property (weak, nonatomic) IBOutlet EditTabView *editModeView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet SelectMoveView *selectMoveView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
 @end
 
@@ -52,6 +56,8 @@
     
     _constraintEditViewHeight.constant = 0;
     _editView.projComTrackingTabViewDelegate = self;
+    _editModeView.editTabViewDelegate = self;
+    _selectMoveView.selectMoveViewDelegate = self;
     
     [self prepareCollectionStates];
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectTrackItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
@@ -80,6 +86,22 @@
 
 #pragma Custom Delegates
 
+- (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
+    if (shouldMove) {
+        PopupViewController *controller = [PopupViewController new];
+        CGRect rect = [controller getViewPositionFromViewController:object controller:self];
+        rect.size.height =  rect.size.height * 0.85;
+        controller.popupPalcement = PopupPlacementBottom;
+        controller.popupRect = rect;
+        controller.popupWidth = 0.98;
+        controller.isGreyedBackground = YES;
+        controller.customCollectionViewDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:controller animated:NO completion:nil];
+
+    }
+}
+
 - (void)switchTabButtonStateChange:(BOOL)isOn {
     
     for (NSNumber *number in collectionItemsState.allKeys) {
@@ -91,7 +113,13 @@
 }
 
 - (void)editTabButtonTapped {
-    isInEditMode = !isInEditMode;
+    [self chageEditMode:YES];
+}
+
+- (void)chageEditMode:(BOOL)editMode {
+    isInEditMode = editMode;
+    _editModeView.hidden = !isInEditMode;
+    _editView.hidden = isInEditMode;
     _collectionView.backgroundColor = isInEditMode?[UIColor whiteColor]:[UIColor clearColor];
     [_collectionView reloadData];
     
@@ -104,26 +132,43 @@
             
         }];
     }
+    
+}
 
+- (void)selectedEditTabButton:(EditTabItem)item {
+    [self chageEditMode:NO];
+
+    /*
+    if (item == EditTabItemCancel) {
+        
+    } else {
+        
+        if (![self hasSelectedItemForEdit]) {
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECT_TRACK_SELECTION_NONE")];
+            return;
+        }
+        
+    }
+    
+*/
 }
 
 -(void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     if (projectNavItem == ProjectNavBackButton) {
+
         [self.navigationController popViewControllerAnimated:YES];
+    
     } else {
-        if ([[DataManager sharedManager] isDebugMode]) {
-            PopupViewController *controller = [PopupViewController new];
-            CGRect rect = [controller getViewPositionFromViewController:[_topBar reOrderButton] controller:self];
-            rect.size.height =  rect.size.height * 0.85;
-            controller.popupRect = rect;
-            controller.popupWidth = 0.98;
-            controller.isGreyedBackground = YES;
-            controller.customCollectionViewDelegate = self;
-            controller.modalPresentationStyle = UIModalPresentationCustom;
-            [self presentViewController:controller animated:NO completion:nil];
-        } else {
-            [[DataManager sharedManager] featureNotAvailable];
-        }
+    
+        PopupViewController *controller = [PopupViewController new];
+        CGRect rect = [controller getViewPositionFromViewController:[_topBar reOrderButton] controller:self];
+        rect.size.height =  rect.size.height * 0.85;
+        controller.popupRect = rect;
+        controller.popupWidth = 0.98;
+        controller.isGreyedBackground = YES;
+        controller.customCollectionViewDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:controller animated:NO completion:nil];
         
     }
 }
