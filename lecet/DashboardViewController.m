@@ -39,6 +39,7 @@
 #import "TrackingListView.h"
 #import "ProjectTrackingViewController.h"
 
+
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate>{
 
     NSDate *currentDate;
@@ -658,6 +659,7 @@
             MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
             [controller setInfo:profileInfo];
             [self.navigationController pushViewController:controller animated:YES];
+
             break;
             
         }

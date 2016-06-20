@@ -9,10 +9,12 @@
 #import "CompanyTrackingListViewController.h"
 #import "ProjectNavigationBarView.h"
 #import "ProjComTrackingTabView.h"
-
+#import "CompanyTrackingListView.h"
+#import "CompanySortViewController.h"
 @interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
+@property (weak, nonatomic) IBOutlet CompanyTrackingListView *companyTrackingListView;
 
 @end
 
@@ -22,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _navBarView.projectNavViewDelegate = self;
+    _tabBarView.projComTrackingTabViewDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +44,12 @@
             break;
         }
         case ProjectNavReOrder:{
-            [[DataManager sharedManager] featureNotAvailable];
+            CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
+            
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
+            [self presentViewController:controller  animated:NO completion:nil];
             break;
         }
             
@@ -54,7 +62,8 @@
 #pragma mark - Tab Delegate
 
 - (void)switchTabButtonStateChange:(BOOL)isOn {
-    [[DataManager sharedManager] featureNotAvailable];
+    
+    [_companyTrackingListView switchButtonChange:isOn];
     
 }
 

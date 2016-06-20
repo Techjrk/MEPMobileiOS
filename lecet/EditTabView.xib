@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTabView">
+            <connections>
+                <outlet property="cancelButton" destination="XWX-UO-Igv" id="R4m-mB-piU"/>
+                <outlet property="doneButton" destination="yFZ-CT-zgq" id="2HU-ql-uXW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="566" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-UO-Igv">
+                    <rect key="frame" x="0.0" y="0.0" width="86" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedEditTabButton:" destination="-1" eventType="touchUpInside" id="o5q-R6-UZD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFZ-CT-zgq">
+                    <rect key="frame" x="480" y="0.0" width="86" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedEditTabButton:" destination="-1" eventType="touchUpInside" id="6p0-B1-cSM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="yFZ-CT-zgq" firstAttribute="width" secondItem="XWX-UO-Igv" secondAttribute="width" id="ECB-mf-eED"/>
+                <constraint firstItem="yFZ-CT-zgq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NdR-ok-FRw"/>
+                <constraint firstItem="XWX-UO-Igv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qw5-eP-Fv6"/>
+                <constraint firstAttribute="trailing" secondItem="yFZ-CT-zgq" secondAttribute="trailing" id="Tw5-1F-YbS"/>
+                <constraint firstItem="XWX-UO-Igv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iPO-Ge-zHC"/>
+                <constraint firstItem="XWX-UO-Igv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.153" id="njh-uk-WuF"/>
+                <constraint firstAttribute="bottom" secondItem="yFZ-CT-zgq" secondAttribute="bottom" id="uwq-Tr-dpz"/>
+                <constraint firstAttribute="bottom" secondItem="XWX-UO-Igv" secondAttribute="bottom" id="w29-Vs-YW0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="480" y="112.5"/>
+        </view>
+    </objects>
+</document>

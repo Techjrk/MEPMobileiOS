@@ -17,6 +17,8 @@
     int tempTag;
     BOOL firstLoad;
     NSMutableArray *flagsClosedOpen;
+    BOOL shouldShowUpdates;
+    
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -24,6 +26,9 @@
 
 @implementation CompanyTrackingListView
 #define kCellIdentifier             @"kCellIdentifier"
+#define kCellAdditionalHeight       0.68f
+#define flagIdentifierOpen          @"open"
+#define flagIdentifierClosed        @"closed"
 
 - (void)awakeFromNib {
     
@@ -36,9 +41,10 @@
     [self tempData];
     
     [collectionItems[@"companyName"] enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
-        [flagsClosedOpen addObject:@"closed"];
+        [flagsClosedOpen addObject:flagIdentifierClosed];
     }];
     firstLoad = YES;
+    shouldShowUpdates = YES;
 }
 
 - (void)setItems:(NSDictionary *)items {
@@ -71,11 +77,21 @@
     NSString *addressTop = [collectionItems[@"companyAddressOne"] objectAtIndex:indexPath.row];
     NSString *addressBelow = [collectionItems[@"companyAddressTwo"] objectAtIndex:indexPath.row];
     
+    
+    
     [cell setTitleName:titleName];
     [cell setAddressTop:addressTop];
     [cell setAddressBelow:addressBelow];
     int tag = (int)indexPath.row;
     [cell setButtontag:tag];
+    
+    NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
+    if ([flag isEqualToString:flagIdentifierOpen]) {
+        [cell changeCaretToUp:YES];
+    }else {
+        [cell changeCaretToUp:NO];
+    }
+    
     
     return cell;
 }
@@ -97,24 +113,31 @@
     CGSize size;
     cellHeight = kDeviceHeight * 0.13;
     
-    NSString *buttonIfToShowString = [collectionItems[@"companyButtons"] objectAtIndex:indexPath.row];
-    if ([buttonIfToShowString isEqualToString:@"false"]) {
+    if (shouldShowUpdates) {
+        
+        NSString *buttonIfToShowString = [collectionItems[@"companyButtons"] objectAtIndex:indexPath.row];
+        if ([buttonIfToShowString isEqualToString:@"false"]) {
+            size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
+            
+        }else {
+            
+            NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
+            if ([flag isEqualToString:flagIdentifierOpen]) {
+                cellHeightToExpand = 60;
+                //size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
+                size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight) + cellHeightToExpand);
+            }else
+            {
+                //size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight/ 2) + 15);
+                size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight));
+            }
+            
+        }
+
+    }else {
         size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
         
-    }else {
-      
-         NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
-        if ([flag isEqualToString:@"open"]) {
-            cellHeightToExpand =40;
-             size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
-        }else
-        {
-            size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight/ 2) + 15);
-        }
-        
     }
-    
-    
     return size;
 }
 
@@ -135,6 +158,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    
 
 }
 
@@ -142,13 +166,23 @@
     firstLoad = NO;
     
     NSString *flag = [flagsClosedOpen objectAtIndex:tag];
-    NSString *flagTochange = [flag isEqualToString:@"closed"]?@"open":@"closed";
+    NSString *flagTochange = [flag isEqualToString:flagIdentifierClosed]?flagIdentifierOpen:flagIdentifierClosed;
     [flagsClosedOpen replaceObjectAtIndex:tag withObject:flagTochange];
     
     tempTag = tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
+    
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
+    
+}
+
+
+- (void)switchButtonChange:(BOOL)isOn {
+    
+    shouldShowUpdates = isOn;
+    
+    [_collectionView reloadData];
     
 }
 

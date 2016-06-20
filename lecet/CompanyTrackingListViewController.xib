@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyTrackingListViewController">
             <connections>
+                <outlet property="companyTrackingListView" destination="bzV-ep-ugg" id="1Zi-aA-9zC"/>
                 <outlet property="navBarView" destination="ypW-Ke-3aN" id="dsw-ay-gTj"/>
                 <outlet property="tabBarView" destination="CyL-m4-10V" id="6yU-Lw-t4z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

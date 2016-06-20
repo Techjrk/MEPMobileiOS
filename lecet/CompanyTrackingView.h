@@ -22,5 +22,7 @@
 - (void)setAddressTwo:(NSString *)address;
 - (void)setButtonLabelTitle:(NSString *)text;
 - (void)setButtonTag:(int)tag;
+- (void)setTextViewHidden:(BOOL)hide;
+- (void)changeCaretToUp:(BOOL)up;
 
 @end
