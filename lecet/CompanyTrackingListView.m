@@ -26,6 +26,9 @@
 
 @implementation CompanyTrackingListView
 #define kCellIdentifier             @"kCellIdentifier"
+#define kCellAdditionalHeight       0.68f
+#define flagIdentifierOpen          @"open"
+#define flagIdentifierClosed        @"closed"
 
 - (void)awakeFromNib {
     
@@ -38,7 +41,7 @@
     [self tempData];
     
     [collectionItems[@"companyName"] enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
-        [flagsClosedOpen addObject:@"closed"];
+        [flagsClosedOpen addObject:flagIdentifierClosed];
     }];
     firstLoad = YES;
     shouldShowUpdates = YES;
@@ -109,12 +112,14 @@
         }else {
             
             NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
-            if ([flag isEqualToString:@"open"]) {
-                cellHeightToExpand =40;
-                size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
+            if ([flag isEqualToString:flagIdentifierOpen]) {
+                cellHeightToExpand = 60;
+                //size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
+                size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight) + cellHeightToExpand);
             }else
             {
-                size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight/ 2) + 15);
+                //size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight/ 2) + 15);
+                size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight));
             }
             
         }
@@ -150,7 +155,7 @@
     firstLoad = NO;
     
     NSString *flag = [flagsClosedOpen objectAtIndex:tag];
-    NSString *flagTochange = [flag isEqualToString:@"closed"]?@"open":@"closed";
+    NSString *flagTochange = [flag isEqualToString:flagIdentifierClosed]?flagIdentifierOpen:flagIdentifierClosed;
     [flagsClosedOpen replaceObjectAtIndex:tag withObject:flagTochange];
     
     tempTag = tag;

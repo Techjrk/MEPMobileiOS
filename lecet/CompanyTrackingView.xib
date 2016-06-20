@@ -25,12 +25,12 @@
             <rect key="frame" x="0.0" y="0.0" width="359" height="219"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1n-Fy-2hN">
-                    <rect key="frame" x="0.0" y="0.0" width="9" height="138"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1n-Fy-2hN">
+                    <rect key="frame" x="0.0" y="0.0" width="9" height="219"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-ho-nuO">
-                    <rect key="frame" x="350" y="0.0" width="9" height="138"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-ho-nuO">
+                    <rect key="frame" x="350" y="0.0" width="9" height="219"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTk-H4-lA5">
@@ -51,7 +51,7 @@
                             <rect key="frame" x="0.0" y="14" width="60" height="60"/>
                         </mapView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTP-k5-Y10">
-                            <rect key="frame" x="78" y="35" width="263" height="19.5"/>
+                            <rect key="frame" x="78" y="35" width="263" height="20"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,7 +61,7 @@
                             <rect key="frame" x="69" y="40" width="8" height="11"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aD-ek-X2J">
-                            <rect key="frame" x="78" y="54" width="263" height="19.5"/>
+                            <rect key="frame" x="78" y="54" width="263" height="20"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,11 +154,19 @@
                                 </mask>
                             </variation>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOe-xF-6of">
+                            <rect key="frame" x="0.0" y="115" width="341" height="16"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="0.45008482799999999" blue="0.39555021239999999" alpha="0.41570581899999998" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="BLQ-EH-fCh" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="leading" id="CzF-VY-Tz9"/>
+                        <constraint firstAttribute="trailing" secondItem="eOe-xF-6of" secondAttribute="trailing" id="Y4w-nc-Hrk"/>
                         <constraint firstItem="BLQ-EH-fCh" firstAttribute="top" secondItem="eGV-Dl-enL" secondAttribute="top" id="gKR-ta-sKB"/>
+                        <constraint firstItem="eOe-xF-6of" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="leading" id="iGt-d2-9y1"/>
+                        <constraint firstItem="eOe-xF-6of" firstAttribute="height" secondItem="2sf-Yn-HuV" secondAttribute="height" multiplier="0.4" id="q0t-8d-Yn9"/>
+                        <constraint firstAttribute="bottom" secondItem="eOe-xF-6of" secondAttribute="bottom" id="tx9-fd-dkn"/>
                         <constraint firstAttribute="trailing" secondItem="BLQ-EH-fCh" secondAttribute="trailing" id="xrP-Ys-xXR"/>
                     </constraints>
                 </view>
