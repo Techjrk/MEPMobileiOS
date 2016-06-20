@@ -14,9 +14,13 @@
 #import "SectionHeaderCollectionViewCell.h"
 #import "ProjComTrackingTabView.h"
 #import "ProjectTrackItemCollectionViewCell.h"
+#import "ProjectTrackItemView.h"
+#import "ProjectTrackEditCollectionViewCell.h"
 
-@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>{
+@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ProjectTrackItemViewDelegate>{
     NSArray *sortItems;
+    NSMutableDictionary *collectionItemsState;
+    BOOL isInEditMode;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *topBar;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *editView;
@@ -26,8 +30,11 @@
 
 @implementation ProjectTrackingViewController
 @synthesize cargo;
-
-#define kCellIdentifier             @"kCellIdentifier"
+@synthesize collectionItems;
+#define kCellIdentifier                 @"kCellIdentifier"
+#define kCellIdentifierEdit             @"kCellIdentifierEdit"
+#define kStateIndex                     @"kStateIndex"
+#define kSortKey                        @[@"bidDate", @"lastPublishDate", @"firstPublishDate", @"estLow", @"estLow"]
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,8 +53,10 @@
     _constraintEditViewHeight.constant = 0;
     _editView.projComTrackingTabViewDelegate = self;
     
+    [self prepareCollectionStates];
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectTrackItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-
+   
+    [_collectionView registerNib:[UINib nibWithNibName:[[ProjectTrackEditCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierEdit];
 
 }
 
@@ -55,19 +64,47 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Sort States
+
+- (void) prepareCollectionStates {
+    if(collectionItemsState == nil) {
+        collectionItemsState = [[NSMutableDictionary alloc]init];
+    }
+    
+    for (NSDictionary *item in self.collectionItems) {
+        NSMutableDictionary *status = [@{kStateSelected:[NSNumber numberWithBool:NO], kStateUpdateType:[NSNumber numberWithInt:ProjectTrackUpdateTypeNewBid], kStateShowUpdate:[NSNumber numberWithBool:YES], kStateExpanded:[NSNumber numberWithBool:NO]} mutableCopy];
+        collectionItemsState[item[@"id"]] = [@{kStateData:item, kStateStatus:status} mutableCopy];
+        
+    }
+}
+
 #pragma Custom Delegates
 
 - (void)switchTabButtonStateChange:(BOOL)isOn {
     
+    for (NSNumber *number in collectionItemsState.allKeys) {
+        NSDictionary *item = collectionItemsState[number];
+        NSMutableDictionary *status = item[kStateStatus];
+        status[kStateShowUpdate] = [NSNumber numberWithBool:isOn];
+    }
+    [_collectionView reloadData];
 }
 
 - (void)editTabButtonTapped {
-    _constraintEditViewHeight.constant = kDeviceHeight * 0.09;
-    [UIView animateWithDuration:0.25 animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
+    isInEditMode = !isInEditMode;
+    _collectionView.backgroundColor = isInEditMode?[UIColor whiteColor]:[UIColor clearColor];
+    [_collectionView reloadData];
+    
+    if (!isInEditMode) {
+        _constraintEditViewHeight.constant = 0;
         
-    }];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+
 }
 
 -(void)tappedProjectNav:(ProjectNavItem)projectNavItem {
@@ -99,6 +136,16 @@
     return YES;
 }
 
+#pragma mark - ProjectTrackItemViewDelegate
+
+-(void)tappedButtonExpand:(id)object view:(id)view{
+  
+    ProjectTrackItemCollectionViewCell *cell = (ProjectTrackItemCollectionViewCell*)view;
+    NSIndexPath *indexPath = [_collectionView indexPathForCell:cell];
+    [_collectionView reloadItemsAtIndexPaths:@[indexPath]];
+
+}
+
 #pragma mark - CustomCollectionView Delegate
 
 - (void)collectionViewItemClassRegister:(id)customCollectionView {
@@ -124,7 +171,15 @@
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+    
+    if (indexPath.row>0) {
+        
+        BOOL isDesc = indexPath.row != 4;
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:kSortKey[indexPath.row-1] ascending:isDesc];
+        
+        self.collectionItems = [self.collectionItems sortedArrayUsingDescriptors:@[descriptor]];
+        [_collectionView reloadData];
+    }
 }
 
 - (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
@@ -138,18 +193,30 @@
     }
 }
 
-#pragma mark - UICollectionView Delegate
-
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ProjectTrackItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];;
+    UICollectionViewCell *cellItem = nil;
     
-    [[cell contentView] setFrame:[cell bounds]];
-    [[cell contentView] layoutIfNeeded];
+    if (!isInEditMode) {
+        
+        ProjectTrackItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];;
+        cell.projectTrackItemViewDelegate = self;
+        [cell setInfo:collectionItemsState[ [self getProjectId:indexPath]]];
+        cellItem = cell;
+        
+    } else {
+        
+        ProjectTrackEditCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierEdit forIndexPath:indexPath];;
+        [cell setInfo:collectionItemsState[ [self getProjectId:indexPath]]];
+        cellItem = cell;
+        
+    }
+    [[cellItem contentView] setFrame:[cellItem bounds]];
+    [[cellItem contentView] layoutIfNeeded];
     
-    return cell;
+    return cellItem;
 }
 
 
@@ -159,7 +226,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 5;
+    return self.collectionItems.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -167,20 +234,40 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGSize size;
+
+    CGFloat cellHeight = 0;
+    NSDictionary *state = collectionItemsState[ [self getProjectId:indexPath]][kStateStatus];
+
+    if (!isInEditMode) {
+        CGFloat multiplier = 0.134;
+        
+        if ([state[kStateShowUpdate] boolValue]) {
+            
+            if ([state[kStateUpdateType] integerValue] != ProjectTrackUpdateTypeNone) {
+                multiplier = 0.21;
+                if ([state[kStateExpanded] boolValue]) {
+                    multiplier = 0.278;
+                }
+            }
+        }
+        
+        cellHeight = kDeviceHeight * multiplier;
+    } else {
+        cellHeight = kDeviceHeight * 0.1;
+    }
     
-    CGFloat cellHeight = kDeviceHeight * 0.15;
-    size = CGSizeMake( kDeviceWidth, cellHeight);
+    size = CGSizeMake( kDeviceWidth * (!isInEditMode?0.97:1.0), cellHeight);
     return size;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    return UIEdgeInsetsMake(0, kDeviceWidth * 0.025, 0, kDeviceWidth * 0.025);
+    return !isInEditMode?UIEdgeInsetsMake(kDeviceWidth * 0.025, 0, kDeviceWidth * 0.025, 0):UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return kDeviceWidth * 0.025;
+    return kDeviceHeight * (isInEditMode?0:0.01);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
@@ -188,10 +275,44 @@
     return 0;
 }
 
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (isInEditMode) {
+        
+        NSMutableDictionary *item = collectionItemsState[ [self getProjectId:indexPath]];
+        NSMutableDictionary *stateItem = item[kStateStatus];
+        BOOL isSelected = [stateItem[kStateSelected] boolValue];
+        stateItem[kStateSelected] = [NSNumber numberWithBool:!isSelected];
+        
+        [_collectionView reloadItemsAtIndexPaths:@[indexPath]];
+  
+        _constraintEditViewHeight.constant = kDeviceHeight * ([self hasSelectedItemForEdit]?0.09:0);
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+
+    }
 }
 
+#pragma mark - Misc Methods
 
+- (BOOL)hasSelectedItemForEdit {
+    BOOL hasSelected = NO;
+    
+    for (NSNumber *number in collectionItemsState.allKeys) {
+        NSDictionary *item = collectionItemsState[number];
+        NSMutableDictionary *status = item[kStateStatus];
+        hasSelected = [status[kStateSelected] boolValue] | hasSelected;
+    }
+
+    return hasSelected;
+}
+
+- (NSNumber*)getProjectId:(NSIndexPath*)indexPath {
+    NSDictionary *dict = self.collectionItems[indexPath.row];
+    return (NSNumber*)dict[@"id"];
+}
+                                               
 @end

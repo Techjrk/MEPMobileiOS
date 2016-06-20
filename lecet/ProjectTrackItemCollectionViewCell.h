@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProjectTrackItemCollectionViewCell : UICollectionViewCell
+#import "ProjectTrackItemView.h"
 
+@interface ProjectTrackItemCollectionViewCell : UICollectionViewCell<ProjectTrackItemViewDelegate>
+@property (strong, nonatomic) id<ProjectTrackItemViewDelegate>projectTrackItemViewDelegate;
+- (void)setInfo:(id)info;
 @end

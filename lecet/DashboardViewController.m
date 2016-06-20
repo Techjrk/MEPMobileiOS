@@ -859,9 +859,19 @@
     
     shouldUsePushZoomAnimation = NO;
     
-    ProjectTrackingViewController *controller = [ProjectTrackingViewController new];
-    controller.cargo = trackItemInfo;
-    [self.navigationController pushViewController:controller animated:YES];
+    if (isProject) {
+        
+        [[DataManager sharedManager] projectTrackingList:trackItemInfo[@"id"] success:^(id object) {
+            ProjectTrackingViewController *controller = [ProjectTrackingViewController new];
+            controller.cargo = trackItemInfo;
+            controller.collectionItems = object;
+            [self.navigationController pushViewController:controller animated:YES];
+        } failure:^(id object) {
+            
+        }];
+    } else {
+        [[DataManager sharedManager] featureNotAvailable];
+    }
 }
 
 #pragma mark - CustomCollectionView Delegate

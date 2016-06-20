@@ -27,6 +27,9 @@
                 <constraint firstAttribute="trailing" secondItem="JxQ-B5-Z6x" secondAttribute="trailing" id="dg2-W0-81y"/>
             </constraints>
             <size key="customSize" width="116" height="50"/>
+            <connections>
+                <outlet property="item" destination="JxQ-B5-Z6x" id="M3L-Xr-6eC"/>
+            </connections>
             <point key="canvasLocation" x="199" y="236"/>
         </collectionViewCell>
     </objects>

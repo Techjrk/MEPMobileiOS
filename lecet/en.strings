@@ -234,3 +234,7 @@
 "SELECT_REMOVE"                             =               "REMOVE";
 "SELECT_COUNT"                              =               "%li Selected";
 
+//Project Tracking List Update Type
+"PROJECT_UPDATE_NEW_BID"                    =               "A new bid has been placed";
+"PROJECT_UPDATE_NEW_NOTE"                   =               "A new note has been placed";
+

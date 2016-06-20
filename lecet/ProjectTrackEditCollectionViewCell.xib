@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProjectTrackEditCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="76"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="76"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyl-RK-BQn">
+                        <rect key="frame" x="0.0" y="0.0" width="19.5" height="76"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HwQ-Fn-EtI">
+                        <rect key="frame" x="374.5" y="0.0" width="19.5" height="76"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_stateDeselected" translatesAutoresizingMaskIntoConstraints="NO" id="Mqd-Br-egq">
+                        <rect key="frame" x="19.5" y="15" width="35.5" height="46"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBK-Fl-Jal">
+                        <rect key="frame" x="55" y="0.0" width="11.5" height="76"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtP-ba-YC2">
+                        <rect key="frame" x="66.5" y="15" width="308" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F95-Jr-Olc">
+                        <rect key="frame" x="86" y="38" width="288.5" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7QY-KJ-840">
+                        <rect key="frame" x="78" y="38" width="8" height="23"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidLocation" translatesAutoresizingMaskIntoConstraints="NO" id="ftO-Df-GrB">
+                        <rect key="frame" x="66.5" y="38" width="11.5" height="23"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rP-Wy-hgH">
+                        <rect key="frame" x="19.5" y="75" width="355" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hap-5V-i6h"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ftO-Df-GrB" firstAttribute="top" secondItem="TtP-ba-YC2" secondAttribute="bottom" id="0E2-Mp-WKc"/>
+                <constraint firstItem="HwQ-Fn-EtI" firstAttribute="width" secondItem="Pyl-RK-BQn" secondAttribute="width" id="0ri-Pv-NdE"/>
+                <constraint firstItem="ftO-Df-GrB" firstAttribute="leading" secondItem="UBK-Fl-Jal" secondAttribute="trailing" id="7jp-J6-ibQ"/>
+                <constraint firstItem="Mqd-Br-egq" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.6" id="7oT-9Q-JVS"/>
+                <constraint firstItem="7QY-KJ-840" firstAttribute="width" secondItem="F95-Jr-Olc" secondAttribute="width" id="82t-NM-02X"/>
+                <constraint firstItem="TtP-ba-YC2" firstAttribute="top" secondItem="Mqd-Br-egq" secondAttribute="top" id="Bby-5X-q7A"/>
+                <constraint firstItem="F95-Jr-Olc" firstAttribute="height" secondItem="TtP-ba-YC2" secondAttribute="height" id="EIO-1t-4bQ"/>
+                <constraint firstItem="HwQ-Fn-EtI" firstAttribute="leading" secondItem="2rP-Wy-hgH" secondAttribute="trailing" id="FUv-5V-a5Z"/>
+                <constraint firstItem="Mqd-Br-egq" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.09" id="IX8-EQ-PxI"/>
+                <constraint firstItem="Pyl-RK-BQn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IhY-uK-43G"/>
+                <constraint firstItem="HwQ-Fn-EtI" firstAttribute="leading" secondItem="TtP-ba-YC2" secondAttribute="trailing" id="JE0-X3-HKw"/>
+                <constraint firstItem="ftO-Df-GrB" firstAttribute="height" secondItem="F95-Jr-Olc" secondAttribute="height" id="JsV-oz-MBX"/>
+                <constraint firstItem="7QY-KJ-840" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.02" id="KFJ-kN-aFJ"/>
+                <constraint firstAttribute="bottom" secondItem="2rP-Wy-hgH" secondAttribute="bottom" id="KSa-02-YFx"/>
+                <constraint firstItem="7QY-KJ-840" firstAttribute="leading" secondItem="ftO-Df-GrB" secondAttribute="trailing" id="Lgo-YI-uIg"/>
+                <constraint firstItem="UBK-Fl-Jal" firstAttribute="centerY" secondItem="Mqd-Br-egq" secondAttribute="centerY" id="MtA-oJ-Y5u"/>
+                <constraint firstItem="Pyl-RK-BQn" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.05" id="NLf-fQ-66G"/>
+                <constraint firstItem="7QY-KJ-840" firstAttribute="centerY" secondItem="F95-Jr-Olc" secondAttribute="centerY" id="PfN-id-KEZ"/>
+                <constraint firstItem="7QY-KJ-840" firstAttribute="height" secondItem="F95-Jr-Olc" secondAttribute="height" id="Uuj-m1-sRP"/>
+                <constraint firstItem="Mqd-Br-egq" firstAttribute="leading" secondItem="Pyl-RK-BQn" secondAttribute="trailing" id="Vcy-O3-1Cw"/>
+                <constraint firstItem="HwQ-Fn-EtI" firstAttribute="leading" secondItem="F95-Jr-Olc" secondAttribute="trailing" id="XX7-bW-zAf"/>
+                <constraint firstItem="F95-Jr-Olc" firstAttribute="top" secondItem="TtP-ba-YC2" secondAttribute="bottom" id="Xc0-j1-stz"/>
+                <constraint firstItem="UBK-Fl-Jal" firstAttribute="leading" secondItem="Mqd-Br-egq" secondAttribute="trailing" id="ZHk-66-cAt"/>
+                <constraint firstItem="2rP-Wy-hgH" firstAttribute="leading" secondItem="Pyl-RK-BQn" secondAttribute="trailing" id="bRb-AT-Ogk"/>
+                <constraint firstItem="F95-Jr-Olc" firstAttribute="width" secondItem="TtP-ba-YC2" secondAttribute="width" multiplier="0.935" id="bzD-vd-b3r"/>
+                <constraint firstItem="HwQ-Fn-EtI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ciO-ke-FiL"/>
+                <constraint firstItem="TtP-ba-YC2" firstAttribute="height" secondItem="Mqd-Br-egq" secondAttribute="height" multiplier="0.5" id="dMh-OI-Ysc"/>
+                <constraint firstItem="Mqd-Br-egq" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="dWO-Gc-XDM"/>
+                <constraint firstAttribute="trailing" secondItem="HwQ-Fn-EtI" secondAttribute="trailing" id="h2O-n5-zAo"/>
+                <constraint firstItem="Pyl-RK-BQn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kIq-db-fpV"/>
+                <constraint firstItem="UBK-Fl-Jal" firstAttribute="width" secondItem="Pyl-RK-BQn" secondAttribute="width" multiplier="0.6" id="mSL-9D-Qbb"/>
+                <constraint firstItem="F95-Jr-Olc" firstAttribute="leading" secondItem="7QY-KJ-840" secondAttribute="trailing" id="n49-5F-lTo"/>
+                <constraint firstAttribute="trailing" secondItem="2rP-Wy-hgH" secondAttribute="trailing" id="qYU-rc-SJZ"/>
+                <constraint firstItem="HwQ-Fn-EtI" firstAttribute="height" secondItem="Pyl-RK-BQn" secondAttribute="height" id="uUn-r8-UBV"/>
+                <constraint firstItem="UBK-Fl-Jal" firstAttribute="height" secondItem="Pyl-RK-BQn" secondAttribute="height" id="vLl-j3-Ufn"/>
+                <constraint firstItem="TtP-ba-YC2" firstAttribute="leading" secondItem="UBK-Fl-Jal" secondAttribute="trailing" id="x0M-Xb-meg"/>
+                <constraint firstItem="2rP-Wy-hgH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xfU-A2-bY8"/>
+                <constraint firstAttribute="bottom" secondItem="Pyl-RK-BQn" secondAttribute="bottom" id="yVh-aX-rmy"/>
+            </constraints>
+            <size key="customSize" width="394" height="76"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="qYU-rc-SJZ"/>
+                    <exclude reference="xfU-A2-bY8"/>
+                    <exclude reference="82t-NM-02X"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="imageState" destination="Mqd-Br-egq" id="U6k-pP-iFn"/>
+                <outlet property="labelLocation" destination="F95-Jr-Olc" id="R9k-BK-nwY"/>
+                <outlet property="labelTitle" destination="TtP-ba-YC2" id="B89-hS-SVF"/>
+                <outlet property="lineView" destination="2rP-Wy-hgH" id="13w-aR-IeJ"/>
+            </connections>
+            <point key="canvasLocation" x="364" y="249"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icon_bidLocation" width="8" height="11"/>
+        <image name="icon_stateDeselected" width="32" height="32"/>
+    </resources>
+</document>
