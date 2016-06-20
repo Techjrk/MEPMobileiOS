@@ -19,6 +19,7 @@ typedef enum{
 
 - (void)selectedEditTabButton:(EditTabItem)item;
 
+
 @end
 
 @interface EditTabView : BaseViewClass

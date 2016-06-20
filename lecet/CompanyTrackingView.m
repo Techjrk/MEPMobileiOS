@@ -38,6 +38,12 @@
 
 - (void)awakeFromNib {
     
+    
+    _mapLabelContainerConstraintHeight.constant = kDeviceHeight * 0.132f;
+    
+    
+    NSLog(@"Height of Cell = %f Device = %f",kDeviceHeight * 0.13,kDeviceHeight);
+    
     _nameLabel.font = COMPANYTRACKINGVIEW_LABEL_NAME_FONT;
     _nameLabel.textColor = COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR;
     
@@ -63,9 +69,6 @@
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
     _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
-    
-    
-
     
 }
 

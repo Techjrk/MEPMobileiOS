@@ -11,6 +11,8 @@
 #import "ProjComTrackingTabView.h"
 #import "CompanyTrackingListView.h"
 #import "CompanySortViewController.h"
+#import "EditViewController.h"
+
 @interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
@@ -68,7 +70,8 @@
 }
 
 - (void)editTabButtonTapped {
-    [[DataManager sharedManager] featureNotAvailable];
+    EditViewController *controller = [[EditViewController alloc] initWithNibName:@"EditViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

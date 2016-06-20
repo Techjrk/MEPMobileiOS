@@ -26,7 +26,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-ge-0QP">
-                    <rect key="frame" x="342" y="29" width="43" height="45.5"/>
+                    <rect key="frame" x="342" y="29" width="43" height="46"/>
                     <state key="normal" image="icon_more"/>
                     <connections>
                         <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="ZuL-9c-dey"/>
@@ -37,21 +37,21 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-XN-3kf">
-                    <rect key="frame" x="298.5" y="29" width="43.5" height="45.5"/>
+                    <rect key="frame" x="299" y="29" width="43" height="46"/>
                     <state key="normal" image="icon_search"/>
                     <connections>
                         <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="jmb-sj-daq"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-K4-0WI">
-                    <rect key="frame" x="255.5" y="29" width="43" height="45.5"/>
+                    <rect key="frame" x="256" y="29" width="43" height="46"/>
                     <state key="normal" image="icon_folder"/>
                     <connections>
                         <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="NXG-4O-hNa"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1T2-yG-fGm">
-                    <rect key="frame" x="212" y="29" width="43.5" height="45.5"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1T2-yG-fGm">
+                    <rect key="frame" x="212" y="29" width="44" height="46"/>
                     <state key="normal" image="icon_location"/>
                     <connections>
                         <action selector="tappedButtonMenu:" destination="-1" eventType="touchUpInside" id="PDu-x0-5Qy"/>
@@ -61,13 +61,13 @@
                     <rect key="frame" x="0.0" y="29" width="8" height="62"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycC-DC-s8B">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycC-DC-s8B">
                     <rect key="frame" x="8" y="29" width="204" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAH-xa-7CN">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAH-xa-7CN">
                     <rect key="frame" x="8" y="61" width="306" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
