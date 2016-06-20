@@ -77,11 +77,21 @@
     NSString *addressTop = [collectionItems[@"companyAddressOne"] objectAtIndex:indexPath.row];
     NSString *addressBelow = [collectionItems[@"companyAddressTwo"] objectAtIndex:indexPath.row];
     
+    
+    
     [cell setTitleName:titleName];
     [cell setAddressTop:addressTop];
     [cell setAddressBelow:addressBelow];
     int tag = (int)indexPath.row;
     [cell setButtontag:tag];
+    
+    NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
+    if ([flag isEqualToString:flagIdentifierOpen]) {
+        [cell changeCaretToUp:YES];
+    }else {
+        [cell changeCaretToUp:NO];
+    }
+    
     
     return cell;
 }

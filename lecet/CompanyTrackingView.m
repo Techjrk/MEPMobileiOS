@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *containerTextView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
 
 @end
 
@@ -61,7 +62,8 @@
     
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
-     [self.view layoutIfNeeded];
+    _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
+    
     
 
     
@@ -117,5 +119,15 @@
 - (void)setTextViewHidden:(BOOL)hide {
     [_textView setHidden:hide];
 }
+
+- (void)changeCaretToUp:(BOOL)up {
+    
+    if (up) {
+        _caretImageView.image = [UIImage imageNamed:@"caretUp_icon"];
+    } else {
+        _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
+    }
+}
+
 
 @end

@@ -20,4 +20,5 @@
 - (void)setButtonLabelTitle:(NSString *)text;
 - (void)setButtontag:(int)tag;
 - (void)setTextViewHidden:(BOOL)hide;
+- (void)changeCaretToUp:(BOOL)up;
 @end
