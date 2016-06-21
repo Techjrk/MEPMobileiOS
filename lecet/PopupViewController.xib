@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupViewController">
             <connections>
+                <outlet property="constraintPlacementBottom" destination="i5M-Pr-FkT" id="scI-3l-npR"/>
                 <outlet property="constraintPlacementTop" destination="oM5-r9-9ka" id="sf6-UX-yeA"/>
                 <outlet property="constraintPlacementTopLeading" destination="erJ-2Y-Pp1" id="Hgk-yf-A0P"/>
                 <outlet property="constraintPopupHeight" destination="YDR-1W-xO5" id="eOO-47-9fl"/>
@@ -15,6 +16,7 @@
                 <outlet property="constraintPopupWidth" destination="bfh-lz-ocz" id="bao-Ek-cRg"/>
                 <outlet property="container" destination="Yzr-0J-z4g" id="qdh-dY-wJx"/>
                 <outlet property="popupContainer" destination="ain-BM-Bde" id="vUV-UD-z5W"/>
+                <outlet property="popupPlacementBottom" destination="SMR-0O-EzD" id="TBv-mK-xIv"/>
                 <outlet property="popupPlacementTop" destination="KZh-Sh-vxo" id="Uqr-jf-NQI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -52,12 +54,22 @@
                     <rect key="frame" x="0.0" y="71" width="33" height="17"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMR-0O-EzD" customClass="TriangleView">
+                    <rect key="frame" x="0.0" y="588" width="33" height="17"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="SMR-0O-EzD" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.023" id="1XB-3Z-Te6"/>
+                <constraint firstItem="SMR-0O-EzD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.08" id="Gov-D0-sG2"/>
                 <constraint firstItem="KZh-Sh-vxo" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.023" id="Jqm-LX-yeT"/>
+                <constraint firstItem="SMR-0O-EzD" firstAttribute="top" secondItem="Yzr-0J-z4g" secondAttribute="bottom" id="Nyt-d2-FKj"/>
+                <constraint firstItem="SMR-0O-EzD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RGd-x3-U7e"/>
                 <constraint firstItem="ain-BM-Bde" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Uqb-3l-cdj"/>
                 <constraint firstItem="KZh-Sh-vxo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="erJ-2Y-Pp1"/>
+                <constraint firstItem="SMR-0O-EzD" firstAttribute="leading" secondItem="KZh-Sh-vxo" secondAttribute="leading" id="gE3-YC-tB2"/>
+                <constraint firstAttribute="bottom" secondItem="SMR-0O-EzD" secondAttribute="bottom" priority="250" constant="131" id="gN1-Jc-GEa"/>
                 <constraint firstItem="ain-BM-Bde" firstAttribute="top" secondItem="KZh-Sh-vxo" secondAttribute="bottom" id="nv0-hW-bHw"/>
                 <constraint firstItem="KZh-Sh-vxo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" priority="250" constant="71" id="oM5-r9-9ka"/>
                 <constraint firstItem="KZh-Sh-vxo" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.08" id="vYF-j3-Rjs"/>
@@ -66,6 +78,11 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="RGd-x3-U7e"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

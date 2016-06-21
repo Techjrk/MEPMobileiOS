@@ -12,6 +12,7 @@
 @interface PopupViewController ()<CustomCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TriangleView *popupPlacementTop;
 @property (weak, nonatomic) IBOutlet UIView *popupContainer;
+@property (weak, nonatomic) IBOutlet TriangleView *popupPlacementBottom;
 @property (weak, nonatomic) IBOutlet CustomCollectionView *container;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPlacementTop;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPopupWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPopupHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPopupLeading;
+@property (strong, nonatomic) IBOutlet UIView *constraintPlacementBottom;
 @end
 
 @implementation PopupViewController
@@ -43,8 +45,21 @@
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(NotificationDismiss:) name:NOTIFICATION_DISMISS_POPUP object:nil];
     
     [_popupPlacementTop setObjectColor:self.popupPlacementColor];
+    [_popupPlacementBottom setObjectColor:self.popupPlacementColor];
+    _popupPlacementTop.hidden = self.popupPalcement != PopupPlacementTop;
+    _popupPlacementBottom.hidden = !_popupPlacementTop.hidden;
+    
     _constraintPlacementTopLeading.constant = (self.popupRect.origin.x + (self.popupRect.size.width * 0.5)) - (_popupPlacementTop.frame.size.width * 0.5);
-    _constraintPlacementTop.constant = self.popupRect.origin.y + (self.popupRect.size.height);
+    
+    if (self.popupPalcement == PopupPlacementTop) {
+        
+        _constraintPlacementTop.constant = self.popupRect.origin.y + (self.popupRect.size.height);
+    
+    } else {
+        
+        _constraintPlacementTop.constant = kDeviceHeight - (self.popupRect.size.height);
+        
+    }
     _constraintPopupWidth.constant = kDeviceWidth * self.popupWidth;
     _constraintPopupLeading.constant = (kDeviceWidth - _constraintPopupWidth.constant) /2.0;
     
@@ -59,7 +74,6 @@
     
     if (self.isGreyedBackground) {
         self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-        
     }
     
     _container.customCollectionViewDelegate = self;
@@ -74,7 +88,7 @@
 
 - (CGRect)getViewPositionFromViewController:(UIView*)view controller:(UIViewController*)controller {
 
-    return [controller.view convertRect:view.frame toView:controller.view];
+    return [view convertRect:view.bounds toView:controller.view];
 
 }
 

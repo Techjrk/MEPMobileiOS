@@ -38,6 +38,7 @@
 #define kUrlProjectAvailableTrackList       @"Projects/%li/availabletrackinglists"
 #define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
 #define kUrlBidCalendar                     @"Projects/bidcalendar"
+#define kUrlProjectTrackingList             @"projectlists/%li/projects"
 
 @interface DataManager()
 @end
@@ -651,6 +652,19 @@
 - (void)companyAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlCompanyAvailableTrackList, (long)recordId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)projectTrackingList:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup"};
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectTrackingList, (long)trackId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

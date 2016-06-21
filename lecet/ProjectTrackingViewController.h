@@ -12,4 +12,5 @@
 
 @interface ProjectTrackingViewController : BaseViewController
 @property (strong ,nonatomic) NSDictionary *cargo;
+@property (strong, nonatomic) NSArray *collectionItems;
 @end

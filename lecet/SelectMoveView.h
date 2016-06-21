@@ -10,6 +10,10 @@
 
 #import "BaseViewClass.h"
 
-@interface SelectMoveView : BaseViewClass
+@protocol SelectMoveViewDelegate <NSObject>
+- (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove;
+@end
 
+@interface SelectMoveView : BaseViewClass
+@property (strong, nonatomic) id<SelectMoveViewDelegate>selectMoveViewDelegate;
 @end

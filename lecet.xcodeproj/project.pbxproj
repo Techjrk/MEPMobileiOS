@@ -147,6 +147,8 @@
 		B70FDF811CEA0BD40035A6D9 /* PariticpantsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF801CEA0BD40035A6D9 /* PariticpantsView.xib */; };
 		B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF831CEA0BEE0035A6D9 /* NotesView.m */; };
 		B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */; };
+		B71B6BFA1D18299300B916BA /* ProjectTrackEditCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B6BF81D18299300B916BA /* ProjectTrackEditCollectionViewCell.m */; };
+		B71B6BFB1D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71B6BF91D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib */; };
 		B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */; };
 		B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */; };
 		B73EFA861D01C2E200C6B3B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA851D01C2E200C6B3B2 /* LocationManager.m */; };
@@ -556,6 +558,11 @@
 		B70FDF831CEA0BEE0035A6D9 /* NotesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesView.m; sourceTree = "<group>"; };
 		B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesView.xib; sourceTree = "<group>"; };
 		B70FDF871CEA0F570035A6D9 /* notesConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = notesConstants.h; sourceTree = "<group>"; };
+		B71B6BF61D17F04D00B916BA /* projectTrackingItemConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTrackingItemConstants.h; sourceTree = "<group>"; };
+		B71B6BF71D18299300B916BA /* ProjectTrackEditCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTrackEditCollectionViewCell.h; sourceTree = "<group>"; };
+		B71B6BF81D18299300B916BA /* ProjectTrackEditCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTrackEditCollectionViewCell.m; sourceTree = "<group>"; };
+		B71B6BF91D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTrackEditCollectionViewCell.xib; sourceTree = "<group>"; };
+		B71B6BFC1D1834BB00B916BA /* projectTrackEditConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTrackEditConstants.h; sourceTree = "<group>"; };
 		B73EFA7E1D01AE0F00C6B3B2 /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareLocationViewController.h; sourceTree = "<group>"; };
 		B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareLocationViewController.m; sourceTree = "<group>"; };
 		B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareLocationViewController.xib; sourceTree = "<group>"; };
@@ -1623,6 +1630,9 @@
 				B73EFB0D1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.h */,
 				B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */,
 				B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */,
+				B71B6BF71D18299300B916BA /* ProjectTrackEditCollectionViewCell.h */,
+				B71B6BF81D18299300B916BA /* ProjectTrackEditCollectionViewCell.m */,
+				B71B6BF91D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1828,6 +1838,8 @@
 				B651064C1D12B12500007759 /* companyTrackingListConstant.h */,
 				B651064D1D12B16C00007759 /* projComTrckingTabViewConstant.h */,
 				B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */,
+				B71B6BF61D17F04D00B916BA /* projectTrackingItemConstants.h */,
+				B71B6BFC1D1834BB00B916BA /* projectTrackEditConstants.h */,
 				B6BDBAA91D17F83C001FB41C /* companySortViewCellConstant.h */,
 				B6BDBAB01D17FFF0001FB41C /* editTabConstant.h */,
 				B6BDBAB71D181C1D001FB41C /* editViewConstant.h */,
@@ -2238,6 +2250,7 @@
 				B7F10A2B1CDB42FA00847FA3 /* DerivedNSManagedObject.m in Sources */,
 				B6411BA51D096892002B6E88 /* SettingsView.m in Sources */,
 				B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */,
+				B71B6BFA1D18299300B916BA /* ProjectTrackEditCollectionViewCell.m in Sources */,
 				B7F10A131CDB3E3300847FA3 /* AFNetworkReachabilityManager.m in Sources */,
 				B771C6011CEB6C28004A628A /* AssociatedBidCollectionViewCell.m in Sources */,
 				B66591181CFF0C8800CFD10C /* ProjectShareViewController.m in Sources */,
