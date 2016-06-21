@@ -2175,6 +2175,7 @@
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
 				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
 				B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */,
+				B71B6BFB1D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B6BDBAB61D180452001FB41C /* EditView.xib in Resources */,
 				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
