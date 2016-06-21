@@ -509,7 +509,7 @@ typedef enum {
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
-    
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 - (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
