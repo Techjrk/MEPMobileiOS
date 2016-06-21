@@ -9,10 +9,12 @@
 #import "PopupViewController.h"
 
 #import "TriangleView.h"
+#import "DownView.h"
+
 @interface PopupViewController ()<CustomCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TriangleView *popupPlacementTop;
 @property (weak, nonatomic) IBOutlet UIView *popupContainer;
-@property (weak, nonatomic) IBOutlet TriangleView *popupPlacementBottom;
+@property (weak, nonatomic) IBOutlet DownView *popupPlacementBottom;
 @property (weak, nonatomic) IBOutlet CustomCollectionView *container;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPlacementTop;
@@ -57,7 +59,7 @@
     
     } else {
         
-        _constraintPlacementBottom.constant = kDeviceHeight - (self.popupRect.origin.y);
+        //_constraintPlacementBottom.constant = kDeviceHeight - (self.popupRect.origin.y);
         
     }
     _constraintPopupWidth.constant = kDeviceWidth * self.popupWidth;
@@ -155,7 +157,11 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];    
+    [super viewDidLayoutSubviews];
+    
+    if (!self.popupPlacementBottom.hidden) {
+        _constraintPlacementTop.constant = (kDeviceHeight - (_constraintPopupHeight.constant + self.popupRect.size.height + (_popupPlacementBottom.frame.size.height * 2)));
+    }
 }
 
 @end
