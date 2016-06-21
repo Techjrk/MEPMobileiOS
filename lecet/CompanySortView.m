@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *topViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -29,17 +30,24 @@
     
     
     _collectionView.bounces = NO;
+  
+    self.layer.shadowColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5].CGColor;
+    self.layer.shadowRadius = 2;
+    self.layer.shadowOpacity = 1;
+    self.layer.shadowOffset = CGSizeMake(2, 2);
+    self.layer.masksToBounds = NO;
     
-    [self.layer setCornerRadius:5.0f];
-    self.layer.masksToBounds = YES;
+    [_containerView.layer setCornerRadius:4.0f];
+    _containerView.layer.masksToBounds = YES;
     
+    
+
     
     items = @[NSLocalizedLanguage(@"SORT_LASTUPDATED"),NSLocalizedLanguage(@"SORT_AlPHABETICAL")];
     
     _labelTitle.font = COMPANYTRACKINGVIEW_LABEL_FONT;
     _labelTitle.textColor = COMPANYTRACKINGVIEW_LABEL_FONT_COLOR;
     [_topViewContainer setBackgroundColor:COMPANYTRACKINGVIEW_VIEW_BG_COLOR];
-    
     _labelTitle.text = NSLocalizedLanguage(@"SORT_TITLE");
     
 }

@@ -30,7 +30,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kux-9J-dHh" customClass="CompanySortView">
                     <rect key="frame" x="5" y="76" width="590" height="132"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.91263196420000003" blue="0.32155614570000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRb-WN-n4e" customClass="TriangleView">
                     <rect key="frame" x="538" y="65" width="48" height="11"/>
