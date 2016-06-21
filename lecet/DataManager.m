@@ -39,6 +39,9 @@
 #define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
 #define kUrlBidCalendar                     @"Projects/bidcalendar"
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
+#define kUrlProjectTrackingListUPdates      @"projectlists/%li/updates"
+#define kUrlCompanyTrackingList             @"companylists/%li/companies"
+#define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
 #define kUrlCompanyInfo                     @"Companies/search?"
 
 @interface DataManager()
@@ -666,6 +669,39 @@
     
     NSString *url = [NSString stringWithFormat:kUrlProjectTrackingList, (long)trackId.integerValue];
     [self HTTP_GET:[self url:url] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)projectTrackingListUpdates:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *url = [NSString stringWithFormat:kUrlProjectTrackingListUPdates, (long)trackId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
+- (void)companyTrackingList:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
+   
+    NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingList, (long)trackId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)companyTrackingListUpdates:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListUpdates, (long)trackId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
