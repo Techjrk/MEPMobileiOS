@@ -886,6 +886,7 @@
         
         [[DataManager sharedManager] companyTrackingList:trackItemInfo[@"id"] success:^(id object) {
             
+            NSLog(@"Result = %@",object);
             CompanyTrackingListViewController *controller = [[CompanyTrackingListViewController alloc] initWithNibName:@"CompanyTrackingListViewController" bundle:nil];
             [controller setInfo:object];
             [self.navigationController pushViewController:controller animated:YES];
