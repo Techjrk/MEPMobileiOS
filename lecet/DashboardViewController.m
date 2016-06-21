@@ -944,6 +944,8 @@
     BOOL isExpanded = YES;
     if (cellItem != nil) {
         isExpanded =  [[cellItem cargo] boolValue];
+    } else {
+        NSLog(@"");
     }
     
     if (isExpanded) {

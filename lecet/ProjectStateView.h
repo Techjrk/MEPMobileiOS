@@ -16,7 +16,7 @@ typedef enum {
 } StateView;
 
 @protocol ProjectStateViewDelegate <NSObject>
-- (void)selectedStateViewItem:(StateView)stateView;
+- (void)selectedStateViewItem:(StateView)stateView view:(UIView*)view;
 @end
 
 @interface ProjectStateView : BaseViewClass

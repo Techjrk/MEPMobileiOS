@@ -16,8 +16,13 @@ typedef enum : NSUInteger {
     PopupPlacementBottom = 1
 } PopupPlacement;
 
+@protocol PopupViewControllerDelegate <NSObject>
+- (void)PopupViewControllerDismissed;
+@end
+
 @interface PopupViewController : BaseViewController
 @property (weak, nonatomic) id<CustomCollectionViewDelegate>customCollectionViewDelegate;
+@property (weak, nonatomic) id<PopupViewControllerDelegate>popupViewControllerDelegate;
 @property (nonatomic) BOOL isGreyedBackground;
 @property (nonatomic) CGRect popupRect;
 @property (strong, nonatomic) UIColor *popupPlacementColor;

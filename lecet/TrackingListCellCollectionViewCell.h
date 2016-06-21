@@ -12,6 +12,7 @@
 
 @interface TrackingListCellCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) id<TrackingListViewDelegate>trackingListViewDelegate;
+@property (nonatomic) BOOL headerDisabled;
 - (CGFloat)cellHeight;
 - (void)setInfo:(id)info withTitle:(NSString*)title;
 - (id) cargo;

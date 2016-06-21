@@ -21,7 +21,6 @@
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         
         CGFloat x1Pos = rect.size.width * 0.5;
-        CGFloat x2Pos = rect.size.width;
         
         CGFloat y1Pos = rect.size.height;
         CGContextBeginPath(ctx);

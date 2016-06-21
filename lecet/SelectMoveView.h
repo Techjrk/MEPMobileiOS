@@ -16,4 +16,5 @@
 
 @interface SelectMoveView : BaseViewClass
 @property (strong, nonatomic) id<SelectMoveViewDelegate>selectMoveViewDelegate;
+- (void)setSelectionCount:(NSInteger)selectionCount;
 @end

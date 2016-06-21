@@ -30,8 +30,16 @@
 #import "ProjectShareViewController.h"
 #import "BidderListViewController.h"
 #import "ParticipantsListViewController.h"
+#import "PopupViewController.h"
+#import "TrackingListCellCollectionViewCell.h"
+#import "ShareItemCollectionViewCell.h"
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate, SeeAllViewDelegate>{
+typedef enum {
+    ProjectDetailPopupModeTrack,
+    ProjectDetailPopupModeShare
+} ProjectDetailPopupMode;
+
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -39,7 +47,9 @@
     NSMutableArray *bidItems;
     NSMutableArray *participants;
     NSString *projectTitle;
-    
+    NSArray *trackItemRecord;
+    NSNumber *recordId;
+    ProjectDetailPopupMode popupMode;
 }
 
 //Views
@@ -156,6 +166,8 @@
     
     DB_Project *project = record;
     projectTitle = project.title;
+    recordId = project.recordId;
+    
     NSString *address1 = project.address1 == nil ? @"": project.address1;
     [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
     
@@ -219,15 +231,15 @@
 
 }
 
-- (void)selectedStateViewItem:(StateView)stateView {
+- (void)selectedStateViewItem:(StateView)stateView view:(UIView *)view{
     
     if (stateView == StateViewShare) {
         
-        [self showShareListMenu];
+        [self showShareListMenu:view];
         
     }else if (stateView == StateViewTrack){
         
-        [self tappedProjectTrackListButton];
+        [self tappedProjectTrackListButton:view];
        
     }else if (stateView == StateViewHide){
  
@@ -304,14 +316,18 @@
 
 #pragma mark - Delegate and Share List Method
 
--(void)tappedDismissedProjectShareList{
-    
+- (void)PopupViewControllerDismissed {
     [_projectState clearSelection];
 }
 
-
-- (void)showShareListMenu{
+-(void)tappedDismissedProjectShareList{
     
+}
+
+
+- (void)showShareListMenu:(UIView*)view{
+    
+    /*
     ProjectShareViewController *controller = [ProjectShareViewController new];
     
     controller.modalPresentationStyle = UIModalPresentationCustom;
@@ -319,6 +335,19 @@
     controller.projectShareListViewControllerDelegate = self;
     [controller setProjectState:_projectState];
     [self presentViewController:controller  animated:YES completion:nil];
+     */
+    
+    popupMode = ProjectDetailPopupModeShare;
+    PopupViewController *controller = [PopupViewController new];
+    CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+    controller.popupRect = rect;
+    controller.popupWidth = 0.98;
+    controller.isGreyedBackground = YES;
+    controller.customCollectionViewDelegate = self;
+    controller.popupViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
+    
     
 }
 
@@ -329,8 +358,9 @@
     [_projectState clearSelection];
 }
 
-- (void)tappedProjectTrackListButton{
+- (void)tappedProjectTrackListButton:(UIView*)view{
     
+    /*
     ProjectListViewController *controller = [ProjectListViewController new];
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -338,6 +368,25 @@
     [controller setProjectStateViewFrame:_projectState];
     controller.projectTrackListViewControllerDelegate = self;
     [self presentViewController:controller  animated:YES completion:nil];
+     */
+    popupMode = ProjectDetailPopupModeTrack;
+    [[DataManager sharedManager] projectAvailableTrackingList:recordId success:^(id object) {
+        
+        trackItemRecord = object;
+        PopupViewController *controller = [PopupViewController new];
+        CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+        controller.popupRect = rect;
+        controller.popupWidth = 0.98;
+        controller.isGreyedBackground = YES;
+        controller.customCollectionViewDelegate = self;
+        controller.popupViewControllerDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:controller animated:NO completion:nil];
+        
+    } failure:^(id object) {
+        
+    }];
+
     
 }
 
@@ -386,6 +435,111 @@
     controller.collectionItems = bidItems;
     controller.projectName = projectTitle;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - CustomCollectionView Delegate
+
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    
+    CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
+    switch (popupMode) {
+        
+        case ProjectDetailPopupModeTrack: {
+            [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            
+            [collectionView registerCollectionItemClass:[ShareItemCollectionViewCell class]];
+            break;
+        }
+    }
+}
+
+- (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
+    
+    switch (popupMode) {
+       
+        case ProjectDetailPopupModeTrack: {
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare :{
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[ShareItemCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        };
+            
+        }
+
+    return nil;
+}
+
+- (NSInteger)collectionViewItemCount {
+    
+    return popupMode == ProjectDetailPopupModeTrack?1:2;
+
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return 1;
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
+
+    switch (popupMode) {
+
+        case ProjectDetailPopupModeTrack: {
+            CGFloat defaultHeight = kDeviceHeight * 0.08;
+            CGFloat cellHeight = kDeviceHeight * 0.06;
+            defaultHeight = defaultHeight+ (trackItemRecord.count*cellHeight);
+            return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            return CGSizeMake(kDeviceWidth * 0.98, kDeviceHeight * 0.075);
+            break;
+        }
+        
+    }
+    
+    return CGSizeZero;
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
+
+    switch (popupMode) {
+        
+        case ProjectDetailPopupModeTrack: {
+
+            TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+            cellItem.headerDisabled = YES;
+            cellItem.trackingListViewDelegate = self;
+            [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT")];
+            
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            
+            ShareItemCollectionViewCell *cellItem = (ShareItemCollectionViewCell*)cell;
+            [cellItem setShareItem:indexPath.row == 0?ShareItemEmail:ShareItemLink];
+            
+            break;
+        }
+        
+    }
+    
+}
+
+- (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 @end
