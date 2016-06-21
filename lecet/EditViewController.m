@@ -106,6 +106,8 @@
 #pragma mark - EditViewListDelegate
 
 - (void)selectedButtonCountInCell:(int)count {
+    
+    [_selectMoveView setSelectionCount:(NSInteger)count];
     [self chageEditMode:NO count:count];
 }
 
