@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-UO-Igv">
-                    <rect key="frame" x="0.0" y="0.0" width="127" height="45"/>
+                    <rect key="frame" x="0.0" y="0.0" width="112.5" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" title="CANCEL"/>
                     <connections>
@@ -27,7 +27,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFZ-CT-zgq">
-                    <rect key="frame" x="248" y="0.0" width="127" height="45"/>
+                    <rect key="frame" x="283" y="0.0" width="92" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" title="DONE"/>
                     <connections>
@@ -37,12 +37,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="yFZ-CT-zgq" firstAttribute="width" secondItem="XWX-UO-Igv" secondAttribute="width" id="ECB-mf-eED"/>
+                <constraint firstItem="yFZ-CT-zgq" firstAttribute="width" secondItem="XWX-UO-Igv" secondAttribute="width" multiplier="0.82" id="ECB-mf-eED"/>
                 <constraint firstItem="yFZ-CT-zgq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NdR-ok-FRw"/>
                 <constraint firstItem="XWX-UO-Igv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qw5-eP-Fv6"/>
                 <constraint firstAttribute="trailing" secondItem="yFZ-CT-zgq" secondAttribute="trailing" id="Tw5-1F-YbS"/>
                 <constraint firstItem="XWX-UO-Igv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iPO-Ge-zHC"/>
-                <constraint firstItem="XWX-UO-Igv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.337" id="njh-uk-WuF"/>
+                <constraint firstItem="XWX-UO-Igv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.3" id="njh-uk-WuF"/>
                 <constraint firstAttribute="bottom" secondItem="yFZ-CT-zgq" secondAttribute="bottom" id="uwq-Tr-dpz"/>
                 <constraint firstAttribute="bottom" secondItem="XWX-UO-Igv" secondAttribute="bottom" id="w29-Vs-YW0"/>
             </constraints>
