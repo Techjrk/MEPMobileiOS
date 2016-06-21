@@ -10,9 +10,9 @@
 #define editViewConstant_h
 
 
-#define EDITVIEW_TOP_LABEL_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define EDITVIEW_TOP_LABEL_FONT             fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define EDITVIEW_TOP_LABEL_FONT_COLOR       RGB(34,34,34)
 
-#define EDITVIEW_BELOW_LABEL_FONT           fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define EDITVIEW_BELOW_LABEL_FONT           fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define EDITVIEW_BELOW_LABEL_FONT_COLOR     RGB(159,164,166)
 #endif /* editViewConstant_h */
