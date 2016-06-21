@@ -117,7 +117,7 @@
     
     if ([[DataManager sharedManager] isDebugMode]) {
 
-        
+      /*
         NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
 
         [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
@@ -126,7 +126,7 @@
             
         }];
 
-         
+         */
         
         /*
         [[DataManager sharedManager] bidCalendarForYear:@(2016) month:@(6) success:^(id object) {
@@ -135,6 +135,12 @@
             
         }]
          */;
+        /*
+        [[DataManager sharedManager] companyTrackingListUpdates:@(0) success:^(id object) {
+            
+        } failure:^(id object) {
+            
+        }];*/
         
     }
 
@@ -878,13 +884,10 @@
         }];
     } else {
         
-        [[DataManager sharedManager] getCompanyInfo:@(220) lastCompanyId:@(230) success:^(id object) {
-            
-            NSArray *result = object[@"results"];
-            //Put CompanyTracking Code Here
+        [[DataManager sharedManager] companyTrackingList:trackItemInfo[@"id"] success:^(id object) {
             
             CompanyTrackingListViewController *controller = [[CompanyTrackingListViewController alloc] initWithNibName:@"CompanyTrackingListViewController" bundle:nil];
-            [controller setInfo:result];
+            [controller setInfo:object];
             [self.navigationController pushViewController:controller animated:YES];
             
         } failure:^(id object) {
