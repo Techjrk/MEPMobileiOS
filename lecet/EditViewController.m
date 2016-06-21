@@ -124,6 +124,10 @@
     [self chageEditMode:NO count:count];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 
 
 @end

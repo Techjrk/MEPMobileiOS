@@ -26,7 +26,7 @@
 
 @implementation CompanyTrackingListView
 #define kCellIdentifier             @"kCellIdentifier"
-#define kCellAdditionalHeight       0.68f
+#define kCellAdditionalHeight       0.78f
 #define flagIdentifierOpen          @"open"
 #define flagIdentifierClosed        @"closed"
 #define kButtonToShow               @"false"
@@ -171,7 +171,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 1;
+    return 8;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section

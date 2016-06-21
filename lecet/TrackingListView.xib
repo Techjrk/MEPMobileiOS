@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="353" height="54"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFr-EA-4pQ">
-                            <rect key="frame" x="17.5" y="0.0" width="318" height="54"/>
+                            <rect key="frame" x="18" y="0.0" width="318" height="54"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="tappedButtonHeader:" destination="-1" eventType="touchUpInside" id="CuO-UJ-x4n"/>
