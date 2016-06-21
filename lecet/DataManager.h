@@ -41,6 +41,9 @@
 - (void)projectAvailableTrackingList:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyAvailableTrackingList:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectTrackingList:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)projectTrackingListUpdates:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)companyTrackingList:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)companyTrackingListUpdates:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)bidCalendarForYear:(NSNumber*)year month:(NSNumber*)month success:(APIBlock)success failure:(APIBlock)failure;
 - (void)getCompanyInfo:(NSNumber*)firstCompanyId lastCompanyId:(NSNumber*)lastCompanyId success:(APIBlock)success failure:(APIBlock)failure;
 

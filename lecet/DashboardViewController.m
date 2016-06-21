@@ -602,20 +602,7 @@
                 trackingListInfo[kTrackList[0]] = [object mutableCopy];
                 [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
             
-                    NSArray *objectArray = object;
-                    if (objectArray.count == 0) {
-                        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-                        [tempArray addObject:[self createMockCompanyTrackList:@"Mock Company Track 01" trackid:@(1) companyIds:@[@1,@2,@3,@4]]];
-                        [tempArray addObject:[self createMockCompanyTrackList:@"Mock Company Track 02" trackid:@(1) companyIds:@[@1,@2,@3,@4]]];
-                        [tempArray addObject:[self createMockCompanyTrackList:@"Mock Company Track 03" trackid:@(1) companyIds:@[@1,@2,@3,@4]]];
-                        [tempArray addObject:[self createMockCompanyTrackList:@"Mock Company Track 04" trackid:@(1) companyIds:@[@1,@2,@3,@4]]];
-                        [tempArray addObject:[self createMockCompanyTrackList:@"Mock Company Track 05" trackid:@(1) companyIds:@[@1,@2,@3,@4]]];
-                        
-                        trackingListInfo[kTrackList[1]] = tempArray;
-                    } else {
-                    
-                        trackingListInfo[kTrackList[1]] = [object mutableCopy];
-                    }
+                    trackingListInfo[kTrackList[1]] = [object mutableCopy];
                     PopupViewController *controller = [PopupViewController new];
                     CGRect rect = [controller getViewPositionFromViewController:view controller:self];
                     rect.size.height =  rect.size.height * 0.85;
@@ -891,7 +878,7 @@
         }];
     } else {
         
-        [[DataManager sharedManager] getCompanyInfo:@220 lastCompanyId:@230 success:^(id object) {
+        [[DataManager sharedManager] getCompanyInfo:@(220) lastCompanyId:@(230) success:^(id object) {
             
             NSArray *result = object[@"results"];
             //Put CompanyTracking Code Here
@@ -948,8 +935,6 @@
     BOOL isExpanded = YES;
     if (cellItem != nil) {
         isExpanded =  [[cellItem cargo] boolValue];
-    } else {
-        NSLog(@"");
     }
     
     if (isExpanded) {
