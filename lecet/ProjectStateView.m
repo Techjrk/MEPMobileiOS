@@ -77,7 +77,7 @@
     _buttonHide.selected = [_buttonHide isEqual:button];
   
     [self setupSelection];
-    [self.projectStateViewDelegate selectedStateViewItem:(StateView)button.tag];
+    [self.projectStateViewDelegate selectedStateViewItem:(StateView)button.tag view:button];
     
 }
 

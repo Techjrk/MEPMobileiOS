@@ -28,10 +28,14 @@
 }
 
 - (id)cargo {
-    return [NSNumber numberWithBool:_listItem.isExpanded];
+    return [NSNumber numberWithBool:[_listItem isExpanded]];
 }
 
 - (void)setTrackingListViewDelegate:(id<TrackingListViewDelegate>)trackingListViewDelegate {
     _listItem.trackingListViewDelegate = trackingListViewDelegate;
+}
+
+- (void)setHeaderDisabled:(BOOL)headerDisabled {
+    _listItem.isHeaderDisabled = headerDisabled;
 }
 @end

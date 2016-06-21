@@ -18,11 +18,19 @@
 #import "ProjectTrackEditCollectionViewCell.h"
 #import "EditTabView.h"
 #import "SelectMoveView.h"
+#import "TrackingListCellCollectionViewCell.h"
 
-@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ProjectTrackItemViewDelegate, EditTabViewDelegate, SelectMoveViewDelegate>{
+typedef enum  {
+    PopupModeSort,
+    PopupModeMove,
+} PopupMode;
+
+@interface ProjectTrackingViewController ()<ProjectNavViewDelegate,CustomCollectionViewDelegate,ProjComTrackingTabViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ProjectTrackItemViewDelegate, EditTabViewDelegate, SelectMoveViewDelegate, TrackingListViewDelegate>{
     NSArray *sortItems;
     NSMutableDictionary *collectionItemsState;
     BOOL isInEditMode;
+    PopupMode popupMode;
+    NSArray *trackItemRecord;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *topBar;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *editView;
@@ -88,15 +96,25 @@
 
 - (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
     if (shouldMove) {
-        PopupViewController *controller = [PopupViewController new];
-        CGRect rect = [controller getViewPositionFromViewController:object controller:self];
-        controller.popupPalcement = PopupPlacementBottom;
-        controller.popupRect = rect;
-        controller.popupWidth = 0.98;
-        controller.isGreyedBackground = YES;
-        controller.customCollectionViewDelegate = self;
-        controller.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:controller animated:NO completion:nil];
+        UIView *objectView = object;
+        NSNumber *number = [[self selectedItemForEdit] lastObject];
+        [[DataManager sharedManager] projectAvailableTrackingList:number success:^(id object) {
+
+            popupMode = PopupModeMove;
+            trackItemRecord = object;
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:objectView controller:self];
+            controller.popupPalcement = PopupPlacementBottom;
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+        
+        } failure:^(id object) {
+            
+        }];
 
     }
 }
@@ -159,6 +177,7 @@
     
     } else {
     
+        popupMode = PopupModeSort;
         PopupViewController *controller = [PopupViewController new];
         CGRect rect = [controller getViewPositionFromViewController:[_topBar reOrderButton] controller:self];
         rect.size.height =  rect.size.height * 0.85;
@@ -190,20 +209,74 @@
 
 }
 
+-(void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    [[DataManager sharedManager] featureNotAvailable];
+}
+
 #pragma mark - CustomCollectionView Delegate
 
 - (void)collectionViewItemClassRegister:(id)customCollectionView {
+    
     CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
-    [collectionView registerCollectionItemClass:[ProjectSortCVCell class]];
-    [collectionView registerCollectionItemClass:[SectionHeaderCollectionViewCell class]];
+    
+    switch (popupMode) {
+        
+        case PopupModeSort: {
+           
+            [collectionView registerCollectionItemClass:[ProjectSortCVCell class]];
+            [collectionView registerCollectionItemClass:[SectionHeaderCollectionViewCell class]];
+            break;
+        }
+            
+        case PopupModeMove: {
+            
+            [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+            break;
+        }
+        
+    }
 }
 
 - (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
-    return [collectionView dequeueReusableCellWithReuseIdentifier:indexPath.row == 0?[[SectionHeaderCollectionViewCell class] description]:[[ProjectSortCVCell class] description] forIndexPath:indexPath];
+    
+    switch (popupMode) {
+        
+        case PopupModeSort: {
+
+            return [collectionView dequeueReusableCellWithReuseIdentifier:indexPath.row == 0?[[SectionHeaderCollectionViewCell class] description]:[[ProjectSortCVCell class] description] forIndexPath:indexPath];
+
+            break;
+        }
+    
+        case PopupModeMove: {
+ 
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            
+            break;
+        }
+    }
+    
+    return nil;
 }
 
 - (NSInteger)collectionViewItemCount {
-    return 6;
+    
+    switch (popupMode) {
+            
+        case PopupModeSort: {
+         
+            return sortItems.count + 1;
+        
+            break;
+        }
+        
+        case PopupModeMove: {
+            
+            return 1;
+            break;
+        }
+    }
+    return 0;
 }
 
 - (NSInteger)collectionViewSectionCount {
@@ -211,7 +284,27 @@
 }
 
 - (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
-    return CGSizeMake(view.frame.size.width * (indexPath.row ==0 ?1:0.95), kDeviceHeight * (indexPath.row == 0?0.082:0.061));
+    switch (popupMode) {
+        case PopupModeSort: {
+
+            return CGSizeMake(view.frame.size.width * (indexPath.row ==0 ?1:0.95), kDeviceHeight * (indexPath.row == 0?0.082:0.061));
+            
+            break;
+        }
+ 
+        case PopupModeMove: {
+
+            CGFloat defaultHeight = kDeviceHeight * 0.08;
+            CGFloat cellHeight = kDeviceHeight * 0.06;
+            defaultHeight = defaultHeight+ (trackItemRecord.count*cellHeight);
+            return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
+          
+            break;
+        }
+    }
+    
+    return CGSizeZero;
+  
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
@@ -230,11 +323,19 @@
     if ([cell isKindOfClass:[ProjectSortCVCell class]]) {
         ProjectSortCVCell *cellItem = (ProjectSortCVCell*)cell;
         cellItem.labelTitle.text = sortItems[indexPath.row-1];
-    } else {
+    } else if([cell isKindOfClass:[SectionHeaderCollectionViewCell class]]){
         SectionHeaderCollectionViewCell *cellItem = (SectionHeaderCollectionViewCell*)cell;
         [cellItem setTitle:NSLocalizedLanguage(@"PROJECTSORT_TITLE_LABEL_TEXT")];
 
+    } else if ([cell isKindOfClass:[TrackingListCellCollectionViewCell class]]) {
+        
+        TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+        cellItem.headerDisabled = YES;
+        cellItem.trackingListViewDelegate = self;
+        [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"PROJECT_TRACKING_LIST")];
+        
     }
+
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -329,8 +430,10 @@
         
         [_collectionView reloadItemsAtIndexPaths:@[indexPath]];
   
-        _constraintEditViewHeight.constant = kDeviceHeight * ([self hasSelectedItemForEdit]?0.09:0);
+        NSArray *selectedItems = [self selectedItemForEdit];
+        _constraintEditViewHeight.constant = kDeviceHeight * (selectedItems.count>0?0.09:0);
         
+        [_selectMoveView setSelectionCount:selectedItems.count];
         [UIView animateWithDuration:0.25 animations:^{
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -342,16 +445,22 @@
 
 #pragma mark - Misc Methods
 
-- (BOOL)hasSelectedItemForEdit {
-    BOOL hasSelected = NO;
+- (NSArray*)selectedItemForEdit {
+    NSMutableArray *selectedItems = [[NSMutableArray alloc] init];
     
     for (NSNumber *number in collectionItemsState.allKeys) {
         NSDictionary *item = collectionItemsState[number];
+        
+        NSDictionary *data = item[kStateData];
+        NSNumber *recordId = data[@"id"];
+        
         NSMutableDictionary *status = item[kStateStatus];
-        hasSelected = [status[kStateSelected] boolValue] | hasSelected;
+        if ([status[kStateSelected] boolValue]) {
+            [selectedItems addObject:recordId];
+        } ;
     }
 
-    return hasSelected;
+    return selectedItems;
 }
 
 - (NSNumber*)getProjectId:(NSIndexPath*)indexPath {

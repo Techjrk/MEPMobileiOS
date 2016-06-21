@@ -33,7 +33,7 @@
     
     _labelCount.font = SELECT_MOVE_COUNT_FONT;
     _labelCount.textColor = SELECT_MOVE_COUNT_COLOR;
-    _labelCount.text = @"3 Selected";
+    _labelCount.text = @"";
     
 }
 
@@ -41,6 +41,11 @@
     UIButton *button = sender;
     [self.selectMoveViewDelegate tappedMoveItem:sender shouldMove:[NSNumber numberWithBool:button.tag == 1]];
 
+}
+
+- (void)setSelectionCount:(NSInteger)selectionCount {
+    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"SELECT_COUNT"), (long)selectionCount];
+    
 }
 
 @end

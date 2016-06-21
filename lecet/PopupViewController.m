@@ -32,6 +32,7 @@
 @synthesize popupRect;
 @synthesize isGreyedBackground;
 @synthesize customCollectionViewDelegate;
+@synthesize popupViewControllerDelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,6 +105,8 @@
     CGPoint loc = [sender locationInView:view];
     UIView* subview = [view hitTest:loc withEvent:nil];
     if ([subview isEqual:self.view]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
+        [self.popupViewControllerDelegate PopupViewControllerDismissed];
         [self dismissViewControllerAnimated:NO completion:nil];
     }
     
@@ -111,7 +114,6 @@
 
 - (void)notificationCollectionViewCellSizeChange:(NSNotificationCenter*)notification {
     [_container reload];
-    [_container layoutSubviews];
     [UIView animateWithDuration:0.2 animations:^{
         _constraintPopupHeight.constant =[_container contentSize].height;
         [self.view layoutIfNeeded];
@@ -144,6 +146,8 @@
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
     [self dismissViewControllerAnimated:NO completion:^{
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
+        [self.popupViewControllerDelegate PopupViewControllerDismissed];
         [self.customCollectionViewDelegate collectionViewDidSelectedItem:indexPath];
     }];
 }
@@ -153,12 +157,16 @@
 }
 
 - (void)NotificationDismiss:(NSNotification*)notification {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.popupViewControllerDelegate PopupViewControllerDismissed];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
+    }];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    
+    [_container layoutSubviews];
     if (!self.popupPlacementBottom.hidden) {
         _constraintPlacementTop.constant = (kDeviceHeight - (_constraintPopupHeight.constant + self.popupRect.size.height + (_popupPlacementBottom.frame.size.height * 2)));
     }

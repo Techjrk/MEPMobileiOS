@@ -17,6 +17,7 @@
 @interface TrackingListView : BaseViewClass
 @property (weak, nonatomic) id<TrackingListViewDelegate>trackingListViewDelegate;
 @property (strong, nonatomic) NSString *headerTitle;
+@property (nonatomic) BOOL isHeaderDisabled;
 - (CGFloat)viewHeight;
 - (void)setInfo:(id)info;
 - (BOOL)isExpanded;

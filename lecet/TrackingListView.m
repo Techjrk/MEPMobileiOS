@@ -27,6 +27,7 @@
 @implementation TrackingListView
 @synthesize trackingListViewDelegate;
 @synthesize headerTitle;
+@synthesize isHeaderDisabled;
 
 #define cellHeight              kDeviceHeight * 0.06
 
@@ -50,7 +51,11 @@
     
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[self.headerTitle stringByAppendingString:@"  "] attributes:@{NSFontAttributeName:TRACK_LIST_TOPBAR_TITLE_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}];
     
-    [title appendAttributedString:[[NSAttributedString alloc] initWithString:!isExpanded?SEE_ALL_CARET_DOWN_TEXT:SEE_ALL_CARET_UP_TEXT attributes:@{NSFontAttributeName:SEE_ALL_CARET_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}]];
+    if (!self.isHeaderDisabled) {
+        [title appendAttributedString:[[NSAttributedString alloc] initWithString:!isExpanded?SEE_ALL_CARET_DOWN_TEXT:SEE_ALL_CARET_UP_TEXT attributes:@{NSFontAttributeName:SEE_ALL_CARET_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}]];
+    } else {
+        _buttonHeader.enabled = NO;
+    }
     
     [_buttonHeader setAttributedTitle:title forState:UIControlStateNormal];
 }
@@ -58,8 +63,8 @@
 - (IBAction)tappedButtonHeader:(id)sender {
     
     isExpanded = !isExpanded;
-    [self changeButtonTitle];
     _collectionView.cargo = [NSNumber numberWithBool:isExpanded];
+    [self changeButtonTitle];
     [_collectionView reload];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
 }

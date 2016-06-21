@@ -9,7 +9,10 @@
 #ifndef dropDownShareListConstant_h
 #define dropDownShareListConstant_h
 
-#define DROPDOWN_SHARELIST_BUTTON_SENDBYEMAIL_FONT           fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
-#define DROPDOWN_SHARELIST_BUTTON_COPYLINK_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
+#define DROPDOWN_SHARELIST_BUTTON_SENDBYEMAIL_FONT          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
+#define DROPDOWN_SHARELIST_BUTTON_COPYLINK_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
+
+#define DROPDOWN_SHARELIST_BUTTON_FONT                      fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define DROPDOWN_SHARELIST_BUTTON_COLOR                     RGB(72, 72, 72)
 
 #endif /* dropDownShareListConstant_h */
