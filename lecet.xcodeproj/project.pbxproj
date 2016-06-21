@@ -87,6 +87,14 @@
 		B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */; };
 		B6BDBAAE1D17FD21001FB41C /* EditTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAAC1D17FD21001FB41C /* EditTabView.m */; };
 		B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAAD1D17FD21001FB41C /* EditTabView.xib */; };
+		B6BDBAB51D180452001FB41C /* EditView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAB31D180452001FB41C /* EditView.m */; };
+		B6BDBAB61D180452001FB41C /* EditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAB41D180452001FB41C /* EditView.xib */; };
+		B6BDBABC1D181EA9001FB41C /* EditViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBABA1D181EA9001FB41C /* EditViewCollectionViewCell.m */; };
+		B6BDBABD1D181EA9001FB41C /* EditViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBABB1D181EA9001FB41C /* EditViewCollectionViewCell.xib */; };
+		B6BDBAC21D181F66001FB41C /* EditViewList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAC01D181F66001FB41C /* EditViewList.m */; };
+		B6BDBAC31D181F66001FB41C /* EditViewList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAC11D181F66001FB41C /* EditViewList.xib */; };
+		B6BDBAC81D1821BD001FB41C /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAC61D1821BD001FB41C /* EditViewController.m */; };
+		B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAC71D1821BD001FB41C /* EditViewController.xib */; };
 		B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */; };
 		B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */; };
 		B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032E71CF2ED0F00D3D02C /* Utilities.m */; };
@@ -451,6 +459,19 @@
 		B6BDBAAC1D17FD21001FB41C /* EditTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTabView.m; sourceTree = "<group>"; };
 		B6BDBAAD1D17FD21001FB41C /* EditTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTabView.xib; sourceTree = "<group>"; };
 		B6BDBAB01D17FFF0001FB41C /* editTabConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = editTabConstant.h; sourceTree = "<group>"; };
+		B6BDBAB21D180452001FB41C /* EditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditView.h; sourceTree = "<group>"; };
+		B6BDBAB31D180452001FB41C /* EditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditView.m; sourceTree = "<group>"; };
+		B6BDBAB41D180452001FB41C /* EditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditView.xib; sourceTree = "<group>"; };
+		B6BDBAB71D181C1D001FB41C /* editViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = editViewConstant.h; sourceTree = "<group>"; };
+		B6BDBAB91D181EA9001FB41C /* EditViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewCollectionViewCell.h; sourceTree = "<group>"; };
+		B6BDBABA1D181EA9001FB41C /* EditViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewCollectionViewCell.m; sourceTree = "<group>"; };
+		B6BDBABB1D181EA9001FB41C /* EditViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6BDBABF1D181F66001FB41C /* EditViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewList.h; sourceTree = "<group>"; };
+		B6BDBAC01D181F66001FB41C /* EditViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewList.m; sourceTree = "<group>"; };
+		B6BDBAC11D181F66001FB41C /* EditViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewList.xib; sourceTree = "<group>"; };
+		B6BDBAC51D1821BD001FB41C /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		B6BDBAC61D1821BD001FB41C /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		B6BDBAC71D1821BD001FB41C /* EditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 		B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateViewController.m; sourceTree = "<group>"; };
 		B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailStateViewController.xib; sourceTree = "<group>"; };
 		B6CF764B1CF868E100BF6C69 /* ProjectDetailStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateViewController.h; sourceTree = "<group>"; };
@@ -1248,6 +1269,46 @@
 			name = "Edit Tab";
 			sourceTree = "<group>";
 		};
+		B6BDBAB11D18041E001FB41C /* EditView */ = {
+			isa = PBXGroup;
+			children = (
+				B6BDBAB21D180452001FB41C /* EditView.h */,
+				B6BDBAB31D180452001FB41C /* EditView.m */,
+				B6BDBAB41D180452001FB41C /* EditView.xib */,
+			);
+			name = EditView;
+			sourceTree = "<group>";
+		};
+		B6BDBAB81D181E6F001FB41C /* EditViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B6BDBAB91D181EA9001FB41C /* EditViewCollectionViewCell.h */,
+				B6BDBABA1D181EA9001FB41C /* EditViewCollectionViewCell.m */,
+				B6BDBABB1D181EA9001FB41C /* EditViewCollectionViewCell.xib */,
+			);
+			name = EditViewCell;
+			sourceTree = "<group>";
+		};
+		B6BDBABE1D181F2B001FB41C /* EditViewList */ = {
+			isa = PBXGroup;
+			children = (
+				B6BDBABF1D181F66001FB41C /* EditViewList.h */,
+				B6BDBAC01D181F66001FB41C /* EditViewList.m */,
+				B6BDBAC11D181F66001FB41C /* EditViewList.xib */,
+			);
+			name = EditViewList;
+			sourceTree = "<group>";
+		};
+		B6BDBAC41D1821A3001FB41C /* EditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B6BDBAC51D1821BD001FB41C /* EditViewController.h */,
+				B6BDBAC61D1821BD001FB41C /* EditViewController.m */,
+				B6BDBAC71D1821BD001FB41C /* EditViewController.xib */,
+			);
+			name = EditViewController;
+			sourceTree = "<group>";
+		};
 		B6CF764C1CF868F800BF6C69 /* ProjectDetailState */ = {
 			isa = PBXGroup;
 			children = (
@@ -1452,6 +1513,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6BDBAC41D1821A3001FB41C /* EditViewController */,
 				B6A74EF61D15DBBA007CDFF3 /* CompanySort */,
 				B65106611D12DC6100007759 /* CompanyTracking */,
 				B6411BF21D09CF4B002B6E88 /* ParticipantsListViewController.h */,
@@ -1524,6 +1586,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B6BDBAB81D181E6F001FB41C /* EditViewCell */,
 				B6A74EF01D15DB96007CDFF3 /* CompanySortCell */,
 				B651065B1D12D75700007759 /* CompanyTrackingCell */,
 				B6411BA71D096DEE002B6E88 /* SettingCell */,
@@ -1588,6 +1651,8 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B6BDBABE1D181F2B001FB41C /* EditViewList */,
+				B6BDBAB11D18041E001FB41C /* EditView */,
 				B6BDBAAA1D17FD05001FB41C /* Edit Tab */,
 				B6A74EE81D15DB2F007CDFF3 /* CompanySort */,
 				B65106531D12B82200007759 /* CompanyTraking */,
@@ -1788,6 +1853,7 @@
 				B71B6BFC1D1834BB00B916BA /* projectTrackEditConstants.h */,
 				B6BDBAA91D17F83C001FB41C /* companySortViewCellConstant.h */,
 				B6BDBAB01D17FFF0001FB41C /* editTabConstant.h */,
+				B6BDBAB71D181C1D001FB41C /* editViewConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -2117,12 +2183,15 @@
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B6411BBF1D09ACBF002B6E88 /* MyProfileViewController.xib in Resources */,
+				B6BDBABD1D181EA9001FB41C /* EditViewCollectionViewCell.xib in Resources */,
 				B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */,
 				B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */,
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
 				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
+				B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */,
 				B71B6BFB1D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
+				B6BDBAB61D180452001FB41C /* EditView.xib in Resources */,
 				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B6411BC51D09ACEF002B6E88 /* MyProfileView.xib in Resources */,
@@ -2133,6 +2202,7 @@
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
 				B73EFAED1D13FB3C00C6B3B2 /* ProjectTrackingViewController.xib in Resources */,
 				B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */,
+				B6BDBAC31D181F66001FB41C /* EditViewList.xib in Resources */,
 				B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */,
 				B68337381D083102004226D3 /* ChnagePasswordCollectionViewCell.xib in Resources */,
 				B65106521D12B80B00007759 /* CompanyTrackingListView.xib in Resources */,
@@ -2180,6 +2250,7 @@
 				B6972B7D1CF327940092D5CD /* DropDownMenuShareList.m in Sources */,
 				B73EFACB1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m in Sources */,
 				B6411BEB1D09CEC8002B6E88 /* BidderListViewController.m in Sources */,
+				B6BDBAB51D180452001FB41C /* EditView.m in Sources */,
 				B6411BBE1D09ACBF002B6E88 /* MyProfileViewController.m in Sources */,
 				B73EFA921D080B1800C6B3B2 /* ProjectAnnotationView.m in Sources */,
 				B651065F1D12D7AD00007759 /* CompanyTrackingCollectionViewCell.m in Sources */,
@@ -2219,6 +2290,7 @@
 				B73EFAEC1D13FB3C00C6B3B2 /* ProjectTrackingViewController.m in Sources */,
 				B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */,
 				B68337241D081C3F004226D3 /* ChangePasswordViewController.m in Sources */,
+				B6BDBAC81D1821BD001FB41C /* EditViewController.m in Sources */,
 				B73EFAB11D09546B00C6B3B2 /* CallOutViewController.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
@@ -2296,6 +2368,7 @@
 				B79616011CF318D60089BC32 /* DB_Project.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
 				B73EFAD11D11518700C6B3B2 /* PopupViewController.m in Sources */,
+				B6BDBABC1D181EA9001FB41C /* EditViewCollectionViewCell.m in Sources */,
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
 				B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */,
@@ -2314,6 +2387,7 @@
 				B6411BC41D09ACEF002B6E88 /* MyProfileView.m in Sources */,
 				B6411BAB1D096E1B002B6E88 /* SettingCollectionViewCell.m in Sources */,
 				B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */,
+				B6BDBAC21D181F66001FB41C /* EditViewList.m in Sources */,
 				B6A74EF41D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m in Sources */,
 				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,

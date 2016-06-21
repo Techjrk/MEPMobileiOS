@@ -38,6 +38,9 @@
 
 - (void)awakeFromNib {
     
+    
+    _mapLabelContainerConstraintHeight.constant = kDeviceHeight * 0.132f;
+
     _nameLabel.font = COMPANYTRACKINGVIEW_LABEL_NAME_FONT;
     _nameLabel.textColor = COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR;
     
@@ -53,7 +56,7 @@
     _containerButtonView.layer.masksToBounds = YES;
     
     
-    [_textView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
+    //[_textView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
     _textView.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
     _textView.font =    COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     
@@ -63,9 +66,6 @@
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
     _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
-    
-    
-
     
 }
 

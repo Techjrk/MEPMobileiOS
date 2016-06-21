@@ -47,14 +47,14 @@
                             </connections>
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-L8-LUJ">
-                            <rect key="frame" x="0.0" y="84.5" width="414" height="51.5"/>
+                            <rect key="frame" x="0.0" y="85" width="414" height="51"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-81-rqB" customClass="EditTabView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-81-rqB" customClass="EditTabView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-KB-GLX" customClass="ProjComTrackingTabView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-KB-GLX" customClass="ProjComTrackingTabView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
@@ -92,7 +92,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xls-hf-owS" customClass="ProjectNavigationBarView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

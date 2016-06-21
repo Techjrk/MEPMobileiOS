@@ -8,15 +8,15 @@
 
 #import "CompanyTrackingListView.h"
 #import "CompanyTrackingCollectionViewCell.h"
+#import "companyTrackingListConstant.h"
 
 @interface CompanyTrackingListView ()<UICollectionViewDelegate, UICollectionViewDataSource,CompanyTrackingCollectionViewCellDelegate>{
-    NSDictionary *collectionItems;
+    NSMutableArray *collectionDataItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
     CGFloat cellHeightToExpand;
     int tempTag;
     BOOL firstLoad;
-    NSMutableArray *flagsClosedOpen;
     BOOL shouldShowUpdates;
     
 }
@@ -29,42 +29,62 @@
 #define kCellAdditionalHeight       0.68f
 #define flagIdentifierOpen          @"open"
 #define flagIdentifierClosed        @"closed"
+#define kButtonToShow               @"false"
 
 - (void)awakeFromNib {
     
     CompanyTrackingCollectionViewCell *cell = (CompanyTrackingCollectionViewCell *)[CompanyTrackingCollectionViewCell class];
 
     [_collectionView registerNib:[UINib nibWithNibName:[cell description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    flagsClosedOpen = [NSMutableArray new];
-    [self tempData];
-    
-    [collectionItems[@"companyName"] enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
-        [flagsClosedOpen addObject:flagIdentifierClosed];
-    }];
+
+   
     firstLoad = YES;
     shouldShowUpdates = YES;
 }
 
-- (void)setItems:(NSDictionary *)items {
-    //collectionItems = items;
-    constraintHeight.constant = 0;
+
+
+- (void)setItems:(id)items {
+
+    collectionDataItems = [items mutableCopy];
+    NSOperationQueue* queue= [NSOperationQueue new];
+    queue.maxConcurrentOperationCount=1;
+    [queue setSuspended: YES];
+    
+    NSMutableArray *tempArray = collectionDataItems;
+    [collectionDataItems enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
+        NSMutableDictionary *dict = [response mutableCopy];
+        [dict setValue:flagIdentifierClosed forKey:COMPANYDATA_BUTTON_STATE];
+        [dict setValue:@"0" forKey:COMPANYDATA_SELECTION_FLAG];
+        if (index == 5 || index == 9) {
+            [dict setValue:@"Add" forKey:COMPANYDATA_BUTTON_TOSHOW];
+        } else {
+            [dict setValue:kButtonToShow forKey:COMPANYDATA_BUTTON_TOSHOW];
+        }
+        
+        
+            NSBlockOperation* op=[NSBlockOperation blockOperationWithBlock: ^ (void)
+            {
+                [tempArray replaceObjectAtIndex:index withObject:dict];
+
+            }];
+            [queue addOperation: op];
+        
+        
+    }];
+    
+    [queue setSuspended: NO];
+    [queue waitUntilAllOperationsAreFinished];
+    
+    collectionDataItems= tempArray;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView reloadData];
+    
 }
 
-- (void)tempData {
-    
-    NSArray *names = @[@"ERS Industrial Services Inc",@"Jay Dee Contractor, Inc",@"Myers & Sons Construction, LP",@"Slayden Construction Group Inc",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
-    NSArray *addressesOne = @[@"7215 NW 7th St",@"38881 Schoolcraft Rd",@"254 bowery St",@"174 Purchase Rd",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
-    NSArray *addressesTwo = @[@"Freemont, CA 10054",@"Livonia, MI 48150-101033",@"Sacramento, CA 21054-1201",@"Stayton, OR 10780",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
-    NSArray *showButtons = @[@"AddAcct",@"Add",@"false",@"false",@"false",@"false",@"AddAcct",@"false",@"false",@"false",@"Add",@"false",@"false",@"false",@"false",@"false"];
-    NSDictionary *dict = @{@"companyName":names,@"companyAddressOne":addressesOne,@"companyAddressTwo":addressesTwo,@"companyButtons":showButtons};
-    
-    collectionItems = dict;
-    
+- (void)setItemFrommEditViewController:(id)item {
+    collectionDataItems =item;
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -73,11 +93,12 @@
     
     CompanyTrackingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.companyTrackingCollectionViewCellDelegate =self;
-    NSString *titleName = [collectionItems[@"companyName"] objectAtIndex:indexPath.row];
-    NSString *addressTop = [collectionItems[@"companyAddressOne"] objectAtIndex:indexPath.row];
-    NSString *addressBelow = [collectionItems[@"companyAddressTwo"] objectAtIndex:indexPath.row];
     
+    NSString *titleName = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_NAME];
+    NSString *addressTop = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ADDRESSONE];
+    NSString *addressCon = [NSString stringWithFormat:@"%@, %@ %@",[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_COUNTY],[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_STATE],[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ZIP5]];
     
+    NSString *addressBelow = addressCon;
     
     [cell setTitleName:titleName];
     [cell setAddressTop:addressTop];
@@ -85,13 +106,13 @@
     int tag = (int)indexPath.row;
     [cell setButtontag:tag];
     
-    NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
+    
+    NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];
     if ([flag isEqualToString:flagIdentifierOpen]) {
         [cell changeCaretToUp:YES];
     }else {
         [cell changeCaretToUp:NO];
     }
-    
     
     return cell;
 }
@@ -103,8 +124,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    //NSInteger count = collectionItems.count;
-    return [collectionItems[@"companyName"] count];
+    return [collectionDataItems count];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -112,32 +132,35 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGSize size;
     cellHeight = kDeviceHeight * 0.13;
+
     
     if (shouldShowUpdates) {
         
-        NSString *buttonIfToShowString = [collectionItems[@"companyButtons"] objectAtIndex:indexPath.row];
-        if ([buttonIfToShowString isEqualToString:@"false"]) {
+        NSString *buttonIfToShowString = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_TOSHOW];
+        if ([buttonIfToShowString isEqualToString:kButtonToShow]) {
             size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
             
         }else {
             
-            NSString *flag = [flagsClosedOpen objectAtIndex:indexPath.row];
+            NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];
             if ([flag isEqualToString:flagIdentifierOpen]) {
                 cellHeightToExpand = 60;
-                //size = CGSizeMake( _collectionView.frame.size.width, cellHeight + ((cellHeight/ 2) + 15) + cellHeightToExpand);
+                
                 size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight) + cellHeightToExpand);
             }else
             {
-                //size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight/ 2) + 15);
+                
                 size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight));
             }
             
         }
-
+        
     }else {
         size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
         
     }
+    
+   
     return size;
 }
 
@@ -158,35 +181,33 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-
 }
 
 - (void)tappedButtonAtTag:(int)tag {
     firstLoad = NO;
-    
-    NSString *flag = [flagsClosedOpen objectAtIndex:tag];
+    NSMutableDictionary *dict = [collectionDataItems objectAtIndex:tag];
+    NSString *flag = [collectionDataItems objectAtIndex:tag][COMPANYDATA_BUTTON_STATE];
     NSString *flagTochange = [flag isEqualToString:flagIdentifierClosed]?flagIdentifierOpen:flagIdentifierClosed;
-    [flagsClosedOpen replaceObjectAtIndex:tag withObject:flagTochange];
+   [dict setValue:flagTochange forKey:COMPANYDATA_BUTTON_STATE];
+    [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
+ 
     
     tempTag = tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
-    
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
 }
 
-
 - (void)switchButtonChange:(BOOL)isOn {
-    
     shouldShowUpdates = isOn;
-    
     [_collectionView reloadData];
-    
 }
 
 
+- (id)getdata {
+    return collectionDataItems;
+}
 
 
 @end

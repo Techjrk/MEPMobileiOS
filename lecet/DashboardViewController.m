@@ -38,7 +38,7 @@
 #import "TrackingListCellCollectionViewCell.h"
 #import "TrackingListView.h"
 #import "ProjectTrackingViewController.h"
-
+#import "CompanyTrackingListViewController.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate>{
 
@@ -673,7 +673,7 @@
     switch (menuDropDownItem) {
             
         case DropDownMenuMyProfile:{
-            
+                    
             MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
             [controller setInfo:profileInfo];
             [self.navigationController pushViewController:controller animated:YES];
@@ -895,6 +895,10 @@
             
             NSArray *result = object[@"results"];
             //Put CompanyTracking Code Here
+            
+            CompanyTrackingListViewController *controller = [[CompanyTrackingListViewController alloc] initWithNibName:@"CompanyTrackingListViewController" bundle:nil];
+            [controller setInfo:result];
+            [self.navigationController pushViewController:controller animated:YES];
             
         } failure:^(id object) {
             
