@@ -39,6 +39,7 @@
 #define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
 #define kUrlBidCalendar                     @"Projects/bidcalendar"
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
+#define kUrlCompanyInfo                     @"Companies/search?"
 
 @interface DataManager()
 @end
@@ -682,6 +683,18 @@
         failure(object);
     } authenticated:YES];
     
+}
+
+- (void)getCompanyInfo:(NSNumber *)firstCompanyId lastCompanyId:(NSNumber *)lastCompanyId success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSDictionary *parameter = @{@"filter[searchFilter][companyId][gte]":firstCompanyId, @"filter[searchFilter][companyId][lte]":lastCompanyId};
+
+    [self HTTP_GET:[self url:kUrlCompanyInfo] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
 }
 
 #pragma mark - MISC FEATURE

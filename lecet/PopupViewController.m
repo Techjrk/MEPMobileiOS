@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPopupWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPopupHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPopupLeading;
-@property (strong, nonatomic) IBOutlet UIView *constraintPlacementBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPlacementBottom;
 @end
 
 @implementation PopupViewController
@@ -57,7 +57,7 @@
     
     } else {
         
-        _constraintPlacementTop.constant = kDeviceHeight - (self.popupRect.size.height);
+        _constraintPlacementBottom.constant = kDeviceHeight - (self.popupRect.origin.y);
         
     }
     _constraintPopupWidth.constant = kDeviceWidth * self.popupWidth;
@@ -153,4 +153,9 @@
 - (void)NotificationDismiss:(NSNotification*)notification {
     [self dismissViewControllerAnimated:NO completion:nil];
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];    
+}
+
 @end
