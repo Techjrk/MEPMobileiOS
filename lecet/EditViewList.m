@@ -16,6 +16,7 @@
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
     NSMutableArray *flagSelectedUnSelected;
+    int countInt;
     
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -121,7 +122,7 @@
 #pragma mark - EditViewCell Delegate
 
 - (void)tappedButtonSelectAtTag:(int)tag {
-    int count;
+    
     NSMutableDictionary *dict = [collectionDataItems objectAtIndex:tag];
     NSString *currentflag = [collectionDataItems objectAtIndex:tag][COMPANYDATA_SELECTION_FLAG];
     NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
@@ -134,18 +135,14 @@
     
     [collectionDataItems enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
         
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)count inSection:0];
-        EditViewCollectionViewCell *cell = (EditViewCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
-        
-        if ([cell isButtonSelected]) {
-            count++;
-            
+        if ([result[COMPANYDATA_SELECTION_FLAG] isEqualToString:SelectedFlag]) {
+            countInt++;
         }
         
     }];
     
-    
-    [_editViewListDelegate selectedButtonCountInCell:count];
+    [_editViewListDelegate selectedButtonCountInCell:countInt];
+    countInt = 0;
     
 }
 
