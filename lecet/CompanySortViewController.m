@@ -52,9 +52,15 @@
 
 - (void)selectedSort:(CompanySortItem)item {
     
-    [_companySortDelegate selectedSort:item];
-    [[DataManager sharedManager] featureNotAvailable];
     
+    [self dismissViewControllerAnimated:YES completion:^{
+        [_companySortDelegate selectedSort:item];
+    }];
+    
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 

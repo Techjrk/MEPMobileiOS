@@ -13,7 +13,7 @@
 #import "CompanySortViewController.h"
 #import "EditViewController.h"
 
-@interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate,EditViewControllerDelegate>{
+@interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate,EditViewControllerDelegate,CompanySortDelegate>{
     
     id dataItems;
     id dataItemsFromEdit;
@@ -70,6 +70,7 @@
         case ProjectNavReOrder:{
             CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
             controller.modalPresentationStyle = UIModalPresentationCustom;
+            controller.companySortDelegate = self;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             [self presentViewController:controller  animated:NO completion:nil];
             break;
@@ -113,6 +114,12 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - CompanySort Delegate
+
+- (void)selectedSort:(CompanySortItem)item {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 
 

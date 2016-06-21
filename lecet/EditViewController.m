@@ -14,7 +14,7 @@
 #import "EditViewList.h"
 #import "CompanySortViewController.h"
 
-@interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate,EditViewListDelegate>{
+@interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate,EditViewListDelegate,CompanySortDelegate>{
     BOOL isInEditMode;;
     NSMutableArray *collectionDataItems;
 }
@@ -68,6 +68,7 @@
         }
         case ProjectNavReOrder:{
             CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
+            controller.companySortDelegate = self;
             controller.modalPresentationStyle = UIModalPresentationCustom;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             [self presentViewController:controller  animated:NO completion:nil];
@@ -128,6 +129,11 @@
     return UIStatusBarStyleLightContent;
 }
 
+#pragma mark - CompanySortDelegate
+- (void)selectedSort:(CompanySortItem)item {
+    
+    [[DataManager sharedManager] featureNotAvailable];
+}
 
 
 @end
