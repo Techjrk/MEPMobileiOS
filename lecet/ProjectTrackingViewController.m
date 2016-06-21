@@ -90,8 +90,6 @@
     if (shouldMove) {
         PopupViewController *controller = [PopupViewController new];
         CGRect rect = [controller getViewPositionFromViewController:object controller:self];
-        rect.origin.y = rect.origin.y +(kDeviceHeight * 0.002);
-        rect.size.height =  rect.size.height * 0.85;
         controller.popupPalcement = PopupPlacementBottom;
         controller.popupRect = rect;
         controller.popupWidth = 0.98;

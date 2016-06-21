@@ -273,6 +273,7 @@
 		B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */; };
 		B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */; };
 		B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */; };
+		B7BF60861D19371100B3BDD7 /* DownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60851D19371100B3BDD7 /* DownView.m */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
 		B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */; };
 		B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */; };
@@ -776,6 +777,8 @@
 		B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectHeaderView.m; sourceTree = "<group>"; };
 		B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectHeaderView.xib; sourceTree = "<group>"; };
 		B7A1D34A1CE4D9A7004E94B3 /* projectHeaderConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectHeaderConstants.h; sourceTree = "<group>"; };
+		B7BF60841D19371100B3BDD7 /* DownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownView.h; sourceTree = "<group>"; };
+		B7BF60851D19371100B3BDD7 /* DownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownView.m; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
 		B7E104301CEC6D7600EAD8E7 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
 		B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsView.xib; sourceTree = "<group>"; };
@@ -1875,6 +1878,8 @@
 				B73EFA911D080B1800C6B3B2 /* ProjectAnnotationView.m */,
 				B73EFA931D080CAF00C6B3B2 /* ProjectPointAnnotation.h */,
 				B73EFA941D080CAF00C6B3B2 /* ProjectPointAnnotation.m */,
+				B7BF60841D19371100B3BDD7 /* DownView.h */,
+				B7BF60851D19371100B3BDD7 /* DownView.m */,
 			);
 			name = BaseClass;
 			sourceTree = "<group>";
@@ -2366,6 +2371,7 @@
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B7BF60861D19371100B3BDD7 /* DownView.m in Sources */,
 				B623B2121CFC9B9D00793D67 /* DropDownProjectList.m in Sources */,
 				B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */,
 				B6411BC41D09ACEF002B6E88 /* MyProfileView.m in Sources */,
