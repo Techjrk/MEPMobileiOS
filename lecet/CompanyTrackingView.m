@@ -62,6 +62,8 @@
     
     [_containerTextView.layer setCornerRadius:4.0f];
     _containerTextView.layer.masksToBounds = YES;
+    [_textView.layer setCornerRadius:4.0f];
+    _textView.layer.masksToBounds = YES;
     
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
@@ -107,8 +109,11 @@
     
     if (up) {
         _caretImageView.image = [UIImage imageNamed:@"caretUp_icon"];
+        [_containerTextView setHidden:NO];
+        
     } else {
         _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
+        [_containerTextView setHidden:YES];
     }
 }
 

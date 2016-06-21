@@ -20,7 +20,7 @@
                 <outlet property="mapLabelContainerConstraintHeight" destination="KX6-wd-50E" id="IZz-sU-KOZ"/>
                 <outlet property="mapView" destination="E5A-Ce-2ph" id="fGZ-Na-qon"/>
                 <outlet property="nameLabel" destination="smI-9W-E0i" id="D3N-Nr-gFu"/>
-                <outlet property="textView" destination="n6s-9e-rDJ" id="CBi-Zt-7cc"/>
+                <outlet property="textView" destination="Oxa-h6-HaB" id="MKf-ZH-BkL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -116,11 +116,11 @@
                     <rect key="frame" x="9" y="88" width="341" height="131"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puw-GH-VZd">
-                            <rect key="frame" x="0.0" y="41" width="341" height="72"/>
+                            <rect key="frame" x="0.0" y="35" width="341" height="78"/>
                             <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-9e-rDJ">
-                                    <rect key="frame" x="8" y="0.0" width="325" height="72"/>
-                                    <color key="backgroundColor" white="1" alpha="0.39684806034482761" colorSpace="calibratedWhite"/>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-h6-HaB">
+                                    <rect key="frame" x="5" y="8" width="331" height="70"/>
+                                    <color key="backgroundColor" white="1" alpha="0.39838362068965516" colorSpace="calibratedWhite"/>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -128,10 +128,10 @@
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="n6s-9e-rDJ" firstAttribute="top" secondItem="puw-GH-VZd" secondAttribute="top" id="6jc-NN-OlD"/>
-                                <constraint firstAttribute="trailing" secondItem="n6s-9e-rDJ" secondAttribute="trailing" constant="8" id="y7o-2y-qTJ"/>
-                                <constraint firstItem="n6s-9e-rDJ" firstAttribute="leading" secondItem="puw-GH-VZd" secondAttribute="leading" constant="8" id="yqI-oG-E30"/>
-                                <constraint firstAttribute="bottom" secondItem="n6s-9e-rDJ" secondAttribute="bottom" id="zbN-d1-gzd"/>
+                                <constraint firstItem="Oxa-h6-HaB" firstAttribute="top" secondItem="puw-GH-VZd" secondAttribute="top" constant="8" id="WBr-JW-sv9"/>
+                                <constraint firstAttribute="trailing" secondItem="Oxa-h6-HaB" secondAttribute="trailing" constant="5" id="fYf-rk-VK4"/>
+                                <constraint firstAttribute="bottom" secondItem="Oxa-h6-HaB" secondAttribute="bottom" id="pc0-PO-fo0"/>
+                                <constraint firstItem="Oxa-h6-HaB" firstAttribute="leading" secondItem="puw-GH-VZd" secondAttribute="leading" constant="5" id="tZZ-Fn-2fo"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLQ-EH-fCh">
@@ -184,22 +184,27 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="puw-GH-VZd" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="leading" id="3CQ-C6-cRi"/>
                         <constraint firstItem="BLQ-EH-fCh" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="leading" id="CzF-VY-Tz9"/>
-                        <constraint firstItem="eOe-xF-6of" firstAttribute="top" secondItem="puw-GH-VZd" secondAttribute="bottom" id="R13-Pl-ftc"/>
+                        <constraint firstItem="puw-GH-VZd" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="leading" id="D7J-IF-WbA"/>
+                        <constraint firstAttribute="trailing" secondItem="puw-GH-VZd" secondAttribute="trailing" id="N7s-tq-bls"/>
                         <constraint firstItem="puw-GH-VZd" firstAttribute="top" secondItem="BLQ-EH-fCh" secondAttribute="bottom" constant="2" id="TRM-TU-4EZ"/>
+                        <constraint firstAttribute="height" constant="131" id="ULz-jM-qh7"/>
+                        <constraint firstItem="eOe-xF-6of" firstAttribute="top" secondItem="puw-GH-VZd" secondAttribute="bottom" id="Vex-xe-WLT"/>
                         <constraint firstAttribute="trailing" secondItem="eOe-xF-6of" secondAttribute="trailing" id="Y4w-nc-Hrk"/>
+                        <constraint firstAttribute="height" constant="131" id="esN-Rs-f7O"/>
                         <constraint firstItem="BLQ-EH-fCh" firstAttribute="top" secondItem="eGV-Dl-enL" secondAttribute="top" id="gKR-ta-sKB"/>
                         <constraint firstItem="eOe-xF-6of" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="leading" id="iGt-d2-9y1"/>
-                        <constraint firstAttribute="trailing" secondItem="puw-GH-VZd" secondAttribute="trailing" id="iQJ-2H-ZM6"/>
-                        <constraint firstItem="puw-GH-VZd" firstAttribute="height" secondItem="eGV-Dl-enL" secondAttribute="height" multiplier="0.55" id="pXq-jb-afo"/>
+                        <constraint firstItem="puw-GH-VZd" firstAttribute="top" secondItem="BLQ-EH-fCh" secondAttribute="bottom" constant="1" id="nkr-1V-WRS"/>
                         <constraint firstItem="eOe-xF-6of" firstAttribute="height" secondItem="2sf-Yn-HuV" secondAttribute="height" multiplier="0.44" id="q0t-8d-Yn9"/>
                         <constraint firstAttribute="bottom" secondItem="eOe-xF-6of" secondAttribute="bottom" id="tx9-fd-dkn"/>
+                        <constraint firstItem="puw-GH-VZd" firstAttribute="top" secondItem="BLQ-EH-fCh" secondAttribute="bottom" constant="-5" id="uA4-ZF-e4r"/>
                         <constraint firstAttribute="trailing" secondItem="BLQ-EH-fCh" secondAttribute="trailing" id="xrP-Ys-xXR"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="ULz-jM-qh7"/>
                             <exclude reference="TRM-TU-4EZ"/>
+                            <exclude reference="nkr-1V-WRS"/>
                         </mask>
                     </variation>
                 </view>
@@ -213,18 +218,35 @@
                 <constraint firstItem="MTk-H4-lA5" firstAttribute="leading" secondItem="Q1n-Fy-2hN" secondAttribute="trailing" id="F5c-rW-lc9"/>
                 <constraint firstItem="Q1n-Fy-2hN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.025" id="FXS-GF-vk0"/>
                 <constraint firstAttribute="trailing" secondItem="T5h-ho-nuO" secondAttribute="trailing" id="GWa-js-jXQ"/>
+                <constraint firstItem="T5h-ho-nuO" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="trailing" id="Gsr-k4-HAu"/>
                 <constraint firstItem="eGV-Dl-enL" firstAttribute="top" secondItem="MTk-H4-lA5" secondAttribute="bottom" id="GvL-cG-hvg"/>
                 <constraint firstAttribute="bottom" secondItem="eGV-Dl-enL" secondAttribute="bottom" id="K9g-D5-Dv5"/>
+                <constraint firstItem="eGV-Dl-enL" firstAttribute="top" secondItem="MTk-H4-lA5" secondAttribute="bottom" id="PTo-a2-WSz"/>
                 <constraint firstItem="Q1n-Fy-2hN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UAO-Hc-Mig"/>
+                <constraint firstItem="eGV-Dl-enL" firstAttribute="top" secondItem="MTk-H4-lA5" secondAttribute="top" id="V6J-2R-utn"/>
                 <constraint firstItem="gCs-Kx-JTI" firstAttribute="width" secondItem="Q1n-Fy-2hN" secondAttribute="width" id="a40-bR-TBE"/>
                 <constraint firstItem="eGV-Dl-enL" firstAttribute="leading" secondItem="Q1n-Fy-2hN" secondAttribute="trailing" id="dGV-29-H2w"/>
+                <constraint firstItem="eGV-Dl-enL" firstAttribute="leading" secondItem="Q1n-Fy-2hN" secondAttribute="trailing" id="h0z-ML-aXA"/>
                 <constraint firstItem="BLQ-EH-fCh" firstAttribute="height" secondItem="MTk-H4-lA5" secondAttribute="height" multiplier="0.46" id="hyE-yn-0hH"/>
                 <constraint firstItem="T5h-ho-nuO" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="trailing" id="lOf-Rx-h4Q"/>
                 <constraint firstAttribute="bottom" secondItem="Q1n-Fy-2hN" secondAttribute="bottom" id="nPh-pf-zEZ"/>
                 <constraint firstItem="MTk-H4-lA5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pVz-uA-mnu"/>
                 <constraint firstItem="Q1n-Fy-2hN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="t8h-ba-1K0"/>
+                <constraint firstItem="T5h-ho-nuO" firstAttribute="leading" secondItem="eGV-Dl-enL" secondAttribute="trailing" id="xYL-dw-uJt"/>
+                <constraint firstItem="eGV-Dl-enL" firstAttribute="leading" secondItem="Q1n-Fy-2hN" secondAttribute="trailing" id="z9k-Op-ojl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GvL-cG-hvg"/>
+                    <exclude reference="K9g-D5-Dv5"/>
+                    <exclude reference="V6J-2R-utn"/>
+                    <exclude reference="dGV-29-H2w"/>
+                    <exclude reference="z9k-Op-ojl"/>
+                    <exclude reference="lOf-Rx-h4Q"/>
+                    <exclude reference="xYL-dw-uJt"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="386.5" y="198.5"/>
         </view>
     </objects>
