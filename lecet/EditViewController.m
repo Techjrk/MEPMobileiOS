@@ -13,7 +13,7 @@
 #import "PopupViewController.h"
 #import "EditViewList.h"
 
-@interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate>{
+@interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate,EditViewListDelegate>{
     BOOL isInEditMode;;
     NSMutableArray *collectionDataItems;
 }
@@ -26,6 +26,7 @@
 @end
 
 @implementation EditViewController
+#define BOTTOMVIEW_BG_COLOR RGB(5, 35, 74)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,7 +35,9 @@
     _navView.projectNavViewDelegate = self;
     _selectMoveView.selectMoveViewDelegate = self;
     _tabView.editTabViewDelegate = self;
+    _editViewList.editViewListDelegate = self;
     
+    [_selectMoveView setBackgroundColor:BOTTOMVIEW_BG_COLOR];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,23 +78,23 @@
 
 #pragma mark - EdittabViewDelgate
 - (void)selectedEditTabButton:(EditTabItem)item {
-    
-    
-    [self chageEditMode:NO];
+    [_editViewControllerDelegate tappedBackButton:collectionDataItems];
     
 }
 
 
+
 #pragma mark - Misc Method
-- (void)chageEditMode:(BOOL)editMode {
+- (void)chageEditMode:(BOOL)editMode count:(int)count{
     isInEditMode = editMode;
    
-    
     if (!isInEditMode) {
         _constraintEditViewHeight.constant = 0;
+        CGFloat heightPopUpView = kDeviceHeight * (count > 0?0.09:0);
         
         [UIView animateWithDuration:0.25 animations:^{
-           _constraintEditViewHeight.constant = kDeviceHeight * 0.09;
+            _constraintEditViewHeight.constant = heightPopUpView;
+            
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             
@@ -100,6 +103,11 @@
     
 }
 
+#pragma mark - EditViewListDelegate
+
+- (void)selectedButtonCountInCell:(int)count {
+    [self chageEditMode:NO count:count];
+}
 
 
 
