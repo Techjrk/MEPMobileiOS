@@ -896,6 +896,10 @@
             NSArray *result = object[@"results"];
             //Put CompanyTracking Code Here
             
+            CompanyTrackingListViewController *controller = [[CompanyTrackingListViewController alloc] initWithNibName:@"CompanyTrackingListViewController" bundle:nil];
+            [controller setInfo:result];
+            [self.navigationController pushViewController:controller animated:YES];
+            
         } failure:^(id object) {
             
         }];

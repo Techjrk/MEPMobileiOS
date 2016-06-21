@@ -13,7 +13,12 @@
 #import "CompanySortViewController.h"
 #import "EditViewController.h"
 
-@interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate>
+@interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate,EditViewControllerDelegate>{
+    
+    id dataItems;
+    id dataItemsFromEdit;
+    BOOL firstLoad;
+}
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
 @property (weak, nonatomic) IBOutlet CompanyTrackingListView *companyTrackingListView;
@@ -27,11 +32,28 @@
     // Do any additional setup after loading the view from its nib.
     _navBarView.projectNavViewDelegate = self;
     _tabBarView.projComTrackingTabViewDelegate = self;
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (!firstLoad) {
+        firstLoad = YES;
+        [_companyTrackingListView setItems:dataItems];
+    } else {
+        [_companyTrackingListView setItemFrommEditViewController:dataItems];
+    }
+        
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setInfo:(id)item {
+    dataItems =item;
 }
 
 #pragma mark - Nav View Delegate
@@ -71,7 +93,20 @@
 
 - (void)editTabButtonTapped {
     EditViewController *controller = [[EditViewController alloc] initWithNibName:@"EditViewController" bundle:nil];
+    controller.editViewControllerDelegate = self;
+    [controller setInfo:[_companyTrackingListView getdata]];
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+#pragma mark - EditViewControllerDelegate
+
+- (void)tappedBackButton:(id)items {
+    dataItems = items;
+    
+
+    
+}
+
+
 
 @end

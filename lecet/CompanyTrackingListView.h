@@ -10,6 +10,8 @@
 #import "BaseViewClass.h"
 
 @interface CompanyTrackingListView : BaseViewClass
-
+- (void)setItems:(id)items;
 - (void)switchButtonChange:(BOOL)isOn;
+- (id)getdata;
+- (void)setItemFrommEditViewController:(id)item ;
 @end

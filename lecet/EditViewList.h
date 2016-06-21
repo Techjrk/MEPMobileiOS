@@ -15,5 +15,7 @@
 
 @interface EditViewList : BaseViewClass
 @property (nonatomic,assign) id <EditViewListDelegate> editViewListDelegate;
+- (void)setInfo:(id)items;
+- (id)getData:(id)items;
 
 @end

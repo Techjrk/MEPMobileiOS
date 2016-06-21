@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EditViewControllerDelegate <NSObject>
+- (void)tappedBackButton:(id)items;
+@end
+
 @interface EditViewController : UIViewController
+@property(nonatomic,assign) id <EditViewControllerDelegate> editViewControllerDelegate;
+- (void)setInfo:(id)items;
 
 @end

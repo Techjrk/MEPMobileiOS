@@ -8,9 +8,11 @@
 
 #import "EditViewList.h"
 #import "EditViewCollectionViewCell.h"
+#import "companyTrackingListConstant.h"
 
 @interface EditViewList ()<UICollectionViewDelegate, UICollectionViewDataSource,EditViewCollectionViewCellDelegate>{
     NSDictionary *collectionItems;
+    NSMutableArray *collectionDataItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
     NSMutableArray *flagSelectedUnSelected;
@@ -26,28 +28,16 @@
 #define SelectedFlag                @"1"
 
 - (void)awakeFromNib {
-    [self tempData];
-    flagSelectedUnSelected = [NSMutableArray new];
-    [collectionItems[@"companyName"] enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
-        
-        [flagSelectedUnSelected addObject:UnSelectedFlag];
-    }];
-
-    
+   
+  
     [_collectionView registerNib:[UINib nibWithNibName:[[EditViewCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
+ 
 }
 
-- (void)tempData {
-    NSArray *names = @[@"ERS Industrial Services Inc",@"Jay Dee Contractor, Inc",@"Myers & Sons Construction, LP",@"Slayden Construction Group Inc",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
-    NSArray *addressesOne = @[@"7215 NW 7th St",@"38881 Schoolcraft Rd",@"254 bowery St",@"174 Purchase Rd",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
-    NSArray *addressesTwo = @[@"Freemont, CA 10054",@"Livonia, MI 48150-101033",@"Sacramento, CA 21054-1201",@"Stayton, OR 10780",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
-    NSArray *showButtons = @[@"AddAcct",@"Add",@"false",@"false",@"false",@"false",@"AddAcct",@"false",@"false",@"false",@"Add",@"false",@"false",@"false",@"false",@"false"];
-    NSDictionary *dict = @{@"companyName":names,@"companyAddressOne":addressesOne,@"companyAddressTwo":addressesTwo,@"companyButtons":showButtons};
-    collectionItems = dict;
-    
-    
+- (void)setInfo:(id)items {
+    collectionDataItems = items;
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -58,15 +48,17 @@
     cell.editViewCollectionViewCellDelegate = self;
     [cell setButtonTag:(int)indexPath.row];
     
-    NSString *addressOne = [collectionItems[@"companyAddressOne"] objectAtIndex:indexPath.row];
-    NSString *addressTwo = [collectionItems[@"companyAddressTwo"] objectAtIndex:indexPath.row];
+  
+    NSString *addressOne = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_NAME];
+    NSString *addressTwo = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ADDRESSONE];
     [cell setAddressOneText:addressOne];
     [cell setAddressTwoTex:addressTwo];
     
     
     [self configureView:cell];
     
-    NSString *currentflag = [flagSelectedUnSelected objectAtIndex:(int)indexPath.row];
+    
+    NSString *currentflag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_SELECTION_FLAG];
     if ([currentflag isEqualToString:UnSelectedFlag]) {
         [cell setButtonSelected:NO];
     }
@@ -91,7 +83,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [collectionItems[@"companyName"] count];
+    return [collectionDataItems count];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -130,14 +122,17 @@
 
 - (void)tappedButtonSelectAtTag:(int)tag {
     int count;
-    NSString *currentflag = [flagSelectedUnSelected objectAtIndex:tag];
+    NSMutableDictionary *dict = [collectionDataItems objectAtIndex:tag];
+    NSString *currentflag = [collectionDataItems objectAtIndex:tag][COMPANYDATA_SELECTION_FLAG];
     NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
-    [flagSelectedUnSelected replaceObjectAtIndex:tag withObject:flagTochange];
+    [dict setValue:flagTochange forKey:COMPANYDATA_SELECTION_FLAG];
+    [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
+        
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
-    [collectionItems[@"companyName"] enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
+    [collectionDataItems enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)count inSection:0];
         EditViewCollectionViewCell *cell = (EditViewCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
@@ -154,6 +149,9 @@
     
 }
 
+- (id)getData:(id)items {
+    return collectionDataItems;
+}
 
 
 @end

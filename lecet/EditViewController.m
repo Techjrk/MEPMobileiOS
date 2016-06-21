@@ -11,14 +11,17 @@
 #import "EditTabView.h"
 #import "SelectMoveView.h"
 #import "PopupViewController.h"
+#import "EditViewList.h"
 
 @interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate>{
     BOOL isInEditMode;;
+    NSMutableArray *collectionDataItems;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navView;
 @property (weak, nonatomic) IBOutlet EditTabView *tabView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
 @property (weak, nonatomic) IBOutlet SelectMoveView *selectMoveView;
+@property (weak, nonatomic) IBOutlet EditViewList *editViewList;
 
 @end
 
@@ -34,14 +37,24 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [_editViewList setInfo:collectionDataItems];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setInfo:(id)items {
+    collectionDataItems = items;
+    
+}
+
+#pragma mark - Nav Delegate
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     switch (projectNavItem) {
         case ProjectNavBackButton:{
+            [_editViewControllerDelegate tappedBackButton:collectionDataItems];
             [self.navigationController popViewControllerAnimated:YES];
             break;
         }

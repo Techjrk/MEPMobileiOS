@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditViewController">
             <connections>
                 <outlet property="constraintEditViewHeight" destination="ArX-7G-2rE" id="O6c-bE-WDt"/>
+                <outlet property="editViewList" destination="arT-6L-8w7" id="qj6-iY-2Xj"/>
                 <outlet property="navView" destination="3Oz-aZ-Wg6" id="hph-4K-qj7"/>
                 <outlet property="selectMoveView" destination="OLq-Fg-UnR" id="BZW-eC-5QP"/>
                 <outlet property="tabView" destination="ZaO-nt-bHk" id="dY9-J6-9bh"/>
