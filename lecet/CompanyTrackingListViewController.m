@@ -69,10 +69,8 @@
         }
         case ProjectNavReOrder:{
             CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
-            
             controller.modalPresentationStyle = UIModalPresentationCustom;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-
             [self presentViewController:controller  animated:NO completion:nil];
             break;
         }
@@ -95,16 +93,21 @@
     EditViewController *controller = [[EditViewController alloc] initWithNibName:@"EditViewController" bundle:nil];
     controller.editViewControllerDelegate = self;
     [controller setInfo:[_companyTrackingListView getdata]];
-    [self.navigationController pushViewController:controller animated:YES];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentViewController:controller  animated:NO completion:nil];
+    
+    //[self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - EditViewControllerDelegate
 
-- (void)tappedBackButton:(id)items {
+- (void)tappedCancelDoneButton:(id)items {
     dataItems = items;
-    
-
-    
+}
+- (void)tappedBackButton {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -12,6 +12,7 @@
 #import "SelectMoveView.h"
 #import "PopupViewController.h"
 #import "EditViewList.h"
+#import "CompanySortViewController.h"
 
 @interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate,EditViewListDelegate>{
     BOOL isInEditMode;;
@@ -57,12 +58,19 @@
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     switch (projectNavItem) {
         case ProjectNavBackButton:{
-            [_editViewControllerDelegate tappedBackButton:collectionDataItems];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:NO completion:^{
+                [_editViewControllerDelegate tappedCancelDoneButton:collectionDataItems];
+                [_editViewControllerDelegate tappedBackButton];
+                
+            }];
+            
             break;
         }
         case ProjectNavReOrder:{
-            [[DataManager sharedManager] featureNotAvailable];
+            CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:controller  animated:NO completion:nil];
             break;
         }
             
@@ -78,7 +86,12 @@
 
 #pragma mark - EdittabViewDelgate
 - (void)selectedEditTabButton:(EditTabItem)item {
-    [_editViewControllerDelegate tappedBackButton:collectionDataItems];
+
+    [self dismissViewControllerAnimated:NO completion:^{
+        [_editViewControllerDelegate tappedCancelDoneButton:collectionDataItems];
+    }];
+    
+    
     
 }
 

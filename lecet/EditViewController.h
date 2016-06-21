@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @protocol EditViewControllerDelegate <NSObject>
-- (void)tappedBackButton:(id)items;
+- (void)tappedCancelDoneButton:(id)items;
+- (void)tappedBackButton;
 @end
 
 @interface EditViewController : UIViewController
