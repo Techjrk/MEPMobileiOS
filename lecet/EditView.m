@@ -36,18 +36,7 @@
 
 - (IBAction)tappedSelectedButton:(id)sender {
     UIButton *button = sender;
-    /*
-    if (isSelected) {
-        isSelected = NO;
-        [_selctedButton setSelected:NO];
-    }else {
-        isSelected = YES;
-        [_selctedButton setSelected:YES];
-        
-    }*/
-    
     [_editViewDelegate tappedButtonSelectAtTag:(int)button.tag];
-   //[_editViewDelegate tappedButtonSelect];
     
 }
 

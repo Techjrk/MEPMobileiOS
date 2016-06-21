@@ -10,7 +10,6 @@
 #import "BaseViewClass.h"
 
 @protocol EditViewDelegate <NSObject>
-- (void)tappedButtonSelect;
 - (void)tappedButtonSelectAtTag:(int)tag;
 @end
 @interface EditView : BaseViewClass

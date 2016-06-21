@@ -44,9 +44,7 @@
 }
 
 #pragma mark - Edit View Delegate
-- (void)tappedButtonSelect {
-    [_editViewCollectionViewCellDelegate tappedButtonSelect];
-}
+
 - (void)tappedButtonSelectAtTag:(int)tag {
     [_editViewCollectionViewCellDelegate tappedButtonSelectAtTag:tag];
 }

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @protocol EditViewCollectionViewCellDelegate <NSObject>
-- (void)tappedButtonSelect;
 - (void)tappedButtonSelectAtTag:(int)tag;
 @end
 

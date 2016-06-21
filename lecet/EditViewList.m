@@ -153,13 +153,7 @@
     [_editViewListDelegate selectedButtonCountInCell:count];
     
 }
-- (void)tappedButtonSelect {
-    
-    
-    
-    
-    
-}
+
 
 
 @end
