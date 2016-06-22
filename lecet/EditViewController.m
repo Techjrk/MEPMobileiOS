@@ -31,7 +31,6 @@ typedef enum  {
     NSArray *trackItemRecord;
     NSArray *sortItems;
 }
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomCollectionViewSpacing;
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navView;
 @property (weak, nonatomic) IBOutlet EditTabView *tabView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
@@ -123,7 +122,6 @@ typedef enum  {
         
         [UIView animateWithDuration:0.25 animations:^{
             _constraintEditViewHeight.constant = heightPopUpView;
-            _constraintBottomCollectionViewSpacing.constant = heightPopUpView;
             
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -352,6 +350,7 @@ typedef enum  {
 #pragma mark - Tracking Delegate
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    [[DataManager sharedManager] featureNotAvailable];
     
 }
 

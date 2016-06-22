@@ -8,7 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditViewController">
             <connections>
-                <outlet property="constraintBottomCollectionViewSpacing" destination="weJ-1y-6Nn" id="37F-zr-bZS"/>
                 <outlet property="constraintEditViewHeight" destination="ArX-7G-2rE" id="O6c-bE-WDt"/>
                 <outlet property="editViewList" destination="arT-6L-8w7" id="qj6-iY-2Xj"/>
                 <outlet property="navView" destination="3Oz-aZ-Wg6" id="hph-4K-qj7"/>
@@ -35,8 +34,8 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arT-6L-8w7" customClass="EditViewList">
-                    <rect key="frame" x="0.0" y="113" width="600" height="487"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="113" width="600" height="421"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLq-Fg-UnR" customClass="SelectMoveView">
                     <rect key="frame" x="0.0" y="534" width="600" height="66"/>
@@ -48,9 +47,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="arT-6L-8w7" secondAttribute="trailing" id="1ka-hq-tSq"/>
-                <constraint firstItem="arT-6L-8w7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="21q-C3-qvK"/>
                 <constraint firstItem="ZaO-nt-bHk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="2tR-iM-YeA"/>
+                <constraint firstItem="arT-6L-8w7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6e3-fN-YOm"/>
+                <constraint firstAttribute="trailing" secondItem="arT-6L-8w7" secondAttribute="trailing" id="Eww-gV-gqR"/>
                 <constraint firstItem="wMy-oT-tIG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FTd-gc-cq6"/>
                 <constraint firstAttribute="trailing" secondItem="OLq-Fg-UnR" secondAttribute="trailing" id="KOy-fv-evw"/>
                 <constraint firstAttribute="trailing" secondItem="ZaO-nt-bHk" secondAttribute="trailing" id="KbU-ZR-Mtk"/>
@@ -58,15 +57,15 @@
                 <constraint firstAttribute="trailing" secondItem="wMy-oT-tIG" secondAttribute="trailing" id="Pvg-hX-wU6"/>
                 <constraint firstItem="3Oz-aZ-Wg6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WUf-km-cox"/>
                 <constraint firstItem="OLq-Fg-UnR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="avu-RB-DrI"/>
-                <constraint firstItem="arT-6L-8w7" firstAttribute="top" secondItem="ZaO-nt-bHk" secondAttribute="bottom" id="cFo-8y-JFd"/>
                 <constraint firstAttribute="bottom" secondItem="wMy-oT-tIG" secondAttribute="bottom" id="ccW-Gv-e5c"/>
                 <constraint firstItem="ZaO-nt-bHk" firstAttribute="top" secondItem="3Oz-aZ-Wg6" secondAttribute="bottom" id="f0b-F0-pdY"/>
                 <constraint firstItem="ZaO-nt-bHk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fC2-HN-wtw"/>
                 <constraint firstItem="wMy-oT-tIG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gwv-qj-luG"/>
                 <constraint firstItem="3Oz-aZ-Wg6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jol-uP-nbK"/>
+                <constraint firstItem="arT-6L-8w7" firstAttribute="top" secondItem="ZaO-nt-bHk" secondAttribute="bottom" id="oMt-Gl-Irb"/>
                 <constraint firstItem="3Oz-aZ-Wg6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="vXq-oc-3EZ"/>
                 <constraint firstAttribute="bottom" secondItem="OLq-Fg-UnR" secondAttribute="bottom" id="vb8-xS-lhJ"/>
-                <constraint firstAttribute="bottom" secondItem="arT-6L-8w7" secondAttribute="bottom" id="weJ-1y-6Nn"/>
+                <constraint firstItem="OLq-Fg-UnR" firstAttribute="top" secondItem="arT-6L-8w7" secondAttribute="bottom" id="zCw-md-8gb"/>
             </constraints>
         </view>
     </objects>
