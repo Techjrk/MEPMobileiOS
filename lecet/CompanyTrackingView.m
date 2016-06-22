@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *containerTextView;
+@property (weak, nonatomic) IBOutlet UILabel *labelUpdateDescription;
+@property (weak, nonatomic) IBOutlet UIView *labelContainer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
 
@@ -60,10 +62,19 @@
     _textView.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
     _textView.font =    COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     
+    _labelUpdateDescription.font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
+    _labelUpdateDescription.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
+    [_labelContainer.layer setCornerRadius:4.0f];
+    _labelContainer.layer.masksToBounds = YES;
+    
+    
     [_containerTextView.layer setCornerRadius:4.0f];
     _containerTextView.layer.masksToBounds = YES;
     [_textView.layer setCornerRadius:4.0f];
     _textView.layer.masksToBounds = YES;
+    
+
+  
     
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
