@@ -41,7 +41,7 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XR7-9C-hs8">
-                            <rect key="frame" x="0.0" y="83" width="336" height="153"/>
+                            <rect key="frame" x="10" y="83" width="316" height="153"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cad-bT-egB">
                                 <size key="itemSize" width="50" height="50"/>
@@ -53,9 +53,9 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="XR7-9C-hs8" firstAttribute="leading" secondItem="Cme-oX-42m" secondAttribute="leading" id="0hg-9R-zPb"/>
+                        <constraint firstItem="XR7-9C-hs8" firstAttribute="leading" secondItem="Cme-oX-42m" secondAttribute="leading" constant="10" id="0hg-9R-zPb"/>
                         <constraint firstItem="FDi-Rp-fBL" firstAttribute="top" secondItem="Cme-oX-42m" secondAttribute="top" id="10d-jS-2r2"/>
-                        <constraint firstAttribute="trailing" secondItem="XR7-9C-hs8" secondAttribute="trailing" id="O5m-iA-IAb"/>
+                        <constraint firstAttribute="trailing" secondItem="XR7-9C-hs8" secondAttribute="trailing" constant="10" id="O5m-iA-IAb"/>
                         <constraint firstItem="FDi-Rp-fBL" firstAttribute="height" secondItem="Cme-oX-42m" secondAttribute="height" multiplier="0.35" id="b1h-o1-2hf"/>
                         <constraint firstAttribute="bottom" secondItem="XR7-9C-hs8" secondAttribute="bottom" id="eMM-Cn-H8Z"/>
                         <constraint firstItem="XR7-9C-hs8" firstAttribute="top" secondItem="FDi-Rp-fBL" secondAttribute="bottom" id="i0v-qq-JLT"/>

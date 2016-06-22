@@ -148,8 +148,26 @@ typedef enum  {
 
 #pragma mark - CompanySortDelegate
 - (void)selectedSort:(CompanySortItem)item {
-    
-    [[DataManager sharedManager] featureNotAvailable];
+    switch (item) {
+        case CompanySortItemLastUpdated: {
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES];
+            collectionDataItems = [[collectionDataItems sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
+            [_editViewList setInfoToReload:collectionDataItems];
+           
+            break;
+        }
+        case CompanySortItemLastAlphabetical: {
+            
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            collectionDataItems = [[collectionDataItems sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
+            [_editViewList setInfoToReload:collectionDataItems];
+            
+            break;
+        }
+            
+    }
 }
 
 - (void)setTrackingInfo:(id)item {

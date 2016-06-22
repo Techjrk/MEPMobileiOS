@@ -83,8 +83,9 @@
     
 }
 
-- (void)setItemFrommEditViewController:(id)item {
+- (void)setItemToReload:(id)item {
     collectionDataItems =item;
+     [_collectionView reloadData];
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -184,14 +185,15 @@
 }
 
 - (void)tappedButtonAtTag:(int)tag {
+
     firstLoad = NO;
+    
     NSMutableDictionary *dict = [collectionDataItems objectAtIndex:tag];
     NSString *flag = [collectionDataItems objectAtIndex:tag][COMPANYDATA_BUTTON_STATE];
     NSString *flagTochange = [flag isEqualToString:flagIdentifierClosed]?flagIdentifierOpen:flagIdentifierClosed;
    [dict setValue:flagTochange forKey:COMPANYDATA_BUTTON_STATE];
     [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
  
-    
     tempTag = tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];

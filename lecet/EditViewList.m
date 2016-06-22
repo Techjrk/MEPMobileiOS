@@ -40,6 +40,11 @@
     _collectionView.dataSource = self;
 }
 
+- (void)setInfoToReload:(id)item {
+    collectionDataItems = item;
+    [_collectionView reloadData];
+}
+
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -42,7 +42,7 @@
         firstLoad = YES;
         [_companyTrackingListView setItems:dataItems];
     } else {
-        [_companyTrackingListView setItemFrommEditViewController:dataItems];
+        [_companyTrackingListView setItemToReload:dataItems];
     }
     [_navBarView setContractorName:trackingInfo[@"name"]];
     
@@ -60,6 +60,10 @@
 - (void)setInfo:(id)item {
     dataItems =item;
 }
+- (void)setTrackingInfo:(id)item {
+    trackingInfo = item;
+}
+
 
 #pragma mark - Nav View Delegate
 
@@ -102,16 +106,16 @@
     [controller setTrackingInfo:trackingInfo];
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
     [self presentViewController:controller  animated:NO completion:nil];
-    
-    //[self.navigationController pushViewController:controller animated:YES];
+
 }
 
 #pragma mark - EditViewControllerDelegate
 
 - (void)tappedCancelDoneButton:(id)items {
     dataItems = items;
+    
+    [_companyTrackingListView setItemToReload:dataItems];
 }
 - (void)tappedBackButton {
     [self.navigationController popViewControllerAnimated:YES];
@@ -125,14 +129,26 @@
 #pragma mark - CompanySort Delegate
 
 - (void)selectedSort:(CompanySortItem)item {
-    [[DataManager sharedManager] featureNotAvailable];
+    switch (item) {
+        case CompanySortItemLastUpdated: {
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES];
+            dataItems = [[[_companyTrackingListView getdata] sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
+            [_companyTrackingListView setItemToReload:dataItems];
+            break;
+        }
+        case CompanySortItemLastAlphabetical: {
+            
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            dataItems = [[[_companyTrackingListView getdata] sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
+            [_companyTrackingListView setItemToReload:dataItems];
+            break;
+        }
+
+    }
 }
 
 
-- (void)setTrackingInfo:(id)item {
-    trackingInfo = item;
-    
-    NSLog(@"tracking Info = %@",item);
-}
 
 @end
