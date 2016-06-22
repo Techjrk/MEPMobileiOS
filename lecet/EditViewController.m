@@ -31,6 +31,7 @@ typedef enum  {
     NSArray *trackItemRecord;
     NSArray *sortItems;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomCollectionViewSpacing;
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navView;
 @property (weak, nonatomic) IBOutlet EditTabView *tabView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
@@ -52,12 +53,11 @@ typedef enum  {
     _editViewList.editViewListDelegate = self;
     
     [_selectMoveView setBackgroundColor:BOTTOMVIEW_BG_COLOR];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [_editViewList setInfo:collectionDataItems];
-    
-    
     [_navView setContractorName:trackingInfo[@"name"]];
     NSString *countString = [NSString stringWithFormat:@"%lu Companies",[trackingInfo[@"companyIds"] count]];
     [_navView setProjectTitle:countString];
@@ -106,9 +106,7 @@ typedef enum  {
     [self dismissViewControllerAnimated:NO completion:^{
         [_editViewControllerDelegate tappedCancelDoneButton:collectionDataItems];
     }];
-    
-    
-    
+
 }
 
 
@@ -116,6 +114,8 @@ typedef enum  {
 #pragma mark - Misc Method
 - (void)chageEditMode:(BOOL)editMode count:(int)count{
     isInEditMode = editMode;
+    
+
    
     if (!isInEditMode) {
         _constraintEditViewHeight.constant = 0;
@@ -123,6 +123,7 @@ typedef enum  {
         
         [UIView animateWithDuration:0.25 animations:^{
             _constraintEditViewHeight.constant = heightPopUpView;
+            _constraintBottomCollectionViewSpacing.constant = heightPopUpView;
             
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {

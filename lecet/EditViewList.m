@@ -31,6 +31,9 @@
    
   
     [_collectionView registerNib:[UINib nibWithNibName:[[EditViewCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
+    _collectionView.showsVerticalScrollIndicator = NO;
+    
+    
  
 }
 
@@ -153,6 +156,7 @@
 - (id)getData:(id)items {
     return collectionDataItems;
 }
+
 
 
 @end

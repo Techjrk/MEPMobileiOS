@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditViewController">
             <connections>
+                <outlet property="constraintBottomCollectionViewSpacing" destination="weJ-1y-6Nn" id="37F-zr-bZS"/>
                 <outlet property="constraintEditViewHeight" destination="ArX-7G-2rE" id="O6c-bE-WDt"/>
                 <outlet property="editViewList" destination="arT-6L-8w7" id="qj6-iY-2Xj"/>
                 <outlet property="navView" destination="3Oz-aZ-Wg6" id="hph-4K-qj7"/>

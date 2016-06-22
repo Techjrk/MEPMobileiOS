@@ -58,7 +58,6 @@
     _containerButtonView.layer.masksToBounds = YES;
     
     
-    //[_textView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
     _textView.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
     _textView.font =    COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     
