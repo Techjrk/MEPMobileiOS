@@ -52,12 +52,11 @@ typedef enum  {
     _editViewList.editViewListDelegate = self;
     
     [_selectMoveView setBackgroundColor:BOTTOMVIEW_BG_COLOR];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [_editViewList setInfo:collectionDataItems];
-    
-    
     [_navView setContractorName:trackingInfo[@"name"]];
     NSString *countString = [NSString stringWithFormat:@"%lu Companies",[trackingInfo[@"companyIds"] count]];
     [_navView setProjectTitle:countString];
@@ -106,9 +105,7 @@ typedef enum  {
     [self dismissViewControllerAnimated:NO completion:^{
         [_editViewControllerDelegate tappedCancelDoneButton:collectionDataItems];
     }];
-    
-    
-    
+
 }
 
 
@@ -116,6 +113,8 @@ typedef enum  {
 #pragma mark - Misc Method
 - (void)chageEditMode:(BOOL)editMode count:(int)count{
     isInEditMode = editMode;
+    
+
    
     if (!isInEditMode) {
         _constraintEditViewHeight.constant = 0;
@@ -351,6 +350,7 @@ typedef enum  {
 #pragma mark - Tracking Delegate
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    [[DataManager sharedManager] featureNotAvailable];
     
 }
 

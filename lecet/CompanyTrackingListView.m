@@ -26,7 +26,7 @@
 
 @implementation CompanyTrackingListView
 #define kCellIdentifier             @"kCellIdentifier"
-#define kCellAdditionalHeight       0.78f
+#define kCellAdditionalHeight       0.599f
 #define flagIdentifierOpen          @"open"
 #define flagIdentifierClosed        @"closed"
 #define kButtonToShow               @"false"
@@ -36,13 +36,10 @@
     CompanyTrackingCollectionViewCell *cell = (CompanyTrackingCollectionViewCell *)[CompanyTrackingCollectionViewCell class];
 
     [_collectionView registerNib:[UINib nibWithNibName:[cell description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-
-   
+   _collectionView.showsVerticalScrollIndicator = NO;
     firstLoad = YES;
     shouldShowUpdates = YES;
 }
-
-
 
 - (void)setItems:(id)items {
 
@@ -194,6 +191,7 @@
    [dict setValue:flagTochange forKey:COMPANYDATA_BUTTON_STATE];
     [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
  
+    
     tempTag = tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
