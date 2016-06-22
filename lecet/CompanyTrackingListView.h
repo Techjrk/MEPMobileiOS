@@ -13,5 +13,5 @@
 - (void)setItems:(id)items;
 - (void)switchButtonChange:(BOOL)isOn;
 - (id)getdata;
-- (void)setItemFrommEditViewController:(id)item ;
+- (void)setItemToReload:(id)item ;
 @end

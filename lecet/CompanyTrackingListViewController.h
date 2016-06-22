@@ -10,4 +10,5 @@
 #import "BaseViewController.h"
 @interface CompanyTrackingListViewController : BaseViewController
 - (void)setInfo:(id)item ;
+- (void)setTrackingInfo:(id)item;
 @end

@@ -16,7 +16,6 @@
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
     NSMutableArray *flagSelectedUnSelected;
-    int countInt;
     
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -39,6 +38,11 @@
     collectionDataItems = items;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+}
+
+- (void)setInfoToReload:(id)item {
+    collectionDataItems = item;
+    [_collectionView reloadData];
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -133,16 +137,16 @@
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
+    NSMutableArray *selectedItems = [[NSMutableArray alloc] init];
     [collectionDataItems enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
         
         if ([result[COMPANYDATA_SELECTION_FLAG] isEqualToString:SelectedFlag]) {
-            countInt++;
+            [selectedItems addObject:result];
         }
         
     }];
     
-    [_editViewListDelegate selectedButtonCountInCell:countInt];
-    countInt = 0;
+    [_editViewListDelegate selectedItem:selectedItems];
     
 }
 

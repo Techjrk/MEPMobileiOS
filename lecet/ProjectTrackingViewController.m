@@ -469,7 +469,7 @@ typedef enum  {
     
     for (NSNumber *number in collectionItemsState.allKeys) {
         NSDictionary *item = collectionItemsState[number];
-        
+
         NSDictionary *data = item[kStateData];
         NSNumber *recordId = data[@"id"];
         

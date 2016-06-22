@@ -10,12 +10,13 @@
 #import "BaseViewClass.h"
 
 @protocol EditViewListDelegate <NSObject>
-- (void)selectedButtonCountInCell:(int)count;
+- (void)selectedItem:(id)items;
 @end
 
 @interface EditViewList : BaseViewClass
 @property (nonatomic,assign) id <EditViewListDelegate> editViewListDelegate;
 - (void)setInfo:(id)items;
+- (void)setInfoToReload:(id)item;
 - (id)getData:(id)items;
 
 @end

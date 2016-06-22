@@ -13,10 +13,23 @@
 #import "PopupViewController.h"
 #import "EditViewList.h"
 #import "CompanySortViewController.h"
+#import "ProjectSortCVCell.h"
+#import "SectionHeaderCollectionViewCell.h"
+#import "TrackingListCellCollectionViewCell.h"
 
-@interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate,EditViewListDelegate,CompanySortDelegate>{
+typedef enum  {
+    PopupModeSort,
+    PopupModeMove,
+} PopupMode;
+
+@interface EditViewController ()<ProjectNavViewDelegate,SelectMoveViewDelegate,EditTabViewDelegate,EditViewListDelegate,CompanySortDelegate,CustomCollectionViewDelegate,TrackingListViewDelegate>{
     BOOL isInEditMode;;
     NSMutableArray *collectionDataItems;
+    id trackingInfo;
+    NSArray *selectedDataItems;
+    PopupMode popupMode;
+    NSArray *trackItemRecord;
+    NSArray *sortItems;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navView;
 @property (weak, nonatomic) IBOutlet EditTabView *tabView;
@@ -43,6 +56,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [_editViewList setInfo:collectionDataItems];
+    
+    
+    [_navView setContractorName:trackingInfo[@"name"]];
+    NSString *countString = [NSString stringWithFormat:@"%lu Companies",[trackingInfo[@"companyIds"] count]];
+    [_navView setProjectTitle:countString];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -78,10 +96,7 @@
     }
 }
 
-- (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
-   
-    
-}
+
 
 #pragma mark - CustomCollectionView Delegate
 
@@ -119,8 +134,10 @@
 
 #pragma mark - EditViewListDelegate
 
-- (void)selectedButtonCountInCell:(int)count {
+- (void)selectedItem:(id)items {
     
+    selectedDataItems = items;
+    int count = (int)[items count];
     [_selectMoveView setSelectionCount:(NSInteger)count];
     [self chageEditMode:NO count:count];
 }
@@ -131,9 +148,210 @@
 
 #pragma mark - CompanySortDelegate
 - (void)selectedSort:(CompanySortItem)item {
-    
-    [[DataManager sharedManager] featureNotAvailable];
+    switch (item) {
+        case CompanySortItemLastUpdated: {
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES];
+            collectionDataItems = [[collectionDataItems sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
+            [_editViewList setInfoToReload:collectionDataItems];
+           
+            break;
+        }
+        case CompanySortItemLastAlphabetical: {
+            
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            collectionDataItems = [[collectionDataItems sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
+            [_editViewList setInfoToReload:collectionDataItems];
+            
+            break;
+        }
+            
+    }
 }
 
+- (void)setTrackingInfo:(id)item {
+    trackingInfo = item;
+}
+
+
+#pragma Custom Delegates
+
+- (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
+    
+    if (shouldMove) {
+        UIView *objectView = object;
+        
+        NSNumber *number = trackingInfo[@"userId"];
+        [[DataManager sharedManager] userCompanyTrackingList:number success:^(id object) {
+            popupMode = PopupModeMove;
+            trackItemRecord = [self companyTrackingListToMove:object];
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:objectView controller:self];
+            controller.popupPalcement = PopupPlacementBottom;
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+            
+        } failure:^(id object) {
+            
+        }];
+    
+        
+    }
+    
+    
+}
+
+- (NSArray *)companyTrackingListToMove:(NSArray *)object {
+    
+    NSMutableArray *mutableObject = [object mutableCopy];
+    [object enumerateObjectsUsingBlock:^(id obj,NSUInteger index,BOOL *stop){
+    
+        if ([obj[@"companyIds"] containsObject:[selectedDataItems lastObject][@"id"]]) {
+            
+            [mutableObject removeObjectAtIndex:index];
+        }
+        
+    }];
+    
+    return [mutableObject copy];
+    
+}
+
+#pragma mark - CustomCollectionView Delegate
+
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    
+    CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
+    
+    switch (popupMode) {
+            
+        case PopupModeSort: {
+            
+            [collectionView registerCollectionItemClass:[ProjectSortCVCell class]];
+            [collectionView registerCollectionItemClass:[SectionHeaderCollectionViewCell class]];
+            break;
+        }
+            
+        case PopupModeMove: {
+            
+            [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+            break;
+        }
+            
+    }
+}
+
+- (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
+    
+    switch (popupMode) {
+            
+        case PopupModeSort: {
+            
+            return [collectionView dequeueReusableCellWithReuseIdentifier:indexPath.row == 0?[[SectionHeaderCollectionViewCell class] description]:[[ProjectSortCVCell class] description] forIndexPath:indexPath];
+            
+            break;
+        }
+            
+        case PopupModeMove: {
+            
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            
+            break;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSInteger)collectionViewItemCount {
+    
+    switch (popupMode) {
+            
+        case PopupModeSort: {
+            
+            return sortItems.count + 1;
+            
+            break;
+        }
+            
+        case PopupModeMove: {
+            
+            return 1;
+            break;
+        }
+    }
+    return 0;
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return 1;
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
+    switch (popupMode) {
+        case PopupModeSort: {
+            
+            return CGSizeMake(view.frame.size.width * (indexPath.row ==0 ?1:0.95), kDeviceHeight * (indexPath.row == 0?0.082:0.061));
+            
+            break;
+        }
+            
+        case PopupModeMove: {
+            
+            CGFloat defaultHeight = kDeviceHeight * 0.08;
+            CGFloat cellHeight = kDeviceHeight * 0.06;
+            defaultHeight = defaultHeight+ (trackItemRecord.count*cellHeight);
+            return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
+            
+            break;
+        }
+    }
+    
+    return CGSizeZero;
+    
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    
+    if (indexPath.row>0) {
+        
+        ///BOOL isDesc = indexPath.row != 4;
+        //NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:kSortKey[indexPath.row-1] ascending:isDesc];
+        
+        //self.collectionItems = [self.collectionItems sortedArrayUsingDescriptors:@[descriptor]];
+        //[_collectionView reloadData];
+    }
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
+    if ([cell isKindOfClass:[ProjectSortCVCell class]]) {
+        ProjectSortCVCell *cellItem = (ProjectSortCVCell*)cell;
+        cellItem.labelTitle.text = sortItems[indexPath.row-1];
+    } else if([cell isKindOfClass:[SectionHeaderCollectionViewCell class]]){
+        SectionHeaderCollectionViewCell *cellItem = (SectionHeaderCollectionViewCell*)cell;
+        [cellItem setTitle:NSLocalizedLanguage(@"PROJECTSORT_TITLE_LABEL_TEXT")];
+        
+    } else if ([cell isKindOfClass:[TrackingListCellCollectionViewCell class]]) {
+        
+        TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+        cellItem.headerDisabled = YES;
+        cellItem.trackingListViewDelegate = self;
+        [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"PROJECT_TRACKING_LIST")];
+        
+    }
+    
+}
+
+
+#pragma mark - Tracking Delegate
+
+- (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    
+}
 
 @end
