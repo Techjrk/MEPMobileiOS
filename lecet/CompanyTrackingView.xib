@@ -14,6 +14,7 @@
                 <outlet property="buttonBelow" destination="2sf-Yn-HuV" id="IIV-ir-LBk"/>
                 <outlet property="buttonLabel" destination="n5Y-GH-mWp" id="juO-ke-AlC"/>
                 <outlet property="caretImageView" destination="H6s-AN-EB4" id="xCU-xD-iUu"/>
+                <outlet property="constraintContainerButtonAndTextHeight" destination="esN-Rs-f7O" id="tly-vY-UCj"/>
                 <outlet property="containerButtonView" destination="BLQ-EH-fCh" id="JYQ-b0-3I2"/>
                 <outlet property="containerTextView" destination="puw-GH-VZd" id="UtW-dS-Ar6"/>
                 <outlet property="labelContainer" destination="Tbv-EQ-RLc" id="h86-Oy-L7W"/>

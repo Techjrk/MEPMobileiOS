@@ -26,7 +26,7 @@
 
 @implementation CompanyTrackingListView
 #define kCellIdentifier             @"kCellIdentifier"
-#define kCellAdditionalHeight       0.78f
+#define kCellAdditionalHeight       0.599f
 #define flagIdentifierOpen          @"open"
 #define flagIdentifierClosed        @"closed"
 #define kButtonToShow               @"false"

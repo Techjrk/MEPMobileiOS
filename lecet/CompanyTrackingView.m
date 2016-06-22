@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIView *labelContainer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerButtonAndTextHeight;
 
 @end
 
@@ -42,6 +43,7 @@
     
     
     _mapLabelContainerConstraintHeight.constant = kDeviceHeight * 0.132f;
+    _constraintContainerButtonAndTextHeight.constant = kDeviceHeight * 0.175f;
 
     _nameLabel.font = COMPANYTRACKINGVIEW_LABEL_NAME_FONT;
     _nameLabel.textColor = COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR;
