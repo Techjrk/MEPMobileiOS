@@ -171,8 +171,6 @@
             NSError *error = nil;
             NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
             
-            NSString *string = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
-        
             [req setHTTPBody:data];
         }
      

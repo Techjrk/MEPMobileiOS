@@ -221,6 +221,7 @@ typedef enum  {
     NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
     
     NSMutableArray *ids = [track[@"projectIds"] mutableCopy];
+    [ids removeObjectsInArray:[self selectedItemForEdit]];
     [ids addObjectsFromArray:[self selectedItemForEdit]];
     track[@"projectIds"] = ids;
     
