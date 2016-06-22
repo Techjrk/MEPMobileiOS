@@ -54,7 +54,7 @@
 - (void)companyAvailableTrackingList:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyTrackingList:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyTrackingListUpdates:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
-- (void)companyTrackingMoveIds:(NSNumber*)trackId recordIds:(NSArray*)ids success:(APIBlock)success failure:(APIBlock)failure;
+- (void)companyTrackingMoveIds:(NSNumber*)trackId recordIds:(NSDictionary*)ids success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyAddTrackingList:(NSNumber*)trackId recordId:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC

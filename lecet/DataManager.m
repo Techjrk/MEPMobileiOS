@@ -773,10 +773,10 @@
     
 }
 
-- (void)companyTrackingMoveIds:(NSNumber *)trackId recordIds:(NSArray *)ids success:(APIBlock)success failure:(APIBlock)failure {
+- (void)companyTrackingMoveIds:(NSNumber *)trackId recordIds:(NSDictionary *)ids success:(APIBlock)success failure:(APIBlock)failure {
 
     NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListMoveIds, (long)trackId.integerValue];
-    [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+    [self HTTP_PUT_BODY:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

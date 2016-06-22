@@ -224,8 +224,8 @@ typedef enum  {
     [ids addObjectsFromArray:[self selectedItemForEdit]];
     track[@"projectIds"] = ids;
     
-    [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:@{@"data":track} success:^(id object) {
-        
+    [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
     } failure:^(id object) {
         
     }];
