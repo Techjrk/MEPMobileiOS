@@ -49,12 +49,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-L8-LUJ">
                             <rect key="frame" x="0.0" y="85" width="414" height="51"/>
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-81-rqB" customClass="EditTabView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-81-rqB" customClass="EditTabView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-KB-GLX" customClass="ProjComTrackingTabView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-KB-GLX" customClass="ProjComTrackingTabView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
