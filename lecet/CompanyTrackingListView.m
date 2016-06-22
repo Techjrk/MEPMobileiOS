@@ -36,13 +36,10 @@
     CompanyTrackingCollectionViewCell *cell = (CompanyTrackingCollectionViewCell *)[CompanyTrackingCollectionViewCell class];
 
     [_collectionView registerNib:[UINib nibWithNibName:[cell description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-
-   
+   _collectionView.showsVerticalScrollIndicator = NO;
     firstLoad = YES;
     shouldShowUpdates = YES;
 }
-
-
 
 - (void)setItems:(id)items {
 
