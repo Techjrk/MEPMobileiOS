@@ -862,7 +862,7 @@
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DISMISS_POPUP object:nil];
+    [[DataManager sharedManager] dismissPopup];
     NSIndexPath *indexPath = object;
     
     BOOL isProject = [view isDescendantOfView:trackList[0]];

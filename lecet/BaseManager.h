@@ -28,6 +28,7 @@ typedef void(^APIBlock)(id object);
 
 //OVERLOAD
 - (void)changeHTTPHeader:(AFHTTPSessionManager*)manager;
+- (void)setHTTPHeaderBody:(AFHTTPSessionManager*)manager withData:(id)data;
 - (void)authenticate:(AFHTTPSessionManager*)manager;
 
 //MISC
@@ -39,5 +40,6 @@ typedef void(^APIBlock)(id object);
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
 - (void)HTTP_POST:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
 - (void)HTTP_PUT:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
+- (void)HTTP_PUT_BODY:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
 - (void)HTTP_DELETE:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;
 @end

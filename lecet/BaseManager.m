@@ -9,8 +9,8 @@
 #import "BaseManager.h"
 
 #import "SFHFKeychainUtils.h"
-
 #import "AppDelegate.h"
+#import <Foundation/NSKeyedArchiver.h>
 
 @interface BaseManager(){
     BOOL isNoInternetShown;
@@ -148,6 +148,63 @@
     }
 }
 
+- (void)HTTP_PUT_BODY:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
+    
+    if ([self connected]) {
+     
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  
+        NSString *accessToken = [self getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
+  
+        
+        NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:url parameters:nil error:nil];
+        
+        [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+    
+        if ([parameters isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = parameters;
+            
+            NSError *error = nil;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+            
+            NSString *string = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
+        
+            [req setHTTPBody:data];
+        }
+     
+        //[self changeHTTPHeader:manager];
+        
+        if (authenticated) {
+            
+            
+            [req setValue:accessToken forHTTPHeaderField:@"Authorization"];
+    
+            //[self authenticate:manager];
+        }
+     
+        [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            
+            if (error == nil) {
+                success(responseObject);
+            } else {
+                failure(responseObject);
+            }
+        }] resume];
+        
+        /*[manager PUT:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self connectionError:error];
+            failure(error);
+        }];*/
+    }
+}
+
+
 - (void)HTTP_DELETE:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
     
     if ([self connected]) {
@@ -172,6 +229,8 @@
 
 #pragma mark FOR OVERLOAD
 - (void)changeHTTPHeader:(AFHTTPSessionManager*)manager {}
+- (void)setHTTPHeaderBody:(AFHTTPSessionManager*)manager withData:(id)data {}
+
 - (NSDictionary*)clientIdentity { return nil; }
 - (void)authenticate:(AFHTTPSessionManager*)manager {}
 

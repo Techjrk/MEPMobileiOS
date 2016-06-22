@@ -142,7 +142,21 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
-    [self.companyStateDelegate tappedCompanyState:[sender isEqual:_buttonTrack]?CompanyStateTrack:CompanyStateShare];
+    
+    UIButton *button = sender;
+    
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setBackgroundColor:COMPANY_STATE_BUTTON_BG_COLOR_SELECTED];
+
+    [self.companyStateDelegate tappedCompanyState:[sender isEqual:_buttonTrack]?CompanyStateTrack:CompanyStateShare view:sender];
+}
+
+- (void)clearSelection {
+    [_buttonTrack setTitleColor:COMPANY_STATE_BUTTON_COLOR forState:UIControlStateNormal];
+    [_buttonTrack setBackgroundColor:[UIColor clearColor]];
+    
+    [_buttonShare setTitleColor:COMPANY_STATE_BUTTON_COLOR forState:UIControlStateNormal];
+    [_buttonShare setBackgroundColor:[UIColor clearColor]];
 }
 
 @end

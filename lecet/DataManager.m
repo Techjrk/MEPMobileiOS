@@ -38,11 +38,17 @@
 #define kUrlProjectAvailableTrackList       @"Projects/%li/availabletrackinglists"
 #define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
 #define kUrlBidCalendar                     @"Projects/bidcalendar"
+#define kUrlCompanyInfo                     @"Companies/search?"
+
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
-#define kUrlProjectTrackingListUPdates      @"projectlists/%li/updates"
+#define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
+#define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
+#define kUrlProjectAddTrackingList          @"projectlists/%li/projects/rel/%li"
+
 #define kUrlCompanyTrackingList             @"companylists/%li/companies"
 #define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
-#define kUrlCompanyInfo                     @"Companies/search?"
+#define kUrlCompanyTrackingListMoveIds      @"companylists/%li"
+#define kUrlCompanyAddTrackingList          @"companylists/%li/companies/rel/%li"
 
 @interface DataManager()
 @end
@@ -84,6 +90,10 @@
 - (void)changeHTTPHeader:(AFHTTPSessionManager *)manager {
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+}
+
+- (void)setHTTPHeaderBody:(AFHTTPSessionManager *)manager withData:(id)data {
+    
 }
 
 - (void)authenticate:(AFHTTPSessionManager *)manager {
@@ -399,7 +409,7 @@
     return record;
 }
 
-#pragma mark - HTTP REQUEST
+#pragma mark - API BIDS HTTP REQUEST
 
 - (void)bidsRecentlyMade:(NSDate *)dateFilter  success:(APIBlock)success failure:(APIBlock)failure {
     
@@ -437,33 +447,16 @@
     } authenticated:YES];
 }
 
-- (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
+- (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]&projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
-    
-    [self HTTP_GET:url parameters:nil success:^(id object) {
-        
-        DB_Project *item = [self saveManageObjectProject:object];
-        
-        [self saveContext];
-        
-        success(item);
-    } failure:^(id object) {
-        failure(object);
-    } authenticated:YES];
-    
-}
-
-- (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure{
-
     /*
-    NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
+     NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
      */
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
     
     NSDictionary *filter =@{@"filter[where][bidDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][bidDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
-
+    
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:filter success:^(id object) {
         
@@ -480,12 +473,12 @@
             [self saveManageObjectProject:item].isHappenSoon = [NSNumber numberWithBool:YES];;
         }
         [self saveContext];
-
+        
         success(object);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
-
+    
 }
 
 - (void)bidsRecentlyAddedLimit:(NSDate*)currentDate success:(APIBlock)success failure:(APIBlock)failure {
@@ -515,7 +508,7 @@
         failure(object);
     } authenticated:YES];
     
- 
+    
 }
 
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
@@ -550,6 +543,48 @@
         failure(object);
     } authenticated:YES];
 
+}
+
+- (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng], @"dist":distance, @"filter[include][0]":@"projectStage", @"filter[include][1][contacts]":@"company"};
+    [self HTTP_GET:[self url:kUrlProjectsNear] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)bidCalendarForYear:(NSNumber *)year month:(NSNumber *)month success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDictionary *parameter = @{@"month":month, @"year":year};
+    
+    [self HTTP_GET:[self url:kUrlBidCalendar] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+#pragma mark - API DETAIL INFO HTTP REQUEST
+
+- (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]&projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
+    
+    [self HTTP_GET:url parameters:nil success:^(id object) {
+        
+        DB_Project *item = [self saveManageObjectProject:object];
+        
+        [self saveContext];
+        
+        success(item);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
 }
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
@@ -611,16 +646,19 @@
     
 }
 
-- (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
+- (void)getCompanyInfo:(NSNumber *)firstCompanyId lastCompanyId:(NSNumber *)lastCompanyId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng], @"dist":distance, @"filter[include][0]":@"projectStage", @"filter[include][1][contacts]":@"company"};
-    [self HTTP_GET:[self url:kUrlProjectsNear] parameters:parameter success:^(id object) {
+    NSDictionary *parameter = @{@"filter[searchFilter][companyId][gte]":firstCompanyId, @"filter[searchFilter][companyId][lte]":lastCompanyId};
+    
+    [self HTTP_GET:[self url:kUrlCompanyInfo] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
     
 }
+
+#pragma mark - PROJECT TRACK LISTS HTTP REQUEST
 
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
   
@@ -633,28 +671,8 @@
 
 }
 
-- (void)userCompanyTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
-    NSString *url = [NSString stringWithFormat:kUrlUserCompanyTrackList, (long)userId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
-        success(object);
-    } failure:^(id object) {
-        failure(object);
-    } authenticated:YES];
-    
-}
-
 - (void)projectAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlProjectAvailableTrackList, (long)recordId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
-        success(object);
-    } failure:^(id object) {
-        failure(object);
-    } authenticated:YES];
-    
-}
-
-- (void)companyAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
-    NSString *url = [NSString stringWithFormat:kUrlCompanyAvailableTrackList, (long)recordId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
@@ -677,14 +695,60 @@
 }
 
 - (void)projectTrackingListUpdates:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
-
-    NSString *url = [NSString stringWithFormat:kUrlProjectTrackingListUPdates, (long)trackId.integerValue];
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectTrackingListUpdates, (long)trackId.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
+    
+}
 
+- (void)projectTrackingMoveIds:(NSNumber *)trackId recordIds:(NSDictionary*)track success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectTrackingListMoveIds, (long)trackId.integerValue];
+    [self HTTP_PUT_BODY:[self url:url] parameters:track success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)projectAddTrackingList:(NSNumber *)trackId recordId:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectAddTrackingList, (long)trackId.integerValue, (long)recordId.integerValue];
+    [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+
+#pragma mark - COMPANY TRACK LISTS HTTP REQUEST
+
+- (void)userCompanyTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *url = [NSString stringWithFormat:kUrlUserCompanyTrackList, (long)userId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)companyAvailableTrackingList:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlCompanyAvailableTrackList, (long)recordId.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
 }
 
 - (void)companyTrackingList:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
@@ -709,11 +773,10 @@
     
 }
 
-- (void)bidCalendarForYear:(NSNumber *)year month:(NSNumber *)month success:(APIBlock)success failure:(APIBlock)failure {
-    
-    NSDictionary *parameter = @{@"month":month, @"year":year};
+- (void)companyTrackingMoveIds:(NSNumber *)trackId recordIds:(NSArray *)ids success:(APIBlock)success failure:(APIBlock)failure {
 
-    [self HTTP_GET:[self url:kUrlBidCalendar] parameters:parameter success:^(id object) {
+    NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListMoveIds, (long)trackId.integerValue];
+    [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -721,11 +784,10 @@
     
 }
 
-- (void)getCompanyInfo:(NSNumber *)firstCompanyId lastCompanyId:(NSNumber *)lastCompanyId success:(APIBlock)success failure:(APIBlock)failure {
-
-    NSDictionary *parameter = @{@"filter[searchFilter][companyId][gte]":firstCompanyId, @"filter[searchFilter][companyId][lte]":lastCompanyId};
-
-    [self HTTP_GET:[self url:kUrlCompanyInfo] parameters:parameter success:^(id object) {
+- (void)companyAddTrackingList:(NSNumber *)trackId recordId:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [NSString stringWithFormat:kUrlCompanyAddTrackingList, (long)trackId.integerValue, (long)recordId.integerValue];
+    [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -780,5 +842,9 @@
     NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
     return [processInfo containsObject:@"IS_DEBUG"];
     
+}
+
+- (void)dismissPopup {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DISMISS_POPUP object:nil];
 }
 @end
