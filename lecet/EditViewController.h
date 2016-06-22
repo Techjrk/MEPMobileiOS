@@ -16,5 +16,6 @@
 @interface EditViewController : UIViewController
 @property(nonatomic,assign) id <EditViewControllerDelegate> editViewControllerDelegate;
 - (void)setInfo:(id)items;
+- (void)setTrackingInfo:(id)item;
 
 @end

@@ -18,6 +18,7 @@
     id dataItems;
     id dataItemsFromEdit;
     BOOL firstLoad;
+    id trackingInfo;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
@@ -43,7 +44,11 @@
     } else {
         [_companyTrackingListView setItemFrommEditViewController:dataItems];
     }
-        
+    [_navBarView setContractorName:trackingInfo[@"name"]];
+    
+    NSString *countString = [NSString stringWithFormat:@"%lu Companies",[trackingInfo[@"companyIds"] count]];
+    [_navBarView setProjectTitle:countString];
+    
     
 }
 
@@ -94,6 +99,7 @@
     EditViewController *controller = [[EditViewController alloc] initWithNibName:@"EditViewController" bundle:nil];
     controller.editViewControllerDelegate = self;
     [controller setInfo:[_companyTrackingListView getdata]];
+    [controller setTrackingInfo:trackingInfo];
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
@@ -122,5 +128,11 @@
     [[DataManager sharedManager] featureNotAvailable];
 }
 
+
+- (void)setTrackingInfo:(id)item {
+    trackingInfo = item;
+    
+    NSLog(@"tracking Info = %@",item);
+}
 
 @end
