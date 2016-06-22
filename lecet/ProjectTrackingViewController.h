@@ -11,6 +11,6 @@
 #import "BaseViewController.h"
 
 @interface ProjectTrackingViewController : BaseViewController
-@property (strong ,nonatomic) NSDictionary *cargo;
-@property (strong, nonatomic) NSArray *collectionItems;
+@property (strong ,nonatomic) NSMutableDictionary *cargo;
+@property (strong, nonatomic) NSMutableArray *collectionItems;
 @end

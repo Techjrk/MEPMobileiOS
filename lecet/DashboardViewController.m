@@ -876,8 +876,8 @@
         
         [[DataManager sharedManager] projectTrackingList:trackItemInfo[@"id"] success:^(id object) {
             ProjectTrackingViewController *controller = [ProjectTrackingViewController new];
-            controller.cargo = trackItemInfo;
-            controller.collectionItems = object;
+            controller.cargo = [trackItemInfo mutableCopy];
+            controller.collectionItems = [(NSArray*)object mutableCopy] ;
             [self.navigationController pushViewController:controller animated:YES];
         } failure:^(id object) {
             

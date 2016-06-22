@@ -122,6 +122,35 @@ typedef enum  {
             
         }];
 
+    } else {
+ 
+        NSMutableDictionary *currentCargo = [self.cargo mutableCopy];
+        NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
+        [currentIds removeObjectsInArray:[self selectedItemForEdit]];
+        currentCargo[@"projectIds"] = currentIds;
+        
+        [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+            
+            NSMutableArray *movedItems = [[NSMutableArray alloc] init];
+            for (NSDictionary *item in self.collectionItems) {
+                NSNumber *recordId = item[@"id"];
+                if ([[self selectedItemForEdit] containsObject:recordId]) {
+                    [movedItems addObject:item];
+                    
+                    [collectionItemsState removeObjectForKey:recordId];
+                }
+            }
+            
+            if (movedItems.count>0) {
+                [self.collectionItems removeObjectsInArray:movedItems];
+            }
+
+            [_collectionView reloadData];
+            
+        } failure:^(id object) {
+            
+        }];
+
     }
 }
 
@@ -225,8 +254,36 @@ typedef enum  {
     [ids addObjectsFromArray:[self selectedItemForEdit]];
     track[@"projectIds"] = ids;
     
+    NSMutableDictionary *currentCargo = [self.cargo mutableCopy];
+    NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
+    [currentIds removeObjectsInArray:[self selectedItemForEdit]];
+    currentCargo[@"projectIds"] = currentIds;
+    
     [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
+        
+        [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+
+            NSMutableArray *movedItems = [[NSMutableArray alloc] init];
+            for (NSDictionary *item in self.collectionItems) {
+                NSNumber *recordId = item[@"id"];
+                if ([[self selectedItemForEdit] containsObject:recordId]) {
+                    [movedItems addObject:item];
+                    
+                    [collectionItemsState removeObjectForKey:recordId];
+                }
+            }
+            
+            if (movedItems.count>0) {
+                [self.collectionItems removeObjectsInArray:movedItems];
+            }
+            
+            [_collectionView reloadData];
+
+        } failure:^(id object) {
+            
+        }];
+        
     } failure:^(id object) {
         
     }];
@@ -334,7 +391,7 @@ typedef enum  {
         BOOL isDesc = indexPath.row != 4;
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:kSortKey[indexPath.row-1] ascending:isDesc];
         
-        self.collectionItems = [self.collectionItems sortedArrayUsingDescriptors:@[descriptor]];
+        self.collectionItems = [[self.collectionItems sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
         [_collectionView reloadData];
     }
 }
