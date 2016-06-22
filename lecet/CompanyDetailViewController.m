@@ -30,14 +30,25 @@
 #import "ContactDetailViewController.h"
 #import "DB_CompanyContact.h"
 #import "ProjectDetailViewController.h"
+#import "CustomCollectionView.h"
+#import "TrackingListCellCollectionViewCell.h"
+#import "ShareItemCollectionViewCell.h"
+#import "PopupViewController.h"
 
-@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate,AssociatedProjectDelegate,ContactListViewDelegate>{
+typedef enum {
+    CompanyDetailPopupModeTrack,
+    CompanyDetailPopupModeShare
+} CompanyDetailPopupMode;
+
+@interface CompanyDetailViewController ()<CompanyHeaderDelegate, CompanyStateDelegate, ProjectBidListDelegate,AssociatedProjectDelegate,ContactListViewDelegate, CustomCollectionViewDelegate, PopupViewControllerDelegate, TrackingListViewDelegate>{
     BOOL isShownContentAdjusted;
     NSNumber *companyRecordId;
     NSMutableArray *contactAllList;
     NSString *companyName;
     BOOL usePushZoom;
     NSMutableArray *associatedProjects;
+    CompanyDetailPopupMode popupMode;
+    NSArray *trackItemRecord;
 }
 //Views
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -196,8 +207,43 @@
     [self.navigationController pushViewController:map animated:YES];
 }
 
-- (void)tappedCompanyState:(CompanyState)companyState {
-    [[DataManager sharedManager] featureNotAvailable];
+- (void)tappedCompanyState:(CompanyState)companyState view:(UIView *)view{
+
+    if (companyState == CompanyStateTrack) {
+       
+        popupMode = CompanyDetailPopupModeTrack;
+        [[DataManager sharedManager] companyAvailableTrackingList:companyRecordId success:^(id object) {
+            
+            trackItemRecord = object;
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.popupViewControllerDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+            
+        } failure:^(id object) {
+            
+        }];
+        
+    } else {
+
+        popupMode = CompanyDetailPopupModeShare;
+        PopupViewController *controller = [PopupViewController new];
+        CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+        controller.popupRect = rect;
+        controller.popupWidth = 0.98;
+        controller.isGreyedBackground = YES;
+        controller.customCollectionViewDelegate = self;
+        controller.popupViewControllerDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:controller animated:NO completion:nil];
+
+    }
+
 }
 
 - (void)tappedCompnayStateContact:(id)object {
@@ -310,6 +356,7 @@
 
 
 #pragma mark - ContactAll List ViewController Method
+
 - (IBAction)tappedToSeeAllContact:(id)sender {
     usePushZoom = NO;
     ContactAllListViewController *controller = [[ContactAllListViewController alloc] initWithNibName:@"ContactAllListViewController" bundle:nil];
@@ -324,5 +371,122 @@
     [self tappedProjectBidsList:fetchRecord];
 }
 
+#pragma mark - CustomCollectionView Delegate
+
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    
+    CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
+    switch (popupMode) {
+            
+        case CompanyDetailPopupModeTrack: {
+            [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+            break;
+        }
+            
+        case CompanyDetailPopupModeShare: {
+            
+            [collectionView registerCollectionItemClass:[ShareItemCollectionViewCell class]];
+            break;
+        }
+    }
+}
+
+- (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
+    
+    switch (popupMode) {
+            
+        case CompanyDetailPopupModeTrack: {
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        }
+            
+        case CompanyDetailPopupModeShare :{
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[ShareItemCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        };
+            
+    }
+    
+    return nil;
+}
+
+- (NSInteger)collectionViewItemCount {
+    
+    return popupMode == CompanyDetailPopupModeTrack?1:2;
+    
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return 1;
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
+    
+    switch (popupMode) {
+            
+        case CompanyDetailPopupModeTrack: {
+            CGFloat defaultHeight = kDeviceHeight * 0.08;
+            CGFloat cellHeight = kDeviceHeight * 0.06;
+            defaultHeight = defaultHeight+ (trackItemRecord.count*cellHeight);
+            return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
+            break;
+        }
+            
+        case CompanyDetailPopupModeShare: {
+            return CGSizeMake(kDeviceWidth * 0.98, kDeviceHeight * 0.075);
+            break;
+        }
+            
+    }
+    
+    return CGSizeZero;
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    [[DataManager sharedManager] featureNotAvailable];
+    [_fieldCompanyState clearSelection];
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
+    
+    switch (popupMode) {
+            
+        case CompanyDetailPopupModeTrack: {
+            
+            TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+            cellItem.headerDisabled = YES;
+            cellItem.trackingListViewDelegate = self;
+            [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT")];
+            
+            break;
+        }
+            
+        case CompanyDetailPopupModeShare: {
+            
+            ShareItemCollectionViewCell *cellItem = (ShareItemCollectionViewCell*)cell;
+            [cellItem setShareItem:indexPath.row == 0?ShareItemEmail:ShareItemLink];
+            
+            break;
+        }
+            
+    }
+    
+}
+
+- (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    
+    NSIndexPath *indexPath = object;
+    NSDictionary *dict = trackItemRecord[indexPath.row];
+    [[DataManager sharedManager] companyAddTrackingList:dict[@"id"] recordId:companyRecordId success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
+        [_fieldCompanyState clearSelection];
+    } failure:^(id object) {
+        
+    }];
+}
+
+- (void)PopupViewControllerDismissed {
+    
+}
 
 @end

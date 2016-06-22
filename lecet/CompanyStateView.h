@@ -16,7 +16,7 @@ typedef enum : NSUInteger {
 } CompanyState;
 
 @protocol CompanyStateDelegate <NSObject>
-- (void)tappedCompanyState:(CompanyState)companyState;
+- (void)tappedCompanyState:(CompanyState)companyState view:(UIView*)view;
 - (void)tappedCompnayStateContact:(id)object;
 @end
 
@@ -24,4 +24,5 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) id<CompanyStateDelegate>companyStateDelegate;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
 - (void)setItems:(NSMutableArray*)items;
+- (void)clearSelection;
 @end

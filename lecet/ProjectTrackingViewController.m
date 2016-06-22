@@ -97,11 +97,17 @@ typedef enum  {
 - (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
     if (shouldMove) {
         UIView *objectView = object;
-        NSNumber *number = [[self selectedItemForEdit] lastObject];
-        [[DataManager sharedManager] projectAvailableTrackingList:number success:^(id object) {
+        
+        NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+        
+        [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue]  success:^(id object) {
 
+            NSMutableArray *array = [object mutableCopy];
+            
+            [array removeObject:self.cargo];
+            
             popupMode = PopupModeMove;
-            trackItemRecord = object;
+            trackItemRecord = array;
             PopupViewController *controller = [PopupViewController new];
             CGRect rect = [controller getViewPositionFromViewController:objectView controller:self];
             controller.popupPalcement = PopupPlacementBottom;
@@ -210,7 +216,20 @@ typedef enum  {
 }
 
 -(void)tappedTrackingListItem:(id)object view:(UIView *)view {
-    [[DataManager sharedManager] featureNotAvailable];
+    
+    NSIndexPath *indexPath = object;
+    NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
+    
+    NSMutableArray *ids = [track[@"projectIds"] mutableCopy];
+    [ids addObjectsFromArray:[self selectedItemForEdit]];
+    track[@"projectIds"] = ids;
+    
+    [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:@{@"data":track} success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];
+    
 }
 
 #pragma mark - CustomCollectionView Delegate

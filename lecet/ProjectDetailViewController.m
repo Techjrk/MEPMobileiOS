@@ -327,16 +327,6 @@ typedef enum {
 
 - (void)showShareListMenu:(UIView*)view{
     
-    /*
-    ProjectShareViewController *controller = [ProjectShareViewController new];
-    
-    controller.modalPresentationStyle = UIModalPresentationCustom;
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    controller.projectShareListViewControllerDelegate = self;
-    [controller setProjectState:_projectState];
-    [self presentViewController:controller  animated:YES completion:nil];
-     */
-    
     popupMode = ProjectDetailPopupModeShare;
     PopupViewController *controller = [PopupViewController new];
     CGRect rect = [controller getViewPositionFromViewController:view controller:self];
@@ -360,15 +350,6 @@ typedef enum {
 
 - (void)tappedProjectTrackListButton:(UIView*)view{
     
-    /*
-    ProjectListViewController *controller = [ProjectListViewController new];
-    controller.modalPresentationStyle = UIModalPresentationCustom;
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-
-    [controller setProjectStateViewFrame:_projectState];
-    controller.projectTrackListViewControllerDelegate = self;
-    [self presentViewController:controller  animated:YES completion:nil];
-     */
     popupMode = ProjectDetailPopupModeTrack;
     [[DataManager sharedManager] projectAvailableTrackingList:recordId success:^(id object) {
         
@@ -539,7 +520,14 @@ typedef enum {
 }
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
-    [[DataManager sharedManager] featureNotAvailable];
+    
+    NSIndexPath *indexPath = object;
+    NSDictionary *dict = trackItemRecord[indexPath.row];
+    [[DataManager sharedManager] projectAddTrackingList:dict[@"id"] recordId:recordId success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
+    } failure:^(id object) {
+        
+    }];
 }
 
 @end
