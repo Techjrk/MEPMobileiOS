@@ -16,6 +16,7 @@
 #import "ProjectSortCVCell.h"
 #import "SectionHeaderCollectionViewCell.h"
 #import "TrackingListCellCollectionViewCell.h"
+#import "companyTrackingListConstant.h"
 
 typedef enum  {
     PopupModeSort,
@@ -41,6 +42,8 @@ typedef enum  {
 
 @implementation EditViewController
 #define BOTTOMVIEW_BG_COLOR RGB(5, 35, 74)
+#define UnSelectedFlag              @"0"
+#define SelectedFlag                @"1"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,7 +61,7 @@ typedef enum  {
 - (void)viewWillAppear:(BOOL)animated {
     [_editViewList setInfo:collectionDataItems];
     [_navView setContractorName:trackingInfo[@"name"]];
-    NSString *countString = [NSString stringWithFormat:@"%lu Companies",[trackingInfo[@"companyIds"] count]];
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
     [_navView setProjectTitle:countString];
 }
 - (void)didReceiveMemoryWarning {
@@ -95,19 +98,57 @@ typedef enum  {
     }
 }
 
-
-
-#pragma mark - CustomCollectionView Delegate
-
 #pragma mark - EdittabViewDelgate
 - (void)selectedEditTabButton:(EditTabItem)item {
 
-    [self dismissViewControllerAnimated:NO completion:^{
-        [_editViewControllerDelegate tappedCancelDoneButton:collectionDataItems];
-    }];
+    
+    switch (item) {
+        case EditTabItemCancel:{
+            [self unCheckedAllChekedBox];
+            break;
+        }
+        case EditTabItemDone:{
+            
+            [self dismissViewControllerAnimated:NO completion:^{
+                [_editViewControllerDelegate tappedCancelDoneButton:collectionDataItems];
+            }];
+            break;
+        }
+    }
+    
+    
 
 }
 
+- (void)unCheckedAllChekedBox {
+    
+    NSOperationQueue* queue= [NSOperationQueue new];
+    queue.maxConcurrentOperationCount=1;
+    [queue setSuspended: YES];
+    
+    NSMutableArray *tempArray = collectionDataItems;
+    [collectionDataItems enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
+        NSMutableDictionary *dict = [response mutableCopy];
+
+        [dict setValue:@"0" forKey:COMPANYDATA_SELECTION_FLAG];
+    
+        NSBlockOperation* op=[NSBlockOperation blockOperationWithBlock: ^ (void)
+                              {
+                                  [tempArray replaceObjectAtIndex:index withObject:dict];
+                                  
+                              }];
+        [queue addOperation: op];
+        
+        
+    }];
+    
+    [queue setSuspended: NO];
+    [queue waitUntilAllOperationsAreFinished];
+    
+    [_editViewList setInfoToReload:collectionDataItems];
+    
+    
+}
 
 
 #pragma mark - Misc Method
@@ -174,7 +215,7 @@ typedef enum  {
 }
 
 
-#pragma Custom Delegates
+#pragma mark - Custom Delegates
 
 - (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
     
@@ -184,6 +225,7 @@ typedef enum  {
         NSNumber *number = trackingInfo[@"userId"];
         [[DataManager sharedManager] userCompanyTrackingList:number success:^(id object) {
             popupMode = PopupModeMove;
+        
             trackItemRecord = [self companyTrackingListToMove:object];
             PopupViewController *controller = [PopupViewController new];
             CGRect rect = [controller getViewPositionFromViewController:objectView controller:self];
@@ -198,25 +240,96 @@ typedef enum  {
         } failure:^(id object) {
             
         }];
-    
+    }else {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:NSLocalizedLanguage(@"COMPANY_TRACK_SELECTION_REMOVE"), trackingInfo[@"name"]] preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_YES")
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                                              
+                                                              [self removeItem];
+                                                              
+                                                          }];
+        
+        [alert addAction:yesAction];
+        
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_NO")
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             
+                                                         }];
+        
+        [alert addAction:noAction];
+        
+        [[DataManager sharedManager] dismissPopup];
+        [self presentViewController:alert animated:YES completion:nil];
+        
         
     }
+
+    
     
     
 }
 
+
+- (void)removeItem {
+    
+    NSMutableDictionary *currentCargo = [trackingInfo mutableCopy];
+    NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
+    [currentIds removeObjectsInArray:selectedDataItems];
+    currentCargo[@"companyIds"] = currentIds;
+    
+    [[DataManager sharedManager] companyTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+        
+        NSMutableArray *movedItems = [[NSMutableArray alloc] init];
+        
+        [collectionDataItems enumerateObjectsUsingBlock:^(id obj,NSUInteger index,BOOL *stop){
+            NSNumber *recordID = obj[@"id"];
+            if ([selectedDataItems containsObject:recordID]) {
+                [movedItems addObject:obj];
+            }
+        }];
+        
+        if (movedItems.count > 0) {
+            [collectionDataItems removeObjectsInArray:movedItems];
+        }
+        
+        
+         NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+        [_navView setProjectTitle:countString];
+        [_editViewList setInfoToReload:collectionDataItems];
+        [self chageEditMode:NO count:(int)collectionDataItems.count];
+        
+        
+    } failure:^(id object) {
+      
+    }];
+    
+}
+
 - (NSArray *)companyTrackingListToMove:(NSArray *)object {
-    
+    NSOperationQueue* queue= [NSOperationQueue new];
+    queue.maxConcurrentOperationCount=1;
+    [queue setSuspended: YES];
     NSMutableArray *mutableObject = [object mutableCopy];
-    [object enumerateObjectsUsingBlock:^(id obj,NSUInteger index,BOOL *stop){
     
-        if ([obj[@"companyIds"] containsObject:[selectedDataItems lastObject][@"id"]]) {
+    [mutableObject enumerateObjectsUsingBlock:^(id obj, NSUInteger index,BOOL *stop){
+        
+        if ([trackingInfo[@"id"] isEqual:obj[@"id" ]]) {
             
-            [mutableObject removeObjectAtIndex:index];
+            NSBlockOperation* op =
+            [NSBlockOperation blockOperationWithBlock: ^ (void) { [mutableObject removeObject:obj]; }];
+            [queue addOperation: op];
+            
         }
         
     }];
     
+    [queue setSuspended: NO];
+    [queue waitUntilAllOperationsAreFinished];
+  
     return [mutableObject copy];
     
 }
@@ -340,7 +453,7 @@ typedef enum  {
         TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
         cellItem.headerDisabled = YES;
         cellItem.trackingListViewDelegate = self;
-        [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"PROJECT_TRACKING_LIST")];
+        [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"COMPANY_TRACKING_LIST")];
         
     }
     
@@ -350,8 +463,89 @@ typedef enum  {
 #pragma mark - Tracking Delegate
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
-    [[DataManager sharedManager] featureNotAvailable];
     
+    NSIndexPath *indexPath = object;
+    
+    NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:NSLocalizedLanguage(@"COMPANY_TRACK_SELECTION_MOVE"), track[@"name"]] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_YES")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          
+                                                          [self moveTrackListIds:indexPath];
+                                                          
+                                                      }];
+    
+    [alert addAction:yesAction];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_NO")
+                                                       style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction *action) {
+                                                         
+                                                     }];
+    
+    [alert addAction:noAction];
+    
+    [[DataManager sharedManager] dismissPopup];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)moveTrackListIds:(NSIndexPath*)indexPath {
+ 
+    NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
+    NSMutableArray *ids = [track[@"companyIds"] mutableCopy];
+    
+    [selectedDataItems enumerateObjectsUsingBlock:^(id obj,NSUInteger countInt,BOOL *stop){
+        
+        if ([ids containsObject:obj]) {
+            [ids removeObject:obj];
+        }
+        [ids addObject:obj];
+        
+        
+    }];
+    track[@"companyIds"] = ids;
+    NSMutableDictionary *currentCargo = [trackingInfo mutableCopy];
+    NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
+    [currentIds removeObjectsInArray:selectedDataItems];
+    currentCargo[@"companyIds"] = currentIds;
+    trackingInfo = currentCargo;
+    
+    [[DataManager sharedManager] companyTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
+        
+        [[DataManager sharedManager] companyTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+            
+            NSMutableArray *movedItems = [[NSMutableArray alloc] init];
+            [collectionDataItems enumerateObjectsUsingBlock:^(id obj,NSUInteger index,BOOL *stop){
+                NSNumber *recordID = obj[@"id"];
+                if ([selectedDataItems containsObject:recordID]) {
+                    [movedItems addObject:obj];
+                }
+            }];
+            
+            if (movedItems.count > 0) {
+                [collectionDataItems removeObjectsInArray:movedItems];
+            }
+            
+            [_editViewList setInfoToReload:collectionDataItems];
+            selectedDataItems = nil;
+            [self chageEditMode:NO count:(int)selectedDataItems.count];
+
+            
+            [_navView setProjectTitle:[NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")]];
+            
+        } failure:^(id object) {
+            
+        }];
+
+    } failure:^(id object) {
+        
+    }];
+
 }
 
 @end

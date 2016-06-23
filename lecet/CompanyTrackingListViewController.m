@@ -46,7 +46,9 @@
     }
     [_navBarView setContractorName:trackingInfo[@"name"]];
     
-    NSString *countString = [NSString stringWithFormat:@"%lu Companies",[trackingInfo[@"companyIds"] count]];
+    
+    
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",[trackingInfo[@"companyIds"] count],NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
     [_navBarView setProjectTitle:countString];
     
     
@@ -115,6 +117,8 @@
 - (void)tappedCancelDoneButton:(id)items {
     dataItems = items;
     
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",[dataItems count],NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+    [_navBarView setProjectTitle:countString];
     [_companyTrackingListView setItemToReload:dataItems];
 }
 - (void)tappedBackButton {
