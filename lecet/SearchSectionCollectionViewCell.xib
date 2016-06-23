@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SearchSectionCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="50"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xl0-nk-3UD">
+                        <rect key="frame" x="0.0" y="0.0" width="15" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFc-Q7-Mdi">
+                        <rect key="frame" x="15" y="0.0" width="366" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="jFc-Q7-Mdi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2Yf-IV-boq"/>
+                <constraint firstItem="Xl0-nk-3UD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9mf-t4-ug2"/>
+                <constraint firstAttribute="trailing" secondItem="jFc-Q7-Mdi" secondAttribute="trailing" id="BFC-0v-YlN"/>
+                <constraint firstItem="Xl0-nk-3UD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LDK-d1-vCq"/>
+                <constraint firstAttribute="bottom" secondItem="jFc-Q7-Mdi" secondAttribute="bottom" id="bLv-be-HxP"/>
+                <constraint firstAttribute="bottom" secondItem="Xl0-nk-3UD" secondAttribute="bottom" id="hPU-Av-IEN"/>
+                <constraint firstItem="jFc-Q7-Mdi" firstAttribute="leading" secondItem="Xl0-nk-3UD" secondAttribute="trailing" id="inU-IZ-wus"/>
+                <constraint firstItem="Xl0-nk-3UD" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.04" id="jjI-3V-dZQ"/>
+            </constraints>
+            <size key="customSize" width="381" height="50"/>
+            <connections>
+                <outlet property="labelTitle" destination="jFc-Q7-Mdi" id="OyV-Qm-ZL7"/>
+            </connections>
+            <point key="canvasLocation" x="309.5" y="193"/>
+        </collectionViewCell>
+    </objects>
+</document>
