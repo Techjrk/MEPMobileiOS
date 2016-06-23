@@ -249,3 +249,5 @@
 
 //ProjectTrackingViewController.xib
 "PROJECT_TRACK_SELECTION_NONE"              =               "No item was selected from the project list";
+"PROJECT_TRACK_SELECTION_MOVE"              =               "Move selected projects to %@";
+"PROJECT_TRACK_SELECTION_REMOVE"            =               "Remove selected projects from %@";

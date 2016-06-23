@@ -94,6 +94,39 @@ typedef enum  {
 
 #pragma Custom Delegates
 
+- (void)removeItem {
+    
+    NSMutableDictionary *currentCargo = [self.cargo mutableCopy];
+    NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
+    [currentIds removeObjectsInArray:[self selectedItemForEdit]];
+    currentCargo[@"projectIds"] = currentIds;
+    
+    [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+        
+        NSMutableArray *movedItems = [[NSMutableArray alloc] init];
+        for (NSDictionary *item in self.collectionItems) {
+            NSNumber *recordId = item[@"id"];
+            if ([[self selectedItemForEdit] containsObject:recordId]) {
+                [movedItems addObject:item];
+                
+                [collectionItemsState removeObjectForKey:recordId];
+            }
+        }
+        
+        if (movedItems.count>0) {
+            [self.collectionItems removeObjectsInArray:movedItems];
+        }
+        
+        [_collectionView reloadData];
+        
+        [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
+        
+    } failure:^(id object) {
+        
+    }];
+
+}
+
 - (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
     if (shouldMove) {
         UIView *objectView = object;
@@ -121,6 +154,32 @@ typedef enum  {
         } failure:^(id object) {
             
         }];
+
+    } else {
+ 
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECT_TRACK_SELECTION_REMOVE"), self.cargo[@"name"]] preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_YES")
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                                              
+                                                              [self removeItem];
+                                                              
+                                                          }];
+        
+        [alert addAction:yesAction];
+        
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_NO")
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             
+                                                         }];
+        
+        [alert addAction:noAction];
+        
+        [[DataManager sharedManager] dismissPopup];
+        [self presentViewController:alert animated:YES completion:nil];
+
 
     }
 }
@@ -159,21 +218,30 @@ typedef enum  {
 }
 
 - (void)selectedEditTabButton:(EditTabItem)item {
-    [self chageEditMode:NO];
-
-    /*
-    if (item == EditTabItemCancel) {
-        
+    
+    if (item == EditTabItemDone) {
+        [self chageEditMode:NO];
     } else {
+    
+        [self clearSelection];
+    }
+ 
+}
+
+- (void)clearSelection {
+    
+    for (NSNumber *itemKey in collectionItemsState.allKeys) {
+
+        NSMutableDictionary *itemState = collectionItemsState[itemKey];
+        NSMutableDictionary *state = itemState[kStateStatus];
         
-        if (![self hasSelectedItemForEdit]) {
-            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECT_TRACK_SELECTION_NONE")];
-            return;
-        }
-        
+        state[kStateSelected] = [NSNumber numberWithBool:NO];
     }
     
-*/
+    [_collectionView reloadData];
+    
+    [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
+    
 }
 
 -(void)tappedProjectNav:(ProjectNavItem)projectNavItem {
@@ -215,9 +283,8 @@ typedef enum  {
 
 }
 
--(void)tappedTrackingListItem:(id)object view:(UIView *)view {
+- (void)moveTrackListIds:(NSIndexPath*)indexPath {
     
-    NSIndexPath *indexPath = object;
     NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
     
     NSMutableArray *ids = [track[@"projectIds"] mutableCopy];
@@ -225,12 +292,73 @@ typedef enum  {
     [ids addObjectsFromArray:[self selectedItemForEdit]];
     track[@"projectIds"] = ids;
     
+    NSMutableDictionary *currentCargo = [self.cargo mutableCopy];
+    NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
+    [currentIds removeObjectsInArray:[self selectedItemForEdit]];
+    currentCargo[@"projectIds"] = currentIds;
+    
     [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
+        
+        [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+            
+            NSMutableArray *movedItems = [[NSMutableArray alloc] init];
+            for (NSDictionary *item in self.collectionItems) {
+                NSNumber *recordId = item[@"id"];
+                if ([[self selectedItemForEdit] containsObject:recordId]) {
+                    [movedItems addObject:item];
+                    
+                    [collectionItemsState removeObjectForKey:recordId];
+                }
+            }
+            
+            if (movedItems.count>0) {
+                [self.collectionItems removeObjectsInArray:movedItems];
+            }
+            
+            [_collectionView reloadData];
+            
+            [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
+            
+        } failure:^(id object) {
+            
+        }];
+        
     } failure:^(id object) {
         
     }];
+
+}
+
+-(void)tappedTrackingListItem:(id)object view:(UIView *)view {
     
+    NSIndexPath *indexPath = object;
+
+    NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:NSLocalizedLanguage(@"PROJECT_TRACK_SELECTION_MOVE"), track[@"name"]] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_YES")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          
+                                                          [self moveTrackListIds:indexPath];
+                
+                                                      }];
+    
+    [alert addAction:yesAction];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_NO")
+                                                       style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction *action) {
+                                                         
+                                                     }];
+    
+    [alert addAction:noAction];
+    
+    [[DataManager sharedManager] dismissPopup];
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 #pragma mark - CustomCollectionView Delegate
@@ -334,7 +462,7 @@ typedef enum  {
         BOOL isDesc = indexPath.row != 4;
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:kSortKey[indexPath.row-1] ascending:isDesc];
         
-        self.collectionItems = [self.collectionItems sortedArrayUsingDescriptors:@[descriptor]];
+        self.collectionItems = [[self.collectionItems sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];
         [_collectionView reloadData];
     }
 }

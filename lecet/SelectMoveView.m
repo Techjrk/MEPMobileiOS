@@ -39,7 +39,7 @@
 
 - (IBAction)tappedButton:(id)sender {
     UIButton *button = sender;
-    [self.selectMoveViewDelegate tappedMoveItem:sender shouldMove:[NSNumber numberWithBool:button.tag == 1]];
+    [self.selectMoveViewDelegate tappedMoveItem:sender shouldMove:button.tag == 1];
 
 }
 
