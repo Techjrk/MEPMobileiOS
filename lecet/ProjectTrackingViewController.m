@@ -242,6 +242,15 @@ typedef enum  {
     
     [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
     
+    _constraintEditViewHeight.constant = 0;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+
+    
 }
 
 -(void)tappedProjectNav:(ProjectNavItem)projectNavItem {
