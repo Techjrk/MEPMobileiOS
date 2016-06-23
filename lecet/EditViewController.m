@@ -147,6 +147,9 @@ typedef enum  {
     
     [_editViewList setInfoToReload:collectionDataItems];
     
+    selectedDataItems = nil;
+    [self chageEditMode:NO count:(int)selectedDataItems.count];
+    
     
 }
 

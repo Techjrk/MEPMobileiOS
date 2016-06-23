@@ -11,7 +11,6 @@
 #import "companyTrackingListConstant.h"
 
 @interface EditViewList ()<UICollectionViewDelegate, UICollectionViewDataSource,EditViewCollectionViewCellDelegate>{
-    NSDictionary *collectionItems;
     NSMutableArray *collectionDataItems;
     NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
