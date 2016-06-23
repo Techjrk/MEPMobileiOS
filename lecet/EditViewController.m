@@ -350,8 +350,38 @@ typedef enum  {
 #pragma mark - Tracking Delegate
 
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
-    [[DataManager sharedManager] featureNotAvailable];
     
+    
+    NSIndexPath *indexPath = object;
+    NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
+    
+    NSLog(@"Track record = %@",track);
+    
+    
+    NSMutableArray *ids = [track[@"companyIds"] mutableCopy];
+    
+    NSLog(@"Selected = %@",selectedDataItems);
+    
+    
+    
+    [ids addObject:selectedDataItems[0][@"id"]];
+    track[@"companyIds"] = ids;
+    
+    NSLog(@"Track After Merge = %@",track);
+    NSArray *comrray= @[@"251",@"252",@"253",@"250"];
+    
+    
+    NSDictionary *dict= @{@"id":@"3",@"companyIds":comrray,@"name":@"TackList Tes 02t",@"userId":@"5"};
+    
+    [[DataManager sharedManager] companyTrackingMoveIds:dict[@"id"] recordIds:dict success:^(id object) {
+        
+        [[DataManager sharedManager] dismissPopup];
+        
+    } failure:^(id object) {
+        
+        NSLog(@"Company = %@",object);
+    }];
+
 }
 
 @end
