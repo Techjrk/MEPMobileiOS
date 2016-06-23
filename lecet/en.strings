@@ -263,3 +263,12 @@
 "SEARCH_SECTION_CONTACTS"                   =               "CONTACTS";
 
 
+//EditViewController.xib
+"COMPANY_TRACK_SELECTION_NONE"              =               "No item was selected from the company list";
+"COMPANY_TRACK_SELECTION_MOVE"              =               "Move selected companies to %@";
+"COMPANY_TRACK_SELECTION_REMOVE"            =               "Remove selected companies from %@";
+"COMPANIES_COUNT_TITLE"                     =               "Companies";
+
+
+
+
