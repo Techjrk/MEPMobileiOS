@@ -847,4 +847,5 @@
 - (void)dismissPopup {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DISMISS_POPUP object:nil];
 }
+
 @end
