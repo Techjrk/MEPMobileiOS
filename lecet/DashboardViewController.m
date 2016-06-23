@@ -39,6 +39,7 @@
 #import "TrackingListView.h"
 #import "ProjectTrackingViewController.h"
 #import "CompanyTrackingListViewController.h"
+#import "SearchViewController.h"
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate>{
 
@@ -330,8 +331,6 @@
     [_chartRecentlyAdded setSegmentItems:segment];
     return bidItemsRecentlyAdded;
 }
-
-
 
 #pragma mark - UICollectionView source and delegate
 
@@ -629,8 +628,10 @@
         
         }
         case MenuHeaderSearch:{
- 
-            [[DataManager sharedManager] featureNotAvailable];
+            shouldUsePushZoomAnimation = NO;
+            
+            SearchViewController *controller = [SearchViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         
         }

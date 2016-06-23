@@ -252,10 +252,14 @@
 "PROJECT_TRACK_SELECTION_MOVE"              =               "Move selected projects to %@";
 "PROJECT_TRACK_SELECTION_REMOVE"            =               "Remove selected projects from %@";
 
+//SearchViewController.xib
+"SEARCH_PLACEHOLDER"                        =               "Search";
+"SEARCH_SECTION_RECENT"                     =               "RECENT";
+"SEARCH_SECTION_SAVED_PROJECT"              =               "PROJECT SAVED SEARCHES";
+"SEARCH_SECTION_SAVED_COMPANY"              =               "COMPANY SAVED SEARCHES";
+"SEARCH_SECTION_SUGGESTED"                  =               "SUGGESTED";
+"SEARCH_SECTION_PROJECTS"                   =               "PROJECTS";
+"SEARCH_SECTION_COMPANIES"                  =               "COMPANIES";
+"SEARCH_SECTION_CONTACTS"                   =               "CONTACTS";
 
-//EditViewController.xib
-"COMPANIES_COUNT_TITLE"                     =               "Companies";
-"COMPANY_TRACK_SELECTION_NONE"              =               "No item was selected from the company list";
-"COMPANY_TRACK_SELECTION_MOVE"              =               "Move selected companies to %@";
-"COMPANY_TRACK_SELECTION_REMOVE"            =               "Remove selected companies from %@";
 
