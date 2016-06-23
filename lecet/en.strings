@@ -251,3 +251,11 @@
 "PROJECT_TRACK_SELECTION_NONE"              =               "No item was selected from the project list";
 "PROJECT_TRACK_SELECTION_MOVE"              =               "Move selected projects to %@";
 "PROJECT_TRACK_SELECTION_REMOVE"            =               "Remove selected projects from %@";
+
+
+//EditViewController.xib
+"COMPANIES_COUNT_TITLE"                     =               "Companies";
+"COMPANY_TRACK_SELECTION_NONE"              =               "No item was selected from the company list";
+"COMPANY_TRACK_SELECTION_MOVE"              =               "Move selected companies to %@";
+"COMPANY_TRACK_SELECTION_REMOVE"            =               "Remove selected companies from %@";
+
