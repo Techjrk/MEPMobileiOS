@@ -144,7 +144,8 @@
     [collectionDataItems enumerateObjectsUsingBlock:^(id result,NSUInteger count,BOOL *stop){
         
         if ([result[COMPANYDATA_SELECTION_FLAG] isEqualToString:SelectedFlag]) {
-            [selectedItems addObject:result];
+            
+            [selectedItems addObject:result[@"id"]];
         }
         
     }];
