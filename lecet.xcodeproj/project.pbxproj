@@ -110,12 +110,6 @@
 		B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE9C1D0490A000727323 /* ContactDetailView.xib */; };
 		B6F0F17E1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F0F17C1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m */; };
 		B6F0F17F1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F0F17D1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib */; };
-		B6F0F1841D1C2055004D6654 /* ProjectFilterBiddingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F0F1821D1C2055004D6654 /* ProjectFilterBiddingView.m */; };
-		B6F0F1851D1C2055004D6654 /* ProjectFilterBiddingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F0F1831D1C2055004D6654 /* ProjectFilterBiddingView.xib */; };
-		B6F0F18A1D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F0F1881D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.m */; };
-		B6F0F18B1D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F0F1891D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.xib */; };
-		B6F0F18F1D1C26FE004D6654 /* ProjectFilterBiddingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F0F18D1D1C26FE004D6654 /* ProjectFilterBiddingListView.m */; };
-		B6F0F1901D1C26FE004D6654 /* ProjectFilterBiddingListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F0F18E1D1C26FE004D6654 /* ProjectFilterBiddingListView.xib */; };
 		B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F56D821D018699009B81F5 /* ProjectNavigationBarView.m */; };
 		B6F56D851D018699009B81F5 /* ProjectNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F56D831D018699009B81F5 /* ProjectNavigationBarView.xib */; };
 		B6F56D8B1D01B752009B81F5 /* ProjectAllBidsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F56D891D01B752009B81F5 /* ProjectAllBidsView.m */; };
@@ -124,6 +118,12 @@
 		B6F7DD3C1D00A4DA00B86B9D /* ProjectTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F7DD3A1D00A4DA00B86B9D /* ProjectTabView.xib */; };
 		B6FC235C1D042D3800296386 /* ProjectAllAssociatedProjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */; };
 		B6FC235D1D042D3800296386 /* ProjectAllAssociatedProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */; };
+		B6FD04361D1D26D000E12123 /* ProjectFilterSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04341D1D26D000E12123 /* ProjectFilterSelectionView.m */; };
+		B6FD04371D1D26D000E12123 /* ProjectFilterSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04351D1D26D000E12123 /* ProjectFilterSelectionView.xib */; };
+		B6FD043D1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD043B1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m */; };
+		B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD043C1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib */; };
+		B6FD04431D1D325800E12123 /* ProjectFilterSelectionViewList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */; };
+		B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */; };
 		B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */; };
 		B6FD33FF1CFDC971005B00A8 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
@@ -515,15 +515,6 @@
 		B6F0F17B1D1C1E18004D6654 /* ProjectFilterBiddingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBiddingViewController.h; sourceTree = "<group>"; };
 		B6F0F17C1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBiddingViewController.m; sourceTree = "<group>"; };
 		B6F0F17D1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBiddingViewController.xib; sourceTree = "<group>"; };
-		B6F0F1811D1C2055004D6654 /* ProjectFilterBiddingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBiddingView.h; sourceTree = "<group>"; };
-		B6F0F1821D1C2055004D6654 /* ProjectFilterBiddingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBiddingView.m; sourceTree = "<group>"; };
-		B6F0F1831D1C2055004D6654 /* ProjectFilterBiddingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBiddingView.xib; sourceTree = "<group>"; };
-		B6F0F1871D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBiddingCollectionViewCell.h; sourceTree = "<group>"; };
-		B6F0F1881D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBiddingCollectionViewCell.m; sourceTree = "<group>"; };
-		B6F0F1891D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBiddingCollectionViewCell.xib; sourceTree = "<group>"; };
-		B6F0F18C1D1C26FE004D6654 /* ProjectFilterBiddingListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBiddingListView.h; sourceTree = "<group>"; };
-		B6F0F18D1D1C26FE004D6654 /* ProjectFilterBiddingListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBiddingListView.m; sourceTree = "<group>"; };
-		B6F0F18E1D1C26FE004D6654 /* ProjectFilterBiddingListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBiddingListView.xib; sourceTree = "<group>"; };
 		B6F56D7F1D01767D009B81F5 /* projectTabConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectTabConstant.h; sourceTree = "<group>"; };
 		B6F56D811D018699009B81F5 /* ProjectNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNavigationBarView.h; sourceTree = "<group>"; };
 		B6F56D821D018699009B81F5 /* ProjectNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNavigationBarView.m; sourceTree = "<group>"; };
@@ -539,6 +530,16 @@
 		B6FC23591D042D3800296386 /* ProjectAllAssociatedProjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectAllAssociatedProjectView.h; sourceTree = "<group>"; };
 		B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectAllAssociatedProjectView.m; sourceTree = "<group>"; };
 		B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectAllAssociatedProjectView.xib; sourceTree = "<group>"; };
+		B6FD04331D1D26D000E12123 /* ProjectFilterSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionView.h; sourceTree = "<group>"; };
+		B6FD04341D1D26D000E12123 /* ProjectFilterSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionView.m; sourceTree = "<group>"; };
+		B6FD04351D1D26D000E12123 /* ProjectFilterSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionView.xib; sourceTree = "<group>"; };
+		B6FD04381D1D2AE900E12123 /* projectFilterSelectionViewConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectFilterSelectionViewConstant.h; sourceTree = "<group>"; };
+		B6FD043A1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionCollectionViewCell.h; sourceTree = "<group>"; };
+		B6FD043B1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionCollectionViewCell.m; sourceTree = "<group>"; };
+		B6FD043C1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
+		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
+		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
 		B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
 		B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
 		B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
@@ -1464,27 +1465,15 @@
 			name = ProjectFilterBidding;
 			sourceTree = "<group>";
 		};
-		B6F0F1801D1C2018004D6654 /* ProjectFilterBidding */ = {
+		B6F0F1801D1C2018004D6654 /* ProjectFilterCheckList */ = {
 			isa = PBXGroup;
 			children = (
-				B6F0F1811D1C2055004D6654 /* ProjectFilterBiddingView.h */,
-				B6F0F1821D1C2055004D6654 /* ProjectFilterBiddingView.m */,
-				B6F0F1831D1C2055004D6654 /* ProjectFilterBiddingView.xib */,
-				B6F0F18C1D1C26FE004D6654 /* ProjectFilterBiddingListView.h */,
-				B6F0F18D1D1C26FE004D6654 /* ProjectFilterBiddingListView.m */,
-				B6F0F18E1D1C26FE004D6654 /* ProjectFilterBiddingListView.xib */,
+				B6FD043F1D1D320800E12123 /* ProjectFilterSelectionViewList */,
+				B6FD04331D1D26D000E12123 /* ProjectFilterSelectionView.h */,
+				B6FD04341D1D26D000E12123 /* ProjectFilterSelectionView.m */,
+				B6FD04351D1D26D000E12123 /* ProjectFilterSelectionView.xib */,
 			);
-			name = ProjectFilterBidding;
-			sourceTree = "<group>";
-		};
-		B6F0F1861D1C20E9004D6654 /* ProjectFilterBiddingCell */ = {
-			isa = PBXGroup;
-			children = (
-				B6F0F1871D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.h */,
-				B6F0F1881D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.m */,
-				B6F0F1891D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.xib */,
-			);
-			name = ProjectFilterBiddingCell;
+			name = ProjectFilterCheckList;
 			sourceTree = "<group>";
 		};
 		B6F56D801D0184CD009B81F5 /* ProjectNavigationBar */ = {
@@ -1525,6 +1514,26 @@
 				B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */,
 			);
 			name = ProjectAllAssociatedProject;
+			sourceTree = "<group>";
+		};
+		B6FD04391D1D2E9400E12123 /* ProjectFilterSelectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				B6FD043A1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.h */,
+				B6FD043B1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m */,
+				B6FD043C1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib */,
+			);
+			name = ProjectFilterSelectionCell;
+			sourceTree = "<group>";
+		};
+		B6FD043F1D1D320800E12123 /* ProjectFilterSelectionViewList */ = {
+			isa = PBXGroup;
+			children = (
+				B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */,
+				B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */,
+				B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */,
+			);
+			name = ProjectFilterSelectionViewList;
 			sourceTree = "<group>";
 		};
 		B6FD33FA1CFDC958005B00A8 /* ProjectList */ = {
@@ -1674,7 +1683,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B6F0F1861D1C20E9004D6654 /* ProjectFilterBiddingCell */,
+				B6FD04391D1D2E9400E12123 /* ProjectFilterSelectionCell */,
 				B6BDBAB81D181E6F001FB41C /* EditViewCell */,
 				B6A74EF01D15DB96007CDFF3 /* CompanySortCell */,
 				B651065B1D12D75700007759 /* CompanyTrackingCell */,
@@ -1755,7 +1764,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				B6F0F1801D1C2018004D6654 /* ProjectFilterBidding */,
+				B6F0F1801D1C2018004D6654 /* ProjectFilterCheckList */,
 				B6BDBABE1D181F2B001FB41C /* EditViewList */,
 				B6BDBAB11D18041E001FB41C /* EditView */,
 				B6BDBAAA1D17FD05001FB41C /* Edit Tab */,
@@ -1960,6 +1969,7 @@
 				B6BDBAB01D17FFF0001FB41C /* editTabConstant.h */,
 				B6BDBAB71D181C1D001FB41C /* editViewConstant.h */,
 				B7BF60911D1BE7EE00B3BDD7 /* searchViewConstants.h */,
+				B6FD04381D1D2AE900E12123 /* projectFilterSelectionViewConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -2224,6 +2234,7 @@
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B7BF60901D1BE28100B3BDD7 /* SearchViewController.xib in Resources */,
+				B6FD04371D1D26D000E12123 /* ProjectFilterSelectionView.xib in Resources */,
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
 				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
@@ -2281,13 +2292,13 @@
 				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
 				B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
+				B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */,
 				B73EFABC1D09ABC400C6B3B2 /* (null) in Resources */,
 				B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */,
 				B651064B1D12AD4000007759 /* ProjComTrackingTabView.xib in Resources */,
 				B64474731D00449B0001B244 /* ProjectSortCVCell.xib in Resources */,
 				B6411BF11D09CED8002B6E88 /* CDProjectBidsViewController.xib in Resources */,
 				B6411BF61D09CF4B002B6E88 /* ParticipantsListViewController.xib in Resources */,
-				B6F0F1851D1C2055004D6654 /* ProjectFilterBiddingView.xib in Resources */,
 				B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
@@ -2298,7 +2309,6 @@
 				B6BDBABD1D181EA9001FB41C /* EditViewCollectionViewCell.xib in Resources */,
 				B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */,
 				B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */,
-				B6F0F1901D1C26FE004D6654 /* ProjectFilterBiddingListView.xib in Resources */,
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
 				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
 				B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */,
@@ -2307,7 +2317,6 @@
 				B6BDBAB61D180452001FB41C /* EditView.xib in Resources */,
 				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
-				B6F0F18B1D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.xib in Resources */,
 				B6411BC51D09ACEF002B6E88 /* MyProfileView.xib in Resources */,
 				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
 				B73EFAD21D11518700C6B3B2 /* PopupViewController.xib in Resources */,
@@ -2324,6 +2333,7 @@
 				B73EFAE61D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
+				B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
 				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
@@ -2423,6 +2433,7 @@
 				B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */,
 				B73EFAD51D117B4D00C6B3B2 /* CustomCollectionView.m in Sources */,
 				B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */,
+				B6FD04361D1D26D000E12123 /* ProjectFilterSelectionView.m in Sources */,
 				B64474721D00449B0001B244 /* ProjectSortCVCell.m in Sources */,
 				B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */,
 				B7A1D33F1CE1FFBD004E94B3 /* DB_BidRecent.m in Sources */,
@@ -2430,7 +2441,6 @@
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
 				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
-				B6F0F1841D1C2055004D6654 /* ProjectFilterBiddingView.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
 				B6A74EFA1D15DBD3007CDFF3 /* CompanySortViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,
@@ -2442,6 +2452,7 @@
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
 				B6EFFE911D0455CF00727323 /* ContactAllListView.m in Sources */,
 				B6411BD01D09B2D8002B6E88 /* MyProfileHeaderView.m in Sources */,
+				B6FD04431D1D325800E12123 /* ProjectFilterSelectionViewList.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */,
@@ -2494,11 +2505,11 @@
 				B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */,
 				B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */,
 				B66591121CFECA6B00CFD10C /* MoreMenuViewController.m in Sources */,
-				B6F0F18A1D1C2129004D6654 /* ProjectFilterBiddingCollectionViewCell.m in Sources */,
 				B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */,
 				B7BF608A1D19723A00B3BDD7 /* ShareItemCollectionViewCell.m in Sources */,
 				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
+				B6FD043D1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m in Sources */,
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
@@ -2515,7 +2526,6 @@
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,
 				B73EFAE51D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.m in Sources */,
-				B6F0F18F1D1C26FE004D6654 /* ProjectFilterBiddingListView.m in Sources */,
 				B69C3AD01D0DB2D3003DD918 /* MyProfileOneTextFieldView.m in Sources */,
 				B7BF608F1D1BE28100B3BDD7 /* SearchViewController.m in Sources */,
 				B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */,

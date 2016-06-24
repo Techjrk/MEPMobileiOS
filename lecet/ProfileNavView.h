@@ -23,5 +23,8 @@ typedef enum  {
 @property (nonatomic,assign) id<ProfileNavViewDelegate> profileNavViewDelegate;
 - (void)setNavTitleLabel:(NSString *)name;
 - (void)hideSaveButton:(BOOL)hide;
+- (void)setNavRightButtonTitle:(NSString *)text;
+- (void)setRigthBorder:(int)border;
 
 @end
+

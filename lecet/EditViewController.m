@@ -268,12 +268,8 @@ typedef enum  {
         [[DataManager sharedManager] dismissPopup];
         [self presentViewController:alert animated:YES completion:nil];
         
-        
     }
 
-    
-    
-    
 }
 
 

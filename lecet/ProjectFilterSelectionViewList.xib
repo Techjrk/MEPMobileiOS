@@ -5,20 +5,21 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectFilterBiddingListView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectFilterSelectionViewList">
             <connections>
-                <outlet property="collectionView" destination="atN-DO-1Gw" id="WKq-nu-h3p"/>
+                <outlet property="collectionView" destination="PRP-XR-0vK" id="nqq-IJ-Jf9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="542" height="337"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="atN-DO-1Gw">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LyL-Mc-PpE">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PRP-XR-0vK">
+                    <rect key="frame" x="0.0" y="0.0" width="542" height="337"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Vy-46-hNc">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -28,11 +29,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="atN-DO-1Gw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1yB-Df-xbe"/>
-                <constraint firstAttribute="bottom" secondItem="atN-DO-1Gw" secondAttribute="bottom" id="Pr3-qN-Eln"/>
-                <constraint firstItem="atN-DO-1Gw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XO7-jm-y5U"/>
-                <constraint firstAttribute="trailing" secondItem="atN-DO-1Gw" secondAttribute="trailing" id="zIi-CY-7C2"/>
+                <constraint firstItem="PRP-XR-0vK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Q0-v7-luO"/>
+                <constraint firstAttribute="bottom" secondItem="PRP-XR-0vK" secondAttribute="bottom" id="kQe-4V-dOe"/>
+                <constraint firstAttribute="trailing" secondItem="PRP-XR-0vK" secondAttribute="trailing" id="lsW-g9-zMj"/>
+                <constraint firstItem="PRP-XR-0vK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oaa-bE-7IX"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="525" y="274.5"/>
         </view>
     </objects>
 </document>
