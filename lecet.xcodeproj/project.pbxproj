@@ -124,6 +124,10 @@
 		B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD043C1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib */; };
 		B6FD04431D1D325800E12123 /* ProjectFilterSelectionViewList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */; };
 		B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */; };
+		B6FD044B1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */; };
+		B6FD044C1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */; };
+		B6FD04521D1D8FD500E12123 /* ProjectFilterBHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */; };
+		B6FD04531D1D8FD500E12123 /* ProjectFilterBHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */; };
 		B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */; };
 		B6FD33FF1CFDC971005B00A8 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
@@ -532,6 +536,13 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
+		B6FD04471D1D875600E12123 /* projectFilterSelectionConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectFilterSelectionConstant.h; sourceTree = "<group>"; };
+		B6FD04481D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterUpdatedViewController.h; sourceTree = "<group>"; };
+		B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterUpdatedViewController.m; sourceTree = "<group>"; };
+		B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterUpdatedViewController.xib; sourceTree = "<group>"; };
+		B6FD044F1D1D8FD500E12123 /* ProjectFilterBHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBHViewController.h; sourceTree = "<group>"; };
+		B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBHViewController.m; sourceTree = "<group>"; };
+		B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBHViewController.xib; sourceTree = "<group>"; };
 		B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
 		B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
 		B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
@@ -1516,6 +1527,26 @@
 			name = ProjectFilterSelectionViewList;
 			sourceTree = "<group>";
 		};
+		B6FD044D1D1D8C3E00E12123 /* ProjectFilterUpdated */ = {
+			isa = PBXGroup;
+			children = (
+				B6FD04481D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.h */,
+				B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */,
+				B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */,
+			);
+			name = ProjectFilterUpdated;
+			sourceTree = "<group>";
+		};
+		B6FD044E1D1D8F5700E12123 /* ProjectFilterBH */ = {
+			isa = PBXGroup;
+			children = (
+				B6FD044F1D1D8FD500E12123 /* ProjectFilterBHViewController.h */,
+				B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */,
+				B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */,
+			);
+			name = ProjectFilterBH;
+			sourceTree = "<group>";
+		};
 		B6FD33FA1CFDC958005B00A8 /* ProjectList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1586,6 +1617,8 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6FD044E1D1D8F5700E12123 /* ProjectFilterBH */,
+				B6FD044D1D1D8C3E00E12123 /* ProjectFilterUpdated */,
 				B6F0F17A1D1C1D79004D6654 /* ProjectFilterBidding */,
 				B6BDBAC41D1821A3001FB41C /* EditViewController */,
 				B6A74EF61D15DBBA007CDFF3 /* CompanySort */,
@@ -1938,6 +1971,7 @@
 				B6BDBAB71D181C1D001FB41C /* editViewConstant.h */,
 				B7BF60911D1BE7EE00B3BDD7 /* searchViewConstants.h */,
 				B6FD04381D1D2AE900E12123 /* projectFilterSelectionViewConstant.h */,
+				B6FD04471D1D875600E12123 /* projectFilterSelectionConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";
@@ -2199,6 +2233,7 @@
 				B65106601D12D7AD00007759 /* CompanyTrackingCollectionViewCell.xib in Resources */,
 				B7BF609B1D1C234B00B3BDD7 /* SearchSectionCollectionViewCell.xib in Resources */,
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
+				B6FD04531D1D8FD500E12123 /* ProjectFilterBHViewController.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B7BF60901D1BE28100B3BDD7 /* SearchViewController.xib in Resources */,
 				B6FD04371D1D26D000E12123 /* ProjectFilterSelectionView.xib in Resources */,
@@ -2274,6 +2309,7 @@
 				B6BDBABD1D181EA9001FB41C /* EditViewCollectionViewCell.xib in Resources */,
 				B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */,
 				B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */,
+				B6FD044C1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib in Resources */,
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
 				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
 				B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */,
@@ -2395,6 +2431,7 @@
 				B70FDF6D1CE9B7160035A6D9 /* CustomEntryField.m in Sources */,
 				B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */,
 				B73EFAD51D117B4D00C6B3B2 /* CustomCollectionView.m in Sources */,
+				B6FD044B1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m in Sources */,
 				B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */,
 				B6FD04361D1D26D000E12123 /* ProjectFilterSelectionView.m in Sources */,
 				B64474721D00449B0001B244 /* ProjectSortCVCell.m in Sources */,
@@ -2441,6 +2478,7 @@
 				B7F10A171CDB3E3300847FA3 /* AFURLSessionManager.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B683372A1D082154004226D3 /* CPCustomTextFieldView.m in Sources */,
+				B6FD04521D1D8FD500E12123 /* ProjectFilterBHViewController.m in Sources */,
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
 				B6411BF01D09CED8002B6E88 /* CDProjectBidsViewController.m in Sources */,
 				B6411BB71D097426002B6E88 /* SettingsCPView.m in Sources */,

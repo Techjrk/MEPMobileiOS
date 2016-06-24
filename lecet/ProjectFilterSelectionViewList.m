@@ -8,6 +8,7 @@
 
 #import "ProjectFilterSelectionViewList.h"
 #import "ProjectFilterSelectionCollectionViewCell.h"
+#import "projectFilterSelectionConstant.h"
 
 @interface ProjectFilterSelectionViewList () <UICollectionViewDelegate, UICollectionViewDataSource,ProjectFilterSelectionCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;
@@ -23,7 +24,7 @@
 #define UnSelectedFlag              @"0"
 #define SelectedFlag                @"1"
 #define FLAGNAME                    @"flag"
-#define TITLENAME                   @"title"
+
 
 - (void)awakeFromNib {
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectFilterSelectionCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
@@ -35,7 +36,8 @@
 - (void)setInfo:(NSArray *)item {
     
     [item enumerateObjectsUsingBlock:^(id obj,NSUInteger index, BOOL *stop){
-        NSDictionary *dict = @{TITLENAME:obj,FLAGNAME:UnSelectedFlag};
+        NSMutableDictionary *dict = [obj mutableCopy];
+        [dict setValue:UnSelectedFlag forKey:FLAGNAME];
         [collectionDataItems addObject:dict];
     }];
     
@@ -50,7 +52,7 @@
     ProjectFilterSelectionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.projectFilterSelectionCollectionViewCellDelegate = self;
     
-     NSString *title = [collectionDataItems objectAtIndex:indexPath.row][TITLENAME];
+     NSString *title = [collectionDataItems objectAtIndex:indexPath.row][PROJECT_SELECTION_TITLE];
     [cell setLabelText:title];
     [cell setButtonTag:(int)indexPath.row];
     [self configureView:cell];

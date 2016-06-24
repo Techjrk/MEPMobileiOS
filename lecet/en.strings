@@ -274,6 +274,22 @@
 "PROJECT_FILTER_BIDDING_TITLE"              =               "Bidding Within";
 "PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE"  =               "APPLY";
 
+//ProjectFilterBHViewController.xib
+"PROJECT_FILTER_BH_TITLE"                   =               "B/H";
+"BH_TITLE_BOTH"                             =               "Both";
+"BH_TITLE_BLDG"                             =               "Building";
+"BH_TITLE_HIGHWAY"                          =               "Heavy-Highway";
+
+//ProjectFilterUpdatedViewController.xib
+"PROJECT_FILTER_UPDATED_TITLE"              =               "UPDATED WITHIN";
+
+
+
+
+
+
+
+
 
 
 

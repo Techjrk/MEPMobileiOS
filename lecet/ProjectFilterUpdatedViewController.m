@@ -1,27 +1,23 @@
 //
-//  ProjectFilterBiddingViewController.m
+//  ProjectFilterUpdatedViewController.m
 //  lecet
 //
-//  Created by Michael San Minay on 23/06/2016.
+//  Created by Michael San Minay on 24/06/2016.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "ProjectFilterBiddingViewController.h"
+#import "ProjectFilterUpdatedViewController.h"
 #import "ProjectFilterSelectionViewList.h"
 #import "ProfileNavView.h"
 #import "projectFilterSelectionConstant.h"
 
-@interface ProjectFilterBiddingViewController ()<ProfileNavViewDelegate,ProjectFilterSelectionViewListDelegate>{
-    NSDictionary *dataInfoItems;
-    
-}
-@property (weak, nonatomic) IBOutlet ProjectFilterSelectionViewList *projectFilterSlectionViewList;
+@interface ProjectFilterUpdatedViewController ()<ProfileNavViewDelegate,ProjectFilterSelectionViewListDelegate>
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
+@property (weak, nonatomic) IBOutlet ProjectFilterSelectionViewList *projectFilterSlectionViewList;
 
 @end
 
-@implementation ProjectFilterBiddingViewController
-
+@implementation ProjectFilterUpdatedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +27,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     
-
+    
     NSArray *array = @[
                        @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
@@ -44,10 +40,10 @@
     
     
     
-   
+    
     [_projectFilterSlectionViewList setInfo:array];
     
-    [_navView setNavTitleLabel:NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE")];
+    [_navView setNavTitleLabel:NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE")];
     [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE")];
     [_navView setRigthBorder:10];
 }
@@ -84,11 +80,5 @@
     NSLog(@"Item %@",dict);
 }
 
-
-- (void)setDataInfo:(NSDictionary *)items {
- 
-    dataInfoItems = items;
-    
-}
 
 @end
