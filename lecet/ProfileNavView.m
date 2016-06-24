@@ -9,16 +9,21 @@
 #import "ProfileNavView.h"
 #import "profileNavViewConstant.h"
 
-@interface ProfileNavView ()
+@interface ProfileNavView () {
+    BOOL setTitleFromController;
+}
 @property (weak, nonatomic) IBOutlet UILabel *profileNavTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *rightNavButton;
 @property (weak, nonatomic) IBOutlet UIButton *leftNavButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintWidth;
 
 @end
 
 @implementation ProfileNavView
 
 - (void)awakeFromNib {
+    
+    _constraintWidth.constant = 0;
     [self setBackgroundColor:PROFILE_NAV_VIEW_BG_COLOR];
     _leftNavButton.tag = ProfileNavItemBackButton;
     _rightNavButton.tag = ProfileNavItemSaveButton;
@@ -28,7 +33,10 @@
     
     _rightNavButton.titleLabel.font = PROFILE_NAV_SAVE_BUTTON_FONT;
     [_rightNavButton setTitleColor:PROFILE_NAV_SAVE_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    [_rightNavButton setTitle:NSLocalizedLanguage(@"PROFILE_NAV_RIGHT_BUTTON_TEXT") forState:UIControlStateNormal];
+    //if (!setTitleFromController) {
+         [_rightNavButton setTitle:NSLocalizedLanguage(@"PROFILE_NAV_RIGHT_BUTTON_TEXT") forState:UIControlStateNormal];
+    //}
+   
 }
 
 - (IBAction)tappedProfileNavButton:(id)sender {
@@ -44,5 +52,13 @@
     [_rightNavButton setHidden:hide];
 }
 
+- (void)setNavRightButtonTitle:(NSString *)text {
+    //setTitleFromController = YES;
+    [_rightNavButton setTitle:text forState:UIControlStateNormal];
+}
+
+- (void)setRigthBorder:(int)border {
+    _constraintWidth.constant = border;
+}
 
 @end

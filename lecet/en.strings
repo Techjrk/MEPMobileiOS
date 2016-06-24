@@ -270,5 +270,10 @@
 "COMPANIES_COUNT_TITLE"                     =               "Companies";
 
 
+//ProjectFilterBiddingViewController.xib
+"PROJECT_FILTER_BIDDING_TITLE"              =               "Bidding Within";
+"PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE"  =               "APPLY";
+
+
 
 

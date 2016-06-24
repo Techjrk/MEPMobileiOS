@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectFilterSelectionView">
+            <connections>
+                <outlet property="checkButton" destination="2Ff-af-uVD" id="9NV-oB-2gs"/>
+                <outlet property="labelTitle" destination="KLI-fa-DW7" id="bVj-4g-tkC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-af-uVD">
+                    <rect key="frame" x="0.0" y="0.0" width="26" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="roundUnselect_icon"/>
+                    <state key="selected" image="roundSelect_icon"/>
+                    <connections>
+                        <action selector="tappedCheckButton:" destination="-1" eventType="touchUpInside" id="AgU-HJ-wbc"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-fa-DW7">
+                    <rect key="frame" x="36" y="0.0" width="310" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2Ff-af-uVD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.078" id="Jlj-iN-PBa"/>
+                <constraint firstItem="2Ff-af-uVD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QIs-3C-NZj"/>
+                <constraint firstAttribute="bottom" secondItem="KLI-fa-DW7" secondAttribute="bottom" id="UDD-qd-VFY"/>
+                <constraint firstAttribute="bottom" secondItem="2Ff-af-uVD" secondAttribute="bottom" id="Y6q-Tv-2h0"/>
+                <constraint firstAttribute="trailing" secondItem="KLI-fa-DW7" secondAttribute="trailing" id="Zke-2o-qHH"/>
+                <constraint firstItem="KLI-fa-DW7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hR9-AS-gL7"/>
+                <constraint firstItem="KLI-fa-DW7" firstAttribute="leading" secondItem="2Ff-af-uVD" secondAttribute="trailing" constant="10" id="u0j-6P-hOU"/>
+                <constraint firstItem="2Ff-af-uVD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yNO-Gi-G4B"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="518" y="169"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="roundSelect_icon" width="26" height="26"/>
+        <image name="roundUnselect_icon" width="26" height="26"/>
+    </resources>
+</document>
