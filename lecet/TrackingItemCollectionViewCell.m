@@ -8,7 +8,13 @@
 
 #import "TrackingItemCollectionViewCell.h"
 
-#import "trackingItemCollectionConstants.h"
+#define TRACKING_ITEM_TITLE_FONT                    fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define TRACKING_ITEM_TITLE_COLOR                   RGB(72, 72, 72)
+
+#define TRACKING_ITEM_COUNT_FONT                    fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define TRACKING_ITEM_COUNT_COLOR                   RGB(136, 136, 136)
+
+#define TRACKING_ITEM_LINE_COLOR                    RGB(193, 193, 193)
 
 @interface TrackingItemCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIView *lineView;

@@ -7,7 +7,6 @@
 //
 
 #import "MyProfileHeaderView.h"
-#import "myProfileConstant.h"
 
 @interface MyProfileHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;

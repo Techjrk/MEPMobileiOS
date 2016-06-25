@@ -8,7 +8,7 @@
 
 #import "ProjectAllBidsView.h"
 #import "ProjectBidItemCollectionViewCell.h"
-#import "projectBidConstants.h"
+#import "ProjectBidView.h"
 #import "DB_Bid.h"
 #import "DB_Project.h"
 #import "ProjectSortCVCell.h"

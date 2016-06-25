@@ -8,8 +8,6 @@
 
 #import "CompanyDetailViewController.h"
 
-#import "companyDetailsConstants.h"
-#import "companyHeaderConstants.h"
 #import "CompanyHeaderView.h"
 #import "CustomEntryField.h"
 #import "AssociatedProjectsView.h"
@@ -17,7 +15,7 @@
 #import "ContactsListView.h"
 #import "ProjectBidListView.h"
 #import "CompanyStateView.h"
-#import "contactFieldConstants.h"
+#import "ContactFieldView.h"
 #import "MapViewController.h"
 #import "PushZoomAnimator.h"
 #import "DB_Company.h"
@@ -34,6 +32,8 @@
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
 #import "PopupViewController.h"
+
+#define COMPANY_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 
 typedef enum {
     CompanyDetailPopupModeTrack,

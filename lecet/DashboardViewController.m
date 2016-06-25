@@ -8,7 +8,6 @@
 
 #import "DashboardViewController.h"
 
-#import "dashboardConstants.h"
 #import "CustomCalendar.h"
 #import "CalendarItem.h"
 #import "DB_BidSoon.h"
@@ -27,7 +26,6 @@
 #import "CompanyDetailViewController.h"
 #import "PushZoomAnimator.h"
 #import "ChartView.h"
-#import "chartConstants.h"
 #import "MoreMenuViewController.h"
 #import "ProjectsNearMeViewController.h"
 #import "SettingsViewController.h"
@@ -40,6 +38,9 @@
 #import "ProjectTrackingViewController.h"
 #import "CompanyTrackingListViewController.h"
 #import "SearchViewController.h"
+
+#define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
+#define DASHBOARD_BIDS_BG_COLOR                 RGB(245, 245, 245)
 
 @interface DashboardViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CustomCalendarDelegate, UIScrollViewDelegate, BidCollectionItemDelegate, BidSoonCollectionItemDelegate, MenuHeaderDelegate, UINavigationControllerDelegate, ChartViewDelegate, BitItemRecentDelegate,MoreMenuViewControllerDelegate, SettingsViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate>{
 

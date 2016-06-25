@@ -10,8 +10,10 @@
 
 #import "SectionTitleView.h"
 #import "ParticipantCollectionViewCell.h"
-#import "participantsConstants.h"
 #import "DB_Participant.h"
+
+#define PARTICIPANTS_FONT                fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define PARTICIPANTS_COLOR               RGB(121, 120, 120)
 
 @interface PariticpantsView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSLayoutConstraint *constraintHeight;

@@ -7,7 +7,12 @@
 //
 
 #import "CPCustomTextFieldView.h"
-#import "cpCustomtextFieldConstant.h"
+
+#define CPCUSTOMTEXTFIELD_LEFT_LABEL_FONT                   fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define CPCUSTOMTEXTFIELD_LEFT_LABEL_FONT_COLOR             RGB(34,34,34)
+
+#define CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT        fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT_COLOR  RGB(34,34,34)
 
 @interface CPCustomTextFieldView ()
 @property (weak, nonatomic) IBOutlet UILabel *leftTitleLabel;

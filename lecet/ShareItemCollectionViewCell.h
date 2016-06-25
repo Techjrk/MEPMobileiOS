@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#define DROPDOWN_SHARELIST_BUTTON_SENDBYEMAIL_FONT          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
+#define DROPDOWN_SHARELIST_BUTTON_COPYLINK_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
+
+#define DROPDOWN_SHARELIST_BUTTON_FONT                      fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define DROPDOWN_SHARELIST_BUTTON_COLOR                     RGB(72, 72, 72)
+
 typedef enum : NSUInteger {
     ShareItemEmail,
     ShareItemLink

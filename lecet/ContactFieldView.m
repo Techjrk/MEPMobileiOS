@@ -8,7 +8,9 @@
 
 #import "ContactFieldView.h"
 
-#import "contactFieldConstants.h"
+#define CONTACT_FIELD_LABEL_FONT                fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define CONTACT_FIELD_LABEL_COLOR               RGB(34, 34, 34)
+#define CONTACT_COMPANY_NAME_FIELD_FONT_COLOR   RGB(76,145,209)
 
 @interface ContactFieldView(){
     ContactFieldType fieldType;

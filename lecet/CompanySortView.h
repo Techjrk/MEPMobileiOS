@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
-#import "companySortViewConstant.h"
-#import "CompanySortDelegate.h"
 
+typedef enum {
+    CompanySortItemLastUpdated = 0,
+    CompanySortItemLastAlphabetical = 1
+    
+}CompanySortItem;
+
+
+#define COMPANYTRACKINGVIEW_LABEL_FONT            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define COMPANYTRACKINGVIEW_LABEL_FONT_COLOR      RGB(34,34,34)
+
+#define COMPANYTRACKINGVIEW_VIEW_BG_COLOR       RGB(245,245,245)
+
+@protocol CompanySortDelegate <NSObject>
+- (void)selectedSort:(CompanySortItem)item;
+@end
 
 @interface CompanySortView : BaseViewClass
 @property (nonatomic,assign) id <CompanySortDelegate> companySortDelegate;

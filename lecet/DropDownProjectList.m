@@ -7,8 +7,13 @@
 //
 
 #import "DropDownProjectList.h"
-#import "dropDownProjectListConstant.h"
 #import "ProjectListCVCell.h"
+
+#define DROPDOWN_PROJECTLIST_LABEL_SELECTTRACKING_FONT                  fontNameWithSize(FONT_NAME_LATO_BOLD, 13)
+#define DROPDOWN_PROJECTLIST_VIEW_SELECTTRACKINGLIST_BG_COLOR           RGB(245, 245, 245)
+#define DROPDOWN_PROJECTLIST_BUTTON_FONT_COLOR                          RGB(72, 72, 72)
+#define DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR                           RGB(136, 136, 136)
+#define DROPDOWN_PROJECTLIST_COLLECTIONVIEW_BG_COLOR                    RGB(193, 193, 193)
 
 @interface DropDownProjectList ()<UICollectionViewDelegate, UICollectionViewDataSource>
 

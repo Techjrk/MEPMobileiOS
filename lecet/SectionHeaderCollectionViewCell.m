@@ -7,7 +7,7 @@
 //
 
 #import "SectionHeaderCollectionViewCell.h"
-#import "projectSortConstant.h"
+#import "ProjectSortViewController.h"
 
 @interface SectionHeaderCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *label;

@@ -8,9 +8,15 @@
 
 #import "CalendarItem.h"
 
-#import "calendarItemConstants.h"
-#import "calendarConstants.h"
-#import "constants.h"
+#import "CustomCalendar.h"
+
+#define CALENDAR_ITEM_INDICATOR_SELECTED_COLOR          RGB(252, 183, 108)
+#define CALENDAR_ITEM_INDICATOR_MARKED_COLOR            RGB(252, 183, 108)
+#define CALENDAR_ITEM_INDICATOR_ACTIVE_COLOR            RGB(252, 183, 108)
+#define CALENDAR_ITEM_INDICATOR_INACTIVE_COLOR          RGB(149, 149, 149)
+#define CALENDAR_ITEM_TEXT_COLOR                        RGB(255, 255, 255)
+
+#define CALENDAR_ITEM_TEXT_FONT                         fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 
 @interface CalendarItem(){
     CalendarItemState state;

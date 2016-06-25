@@ -10,7 +10,8 @@
 #import "ProfileNavView.h"
 #import "ChangePasswordView.h"
 #import "ProfileNavView.h"
-#import "changePasswordVCConstant.h"
+
+#define CHANGEPASSWORD_VC_BG_COLOR          RGB(245,245,245)
 
 @interface ChangePasswordViewController ()<ProfileNavViewDelegate>{
     

@@ -8,7 +8,6 @@
 
 #import "ProjectsNearMeViewController.h"
 
-#import "projectsNearMeConstants.h"
 #import "ShareLocationViewController.h"
 #import "GoToSettingsViewController.h"
 #import "ProjectAnnotationView.h"
@@ -16,6 +15,8 @@
 #import "CallOutViewController.h"
 #import "ProjectPointAnnotation.h"
 #import <MapKit/MapKit.h>
+
+#define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
 @interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate>{
     BOOL isFirstLaunch;

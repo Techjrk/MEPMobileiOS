@@ -8,7 +8,6 @@
 
 #import "EditViewList.h"
 #import "EditViewCollectionViewCell.h"
-#import "companyTrackingListConstant.h"
 
 @interface EditViewList ()<UICollectionViewDelegate, UICollectionViewDataSource,EditViewCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;

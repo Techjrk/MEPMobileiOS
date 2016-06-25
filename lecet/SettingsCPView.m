@@ -7,7 +7,9 @@
 //
 
 #import "SettingsCPView.h"
-#import "SettingConstant.h"
+
+#define SETTINGS_LABEL_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define SETTINGS_LABEL_FONT_COLOR           RGB(34,34,34)
 
 @interface SettingsCPView ()
 @property (weak, nonatomic) IBOutlet UILabel *label;

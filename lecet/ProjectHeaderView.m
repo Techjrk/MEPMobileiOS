@@ -8,8 +8,16 @@
 
 #import "ProjectHeaderView.h"
 
-#import "projectHeaderConstants.h"
 #import <MapKit/MapKit.h>
+
+#define PROJECT_HEADER_BG_COLOR                     RGB(19, 86, 141)
+#define PROJECT_HEADER_INFO_BG_COLOR                RGB(248, 153, 0)
+
+#define PROJECT_HEADER_TITLE_TEXT_COLOR             RGB(255, 255, 255)
+#define PROJECT_HEADER_TITLE_TEXT_FONT              fontNameWithSize(FONT_NAME_LATO_BLACK, 17)
+
+#define PROJECT_LOCATION_TEXT_COLOR                 RGB(255, 255, 255)
+#define PROJECT_LOCATION_TEXT_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
 
 @interface ProjectHeaderView()<MKMapViewDelegate>{
     CGFloat geoCodeLat;

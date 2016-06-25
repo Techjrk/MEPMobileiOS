@@ -9,8 +9,7 @@
 #import "ContactDetailViewController.h"
 #import "ContactNavBarView.h"
 #import "ContactDetailView.h"
-#import "contactFieldConstants.h"
-
+#import "ContactFieldView.h"
 #import "DB_CompanyContact.h"
 #import "DB_Company.h"
 #import <MapKit/MapKit.h>

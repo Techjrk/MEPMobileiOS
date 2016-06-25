@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+#define PROJECT_GEOCODE_LAT                         @"GEO_CODE_LAT"
+#define PROJECT_GEOCODE_LNG                         @"GEO_CODE_LNG"
+#define PROJECT_TITLE                               @"PROJECT_TITLE"
+#define PROJECT_LOCATION                            @"PROJECT_LOCATION"
+
 @protocol ProjectHeaderDelegate <NSObject>
 - (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
 @end

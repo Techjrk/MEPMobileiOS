@@ -9,7 +9,9 @@
 #import "SettingCollectionViewCell.h"
 #import "SettingsNotificationsView.h"
 #import "SettingsCPView.h"
-#import "SettingConstant.h"
+
+#define SETTINGS_SIGNOUT_LABEL_FONT fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define SETTINGS_SIGNOUT_LABEL_FONT_COLOR RGB(149,149,149)
 
 @interface SettingCollectionViewCell()<SettingsNotificationsViewDelegate>
 @property (weak, nonatomic) IBOutlet SettingsNotificationsView *notificationView;

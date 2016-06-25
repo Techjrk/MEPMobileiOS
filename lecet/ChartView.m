@@ -8,9 +8,12 @@
 
 #import "ChartView.h"
 
-#import "chartConstants.h"
 #import "CustomPieChart.h"
 #import "CustomPieChartLayer.h"
+
+#define CHART_BUTTON_SELECTED_COLOR                 RGB(9, 23, 53)
+
+#define CHART_BUTTON_GROUP_LABEL_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 10)
 
 @interface ChartView()<CustomPieChartDelegate>
 @property (weak, nonatomic) IBOutlet UIView *chartButtonGroup;

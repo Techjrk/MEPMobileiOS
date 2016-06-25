@@ -7,11 +7,12 @@
 //
 
 #import "ProjectSortCVCell.h"
-#import "projectSortConstant.h"
+
+#define PROJECTSORT_CELL_LABEL_FONT                     fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define PROJECTSORT_CELL_LABEL_FONT_COLOR               RGB(72,72,72)
 
 @interface ProjectSortCVCell ()
 @property (weak, nonatomic) IBOutlet UIView *lineView;
-
 @end
 
 @implementation ProjectSortCVCell

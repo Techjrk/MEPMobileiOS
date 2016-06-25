@@ -7,7 +7,10 @@
 //
 
 #import "SettingsNotificationsView.h"
-#import "SettingConstant.h"
+
+#define SETTINGS_LABEL_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define SETTINGS_LABEL_FONT_COLOR           RGB(34,34,34)
+#define SETTINGS_SWITCHBUTTON_BG_COLOR      RGB(168,195,230)
 
 @interface SettingsNotificationsView ()
 @property (weak, nonatomic) IBOutlet UISwitch *switchButton;

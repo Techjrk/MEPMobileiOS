@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface SectionHeaderCollectionViewCell : UICollectionViewCell
 - (void)setTitle:(NSString*)title;
 @end

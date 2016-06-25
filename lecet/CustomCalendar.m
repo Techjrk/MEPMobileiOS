@@ -8,9 +8,16 @@
 
 #import "CustomCalendar.h"
 
-#import "calendarConstants.h"
 #import "CalendarItemCollectionViewCell.h"
 #import "CalendarItem.h"
+
+#define CALENDAR_BG_COLOR                                       RGB(5, 35, 74)
+#define CALENDAR_CONTENT_VIEW_BG_COLOR                          RGB(5, 35, 74)
+#define CALENDAR_MONTH_CONTAINER_VIEW_BG_COLOR                  RGB(248, 152, 28)
+
+#define CALENDAR_LABEL_MONTH_TEXT_COLOR                         RGB(255, 255, 255)
+#define CALENDAR_LABEL_MONTH_TEXT_FONT                          fontNameWithSize(FONT_NAME_LATO_BLACK, 17)
+
 
 @interface CustomCalendar()<UICollectionViewDelegate, UICollectionViewDataSource, CalendarItemCollectionViewCellDelegate>{
     NSDate *currentDate;

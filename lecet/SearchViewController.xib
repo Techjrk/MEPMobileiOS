@@ -22,6 +22,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ev1-02-ufH">
+                    <rect key="frame" x="0.0" y="84.5" width="414" height="651.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uot-Dy-KDt">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="rpu-qD-y20"/>
+                        <outlet property="delegate" destination="-1" id="qj6-Kp-R8P"/>
+                    </connections>
+                </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fiW-wQ-edk">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="84.5"/>
                     <subviews>
@@ -57,20 +71,6 @@
                         <constraint firstItem="U88-lk-nNv" firstAttribute="centerY" secondItem="XPt-Zi-h49" secondAttribute="centerY" id="ye7-1V-xBz"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ev1-02-ufH">
-                    <rect key="frame" x="0.0" y="84.5" width="414" height="651.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uot-Dy-KDt">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="50" height="50"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="rpu-qD-y20"/>
-                        <outlet property="delegate" destination="-1" id="qj6-Kp-R8P"/>
-                    </connections>
-                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -78,6 +78,7 @@
                 <constraint firstItem="ev1-02-ufH" firstAttribute="top" secondItem="fiW-wQ-edk" secondAttribute="bottom" id="0dy-uw-oKi"/>
                 <constraint firstItem="ICU-AI-saw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1hJ-yn-0E6"/>
                 <constraint firstItem="fiW-wQ-edk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.115" id="3AM-Ts-mVO"/>
+                <constraint firstAttribute="bottom" secondItem="ev1-02-ufH" secondAttribute="bottom" id="4x2-YH-Et0"/>
                 <constraint firstAttribute="trailing" secondItem="fiW-wQ-edk" secondAttribute="trailing" id="Fb3-0k-xvH"/>
                 <constraint firstItem="fiW-wQ-edk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ijm-vb-ajm"/>
                 <constraint firstItem="ICU-AI-saw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WCx-Hc-EMJ"/>
@@ -92,6 +93,11 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="XAX-SX-YyD"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

@@ -8,7 +8,7 @@
 
 #import "CompanyTrackingListView.h"
 #import "CompanyTrackingCollectionViewCell.h"
-#import "companyTrackingListConstant.h"
+#import "EditViewList.h"
 
 @interface CompanyTrackingListView ()<UICollectionViewDelegate, UICollectionViewDataSource,CompanyTrackingCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;

@@ -9,7 +9,7 @@
 #import "MyProfileViewController.h"
 #import "ProfileNavView.h"
 #import "MyProfileView.h"
-#import "myProfileConstant.h"
+#import "MyProfileHeaderView.h"
 
 @interface MyProfileViewController ()<ProfileNavViewDelegate> {
     

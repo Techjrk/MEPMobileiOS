@@ -8,12 +8,18 @@
 
 #import "SearchViewController.h"
 
-#import "searchViewConstants.h"
 #import "SearchSectionCollectionViewCell.h"
 #import "SearchSuggestedCollectionViewCell.h"
 #import "SearchProjectCollectionViewCell.h"
 #import "SearchCompanyCollectionViewCell.h"
 #import "SearchContactCollectionViewCell.h"
+#import "SearchSavedCollectionViewCell.h"
+
+#define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+
+#define SEACRCH_PLACEHOLDER_FONT                        fontNameWithSize(FONT_NAME_AWESOME, 14)
+#define SEACRCH_PLACEHOLDER_COLOR                       RGB(255, 255, 255)
+#define SEACRCH_PLACEHOLDER_TEXT                        [NSString stringWithFormat:@"%C", 0xf002]
 
 typedef enum : NSUInteger {
     SearchSectionRecent = 0,
@@ -69,9 +75,9 @@ typedef enum : NSUInteger {
    
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionRecent)];
 
-    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedProject)];
+    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSavedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedProject)];
 
-    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedCompany)];
+    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSavedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedCompany)];
 
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSuggested)];
 
@@ -206,12 +212,12 @@ typedef enum : NSUInteger {
             }
                 
             case SearchSectionSavedProject: {
-                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.073);
+                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.071);
                 break;
             }
                 
             case SearchSectionSavedCompany: {
-                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.073);
+                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.071);
                 break;
             }
     

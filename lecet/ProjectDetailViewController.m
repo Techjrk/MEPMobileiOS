@@ -10,8 +10,6 @@
 
 #import "ProjectHeaderView.h"
 #import "ProjectStateView.h"
-#import "projectHeaderConstants.h"
-#import "projectDetailConstants.h"
 #import "CustomEntryField.h"
 #import "SeeAllView.h"
 #import "NotesView.h"
@@ -33,6 +31,8 @@
 #import "PopupViewController.h"
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
+
+#define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 
 typedef enum {
     ProjectDetailPopupModeTrack,

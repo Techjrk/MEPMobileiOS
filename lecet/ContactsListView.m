@@ -11,7 +11,7 @@
 #import "SectionTitleView.h"
 #import "ContactItemCollectionViewCell.h"
 #import "DB_CompanyContact.h"
-#import "contactsConstants.h"
+#import "ContactsView.h"
 #import "DB_Company.h"
 
 @interface ContactsListView()<UICollectionViewDelegate, UICollectionViewDataSource>{

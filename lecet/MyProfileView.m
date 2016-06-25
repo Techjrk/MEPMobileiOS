@@ -7,10 +7,11 @@
 //
 
 #import "MyProfileView.h"
-#import "myProfileConstant.h"
 #import "MyProfileCustomTextFieldView.h"
 #import "MyProfileOneTextFieldView.h"
 #import "MyProfileTwoTextFieldView.h"
+#import "MyProfileHeaderView.h"
+
 @interface MyProfileView ()<TextfieldViewDelegate>{
     NSDictionary *collectionItems;
     NSLayoutConstraint *constraintHeight;

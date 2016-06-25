@@ -8,7 +8,15 @@
 
 #import "ShareLocationViewController.h"
 
-#import "shareLocationConstants.h"
+#define SHARE_LOCATION_MSG_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 13)
+#define SHARE_LOCATION_MSG_COLOR                RGB(34, 34, 34)
+
+#define SHARE_LOCATION_BUTTON_SHARE_FONT        fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define SHARE_LOCATION_BUTTON_SHARE_COLOR       RGB(255, 255, 255)
+#define SHARE_LOCATION_BUTTON_SHARE_BG_COLOR    RGB(0, 63, 114)
+
+#define SHARE_LOCATION_BUTTON_CANCEL_FONT       fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define SHARE_LOCATION_BUTTON_CANCEL_COLOR      RGB(0, 63, 114)
 
 @interface ShareLocationViewController ()
 @property (weak, nonatomic) IBOutlet UIView *blurView;

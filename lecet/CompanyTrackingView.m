@@ -8,13 +8,25 @@
 
 #import "CompanyTrackingView.h"
 #import <MapKit/MapKit.h>
-#import "companyTrackingViewConstant.h"
+
+#define COMPANYTRACKINGVIEW_LABEL_NAME_FONT             fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
+#define COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR       RGB(34,34,34)
+
+#define COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT          fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
+#define COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT_COLOR    RGB(159,164,166)
+
+#define COMPANYTRACKINGVIEW_BUTTON_LABEL_FONT           fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define COMPANYTRACKINGVIEW_BUTTON_LABEL_FONT_COLOR           RGB(255,255,255)
+#define COMPANYTRACKINGVIEW_BUTTON_BG_COLOR             RGB(76,145,209)
+
+
+#define COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR           RGB(76,145,209)
+#define COMPANYTRACKINGVIEW_TEXTVIEW_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
+
+#define COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR         RGB(255,255,255)
 
 @interface CompanyTrackingView () {
-    
     BOOL dataIsShown;
-
-
 }
 @property (weak, nonatomic) IBOutlet UIView *belowContainerView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -73,9 +85,6 @@
     _containerTextView.layer.masksToBounds = YES;
     [_textView.layer setCornerRadius:4.0f];
     _textView.layer.masksToBounds = YES;
-    
-
-  
     
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 

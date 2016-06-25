@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "CompanySortDelegate.h"
+#import "CompanySortView.h"
 
 @interface CompanySortViewController : BaseViewController
 @property (nonatomic,assign) id<CompanySortDelegate> companySortDelegate;

@@ -9,8 +9,16 @@
 #import "BidItemRecent.h"
 
 #import <MapKit/MapKit.h>
-#import "bidItemRecentConstants.h"
 #import "DB_Project.h"
+
+#define BID_ITEM_RECENT_LABEL_TITLE_COLOR                   RGB(34, 34, 34)
+#define BID_ITEM_RECENT_LABEL_TITLE_FONT                    fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+
+#define BID_ITEM_RECENT_LABEL_LOCATION_COLOR                RGB(159, 164, 166)
+#define BID_ITEM_RECENT_LABEL_LOCATION_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 10)
+
+#define BID_ITEM_RECENT_LABEL_TYPE_COLOR                    RGB(159, 164, 166)
+#define BID_ITEM_RECENT_LABEL_TYPE_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 10)
 
 @interface BidItemRecent()<MKMapViewDelegate>{
     NSNumber *recordId;

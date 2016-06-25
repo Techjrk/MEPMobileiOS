@@ -8,8 +8,14 @@
 
 #import "ProjectDetailStateView.h"
 
-#import "projectDetailStateConstants.h"
+#define PROJECTDETAIL_HIDEPROJECT_BUTTON_BG_COLOR           RGB(0, 63, 114)
+#define PROJECTDETAIL_HIDEPROJECT_BUTTON_FONT_COLOR         RGB(255, 255, 255)
+#define PROJECTDETAIL_HIDEPROJECT_BUTTON_FONT               fontNameWithSize(FONT_NAME_LATO_BOLD, 11)
+#define PROJECTDETAIL_CANCEL_BUTTON_FONT                    fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define PROJECTDETAIL_CANCEL_BUTTON_FONT_COLOR              RGB(0, 63, 144)
 
+#define PROJECTDETAIL_TITLE_LABEL_FONT                      fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 13)
+#define PROJECTDETAIL_TITLE_LABEL_FONT_COLOR                RGB(33, 33, 33)
 
 @interface ProjectDetailStateView ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonHideProject;

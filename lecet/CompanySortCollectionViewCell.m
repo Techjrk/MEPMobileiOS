@@ -7,11 +7,11 @@
 //
 
 #import "CompanySortCollectionViewCell.h"
-#import "companySortViewCellConstant.h"
 
-@interface CompanySortCollectionViewCell() {
-    
-}
+#define COMPANYSORTVC_LABEL_FONT            fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define COMPANYSORTVC_LABEL_FONT_COLOR      RGB(72,72,72)
+
+@interface CompanySortCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 
 @end
