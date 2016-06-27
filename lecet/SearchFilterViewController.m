@@ -8,6 +8,8 @@
 
 #import "SearchFilterViewController.h"
 
+#import "ProjectFilterView.h"
+
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
 
@@ -28,7 +30,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet ProjectFilterView *projectFilter;
+@property (weak, nonatomic) IBOutlet UIScrollView *projectScrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMarkerLeading;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintProjectFilterHeight;
 - (IBAction)tappedButton:(id)sender;
 - (IBAction)tappedButtonCancel:(id)sender;
 - (IBAction)tappedButtonApply:(id)sender;
@@ -63,6 +68,9 @@
     _labelTitle.font = TITLE_FONT;
     _labelTitle.textColor = TITLE_COLOR;
     _labelTitle.text = NSLocalizedLanguage(@"SEARCH_FILTER_TITLE");
+    
+    [_projectFilter setConstraint:_constraintProjectFilterHeight];
+    _projectFilter.scrollView = _projectScrollView;
 
 }
 
@@ -93,6 +101,9 @@
 }
 
 - (IBAction)tappedButtonCancel:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
