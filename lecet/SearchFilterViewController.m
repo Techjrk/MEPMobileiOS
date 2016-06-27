@@ -61,11 +61,9 @@
     _buttonCancel.titleLabel.font = BUTTON_FILTER_FONT;
     [_buttonCancel setTitle:NSLocalizedLanguage(@"SEARCH_FILTER_CANCEL") forState:UIControlStateNormal];
 
-
     [_buttonApply setTitleColor:BUTTON_FILTER_COLOR forState:UIControlStateNormal];
     _buttonApply.titleLabel.font = BUTTON_FILTER_FONT;
     [_buttonApply setTitle:NSLocalizedLanguage(@"SEARCH_FILTER_APPLY") forState:UIControlStateNormal];
-
     
     _labelTitle.font = TITLE_FONT;
     _labelTitle.textColor = TITLE_COLOR;
@@ -119,5 +117,6 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
+    [[DataManager sharedManager] featureNotAvailable];
 }
 @end

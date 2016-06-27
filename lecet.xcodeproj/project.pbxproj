@@ -309,6 +309,8 @@
 		B7BF60DA1D212E8300B3BDD7 /* FilterLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60D91D212E8300B3BDD7 /* FilterLabelView.xib */; };
 		B7BF60DD1D2154C400B3BDD7 /* CompanyFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60DC1D2154C400B3BDD7 /* CompanyFilterView.m */; };
 		B7BF60DF1D2154D500B3BDD7 /* CompanyFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60DE1D2154D500B3BDD7 /* CompanyFilterView.xib */; };
+		B7BF60E31D215E7D00B3BDD7 /* RefineSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60E11D215E7D00B3BDD7 /* RefineSearchViewController.m */; };
+		B7BF60E41D215E7D00B3BDD7 /* RefineSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60E21D215E7D00B3BDD7 /* RefineSearchViewController.xib */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
 		B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */; };
 		B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */; };
@@ -811,6 +813,9 @@
 		B7BF60DB1D2154C400B3BDD7 /* CompanyFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFilterView.h; sourceTree = "<group>"; };
 		B7BF60DC1D2154C400B3BDD7 /* CompanyFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyFilterView.m; sourceTree = "<group>"; };
 		B7BF60DE1D2154D500B3BDD7 /* CompanyFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyFilterView.xib; sourceTree = "<group>"; };
+		B7BF60E01D215E7D00B3BDD7 /* RefineSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefineSearchViewController.h; sourceTree = "<group>"; };
+		B7BF60E11D215E7D00B3BDD7 /* RefineSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefineSearchViewController.m; sourceTree = "<group>"; };
+		B7BF60E21D215E7D00B3BDD7 /* RefineSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefineSearchViewController.xib; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
 		B7E104301CEC6D7600EAD8E7 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
 		B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsView.xib; sourceTree = "<group>"; };
@@ -1625,6 +1630,9 @@
 				B7BF60C41D1EED6B00B3BDD7 /* SearchFilterViewController.h */,
 				B7BF60C51D1EED6B00B3BDD7 /* SearchFilterViewController.m */,
 				B7BF60C61D1EED6B00B3BDD7 /* SearchFilterViewController.xib */,
+				B7BF60E01D215E7D00B3BDD7 /* RefineSearchViewController.h */,
+				B7BF60E11D215E7D00B3BDD7 /* RefineSearchViewController.m */,
+				B7BF60E21D215E7D00B3BDD7 /* RefineSearchViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2267,6 +2275,7 @@
 				B68337251D081C3F004226D3 /* ChangePasswordViewController.xib in Resources */,
 				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
+				B7BF60E41D215E7D00B3BDD7 /* RefineSearchViewController.xib in Resources */,
 				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2389,6 +2398,7 @@
 				B644747A1D0047F10001B244 /* ProjectSortView.m in Sources */,
 				B66DF81F1D007D000071A6B5 /* ProjectBidsListViewController.m in Sources */,
 				B65106591D12B94800007759 /* CompanyTrackingView.m in Sources */,
+				B7BF60E31D215E7D00B3BDD7 /* RefineSearchViewController.m in Sources */,
 				B7E1043C1CEC74E900EAD8E7 /* ContactsListView.m in Sources */,
 				B7F10A151CDB3E3300847FA3 /* AFURLRequestSerialization.m in Sources */,
 				B7F10A141CDB3E3300847FA3 /* AFSecurityPolicy.m in Sources */,

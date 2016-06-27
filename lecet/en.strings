@@ -326,6 +326,10 @@
 "COMPANY_FILTER_ANY"                        =               "Any";
 "COMPANY_FILTER_LABEL"                      =               "Related Projects";
 
+//RefineSearchViewController.xib
+"REFINE_FILTER_TITLE"                       =               "Refine Search";
+"REFINE_FILTER_APPLY"                       =               "APPLY";
+"REFINE_FILTER_CANCEL"                      =               "CANCEL";
 
 
 

@@ -17,6 +17,7 @@
 #import "SearchResultCollectionViewCell.h"
 #import "SearchResultView.h"
 #import "SearchFilterViewController.h"
+#import "RefineSearchViewController.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -125,8 +126,15 @@ typedef enum : NSUInteger {
 #pragma mark - Navigation Methods
 
 - (void)tappedButtonFilter:(id)sender {
+    
     SearchFilterViewController *controller = [SearchFilterViewController new];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    /*
+    
+    RefineSearchViewController *controller = [RefineSearchViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+     */
 }
 
 - (IBAction)tappedButtonBack:(id)sender {
