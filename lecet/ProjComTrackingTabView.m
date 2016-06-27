@@ -7,7 +7,15 @@
 //
 
 #import "ProjComTrackingTabView.h"
-#import "projComTrckingTabViewConstant.h"
+
+#define PROJCOMTRACKINGTAB_SWITCHBUTTON_BG_COLOR            RGB(168,195,230)
+#define PROJCOMTRACKINGTAB_LABEL_FONT                       fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define PROJCOMTRACKINGTAB_LABEL_FONT_COLOR                 RGB(255,255,255)
+
+#define PROJCOMTRACKINGTAB_BUTTON_FONT                      fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define PROJCOMTRACKINGTAB_BUTTON_FONT_COLOR                RGB(168,195,230)
+
+#define PROJCOMTRACKINGTAB_VIEW_BG_COLOR                    RGB(5, 35, 74)
 
 @interface ProjComTrackingTabView ()
 @property (weak, nonatomic) IBOutlet UISwitch *switchButton;

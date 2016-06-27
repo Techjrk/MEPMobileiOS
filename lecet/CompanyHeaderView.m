@@ -8,7 +8,12 @@
 
 #import "CompanyHeaderView.h"
 #import <MapKit/MapKit.h>
-#import "companyHeaderConstants.h"
+
+#define COMPANY_HEADER_BG_COLOR                     RGB(19, 86, 141)
+#define COMPANY_HEADER_INFO_BG_COLOR                RGB(248, 153, 0)
+
+#define COMPANY_HEADER_TITLE_TEXT_COLOR             RGB(255, 255, 255)
+#define COMPANY_HEADER_TITLE_TEXT_FONT              fontNameWithSize(FONT_NAME_LATO_BLACK, 17)
 
 @interface CompanyHeaderView()<MKMapViewDelegate>{
     CGFloat geoCodeLat;

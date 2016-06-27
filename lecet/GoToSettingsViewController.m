@@ -8,7 +8,15 @@
 
 #import "GoToSettingsViewController.h"
 
-#import "goToSettingsConstants.h"
+#define GOTO_SETTINGS_MSG_FONT                      fontNameWithSize(FONT_NAME_LATO_REGULAR, 13)
+#define GOTO_SETTINGS_MSG_COLOR                     RGB(34, 34, 34)
+
+#define GOTO_SETTINGS_BUTTON_SETTINGS_FONT          fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define GOTO_SETTINGS_BUTTON_SETTINGS_COLOR         RGB(255, 255, 255)
+#define GOTO_SETTINGS_BUTTON_SETTINGS_BG_COLOR      RGB(0, 63, 114)
+
+#define GOTO_SETTINGS_BUTTON_CANCEL_FONT            fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define GOTO_SETTINGS_BUTTON_CANCEL_COLOR           RGB(0, 63, 114)
 
 @interface GoToSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIView *blurView;

@@ -8,13 +8,14 @@
 
 #import "SettingsViewController.h"
 #import "ProfileNavView.h"
-#import "SettingConstant.h"
 #import "SettingsView.h"
 #import "ChangePasswordViewController.h"
+
+#define SETTINGS_VC_BG_COLOR RGB(245,245,245)
+
 @interface SettingsViewController ()<ProfileNavViewDelegate,SettingViewDelegate>
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet SettingsView *settingsView;
-
 @end
 
 @implementation SettingsViewController

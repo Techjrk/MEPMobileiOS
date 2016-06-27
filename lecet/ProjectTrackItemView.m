@@ -8,8 +8,27 @@
 
 #import "ProjectTrackItemView.h"
 
-#import "projectTrackingItemConstants.h"
 #import <MapKit/MapKit.h>
+
+#define PROJECT_TRACK_ITEM_TITLE_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define PROJECT_TRACK_ITEM_TITLE_COLOR                  RGB(34, 34, 34)
+
+#define PROJECT_TRACK_ITEM_LOCATION_FONT                fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define PROJECT_TRACK_ITEM_LOCATION_COLOR               RGB(159, 164, 166)
+
+#define PROJECT_TRACK_ITEM_TYPE_FONT                    fontNameWithSize(FONT_NAME_LATO_REGULAR, 10)
+#define PROJECT_TRACK_ITEM_TYPE_COLOR                   RGB(159, 164, 166)
+
+#define PROJECT_TRACK_UPDATE_FONT                       fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define PROJECT_TRACK_UPDATE_COLOR                      RGB(255, 255, 255)
+
+#define PROJECT_TRACK_TEXT_BG_COLOR                     RGB(255, 255, 255)
+#define PROJECT_TRACK_UPDATE_BG_COLOR                   RGB(76, 145, 209)
+
+#define PROJECT_TRACK_CARET_FONT                        fontNameWithSize(FONT_NAME_AWESOME, 16)
+#define PROJECT_TRACK_CARET_COLOR                       RGB(0, 63, 114)
+#define PROJECT_TRACK_DOWN_TEXT                         [NSString stringWithFormat:@"%C", 0xf0d7]
+#define PROJECT_TRACK_UP_TEXT                           [NSString stringWithFormat:@"%C", 0xf0d8]
 
 @interface ProjectTrackItemView()<MKMapViewDelegate>{
     NSMutableDictionary *stateStatus;
@@ -64,6 +83,8 @@
 
     [_buttonExpand setTitleColor:PROJECT_TRACK_CARET_COLOR forState:UIControlStateNormal];
     _buttonExpand.titleLabel.font = PROJECT_TRACK_CARET_FONT;
+    
+    _container.hidden = YES;
     
 }
 
@@ -120,40 +141,47 @@
     
     stateStatus = info[kStateStatus];
     
-    BOOL shouldShowUpdates = [stateStatus[kStateShowUpdate] boolValue];
-    
-    ProjectTrackUpdateType updateType = (ProjectTrackUpdateType)[stateStatus[kStateUpdateType] integerValue];
-    _container.hidden = (updateType == ProjectTrackUpdateTypeNone);
-    
-    if(!_container.hidden){
-        
-        if (shouldShowUpdates) {
+    if (stateStatus != nil) {
 
-            BOOL isExpanded = [stateStatus[kStateExpanded] boolValue];
-            
-            _labelUpdateDetails.hidden = !isExpanded;
-            _labelContainer.hidden = _labelUpdateDetails.hidden;
-            _constraintUpdateContainerHeight.constant = kDeviceHeight * (!isExpanded?0.06:0.133);
-            
-            [self setButtonTitle:isExpanded];
+        BOOL shouldShowUpdates = [stateStatus[kStateShowUpdate] boolValue];
         
-            switch ((long)updateType) {
-                case ProjectTrackUpdateTypeNewBid:{
-                    _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_BID");
-                    break;
-                }
-                    
-                case ProjectTrackUpdateTypeNewNote: {
-                    _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
-                    break;
-                }
+        ProjectTrackUpdateType updateType = (ProjectTrackUpdateType)[stateStatus[kStateUpdateType] integerValue];
+        _container.hidden = (updateType == ProjectTrackUpdateTypeNone);
+        
+        if(!_container.hidden){
+            
+            if (shouldShowUpdates) {
                 
+                BOOL isExpanded = [stateStatus[kStateExpanded] boolValue];
+                
+                _labelUpdateDetails.hidden = !isExpanded;
+                _labelContainer.hidden = _labelUpdateDetails.hidden;
+                _constraintUpdateContainerHeight.constant = kDeviceHeight * (!isExpanded?0.06:0.133);
+                
+                [self setButtonTitle:isExpanded];
+                
+                switch ((long)updateType) {
+                    case ProjectTrackUpdateTypeNewBid:{
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_BID");
+                        break;
+                    }
+                        
+                    case ProjectTrackUpdateTypeNewNote: {
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        break;
+                    }
+                        
+                }
+            } else {
+                _container.hidden = YES;
             }
-        } else {
-            _container.hidden = YES;
+            
         }
-        
+
+    } else {
+        _container.hidden = YES;
     }
+    
     
     NSDictionary *geocode = project[@"geocode"];
     

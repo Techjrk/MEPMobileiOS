@@ -7,7 +7,6 @@
 //
 
 #import "CompanySortViewController.h"
-#import "CompanySortView.h"
 #import "TriangleView.h"
 
 @interface CompanySortViewController ()<CompanySortDelegate>

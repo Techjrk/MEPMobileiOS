@@ -8,7 +8,7 @@
 
 #import "MyProfileCustomTextFieldView.h"
 #import "MyProfileHeaderView.h"
-#import "myProfileConstant.h"
+
 @interface MyProfileCustomTextFieldView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldOne;

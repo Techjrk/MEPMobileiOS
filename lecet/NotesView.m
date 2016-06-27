@@ -9,7 +9,9 @@
 #import "NotesView.h"
 
 #import "SectionTitleView.h"
-#import "notesConstants.h"
+
+#define NOTES_VIEW_TEXT_COLOR               RGB(34, 34, 34)
+#define NOTES_VIEW_TEXT_FONT                fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
 
 @interface NotesView(){
     NSLayoutConstraint *constraintHeight;

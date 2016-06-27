@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.layer.cornerRadius = kDeviceWidth * 0.015;
+    self.layer.cornerRadius = kDeviceWidth * 0.01;
     self.layer.masksToBounds = YES;
     _item.projectTrackItemViewDelegate = self;
 

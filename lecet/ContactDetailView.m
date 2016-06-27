@@ -8,7 +8,6 @@
 
 #import "ContactDetailView.h"
 #import "ContactFieldCollectionViewCell.h"
-#import "contactDetailViewConstant.h"
 
 @interface ContactDetailView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;

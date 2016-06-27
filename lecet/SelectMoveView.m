@@ -8,7 +8,11 @@
 
 #import "SelectMoveView.h"
 
-#import "selectMoveViewConstants.h"
+#define SELECT_MOVE_BUTTON_FONT                 fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 9)
+#define SELECT_MOVE_BUTTON_COLOR                RGB(255, 255, 255)
+
+#define SELECT_MOVE_COUNT_FONT                  fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 10)
+#define SELECT_MOVE_COUNT_COLOR                 RGB(255, 255, 255)
 
 @interface SelectMoveView()
 @property (weak, nonatomic) IBOutlet UILabel *labelMove;

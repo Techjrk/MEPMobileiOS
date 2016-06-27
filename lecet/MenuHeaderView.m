@@ -8,7 +8,12 @@
 
 #import "MenuHeaderView.h"
 
-#import "menuHeaderConstants.h"
+#define MENUHEADER_LABEL_HEADER_FONT              fontNameWithSize(FONT_NAME_LATO_BLACK, 22)
+#define MENUHEADER_LABEL_TEXT_FONT                fontNameWithSize(FONT_NAME_LATO_REGULAR, 13.5)
+#define MENUHEADER_LABEL_NUMBER_FONT              fontNameWithSize(FONT_NAME_LATO_BOLD, 13.5)
+
+#define MENUHEADER_LABEL_HEADER_COLOR             RGB(255, 255, 255)
+#define MENUHEADER_LABEL_COUNT_COLOR              RGB(255, 255, 255)
 
 @interface MenuHeaderView()
 @property (weak, nonatomic) IBOutlet UILabel *labelHeader;

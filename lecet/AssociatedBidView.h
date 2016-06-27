@@ -10,6 +10,12 @@
 
 #import "BaseViewClass.h"
 
+#define ASSOCIATED_BID_NAME                             @"ASSOCIATED_BID_NAME"
+#define ASSOCIATED_BID_LOCATION                         @"ASSOCIATED_BID_LOCATION"
+#define ASSOCIATED_BID_DESIGNATION                      @"ASSOCIATED_BID_DESIGNATION"
+#define ASSOCIATED_BID_GEOCODE_LAT                      @"ASSOCIATED_BID_GEOCODE_LAT"
+#define ASSOCIATED_BID_GEOCODE_LNG                      @"ASSOCIATED_BID_GEOCODE_LNG"
+
 @interface AssociatedBidView : BaseViewClass
 - (void)setInfo:(id)info;
 @end

@@ -8,8 +8,6 @@
 
 #import "ShareItemCollectionViewCell.h"
 
-#import "dropDownShareListConstant.h"
-
 @interface ShareItemCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

@@ -10,10 +10,12 @@
 
 #import "SectionTitleView.h"
 #import "ProjectBidItemCollectionViewCell.h"
-#import "projectBidListConstants.h"
-#import "projectBidConstants.h"
+#import "ProjectBidView.h"
 #import "DB_Bid.h"
 #import "DB_Project.h"
+
+#define PROJECT_BID_LIST_BUTTON_FONT                fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define PROJECT_BID_LIST_BUTTON_COLOR               RGB(121, 120, 120)
 
 @interface ProjectBidListView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;

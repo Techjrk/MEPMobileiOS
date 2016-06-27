@@ -8,12 +8,21 @@
 
 #import "SearchViewController.h"
 
-#import "searchViewConstants.h"
 #import "SearchSectionCollectionViewCell.h"
 #import "SearchSuggestedCollectionViewCell.h"
 #import "SearchProjectCollectionViewCell.h"
 #import "SearchCompanyCollectionViewCell.h"
 #import "SearchContactCollectionViewCell.h"
+#import "SearchSavedCollectionViewCell.h"
+#import "SearchResultCollectionViewCell.h"
+#import "SearchResultView.h"
+#import "SearchFilterViewController.h"
+
+#define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+
+#define SEACRCH_PLACEHOLDER_FONT                        fontNameWithSize(FONT_NAME_AWESOME, 14)
+#define SEACRCH_PLACEHOLDER_COLOR                       RGB(255, 255, 255)
+#define SEACRCH_PLACEHOLDER_TEXT                        [NSString stringWithFormat:@"%C", 0xf002]
 
 typedef enum : NSUInteger {
     SearchSectionRecent = 0,
@@ -23,11 +32,15 @@ typedef enum : NSUInteger {
     SearchSectionProjects = 4,
     SearchSectionCompanies = 5,
     SearchSectionContacts = 6,
+    SearchSectionResult = 7,
 } SearchSection;
 
 
 @interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     BOOL searchMode;
+    BOOL showResult;
+    NSMutableDictionary *collectionItems;
+    NSInteger resultIndex;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -36,7 +49,7 @@ typedef enum : NSUInteger {
 
 @implementation SearchViewController
 
-#define kSections               @[NSLocalizedLanguage(@"SEARCH_SECTION_RECENT"),NSLocalizedLanguage(@"SEARCH_SECTION_SAVED_PROJECT"),NSLocalizedLanguage(@"SEARCH_SECTION_SAVED_COMPANY"),NSLocalizedLanguage(@"SEARCH_SECTION_SUGGESTED"),NSLocalizedLanguage(@"SEARCH_SECTION_PROJECTS"),NSLocalizedLanguage(@"SEARCH_SECTION_COMPANIES"),NSLocalizedLanguage(@"SEARCH_SECTION_CONTACTS")]
+#define kSections               @[NSLocalizedLanguage(@"SEARCH_SECTION_RECENT"),NSLocalizedLanguage(@"SEARCH_SECTION_SAVED_PROJECT"),NSLocalizedLanguage(@"SEARCH_SECTION_SAVED_COMPANY"),NSLocalizedLanguage(@"SEARCH_SECTION_SUGGESTED"),NSLocalizedLanguage(@"SEARCH_SECTION_PROJECTS"),NSLocalizedLanguage(@"SEARCH_SECTION_COMPANIES"),NSLocalizedLanguage(@"SEARCH_SECTION_CONTACTS"), NSLocalizedLanguage(@"SEARCH_SECTION_RESULT")]
 
 #define kCellIdentifier(section)         [NSString stringWithFormat:@"kCellIdentifier_%li",(long)section]
 
@@ -45,16 +58,26 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    collectionItems = [[NSMutableDictionary alloc] init];
+    
+    collectionItems[RESULT_ITEMS_PROJECT] = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
+    
+    collectionItems[RESULT_ITEMS_COMPANY] = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
+    
+    collectionItems[RESULT_ITEMS_CONTACT] = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
+    
     [self enableTapGesture:YES];
     _labeSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _labeSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
     _labeSearch.layer.masksToBounds = YES;
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_filter"]];
-    imageView.frame = CGRectMake(0, 0, kDeviceWidth * 0.1, kDeviceHeight * 0.025);
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, kDeviceWidth * 0.1, kDeviceHeight * 0.025);
+    [button setImage:[UIImage imageNamed:@"icon_filter"] forState:UIControlStateNormal];
+    button.showsTouchWhenHighlighted = YES;
+    [button addTarget:self action:@selector(tappedButtonFilter:) forControlEvents:UIControlEventTouchUpInside];
     
-    _labeSearch.rightView = imageView;
+    _labeSearch.rightView = button;
     _labeSearch.rightViewMode = UITextFieldViewModeAlways;
     _labeSearch.textColor = [UIColor whiteColor];
     _labeSearch.font = SEACRCH_TEXTFIELD_TEXT_FONT;
@@ -69,9 +92,9 @@ typedef enum : NSUInteger {
    
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionRecent)];
 
-    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedProject)];
+    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSavedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedProject)];
 
-    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedCompany)];
+    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSavedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedCompany)];
 
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSuggested)];
 
@@ -81,9 +104,10 @@ typedef enum : NSUInteger {
     
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchContactCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionContacts)];
 
+    [_collectionView registerNib:[UINib nibWithNibName:[[SearchResultCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionResult)];
 
-    
     searchMode = YES;
+    showResult = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,6 +123,11 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - Navigation Methods
+
+- (void)tappedButtonFilter:(id)sender {
+    SearchFilterViewController *controller = [SearchFilterViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 - (IBAction)tappedButtonBack:(id)sender {
 
@@ -122,6 +151,12 @@ typedef enum : NSUInteger {
             
             break;
         }
+            
+        case SearchSectionResult: {
+            SearchResultCollectionViewCell *cellItem = (SearchResultCollectionViewCell*)cell;
+            [cellItem setCollectionItems:collectionItems tab:resultIndex];
+            break;
+        }
         default:
             break;
     }
@@ -134,7 +169,10 @@ typedef enum : NSUInteger {
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 7;
+    
+    collectionView.backgroundColor = showResult?[UIColor clearColor]:[UIColor whiteColor];
+
+    return kSections.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -143,43 +181,50 @@ typedef enum : NSUInteger {
     
     SearchSection sectionType = (SearchSection)section;
     
-    if ([self shouldShowSection:section] | ((sectionType == SearchSectionSuggested) & searchMode)) {
+    if ([self shouldShowSection:section] | ((sectionType == SearchSectionSuggested) & searchMode) | ((sectionType == SearchSectionResult) & showResult) ) {
 
         switch (sectionType) {
                 
             case SearchSectionRecent: {
-                count = 1;
+                count = showResult?0:1;
                 break;
             }
                 
             case SearchSectionSavedProject: {
-                count = 3;
+                count = showResult?0:3;
                 break;
             }
                 
             case SearchSectionSavedCompany: {
-                count = 2;
+                count = showResult?0:2;
                 break;
             }
                 
             case SearchSectionSuggested: {
-                count = 3;
+                count = showResult?0:3;
                 break;
             }
                 
             case SearchSectionProjects: {
-                count = 4;
+                NSArray *items = collectionItems[RESULT_ITEMS_PROJECT];
+                count = showResult?0:(items.count>4?4:items.count);
                 break;
             }
                 
             case SearchSectionCompanies: {
-                count = 4;
+                NSArray *items = collectionItems[RESULT_ITEMS_COMPANY];
+                count = showResult?0:(items.count>4?4:items.count);
                 break;
             }
                 
             case SearchSectionContacts: {
-                count = 3;
+                NSArray *items = collectionItems[RESULT_ITEMS_CONTACT];
+                count = showResult?0:(items.count>4?4:items.count);
                 break;
+            }
+                
+            case SearchSectionResult: {
+                count = showResult?1:0;
             }
                 
         }
@@ -196,7 +241,7 @@ typedef enum : NSUInteger {
   
     SearchSection sectionType = (SearchSection)indexPath.section;
     
-    if ([self shouldShowSection:indexPath.section] | (sectionType == SearchSectionSuggested )) {
+    if ([self shouldShowSection:indexPath.section] | (sectionType == SearchSectionSuggested ) | (sectionType == SearchSectionResult )) {
 
         switch (sectionType) {
                 
@@ -206,12 +251,12 @@ typedef enum : NSUInteger {
             }
                 
             case SearchSectionSavedProject: {
-                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.073);
+                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.071);
                 break;
             }
                 
             case SearchSectionSavedCompany: {
-                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.073);
+                size = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.071);
                 break;
             }
     
@@ -235,6 +280,12 @@ typedef enum : NSUInteger {
                 break;
             }
                 
+            case SearchSectionResult: {
+                size = CGSizeMake(collectionView.frame.size.width, _collectionView.frame.size.height);
+                break;
+                
+            }
+                
         }
 
     }
@@ -245,7 +296,14 @@ typedef enum : NSUInteger {
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
     SearchSection sectionType = (SearchSection)section;
-    return UIEdgeInsetsMake( 0, 0, kDeviceHeight * ([self shouldShowSection:section] | (sectionType == SearchSectionSuggested )?0.024:0), 0);
+    
+    BOOL shouldHaveInset = [self shouldShowSection:section] | (sectionType == SearchSectionSuggested );
+    
+    if (showResult) {
+        shouldHaveInset = NO;
+    }
+
+    return UIEdgeInsetsMake( 0, 0, kDeviceHeight * (shouldHaveInset?0.024:0), 0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -260,7 +318,15 @@ typedef enum : NSUInteger {
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SearchSection sectionType = (SearchSection)indexPath.section;
     
+    if (sectionType == SearchSectionSuggested) {
+        
+        resultIndex = indexPath.row;
+        showResult = YES;
+        [_collectionView reloadData];
+
+    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -272,9 +338,15 @@ typedef enum : NSUInteger {
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+   
     
+    BOOL shouldHaveHeader = [self shouldShowSection:section];
     
-    return  CGSizeMake(collectionView.frame.size.width, kDeviceHeight * ( [self shouldShowSection:section]?0.05:0));
+    if (showResult) {
+        shouldHaveHeader = NO;
+    }
+    
+    return  CGSizeMake(collectionView.frame.size.width, kDeviceHeight * (shouldHaveHeader ?0.05:0));
 }
 
 - (BOOL)shouldShowSection:(NSInteger)section {
@@ -288,7 +360,7 @@ typedef enum : NSUInteger {
         
     } else {
         
-        shouldExpandHeader = !((searchSection  == SearchSectionRecent) || (searchSection == SearchSectionSavedProject) || (searchSection == SearchSectionSavedCompany) || (searchSection == SearchSectionSuggested));
+        shouldExpandHeader = !((searchSection  == SearchSectionRecent) || (searchSection == SearchSectionSavedProject) || (searchSection == SearchSectionSavedCompany) || (searchSection == SearchSectionSuggested) || (searchSection == SearchSectionResult));
         
     }
 

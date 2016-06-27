@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+#define COMPANY_GEOCODE_LAT                         @"GEO_CODE_LAT"
+#define COMPANY_GEOCODE_LNG                         @"GEO_CODE_LNG"
+#define COMPANY_TITLE                               @"PROJECT_TITLE"
+
 @protocol CompanyHeaderDelegate <NSObject>
 - (void)tappedCompanyMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
 @end

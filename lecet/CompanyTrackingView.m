@@ -8,13 +8,25 @@
 
 #import "CompanyTrackingView.h"
 #import <MapKit/MapKit.h>
-#import "companyTrackingViewConstant.h"
+
+#define COMPANYTRACKINGVIEW_LABEL_NAME_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR       RGB(34,34,34)
+
+#define COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT          fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define COMPANYTRACKINGVIEW_LABEL_ADDRESS_FONT_COLOR    RGB(159,164,166)
+
+#define COMPANYTRACKINGVIEW_BUTTON_LABEL_FONT           fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define COMPANYTRACKINGVIEW_BUTTON_LABEL_FONT_COLOR     RGB(255,255,255)
+#define COMPANYTRACKINGVIEW_BUTTON_BG_COLOR             RGB(76,145,209)
+
+
+#define COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR           RGB(76,145,209)
+#define COMPANYTRACKINGVIEW_TEXTVIEW_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
+
+#define COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR         RGB(255,255,255)
 
 @interface CompanyTrackingView () {
-    
     BOOL dataIsShown;
-
-
 }
 @property (weak, nonatomic) IBOutlet UIView *belowContainerView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -56,7 +68,9 @@
     [_buttonBelow setBackgroundColor:COMPANYTRACKINGVIEW_BUTTON_BG_COLOR];
     _buttonLabel.textColor = COMPANYTRACKINGVIEW_BUTTON_LABEL_FONT_COLOR;
     _buttonLabel.font = COMPANYTRACKINGVIEW_BUTTON_LABEL_FONT;
-    [_containerButtonView.layer setCornerRadius:4.0f];
+    
+    CGFloat corderRadius = kDeviceWidth * 0.015;
+    [_containerButtonView.layer setCornerRadius:corderRadius];
     _containerButtonView.layer.masksToBounds = YES;
     
     
@@ -65,17 +79,14 @@
     
     _labelUpdateDescription.font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     _labelUpdateDescription.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
-    [_labelContainer.layer setCornerRadius:4.0f];
+    [_labelContainer.layer setCornerRadius:corderRadius];
     _labelContainer.layer.masksToBounds = YES;
     
     
-    [_containerTextView.layer setCornerRadius:4.0f];
+    [_containerTextView.layer setCornerRadius:corderRadius];
     _containerTextView.layer.masksToBounds = YES;
-    [_textView.layer setCornerRadius:4.0f];
+    [_textView.layer setCornerRadius:corderRadius];
     _textView.layer.masksToBounds = YES;
-    
-
-  
     
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 

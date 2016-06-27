@@ -7,7 +7,9 @@
 //
 
 #import "ProjectFilterSelectionView.h"
-#import "projectFilterSelectionViewConstant.h"
+
+#define PROJECTFILTER_SELECT_LABEL_FONT                        fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define PROJECTFILTER_SELECT_LABEL_FONT_COLOR                  RGB(34, 34, 34)
 
 @interface ProjectFilterSelectionView ()
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;

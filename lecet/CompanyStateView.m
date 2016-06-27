@@ -8,8 +8,12 @@
 
 #import "CompanyStateView.h"
 
-#import "companyStateConstants.h"
 #import "ContactFieldCollectionViewCell.h"
+
+#define COMPANY_STATE_SHADOW_COLOR                  RGB(0, 0, 0)
+#define COMPANY_STATE_BUTTON_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
+#define COMPANY_STATE_BUTTON_COLOR                  RGB(0, 56, 114)
+#define COMPANY_STATE_BUTTON_BG_COLOR_SELECTED      RGB(0, 56, 114)
 
 @interface CompanyStateView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;

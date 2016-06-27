@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+#define kItemActive         @"kItemActive"
+#define kItemDay            @"kItemDay"
+#define kItemTag            @"kItemTag"
+
+#define CALENDAR_CLEAR_SELECTION                                @"CALENDAR_CLEAR_SELECTION"
+
 typedef enum : NSUInteger {
     CalendarButtonLeft = 0,
     CalendarButtonRight = 1,

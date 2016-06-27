@@ -7,7 +7,10 @@
 //
 
 #import "EditTabView.h"
-#import "editTabConstant.h"
+
+#define EDITTAB_BUTTON_FONT         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 14)
+#define EDITTAB_BUTTON_FONT_COLOR   RGB(168,195,230)
+#define EDITTAB_VIEW_BG_COLOR       RGB(5, 35, 74)
 
 @interface EditTabView ()
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;

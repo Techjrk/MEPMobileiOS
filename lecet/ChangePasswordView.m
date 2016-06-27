@@ -8,7 +8,9 @@
 
 #import "ChangePasswordView.h"
 #import "ChnagePasswordCollectionViewCell.h"
-#import "changePasswordViewConstant.h"
+
+#define CHANGEPASSWORD_LEFTTITLE @"CHANGEPASSWORD_TITLE"
+#define CHANGEPASSWORD_PLACEHOLDER @"CHANGEPASSWORD_PLACEHOLDER"
 
 @interface ChangePasswordView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSDictionary *collectionItems;

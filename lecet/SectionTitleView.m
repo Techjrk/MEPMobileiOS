@@ -8,7 +8,9 @@
 
 #import "SectionTitleView.h"
 
-#import "sectionTitleConstants.h"
+#define SECTION_TITLE_TEXT_FONT                 fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define SECTION_TITLE_TEXT_COLOR                RGB(34, 34, 34)
+#define SECTION_TITLE_LINE_COLOR                RGB(8, 73, 124)
 
 @interface SectionTitleView()
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;

@@ -8,7 +8,7 @@
 
 #import "MyProfileTwoTextFieldView.h"
 #import "MyProfileHeaderView.h"
-#import "myProfileConstant.h"
+
 @interface MyProfileTwoTextFieldView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldLeft;

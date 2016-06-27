@@ -9,8 +9,6 @@
 #import "CustomPieChartLayer.h"
 #import <UIKit/UIKit.h>
 
-#import "constants.h"
-
 @interface CustomPieChartLayer(){
     BOOL hasFocus;
     BOOL hasFocusSegment;

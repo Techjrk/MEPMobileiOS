@@ -7,7 +7,18 @@
 //
 
 #import "ProjectStateView.h"
-#import "projectStateConstants.h"
+
+#define PROJECT_STATE_BUTTON_TEXT_FONT              fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
+#define PROJECT_STATE_BUTTON_SHADOW_COLOR           RGB(0, 0, 0)
+
+#define PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE      RGB(0, 56, 114)
+#define PROJECT_STATE_BUTTON_TEXT_COLOR_SELECTED    RGB(255, 255, 255)
+
+#define PROJECT_STATE_BUTTON_BG_COLOR_ACTIVE        RGB(255, 255, 255)
+#define PROJECT_STATE_BUTTON_BG_COLOR_SELECTED      RGB(0, 56, 114)
+
+#define PROJECT_STATE_CARET_DOWN_TEXT               [NSString stringWithFormat:@"%C", 0xf0d7]
+#define PROJECT_STATE_CARET_DOWN_FONT               fontNameWithSize(FONT_NAME_AWESOME, 11)
 
 @interface ProjectStateView()
 @property (weak, nonatomic) IBOutlet UIButton *buttonTrack;

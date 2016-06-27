@@ -10,8 +10,6 @@
 
 #import "ProjectHeaderView.h"
 #import "ProjectStateView.h"
-#import "projectHeaderConstants.h"
-#import "projectDetailConstants.h"
 #import "CustomEntryField.h"
 #import "SeeAllView.h"
 #import "NotesView.h"
@@ -26,20 +24,20 @@
 #import "DB_Participant.h"
 
 #import "ProjectDetailStateViewController.h"
-#import "ProjectListViewController.h"
-#import "ProjectShareViewController.h"
 #import "BidderListViewController.h"
 #import "ParticipantsListViewController.h"
 #import "PopupViewController.h"
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
 
+#define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
+
 typedef enum {
     ProjectDetailPopupModeTrack,
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate,ProjectTrackListViewControllerDelegate,ProjectShareListViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;

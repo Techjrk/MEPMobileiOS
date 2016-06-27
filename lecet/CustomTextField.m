@@ -8,7 +8,12 @@
 
 #import "CustomTextField.h"
 
-#import "customTextFieldConstants.h"
+#define CUSTOM_TEXTFIELD_LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 8)
+#define CUSTOM_TEXTFIELD_FIELD_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
+
+#define CUSTOM_TEXTFIELD_LABEL_COLOR                 RGB(72, 72, 74)
+#define CUSTOM_TEXTFIELD_FIELD_COLOR                 RGB(72, 72, 74)
+#define CUSTOM_TEXTFIELD_LAYER_COLOR                 RGB(72, 72, 74)
 
 @interface CustomTextField()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelPlaceholder;
