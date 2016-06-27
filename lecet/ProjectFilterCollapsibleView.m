@@ -10,11 +10,15 @@
 
 #define LABEL_FONT                        fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_FONT_COLOR                  RGB(34, 34, 34)
-@interface ProjectFilterCollapsibleView ()
+@interface ProjectFilterCollapsibleView () {
+    UIView *mask;
+}
 @property (weak, nonatomic) IBOutlet UIButton *selectionButton;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIButton *dropDownButton;
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftLineViewSpacing;
 @end
 
 @implementation ProjectFilterCollapsibleView
@@ -22,7 +26,7 @@
 - (void)awakeFromNib {
     _labelTitle.font = LABEL_FONT;
     _labelTitle.textColor = LABEL_FONT_COLOR;
-        
+    
 }
 
 - (void)setLabelTitleText:(NSString *)text {
@@ -42,16 +46,22 @@
     [_dropDownButton setSelected:selected];
 }
 
-
 - (IBAction)tappedSelecTionButton:(id)sender {
     UIButton *button = sender;
     [_projectFilterCollapsibleViewDelegate tappedSelectionButton:(int)button.tag];
     
 }
+
+- (void)setLeftSpacingForLineView:(CGFloat)value {
+    _leftLineViewSpacing.constant = value;
+}
+
 - (IBAction)tappedDropDownButton:(id)sender {
     UIButton *button = sender;
     [_projectFilterCollapsibleViewDelegate tappedDropDownButton:(int)button.tag];
     
 }
+
+
 
 @end

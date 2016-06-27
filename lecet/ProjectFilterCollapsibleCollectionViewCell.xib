@@ -29,6 +29,7 @@
             <size key="customSize" width="248" height="52"/>
             <connections>
                 <outlet property="collapsibleView" destination="2bC-nC-kCQ" id="iZj-pJ-nYH"/>
+                <outlet property="collapsibleViewLeftSapcing" destination="3Zo-gN-286" id="AHd-Of-X0K"/>
             </connections>
             <point key="canvasLocation" x="461" y="414"/>
         </collectionViewCell>

@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectFilterCollapsibleView">
             <connections>
                 <outlet property="dropDownButton" destination="mqh-jp-9WW" id="WGX-si-llb"/>
                 <outlet property="labelTitle" destination="Adx-BG-ap8" id="aS5-xq-Efz"/>
+                <outlet property="leftLineViewSpacing" destination="S3o-uF-MgC" id="gBC-vQ-0Sd"/>
+                <outlet property="lineView" destination="tzy-LI-7Wa" id="iz3-me-VED"/>
                 <outlet property="selectionButton" destination="nHs-8n-jMV" id="z9N-Jn-d4r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,12 +43,21 @@
                         <action selector="tappedDropDownButton:" destination="-1" eventType="touchUpInside" id="EPl-JR-f1i"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzy-LI-7Wa">
+                    <rect key="frame" x="0.0" y="43" width="346" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.30191271551724136" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Wmc-oJ-Ioj"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="tzy-LI-7Wa" secondAttribute="trailing" id="07r-rc-FK6"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="GSj-Oj-cHm"/>
                 <constraint firstItem="Adx-BG-ap8" firstAttribute="leading" secondItem="nHs-8n-jMV" secondAttribute="trailing" constant="8" id="Lgq-wq-GcZ"/>
-                <constraint firstItem="nHs-8n-jMV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.125" id="ZSP-Py-cBL"/>
+                <constraint firstItem="tzy-LI-7Wa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S3o-uF-MgC"/>
+                <constraint firstAttribute="bottom" secondItem="tzy-LI-7Wa" secondAttribute="bottom" id="U4O-S8-ryM"/>
                 <constraint firstAttribute="trailing" secondItem="mqh-jp-9WW" secondAttribute="trailing" id="aNS-zB-wjD"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hHb-xA-Dcq"/>
                 <constraint firstItem="Adx-BG-ap8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kuG-P0-pvt"/>
@@ -55,11 +65,6 @@
                 <constraint firstItem="mqh-jp-9WW" firstAttribute="leading" secondItem="Adx-BG-ap8" secondAttribute="trailing" constant="8" id="qbF-TT-8M1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="ZSP-Py-cBL"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="171" y="357"/>
         </view>
     </objects>

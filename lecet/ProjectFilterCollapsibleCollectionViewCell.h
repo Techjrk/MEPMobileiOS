@@ -23,4 +23,6 @@
 - (void)setButtonTag:(int)tag;
 - (void)setSelectionButtonSelected:(BOOL)selected;
 - (void)setDropDownSelected:(BOOL)selected;
+- (void)setLeftLineSpacingForLineView:(CGFloat)value;
+- (void)setCollapsibleViewLetfSpacing:(CGFloat)value;
 @end

@@ -24,5 +24,6 @@
 - (void)setButtonTag:(int)tag;
 - (void)setSelectionButtonSelected:(BOOL)selected;
 - (void)setDropDonwSelected:(BOOL)selected;
+- (void)setLeftSpacingForLineView:(CGFloat)value;
 
 @end

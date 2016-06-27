@@ -11,6 +11,7 @@
 
 @interface ProjectFilterCollapsibleCollectionViewCell ()<ProjectFilterCollapsibleViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleView *collapsibleView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collapsibleViewLeftSapcing;
 
 @end
 
@@ -38,6 +39,13 @@
     [_collapsibleView setDropDonwSelected:selected];
 }
 
+- (void)setLeftLineSpacingForLineView:(CGFloat)value {
+    [_collapsibleView setLeftSpacingForLineView:value];
+}
+
+- (void)setCollapsibleViewLetfSpacing:(CGFloat)value {
+    _collapsibleViewLeftSapcing.constant = value;
+}
 
 #pragma mark - CollapsibleView Delegate
 
