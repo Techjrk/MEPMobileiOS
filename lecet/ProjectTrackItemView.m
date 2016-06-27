@@ -84,6 +84,8 @@
     [_buttonExpand setTitleColor:PROJECT_TRACK_CARET_COLOR forState:UIControlStateNormal];
     _buttonExpand.titleLabel.font = PROJECT_TRACK_CARET_FONT;
     
+    _container.hidden = YES;
+    
 }
 
 - (void)setButtonTitle:(BOOL)isExpanded {
@@ -139,40 +141,47 @@
     
     stateStatus = info[kStateStatus];
     
-    BOOL shouldShowUpdates = [stateStatus[kStateShowUpdate] boolValue];
-    
-    ProjectTrackUpdateType updateType = (ProjectTrackUpdateType)[stateStatus[kStateUpdateType] integerValue];
-    _container.hidden = (updateType == ProjectTrackUpdateTypeNone);
-    
-    if(!_container.hidden){
-        
-        if (shouldShowUpdates) {
+    if (stateStatus != nil) {
 
-            BOOL isExpanded = [stateStatus[kStateExpanded] boolValue];
-            
-            _labelUpdateDetails.hidden = !isExpanded;
-            _labelContainer.hidden = _labelUpdateDetails.hidden;
-            _constraintUpdateContainerHeight.constant = kDeviceHeight * (!isExpanded?0.06:0.133);
-            
-            [self setButtonTitle:isExpanded];
+        BOOL shouldShowUpdates = [stateStatus[kStateShowUpdate] boolValue];
         
-            switch ((long)updateType) {
-                case ProjectTrackUpdateTypeNewBid:{
-                    _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_BID");
-                    break;
-                }
-                    
-                case ProjectTrackUpdateTypeNewNote: {
-                    _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
-                    break;
-                }
+        ProjectTrackUpdateType updateType = (ProjectTrackUpdateType)[stateStatus[kStateUpdateType] integerValue];
+        _container.hidden = (updateType == ProjectTrackUpdateTypeNone);
+        
+        if(!_container.hidden){
+            
+            if (shouldShowUpdates) {
                 
+                BOOL isExpanded = [stateStatus[kStateExpanded] boolValue];
+                
+                _labelUpdateDetails.hidden = !isExpanded;
+                _labelContainer.hidden = _labelUpdateDetails.hidden;
+                _constraintUpdateContainerHeight.constant = kDeviceHeight * (!isExpanded?0.06:0.133);
+                
+                [self setButtonTitle:isExpanded];
+                
+                switch ((long)updateType) {
+                    case ProjectTrackUpdateTypeNewBid:{
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_BID");
+                        break;
+                    }
+                        
+                    case ProjectTrackUpdateTypeNewNote: {
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        break;
+                    }
+                        
+                }
+            } else {
+                _container.hidden = YES;
             }
-        } else {
-            _container.hidden = YES;
+            
         }
-        
+
+    } else {
+        _container.hidden = YES;
     }
+    
     
     NSDictionary *geocode = project[@"geocode"];
     

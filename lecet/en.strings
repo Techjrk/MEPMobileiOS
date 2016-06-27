@@ -261,6 +261,7 @@
 "SEARCH_SECTION_PROJECTS"                   =               "PROJECTS";
 "SEARCH_SECTION_COMPANIES"                  =               "COMPANIES";
 "SEARCH_SECTION_CONTACTS"                   =               "CONTACTS";
+"SEARCH_SECTION_RESULT"                     =               "RESULT";
 
 //EditViewController.xib
 "COMPANY_TRACK_SELECTION_NONE"              =               "No item was selected from the company list";
@@ -276,4 +277,15 @@
 "SEARCH_SUGGEST_COUNT_COMPANY"              =               "%li Companies";
 "SEARCH_SUGGEST_COUNT_CONTACT"              =               "%li Contacts";
 
+//SearchResultView.xib
+"SEARCH_RESULT_COUNT_PROJECT"               =               "%li Projects";
+"SEARCH_RESULT_COUNT_COMPANY"               =               "%li Companies";
+"SEARCH_RESULT_COUNT_CONTACT"               =               "%li Contacts";
+
+//SearchFilterViewController.xib
+"SEARCH_FILTER_TITLE"                       =               "Filters";
+"SEARCH_FILTER_APPLY"                       =               "APPLY";
+"SEARCH_FILTER_CANCEL"                      =               "CANCEL";
+"SEARCH_FILTER_PROJECT"                     =               "Projects";
+"SEARCH_FILTER_COMPANY"                     =               "Companies";
 

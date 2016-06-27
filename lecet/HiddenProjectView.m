@@ -47,7 +47,6 @@
     [_buttonUnhide setTitle:NSLocalizedLanguage(@"HIDDEN_PROJECT_HIDE") forState:UIControlStateSelected];
     [_buttonUnhide setTitleColor:HIDDEN_PROJECT_HIDE_COLOR forState:UIControlStateSelected];
     
-    //_buttonUnhide.selected = YES;
 }
 
 - (void)setInfo:(id)info {

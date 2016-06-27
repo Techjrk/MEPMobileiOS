@@ -357,7 +357,6 @@
             cellItem.bidSoonCollectionItemDelegate = self;
             cell = cellItem;
             break;
-           break;
         }
         default: {
             BitItemRecentCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierRecent forIndexPath:indexPath];
