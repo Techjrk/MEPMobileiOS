@@ -269,10 +269,10 @@
 "COMPANY_TRACK_SELECTION_REMOVE"            =               "Remove selected companies from %@";
 "COMPANIES_COUNT_TITLE"                     =               "Companies";
 
-
 //ProjectFilterBiddingViewController.xib
 "PROJECT_FILTER_BIDDING_TITLE"              =               "Bidding Within";
 "PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE"  =               "APPLY";
+
 //SearchResultView.xib
 "SEARCH_RESULT_COUNT_PROJECT"               =               "%li Projects";
 "SEARCH_RESULT_COUNT_COMPANY"               =               "%li Companies";
@@ -283,6 +283,7 @@
 "BH_TITLE_BOTH"                             =               "Both";
 "BH_TITLE_BLDG"                             =               "Building";
 "BH_TITLE_HIGHWAY"                          =               "Heavy-Highway";
+
 //SearchFilterViewController.xib
 "SEARCH_FILTER_TITLE"                       =               "Filters";
 "SEARCH_FILTER_APPLY"                       =               "APPLY";
@@ -292,6 +293,14 @@
 
 //ProjectFilterUpdatedViewController.xib
 "PROJECT_FILTER_UPDATED_TITLE"              =               "UPDATED WITHIN";
+
+//SearchSuggestedCollectionViewCell.xib
+"SEARCH_SUGGEST_HEADER_PROJECT"             =               "in Projects";
+"SEARCH_SUGGEST_HEADER_COMPANY"             =               "in Companies";
+"SEARCH_SUGGEST_HEADER_CONTACT"             =               "in Contacts";
+"SEARCH_SUGGEST_COUNT_PROJECT"              =               "%li Projects";
+"SEARCH_SUGGEST_COUNT_COMPANY"              =               "%li Companies";
+"SEARCH_SUGGEST_COUNT_CONTACT"              =               "%li Contacts";
 
 
 
