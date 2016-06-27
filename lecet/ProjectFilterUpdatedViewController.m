@@ -38,9 +38,6 @@
                        @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
                        ];
     
-    
-    
-    
     [_projectFilterSlectionViewList setInfo:array];
     
     [_navView setNavTitleLabel:NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE")];
