@@ -517,7 +517,6 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
-		B6FD04471D1D875600E12123 /* projectFilterSelectionConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectFilterSelectionConstant.h; sourceTree = "<group>"; };
 		B6FD04481D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterUpdatedViewController.h; sourceTree = "<group>"; };
 		B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterUpdatedViewController.m; sourceTree = "<group>"; };
 		B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterUpdatedViewController.xib; sourceTree = "<group>"; };
