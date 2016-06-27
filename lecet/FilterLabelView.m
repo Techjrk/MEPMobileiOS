@@ -42,6 +42,9 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
+    
+    [self.filterLabelViewDelegate tappedFilterLabelView:self];
+    
 }
 
 @end

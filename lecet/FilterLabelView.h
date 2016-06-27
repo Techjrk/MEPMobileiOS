@@ -10,7 +10,12 @@
 
 #import "BaseViewClass.h"
 
+@protocol FilterLabelViewDelegate <NSObject>
+- (void)tappedFilterLabelView:(id)object;
+@end
+
 @interface FilterLabelView : BaseViewClass
+@property (weak, nonatomic) id<FilterLabelViewDelegate>filterLabelViewDelegate;
 - (void)setTitle:(NSString*)title;
 - (void)setValue:(NSString*)value;
 @end

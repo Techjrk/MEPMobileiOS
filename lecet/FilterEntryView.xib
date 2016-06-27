@@ -41,12 +41,20 @@
                     <rect key="frame" x="0.0" y="91" width="319" height="10"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R64-ts-RpQ">
+                    <rect key="frame" x="-0.5" y="51.5" width="319" height="39.5"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="7w0-ho-45U"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="sjj-ab-p62" secondAttribute="trailing" id="13w-Bk-7vI"/>
                 <constraint firstItem="bmb-Z1-Yk3" firstAttribute="top" secondItem="zr3-BF-Sx1" secondAttribute="bottom" id="45g-qi-2Tr"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="top" secondItem="zr3-BF-Sx1" secondAttribute="top" id="8Xt-b1-WiL"/>
                 <constraint firstAttribute="trailing" secondItem="bmb-Z1-Yk3" secondAttribute="trailing" id="DHc-5I-HOp"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="height" secondItem="zr3-BF-Sx1" secondAttribute="height" id="DIR-lp-FlU"/>
                 <constraint firstItem="sjj-ab-p62" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.12" id="Mh6-mN-2Aj"/>
                 <constraint firstItem="bmb-Z1-Yk3" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="Ms5-vM-oF8"/>
                 <constraint firstItem="sjj-ab-p62" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P1E-fJ-sRZ"/>
@@ -59,8 +67,10 @@
                 <constraint firstItem="sjj-ab-p62" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dC0-3u-iaz"/>
                 <constraint firstAttribute="trailing" secondItem="zr3-BF-Sx1" secondAttribute="trailing" id="jaV-YU-7aZ"/>
                 <constraint firstItem="Nun-Rm-UVY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jbt-We-hIz"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="width" secondItem="zr3-BF-Sx1" secondAttribute="width" id="nAM-xM-Y4p"/>
                 <constraint firstAttribute="bottom" secondItem="bmb-Z1-Yk3" secondAttribute="bottom" id="oQM-yw-m8G"/>
                 <constraint firstItem="zr3-BF-Sx1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.39" id="r8k-aM-L0m"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="centerX" secondItem="zr3-BF-Sx1" secondAttribute="centerX" id="zIn-od-Y39"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

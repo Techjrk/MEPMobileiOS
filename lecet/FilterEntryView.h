@@ -10,6 +10,11 @@
 
 #import "BaseViewClass.h"
 
+@protocol FilterEntryViewDelegate <NSObject>
+- (void)tappedFilterEntryViewDelegate:(id)object;
+@end
+
 @interface FilterEntryView : BaseViewClass
+@property (weak, nonatomic) id<FilterEntryViewDelegate>filterEntryViewDelegate;
 - (void)setTitle:(NSString*)title;
 @end

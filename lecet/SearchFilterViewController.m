@@ -9,6 +9,7 @@
 #import "SearchFilterViewController.h"
 
 #import "ProjectFilterView.h"
+#import "CompanyFilterView.h"
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet ProjectFilterView *projectFilter;
 @property (weak, nonatomic) IBOutlet UIScrollView *projectScrollView;
+@property (weak, nonatomic) IBOutlet CompanyFilterView *companyFilter;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMarkerLeading;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintProjectFilterHeight;
 - (IBAction)tappedButton:(id)sender;
@@ -71,6 +73,9 @@
     
     [_projectFilter setConstraint:_constraintProjectFilterHeight];
     _projectFilter.scrollView = _projectScrollView;
+    
+
+    _companyFilter.hidden = YES;
 
 }
 
@@ -92,10 +97,17 @@
 
     _constraintMarkerLeading.constant = button.frame.origin.x;
     
+    
     [UIView animateWithDuration:0.25 animations:^{
+    
         [self.view layoutIfNeeded];
+    
     } completion:^(BOOL finished) {
         
+        if (finished) {
+            _projectScrollView.hidden = _constraintMarkerLeading.constant != 0;
+            _companyFilter.hidden = !_projectScrollView.hidden;
+        }
     }];
     
 }

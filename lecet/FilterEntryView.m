@@ -13,6 +13,7 @@
 @interface FilterEntryView()
 @property (weak, nonatomic) IBOutlet CustomTitleLabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+- (IBAction)tappedButton:(id)sender;
 @end
 
 @implementation FilterEntryView
@@ -26,6 +27,10 @@
 
 - (void)setTitle:(NSString *)title {
     _labelTitle.text = title;
+}
+
+- (IBAction)tappedButton:(id)sender {
+    [self.filterEntryViewDelegate tappedFilterEntryViewDelegate:self];
 }
 
 @end

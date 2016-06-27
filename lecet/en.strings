@@ -317,6 +317,15 @@
 "PROJECT_FILTER_FEW"                        =               "Fewer Options";
 "PROJECT_FILTER_ANY"                        =               "Any";
 
+//CompanyFilterView.xib
+"COMPANY_FILTER_LOCATION"                   =               "LOCATION";
+"COMPANY_FILTER_VALUE"                      =               "VALUE";
+"COMPANY_FILTER_JURISDICTION"               =               "JURISDICTION";
+"COMPANY_FILTER_BIDDING"                    =               "BIDDING WITHIN";
+"COMPANY_FILTER_TYPE"                       =               "PROJECT TYPE";
+"COMPANY_FILTER_ANY"                        =               "Any";
+"COMPANY_FILTER_LABEL"                      =               "Related Projects";
+
 
 
 

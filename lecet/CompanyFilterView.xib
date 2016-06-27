@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyFilterView">
+            <connections>
+                <outlet property="constraintFilterHeight" destination="0xr-yj-8uU" id="cCe-wN-0pg"/>
+                <outlet property="constraintLabelHeight" destination="9xz-AN-9I9" id="fVQ-Sl-n3c"/>
+                <outlet property="fieldJurisdiction" destination="cDe-Ws-xbY" id="BiQ-YP-ZXB"/>
+                <outlet property="fieldLocation" destination="uyh-et-ZiT" id="cyS-9d-3bW"/>
+                <outlet property="filterBidding" destination="7Ui-Dp-9Xa" id="JW5-pe-Hfz"/>
+                <outlet property="filterProjectType" destination="gtq-KW-S54" id="fB6-Uj-Pcv"/>
+                <outlet property="filterValue" destination="pwF-LR-z3O" id="Z7e-Fz-uaH"/>
+                <outlet property="labelProject" destination="ru4-h9-qoo" id="JUd-fi-E3S"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="510"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyh-et-ZiT" customClass="FilterEntryView">
+                    <rect key="frame" x="12" y="0.0" width="384" height="88"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="0xr-yj-8uU"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru4-h9-qoo">
+                    <rect key="frame" x="12" y="88" width="384" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwF-LR-z3O" customClass="FilterEntryView">
+                    <rect key="frame" x="12" y="132" width="384" height="88"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDe-Ws-xbY" customClass="FilterLabelView">
+                    <rect key="frame" x="12" y="220" width="384" height="58.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58.5" id="9xz-AN-9I9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ui-Dp-9Xa" customClass="FilterLabelView">
+                    <rect key="frame" x="12" y="278.5" width="384" height="58.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtq-KW-S54" customClass="FilterLabelView">
+                    <rect key="frame" x="12" y="337" width="384" height="58.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ru4-h9-qoo" firstAttribute="width" secondItem="uyh-et-ZiT" secondAttribute="width" id="1vb-FQ-Zg4"/>
+                <constraint firstItem="7Ui-Dp-9Xa" firstAttribute="centerX" secondItem="cDe-Ws-xbY" secondAttribute="centerX" id="4d9-uJ-yGD"/>
+                <constraint firstItem="uyh-et-ZiT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5ru-VU-jPZ"/>
+                <constraint firstItem="cDe-Ws-xbY" firstAttribute="top" secondItem="pwF-LR-z3O" secondAttribute="bottom" id="AWR-il-D7L"/>
+                <constraint firstItem="cDe-Ws-xbY" firstAttribute="width" secondItem="pwF-LR-z3O" secondAttribute="width" id="BJw-1f-Al0"/>
+                <constraint firstItem="7Ui-Dp-9Xa" firstAttribute="width" secondItem="cDe-Ws-xbY" secondAttribute="width" id="CR3-b8-0Rg"/>
+                <constraint firstItem="ru4-h9-qoo" firstAttribute="height" secondItem="uyh-et-ZiT" secondAttribute="height" multiplier="0.5" id="F61-xr-7xJ"/>
+                <constraint firstItem="gtq-KW-S54" firstAttribute="width" secondItem="7Ui-Dp-9Xa" secondAttribute="width" id="IBv-KQ-emz"/>
+                <constraint firstItem="ru4-h9-qoo" firstAttribute="top" secondItem="uyh-et-ZiT" secondAttribute="bottom" id="JJy-hS-ZG5"/>
+                <constraint firstItem="ru4-h9-qoo" firstAttribute="centerX" secondItem="uyh-et-ZiT" secondAttribute="centerX" id="JnN-JH-p5f"/>
+                <constraint firstItem="gtq-KW-S54" firstAttribute="centerX" secondItem="7Ui-Dp-9Xa" secondAttribute="centerX" id="RlY-kU-GR8"/>
+                <constraint firstItem="uyh-et-ZiT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="V70-Xl-x92"/>
+                <constraint firstItem="7Ui-Dp-9Xa" firstAttribute="height" secondItem="cDe-Ws-xbY" secondAttribute="height" id="XGg-dx-VvA"/>
+                <constraint firstItem="pwF-LR-z3O" firstAttribute="width" secondItem="uyh-et-ZiT" secondAttribute="width" id="bXb-OF-4oq"/>
+                <constraint firstItem="7Ui-Dp-9Xa" firstAttribute="top" secondItem="cDe-Ws-xbY" secondAttribute="bottom" id="hpy-bR-7mP"/>
+                <constraint firstItem="pwF-LR-z3O" firstAttribute="top" secondItem="ru4-h9-qoo" secondAttribute="bottom" id="iKE-TG-xic"/>
+                <constraint firstItem="cDe-Ws-xbY" firstAttribute="centerX" secondItem="pwF-LR-z3O" secondAttribute="centerX" id="mv9-xi-Qvt"/>
+                <constraint firstItem="gtq-KW-S54" firstAttribute="top" secondItem="7Ui-Dp-9Xa" secondAttribute="bottom" id="nhd-Vh-GfY"/>
+                <constraint firstItem="pwF-LR-z3O" firstAttribute="height" secondItem="uyh-et-ZiT" secondAttribute="height" id="w9d-rh-Qby"/>
+                <constraint firstItem="uyh-et-ZiT" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.94" id="wZT-zc-5LJ"/>
+                <constraint firstItem="pwF-LR-z3O" firstAttribute="centerX" secondItem="ru4-h9-qoo" secondAttribute="centerX" id="xei-wG-0lg"/>
+                <constraint firstItem="gtq-KW-S54" firstAttribute="height" secondItem="7Ui-Dp-9Xa" secondAttribute="height" id="ykE-8Q-dMY"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="166" y="97"/>
+        </view>
+    </objects>
+</document>

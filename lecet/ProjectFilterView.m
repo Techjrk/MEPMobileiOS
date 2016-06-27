@@ -18,7 +18,7 @@
 #define BUTTON_OPTION_DOWN                  [NSString stringWithFormat:@"%C", 0xf107]
 #define BUTTON_OPTION_UP                    [NSString stringWithFormat:@"%C", 0xf106]
 
-@interface ProjectFilterView(){
+@interface ProjectFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate>{
     BOOL isExpanded;
     NSLayoutConstraint *constraintObject;
 }
@@ -68,6 +68,16 @@
     [_fieldOwner setValue:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
     [_fieldWork setValue:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
     
+    _fieldLocation.filterEntryViewDelegate = self;
+    _fieldType.filterEntryViewDelegate = self;
+    _fieldValue.filterEntryViewDelegate = self;
+    _fieldUpdated.filterLabelViewDelegate = self;
+    _fieldJurisdiction.filterLabelViewDelegate = self;
+    _fieldStage.filterLabelViewDelegate = self;
+    _fieldBidding.filterLabelViewDelegate = self;
+    _fieldBH.filterLabelViewDelegate = self;
+    _fieldOwner.filterLabelViewDelegate = self;
+    _fieldWork.filterLabelViewDelegate = self;
     
     [self setButtonTitle];
 }
@@ -108,6 +118,18 @@
     constraintObject.constant = _buttonOptions.frame.size.height + _buttonOptions.frame.origin.y + (kDeviceHeight * 0.02);
     self.scrollView.contentSize = CGSizeMake(self.frame.size.width, constraintObject.constant);
 
+}
+
+- (void)tappedFilterLabelView:(id)object {
+
+    [[DataManager sharedManager] featureNotAvailable];
+    
+}
+
+- (void)tappedFilterEntryViewDelegate:(id)object {
+ 
+    [[DataManager sharedManager] featureNotAvailable];
+    
 }
 
 @end
