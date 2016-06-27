@@ -302,6 +302,34 @@
 "SEARCH_SUGGEST_COUNT_COMPANY"              =               "%li Companies";
 "SEARCH_SUGGEST_COUNT_CONTACT"              =               "%li Contacts";
 
+//ProjectFilterView.xib
+"PROJECT_FILTER_LOCATION"                   =               "LOCATION";
+"PROJECT_FILTER_TYPE"                       =               "TYPE";
+"PROJECT_FILTER_VALUE"                      =               "VALUE";
+"PROJECT_FILTER_UPDATED"                    =               "UPDATED WITHIN";
+"PROJECT_FILTER_JURISDICTION"               =               "JURISDICTION";
+"PROJECT_FILTER_STAGE"                      =               "STAGE";
+"PROJECT_FILTER_BIDDING"                    =               "BIDDING WITHIN";
+"PROJECT_FILTER_BH"                         =               "B/H";
+"PROJECT_FILTER_OWNER"                      =               "OWNER TYPE";
+"PROJECT_FILTER_WORK"                       =               "WORK TYPE";
+"PROJECT_FILTER_MORE"                       =               "More Options";
+"PROJECT_FILTER_FEW"                        =               "Fewer Options";
+"PROJECT_FILTER_ANY"                        =               "Any";
+
+//CompanyFilterView.xib
+"COMPANY_FILTER_LOCATION"                   =               "LOCATION";
+"COMPANY_FILTER_VALUE"                      =               "VALUE";
+"COMPANY_FILTER_JURISDICTION"               =               "JURISDICTION";
+"COMPANY_FILTER_BIDDING"                    =               "BIDDING WITHIN";
+"COMPANY_FILTER_TYPE"                       =               "PROJECT TYPE";
+"COMPANY_FILTER_ANY"                        =               "Any";
+"COMPANY_FILTER_LABEL"                      =               "Related Projects";
+
+//RefineSearchViewController.xib
+"REFINE_FILTER_TITLE"                       =               "Refine Search";
+"REFINE_FILTER_APPLY"                       =               "APPLY";
+"REFINE_FILTER_CANCEL"                      =               "CANCEL";
 
 
 

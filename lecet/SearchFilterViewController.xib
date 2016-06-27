@@ -12,9 +12,13 @@
                 <outlet property="buttonCancel" destination="4Uv-RE-e0V" id="Sed-bf-1Vh"/>
                 <outlet property="buttonCompany" destination="PV1-Wm-Gmg" id="4q7-il-TI8"/>
                 <outlet property="buttonProject" destination="Cf3-cS-LuB" id="gKz-Av-qkc"/>
+                <outlet property="companyFilter" destination="p8J-EU-uzH" id="VP7-I5-vpA"/>
                 <outlet property="constraintMarkerLeading" destination="MpJ-iY-u1G" id="3a3-iv-4xx"/>
+                <outlet property="constraintProjectFilterHeight" destination="4mw-CX-zSF" id="E28-7e-va2"/>
                 <outlet property="labelTitle" destination="D6Z-ee-phb" id="gDV-mq-PCh"/>
                 <outlet property="markerView" destination="ar6-qh-yTT" id="RhH-JS-QNi"/>
+                <outlet property="projectFilter" destination="grR-J8-jgo" id="nGL-R1-8CP"/>
+                <outlet property="projectScrollView" destination="qDH-pP-jmN" id="uv7-Ne-srG"/>
                 <outlet property="topHeader" destination="0A9-Do-HUn" id="jNF-g3-GOP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -139,7 +143,42 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUt-RM-RTN">
                             <rect key="frame" x="0.0" y="146" width="414" height="590"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8J-EU-uzH" customClass="CompanyFilterView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDH-pP-jmN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grR-J8-jgo" customClass="ProjectFilterView">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="590" id="4mw-CX-zSF"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="grR-J8-jgo" secondAttribute="bottom" id="3ek-IT-x7c"/>
+                                        <constraint firstItem="grR-J8-jgo" firstAttribute="top" secondItem="qDH-pP-jmN" secondAttribute="top" id="85k-nU-d1S"/>
+                                        <constraint firstItem="grR-J8-jgo" firstAttribute="leading" secondItem="qDH-pP-jmN" secondAttribute="leading" id="tmq-3w-z6b"/>
+                                        <constraint firstAttribute="trailing" secondItem="grR-J8-jgo" secondAttribute="trailing" id="uyW-UJ-c94"/>
+                                    </constraints>
+                                </scrollView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="grR-J8-jgo" firstAttribute="width" secondItem="MUt-RM-RTN" secondAttribute="width" id="281-tX-YEX"/>
+                                <constraint firstItem="qDH-pP-jmN" firstAttribute="leading" secondItem="MUt-RM-RTN" secondAttribute="leading" id="3wQ-1j-v1n"/>
+                                <constraint firstAttribute="trailing" secondItem="p8J-EU-uzH" secondAttribute="trailing" id="6PH-bg-r2G"/>
+                                <constraint firstAttribute="bottom" secondItem="p8J-EU-uzH" secondAttribute="bottom" id="DRw-hY-RyM"/>
+                                <constraint firstAttribute="bottom" secondItem="qDH-pP-jmN" secondAttribute="bottom" id="a8i-LS-Mnb"/>
+                                <constraint firstItem="p8J-EU-uzH" firstAttribute="top" secondItem="MUt-RM-RTN" secondAttribute="top" id="cFv-19-t4k"/>
+                                <constraint firstAttribute="trailing" secondItem="qDH-pP-jmN" secondAttribute="trailing" id="giS-uj-gWh"/>
+                                <constraint firstItem="p8J-EU-uzH" firstAttribute="leading" secondItem="MUt-RM-RTN" secondAttribute="leading" id="kLY-9J-lfm"/>
+                                <constraint firstItem="qDH-pP-jmN" firstAttribute="top" secondItem="MUt-RM-RTN" secondAttribute="top" id="uuK-i9-ID9"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

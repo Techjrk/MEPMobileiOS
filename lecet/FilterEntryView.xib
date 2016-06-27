@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterEntryView">
+            <connections>
+                <outlet property="collectionView" destination="zr3-BF-Sx1" id="TL6-e8-eoq"/>
+                <outlet property="labelTitle" destination="Nun-Rm-UVY" id="wd0-Uk-Xfu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="319" height="101"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nun-Rm-UVY" customClass="CustomTitleLabel">
+                    <rect key="frame" x="0.0" y="12" width="319" height="30.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjj-ab-p62">
+                    <rect key="frame" x="0.0" y="0.0" width="319" height="12"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zr3-BF-Sx1">
+                    <rect key="frame" x="0.0" y="51.5" width="319" height="39.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jct-15-iBc">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmb-Z1-Yk3">
+                    <rect key="frame" x="0.0" y="91" width="319" height="10"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R64-ts-RpQ">
+                    <rect key="frame" x="-0.5" y="51.5" width="319" height="39.5"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="7w0-ho-45U"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="sjj-ab-p62" secondAttribute="trailing" id="13w-Bk-7vI"/>
+                <constraint firstItem="bmb-Z1-Yk3" firstAttribute="top" secondItem="zr3-BF-Sx1" secondAttribute="bottom" id="45g-qi-2Tr"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="top" secondItem="zr3-BF-Sx1" secondAttribute="top" id="8Xt-b1-WiL"/>
+                <constraint firstAttribute="trailing" secondItem="bmb-Z1-Yk3" secondAttribute="trailing" id="DHc-5I-HOp"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="height" secondItem="zr3-BF-Sx1" secondAttribute="height" id="DIR-lp-FlU"/>
+                <constraint firstItem="sjj-ab-p62" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.12" id="Mh6-mN-2Aj"/>
+                <constraint firstItem="bmb-Z1-Yk3" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="Ms5-vM-oF8"/>
+                <constraint firstItem="sjj-ab-p62" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P1E-fJ-sRZ"/>
+                <constraint firstAttribute="trailing" secondItem="Nun-Rm-UVY" secondAttribute="trailing" id="QJ5-qj-P3c"/>
+                <constraint firstItem="zr3-BF-Sx1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SX1-OS-odo"/>
+                <constraint firstItem="Nun-Rm-UVY" firstAttribute="top" secondItem="sjj-ab-p62" secondAttribute="bottom" id="UGb-8E-BFL"/>
+                <constraint firstItem="Nun-Rm-UVY" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="VMN-Pr-Io5"/>
+                <constraint firstAttribute="bottom" secondItem="zr3-BF-Sx1" secondAttribute="bottom" constant="20" id="W2v-SE-ino"/>
+                <constraint firstItem="bmb-Z1-Yk3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="X3E-9K-5QR"/>
+                <constraint firstItem="sjj-ab-p62" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dC0-3u-iaz"/>
+                <constraint firstAttribute="trailing" secondItem="zr3-BF-Sx1" secondAttribute="trailing" id="jaV-YU-7aZ"/>
+                <constraint firstItem="Nun-Rm-UVY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jbt-We-hIz"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="width" secondItem="zr3-BF-Sx1" secondAttribute="width" id="nAM-xM-Y4p"/>
+                <constraint firstAttribute="bottom" secondItem="bmb-Z1-Yk3" secondAttribute="bottom" id="oQM-yw-m8G"/>
+                <constraint firstItem="zr3-BF-Sx1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.39" id="r8k-aM-L0m"/>
+                <constraint firstItem="R64-ts-RpQ" firstAttribute="centerX" secondItem="zr3-BF-Sx1" secondAttribute="centerX" id="zIn-od-Y39"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="W2v-SE-ino"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="104.5" y="-56.5"/>
+        </view>
+    </objects>
+</document>

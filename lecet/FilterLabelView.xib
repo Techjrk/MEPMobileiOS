@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterLabelView">
+            <connections>
+                <outlet property="labelTitle" destination="idZ-VA-sPR" id="rTN-La-WVd"/>
+                <outlet property="labelValue" destination="MBW-Yx-mMj" id="bzT-ua-6Ej"/>
+                <outlet property="lineView" destination="FPa-DJ-TeK" id="R1c-rO-rQ7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="362" height="62"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPa-DJ-TeK">
+                    <rect key="frame" x="0.0" y="61" width="362" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="0iY-f6-swZ"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idZ-VA-sPR" customClass="CustomTitleLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="271.5" height="62"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBW-Yx-mMj">
+                    <rect key="frame" x="271.5" y="0.0" width="90.5" height="62"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbf-eX-u44">
+                    <rect key="frame" x="0.0" y="0.0" width="362" height="62"/>
+                    <connections>
+                        <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="rS0-2g-7mC"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jbf-eX-u44" secondAttribute="trailing" id="0wP-pJ-nyI"/>
+                <constraint firstItem="jbf-eX-u44" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7uQ-ho-ELj"/>
+                <constraint firstItem="MBW-Yx-mMj" firstAttribute="leading" secondItem="idZ-VA-sPR" secondAttribute="trailing" id="8cZ-Kc-7JU"/>
+                <constraint firstAttribute="bottom" secondItem="jbf-eX-u44" secondAttribute="bottom" id="9H7-Lg-gDX"/>
+                <constraint firstItem="MBW-Yx-mMj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9b0-Vp-mlo"/>
+                <constraint firstAttribute="bottom" secondItem="FPa-DJ-TeK" secondAttribute="bottom" id="MQW-Xh-T2P"/>
+                <constraint firstItem="FPa-DJ-TeK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TW2-vk-ZGp"/>
+                <constraint firstAttribute="trailing" secondItem="MBW-Yx-mMj" secondAttribute="trailing" id="TpS-r4-g40"/>
+                <constraint firstItem="jbf-eX-u44" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZRa-zG-p5c"/>
+                <constraint firstItem="MBW-Yx-mMj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.25" id="cxv-Z2-rP1"/>
+                <constraint firstAttribute="trailing" secondItem="FPa-DJ-TeK" secondAttribute="trailing" id="fI5-VY-LWy"/>
+                <constraint firstItem="idZ-VA-sPR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h64-l2-Ivr"/>
+                <constraint firstAttribute="bottom" secondItem="MBW-Yx-mMj" secondAttribute="bottom" id="x8c-oP-Mcf"/>
+                <constraint firstAttribute="bottom" secondItem="idZ-VA-sPR" secondAttribute="bottom" id="y9K-Np-SDZ"/>
+                <constraint firstItem="idZ-VA-sPR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yWd-wV-bep"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="126" y="-76"/>
+        </view>
+    </objects>
+</document>
