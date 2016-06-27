@@ -122,8 +122,6 @@
 		B6FD044C1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */; };
 		B6FD04521D1D8FD500E12123 /* ProjectFilterBHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */; };
 		B6FD04531D1D8FD500E12123 /* ProjectFilterBHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */; };
-		B6FD33FE1CFDC971005B00A8 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */; };
-		B6FD33FF1CFDC971005B00A8 /* ProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
 		B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551F1CD0C56A0050CF8A /* AppDelegate.m */; };
 		B70155231CD0C56A0050CF8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155221CD0C56A0050CF8A /* ViewController.m */; };
@@ -512,16 +510,12 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
-		B6FD04471D1D875600E12123 /* projectFilterSelectionConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectFilterSelectionConstant.h; sourceTree = "<group>"; };
 		B6FD04481D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterUpdatedViewController.h; sourceTree = "<group>"; };
 		B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterUpdatedViewController.m; sourceTree = "<group>"; };
 		B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterUpdatedViewController.xib; sourceTree = "<group>"; };
 		B6FD044F1D1D8FD500E12123 /* ProjectFilterBHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBHViewController.h; sourceTree = "<group>"; };
 		B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBHViewController.m; sourceTree = "<group>"; };
 		B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBHViewController.xib; sourceTree = "<group>"; };
-		B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
-		B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
-		B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListViewController.xib; sourceTree = "<group>"; };
 		B70155181CD0C56A0050CF8A /* Lecet MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecet MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1475,16 +1469,6 @@
 			name = ProjectFilterBH;
 			sourceTree = "<group>";
 		};
-		B6FD33FA1CFDC958005B00A8 /* ProjectList */ = {
-			isa = PBXGroup;
-			children = (
-				B6FD33FB1CFDC971005B00A8 /* ProjectListViewController.h */,
-				B6FD33FC1CFDC971005B00A8 /* ProjectListViewController.m */,
-				B6FD33FD1CFDC971005B00A8 /* ProjectListViewController.xib */,
-			);
-			name = ProjectList;
-			sourceTree = "<group>";
-		};
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
@@ -1858,64 +1842,6 @@
 			isa = PBXGroup;
 			children = (
 				B76C692D1CD21A54009E9F15 /* constants.h */,
-				B76C69361CD2243D009E9F15 /* loginConstants.h */,
-				B76C69511CD25616009E9F15 /* customTextFieldConstants.h */,
-				B76C69571CD37D9B009E9F15 /* dashboardConstants.h */,
-				B76C69581CD396F6009E9F15 /* menuHeaderConstants.h */,
-				B76C69631CD3BADF009E9F15 /* chartConstants.h */,
-				B76C696E1CD76601009E9F15 /* bidItemViewConstants.h */,
-				B76C697C1CD9FEF4009E9F15 /* calendarConstants.h */,
-				B76C69871CDA0AC1009E9F15 /* calendarItemConstants.h */,
-				B7F10A341CDB8AC200847FA3 /* bidSoonItemConstants.h */,
-				B7A1D34A1CE4D9A7004E94B3 /* projectHeaderConstants.h */,
-				B70FDF691CE63A6D0035A6D9 /* projectStateConstants.h */,
-				B70FDF6A1CE64B670035A6D9 /* projectDetailConstants.h */,
-				B70FDF701CE9B9960035A6D9 /* customEntryFieldConstants.h */,
-				B70FDF761CEA01700035A6D9 /* seeAllConstants.h */,
-				B70FDF7C1CEA0A410035A6D9 /* sectionTitleConstants.h */,
-				B70FDF871CEA0F570035A6D9 /* notesConstants.h */,
-				B771C5F61CEB478F004A628A /* companyHeaderConstants.h */,
-				B771C5F71CEB52E2004A628A /* companyDetailsConstants.h */,
-				B771C5FD1CEB55C1004A628A /* companyStateConstants.h */,
-				B771C60F1CEB94F0004A628A /* associatedBidConstants.h */,
-				B7E104341CEC6FA800EAD8E7 /* contactsConstants.h */,
-				B7E104441CEC850900EAD8E7 /* projectBidConstants.h */,
-				B7E1044F1CECA2E300EAD8E7 /* projectBidListConstants.h */,
-				B7E104501CECA6D000EAD8E7 /* associatedProjectsConstants.h */,
-				B7E1045B1CECEC7F00EAD8E7 /* contactFieldConstants.h */,
-				B796161D1CF5CCDE0089BC32 /* bidItemRecentConstants.h */,
-				B79616471CF841C20089BC32 /* participantsConstants.h */,
-				B79616481CF85DA00089BC32 /* projectBidderConstants.h */,
-				B79616571D018E6C0089BC32 /* projectsNearMeConstants.h */,
-				B73EFA831D01B92C00C6B3B2 /* shareLocationConstants.h */,
-				B64474751D00466B0001B244 /* projectSortConstant.h */,
-				B6F56D7F1D01767D009B81F5 /* projectTabConstant.h */,
-				B6F56D861D0191FC009B81F5 /* projectNavigationBarConstant.h */,
-				B73EFA8F1D0309C400C6B3B2 /* goToSettingsConstants.h */,
-				B6F574CE1D02191F003AA33D /* contactNavBarConstant.h */,
-				B61F68231D05A47F00D249F4 /* contactDetailViewConstant.h */,
-				B68337131D0816B5004226D3 /* profileNavViewConstant.h */,
-				B683372C1D082D81004226D3 /* cpCustomtextFieldConstant.h */,
-				B68337391D08846F004226D3 /* changePasswordVCConstant.h */,
-				B683373A1D088653004226D3 /* changePasswordViewConstant.h */,
-				B6411BB91D0979D8002B6E88 /* SettingConstant.h */,
-				B6411BF71D09D353002B6E88 /* myProfileConstant.h */,
-				B73EFAC21D0EEFF300C6B3B2 /* hiddenProjectsConstants.h */,
-				B73EFACD1D0EF90400C6B3B2 /* hiddenProjectCellConstants.h */,
-				B73EFAE71D11ABF500C6B3B2 /* trackingItemCollectionConstants.h */,
-				B651066A1D12F27700007759 /* companyTrackingViewConstant.h */,
-				B73EFAE81D12C25700C6B3B2 /* trackingListViewConstants.h */,
-				B651064C1D12B12500007759 /* companyTrackingListConstant.h */,
-				B651064D1D12B16C00007759 /* projComTrckingTabViewConstant.h */,
-				B73EFB071D144ACA00C6B3B2 /* selectMoveViewConstants.h */,
-				B71B6BF61D17F04D00B916BA /* projectTrackingItemConstants.h */,
-				B71B6BFC1D1834BB00B916BA /* projectTrackEditConstants.h */,
-				B6BDBAA91D17F83C001FB41C /* companySortViewCellConstant.h */,
-				B6BDBAB01D17FFF0001FB41C /* editTabConstant.h */,
-				B6BDBAB71D181C1D001FB41C /* editViewConstant.h */,
-				B7BF60911D1BE7EE00B3BDD7 /* searchViewConstants.h */,
-				B6FD04381D1D2AE900E12123 /* projectFilterSelectionViewConstant.h */,
-				B6FD04471D1D875600E12123 /* projectFilterSelectionConstant.h */,
 			);
 			name = AppConstants;
 			sourceTree = "<group>";

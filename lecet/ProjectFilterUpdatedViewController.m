@@ -9,7 +9,18 @@
 #import "ProjectFilterUpdatedViewController.h"
 #import "ProjectFilterSelectionViewList.h"
 #import "ProfileNavView.h"
-#import "projectFilterSelectionConstant.h"
+
+typedef enum  {
+    ProjectFilterItemAny = 0,
+    ProjectFilterItemHours = 1,
+    ProjectFilterItemDays = 2,
+    ProjectFilterItemMonths = 3,
+} ProjectFilterItem;
+
+
+#define PROJECT_SELECTION_TITLE @"TITLE"
+#define PROJECT_SELECTION_VALUE @"VALUE"
+#define PROJECT_SELECTION_TYPE  @"TYPE"
 
 @interface ProjectFilterUpdatedViewController ()<ProfileNavViewDelegate,ProjectFilterSelectionViewListDelegate>
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
