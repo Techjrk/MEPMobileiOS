@@ -38,13 +38,17 @@
     
     
     collectionDataItems = [@[@{TITLENAME:@"One",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                               SUBCATEGORYDATA:@[@"Try"]
+                               SUBCATEGORYDATA:
+                                @[@{TITLENAME:@"SubOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]
                                },
                              @{TITLENAME:@"Two",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
                                SUBCATEGORYDATA:@[]
                                },
                              @{TITLENAME:@"three",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                               SUBCATEGORYDATA:@[@"3one",@"3Two",@"3Four"]
+                               SUBCATEGORYDATA:@[
+                                @{TITLENAME:@"SubThreeOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
+                                @{TITLENAME:@"SubThreeTwo",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
+                                @{TITLENAME:@"SubThreeThree",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]
                                },
                              @{TITLENAME:@"Four",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
                                SUBCATEGORYDATA:@[]
@@ -94,22 +98,25 @@
     ProjectFilterCollapsibleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.projectFilterCollapsibleCollectionViewCellDelegate = self;
     
-    
+    [cell setIndePathForCollapsible:indexPath];
     if (indexPath.item == 0) {
         
-
+        //Section Data
         NSString *title = [collectionDataItems objectAtIndex:indexPath.section][TITLENAME];
         [cell setTextLabel:title];
-        [cell setButtonTag:(int)indexPath.section];
-        
+        //[cell setButtonTag:(int)indexPath.section];
         
         NSString *currentflag = [collectionDataItems objectAtIndex:indexPath.section][SELECTIONFLAGNAME];
+        BOOL selected = [currentflag isEqualToString:SelectedFlag]?YES:NO;
+        [cell setSelectionButtonSelected:selected];
+        
+        /*
         if ([currentflag isEqualToString:UnSelectedFlag]) {
             [cell setSelectionButtonSelected:NO];
         }
         if ([currentflag isEqualToString:SelectedFlag]) {
             [cell setSelectionButtonSelected:YES];
-        }
+        }*/
         
         NSString *dropDownFlag = [collectionDataItems objectAtIndex:indexPath.section][DROPDOWNFLAGNAME];
         if ([dropDownFlag isEqualToString:UnSelectedFlag]) {
@@ -124,10 +131,29 @@
 
         
     }else {
+        //SubCategory or Row Data
+        NSDictionary *dict = [[collectionDataItems objectAtIndex:indexPath.section][SUBCATEGORYDATA] count] > 0?[[collectionDataItems objectAtIndex:indexPath.section][SUBCATEGORYDATA] objectAtIndex:indexPath.row - 1]:nil;
+ 
+        [cell setTextLabel:dict[TITLENAME]];
         
-        NSString *title = [[collectionDataItems objectAtIndex:indexPath.section][SUBCATEGORYDATA] count] > 0?[[collectionDataItems objectAtIndex:indexPath.section][SUBCATEGORYDATA] objectAtIndex:indexPath.row - 1]:nil;
+        NSString *currentflag = dict[SELECTIONFLAGNAME];
+        BOOL selected = [currentflag isEqualToString:SelectedFlag]?YES:NO;
+        [cell setSelectionButtonSelected:selected];
         
-        [cell setTextLabel:title];
+        NSString *dropDownFlag = dict[DROPDOWNFLAGNAME];
+        BOOL dropDownSelected = [dropDownFlag isEqualToString:SelectedFlag]?YES:NO;
+        [cell setDropDownSelected:dropDownSelected];
+        
+        
+        /*
+        if ([dropDownFlag isEqualToString:UnSelectedFlag]) {
+            [cell setDropDownSelected:NO];
+        }
+        if ([dropDownFlag isEqualToString:SelectedFlag]) {
+            [cell setDropDownSelected:YES];
+        }
+        */
+        
         [cell setCollapsibleViewLetfSpacing:42.0f];
         [cell setLeftLineSpacingForLineView:42.0f];
         
@@ -212,29 +238,69 @@
 #pragma mark - Cell Delegate
 
 
-- (void)tappedSelectionButton:(int)tag {
+- (void)tappedSelectionButton:(id)tag {
+    NSIndexPath *index = tag;
     
-    NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:tag] mutableCopy];
-    NSString *currentflag = [collectionDataItems objectAtIndex:tag][SELECTIONFLAGNAME];
-    NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
-    [dict setValue:flagTochange forKey:SELECTIONFLAGNAME];
-    [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:(NSInteger)tag];
-    NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
-    [_collectionView reloadItemsAtIndexPaths:indexPaths];
+    
+    if (index.row == 0) {
+        NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.section] mutableCopy];
+        NSString *currentflag = [collectionDataItems objectAtIndex:index.section][SELECTIONFLAGNAME];
+        NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
+        [dict setValue:flagTochange forKey:SELECTIONFLAGNAME];
+        [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
+        //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:(NSInteger)tag];
+        //NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
+        //[_collectionView reloadItemsAtIndexPaths:indexPaths];
+    } else {
+        NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.section] mutableCopy];
+        NSMutableArray *array = [dict[SUBCATEGORYDATA] mutableCopy];
+        
+        NSMutableDictionary *subDict = [[array objectAtIndex:index.row -1] mutableCopy];
+        NSString *currentflag = subDict[SELECTIONFLAGNAME];
+        NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
+        [subDict setValue:flagTochange forKey:SELECTIONFLAGNAME];
+        [array replaceObjectAtIndex:index.row -1 withObject:subDict];
+        [dict setValue:array forKey:SUBCATEGORYDATA];
+        [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
+    }
+    
+    [_collectionView reloadData];
     
 }
 
-- (void)tappedDropDownButton:(int)tag {
+- (void)tappedDropDownButton:(id)tag {
     
-    NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:tag] mutableCopy];
-    NSString *currentflag = [collectionDataItems objectAtIndex:tag][DROPDOWNFLAGNAME];
-    NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
-    [dict setValue:flagTochange forKey:DROPDOWNFLAGNAME];
-    [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
+    NSIndexPath *index = tag;
+   
     
-    
-    
+    if (index.row == 0) {
+        NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.section] mutableCopy];
+        NSString *currentflag = [collectionDataItems objectAtIndex:index.section][DROPDOWNFLAGNAME];
+        NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
+        [dict setValue:flagTochange forKey:DROPDOWNFLAGNAME];
+        [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
+     
+    } else {
+        
+        NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.section] mutableCopy];
+        NSMutableArray *array = [dict[SUBCATEGORYDATA] mutableCopy];
+        
+        NSMutableDictionary *subDict = [[array objectAtIndex:index.row -1] mutableCopy];
+        NSString *currentflag = subDict[DROPDOWNFLAGNAME];
+        NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
+        [subDict setValue:flagTochange forKey:DROPDOWNFLAGNAME];
+        [array replaceObjectAtIndex:index.row -1 withObject:subDict];
+        [dict setValue:array forKey:SUBCATEGORYDATA];
+        [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
+        //NSLog(@"Array %@", collectionDataItems);
+        //NSLog(@"IndexRow %ld IndexSection %ld",(long)index.row,(long)index.section);
+        
+        
+    }
     [_collectionView reloadData];
+    
+
+    
+    
 }
 @end

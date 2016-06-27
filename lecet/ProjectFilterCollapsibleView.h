@@ -12,8 +12,8 @@
 
 
 @protocol ProjectFilterCollapsibleViewDelegate <NSObject>
-- (void)tappedSelectionButton:(int)tag;
-- (void)tappedDropDownButton:(int)tag;
+- (void)tappedSelectionButton:(id)tag;
+- (void)tappedDropDownButton:(id)tag;
 @end
 
 
@@ -25,5 +25,6 @@
 - (void)setSelectionButtonSelected:(BOOL)selected;
 - (void)setDropDonwSelected:(BOOL)selected;
 - (void)setLeftSpacingForLineView:(CGFloat)value;
+- (void)setIndexPath:(NSIndexPath *)index;
 
 @end

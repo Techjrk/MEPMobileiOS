@@ -12,8 +12,8 @@
 
 @protocol ProjectFilterCollapsibleCollectionViewCellDelegate <NSObject>
 
-- (void)tappedSelectionButton:(int)tag;
-- (void)tappedDropDownButton:(int)tag;
+- (void)tappedSelectionButton:(id)tag;
+- (void)tappedDropDownButton:(id)tag;
 
 @end
 
@@ -25,4 +25,5 @@
 - (void)setDropDownSelected:(BOOL)selected;
 - (void)setLeftLineSpacingForLineView:(CGFloat)value;
 - (void)setCollapsibleViewLetfSpacing:(CGFloat)value;
+- (void)setIndePathForCollapsible:(NSIndexPath *)index;
 @end

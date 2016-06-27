@@ -46,16 +46,20 @@
 - (void)setCollapsibleViewLetfSpacing:(CGFloat)value {
     _collapsibleViewLeftSapcing.constant = value;
 }
+- (void)setIndePathForCollapsible:(NSIndexPath *)index {
+    [_collapsibleView setIndexPath:index];
+}
 
 #pragma mark - CollapsibleView Delegate
 
-- (void)tappedSelectionButton:(int)tag {
+- (void)tappedSelectionButton:(id)tag {
  
     [_projectFilterCollapsibleCollectionViewCellDelegate tappedSelectionButton:tag];
 }
 
-- (void)tappedDropDownButton:(int)tag {
+- (void)tappedDropDownButton:(id)tag {
     [_projectFilterCollapsibleCollectionViewCellDelegate tappedDropDownButton:tag];
 }
+
 
 @end

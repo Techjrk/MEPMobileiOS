@@ -12,6 +12,7 @@
 #define LABEL_FONT_COLOR                  RGB(34, 34, 34)
 @interface ProjectFilterCollapsibleView () {
     UIView *mask;
+    NSIndexPath *indexPath;
 }
 @property (weak, nonatomic) IBOutlet UIButton *selectionButton;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
@@ -47,8 +48,8 @@
 }
 
 - (IBAction)tappedSelecTionButton:(id)sender {
-    UIButton *button = sender;
-    [_projectFilterCollapsibleViewDelegate tappedSelectionButton:(int)button.tag];
+   // UIButton *button = sender;
+    [_projectFilterCollapsibleViewDelegate tappedSelectionButton:indexPath];
     
 }
 
@@ -56,9 +57,13 @@
     _leftLineViewSpacing.constant = value;
 }
 
+- (void)setIndexPath:(NSIndexPath *)index {
+    indexPath = index;
+}
+
 - (IBAction)tappedDropDownButton:(id)sender {
-    UIButton *button = sender;
-    [_projectFilterCollapsibleViewDelegate tappedDropDownButton:(int)button.tag];
+    //UIButton *button = sender;
+    [_projectFilterCollapsibleViewDelegate tappedDropDownButton:indexPath];
     
 }
 
