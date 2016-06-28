@@ -60,6 +60,12 @@
 - (void)companyAddTrackingList:(NSNumber*)trackId recordId:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companySearch:(NSMutableDictionary*)filter data:(NSMutableDictionary*)data success:(APIBlock)success failure:(APIBlock)failure;
 
+//PROJECT GROUP LIST
+- (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure;
+
+//PROJECT CATEGORY
+- (void)projectCategoryLisByGroupID:(NSNumber*)projectGroupID success:(APIBlock)success failure:(APIBlock)failure;
+
 //MISC
 - (void)featureNotAvailable;
 - (void)showBusyScreen;

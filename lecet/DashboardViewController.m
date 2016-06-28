@@ -668,10 +668,7 @@
 
             */
             
-            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
-            [self.navigationController pushViewController:controller animated:YES];
-            
-            
+            [self pushProjectFilterTypes];
             break;
             
         }
@@ -954,5 +951,24 @@
     
 }
 
+
+
+- (void)pushProjectFilterTypes {
+    
+    [[DataManager sharedManager] projectGroupRequest:^(id obj){
+        
+        ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
+        [controller setInfo:obj];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    }failure:^(id obj){
+        NSLog(@"Failed Object = %@",obj);
+    }];
+
+    
+    
+    
+    
+}
 
 @end

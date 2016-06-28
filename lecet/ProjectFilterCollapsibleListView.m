@@ -29,7 +29,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 #define DROPDOWNFLAGNAME            @"dropDownFlagName"
-#define TITLENAME                   @"TITLE"
+#define TITLENAME                   @"title"
 #define SUBCATEGORYDATA             @"SubData"
 #define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
 
@@ -46,6 +46,16 @@
     _collectionView.dataSource = self;
     
     
+}
+
+- (void)replaceInfo:(id)info atSection:(int)section {
+
+    [collectionDataItems replaceObjectAtIndex:section withObject:info];
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+    //NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
+    //[_collectionView reloadItemsAtIndexPaths:indexPaths];
+    //_collectionView insertItemsAtIndexPaths:<#(nonnull NSArray<NSIndexPath *> *)#>
+    [_collectionView reloadData];
 }
 
 
@@ -74,7 +84,16 @@
         BOOL dropDownSelected = [dropDownFlag isEqualToString:SelectedFlag]?YES:NO;
         [cell setDropDownSelected:dropDownSelected];
         
-        [cell setCollapsibleViewLetfSpacing:42.0f];
+        //CGFloat leftSpacing = dropDownSelected?42.0f:0;
+        
+        /*
+        if (indexPath.section) {
+            [cell setCollapsibleViewLetfSpacing:0];
+        } else{
+            [cell setCollapsibleViewLetfSpacing:42.0f];
+        }
+         */
+        
         [cell setLeftLineSpacingForLineView:42.0f];
         
         //Second SubCategory
@@ -177,7 +196,9 @@
         NSMutableDictionary *subDict = [self getSubCategoryalue:indexPath];
         NSString *currentflag = subDict[DROPDOWNFLAGNAME];
         CGFloat heigthIfOpen = [currentflag isEqualToString:SelectedFlag]?cellHeight *2:cellHeight;
-        size = CGSizeMake( _collectionView.frame.size.width, heigthIfOpen);
+        
+        CGFloat width = _collectionView.frame.size.width - 52;
+        size = CGSizeMake( width, heigthIfOpen);
     }
     
 

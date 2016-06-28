@@ -53,6 +53,9 @@
 #define kUrlCompanyAddTrackingList          @"companylists/%li/companies/rel/%li"
 #define kUrlCompanySearch                   @"Companies/search"
 
+#define kUrlProjectGroup                    @"ProjectGroups?"
+#define kUrlProjectCategory                 @"ProjectCategories?"
+
 @interface DataManager()
 @end
 @implementation DataManager
@@ -835,6 +838,36 @@
     } authenticated:YES];
 
 }
+
+#pragma mark - PROJECT GROUP HTTP REQUEST
+
+- (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure {
+
+//NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
+    
+    [self HTTP_GET:[self url:kUrlProjectGroup] parameters:nil success:^(id object) {
+        success(object);
+        
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
+#pragma mark - PROJECT CATEGORY HTTP REQUEST
+- (void)projectCategoryLisByGroupID:(NSNumber *)projectGroupID success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSDictionary *filter =@{@"filter[where][projectGroupId]":projectGroupID};
+    
+    [self HTTP_GET:[self url:kUrlProjectCategory] parameters:filter success:^(id object) {
+        success(object);
+        
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
 
 #pragma mark - MISC FEATURE
 

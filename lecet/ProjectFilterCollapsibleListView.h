@@ -12,5 +12,6 @@
 - (void)setInfo:(NSArray *)item;
 - (void)setCollectionViewBounce:(BOOL)bounce;
 - (void)setHideLineViewInFirstLayerForSecSubCat:(BOOL)hide;
+- (void)replaceInfo:(id)info atSection:(int)section;
 
 @end

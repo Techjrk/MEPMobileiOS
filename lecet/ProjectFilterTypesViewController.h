@@ -10,5 +10,6 @@
 #import "BaseViewController.h"
 
 @interface ProjectFilterTypesViewController : BaseViewController
+- (void)setInfo:(id)info;
 
 @end
