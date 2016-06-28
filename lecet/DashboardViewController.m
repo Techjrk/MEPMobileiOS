@@ -122,7 +122,6 @@
 
         
         
-        
         /*
         [[DataManager sharedManager] bidCalendarForYear:@(2016) month:@(6) success:^(id object) {
             

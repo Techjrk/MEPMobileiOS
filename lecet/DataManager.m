@@ -40,6 +40,7 @@
 #define kUrlBidCalendar                     @"Projects/bidcalendar"
 #define kUrlCompanyInfo                     @"Companies/search?"
 #define kUrlContactSearch                   @"Contacts/search"
+#define kUrlSavedSearches                   @"LecetUsers/%li/searches"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
@@ -672,6 +673,36 @@
         failure(object);
     } authenticated:YES];
 
+}
+
+- (void)savedSearches:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+
+    NSString *url = [NSString stringWithFormat:kUrlSavedSearches,(long)userId.integerValue ];
+    
+    NSMutableArray *project = [[NSMutableArray alloc] init];
+    NSMutableArray *company = [[NSMutableArray alloc] init];
+    data[SEARCH_RESULT_SAVED_PROJECT] = project;
+    data[SEARCH_RESULT_SAVED_COMPANY] = company;
+ 
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        
+        for (NSDictionary *item in object) {
+            
+            if ([item[@"modelName"] isEqualToString:@"Project"]) {
+                [project addObject:item];
+            } else if ([item[@"modelName"] isEqualToString:@"Company"]) {
+                [company addObject:item];
+            }
+            
+        }
+        
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
 }
 
 #pragma mark - PROJECT TRACK LISTS HTTP REQUEST

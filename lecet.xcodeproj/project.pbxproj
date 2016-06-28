@@ -311,6 +311,12 @@
 		B7BF60DF1D2154D500B3BDD7 /* CompanyFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60DE1D2154D500B3BDD7 /* CompanyFilterView.xib */; };
 		B7BF60E31D215E7D00B3BDD7 /* RefineSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60E11D215E7D00B3BDD7 /* RefineSearchViewController.m */; };
 		B7BF60E41D215E7D00B3BDD7 /* RefineSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60E21D215E7D00B3BDD7 /* RefineSearchViewController.xib */; };
+		B7BF60ED1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60EB1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.m */; };
+		B7BF60EE1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60EC1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.xib */; };
+		B7BF60F11D22B48400B3BDD7 /* RecentSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60F01D22B48400B3BDD7 /* RecentSearchView.m */; };
+		B7BF60F31D22B49400B3BDD7 /* RecentSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60F21D22B49400B3BDD7 /* RecentSearchView.xib */; };
+		B7BF60F71D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60F51D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.m */; };
+		B7BF60F81D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60F61D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.xib */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
 		B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */; };
 		B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */; };
@@ -816,6 +822,15 @@
 		B7BF60E01D215E7D00B3BDD7 /* RefineSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefineSearchViewController.h; sourceTree = "<group>"; };
 		B7BF60E11D215E7D00B3BDD7 /* RefineSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefineSearchViewController.m; sourceTree = "<group>"; };
 		B7BF60E21D215E7D00B3BDD7 /* RefineSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefineSearchViewController.xib; sourceTree = "<group>"; };
+		B7BF60EA1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentSearchCollectionViewCell.h; sourceTree = "<group>"; };
+		B7BF60EB1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentSearchCollectionViewCell.m; sourceTree = "<group>"; };
+		B7BF60EC1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7BF60EF1D22B48400B3BDD7 /* RecentSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentSearchView.h; sourceTree = "<group>"; };
+		B7BF60F01D22B48400B3BDD7 /* RecentSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentSearchView.m; sourceTree = "<group>"; };
+		B7BF60F21D22B49400B3BDD7 /* RecentSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchView.xib; sourceTree = "<group>"; };
+		B7BF60F41D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentSearchItemCollectionViewCell.h; sourceTree = "<group>"; };
+		B7BF60F51D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentSearchItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B7BF60F61D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
 		B7E104301CEC6D7600EAD8E7 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
 		B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsView.xib; sourceTree = "<group>"; };
@@ -1720,6 +1735,12 @@
 				B7BF60BA1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.h */,
 				B7BF60BB1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.m */,
 				B7BF60BC1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.xib */,
+				B7BF60EA1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.h */,
+				B7BF60EB1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.m */,
+				B7BF60EC1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.xib */,
+				B7BF60F41D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.h */,
+				B7BF60F51D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.m */,
+				B7BF60F61D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1868,6 +1889,9 @@
 				B7BF60DB1D2154C400B3BDD7 /* CompanyFilterView.h */,
 				B7BF60DC1D2154C400B3BDD7 /* CompanyFilterView.m */,
 				B7BF60DE1D2154D500B3BDD7 /* CompanyFilterView.xib */,
+				B7BF60EF1D22B48400B3BDD7 /* RecentSearchView.h */,
+				B7BF60F01D22B48400B3BDD7 /* RecentSearchView.m */,
+				B7BF60F21D22B49400B3BDD7 /* RecentSearchView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -2225,6 +2249,7 @@
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B6411BBF1D09ACBF002B6E88 /* MyProfileViewController.xib in Resources */,
 				B7BF60AF1D1D85AA00B3BDD7 /* SearchContactCollectionViewCell.xib in Resources */,
+				B7BF60EE1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.xib in Resources */,
 				B6BDBABD1D181EA9001FB41C /* EditViewCollectionViewCell.xib in Resources */,
 				B7BF60DF1D2154D500B3BDD7 /* CompanyFilterView.xib in Resources */,
 				B7BF60C81D1EED6B00B3BDD7 /* SearchFilterViewController.xib in Resources */,
@@ -2235,6 +2260,7 @@
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
 				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
 				B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */,
+				B7BF60F81D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.xib in Resources */,
 				B71B6BFB1D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B6BDBAB61D180452001FB41C /* EditView.xib in Resources */,
@@ -2247,6 +2273,7 @@
 				B651065A1D12B94800007759 /* CompanyTrackingView.xib in Resources */,
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
 				B73EFAED1D13FB3C00C6B3B2 /* ProjectTrackingViewController.xib in Resources */,
+				B7BF60F31D22B49400B3BDD7 /* RecentSearchView.xib in Resources */,
 				B7BF60A51D1D6FB900B3BDD7 /* SearchProjectCollectionViewCell.xib in Resources */,
 				B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */,
 				B6BDBAC31D181F66001FB41C /* EditViewList.xib in Resources */,
@@ -2331,6 +2358,7 @@
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
 				B79616511D004D7A0089BC32 /* TriangleView.m in Sources */,
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
+				B7BF60F71D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.m in Sources */,
 				B70155231CD0C56A0050CF8A /* ViewController.m in Sources */,
 				B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */,
 				B73EFB0A1D14546E00C6B3B2 /* ProjectTrackItemView.m in Sources */,
@@ -2348,6 +2376,7 @@
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */,
+				B7BF60F11D22B48400B3BDD7 /* RecentSearchView.m in Sources */,
 				B73EFA951D080CAF00C6B3B2 /* ProjectPointAnnotation.m in Sources */,
 				B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */,
 				B7F10A1B1CDB3E3300847FA3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2445,6 +2474,7 @@
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
 				B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */,
+				B7BF60ED1D22B37F00B3BDD7 /* RecentSearchCollectionViewCell.m in Sources */,
 				B7BF60861D19371100B3BDD7 /* DownView.m in Sources */,
 				B7BF60CB1D21178A00B3BDD7 /* CustomTitleLabel.m in Sources */,
 				B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */,
