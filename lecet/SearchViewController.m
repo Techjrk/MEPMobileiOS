@@ -18,6 +18,9 @@
 #import "SearchResultView.h"
 #import "SearchFilterViewController.h"
 #import "RefineSearchViewController.h"
+#import "ProjectDetailViewController.h"
+#import "CompanyDetailViewController.h"
+#import "ContactDetailViewController.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -37,7 +40,7 @@ typedef enum : NSUInteger {
 } SearchSection;
 
 
-@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>{
+@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate>{
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
@@ -61,11 +64,9 @@ typedef enum : NSUInteger {
     
     collectionItems = [[NSMutableDictionary alloc] init];
     
-    collectionItems[RESULT_ITEMS_PROJECT] = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
-    
-    collectionItems[RESULT_ITEMS_COMPANY] = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
-    
-    collectionItems[RESULT_ITEMS_CONTACT] = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
+    collectionItems[SEARCH_RESULT_PROJECT] = [[NSMutableDictionary alloc] init];
+    collectionItems[SEARCH_RESULT_COMPANY] = [[NSMutableDictionary alloc] init];
+    collectionItems[SEARCH_RESULT_CONTACT] = [[NSMutableDictionary alloc] init];
     
     [self enableTapGesture:YES];
     _labeSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
@@ -107,7 +108,7 @@ typedef enum : NSUInteger {
 
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchResultCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionResult)];
 
-    searchMode = YES;
+    searchMode = NO;
     showResult = NO;
 }
 
@@ -155,18 +156,78 @@ typedef enum : NSUInteger {
         case SearchSectionSuggested: {
             
             SearchSuggestedCollectionViewCell *cellItem = (SearchSuggestedCollectionViewCell*)cell;
-            [cellItem setInfo:@"Jay Dee" count:3 headerType:(SearchSuggestedHeader)indexPath.row];
+            
+            NSMutableDictionary *result = nil;
+            
+            switch (indexPath.row) {
+                case 0: {
+                    result = collectionItems[SEARCH_RESULT_PROJECT];
+                    break;
+                }
+                    
+                case 1: {
+                    result = collectionItems[SEARCH_RESULT_COMPANY];
+                    break;
+                }
+                    
+                case 2: {
+                    result = collectionItems[SEARCH_RESULT_CONTACT];
+                    break;
+                }
+                    
+            }
+            
+            NSNumber *total = [DerivedNSManagedObject objectOrNil:result[@"total"]];
+            NSInteger count = 0;
+            if( total != nil) {
+                count = total.integerValue;
+            }
+            
+            [cellItem setInfo:_labeSearch.text count:count headerType:(SearchSuggestedHeader)indexPath.row];
             
             break;
         }
             
         case SearchSectionResult: {
             SearchResultCollectionViewCell *cellItem = (SearchResultCollectionViewCell*)cell;
+            cellItem.navigationController = self.navigationController;
             [cellItem setCollectionItems:collectionItems tab:resultIndex];
+            [cellItem reloadData];
             break;
         }
-        default:
+            
+        case SearchSectionProjects: {
+            
+            NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+            NSArray *items = result[@"results"];
+            
+            SearchProjectCollectionViewCell *cellItem = (SearchProjectCollectionViewCell*)cell;
+            [cellItem setInfo:items[indexPath.row ]];
+            
             break;
+        }
+            
+        case SearchSectionCompanies: {
+
+            NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
+            NSArray *items = result[@"results"];
+            
+            SearchCompanyCollectionViewCell *cellItem = (SearchCompanyCollectionViewCell*)cell;
+            [cellItem setInfo:items[indexPath.row ]];
+
+            break;
+        }
+            
+        case SearchSectionContacts: {
+ 
+            NSMutableDictionary *result = collectionItems[SEARCH_RESULT_CONTACT];
+            NSArray *items = result[@"results"];
+            
+            SearchContactCollectionViewCell *cellItem = (SearchContactCollectionViewCell*)cell;
+            [cellItem setInfo:items[indexPath.row ]];
+
+            break;
+        }
     }
 
     [[cell contentView] setFrame:[cell bounds]];
@@ -214,20 +275,23 @@ typedef enum : NSUInteger {
             }
                 
             case SearchSectionProjects: {
-                NSArray *items = collectionItems[RESULT_ITEMS_PROJECT];
+                NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+                NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
                 count = showResult?0:(items.count>4?4:items.count);
                 break;
             }
                 
             case SearchSectionCompanies: {
-                NSArray *items = collectionItems[RESULT_ITEMS_COMPANY];
+                NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
+                NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
                 count = showResult?0:(items.count>4?4:items.count);
                 break;
             }
                 
             case SearchSectionContacts: {
-                NSArray *items = collectionItems[RESULT_ITEMS_CONTACT];
-                count = showResult?0:(items.count>4?4:items.count);
+                NSMutableDictionary *result = collectionItems[SEARCH_RESULT_CONTACT];
+                NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+                count = showResult?0:( items.count>4?4:items.count);
                 break;
             }
                 
@@ -309,6 +373,12 @@ typedef enum : NSUInteger {
     
     if (showResult) {
         shouldHaveInset = NO;
+    } else {
+     
+        if (searchMode) {
+            shouldHaveInset = [self sectionHasRecord:sectionType];
+        }
+        
     }
 
     return UIEdgeInsetsMake( 0, 0, kDeviceHeight * (shouldHaveInset?0.024:0), 0);
@@ -334,6 +404,52 @@ typedef enum : NSUInteger {
         showResult = YES;
         [_collectionView reloadData];
 
+    } else if (sectionType == SearchSectionProjects) {
+      
+        NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+        NSDictionary *item = items[indexPath.row];
+        
+        [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
+
+            ProjectDetailViewController *detail = [ProjectDetailViewController new];
+            detail.view.hidden = NO;
+            [detail detailsFromProject:object];
+            
+            [self.navigationController pushViewController:detail animated:YES];
+        } failure:^(id object) {
+        }];
+
+    } else if (sectionType == SearchSectionCompanies) {
+        
+        NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
+        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+        NSDictionary *item = items[indexPath.row];
+        
+        [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
+            id returnObject = object;
+       
+            [[DataManager sharedManager] companyProjectBids:item[@"id"] success:^(id object) {
+                CompanyDetailViewController *controller = [CompanyDetailViewController new];
+                controller.view.hidden = NO;
+                [controller setInfo:returnObject];
+                [self.navigationController pushViewController:controller animated:YES];
+            } failure:^(id object) {
+            }];
+          
+        } failure:^(id object) {
+        }];
+
+    } else if (sectionType == SearchSectionContacts) {
+        
+        NSMutableDictionary *result = collectionItems[SEARCH_RESULT_CONTACT];
+        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+        NSDictionary *item = items[indexPath.row];
+        
+        ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
+        [controller setCompanyContactDetailsFromDictionary:item];
+        [self.navigationController pushViewController:controller animated:YES];
+
     }
 }
 
@@ -347,11 +463,17 @@ typedef enum : NSUInteger {
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
    
+    SearchSection sectionType = (SearchSection)section;
     
     BOOL shouldHaveHeader = [self shouldShowSection:section];
     
     if (showResult) {
         shouldHaveHeader = NO;
+    } else {
+        
+        if (searchMode) {
+            shouldHaveHeader = [self sectionHasRecord:sectionType];
+        }
     }
     
     return  CGSizeMake(collectionView.frame.size.width, kDeviceHeight * (shouldHaveHeader ?0.05:0));
@@ -373,6 +495,119 @@ typedef enum : NSUInteger {
     }
 
     return shouldExpandHeader;
+}
+
+#pragma mark - Search 
+
+- (void)search {
+
+    
+    [[DataManager sharedManager] projectSearch:[@{@"q": _labeSearch.text, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy] data:collectionItems success:^(id object) {
+       
+        [_collectionView reloadData];
+        
+    } failure:^(id object) {
+        
+    }];
+    
+    
+    
+    [[DataManager sharedManager] companySearch:[@{@"q": _labeSearch.text} mutableCopy] data:collectionItems success:^(id object) {
+   
+        [_collectionView reloadData];
+    } failure:^(id object) {
+        
+    }];
+    
+    
+    [[DataManager sharedManager] contactSearch:[@{@"q": _labeSearch.text, @"filter[include][0]":@"company"} mutableCopy] data:collectionItems success:^(id object) {
+
+        [_collectionView reloadData];
+
+    } failure:^(id object) {
+        
+    }];
+    
+
+}
+
+#pragma mark - UITextField Delegate
+
+- (void) textFieldText:(id)notification {
+
+    if (_labeSearch.text.length>0) {
+        
+        if (!searchMode) {
+            searchMode = YES;
+            [_collectionView reloadData];
+        }
+        
+        [[DataManager sharedManager] cancellAllRequests];
+        [self search];
+    } else {
+        searchMode = NO;
+        showResult = NO;
+        
+        [_collectionView reloadData];
+    }
+
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                           selector:@selector (textFieldText:)
+                               name:UITextFieldTextDidChangeNotification
+                             object:textField];
+
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:textField];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+
+    [self.view endEditing:YES];
+    
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+
+    return YES;
+}
+
+- (BOOL) sectionHasRecord:(SearchSection)sectionType {
+
+    
+    if (sectionType == SearchSectionProjects | sectionType == SearchSectionCompanies | sectionType == SearchSectionContacts) {
+        
+        NSMutableDictionary *result = nil;
+        if (sectionType == SearchSectionProjects) {
+            
+            result = collectionItems[SEARCH_RESULT_PROJECT];
+            
+        } else if (sectionType == SearchSectionCompanies) {
+            
+            result = collectionItems[SEARCH_RESULT_COMPANY];
+            
+        } else {
+            
+            result = collectionItems[SEARCH_RESULT_CONTACT];
+        }
+        
+        NSNumber *total = [DerivedNSManagedObject objectOrNil:result[@"total"]];
+        NSInteger count = 0;
+        if( total != nil) {
+            count = total.integerValue;
+        }
+        
+        return count>0;
+    }
+    
+    return NO;
+
 }
 
 @end

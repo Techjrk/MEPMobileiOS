@@ -11,6 +11,10 @@
 #import "ProjectTrackItemCollectionViewCell.h"
 #import "CompanyTrackingCollectionViewCell.h"
 #import "ContactItemCollectionViewCell.h"
+#import "ContactsView.h"
+#import "ProjectDetailViewController.h"
+#import "CompanyDetailViewController.h"
+#import "ContactDetailViewController.h"
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 
@@ -33,6 +37,8 @@
 @end
 
 @implementation SearchResultView
+@synthesize navigationController;
+
 #define kCellIdentifierProject              @"kCellIdentifierProject"
 #define kCellIdentifierCompany              @"kCellIdentifierCompany"
 #define kCellIdentifierContact              @"kCellIdentifierContact"
@@ -77,28 +83,30 @@
 }
 
 - (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSInteger)tab {
-    items = collectionItems;
+    items = [collectionItems mutableCopy];
     currentTab = tab;
     _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab;
     [self setInfo];
     
 }
+
 - (void)setCollectionItems:(NSMutableDictionary *)collectionItems {
 }
 
 - (NSInteger)getCollectionCount:(NSString*)string {
 
-    NSArray *array = items[string];
-    return array.count;
+    NSMutableDictionary *collectionItems = items[string];
+    NSArray *itemList = collectionItems[@"results"];
+    return itemList.count;
 }
 
 - (void)setInfo {
     
-    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_PROJECT"), [self getCollectionCount:RESULT_ITEMS_PROJECT]] forState:UIControlStateNormal];
+    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_PROJECT"), [self getCollectionCount:SEARCH_RESULT_PROJECT]] forState:UIControlStateNormal];
 
-    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_COMPANY"), [self getCollectionCount:RESULT_ITEMS_COMPANY]] forState:UIControlStateNormal];
+    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_COMPANY"), [self getCollectionCount:SEARCH_RESULT_COMPANY]] forState:UIControlStateNormal];
 
-    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_CONTACT"), [self getCollectionCount:RESULT_ITEMS_CONTACT]] forState:UIControlStateNormal];
+    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_CONTACT"), [self getCollectionCount:SEARCH_RESULT_CONTACT]] forState:UIControlStateNormal];
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -111,23 +119,82 @@
     
     UICollectionViewCell *cell;
     
+    NSMutableDictionary *collectionItems = nil;
+    
     switch (currentTab) {
             
         case 0: {
+            
+            collectionItems = items[SEARCH_RESULT_PROJECT];
+            NSArray *itemList = collectionItems[@"results"];
             ProjectTrackItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierProject forIndexPath:indexPath];
             cell = cellItem;
+            [cellItem setInfo:itemList[indexPath.row]];
             break;
         }
         
         case 1: {
+            collectionItems = items[SEARCH_RESULT_COMPANY];
+            NSArray *itemList = collectionItems[@"results"];
+            
             CompanyTrackingCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierCompany forIndexPath:indexPath];
             cell = cellItem;
+            
+            NSDictionary *item = itemList[indexPath.row];
+            NSString *address1 = [DerivedNSManagedObject objectOrNil:item[@"address1"]];
+            
+            NSString *addr = @"";
+            NSString *county = [DerivedNSManagedObject objectOrNil:item[@"county"]];
+            NSString *state = [DerivedNSManagedObject objectOrNil:item[@"state"]];
+            NSString *zip = [DerivedNSManagedObject objectOrNil:item[@"zip5"]];
+            
+            if (county != nil) {
+                addr = [addr stringByAppendingString:county];
+                
+                if (state != nil) {
+                    addr = [addr stringByAppendingString:@", "];
+                }
+            }
+            
+            if (state != nil) {
+                addr = [addr stringByAppendingString:state];
+                if (zip != nil) {
+                    [addr stringByAppendingString:@" "];
+                }
+            }
+            
+            if (zip != nil) {
+                addr = [addr stringByAppendingString:zip];
+                
+            }
+
+            [cellItem setTitleName:item[@"name"]];
+            [cellItem setAddressTop:address1];
+            [cellItem setAddressBelow:addr];
+
             break;
         }
             
         case 2: {
+            collectionItems = items[SEARCH_RESULT_CONTACT];
+            NSArray *itemList = collectionItems[@"results"];
+            
             ContactItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierContact forIndexPath:indexPath];
             cell = cellItem;
+          
+            NSDictionary *item = itemList[indexPath.row];
+            
+            NSDictionary *company = [DerivedNSManagedObject objectOrNil:item[@"company"]];
+            NSString *companyName = @"";
+            
+            if (company != nil) {
+                companyName = [DerivedNSManagedObject objectOrNil:company[@"name"]];
+            }
+            
+            if (companyName == nil) {
+                companyName = @"";
+            }
+            [cellItem setItemInfo:@{CONTACT_NAME:item[@"name"], CONTACT_COMPANY:companyName}];
             break;
         }
             
@@ -148,16 +215,16 @@
     
     switch (currentTab) {
         case 0: {
-            return [self getCollectionCount:RESULT_ITEMS_PROJECT];
+            return [self getCollectionCount:SEARCH_RESULT_PROJECT];
             break;
         }
         case 1: {
-            return [self getCollectionCount:RESULT_ITEMS_COMPANY];
+            return [self getCollectionCount:SEARCH_RESULT_COMPANY];
             break;
         }
             
         case 2 : {
-            return [self getCollectionCount:RESULT_ITEMS_CONTACT];
+            return [self getCollectionCount:SEARCH_RESULT_CONTACT];
             break;
         }
     }
@@ -191,8 +258,56 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (currentTab == 0) {
+        
+        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_PROJECT];
+        NSArray *itemList = collectionItems[@"results"];
+        NSDictionary *item = itemList[indexPath.row];
+        
+        [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
+            
+            ProjectDetailViewController *detail = [ProjectDetailViewController new];
+            detail.view.hidden = NO;
+            [detail detailsFromProject:object];
+            
+            [self.navigationController pushViewController:detail animated:YES];
+        } failure:^(id object) {
+        }];
+        
+    } else if (currentTab == 1) {
+        
+        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
+        NSArray *itemList = collectionItems[@"results"];
+        NSDictionary *item = itemList[indexPath.row];
+        
+        [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
+            id returnObject = object;
+            
+            [[DataManager sharedManager] companyProjectBids:item[@"id"] success:^(id object) {
+                CompanyDetailViewController *controller = [CompanyDetailViewController new];
+                controller.view.hidden = NO;
+                [controller setInfo:returnObject];
+                [self.navigationController pushViewController:controller animated:YES];
+            } failure:^(id object) {
+            }];
+            
+        } failure:^(id object) {
+        }];
+
+    } else if (currentTab == 3) {
+     
+        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
+        NSArray *itemList = collectionItems[@"results"];
+        NSDictionary *item = itemList[indexPath.row];
+        
+        ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
+        [controller setCompanyContactDetailsFromDictionary:item];
+        [self.navigationController pushViewController:controller animated:YES];
+
+    }
 }
 
-
+- (void)reloadData {
+    [_collectionView reloadData];
+}
 @end

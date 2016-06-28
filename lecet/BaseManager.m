@@ -245,6 +245,12 @@
     return controller;
 }
 
+-(void)cancellAllRequests {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.operationQueue cancelAllOperations];
+    
+}
 
 - (void)noInternet {
         

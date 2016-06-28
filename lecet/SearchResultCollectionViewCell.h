@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchResultCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) UINavigationController *navigationController;
 - (void)setCollectionItems:(NSMutableDictionary*)collectionItems tab:(NSInteger)tab;
+- (void)reloadData;
 @end

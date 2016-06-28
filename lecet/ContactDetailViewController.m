@@ -76,6 +76,74 @@
     
 }
 
+- (void)setCompanyContactDetailsFromDictionary:(id)item {
+    
+    NSDictionary *record = item;
+    name = record[@"name"];
+
+    NSDictionary *recordCompany = [DerivedNSManagedObject objectOrNil:record[@"company"]];
+    NSString *companyName = [DerivedNSManagedObject objectOrNil:recordCompany[@"name"]];
+    
+    if (companyName == nil) {
+        companyName = @"";
+    }
+    
+    NSMutableArray *contactItem = [NSMutableArray new];
+    NSString *title = [DerivedNSManagedObject objectOrNil:record[@"title"]];
+    
+    if (title != nil) {
+        NSString *accountTitleAndName = [NSString stringWithFormat:@"%@ at %@",title,companyName];
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeAccount ], CONTACT_FIELD_DATA:accountTitleAndName}];
+    }
+    
+    
+    NSString *fullAddr = @"";
+    NSString *address1 = [DerivedNSManagedObject objectOrNil:recordCompany[@"address1"]];
+    NSString *state = [DerivedNSManagedObject objectOrNil:recordCompany[@"state"]];;
+    NSString *zip5 = [DerivedNSManagedObject objectOrNil:recordCompany[@"zipPlus4"]];;
+    
+    if(address1 != nil) {
+        fullAddr = [fullAddr stringByAppendingString:address1];
+        
+        if (state != nil | zip5 != nil) {
+            fullAddr = [fullAddr stringByAppendingString:@", "];
+        }
+    }
+    
+    if (state != nil) {
+        fullAddr = [fullAddr stringByAppendingString:state];
+        
+        if (zip5 != nil) {
+            fullAddr = [fullAddr stringByAppendingString:@" "];
+        }
+    }
+    
+    if (zip5 != nil) {
+        fullAddr = [fullAddr stringByAppendingString:zip5];
+        
+    }
+
+    
+    if (fullAddr) {
+        NSString *contactAddressInfo = fullAddr;
+        address = contactAddressInfo;
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeLocation ], CONTACT_FIELD_DATA:contactAddressInfo}];
+    }
+    
+    NSString *phoneNumber = [DerivedNSManagedObject objectOrNil:record[@"phoneNumber"]];
+    NSString *email = [DerivedNSManagedObject objectOrNil:record[@"email"]];
+    if (phoneNumber) {
+        
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypePhone ], CONTACT_FIELD_DATA:phoneNumber}];
+    }
+    if (email) {
+        
+        [contactItem addObject:@{CONTACT_FIELD_TYPE:[NSNumber numberWithInteger:ContactFieldTypeEmail ], CONTACT_FIELD_DATA:email}];
+    }
+    
+    contactDetails = contactItem;
+
+}
 
 - (NSString *)determineIfTitleIsEmpty:(NSString *)title {
     

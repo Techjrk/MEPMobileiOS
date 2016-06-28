@@ -37,4 +37,30 @@
     
 }
 
+- (void)setInfo:(id)info {
+    NSDictionary *item = info;
+    
+    _labelTitle.text = item[@"title"];
+    
+    NSString *addr = @"";
+    
+    NSString *county = [DerivedNSManagedObject objectOrNil:item[@"county"]];
+    NSString *state = [DerivedNSManagedObject objectOrNil:item[@"state"]];
+    if (county != nil) {
+        addr = [addr stringByAppendingString:county];
+        
+        if (state != nil) {
+            addr = [addr stringByAppendingString:@", "];
+        }
+    }
+    
+    if (state != nil) {
+        addr = [addr stringByAppendingString:state];
+    }
+    
+    _labelLocation.text = addr;
+
+    
+}
+
 @end

@@ -26,4 +26,13 @@
     
 }
 
+- (void)reloadData {
+ 
+    [_cellItem reloadData];
+    
+}
+
+- (void)setNavigationController:(UINavigationController *)navigationController {
+    _cellItem.navigationController = navigationController;
+}
 @end
