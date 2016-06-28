@@ -49,7 +49,7 @@
 
 - (IBAction)tappedSelecTionButton:(id)sender {
    // UIButton *button = sender;
-    [_projectFilterCollapsibleViewDelegate tappedSelectionButton:indexPath];
+    [_projectFilterCollapsibleViewDelegate tappedSelectionButton:indexPath senderView:self];
     
 }
 
@@ -61,9 +61,17 @@
     indexPath = index;
 }
 
+- (void)setRightButtonHidden:(BOOL)hide {
+    [_dropDownButton setHidden:hide];
+}
+
+- (void)setLineViewHidden:(BOOL)hide {
+    [_lineView setHidden:hide];
+}
+
 - (IBAction)tappedDropDownButton:(id)sender {
     //UIButton *button = sender;
-    [_projectFilterCollapsibleViewDelegate tappedDropDownButton:indexPath];
+    [_projectFilterCollapsibleViewDelegate tappedDropDownButton:indexPath senderView:self];
     
 }
 

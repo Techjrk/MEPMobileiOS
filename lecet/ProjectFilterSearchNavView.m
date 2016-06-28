@@ -57,13 +57,18 @@
     _backButton.tag = ProjectFilterSearchNavItemBack;
     _rightButton.tag = ProjectFilterSearchNavItemApply;
     
+    [_textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+    
 }
 
 - (IBAction)tappedButton:(id)sender {
     UIButton *button = sender;
-    
     [_projectFilterSearchNavViewDelegate tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)button.tag];
     
+}
+
+- (void)textFieldChanged:(UITextField *)textField {
+    [_projectFilterSearchNavViewDelegate textFieldChanged:textField];
 }
 
 @end

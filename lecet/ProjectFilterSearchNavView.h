@@ -16,6 +16,7 @@ typedef enum {
 
 @protocol ProjectFilterSearchNavViewDelegate <NSObject>
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item;
+- (void)textFieldChanged:(UITextField *)textField;
 @end
 
 @interface ProjectFilterSearchNavView : BaseViewClass

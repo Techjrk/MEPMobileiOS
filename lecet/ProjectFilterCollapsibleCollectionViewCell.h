@@ -11,9 +11,9 @@
 
 
 @protocol ProjectFilterCollapsibleCollectionViewCellDelegate <NSObject>
-
 - (void)tappedSelectionButton:(id)tag;
 - (void)tappedDropDownButton:(id)tag;
+- (void)tappedSecondSubCatSelectionButton:(id)tag;
 
 @end
 
@@ -26,4 +26,14 @@
 - (void)setLeftLineSpacingForLineView:(CGFloat)value;
 - (void)setCollapsibleViewLetfSpacing:(CGFloat)value;
 - (void)setIndePathForCollapsible:(NSIndexPath *)index;
+- (void)setCollapsibleRightButtonHidden:(BOOL)hide;
+- (void)setLineViewHidden:(BOOL)hide;
+
+
+//Second Sub
+- (void)setSecSubCatInfo:(id)info;
+- (void)setSecSubCatLeftSpacing:(CGFloat)val;
+- (void)setSecSubCatBounce:(BOOL)bounce;
+- (void)setHideLineViewBOOL:(BOOL)hide;
+
 @end

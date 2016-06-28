@@ -1,23 +1,23 @@
 //
-//  ProjectFilterLocationViewController.m
+//  ProjectFilterTypesViewController.m
 //  lecet
 //
-//  Created by Michael San Minay on 27/06/2016.
+//  Created by Michael San Minay on 28/06/2016.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
-#import "ProjectFilterLocationViewController.h"
+#import "ProjectFilterTypesViewController.h"
 #import "ProjectFilterSearchNavView.h"
 #import "ProjectFilterCollapsibleListView.h"
 
-@interface ProjectFilterLocationViewController ()<ProjectFilterSearchNavViewDelegate>
+
+@interface ProjectFilterTypesViewController ()<ProjectFilterSearchNavViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectFilterSearchNavView *navView;
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleListView *listView;
 
-
 @end
 
-@implementation ProjectFilterLocationViewController
+@implementation ProjectFilterTypesViewController
 #define UnSelectedFlag              @"0"
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
@@ -29,12 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     _navView.projectFilterSearchNavViewDelegate = self;
     [self enableTapGesture:YES];
+
     
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -81,4 +80,9 @@
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)textFieldChanged:(UITextField *)textField {
+    NSLog(@"Text = %@",textField.text);
+}
+
 @end

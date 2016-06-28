@@ -8,10 +8,15 @@
 
 #import "ProjectFilterCollapsibleCollectionViewCell.h"
 #import "ProjectFilterCollapsibleView.h"
+#import "ProjectFilterCollapsibleListView.h"
 
 @interface ProjectFilterCollapsibleCollectionViewCell ()<ProjectFilterCollapsibleViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleView *collapsibleView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collapsibleViewLeftSapcing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collpsibleHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *seconSubCategoryHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondSubCatLeftSpacing;
+@property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleListView *secSubCollapsibleListView;
 
 @end
 
@@ -21,6 +26,9 @@
     [super awakeFromNib];
     // Initialization code
     _collapsibleView.projectFilterCollapsibleViewDelegate = self;
+    _collpsibleHeight.constant = kDeviceHeight * 0.08;
+    _seconSubCategoryHeight.constant = kDeviceHeight * 0.08;
+
 }
 
 - (void)setTextLabel:(NSString *)text {
@@ -50,15 +58,50 @@
     [_collapsibleView setIndexPath:index];
 }
 
-#pragma mark - CollapsibleView Delegate
-
-- (void)tappedSelectionButton:(id)tag {
- 
-    [_projectFilterCollapsibleCollectionViewCellDelegate tappedSelectionButton:tag];
+- (void)setCollapsibleRightButtonHidden:(BOOL)hide {
+    [_collapsibleView setRightButtonHidden:hide];
 }
 
-- (void)tappedDropDownButton:(id)tag {
-    [_projectFilterCollapsibleCollectionViewCellDelegate tappedDropDownButton:tag];
+- (void)setLineViewHidden:(BOOL)hide {
+    [_collapsibleView setLineViewHidden:hide];
+}
+
+
+#pragma mark - SecSubCat Method 
+
+- (void)setSecSubCatInfo:(id)info {
+    [_secSubCollapsibleListView setInfo:info];
+}
+
+- (void)setSecSubCatBounce:(BOOL)bounce {
+    [_secSubCollapsibleListView setCollectionViewBounce:bounce];
+}
+
+- (void)setSecSubCatLeftSpacing:(CGFloat)val {
+    _secondSubCatLeftSpacing.constant = val;
+}
+
+- (void)setHideLineViewBOOL:(BOOL)hide {
+    
+    [_secSubCollapsibleListView setHideLineViewInFirstLayerForSecSubCat:hide];
+}
+
+#pragma mark - CollapsibleView Delegate
+
+- (void)tappedSelectionButton:(id)tag senderView:(UIView *)senderView{
+ 
+    if (senderView == _collapsibleView) {
+       [_projectFilterCollapsibleCollectionViewCellDelegate tappedSelectionButton:tag];
+    }
+    
+    
+    
+}
+
+- (void)tappedDropDownButton:(id)tag senderView:(UIView *)senderView{
+    if (senderView == _collapsibleView) {
+        [_projectFilterCollapsibleCollectionViewCellDelegate tappedDropDownButton:tag];
+    }
 }
 
 

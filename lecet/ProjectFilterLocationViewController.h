@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ProjectFilterLocationViewController : UIViewController
+@interface ProjectFilterLocationViewController : BaseViewController
 
 @end

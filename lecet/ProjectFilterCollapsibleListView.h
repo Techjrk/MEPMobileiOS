@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 @interface ProjectFilterCollapsibleListView : BaseViewClass
+- (void)setInfo:(NSArray *)item;
+- (void)setCollectionViewBounce:(BOOL)bounce;
+- (void)setHideLineViewInFirstLayerForSecSubCat:(BOOL)hide;
 
 @end

@@ -38,7 +38,7 @@
 #import "ProjectTrackingViewController.h"
 #import "CompanyTrackingListViewController.h"
 #import "SearchViewController.h"
-#import "ProjectFilterLocationViewController.h"
+#import "ProjectFilterTypesViewController.h"
 
 #define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
 #define DASHBOARD_BIDS_BG_COLOR                 RGB(245, 245, 245)
@@ -675,7 +675,7 @@
 
             */
             
-            ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
+            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
             [self.navigationController pushViewController:controller animated:YES];
             
             
