@@ -38,6 +38,7 @@
 #import "ProjectTrackingViewController.h"
 #import "CompanyTrackingListViewController.h"
 #import "SearchViewController.h"
+#import "ProjectFilterTypesViewController.h"
 
 #define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
 #define DASHBOARD_BIDS_BG_COLOR                 RGB(245, 245, 245)
@@ -659,11 +660,17 @@
     switch (menuDropDownItem) {
             
         case DropDownMenuMyProfile:{
-                    
+            /*
             MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
             [controller setInfo:profileInfo];
             [self.navigationController pushViewController:controller animated:YES];
 
+            */
+            
+            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            
             break;
             
         }
