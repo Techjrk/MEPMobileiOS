@@ -10,10 +10,8 @@
 
 #import "BaseViewClass.h"
 
-#define RESULT_ITEMS_PROJECT                @"RESULT_ITEMS_PROJECT"
-#define RESULT_ITEMS_COMPANY                @"RESULT_ITEMS_COMPANY"
-#define RESULT_ITEMS_CONTACT                @"RESULT_ITEMS_CONTACT"
-
 @interface SearchResultView : BaseViewClass
+@property (weak, nonatomic) UINavigationController *navigationController;
 - (void) setCollectionItems:(NSMutableDictionary*)collectionItems tab:(NSInteger)tab;
+- (void)reloadData;
 @end

@@ -59,6 +59,7 @@
     BOOL isDoneLoadingRecentlyAdded;
     NSMutableDictionary *trackingListInfo;
     TrackingListCellCollectionViewCell *trackList[2];
+    
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -120,16 +121,8 @@
     
     if ([[DataManager sharedManager] isDebugMode]) {
 
-      /*
-        NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
-
-        [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
-            
-        } failure:^(id object) {
-            
-        }];
-
-         */
+        
+        
         
         /*
         [[DataManager sharedManager] bidCalendarForYear:@(2016) month:@(6) success:^(id object) {

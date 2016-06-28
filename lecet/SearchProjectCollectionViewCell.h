@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchProjectCollectionViewCell : UICollectionViewCell
-
+- (void)setInfo:(id)info;
 @end

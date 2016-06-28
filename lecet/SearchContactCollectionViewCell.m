@@ -42,7 +42,7 @@
 
 - (void)setTitle:(NSString*)postion companyName:(NSString*)companyName {
     
-    if ( (postion != nil) | (postion.length>0) ) {
+    if ( (postion != nil) & (postion.length>0) ) {
         postion = [postion stringByAppendingString:@", "];
     }
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:postion attributes:@{NSFontAttributeName:LABEL_POSITION_FONT, NSForegroundColorAttributeName:LABEL_POSITION_COLOR}];
@@ -51,8 +51,27 @@
     
     _labelTitle.attributedText = title;
     
+}
+
+- (void)setInfo:(id)info {
+    NSDictionary *item = info;
     
+    _labelName.text = item[@"name"];
     
+    NSString *companyName = @"";
+    
+    NSDictionary *company = [DerivedNSManagedObject objectOrNil:item[@"company"]];
+    
+    if (company != nil) {
+        companyName = [DerivedNSManagedObject objectOrNil:company[@"name"]];
+    }
+    
+    if (companyName == nil) {
+        companyName = @"";
+    }
+    
+    NSString *position = [DerivedNSManagedObject objectOrNil:item[@"title"]];
+    [self setTitle:position!=nil?position:@"" companyName:companyName];
 }
 
 @end

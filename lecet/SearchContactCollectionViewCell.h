@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchContactCollectionViewCell : UICollectionViewCell
-
+- (void)setInfo:(id)info;
 @end

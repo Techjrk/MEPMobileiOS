@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactDetailViewController : UIViewController
-
-
 - (void)setCompanyContactDetails:(id)item;
+- (void)setCompanyContactDetailsFromDictionary:(id)item;
 @end

@@ -96,6 +96,10 @@
 
 - (void)setInfo:(id)info {
     NSDictionary *project = info[kStateData];
+    
+    if (project == nil) {
+        project = info;
+    }
     _labelTitle.text = project[@"title"];
     
     NSString *addr = @"";

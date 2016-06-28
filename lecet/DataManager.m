@@ -39,16 +39,19 @@
 #define kUrlCompanyAvailableTrackList       @"Companies/%li/availabletrackinglists"
 #define kUrlBidCalendar                     @"Projects/bidcalendar"
 #define kUrlCompanyInfo                     @"Companies/search?"
+#define kUrlContactSearch                   @"Contacts/search"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
 #define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
 #define kUrlProjectAddTrackingList          @"projectlists/%li/projects/rel/%li"
+#define kUrlProjectSearch                   @"Projects/search"
 
 #define kUrlCompanyTrackingList             @"companylists/%li/companies"
 #define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
 #define kUrlCompanyTrackingListMoveIds      @"companylists/%li"
 #define kUrlCompanyAddTrackingList          @"companylists/%li/companies/rel/%li"
+#define kUrlCompanySearch                   @"Companies/search"
 
 @interface DataManager()
 @end
@@ -572,7 +575,7 @@
 
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]&projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
+    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]=projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
         
@@ -658,6 +661,19 @@
     
 }
 
+- (void)contactSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+    
+    [self HTTP_GET:[self url:kUrlContactSearch] parameters:filter success:^(id object) {
+        
+        data[SEARCH_RESULT_CONTACT] = (id)[object mutableCopy];
+        
+        success(data);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
 #pragma mark - PROJECT TRACK LISTS HTTP REQUEST
 
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
@@ -727,6 +743,18 @@
     
 }
 
+- (void)projectSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+
+    [self HTTP_GET:[self url:kUrlProjectSearch] parameters:filter success:^(id object) {
+    
+        data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+        
+        success(data);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
 
 #pragma mark - COMPANY TRACK LISTS HTTP REQUEST
 
@@ -789,6 +817,19 @@
     NSString *url = [NSString stringWithFormat:kUrlCompanyAddTrackingList, (long)trackId.integerValue, (long)recordId.integerValue];
     [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
         success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
+- (void)companySearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+    
+    [self HTTP_GET:[self url:kUrlCompanySearch] parameters:filter success:^(id object) {
+        
+        data[SEARCH_RESULT_COMPANY] = (id)[object mutableCopy];
+        
+        success(data);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];

@@ -68,4 +68,8 @@ NSLocalizedLanguage(NSString *key){
 #define NOTIFICATION_CELL_SIZE_CHANGE            @"NOTIFICATION_CELL_SIZE_CHANGE"
 #define NOTIFICATION_DISMISS_POPUP               @"NOTIFICATION_DISMISS_POPUP"
 
+#define SEARCH_RESULT_PROJECT                    @"SEARCH_RESULT_PROJECT"
+#define SEARCH_RESULT_COMPANY                    @"SEARCH_RESULT_COMPANY"
+#define SEARCH_RESULT_CONTACT                    @"SEARCH_RESULT_CONTACT"
+
 #endif /* constants_h */
