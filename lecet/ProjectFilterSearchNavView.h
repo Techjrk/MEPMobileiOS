@@ -21,5 +21,6 @@ typedef enum {
 
 @interface ProjectFilterSearchNavView : BaseViewClass
 @property (nonatomic,assign) id <ProjectFilterSearchNavViewDelegate> projectFilterSearchNavViewDelegate;
+- (void)setSearchTextFieldPlaceHolder:(NSString *)text;
 
 @end

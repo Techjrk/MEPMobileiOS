@@ -11,10 +11,10 @@
 
 
 
-#define BUTTON_FONT                        fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define BUTTON_FONT                        fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
 #define BUTTON_FONT_COLOR                  RGB(168,195,230)
 
-#define SEACRCH_PLACEHOLDER_FONT           fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define SEACRCH_PLACEHOLDER_FONT           fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
 #define SEACRCH_PLACEHOLDER_COLOR          RGB(255,255,255)
 #define SEACRCH_PLACEHOLDER_TEXT           @" "
 #define SEACRCH_TEXTFIELD_TEXT_FONT        fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
@@ -45,6 +45,7 @@
     NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:SEACRCH_PLACEHOLDER_TEXT attributes:@{NSFontAttributeName:SEACRCH_PLACEHOLDER_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}];
     
     [placeHolder appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@",NSLocalizedLanguage(@"SEARCH_PLACEHOLDER")] attributes:@{NSFontAttributeName:SEACRCH_TEXTFIELD_TEXT_FONT, NSForegroundColorAttributeName:[SEACRCH_PLACEHOLDER_COLOR colorWithAlphaComponent:0.5f]}]];
+    
 
     
     _textField.leftView = button;
@@ -59,6 +60,13 @@
     
     [_textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
     
+}
+
+- (void)setSearchTextFieldPlaceHolder:(NSString *)text {
+    NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:SEACRCH_PLACEHOLDER_TEXT attributes:@{NSFontAttributeName:SEACRCH_PLACEHOLDER_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}];
+    
+    [placeHolder appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@",text] attributes:@{NSFontAttributeName:SEACRCH_TEXTFIELD_TEXT_FONT, NSForegroundColorAttributeName:[SEACRCH_PLACEHOLDER_COLOR colorWithAlphaComponent:0.5f]}]];
+    _textField.attributedPlaceholder = placeHolder;
 }
 
 - (IBAction)tappedButton:(id)sender {

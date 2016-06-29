@@ -58,8 +58,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
     [_listView setInfo:[dataInfo copy]];
+    [_navView setSearchTextFieldPlaceHolder:NSLocalizedLanguage(@"PROJECT_TYPES_SEARCH_PLACEHOLDER")];
     
 }
 

@@ -335,7 +335,8 @@
 "REFINE_FILTER_CANCEL"                      =               "CANCEL";
 
 
-
+//ProjectFilterTypesViewController.xib
+"PROJECT_TYPES_SEARCH_PLACEHOLDER"          =               "Search for types";
 
 
 

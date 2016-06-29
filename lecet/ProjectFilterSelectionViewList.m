@@ -109,11 +109,13 @@ typedef enum  {
     return size;
 }
 
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    
+ 
     return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
 }
+
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
