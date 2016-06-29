@@ -51,10 +51,11 @@
 - (void)replaceInfo:(id)info atSection:(int)section {
 
     [collectionDataItems replaceObjectAtIndex:section withObject:info];
-    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
-    //NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
-    //[_collectionView reloadItemsAtIndexPaths:indexPaths];
-    //_collectionView insertItemsAtIndexPaths:<#(nonnull NSArray<NSIndexPath *> *)#>
+    [_collectionView reloadData];
+}
+
+- (void)setInfoToReload:(id)info {
+    collectionDataItems = [info mutableCopy];
     [_collectionView reloadData];
 }
 
@@ -141,10 +142,8 @@
     if (hideLineViewInFirstLayerForSecSubCat) {
         [cell setLineViewHidden:YES];
     }
-    
 
 }
-
 
 #pragma mark - Second SubCategory Data
 - (void)configureSecSubCategory:(ProjectFilterCollapsibleCollectionViewCell *)cell index:(NSIndexPath *)indexPath {
@@ -220,27 +219,25 @@
 {
     return 0;
 }
-
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
 
 }
 
-
-
 #pragma mark - Cell Delegate
-
-
 - (void)tappedSelectionButton:(id)tag {
     NSIndexPath *index = tag;
     
     
-    if (index.row == 0) {
+    if (index.item == 0) {
         NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.section] mutableCopy];
         NSString *currentflag = [collectionDataItems objectAtIndex:index.section][SELECTIONFLAGNAME];
         NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
         [dict setValue:flagTochange forKey:SELECTIONFLAGNAME];
+        
+        NSMutableArray *clearSelection = [self clearSelection:dict[SUBCATEGORYDATA]];
+        [dict setValue:clearSelection forKey:SUBCATEGORYDATA];
+        
         [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
 
         
@@ -254,6 +251,7 @@
         [subDict setValue:flagTochange forKey:SELECTIONFLAGNAME];
         [array replaceObjectAtIndex:index.row -1 withObject:subDict];
         [dict setValue:array forKey:SUBCATEGORYDATA];
+        [dict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
         [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
     }
     
@@ -266,7 +264,7 @@
     NSIndexPath *index = tag;
    
     
-    if (index.row == 0) {
+    if (index.item == 0) {
         NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.section] mutableCopy];
         NSString *currentflag = [collectionDataItems objectAtIndex:index.section][DROPDOWNFLAGNAME];
         NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
@@ -287,18 +285,14 @@
         [collectionDataItems replaceObjectAtIndex:index.section withObject:dict];
 
     }
+    
     [_collectionView reloadData];
-    
-
-    
     
 }
 
 - (void)tappedSecondSubCatSelectionButton:(id)tag {
     
-    //NSLog(@"Sec Sub Index = %@",tag);
 }
-
 
 #pragma mark - Misc Method
 
@@ -316,6 +310,17 @@
 
 - (void)setHideLineViewInFirstLayerForSecSubCat:(BOOL)hide {
     hideLineViewInFirstLayerForSecSubCat = hide;
+}
+
+- (NSMutableArray *)clearSelection:(NSMutableArray *)array {
+    NSMutableArray *reArray = [NSMutableArray new];
+    for (id obj in array) {
+        NSMutableDictionary *res = [obj mutableCopy];
+        [res setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [reArray addObject:res];
+    }
+    
+    return reArray;
 }
 
 @end

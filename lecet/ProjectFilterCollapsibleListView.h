@@ -13,5 +13,5 @@
 - (void)setCollectionViewBounce:(BOOL)bounce;
 - (void)setHideLineViewInFirstLayerForSecSubCat:(BOOL)hide;
 - (void)replaceInfo:(id)info atSection:(int)section;
-
+- (void)setInfoToReload:(id)info;
 @end

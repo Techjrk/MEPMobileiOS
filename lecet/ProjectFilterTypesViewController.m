@@ -30,6 +30,8 @@
 #define SUBCATEGORYDATA             @"SubData"
 #define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
 
+#define INDEXFORSEARCHRESULT        @"index"
+#define DATARESULTINSECONDLAYER     @"dataresultInSecondLayer"
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -77,13 +79,50 @@
 
 - (void)textFieldChanged:(UITextField *)textField {
     
-    NSArray *filtered = [[dataInfo copy] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"ANY %K LIKE[cd] %@",@"tags",@"*"]];
-   
-
-    NSLog(@"TitleName = %@",filtered);
-    //NSLog(@"DataInfo = %@",dataInfo);
+    if (textField.text.length > 0) {
+        NSString *searchText = [NSString stringWithFormat:@"%@*",textField.text];
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.title like[cd] %@", searchText];
+        NSArray *filteredFirstLayer = [[dataInfo copy] filteredArrayUsingPredicate:resultPredicate];
+        
+        
+        if (filteredFirstLayer.count > 0) {
+            
+            NSArray *configureFilter = [[self changeDropDownSelectionValueOnceSearch:filteredFirstLayer] copy];
+            [_listView setInfoToReload:configureFilter];
+            
+        } else {
+            int countIndex = 0;
+            
+            NSMutableArray *searchReultFromSubCat = [NSMutableArray new];
+            for (id obj in dataInfo) {
+                countIndex++;
+                NSArray *filteredSecondLayer = [obj[SUBCATEGORYDATA] filteredArrayUsingPredicate:resultPredicate];
+                NSUInteger index = [obj[SUBCATEGORYDATA]  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+                    return [resultPredicate evaluateWithObject:obj];
+                }];
+                
+                if (filteredSecondLayer.count > 0) {
+                    NSNumber *num = [NSNumber numberWithInt:countIndex-1];
+                    NSNumber *secNum = [NSNumber numberWithInt:(int)index];
+                    NSDictionary *dict = @{INDEXFORSEARCHRESULT:num,@"dataresultInSecondLayer":filteredSecondLayer,@"indexInSecondLayer":secNum};
+                    [searchReultFromSubCat addObject:dict];
+                }
+            }
+            
+            //NSLog(@"Result = %@",searchReultFromSubCat);
+            
+            NSMutableArray *secondSubCatSearchResult = [self configuredSearchResult:searchReultFromSubCat];
+            [_listView setInfoToReload:[secondSubCatSearchResult copy]];
+            
+        }
+ 
+    } else {
+        
+        [_listView setInfoToReload:[dataInfo copy]];
+    }
 }
 
+#pragma mark - Misc Method
 
 - (void)requestSubData:(int)index {
     [_operationQueue addOperationWithBlock:^{
@@ -101,23 +140,85 @@
                     [res setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
                     [res setValue:UnSelectedFlag forKey:DROPDOWNFLAGNAME];
                     [enumObj addObject:res];
-                    
                 }
                
                 NSMutableDictionary *dictFinal = [[dataInfo objectAtIndex:index] mutableCopy];
                 [dictFinal setValue:enumObj forKey:SUBCATEGORYDATA];
                 [_listView replaceInfo:dictFinal atSection:index];
 
-                
             }];
             
         }failure:^(id obj){
-            NSLog(@"Failed Object = %@",obj);
+            
         }];
 
     }];
-    
 
+}
+
+- (NSMutableArray *)changeDropDownSelectionValueOnceSearch:(NSArray *)array {
+    NSMutableArray *resArray = [NSMutableArray new];
+    
+    for (id obj in [array mutableCopy]) {
+        NSMutableDictionary *resDict = [obj mutableCopy];
+        [resDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [resDict setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
+        [resArray addObject:resDict];
+    }
+    return resArray;
+}
+
+
+
+- (NSMutableArray *)configuredSearchResult:(NSMutableArray *)mutableArray {
+    NSMutableArray *resArray = [NSMutableArray new];
+    
+    for (id searchResult in mutableArray) {
+        
+        int indexID = [searchResult[INDEXFORSEARCHRESULT] intValue];
+        NSMutableDictionary *dic = [[dataInfo objectAtIndex:indexID] mutableCopy];
+        [dic setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [dic setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
+        [dic setValue:searchResult[DATARESULTINSECONDLAYER] forKey:SUBCATEGORYDATA];
+        
+        [resArray addObject:dic];
+        
+    }
+    
+    return resArray;
+}
+
+
+- (NSMutableArray *)configuredSearchResultWithAutoSelect:(NSMutableArray *)mutableArray {
+    NSMutableArray *resArray = [NSMutableArray new];
+
+    for (id searchResult in mutableArray) {
+        
+        int indexID = [searchResult[INDEXFORSEARCHRESULT] intValue];
+        NSMutableDictionary *dic = [[dataInfo objectAtIndex:indexID] mutableCopy];
+        [dic setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [dic setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
+        
+        for (id resultSecond in searchResult[DATARESULTINSECONDLAYER]) {
+
+            NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"id == %@", resultSecond[@"id"]];
+            NSUInteger indexSec = [dic[SUBCATEGORYDATA]  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+                return [resultPredicate evaluateWithObject:obj];
+            }];
+            NSMutableDictionary *secondDict = [dic[SUBCATEGORYDATA] objectAtIndex:indexSec];
+            [secondDict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+            [secondDict setValue:UnSelectedFlag forKey:DROPDOWNFLAGNAME];
+            
+            [[dic[SUBCATEGORYDATA] mutableCopy] replaceObjectAtIndex:indexSec withObject:secondDict];
+            
+        }
+        
+        [resArray addObject:dic];
+
+    }
+    
+   
+    return resArray;
 }
 
 @end
