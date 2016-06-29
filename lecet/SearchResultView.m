@@ -259,7 +259,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (currentTab == 0) {
+    if (currentTab.integerValue == 0) {
         
         NSMutableDictionary *collectionItems = items[SEARCH_RESULT_PROJECT];
         NSArray *itemList = collectionItems[@"results"];
@@ -295,9 +295,9 @@
         } failure:^(id object) {
         }];
 
-    } else if (currentTab.integerValue == 3) {
+    } else if (currentTab.integerValue == 2) {
      
-        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
+        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_CONTACT];
         NSArray *itemList = collectionItems[@"results"];
         NSDictionary *item = itemList[indexPath.row];
         
