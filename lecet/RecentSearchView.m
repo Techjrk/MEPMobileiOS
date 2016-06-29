@@ -77,6 +77,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    [[DataManager sharedManager] featureNotAvailable];
+
 }
 
 @end

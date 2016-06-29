@@ -488,7 +488,16 @@ typedef enum : NSUInteger {
         [controller setCompanyContactDetailsFromDictionary:item];
         [self.navigationController pushViewController:controller animated:YES];
 
+    } else if (sectionType == SearchSectionSavedProject) {
+        
+        [[DataManager sharedManager] featureNotAvailable];
+        
+    } else if (sectionType == SearchSectionSavedCompany) {
+        
+        [[DataManager sharedManager] featureNotAvailable];
+        
     }
+    
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
