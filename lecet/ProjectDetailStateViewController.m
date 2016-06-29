@@ -70,7 +70,12 @@
     if (projectDetailStteItesm == ProjectDetailStateCancel) {
         [self hideProjectDetailState];
     }else{
-        [[DataManager sharedManager] featureNotAvailable];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self.projectDetailStateViewControllerDelegate tappedHideButton];
+        }];
+        
+        ;
     }
 }
 @end

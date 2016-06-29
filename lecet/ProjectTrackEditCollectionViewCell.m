@@ -63,12 +63,15 @@
     _labelLocation.text = addr;
     
     
-    stateStatus = info[kStateStatus];
+    stateStatus = [DerivedNSManagedObject objectOrNil:info[kStateStatus]];
     
 
-    BOOL isSelected = [stateStatus[kStateSelected] boolValue];
+    if (stateStatus != nil) {
+
+        BOOL isSelected = [stateStatus[kStateSelected] boolValue];
+        _imageState.image = [UIImage imageNamed:isSelected?@"icon_stateSelected":@"icon_stateDeselected"];
     
-    _imageState.image = [UIImage imageNamed:isSelected?@"icon_stateSelected":@"icon_stateDeselected"];
+    }
 }
 
 @end

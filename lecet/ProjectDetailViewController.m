@@ -372,6 +372,7 @@ typedef enum {
 #pragma mark - Project Detail State ViewController Methods And Delegate
 
 - (void)tappedProjectDetailStateHideButton{
+    
     ProjectDetailStateViewController *controller = [[ProjectDetailStateViewController alloc] initWithNibName:@"ProjectDetailStateViewController" bundle:nil];
     
     controller.modalPresentationStyle = UIModalPresentationCustom;
@@ -385,6 +386,17 @@ typedef enum {
 - (void)tappedDismissed{
     
     [_projectState clearSelection];
+}
+
+- (void)tappedHideButton {
+    
+    [[DataManager sharedManager] hideProject:recordId success:^(id object) {
+        
+        [_projectState clearSelection];
+
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (void)tappedProjectBidder:(id)object {

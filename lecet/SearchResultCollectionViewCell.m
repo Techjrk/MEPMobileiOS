@@ -8,8 +8,6 @@
 
 #import "SearchResultCollectionViewCell.h"
 
-#import "SearchResultView.h"
-
 @interface SearchResultCollectionViewCell()
 @property (weak, nonatomic) IBOutlet SearchResultView *cellItem;
 @end
@@ -20,7 +18,7 @@
     [super awakeFromNib];
 }
 
-- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSInteger)tab {
+- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab {
  
     [_cellItem setCollectionItems:collectionItems tab:tab];
     
@@ -34,5 +32,9 @@
 
 - (void)setNavigationController:(UINavigationController *)navigationController {
     _cellItem.navigationController = navigationController;
+}
+
+- (void)setSearchResultViewDelegate:(id<SearchResultViewDelegate>)searchResultViewDelegate {
+    _cellItem.searchResultViewDelegate = searchResultViewDelegate;
 }
 @end

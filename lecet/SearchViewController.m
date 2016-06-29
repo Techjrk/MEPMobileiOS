@@ -22,6 +22,7 @@
 #import "CompanyDetailViewController.h"
 #import "ContactDetailViewController.h"
 #import "RecentSearchCollectionViewCell.h"
+#import "SeeAllCollectionViewCell.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -41,12 +42,13 @@ typedef enum : NSUInteger {
 } SearchSection;
 
 
-@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate>{
+@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate>{
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
-    NSInteger resultIndex;
+    
 }
+@property (strong, nonatomic) NSNumber *resultIndex;
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 - (IBAction)tappedButtonBack:(id)sender;
@@ -94,7 +96,9 @@ typedef enum : NSUInteger {
     _labeSearch.attributedPlaceholder = placeHolder;
   
     [_collectionView registerNib: [UINib nibWithNibName:[[SearchSectionCollectionViewCell class] description] bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[[SearchSectionCollectionViewCell class] description]];
-   
+  
+    [_collectionView registerNib: [UINib nibWithNibName:[[SeeAllCollectionViewCell class] description] bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:[[SeeAllCollectionViewCell class] description]];
+    
     [_collectionView registerNib:[UINib nibWithNibName:[[RecentSearchCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionRecent)];
 
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchSavedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedProject)];
@@ -113,6 +117,8 @@ typedef enum : NSUInteger {
 
     searchMode = NO;
     showResult = NO;
+    
+    _resultIndex = [NSNumber numberWithInteger:0];
     
     [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
         [_collectionView reloadData];
@@ -227,7 +233,8 @@ typedef enum : NSUInteger {
         case SearchSectionResult: {
             SearchResultCollectionViewCell *cellItem = (SearchResultCollectionViewCell*)cell;
             cellItem.navigationController = self.navigationController;
-            [cellItem setCollectionItems:collectionItems tab:resultIndex];
+            cellItem.searchResultViewDelegate = self;
+            [cellItem setCollectionItems:collectionItems tab:_resultIndex];
             [cellItem reloadData];
             break;
         }
@@ -438,7 +445,7 @@ typedef enum : NSUInteger {
     
     if (sectionType == SearchSectionSuggested) {
         
-        resultIndex = indexPath.row;
+        _resultIndex = [NSNumber numberWithInteger:indexPath.row];
         showResult = YES;
         [_collectionView reloadData];
 
@@ -502,10 +509,68 @@ typedef enum : NSUInteger {
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    SearchSectionCollectionViewCell *sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[[SearchSectionCollectionViewCell class] description] forIndexPath:indexPath];
+    id returnObject = nil;
     
-    [sectionHeader setTitle:kSections[indexPath.section]];
-    return sectionHeader;
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        SearchSectionCollectionViewCell *sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[[SearchSectionCollectionViewCell class] description] forIndexPath:indexPath];
+        
+        [sectionHeader setTitle:kSections[indexPath.section]];
+        
+        returnObject = sectionHeader;
+    } else {
+        
+        NSString *section = @"";
+        
+        SearchSection sectionType = (SearchSection)indexPath.section;
+        
+        NSMutableDictionary *result = nil;
+        
+        switch (sectionType) {
+            case SearchSectionProjects: {
+                section = NSLocalizedLanguage(@"SEARCH_RESULT_SEE_PROJECT");
+                result = collectionItems[SEARCH_RESULT_PROJECT];
+                break;
+            }
+                
+            case SearchSectionCompanies: {
+                section = NSLocalizedLanguage(@"SEARCH_RESULT_SEE_COMPANY");
+                result = collectionItems[SEARCH_RESULT_COMPANY];
+                break;
+            }
+                
+            case SearchSectionContacts: {
+                section = NSLocalizedLanguage(@"SEARCH_RESULT_SEE_CONTACT");
+                result = collectionItems[SEARCH_RESULT_CONTACT];
+                break;
+            }
+                
+            default: {
+                break;
+            }
+                
+        }
+ 
+        SeeAllCollectionViewCell *sectionFooter = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:[[SeeAllCollectionViewCell class] description] forIndexPath:indexPath];
+        
+        if (result != nil) {
+ 
+            NSNumber *total = [DerivedNSManagedObject objectOrNil:result[@"total"]];
+            NSInteger count = 0;
+            if( total != nil) {
+                count = total.integerValue;
+            }
+
+            [sectionFooter setTitle:[NSString stringWithFormat:section, (long)count]];
+            
+            sectionFooter.indexPath = indexPath;
+            sectionFooter.seeAllCollectionViewCellDelegate = self;
+        }
+ 
+        returnObject = sectionFooter;
+    }
+    
+    
+    return returnObject;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
@@ -524,6 +589,42 @@ typedef enum : NSUInteger {
     }
     
     return  CGSizeMake(collectionView.frame.size.width, kDeviceHeight * (shouldHaveHeader ?0.05:0));
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+
+    SearchSection sectionType = (SearchSection)section;
+
+    CGSize footerSize = CGSizeZero;
+    BOOL hasSection = (sectionType == SearchSectionProjects) | (sectionType == SearchSectionCompanies) | (sectionType == SearchSectionContacts);
+    
+    if (hasSection) {
+        
+        NSMutableDictionary *result = nil;
+        
+        if (sectionType == SearchSectionProjects) {
+    
+            result = collectionItems[SEARCH_RESULT_PROJECT];
+        
+        } else if(sectionType == SearchSectionCompanies) {
+        
+            result = collectionItems[SEARCH_RESULT_COMPANY];
+        
+        } else {
+        
+            result = collectionItems[SEARCH_RESULT_CONTACT];
+            
+        }
+        
+        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+        
+        if ((items.count>4) && (searchMode) && (!showResult)) {
+            footerSize = CGSizeMake(collectionView.frame.size.width, kDeviceHeight * 0.03);
+        }
+        
+    }
+    
+    return footerSize;
 }
 
 - (BOOL)shouldShowSection:(NSInteger)section {
@@ -654,6 +755,42 @@ typedef enum : NSUInteger {
     }
     
     return NO;
+
+}
+
+- (void)tappedSectionFooter:(id)object {
+
+    SeeAllCollectionViewCell *footer = (SeeAllCollectionViewCell*)object;
+    SearchSection sectionType = (SearchSection)footer.indexPath.section;
+    BOOL shouldReload = NO;
+    if (sectionType == SearchSectionProjects) {
+        
+        _resultIndex = [NSNumber numberWithInteger:0];
+        shouldReload = YES;
+    
+    } else if (sectionType == SearchSectionCompanies) {
+    
+        _resultIndex = [NSNumber numberWithInteger:1];
+        shouldReload = YES;
+        
+    } else if (sectionType == SearchSectionContacts) {
+        
+        _resultIndex = [NSNumber numberWithInteger:2];
+        shouldReload = YES;
+        
+    }
+    
+    if (shouldReload) {
+
+        showResult = YES;
+        [_collectionView reloadData];
+    
+    }
+}
+
+- (void)currentTabChanged:(id)object {
+    
+    _resultIndex = (NSNumber*)object;
 
 }
 
