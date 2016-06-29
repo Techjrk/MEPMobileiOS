@@ -187,8 +187,6 @@
         NSMutableDictionary *subDict = [self getSubCategoryalue:indexPath];
         NSString *currentflag = subDict[DROPDOWNFLAGNAME];
         CGFloat heigthIfOpen = [currentflag isEqualToString:SelectedFlag]?cellHeight *2:cellHeight;
-        
-        //CGFloat width = _collectionView.frame.size.width - 52;
         size = CGSizeMake( _collectionView.frame.size.width, heigthIfOpen);
     }
     

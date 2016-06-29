@@ -670,14 +670,10 @@
     switch (menuDropDownItem) {
             
         case DropDownMenuMyProfile:{
-            /*
+            
             MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
             [controller setInfo:profileInfo];
             [self.navigationController pushViewController:controller animated:YES];
-
-            */
-            
-            [self pushProjectFilterTypes];
             break;
             
         }
