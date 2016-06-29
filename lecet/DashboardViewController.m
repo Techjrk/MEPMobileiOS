@@ -81,6 +81,16 @@
 #define kTrackList              @[kTrackListProject,kTrackListCompany]
 #define kCategory               @[@(101), @(102), @(103), @(105)]
 
+
+#define UnSelectedFlag              @"0"
+#define SelectedFlag                @"1"
+#define SELECTIONFLAGNAME           @"selectionFlag"
+#define DROPDOWNFLAGNAME            @"dropDownFlagName"
+#define TITLENAME                   @"title"
+#define PROJECTGROUPID              @"id"
+#define SUBCATEGORYDATA             @"SubData"
+#define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -953,22 +963,71 @@
 
 
 
+#pragma mark - ProjectFilter Types
+
 - (void)pushProjectFilterTypes {
     
+    
+    NSMutableArray *mutArray = [NSMutableArray new];
+    
     [[DataManager sharedManager] projectGroupRequest:^(id obj){
+     
         
-        ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
-        [controller setInfo:obj];
-        [self.navigationController pushViewController:controller animated:YES];
-        
-    }failure:^(id obj){
-        NSLog(@"Failed Object = %@",obj);
-    }];
+        [[DataManager sharedManager] projectCategoryList:^(id catObj){
+ 
+
+            int count = 0;
+            for (id headerObj in obj) {
+                
+                NSMutableArray *configuredSubArray = [self addDropDownButtonAndSelectionFlagInArray:catObj];
+                NSMutableArray *subArray = [self filteredArray:configuredSubArray projectGroupId:headerObj[PROJECTGROUPID]];
+                NSDictionary *dict = @{TITLENAME:headerObj[TITLENAME],PROJECTGROUPID:headerObj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:subArray};
+                [mutArray addObject:dict];
+                count++;
+                
+                
+            }
+
+            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
+            [controller setInfo:mutArray];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        }failure:^(id catFailObj){
+            
+        }];
 
     
-    
-    
-    
+        
+    }failure:^(id obj){
+   
+    }];
+
 }
+
+
+- (NSMutableArray *)filteredArray:(NSMutableArray *)array projectGroupId:(NSNumber *)numID {
+    
+    NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary* evaluatedObject, NSDictionary *bindings) {
+        return [[evaluatedObject valueForKey:@"projectGroupId"] isEqual:numID];
+    }]];
+
+    return [filtered mutableCopy];
+}
+
+
+- (NSMutableArray *)addDropDownButtonAndSelectionFlagInArray:(NSArray *)subCatArray {
+    
+    NSMutableArray *array = [NSMutableArray new];
+    
+    for (id  result in [subCatArray mutableCopy]) {
+        NSMutableDictionary *res = [result mutableCopy];
+        [res setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [res setValue:UnSelectedFlag forKey:DROPDOWNFLAGNAME];
+        [array addObject:res];
+    }
+    
+    return array;
+}
+
 
 @end

@@ -39,49 +39,23 @@
 }
 
 - (void)setInfo:(id)info {
+    
+    /*
     dataInfo = [NSMutableArray new];
     _operationQueue = [[NSOperationQueue alloc] init];
     int count = 0;
     for (id obj in info) {
-        NSDictionary *dict = @{TITLENAME:obj[TITLENAME],PROJECTGROUPID:obj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:SelectedFlag,SUBCATEGORYDATA:@[]};
+        NSDictionary *dict = @{TITLENAME:obj[TITLENAME],PROJECTGROUPID:obj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:@[]};
         [dataInfo addObject:dict];
         count++;
         
         [self requestSubData:count - 1];
     }
-    
+    */
+    dataInfo = info;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-    /*
-    NSArray *array = @[@{TITLENAME:@"One",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:
-                             @[@{TITLENAME:@"SubOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                                 SECONDSUBCATDATA:@[
-                                         @{TITLENAME:@"SecSubOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}
-                                         ]
-                                 }]
-                         },
-                       @{TITLENAME:@"Two",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[]
-                         },
-                       @{TITLENAME:@"three",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[
-                                 @{TITLENAME:@"SubThreeOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
-                                 @{TITLENAME:@"SubThreeTwo",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
-                                 @{TITLENAME:@"SubThreeThree",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]
-                         },
-                       @{TITLENAME:@"Four",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[]
-                         },
-                       @{TITLENAME:@"Five",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[]
-                         }
-                       ];
-    
-    [_listView setInfo:array];
-    */
 
     [_listView setInfo:[dataInfo copy]];
     
@@ -102,16 +76,18 @@
 }
 
 - (void)textFieldChanged:(UITextField *)textField {
-    //NSLog(@"Text = %@",textField.text);
     
-    
+    NSArray *filtered = [[dataInfo copy] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"ANY %K LIKE[cd] %@",@"tags",@"*"]];
+   
+
+    NSLog(@"TitleName = %@",filtered);
+    //NSLog(@"DataInfo = %@",dataInfo);
 }
 
 
 - (void)requestSubData:(int)index {
     [_operationQueue addOperationWithBlock:^{
         
-      
         NSNumber *num = [dataInfo objectAtIndex:index][PROJECTGROUPID];
         
         [[DataManager sharedManager] projectCategoryLisByGroupID:num success:^(id obj){
@@ -119,9 +95,7 @@
                 
                 NSMutableArray *enumObj = [NSMutableArray new];
                 
-                //int indexCount;
                 for (id result in [obj mutableCopy]) {
-                    //indexCount++;
                     NSMutableDictionary *res = [result mutableCopy];
                     
                     [res setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
@@ -132,9 +106,8 @@
                
                 NSMutableDictionary *dictFinal = [[dataInfo objectAtIndex:index] mutableCopy];
                 [dictFinal setValue:enumObj forKey:SUBCATEGORYDATA];
-                //[dataInfo replaceObjectAtIndex:index withObject:dictFinal];
                 [_listView replaceInfo:dictFinal atSection:index];
-                //NSLog(@"DATA = To mutate = %@",dataInfo);
+
                 
             }];
             
@@ -142,10 +115,6 @@
             NSLog(@"Failed Object = %@",obj);
         }];
 
-        
-
-     
-    
     }];
     
 

@@ -64,6 +64,7 @@
 - (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure;
 
 //PROJECT CATEGORY
+- (void)projectCategoryList:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectCategoryLisByGroupID:(NSNumber*)projectGroupID success:(APIBlock)success failure:(APIBlock)failure;
 
 //MISC

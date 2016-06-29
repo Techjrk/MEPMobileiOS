@@ -842,8 +842,6 @@
 #pragma mark - PROJECT GROUP HTTP REQUEST
 
 - (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure {
-
-//NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
     
     [self HTTP_GET:[self url:kUrlProjectGroup] parameters:nil success:^(id object) {
         success(object);
@@ -855,6 +853,17 @@
 }
 
 #pragma mark - PROJECT CATEGORY HTTP REQUEST
+- (void)projectCategoryList:(APIBlock)success failure:(APIBlock)failure {
+
+    [self HTTP_GET:[self url:kUrlProjectCategory] parameters:nil success:^(id object) {
+        success(object);
+        
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
 - (void)projectCategoryLisByGroupID:(NSNumber *)projectGroupID success:(APIBlock)success failure:(APIBlock)failure {
     
     NSDictionary *filter =@{@"filter[where][projectGroupId]":projectGroupID};
@@ -865,7 +874,7 @@
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
-    
+  
 }
 
 
