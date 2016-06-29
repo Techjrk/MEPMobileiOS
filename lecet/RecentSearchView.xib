@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecentSearchView">
+            <connections>
+                <outlet property="collectionView" destination="JCz-xB-izk" id="ceB-EW-vb8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="240"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JCz-xB-izk">
+                    <rect key="frame" x="20" y="0.0" width="359" height="240"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MrD-Ve-PDJ">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="OOC-kV-OCE"/>
+                        <outlet property="delegate" destination="-1" id="ik2-kA-RIi"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="JCz-xB-izk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Bjf-l2-2e2"/>
+                <constraint firstAttribute="trailing" secondItem="JCz-xB-izk" secondAttribute="trailing" id="FM7-Ut-Q3E"/>
+                <constraint firstItem="JCz-xB-izk" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="Gkh-fV-qwg"/>
+                <constraint firstItem="JCz-xB-izk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HTf-lJ-EIh"/>
+                <constraint firstAttribute="bottom" secondItem="JCz-xB-izk" secondAttribute="bottom" id="lcA-Xi-AvU"/>
+                <constraint firstItem="JCz-xB-izk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xRF-A3-NH9"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Bjf-l2-2e2"/>
+                    <exclude reference="FM7-Ut-Q3E"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="179.5" y="13"/>
+        </view>
+    </objects>
+</document>

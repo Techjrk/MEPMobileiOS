@@ -71,5 +71,8 @@ NSLocalizedLanguage(NSString *key){
 #define SEARCH_RESULT_PROJECT                    @"SEARCH_RESULT_PROJECT"
 #define SEARCH_RESULT_COMPANY                    @"SEARCH_RESULT_COMPANY"
 #define SEARCH_RESULT_CONTACT                    @"SEARCH_RESULT_CONTACT"
+#define SEARCH_RESULT_RECENT                     @"SEARCH_RESULT_RECENT"
+#define SEARCH_RESULT_SAVED_PROJECT              @"SEARCH_RESULT_SAVED_PROJECT"
+#define SEARCH_RESULT_SAVED_COMPANY              @"SEARCH_RESULT_SAVED_COMPANY"
 
 #endif /* constants_h */

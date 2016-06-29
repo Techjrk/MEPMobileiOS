@@ -21,6 +21,7 @@
 #import "ProjectDetailViewController.h"
 #import "CompanyDetailViewController.h"
 #import "ContactDetailViewController.h"
+#import "RecentSearchCollectionViewCell.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -67,6 +68,8 @@ typedef enum : NSUInteger {
     collectionItems[SEARCH_RESULT_PROJECT] = [[NSMutableDictionary alloc] init];
     collectionItems[SEARCH_RESULT_COMPANY] = [[NSMutableDictionary alloc] init];
     collectionItems[SEARCH_RESULT_CONTACT] = [[NSMutableDictionary alloc] init];
+    collectionItems[SEARCH_RESULT_SAVED_PROJECT] = [[NSMutableArray alloc] init];
+    collectionItems[SEARCH_RESULT_SAVED_COMPANY] = [[NSMutableArray alloc] init];
     
     [self enableTapGesture:YES];
     _labeSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
@@ -92,7 +95,7 @@ typedef enum : NSUInteger {
   
     [_collectionView registerNib: [UINib nibWithNibName:[[SearchSectionCollectionViewCell class] description] bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[[SearchSectionCollectionViewCell class] description]];
    
-    [_collectionView registerNib:[UINib nibWithNibName:[[SearchSuggestedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionRecent)];
+    [_collectionView registerNib:[UINib nibWithNibName:[[RecentSearchCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionRecent)];
 
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchSavedCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionSavedProject)];
 
@@ -110,6 +113,12 @@ typedef enum : NSUInteger {
 
     searchMode = NO;
     showResult = NO;
+    
+    [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
+        [_collectionView reloadData];
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,6 +162,33 @@ typedef enum : NSUInteger {
     SearchSection sectionType = (SearchSection)indexPath.section;
     
     switch (sectionType) {
+        case SearchSectionRecent: {
+            
+            RecentSearchCollectionViewCell *cellItem = (RecentSearchCollectionViewCell*)cell;
+            [cellItem setInfo:nil];
+            break;
+        }
+            
+        case SearchSectionSavedProject: {
+            
+            NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
+            NSDictionary *item = items[indexPath.row];
+            SearchSavedCollectionViewCell *cellItem = (SearchSavedCollectionViewCell*)cell;
+            [cellItem setInfo:item];
+            
+            break;
+        }
+            
+        case SearchSectionSavedCompany: {
+            
+            NSArray *items = collectionItems[SEARCH_RESULT_SAVED_COMPANY];
+            NSDictionary *item = items[indexPath.row];
+            SearchSavedCollectionViewCell *cellItem = (SearchSavedCollectionViewCell*)cell;
+            [cellItem setInfo:item];
+            
+            break;
+        }
+            
         case SearchSectionSuggested: {
             
             SearchSuggestedCollectionViewCell *cellItem = (SearchSuggestedCollectionViewCell*)cell;
@@ -260,12 +296,14 @@ typedef enum : NSUInteger {
             }
                 
             case SearchSectionSavedProject: {
-                count = showResult?0:3;
+                NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
+                count = showResult?0:items.count;
                 break;
             }
                 
             case SearchSectionSavedCompany: {
-                count = showResult?0:2;
+                NSArray *items = collectionItems[SEARCH_RESULT_SAVED_COMPANY];
+                count = showResult?0:items.count;
                 break;
             }
                 
@@ -450,7 +488,16 @@ typedef enum : NSUInteger {
         [controller setCompanyContactDetailsFromDictionary:item];
         [self.navigationController pushViewController:controller animated:YES];
 
+    } else if (sectionType == SearchSectionSavedProject) {
+        
+        [[DataManager sharedManager] featureNotAvailable];
+        
+    } else if (sectionType == SearchSectionSavedCompany) {
+        
+        [[DataManager sharedManager] featureNotAvailable];
+        
     }
+    
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

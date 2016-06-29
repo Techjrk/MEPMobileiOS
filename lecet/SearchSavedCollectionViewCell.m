@@ -45,4 +45,11 @@
     
 }
 
+- (void)setInfo:(id)info {
+    
+    NSDictionary *item = info;
+    _labelTitle.text = item[@"title"];
+    
+}
+
 @end
