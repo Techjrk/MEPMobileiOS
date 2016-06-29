@@ -47,6 +47,8 @@
 #define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
 #define kUrlProjectAddTrackingList          @"projectlists/%li/projects/rel/%li"
 #define kUrlProjectSearch                   @"Projects/search"
+#define kUrlProjectHide                     @"Projects/%li/hide"
+#define kUrlProjectUnhide                   @"Projects/%li/unhide"
 
 #define kUrlCompanyTrackingList             @"companylists/%li/companies"
 #define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
@@ -781,6 +783,28 @@
         data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
         
         success(data);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
+- (void)hideProject:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *url = [NSString stringWithFormat:kUrlProjectHide, (long)recordId.integerValue ];
+    [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
+- (void)unhideProject:(NSNumber *)recordId success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *url = [NSString stringWithFormat:kUrlProjectUnhide, (long)recordId.integerValue ];
+    [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+        success(object);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];

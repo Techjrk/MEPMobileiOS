@@ -12,6 +12,7 @@
 @protocol ProjectDetailStateViewControllerDelegate <NSObject>
 @required
 - (void)tappedDismissed;
+- (void)tappedHideButton;
 @end
 
 @interface ProjectDetailStateViewController : UIViewController

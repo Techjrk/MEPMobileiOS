@@ -51,6 +51,8 @@
 - (void)projectTrackingMoveIds:(NSNumber*)trackId recordIds:(NSDictionary*)track success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectAddTrackingList:(NSNumber*)trackId recordId:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectSearch:(NSMutableDictionary*)filter data:(NSMutableDictionary*)data success:(APIBlock)success failure:(APIBlock)failure;
+- (void)hideProject:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)unhideProject:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 
 //COMPANY TRACK LISTS
 - (void)userCompanyTrackingList:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
