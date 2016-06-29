@@ -10,8 +10,13 @@
 
 #import "BaseViewClass.h"
 
+@protocol SearchResultViewDelegate <NSObject>
+- (void)currentTabChanged:(id)object;
+@end
+
 @interface SearchResultView : BaseViewClass
+@property (weak, nonatomic) id<SearchResultViewDelegate>searchResultViewDelegate;
 @property (weak, nonatomic) UINavigationController *navigationController;
-- (void) setCollectionItems:(NSMutableDictionary*)collectionItems tab:(NSInteger)tab;
+- (void) setCollectionItems:(NSMutableDictionary*)collectionItems tab:(NSNumber*)tab;
 - (void)reloadData;
 @end

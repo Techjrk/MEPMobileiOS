@@ -187,23 +187,33 @@
     }
     
     
-    NSDictionary *geocode = project[@"geocode"];
+    NSDictionary *geocode = [DerivedNSManagedObject objectOrNil:project[@"geocode"]];
     
-    CGFloat geocodeLat = [geocode[@"lat"] floatValue];
-    CGFloat geocodeLng = [geocode[@"lng"] floatValue];
-    
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geocodeLat, geocodeLng);
-    
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
-    MKCoordinateRegion region = {coordinate, span};
-    
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:coordinate];
-    
-    [_mapView removeAnnotations:_mapView.annotations];
-    
-    [_mapView setRegion:region];
-    [_mapView addAnnotation:annotation];
+    if (geocode != nil) {
+
+        _mapView.hidden = NO;
+
+        CGFloat geocodeLat = [geocode[@"lat"] floatValue];
+        CGFloat geocodeLng = [geocode[@"lng"] floatValue];
+        
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geocodeLat, geocodeLng);
+        
+        MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+        MKCoordinateRegion region = {coordinate, span};
+        
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        [annotation setCoordinate:coordinate];
+        
+        [_mapView removeAnnotations:_mapView.annotations];
+        
+        [_mapView setRegion:region];
+        [_mapView addAnnotation:annotation];
+        
+    } else {
+
+        [_mapView removeAnnotations:_mapView.annotations];
+        _mapView.hidden = YES;
+    }
 
 }
 

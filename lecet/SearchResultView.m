@@ -24,7 +24,7 @@
 
 @interface SearchResultView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableDictionary *items;
-    NSInteger currentTab;
+    NSNumber *currentTab;
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonProjects;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCompany;
@@ -75,17 +75,18 @@
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (finished) {
-            currentTab =  ((button.frame.origin.x + button.frame.size.width) / button.frame.size.width) -1;
+            currentTab = [NSNumber numberWithInteger:(long)((button.frame.origin.x + button.frame.size.width) / button.frame.size.width) -1];
+            [self.searchResultViewDelegate currentTabChanged:currentTab];
             [_collectionView reloadData];
         }
     }];
     
 }
 
-- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSInteger)tab {
+- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab {
     items = [collectionItems mutableCopy];
     currentTab = tab;
-    _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab;
+    _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab.integerValue;
     [self setInfo];
     
 }
@@ -121,7 +122,7 @@
     
     NSMutableDictionary *collectionItems = nil;
     
-    switch (currentTab) {
+    switch (currentTab.integerValue) {
             
         case 0: {
             
@@ -213,7 +214,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    switch (currentTab) {
+    switch (currentTab.integerValue) {
         case 0: {
             return [self getCollectionCount:SEARCH_RESULT_PROJECT];
             break;
@@ -237,7 +238,7 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGSize size;
-    size = CGSizeMake( collectionView.frame.size.width * 0.96, kDeviceHeight * (currentTab == 2?0.145:0.13));
+    size = CGSizeMake( collectionView.frame.size.width * 0.96, kDeviceHeight * (currentTab.integerValue == 2?0.145:0.13));
     return size;
 }
 
@@ -248,7 +249,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return kDeviceHeight * (currentTab == 2?0:0.015);
+    return kDeviceHeight * (currentTab.integerValue == 2?0:0.015);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
@@ -274,7 +275,7 @@
         } failure:^(id object) {
         }];
         
-    } else if (currentTab == 1) {
+    } else if (currentTab.integerValue == 1) {
         
         NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
         NSArray *itemList = collectionItems[@"results"];
@@ -294,7 +295,7 @@
         } failure:^(id object) {
         }];
 
-    } else if (currentTab == 3) {
+    } else if (currentTab.integerValue == 3) {
      
         NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
         NSArray *itemList = collectionItems[@"results"];

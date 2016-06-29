@@ -277,6 +277,9 @@
 "SEARCH_RESULT_COUNT_PROJECT"               =               "%li Projects";
 "SEARCH_RESULT_COUNT_COMPANY"               =               "%li Companies";
 "SEARCH_RESULT_COUNT_CONTACT"               =               "%li Contacts";
+"SEARCH_RESULT_SEE_PROJECT"                 =               "See all %li Projects";
+"SEARCH_RESULT_SEE_COMPANY"                 =               "See all %li Companies";
+"SEARCH_RESULT_SEE_CONTACT"                 =               "See all %li Contacts";
 
 //ProjectFilterBHViewController.xib
 "PROJECT_FILTER_BH_TITLE"                   =               "B/H";
