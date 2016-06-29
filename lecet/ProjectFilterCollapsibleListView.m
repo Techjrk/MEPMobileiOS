@@ -85,16 +85,8 @@
         BOOL dropDownSelected = [dropDownFlag isEqualToString:SelectedFlag]?YES:NO;
         [cell setDropDownSelected:dropDownSelected];
         
-        //CGFloat leftSpacing = dropDownSelected?42.0f:0;
-        
-        /*
-        if (indexPath.section) {
-            [cell setCollapsibleViewLetfSpacing:0];
-        } else{
-            [cell setCollapsibleViewLetfSpacing:42.0f];
-        }
-         */
-        
+       
+        [cell setCollapsibleViewLetfSpacing:42.0f];
         [cell setLeftLineSpacingForLineView:42.0f];
         
         //Second SubCategory
@@ -119,11 +111,11 @@
     
     
     NSString *dropDownFlag = [collectionDataItems objectAtIndex:indexPath.section][DROPDOWNFLAGNAME];
-    
+    [cell setCollapsibleViewLetfSpacing:0];
     if ([dropDownFlag isEqualToString:UnSelectedFlag]) {
         [cell setDropDownSelected:NO];
         [cell setLeftLineSpacingForLineView:0];
-        [cell setCollapsibleViewLetfSpacing:0];
+        
     }
     if ([dropDownFlag isEqualToString:SelectedFlag]) {
         [cell setDropDownSelected:YES];
@@ -196,8 +188,8 @@
         NSString *currentflag = subDict[DROPDOWNFLAGNAME];
         CGFloat heigthIfOpen = [currentflag isEqualToString:SelectedFlag]?cellHeight *2:cellHeight;
         
-        CGFloat width = _collectionView.frame.size.width - 52;
-        size = CGSizeMake( width, heigthIfOpen);
+        //CGFloat width = _collectionView.frame.size.width - 52;
+        size = CGSizeMake( _collectionView.frame.size.width, heigthIfOpen);
     }
     
 
@@ -206,7 +198,6 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    
     return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
 }
 
@@ -217,7 +208,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 5;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
