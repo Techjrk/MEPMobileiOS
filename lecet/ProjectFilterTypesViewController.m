@@ -109,7 +109,6 @@
                 }
             }
             
-            //NSLog(@"Result = %@",searchReultFromSubCat);
             
             NSMutableArray *secondSubCatSearchResult = [self configuredSearchResult:searchReultFromSubCat];
             [_listView setInfoToReload:[secondSubCatSearchResult copy]];

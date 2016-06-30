@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkOwnerTypesViewController">
+            <connections>
+                <outlet property="collectionView" destination="ewD-rJ-kVe" id="ECc-OI-HFp"/>
+                <outlet property="containerCollectionView" destination="uP5-if-vKE" id="tnY-xI-vMt"/>
+                <outlet property="navView" destination="zRp-GV-OPP" id="6i6-pS-oFz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3do-nh-qJe" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRp-GV-OPP" customClass="ProfileNavView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uP5-if-vKE">
+                    <rect key="frame" x="0.0" y="71" width="600" height="529"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ewD-rJ-kVe">
+                            <rect key="frame" x="15" y="0.0" width="570" height="529"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q92-If-uUh">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ewD-rJ-kVe" firstAttribute="top" secondItem="uP5-if-vKE" secondAttribute="top" id="3GJ-ld-wea"/>
+                        <constraint firstItem="ewD-rJ-kVe" firstAttribute="leading" secondItem="uP5-if-vKE" secondAttribute="leading" constant="15" id="5ov-cf-Bgi"/>
+                        <constraint firstAttribute="bottom" secondItem="ewD-rJ-kVe" secondAttribute="bottom" id="frv-yo-AV6"/>
+                        <constraint firstAttribute="trailing" secondItem="ewD-rJ-kVe" secondAttribute="trailing" constant="15" id="obr-Cd-oSi"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3do-nh-qJe" secondAttribute="trailing" id="1db-f6-GeC"/>
+                <constraint firstAttribute="trailing" secondItem="zRp-GV-OPP" secondAttribute="trailing" id="BzI-Cp-QWa"/>
+                <constraint firstItem="zRp-GV-OPP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="GLY-qr-9QL"/>
+                <constraint firstItem="uP5-if-vKE" firstAttribute="top" secondItem="zRp-GV-OPP" secondAttribute="bottom" id="HEt-I8-vdU"/>
+                <constraint firstAttribute="trailing" secondItem="uP5-if-vKE" secondAttribute="trailing" id="N8H-H3-Cb7"/>
+                <constraint firstItem="zRp-GV-OPP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PZg-6q-HP6"/>
+                <constraint firstItem="3do-nh-qJe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TZZ-s9-6d0"/>
+                <constraint firstItem="3do-nh-qJe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xhf-CE-YiO"/>
+                <constraint firstItem="zRp-GV-OPP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fg1-OS-TyV"/>
+                <constraint firstItem="uP5-if-vKE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iCL-NC-tn6"/>
+                <constraint firstAttribute="bottom" secondItem="3do-nh-qJe" secondAttribute="bottom" id="pVc-cY-zRh"/>
+                <constraint firstAttribute="bottom" secondItem="uP5-if-vKE" secondAttribute="bottom" id="t5v-Kd-XiR"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="310"/>
+        </view>
+    </objects>
+</document>

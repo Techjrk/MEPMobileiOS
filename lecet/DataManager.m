@@ -59,6 +59,7 @@
 #define kUrlProjectGroup                    @"ProjectGroups?"
 #define kUrlProjectCategory                 @"ProjectCategories?"
 
+#define kUrlWorkTypes                       @"WorkTypes?"
 @interface DataManager()
 @end
 @implementation DataManager
@@ -932,6 +933,18 @@
   
 }
 
+
+#pragma mark - WORK TYPES
+- (void)workTypes:(APIBlock)success failure:(APIBlock)failure {
+    
+    [self HTTP_GET:[self url:kUrlWorkTypes] parameters:nil success:^(id object) {
+        success(object);
+        
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
 
 #pragma mark - MISC FEATURE
 

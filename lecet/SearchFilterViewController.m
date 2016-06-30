@@ -10,6 +10,8 @@
 
 #import "ProjectFilterView.h"
 #import "CompanyFilterView.h"
+#import "WorkOwnerTypesViewController.h"
+
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -22,6 +24,10 @@
 #define BUTTON_MARKER_COLOR                 RGB(248, 152, 28)
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
+
+#define UnSelectedFlag              @"0"
+#define SelectedFlag                @"1"
+#define SELECTIONFLAGNAME           @"selectionFlag"
 
 @interface SearchFilterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
@@ -117,6 +123,23 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
-    [[DataManager sharedManager] featureNotAvailable];
+    //[[DataManager sharedManager] featureNotAvailable];
+    [self pushWorkTypes];
+    
+}
+
+
+- (void)pushWorkTypes {
+    [[DataManager sharedManager] workTypes:^(id obj){
+        
+        WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
+        [controller setInfo:obj];
+        [controller setNavTitle:@"WORK TYPES1"];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+        
+    }failure:^(id failObject){
+        
+    }];
 }
 @end
