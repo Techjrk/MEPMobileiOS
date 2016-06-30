@@ -117,7 +117,7 @@
 - (void)tappedCancelDoneButton:(id)items {
     dataItems = items;
     
-    NSString *countString = [NSString stringWithFormat:@"%lu %@",[dataItems count],NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)[dataItems count],NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
     [_navBarView setProjectTitle:countString];
     [_companyTrackingListView setItemToReload:dataItems];
 }

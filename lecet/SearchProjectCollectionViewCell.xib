@@ -26,6 +26,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x02-Su-LPA">
                                 <rect key="frame" x="0.0" y="0.0" width="70.5" height="72"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="bWq-Ac-9j2"/>
+                                </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cjo-Gs-INQ">
                                 <rect key="frame" x="70" y="0.0" width="16" height="72"/>
@@ -110,6 +113,7 @@
                 <outlet property="labelLocation" destination="F24-LA-pEX" id="7Aq-OC-IH4"/>
                 <outlet property="labelTitle" destination="UUm-UI-sXc" id="2fT-n9-xMr"/>
                 <outlet property="lineView" destination="gQC-pu-GeF" id="Nud-ZM-Iyp"/>
+                <outlet property="mapView" destination="x02-Su-LPA" id="AFc-CV-z15"/>
             </connections>
             <point key="canvasLocation" x="296.5" y="214"/>
         </collectionViewCell>

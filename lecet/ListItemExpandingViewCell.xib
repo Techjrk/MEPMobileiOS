@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,10 +13,46 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbl-ox-pb6">
+                        <rect key="frame" x="11" y="0.0" width="351" height="120"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBK-eK-7py">
+                                <rect key="frame" x="15" y="7" width="32" height="32"/>
+                                <state key="normal" image="unSelected_icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2V-tg-K5f">
+                                <rect key="frame" x="277" y="8" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBl-q2-3dN">
+                                <rect key="frame" x="133" y="12" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XBK-eK-7py" firstAttribute="leading" secondItem="Nbl-ox-pb6" secondAttribute="leading" constant="15" id="JmJ-hb-SGz"/>
+                            <constraint firstAttribute="trailing" secondItem="j2V-tg-K5f" secondAttribute="trailing" constant="28" id="MPL-5b-Hti"/>
+                            <constraint firstItem="tBl-q2-3dN" firstAttribute="top" secondItem="Nbl-ox-pb6" secondAttribute="top" constant="12" id="ge0-14-WTy"/>
+                        </constraints>
+                    </view>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Nbl-ox-pb6" secondAttribute="bottom" id="0kX-9V-OtY"/>
+                <constraint firstItem="Nbl-ox-pb6" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XZG-3E-Oag"/>
+                <constraint firstItem="Nbl-ox-pb6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Z5w-Si-yFh"/>
+                <constraint firstItem="Nbl-ox-pb6" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.94" id="pzF-r6-VSM"/>
+            </constraints>
             <size key="customSize" width="373" height="120"/>
             <point key="canvasLocation" x="308.5" y="227"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="unSelected_icon" width="32" height="32"/>
+    </resources>
 </document>

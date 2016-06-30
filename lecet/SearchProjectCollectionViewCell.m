@@ -8,16 +8,19 @@
 
 #import "SearchProjectCollectionViewCell.h"
 
+#import <MapKit/MapKit.h>
+
 #define LABEL_TITLE_FONT                    fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_TITLE_COLOR                   RGB(34, 34, 34)
 
 #define LABEL_LOCATION_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_LOCATION_COLOR                RGB(159, 164, 166)
 
-@interface SearchProjectCollectionViewCell()
+@interface SearchProjectCollectionViewCell()<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
 @implementation SearchProjectCollectionViewCell
@@ -60,6 +63,56 @@
     
     _labelLocation.text = addr;
 
+    NSDictionary *geocode = [DerivedNSManagedObject objectOrNil:item[@"geocode"]];
+    
+    if (geocode != nil) {
+        
+        _mapView.hidden = NO;
+        
+        CGFloat geocodeLat = [geocode[@"lat"] floatValue];
+        CGFloat geocodeLng = [geocode[@"lng"] floatValue];
+        
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geocodeLat, geocodeLng);
+        
+        MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+        MKCoordinateRegion region = {coordinate, span};
+        
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        [annotation setCoordinate:coordinate];
+        
+        [_mapView removeAnnotations:_mapView.annotations];
+        
+        [_mapView setRegion:region];
+        [_mapView addAnnotation:annotation];
+        
+    } else {
+        
+        [_mapView removeAnnotations:_mapView.annotations];
+        _mapView.hidden = YES;
+    }
+
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        
+    }
+    
+    return userAnnotationView;
     
 }
 
