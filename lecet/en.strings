@@ -337,6 +337,7 @@
 
 //ProjectFilterTypesViewController.xib
 "PROJECT_TYPES_SEARCH_PLACEHOLDER"          =               "Search for types";
+"PROJECT_LOCATION_SEARCH_PLACEHOLDER"       =               "Search for location";
 
 
 

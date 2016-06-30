@@ -24,7 +24,8 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 #define DROPDOWNFLAGNAME            @"dropDownFlagName"
-#define TITLENAME                   @"TITLE"
+#define TITLENAME                   @"title"
+#define PROJECTGROUPID              @"id"
 #define SUBCATEGORYDATA             @"SubData"
 #define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
 
@@ -43,36 +44,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    /*
-    NSArray *array = @[@{TITLENAME:@"One",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
+    
+    NSArray *array = @[@{TITLENAME:@"California",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
                          SUBCATEGORYDATA:
-                             @[@{TITLENAME:@"SubOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                                 SECONDSUBCATDATA:@[
-                                         @{TITLENAME:@"SecSubOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}
-                                         ]
-                                 }]
+                             @[@{TITLENAME:@"San Francisco",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
+                               @{TITLENAME:@"San Jose",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
+                               @{TITLENAME:@"Santa Ana",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}
+                               ],                         },
+                       @{TITLENAME:@"Utah",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
+                         SUBCATEGORYDATA:@[@{TITLENAME:@"Salt Lake City",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]
                          },
-                       @{TITLENAME:@"Two",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[]
-                         },
-                       @{TITLENAME:@"three",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[
-                                 @{TITLENAME:@"SubThreeOne",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
-                                 @{TITLENAME:@"SubThreeTwo",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
-                                 @{TITLENAME:@"SubThreeThree",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]
-                         },
-                       @{TITLENAME:@"Four",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[]
-                         },
-                       @{TITLENAME:@"Five",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[]
-                         }
+                       @{TITLENAME:@"Texas",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
+                         SUBCATEGORYDATA:@[@{TITLENAME:@"San Antonio",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]}
                        ];
     
-    [_listView setInfo:array];
-    */
+    dataInfo = [array mutableCopy];
+    
     [_listView setInfo:[dataInfo copy]];
-    [_navView setSearchTextFieldPlaceHolder:NSLocalizedLanguage(@"PROJECT_TYPES_SEARCH_PLACEHOLDER")];
+    [_navView setSearchTextFieldPlaceHolder:NSLocalizedLanguage(@"PROJECT_LOCATION_SEARCH_PLACEHOLDER")];
 
 }
 
