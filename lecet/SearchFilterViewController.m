@@ -123,8 +123,7 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
-    //[[DataManager sharedManager] featureNotAvailable];
-    [self pushWorkTypes];
+    [[DataManager sharedManager] featureNotAvailable];
     
 }
 
@@ -134,7 +133,7 @@
         
         WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
         [controller setInfo:obj];
-        [controller setNavTitle:@"WORK TYPES1"];
+        [controller setNavTitle:@"WORK TYPES"];
         [self.navigationController pushViewController:controller animated:YES];
         
         
