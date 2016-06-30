@@ -128,6 +128,9 @@
 
 - (void)tappedFilterEntryViewDelegate:(id)object {
  
+    if ([object isEqual:_fieldType]) {
+        
+    }
     [[DataManager sharedManager] featureNotAvailable];
     
 }
