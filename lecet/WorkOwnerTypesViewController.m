@@ -36,7 +36,7 @@
     [_collectionView registerNib:[UINib nibWithNibName:[[WorkOwnerTypesCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.showsVerticalScrollIndicator = NO;
     [_navView setRigthBorder:10];
-    [_navView setNavRightButtonTitle:@"APPLY"];
+    [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"RIGHTNAV_BUTTON_TITLE")];
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;

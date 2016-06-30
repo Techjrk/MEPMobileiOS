@@ -133,7 +133,7 @@
         
         WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
         [controller setInfo:obj];
-        [controller setNavTitle:@"WORK TYPES"];
+        [controller setNavTitle:NSLocalizedLanguage(@"WORK_TYPES_TITLE")];
         [self.navigationController pushViewController:controller animated:YES];
         
         
