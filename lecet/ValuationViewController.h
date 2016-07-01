@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+@protocol ValuationViewControllerDelegate <NSObject>
+- (void)tappedApplyButton:(id)items;
+@end
+
 @interface ValuationViewController : BaseViewController
+@property (nonatomic,assign) id <ValuationViewControllerDelegate> valuationViewControllerDelegate;
 
 @end

@@ -66,7 +66,7 @@
     
     [_navView setRigthBorder:10];
     [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"RIGHTNAV_BUTTON_TITLE")];
-    [_navView setNavTitleLabel:@"Valuation"];
+    [_navView setNavTitleLabel:NSLocalizedLanguage(@"VALUATION_NAV_TITLE")];
     
     [self enableTapGesture:YES];
     
@@ -108,6 +108,9 @@
         }
         case ProfileNavItemSaveButton:{
             
+            NSDictionary * dict = @{@"MIN":_leftTextField.text,@"MAX":_rightTextField.text};
+            [_valuationViewControllerDelegate tappedApplyButton:dict];
+            [[DataManager sharedManager] featureNotAvailable];
             break;
         }
     }

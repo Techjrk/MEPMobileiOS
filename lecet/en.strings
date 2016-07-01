@@ -346,6 +346,7 @@
 "WORK_TYPES_TITLE"                          =               "WORK TYPES";
 "OWNER_TYPES_TITLE"                         =               "OWNER TYPES";
 
-
+//ValuationViewController.xib
+"VALUATION_NAV_TITLE"                       =               "Valuation";
 
 
