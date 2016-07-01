@@ -35,6 +35,7 @@
     // Do any additional setup after loading the view from its nib.
     [_collectionView registerNib:[UINib nibWithNibName:[[WorkOwnerTypesCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.showsVerticalScrollIndicator = NO;
+    _navView.profileNavViewDelegate = self;
     [_navView setRigthBorder:10];
     [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"RIGHTNAV_BUTTON_TITLE")];
     
