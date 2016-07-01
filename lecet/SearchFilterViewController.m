@@ -12,6 +12,7 @@
 #import "CompanyFilterView.h"
 #import "WorkOwnerTypesViewController.h"
 #import "ProjectFilterTypesViewController.h"
+#import "ProjectFilterLocationViewController.h"
 
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
@@ -165,7 +166,6 @@
 - (void)pushProjectFilterTypes {
     
     [[DataManager sharedManager] projectGroupRequest:^(id obj){
-        
         
         [[DataManager sharedManager] projectCategoryList:^(id catObj){
             

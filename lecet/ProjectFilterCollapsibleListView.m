@@ -245,6 +245,7 @@
     }
     
     [_collectionView reloadData];
+    [_projectFilterCollapsibleListViewDelegate tappedSelectionButton:collectionDataItems];
     
 }
 
@@ -276,6 +277,7 @@
     }
     
     [_collectionView reloadData];
+    
     
 }
 

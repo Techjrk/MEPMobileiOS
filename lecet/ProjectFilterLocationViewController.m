@@ -10,8 +10,10 @@
 #import "ProjectFilterSearchNavView.h"
 #import "ProjectFilterCollapsibleListView.h"
 
-@interface ProjectFilterLocationViewController ()<ProjectFilterSearchNavViewDelegate>{
+@interface ProjectFilterLocationViewController ()<ProjectFilterSearchNavViewDelegate,ProjectFilterCollapsibleListViewDelegate>{
     NSMutableArray *dataInfo;
+    
+    NSArray *dataSelected;
 }
 @property (weak, nonatomic) IBOutlet ProjectFilterSearchNavView *navView;
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleListView *listView;
@@ -37,6 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     
     _navView.projectFilterSearchNavViewDelegate = self;
+    _listView.projectFilterCollapsibleListViewDelegate = self;
     [self enableTapGesture:YES];
     
 }
@@ -194,7 +197,37 @@
         
     }
     
-    
     return resArray;
 }
+
+
+- (void)tappedSelectionButton:(id)items {
+    NSMutableArray *resArray = [NSMutableArray new];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.selectionFlag == %@", @"1"];
+
+        int countIndex = 0;
+        for (id obj in items) {
+            NSMutableDictionary *dict = [obj mutableCopy];
+            countIndex++;
+            
+            if ([obj[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
+                [resArray addObject:dict];
+            }else {
+                
+                NSArray *filteredSecondLayer = [obj[SUBCATEGORYDATA] filteredArrayUsingPredicate:resultPredicate];
+                if (filteredSecondLayer.count > 0) {
+             
+                    [dict setValue:filteredSecondLayer forKey:SUBCATEGORYDATA];
+                    [resArray addObject:dict];
+                }
+
+            }
+            
+        }
+    dataSelected = resArray;
+    
+}
+
+
+
 @end
