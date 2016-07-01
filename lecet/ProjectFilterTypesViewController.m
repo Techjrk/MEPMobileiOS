@@ -40,20 +40,13 @@
     
 }
 
-- (void)setInfo:(id)info {
+
+- (void)setInfoGroupList:(id)obj categoryList:(id)catList {
     
-    /*
-    dataInfo = [NSMutableArray new];
-    _operationQueue = [[NSOperationQueue alloc] init];
-    int count = 0;
-    for (id obj in info) {
-        NSDictionary *dict = @{TITLENAME:obj[TITLENAME],PROJECTGROUPID:obj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:@[]};
-        [dataInfo addObject:dict];
-        count++;
-        
-        [self requestSubData:count - 1];
-    }
-    */
+   dataInfo =  [self manipulatedDataInfoGroupListInfo:obj categoryListInfo:catList];
+}
+
+- (void)setInfo:(id)info {
     dataInfo = info;
 }
 
@@ -219,5 +212,48 @@
    
     return resArray;
 }
+
+#pragma mark - Data Manipulation
+
+
+- (NSMutableArray *)manipulatedDataInfoGroupListInfo:(id)obj categoryListInfo:(id)catObj {
+    NSMutableArray *mutArray = [NSMutableArray new];
+    
+    for (id headerObj in obj) {
+        
+        NSMutableArray *configuredSubArray = [self addDropDownButtonAndSelectionFlagInArray:catObj];
+        NSMutableArray *subArray = [self filteredArray:configuredSubArray projectGroupId:headerObj[PROJECTGROUPID]];
+        NSDictionary *dict = @{TITLENAME:headerObj[TITLENAME],PROJECTGROUPID:headerObj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:subArray};
+        [mutArray addObject:dict];
+    }
+    
+    return mutArray;
+
+}
+
+- (NSMutableArray *)filteredArray:(NSMutableArray *)array projectGroupId:(NSNumber *)numID {
+    
+    NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary* evaluatedObject, NSDictionary *bindings) {
+        return [[evaluatedObject valueForKey:@"projectGroupId"] isEqual:numID];
+    }]];
+    
+    return [filtered mutableCopy];
+}
+
+
+- (NSMutableArray *)addDropDownButtonAndSelectionFlagInArray:(NSArray *)subCatArray {
+    
+    NSMutableArray *array = [NSMutableArray new];
+    
+    for (id  result in [subCatArray mutableCopy]) {
+        NSMutableDictionary *res = [result mutableCopy];
+        [res setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [res setValue:UnSelectedFlag forKey:DROPDOWNFLAGNAME];
+        [array addObject:res];
+    }
+    
+    return array;
+}
+
 
 @end

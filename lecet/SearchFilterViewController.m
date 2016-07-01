@@ -11,6 +11,7 @@
 #import "ProjectFilterView.h"
 #import "CompanyFilterView.h"
 #import "WorkOwnerTypesViewController.h"
+#import "ProjectFilterTypesViewController.h"
 
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
@@ -127,7 +128,6 @@
     
 }
 
-
 - (void)pushWorkTypes {
     [[DataManager sharedManager] workTypes:^(id obj){
         
@@ -141,4 +141,32 @@
         
     }];
 }
+
+
+
+#pragma mark - ProjectFilter Types
+
+- (void)pushProjectFilterTypes {
+    
+    [[DataManager sharedManager] projectGroupRequest:^(id obj){
+        
+        
+        [[DataManager sharedManager] projectCategoryList:^(id catObj){
+            
+            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
+            [controller setInfoGroupList:obj categoryList:catObj];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        }failure:^(id catFailObj){
+            
+        }];
+        
+        
+        
+    }failure:^(id obj){
+        
+    }];
+    
+}
+
 @end
