@@ -342,7 +342,7 @@
 "PROJECT_LOCATION_SEARCH_PLACEHOLDER"       =               "Search for location";
 
 //WorkOwnerTypesViewCpntroller.xib
-"RIGHTNAV_BUTTON_TITLE" = "APPLY";
+"RIGHTNAV_BUTTON_TITLE"                     =               "APPLY";
 "WORK_TYPES_TITLE"                          =               "WORK TYPES";
 "OWNER_TYPES_TITLE"                         =               "OWNER TYPES";
 

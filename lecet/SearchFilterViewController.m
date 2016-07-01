@@ -128,6 +128,24 @@
     
 }
 
+#pragma mark - Owner Types
+
+- (void)pushOwnerTypes {
+    
+    NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
+                             @{@"title":@"Local Government",@"id":@(2)},
+                             @{@"title":@"Military",@"id":@(3)},
+                             @{@"title":@"Private",@"id":@(4)},
+                             @{@"title":@"State",@"id":@(5)}
+                             ] mutableCopy];
+    
+    WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
+    [controller setInfo:obj];
+    [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - Work Types
 - (void)pushWorkTypes {
     [[DataManager sharedManager] workTypes:^(id obj){
         
@@ -141,8 +159,6 @@
         
     }];
 }
-
-
 
 #pragma mark - ProjectFilter Types
 
@@ -160,9 +176,7 @@
         }failure:^(id catFailObj){
             
         }];
-        
-        
-        
+    
     }failure:^(id obj){
         
     }];

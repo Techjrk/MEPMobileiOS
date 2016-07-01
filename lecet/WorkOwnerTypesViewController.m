@@ -39,6 +39,10 @@
     [_navView setRigthBorder:10];
     [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"RIGHTNAV_BUTTON_TITLE")];
     
+    
+    
+    
+    
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     
@@ -162,7 +166,5 @@
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
 }
-
-
 
 @end
