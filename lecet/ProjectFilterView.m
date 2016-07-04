@@ -57,7 +57,7 @@
     _fieldType.filterModel = FilterModelType;
     
     [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_VALUE")];
-    _fieldType.filterModel = FilterModelValue;
+    _fieldValue.filterModel = FilterModelValue;
     
     [_fieldUpdated setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED")];
     _fieldUpdated.filterModel = FilterModelUpdated;
