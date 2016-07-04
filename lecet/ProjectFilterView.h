@@ -10,7 +10,25 @@
 
 #import "BaseViewClass.h"
 
+typedef enum : NSUInteger {
+    FilterModelLocation,
+    FilterModelType,
+    FilterModelValue,
+    FilterModelUpdated,
+    FilterModelJurisdiction,
+    FilterModelStage,
+    FilterModelBidding,
+    FilterModelBH,
+    FilterModelOwner,
+    FilterModelWork
+} FilterModel;
+
+@protocol ProjectFilterViewDelegate <NSObject>
+- (void)tappedFilterItem:(id)object;
+@end
+
 @interface ProjectFilterView : BaseViewClass
+@property (weak, nonatomic) id<ProjectFilterViewDelegate>projectFilterViewDelegate;
 @property (weak, nonatomic) UIScrollView *scrollView;
 - (void) setConstraint:(NSLayoutConstraint*)constraint;
 @end

@@ -42,6 +42,7 @@
 
 @implementation ProjectFilterView
 @synthesize scrollView;
+@synthesize projectFilterViewDelegate;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -50,15 +51,34 @@
     _constraintLabelHeight.constant = kDeviceHeight * 0.079;
      
     [_fieldLocation setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION")];
+    _fieldType.filterModel = FilterModelLocation;
+    
     [_fieldType setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_TYPE")];
+    _fieldType.filterModel = FilterModelType;
+    
     [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_VALUE")];
+    _fieldType.filterModel = FilterModelValue;
+    
     [_fieldUpdated setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED")];
+    _fieldUpdated.filterModel = FilterModelUpdated;
+    
     [_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_JURISDICTION")];
+    _fieldJurisdiction.filterModel = FilterModelJurisdiction;
+    
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_STAGE")];
+    _fieldStage.filterModel = FilterModelStage;
+    
     [_fieldBidding setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING")];
+    _fieldBidding.filterModel = FilterModelBidding;
+    
     [_fieldBH setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_BH")];
+    _fieldBH.filterModel = FilterModelBH;
+    
     [_fieldOwner setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_OWNER")];
+    _fieldOwner.filterModel = FilterModelOwner;
+    
     [_fieldWork setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_WORK")];
+    _fieldWork.filterModel = FilterModelWork;
     
     [_fieldUpdated setValue:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
     [_fieldJurisdiction setValue:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
@@ -122,16 +142,13 @@
 
 - (void)tappedFilterLabelView:(id)object {
 
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.projectFilterViewDelegate tappedFilterItem:object];
     
 }
 
 - (void)tappedFilterEntryViewDelegate:(id)object {
  
-    if ([object isEqual:_fieldType]) {
-        
-    }
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.projectFilterViewDelegate tappedFilterItem:object];
     
 }
 

@@ -8,7 +8,23 @@
 
 #import "ListItemCollectionViewCell.h"
 
+@interface ListItemCollectionViewCell()
+@end
 @implementation ListItemCollectionViewCell
 @synthesize level;
 @synthesize index;
+@synthesize listItemCollectionViewCellDelegate;
+
++ (CGFloat)itemHeight {
+    return kDeviceHeight * 0.087;
+}
+
+- (id)parentListView {
+    
+    return [self superview];
+}
+
+- (void)setItem:(NSMutableDictionary *)item {
+    localItem = item;
+}
 @end

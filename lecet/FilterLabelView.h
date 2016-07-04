@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewClass.h"
+#import "ProjectFilterView.h"
 
 @protocol FilterLabelViewDelegate <NSObject>
 - (void)tappedFilterLabelView:(id)object;
@@ -16,6 +17,7 @@
 
 @interface FilterLabelView : BaseViewClass
 @property (weak, nonatomic) id<FilterLabelViewDelegate>filterLabelViewDelegate;
+@property (nonatomic) FilterModel filterModel;
 - (void)setTitle:(NSString*)title;
 - (void)setValue:(NSString*)value;
 @end

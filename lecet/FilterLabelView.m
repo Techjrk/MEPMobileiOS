@@ -21,6 +21,7 @@
 @end
 
 @implementation FilterLabelView
+@synthesize filterModel;
 
 - (void)awakeFromNib {
     [super awakeFromNib];

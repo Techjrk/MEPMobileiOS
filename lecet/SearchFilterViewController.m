@@ -10,6 +10,10 @@
 
 #import "ProjectFilterView.h"
 #import "CompanyFilterView.h"
+#import "FilterEntryView.h"
+#import "FilterLabelView.h"
+#import "FilterViewController.h"
+#import "ListItemExpandingViewCell.h"
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -23,7 +27,7 @@
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 
-@interface SearchFilterViewController ()
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonProject;
@@ -71,8 +75,7 @@
     
     [_projectFilter setConstraint:_constraintProjectFilterHeight];
     _projectFilter.scrollView = _projectScrollView;
-    
-
+    _projectFilter.projectFilterViewDelegate = self;
     _companyFilter.hidden = YES;
 
 }
@@ -119,4 +122,98 @@
 - (IBAction)tappedButtonApply:(id)sender {
     [[DataManager sharedManager] featureNotAvailable];
 }
+
+#pragma mark - ProjectFilterViewDelegate
+
+- (void)tappedFilterItem:(id)object {
+    
+    FilterModel model = 0;
+    BOOL shouldProcess = NO;
+    
+    if ([object class] == [FilterLabelView class]) {
+        
+        model = [(FilterLabelView*)object filterModel];
+        shouldProcess = YES;
+        
+    } else if([object class] == [FilterEntryView class]) {
+        
+        model = [(FilterEntryView*)object filterModel];
+        shouldProcess = YES;
+    }
+    
+    if (shouldProcess) {
+        
+        switch (model) {
+            case FilterModelLocation: {
+                
+                break;
+            }
+                
+            case FilterModelType: {
+                break;
+            }
+                
+            case FilterModelValue: {
+                break;
+            }
+                
+            case FilterModelUpdated: {
+                break;
+            }
+                
+            case FilterModelJurisdiction: {
+                
+                FilterViewController *controller = [FilterViewController new];
+                
+                NSMutableDictionary *dict1 = [@{LIST_VIEW_NAME:@"VALUE01"} mutableCopy];
+                NSMutableDictionary *dict2 = [@{LIST_VIEW_NAME:@"VALUE02"} mutableCopy];
+                NSMutableDictionary *dict3 = [@{LIST_VIEW_NAME:@"VALUE03"} mutableCopy];
+                
+                NSDictionary *dictArray1 = [@{LIST_VIEW_NAME:@"SUB01", LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray2 = [@{LIST_VIEW_NAME:@"SUB02",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray3 = [@{LIST_VIEW_NAME:@"SUB03",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray4 = [@{LIST_VIEW_NAME:@"SUB04",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray5 = [@{LIST_VIEW_NAME:@"SUB05",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray6 = [@{LIST_VIEW_NAME:@"SUB06",LIST_VIEW_SUBITEMS:@[dictArray5, dict2, dict3]}mutableCopy];
+                
+                
+                /*
+                 controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]},
+                 @{LIST_VIEW_NAME:@"ITEM02",LIST_VIEW_SUBITEMS:@[dictArray2, dict2]},
+                 @{LIST_VIEW_NAME:@"ITEM03",LIST_VIEW_SUBITEMS:@[dictArray3, dictArray4]}] mutableCopy];
+                 */
+                
+                controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]}, @{LIST_VIEW_NAME:@"ITEM02",LIST_VIEW_SUBITEMS:@[dictArray2, dict2, dictArray6]}, @{LIST_VIEW_NAME:@"ITEM03",LIST_VIEW_SUBITEMS:@[dictArray3, dictArray4]}] mutableCopy];
+
+                
+                [self.navigationController pushViewController:controller animated:YES];
+                
+                break;
+            }
+                
+            case FilterModelStage: {
+                break;
+            }
+                
+            case FilterModelBidding: {
+                break;
+            }
+                
+            case FilterModelBH: {
+                break;
+            }
+                
+            case FilterModelOwner: {
+                break;
+            }
+                
+            case FilterModelWork: {
+                break;
+            }
+        }
+        
+    }
+    
+}
+
 @end

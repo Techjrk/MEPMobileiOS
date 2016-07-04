@@ -13,8 +13,12 @@
 @protocol ListItemExpandingViewCellDelegate <NSObject>
 - (void)listViewItemWillExpand:(ListItemCollectionViewCell*)listViewItem;
 - (void)listViewItemDidExpand:(ListItemCollectionViewCell*)listViewItem;
+- (NSArray*)listViewSubItems:(ListItemCollectionViewCell*)listViewItem;
 @end
 
 @interface ListItemExpandingViewCell : ListItemCollectionViewCell
-
+@property (weak, nonatomic) id<ListItemExpandingViewCellDelegate>listItemExpandingViewCellDelegate;
+@property (weak, nonatomic) id<ListItemCollectionViewCellDelegate>listItemCollectionViewCellDelegate;
++ (CGFloat)itemHeight;
+- (void)reloadData;
 @end

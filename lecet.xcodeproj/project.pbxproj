@@ -256,6 +256,8 @@
 		B771C6071CEB6C65004A628A /* AssociatedBidView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C6061CEB6C65004A628A /* AssociatedBidView.xib */; };
 		B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B771C60A1CEB7503004A628A /* AssociatedProjectsView.m */; };
 		B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */; };
+		B77E08E71D2687D80087454F /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77E08E51D2687D80087454F /* FilterViewController.m */; };
+		B77E08E81D2687D80087454F /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B77E08E61D2687D80087454F /* FilterViewController.xib */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
@@ -751,6 +753,9 @@
 		B771C6091CEB7503004A628A /* AssociatedProjectsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedProjectsView.h; sourceTree = "<group>"; };
 		B771C60A1CEB7503004A628A /* AssociatedProjectsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociatedProjectsView.m; sourceTree = "<group>"; };
 		B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssociatedProjectsView.xib; sourceTree = "<group>"; };
+		B77E08E41D2687D80087454F /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		B77E08E51D2687D80087454F /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		B77E08E61D2687D80087454F /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Contact+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1780,6 +1785,9 @@
 				B7BF61101D240D5000B3BDD7 /* ListViewController.h */,
 				B7BF61111D240D5000B3BDD7 /* ListViewController.m */,
 				B7BF61121D240D5000B3BDD7 /* ListViewController.xib */,
+				B77E08E41D2687D80087454F /* FilterViewController.h */,
+				B77E08E51D2687D80087454F /* FilterViewController.m */,
+				B77E08E61D2687D80087454F /* FilterViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2429,6 +2437,7 @@
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
 				B73EFAED1D13FB3C00C6B3B2 /* ProjectTrackingViewController.xib in Resources */,
 				B7BF60F31D22B49400B3BDD7 /* RecentSearchView.xib in Resources */,
+				B77E08E81D2687D80087454F /* FilterViewController.xib in Resources */,
 				B7BF60A51D1D6FB900B3BDD7 /* SearchProjectCollectionViewCell.xib in Resources */,
 				B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */,
 				B7BF610F1D240CE000B3BDD7 /* CustomListView.xib in Resources */,
@@ -2639,6 +2648,7 @@
 				B7BF608A1D19723A00B3BDD7 /* ShareItemCollectionViewCell.m in Sources */,
 				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
+				B77E08E71D2687D80087454F /* FilterViewController.m in Sources */,
 				B6FD043D1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m in Sources */,
 				B76C69801CDA04FC009E9F15 /* CalendarItemCollectionViewCell.m in Sources */,
 				B76C69661CD7551E009E9F15 /* BidItemView.m in Sources */,
@@ -2768,8 +2778,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -2779,9 +2789,9 @@
 				INFOPLIST_FILE = lecet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0a361953-2b77-4f5e-b808-0631c8b6fb52";
 			};
 			name = Debug;
 		};
@@ -2789,8 +2799,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -2800,9 +2810,9 @@
 				INFOPLIST_FILE = lecet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0a361953-2b77-4f5e-b808-0631c8b6fb52";
 			};
 			name = Release;
 		};

@@ -17,6 +17,7 @@
 @end
 
 @implementation FilterEntryView
+@synthesize filterModel;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
