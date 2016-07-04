@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+
+@protocol ProjectFilterCollapsibleListViewDelegate <NSObject>
+@optional
+- (void)tappedSelectionButton:(id)items;
+@end
+
 @interface ProjectFilterCollapsibleListView : BaseViewClass
+@property(nonatomic,assign) id <ProjectFilterCollapsibleListViewDelegate> projectFilterCollapsibleListViewDelegate;
 - (void)setInfo:(NSArray *)item;
 - (void)setCollectionViewBounce:(BOOL)bounce;
 - (void)setHideLineViewInFirstLayerForSecSubCat:(BOOL)hide;

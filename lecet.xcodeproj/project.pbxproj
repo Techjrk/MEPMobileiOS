@@ -49,6 +49,10 @@
 		B65106601D12D7AD00007759 /* CompanyTrackingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B651065E1D12D7AD00007759 /* CompanyTrackingCollectionViewCell.xib */; };
 		B65106681D12DCA900007759 /* CompanyTrackingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65106661D12DCA900007759 /* CompanyTrackingListViewController.m */; };
 		B65106691D12DCA900007759 /* CompanyTrackingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65106671D12DCA900007759 /* CompanyTrackingListViewController.xib */; };
+		B65BCDC01D2529AF00FE9781 /* WorkOwnerTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65BCDBE1D2529AF00FE9781 /* WorkOwnerTypesViewController.m */; };
+		B65BCDC11D2529AF00FE9781 /* WorkOwnerTypesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65BCDBF1D2529AF00FE9781 /* WorkOwnerTypesViewController.xib */; };
+		B65BCDC61D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65BCDC41D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.m */; };
+		B65BCDC71D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65BCDC51D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.xib */; };
 		B66544BC1D002CBD0033732F /* CDAssociatedProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66544BA1D002CBD0033732F /* CDAssociatedProjectViewController.m */; };
 		B66544BD1D002CBD0033732F /* CDAssociatedProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66544BB1D002CBD0033732F /* CDAssociatedProjectViewController.xib */; };
 		B66591121CFECA6B00CFD10C /* MoreMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66591101CFECA6B00CFD10C /* MoreMenuViewController.m */; };
@@ -67,6 +71,8 @@
 		B683372B1D082154004226D3 /* CPCustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68337291D082154004226D3 /* CPCustomTextFieldView.xib */; };
 		B68337371D083102004226D3 /* ChnagePasswordCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B68337351D083102004226D3 /* ChnagePasswordCollectionViewCell.m */; };
 		B68337381D083102004226D3 /* ChnagePasswordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68337361D083102004226D3 /* ChnagePasswordCollectionViewCell.xib */; };
+		B6855EA91D2660B400553F0F /* ValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6855EA71D2660B400553F0F /* ValuationViewController.m */; };
+		B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6855EA81D2660B400553F0F /* ValuationViewController.xib */; };
 		B69C3AD01D0DB2D3003DD918 /* MyProfileOneTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C3ACE1D0DB2D3003DD918 /* MyProfileOneTextFieldView.m */; };
 		B69C3AD11D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69C3ACF1D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib */; };
 		B69C3AD61D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C3AD41D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m */; };
@@ -447,6 +453,12 @@
 		B65106651D12DCA900007759 /* CompanyTrackingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyTrackingListViewController.h; sourceTree = "<group>"; };
 		B65106661D12DCA900007759 /* CompanyTrackingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyTrackingListViewController.m; sourceTree = "<group>"; };
 		B65106671D12DCA900007759 /* CompanyTrackingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyTrackingListViewController.xib; sourceTree = "<group>"; };
+		B65BCDBD1D2529AF00FE9781 /* WorkOwnerTypesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOwnerTypesViewController.h; sourceTree = "<group>"; };
+		B65BCDBE1D2529AF00FE9781 /* WorkOwnerTypesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOwnerTypesViewController.m; sourceTree = "<group>"; };
+		B65BCDBF1D2529AF00FE9781 /* WorkOwnerTypesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkOwnerTypesViewController.xib; sourceTree = "<group>"; };
+		B65BCDC31D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOwnerTypesCollectionViewCell.h; sourceTree = "<group>"; };
+		B65BCDC41D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOwnerTypesCollectionViewCell.m; sourceTree = "<group>"; };
+		B65BCDC51D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkOwnerTypesCollectionViewCell.xib; sourceTree = "<group>"; };
 		B66544B91D002CBD0033732F /* CDAssociatedProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAssociatedProjectViewController.h; sourceTree = "<group>"; };
 		B66544BA1D002CBD0033732F /* CDAssociatedProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAssociatedProjectViewController.m; sourceTree = "<group>"; };
 		B66544BB1D002CBD0033732F /* CDAssociatedProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CDAssociatedProjectViewController.xib; sourceTree = "<group>"; };
@@ -474,6 +486,9 @@
 		B68337341D083102004226D3 /* ChnagePasswordCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChnagePasswordCollectionViewCell.h; sourceTree = "<group>"; };
 		B68337351D083102004226D3 /* ChnagePasswordCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChnagePasswordCollectionViewCell.m; sourceTree = "<group>"; };
 		B68337361D083102004226D3 /* ChnagePasswordCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChnagePasswordCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6855EA61D2660B400553F0F /* ValuationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuationViewController.h; sourceTree = "<group>"; };
+		B6855EA71D2660B400553F0F /* ValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuationViewController.m; sourceTree = "<group>"; };
+		B6855EA81D2660B400553F0F /* ValuationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuationViewController.xib; sourceTree = "<group>"; };
 		B69C3ACD1D0DB2D3003DD918 /* MyProfileOneTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileOneTextFieldView.h; sourceTree = "<group>"; };
 		B69C3ACE1D0DB2D3003DD918 /* MyProfileOneTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileOneTextFieldView.m; sourceTree = "<group>"; };
 		B69C3ACF1D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileOneTextFieldView.xib; sourceTree = "<group>"; };
@@ -1171,6 +1186,26 @@
 			name = CompanyTracking;
 			sourceTree = "<group>";
 		};
+		B65BCDBC1D25295400FE9781 /* WorkOwnerTypes */ = {
+			isa = PBXGroup;
+			children = (
+				B65BCDBD1D2529AF00FE9781 /* WorkOwnerTypesViewController.h */,
+				B65BCDBE1D2529AF00FE9781 /* WorkOwnerTypesViewController.m */,
+				B65BCDBF1D2529AF00FE9781 /* WorkOwnerTypesViewController.xib */,
+			);
+			name = WorkOwnerTypes;
+			sourceTree = "<group>";
+		};
+		B65BCDC21D2534DE00FE9781 /* WorkOwnerTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				B65BCDC31D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.h */,
+				B65BCDC41D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.m */,
+				B65BCDC51D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.xib */,
+			);
+			name = WorkOwnerTypeCell;
+			sourceTree = "<group>";
+		};
 		B66544B81D002C2F0033732F /* Associated Projects */ = {
 			isa = PBXGroup;
 			children = (
@@ -1259,6 +1294,16 @@
 				B68337361D083102004226D3 /* ChnagePasswordCollectionViewCell.xib */,
 			);
 			name = ChangePasswordCell;
+			sourceTree = "<group>";
+		};
+		B6855EA51D26604500553F0F /* Valuation */ = {
+			isa = PBXGroup;
+			children = (
+				B6855EA61D2660B400553F0F /* ValuationViewController.h */,
+				B6855EA71D2660B400553F0F /* ValuationViewController.m */,
+				B6855EA81D2660B400553F0F /* ValuationViewController.xib */,
+			);
+			name = Valuation;
 			sourceTree = "<group>";
 		};
 		B6972B881CF327D00092D5CD /* ProjectDetailState */ = {
@@ -1704,6 +1749,8 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6855EA51D26604500553F0F /* Valuation */,
+				B65BCDBC1D25295400FE9781 /* WorkOwnerTypes */,
 				B6AA23721D22B043008B30E0 /* ProjectFilterTypes */,
 				B6AF1CF01D21307300C95A8F /* ProjectFilterLocation */,
 				B6FD044E1D1D8F5700E12123 /* ProjectFilterBH */,
@@ -1795,6 +1842,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B65BCDC21D2534DE00FE9781 /* WorkOwnerTypeCell */,
 				B6AF1CEA1D212D6800C95A8F /* ProjectFilterCollapsibleCell */,
 				B6FD04391D1D2E9400E12123 /* ProjectFilterSelectionCell */,
 				B6BDBAB81D181E6F001FB41C /* EditViewCell */,
@@ -2323,6 +2371,7 @@
 				B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */,
 				B65106691D12DCA900007759 /* CompanyTrackingListViewController.xib in Resources */,
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
+				B65BCDC71D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.xib in Resources */,
 				B7BF60C31D1EAC8400B3BDD7 /* SearchResultView.xib in Resources */,
 				B6411BA61D096892002B6E88 /* SettingsView.xib in Resources */,
 				B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */,
@@ -2406,6 +2455,7 @@
 				B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
+				B65BCDC11D2529AF00FE9781 /* WorkOwnerTypesViewController.xib in Resources */,
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B6411BBF1D09ACBF002B6E88 /* MyProfileViewController.xib in Resources */,
@@ -2452,6 +2502,7 @@
 				B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
 				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
+				B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */,
 				B7BF60BE1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.xib in Resources */,
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
@@ -2536,6 +2587,7 @@
 				B73EFB0A1D14546E00C6B3B2 /* ProjectTrackItemView.m in Sources */,
 				B7BF60A91D1D828900B3BDD7 /* SearchCompanyCollectionViewCell.m in Sources */,
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
+				B65BCDC01D2529AF00FE9781 /* WorkOwnerTypesViewController.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
 				B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */,
 				B73EFAEC1D13FB3C00C6B3B2 /* ProjectTrackingViewController.m in Sources */,
@@ -2623,6 +2675,7 @@
 				B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */,
 				B76C69541CD376B2009E9F15 /* MenuHeaderView.m in Sources */,
 				B701551D1CD0C56A0050CF8A /* main.m in Sources */,
+				B65BCDC61D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.m in Sources */,
 				B73EFB101D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m in Sources */,
 				B7F10A2E1CDB577800847FA3 /* DataManager.m in Sources */,
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
@@ -2635,6 +2688,7 @@
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
 				B79616011CF318D60089BC32 /* DB_Project.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
+				B6855EA91D2660B400553F0F /* ValuationViewController.m in Sources */,
 				B73EFAD11D11518700C6B3B2 /* PopupViewController.m in Sources */,
 				B6BDBABC1D181EA9001FB41C /* EditViewCollectionViewCell.m in Sources */,
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,

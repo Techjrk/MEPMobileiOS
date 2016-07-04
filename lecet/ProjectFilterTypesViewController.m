@@ -11,8 +11,9 @@
 #import "ProjectFilterCollapsibleListView.h"
 
 
-@interface ProjectFilterTypesViewController ()<ProjectFilterSearchNavViewDelegate>{
+@interface ProjectFilterTypesViewController ()<ProjectFilterSearchNavViewDelegate,ProjectFilterCollapsibleListViewDelegate>{
     NSMutableArray *dataInfo;
+    NSArray *dataSelected;
 }
 @property (weak, nonatomic) IBOutlet ProjectFilterSearchNavView *navView;
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleListView *listView;
@@ -36,24 +37,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _navView.projectFilterSearchNavViewDelegate = self;
+    _listView.projectFilterCollapsibleListViewDelegate = self;
     [self enableTapGesture:YES];
     
 }
 
-- (void)setInfo:(id)info {
+
+- (void)setInfoGroupList:(id)obj categoryList:(id)catList {
     
-    /*
-    dataInfo = [NSMutableArray new];
-    _operationQueue = [[NSOperationQueue alloc] init];
-    int count = 0;
-    for (id obj in info) {
-        NSDictionary *dict = @{TITLENAME:obj[TITLENAME],PROJECTGROUPID:obj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:@[]};
-        [dataInfo addObject:dict];
-        count++;
-        
-        [self requestSubData:count - 1];
-    }
-    */
+   dataInfo =  [self manipulatedDataInfoGroupListInfo:obj categoryListInfo:catList];
+}
+
+- (void)setInfo:(id)info {
     dataInfo = info;
 }
 
@@ -109,7 +104,6 @@
                 }
             }
             
-            //NSLog(@"Result = %@",searchReultFromSubCat);
             
             NSMutableArray *secondSubCatSearchResult = [self configuredSearchResult:searchReultFromSubCat];
             [_listView setInfoToReload:[secondSubCatSearchResult copy]];
@@ -219,6 +213,75 @@
     
    
     return resArray;
+}
+
+#pragma mark - Data Manipulation
+
+
+- (NSMutableArray *)manipulatedDataInfoGroupListInfo:(id)obj categoryListInfo:(id)catObj {
+    NSMutableArray *mutArray = [NSMutableArray new];
+    
+    for (id headerObj in obj) {
+        
+        NSMutableArray *configuredSubArray = [self addDropDownButtonAndSelectionFlagInArray:catObj];
+        NSMutableArray *subArray = [self filteredArray:configuredSubArray projectGroupId:headerObj[PROJECTGROUPID]];
+        NSDictionary *dict = @{TITLENAME:headerObj[TITLENAME],PROJECTGROUPID:headerObj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:subArray};
+        [mutArray addObject:dict];
+    }
+    
+    return mutArray;
+
+}
+
+- (NSMutableArray *)filteredArray:(NSMutableArray *)array projectGroupId:(NSNumber *)numID {
+    
+    NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary* evaluatedObject, NSDictionary *bindings) {
+        return [[evaluatedObject valueForKey:@"projectGroupId"] isEqual:numID];
+    }]];
+    
+    return [filtered mutableCopy];
+}
+
+
+- (NSMutableArray *)addDropDownButtonAndSelectionFlagInArray:(NSArray *)subCatArray {
+    
+    NSMutableArray *array = [NSMutableArray new];
+    
+    for (id  result in [subCatArray mutableCopy]) {
+        NSMutableDictionary *res = [result mutableCopy];
+        [res setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [res setValue:UnSelectedFlag forKey:DROPDOWNFLAGNAME];
+        [array addObject:res];
+    }
+    
+    return array;
+}
+
+- (void)tappedSelectionButton:(id)items {
+ 
+    NSMutableArray *resArray = [NSMutableArray new];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.selectionFlag == %@", @"1"];
+    
+    int countIndex = 0;
+    for (id obj in items) {
+        NSMutableDictionary *dict = [obj mutableCopy];
+        countIndex++;
+        
+        if ([obj[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
+            [resArray addObject:dict];
+        }else {
+            
+            NSArray *filteredSecondLayer = [obj[SUBCATEGORYDATA] filteredArrayUsingPredicate:resultPredicate];
+            if (filteredSecondLayer.count > 0) {
+                
+                [dict setValue:filteredSecondLayer forKey:SUBCATEGORYDATA];
+                [resArray addObject:dict];
+            }
+            
+        }
+        
+    }
+    dataSelected = [resArray copy];
 }
 
 @end

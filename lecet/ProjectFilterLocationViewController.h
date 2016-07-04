@@ -10,5 +10,5 @@
 #import "BaseViewController.h"
 
 @interface ProjectFilterLocationViewController : BaseViewController
-
+- (void)setInfo:(id)info;
 @end

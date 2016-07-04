@@ -121,6 +121,7 @@
 
 - (IBAction)tappedButtonApply:(id)sender {
     [[DataManager sharedManager] featureNotAvailable];
+    
 }
 
 #pragma mark - ProjectFilterViewDelegate
