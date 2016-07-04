@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WorkOwnerTypesViewControllerDelegate <NSObject>
+- (void)workOwnerTypesSelectedItems:(id)item;
+@end
+
 @interface WorkOwnerTypesViewController : UIViewController
+@property (nonatomic,assign) id <WorkOwnerTypesViewControllerDelegate> workOwnerTypesViewControllerDelegate;
 - (void)setInfo:(id)info;
 - (void)setNavTitle:(NSString *)text;
 @end

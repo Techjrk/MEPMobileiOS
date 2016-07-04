@@ -13,6 +13,7 @@
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
     NSString *navTitle;
+    int prevTag;
 }
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet UIView *containerCollectionView;
@@ -38,10 +39,6 @@
     _navView.profileNavViewDelegate = self;
     [_navView setRigthBorder:10];
     [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"RIGHTNAV_BUTTON_TITLE")];
-    
-    
-    
-    
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -154,7 +151,13 @@
 
 #pragma mark - Cell Delegate
 - (void)tappedSelectionButton:(id)tag {
+    
+    
     NSIndexPath *index = tag;
+    
+    if (prevTag != index.row) {
+        [self clearPrevSelection];
+    }
     
     NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.row] mutableCopy];
     NSString *currentflag = [collectionDataItems objectAtIndex:index.row][SELECTIONFLAGNAME];
@@ -164,6 +167,40 @@
     
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:index, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
+    
+    prevTag = (int)index.row;
+    NSDictionary *returnDict = [[collectionDataItems objectAtIndex:index.row][SELECTIONFLAGNAME] isEqualToString: SelectedFlag]?[collectionDataItems objectAtIndex:index.row]:nil;
+    [_workOwnerTypesViewControllerDelegate workOwnerTypesSelectedItems:returnDict];
+    
+}
+
+- (void)clearPrevSelection {
+    NSOperationQueue* queue= [NSOperationQueue new];
+    queue.maxConcurrentOperationCount=1;
+    [queue setSuspended: YES];
+    
+    [collectionDataItems enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
+        
+        if ([response[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
+            NSBlockOperation* op=[NSBlockOperation blockOperationWithBlock: ^ (void)
+                                  {
+                                      NSMutableDictionary *prevDict = [[collectionDataItems objectAtIndex:index] mutableCopy];
+                                      [prevDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+                                      [collectionDataItems replaceObjectAtIndex:index withObject:prevDict];
+                                      
+                                      
+                                  }];
+            [queue addOperation: op];
+            
+            
+        }
+        
+        
+    }];
+    
+    [queue setSuspended: NO];
+    [queue waitUntilAllOperationsAreFinished];
+    [_collectionView reloadData];
     
 }
 

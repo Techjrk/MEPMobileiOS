@@ -39,7 +39,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate>
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate,WorkOwnerTypesViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonProject;
@@ -242,6 +242,7 @@
                 WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
                 [controller setInfo:obj];
                 [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
+                controller.workOwnerTypesViewControllerDelegate =self;
                 [self.navigationController pushViewController:controller animated:YES];
 
                 break;
@@ -264,6 +265,7 @@
         WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
         [controller setInfo:obj];
         [controller setNavTitle:NSLocalizedLanguage(@"WORK_TYPES_TITLE")];
+        controller.workOwnerTypesViewControllerDelegate =self;
         [self.navigationController pushViewController:controller animated:YES];
         
         
@@ -291,6 +293,12 @@
     }failure:^(id obj){
         
     }];
+    
+}
+
+#pragma mark - WorkOwnerTypes Delegate
+
+- (void)workOwnerTypesSelectedItems:(id)item {
     
 }
 
