@@ -17,6 +17,10 @@
 #import "WorkOwnerTypesViewController.h"
 #import "ProjectFilterTypesViewController.h"
 #import "ProjectFilterLocationViewController.h"
+#import "ProjectFilterBiddingViewController.h"
+#import "ProjectFilterUpdatedViewController.h"
+#import "ProjectFilterBHViewController.h"
+#import "ValuationViewController.h"
 
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
@@ -35,7 +39,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate>
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate,WorkOwnerTypesViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonProject;
@@ -156,7 +160,8 @@
         
         switch (model) {
             case FilterModelLocation: {
-                
+                ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
@@ -166,10 +171,14 @@
             }
                 
             case FilterModelValue: {
+                ValuationViewController *controller =  [ValuationViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
             case FilterModelUpdated: {
+                ProjectFilterUpdatedViewController *controller = [ProjectFilterUpdatedViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
@@ -208,10 +217,16 @@
             }
                 
             case FilterModelBidding: {
+                
+                ProjectFilterBiddingViewController *controller = [ProjectFilterBiddingViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
+                
                 break;
             }
                 
             case FilterModelBH: {
+                ProjectFilterBHViewController *controller = [ProjectFilterBHViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
@@ -227,6 +242,7 @@
                 WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
                 [controller setInfo:obj];
                 [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
+                controller.workOwnerTypesViewControllerDelegate =self;
                 [self.navigationController pushViewController:controller animated:YES];
 
                 break;
@@ -249,6 +265,7 @@
         WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
         [controller setInfo:obj];
         [controller setNavTitle:NSLocalizedLanguage(@"WORK_TYPES_TITLE")];
+        controller.workOwnerTypesViewControllerDelegate =self;
         [self.navigationController pushViewController:controller animated:YES];
         
         
@@ -276,6 +293,12 @@
     }failure:^(id obj){
         
     }];
+    
+}
+
+#pragma mark - WorkOwnerTypes Delegate
+
+- (void)workOwnerTypesSelectedItems:(id)item {
     
 }
 
