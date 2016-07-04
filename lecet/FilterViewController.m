@@ -17,11 +17,13 @@
 #define SEACRCH_PLACEHOLDER_COLOR                       RGB(255, 255, 255)
 #define SEACRCH_PLACEHOLDER_TEXT                        [NSString stringWithFormat:@"%C", 0xf002]
 
-#define BUTTON_FILTER_FONT                  fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 14)
-#define BUTTON_FILTER_COLOR                 RGB(168, 195, 230)
+#define BUTTON_FILTER_FONT                              fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 14)
+#define BUTTON_FILTER_COLOR                             RGB(168, 195, 230)
 
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
     NSMutableArray *localListViewItems;
+    
+    NSString *sss;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -59,12 +61,14 @@
     }
     _listView.customListViewDelegate = self;
     
+    
     NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:SEACRCH_PLACEHOLDER_TEXT attributes:@{NSFontAttributeName:SEACRCH_PLACEHOLDER_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}];
     
     [placeHolder appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"   %@ %@",NSLocalizedLanguage(@"FILTER_VIEW_SEARCH_FOR"),self.searchTitle] attributes:@{NSFontAttributeName:SEACRCH_TEXTFIELD_TEXT_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}]];
     _labelSearch.attributedPlaceholder = placeHolder;
     _labelSearch.textColor = [UIColor whiteColor];
 
+     
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,7 +87,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 #pragma mark - Custom List View Delegate
 
