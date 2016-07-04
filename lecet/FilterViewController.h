@@ -12,4 +12,5 @@
 
 @interface FilterViewController : BaseViewController
 @property (strong, nonatomic) NSMutableArray *listViewItems;
+@property (weak, nonatomic) NSString *searchTitle;
 @end

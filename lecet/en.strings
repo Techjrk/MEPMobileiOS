@@ -349,4 +349,9 @@
 //ValuationViewController.xib
 "VALUATION_NAV_TITLE"                       =               "Valuation";
 
+//FilterViewController
+"FILTER_VIEW_SEARCH_FOR"                    =               "Search for";
+"FILTER_VIEW_JURISRICTION"                  =               "jurisdiction";
+"FILTER_VIEW_APPLY"                         =               "APPLY";
+
 

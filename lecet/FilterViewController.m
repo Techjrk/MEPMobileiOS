@@ -11,25 +11,41 @@
 #import "ListItemCollectionViewCell.h"
 #import "ListItemExpandingViewCell.h"
 
+#define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+
+#define SEACRCH_PLACEHOLDER_FONT                        fontNameWithSize(FONT_NAME_AWESOME, 14)
+#define SEACRCH_PLACEHOLDER_COLOR                       RGB(255, 255, 255)
+#define SEACRCH_PLACEHOLDER_TEXT                        [NSString stringWithFormat:@"%C", 0xf002]
+
+#define BUTTON_FILTER_FONT                  fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 14)
+#define BUTTON_FILTER_COLOR                 RGB(168, 195, 230)
+
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
     NSMutableArray *localListViewItems;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
+@property (weak, nonatomic) IBOutlet UIButton *buttonApply;
 @property (weak, nonatomic) IBOutlet CustomListView *listView;
+@property (weak, nonatomic) IBOutlet UIView *viewbackground;
 - (IBAction)tappedBackButton:(id)sender;
 @end
 
 @implementation FilterViewController
 @synthesize listViewItems;
+@synthesize searchTitle;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self enableTapGesture:YES];
     
-    _labelSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
-    _labelSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
-    _labelSearch.layer.masksToBounds = YES;
+    [_buttonApply setTitleColor:BUTTON_FILTER_COLOR forState:UIControlStateNormal];
+    _buttonApply.titleLabel.font = BUTTON_FILTER_FONT;
+    [_buttonApply setTitle:NSLocalizedLanguage(@"FILTER_VIEW_APPLY") forState:UIControlStateNormal];
+
+    _viewbackground.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
+    _viewbackground.layer.cornerRadius = kDeviceWidth * 0.0106;
+    _viewbackground.layer.masksToBounds = YES;
 
     localListViewItems = [NSMutableArray new];
     
@@ -42,6 +58,13 @@
         
     }
     _listView.customListViewDelegate = self;
+    
+    NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:SEACRCH_PLACEHOLDER_TEXT attributes:@{NSFontAttributeName:SEACRCH_PLACEHOLDER_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}];
+    
+    [placeHolder appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"   %@ %@",NSLocalizedLanguage(@"FILTER_VIEW_SEARCH_FOR"),self.searchTitle] attributes:@{NSFontAttributeName:SEACRCH_TEXTFIELD_TEXT_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}]];
+    _labelSearch.attributedPlaceholder = placeHolder;
+    _labelSearch.textColor = [UIColor whiteColor];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +146,7 @@
     
     return totalHeight;
 }
+
 
 #pragma mark - ListItemExpandingViewCellDelegate
 
