@@ -49,6 +49,11 @@
     return [_collectionView indexPathsForVisibleItems];
 }
 
+- (void)setListViewScrollable:(BOOL)scrollable {
+
+    [_collectionView setScrollEnabled:scrollable];
+}
+
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

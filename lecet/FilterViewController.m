@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self enableTapGesture:YES];
+    
     _labelSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _labelSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
     _labelSearch.layer.masksToBounds = YES;
