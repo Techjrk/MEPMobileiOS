@@ -17,6 +17,10 @@
 #import "WorkOwnerTypesViewController.h"
 #import "ProjectFilterTypesViewController.h"
 #import "ProjectFilterLocationViewController.h"
+#import "ProjectFilterBiddingViewController.h"
+#import "ProjectFilterUpdatedViewController.h"
+#import "ProjectFilterBHViewController.h"
+#import "ValuationViewController.h"
 
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
@@ -156,7 +160,8 @@
         
         switch (model) {
             case FilterModelLocation: {
-                
+                ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
@@ -166,10 +171,14 @@
             }
                 
             case FilterModelValue: {
+                ValuationViewController *controller =  [ValuationViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
             case FilterModelUpdated: {
+                ProjectFilterUpdatedViewController *controller = [ProjectFilterUpdatedViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
@@ -208,10 +217,16 @@
             }
                 
             case FilterModelBidding: {
+                
+                ProjectFilterBiddingViewController *controller = [ProjectFilterBiddingViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
+                
                 break;
             }
                 
             case FilterModelBH: {
+                ProjectFilterBHViewController *controller = [ProjectFilterBHViewController new];
+                [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
                 
