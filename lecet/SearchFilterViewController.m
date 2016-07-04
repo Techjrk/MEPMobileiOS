@@ -21,7 +21,8 @@
 #import "ProjectFilterUpdatedViewController.h"
 #import "ProjectFilterBHViewController.h"
 #import "ValuationViewController.h"
-
+#import "ProjectFilterSelectionViewController.h"
+#import "TesrViewController.h"
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -226,8 +227,27 @@
             }
                 
             case FilterModelBH: {
-                ProjectFilterBHViewController *controller = [ProjectFilterBHViewController new];
+                //ProjectFilterBHViewController *controller = [ProjectFilterBHViewController new];
+                //[self.navigationController pushViewController:controller animated:YES];
+                /*
+                NSArray *array = @[
+                                   @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                                   @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@(102),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                                   @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@(101),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                                   ];
+                */
+                
+                
+                ProjectFilterSelectionViewController *controller = [ProjectFilterSelectionViewController new];
+                /*
+                controller.projectFilterSelectionViewControllerDelegate = self;
+                controller.dataInfo  = array;
+                controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BH_TITLE");
+                controller.navRightButtonTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE");
+                */
+                
                 [self.navigationController pushViewController:controller animated:YES];
+                
                 break;
             }
                 
@@ -243,7 +263,7 @@
                 WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
                 [controller setInfo:obj];
                 [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
-                controller.workOwnerTypesViewControllerDelegate =self;
+                controller.workOwnerTypesViewControllerDelegate = self;
                 [self.navigationController pushViewController:controller animated:YES];
 
                 break;
@@ -300,6 +320,12 @@
 #pragma mark - WorkOwnerTypes Delegate
 
 - (void)workOwnerTypesSelectedItems:(id)item {
+    
+}
+
+#pragma mark - projectFilterSelectionViewControllerDelegate 
+
+- (void)tappedApplyButton:(id)items {
     
 }
 
