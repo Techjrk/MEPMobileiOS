@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consstraintTralingWidth;
 @property (weak, nonatomic) IBOutlet CustomListView *listView;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *imageCheckView;
 - (IBAction)tappedButtonCheck:(id)sender;
 - (IBAction)tappedButtonExpand:(id)sender;
 @end
@@ -43,7 +44,7 @@
     _constraintItemContainerHeight.constant = [ListItemExpandingViewCell itemHeight];
     _consstraintTralingWidth.constant = kDeviceWidth * 0.04;
     _constraintButtonExpandWidth.constant = kDeviceWidth * 0.15;
-    _constraintButtonCheckWidth.constant = kDeviceWidth * 0.12;
+    _constraintButtonCheckWidth.constant = kDeviceWidth * 0.112;
     _lineView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
     
     _buttonCheck.contentMode = UIViewContentModeScaleAspectFit;
@@ -57,6 +58,8 @@
     _labelTitle.font = LABEL_FONT;
     _labelTitle.textColor = LABEL_COLOR;
     
+    [_listView setListViewScrollable:NO];
+    
 }
 
 - (void)setButtonExpanded:(BOOL)expanded {
@@ -68,6 +71,18 @@
 }
 
 - (IBAction)tappedButtonCheck:(id)sender {
+    NSNumber *checked = localItem[STATUS_CHECK];
+    
+    localItem[STATUS_CHECK] = [NSNumber numberWithBool:!checked.boolValue];
+    
+    [self setCheckImage:!checked.boolValue];
+    
+}
+
+- (void)setCheckImage:(BOOL)checked {
+    
+    _imageCheckView.image = [UIImage imageNamed:checked?@"icon_stateSelected":@"icon_stateDeselected"];
+    
 }
 
 - (IBAction)tappedButtonExpand:(id)sender {
@@ -190,6 +205,11 @@
         
         _constraintButtonExpandWidth.constant = kDeviceWidth * 0.15;
     }
+    
+    NSNumber *checked = localItem[STATUS_CHECK];
+    
+    [self setCheckImage:checked.boolValue];
+    
 }
 
 - (void)didChangeListViewItemSize {

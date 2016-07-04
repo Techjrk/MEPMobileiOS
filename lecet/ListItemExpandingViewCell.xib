@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="18.5" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unSelected_icon" translatesAutoresizingMaskIntoConstraints="NO" id="0G3-U8-cJM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_stateDeselected" translatesAutoresizingMaskIntoConstraints="NO" id="0G3-U8-cJM">
                                         <rect key="frame" x="18" y="0.0" width="25" height="44"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIT-ZT-mqf">
@@ -177,6 +177,7 @@
                 <outlet property="constraintButtonCheckWidth" destination="q8v-If-V6G" id="v5g-O1-fXx"/>
                 <outlet property="constraintButtonExpandWidth" destination="Q34-fi-bep" id="0r2-YM-Xii"/>
                 <outlet property="constraintItemContainerHeight" destination="ug8-Wh-54J" id="vJP-FK-2yg"/>
+                <outlet property="imageCheckView" destination="0G3-U8-cJM" id="q1X-nJ-33L"/>
                 <outlet property="labelTitle" destination="kwE-hf-oIW" id="ITQ-E4-EPN"/>
                 <outlet property="lineView" destination="9sU-4X-aIf" id="OjT-rT-67h"/>
                 <outlet property="listView" destination="rp9-Hy-Vig" id="M6Y-yL-rXp"/>
@@ -185,6 +186,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="unSelected_icon" width="32" height="32"/>
+        <image name="icon_stateDeselected" width="32" height="32"/>
     </resources>
 </document>

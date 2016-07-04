@@ -29,4 +29,5 @@
 - (void)reloadData;
 - (void)reloadIndexPaths:(NSArray*)indexPaths;
 - (NSArray*)visibleIndexPaths;
+- (void)setListViewScrollable:(BOOL)scrollable;
 @end
