@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectFilterCollapsibleView">
@@ -21,8 +22,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHs-8n-jMV">
-                    <rect key="frame" x="0.0" y="6" width="32" height="32"/>
+                    <rect key="frame" x="0.0" y="9" width="26" height="26"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="Ec0-An-oqM"/>
+                        <constraint firstAttribute="height" constant="26" id="tOR-79-S9p"/>
+                    </constraints>
                     <state key="normal" image="unSelected_icon"/>
                     <state key="selected" image="selected_icon"/>
                     <connections>
@@ -30,7 +35,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adx-BG-ap8">
-                    <rect key="frame" x="40" y="11" width="282" height="21"/>
+                    <rect key="frame" x="34" y="11" width="288" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -55,6 +60,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="tzy-LI-7Wa" secondAttribute="trailing" id="07r-rc-FK6"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="GSj-Oj-cHm"/>
+                <constraint firstItem="nHs-8n-jMV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="GUe-fh-nYc"/>
                 <constraint firstItem="Adx-BG-ap8" firstAttribute="leading" secondItem="nHs-8n-jMV" secondAttribute="trailing" constant="8" id="Lgq-wq-GcZ"/>
                 <constraint firstItem="tzy-LI-7Wa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S3o-uF-MgC"/>
                 <constraint firstAttribute="bottom" secondItem="tzy-LI-7Wa" secondAttribute="bottom" id="U4O-S8-ryM"/>
@@ -63,8 +69,17 @@
                 <constraint firstItem="Adx-BG-ap8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kuG-P0-pvt"/>
                 <constraint firstItem="mqh-jp-9WW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pTs-jo-Evu"/>
                 <constraint firstItem="mqh-jp-9WW" firstAttribute="leading" secondItem="Adx-BG-ap8" secondAttribute="trailing" constant="8" id="qbF-TT-8M1"/>
+                <constraint firstItem="nHs-8n-jMV" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="uZH-8n-oOG"/>
+                <constraint firstItem="nHs-8n-jMV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.07" id="zj6-6a-WOf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GUe-fh-nYc"/>
+                    <exclude reference="uZH-8n-oOG"/>
+                    <exclude reference="zj6-6a-WOf"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="171" y="357"/>
         </view>
     </objects>
