@@ -198,6 +198,7 @@
                 NSDictionary *dictArray5 = [@{LIST_VIEW_NAME:@"SUB05",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
                 NSDictionary *dictArray6 = [@{LIST_VIEW_NAME:@"SUB06",LIST_VIEW_SUBITEMS:@[dictArray5, dict2, dict3]}mutableCopy];
                 
+                controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
                 
                 /*
                  controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]},
