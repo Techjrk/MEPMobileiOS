@@ -23,18 +23,18 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BvV-iC-JHF" customClass="ProjectFilterSelectionViewList">
-                    <rect key="frame" x="15" y="70" width="570" height="530"/>
+                    <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ve5-IF-eIZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1E9-8r-Yj7"/>
-                <constraint firstItem="BvV-iC-JHF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="8dd-jl-Z03"/>
+                <constraint firstItem="BvV-iC-JHF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8dd-jl-Z03"/>
                 <constraint firstAttribute="bottom" secondItem="BvV-iC-JHF" secondAttribute="bottom" id="8e3-vo-jbj"/>
                 <constraint firstItem="BvV-iC-JHF" firstAttribute="top" secondItem="ve5-IF-eIZ" secondAttribute="bottom" id="HyJ-ua-D7f"/>
                 <constraint firstItem="ve5-IF-eIZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="as7-3x-DXG"/>
-                <constraint firstAttribute="trailing" secondItem="BvV-iC-JHF" secondAttribute="trailing" constant="15" id="c4u-nx-cRj"/>
+                <constraint firstAttribute="trailing" secondItem="BvV-iC-JHF" secondAttribute="trailing" id="c4u-nx-cRj"/>
                 <constraint firstAttribute="trailing" secondItem="ve5-IF-eIZ" secondAttribute="trailing" id="nvj-3K-Dfw"/>
                 <constraint firstItem="ve5-IF-eIZ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="sIN-Gn-L9X"/>
             </constraints>
