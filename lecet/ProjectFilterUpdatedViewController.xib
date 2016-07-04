@@ -23,7 +23,7 @@
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0G-s9-aqC" customClass="ProjectFilterSelectionViewList">
-                    <rect key="frame" x="15" y="70" width="570" height="530"/>
+                    <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -31,12 +31,12 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="A0G-s9-aqC" secondAttribute="bottom" id="Chv-ni-jAN"/>
                 <constraint firstItem="trP-wr-4RI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Dwn-9j-oEb"/>
-                <constraint firstItem="A0G-s9-aqC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Lwx-U3-mGS"/>
+                <constraint firstItem="A0G-s9-aqC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lwx-U3-mGS"/>
                 <constraint firstItem="trP-wr-4RI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aPo-sd-AoF"/>
                 <constraint firstItem="trP-wr-4RI" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="fVN-2o-le2"/>
                 <constraint firstAttribute="trailing" secondItem="trP-wr-4RI" secondAttribute="trailing" id="pTW-gy-4Kk"/>
                 <constraint firstItem="A0G-s9-aqC" firstAttribute="top" secondItem="trP-wr-4RI" secondAttribute="bottom" id="rR3-Py-MYe"/>
-                <constraint firstAttribute="trailing" secondItem="A0G-s9-aqC" secondAttribute="trailing" constant="15" id="uvb-lO-udp"/>
+                <constraint firstAttribute="trailing" secondItem="A0G-s9-aqC" secondAttribute="trailing" id="uvb-lO-udp"/>
             </constraints>
         </view>
     </objects>

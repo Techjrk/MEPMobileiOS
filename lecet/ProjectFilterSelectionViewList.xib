@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PRP-XR-0vK">
-                    <rect key="frame" x="0.0" y="0.0" width="542" height="337"/>
+                    <rect key="frame" x="15" y="0.0" width="512" height="337"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Vy-46-hNc">
                         <size key="itemSize" width="50" height="50"/>
@@ -31,8 +31,8 @@
             <constraints>
                 <constraint firstItem="PRP-XR-0vK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Q0-v7-luO"/>
                 <constraint firstAttribute="bottom" secondItem="PRP-XR-0vK" secondAttribute="bottom" id="kQe-4V-dOe"/>
-                <constraint firstAttribute="trailing" secondItem="PRP-XR-0vK" secondAttribute="trailing" id="lsW-g9-zMj"/>
-                <constraint firstItem="PRP-XR-0vK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oaa-bE-7IX"/>
+                <constraint firstAttribute="trailing" secondItem="PRP-XR-0vK" secondAttribute="trailing" constant="15" id="lsW-g9-zMj"/>
+                <constraint firstItem="PRP-XR-0vK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="oaa-bE-7IX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="525" y="274.5"/>
