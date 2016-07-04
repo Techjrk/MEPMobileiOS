@@ -14,6 +14,10 @@
 #import "FilterLabelView.h"
 #import "FilterViewController.h"
 #import "ListItemExpandingViewCell.h"
+#import "WorkOwnerTypesViewController.h"
+#import "ProjectFilterTypesViewController.h"
+#import "ProjectFilterLocationViewController.h"
+
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -26,6 +30,10 @@
 #define BUTTON_MARKER_COLOR                 RGB(248, 152, 28)
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
+
+#define UnSelectedFlag              @"0"
+#define SelectedFlag                @"1"
+#define SELECTIONFLAGNAME           @"selectionFlag"
 
 @interface SearchFilterViewController ()<ProjectFilterViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
@@ -125,9 +133,149 @@
 }
 
 #pragma mark - ProjectFilterViewDelegate
+#pragma mark - Owner Types
 
 - (void)tappedFilterItem:(id)object {
     
+    
+    FilterModel model = 0;
+    BOOL shouldProcess = NO;
+    
+    if ([object class] == [FilterLabelView class]) {
+        
+        model = [(FilterLabelView*)object filterModel];
+        shouldProcess = YES;
+        
+    } else if([object class] == [FilterEntryView class]) {
+        
+        model = [(FilterEntryView*)object filterModel];
+        shouldProcess = YES;
+    }
+    
+    if (shouldProcess) {
+        
+        switch (model) {
+            case FilterModelLocation: {
+                
+                break;
+            }
+                
+            case FilterModelType: {
+                [self pushProjectFilterTypes];
+                break;
+            }
+                
+            case FilterModelValue: {
+                break;
+            }
+                
+            case FilterModelUpdated: {
+                break;
+            }
+                
+            case FilterModelJurisdiction: {
+                
+                FilterViewController *controller = [FilterViewController new];
+                
+                NSMutableDictionary *dict1 = [@{LIST_VIEW_NAME:@"VALUE01"} mutableCopy];
+                NSMutableDictionary *dict2 = [@{LIST_VIEW_NAME:@"VALUE02"} mutableCopy];
+                NSMutableDictionary *dict3 = [@{LIST_VIEW_NAME:@"VALUE03"} mutableCopy];
+                
+                NSDictionary *dictArray1 = [@{LIST_VIEW_NAME:@"SUB01", LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray2 = [@{LIST_VIEW_NAME:@"SUB02",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray3 = [@{LIST_VIEW_NAME:@"SUB03",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray4 = [@{LIST_VIEW_NAME:@"SUB04",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray5 = [@{LIST_VIEW_NAME:@"SUB05",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
+                NSDictionary *dictArray6 = [@{LIST_VIEW_NAME:@"SUB06",LIST_VIEW_SUBITEMS:@[dictArray5, dict2, dict3]}mutableCopy];
+                
+                
+                /*
+                 controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]},
+                 @{LIST_VIEW_NAME:@"ITEM02",LIST_VIEW_SUBITEMS:@[dictArray2, dict2]},
+                 @{LIST_VIEW_NAME:@"ITEM03",LIST_VIEW_SUBITEMS:@[dictArray3, dictArray4]}] mutableCopy];
+                 */
+                
+                controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]}, @{LIST_VIEW_NAME:@"ITEM02",LIST_VIEW_SUBITEMS:@[dictArray2, dict2, dictArray6]}, @{LIST_VIEW_NAME:@"ITEM03",LIST_VIEW_SUBITEMS:@[dictArray3, dictArray4]}] mutableCopy];
+                
+                
+                [self.navigationController pushViewController:controller animated:YES];
+                
+                break;
+            }
+                
+            case FilterModelStage: {
+                break;
+            }
+                
+            case FilterModelBidding: {
+                break;
+            }
+                
+            case FilterModelBH: {
+                break;
+            }
+                
+            case FilterModelOwner: {
+                
+                NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
+                                         @{@"title":@"Local Government",@"id":@(2)},
+                                         @{@"title":@"Military",@"id":@(3)},
+                                         @{@"title":@"Private",@"id":@(4)},
+                                         @{@"title":@"State",@"id":@(5)}
+                                         ] mutableCopy];
+                
+                WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
+                [controller setInfo:obj];
+                [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
+                [self.navigationController pushViewController:controller animated:YES];
+
+                break;
+            }
+                
+            case FilterModelWork: {
+                [self pushWorkTypes];
+                break;
+            }
+        }
+        
+    }
+
+}
+
+#pragma mark - Work Types
+- (void)pushWorkTypes {
+    [[DataManager sharedManager] workTypes:^(id obj){
+        
+        WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
+        [controller setInfo:obj];
+        [controller setNavTitle:NSLocalizedLanguage(@"WORK_TYPES_TITLE")];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+        
+    }failure:^(id failObject){
+        
+    }];
+}
+
+#pragma mark - ProjectFilter Types
+
+- (void)pushProjectFilterTypes {
+    
+    [[DataManager sharedManager] projectGroupRequest:^(id obj){
+        
+        [[DataManager sharedManager] projectCategoryList:^(id catObj){
+            
+            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
+            [controller setInfoGroupList:obj categoryList:catObj];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        }failure:^(id catFailObj){
+            
+        }];
+    
+    }failure:^(id obj){
+        
+    }];
     
 }
 
