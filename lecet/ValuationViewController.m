@@ -70,6 +70,8 @@
     
     [self enableTapGesture:YES];
     
+    [_leftTextField becomeFirstResponder];
+    
 }
 
 
