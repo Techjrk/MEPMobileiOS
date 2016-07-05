@@ -84,8 +84,8 @@
     dataInfo = info;
 }
 
-
 #pragma mark Nav Delegate
+
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -136,8 +136,6 @@
 
 #pragma mark - Misc Method
 
-
-
 - (NSMutableArray *)changeDropDownSelectionValueOnceSearch:(NSArray *)array {
     NSMutableArray *resArray = [NSMutableArray new];
     
@@ -149,8 +147,6 @@
     }
     return resArray;
 }
-
-
 
 - (NSMutableArray *)configuredSearchResult:(NSMutableArray *)mutableArray {
     NSMutableArray *resArray = [NSMutableArray new];
@@ -169,7 +165,6 @@
     
     return resArray;
 }
-
 
 - (NSMutableArray *)configuredSearchResultWithAutoSelect:(NSMutableArray *)mutableArray {
     NSMutableArray *resArray = [NSMutableArray new];
@@ -201,7 +196,6 @@
     
     return resArray;
 }
-
 
 - (void)tappedSelectionButton:(id)items {
     NSMutableArray *resArray = [NSMutableArray new];

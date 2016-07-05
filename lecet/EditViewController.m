@@ -40,6 +40,7 @@ typedef enum  {
 @end
 
 @implementation EditViewController
+
 #define BOTTOMVIEW_BG_COLOR RGB(5, 35, 74)
 #define UnSelectedFlag              @"0"
 #define SelectedFlag                @"1"
@@ -80,6 +81,7 @@ typedef enum  {
 }
 
 #pragma mark - Nav Delegate
+
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     switch (projectNavItem) {
         case ProjectNavBackButton:{
@@ -104,6 +106,7 @@ typedef enum  {
 }
 
 #pragma mark - EdittabViewDelgate
+
 - (void)selectedEditTabButton:(EditTabItem)item {
 
     
@@ -158,8 +161,8 @@ typedef enum  {
     
 }
 
-
 #pragma mark - Misc Method
+
 - (void)chageEditMode:(BOOL)editMode count:(int)count{
     isInEditMode = editMode;
     
@@ -195,6 +198,7 @@ typedef enum  {
 }
 
 #pragma mark - CompanySortDelegate
+
 - (void)selectedSort:(CompanySortItem)item {
     switch (item) {
         case CompanySortItemLastUpdated: {
@@ -221,7 +225,6 @@ typedef enum  {
 - (void)setTrackingInfo:(id)item {
     trackingInfo = item;
 }
-
 
 #pragma mark - Custom Delegates
 
@@ -276,7 +279,6 @@ typedef enum  {
     }
 
 }
-
 
 - (void)removeItem {
     
@@ -495,7 +497,6 @@ typedef enum  {
     [[DataManager sharedManager] dismissPopup];
     [self presentViewController:alert animated:YES completion:nil];
 }
-
 
 - (void)moveTrackListIds:(NSIndexPath*)indexPath {
  
