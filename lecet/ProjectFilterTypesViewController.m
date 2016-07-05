@@ -22,8 +22,10 @@
 @end
 
 @implementation ProjectFilterTypesViewController
+
 #define UnSelectedFlag              @"0"
 #define SelectedFlag                @"1"
+
 #define SELECTIONFLAGNAME           @"selectionFlag"
 #define DROPDOWNFLAGNAME            @"dropDownFlagName"
 #define TITLENAME                   @"title"
@@ -33,6 +35,7 @@
 
 #define INDEXFORSEARCHRESULT        @"index"
 #define DATARESULTINSECONDLAYER     @"dataresultInSecondLayer"
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -216,7 +219,6 @@
 }
 
 #pragma mark - Data Manipulation
-
 
 - (NSMutableArray *)manipulatedDataInfoGroupListInfo:(id)obj categoryListInfo:(id)catObj {
     NSMutableArray *mutArray = [NSMutableArray new];

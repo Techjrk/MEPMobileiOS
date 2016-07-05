@@ -1,13 +1,12 @@
 //
-//  ProjectFilterSelectionViewController.h
+//  FilterSelectionViewController.h
 //  lecet
 //
-//  Created by Michael San Minay on 04/07/2016.
+//  Created by Michael San Minay on 05/07/2016.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-/*
 typedef enum  {
     ProjectFilterItemAny = 0,
     ProjectFilterItemHours = 1,
@@ -20,19 +19,16 @@ typedef enum  {
 #define PROJECT_SELECTION_TYPE  @"TYPE"
 
 
-@protocol ProjectFilterSelectionViewControllerDelegate <NSObject>
+@protocol FilterSelectionViewControllerDelegate <NSObject>
 - (void)tappedApplyButton:(id)items;
 
 @end
-*/
 
-@interface ProjectFilterSelectionViewController : UIViewController
-/*
-@property (nonatomic,assign) id <ProjectFilterSelectionViewControllerDelegate> projectFilterSelectionViewControllerDelegate;
-@property (nonatomic,weak) NSArray *dataInfo;
+@interface FilterSelectionViewController : UIViewController
+
+@property (nonatomic,assign) id <FilterSelectionViewControllerDelegate> filterSelectionViewControllerDelegate;
+
+@property (nonatomic,strong) NSArray *dataInfo;
 @property (nonatomic,weak) NSString *navTitle;
-@property (nonatomic,weak) NSString *navRightButtonTitle;
- */
- 
-@end
 
+@end

@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectFilterBHViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterSelectionViewController">
             <connections>
-                <outlet property="navView" destination="YOt-LN-Jbc" id="mvO-HO-8FN"/>
-                <outlet property="projectFilterSlectionViewList" destination="uiu-lo-Xfj" id="c59-AV-HoU"/>
+                <outlet property="navView" destination="Elg-Ti-Uyu" id="7AS-Jr-X0C"/>
+                <outlet property="projectFilterSlectionViewList" destination="m1f-Js-QMa" id="J34-7d-fTI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,25 +18,25 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-LN-Jbc" customClass="ProfileNavView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elg-Ti-Uyu" customClass="ProfileNavView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiu-lo-Xfj" customClass="ProjectFilterSelectionViewList">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1f-Js-QMa" customClass="ProjectFilterSelectionViewList">
                     <rect key="frame" x="0.0" y="71" width="600" height="529"/>
                     <color key="backgroundColor" red="0.96078431369999995" green="0.91263196420000003" blue="0.32155614570000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="uiu-lo-Xfj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2hf-HQ-rgl"/>
-                <constraint firstItem="YOt-LN-Jbc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KyY-rW-rve"/>
-                <constraint firstItem="YOt-LN-Jbc" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="LMy-Hg-Gfe"/>
-                <constraint firstAttribute="bottom" secondItem="uiu-lo-Xfj" secondAttribute="bottom" id="beR-52-E9W"/>
-                <constraint firstAttribute="trailing" secondItem="uiu-lo-Xfj" secondAttribute="trailing" id="cLx-3r-HgQ"/>
-                <constraint firstItem="uiu-lo-Xfj" firstAttribute="top" secondItem="YOt-LN-Jbc" secondAttribute="bottom" id="gPR-y5-lRB"/>
-                <constraint firstAttribute="trailing" secondItem="YOt-LN-Jbc" secondAttribute="trailing" id="ltu-3E-6hG"/>
-                <constraint firstItem="YOt-LN-Jbc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rzE-80-YCS"/>
+                <constraint firstAttribute="bottom" secondItem="m1f-Js-QMa" secondAttribute="bottom" id="06W-gb-grU"/>
+                <constraint firstItem="Elg-Ti-Uyu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1vE-vo-OdO"/>
+                <constraint firstItem="m1f-Js-QMa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7We-MZ-kLq"/>
+                <constraint firstItem="Elg-Ti-Uyu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9LK-Xl-Azv"/>
+                <constraint firstAttribute="trailing" secondItem="Elg-Ti-Uyu" secondAttribute="trailing" id="Kyp-41-anA"/>
+                <constraint firstItem="Elg-Ti-Uyu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="kMv-Wy-riz"/>
+                <constraint firstItem="m1f-Js-QMa" firstAttribute="top" secondItem="Elg-Ti-Uyu" secondAttribute="bottom" id="xNB-Ai-v4h"/>
+                <constraint firstAttribute="trailing" secondItem="m1f-Js-QMa" secondAttribute="trailing" id="xtN-15-tZr"/>
             </constraints>
         </view>
     </objects>

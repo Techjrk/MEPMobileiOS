@@ -39,10 +39,6 @@
 		B64474731D00449B0001B244 /* ProjectSortCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64474711D00449B0001B244 /* ProjectSortCVCell.xib */; };
 		B644747A1D0047F10001B244 /* ProjectSortView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64474781D0047F10001B244 /* ProjectSortView.m */; };
 		B644747B1D0047F10001B244 /* ProjectSortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64474791D0047F10001B244 /* ProjectSortView.xib */; };
-		B649A4D11D2AA00C0012D060 /* ProjectFilterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B649A4CF1D2AA00C0012D060 /* ProjectFilterSelectionViewController.m */; };
-		B649A4D21D2AA00C0012D060 /* ProjectFilterSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B649A4D01D2AA00C0012D060 /* ProjectFilterSelectionViewController.xib */; };
-		B649A4E11D2AC1350012D060 /* TesrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B649A4DF1D2AC1350012D060 /* TesrViewController.m */; };
-		B649A4E21D2AC1350012D060 /* TesrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B649A4E01D2AC1350012D060 /* TesrViewController.xib */; };
 		B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B65106481D12AD4000007759 /* ProjComTrackingTabView.m */; };
 		B651064B1D12AD4000007759 /* ProjComTrackingTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65106491D12AD4000007759 /* ProjComTrackingTabView.xib */; };
 		B65106511D12B80B00007759 /* CompanyTrackingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B651064F1D12B80B00007759 /* CompanyTrackingListView.m */; };
@@ -118,14 +114,14 @@
 		B6E032EE1CF2ED4200D3D02C /* DropDownMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E032EC1CF2ED4200D3D02C /* DropDownMenuView.xib */; };
 		B6EA88B41CF439F400BB3180 /* ProjectDetailStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EA88B21CF439F400BB3180 /* ProjectDetailStateView.m */; };
 		B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EA88B31CF439F400BB3180 /* ProjectDetailStateView.xib */; };
+		B6EC8B3F1D2BC3F600F4780A /* FilterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EC8B3D1D2BC3F600F4780A /* FilterSelectionViewController.m */; };
+		B6EC8B401D2BC3F600F4780A /* FilterSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EC8B3E1D2BC3F600F4780A /* FilterSelectionViewController.xib */; };
 		B6EFFE911D0455CF00727323 /* ContactAllListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EFFE8F1D0455CF00727323 /* ContactAllListView.m */; };
 		B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE901D0455CF00727323 /* ContactAllListView.xib */; };
 		B6EFFE971D04592A00727323 /* ContactAllListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EFFE951D04592A00727323 /* ContactAllListViewController.m */; };
 		B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE961D04592A00727323 /* ContactAllListViewController.xib */; };
 		B6EFFE9D1D0490A000727323 /* ContactDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EFFE9B1D0490A000727323 /* ContactDetailView.m */; };
 		B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EFFE9C1D0490A000727323 /* ContactDetailView.xib */; };
-		B6F0F17E1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F0F17C1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m */; };
-		B6F0F17F1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F0F17D1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib */; };
 		B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F56D821D018699009B81F5 /* ProjectNavigationBarView.m */; };
 		B6F56D851D018699009B81F5 /* ProjectNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F56D831D018699009B81F5 /* ProjectNavigationBarView.xib */; };
 		B6F56D8B1D01B752009B81F5 /* ProjectAllBidsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F56D891D01B752009B81F5 /* ProjectAllBidsView.m */; };
@@ -140,10 +136,6 @@
 		B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD043C1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib */; };
 		B6FD04431D1D325800E12123 /* ProjectFilterSelectionViewList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */; };
 		B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */; };
-		B6FD044B1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */; };
-		B6FD044C1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */; };
-		B6FD04521D1D8FD500E12123 /* ProjectFilterBHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */; };
-		B6FD04531D1D8FD500E12123 /* ProjectFilterBHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */; };
 		B701551D1CD0C56A0050CF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551C1CD0C56A0050CF8A /* main.m */; };
 		B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551F1CD0C56A0050CF8A /* AppDelegate.m */; };
 		B70155231CD0C56A0050CF8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155221CD0C56A0050CF8A /* ViewController.m */; };
@@ -442,12 +434,6 @@
 		B64474771D0047F10001B244 /* ProjectSortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSortView.h; sourceTree = "<group>"; };
 		B64474781D0047F10001B244 /* ProjectSortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSortView.m; sourceTree = "<group>"; };
 		B64474791D0047F10001B244 /* ProjectSortView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectSortView.xib; sourceTree = "<group>"; };
-		B649A4CE1D2AA00C0012D060 /* ProjectFilterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewController.h; sourceTree = "<group>"; };
-		B649A4CF1D2AA00C0012D060 /* ProjectFilterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewController.m; sourceTree = "<group>"; };
-		B649A4D01D2AA00C0012D060 /* ProjectFilterSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewController.xib; sourceTree = "<group>"; };
-		B649A4DE1D2AC1350012D060 /* TesrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TesrViewController.h; sourceTree = "<group>"; };
-		B649A4DF1D2AC1350012D060 /* TesrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TesrViewController.m; sourceTree = "<group>"; };
-		B649A4E01D2AC1350012D060 /* TesrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TesrViewController.xib; sourceTree = "<group>"; };
 		B65106471D12AD4000007759 /* ProjComTrackingTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjComTrackingTabView.h; sourceTree = "<group>"; };
 		B65106481D12AD4000007759 /* ProjComTrackingTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjComTrackingTabView.m; sourceTree = "<group>"; };
 		B65106491D12AD4000007759 /* ProjComTrackingTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjComTrackingTabView.xib; sourceTree = "<group>"; };
@@ -562,6 +548,9 @@
 		B6EA88B11CF439F400BB3180 /* ProjectDetailStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateView.h; sourceTree = "<group>"; };
 		B6EA88B21CF439F400BB3180 /* ProjectDetailStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateView.m; sourceTree = "<group>"; };
 		B6EA88B31CF439F400BB3180 /* ProjectDetailStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDetailStateView.xib; sourceTree = "<group>"; };
+		B6EC8B3C1D2BC3F600F4780A /* FilterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSelectionViewController.h; sourceTree = "<group>"; };
+		B6EC8B3D1D2BC3F600F4780A /* FilterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSelectionViewController.m; sourceTree = "<group>"; };
+		B6EC8B3E1D2BC3F600F4780A /* FilterSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterSelectionViewController.xib; sourceTree = "<group>"; };
 		B6EFFE8E1D0455CF00727323 /* ContactAllListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactAllListView.h; sourceTree = "<group>"; };
 		B6EFFE8F1D0455CF00727323 /* ContactAllListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactAllListView.m; sourceTree = "<group>"; };
 		B6EFFE901D0455CF00727323 /* ContactAllListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactAllListView.xib; sourceTree = "<group>"; };
@@ -571,9 +560,6 @@
 		B6EFFE9A1D0490A000727323 /* ContactDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailView.h; sourceTree = "<group>"; };
 		B6EFFE9B1D0490A000727323 /* ContactDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailView.m; sourceTree = "<group>"; };
 		B6EFFE9C1D0490A000727323 /* ContactDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactDetailView.xib; sourceTree = "<group>"; };
-		B6F0F17B1D1C1E18004D6654 /* ProjectFilterBiddingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBiddingViewController.h; sourceTree = "<group>"; };
-		B6F0F17C1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBiddingViewController.m; sourceTree = "<group>"; };
-		B6F0F17D1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBiddingViewController.xib; sourceTree = "<group>"; };
 		B6F56D811D018699009B81F5 /* ProjectNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNavigationBarView.h; sourceTree = "<group>"; };
 		B6F56D821D018699009B81F5 /* ProjectNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNavigationBarView.m; sourceTree = "<group>"; };
 		B6F56D831D018699009B81F5 /* ProjectNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNavigationBarView.xib; sourceTree = "<group>"; };
@@ -595,12 +581,6 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
-		B6FD04481D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterUpdatedViewController.h; sourceTree = "<group>"; };
-		B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterUpdatedViewController.m; sourceTree = "<group>"; };
-		B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterUpdatedViewController.xib; sourceTree = "<group>"; };
-		B6FD044F1D1D8FD500E12123 /* ProjectFilterBHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterBHViewController.h; sourceTree = "<group>"; };
-		B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterBHViewController.m; sourceTree = "<group>"; };
-		B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterBHViewController.xib; sourceTree = "<group>"; };
 		B70155181CD0C56A0050CF8A /* Lecet MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecet MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1137,24 +1117,14 @@
 			name = ProjectSortView;
 			sourceTree = "<group>";
 		};
-		B649A4CD1D2A9F010012D060 /* ProjectFilterSelecttionViewController */ = {
+		B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B649A4CE1D2AA00C0012D060 /* ProjectFilterSelectionViewController.h */,
-				B649A4CF1D2AA00C0012D060 /* ProjectFilterSelectionViewController.m */,
-				B649A4D01D2AA00C0012D060 /* ProjectFilterSelectionViewController.xib */,
+				B6EC8B3C1D2BC3F600F4780A /* FilterSelectionViewController.h */,
+				B6EC8B3D1D2BC3F600F4780A /* FilterSelectionViewController.m */,
+				B6EC8B3E1D2BC3F600F4780A /* FilterSelectionViewController.xib */,
 			);
-			name = ProjectFilterSelecttionViewController;
-			sourceTree = "<group>";
-		};
-		B649A4D81D2ABB4E0012D060 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				B649A4DE1D2AC1350012D060 /* TesrViewController.h */,
-				B649A4DF1D2AC1350012D060 /* TesrViewController.m */,
-				B649A4E01D2AC1350012D060 /* TesrViewController.xib */,
-			);
-			name = "New Group";
+			name = FilterSelectionViewController;
 			sourceTree = "<group>";
 		};
 		B65106401D12A9BD00007759 /* CompanyTrackingListView */ = {
@@ -1618,16 +1588,6 @@
 			name = ContactDetailView;
 			sourceTree = "<group>";
 		};
-		B6F0F17A1D1C1D79004D6654 /* ProjectFilterBidding */ = {
-			isa = PBXGroup;
-			children = (
-				B6F0F17B1D1C1E18004D6654 /* ProjectFilterBiddingViewController.h */,
-				B6F0F17C1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m */,
-				B6F0F17D1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib */,
-			);
-			name = ProjectFilterBidding;
-			sourceTree = "<group>";
-		};
 		B6F0F1801D1C2018004D6654 /* ProjectFilterCheckList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1699,26 +1659,6 @@
 			name = ProjectFilterSelectionViewList;
 			sourceTree = "<group>";
 		};
-		B6FD044D1D1D8C3E00E12123 /* ProjectFilterUpdated */ = {
-			isa = PBXGroup;
-			children = (
-				B6FD04481D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.h */,
-				B6FD04491D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m */,
-				B6FD044A1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib */,
-			);
-			name = ProjectFilterUpdated;
-			sourceTree = "<group>";
-		};
-		B6FD044E1D1D8F5700E12123 /* ProjectFilterBH */ = {
-			isa = PBXGroup;
-			children = (
-				B6FD044F1D1D8FD500E12123 /* ProjectFilterBHViewController.h */,
-				B6FD04501D1D8FD500E12123 /* ProjectFilterBHViewController.m */,
-				B6FD04511D1D8FD500E12123 /* ProjectFilterBHViewController.xib */,
-			);
-			name = ProjectFilterBH;
-			sourceTree = "<group>";
-		};
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
@@ -1779,15 +1719,11 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B649A4D81D2ABB4E0012D060 /* New Group */,
-				B649A4CD1D2A9F010012D060 /* ProjectFilterSelecttionViewController */,
+				B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */,
 				B6855EA51D26604500553F0F /* Valuation */,
 				B65BCDBC1D25295400FE9781 /* WorkOwnerTypes */,
 				B6AA23721D22B043008B30E0 /* ProjectFilterTypes */,
 				B6AF1CF01D21307300C95A8F /* ProjectFilterLocation */,
-				B6FD044E1D1D8F5700E12123 /* ProjectFilterBH */,
-				B6FD044D1D1D8C3E00E12123 /* ProjectFilterUpdated */,
-				B6F0F17A1D1C1D79004D6654 /* ProjectFilterBidding */,
 				B6BDBAC41D1821A3001FB41C /* EditViewController */,
 				B6A74EF61D15DBBA007CDFF3 /* CompanySort */,
 				B65106611D12DC6100007759 /* CompanyTracking */,
@@ -2394,6 +2330,7 @@
 				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
 				B6411BEC1D09CEC8002B6E88 /* BidderListViewController.xib in Resources */,
 				B683372B1D082154004226D3 /* CPCustomTextFieldView.xib in Resources */,
+				B6EC8B401D2BC3F600F4780A /* FilterSelectionViewController.xib in Resources */,
 				B644747B1D0047F10001B244 /* ProjectSortView.xib in Resources */,
 				B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */,
 				B7BF60DA1D212E8300B3BDD7 /* FilterLabelView.xib in Resources */,
@@ -2412,7 +2349,6 @@
 				B65106601D12D7AD00007759 /* CompanyTrackingCollectionViewCell.xib in Resources */,
 				B7BF609B1D1C234B00B3BDD7 /* SearchSectionCollectionViewCell.xib in Resources */,
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
-				B6FD04531D1D8FD500E12123 /* ProjectFilterBHViewController.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B7BF60901D1BE28100B3BDD7 /* SearchViewController.xib in Resources */,
 				B6FD04371D1D26D000E12123 /* ProjectFilterSelectionView.xib in Resources */,
@@ -2499,14 +2435,12 @@
 				B7BF60C81D1EED6B00B3BDD7 /* SearchFilterViewController.xib in Resources */,
 				B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */,
 				B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */,
-				B6FD044C1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.xib in Resources */,
 				B7BF60B41D1E36F000B3BDD7 /* SearchSavedCollectionViewCell.xib in Resources */,
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
 				B73EFADC1D11946D00C6B3B2 /* TrackingListView.xib in Resources */,
 				B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */,
 				B7BF60F81D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.xib in Resources */,
 				B71B6BFB1D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib in Resources */,
-				B649A4D21D2AA00C0012D060 /* ProjectFilterSelectionViewController.xib in Resources */,
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B6BDBAB61D180452001FB41C /* EditView.xib in Resources */,
 				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
@@ -2536,7 +2470,6 @@
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
 				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
 				B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */,
-				B649A4E21D2AC1350012D060 /* TesrViewController.xib in Resources */,
 				B7BF60BE1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.xib in Resources */,
 				B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */,
 				B70155441CD0C7A20050CF8A /* DashboardViewController.xib in Resources */,
@@ -2544,7 +2477,6 @@
 				B6411BB81D097426002B6E88 /* SettingsCPView.xib in Resources */,
 				B6A74EF51D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib in Resources */,
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
-				B6F0F17F1D1C1E18004D6654 /* ProjectFilterBiddingViewController.xib in Resources */,
 				B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
@@ -2634,7 +2566,6 @@
 				B6AF1CF41D2130CA00C95A8F /* ProjectFilterLocationViewController.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
-				B649A4E11D2AC1350012D060 /* TesrViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */,
 				B7BF60F11D22B48400B3BDD7 /* RecentSearchView.m in Sources */,
@@ -2647,7 +2578,6 @@
 				B7BF61171D240DD100B3BDD7 /* ListItemCollectionViewCell.m in Sources */,
 				B70FDF731CE9FECB0035A6D9 /* SeeAllView.m in Sources */,
 				B73EFAD51D117B4D00C6B3B2 /* CustomCollectionView.m in Sources */,
-				B6FD044B1D1D8C2D00E12123 /* ProjectFilterUpdatedViewController.m in Sources */,
 				B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */,
 				B7BF60B31D1E36F000B3BDD7 /* SearchSavedCollectionViewCell.m in Sources */,
 				B6FD04361D1D26D000E12123 /* ProjectFilterSelectionView.m in Sources */,
@@ -2669,7 +2599,6 @@
 				B68337101D080CFA004226D3 /* ProfileNavView.m in Sources */,
 				B7F10A1E1CDB3E3300847FA3 /* UIProgressView+AFNetworking.m in Sources */,
 				B6EFFE911D0455CF00727323 /* ContactAllListView.m in Sources */,
-				B649A4D11D2AA00C0012D060 /* ProjectFilterSelectionViewController.m in Sources */,
 				B6411BD01D09B2D8002B6E88 /* MyProfileHeaderView.m in Sources */,
 				B6FD04431D1D325800E12123 /* ProjectFilterSelectionViewList.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
@@ -2700,7 +2629,6 @@
 				B7BF60AE1D1D85AA00B3BDD7 /* SearchContactCollectionViewCell.m in Sources */,
 				B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */,
 				B683372A1D082154004226D3 /* CPCustomTextFieldView.m in Sources */,
-				B6FD04521D1D8FD500E12123 /* ProjectFilterBHViewController.m in Sources */,
 				B7BF60BD1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.m in Sources */,
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
 				B6411BF01D09CED8002B6E88 /* CDProjectBidsViewController.m in Sources */,
@@ -2762,7 +2690,6 @@
 				B7BF608F1D1BE28100B3BDD7 /* SearchViewController.m in Sources */,
 				B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */,
 				B73EFAB61D09985A00C6B3B2 /* (null) in Sources */,
-				B6F0F17E1D1C1E18004D6654 /* ProjectFilterBiddingViewController.m in Sources */,
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B6EA88B41CF439F400BB3180 /* ProjectDetailStateView.m in Sources */,
 				B771C6051CEB6C50004A628A /* AssociatedBidView.m in Sources */,
@@ -2770,6 +2697,7 @@
 				B7BF60A41D1D6FB900B3BDD7 /* SearchProjectCollectionViewCell.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
+				B6EC8B3F1D2BC3F600F4780A /* FilterSelectionViewController.m in Sources */,
 				B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */,
 				B707BC401CEF0B960003C836 /* LandingViewController.m in Sources */,
 				B7F10A161CDB3E3300847FA3 /* AFURLResponseSerialization.m in Sources */,

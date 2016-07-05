@@ -269,9 +269,14 @@
 "COMPANY_TRACK_SELECTION_REMOVE"            =               "Remove selected companies from %@";
 "COMPANIES_COUNT_TITLE"                     =               "Companies";
 
-//ProjectFilterBiddingViewController.xib
+//FilterSelectionViewController.xib
 "PROJECT_FILTER_BIDDING_TITLE"              =               "Bidding Within";
 "PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE"  =               "APPLY";
+"PROJECT_FILTER_BH_TITLE"                   =               "B/H";
+"BH_TITLE_BOTH"                             =               "Both";
+"BH_TITLE_BLDG"                             =               "Building";
+"BH_TITLE_HIGHWAY"                          =               "Heavy-Highway";
+"PROJECT_FILTER_UPDATED_TITLE"              =               "UPDATED WITHIN";
 
 //SearchResultView.xib
 "SEARCH_RESULT_COUNT_PROJECT"               =               "%li Projects";
@@ -281,21 +286,12 @@
 "SEARCH_RESULT_SEE_COMPANY"                 =               "See all %li Companies";
 "SEARCH_RESULT_SEE_CONTACT"                 =               "See all %li Contacts";
 
-//ProjectFilterBHViewController.xib
-"PROJECT_FILTER_BH_TITLE"                   =               "B/H";
-"BH_TITLE_BOTH"                             =               "Both";
-"BH_TITLE_BLDG"                             =               "Building";
-"BH_TITLE_HIGHWAY"                          =               "Heavy-Highway";
-
 //SearchFilterViewController.xib
 "SEARCH_FILTER_TITLE"                       =               "Filters";
 "SEARCH_FILTER_APPLY"                       =               "APPLY";
 "SEARCH_FILTER_CANCEL"                      =               "CANCEL";
 "SEARCH_FILTER_PROJECT"                     =               "Projects";
 "SEARCH_FILTER_COMPANY"                     =               "Companies";
-
-//ProjectFilterUpdatedViewController.xib
-"PROJECT_FILTER_UPDATED_TITLE"              =               "UPDATED WITHIN";
 
 //SearchSuggestedCollectionViewCell.xib
 "SEARCH_SUGGEST_HEADER_PROJECT"             =               "in Projects";

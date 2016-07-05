@@ -17,12 +17,8 @@
 #import "WorkOwnerTypesViewController.h"
 #import "ProjectFilterTypesViewController.h"
 #import "ProjectFilterLocationViewController.h"
-#import "ProjectFilterBiddingViewController.h"
-#import "ProjectFilterUpdatedViewController.h"
-#import "ProjectFilterBHViewController.h"
 #import "ValuationViewController.h"
-#import "ProjectFilterSelectionViewController.h"
-#import "TesrViewController.h"
+#import "FilterSelectionViewController.h"
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -40,7 +36,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate,WorkOwnerTypesViewControllerDelegate>
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonProject;
@@ -178,7 +174,21 @@
             }
                 
             case FilterModelUpdated: {
-                ProjectFilterUpdatedViewController *controller = [ProjectFilterUpdatedViewController new];
+                
+                NSArray *array = @[
+                                   @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                                   ];
+                
+                FilterSelectionViewController *controller = [FilterSelectionViewController new];
+                controller.filterSelectionViewControllerDelegate = self;
+                [controller setDataInfo:array];
+                controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE");
                 [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
@@ -220,32 +230,37 @@
                 
             case FilterModelBidding: {
                 
-                ProjectFilterBiddingViewController *controller = [ProjectFilterBiddingViewController new];
+                NSArray *array = @[
+                                   @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                                   @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                                   ];
+                
+                FilterSelectionViewController *controller = [FilterSelectionViewController new];
+                controller.filterSelectionViewControllerDelegate = self;
+                [controller setDataInfo:array];
+                controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE");
                 [self.navigationController pushViewController:controller animated:YES];
                 
                 break;
             }
                 
             case FilterModelBH: {
-                //ProjectFilterBHViewController *controller = [ProjectFilterBHViewController new];
-                //[self.navigationController pushViewController:controller animated:YES];
-                /*
+
                 NSArray *array = @[
                                    @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                                    @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@(102),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                                    @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@(101),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                                    ];
-                */
                 
-                
-                ProjectFilterSelectionViewController *controller = [ProjectFilterSelectionViewController new];
-                /*
-                controller.projectFilterSelectionViewControllerDelegate = self;
-                controller.dataInfo  = array;
+                FilterSelectionViewController *controller = [FilterSelectionViewController new];
+                controller.filterSelectionViewControllerDelegate = self;
+                [controller setDataInfo:array];
                 controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BH_TITLE");
-                controller.navRightButtonTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE");
-                */
-                
                 [self.navigationController pushViewController:controller animated:YES];
                 
                 break;
@@ -323,10 +338,12 @@
     
 }
 
-#pragma mark - projectFilterSelectionViewControllerDelegate 
+#pragma mark - FilterSelectionViewControllerDelegate
 
 - (void)tappedApplyButton:(id)items {
+  
     
+    NSLog(@"Items selected = %@",items);
 }
 
 @end
