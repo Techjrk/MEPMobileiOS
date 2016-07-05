@@ -24,10 +24,11 @@
                     <rect key="frame" x="17" y="14" width="341" height="47"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUZ-bo-j31">
-                            <rect key="frame" x="35" y="6" width="236" height="34"/>
+                            <rect key="frame" x="35" y="8" width="236" height="31"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6X3-gJ-eTr">
-                                    <rect key="frame" x="11" y="9" width="214" height="17"/>
+                                    <rect key="frame" x="11" y="7" width="214" height="17"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -69,7 +70,7 @@
                         <constraint firstItem="eBk-in-Ow0" firstAttribute="centerY" secondItem="Ij4-zp-4Dk" secondAttribute="centerY" id="ntp-xu-VZH"/>
                         <constraint firstItem="zUZ-bo-j31" firstAttribute="centerY" secondItem="Ij4-zp-4Dk" secondAttribute="centerY" id="x0x-2c-Dx5"/>
                         <constraint firstAttribute="trailing" secondItem="eBk-in-Ow0" secondAttribute="trailing" id="xc9-tI-6B1"/>
-                        <constraint firstItem="zUZ-bo-j31" firstAttribute="height" secondItem="Ij4-zp-4Dk" secondAttribute="height" multiplier="0.74" id="zbC-UJ-mdJ"/>
+                        <constraint firstItem="zUZ-bo-j31" firstAttribute="height" secondItem="Ij4-zp-4Dk" secondAttribute="height" multiplier="0.67" id="zbC-UJ-mdJ"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-8o-gQY">

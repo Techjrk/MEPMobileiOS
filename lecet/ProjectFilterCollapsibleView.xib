@@ -35,7 +35,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adx-BG-ap8">
-                    <rect key="frame" x="34" y="11" width="288" height="21"/>
+                    <rect key="frame" x="41" y="11" width="281" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                 <constraint firstAttribute="trailing" secondItem="tzy-LI-7Wa" secondAttribute="trailing" id="07r-rc-FK6"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="GSj-Oj-cHm"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="GUe-fh-nYc"/>
-                <constraint firstItem="Adx-BG-ap8" firstAttribute="leading" secondItem="nHs-8n-jMV" secondAttribute="trailing" constant="8" id="Lgq-wq-GcZ"/>
+                <constraint firstItem="Adx-BG-ap8" firstAttribute="leading" secondItem="nHs-8n-jMV" secondAttribute="trailing" constant="15" id="Lgq-wq-GcZ"/>
                 <constraint firstItem="tzy-LI-7Wa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S3o-uF-MgC"/>
                 <constraint firstAttribute="bottom" secondItem="tzy-LI-7Wa" secondAttribute="bottom" id="U4O-S8-ryM"/>
                 <constraint firstAttribute="trailing" secondItem="mqh-jp-9WW" secondAttribute="trailing" id="aNS-zB-wjD"/>

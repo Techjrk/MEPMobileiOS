@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-af-uVD">
-                    <rect key="frame" x="0.0" y="0.0" width="26" height="44"/>
+                    <rect key="frame" x="5" y="0.0" width="26" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" image="roundUnselect_icon"/>
                     <state key="selected" image="roundSelect_icon"/>
@@ -28,7 +28,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-fa-DW7">
-                    <rect key="frame" x="36" y="0.0" width="310" height="44"/>
+                    <rect key="frame" x="46" y="0.0" width="300" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,8 +43,8 @@
                 <constraint firstAttribute="bottom" secondItem="2Ff-af-uVD" secondAttribute="bottom" id="Y6q-Tv-2h0"/>
                 <constraint firstAttribute="trailing" secondItem="KLI-fa-DW7" secondAttribute="trailing" id="Zke-2o-qHH"/>
                 <constraint firstItem="KLI-fa-DW7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hR9-AS-gL7"/>
-                <constraint firstItem="KLI-fa-DW7" firstAttribute="leading" secondItem="2Ff-af-uVD" secondAttribute="trailing" constant="10" id="u0j-6P-hOU"/>
-                <constraint firstItem="2Ff-af-uVD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yNO-Gi-G4B"/>
+                <constraint firstItem="KLI-fa-DW7" firstAttribute="leading" secondItem="2Ff-af-uVD" secondAttribute="trailing" constant="15" id="u0j-6P-hOU"/>
+                <constraint firstItem="2Ff-af-uVD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="yNO-Gi-G4B"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="518" y="169"/>
