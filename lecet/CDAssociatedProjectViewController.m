@@ -26,6 +26,12 @@
 
 @implementation CDAssociatedProjectViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _projectNavBarView.projectNavViewDelegate = self;
@@ -66,7 +72,7 @@
 }
 
 - (void)tappedReOrderButton {
-    ProjectSortViewController *controller = [[ProjectSortViewController alloc] initWithNibName:@"ProjectSortViewController" bundle:nil];;
+    ProjectSortViewController *controller = [ProjectSortViewController new];
     controller.projectSortViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

@@ -491,7 +491,7 @@ typedef enum : NSUInteger {
         NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
         NSDictionary *item = items[indexPath.row];
         
-        ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
+        ContactDetailViewController *controller = [ContactDetailViewController new];
         [controller setCompanyContactDetailsFromDictionary:item];
         [self.navigationController pushViewController:controller animated:YES];
 

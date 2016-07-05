@@ -373,7 +373,7 @@ typedef enum {
 
 - (void)tappedProjectDetailStateHideButton{
     
-    ProjectDetailStateViewController *controller = [[ProjectDetailStateViewController alloc] initWithNibName:@"ProjectDetailStateViewController" bundle:nil];
+    ProjectDetailStateViewController *controller = [ProjectDetailStateViewController new];
     
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

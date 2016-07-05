@@ -301,7 +301,7 @@
         NSArray *itemList = collectionItems[@"results"];
         NSDictionary *item = itemList[indexPath.row];
         
-        ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
+        ContactDetailViewController *controller = [ContactDetailViewController new];
         [controller setCompanyContactDetailsFromDictionary:item];
         [self.navigationController pushViewController:controller animated:YES];
 

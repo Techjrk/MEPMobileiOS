@@ -28,6 +28,12 @@
 
 @implementation CompanyTrackingListViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -79,7 +85,7 @@
             break;
         }
         case ProjectNavReOrder:{
-            CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
+            CompanySortViewController *controller = [CompanySortViewController new];
             controller.modalPresentationStyle = UIModalPresentationCustom;
             controller.companySortDelegate = self;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -102,7 +108,7 @@
 }
 
 - (void)editTabButtonTapped {
-    EditViewController *controller = [[EditViewController alloc] initWithNibName:@"EditViewController" bundle:nil];
+    EditViewController *controller = [EditViewController new];
     controller.editViewControllerDelegate = self;
     [controller setInfo:[_companyTrackingListView getdata]];
     [controller setTrackingInfo:trackingInfo];

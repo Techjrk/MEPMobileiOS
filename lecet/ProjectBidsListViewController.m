@@ -25,6 +25,12 @@
 
 @implementation ProjectBidsListViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _projectNavigationView.projectNavViewDelegate = self;
@@ -58,7 +64,7 @@
 }
 
 - (void)tappedReOrderButton {
-    ProjectSortViewController *controller = [[ProjectSortViewController alloc] initWithNibName:@"ProjectSortViewController" bundle:nil];
+    ProjectSortViewController *controller = [ProjectSortViewController new];
     controller.projectSortViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -94,7 +100,7 @@
 
 - (void)selectedProjectAllBidItem:(id)object {
 
-    ProjectDetailViewController *detail = [[ProjectDetailViewController alloc] initWithNibName:@"ProjectDetailViewController" bundle:nil];
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
     detail.view.hidden = NO;
     DB_Bid *bid = object;
     [detail detailsFromProject:bid.relationshipProject];

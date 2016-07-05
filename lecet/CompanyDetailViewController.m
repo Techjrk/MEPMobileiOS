@@ -324,7 +324,7 @@ typedef enum {
 
 - (void)tappededSeeAllAssociateProject {
     usePushZoom = NO;
-    CDAssociatedProjectViewController *controller = [[CDAssociatedProjectViewController alloc] initWithNibName:@"CDAssociatedProjectViewController" bundle:nil];
+    CDAssociatedProjectViewController *controller = [CDAssociatedProjectViewController new];
     [controller setContractorName:companyName];
     [controller setInfoForAssociatedProjects:associatedProjects];
     [self.navigationController pushViewController:controller animated:YES];
@@ -344,7 +344,7 @@ typedef enum {
 - (void)selectedContact:(id)item {
     usePushZoom = NO;
     //ContactDetailViewController *controller = [ContactDetailViewController new];
-    ContactDetailViewController *controller = [[ContactDetailViewController alloc] initWithNibName:@"ContactDetailViewController" bundle:nil];
+    ContactDetailViewController *controller = [ContactDetailViewController new];
     [controller setCompanyContactDetails:item];
     [self.navigationController pushViewController:controller animated:YES];
 
@@ -359,7 +359,7 @@ typedef enum {
 
 - (IBAction)tappedToSeeAllContact:(id)sender {
     usePushZoom = NO;
-    ContactAllListViewController *controller = [[ContactAllListViewController alloc] initWithNibName:@"ContactAllListViewController" bundle:nil];
+    ContactAllListViewController *controller = [ContactAllListViewController new];
     [controller setInfoForContactList:contactAllList];
     [self.navigationController pushViewController:controller animated:YES];
 }

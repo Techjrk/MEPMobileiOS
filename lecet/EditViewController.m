@@ -44,6 +44,12 @@ typedef enum  {
 #define UnSelectedFlag              @"0"
 #define SelectedFlag                @"1"
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -86,7 +92,7 @@ typedef enum  {
             break;
         }
         case ProjectNavReOrder:{
-            CompanySortViewController *controller = [[CompanySortViewController alloc] initWithNibName:@"CompanySortViewController" bundle:nil];
+            CompanySortViewController *controller = [CompanySortViewController new];
             controller.companySortDelegate = self;
             controller.modalPresentationStyle = UIModalPresentationCustom;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

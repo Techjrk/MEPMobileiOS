@@ -661,7 +661,7 @@
             
         case DropDownMenuMyProfile:{
             
-            MyProfileViewController *controller = [[MyProfileViewController alloc] initWithNibName:@"MyProfileViewController" bundle:nil];
+            MyProfileViewController *controller = [MyProfileViewController new];
             [controller setInfo:profileInfo];
             [self.navigationController pushViewController:controller animated:YES];
             break;
@@ -678,7 +678,7 @@
         }
             
         case DropDownMenuSettings:{
-            SettingsViewController *controller = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+            SettingsViewController *controller = [SettingsViewController new];
             controller.settingsViewControllerDelegate = self;
             [self.navigationController pushViewController:controller animated:YES];
             break;
@@ -879,7 +879,7 @@
         
         [[DataManager sharedManager] companyTrackingList:trackItemInfo[@"id"] success:^(id object) {
             
-            CompanyTrackingListViewController *controller = [[CompanyTrackingListViewController alloc] initWithNibName:@"CompanyTrackingListViewController" bundle:nil];
+            CompanyTrackingListViewController *controller = [CompanyTrackingListViewController new];
             [controller setTrackingInfo:trackItemInfo];
             [controller setInfo:object];
             [self.navigationController pushViewController:controller animated:YES];
