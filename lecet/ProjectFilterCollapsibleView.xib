@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHs-8n-jMV">
-                    <rect key="frame" x="0.0" y="9" width="26" height="26"/>
+                    <rect key="frame" x="5" y="9" width="26" height="26"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="Ec0-An-oqM"/>
@@ -35,13 +35,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adx-BG-ap8">
-                    <rect key="frame" x="34" y="11" width="288" height="21"/>
+                    <rect key="frame" x="46" y="11" width="271" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-jp-9WW">
-                    <rect key="frame" x="330" y="11" width="16" height="22"/>
+                    <rect key="frame" x="325" y="11" width="16" height="22"/>
                     <state key="normal" image="icon_arrowDown"/>
                     <state key="selected" image="icon_arrowUp"/>
                     <connections>
@@ -61,11 +61,11 @@
                 <constraint firstAttribute="trailing" secondItem="tzy-LI-7Wa" secondAttribute="trailing" id="07r-rc-FK6"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="GSj-Oj-cHm"/>
                 <constraint firstItem="nHs-8n-jMV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="GUe-fh-nYc"/>
-                <constraint firstItem="Adx-BG-ap8" firstAttribute="leading" secondItem="nHs-8n-jMV" secondAttribute="trailing" constant="8" id="Lgq-wq-GcZ"/>
+                <constraint firstItem="Adx-BG-ap8" firstAttribute="leading" secondItem="nHs-8n-jMV" secondAttribute="trailing" constant="15" id="Lgq-wq-GcZ"/>
                 <constraint firstItem="tzy-LI-7Wa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S3o-uF-MgC"/>
                 <constraint firstAttribute="bottom" secondItem="tzy-LI-7Wa" secondAttribute="bottom" id="U4O-S8-ryM"/>
-                <constraint firstAttribute="trailing" secondItem="mqh-jp-9WW" secondAttribute="trailing" id="aNS-zB-wjD"/>
-                <constraint firstItem="nHs-8n-jMV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hHb-xA-Dcq"/>
+                <constraint firstAttribute="trailing" secondItem="mqh-jp-9WW" secondAttribute="trailing" constant="5" id="aNS-zB-wjD"/>
+                <constraint firstItem="nHs-8n-jMV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="hHb-xA-Dcq"/>
                 <constraint firstItem="Adx-BG-ap8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kuG-P0-pvt"/>
                 <constraint firstItem="mqh-jp-9WW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pTs-jo-Evu"/>
                 <constraint firstItem="mqh-jp-9WW" firstAttribute="leading" secondItem="Adx-BG-ap8" secondAttribute="trailing" constant="8" id="qbF-TT-8M1"/>
