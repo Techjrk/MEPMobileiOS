@@ -26,6 +26,7 @@
 @property (weak, nonatomic) NSNumber *level;
 @property (weak, nonatomic) NSIndexPath *index;
 + (CGFloat)itemHeight;
++ (NSMutableDictionary*)createItem:(NSString*)name value:(NSString*)value model:(NSString*)model;
 - (void)setItem:(NSMutableDictionary*)item;
 - (id)parentListView;
 @end
