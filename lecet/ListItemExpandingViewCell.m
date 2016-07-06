@@ -196,7 +196,7 @@
     subItems = item[LIST_VIEW_SUBITEMS];
     _labelTitle.text = item[LIST_VIEW_NAME];
     
-    if (subItems == nil) {
+    if ((subItems == nil) | (subItems.count == 0)) {
         _constraintButtonExpandWidth.constant = 0;
     } else {
         

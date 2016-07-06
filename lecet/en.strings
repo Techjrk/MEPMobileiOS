@@ -348,6 +348,7 @@
 //FilterViewController
 "FILTER_VIEW_SEARCH_FOR"                    =               "Search for";
 "FILTER_VIEW_JURISRICTION"                  =               "jurisdiction";
+"FILTER_VIEW_STAGES"                        =               "stages";
 "FILTER_VIEW_APPLY"                         =               "APPLY";
 
 

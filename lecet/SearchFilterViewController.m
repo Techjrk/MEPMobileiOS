@@ -134,7 +134,21 @@
 }
 
 #pragma mark - ProjectFilterViewDelegate
-#pragma mark - Owner Types
+
+- (NSMutableArray*) createSubItems {
+
+    NSMutableArray *subItems = [NSMutableArray new];
+    NSMutableDictionary *subItem = [ListItemCollectionViewCell createItem:@"EMOD" value:@"" model:@"jurisdiction"];
+    [subItems addObject:subItem];
+    
+    NSMutableArray *children = [NSMutableArray new];
+    NSMutableDictionary *child = [ListItemCollectionViewCell createItem:@"53" value:@"" model:@"jurisdiction"];
+    [children addObject:child];
+    
+    subItem[LIST_VIEW_SUBITEMS] = children;
+
+    return subItems;
+}
 
 - (void)tappedFilterItem:(id)object {
     
@@ -195,36 +209,105 @@
                 
             case FilterModelJurisdiction: {
                 
+                NSMutableArray *listItems = [NSMutableArray new];
+                
+                NSMutableDictionary *item01 = [ListItemCollectionViewCell createItem:@"CECA" value:@"" model:@"jurisdiction"];
+                
+                [listItems addObject:item01];
+                item01[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item02 = [ListItemCollectionViewCell createItem:@"EAST" value:@"" model:@"jurisdiction"];
+         
+                [listItems addObject:item02];
+                item02[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item03 = [ListItemCollectionViewCell createItem:@"GTLK" value:@"" model:@"jurisdiction"];
+         
+                [listItems addObject:item03];
+                item03[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item04 = [ListItemCollectionViewCell createItem:@"MATL" value:@"" model:@"jurisdiction"];
+         
+                [listItems addObject:item04];
+                item04[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item05 = [ListItemCollectionViewCell createItem:@"MWST" value:@"" model:@"jurisdiction"];
+           
+                [listItems addObject:item05];
+                item05[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item06 = [ListItemCollectionViewCell createItem:@"NENG" value:@"" model:@"jurisdiction"];
+         
+                [listItems addObject:item06];
+                item06[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item07 = [ListItemCollectionViewCell createItem:@"NWST" value:@"" model:@"jurisdiction"];
+                
+                [listItems addObject:item07];
+                item07[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item08 = [ListItemCollectionViewCell createItem:@"OVSS" value:@"" model:@"jurisdiction"];
+           
+                [listItems addObject:item08];
+                item08[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item09 = [ListItemCollectionViewCell createItem:@"PWST" value:@"" model:@"jurisdiction"];
+         
+                [listItems addObject:item09];
+                item09[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
+                NSMutableDictionary *item10 = [ListItemCollectionViewCell createItem:@"WMOK" value:@"" model:@"jurisdiction"];
+                
+                [listItems addObject:item10];
+                item10[LIST_VIEW_SUBITEMS] = [self createSubItems];
+                
                 FilterViewController *controller = [FilterViewController new];
-                
-                NSMutableDictionary *dict1 = [@{LIST_VIEW_NAME:@"VALUE01"} mutableCopy];
-                NSMutableDictionary *dict2 = [@{LIST_VIEW_NAME:@"VALUE02"} mutableCopy];
-                NSMutableDictionary *dict3 = [@{LIST_VIEW_NAME:@"VALUE03"} mutableCopy];
-                
-                NSDictionary *dictArray1 = [@{LIST_VIEW_NAME:@"SUB01", LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
-                NSDictionary *dictArray2 = [@{LIST_VIEW_NAME:@"SUB02",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
-                NSDictionary *dictArray3 = [@{LIST_VIEW_NAME:@"SUB03",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
-                NSDictionary *dictArray4 = [@{LIST_VIEW_NAME:@"SUB04",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
-                NSDictionary *dictArray5 = [@{LIST_VIEW_NAME:@"SUB05",LIST_VIEW_SUBITEMS:@[dict1, dict2, dict3]}mutableCopy];
-                NSDictionary *dictArray6 = [@{LIST_VIEW_NAME:@"SUB06",LIST_VIEW_SUBITEMS:@[dictArray5, dict2, dict3]}mutableCopy];
-                
                 controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-                
-                /*
-                 controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]},
-                 @{LIST_VIEW_NAME:@"ITEM02",LIST_VIEW_SUBITEMS:@[dictArray2, dict2]},
-                 @{LIST_VIEW_NAME:@"ITEM03",LIST_VIEW_SUBITEMS:@[dictArray3, dictArray4]}] mutableCopy];
-                 */
-                
-                controller.listViewItems = [@[@{LIST_VIEW_NAME:@"ITEM01", LIST_VIEW_SUBITEMS:@[dictArray1, dict1]}, @{LIST_VIEW_NAME:@"ITEM02",LIST_VIEW_SUBITEMS:@[dictArray2, dict2, dictArray6]}, @{LIST_VIEW_NAME:@"ITEM03",LIST_VIEW_SUBITEMS:@[dictArray3, dictArray4]}] mutableCopy];
-                
-                
+                controller.listViewItems = listItems;
                 [self.navigationController pushViewController:controller animated:YES];
                 
                 break;
             }
                 
             case FilterModelStage: {
+                
+                NSMutableArray *listItems = [NSMutableArray new];
+                
+                [[DataManager sharedManager] parentStage:^(id object) {
+                
+                    for (NSDictionary *item in object) {
+                        
+                        NSMutableDictionary *listItem = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"parentStage"];
+                        
+                        NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
+                        
+                        if (stages != nil) {
+                   
+                            NSMutableArray *subItems = [NSMutableArray new];
+                            
+                            for (NSDictionary *stage in stages) {
+                              
+                                NSMutableDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
+                                [subItems addObject:subItem];
+                            
+                            }
+                            
+                            listItem[LIST_VIEW_SUBITEMS] = subItems;
+                        }
+                        
+                        [listItems addObject:listItem];
+                        
+                    }
+                    
+                    FilterViewController *controller = [FilterViewController new];
+                    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
+                    controller.listViewItems = listItems;
+                    [self.navigationController pushViewController:controller animated:YES];
+                    
+                } failure:^(id object) {
+                    
+                }];
+                
                 break;
             }
                 

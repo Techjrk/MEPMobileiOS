@@ -13,6 +13,7 @@
 #define LIST_VIEW_SUBITEMS                  @"LIST_VIEW_SUBITEMS"
 #define LIST_VIEW_NAME                      @"LIST_VIEW_NAME"
 #define LIST_VIEW_VALUE                     @"LIST_VIEW_VALUE"
+#define LIST_VIEW_MODEL                     @"LIST_VIEW_MODEL"
 
 @protocol ListItemCollectionViewCellDelegate <NSObject>
 - (void)didChangeListViewItemSize;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) NSNumber *level;
 @property (weak, nonatomic) NSIndexPath *index;
 + (CGFloat)itemHeight;
++ (NSMutableDictionary*)createItem:(NSString*)name value:(NSString*)value model:(NSString*)model;
 - (void)setItem:(NSMutableDictionary*)item;
 - (id)parentListView;
 @end

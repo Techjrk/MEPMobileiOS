@@ -42,6 +42,8 @@
 #define kUrlContactSearch                   @"Contacts/search"
 #define kUrlSavedSearches                   @"LecetUsers/%li/searches"
 
+#define kUrlParentStage                     @"ProjectParentStages"
+
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
 #define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
@@ -707,6 +709,20 @@
         success(object);
     } failure:^(id object) {
         failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)parentStage:(APIBlock)success failure:(APIBlock)failure {
+
+    [self HTTP_GET:[self url:kUrlParentStage] parameters:@{@"filter[include]":@"stages"} success:^(id object) {
+        
+        success(object);
+        
+    } failure:^(id object) {
+    
+        failure(object);
+        
     } authenticated:YES];
     
 }
