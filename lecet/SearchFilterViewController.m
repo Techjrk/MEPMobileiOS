@@ -225,6 +225,51 @@
             }
                 
             case FilterModelStage: {
+                
+                NSMutableArray *listItems = [NSMutableArray new];
+                
+                [[DataManager sharedManager] parentStage:^(id object) {
+                
+                    for (NSDictionary *item in object) {
+                        
+                        NSMutableDictionary *listItem = [NSMutableDictionary new];
+                        
+                        listItem[LIST_VIEW_NAME] = item[@"name"];
+                        listItem[LIST_VIEW_VALUE] = item[@"value"];
+                        listItem[LIST_VIEW_MODEL] = @"parentStage";
+                        
+                        NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
+                        
+                        if (stages != nil) {
+                   
+                            NSMutableArray *subItems = [NSMutableArray new];
+                            
+                            for (NSDictionary *stage in stages) {
+                                NSMutableDictionary *subItem = [NSMutableDictionary new];
+                                
+                                subItem[LIST_VIEW_NAME] = stage[@"name"];
+                                subItem[LIST_VIEW_VALUE] = stage[@"value"];
+                                subItem[LIST_VIEW_MODEL] = @"stage";
+                                
+                                [subItems addObject:subItem];
+                            }
+                            
+                            listItem[LIST_VIEW_SUBITEMS] = subItems;
+                        }
+                        
+                        [listItems addObject:listItem];
+                        
+                    }
+                    
+                    FilterViewController *controller = [FilterViewController new];
+                    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
+                    controller.listViewItems = listItems;
+                    [self.navigationController pushViewController:controller animated:YES];
+                    
+                } failure:^(id object) {
+                    
+                }];
+                
                 break;
             }
                 

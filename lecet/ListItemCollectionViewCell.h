@@ -13,6 +13,7 @@
 #define LIST_VIEW_SUBITEMS                  @"LIST_VIEW_SUBITEMS"
 #define LIST_VIEW_NAME                      @"LIST_VIEW_NAME"
 #define LIST_VIEW_VALUE                     @"LIST_VIEW_VALUE"
+#define LIST_VIEW_MODEL                     @"LIST_VIEW_MODEL"
 
 @protocol ListItemCollectionViewCellDelegate <NSObject>
 - (void)didChangeListViewItemSize;
