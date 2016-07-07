@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewClass.h"
+#import "ProjectFilterView.h"
+
+@protocol CompanyFilterViewDelegate <NSObject>
+- (void)tappedCompanyFilterItem:(id)object view:(UIView*)view;
+@end
 
 @interface CompanyFilterView : BaseViewClass
-
+@property (weak, nonatomic) id<CompanyFilterViewDelegate>companyFilterViewDelegate;
 @end

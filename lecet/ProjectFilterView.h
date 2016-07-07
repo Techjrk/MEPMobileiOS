@@ -20,11 +20,12 @@ typedef enum : NSUInteger {
     FilterModelBidding,
     FilterModelBH,
     FilterModelOwner,
-    FilterModelWork
+    FilterModelWork,
+    FilterModelProjectType
 } FilterModel;
 
 @protocol ProjectFilterViewDelegate <NSObject>
-- (void)tappedFilterItem:(id)object;
+- (void)tappedProjectFilterItem:(id)object view:(UIView*)view;
 @end
 
 @interface ProjectFilterView : BaseViewClass

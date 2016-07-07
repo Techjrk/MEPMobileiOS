@@ -60,6 +60,7 @@
 
 #define kUrlProjectGroup                    @"ProjectGroups?"
 #define kUrlProjectCategory                 @"ProjectCategories?"
+#define kUrlProjectTypes                    @"ProjectGroups"
 
 #define kUrlWorkTypes                       @"WorkTypes?"
 @interface DataManager()
@@ -942,13 +943,23 @@
     
     [self HTTP_GET:[self url:kUrlProjectCategory] parameters:filter success:^(id object) {
         success(object);
-        
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
   
 }
 
+- (void)projectTypes:(APIBlock)success failure:(APIBlock)failure {
+
+    [self HTTP_GET:[self url:kUrlProjectTypes] parameters:@{@"filter[include][projectCategories]":@"projectTypes"} success:^(id object) {
+    
+        success(object);
+        
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
 
 #pragma mark - WORK TYPES
 - (void)workTypes:(APIBlock)success failure:(APIBlock)failure {

@@ -36,7 +36,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate>
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonProject;
@@ -81,11 +81,13 @@
     _labelTitle.font = TITLE_FONT;
     _labelTitle.textColor = TITLE_COLOR;
     _labelTitle.text = NSLocalizedLanguage(@"SEARCH_FILTER_TITLE");
+    _labelTitle.tintColor = [UIColor whiteColor];
     
     [_projectFilter setConstraint:_constraintProjectFilterHeight];
     _projectFilter.scrollView = _projectScrollView;
     _projectFilter.projectFilterViewDelegate = self;
     _companyFilter.hidden = YES;
+    _companyFilter.companyFilterViewDelegate = self;
 
 }
 
@@ -137,12 +139,12 @@
 
 - (NSMutableArray*) createSubItems {
 
-    NSMutableArray *subItems = [NSMutableArray new];
-    NSMutableDictionary *subItem = [ListItemCollectionViewCell createItem:@"EMOD" value:@"" model:@"jurisdiction"];
+    ListViewItemArray *subItems = [ListViewItemArray new];
+    ListViewItemDictionary *subItem = [ListItemCollectionViewCell createItem:@"EMOD" value:@"" model:@"jurisdiction"];
     [subItems addObject:subItem];
     
-    NSMutableArray *children = [NSMutableArray new];
-    NSMutableDictionary *child = [ListItemCollectionViewCell createItem:@"53" value:@"" model:@"jurisdiction"];
+    ListViewItemArray *children = [ListViewItemArray new];
+    ListViewItemDictionary *child = [ListItemCollectionViewCell createItem:@"53" value:@"" model:@"jurisdiction"];
     [children addObject:child];
     
     subItem[LIST_VIEW_SUBITEMS] = children;
@@ -150,8 +152,7 @@
     return subItems;
 }
 
-- (void)tappedFilterItem:(id)object {
-    
+- (void)tappedProjectFilterItem:(id)object view:(UIView *)view {
     
     FilterModel model = 0;
     BOOL shouldProcess = NO;
@@ -171,204 +172,56 @@
         
         switch (model) {
             case FilterModelLocation: {
-                ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
-                [self.navigationController pushViewController:controller animated:YES];
+                [self filterLocation:view];
                 break;
             }
                 
             case FilterModelType: {
-                [self pushProjectFilterTypes];
+                [self filterTypes:view];
                 break;
             }
                 
             case FilterModelValue: {
-                ValuationViewController *controller =  [ValuationViewController new];
-                [self.navigationController pushViewController:controller animated:YES];
+                [self filterValue:view];
                 break;
             }
                 
             case FilterModelUpdated: {
-                
-                NSArray *array = @[
-                                   @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
-                                   ];
-                
-                FilterSelectionViewController *controller = [FilterSelectionViewController new];
-                controller.filterSelectionViewControllerDelegate = self;
-                [controller setDataInfo:array];
-                controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE");
-                [self.navigationController pushViewController:controller animated:YES];
+                [self filterUpdatedWithin:view];
                 break;
             }
                 
             case FilterModelJurisdiction: {
-                
-                NSMutableArray *listItems = [NSMutableArray new];
-                
-                NSMutableDictionary *item01 = [ListItemCollectionViewCell createItem:@"CECA" value:@"" model:@"jurisdiction"];
-                
-                [listItems addObject:item01];
-                item01[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item02 = [ListItemCollectionViewCell createItem:@"EAST" value:@"" model:@"jurisdiction"];
-         
-                [listItems addObject:item02];
-                item02[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item03 = [ListItemCollectionViewCell createItem:@"GTLK" value:@"" model:@"jurisdiction"];
-         
-                [listItems addObject:item03];
-                item03[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item04 = [ListItemCollectionViewCell createItem:@"MATL" value:@"" model:@"jurisdiction"];
-         
-                [listItems addObject:item04];
-                item04[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item05 = [ListItemCollectionViewCell createItem:@"MWST" value:@"" model:@"jurisdiction"];
-           
-                [listItems addObject:item05];
-                item05[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item06 = [ListItemCollectionViewCell createItem:@"NENG" value:@"" model:@"jurisdiction"];
-         
-                [listItems addObject:item06];
-                item06[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item07 = [ListItemCollectionViewCell createItem:@"NWST" value:@"" model:@"jurisdiction"];
-                
-                [listItems addObject:item07];
-                item07[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item08 = [ListItemCollectionViewCell createItem:@"OVSS" value:@"" model:@"jurisdiction"];
-           
-                [listItems addObject:item08];
-                item08[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item09 = [ListItemCollectionViewCell createItem:@"PWST" value:@"" model:@"jurisdiction"];
-         
-                [listItems addObject:item09];
-                item09[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                NSMutableDictionary *item10 = [ListItemCollectionViewCell createItem:@"WMOK" value:@"" model:@"jurisdiction"];
-                
-                [listItems addObject:item10];
-                item10[LIST_VIEW_SUBITEMS] = [self createSubItems];
-                
-                FilterViewController *controller = [FilterViewController new];
-                controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-                controller.listViewItems = listItems;
-                [self.navigationController pushViewController:controller animated:YES];
-                
+                [self filterJurisdiction:view];
                 break;
             }
                 
             case FilterModelStage: {
-                
-                NSMutableArray *listItems = [NSMutableArray new];
-                
-                [[DataManager sharedManager] parentStage:^(id object) {
-                
-                    for (NSDictionary *item in object) {
-                        
-                        NSMutableDictionary *listItem = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"parentStage"];
-                        
-                        NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
-                        
-                        if (stages != nil) {
-                   
-                            NSMutableArray *subItems = [NSMutableArray new];
-                            
-                            for (NSDictionary *stage in stages) {
-                              
-                                NSMutableDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
-                                [subItems addObject:subItem];
-                            
-                            }
-                            
-                            listItem[LIST_VIEW_SUBITEMS] = subItems;
-                        }
-                        
-                        [listItems addObject:listItem];
-                        
-                    }
-                    
-                    FilterViewController *controller = [FilterViewController new];
-                    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
-                    controller.listViewItems = listItems;
-                    [self.navigationController pushViewController:controller animated:YES];
-                    
-                } failure:^(id object) {
-                    
-                }];
-                
+                [self filterStage:view];
                 break;
             }
                 
             case FilterModelBidding: {
-                
-                NSArray *array = @[
-                                   @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
-                                   @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
-                                   ];
-                
-                FilterSelectionViewController *controller = [FilterSelectionViewController new];
-                controller.filterSelectionViewControllerDelegate = self;
-                [controller setDataInfo:array];
-                controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE");
-                [self.navigationController pushViewController:controller animated:YES];
-                
+                [self filterBiddingWithin:view];
                 break;
             }
                 
             case FilterModelBH: {
-
-                NSArray *array = @[
-                                   @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                                   @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@(102),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                                   @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@(101),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                                   ];
-                
-                FilterSelectionViewController *controller = [FilterSelectionViewController new];
-                controller.filterSelectionViewControllerDelegate = self;
-                [controller setDataInfo:array];
-                controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BH_TITLE");
-                [self.navigationController pushViewController:controller animated:YES];
-                
+                [self filterBH:view];
                 break;
             }
                 
             case FilterModelOwner: {
-                
-                NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
-                                         @{@"title":@"Local Government",@"id":@(2)},
-                                         @{@"title":@"Military",@"id":@(3)},
-                                         @{@"title":@"Private",@"id":@(4)},
-                                         @{@"title":@"State",@"id":@(5)}
-                                         ] mutableCopy];
-                
-                WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
-                [controller setInfo:obj];
-                [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
-                controller.workOwnerTypesViewControllerDelegate = self;
-                [self.navigationController pushViewController:controller animated:YES];
-
+                [self filterOwner:view];
                 break;
             }
                 
             case FilterModelWork: {
-                [self pushWorkTypes];
+                [self pushWorkTypes:view];
+                break;
+            }
+                
+            default: {
                 break;
             }
         }
@@ -377,8 +230,225 @@
 
 }
 
+- (void)tappedCompanyFilterItem:(id)object view:(UIView *)view {
+    
+    FilterModel model = 0;
+    BOOL shouldProcess = NO;
+    
+    if ([object class] == [FilterLabelView class]) {
+        
+        model = [(FilterLabelView*)object filterModel];
+        shouldProcess = YES;
+        
+    } else if([object class] == [FilterEntryView class]) {
+        
+        model = [(FilterEntryView*)object filterModel];
+        shouldProcess = YES;
+    }
+    
+    if (shouldProcess) {
+        
+        switch (model) {
+            
+            case FilterModelLocation: {
+                [self filterLocation:view];
+                break;
+            }
+            
+            case FilterModelValue: {
+                [self filterValue:view];
+                break;
+            }
+                
+            case FilterModelJurisdiction: {
+                [self filterJurisdiction:view];
+                break;
+            }
+                
+            case FilterModelBidding: {
+                [self filterBiddingWithin:view];
+                break;
+            }
+                
+            case FilterModelProjectType: {
+                [self filterProjectTypes:view];
+                break;
+            }
+                
+            default: {
+                break;
+            }
+        }
+    }
+}
+
+- (void)filterJurisdiction:(UIView*)view {
+    
+    ListViewItemArray *listItems = [ListViewItemArray new];
+    
+    NSMutableDictionary *item01 = [ListItemCollectionViewCell createItem:@"CECA" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item01];
+    item01[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item02 = [ListItemCollectionViewCell createItem:@"EAST" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item02];
+    item02[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item03 = [ListItemCollectionViewCell createItem:@"GTLK" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item03];
+    item03[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item04 = [ListItemCollectionViewCell createItem:@"MATL" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item04];
+    item04[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item05 = [ListItemCollectionViewCell createItem:@"MWST" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item05];
+    item05[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item06 = [ListItemCollectionViewCell createItem:@"NENG" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item06];
+    item06[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item07 = [ListItemCollectionViewCell createItem:@"NWST" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item07];
+    item07[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item08 = [ListItemCollectionViewCell createItem:@"OVSS" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item08];
+    item08[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item09 = [ListItemCollectionViewCell createItem:@"PWST" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item09];
+    item09[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    NSMutableDictionary *item10 = [ListItemCollectionViewCell createItem:@"WMOK" value:@"" model:@"jurisdiction"];
+    
+    [listItems addObject:item10];
+    
+    item10[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
+    controller.listViewItems = listItems;
+    controller.singleSelect = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)filterStage:(UIView*)view {
+    
+    ListViewItemArray *listItems = [ListViewItemArray new];
+    
+    [[DataManager sharedManager] parentStage:^(id object) {
+        
+        for (NSDictionary *item in object) {
+            
+            ListViewItemDictionary *listItem = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"parentStage"];
+            
+            NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
+            
+            if (stages != nil) {
+                
+                ListViewItemArray *subItems = [ListViewItemArray new];
+                
+                for (NSDictionary *stage in stages) {
+                    
+                    ListViewItemDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
+                    [subItems addObject:subItem];
+                    
+                }
+                
+                listItem[LIST_VIEW_SUBITEMS] = subItems;
+            }
+            
+            [listItems addObject:listItem];
+            
+        }
+        
+        FilterViewController *controller = [FilterViewController new];
+        controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
+        controller.listViewItems = listItems;
+        controller.singleSelect = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    } failure:^(id object) {
+        
+    }];
+
+}
+
+- (void)filterProjectTypes:(UIView*)view {
+    
+    [[DataManager sharedManager] projectTypes:^(id groups) {
+        
+        ListViewItemArray *listItems = [ListViewItemArray new];
+
+        for (NSDictionary *group in groups) {
+            
+            ListViewItemDictionary *groupItem = [ListItemCollectionViewCell createItem:group[@"title"] value:group[@"id"] model:@"projectGroup"];
+            
+            NSArray *categories = [DerivedNSManagedObject objectOrNil:group[@"projectCategories"]];
+            
+            if (categories) {
+   
+                ListViewItemArray *groupItems = [ListViewItemArray new];
+                
+                for (NSDictionary *category in categories) {
+                    
+                    ListViewItemDictionary *categoryItem = [ListItemCollectionViewCell createItem:category[@"title"] value:category[@"id"] model:@"projectCategory"];
+                    [groupItems addObject:categoryItem];
+                    
+                    NSArray *projectTypes = [DerivedNSManagedObject objectOrNil:category[@"projectTypes"]];
+                    
+                    if (projectTypes) {
+                        
+                        ListViewItemArray *projectTypeItems = [ListViewItemArray new];
+                        
+                        for (NSDictionary *projectType in projectTypes) {
+                            
+                            ListViewItemDictionary *projectTypeItem = [ListItemCollectionViewCell createItem:projectType[@"title"] value:projectType[@"id"] model:@"projectType"];
+                            
+                            [projectTypeItems addObject:projectTypeItem];
+                        }
+      
+                        categoryItem[LIST_VIEW_SUBITEMS] = projectTypeItems;
+                        
+                    }
+                    
+                }
+                
+                groupItem[LIST_VIEW_SUBITEMS] = groupItems;
+                
+            }
+            
+            [listItems addObject:groupItem];
+            
+        }
+        
+        FilterViewController *controller = [FilterViewController new];
+        controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
+        controller.listViewItems = listItems;
+        controller.singleSelect = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    } failure:^(id object) {
+        
+    }];
+}
+
 #pragma mark - Work Types
-- (void)pushWorkTypes {
+
+- (void)pushWorkTypes:(UIView*)view {
     [[DataManager sharedManager] workTypes:^(id obj){
         
         WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
@@ -393,9 +463,94 @@
     }];
 }
 
+- (void)filterLocation:(UIView*)view {
+
+    ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)filterValue:(UIView*)view {
+    
+    ValuationViewController *controller =  [ValuationViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+
+- (void)filterUpdatedWithin:(UIView*)view {
+    
+    NSArray *array = @[
+                       @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       ];
+    
+    FilterSelectionViewController *controller = [FilterSelectionViewController new];
+    controller.filterSelectionViewControllerDelegate = self;
+    [controller setDataInfo:array];
+    controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE");
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)filterBiddingWithin:(UIView*)view {
+    NSArray *array = @[
+                       @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       ];
+    
+    FilterSelectionViewController *controller = [FilterSelectionViewController new];
+    controller.filterSelectionViewControllerDelegate = self;
+    [controller setDataInfo:array];
+    controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE");
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)filterBH:(UIView*)view {
+    
+    NSArray *array = @[
+                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@(102),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@(101),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       ];
+    
+    FilterSelectionViewController *controller = [FilterSelectionViewController new];
+    controller.filterSelectionViewControllerDelegate = self;
+    [controller setDataInfo:array];
+    controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BH_TITLE");
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+
+- (void)filterOwner:(UIView*)view {
+ 
+    NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
+                             @{@"title":@"Local Government",@"id":@(2)},
+                             @{@"title":@"Military",@"id":@(3)},
+                             @{@"title":@"Private",@"id":@(4)},
+                             @{@"title":@"State",@"id":@(5)}
+                             ] mutableCopy];
+    
+    WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
+    [controller setInfo:obj];
+    [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
+    controller.workOwnerTypesViewControllerDelegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
 #pragma mark - ProjectFilter Types
 
-- (void)pushProjectFilterTypes {
+- (void)filterTypes:(UIView*)view {
     
     [[DataManager sharedManager] projectGroupRequest:^(id obj){
         

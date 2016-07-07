@@ -64,13 +64,11 @@
 - (void)companyAddTrackingList:(NSNumber*)trackId recordId:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companySearch:(NSMutableDictionary*)filter data:(NSMutableDictionary*)data success:(APIBlock)success failure:(APIBlock)failure;
 
-//PROJECT GROUP LIST
+//PROJECTS
 - (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure;
-
-//PROJECT CATEGORY
 - (void)projectCategoryList:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectCategoryLisByGroupID:(NSNumber*)projectGroupID success:(APIBlock)success failure:(APIBlock)failure;
-
+- (void)projectTypes:(APIBlock)success failure:(APIBlock)failure;
 //WORK TYPES
 - (void)workTypes:(APIBlock)success failure:(APIBlock)failure;
 

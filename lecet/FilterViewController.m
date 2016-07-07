@@ -21,7 +21,7 @@
 #define BUTTON_FILTER_COLOR                             RGB(168, 195, 230)
 
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
-    NSMutableArray *localListViewItems;
+    ListViewItemArray *localListViewItems;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -33,6 +33,7 @@
 @implementation FilterViewController
 @synthesize listViewItems;
 @synthesize searchTitle;
+@synthesize singleSelect;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,7 +48,7 @@
     _viewbackground.layer.cornerRadius = kDeviceWidth * 0.0106;
     _viewbackground.layer.masksToBounds = YES;
 
-    localListViewItems = [NSMutableArray new];
+    localListViewItems = [ListViewItemArray new];
     
     for (NSDictionary *item in self.listViewItems) {
         NSMutableDictionary *mutableItem = [item mutableCopy];
@@ -58,14 +59,14 @@
         
     }
     _listView.customListViewDelegate = self;
-    
+    _listView.singleSelection = self.singleSelect;
     
     NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:SEACRCH_PLACEHOLDER_TEXT attributes:@{NSFontAttributeName:SEACRCH_PLACEHOLDER_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}];
     
     [placeHolder appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"   %@ %@",NSLocalizedLanguage(@"FILTER_VIEW_SEARCH_FOR"),self.searchTitle] attributes:@{NSFontAttributeName:SEACRCH_TEXTFIELD_TEXT_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}]];
     _labelSearch.attributedPlaceholder = placeHolder;
     _labelSearch.textColor = [UIColor whiteColor];
-
+    _labelSearch.tintColor = [UIColor whiteColor];
      
 }
 
@@ -178,6 +179,33 @@
 - (void)didChangeListViewItemSize {
  
     [_listView reloadData];
+    
+}
+
+- (BOOL)singleSelection {
+    
+    if (self.singleSelect) {
+        
+        [self uncheckItem:localListViewItems];
+        
+        [_listView reloadData];
+    }
+    
+    return self.singleSelect;
+}
+
+- (void)uncheckItem:(ListViewItemArray*)items {
+
+    for (ListViewItemDictionary *item in items) {
+        item[STATUS_CHECK] = [NSNumber numberWithBool:NO];
+        
+        ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+        
+        if (subItems) {
+            [self uncheckItem:subItems];
+        }
+        
+    }
     
 }
 

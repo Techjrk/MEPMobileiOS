@@ -140,15 +140,15 @@
 
 }
 
-- (void)tappedFilterLabelView:(id)object {
+- (void)tappedFilterLabelView:(id)object{
 
-    [self.projectFilterViewDelegate tappedFilterItem:object];
+    [self.projectFilterViewDelegate tappedProjectFilterItem:object view:self];
     
 }
 
 - (void)tappedFilterEntryViewDelegate:(id)object {
  
-    [self.projectFilterViewDelegate tappedFilterItem:object];
+    [self.projectFilterViewDelegate tappedProjectFilterItem:object view:self];
     
 }
 

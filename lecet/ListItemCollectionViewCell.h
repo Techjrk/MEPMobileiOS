@@ -15,18 +15,32 @@
 #define LIST_VIEW_VALUE                     @"LIST_VIEW_VALUE"
 #define LIST_VIEW_MODEL                     @"LIST_VIEW_MODEL"
 
+@interface ListViewItemDictionary : NSMutableDictionary {
+    NSMutableDictionary *proxy;
+}
+@property (weak, nonatomic) id parent;
+@end
+
+@interface ListViewItemArray : NSMutableArray {
+    NSMutableArray *proxy;
+}
+@property (weak, nonatomic) id parent;
+- (void)addObject:(id)anObject;
+@end
+
 @protocol ListItemCollectionViewCellDelegate <NSObject>
 - (void)didChangeListViewItemSize;
+- (BOOL)singleSelection;
 @end
 
 @interface ListItemCollectionViewCell : UICollectionViewCell{
-    NSMutableDictionary *localItem;
+    ListViewItemDictionary *localItem;
 }
 @property (weak, nonatomic) id<ListItemCollectionViewCellDelegate>listItemCollectionViewCellDelegate;
 @property (weak, nonatomic) NSNumber *level;
 @property (weak, nonatomic) NSIndexPath *index;
 + (CGFloat)itemHeight;
-+ (NSMutableDictionary*)createItem:(NSString*)name value:(NSString*)value model:(NSString*)model;
-- (void)setItem:(NSMutableDictionary*)item;
++ (ListViewItemDictionary*)createItem:(NSString*)name value:(NSString*)value model:(NSString*)model;
+- (void)setItem:(ListViewItemDictionary*)item;
 - (id)parentListView;
 @end

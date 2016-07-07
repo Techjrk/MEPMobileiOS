@@ -13,4 +13,5 @@
 @interface FilterViewController : BaseViewController
 @property (strong, nonatomic) NSMutableArray *listViewItems;
 @property (weak, nonatomic) NSString *searchTitle;
+@property (nonatomic) BOOL singleSelect;
 @end
