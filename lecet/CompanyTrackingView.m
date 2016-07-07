@@ -46,6 +46,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerButtonAndTextHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *rightImageIcon;
 
 @end
 
@@ -138,6 +139,19 @@
         _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
         [_containerTextView setHidden:YES];
     }
+}
+
+- (void)setImage:(id)info {
+
+    NSString *summary =  info;
+    if (summary.length > 0) {
+        _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+    }
+    
+}
+
+- (void)setLabelDescription:(NSString *)text {
+    _labelUpdateDescription.text = text;
 }
 
 

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+typedef enum {
+    changeIndicatorItemAdded = 1,
+    changeIndicatorItemAddAccount = 2,
+}changeIndicatorItem;
 
 @protocol CompanyTrackingViewDelegate <NSObject>
 @required
@@ -24,5 +28,6 @@
 - (void)setButtonTag:(int)tag;
 - (void)setTextViewHidden:(BOOL)hide;
 - (void)changeCaretToUp:(BOOL)up;
-
+- (void)setImage:(id)info;
+- (void)setLabelDescription:(NSString *)text;
 @end

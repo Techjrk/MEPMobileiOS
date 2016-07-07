@@ -21,4 +21,6 @@
 - (void)setButtontag:(int)tag;
 - (void)setTextViewHidden:(BOOL)hide;
 - (void)changeCaretToUp:(BOOL)up;
+- (void)setImage:(id)imageName;
+- (void)setUpdateDescription:(NSString *)text;
 @end

@@ -60,4 +60,12 @@
     [_companyTrackingView changeCaretToUp:up];
 }
 
+- (void)setImage:(id)imageName {
+    [_companyTrackingView setImage:imageName];
+}
+
+- (void)setUpdateDescription:(NSString *)text {
+    [_companyTrackingView setLabelDescription:text];
+}
+
 @end

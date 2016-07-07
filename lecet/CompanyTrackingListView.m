@@ -10,6 +10,8 @@
 #import "CompanyTrackingCollectionViewCell.h"
 #import "EditViewList.h"
 
+
+
 @interface CompanyTrackingListView ()<UICollectionViewDelegate, UICollectionViewDataSource,CompanyTrackingCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;
     NSLayoutConstraint *constraintHeight;
@@ -25,6 +27,7 @@
 @end
 
 @implementation CompanyTrackingListView
+
 #define kCellIdentifier             @"kCellIdentifier"
 #define kCellAdditionalHeight       0.599f
 #define flagIdentifierOpen          @"open"
@@ -48,18 +51,26 @@
     queue.maxConcurrentOperationCount=1;
     [queue setSuspended: YES];
     
+
+
+    
     NSMutableArray *tempArray = collectionDataItems;
     [collectionDataItems enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
         NSMutableDictionary *dict = [response mutableCopy];
         [dict setValue:flagIdentifierClosed forKey:COMPANYDATA_BUTTON_STATE];
         [dict setValue:@"0" forKey:COMPANYDATA_SELECTION_FLAG];
-        if (index == 5 || index == 9) {
-            [dict setValue:@"Add" forKey:COMPANYDATA_BUTTON_TOSHOW];
+        
+    
+        
+        if ([DerivedNSManagedObject objectOrNil:dict[@"UPDATES"]]) {
+            
+            NSDictionary *updates = dict[@"UPDATES"];
+            [dict setValue:updates[@"changeIndicator"] forKey:COMPANYDATA_BUTTON_TOSHOW];
+            
         } else {
             [dict setValue:kButtonToShow forKey:COMPANYDATA_BUTTON_TOSHOW];
         }
-        
-        
+
             NSBlockOperation* op=[NSBlockOperation blockOperationWithBlock: ^ (void)
             {
                 [tempArray replaceObjectAtIndex:index withObject:dict];
@@ -104,6 +115,15 @@
     int tag = (int)indexPath.row;
     [cell setButtontag:tag];
     
+    
+    
+    
+    if ([DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]]) {
+        NSString *titleUpdates =  [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"summary"];
+        [cell setButtonLabelTitle:titleUpdates];
+        [cell setImage:[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_TOSHOW]];
+        [cell setUpdateDescription:titleName];
+    }
     
     NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];
     if ([flag isEqualToString:flagIdentifierOpen]) {
