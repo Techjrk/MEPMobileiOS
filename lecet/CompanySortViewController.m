@@ -53,6 +53,7 @@
     [self dismissViewControllerAnimated:YES completion:Nil];
     
 }
+
 #pragma mark - CompanySortViewDelegate
 
 - (void)selectedSort:(CompanySortItem)item {
