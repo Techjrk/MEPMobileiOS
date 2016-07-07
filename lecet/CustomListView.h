@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class CustomListView;
+
 #import "BaseViewClass.h"
 #import "ListItemCollectionViewCell.h"
 
-@class CustomListView;
 
 @protocol CustomListViewDelegate <NSObject>
 - (void)listViewRegisterNib:(CustomListView*)customListView;
@@ -24,6 +25,7 @@
 @interface CustomListView : BaseViewClass
 @property (weak, nonatomic) id<CustomListViewDelegate>customListViewDelegate;
 @property (weak ,nonatomic) UINavigationController *navigationController;
+@property (nonatomic) BOOL singleSelection;
 - (void)registerListItemNib:(Class)objectClass;
 - (ListItemCollectionViewCell*)dequeListItemCollectionViewCell:(NSString*)identifier indexPath:(NSIndexPath*)indexPath;
 - (void)reloadData;

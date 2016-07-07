@@ -23,10 +23,10 @@
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
 @property (weak, nonatomic) IBOutlet FilterLabelView *filterBidding;
 @property (weak, nonatomic) IBOutlet FilterLabelView *filterProjectType;
-
 @end
 
 @implementation CompanyFilterView
+@synthesize companyFilterViewDelegate;
 
 - (void)awakeFromNib {
     
@@ -40,10 +40,19 @@
     _labelProject.text = NSLocalizedLanguage(@"COMPANY_FILTER_LABEL");
     
     [_fieldLocation setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_LOCATION")];
+    _fieldLocation.filterModel = FilterModelLocation;
+    
     [_filterValue setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_VALUE")];
+    _filterValue.filterModel = FilterModelValue;
+    
     [_fieldJurisdiction setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_JURISDICTION")];
+    _fieldJurisdiction.filterModel = FilterModelJurisdiction;
+    
     [_filterBidding setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_BIDDING")];
+    _filterBidding.filterModel = FilterModelBidding;
+    
     [_filterProjectType setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_TYPE")];
+    _filterProjectType.filterModel = FilterModelProjectType;
     
     [_fieldJurisdiction setValue:NSLocalizedLanguage(@"COMPANY_FILTER_ANY")];
     [_filterBidding setValue:NSLocalizedLanguage(@"COMPANY_FILTER_ANY")];
@@ -58,11 +67,11 @@
 }
 
 - (void)tappedFilterLabelView:(id)object {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.companyFilterViewDelegate tappedCompanyFilterItem:object view:self];
 }
 
 - (void)tappedFilterEntryViewDelegate:(id)object {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.companyFilterViewDelegate tappedCompanyFilterItem:object view:self];
 }
 
 @end

@@ -19,7 +19,7 @@
 #define LABEL_COLOR                         RGB(34, 34, 34)
 
 @interface ListItemExpandingViewCell()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
-    NSMutableArray *subItems;
+    ListViewItemArray *subItems;
 }
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCheck;
@@ -71,11 +71,16 @@
 }
 
 - (IBAction)tappedButtonCheck:(id)sender {
+ 
     NSNumber *checked = localItem[STATUS_CHECK];
     
-    localItem[STATUS_CHECK] = [NSNumber numberWithBool:!checked.boolValue];
+    if([self.listItemCollectionViewCellDelegate singleSelection]) {
+        
+    };
     
+    localItem[STATUS_CHECK] = [NSNumber numberWithBool:!checked.boolValue];
     [self setCheckImage:!checked.boolValue];
+    
     
 }
 
@@ -106,16 +111,9 @@
 }
 
 - (NSInteger)listViewItemCount {
-    
-    NSInteger count = 0;
-    
-    NSArray *array = [self.listItemExpandingViewCellDelegate listViewSubItems:self];
-    
-    if (array != nil) {
-        count = array.count;
-    }
-    
+
     return subItems.count;
+
 }
 
 - (ListItemCollectionViewCell *)listViewItemPrepareForUse:(NSIndexPath *)indexPath listView:(CustomListView *)listView{
@@ -133,7 +131,7 @@
 - (CGSize)listViewItemSize:(NSIndexPath *)indexPath {
     
     CGFloat itemHeight = [ListItemExpandingViewCell itemHeight];
-    NSMutableDictionary *item = subItems[indexPath.row];
+    ListViewItemDictionary *item = subItems[indexPath.row];
     NSNumber *expand = item[STATUS_EXPAND];
     
     if ((expand != nil) & expand.boolValue) {
@@ -191,7 +189,7 @@
     return subItems;
 }
 
-- (void)setItem:(NSMutableDictionary *)item {
+- (void)setItem:(ListViewItemDictionary *)item {
     [super setItem:item];
     subItems = item[LIST_VIEW_SUBITEMS];
     _labelTitle.text = item[LIST_VIEW_NAME];
@@ -220,4 +218,11 @@
 - (void)reloadData {
     [_listView reloadData];
 }
+
+- (BOOL)singleSelection {
+
+    return [self.listItemCollectionViewCellDelegate singleSelection];
+
+}
+
 @end

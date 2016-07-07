@@ -8,6 +8,105 @@
 
 #import "ListItemCollectionViewCell.h"
 
+@implementation ListViewItemDictionary
+
+- (instancetype)init {
+    self = [super init];
+    proxy = [NSMutableDictionary new];
+    self.parent = nil;
+    return self;
+}
+
+- (void)setObject:(id)anObject forKey:(id<NSCopying>)aKey {
+
+    if (anObject) {
+        
+        proxy[aKey] = anObject;
+        
+    } else {
+
+        [proxy removeObjectForKey:aKey];
+    }
+    
+    if ([anObject class] == [ListViewItemDictionary class]) {
+        
+        ListViewItemDictionary *object = anObject;
+        object.parent = self;
+        
+    }
+    
+    if ([anObject class] == [ListViewItemArray class]) {
+        
+        ListViewItemArray *object = anObject;
+        object.parent = self;
+        
+    }
+
+}
+
+- (NSUInteger)count {
+
+    return proxy.count;
+}
+
+- (NSEnumerator *)keyEnumerator {
+
+    return [proxy keyEnumerator];
+}
+
+- (id)objectForKey:(id)aKey {
+
+    return [proxy objectForKey:aKey];
+}
+
+@end
+
+
+@implementation ListViewItemArray
+
+- (instancetype)init {
+    self = [super init];
+    self.parent = nil;
+    proxy = [NSMutableArray new];
+    return self;
+}
+
+- (void)addObject:(id)anObject {
+   
+    [proxy addObject:anObject];
+
+    if ([anObject class] == [ListViewItemDictionary class]) {
+        
+        ListViewItemDictionary *object = anObject;
+        object.parent = self;
+  
+    }
+
+    if ([anObject class] == [ListViewItemArray class]) {
+        
+        ListViewItemArray *object = anObject;
+        object.parent = self;
+        
+    }
+
+}
+
+- (id) forwardingTargetForSelector:(SEL)aSelector {
+    return proxy;
+}
+
+- (NSUInteger)count {
+    
+    return proxy.count;
+}
+
+- (id)objectAtIndex:(NSUInteger)index {
+
+    return [proxy objectAtIndex:index];
+}
+
+@end
+
 @interface ListItemCollectionViewCell()
 @end
 @implementation ListItemCollectionViewCell
@@ -19,9 +118,9 @@
     return kDeviceHeight * 0.087;
 }
 
-+ (NSMutableDictionary *)createItem:(NSString *)name value:(NSString *)value model:(NSString *)model {
++ (ListViewItemDictionary *)createItem:(NSString *)name value:(NSString *)value model:(NSString *)model {
     
-    NSMutableDictionary *item = [NSMutableDictionary new];
+    ListViewItemDictionary *item = [ListViewItemDictionary new];
     
     item[LIST_VIEW_NAME] = name;
     item[LIST_VIEW_VALUE] = value;
@@ -35,7 +134,8 @@
     return [self superview];
 }
 
-- (void)setItem:(NSMutableDictionary *)item {
+- (void)setItem:(ListViewItemDictionary *)item {
     localItem = item;
 }
+
 @end
