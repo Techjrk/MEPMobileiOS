@@ -114,7 +114,7 @@
     [cell setAddressBelow:addressBelow];
     int tag = (int)indexPath.row;
     [cell setButtontag:tag];
-    
+    [cell searchLocationGeoCode];
     
     
     

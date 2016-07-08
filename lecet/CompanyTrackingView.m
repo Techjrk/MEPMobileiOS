@@ -165,6 +165,64 @@
     _labelUpdateDescription.text = text;
 }
 
+- (void)searchForLocationGeocode {
+    NSString *address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
+    
+    NSString *location = address;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     
+                     if (placemarks && placemarks.count > 0) {
+                         
+                         CLPlacemark *result = [placemarks objectAtIndex:0];
+                         [self setMapInfoLatitude:result];
+                        
+                     } else if (error != nil) {
+                         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
+                     }
+                 }
+     ];
+}
+
+- (void)setMapInfoLatitude:(CLPlacemark *)coord {
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(coord.location.coordinate.latitude, coord.location.coordinate.longitude);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        
+    }
+    
+    return userAnnotationView;
+    
+}
 
 
 @end

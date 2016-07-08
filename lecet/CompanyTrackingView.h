@@ -29,4 +29,5 @@ typedef enum {
 - (void)changeCaretToUp:(BOOL)up;
 - (void)setImage:(id)info;
 - (void)setLabelDescription:(NSString *)text;
+- (void)searchForLocationGeocode;
 @end

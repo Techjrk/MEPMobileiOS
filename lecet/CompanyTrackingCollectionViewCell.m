@@ -64,4 +64,7 @@
     [_companyTrackingView setLabelDescription:text];
 }
 
+- (void)searchLocationGeoCode {
+    [_companyTrackingView searchForLocationGeocode];
+}
 @end

@@ -22,4 +22,5 @@
 - (void)changeCaretToUp:(BOOL)up;
 - (void)setImage:(id)imageName;
 - (void)setUpdateDescription:(NSString *)text;
+- (void)searchLocationGeoCode;
 @end
