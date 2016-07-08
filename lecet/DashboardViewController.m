@@ -948,7 +948,6 @@
     
 }
 
-
 #pragma mark - CompanyTrackingListAndUpdates
 
 - (void)companyTrackingListAndUpdatesFiltered:(id)trackItemInfo success:(APIBlock)success fail:(APIBlock)fail {
@@ -972,7 +971,6 @@
              }
             
             success(companyListArry);
-            
             
             
         }failure:^(id failObj){

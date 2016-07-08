@@ -52,10 +52,6 @@
     [_companyTrackingCollectionViewCellDelegate tappedButtonAtTag:tag];
 }
 
-- (void)setTextViewHidden:(BOOL)hide {
-    [_companyTrackingView setTextViewHidden:hide];
-}
-
 - (void)changeCaretToUp:(BOOL)up {
     [_companyTrackingView changeCaretToUp:up];
 }

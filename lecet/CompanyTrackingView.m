@@ -39,9 +39,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonBelow;
 @property (weak, nonatomic) IBOutlet UIView *containerButtonView;
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @property (weak, nonatomic) IBOutlet UIView *containerTextView;
 @property (weak, nonatomic) IBOutlet UILabel *labelUpdateDescription;
+@property (weak, nonatomic) IBOutlet UILabel *leftLabelPriceDesc;
 @property (weak, nonatomic) IBOutlet UIView *labelContainer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
@@ -75,24 +76,27 @@
     _containerButtonView.layer.masksToBounds = YES;
     
     
-    _textView.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
-    _textView.font =    COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
+    
     
     _labelUpdateDescription.font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     _labelUpdateDescription.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
+    _leftLabelPriceDesc
+    .font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
+    _leftLabelPriceDesc.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
+    
     [_labelContainer.layer setCornerRadius:corderRadius];
     _labelContainer.layer.masksToBounds = YES;
     
     
     [_containerTextView.layer setCornerRadius:corderRadius];
     _containerTextView.layer.masksToBounds = YES;
-    [_textView.layer setCornerRadius:corderRadius];
-    _textView.layer.masksToBounds = YES;
-    
+
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
     _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
     
+    
+  
 }
 
 
@@ -125,9 +129,6 @@
     [_buttonBelow setTag:tag];
 }
 
-- (void)setTextViewHidden:(BOOL)hide {
-    [_textView setHidden:hide];
-}
 
 - (void)changeCaretToUp:(BOOL)up {
     
@@ -143,9 +144,14 @@
 
 - (void)setImage:(id)info {
 
-    NSString *summary =  info;
+    NSString *summary =  [info stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
     if (summary.length > 0) {
+        
+        _leftLabelPriceDesc.text = @"$0";
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
+    
     }
     
 }
@@ -153,6 +159,7 @@
 - (void)setLabelDescription:(NSString *)text {
     _labelUpdateDescription.text = text;
 }
+
 
 
 @end

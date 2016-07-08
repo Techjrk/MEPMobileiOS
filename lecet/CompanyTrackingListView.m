@@ -121,7 +121,7 @@
     if ([DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]]) {
         NSString *titleUpdates =  [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"summary"];
         [cell setButtonLabelTitle:titleUpdates];
-        [cell setImage:[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_TOSHOW]];
+        [cell setImage:titleUpdates];
         [cell setUpdateDescription:titleName];
     }
     
