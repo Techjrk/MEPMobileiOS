@@ -869,7 +869,8 @@
 - (void)companyTrackingListUpdates:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
 
     NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListUpdates, (long)trackId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+    NSDictionary *filter = @{@"filter[order]":@"updatedAt DESC"};
+    [self HTTP_GET:[self url:url] parameters:filter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
