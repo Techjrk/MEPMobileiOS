@@ -57,7 +57,7 @@
     
     
     _mapLabelContainerConstraintHeight.constant = kDeviceHeight * 0.132f;
-    _constraintContainerButtonAndTextHeight.constant = kDeviceHeight * 0.175f;
+    _constraintContainerButtonAndTextHeight.constant = kDeviceHeight * 0.17f;
 
     _nameLabel.font = COMPANYTRACKINGVIEW_LABEL_NAME_FONT;
     _nameLabel.textColor = COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR;
@@ -144,14 +144,19 @@
 
 - (void)setImage:(id)info {
 
-    NSString *summary =  [info stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *modelType =  info;
     
-    if (summary.length > 0) {
-        
+    if ([modelType isEqual:@"ProjectContact"]) {
+        _rightImageIcon.image = [UIImage imageNamed:@"addAcct_icon"];
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+    
+    }
+    
+    if ([modelType isEqual:@"Bid"]) {
         _leftLabelPriceDesc.text = @"$0";
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
         [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
-    
+        
     }
     
 }

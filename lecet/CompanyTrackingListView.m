@@ -121,7 +121,8 @@
     if ([DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]]) {
         NSString *titleUpdates =  [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"summary"];
         [cell setButtonLabelTitle:titleUpdates];
-        [cell setImage:titleUpdates];
+        id modelType = [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"modelType"];
+        [cell setImage:modelType];
         [cell setUpdateDescription:titleName];
     }
     
@@ -162,7 +163,7 @@
             
             NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];
             if ([flag isEqualToString:flagIdentifierOpen]) {
-                cellHeightToExpand = 60;
+                cellHeightToExpand = 50;
                 
                 size = CGSizeMake( _collectionView.frame.size.width, cellHeight + (cellHeight * kCellAdditionalHeight) + cellHeightToExpand);
             }else
