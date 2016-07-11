@@ -31,6 +31,7 @@
 #define TITLENAME                   @"title"
 #define PROJECTGROUPID              @"id"
 #define SUBCATEGORYDATA             @"SubData"
+#define PROJECTCATEGORIES             @"projectCategories"
 #define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
 
 #define INDEXFORSEARCHRESULT        @"index"
@@ -54,6 +55,11 @@
 - (void)setInfo:(id)info {
     dataInfo = info;
 }
+
+- (void)setDataInfo:(id)info {
+   dataInfo =  [self dataManipulationGroupListInfo:info];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [_listView setInfo:[dataInfo copy]];
@@ -218,6 +224,26 @@
     return resArray;
 }
 
+
+#pragma mark - Data Manipulation Two
+
+- (NSMutableArray *)dataManipulationGroupListInfo:(id)obj {
+ 
+    NSMutableArray *mutArray = [NSMutableArray new];
+    
+    for (id headerObj in obj) {
+        
+        NSMutableArray *configuredSubArray = [self addDropDownButtonAndSelectionFlagInArray:headerObj[PROJECTCATEGORIES]];
+        NSMutableArray *subArray = [self filteredArray:configuredSubArray projectGroupId:headerObj[PROJECTGROUPID]];
+        NSDictionary *dict = @{TITLENAME:headerObj[TITLENAME],PROJECTGROUPID:headerObj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:subArray};
+        [mutArray addObject:dict];
+    }
+    
+    return mutArray;
+    
+}
+
+
 #pragma mark - Data Manipulation
 
 - (NSMutableArray *)manipulatedDataInfoGroupListInfo:(id)obj categoryListInfo:(id)catObj {
@@ -259,6 +285,7 @@
     return array;
 }
 
+#pragma mark - Selected Items
 - (void)tappedSelectionButton:(id)items {
  
     NSMutableArray *resArray = [NSMutableArray new];

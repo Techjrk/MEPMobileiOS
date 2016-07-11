@@ -916,8 +916,8 @@
 #pragma mark - PROJECT GROUP HTTP REQUEST
 
 - (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure {
-    
-    [self HTTP_GET:[self url:kUrlProjectGroup] parameters:nil success:^(id object) {
+    NSDictionary *filter =@{@"filter[include]":@"projectCategories"};
+    [self HTTP_GET:[self url:kUrlProjectGroup] parameters:filter success:^(id object) {
         success(object);
         
     } failure:^(id object) {

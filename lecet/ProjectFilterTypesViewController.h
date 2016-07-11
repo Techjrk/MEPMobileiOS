@@ -10,5 +10,5 @@
 #import "BaseViewController.h"
 
 @interface ProjectFilterTypesViewController : BaseViewController
-- (void)setInfoGroupList:(id)obj categoryList:(id)catList;
+- (void)setDataInfo:(id)info;
 @end
