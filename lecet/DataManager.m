@@ -753,7 +753,7 @@
 
 - (void)projectTrackingList:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup"};
+    NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup",@"filter[include]":@"updates"};
     
     NSString *url = [NSString stringWithFormat:kUrlProjectTrackingList, (long)trackId.integerValue];
     [self HTTP_GET:[self url:url] parameters:parameter success:^(id object) {

@@ -25,6 +25,9 @@ typedef enum : NSUInteger {
     ProjectTrackUpdateTypeNone = 0,
     ProjectTrackUpdateTypeNewBid = 2,
     ProjectTrackUpdateTypeNewNote = 3,
+    ProjectTrackUpdateTypeStage = 4,
+    ProjectTrackUpdateTypeWorkType = 5,
+    ProjectTrackUpdateTypeContact = 6,
 } ProjectTrackUpdateType;
 
 

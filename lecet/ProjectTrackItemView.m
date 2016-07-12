@@ -106,6 +106,21 @@
     
     NSString *county = [DerivedNSManagedObject objectOrNil:project[@"county"]];
     NSString *state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
+    NSDictionary *update = [DerivedNSManagedObject objectOrNil:info[@"update"]];
+    NSString *summary;
+    NSString *detailsUpdate;
+    NSString *amountDetails = @"$0";
+    
+    
+    if (update != nil) {
+        
+        summary = update[@"summary"];
+        detailsUpdate = update[@"modelObject"][@"company"][@"name"];
+        
+        NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
+        amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
+    }
+    
     if (county != nil) {
         addr = [addr stringByAppendingString:county];
         
@@ -163,10 +178,25 @@
                 _constraintUpdateContainerHeight.constant = kDeviceHeight * (!isExpanded?0.06:0.133);
                 
                 [self setButtonTitle:isExpanded];
+                [self setImageViewType:updateType];
                 
                 switch ((long)updateType) {
                     case ProjectTrackUpdateTypeNewBid:{
-                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_BID");
+                        _labelUpdateType.text = summary;
+                        _labelUpdateDetails.attributedText = [self attributedStringAmount:amountDetails description:detailsUpdate];
+                        break;
+                    }
+                    case ProjectTrackUpdateTypeStage: {
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        break;
+                    }
+                        
+                    case ProjectTrackUpdateTypeWorkType: {
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        break;
+                    }
+                    case ProjectTrackUpdateTypeContact: {
+                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
                         break;
                     }
                         
@@ -215,6 +245,70 @@
         _mapView.hidden = YES;
     }
 
+}
+
+
+- (void)setImageViewType:(ProjectTrackUpdateType)updateType {
+    
+    UIImage *imageType;
+    switch ((long)updateType) {
+        case ProjectTrackUpdateTypeNewBid:{
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+            break;
+        }
+        case ProjectTrackUpdateTypeStage: {
+            
+            break;
+        }
+            
+        case ProjectTrackUpdateTypeWorkType: {
+            
+            break;
+        }
+        case ProjectTrackUpdateTypeContact: {
+            imageType = [UIImage imageNamed:@"addAcct_icon"];
+            break;
+        }
+            
+        case ProjectTrackUpdateTypeNewNote: {
+            
+            break;
+        }
+            
+    }
+
+    _imageView.image = imageType;
+    
+}
+
+- (NSMutableAttributedString *)attributedStringAmount:(NSString *)amount description:(NSString *)desc {
+    
+    
+    NSMutableAttributedString *amountAttribute = [[NSMutableAttributedString alloc] initWithString:amount];
+    
+    
+    NSString *descString = [NSString stringWithFormat:@"%@",desc];
+    NSMutableAttributedString *descAttribute = [[NSMutableAttributedString alloc] initWithString:descString];
+    
+   
+    
+    NSMutableParagraphStyle *amountStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [amountStyle setAlignment:NSTextAlignmentLeft];
+    
+    NSMutableParagraphStyle *descStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [descStyle setAlignment:NSTextAlignmentRight];
+    
+    [amountAttribute addAttribute:NSParagraphStyleAttributeName value:amountStyle range:NSMakeRange(0, amount.length)];
+    
+    [descAttribute addAttribute:NSParagraphStyleAttributeName value:descStyle range:NSMakeRange(0, desc.length)];
+    CGFloat textLength = amount.length + desc.length;
+    //CGFloat width = _labelContainer.frame.size.width;
+    CGFloat space = 170 - textLength;
+    [amountAttribute addAttribute:NSKernAttributeName value:[NSNumber numberWithFloat:space] range:NSMakeRange(amountAttribute.length - 1, 1)];
+    
+    [amountAttribute appendAttributedString:[descAttribute mutableCopy]];
+    
+    return amountAttribute;
 }
 
 #pragma mark - Map Delegate

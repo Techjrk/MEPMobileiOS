@@ -47,6 +47,7 @@ typedef enum  {
 #define kCellIdentifierEdit             @"kCellIdentifierEdit"
 #define kStateIndex                     @"kStateIndex"
 #define kSortKey                        @[@"bidDate", @"lastPublishDate", @"firstPublishDate", @"estLow", @"estLow"]
+#define kUpdateData                     @"update"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -86,10 +87,59 @@ typedef enum  {
     }
     
     for (NSDictionary *item in self.collectionItems) {
-        NSMutableDictionary *status = [@{kStateSelected:[NSNumber numberWithBool:NO], kStateUpdateType:[NSNumber numberWithInt:ProjectTrackUpdateTypeNewBid], kStateShowUpdate:[NSNumber numberWithBool:YES], kStateExpanded:[NSNumber numberWithBool:NO]} mutableCopy];
-        collectionItemsState[item[@"id"]] = [@{kStateData:item, kStateStatus:status} mutableCopy];
+        
+        
+        BOOL showUpdate = [DerivedNSManagedObject objectOrNil:item[@"updates"]] != nil?YES:NO;
+        NSDictionary *update = [self update:item[@"updates"]];
+        
+        NSMutableDictionary *status = [@{kStateSelected:[NSNumber numberWithBool:NO], kStateUpdateType:[NSNumber numberWithInt:[self projectUpdateType:update]], kStateShowUpdate:[NSNumber numberWithBool:showUpdate], kStateExpanded:[NSNumber numberWithBool:NO]} mutableCopy];
+        
+        collectionItemsState[item[@"id"]] = [@{kStateData:item, kStateStatus:status,kUpdateData:update} mutableCopy];
         
     }
+    
+}
+
+- (NSDictionary *)update:(NSArray *)array {
+    
+    NSDictionary *update = [NSDictionary new];
+        NSArray *bids = [array copy];
+        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO];
+        NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    if (sorted.count > 0) {
+        
+        update = [sorted objectAtIndex:0];
+        return  update;
+    }else {
+        return update;
+    }
+    
+}
+
+- (ProjectTrackUpdateType)projectUpdateType:(id)info {
+    
+    
+    if ([DerivedNSManagedObject objectOrNil:info[@"modelType"]]) {
+        if ([info[@"modelType"] isEqual:@"Bid"]) {
+            return ProjectTrackUpdateTypeNewBid;
+        }
+        
+        if ([info[@"modelType"] isEqual:@"ProjectStage"]) {
+            return ProjectTrackUpdateTypeStage;
+        }
+        
+        if ([info[@"modelType"] isEqual:@"WorkType"]) {
+            return ProjectTrackUpdateTypeWorkType;
+        }
+        
+        if ([info[@"modelType"] isEqual:@"ProjectContact"]) {
+            return ProjectTrackUpdateTypeContact;
+        }
+    }
+    
+    
+    return ProjectTrackUpdateTypeNone;
+    
 }
 
 #pragma Custom Delegates
