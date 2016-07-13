@@ -107,19 +107,6 @@
     NSString *county = [DerivedNSManagedObject objectOrNil:project[@"county"]];
     NSString *state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
     NSDictionary *update = [DerivedNSManagedObject objectOrNil:info[@"update"]];
-    NSString *summary;
-    NSString *detailsUpdate;
-    NSString *amountDetails = @"$0";
-    
-    
-    if (update != nil) {
-        
-        summary = update[@"summary"];
-        detailsUpdate = update[@"modelObject"][@"company"][@"name"];
-        
-        NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
-        amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
-    }
     
     if (county != nil) {
         addr = [addr stringByAppendingString:county];
@@ -182,26 +169,27 @@
                 
                 switch ((long)updateType) {
                     case ProjectTrackUpdateTypeNewBid:{
-                        _labelUpdateType.text = summary;
-                        _labelUpdateDetails.attributedText = [self attributedStringAmount:amountDetails description:detailsUpdate];
+                        [self updateNewBidInfo:update];
                         break;
                     }
                     case ProjectTrackUpdateTypeStage: {
-                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        [self updateNewStage:update];
                         break;
                     }
                         
                     case ProjectTrackUpdateTypeWorkType: {
-                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        _labelUpdateType.text = @"Work Type";
+                        _labelUpdateDetails.text = @"Work Type";
                         break;
                     }
                     case ProjectTrackUpdateTypeContact: {
-                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        [self updateNewContactInfo:update];
                         break;
                     }
                         
                     case ProjectTrackUpdateTypeNewNote: {
                         _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        
                         break;
                     }
                         
@@ -257,12 +245,12 @@
             break;
         }
         case ProjectTrackUpdateTypeStage: {
-            
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
             break;
         }
             
         case ProjectTrackUpdateTypeWorkType: {
-            
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
             break;
         }
         case ProjectTrackUpdateTypeContact: {
@@ -271,7 +259,7 @@
         }
             
         case ProjectTrackUpdateTypeNewNote: {
-            
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
             break;
         }
             
@@ -281,16 +269,12 @@
     
 }
 
-- (NSMutableAttributedString *)attributedStringAmount:(NSString *)amount description:(NSString *)desc {
-    
+- (NSMutableAttributedString *)attributedStringLeftDesc:(NSString *)amount RightDesc:(NSString *)desc {
     
     NSMutableAttributedString *amountAttribute = [[NSMutableAttributedString alloc] initWithString:amount];
     
-    
     NSString *descString = [NSString stringWithFormat:@"%@",desc];
     NSMutableAttributedString *descAttribute = [[NSMutableAttributedString alloc] initWithString:descString];
-    
-   
     
     NSMutableParagraphStyle *amountStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [amountStyle setAlignment:NSTextAlignmentLeft];
@@ -302,13 +286,60 @@
     
     [descAttribute addAttribute:NSParagraphStyleAttributeName value:descStyle range:NSMakeRange(0, desc.length)];
     CGFloat textLength = amount.length + desc.length;
-    //CGFloat width = _labelContainer.frame.size.width;
     CGFloat space = 170 - textLength;
     [amountAttribute addAttribute:NSKernAttributeName value:[NSNumber numberWithFloat:space] range:NSMakeRange(amountAttribute.length - 1, 1)];
     
     [amountAttribute appendAttributedString:[descAttribute mutableCopy]];
     
     return amountAttribute;
+}
+
+#pragma mark - DetailsInfo
+- (void)updateNewBidInfo:(id)update {
+    
+    NSString *summary;
+    NSString *detailsUpdate;
+    NSString *amountDetails = @"$0";
+    
+    if (update != nil) {
+        
+        summary = update[@"summary"];
+        detailsUpdate = update[@"modelObject"][@"company"][@"name"];
+        NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
+        amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
+    }
+    
+    
+    _labelUpdateType.text = summary;
+    _labelUpdateDetails.attributedText = [self attributedStringLeftDesc:amountDetails RightDesc:detailsUpdate];
+}
+
+- (void)updateNewContactInfo:(id)update{
+
+    NSString *summary;
+    NSString *contactTitle;
+    NSString *company;
+    
+    if (update != nil) {
+        
+        summary = update[@"summary"];
+        company = update[@"modelObject"][@"company"][@"name"];
+        contactTitle = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"contact"][@"title"]];
+        
+    }
+
+    _labelUpdateType.text = summary;
+    _labelUpdateDetails.attributedText = [self attributedStringLeftDesc:company RightDesc:contactTitle];
+}
+
+- (void)updateNewStage:(id)update {
+    NSString *summary;
+ 
+    if (update != nil) {
+        summary = update[@"summary"];
+    }
+    
+    _labelUpdateType.text = summary;
 }
 
 #pragma mark - Map Delegate
@@ -334,7 +365,6 @@
     return userAnnotationView;
     
 }
-
 
 - (IBAction)tappedButtonExppand:(id)sender {
     BOOL expanded = [stateStatus[kStateExpanded] boolValue];

@@ -75,9 +75,6 @@
     [_containerButtonView.layer setCornerRadius:corderRadius];
     _containerButtonView.layer.masksToBounds = YES;
     
-    
-    
-    
     _labelUpdateDescription.font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     _labelUpdateDescription.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
     _leftLabelPriceDesc
@@ -95,8 +92,6 @@
 
     _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
     
-    
-  
 }
 
 
@@ -166,7 +161,18 @@
 }
 
 - (void)searchForLocationGeocode {
-    NSString *address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
+    
+    NSString *address;
+    
+    NSArray *addressTwoArray = [_address2Label.text componentsSeparatedByString:@" "];
+    
+    
+    NSString *zip = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:2]];
+    if ([zip isEqual:@"<null>"] || zip == nil) {
+        address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
+    } else {
+        address = [addressTwoArray objectAtIndex:2];
+    }
     
     NSString *location = address;
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -223,6 +229,5 @@
     return userAnnotationView;
     
 }
-
 
 @end

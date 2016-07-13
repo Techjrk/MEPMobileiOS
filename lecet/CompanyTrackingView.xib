@@ -155,7 +155,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-gC-77o">
-                                            <rect key="frame" x="10" y="0.0" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="10" y="0.0" width="0.0" height="58"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -168,6 +168,7 @@
                                         <constraint firstItem="YpB-fZ-msI" firstAttribute="leading" secondItem="Tbv-EQ-RLc" secondAttribute="leading" id="4vp-RA-Vl6"/>
                                         <constraint firstItem="CLT-TU-Qli" firstAttribute="width" secondItem="YpB-fZ-msI" secondAttribute="width" id="9fm-qA-ouP"/>
                                         <constraint firstItem="YpB-fZ-msI" firstAttribute="width" secondItem="Tbv-EQ-RLc" secondAttribute="width" multiplier="0.03" id="Aqr-QZ-5a8"/>
+                                        <constraint firstAttribute="bottom" secondItem="UdR-gC-77o" secondAttribute="bottom" id="Gok-3g-BZ8"/>
                                         <constraint firstItem="CnH-2o-XlP" firstAttribute="leading" secondItem="UdR-gC-77o" secondAttribute="trailing" id="ORd-PP-QlV"/>
                                         <constraint firstAttribute="trailing" secondItem="CLT-TU-Qli" secondAttribute="trailing" id="PLM-DG-1BW"/>
                                         <constraint firstItem="CLT-TU-Qli" firstAttribute="top" secondItem="Tbv-EQ-RLc" secondAttribute="top" id="QIA-VO-keC"/>
