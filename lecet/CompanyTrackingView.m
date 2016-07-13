@@ -148,9 +148,9 @@
     }
     
     if ([modelType isEqual:@"Bid"]) {
-        _leftLabelPriceDesc.text = @"$0";
+       // _leftLabelPriceDesc.text = @"$0";
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
-        [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
         
     }
     

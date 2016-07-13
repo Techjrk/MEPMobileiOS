@@ -144,7 +144,6 @@
     NSString *projectType = [NSString stringWithFormat:@"%@ %@ %@", primaryProjectTypeTitle==nil?@"":primaryProjectTypeTitle, projectCategoryTitle==nil?@"":projectCategoryTitle, projectGroupTitle==nil?@"":projectGroupTitle];
 
     _labelType.text = projectType;
-    
     stateStatus = info[kStateStatus];
     
     if (stateStatus != nil) {
@@ -178,8 +177,8 @@
                     }
                         
                     case ProjectTrackUpdateTypeWorkType: {
-                        _labelUpdateType.text = @"Work Type";
-                        _labelUpdateDetails.text = @"Work Type";
+                        //_labelUpdateType.text = @"Work Type";
+                        //_labelUpdateDetails.text = @"Work Type";
                         break;
                     }
                     case ProjectTrackUpdateTypeContact: {
@@ -311,7 +310,7 @@
     
     
     _labelUpdateType.text = summary;
-    _labelUpdateDetails.attributedText = [self attributedStringLeftDesc:amountDetails RightDesc:detailsUpdate];
+    _labelUpdateDetails.text = detailsUpdate;
 }
 
 - (void)updateNewContactInfo:(id)update{
@@ -329,7 +328,7 @@
     }
 
     _labelUpdateType.text = summary;
-    _labelUpdateDetails.attributedText = [self attributedStringLeftDesc:company RightDesc:contactTitle];
+    _labelUpdateDetails.text = company;
 }
 
 - (void)updateNewStage:(id)update {
