@@ -46,7 +46,7 @@ typedef enum : NSUInteger {
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
-    
+    BOOL isPushingController;
 }
 @property (strong, nonatomic) NSNumber *resultIndex;
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
@@ -451,49 +451,74 @@ typedef enum : NSUInteger {
 
     } else if (sectionType == SearchSectionProjects) {
       
-        NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
-        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
-        NSDictionary *item = items[indexPath.row];
-        
-        [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
-
-            ProjectDetailViewController *detail = [ProjectDetailViewController new];
-            detail.view.hidden = NO;
-            [detail detailsFromProject:object];
+        if (!isPushingController) {
+            isPushingController = YES;
+            NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+            NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+            NSDictionary *item = items[indexPath.row];
             
-            [self.navigationController pushViewController:detail animated:YES];
-        } failure:^(id object) {
-        }];
+            [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
+                
+                ProjectDetailViewController *detail = [ProjectDetailViewController new];
+                detail.view.hidden = NO;
+                [detail detailsFromProject:object];
+                
+                isPushingController = NO;
+                [self.navigationController pushViewController:detail animated:YES];
+                
+            } failure:^(id object) {
+                
+                isPushingController = NO;
+                
+            }];
+            
+        }
 
     } else if (sectionType == SearchSectionCompanies) {
         
-        NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
-        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
-        NSDictionary *item = items[indexPath.row];
-        
-        [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
-            id returnObject = object;
-       
-            [[DataManager sharedManager] companyProjectBids:item[@"id"] success:^(id object) {
-                CompanyDetailViewController *controller = [CompanyDetailViewController new];
-                controller.view.hidden = NO;
-                [controller setInfo:returnObject];
-                [self.navigationController pushViewController:controller animated:YES];
+        if (!isPushingController) {
+
+            isPushingController = YES;
+            NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
+            NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+            NSDictionary *item = items[indexPath.row];
+            
+            [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
+                id returnObject = object;
+                
+                [[DataManager sharedManager] companyProjectBids:item[@"id"] success:^(id object) {
+                    CompanyDetailViewController *controller = [CompanyDetailViewController new];
+                    controller.view.hidden = NO;
+                    [controller setInfo:returnObject];
+                    isPushingController = NO;
+                    [self.navigationController pushViewController:controller animated:YES];
+                } failure:^(id object) {
+                    isPushingController = NO;
+                }];
+                
             } failure:^(id object) {
+                
+                isPushingController = YES;
+                
             }];
-          
-        } failure:^(id object) {
-        }];
+
+        }
 
     } else if (sectionType == SearchSectionContacts) {
         
-        NSMutableDictionary *result = collectionItems[SEARCH_RESULT_CONTACT];
-        NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
-        NSDictionary *item = items[indexPath.row];
-        
-        ContactDetailViewController *controller = [ContactDetailViewController new];
-        [controller setCompanyContactDetailsFromDictionary:item];
-        [self.navigationController pushViewController:controller animated:YES];
+        if (!isPushingController) {
+
+            isPushingController = YES;
+            NSMutableDictionary *result = collectionItems[SEARCH_RESULT_CONTACT];
+            NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
+            NSDictionary *item = items[indexPath.row];
+            
+            ContactDetailViewController *controller = [ContactDetailViewController new];
+            [controller setCompanyContactDetailsFromDictionary:item];
+            isPushingController = NO;
+            [self.navigationController pushViewController:controller animated:YES];
+
+        }
 
     } else if (sectionType == SearchSectionSavedProject) {
         
