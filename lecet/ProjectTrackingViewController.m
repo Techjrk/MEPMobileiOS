@@ -169,6 +169,8 @@ typedef enum  {
         
         [_collectionView reloadData];
         
+        [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"), (long)self.collectionItems.count]];
+
         [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
         
     } failure:^(id object) {
@@ -199,6 +201,7 @@ typedef enum  {
             controller.isGreyedBackground = YES;
             controller.customCollectionViewDelegate = self;
             controller.modalPresentationStyle = UIModalPresentationCustom;
+
             [self presentViewController:controller animated:NO completion:nil];
         
         } failure:^(id object) {
@@ -270,6 +273,7 @@ typedef enum  {
 - (void)selectedEditTabButton:(EditTabItem)item {
     
     if (item == EditTabItemDone) {
+        [self clearSelectedItems];
         [self chageEditMode:NO];
     } else {
     
@@ -278,16 +282,21 @@ typedef enum  {
  
 }
 
-- (void)clearSelection {
+- (void)clearSelectedItems {
     
     for (NSNumber *itemKey in collectionItemsState.allKeys) {
-
+        
         NSMutableDictionary *itemState = collectionItemsState[itemKey];
         NSMutableDictionary *state = itemState[kStateStatus];
         
         state[kStateSelected] = [NSNumber numberWithBool:NO];
     }
+
+}
+
+- (void)clearSelection {
     
+    [self clearSelectedItems];
     [_collectionView reloadData];
     
     [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
@@ -377,6 +386,8 @@ typedef enum  {
             
             [_collectionView reloadData];
             
+            [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"), (long)self.collectionItems.count]];
+
             [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
             
         } failure:^(id object) {
@@ -539,7 +550,7 @@ typedef enum  {
         TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
         cellItem.headerDisabled = YES;
         cellItem.trackingListViewDelegate = self;
-        [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"PROJECT_TRACKING_LIST")];
+        [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"PROJECT_TRACKING_MOVE")];
         
     }
 

@@ -119,7 +119,7 @@
 "PROJECTDETAILSATE_TITLE_LABEL_TEXT"                =         "You are about to hide this project";
 
 //ShareLocationViewController.xib
-"SHARE_LOCATION_MSG"                        =               "This feature is only available\nwhen you share your location\nwith this app.Please tap OK\nwhen prompted.";
+"SHARE_LOCATION_MSG"                        =               "This feature is only available\nwhen you share your location\nwith this app. Please tap OK\nwhen prompted.";
 "SHARE_LOCATION_BUTTON_SHARE"               =               "SHARE MY LOCATION";
 "SHARE_LOCATION_BUTTON_CANCEL"              =               "CANCEL";
 
@@ -166,7 +166,7 @@
 
 //SettingViewController.xib
 "SETTINGS_NAV_TITLE"                        =               "Settings";
-"SETTINGS_SIGNOUT"                          =               "Sign out from Lecet MEP";
+"SETTINGS_SIGNOUT"                          =               "Sign out from Lecet MEP?";
 
 //ProjectsNearMeViewController.xib
 "PROJECTS_NEAR_LOCATION_EMPTY"              =               "Please enter a location to search";
@@ -228,6 +228,7 @@
 //Dashboard Tracking Lists
 "PROJECT_TRACKING_LIST"                     =               "Project lists";
 "COMPANY_TRACKING_LIST"                     =               "Company lists";
+"PROJECT_TRACKING_MOVE"                     =               "Move to";
 
 //SelectMoveView.xib
 "SELECT_MOVE"                               =               "MOVE";
@@ -249,8 +250,8 @@
 
 //ProjectTrackingViewController.xib
 "PROJECT_TRACK_SELECTION_NONE"              =               "No item was selected from the project list";
-"PROJECT_TRACK_SELECTION_MOVE"              =               "Move selected projects to %@";
-"PROJECT_TRACK_SELECTION_REMOVE"            =               "Remove selected projects from %@";
+"PROJECT_TRACK_SELECTION_MOVE"              =               "Move selected projects to %@?";
+"PROJECT_TRACK_SELECTION_REMOVE"            =               "Remove selected projects from %@?";
 
 //SearchViewController.xib
 "SEARCH_PLACEHOLDER"                        =               "Search";
