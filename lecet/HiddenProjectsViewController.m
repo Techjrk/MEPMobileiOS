@@ -62,9 +62,10 @@
     
     HiddenProjectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    //DB_CompanyContact *item = collectionItems[indexPath.row];
+    NSMutableDictionary *itemDict = [self.collectionItems[indexPath.row] mutableCopy];
+    self.collectionItems[indexPath.row] = itemDict;
+    [cell setInfo:itemDict];
     
-    //[cell setItemInfo:@{CONTACT_NAME:item.name, CONTACT_COMPANY:item.relationshipCompany.name}];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     

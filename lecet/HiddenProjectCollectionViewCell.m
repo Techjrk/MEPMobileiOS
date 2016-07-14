@@ -20,7 +20,7 @@
 }
 
 - (void)setInfo:(id)info {
-    
+    [_hiddenItem setInfo:info];
 }
 
 @end
