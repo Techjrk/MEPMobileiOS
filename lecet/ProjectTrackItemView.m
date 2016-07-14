@@ -244,7 +244,7 @@
             break;
         }
         case ProjectTrackUpdateTypeStage: {
-            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+            imageType = [UIImage imageNamed:@"Info"];
             break;
         }
             
@@ -307,7 +307,6 @@
         NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
         amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
     }
-    
     
     _labelUpdateType.text = summary;
     _labelUpdateDetails.text = detailsUpdate;
