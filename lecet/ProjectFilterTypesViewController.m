@@ -23,15 +23,8 @@
 
 @implementation ProjectFilterTypesViewController
 
-#define UnSelectedFlag              @"0"
-#define SelectedFlag                @"1"
-
-#define SELECTIONFLAGNAME           @"selectionFlag"
-#define DROPDOWNFLAGNAME            @"dropDownFlagName"
-#define TITLENAME                   @"title"
 #define PROJECTGROUPID              @"id"
-#define SUBCATEGORYDATA             @"SubData"
-#define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
+#define PROJECTCATEGORIES             @"projectCategories"
 
 #define INDEXFORSEARCHRESULT        @"index"
 #define DATARESULTINSECONDLAYER     @"dataresultInSecondLayer"
@@ -45,7 +38,6 @@
     
 }
 
-
 - (void)setInfoGroupList:(id)obj categoryList:(id)catList {
     
    dataInfo =  [self manipulatedDataInfoGroupListInfo:obj categoryListInfo:catList];
@@ -54,6 +46,11 @@
 - (void)setInfo:(id)info {
     dataInfo = info;
 }
+
+- (void)setDataInfo:(id)info {
+   dataInfo =  [self dataManipulationGroupListInfo:info];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [_listView setInfo:[dataInfo copy]];
@@ -218,6 +215,26 @@
     return resArray;
 }
 
+
+#pragma mark - Data Manipulation Two
+
+- (NSMutableArray *)dataManipulationGroupListInfo:(id)obj {
+ 
+    NSMutableArray *mutArray = [NSMutableArray new];
+    
+    for (id headerObj in obj) {
+        
+        NSMutableArray *configuredSubArray = [self addDropDownButtonAndSelectionFlagInArray:headerObj[PROJECTCATEGORIES]];
+        NSMutableArray *subArray = [self filteredArray:configuredSubArray projectGroupId:headerObj[PROJECTGROUPID]];
+        NSDictionary *dict = @{TITLENAME:headerObj[TITLENAME],PROJECTGROUPID:headerObj[PROJECTGROUPID],SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,SUBCATEGORYDATA:subArray};
+        [mutArray addObject:dict];
+    }
+    
+    return mutArray;
+    
+}
+
+
 #pragma mark - Data Manipulation
 
 - (NSMutableArray *)manipulatedDataInfoGroupListInfo:(id)obj categoryListInfo:(id)catObj {
@@ -259,6 +276,7 @@
     return array;
 }
 
+#pragma mark - Selected Items
 - (void)tappedSelectionButton:(id)items {
  
     NSMutableArray *resArray = [NSMutableArray new];

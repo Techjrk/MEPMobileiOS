@@ -753,7 +753,7 @@
 
 - (void)projectTrackingList:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup"};
+    NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup",@"filter[include]":@"updates"};
     
     NSString *url = [NSString stringWithFormat:kUrlProjectTrackingList, (long)trackId.integerValue];
     [self HTTP_GET:[self url:url] parameters:parameter success:^(id object) {
@@ -869,7 +869,8 @@
 - (void)companyTrackingListUpdates:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
 
     NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListUpdates, (long)trackId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+    NSDictionary *filter = @{@"filter[order]":@"updatedAt DESC"};
+    [self HTTP_GET:[self url:url] parameters:filter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -915,8 +916,8 @@
 #pragma mark - PROJECT GROUP HTTP REQUEST
 
 - (void)projectGroupRequest:(APIBlock)success failure:(APIBlock)failure {
-    
-    [self HTTP_GET:[self url:kUrlProjectGroup] parameters:nil success:^(id object) {
+    NSDictionary *filter =@{@"filter[include]":@"projectCategories"};
+    [self HTTP_GET:[self url:kUrlProjectGroup] parameters:filter success:^(id object) {
         success(object);
         
     } failure:^(id object) {

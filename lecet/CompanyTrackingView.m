@@ -39,13 +39,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonBelow;
 @property (weak, nonatomic) IBOutlet UIView *containerButtonView;
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @property (weak, nonatomic) IBOutlet UIView *containerTextView;
 @property (weak, nonatomic) IBOutlet UILabel *labelUpdateDescription;
+@property (weak, nonatomic) IBOutlet UILabel *leftLabelPriceDesc;
 @property (weak, nonatomic) IBOutlet UIView *labelContainer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerButtonAndTextHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *rightImageIcon;
 
 @end
 
@@ -55,7 +57,7 @@
     
     
     _mapLabelContainerConstraintHeight.constant = kDeviceHeight * 0.132f;
-    _constraintContainerButtonAndTextHeight.constant = kDeviceHeight * 0.175f;
+    _constraintContainerButtonAndTextHeight.constant = kDeviceHeight * 0.17f;
 
     _nameLabel.font = COMPANYTRACKINGVIEW_LABEL_NAME_FONT;
     _nameLabel.textColor = COMPANYTRACKINGVIEW_LABEL_NAME_FONT_COLOR;
@@ -73,21 +75,19 @@
     [_containerButtonView.layer setCornerRadius:corderRadius];
     _containerButtonView.layer.masksToBounds = YES;
     
-    
-    _textView.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
-    _textView.font =    COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
-    
     _labelUpdateDescription.font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
     _labelUpdateDescription.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
+    _leftLabelPriceDesc
+    .font = COMPANYTRACKINGVIEW_TEXTVIEW_FONT;
+    _leftLabelPriceDesc.textColor = COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR;
+    
     [_labelContainer.layer setCornerRadius:corderRadius];
     _labelContainer.layer.masksToBounds = YES;
     
     
     [_containerTextView.layer setCornerRadius:corderRadius];
     _containerTextView.layer.masksToBounds = YES;
-    [_textView.layer setCornerRadius:corderRadius];
-    _textView.layer.masksToBounds = YES;
-    
+
     [_containerTextView setBackgroundColor:COMPANYTRACKINGVIEW_TEXTVIEW_BG_COLOR];
 
     _caretImageView.image = [UIImage imageNamed:@"caretDown_icon"];
@@ -124,9 +124,6 @@
     [_buttonBelow setTag:tag];
 }
 
-- (void)setTextViewHidden:(BOOL)hide {
-    [_textView setHidden:hide];
-}
 
 - (void)changeCaretToUp:(BOOL)up {
     
@@ -140,5 +137,97 @@
     }
 }
 
+- (void)setImage:(id)info {
+
+    NSString *modelType =  info;
+    
+    if ([modelType isEqual:@"ProjectContact"]) {
+        _rightImageIcon.image = [UIImage imageNamed:@"addAcct_icon"];
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+    
+    }
+    
+    if ([modelType isEqual:@"Bid"]) {
+       // _leftLabelPriceDesc.text = @"$0";
+        _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+        
+    }
+    
+}
+
+- (void)setLabelDescription:(NSString *)text {
+    _labelUpdateDescription.text = text;
+}
+
+- (void)searchForLocationGeocode {
+    
+    NSString *address;
+    
+    NSArray *addressTwoArray = [_address2Label.text componentsSeparatedByString:@" "];
+    
+    
+    NSString *zip = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:2]];
+    if ([zip isEqual:@"<null>"] || zip == nil) {
+        address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
+    } else {
+        address = [addressTwoArray objectAtIndex:2];
+    }
+    
+    NSString *location = address;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     
+                     if (placemarks && placemarks.count > 0) {
+                         
+                         CLPlacemark *result = [placemarks objectAtIndex:0];
+                         [self setMapInfoLatitude:result];
+                        
+                     } else if (error != nil) {
+                         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
+                     }
+                 }
+     ];
+}
+
+- (void)setMapInfoLatitude:(CLPlacemark *)coord {
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(coord.location.coordinate.latitude, coord.location.coordinate.longitude);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        
+    }
+    
+    return userAnnotationView;
+    
+}
 
 @end

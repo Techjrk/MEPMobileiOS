@@ -553,21 +553,12 @@
 - (void)filterTypes:(UIView*)view {
     
     [[DataManager sharedManager] projectGroupRequest:^(id obj){
-        
-        [[DataManager sharedManager] projectCategoryList:^(id catObj){
-            
-            ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
-            [controller setInfoGroupList:obj categoryList:catObj];
-            [self.navigationController pushViewController:controller animated:YES];
-            
-        }failure:^(id catFailObj){
-            
-        }];
-    
+        ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
+        [controller setDataInfo:obj];
+        [self.navigationController pushViewController:controller animated:YES];
     }failure:^(id obj){
         
     }];
-    
 }
 
 #pragma mark - WorkOwnerTypes Delegate

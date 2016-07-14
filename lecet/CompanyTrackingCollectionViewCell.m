@@ -52,12 +52,19 @@
     [_companyTrackingCollectionViewCellDelegate tappedButtonAtTag:tag];
 }
 
-- (void)setTextViewHidden:(BOOL)hide {
-    [_companyTrackingView setTextViewHidden:hide];
-}
-
 - (void)changeCaretToUp:(BOOL)up {
     [_companyTrackingView changeCaretToUp:up];
 }
 
+- (void)setImage:(id)imageName {
+    [_companyTrackingView setImage:imageName];
+}
+
+- (void)setUpdateDescription:(NSString *)text {
+    [_companyTrackingView setLabelDescription:text];
+}
+
+- (void)searchLocationGeoCode {
+    [_companyTrackingView searchForLocationGeocode];
+}
 @end

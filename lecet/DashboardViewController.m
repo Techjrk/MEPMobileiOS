@@ -596,7 +596,7 @@
             [trackingListInfo removeAllObjects];
             
             NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
-
+        
             [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
                 
                 trackingListInfo[kTrackList[0]] = [object mutableCopy];
@@ -619,6 +619,7 @@
             } failure:^(id object) {
                 
             }];
+            
             break;
         
         }
@@ -879,14 +880,13 @@
         }];
     } else {
         
-        [[DataManager sharedManager] companyTrackingList:trackItemInfo[@"id"] success:^(id object) {
+        [self companyTrackingListAndUpdatesFiltered:trackItemInfo success:^(id object){
             
             CompanyTrackingListViewController *controller = [CompanyTrackingListViewController new];
             [controller setTrackingInfo:trackItemInfo];
             [controller setInfo:object];
             [self.navigationController pushViewController:controller animated:YES];
-            
-        } failure:^(id object) {
+        }fail:^(id obj){
             
         }];
         
@@ -948,10 +948,41 @@
     
 }
 
+#pragma mark - CompanyTrackingListAndUpdates
 
+- (void)companyTrackingListAndUpdatesFiltered:(id)trackItemInfo success:(APIBlock)success fail:(APIBlock)fail {
+   
+    [[DataManager sharedManager] companyTrackingList:trackItemInfo[@"id"] success:^(id companyListObj) {
+       
+        [[DataManager sharedManager] companyTrackingListUpdates:trackItemInfo[@"id"]  success:^(id updatesObj){
+            
+             NSMutableArray *companyListArry = [NSMutableArray new];
+             
+             for (id obj in companyListObj) {
+                 NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"companyId == %@", [NSNumber numberWithInteger:[obj[@"id"] integerValue]]];
+                 NSArray *filteredUpdates = [updatesObj filteredArrayUsingPredicate:resultPredicate];
+                 NSMutableDictionary *dict = [obj mutableCopy];
+                 
+                 if (filteredUpdates.count > 0) {
+                     [dict setValue:filteredUpdates[0] forKey:@"UPDATES"];
+                 }
+             
+                 [companyListArry addObject:dict];
+             }
+            
+            success(companyListArry);
+            
+            
+        }failure:^(id failObj){
+            
+            fail(failObj);
+        }];
+    
+    } failure:^(id object) {
+        fail(object);
+    }];
 
-
-
-
+    
+}
 
 @end

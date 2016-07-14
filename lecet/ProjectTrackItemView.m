@@ -106,6 +106,8 @@
     
     NSString *county = [DerivedNSManagedObject objectOrNil:project[@"county"]];
     NSString *state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
+    NSDictionary *update = [DerivedNSManagedObject objectOrNil:info[@"update"]];
+    
     if (county != nil) {
         addr = [addr stringByAppendingString:county];
         
@@ -142,7 +144,6 @@
     NSString *projectType = [NSString stringWithFormat:@"%@ %@ %@", primaryProjectTypeTitle==nil?@"":primaryProjectTypeTitle, projectCategoryTitle==nil?@"":projectCategoryTitle, projectGroupTitle==nil?@"":projectGroupTitle];
 
     _labelType.text = projectType;
-    
     stateStatus = info[kStateStatus];
     
     if (stateStatus != nil) {
@@ -163,15 +164,31 @@
                 _constraintUpdateContainerHeight.constant = kDeviceHeight * (!isExpanded?0.06:0.133);
                 
                 [self setButtonTitle:isExpanded];
+                [self setImageViewType:updateType];
                 
                 switch ((long)updateType) {
                     case ProjectTrackUpdateTypeNewBid:{
-                        _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_BID");
+                        [self updateNewBidInfo:update];
+                        break;
+                    }
+                    case ProjectTrackUpdateTypeStage: {
+                        [self updateNewStage:update];
+                        break;
+                    }
+                        
+                    case ProjectTrackUpdateTypeWorkType: {
+                        //_labelUpdateType.text = @"Work Type";
+                        //_labelUpdateDetails.text = @"Work Type";
+                        break;
+                    }
+                    case ProjectTrackUpdateTypeContact: {
+                        [self updateNewContactInfo:update];
                         break;
                     }
                         
                     case ProjectTrackUpdateTypeNewNote: {
                         _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
+                        
                         break;
                     }
                         
@@ -217,6 +234,113 @@
 
 }
 
+
+- (void)setImageViewType:(ProjectTrackUpdateType)updateType {
+    
+    UIImage *imageType;
+    switch ((long)updateType) {
+        case ProjectTrackUpdateTypeNewBid:{
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+            break;
+        }
+        case ProjectTrackUpdateTypeStage: {
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+            break;
+        }
+            
+        case ProjectTrackUpdateTypeWorkType: {
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+            break;
+        }
+        case ProjectTrackUpdateTypeContact: {
+            imageType = [UIImage imageNamed:@"addAcct_icon"];
+            break;
+        }
+            
+        case ProjectTrackUpdateTypeNewNote: {
+            imageType = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
+            break;
+        }
+            
+    }
+
+    _imageView.image = imageType;
+    
+}
+
+- (NSMutableAttributedString *)attributedStringLeftDesc:(NSString *)amount RightDesc:(NSString *)desc {
+    
+    NSMutableAttributedString *amountAttribute = [[NSMutableAttributedString alloc] initWithString:amount];
+    
+    NSString *descString = [NSString stringWithFormat:@"%@",desc];
+    NSMutableAttributedString *descAttribute = [[NSMutableAttributedString alloc] initWithString:descString];
+    
+    NSMutableParagraphStyle *amountStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [amountStyle setAlignment:NSTextAlignmentLeft];
+    
+    NSMutableParagraphStyle *descStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [descStyle setAlignment:NSTextAlignmentRight];
+    
+    [amountAttribute addAttribute:NSParagraphStyleAttributeName value:amountStyle range:NSMakeRange(0, amount.length)];
+    
+    [descAttribute addAttribute:NSParagraphStyleAttributeName value:descStyle range:NSMakeRange(0, desc.length)];
+    CGFloat textLength = amount.length + desc.length;
+    CGFloat space = 170 - textLength;
+    [amountAttribute addAttribute:NSKernAttributeName value:[NSNumber numberWithFloat:space] range:NSMakeRange(amountAttribute.length - 1, 1)];
+    
+    [amountAttribute appendAttributedString:[descAttribute mutableCopy]];
+    
+    return amountAttribute;
+}
+
+#pragma mark - DetailsInfo
+- (void)updateNewBidInfo:(id)update {
+    
+    NSString *summary;
+    NSString *detailsUpdate;
+    NSString *amountDetails = @"$0";
+    
+    if (update != nil) {
+        
+        summary = update[@"summary"];
+        detailsUpdate = update[@"modelObject"][@"company"][@"name"];
+        NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
+        amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
+    }
+    
+    
+    _labelUpdateType.text = summary;
+    _labelUpdateDetails.text = detailsUpdate;
+}
+
+- (void)updateNewContactInfo:(id)update{
+
+    NSString *summary;
+    NSString *contactTitle;
+    NSString *company;
+    
+    if (update != nil) {
+        
+        summary = update[@"summary"];
+        company = update[@"modelObject"][@"company"][@"name"];
+        contactTitle = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"contact"][@"title"]];
+        
+    }
+
+    _labelUpdateType.text = summary;
+    _labelUpdateDetails.text = company;
+}
+
+- (void)updateNewStage:(id)update {
+    NSString *summary;
+ 
+    if (update != nil) {
+        summary = update[@"summary"];
+    }
+    
+    _labelUpdateType.text = summary;
+}
+
 #pragma mark - Map Delegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -240,7 +364,6 @@
     return userAnnotationView;
     
 }
-
 
 - (IBAction)tappedButtonExppand:(id)sender {
     BOOL expanded = [stateStatus[kStateExpanded] boolValue];

@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+#define UnSelectedFlag              @"0"
+#define SelectedFlag                @"1"
+#define SELECTIONFLAGNAME           @"selectionFlag"
+#define DROPDOWNFLAGNAME            @"dropDownFlagName"
+#define TITLENAME                   @"title"
+#define SUBCATEGORYDATA             @"SubData"
+#define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
+
 @protocol ProjectFilterCollapsibleListViewDelegate <NSObject>
 @optional
 - (void)tappedSelectionButton:(id)items;

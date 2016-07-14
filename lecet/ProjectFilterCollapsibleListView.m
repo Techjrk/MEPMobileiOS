@@ -23,15 +23,7 @@
 
 @implementation ProjectFilterCollapsibleListView
 
-
 #define kCellIdentifier             @"kCellIdentifier"
-#define UnSelectedFlag              @"0"
-#define SelectedFlag                @"1"
-#define SELECTIONFLAGNAME           @"selectionFlag"
-#define DROPDOWNFLAGNAME            @"dropDownFlagName"
-#define TITLENAME                   @"title"
-#define SUBCATEGORYDATA             @"SubData"
-#define SECONDSUBCATDATA            @"SECONDSUBCATDATA"
 
 - (void)awakeFromNib {
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectFilterCollapsibleCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
