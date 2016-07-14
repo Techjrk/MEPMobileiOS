@@ -12,12 +12,15 @@
 #import "ProfileNavView.h"
 
 #define CHANGEPASSWORD_VC_BG_COLOR          RGB(245,245,245)
+#define BOTTOM_LABEL_FONT_COLOR             RGB(149,149,149)
+#define BOTTOM_LABEL_FONT                   fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 9.0f)
 
 @interface ChangePasswordViewController ()<ProfileNavViewDelegate>{
     
 }
 @property (weak, nonatomic) IBOutlet ProfileNavView *profileNavView;
 @property (weak, nonatomic) IBOutlet ChangePasswordView *chnagePasswordView;
+@property (weak, nonatomic) IBOutlet UILabel *bottomLabel;
 
 @end
 
@@ -34,6 +37,8 @@
     // Do any additional setup after loading the view from its nib.
     _profileNavView.profileNavViewDelegate = self;
     [self.view setBackgroundColor:CHANGEPASSWORD_VC_BG_COLOR];
+    _bottomLabel.font = BOTTOM_LABEL_FONT;
+    _bottomLabel.textColor = BOTTOM_LABEL_FONT_COLOR;
     _profileNavView.profileNavViewDelegate = self;
     [_profileNavView setNavTitleLabel:NSLocalizedLanguage(@"CHANGEPASSWORD_NAV_TITLE")];
     [self enableTapGesture:YES];
