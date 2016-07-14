@@ -19,6 +19,7 @@
     NSMutableDictionary *proxy;
 }
 @property (weak, nonatomic) id parent;
+- (void)clearSubItems;
 @end
 
 @interface ListViewItemArray : NSMutableArray {
