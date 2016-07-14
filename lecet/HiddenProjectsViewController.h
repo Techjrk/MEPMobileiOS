@@ -11,5 +11,5 @@
 #import "BaseViewController.h"
 
 @interface HiddenProjectsViewController : BaseViewController
-@property (nonatomic, copy) NSMutableArray *collectionItems;
+@property (strong ,nonatomic) NSMutableArray *collectionItems;
 @end

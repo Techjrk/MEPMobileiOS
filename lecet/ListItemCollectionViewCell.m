@@ -59,6 +59,29 @@
     return [proxy objectForKey:aKey];
 }
 
+- (void)clearSubItems {
+    ListViewItemArray *items = proxy[LIST_VIEW_SUBITEMS];
+    
+    if (items) {
+    
+        [self clearItems:items];
+    }
+}
+
+- (void)clearItems:(ListViewItemArray*)items {
+    
+    for (ListViewItemDictionary *item in items) {
+        
+        item[STATUS_CHECK] = [NSNumber numberWithBool:NO];
+        ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+        
+        if (subItems) {
+            [self clearItems:subItems];
+        }
+        
+    }
+}
+
 @end
 
 

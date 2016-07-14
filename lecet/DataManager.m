@@ -31,6 +31,7 @@
 #define kUrlCompanyDetail                   @"Companies/%li?"
 #define kUrlCompanyBids                     @"Bids/"
 #define kUrlUserInfo                        @"LecetUsers/%li?"
+#define kUrlHiddenProjects                  @"LecetUsers/%li?"
 #define kUrlContactInfo                     @"Contacts/%li?"
 #define kUrlProjectsNear                    @"Projects/near"
 #define kUrlUserProjectTrackList            @"LecetUsers/%li/projectTrackingLists"
@@ -960,6 +961,20 @@
         failure(object);
     } authenticated:YES];
     
+}
+
+- (void)hiddentProjects:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    
+    NSString *url = [self url:[NSString stringWithFormat:kUrlHiddenProjects, (long)userId.integerValue ]];
+    
+    [self HTTP_GET:url parameters:@{@"filter[include]":@"hiddenProjects"} success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
 }
 
 #pragma mark - WORK TYPES

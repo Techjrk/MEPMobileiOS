@@ -69,6 +69,8 @@
 - (void)projectCategoryList:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectCategoryLisByGroupID:(NSNumber*)projectGroupID success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectTypes:(APIBlock)success failure:(APIBlock)failure;
+- (void)hiddentProjects:(APIBlock)success failure:(APIBlock)failure;
+
 //WORK TYPES
 - (void)workTypes:(APIBlock)success failure:(APIBlock)failure;
 

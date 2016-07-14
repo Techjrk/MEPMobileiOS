@@ -673,9 +673,16 @@
             
         case DropDownMenuHiddenProjects: {
             
-            HiddenProjectsViewController *controller = [HiddenProjectsViewController new];
-            controller.collectionItems = [@[@"", @"", @"", @""] mutableCopy];
-            [self.navigationController pushViewController:controller animated:YES];
+            [[DataManager sharedManager] hiddentProjects:^(id object) {
+                
+                HiddenProjectsViewController *controller = [HiddenProjectsViewController new];
+                controller.collectionItems = [object[@"hiddenProjects"] mutableCopy];
+                [self.navigationController pushViewController:controller animated:YES];
+
+            } failure:^(id object) {
+                
+            }];
+            
             break;
         
         }

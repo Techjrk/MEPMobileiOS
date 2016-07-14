@@ -51,9 +51,9 @@
             <size key="customSize" width="177" height="143"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="dJh-Ap-NNV"/>
                     <exclude reference="DHc-Be-g48"/>
                     <exclude reference="vD8-6Q-pN8"/>
-                    <exclude reference="dJh-Ap-NNV"/>
                 </mask>
             </variation>
             <connections>
