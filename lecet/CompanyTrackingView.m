@@ -148,7 +148,6 @@
     }
     
     if ([modelType isEqual:@"Bid"]) {
-       // _leftLabelPriceDesc.text = @"$0";
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
         [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
         
@@ -161,17 +160,25 @@
 }
 
 - (void)searchForLocationGeocode {
+    [self searchRecursiveLocationGeocode:NO];
+}
+
+- (void)searchRecursiveLocationGeocode:(BOOL)failSearchZip {
     
     NSString *address;
-    
     NSArray *addressTwoArray = [_address2Label.text componentsSeparatedByString:@" "];
-    
-    
     NSString *zip = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:2]];
-    if ([zip isEqual:@"<null>"] || zip == nil) {
-        address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
-    } else {
-        address = [addressTwoArray objectAtIndex:2];
+    NSString *city = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:0]];
+    NSString *state = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:1]];
+    
+    if (failSearchZip) {
+        address = [NSString stringWithFormat:@"%@, %@",city,state];
+    }else {
+        if ([zip isEqual:@"<null>"] || zip == nil) {
+            address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
+        } else {
+            address = [addressTwoArray objectAtIndex:2];
+        }
     }
     
     NSString *location = address;
@@ -183,12 +190,14 @@
                          
                          CLPlacemark *result = [placemarks objectAtIndex:0];
                          [self setMapInfoLatitude:result];
-                        
+                         
                      } else if (error != nil) {
-                         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
+                        
+                         [self searchRecursiveLocationGeocode:YES];
                      }
                  }
      ];
+    
 }
 
 - (void)setMapInfoLatitude:(CLPlacemark *)coord {

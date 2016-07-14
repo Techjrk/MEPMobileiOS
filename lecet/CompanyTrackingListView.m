@@ -50,17 +50,12 @@
     NSOperationQueue* queue= [NSOperationQueue new];
     queue.maxConcurrentOperationCount=1;
     [queue setSuspended: YES];
-    
 
-
-    
     NSMutableArray *tempArray = collectionDataItems;
     [collectionDataItems enumerateObjectsUsingBlock:^(id response,NSUInteger index,BOOL *stop){
         NSMutableDictionary *dict = [response mutableCopy];
         [dict setValue:flagIdentifierClosed forKey:COMPANYDATA_BUTTON_STATE];
         [dict setValue:@"0" forKey:COMPANYDATA_SELECTION_FLAG];
-        
-    
         
         if ([DerivedNSManagedObject objectOrNil:dict[@"UPDATES"]]) {
             
@@ -77,7 +72,6 @@
 
             }];
             [queue addOperation: op];
-        
         
     }];
     
@@ -116,8 +110,6 @@
     [cell setButtontag:tag];
     [cell searchLocationGeoCode];
     
-    
-    
     if ([DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]]) {
         NSString *titleUpdates =  [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"summary"];
         [cell setButtonLabelTitle:titleUpdates];
@@ -152,7 +144,6 @@
     CGSize size;
     cellHeight = kDeviceHeight * 0.13;
 
-    
     if (shouldShowUpdates) {
         
         NSString *buttonIfToShowString = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_TOSHOW];

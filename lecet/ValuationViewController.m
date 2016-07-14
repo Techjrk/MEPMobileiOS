@@ -74,7 +74,6 @@
     
 }
 
-
 - (NSMutableAttributedString *)placeHolderForTextField {
     NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{NSFontAttributeName:TEXTFIELD_FONT, NSForegroundColorAttributeName:TEXTFIELD_FONT_COLOR}];
     
@@ -97,7 +96,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - NavViewDelegate
 
