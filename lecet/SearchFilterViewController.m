@@ -122,6 +122,7 @@
         if (finished) {
             _projectScrollView.hidden = _constraintMarkerLeading.constant != 0;
             _companyFilter.hidden = !_projectScrollView.hidden;
+            
         }
     }];
     
@@ -567,17 +568,21 @@
 
 #pragma mark - WorkOwnerTypes Delegate
 - (void)tappedApplyWorkOwnerButton:(id)item {
-    
-    NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
-    NSDictionary *value = item != nil?item:emptyDic;
-    [_projectFilter setFilterModelInfo:selectedModel value:value];
-    
+        NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
+        NSDictionary *value = item != nil?item:emptyDic;
+        [_projectFilter setFilterModelInfo:selectedModel value:value];
+   
 }
 
 #pragma mark - FilterSelectionViewControllerDelegate
 - (void)tappedApplyButton:(id)items {
+    
     NSDictionary *dict = items;
-    [_projectFilter setFilterModelInfo:selectedModel value:dict];
+    if (_companyFilter.hidden) {
+        [_projectFilter setFilterModelInfo:selectedModel value:dict];
+    } else {
+        [_companyFilter setFilterModelInfo:selectedModel value:dict];
+    }
 }
 
 @end
