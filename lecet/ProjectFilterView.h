@@ -32,4 +32,5 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) id<ProjectFilterViewDelegate>projectFilterViewDelegate;
 @property (weak, nonatomic) UIScrollView *scrollView;
 - (void) setConstraint:(NSLayoutConstraint*)constraint;
+- (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
 @end

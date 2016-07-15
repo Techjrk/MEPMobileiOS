@@ -36,7 +36,10 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate>
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate>{
+    
+    FilterModel selectedModel;
+}
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonProject;
@@ -132,7 +135,6 @@
 
 - (IBAction)tappedButtonApply:(id)sender {
     [[DataManager sharedManager] featureNotAvailable];
-    
 }
 
 #pragma mark - ProjectFilterViewDelegate
@@ -162,11 +164,13 @@
         model = [(FilterLabelView*)object filterModel];
         shouldProcess = YES;
         
+        
     } else if([object class] == [FilterEntryView class]) {
         
         model = [(FilterEntryView*)object filterModel];
         shouldProcess = YES;
     }
+    selectedModel = model;
     
     if (shouldProcess) {
         
@@ -245,7 +249,7 @@
         model = [(FilterEntryView*)object filterModel];
         shouldProcess = YES;
     }
-    
+    selectedModel = model;
     if (shouldProcess) {
         
         switch (model) {
@@ -548,6 +552,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 
 }
+
 #pragma mark - ProjectFilter Types
 
 - (void)filterTypes:(UIView*)view {
@@ -565,13 +570,12 @@
 
 - (void)workOwnerTypesSelectedItems:(id)item {
     
+    [_projectFilter setFilterModelInfo:selectedModel value:item];
 }
 
 #pragma mark - FilterSelectionViewControllerDelegate
 
 - (void)tappedApplyButton:(id)items {
-  
-    
     NSLog(@"Items selected = %@",items);
 }
 

@@ -152,4 +152,56 @@
     
 }
 
+- (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val{
+ 
+    switch (filterModel) {
+        case FilterModelLocation:{
+            
+            break;
+        }
+        case FilterModelType:{
+            
+            break;
+        }
+        case FilterModelValue:{
+            
+            break;
+        }
+        case FilterModelUpdated:{
+            
+            break;
+        }
+        case FilterModelJurisdiction:{
+            
+            break;
+        }
+        case FilterModelStage:{
+            
+            break;
+        }
+        case FilterModelBidding:{
+            
+            break;
+        }
+        case FilterModelBH:{
+            
+            break;
+        }
+        case FilterModelOwner:{
+            
+            break;
+        }
+        case FilterModelWork:{
+            
+            break;
+        }
+        case FilterModelProjectType:{
+            
+            break;
+        }
+        
+    }
+}
+
+
 @end
