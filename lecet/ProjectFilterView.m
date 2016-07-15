@@ -188,11 +188,12 @@
             break;
         }
         case FilterModelOwner:{
+            [_fieldOwner setValue:val];
             
             break;
         }
         case FilterModelWork:{
-            
+            [_fieldWork setValue:val];
             break;
         }
         case FilterModelProjectType:{

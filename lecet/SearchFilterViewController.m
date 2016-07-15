@@ -567,10 +567,15 @@
 }
 
 #pragma mark - WorkOwnerTypes Delegate
-
-- (void)workOwnerTypesSelectedItems:(id)item {
+- (void)tappedApplyWorkOwnerButton:(id)item {
+   
+    if (item != nil) {
+        NSString *value = item[@"title"];
+        [_projectFilter setFilterModelInfo:selectedModel value:value];
+    } else {
+        [_projectFilter setFilterModelInfo:selectedModel value:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
+    }
     
-    [_projectFilter setFilterModelInfo:selectedModel value:item];
 }
 
 #pragma mark - FilterSelectionViewControllerDelegate
