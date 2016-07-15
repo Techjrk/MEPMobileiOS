@@ -52,6 +52,7 @@
         }
         case ProfileNavItemSaveButton:{
             [_filterSelectionViewControllerDelegate tappedApplyButton:dataSelected];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         }
     }

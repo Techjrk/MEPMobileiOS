@@ -67,7 +67,6 @@
         [array addObject:resDict];
     }
 
-    
     collectionDataItems  = array;
 
 }
@@ -146,7 +145,7 @@
             
             NSDictionary *value = selectedData != nil?selectedData:nil;
             [_workOwnerTypesViewControllerDelegate tappedApplyWorkOwnerButton:value];
-            
+            [self.navigationController popViewControllerAnimated:YES];
             
             break;
         }
@@ -160,7 +159,6 @@
 #pragma mark - Cell Delegate
 
 - (void)tappedSelectionButton:(id)tag {
-    
     
     NSIndexPath *index = tag;
     
@@ -199,7 +197,6 @@
                                       
                                   }];
             [queue addOperation: op];
-            
             
         }
         

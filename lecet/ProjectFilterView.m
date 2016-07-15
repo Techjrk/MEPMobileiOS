@@ -107,7 +107,6 @@
     
     [title appendAttributedString:[[NSAttributedString alloc] initWithString:!isExpanded?BUTTON_OPTION_DOWN:BUTTON_OPTION_UP attributes:@{NSFontAttributeName:BUTTON_OPTION_FONT, NSForegroundColorAttributeName:BUTTON_COLOR}] ];
     
-    
     [ _buttonOptions setAttributedTitle:title forState:UIControlStateNormal];
     
 }
@@ -153,7 +152,7 @@
 }
 
 - (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val{
- 
+    NSString *title;
     switch (filterModel) {
         case FilterModelLocation:{
             
@@ -168,6 +167,9 @@
             break;
         }
         case FilterModelUpdated:{
+
+            title = [self getItem:val keyName:@"TITLE"];
+            [_fieldUpdated setValue:title];
             
             break;
         }
@@ -181,19 +183,30 @@
         }
         case FilterModelBidding:{
             
+            title = [self getItem:val keyName:@"TITLE"];
+            [_fieldBidding setValue:title];
+            
             break;
         }
         case FilterModelBH:{
             
+            title = [self getItem:val keyName:@"TITLE"];
+            [_fieldBH setValue:title];
+            
             break;
         }
         case FilterModelOwner:{
-            [_fieldOwner setValue:val];
+            
+            title = [self getItem:val keyName:@"title"];
+            [_fieldOwner setValue:title];
             
             break;
         }
         case FilterModelWork:{
-            [_fieldWork setValue:val];
+            
+            title = [self getItem:val keyName:@"title"];
+            [_fieldWork setValue:title];
+            
             break;
         }
         case FilterModelProjectType:{
@@ -202,6 +215,10 @@
         }
         
     }
+}
+
+- (NSString *)getItem:(id)info keyName:(id)key {
+    return info[key];
 }
 
 

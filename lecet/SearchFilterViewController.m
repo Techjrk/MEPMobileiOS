@@ -554,7 +554,6 @@
 }
 
 #pragma mark - ProjectFilter Types
-
 - (void)filterTypes:(UIView*)view {
     
     [[DataManager sharedManager] projectGroupRequest:^(id obj){
@@ -568,20 +567,17 @@
 
 #pragma mark - WorkOwnerTypes Delegate
 - (void)tappedApplyWorkOwnerButton:(id)item {
-   
-    if (item != nil) {
-        NSString *value = item[@"title"];
-        [_projectFilter setFilterModelInfo:selectedModel value:value];
-    } else {
-        [_projectFilter setFilterModelInfo:selectedModel value:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
-    }
+    
+    NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
+    NSDictionary *value = item != nil?item:emptyDic;
+    [_projectFilter setFilterModelInfo:selectedModel value:value];
     
 }
 
 #pragma mark - FilterSelectionViewControllerDelegate
-
 - (void)tappedApplyButton:(id)items {
-    NSLog(@"Items selected = %@",items);
+    NSDictionary *dict = items;
+    [_projectFilter setFilterModelInfo:selectedModel value:dict];
 }
 
 @end
