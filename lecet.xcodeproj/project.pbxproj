@@ -2809,7 +2809,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "0a361953-2b77-4f5e-b808-0631c8b6fb52";
+				PROVISIONING_PROFILE = "43fef7df-8a75-4a13-8bda-1fdc73609481";
 			};
 			name = Debug;
 		};
@@ -2830,7 +2830,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "0a361953-2b77-4f5e-b808-0631c8b6fb52";
+				PROVISIONING_PROFILE = "43fef7df-8a75-4a13-8bda-1fdc73609481";
 			};
 			name = Release;
 		};

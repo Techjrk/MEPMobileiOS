@@ -65,7 +65,7 @@ float MilesToMeters(float miles) {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         
         [[[DataManager sharedManager] locationManager] startUpdatingLocation];
-        //[self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+ 
     }
 }
 

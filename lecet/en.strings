@@ -280,9 +280,14 @@
 "PROJECT_FILTER_UPDATED_TITLE"              =               "UPDATED WITHIN";
 
 //SearchResultView.xib
-"SEARCH_RESULT_COUNT_PROJECT"               =               "%li Projects";
-"SEARCH_RESULT_COUNT_COMPANY"               =               "%li Companies";
-"SEARCH_RESULT_COUNT_CONTACT"               =               "%li Contacts";
+"SEARCH_RESULT_COUNT_PROJECT"               =               "%li Project";
+"SEARCH_RESULT_COUNT_COMPANY"               =               "%li Company";
+"SEARCH_RESULT_COUNT_CONTACT"               =               "%li Contact";
+
+"SEARCH_RESULT_COUNT_PROJECTS"              =               "%li Projects";
+"SEARCH_RESULT_COUNT_COMPANIES"             =               "%li Companies";
+"SEARCH_RESULT_COUNT_CONTACTS"              =               "%li Contacts";
+
 "SEARCH_RESULT_SEE_PROJECT"                 =               "See all %li Projects";
 "SEARCH_RESULT_SEE_COMPANY"                 =               "See all %li Companies";
 "SEARCH_RESULT_SEE_CONTACT"                 =               "See all %li Contacts";
@@ -298,9 +303,12 @@
 "SEARCH_SUGGEST_HEADER_PROJECT"             =               "in Projects";
 "SEARCH_SUGGEST_HEADER_COMPANY"             =               "in Companies";
 "SEARCH_SUGGEST_HEADER_CONTACT"             =               "in Contacts";
-"SEARCH_SUGGEST_COUNT_PROJECT"              =               "%li Projects";
-"SEARCH_SUGGEST_COUNT_COMPANY"              =               "%li Companies";
-"SEARCH_SUGGEST_COUNT_CONTACT"              =               "%li Contacts";
+"SEARCH_SUGGEST_COUNT_PROJECT"              =               "%li Project";
+"SEARCH_SUGGEST_COUNT_COMPANY"              =               "%li Company";
+"SEARCH_SUGGEST_COUNT_CONTACT"              =               "%li Contact";
+"SEARCH_SUGGEST_COUNT_PROJECTS"             =               "%li Projects";
+"SEARCH_SUGGEST_COUNT_COMPANIES"            =               "%li Companies";
+"SEARCH_SUGGEST_COUNT_CONTACTS"             =               "%li Contacts";
 
 //ProjectFilterView.xib
 "PROJECT_FILTER_LOCATION"                   =               "LOCATION";

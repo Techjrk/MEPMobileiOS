@@ -103,11 +103,11 @@
 
 - (void)setInfo {
     
-    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_PROJECT"), [self getCollectionCount:SEARCH_RESULT_PROJECT]] forState:UIControlStateNormal];
+    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCount:SEARCH_RESULT_PROJECT]<=1?@"SEARCH_RESULT_COUNT_PROJECT":@"SEARCH_RESULT_COUNT_PROJECTS"), [self getCollectionCount:SEARCH_RESULT_PROJECT]] forState:UIControlStateNormal];
 
-    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_COMPANY"), [self getCollectionCount:SEARCH_RESULT_COMPANY]] forState:UIControlStateNormal];
+    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCount:SEARCH_RESULT_COMPANY]<=1?@"SEARCH_RESULT_COUNT_COMPANY":@"SEARCH_RESULT_COUNT_COMPANIES"), [self getCollectionCount:SEARCH_RESULT_COMPANY]] forState:UIControlStateNormal];
 
-    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"SEARCH_RESULT_COUNT_CONTACT"), [self getCollectionCount:SEARCH_RESULT_CONTACT]] forState:UIControlStateNormal];
+    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCount:SEARCH_RESULT_CONTACT]<=1?@"SEARCH_RESULT_COUNT_CONTACT":@"SEARCH_RESULT_COUNT_CONTACTS"), [self getCollectionCount:SEARCH_RESULT_CONTACT]] forState:UIControlStateNormal];
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;

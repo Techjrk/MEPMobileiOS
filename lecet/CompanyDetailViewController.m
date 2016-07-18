@@ -486,7 +486,7 @@ typedef enum {
 }
 
 - (void)PopupViewControllerDismissed {
-    
+    [_fieldCompanyState clearSelection];
 }
 
 @end

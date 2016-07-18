@@ -72,8 +72,9 @@
     //if ([[DataManager sharedManager] isDebugMode]) {
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
+
     //}
-     
+    
 }
 
 - (void)addBlurEffect:(UIView*)view {

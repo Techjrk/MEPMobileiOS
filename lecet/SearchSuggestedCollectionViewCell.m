@@ -43,19 +43,19 @@
     
         case SearchSuggestedHeaderProject: {
             appendedString = NSLocalizedLanguage(@"SEARCH_SUGGEST_HEADER_PROJECT");
-            countString = NSLocalizedLanguage(@"SEARCH_SUGGEST_COUNT_PROJECT");
+            countString = NSLocalizedLanguage(count<=1?@"SEARCH_SUGGEST_COUNT_PROJECT":@"SEARCH_SUGGEST_COUNT_PROJECTS");
             break;
         }
    
         case SearchSuggestedHeaderCompany: {
             appendedString = NSLocalizedLanguage(@"SEARCH_SUGGEST_HEADER_COMPANY");
-            countString = NSLocalizedLanguage(@"SEARCH_SUGGEST_COUNT_COMPANY");
+            countString = NSLocalizedLanguage(count<=1?@"SEARCH_SUGGEST_COUNT_COMPANY":@"SEARCH_SUGGEST_COUNT_COMPANIES");
             break;
         }
             
         case SearchSuggestedHeaderContact: {
             appendedString = NSLocalizedLanguage(@"SEARCH_SUGGEST_HEADER_CONTACT");
-            countString = NSLocalizedLanguage(@"SEARCH_SUGGEST_COUNT_CONTACT");
+            countString = NSLocalizedLanguage(count<=1?@"SEARCH_SUGGEST_COUNT_CONTACT":@"SEARCH_SUGGEST_COUNT_CONTACTS");
             break;
         }
             

@@ -98,9 +98,13 @@
             [self authenticate:manager];
         }
         
+        [self enableUserTouch:NO];
+        
         [manager GET:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self enableUserTouch:YES];
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self enableUserTouch:YES];
             [self connectionError:error];
             failure(error);
         }];
@@ -118,9 +122,13 @@
             [self authenticate:manager];
         }
         
+        [self enableUserTouch:NO];
+        
         [manager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self enableUserTouch:YES];
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self enableUserTouch:YES];
             [self connectionError:error];
             failure(error);
         }];
@@ -139,9 +147,13 @@
             [self authenticate:manager];
         }
         
+        [self enableUserTouch:NO];
+        
         [manager PUT:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self enableUserTouch:YES];
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self enableUserTouch:YES];
             [self connectionError:error];
             failure(error);
         }];
@@ -178,11 +190,15 @@
     
         }
      
+        [self enableUserTouch:NO];
+        
         [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             
             if (error == nil) {
+                [self enableUserTouch:YES];
                 success(responseObject);
             } else {
+                [self enableUserTouch:YES];
                 [self connectionError:error];
                 failure(responseObject);
             }
@@ -204,9 +220,13 @@
             [self authenticate:manager];
         }
         
+        [self enableUserTouch:NO];
+        
         [manager DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self enableUserTouch:YES];
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self enableUserTouch:YES];
             [self connectionError:error];
             failure(error);
         }];
@@ -245,6 +265,25 @@
     }
     
     return controller;
+}
+
+- (void)enableUserTouch:(BOOL)enabled {
+    UIViewController *controller = [self getActiveViewController];
+
+    UIView *view = [controller.view performSelector:@selector(firstResponder)];
+    
+    if (view) {
+        
+        if ([view isKindOfClass:[UITextField class]]) {
+            controller.view.userInteractionEnabled = YES;
+            
+        } else {
+            controller.view.userInteractionEnabled = enabled;
+        }
+    
+    } else {
+        controller.view.userInteractionEnabled = enabled;
+    }
 }
 
 -(void)cancellAllRequests {
