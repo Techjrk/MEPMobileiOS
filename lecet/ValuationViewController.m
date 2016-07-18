@@ -109,8 +109,7 @@
         case ProfileNavItemSaveButton:{
             
             NSDictionary * dict = @{@"MIN":_leftTextField.text,@"MAX":_rightTextField.text};
-            [_valuationViewControllerDelegate tappedApplyButton:dict];
-            [[DataManager sharedManager] featureNotAvailable];
+            [_valuationViewControllerDelegate tappedValuationApplyButton:dict];
             break;
         }
     }
