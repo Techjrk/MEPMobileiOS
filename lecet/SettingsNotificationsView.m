@@ -25,6 +25,11 @@
     _label.textColor = SETTINGS_LABEL_FONT_COLOR;
     [_switchButton setOnTintColor:SETTINGS_SWITCHBUTTON_BG_COLOR];
     _label.text = NSLocalizedLanguage(@"SETTING_NOTIFICATIONS_TEXT");
+    
+    if(isiPhone4) {
+        _switchButton.transform = CGAffineTransformMakeScale(0.80, 0.75);
+    }
+    
 }
 
 - (IBAction)switchButtonClicked:(id)sender {
