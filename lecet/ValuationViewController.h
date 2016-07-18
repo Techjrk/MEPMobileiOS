@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 
 @protocol ValuationViewControllerDelegate <NSObject>
-- (void)tappedApplyButton:(id)items;
+- (void)tappedValuationApplyButton:(id)items;
 @end
 
 @interface ValuationViewController : BaseViewController

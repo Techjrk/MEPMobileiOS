@@ -79,6 +79,20 @@
 #pragma mark Nav Delegate
 
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item {
+    
+    switch (item) {
+            
+        case ProjectFilterSearchNavItemBack:{
+            
+            break;
+        }
+        case ProjectFilterSearchNavItemApply:{
+            
+            [_projectFilterLocationViewControllerDelegate tappedLocationApplyButton:dataSelected];
+            break;
+        }
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

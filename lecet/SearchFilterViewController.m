@@ -36,7 +36,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate>{
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ProjectFilterTypesViewControllerDelegate,ProjectFilterLocationViewControllerDelegate,ValuationViewControllerDelegate>{
     
     FilterModel selectedModel;
 }
@@ -471,6 +471,7 @@
 - (void)filterLocation:(UIView*)view {
 
     ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
+    controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 
 }
@@ -478,6 +479,7 @@
 - (void)filterValue:(UIView*)view {
     
     ValuationViewController *controller =  [ValuationViewController new];
+    controller.valuationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -555,19 +557,35 @@
 }
 
 #pragma mark - ProjectFilter Types
+
 - (void)filterTypes:(UIView*)view {
     
     [[DataManager sharedManager] projectGroupRequest:^(id obj){
         ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
         [controller setDataInfo:obj];
+        controller.projectFilterTypesViewControllerDelegate = self;
         [self.navigationController pushViewController:controller animated:YES];
     }failure:^(id obj){
         
     }];
 }
 
+#pragma mark - FilterTypes Delegate
+
+- (void)tappedTypesApplyButton:(id)items {
+    
+}
+
+#pragma mark - Location Delegate
+
+- (void)tappedLocationApplyButton:(id)items {
+    
+}
+
 #pragma mark - WorkOwnerTypes Delegate
+
 - (void)tappedApplyWorkOwnerButton:(id)item {
+    
         NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
         NSDictionary *value = item != nil?item:emptyDic;
         [_projectFilter setFilterModelInfo:selectedModel value:value];
@@ -575,6 +593,7 @@
 }
 
 #pragma mark - FilterSelectionViewControllerDelegate
+
 - (void)tappedApplyButton:(id)items {
     
     NSDictionary *dict = items;
@@ -584,5 +603,12 @@
         [_companyFilter setFilterModelInfo:selectedModel value:dict];
     }
 }
+
+#pragma mark - Valuation Delegate
+
+- (void)tappedValuationApplyButton:(id)items {
+    
+}
+
 
 @end
