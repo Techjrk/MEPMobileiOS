@@ -69,6 +69,20 @@
 
 #pragma mark Nav Delegate
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item {
+    
+    switch (item) {
+            
+        case ProjectFilterSearchNavItemBack:{
+            
+            break;
+        }
+        case ProjectFilterSearchNavItemApply:{
+            
+            [_projectFilterTypesViewControllerDelegate tappedTypesApplyButton:dataSelected];
+            break;
+        }
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -277,6 +291,7 @@
 }
 
 #pragma mark - Selected Items
+
 - (void)tappedSelectionButton:(id)items {
  
     NSMutableArray *resArray = [NSMutableArray new];

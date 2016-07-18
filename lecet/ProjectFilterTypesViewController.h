@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+@protocol ProjectFilterTypesViewControllerDelegate <NSObject>
+- (void)tappedTypesApplyButton:(id)items;
+@end
+
 @interface ProjectFilterTypesViewController : BaseViewController
+@property (nonatomic, assign) id <ProjectFilterTypesViewControllerDelegate> projectFilterTypesViewControllerDelegate;
 - (void)setDataInfo:(id)info;
 @end

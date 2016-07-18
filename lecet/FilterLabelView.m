@@ -30,8 +30,7 @@
     
     _labelValue.font = LABEL_FONT;
     _labelValue.textColor = [LABEL_COLOR colorWithAlphaComponent:0.5];
-    
-    
+    _labelValue.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setTitle:(NSString *)title {

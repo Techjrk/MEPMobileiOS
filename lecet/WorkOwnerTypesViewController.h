@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol WorkOwnerTypesViewControllerDelegate <NSObject>
-- (void)workOwnerTypesSelectedItems:(id)item;
+@required
+- (void)tappedApplyWorkOwnerButton:(id)item;
+
 @end
 
 @interface WorkOwnerTypesViewController : UIViewController

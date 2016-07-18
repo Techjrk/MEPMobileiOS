@@ -12,10 +12,13 @@
 #import "ChangePasswordViewController.h"
 
 #define SETTINGS_VC_BG_COLOR RGB(245,245,245)
+#define BOTTOM_LABEL_FONT_COLOR             RGB(149,149,149)
+#define BOTTOM_LABEL_FONT                   fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 9.0f)
 
 @interface SettingsViewController ()<ProfileNavViewDelegate,SettingViewDelegate>
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet SettingsView *settingsView;
+@property (weak, nonatomic) IBOutlet UILabel *bottomLabel;
 @end
 
 @implementation SettingsViewController
@@ -37,6 +40,11 @@
     _navView.profileNavViewDelegate = self;
     [self.view setBackgroundColor:SETTINGS_VC_BG_COLOR];
     _settingsView.settingViewDelegate = self;
+    
+    _bottomLabel.font = BOTTOM_LABEL_FONT;
+    _bottomLabel.textColor = BOTTOM_LABEL_FONT_COLOR;
+    NSString *version = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+    _bottomLabel.text = [NSString stringWithFormat:@"MEP %@",version];
 }
 
 - (void)didReceiveMemoryWarning {

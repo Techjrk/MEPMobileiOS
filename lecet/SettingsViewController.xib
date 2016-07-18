@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
+                <outlet property="bottomLabel" destination="y9t-A4-qVy" id="8ZW-8x-esF"/>
                 <outlet property="navView" destination="78i-LD-5u5" id="l9r-2Z-xRa"/>
                 <outlet property="settingsView" destination="z1U-7u-1Z9" id="NcS-bF-rNK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,18 +27,43 @@
                     <rect key="frame" x="0.0" y="71" width="600" height="140"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbD-iI-Jc5">
+                    <rect key="frame" x="0.0" y="562" width="600" height="38"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEP 1.2.3.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9t-A4-qVy">
+                    <rect key="frame" x="257" y="541" width="86" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="y9t-A4-qVy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0JH-go-lgO"/>
                 <constraint firstAttribute="trailing" secondItem="z1U-7u-1Z9" secondAttribute="trailing" id="3SU-Qy-iI4"/>
+                <constraint firstAttribute="trailing" secondItem="kbD-iI-Jc5" secondAttribute="trailing" id="7K0-Nn-OdX"/>
                 <constraint firstItem="z1U-7u-1Z9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8WX-nd-frQ"/>
+                <constraint firstAttribute="bottom" secondItem="kbD-iI-Jc5" secondAttribute="bottom" id="BPX-El-kQA"/>
                 <constraint firstItem="78i-LD-5u5" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.118" id="DaC-Ha-vyT"/>
                 <constraint firstItem="78i-LD-5u5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="E1o-Cd-AkX"/>
+                <constraint firstItem="kbD-iI-Jc5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JRA-Yn-tmt"/>
+                <constraint firstItem="kbD-iI-Jc5" firstAttribute="top" secondItem="y9t-A4-qVy" secondAttribute="bottom" id="Qla-mQ-XmW"/>
                 <constraint firstItem="z1U-7u-1Z9" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.234" id="byc-CL-qHA"/>
+                <constraint firstItem="kbD-iI-Jc5" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.063" id="ewD-i9-KmC"/>
                 <constraint firstItem="z1U-7u-1Z9" firstAttribute="top" secondItem="78i-LD-5u5" secondAttribute="bottom" id="he9-cg-b7h"/>
                 <constraint firstAttribute="trailing" secondItem="78i-LD-5u5" secondAttribute="trailing" id="wEO-Ow-TY2"/>
                 <constraint firstItem="78i-LD-5u5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zcV-Wf-QVx"/>
             </constraints>
         </view>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEP 1.2.3.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n4S-lm-iN0">
+            <rect key="frame" x="0.0" y="0.0" width="86" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
 </document>

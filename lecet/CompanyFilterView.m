@@ -74,4 +74,62 @@
     [self.companyFilterViewDelegate tappedCompanyFilterItem:object view:self];
 }
 
+- (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val{
+    NSString *title;
+    switch (filterModel) {
+        case FilterModelLocation:{
+            
+            break;
+        }
+        case FilterModelType:{
+            
+            break;
+        }
+        case FilterModelValue:{
+            
+            break;
+        }
+        case FilterModelUpdated:{
+            
+            break;
+        }
+        case FilterModelJurisdiction:{
+            
+            break;
+        }
+        case FilterModelStage:{
+            
+            break;
+        }
+        case FilterModelBidding:{
+            
+            title = [self getItem:val keyName:@"TITLE"];
+            [_filterBidding setValue:title];
+            
+            break;
+        }
+        case FilterModelBH:{
+
+            break;
+        }
+        case FilterModelOwner:{
+
+            break;
+        }
+        case FilterModelWork:{
+
+            break;
+        }
+        case FilterModelProjectType:{
+            
+            break;
+        }
+            
+    }
+}
+
+- (NSString *)getItem:(id)info keyName:(id)key {
+    return info[key];
+}
+
 @end

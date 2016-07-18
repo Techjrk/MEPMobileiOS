@@ -14,6 +14,7 @@
     CGFloat cellHeight;
     NSString *navTitle;
     int prevTag;
+    id selectedData;
 }
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet UIView *containerCollectionView;
@@ -66,7 +67,6 @@
         [array addObject:resDict];
     }
 
-    
     collectionDataItems  = array;
 
 }
@@ -143,6 +143,10 @@
         }
         case ProfileNavItemSaveButton:{
             
+            NSDictionary *value = selectedData != nil?selectedData:nil;
+            [_workOwnerTypesViewControllerDelegate tappedApplyWorkOwnerButton:value];
+            [self.navigationController popViewControllerAnimated:YES];
+            
             break;
         }
     }
@@ -155,7 +159,6 @@
 #pragma mark - Cell Delegate
 
 - (void)tappedSelectionButton:(id)tag {
-    
     
     NSIndexPath *index = tag;
     
@@ -174,8 +177,7 @@
     
     prevTag = (int)index.row;
     NSDictionary *returnDict = [[collectionDataItems objectAtIndex:index.row][SELECTIONFLAGNAME] isEqualToString: SelectedFlag]?[collectionDataItems objectAtIndex:index.row]:nil;
-    [_workOwnerTypesViewControllerDelegate workOwnerTypesSelectedItems:returnDict];
-    
+    selectedData = returnDict;
 }
 
 - (void)clearPrevSelection {
@@ -195,7 +197,6 @@
                                       
                                   }];
             [queue addOperation: op];
-            
             
         }
         

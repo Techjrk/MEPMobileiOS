@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+@protocol ProjectFilterLocationViewControllerDelegate <NSObject>
+- (void)tappedLocationApplyButton:(id)items;
+@end
+
 @interface ProjectFilterLocationViewController : BaseViewController
+@property (nonatomic,assign) id <ProjectFilterLocationViewControllerDelegate> projectFilterLocationViewControllerDelegate;
 - (void)setInfo:(id)info;
 @end
