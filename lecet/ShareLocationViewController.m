@@ -78,7 +78,7 @@
     CGPoint loc = [sender locationInView:view];
     UIView* subview = [view hitTest:loc withEvent:nil];
     if ([subview isEqual:_blurView]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        //[self dismissViewControllerAnimated:YES completion:nil];
     }
      
 }
