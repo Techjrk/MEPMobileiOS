@@ -22,6 +22,8 @@
 
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
     ListViewItemArray *localListViewItems;
+    ListViewItemArray *tempLocalListViewItems;
+    NSMutableArray *searchResultSubCat;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -54,10 +56,10 @@
         NSMutableDictionary *mutableItem = [item mutableCopy];
         mutableItem[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
         mutableItem[STATUS_CHECK] = [NSNumber numberWithBool:NO];
-        
         [localListViewItems addObject:mutableItem];
-        
     }
+    tempLocalListViewItems = localListViewItems;
+    
     _listView.customListViewDelegate = self;
     _listView.singleSelection = self.singleSelect;
     
@@ -67,7 +69,9 @@
     _labelSearch.attributedPlaceholder = placeHolder;
     _labelSearch.textColor = [UIColor whiteColor];
     _labelSearch.tintColor = [UIColor whiteColor];
-     
+    
+    [_labelSearch addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -204,8 +208,84 @@
         if (subItems) {
             [self uncheckItem:subItems];
         }
+    }
+    
+}
+
+
+
+#pragma mark - Search Function
+
+-(void)textFieldDidChange :(UITextField *)textField{
+    searchResultSubCat = [NSMutableArray new];
+    
+    if (textField.text.length > 0) {
+        [self searchItem:tempLocalListViewItems search:textField.text parentItem:nil];
+        localListViewItems = (ListViewItemArray *)[self expandSearchResult:(ListViewItemArray *)[searchResultSubCat mutableCopy]];
+    }
+    
+    if (textField.text.length == 0) {
+        
+        localListViewItems = tempLocalListViewItems;
+        [self unexpand:localListViewItems];
+    }
+    
+    [_listView reloadData];
+}
+
+- (void)searchItem:(id)items search:(NSString *)sText parentItem:(id)pitem {
+    
+    NSString *searchText = [NSString stringWithFormat:@"%@*",sText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.LIST_VIEW_NAME like[cd] %@", searchText];
+    NSArray *filteredFirstLayer = [[items copy] filteredArrayUsingPredicate:resultPredicate];
+    
+    if (filteredFirstLayer.count > 0) {
+        
+        if (pitem != nil) {
+            [searchResultSubCat addObject:pitem];
+        } else {
+            searchResultSubCat = [filteredFirstLayer mutableCopy];
+        }
+        
+    } else {
+        
+    
+        for (ListViewItemDictionary *item in items) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+            
+            if (subItems) {
+                [self searchItem:subItems search:sText parentItem:item];
+            }
+        }
         
     }
+
+}
+
+- (NSMutableArray *)expandSearchResult:(ListViewItemArray*)items {
+    for (ListViewItemDictionary *item in items) {
+        item[STATUS_EXPAND] = [NSNumber numberWithBool:YES];
+        ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+        if (subItems) {
+            [self expandSearchResult:subItems];
+        }
+        
+    }
+    
+    return items;
+}
+
+- (void)unexpand:(ListViewItemArray*)items {
+    for (ListViewItemDictionary *item in items) {
+        item[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
+         ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+         
+         if (subItems) {
+         [self uncheckItem:subItems];
+         }
+         
+    }
+    
     
 }
 
