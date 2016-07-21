@@ -462,7 +462,6 @@
         controller.workOwnerTypesViewControllerDelegate =self;
         [self.navigationController pushViewController:controller animated:YES];
         
-        
     }failure:^(id failObject){
         
     }];
