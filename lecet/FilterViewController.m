@@ -23,7 +23,7 @@
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
     ListViewItemArray *localListViewItems;
     ListViewItemArray *tempLocalListViewItems;
-    NSMutableArray *searchResultSubCat;
+    ListViewItemArray *searchResult;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -153,7 +153,6 @@
     return totalHeight;
 }
 
-
 #pragma mark - ListItemExpandingViewCellDelegate
 
 - (void)listViewItemDidExpand:(ListItemCollectionViewCell *)listViewItem {
@@ -209,19 +208,16 @@
             [self uncheckItem:subItems];
         }
     }
-    
 }
-
-
 
 #pragma mark - Search Function
 
 -(void)textFieldDidChange :(UITextField *)textField{
-    searchResultSubCat = [NSMutableArray new];
+    searchResult = [ListViewItemArray new];
     
     if (textField.text.length > 0) {
         [self searchItem:tempLocalListViewItems search:textField.text parentItem:nil];
-        localListViewItems = (ListViewItemArray *)[self expandSearchResult:(ListViewItemArray *)[searchResultSubCat mutableCopy]];
+        localListViewItems = (ListViewItemArray *)[self expandSearchResult:(ListViewItemArray *)[searchResult mutableCopy]];
     }
     
     if (textField.text.length == 0) {
@@ -242,14 +238,14 @@
     if (filteredFirstLayer.count > 0) {
         
         if (pitem != nil) {
-            [searchResultSubCat addObject:pitem];
+            pitem[LIST_VIEW_SUBITEMS] = [filteredFirstLayer mutableCopy];
+            [searchResult addObject:pitem];
         } else {
-            searchResultSubCat = [filteredFirstLayer mutableCopy];
+            searchResult = [filteredFirstLayer mutableCopy];
         }
         
     } else {
         
-    
         for (ListViewItemDictionary *item in items) {
             ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
             
@@ -281,12 +277,11 @@
          ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
          
          if (subItems) {
-         [self uncheckItem:subItems];
+         [self unexpand:subItems];
          }
          
     }
-    
-    
+
 }
 
 @end
