@@ -151,14 +151,35 @@
             
             NSString *text = [item[LIST_VIEW_NAME] uppercaseString];
             [item filterSubItems:filter];
+            
             if ([text containsString:[filter uppercaseString]] | ([item subItemCount]>0)) {
+             
                 [filteredProxy addObject:item];
+                
+                if ([item subItemCount]>0) {
+                    item[STATUS_EXPAND] = [NSNumber numberWithBool:YES];
+                }
                 
             }
             
         }
         
     } else {
+
+        for (ListViewItemDictionary *item in proxy) {
+            
+            [item filterSubItems:filter];
+            
+            if ([item subItemCount]>0) {
+                
+                if ([item subItemCount]>0) {
+                    item[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
+                }
+                
+            }
+            
+        }
+
         
     }
     
