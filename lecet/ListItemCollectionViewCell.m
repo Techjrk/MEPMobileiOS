@@ -63,7 +63,6 @@
     ListViewItemArray *items = proxy[LIST_VIEW_SUBITEMS];
     
     if (items) {
-    
         [self clearItems:items];
     }
 }
@@ -82,6 +81,16 @@
     }
 }
 
+- (void)filterSubItems:(NSString *)filter {
+    ListViewItemArray *items = proxy[LIST_VIEW_SUBITEMS];
+    [items filterSubItems:filter];
+}
+
+- (NSInteger)subItemCount {
+    ListViewItemArray *items = proxy[LIST_VIEW_SUBITEMS];
+    return items.count;
+}
+
 @end
 
 
@@ -91,22 +100,24 @@
     self = [super init];
     self.parent = nil;
     proxy = [NSMutableArray new];
+    filteredProxy = [NSMutableArray new];
     return self;
 }
 
 - (void)addObject:(id)anObject {
    
-    [proxy addObject:anObject];
-
+ 
     if ([anObject class] == [ListViewItemDictionary class]) {
         
-        ListViewItemDictionary *object = anObject;
+        [proxy addObject:anObject];
+       ListViewItemDictionary *object = anObject;
         object.parent = self;
   
     }
 
     if ([anObject class] == [ListViewItemArray class]) {
         
+        [proxy addObject:anObject];
         ListViewItemArray *object = anObject;
         object.parent = self;
         
@@ -120,12 +131,37 @@
 
 - (NSUInteger)count {
     
-    return proxy.count;
+    return isFiltered?filteredProxy.count:proxy.count;
 }
 
 - (id)objectAtIndex:(NSUInteger)index {
+    id anObject = isFiltered?[filteredProxy objectAtIndex:index]:[proxy objectAtIndex:index];
+    return anObject;
+}
 
-    return [proxy objectAtIndex:index];
+- (void)filterSubItems:(NSString *)filter {
+    
+    isFiltered = filter != nil;
+    
+    [filteredProxy removeAllObjects];
+    
+    if (filter) {
+        
+        for (ListViewItemDictionary *item in proxy) {
+            
+            NSString *text = [item[LIST_VIEW_NAME] uppercaseString];
+            [item filterSubItems:filter];
+            if ([text containsString:[filter uppercaseString]] | ([item subItemCount]>0)) {
+                [filteredProxy addObject:item];
+                
+            }
+            
+        }
+        
+    } else {
+        
+    }
+    
 }
 
 @end

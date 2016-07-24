@@ -22,8 +22,6 @@
 
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
     ListViewItemArray *localListViewItems;
-    ListViewItemArray *tempLocalListViewItems;
-    ListViewItemArray *searchResult;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -52,13 +50,12 @@
 
     localListViewItems = [ListViewItemArray new];
     
-    for (NSDictionary *item in self.listViewItems) {
-        NSMutableDictionary *mutableItem = [item mutableCopy];
+    for (ListViewItemDictionary *item in self.listViewItems) {
+        ListViewItemDictionary *mutableItem = item;
         mutableItem[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
         mutableItem[STATUS_CHECK] = [NSNumber numberWithBool:NO];
         [localListViewItems addObject:mutableItem];
     }
-    tempLocalListViewItems = localListViewItems;
     
     _listView.customListViewDelegate = self;
     _listView.singleSelection = self.singleSelect;
@@ -213,6 +210,14 @@
 #pragma mark - Search Function
 
 -(void)textFieldDidChange :(UITextField *)textField{
+    
+    NSString *filter = textField.text;
+    
+    if ([filter isEqualToString:@""]) {
+        filter = nil;
+    }
+    [localListViewItems filterSubItems:filter];
+    /*
     searchResult = [ListViewItemArray new];
     
     if (textField.text.length > 0) {
@@ -225,10 +230,11 @@
         localListViewItems = tempLocalListViewItems;
         [self unexpand:localListViewItems];
     }
-    
+    */
     [_listView reloadData];
+     
 }
-
+/*
 - (void)searchItem:(id)items search:(NSString *)sText parentItem:(id)pitem {
     
     NSString *searchText = [NSString stringWithFormat:@"%@*",sText];
@@ -257,6 +263,7 @@
     }
 
 }
+*/
 
 - (NSMutableArray *)expandSearchResult:(ListViewItemArray*)items {
     for (ListViewItemDictionary *item in items) {

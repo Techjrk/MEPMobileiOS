@@ -288,7 +288,7 @@
 }
 
 - (void)filterJurisdiction:(UIView*)view {
-    
+    /*
     ListViewItemArray *listItems = [ListViewItemArray new];
     
     NSMutableDictionary *item01 = [ListItemCollectionViewCell createItem:@"CECA" value:@"" model:@"jurisdiction"];
@@ -341,10 +341,11 @@
     [listItems addObject:item10];
     
     item10[LIST_VIEW_SUBITEMS] = [self createSubItems];
+    */
     
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-    controller.listViewItems = listItems;
+    //controller.listViewItems = listItems;
     controller.singleSelect = YES;
     [self.navigationController pushViewController:controller animated:YES];
 

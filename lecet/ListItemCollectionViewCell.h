@@ -20,13 +20,18 @@
 }
 @property (weak, nonatomic) id parent;
 - (void)clearSubItems;
+- (void)filterSubItems:(NSString*)filter;
+- (NSInteger)subItemCount;
 @end
 
 @interface ListViewItemArray : NSMutableArray {
     NSMutableArray *proxy;
+    NSMutableArray *filteredProxy;
+    BOOL isFiltered;
 }
 @property (weak, nonatomic) id parent;
 - (void)addObject:(id)anObject;
+- (void)filterSubItems:(NSString*)filter;
 @end
 
 @protocol ListItemCollectionViewCellDelegate <NSObject>
