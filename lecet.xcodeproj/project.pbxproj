@@ -107,6 +107,8 @@
 		B6BDBAC31D181F66001FB41C /* EditViewList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAC11D181F66001FB41C /* EditViewList.xib */; };
 		B6BDBAC81D1821BD001FB41C /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAC61D1821BD001FB41C /* EditViewController.m */; };
 		B6BDBAC91D1821BD001FB41C /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAC71D1821BD001FB41C /* EditViewController.xib */; };
+		B6BEE9831D46275800237BB9 /* TouchIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BEE9821D46275800237BB9 /* TouchIDManager.m */; };
+		B6BEE9871D46278300237BB9 /* EHFAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BEE9861D46278300237BB9 /* EHFAuthenticator.m */; };
 		B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */; };
 		B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */; };
 		B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E032E71CF2ED0F00D3D02C /* Utilities.m */; };
@@ -537,6 +539,10 @@
 		B6BDBAC51D1821BD001FB41C /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		B6BDBAC61D1821BD001FB41C /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		B6BDBAC71D1821BD001FB41C /* EditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
+		B6BEE9811D46275800237BB9 /* TouchIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIDManager.h; sourceTree = "<group>"; };
+		B6BEE9821D46275800237BB9 /* TouchIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDManager.m; sourceTree = "<group>"; };
+		B6BEE9851D46278300237BB9 /* EHFAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHFAuthenticator.h; sourceTree = "<group>"; };
+		B6BEE9861D46278300237BB9 /* EHFAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHFAuthenticator.m; sourceTree = "<group>"; };
 		B6CF76471CF867B200BF6C69 /* ProjectDetailStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailStateViewController.m; sourceTree = "<group>"; };
 		B6CF76491CF867F200BF6C69 /* ProjectDetailStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailStateViewController.xib; sourceTree = "<group>"; };
 		B6CF764B1CF868E100BF6C69 /* ProjectDetailStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailStateViewController.h; sourceTree = "<group>"; };
@@ -1496,6 +1502,15 @@
 			name = EditViewController;
 			sourceTree = "<group>";
 		};
+		B6BEE9841D46276600237BB9 /* EHFAuthenticator */ = {
+			isa = PBXGroup;
+			children = (
+				B6BEE9851D46278300237BB9 /* EHFAuthenticator.h */,
+				B6BEE9861D46278300237BB9 /* EHFAuthenticator.m */,
+			);
+			name = EHFAuthenticator;
+			sourceTree = "<group>";
+		};
 		B6CF764C1CF868F800BF6C69 /* ProjectDetailState */ = {
 			isa = PBXGroup;
 			children = (
@@ -2190,6 +2205,7 @@
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B6BEE9841D46276600237BB9 /* EHFAuthenticator */,
 				B7F10A211CDB3E4100847FA3 /* SFHFKeychainUtils */,
 				B7F109EF1CDB3E3300847FA3 /* AFNetworking */,
 				B7F109FD1CDB3E3300847FA3 /* UIKit+AFNetworking */,
@@ -2256,6 +2272,8 @@
 		B7F10A251CDB411A00847FA3 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B6BEE9811D46275800237BB9 /* TouchIDManager.h */,
+				B6BEE9821D46275800237BB9 /* TouchIDManager.m */,
 				B7F10A261CDB41DE00847FA3 /* BaseManager.h */,
 				B7F10A271CDB41DE00847FA3 /* BaseManager.m */,
 				B7F10A291CDB42FA00847FA3 /* DerivedNSManagedObject.h */,
@@ -2544,6 +2562,7 @@
 				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
 				B6EFFE971D04592A00727323 /* ContactAllListViewController.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
+				B6BEE9831D46275800237BB9 /* TouchIDManager.m in Sources */,
 				B79616511D004D7A0089BC32 /* TriangleView.m in Sources */,
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
 				B7BF60F71D22B62F00B3BDD7 /* RecentSearchItemCollectionViewCell.m in Sources */,
@@ -2604,6 +2623,7 @@
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */,
+				B6BEE9871D46278300237BB9 /* EHFAuthenticator.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
 				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
 				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
