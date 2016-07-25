@@ -207,8 +207,7 @@ typedef enum {
     
     bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
     
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
-    bidItems =[[[bidItems copy] sortedArrayUsingDescriptors:@[sort]] mutableCopy];
+    [self dataSortingLowestToHighestBid];
     
     [_projectBidder setItems:bidItems];
  
@@ -325,7 +324,6 @@ typedef enum {
 -(void)tappedDismissedProjectShareList{
     
 }
-
 
 - (void)showShareListMenu:(UIView*)view{
     
@@ -542,6 +540,44 @@ typedef enum {
     } failure:^(id object) {
         
     }];
+}
+
+- (void)dataSortingLowestToHighestBid{
+    
+    NSArray *array = [bidItems copy];
+    NSArray *sortedArray = [array sortedArrayUsingComparator: ^(DB_Bid *obj1, DB_Bid *obj2) {
+        int objOne = (int)[obj1.rank integerValue];
+        int objTwo = (int)[obj2.rank integerValue];
+        
+        if (objOne == 0 && objTwo == 0)
+        {
+            return (NSComparisonResult)NSOrderedSame;
+        }
+        if (objOne  == 0)
+        {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        if (objTwo  == 0)
+        {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        if (objOne  > objTwo )
+        {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        
+        if (objOne < objTwo )
+        {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        
+        return (NSComparisonResult)NSOrderedSame;
+    }];
+    
+    bidItems = [sortedArray mutableCopy];
+    
 }
 
 @end
