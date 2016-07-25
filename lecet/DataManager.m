@@ -42,8 +42,8 @@
 #define kUrlCompanyInfo                     @"Companies/search?"
 #define kUrlContactSearch                   @"Contacts/search"
 #define kUrlSavedSearches                   @"LecetUsers/%li/searches"
-
 #define kUrlParentStage                     @"ProjectParentStages"
+#define kUrlJurisdiction                    @"Regions/tree"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
@@ -727,6 +727,20 @@
         
     } authenticated:YES];
     
+}
+
+- (void)jurisdiction:(APIBlock)success failure:(APIBlock)failure {
+
+    [self HTTP_GET:[self url:kUrlJurisdiction] parameters:nil success:^(id object) {
+        
+        success(object);
+        
+    } failure:^(id object) {
+        
+        failure(object);
+        
+    } authenticated:YES];
+
 }
 
 #pragma mark - PROJECT TRACK LISTS HTTP REQUEST
