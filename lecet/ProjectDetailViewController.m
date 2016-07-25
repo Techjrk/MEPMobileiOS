@@ -206,6 +206,10 @@ typedef enum {
     [_fieldBuildingOrHighway setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_B_OR_H") line1Text:project.primaryProjectTypeBuildingOrHighway line2Text:nil];
     
     bidItems =  [project.relationshipBid allObjects] != nil? [[project.relationshipBid allObjects] mutableCopy] : [NSMutableArray new];
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
+    bidItems =[[[bidItems copy] sortedArrayUsingDescriptors:@[sort]] mutableCopy];
+    
     [_projectBidder setItems:bidItems];
  
     participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];

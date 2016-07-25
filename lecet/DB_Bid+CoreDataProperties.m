@@ -18,6 +18,7 @@
 @dynamic isRecentMade;
 @dynamic recordId;
 @dynamic amount;
+@dynamic rank;
 @dynamic relationshipCompany;
 @dynamic relationshipContact;
 @dynamic relationshipProject;

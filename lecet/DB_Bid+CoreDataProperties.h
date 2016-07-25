@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *isRecentMade;
 @property (nullable, nonatomic, retain) NSNumber *recordId;
 @property (nullable, nonatomic, retain) NSNumber *amount;
+@property (nullable, nonatomic, retain) NSNumber *rank;
 @property (nullable, nonatomic, retain) DB_Company *relationshipCompany;
 @property (nullable, nonatomic, retain) DB_Contact *relationshipContact;
 @property (nullable, nonatomic, retain) DB_Project *relationshipProject;

@@ -5,6 +5,7 @@
         <attribute name="awardInd" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isRecentMade" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="rank" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="relationshipCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Company" inverseName="relationshipBid" inverseEntity="DB_Company" syncable="YES"/>
         <relationship name="relationshipContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Contact" inverseName="relationshipBid" inverseEntity="DB_Contact" syncable="YES"/>
@@ -268,7 +269,7 @@
         <relationship name="relationshipParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_Participant" inverseName="relationshipProject" inverseEntity="DB_Participant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="165"/>
+        <element name="DB_Bid" positionX="-18" positionY="162" width="128" height="180"/>
         <element name="DB_BidRecent" positionX="-54" positionY="144" width="128" height="1140"/>
         <element name="DB_BidSoon" positionX="-63" positionY="-18" width="128" height="735"/>
         <element name="DB_Company" positionX="-45" positionY="144" width="128" height="360"/>

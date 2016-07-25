@@ -148,6 +148,11 @@
     record.awardInd = [NSNumber numberWithBool:[bid[@"awardInd"] boolValue]];
     record.createDate = bid[@"createDate"];
     
+    NSNumber *rank = [DerivedNSManagedObject objectOrNil:bid[@"rank"]];
+    if (rank != nil) {
+        record.rank = [NSNumber numberWithFloat:rank.integerValue];;
+    }
+    
     NSNumber *amount = [DerivedNSManagedObject objectOrNil:bid[@"amount"]];
     if (amount != nil) {
         record.amount = [NSNumber numberWithFloat:amount.floatValue];
