@@ -8,6 +8,8 @@
 
 #import "RecentSearchView.h"
 #import "RecentSearchItemCollectionViewCell.h"
+#import "ProjectDetailViewController.h"
+#import "CompanyDetailViewController.h"
 
 @interface RecentSearchView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *items;
@@ -90,8 +92,53 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    [[DataManager sharedManager] featureNotAvailable];
+    NSDictionary *item = items[indexPath.row];
+    NSNumber *recordId = [DerivedNSManagedObject objectOrNil:item[@"projectId"]];
+    BOOL isProject = YES;
+    
+    if (recordId == nil) {
+        recordId = [DerivedNSManagedObject objectOrNil:item[@"companyId"]];
+        isProject = NO;
+        
+    }
 
+    if (isProject) {
+        
+        [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
+        
+            ProjectDetailViewController *detail = [ProjectDetailViewController new];
+            detail.view.hidden = NO;
+            [detail detailsFromProject:object];
+            
+            UIViewController *controller = [[DataManager sharedManager] getActiveViewController];
+            [controller.navigationController pushViewController:detail animated:YES];
+   
+        } failure:^(id object) {
+        
+        }];
+
+    } else {
+        
+        [[DataManager sharedManager] companyDetail:recordId success:^(id object) {
+            
+            id returnObject = object;
+            
+            [[DataManager sharedManager] companyProjectBids:recordId success:^(id object) {
+                
+                CompanyDetailViewController *controller = [CompanyDetailViewController new];
+                controller.view.hidden = NO;
+                [controller setInfo:returnObject];
+   
+                UIViewController *navController = [[DataManager sharedManager] getActiveViewController];
+                [navController.navigationController pushViewController:controller animated:YES];
+                
+            } failure:^(id object) {
+            }];
+            
+        } failure:^(id object) {
+        }];
+        
+    }
 }
 
 @end
