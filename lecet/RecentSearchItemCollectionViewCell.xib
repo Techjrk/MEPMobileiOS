@@ -16,6 +16,9 @@
                 <subviews>
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ni9-UE-Gaq">
                         <rect key="frame" x="9" y="0.0" width="159" height="100"/>
+                        <connections>
+                            <outlet property="delegate" destination="gTV-IL-0wX" id="kub-eY-TBn"/>
+                        </connections>
                     </mapView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Performing Arts Center" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFt-zK-aV2">
                         <rect key="frame" x="9" y="100" width="159" height="43"/>
@@ -58,6 +61,7 @@
             </variation>
             <connections>
                 <outlet property="labelTitle" destination="UFt-zK-aV2" id="d5g-Jb-Nbh"/>
+                <outlet property="mapView" destination="Ni9-UE-Gaq" id="Y0n-M7-RvW"/>
             </connections>
             <point key="canvasLocation" x="343.5" y="239.5"/>
         </collectionViewCell>

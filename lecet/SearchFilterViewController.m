@@ -288,66 +288,52 @@
 }
 
 - (void)filterJurisdiction:(UIView*)view {
-    /*
+    
     ListViewItemArray *listItems = [ListViewItemArray new];
+ 
+    [[DataManager sharedManager] jurisdiction:^(id object) {
+
+        NSArray *items = object;
+        
+        for (NSDictionary *item in items) {
+            
+            NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
+            
+            [listItems addObject:jurisdiction];
+            
+            NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"locals"]];
+            
+            if (locals != nil) {
+                
+                if (locals.count>0) {
+ 
+                    ListViewItemArray *localItems = [ListViewItemArray new];
+                    
+                    for (NSDictionary *local in locals) {
+                        
+                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:item[@"id"] model:@"local"];
+                        
+                        [localItems addObject:localItem];
+                    }
+                    
+                    jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
+                    
+                }
+                
+            }
+            
+        }
+        
+        FilterViewController *controller = [FilterViewController new];
+        controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
+        controller.listViewItems = listItems;
+        controller.singleSelect = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+
+    } failure:^(id object) {
+        
+    }];
     
-    NSMutableDictionary *item01 = [ListItemCollectionViewCell createItem:@"CECA" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item01];
-    item01[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item02 = [ListItemCollectionViewCell createItem:@"EAST" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item02];
-    item02[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item03 = [ListItemCollectionViewCell createItem:@"GTLK" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item03];
-    item03[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item04 = [ListItemCollectionViewCell createItem:@"MATL" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item04];
-    item04[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item05 = [ListItemCollectionViewCell createItem:@"MWST" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item05];
-    item05[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item06 = [ListItemCollectionViewCell createItem:@"NENG" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item06];
-    item06[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item07 = [ListItemCollectionViewCell createItem:@"NWST" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item07];
-    item07[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item08 = [ListItemCollectionViewCell createItem:@"OVSS" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item08];
-    item08[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item09 = [ListItemCollectionViewCell createItem:@"PWST" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item09];
-    item09[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    
-    NSMutableDictionary *item10 = [ListItemCollectionViewCell createItem:@"WMOK" value:@"" model:@"jurisdiction"];
-    
-    [listItems addObject:item10];
-    
-    item10[LIST_VIEW_SUBITEMS] = [self createSubItems];
-    */
-    
-    FilterViewController *controller = [FilterViewController new];
-    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-    //controller.listViewItems = listItems;
-    controller.singleSelect = YES;
-    [self.navigationController pushViewController:controller animated:YES];
 
 }
 

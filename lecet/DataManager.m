@@ -42,8 +42,9 @@
 #define kUrlCompanyInfo                     @"Companies/search?"
 #define kUrlContactSearch                   @"Contacts/search"
 #define kUrlSavedSearches                   @"LecetUsers/%li/searches"
-
 #define kUrlParentStage                     @"ProjectParentStages"
+#define kUrlJurisdiction                    @"Regions/tree"
+#define kUrlRecentlyViewed                  @"LecetUsers/%li/activities"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
@@ -727,6 +728,38 @@
         
     } authenticated:YES];
     
+}
+
+- (void)jurisdiction:(APIBlock)success failure:(APIBlock)failure {
+
+    [self HTTP_GET:[self url:kUrlJurisdiction] parameters:nil success:^(id object) {
+        
+        success(object);
+        
+    } failure:^(id object) {
+        
+        failure(object);
+        
+    } authenticated:YES];
+
+}
+
+- (void)recentlyViewed:(APIBlock)success failure:(APIBlock)failure {
+  
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+
+    NSString *url = [self url:[NSString stringWithFormat:kUrlRecentlyViewed,userId.integerValue]];
+                     
+    [self HTTP_GET:url parameters:@{@"filter[where][code][inq][0]":@"VIEW_PROJECT", @"filter[where][code][inq][1]":@"VIEW_COMPANY", @"limit":@"10", @"filter[include][0]":@"project", @"filter[include][1]":@"company"} success:^(id object) {
+        
+        success(object);
+        
+    } failure:^(id object) {
+        
+        failure(object);
+        
+    } authenticated:YES];
+
 }
 
 #pragma mark - PROJECT TRACK LISTS HTTP REQUEST

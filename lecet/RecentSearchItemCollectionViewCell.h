@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RecentSearchItemCollectionViewCell : UICollectionViewCell
-
+- (void)setInfo:(id)info;
 @end
