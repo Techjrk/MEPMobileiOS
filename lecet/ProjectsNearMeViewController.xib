@@ -67,16 +67,25 @@
                         <outlet property="delegate" destination="-1" id="bg0-y1-qB8"/>
                     </connections>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bim-2D-c2L">
+                    <rect key="frame" x="336" y="658" width="53" height="53"/>
+                    <state key="normal" image="locationArrow_icon "/>
+                    <connections>
+                        <action selector="tappedLocationRecenterButton:" destination="-1" eventType="touchUpInside" id="GTg-jZ-I7d"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bPF-Bf-kON" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2cV-Ka-CnQ"/>
                 <constraint firstItem="Ze1-Fk-hF2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="5fm-6A-f7Z"/>
                 <constraint firstAttribute="bottom" secondItem="c4p-uc-d1n" secondAttribute="bottom" id="7yL-5u-lBF"/>
+                <constraint firstAttribute="bottom" secondItem="bim-2D-c2L" secondAttribute="bottom" constant="25" id="8RS-st-yUg"/>
                 <constraint firstItem="4X6-5H-z1L" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.055" id="C9h-Gy-Moa"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PJk-Aw-GRi"/>
                 <constraint firstAttribute="bottom" secondItem="bPF-Bf-kON" secondAttribute="bottom" id="RAw-UF-wCd"/>
                 <constraint firstAttribute="trailing" secondItem="bPF-Bf-kON" secondAttribute="trailing" id="RXh-Rf-1ej"/>
+                <constraint firstAttribute="trailing" secondItem="bim-2D-c2L" secondAttribute="trailing" constant="25" id="VM3-h7-n0E"/>
                 <constraint firstItem="c4p-uc-d1n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZXS-lj-GTr"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bmm-7r-peQ"/>
                 <constraint firstItem="bPF-Bf-kON" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dFA-vE-3kd"/>
@@ -99,5 +108,6 @@
     </objects>
     <resources>
         <image name="icon_arrowLeft" width="10" height="24"/>
+        <image name="locationArrow_icon " width="53" height="53"/>
     </resources>
 </document>

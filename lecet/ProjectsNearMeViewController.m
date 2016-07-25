@@ -316,6 +316,10 @@ float MilesToMeters(float miles) {
     return YES;
 }
 
+- (IBAction)tappedLocationRecenterButton:(id)sender {
+    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+    
+}
 
 
 @end
