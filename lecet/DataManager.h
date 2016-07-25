@@ -44,6 +44,7 @@
 - (void)savedSearches:(NSMutableDictionary*)data success:(APIBlock)success failure:(APIBlock)failure;
 - (void)parentStage:(APIBlock)success failure:(APIBlock)failure;
 - (void)jurisdiction:(APIBlock)success failure:(APIBlock)failure;
+- (void)recentlyViewed:(APIBlock)success failure:(APIBlock)failure;
 
 //PROJECT TRACK LISTS
 - (void)userProjectTrackingList:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;

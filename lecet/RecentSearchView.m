@@ -9,7 +9,9 @@
 #import "RecentSearchView.h"
 #import "RecentSearchItemCollectionViewCell.h"
 
-@interface RecentSearchView()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface RecentSearchView()<UICollectionViewDelegate, UICollectionViewDataSource>{
+    NSMutableArray *items;
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
 
@@ -21,6 +23,16 @@
     
     [_collectionView registerNib:[UINib nibWithNibName:[[RecentSearchItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     
+    items = [NSMutableArray new];
+    [[DataManager sharedManager] recentlyViewed:^(id object) {
+    
+        items = [object mutableCopy];
+        [_collectionView reloadData];
+        
+    } failure:^(id object) {
+        
+    }];
+    
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -29,6 +41,7 @@
     
     RecentSearchItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
+    [cell setInfo:items[indexPath.row]];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
@@ -42,7 +55,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    NSInteger count = 5;
+    NSInteger count = items.count;
     
     return count;
 }
