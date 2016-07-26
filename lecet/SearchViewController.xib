@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
+                <outlet property="clearButton" destination="n4c-2p-kpe" id="pV5-FE-dHg"/>
                 <outlet property="collectionView" destination="ev1-02-ufH" id="MJO-fK-fk5"/>
                 <outlet property="labeSearch" destination="U88-lk-nNv" id="wac-V3-LRh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -50,22 +51,36 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="U88-lk-nNv">
-                            <rect key="frame" x="49" y="26" width="352" height="46"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="U88-lk-nNv">
+                            <rect key="frame" x="50" y="26" width="352" height="46"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="v2H-9h-WLI"/>
                             </connections>
                         </textField>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDi-y7-E95">
+                            <rect key="frame" x="361" y="26" width="41" height="46"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4c-2p-kpe">
+                            <rect key="frame" x="347" y="38" width="14" height="22"/>
+                            <state key="normal" image="clearText_icon"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="bDi-y7-E95" firstAttribute="height" secondItem="U88-lk-nNv" secondAttribute="height" id="9lO-pM-gZA"/>
+                        <constraint firstItem="bDi-y7-E95" firstAttribute="leading" secondItem="n4c-2p-kpe" secondAttribute="trailing" id="B0L-u6-iwg"/>
                         <constraint firstItem="U88-lk-nNv" firstAttribute="height" secondItem="fiW-wQ-edk" secondAttribute="height" multiplier="0.55" id="CU1-l6-3e9"/>
+                        <constraint firstItem="bDi-y7-E95" firstAttribute="centerY" secondItem="U88-lk-nNv" secondAttribute="centerY" id="PD6-SJ-kPW"/>
+                        <constraint firstItem="n4c-2p-kpe" firstAttribute="centerY" secondItem="U88-lk-nNv" secondAttribute="centerY" id="RB1-KP-hRW"/>
                         <constraint firstItem="XPt-Zi-h49" firstAttribute="width" secondItem="fiW-wQ-edk" secondAttribute="width" multiplier="0.12" id="SMW-CO-jHD"/>
                         <constraint firstItem="XPt-Zi-h49" firstAttribute="leading" secondItem="fiW-wQ-edk" secondAttribute="leading" id="TTt-w2-0NK"/>
                         <constraint firstAttribute="trailing" secondItem="MLd-Fa-TKx" secondAttribute="trailing" id="Uwo-EY-nzi"/>
                         <constraint firstItem="XPt-Zi-h49" firstAttribute="top" secondItem="MLd-Fa-TKx" secondAttribute="bottom" id="Wmb-Lq-gnp"/>
+                        <constraint firstItem="bDi-y7-E95" firstAttribute="trailing" secondItem="U88-lk-nNv" secondAttribute="trailing" id="ZwM-VD-H5E"/>
                         <constraint firstItem="U88-lk-nNv" firstAttribute="width" secondItem="fiW-wQ-edk" secondAttribute="width" multiplier="0.85" id="aNi-JR-MWV"/>
                         <constraint firstItem="MLd-Fa-TKx" firstAttribute="top" secondItem="fiW-wQ-edk" secondAttribute="top" id="dfC-a4-QpE"/>
                         <constraint firstItem="U88-lk-nNv" firstAttribute="leading" secondItem="XPt-Zi-h49" secondAttribute="trailing" id="fav-5b-vKL"/>
@@ -88,6 +103,7 @@
                 <constraint firstAttribute="bottom" secondItem="ev1-02-ufH" secondAttribute="bottom" id="XAX-SX-YyD"/>
                 <constraint firstAttribute="trailing" secondItem="ev1-02-ufH" secondAttribute="trailing" id="XYw-Fr-IcB"/>
                 <constraint firstItem="MLd-Fa-TKx" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="XsX-fI-Nhn"/>
+                <constraint firstItem="bDi-y7-E95" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.1" id="dsa-AG-A1x"/>
                 <constraint firstItem="ev1-02-ufH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lIU-We-RLj"/>
                 <constraint firstItem="fiW-wQ-edk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qgE-cr-zyT"/>
                 <constraint firstAttribute="bottom" secondItem="ICU-AI-saw" secondAttribute="bottom" id="wYM-dL-u9A"/>
@@ -104,6 +120,7 @@
         </view>
     </objects>
     <resources>
+        <image name="clearText_icon" width="14" height="14"/>
         <image name="icon_arrowLeft" width="10" height="24"/>
     </resources>
 </document>

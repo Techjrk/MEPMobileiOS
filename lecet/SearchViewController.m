@@ -51,6 +51,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSNumber *resultIndex;
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak,nonatomic) IBOutlet UIButton *clearButton;
 - (IBAction)tappedButtonBack:(id)sender;
 @end
 
@@ -84,11 +85,18 @@ typedef enum : NSUInteger {
     button.showsTouchWhenHighlighted = YES;
     [button addTarget:self action:@selector(tappedButtonFilter:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    [_clearButton addTarget:self action:@selector(clearText) forControlEvents:UIControlEventTouchUpInside];
+    [_clearButton setHidden:YES];
+    
     _labeSearch.rightView = button;
     _labeSearch.rightViewMode = UITextFieldViewModeAlways;
+    _labeSearch.delegate = self;
+    
     _labeSearch.textColor = [UIColor whiteColor];
     _labeSearch.font = SEACRCH_TEXTFIELD_TEXT_FONT;
     [_labeSearch setTintColor:[UIColor whiteColor]];
+    [_labeSearch addTarget:self action:@selector(onEditing:) forControlEvents: UIControlEventEditingChanged];
     
     NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:SEACRCH_PLACEHOLDER_TEXT attributes:@{NSFontAttributeName:SEACRCH_PLACEHOLDER_FONT, NSForegroundColorAttributeName:SEACRCH_PLACEHOLDER_COLOR}];
     
@@ -817,6 +825,22 @@ typedef enum : NSUInteger {
     
     _resultIndex = (NSNumber*)object;
 
+}
+
+-(void) onEditing:(id)sender {
+    
+    
+    if(![_labeSearch.text isEqualToString:@""]){
+        [_clearButton setHidden:NO];
+    }else{
+        [_clearButton setHidden:YES];
+    }
+    
+}
+
+- (void)clearText {
+    _labeSearch.text = nil;
+    [_clearButton setHidden:YES];
 }
 
 @end
