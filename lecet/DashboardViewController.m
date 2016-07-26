@@ -524,7 +524,9 @@
     BidItemView *item = object;
     BidItemCollectionViewCell *cell = (BidItemCollectionViewCell*)[[item superview] superview];
 
-    _bidsCollectionView.userInteractionEnabled = NO;
+    BOOL connected= [[BaseManager sharedManager] connected];
+    _bidsCollectionView.userInteractionEnabled = connected?NO:YES;
+    
     [[DataManager sharedManager] projectDetail:[item getProjectRecordId] success:^(id object) {
         [self showProjectDetails:object fromRect:cell.frame];
         _bidsCollectionView.userInteractionEnabled = YES;

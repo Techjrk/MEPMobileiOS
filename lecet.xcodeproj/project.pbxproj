@@ -2816,7 +2816,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (R4QP7Q3DLN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2829,7 +2829,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "43fef7df-8a75-4a13-8bda-1fdc73609481";
+				PROVISIONING_PROFILE = "276cabc0-4b60-430d-bbb3-1e3f85ec55be";
 			};
 			name = Debug;
 		};
@@ -2837,7 +2837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (R4QP7Q3DLN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2850,7 +2850,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "43fef7df-8a75-4a13-8bda-1fdc73609481";
+				PROVISIONING_PROFILE = "276cabc0-4b60-430d-bbb3-1e3f85ec55be";
 			};
 			name = Release;
 		};
