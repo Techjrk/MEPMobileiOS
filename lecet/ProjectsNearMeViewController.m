@@ -114,9 +114,6 @@ float MilesToMeters(float miles) {
 
 - (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate {
     
-    
-    
-    
     if (CLLocationCoordinate2DIsValid(coordinate)) {
         CGFloat lat = coordinate.latitude;
         CGFloat lng = coordinate.longitude;
