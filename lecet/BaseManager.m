@@ -129,7 +129,9 @@
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self enableUserTouch:YES];
-            [self connectionError:error];
+            if (![NSStringFromClass([[self getActiveViewController]  class]) isEqualToString:@"LoginViewController"]) {
+                [self connectionError:error];
+            }
             failure(error);
         }];
     }
@@ -200,6 +202,10 @@
             } else {
                 [self enableUserTouch:YES];
                 [self connectionError:error];
+                
+                
+               
+                
                 failure(responseObject);
             }
         }] resume];
