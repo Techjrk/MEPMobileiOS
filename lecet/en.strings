@@ -361,4 +361,9 @@
 "FILTER_VIEW_PROJECTTYPE"                   =               "project types";
 "FILTER_VIEW_APPLY"                         =               "APPLY";
 
+//SaveSearchChangeItemView
+"SAVE_SEARCH_TITLE"                         =               "You have made changes to this saved search";
+"SAVE_SEARCH_CANCEL"                        =               "CANCEL";
+"SAVE_SEARCH_SAVECHANGES"                   =               "SAVE CHANGES";
+
 

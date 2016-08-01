@@ -23,6 +23,7 @@
 #import "ContactDetailViewController.h"
 #import "RecentSearchCollectionViewCell.h"
 #import "SeeAllCollectionViewCell.h"
+#import "SaveSearchChangeItemView.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -42,16 +43,19 @@ typedef enum : NSUInteger {
 } SearchSection;
 
 
-@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate>{
+@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate>{
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
     BOOL isPushingController;
 }
+@property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
 @property (strong, nonatomic) NSNumber *resultIndex;
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak,nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintCollectionBottomLeading;
 - (IBAction)tappedButtonBack:(id)sender;
 @end
 
@@ -78,6 +82,9 @@ typedef enum : NSUInteger {
     _labeSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _labeSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
     _labeSearch.layer.masksToBounds = YES;
+    
+    _constraintSaveSearchesHeight.constant = 0;
+    _saveSearchesView.saveSearchChangeItemViewDelegate = self;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, kDeviceWidth * 0.1, kDeviceHeight * 0.025);
@@ -452,7 +459,7 @@ typedef enum : NSUInteger {
     SearchSection sectionType = (SearchSection)indexPath.section;
     
     if (sectionType == SearchSectionSuggested) {
-        
+        [self showSaveSearches:YES];
         _resultIndex = [NSNumber numberWithInteger:indexPath.row];
         showResult = YES;
         [_collectionView reloadData];
@@ -841,6 +848,42 @@ typedef enum : NSUInteger {
 - (void)clearText {
     _labeSearch.text = nil;
     [_clearButton setHidden:YES];
+}
+
+#pragma mark - Save Sarche Delegate
+
+- (void)tappedButtonSaveSearchesItem:(SaveSearchChangeItem)item {
+    switch (item) {
+        case SaveSearchChangeItemSave:{
+            [[DataManager sharedManager] featureNotAvailable];
+            break;
+        }
+        case SaveSearchChangeItemCancel:{
+            [self showSaveSearches:NO];
+            
+            break;
+        }
+            
+    }
+}
+
+- (void)showSaveSearches:(BOOL)show {
+    
+    CGFloat height;
+    
+    if (show) {
+        height = kDeviceHeight * 0.128;
+    } else {
+        height = 0;
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        _constraintSaveSearchesHeight.constant = height;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [_collectionView reloadData];
+    }];
+
 }
 
 @end
