@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -10,7 +10,9 @@
             <connections>
                 <outlet property="clearButton" destination="n4c-2p-kpe" id="pV5-FE-dHg"/>
                 <outlet property="collectionView" destination="ev1-02-ufH" id="MJO-fK-fk5"/>
+                <outlet property="constraintSaveSearchesHeight" destination="GRZ-bz-urs" id="Ium-e1-xCZ"/>
                 <outlet property="labeSearch" destination="U88-lk-nNv" id="wac-V3-LRh"/>
+                <outlet property="saveSearchesView" destination="1fj-QL-fru" id="pdh-e2-tWf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,9 +25,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fj-QL-fru" customClass="SaveSearchChangeItemView">
+                    <rect key="frame" x="0.0" y="85" width="414" height="87"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="87" id="GRZ-bz-urs"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ev1-02-ufH">
-                    <rect key="frame" x="0.0" y="85" width="414" height="651"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="172" width="414" height="564"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uot-Dy-KDt">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="50" height="50"/>
@@ -93,30 +102,27 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ICU-AI-saw" secondAttribute="trailing" id="0Rw-Ps-QcH"/>
-                <constraint firstItem="ev1-02-ufH" firstAttribute="top" secondItem="fiW-wQ-edk" secondAttribute="bottom" id="0dy-uw-oKi"/>
                 <constraint firstItem="ICU-AI-saw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1hJ-yn-0E6"/>
                 <constraint firstItem="fiW-wQ-edk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.115" id="3AM-Ts-mVO"/>
-                <constraint firstAttribute="bottom" secondItem="ev1-02-ufH" secondAttribute="bottom" id="4x2-YH-Et0"/>
+                <constraint firstAttribute="trailing" secondItem="ev1-02-ufH" secondAttribute="trailing" id="99d-d5-SiZ"/>
                 <constraint firstAttribute="trailing" secondItem="fiW-wQ-edk" secondAttribute="trailing" id="Fb3-0k-xvH"/>
                 <constraint firstItem="fiW-wQ-edk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ijm-vb-ajm"/>
+                <constraint firstItem="1fj-QL-fru" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KWw-VO-UNg"/>
                 <constraint firstItem="ICU-AI-saw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WCx-Hc-EMJ"/>
-                <constraint firstAttribute="bottom" secondItem="ev1-02-ufH" secondAttribute="bottom" id="XAX-SX-YyD"/>
-                <constraint firstAttribute="trailing" secondItem="ev1-02-ufH" secondAttribute="trailing" id="XYw-Fr-IcB"/>
+                <constraint firstAttribute="trailing" secondItem="1fj-QL-fru" secondAttribute="trailing" id="Xnq-5O-GSa"/>
                 <constraint firstItem="MLd-Fa-TKx" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="XsX-fI-Nhn"/>
+                <constraint firstAttribute="bottom" secondItem="ev1-02-ufH" secondAttribute="bottom" id="api-4x-fmJ"/>
                 <constraint firstItem="bDi-y7-E95" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.1" id="dsa-AG-A1x"/>
-                <constraint firstItem="ev1-02-ufH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lIU-We-RLj"/>
+                <constraint firstItem="1fj-QL-fru" firstAttribute="top" secondItem="fiW-wQ-edk" secondAttribute="bottom" id="jtQ-LD-6j7"/>
                 <constraint firstItem="fiW-wQ-edk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qgE-cr-zyT"/>
+                <constraint firstItem="ev1-02-ufH" firstAttribute="top" secondItem="1fj-QL-fru" secondAttribute="bottom" id="r4c-ro-n4U"/>
+                <constraint firstItem="ev1-02-ufH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t1i-Ix-RCK"/>
                 <constraint firstAttribute="bottom" secondItem="ICU-AI-saw" secondAttribute="bottom" id="wYM-dL-u9A"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="XAX-SX-YyD"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>
