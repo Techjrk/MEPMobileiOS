@@ -10,6 +10,7 @@
 
 #import "BaseViewController.h"
 @interface CallOutViewController : BaseViewController
+@property (weak, nonatomic) UIViewController *parentCtrl;
 @property (strong, nonatomic) id projectPin;
 @property (strong, nonatomic) UIView *sourceView;
 - (void)setInfo:(id)info;

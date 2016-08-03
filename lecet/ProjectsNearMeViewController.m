@@ -61,7 +61,8 @@ float MilesToMeters(float miles) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationAppBecomeActive:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_LOCATION_DENIED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationAllowed:) name:NOTIFICATION_LOCATION_ALLOWED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];    
+    
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         
         [[[DataManager sharedManager] locationManager] startUpdatingLocation];
@@ -274,6 +275,7 @@ float MilesToMeters(float miles) {
         [controller setInfo:annotation.cargo];
         annotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
         controller.projectPin = annotationView;
+        controller.parentCtrl = self;
         [self.navigationController presentViewController:controller animated:NO completion:nil];
     }
 }

@@ -123,13 +123,13 @@
 
         
         
-        /*
+        
         [[DataManager sharedManager] bidCalendarForYear:@(2016) month:@(6) success:^(id object) {
             
         } failure:^(id object) {
             
         }]
-         */;
+         ;
         
         /*
         [[DataManager sharedManager] companyTrackingListUpdates:@(2) success:^(id object) {
