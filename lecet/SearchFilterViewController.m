@@ -182,7 +182,8 @@
             }
                 
             case FilterModelType: {
-                [self filterTypes:view];
+                //[self filterTypes:view];
+                [self filterProjectTypes:view];
                 break;
             }
                 
@@ -430,7 +431,8 @@
         FilterViewController *controller = [FilterViewController new];
         controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
         controller.listViewItems = listItems;
-        controller.singleSelect = YES;
+       
+        controller.singleSelect = _companyFilter.hidden?NO:YES;
         [self.navigationController pushViewController:controller animated:YES];
         
     } failure:^(id object) {
@@ -554,6 +556,7 @@
     }failure:^(id obj){
         
     }];
+    
 }
 
 #pragma mark - FilterTypes Delegate
