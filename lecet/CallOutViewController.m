@@ -10,6 +10,7 @@
 
 #import "CustomCallOut.h"
 #import "ProjectAnnotationView.h"
+#import "ProjectDetailViewController.h"
 
 @interface CallOutViewController ()<UIPopoverPresentationControllerDelegate>{
     NSDictionary *infoDict;
@@ -20,6 +21,7 @@
 @implementation CallOutViewController
 @synthesize sourceView;
 @synthesize projectPin;
+@synthesize parentCtrl;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -34,6 +36,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationViewProject:) name:NOTIFICATION_VIEW_PROJECT object:nil];
 
 }
 
@@ -81,6 +84,23 @@
 
 - (void)setInfo:(id)info {
     infoDict = [info copy];
+}
+
+- (void)NotificationViewProject:(NSNotification*)notification {
+    
+    NSNumber *recordId = notification.object;
+    [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
+        
+        ProjectDetailViewController *detail = [ProjectDetailViewController new];
+        detail.view.hidden = NO;
+        [detail detailsFromProject:object];
+        
+        [self.parentCtrl.navigationController pushViewController:detail animated:YES];
+    } failure:^(id object) {
+    }];
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
 }
 
 @end

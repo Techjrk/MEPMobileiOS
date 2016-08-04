@@ -36,6 +36,7 @@
 @interface CustomCallOut(){
     CGFloat cornerRadius;
     CGFloat lat, lng;
+    NSNumber *recordId;
 }
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -48,6 +49,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelProjectAddress;
 @property (weak, nonatomic) IBOutlet UIButton *buttonGetDirection;
 - (IBAction)tappedButtonDirection:(id)sender;
+- (IBAction)tappedButtonView:(id)sender;
 @end
 
 @implementation CustomCallOut
@@ -81,6 +83,8 @@
 - (void)setInfo:(id)info {
 
     NSDictionary *dict = info;
+    
+    recordId = dict[@"id"];
     
     _labelProjectName.text = dict[@"title"];
     _labelProjectAddress.text = [NSString stringWithFormat:@"%@ %@, %@ %@", dict[@"address1"], dict[@"city"], dict[@"state"], dict[@"zipPlus4"]];
@@ -129,4 +133,11 @@
     
     [endingItem openInMapsWithLaunchOptions:launchOptions];
 }
+
+- (IBAction)tappedButtonView:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VIEW_PROJECT object:recordId];
+    
+}
+
 @end
