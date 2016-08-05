@@ -11,6 +11,9 @@
 #import "BaseViewClass.h"
 #import "ProjectFilterView.h"
 
+#define ENTRYTITLE  @"entryTitle"
+#define ENTRYID     @"entryID"
+
 @protocol FilterEntryViewDelegate <NSObject>
 - (void)tappedFilterEntryViewDelegate:(id)object;
 - (void)reloadDataBeenComplete:(FilterModel)filterModel;

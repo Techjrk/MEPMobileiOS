@@ -21,6 +21,7 @@
 @interface ProjectFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate>{
     BOOL isExpanded;
     NSLayoutConstraint *constraintObject;
+    BOOL selectedItemIsEmpty;
 }
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldType;
@@ -37,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewOptionsHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLabelHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldTypeHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldValueHeight;
 - (IBAction)tappedButtonOptions:(id)sender;
 @end
 
@@ -47,7 +50,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    _constraintFieldHeight.constant = kDeviceHeight * 0.117;
+    CGFloat fieldHeight = kDeviceHeight * 0.117;
+    _constraintFieldHeight.constant = fieldHeight;
+    _constraintFieldTypeHeight.constant = fieldHeight;
+    _constraintFieldValueHeight.constant = fieldHeight;
+    
     _constraintLabelHeight.constant = kDeviceHeight * 0.079;
      
     [_fieldLocation setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION")];
@@ -223,68 +230,47 @@
 
 - (void)reloadDataBeenComplete:(FilterModel)filterModel {
     
-    switch (filterModel) {
-        case FilterModelLocation:{
-            
-            break;
-        }
-        case FilterModelType:{
-            
-            break;
-        }
-        case FilterModelValue:{
-            
-            break;
-        }
-        case FilterModelUpdated:{
-            
-            break;
-        }
-        case FilterModelJurisdiction:{
-            
-            break;
-        }
-        case FilterModelStage:{
-            
-            break;
-        }
-        case FilterModelBidding:{
-            break;
-        }
-        case FilterModelBH:{
-            
-            break;
-        }
-        case FilterModelOwner:{
-            
-            
-            break;
-        }
-        case FilterModelWork:{
-            
-            
-            break;
-        }
-        case FilterModelProjectType:{
-            
-            break;
-        }
-            
+    CGFloat collectionViewHeight = kDeviceHeight * 0.117;
+    CGFloat collectionViewContentSizeHeight = kDeviceHeight * 0.117;
+    NSLayoutConstraint *constraintHeight;
+    if (filterModel == FilterModelLocation) {
+        collectionViewHeight = _fieldLocation.collectionView.frame.size.height;
+        collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
+        constraintHeight = _constraintFieldHeight;
+    }
+    if (filterModel == FilterModelType) {
+        collectionViewHeight = _fieldType.collectionView.frame.size.height;
+        collectionViewContentSizeHeight = _fieldType.collectionView.contentSize.height;
+        constraintHeight = _constraintFieldTypeHeight;
+    }
+    if (filterModel == FilterModelValue) {
+        collectionViewHeight = _fieldValue.collectionView.frame.size.height;
+        collectionViewContentSizeHeight = _fieldValue.collectionView.contentSize.height;
+        constraintHeight = _constraintFieldValueHeight;
     }
     
-    CGFloat collecTionStandardHeight = _fieldLocation.collectionView.frame.size.height;
+    CGFloat additionalHeight;
     
-    if (_fieldLocation.collectionView.contentSize.height > collecTionStandardHeight) {
+    if (selectedItemIsEmpty) {
+       additionalHeight = kDeviceHeight * 0.117;
+    } else {
+        additionalHeight = (kDeviceHeight * 0.115) + (collectionViewContentSizeHeight + (kDeviceHeight * 0.025));
+    }
+    
+    
+  //  if (collectionViewContentSizeHeight > collectionViewHeight || selectedItemIsEmpty) {
         [UIView animateWithDuration:0.25 animations:^{
-            _constraintFieldHeight.constant = (kDeviceHeight * 0.115) + (_fieldLocation.collectionView.contentSize.height + (kDeviceHeight * 0.025));
+            constraintHeight.constant = additionalHeight;
             [self layoutIfNeeded];
         } completion:^(BOOL finished) {
         }];
-    }
-    
+  //  }
+
 }
 
 - (void)setLocationInfo:(id)info {
+    NSArray *data = [info copy];
+    selectedItemIsEmpty = data.count > 0?NO:YES;
     [_fieldLocation setInfo:info];
 }
 

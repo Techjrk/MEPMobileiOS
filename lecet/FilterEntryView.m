@@ -39,12 +39,9 @@
 }
 
 - (void)setInfo:(id)info {
-    
-    collectionDataItems = [NSMutableArray new];
-    collectionDataItems = [@[@"Bridge",@"Communication",@"Classified",@"Utilites"] mutableCopy];
+    collectionDataItems = [info mutableCopy];
     [_collectionView reloadData];
     [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.25];
-
 }
 
 - (void)setTitle:(NSString *)title {
@@ -60,8 +57,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     FilterEntryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    NSString *text = [collectionDataItems objectAtIndex:indexPath.row];
-    [cell setLabelAttributedText:[self convertToAttributedText:text]];
+    NSDictionary *dict = [collectionDataItems objectAtIndex:indexPath.row];
+    [cell setLabelAttributedText:[self convertToAttributedText:dict[ENTRYTITLE]]];
     
     return cell;
 }
@@ -81,8 +78,8 @@
     CGSize size;
     cellHeight = kDeviceHeight * 0.08;
     
-    NSString *text = [collectionDataItems objectAtIndex:indexPath.row];
-    CGSize labelSize = [text sizeWithAttributes:@{NSFontAttributeName :LABEL_FONT}];
+    NSDictionary *dict = [collectionDataItems objectAtIndex:indexPath.row];
+    CGSize labelSize = [dict[ENTRYTITLE] sizeWithAttributes:@{NSFontAttributeName :LABEL_FONT}];
 
     size = CGSizeMake( labelSize.width + 30 , kDeviceHeight * 0.035);
     return size;

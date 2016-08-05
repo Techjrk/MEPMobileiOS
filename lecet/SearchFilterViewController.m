@@ -39,6 +39,7 @@
 @interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ProjectFilterTypesViewControllerDelegate,ProjectFilterLocationViewControllerDelegate,ValuationViewControllerDelegate>{
     
     FilterModel selectedModel;
+    NSMutableArray *selectedLocationItems;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
@@ -568,7 +569,25 @@
 #pragma mark - Location Delegate
 
 - (void)tappedLocationApplyButton:(id)items {
-    [_projectFilter setLocationInfo:nil];
+   selectedLocationItems = [NSMutableArray new];
+    [self getLocationData:items];
+    [_projectFilter setLocationInfo:selectedLocationItems];
+}
+
+- (void)getLocationData:(id)items {
+
+    for (NSDictionary *item in items) {
+        
+        if ([item[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
+            [selectedLocationItems addObject:@{ENTRYTITLE:item[@"title"],ENTRYID:@0}];
+        }
+        
+        NSArray *subArray = [DerivedNSManagedObject objectOrNil:item[@"SubData"]];
+        if (subArray.count > 0) {
+            [self getLocationData:subArray];
+        }
+    }
+
 }
 
 #pragma mark - WorkOwnerTypes Delegate
