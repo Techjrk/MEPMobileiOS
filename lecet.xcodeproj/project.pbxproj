@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60359531D01F2CA006E5231 /* ContactNavBarView.m */; };
 		B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60359541D01F2CA006E5231 /* ContactNavBarView.xib */; };
+		B620C1251D535371005CD4B6 /* FilterEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */; };
+		B620C1261D535371005CD4B6 /* FilterEntryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B620C1241D535371005CD4B6 /* FilterEntryCollectionViewCell.xib */; };
 		B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */; };
 		B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */; };
 		B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411B9D1D096729002B6E88 /* SettingsViewController.m */; };
@@ -393,6 +395,9 @@
 		B60359531D01F2CA006E5231 /* ContactNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactNavBarView.m; sourceTree = "<group>"; };
 		B60359541D01F2CA006E5231 /* ContactNavBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactNavBarView.xib; sourceTree = "<group>"; };
 		B61F8BB01D0FFFA3009F70EF /* TextfieldViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldViewDelegate.h; sourceTree = "<group>"; };
+		B620C1221D535371005CD4B6 /* FilterEntryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterEntryCollectionViewCell.h; sourceTree = "<group>"; };
+		B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterEntryCollectionViewCell.m; sourceTree = "<group>"; };
+		B620C1241D535371005CD4B6 /* FilterEntryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterEntryCollectionViewCell.xib; sourceTree = "<group>"; };
 		B623B20A1CFC9AC900793D67 /* ProjectListCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListCVCell.h; sourceTree = "<group>"; };
 		B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListCVCell.m; sourceTree = "<group>"; };
 		B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListCVCell.xib; sourceTree = "<group>"; };
@@ -1006,6 +1011,16 @@
 				B60359541D01F2CA006E5231 /* ContactNavBarView.xib */,
 			);
 			name = ContactNavBar;
+			sourceTree = "<group>";
+		};
+		B620C1271D535386005CD4B6 /* FilterEntry */ = {
+			isa = PBXGroup;
+			children = (
+				B620C1221D535371005CD4B6 /* FilterEntryCollectionViewCell.h */,
+				B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */,
+				B620C1241D535371005CD4B6 /* FilterEntryCollectionViewCell.xib */,
+			);
+			name = FilterEntry;
 			sourceTree = "<group>";
 		};
 		B623B2091CFC9AB700793D67 /* ProjectListCell */ = {
@@ -1840,6 +1855,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B620C1271D535386005CD4B6 /* FilterEntry */,
 				B65BCDC21D2534DE00FE9781 /* WorkOwnerTypeCell */,
 				B6AF1CEA1D212D6800C95A8F /* ProjectFilterCollapsibleCell */,
 				B6FD04391D1D2E9400E12123 /* ProjectFilterSelectionCell */,
@@ -2487,6 +2503,7 @@
 				B6AF1CE21D21240700C95A8F /* ProjectFilterCollapsibleView.xib in Resources */,
 				B651065A1D12B94800007759 /* CompanyTrackingView.xib in Resources */,
 				B70FDF751CE9FEDB0035A6D9 /* SeeAllView.xib in Resources */,
+				B620C1261D535371005CD4B6 /* FilterEntryCollectionViewCell.xib in Resources */,
 				B73EFAED1D13FB3C00C6B3B2 /* ProjectTrackingViewController.xib in Resources */,
 				B7BF60F31D22B49400B3BDD7 /* RecentSearchView.xib in Resources */,
 				B77E08E81D2687D80087454F /* FilterViewController.xib in Resources */,
@@ -2658,6 +2675,7 @@
 				B6AF1CFA1D21325F00C95A8F /* ProjectFilterSearchNavView.m in Sources */,
 				B644747A1D0047F10001B244 /* ProjectSortView.m in Sources */,
 				B66DF81F1D007D000071A6B5 /* ProjectBidsListViewController.m in Sources */,
+				B620C1251D535371005CD4B6 /* FilterEntryCollectionViewCell.m in Sources */,
 				B65106591D12B94800007759 /* CompanyTrackingView.m in Sources */,
 				B7BF60E31D215E7D00B3BDD7 /* RefineSearchViewController.m in Sources */,
 				B7E1043C1CEC74E900EAD8E7 /* ContactsListView.m in Sources */,

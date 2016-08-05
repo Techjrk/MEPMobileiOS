@@ -568,7 +568,7 @@
 #pragma mark - Location Delegate
 
 - (void)tappedLocationApplyButton:(id)items {
-    
+    [_projectFilter setLocationInfo:nil];
 }
 
 #pragma mark - WorkOwnerTypes Delegate

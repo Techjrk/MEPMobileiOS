@@ -47,7 +47,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    _constraintFieldHeight.constant = kDeviceHeight * 0.115;
+    _constraintFieldHeight.constant = kDeviceHeight * 0.117;
     _constraintLabelHeight.constant = kDeviceHeight * 0.079;
      
     [_fieldLocation setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION")];
@@ -221,5 +221,71 @@
     return info[key];
 }
 
+- (void)reloadDataBeenComplete:(FilterModel)filterModel {
+    
+    switch (filterModel) {
+        case FilterModelLocation:{
+            
+            break;
+        }
+        case FilterModelType:{
+            
+            break;
+        }
+        case FilterModelValue:{
+            
+            break;
+        }
+        case FilterModelUpdated:{
+            
+            break;
+        }
+        case FilterModelJurisdiction:{
+            
+            break;
+        }
+        case FilterModelStage:{
+            
+            break;
+        }
+        case FilterModelBidding:{
+            break;
+        }
+        case FilterModelBH:{
+            
+            break;
+        }
+        case FilterModelOwner:{
+            
+            
+            break;
+        }
+        case FilterModelWork:{
+            
+            
+            break;
+        }
+        case FilterModelProjectType:{
+            
+            break;
+        }
+            
+    }
+    
+    CGFloat collecTionStandardHeight = _fieldLocation.collectionView.frame.size.height;
+    
+    if (_fieldLocation.collectionView.contentSize.height > collecTionStandardHeight) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _constraintFieldHeight.constant = (kDeviceHeight * 0.115) + (_fieldLocation.collectionView.contentSize.height + (kDeviceHeight * 0.025));
+            [self layoutIfNeeded];
+        } completion:^(BOOL finished) {
+        }];
+    }
+    
+}
+
+- (void)setLocationInfo:(id)info {
+    [_fieldLocation setInfo:info];
+}
 
 @end
