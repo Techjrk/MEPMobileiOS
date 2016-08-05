@@ -996,7 +996,9 @@
         success(object);
         
     } failure:^(id object) {
+        
         failure(object);
+        
     } authenticated:YES];
     
 }
