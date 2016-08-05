@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="buttonOptions" destination="yJZ-zN-sti" id="qTo-NW-XKC"/>
                 <outlet property="constraintFieldHeight" destination="WLK-MC-gdh" id="cv5-HF-QYD"/>
+                <outlet property="constraintFieldTypeHeight" destination="t4G-bX-6LN" id="DPC-9a-jY8"/>
+                <outlet property="constraintFieldValueHeight" destination="hiP-Q3-QRs" id="2ZJ-te-fLI"/>
                 <outlet property="constraintLabelHeight" destination="Tfv-7J-CW2" id="zun-O0-8F5"/>
                 <outlet property="constraintViewOptionsHeight" destination="aFJ-tx-csC" id="ww6-H3-hum"/>
                 <outlet property="fieldBH" destination="M7B-YC-1eW" id="pD2-up-4NS"/>
@@ -31,52 +33,58 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-NC-tUk" customClass="FilterEntryView">
-                    <rect key="frame" x="10.5" y="0.0" width="325" height="88"/>
+                    <rect key="frame" x="11" y="0.0" width="325" height="88"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="88" id="WLK-MC-gdh"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIM-Lg-fiG" customClass="FilterEntryView">
-                    <rect key="frame" x="10.5" y="88" width="325" height="88"/>
+                    <rect key="frame" x="11" y="88" width="325" height="88"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="t4G-bX-6LN"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9o7-ln-iVo" customClass="FilterEntryView">
-                    <rect key="frame" x="10.5" y="176" width="325" height="88"/>
+                    <rect key="frame" x="11" y="176" width="325" height="88"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="hiP-Q3-QRs"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS1-bs-m0G" customClass="FilterLabelView">
-                    <rect key="frame" x="10.5" y="264" width="325" height="58.5"/>
+                    <rect key="frame" x="11" y="264" width="325" height="59"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="58.5" id="Tfv-7J-CW2"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-4s-QuB" customClass="FilterLabelView">
-                    <rect key="frame" x="11" y="322.5" width="325" height="58"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-4s-QuB" customClass="FilterLabelView">
+                    <rect key="frame" x="11" y="323" width="325" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vav-hB-Nd1" customClass="FilterLabelView">
-                    <rect key="frame" x="11" y="380.5" width="325" height="58.5"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vav-hB-Nd1" customClass="FilterLabelView">
+                    <rect key="frame" x="11" y="381" width="325" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6o-m0-w3n" customClass="FilterLabelView">
-                    <rect key="frame" x="11" y="439" width="325" height="58.5"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6o-m0-w3n" customClass="FilterLabelView">
+                    <rect key="frame" x="11" y="439" width="325" height="59"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-Yo-Dww">
-                    <rect key="frame" x="11" y="497.5" width="325" height="0.0"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-Yo-Dww">
+                    <rect key="frame" x="11" y="498" width="325" height="0.0"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7B-YC-1eW" customClass="FilterLabelView">
-                            <rect key="frame" x="0.0" y="0.0" width="325" height="58.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="325" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-TM-3dS" customClass="FilterLabelView">
-                            <rect key="frame" x="0.0" y="58.5" width="325" height="58.5"/>
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-TM-3dS" customClass="FilterLabelView">
+                            <rect key="frame" x="0.0" y="59" width="325" height="58"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeD-3e-kgq" customClass="FilterLabelView">
-                            <rect key="frame" x="0.0" y="117" width="325" height="58.5"/>
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeD-3e-kgq" customClass="FilterLabelView">
+                            <rect key="frame" x="0.0" y="117" width="325" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -101,8 +109,8 @@
                         </mask>
                     </variation>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-zN-sti">
-                    <rect key="frame" x="104.5" y="497.5" width="138" height="73"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-zN-sti">
+                    <rect key="frame" x="105" y="498" width="138" height="73"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="tappedButtonOptions:" destination="-1" eventType="touchUpInside" id="lf2-ab-qrZ"/>
@@ -117,21 +125,18 @@
                 <constraint firstItem="uIM-Lg-fiG" firstAttribute="top" secondItem="7uj-NC-tUk" secondAttribute="bottom" id="4Wq-Xd-bwl"/>
                 <constraint firstItem="9o7-ln-iVo" firstAttribute="top" secondItem="uIM-Lg-fiG" secondAttribute="bottom" id="6po-qh-fP6"/>
                 <constraint firstItem="b4F-Yo-Dww" firstAttribute="top" secondItem="p6o-m0-w3n" secondAttribute="bottom" id="8Yi-ax-Itk"/>
-                <constraint firstItem="9o7-ln-iVo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.145" id="AYb-gk-qFd"/>
                 <constraint firstItem="vav-hB-Nd1" firstAttribute="width" secondItem="1dZ-4s-QuB" secondAttribute="width" id="Flx-d5-XTd"/>
                 <constraint firstItem="1dZ-4s-QuB" firstAttribute="height" secondItem="DS1-bs-m0G" secondAttribute="height" id="HdF-ob-AgB"/>
                 <constraint firstItem="vav-hB-Nd1" firstAttribute="top" secondItem="1dZ-4s-QuB" secondAttribute="bottom" id="K4j-aY-3gu"/>
                 <constraint firstItem="M7B-YC-1eW" firstAttribute="height" secondItem="p6o-m0-w3n" secondAttribute="height" id="MCd-pi-U4I"/>
                 <constraint firstItem="p6o-m0-w3n" firstAttribute="height" secondItem="vav-hB-Nd1" secondAttribute="height" id="O8p-uI-fH4"/>
                 <constraint firstItem="vav-hB-Nd1" firstAttribute="height" secondItem="1dZ-4s-QuB" secondAttribute="height" id="Udp-56-rMU"/>
-                <constraint firstItem="uIM-Lg-fiG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.145" id="VaU-V6-SOS"/>
                 <constraint firstItem="7uj-NC-tUk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="X0B-St-oKI"/>
                 <constraint firstItem="1dZ-4s-QuB" firstAttribute="width" secondItem="DS1-bs-m0G" secondAttribute="width" id="YDC-cH-xSG"/>
                 <constraint firstItem="DS1-bs-m0G" firstAttribute="width" secondItem="9o7-ln-iVo" secondAttribute="width" id="dQB-fk-2wl"/>
                 <constraint firstItem="DS1-bs-m0G" firstAttribute="centerX" secondItem="9o7-ln-iVo" secondAttribute="centerX" id="eGg-Kc-ugz"/>
                 <constraint firstItem="b4F-Yo-Dww" firstAttribute="centerX" secondItem="p6o-m0-w3n" secondAttribute="centerX" id="elM-g5-6fR"/>
                 <constraint firstItem="p6o-m0-w3n" firstAttribute="centerX" secondItem="vav-hB-Nd1" secondAttribute="centerX" id="fB5-s5-3xr"/>
-                <constraint firstItem="9o7-ln-iVo" firstAttribute="height" secondItem="uIM-Lg-fiG" secondAttribute="height" id="faZ-43-C5N"/>
                 <constraint firstItem="uIM-Lg-fiG" firstAttribute="width" secondItem="7uj-NC-tUk" secondAttribute="width" id="frI-Ta-GhM"/>
                 <constraint firstItem="uIM-Lg-fiG" firstAttribute="centerX" secondItem="7uj-NC-tUk" secondAttribute="centerX" id="gOl-h0-pmb"/>
                 <constraint firstItem="b4F-Yo-Dww" firstAttribute="width" secondItem="p6o-m0-w3n" secondAttribute="width" id="gif-0d-5bR"/>
@@ -140,29 +145,18 @@
                 <constraint firstItem="9o7-ln-iVo" firstAttribute="width" secondItem="uIM-Lg-fiG" secondAttribute="width" id="kRL-xM-AAy"/>
                 <constraint firstItem="1dZ-4s-QuB" firstAttribute="top" secondItem="DS1-bs-m0G" secondAttribute="bottom" id="l1t-mB-GU6"/>
                 <constraint firstItem="yJZ-zN-sti" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="n2X-24-3nw"/>
-                <constraint firstItem="7uj-NC-tUk" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.145" id="oz7-en-nKi"/>
                 <constraint firstItem="1dZ-4s-QuB" firstAttribute="centerX" secondItem="DS1-bs-m0G" secondAttribute="centerX" id="qp4-aI-QIy"/>
                 <constraint firstItem="M7B-YC-1eW" firstAttribute="width" secondItem="p6o-m0-w3n" secondAttribute="width" id="r8K-9o-eT1"/>
-                <constraint firstItem="uIM-Lg-fiG" firstAttribute="height" secondItem="7uj-NC-tUk" secondAttribute="height" id="rJh-mT-lqE"/>
                 <constraint firstItem="yJZ-zN-sti" firstAttribute="top" secondItem="b4F-Yo-Dww" secondAttribute="bottom" id="rvi-Lg-VsW"/>
                 <constraint firstItem="9o7-ln-iVo" firstAttribute="centerX" secondItem="uIM-Lg-fiG" secondAttribute="centerX" id="scX-Yp-Ewp"/>
                 <constraint firstItem="vav-hB-Nd1" firstAttribute="centerX" secondItem="1dZ-4s-QuB" secondAttribute="centerX" id="u23-tL-M9p"/>
                 <constraint firstItem="p6o-m0-w3n" firstAttribute="width" secondItem="vav-hB-Nd1" secondAttribute="width" id="vWE-ch-QKW"/>
                 <constraint firstItem="DS1-bs-m0G" firstAttribute="top" secondItem="9o7-ln-iVo" secondAttribute="bottom" id="wYU-n4-gR0"/>
-                <constraint firstItem="DS1-bs-m0G" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.096" id="z8g-Dd-q7r"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="oz7-en-nKi"/>
-                    <exclude reference="VaU-V6-SOS"/>
-                    <exclude reference="AYb-gk-qFd"/>
-                    <exclude reference="z8g-Dd-q7r"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="-42" y="208"/>
         </view>
     </objects>

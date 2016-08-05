@@ -39,6 +39,7 @@
 @interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ProjectFilterTypesViewControllerDelegate,ProjectFilterLocationViewControllerDelegate,ValuationViewControllerDelegate>{
     
     FilterModel selectedModel;
+    NSMutableArray *selectedLocationItems;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
@@ -182,7 +183,8 @@
             }
                 
             case FilterModelType: {
-                [self filterTypes:view];
+                //[self filterTypes:view];
+                [self filterProjectTypes:view];
                 break;
             }
                 
@@ -430,7 +432,8 @@
         FilterViewController *controller = [FilterViewController new];
         controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
         controller.listViewItems = listItems;
-        controller.singleSelect = YES;
+       
+        controller.singleSelect = _companyFilter.hidden?NO:YES;
         [self.navigationController pushViewController:controller animated:YES];
         
     } failure:^(id object) {
@@ -554,6 +557,7 @@
     }failure:^(id obj){
         
     }];
+    
 }
 
 #pragma mark - FilterTypes Delegate
@@ -565,7 +569,25 @@
 #pragma mark - Location Delegate
 
 - (void)tappedLocationApplyButton:(id)items {
-    
+   selectedLocationItems = [NSMutableArray new];
+    [self getLocationData:items];
+    [_projectFilter setLocationInfo:selectedLocationItems];
+}
+
+- (void)getLocationData:(id)items {
+
+    for (NSDictionary *item in items) {
+        
+        if ([item[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
+            [selectedLocationItems addObject:@{ENTRYTITLE:item[@"title"],ENTRYID:@0}];
+        }
+        
+        NSArray *subArray = [DerivedNSManagedObject objectOrNil:item[@"SubData"]];
+        if (subArray.count > 0) {
+            [self getLocationData:subArray];
+        }
+    }
+
 }
 
 #pragma mark - WorkOwnerTypes Delegate

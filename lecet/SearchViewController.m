@@ -48,6 +48,7 @@ typedef enum : NSUInteger {
     BOOL showResult;
     NSMutableDictionary *collectionItems;
     BOOL isPushingController;
+    UIButton *button;
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
@@ -86,9 +87,10 @@ typedef enum : NSUInteger {
     _constraintSaveSearchesHeight.constant = 0;
     _saveSearchesView.saveSearchChangeItemViewDelegate = self;
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, kDeviceWidth * 0.1, kDeviceHeight * 0.025);
     [button setImage:[UIImage imageNamed:@"icon_filter"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"icon_filter_apply"] forState:UIControlStateSelected];
     button.showsTouchWhenHighlighted = YES;
     [button addTarget:self action:@selector(tappedButtonFilter:) forControlEvents:UIControlEventTouchUpInside];
     

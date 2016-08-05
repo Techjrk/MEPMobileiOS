@@ -11,12 +11,18 @@
 #import "BaseViewClass.h"
 #import "ProjectFilterView.h"
 
+#define ENTRYTITLE  @"entryTitle"
+#define ENTRYID     @"entryID"
+
 @protocol FilterEntryViewDelegate <NSObject>
 - (void)tappedFilterEntryViewDelegate:(id)object;
+- (void)reloadDataBeenComplete:(FilterModel)filterModel;
 @end
 
 @interface FilterEntryView : BaseViewClass
 @property (weak, nonatomic) id<FilterEntryViewDelegate>filterEntryViewDelegate;
 @property (nonatomic) FilterModel filterModel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 - (void)setTitle:(NSString*)title;
+- (void)setInfo:(id)info;
 @end
