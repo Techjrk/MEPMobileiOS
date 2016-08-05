@@ -22,6 +22,7 @@
     BOOL isExpanded;
     NSLayoutConstraint *constraintObject;
     BOOL selectedItemIsEmpty;
+    NSArray *dataSelected;
 }
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldType;
@@ -254,23 +255,30 @@
     if (selectedItemIsEmpty) {
        additionalHeight = kDeviceHeight * 0.117;
     } else {
-        additionalHeight = (kDeviceHeight * 0.115) + (collectionViewContentSizeHeight + (kDeviceHeight * 0.025));
+        CGFloat extraHeight = dataSelected.count > 2?collectionViewContentSizeHeight + (kDeviceHeight * 0.025):0;
+        additionalHeight = (kDeviceHeight * 0.115) + (extraHeight);
     }
     
-    
-  //  if (collectionViewContentSizeHeight > collectionViewHeight || selectedItemIsEmpty) {
+    if (collectionViewContentSizeHeight > collectionViewHeight || selectedItemIsEmpty) {
         [UIView animateWithDuration:0.25 animations:^{
             constraintHeight.constant = additionalHeight;
             [self layoutIfNeeded];
         } completion:^(BOOL finished) {
         }];
-  //  }
+    } else {
+        [UIView animateWithDuration:0.25 animations:^{
+            constraintHeight.constant = additionalHeight;
+            [self layoutIfNeeded];
+        } completion:^(BOOL finished) {
+        }];
+
+    }
 
 }
 
 - (void)setLocationInfo:(id)info {
-    NSArray *data = [info copy];
-    selectedItemIsEmpty = data.count > 0?NO:YES;
+    dataSelected = [info copy];
+    selectedItemIsEmpty = dataSelected.count > 0?NO:YES;
     [_fieldLocation setInfo:info];
 }
 
