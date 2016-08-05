@@ -15,7 +15,7 @@
 #define LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_FONT_COLOR            RGB(34,34,34)
 
-@interface FilterEntryView() <UICollectionViewDelegate, UICollectionViewDataSource> {
+@interface FilterEntryView() <UICollectionViewDelegate, UICollectionViewDataSource,FilterEntryCollectionViewCellDelegate> {
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
 }
@@ -57,8 +57,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     FilterEntryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    cell.button.tag = indexPath.row;
     NSDictionary *dict = [collectionDataItems objectAtIndex:indexPath.row];
     [cell setLabelAttributedText:[self convertToAttributedText:dict[ENTRYTITLE]]];
+    cell.filterEntryCollectionViewCellDelegate = self;
     
     return cell;
 }
@@ -106,6 +108,12 @@
 
 - (void)reloadData {
     [_filterEntryViewDelegate reloadDataBeenComplete:self.filterModel];
+}
+
+#pragma mark - RemovedData
+- (void)tappedRemovedButtonAtIndex:(int)index {
+    [collectionDataItems removeObjectAtIndex:index];
+    [_collectionView reloadData];
 }
 
 @end

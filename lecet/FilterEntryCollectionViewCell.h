@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FilterEntryCollectionViewCellDelegate <NSObject>
+- (void)tappedRemovedButtonAtIndex:(int)index;
+@end
 @interface FilterEntryCollectionViewCell : UICollectionViewCell
+@property (nonatomic,assign) id <FilterEntryCollectionViewCellDelegate> filterEntryCollectionViewCellDelegate;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 - (void)setLabelAttributedText:(id)attriText;
 @end

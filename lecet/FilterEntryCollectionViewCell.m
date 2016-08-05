@@ -13,8 +13,6 @@
 
 
 @interface FilterEntryCollectionViewCell ()
-
-
 @end
 @implementation FilterEntryCollectionViewCell
 
@@ -31,6 +29,11 @@
 
 - (void)setLabelAttributedText:(id)attriText {
     _label.attributedText = attriText;
+}
+
+- (IBAction)tappedRemovedButton:(id)sender {
+    UIButton *button = sender;
+    [_filterEntryCollectionViewCellDelegate tappedRemovedButtonAtIndex:(int)button.tag];
 }
 
 @end
