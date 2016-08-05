@@ -255,7 +255,7 @@
     if (selectedItemIsEmpty) {
        additionalHeight = kDeviceHeight * 0.117;
     } else {
-        CGFloat extraHeight = dataSelected.count > 2?collectionViewContentSizeHeight + (kDeviceHeight * 0.025):0;
+        CGFloat extraHeight = dataSelected.count > 3?collectionViewContentSizeHeight + (kDeviceHeight * 0.025):0;
         additionalHeight = (kDeviceHeight * 0.115) + (extraHeight);
     }
     
