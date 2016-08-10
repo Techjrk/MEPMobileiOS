@@ -19,6 +19,7 @@
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
 }
+@property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet CustomTitleLabel *labelTitle;
 - (IBAction)tappedButton:(id)sender;
 @end
@@ -36,12 +37,19 @@
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    
+     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedButton:)];
+    tapRecognizer.cancelsTouchesInView = YES;
+    [_collectionView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)setInfo:(id)info {
     collectionDataItems = [info mutableCopy];
     [_collectionView reloadData];
     [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.25];
+
+    _button.hidden = collectionDataItems.count > 0?YES:NO;
+
 }
 
 - (void)setTitle:(NSString *)title {
@@ -106,9 +114,15 @@
     return UIEdgeInsetsMake(kDeviceHeight * 0.005, kDeviceHeight * 0.008, kDeviceHeight * 0.005, kDeviceHeight * 0.008);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 - (void)reloadData {
     [_filterEntryViewDelegate reloadDataBeenComplete:self.filterModel];
 }
+
+
 
 #pragma mark - RemovedData
 - (void)tappedRemovedButtonAtIndex:(int)index {
