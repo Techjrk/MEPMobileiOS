@@ -144,12 +144,10 @@
 
     int collectionViewContentSizeHeight = FILTER_VIEW_HEIGHT;
     NSLayoutConstraint *constraintHeight;
-    NSArray *collectionItems;
     
     if (filterModel == FilterModelLocation) {
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
         constraintHeight = _constraintFilterHeight;
-        collectionItems = [_fieldLocation getCollectionDataItems];
     }
     
     if (filterModel == FilterModelValue) {
@@ -175,7 +173,6 @@
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
     }];
-    
     
 }
 
