@@ -18,11 +18,11 @@
 #define BUTTON_OPTION_DOWN                  [NSString stringWithFormat:@"%C", 0xf107]
 #define BUTTON_OPTION_UP                    [NSString stringWithFormat:@"%C", 0xf106]
 
+#define FIELD_VIEW_HEIGHT                   kDeviceHeight * 0.117
+
 @interface ProjectFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate>{
     BOOL isExpanded;
     NSLayoutConstraint *constraintObject;
-    BOOL selectedItemIsEmpty;
-    NSArray *dataSelected;
 }
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldType;
@@ -51,7 +51,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    CGFloat fieldHeight = kDeviceHeight * 0.117;
+    CGFloat fieldHeight = FIELD_VIEW_HEIGHT;
     _constraintFieldHeight.constant = fieldHeight;
     _constraintFieldTypeHeight.constant = fieldHeight;
     _constraintFieldValueHeight.constant = fieldHeight;
@@ -231,54 +231,44 @@
 
 - (void)reloadDataBeenComplete:(FilterModel)filterModel {
     
-    CGFloat collectionViewHeight = kDeviceHeight * 0.117;
-    CGFloat collectionViewContentSizeHeight = kDeviceHeight * 0.117;
+    int collectionViewContentSizeHeight = CELL_FILTER_ORIGINAL_HEIGHT;
     NSLayoutConstraint *constraintHeight;
+    
     if (filterModel == FilterModelLocation) {
-        collectionViewHeight = _fieldLocation.collectionView.frame.size.height;
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
         constraintHeight = _constraintFieldHeight;
     }
     if (filterModel == FilterModelType) {
-        collectionViewHeight = _fieldType.collectionView.frame.size.height;
         collectionViewContentSizeHeight = _fieldType.collectionView.contentSize.height;
         constraintHeight = _constraintFieldTypeHeight;
     }
     if (filterModel == FilterModelValue) {
-        collectionViewHeight = _fieldValue.collectionView.frame.size.height;
         collectionViewContentSizeHeight = _fieldValue.collectionView.contentSize.height;
         constraintHeight = _constraintFieldValueHeight;
     }
     
     CGFloat additionalHeight;
-    
-    if (selectedItemIsEmpty) {
-       additionalHeight = kDeviceHeight * 0.117;
-    } else {
-        CGFloat extraHeight = dataSelected.count > 3?collectionViewContentSizeHeight + (kDeviceHeight * 0.025):0;
-        additionalHeight = (kDeviceHeight * 0.115) + (extraHeight);
-    }
-    
-    if (collectionViewContentSizeHeight > collectionViewHeight || selectedItemIsEmpty) {
-        [UIView animateWithDuration:0.25 animations:^{
-            constraintHeight.constant = additionalHeight;
-            [self layoutIfNeeded];
-        } completion:^(BOOL finished) {
-        }];
-    } else {
-        [UIView animateWithDuration:0.25 animations:^{
-            constraintHeight.constant = additionalHeight;
-            [self layoutIfNeeded];
-        } completion:^(BOOL finished) {
-        }];
 
+    CGFloat extraHeight;
+    
+    int filterHeigthOrig = CELL_FILTER_ORIGINAL_HEIGHT;
+    if (collectionViewContentSizeHeight > filterHeigthOrig) {
+        extraHeight = collectionViewContentSizeHeight + (kDeviceHeight * 0.025);
+    } else {
+        extraHeight = 0;
     }
+    
+    additionalHeight = FIELD_VIEW_HEIGHT + (extraHeight);
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        constraintHeight.constant = additionalHeight;
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+    }];
 
 }
 
 - (void)setLocationInfo:(id)info {
-    dataSelected = [info copy];
-    selectedItemIsEmpty = dataSelected.count > 0?NO:YES;
     [_fieldLocation setInfo:info];
 }
 

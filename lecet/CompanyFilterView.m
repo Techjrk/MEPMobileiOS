@@ -11,8 +11,9 @@
 #import "FilterEntryView.h"
 #import "FilterLabelView.h"
 
-#define LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
-#define LABEL_COLOR                 RGB(34, 34, 34)
+#define LABEL_FONT                          fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define LABEL_COLOR                         RGB(34, 34, 34)
+#define FILTER_VIEW_HEIGHT                  kDeviceHeight * 0.117
 
 @interface CompanyFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate> {
     NSLayoutConstraint *constraintObject;
@@ -36,7 +37,7 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    CGFloat fieldFilterHeight = kDeviceHeight * 0.117;
+    CGFloat fieldFilterHeight = FILTER_VIEW_HEIGHT;
     _constraintFilterHeight.constant = fieldFilterHeight;
     _constraintFilterValueHeight.constant = fieldFilterHeight;
     _constraintLabelHeight.constant = kDeviceHeight * 0.079;
@@ -141,26 +142,34 @@
 
 - (void)reloadDataBeenComplete:(FilterModel)filterModel {
 
-    CGFloat collectionViewHeight = kDeviceHeight * 0.117;
-    CGFloat collectionViewContentSizeHeight = kDeviceHeight * 0.117;
+    int collectionViewContentSizeHeight = FILTER_VIEW_HEIGHT;
     NSLayoutConstraint *constraintHeight;
+    NSArray *collectionItems;
     
     if (filterModel == FilterModelLocation) {
-        collectionViewHeight = _fieldLocation.collectionView.frame.size.height;
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
         constraintHeight = _constraintFilterHeight;
+        collectionItems = [_fieldLocation getCollectionDataItems];
     }
     
     if (filterModel == FilterModelValue) {
-        collectionViewHeight = _filterValue.collectionView.frame.size.height;
         collectionViewContentSizeHeight = _filterValue.collectionView.contentSize.height;
         constraintHeight = _constraintFilterValueHeight;
     }
-    
+  
     CGFloat additionalHeight;
-    CGFloat extraHeight = dataSelected.count > 3?collectionViewContentSizeHeight + (kDeviceHeight * 0.025):0;
-    additionalHeight = (kDeviceHeight * 0.115) + (extraHeight);
-
+    
+    CGFloat extraHeight;
+    
+    int filterHeigthOrig = CELL_FILTER_ORIGINAL_HEIGHT;
+    if (collectionViewContentSizeHeight > filterHeigthOrig) {
+        extraHeight = collectionViewContentSizeHeight + (kDeviceHeight * 0.025);
+    } else {
+        extraHeight = 0;
+    }
+    
+    additionalHeight = FILTER_VIEW_HEIGHT + (extraHeight);
+    
     [UIView animateWithDuration:0.25 animations:^{
         constraintHeight.constant = additionalHeight;
         [self layoutIfNeeded];

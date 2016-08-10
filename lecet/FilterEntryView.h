@@ -13,6 +13,7 @@
 
 #define ENTRYTITLE  @"entryTitle"
 #define ENTRYID     @"entryID"
+#define CELL_FILTER_ORIGINAL_HEIGHT        (kDeviceHeight * 0.035) + ((kDeviceHeight * 0.005) * 2)
 
 @protocol FilterEntryViewDelegate <NSObject>
 - (void)tappedFilterEntryViewDelegate:(id)object;
@@ -25,4 +26,5 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 - (void)setTitle:(NSString*)title;
 - (void)setInfo:(id)info;
+
 @end

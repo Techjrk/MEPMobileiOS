@@ -86,12 +86,12 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGSize size;
-    cellHeight = kDeviceHeight * 0.08;
+    cellHeight = kDeviceHeight * 0.035;
     
     NSDictionary *dict = [collectionDataItems objectAtIndex:indexPath.row];
     CGSize labelSize = [dict[ENTRYTITLE] sizeWithAttributes:@{NSFontAttributeName :LABEL_FONT}];
 
-    size = CGSizeMake( labelSize.width + 30 , kDeviceHeight * 0.035);
+    size = CGSizeMake( labelSize.width + 30 , cellHeight);
     return size;
 }
 
@@ -122,12 +122,11 @@
     [_filterEntryViewDelegate reloadDataBeenComplete:self.filterModel];
 }
 
-
-
 #pragma mark - RemovedData
 - (void)tappedRemovedButtonAtIndex:(int)index {
     [collectionDataItems removeObjectAtIndex:index];
     [_collectionView reloadData];
+    [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.25];
 }
 
 @end
