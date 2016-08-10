@@ -571,7 +571,14 @@
 - (void)tappedLocationApplyButton:(id)items {
    selectedLocationItems = [NSMutableArray new];
     [self getLocationData:items];
-    [_projectFilter setLocationInfo:selectedLocationItems];
+
+    if (_companyFilter.hidden) {
+        [_projectFilter setLocationInfo:selectedLocationItems];
+    } else {
+        [_companyFilter setLocationInfo:selectedLocationItems];
+    }
+
+    
 }
 
 - (void)getLocationData:(id)items {

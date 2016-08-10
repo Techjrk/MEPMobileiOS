@@ -14,9 +14,14 @@
 #define LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define LABEL_COLOR                 RGB(34, 34, 34)
 
-@interface CompanyFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate>
+@interface CompanyFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate> {
+    NSLayoutConstraint *constraintObject;
+    NSArray *dataSelected;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFilterHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLabelHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFilterValueHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFilterTitleHeight;
 @property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
 @property (weak, nonatomic) IBOutlet FilterEntryView *filterValue;
 @property (weak, nonatomic) IBOutlet UILabel *labelProject;
@@ -31,9 +36,11 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    
-    _constraintFilterHeight.constant = kDeviceHeight * 0.115;
+    CGFloat fieldFilterHeight = kDeviceHeight * 0.117;
+    _constraintFilterHeight.constant = fieldFilterHeight;
+    _constraintFilterValueHeight.constant = fieldFilterHeight;
     _constraintLabelHeight.constant = kDeviceHeight * 0.079;
+    _constraintFilterTitleHeight.constant = fieldFilterHeight * 0.5;
     
     _labelProject.font = LABEL_FONT;
     _labelProject.textColor = LABEL_COLOR;
@@ -130,6 +137,42 @@
 
 - (NSString *)getItem:(id)info keyName:(id)key {
     return info[key];
+}
+
+- (void)reloadDataBeenComplete:(FilterModel)filterModel {
+
+    CGFloat collectionViewHeight = kDeviceHeight * 0.117;
+    CGFloat collectionViewContentSizeHeight = kDeviceHeight * 0.117;
+    NSLayoutConstraint *constraintHeight;
+    
+    if (filterModel == FilterModelLocation) {
+        collectionViewHeight = _fieldLocation.collectionView.frame.size.height;
+        collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
+        constraintHeight = _constraintFilterHeight;
+    }
+    
+    if (filterModel == FilterModelValue) {
+        collectionViewHeight = _filterValue.collectionView.frame.size.height;
+        collectionViewContentSizeHeight = _filterValue.collectionView.contentSize.height;
+        constraintHeight = _constraintFilterValueHeight;
+    }
+    
+    CGFloat additionalHeight;
+    CGFloat extraHeight = dataSelected.count > 3?collectionViewContentSizeHeight + (kDeviceHeight * 0.025):0;
+    additionalHeight = (kDeviceHeight * 0.115) + (extraHeight);
+
+    [UIView animateWithDuration:0.25 animations:^{
+        constraintHeight.constant = additionalHeight;
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+    }];
+    
+    
+}
+
+- (void)setLocationInfo:(id)info {
+    dataSelected = [info copy];
+    [_fieldLocation setInfo:info];
 }
 
 @end

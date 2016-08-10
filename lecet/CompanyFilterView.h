@@ -18,5 +18,6 @@
 @interface CompanyFilterView : BaseViewClass
 @property (weak, nonatomic) id<CompanyFilterViewDelegate>companyFilterViewDelegate;
 - (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
+- (void)setLocationInfo:(id)info;
 
 @end

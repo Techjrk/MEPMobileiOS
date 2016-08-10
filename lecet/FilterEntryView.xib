@@ -42,8 +42,8 @@
                     <rect key="frame" x="0.0" y="91" width="319" height="10"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R64-ts-RpQ">
-                    <rect key="frame" x="-0.5" y="51.5" width="319" height="39.5"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R64-ts-RpQ">
+                    <rect key="frame" x="-1" y="52" width="320" height="39"/>
                     <connections>
                         <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="7w0-ho-45U"/>
                     </connections>
