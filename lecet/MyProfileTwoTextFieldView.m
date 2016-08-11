@@ -55,9 +55,17 @@
 - (void)setTextFieldLeftText:(NSString *)text {
     _textFieldLeft.text = text;
 }
+- (void)setTextFieldLeftPlaceholder:(NSString *)text {
+    _textFieldLeft.placeholder = text;
+}
+
 - (void)setTextFielRightText:(NSString *)text {
     _textFieldRight.text = text;
 }
+- (void)setTextFielRightPlaceholder:(NSString *)text {
+    _textFieldRight.placeholder = text;
+}
+
 - (NSString *)getTextLeft {
     return _textFieldLeft.text;
 }
@@ -90,6 +98,5 @@
     
     return NO;
 }
-
 
 @end

@@ -34,5 +34,17 @@
 - (NSString *)getState;
 - (NSString *)getZip;
 
+- (void)setFirstNamePlaceholder:(NSString *)text;
+- (void)setLastNamePlaceholder:(NSString *)text;
+- (void)setEmailAddressPlaceholder:(NSString *)text;
+- (void)setTitlePlaceholder:(NSString *)tex;
+- (void)setOrganizationPlaceholder:(NSString *)text;
+- (void)setPhonePlaceHolder:(NSString *)text;
+- (void)setFaxPlaceholder:(NSString *)text;
+- (void)setStreetAddressPlaceholder:(NSString *)text;
+- (void)setCityPlaceholder:(NSString *)text;
+- (void)setStatePlaceholder:(NSString *)text;
+- (void)setZIPPlaceholder:(NSString *)text;
+
 - (void)setInfo:(id)info;
 @end

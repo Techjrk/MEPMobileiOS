@@ -36,8 +36,12 @@
 
 }
 
--(void)setPlaceHolder:(NSString *)placeHolder {
+-(void)setPlaceHolderOne:(NSString *)placeHolder {
     // _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSForegroundColorAttributeName:[CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT_COLOR colorWithAlphaComponent:0.5f], NSFontAttributeName:CPCUSTOMTEXTFIELD_TEXTFIELD_PLACEHOLDER_FONT}];
+}
+
+- (void)setPlaceHolderTwo:(NSString *)placeholder {
+    
 }
 
 - (void)textFieldDidBeginEditing

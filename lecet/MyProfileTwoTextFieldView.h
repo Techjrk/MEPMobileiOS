@@ -21,7 +21,9 @@
 - (NSString *)getTextLeft;
 - (NSString *)getTextRight;
 
-
 - (void)setLeftTFKeyboard:(UIKeyboardType)keyboard;
 - (void)setRightTFKeyboard:(UIKeyboardType)keyboard;
+
+- (void)setTextFieldLeftPlaceholder:(NSString *)text;
+- (void)setTextFielRightPlaceholder:(NSString *)text;
 @end

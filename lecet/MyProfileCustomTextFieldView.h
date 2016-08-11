@@ -23,4 +23,7 @@
 - (NSString *)getTextOne;
 - (NSString *)getTextTwo;
 
+-(void)setPlaceHolderOne:(NSString *)placeHolder;
+- (void)setPlaceHolderTwo:(NSString *)placeholder;
+
 @end

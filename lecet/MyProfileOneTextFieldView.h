@@ -19,4 +19,5 @@
 - (void)setKeyBoard:(UIKeyboardType)keyBoard;
 - (NSString *)getText;
 - (void)setScrollableEnabled:(BOOL)enabled;
+- (void)setTextFieldPlaceholder:(NSString *)text;
 @end

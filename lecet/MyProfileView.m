@@ -138,10 +138,22 @@
 }
 
 - (void)setFirstName:(NSString *)text {
-    [_nameTextFieldview setTextFieldOneText:text];
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        [_nameTextFieldview setTextFieldOneText:text];
+    }
+}
+
+- (void)setFirstNamePlaceholder:(NSString *)text {
+    [_nameTextFieldview setPlaceHolderOne:text];
 }
 
 - (void)setLastName:(NSString *)text {
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        [_nameTextFieldview setTextFieldTwoText:text];
+    }
+}
+
+- (void)setLastNamePlaceholder:(NSString *)text {
     [_nameTextFieldview setTextFieldTwoText:text];
 }
 
@@ -149,41 +161,85 @@
     [_emailAddressTextFieldView setTextFielText:text];
 }
 
+- (void)setEmailAddressPlaceholder:(NSString *)text {
+    [_emailAddressTextFieldView setTextFieldPlaceholder:text];
+}
+
 - (void)setTitle:(NSString *)text {
     [_titleTextFieldView setTextFielText:text];
 }
 
+- (void)setTitlePlaceholder:(NSString *)text {
+    [_titleTextFieldView setTextFieldPlaceholder:text];
+}
+
 - (void)setOrganization:(NSString *)text {
-    
-    CGSize size = [self totalHeightContentInTextFieldView:text];
-    NSLayoutConstraint *height = _constraintOrganizationHeight;
-    _constraintOrganizationHeight.constant = height.constant + size.height ;
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        CGSize size = [self totalHeightContentInTextFieldView:text];
+        NSLayoutConstraint *height = _constraintOrganizationHeight;
+        _constraintOrganizationHeight.constant = height.constant + size.height ;
+    }
     [_organizationTextFieldView setTextFielText:text];
+}
+
+- (void)setOrganizationPlaceholder:(NSString *)text {
+    [_organizationTextFieldView setTextFieldPlaceholder:text];
     
 }
 
 - (void)setPhone:(NSString *)text {
-    [_phoneFaxTextFieldView setTextFieldLeftText:text];
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        [_phoneFaxTextFieldView setTextFieldLeftText:text];
+    }
+}
+
+- (void)setPhonePlaceHolder:(NSString *)text {
+    [_phoneFaxTextFieldView setTextFieldLeftPlaceholder:text];
 }
 
 - (void)setFax:(NSString *)text {
-    [_phoneFaxTextFieldView setTextFielRightText:text];
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        [_phoneFaxTextFieldView setTextFielRightText:text];
+    }
+}
+
+- (void)setFaxPlaceholder:(NSString *)text {
+    [_phoneFaxTextFieldView setTextFielRightPlaceholder:text];
 }
 
 - (void)setStreetAddress:(NSString *)text {
     [_streetAddressTextFieldView setTextFielText:text];
 }
 
+- (void)setStreetAddressPlaceholder:(NSString *)text {
+    [_streetAddressTextFieldView setTextFieldPlaceholder:text];
+}
+
 - (void)setCity:(NSString *)text {
     [_cityTextFieldView setTextFielText:text];
 }
+- (void)setCityPlaceholder:(NSString *)text {
+    [_cityTextFieldView setTextFieldPlaceholder:text];
+}
 
 - (void)setState:(NSString *)text {
-    [_stateZipTextFieldView setTextFieldLeftText:text];
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        [_stateZipTextFieldView setTextFieldLeftText:text];
+    }
+}
+
+- (void)setStatePlaceholder:(NSString *)text {
+    [_stateZipTextFieldView setTextFieldLeftPlaceholder:text];
 }
 
 - (void)setZIP:(NSString *)text {
-    [_stateZipTextFieldView setTextFielRightText:text];
+    if ([DerivedNSManagedObject objectOrNil:text]) {
+        [_stateZipTextFieldView setTextFielRightText:text];
+    }
+}
+
+- (void)setZIPPlaceholder:(NSString *)text {
+    [_stateZipTextFieldView setTextFielRightPlaceholder:text];
 }
 
 
