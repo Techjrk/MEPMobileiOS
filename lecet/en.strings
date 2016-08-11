@@ -202,16 +202,16 @@
 "MYPROFILE_HEADER_TEXT_STATE"               =               "STATE";
 "MYPROFILE_HEADER_TEXT_ZIP"                 =               "ZIP";
 
-"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME"      =               "FIRST NAME";
-"MYPROFILE_PLACEHOLDER_TEXT_LASTNAME"       =               "LAST NAME";
-"MYPROFILE_PLACEHOLDER_TEXT_EMAIL_ADDRESS"  =               "EMAIL ADDRESS";
-"MYPROFILE_PLACEHOLDER_TEXT_TITLE"          =               "TITLE";
-"MYPROFILE_PLACEHOLDER_TEXT_ORGANIZATION"   =               "ORGANIZATION";
-"MYPROFILE_PLACEHOLDER_TEXT_PHONE"          =               "PHONE";
-"MYPROFILE_PLACEHOLDER_TEXT_FAX"            =               "FAX";
-"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS"  =               "STREET ADDRESS";
-"MYPROFILE_PLACEHOLDER_TEXT_CITY"           =               "CITY";
-"MYPROFILE_PLACEHOLDER_TEXT_STATE"          =               "STATE";
+"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME"      =               "First name";
+"MYPROFILE_PLACEHOLDER_TEXT_LASTNAME"       =               "Last name";
+"MYPROFILE_PLACEHOLDER_TEXT_EMAIL_ADDRESS"  =               "Email Address";
+"MYPROFILE_PLACEHOLDER_TEXT_TITLE"          =               "Title";
+"MYPROFILE_PLACEHOLDER_TEXT_ORGANIZATION"   =               "Organization";
+"MYPROFILE_PLACEHOLDER_TEXT_PHONE"          =               "Phone";
+"MYPROFILE_PLACEHOLDER_TEXT_FAX"            =               "Fax";
+"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS"  =               "Street Address";
+"MYPROFILE_PLACEHOLDER_TEXT_CITY"           =               "City";
+"MYPROFILE_PLACEHOLDER_TEXT_STATE"          =               "State";
 "MYPROFILE_PLACEHOLDER_TEXT_ZIP"            =               "ZIP";
 
 //HiddenProjectsViewController.xib

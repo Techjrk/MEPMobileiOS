@@ -77,45 +77,46 @@
 
 - (void)setTextFieldText {
 
-    [_myProfileView setFirstNamePlaceholder:@"First Name"];
+    
+    [_myProfileView setFirstNamePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME")];
     [_myProfileView setFirstName:myProfileInfo[@"first_name"]];
     
-    [_myProfileView setLastNamePlaceholder:@"Last Name"];
+    [_myProfileView setLastNamePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_LASTNAME")];
     [_myProfileView setLastName:myProfileInfo[@"last_name"]];
     
-    [_myProfileView setEmailAddressPlaceholder:@"Email Address"];
+    [_myProfileView setEmailAddressPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_EMAIL_ADDRESS")];
     [_myProfileView setEmailAddress:myProfileInfo[@"email"]];
     
     //[_myProfileView setTitle:@"Director of Operations"];
-    [_myProfileView setTitlePlaceholder:@"Title"];
+    [_myProfileView setTitlePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_TITLE")];
     [_myProfileView setTitle:myProfileInfo[@"title"]];
     
     //[_myProfileView setOrganization:@"Laborers-Employers CooperaMon and EducaMon Trust (LECET)"];
-    [_myProfileView setOrganizationPlaceholder:@"Organization"];
+    [_myProfileView setOrganizationPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_ORGANIZATION")];
     [_myProfileView setOrganization:myProfileInfo[@"organization"]];
     
     //[_myProfileView setPhone:@"(718) 501-1234"];
-    [_myProfileView setPhonePlaceHolder:@"Phone"];
+    [_myProfileView setPhonePlaceHolder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_PHONE")];
     [_myProfileView setPhone:myProfileInfo[@"phoneNumber"]];
     
     //[_myProfileView setFax:@"(718) 432-9873"];
-    [_myProfileView setFaxPlaceholder:@"Fax"];
+    [_myProfileView setFaxPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_FAX")];
     [_myProfileView setFax:@"(718) 432-9873"];
     
     //[_myProfileView setStreetAddress:@"905 16th St NW"];
-    [_myProfileView setStatePlaceholder:@"Street Address"];
+    [_myProfileView setStreetAddressPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS")];
     [_myProfileView setStreetAddress:myProfileInfo[@"address"]];
     
     //[_myProfileView setCity:@"Washington"];
-    [_myProfileView setCityPlaceholder:@"City"];
+    [_myProfileView setCityPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_CITY")];
     [_myProfileView setCity:myProfileInfo[@"city"]];
     
     //[_myProfileView setState:@"DC"];
-    [_myProfileView setStatePlaceholder:@"State"];
+    [_myProfileView setStatePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_STATE")];
     [_myProfileView setState:myProfileInfo[@"state"]];
     
     //[_myProfileView setZIP:@"20006"];
-    [_myProfileView setZIPPlaceholder:@"ZIP"];
+    [_myProfileView setZIPPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_ZIP")];
     [_myProfileView setZIP:myProfileInfo[@"zip"]];
     
 }
@@ -128,7 +129,6 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
 
 @end
 
