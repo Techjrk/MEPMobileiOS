@@ -15,4 +15,9 @@
     return [NSString stringWithFormat:@"%@, %@", self.county, self.state];
 }
 
+- (NSString*)completeAddress {
+    
+    return [NSString stringWithFormat:@"%@ %@ %@, %@", self.address1, self.address2, self.county, self.state];
+}
+
 @end

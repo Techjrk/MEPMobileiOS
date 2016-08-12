@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DB_Company : DerivedNSManagedObject
 
 - (NSString *)address;
-
+- (NSString*)completeAddress;
 @end
 
 NS_ASSUME_NONNULL_END

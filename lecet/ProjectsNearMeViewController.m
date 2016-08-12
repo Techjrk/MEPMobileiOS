@@ -109,7 +109,7 @@ float MilesToMeters(float miles) {
 - (void)NotificationGPSLocation:(NSNotification*)notification {
     if (!isLocationCaptured) {
         isLocationCaptured = YES;
-        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+        [self loadProjects:1 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
     }
 }
 
@@ -244,6 +244,8 @@ float MilesToMeters(float miles) {
         userAnnotationView = (ProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
         if (userAnnotationView == nil)  {
             userAnnotationView = [[ProjectAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+            userAnnotationView.enabled = YES;
+            userAnnotationView.canShowCallout = YES;
         }
         else
             userAnnotationView.annotation = annotation;
@@ -294,7 +296,7 @@ float MilesToMeters(float miles) {
                          region.span.longitudeDelta /= 8.0;
                          region.span.latitudeDelta /= 8.0;
                          
-                         [self loadProjects:5 coordinate:region.center];
+                         [self loadProjects:1 coordinate:region.center];
                          
                      } else if (error != nil) {
                          BOOL connected = [[BaseManager sharedManager] connected];

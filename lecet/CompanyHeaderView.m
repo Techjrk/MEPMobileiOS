@@ -18,6 +18,7 @@
 @interface CompanyHeaderView()<MKMapViewDelegate>{
     CGFloat geoCodeLat;
     CGFloat geoCodeLng;
+    NSString *companyAddress;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *viewInfo;
@@ -43,19 +44,9 @@
     _labelTitle.text = info[COMPANY_TITLE];
     geoCodeLat = [info[COMPANY_GEOCODE_LAT] floatValue];
     geoCodeLng = [info[COMPANY_GEOCODE_LNG] floatValue];
-
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoCodeLat, geoCodeLng);
-    
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
-    MKCoordinateRegion region = {coordinate, span};
-    
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:coordinate];
-    
-    [_mapView removeAnnotations:_mapView.annotations];
-    
-    [_mapView setRegion:region];
-    [_mapView addAnnotation:annotation];
+    companyAddress = info[COMPANY_GEO_ADDRESS];
+        
+    [self searchRecursiveLocationGeocode];
     
 }
 
@@ -88,5 +79,45 @@
 - (CGRect)mapFrame {
     return _mapView.frame;
 }
+
+
+- (void)searchRecursiveLocationGeocode {
+    
+    NSString *location = companyAddress;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     
+                     if (placemarks && placemarks.count > 0) {
+                         
+                         CLPlacemark *result = [placemarks objectAtIndex:0];
+                         [self setMapInfoLatitude:result];
+                         
+                     } else if (error != nil) {
+                         
+                         //[self searchRecursiveLocationGeocode:YES];
+                     }
+                 }
+     ];
+    
+}
+
+- (void)setMapInfoLatitude:(CLPlacemark *)coord {
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(coord.location.coordinate.latitude, coord.location.coordinate.longitude);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+    
+}
+
 
 @end

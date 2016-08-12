@@ -313,7 +313,7 @@
                     
                     for (NSDictionary *local in locals) {
                         
-                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:item[@"id"] model:@"local"];
+                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"local"];
                         
                         [localItems addObject:localItem];
                     }
@@ -323,6 +323,39 @@
                 }
                 
             }
+            
+            NSArray *districtCouncils = [DerivedNSManagedObject objectOrNil:item[@"districtCouncils"]];
+            
+            if (districtCouncils != nil) {
+                
+                ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
+                
+                for (NSDictionary *districtItem in districtCouncils) {
+                    
+                    NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
+                    
+                    [localItems addObject:localItem];
+                    
+                    
+                    NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
+                    
+                    ListViewItemArray *localDistrict = [ListViewItemArray new];
+                    
+                    for (NSDictionary *local in locals) {
+                        
+                        NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
+                        
+                        [localDistrict addObject:item];
+                        
+                    }
+                    
+                    localItem[LIST_VIEW_SUBITEMS] = localDistrict;
+                    
+                    
+                }
+                
+            }
+            
             
         }
         

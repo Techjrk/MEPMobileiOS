@@ -146,8 +146,6 @@
 		B70155201CD0C56A0050CF8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B701551F1CD0C56A0050CF8A /* AppDelegate.m */; };
 		B70155231CD0C56A0050CF8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155221CD0C56A0050CF8A /* ViewController.m */; };
 		B70155281CD0C56A0050CF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B70155271CD0C56A0050CF8A /* Assets.xcassets */; };
-		B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155371CD0C77B0050CF8A /* SplashViewController.m */; };
-		B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70155381CD0C77B0050CF8A /* SplashViewController.xib */; };
 		B701553E1CD0C7920050CF8A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B701553C1CD0C7920050CF8A /* LoginViewController.m */; };
 		B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B701553D1CD0C7920050CF8A /* LoginViewController.xib */; };
 		B70155431CD0C7A20050CF8A /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70155411CD0C7A20050CF8A /* DashboardViewController.m */; };
@@ -605,9 +603,6 @@
 		B70155221CD0C56A0050CF8A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B70155271CD0C56A0050CF8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B701552C1CD0C56A0050CF8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B70155361CD0C77B0050CF8A /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		B70155371CD0C77B0050CF8A /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		B70155381CD0C77B0050CF8A /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		B701553B1CD0C7920050CF8A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B701553C1CD0C7920050CF8A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B701553D1CD0C7920050CF8A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1791,9 +1786,6 @@
 				B66544B81D002C2F0033732F /* Associated Projects */,
 				B665910B1CFEC8FE00CFD10C /* MoreMenuController */,
 				B6CF764C1CF868F800BF6C69 /* ProjectDetailState */,
-				B70155361CD0C77B0050CF8A /* SplashViewController.h */,
-				B70155371CD0C77B0050CF8A /* SplashViewController.m */,
-				B70155381CD0C77B0050CF8A /* SplashViewController.xib */,
 				B701553B1CD0C7920050CF8A /* LoginViewController.h */,
 				B701553C1CD0C7920050CF8A /* LoginViewController.m */,
 				B701553D1CD0C7920050CF8A /* LoginViewController.xib */,
@@ -2460,7 +2452,6 @@
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
 				B771C5FC1CEB5562004A628A /* CompanyStateView.xib in Resources */,
 				B7E1043E1CEC74FE00EAD8E7 /* ContactsListView.xib in Resources */,
-				B701553A1CD0C77B0050CF8A /* SplashViewController.xib in Resources */,
 				B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
 				B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */,
@@ -2714,7 +2705,6 @@
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B7BF60D81D212E7400B3BDD7 /* FilterLabelView.m in Sources */,
 				B7BF61131D240D5000B3BDD7 /* ListViewController.m in Sources */,
-				B70155391CD0C77B0050CF8A /* SplashViewController.m in Sources */,
 				B796164E1CF892DF0089BC32 /* DB_CompanyContact.m in Sources */,
 				B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */,
 				B66591121CFECA6B00CFD10C /* MoreMenuViewController.m in Sources */,
