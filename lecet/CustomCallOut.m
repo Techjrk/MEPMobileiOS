@@ -86,8 +86,31 @@
     
     recordId = dict[@"id"];
     
+    NSString *fullAddress = @"";
+    
+    NSString *address1 = [DerivedNSManagedObject objectOrNil:dict[@"address1"]];
+    NSString *city = [DerivedNSManagedObject objectOrNil:dict[@"city"]];
+    NSString *state = [DerivedNSManagedObject objectOrNil:dict[@"state"]];
+    NSString *zip = [DerivedNSManagedObject objectOrNil:dict[@"zipPlus4"]];
+    
+    if (address1 != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:address1] stringByAppendingString:@" "];
+    }
+    
+    if (city != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:city] stringByAppendingString:@", "];
+    }
+    
+    if (state != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:state] stringByAppendingString:@" "];
+    }
+    
+    if (zip != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:zip] stringByAppendingString:@" "];
+    }
+    
     _labelProjectName.text = dict[@"title"];
-    _labelProjectAddress.text = [NSString stringWithFormat:@"%@ %@, %@ %@", dict[@"address1"], dict[@"city"], dict[@"state"], dict[@"zipPlus4"]];
+    _labelProjectAddress.text = fullAddress;
     
     NSArray *contacts = dict[@"contacts"];
     if (contacts != nil) {

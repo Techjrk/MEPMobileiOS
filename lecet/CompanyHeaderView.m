@@ -106,6 +106,9 @@
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(coord.location.coordinate.latitude, coord.location.coordinate.longitude);
     
+    geoCodeLat = coord.location.coordinate.latitude;
+    geoCodeLng = coord.location.coordinate.longitude;
+    
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
     MKCoordinateRegion region = {coordinate, span};
     
