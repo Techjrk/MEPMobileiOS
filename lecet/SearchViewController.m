@@ -768,6 +768,13 @@ typedef enum : NSUInteger {
     return YES;
 }
 
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    
+    [self clearText];
+    return YES;
+
+}
+
 - (BOOL) sectionHasRecord:(SearchSection)sectionType {
 
     
@@ -848,7 +855,11 @@ typedef enum : NSUInteger {
 }
 
 - (void)clearText {
-    _labeSearch.text = nil;
+    _labeSearch.text = @"";
+    searchMode = NO;
+    showResult = NO;
+    [_collectionView reloadData];
+
     [_clearButton setHidden:YES];
 }
 

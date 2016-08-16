@@ -683,6 +683,7 @@
     [self HTTP_GET:[self url:kUrlContactSearch] parameters:filter success:^(id object) {
         
         data[SEARCH_RESULT_CONTACT] = (id)[object mutableCopy];
+        data[SEARCH_RESULT_CONTACT_FILTER] = (id)filter;
         
         success(data);
     } failure:^(id object) {
@@ -841,6 +842,7 @@
     [self HTTP_GET:[self url:kUrlProjectSearch] parameters:filter success:^(id object) {
     
         data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+        data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
         
         success(data);
     } failure:^(id object) {
@@ -944,6 +946,7 @@
     [self HTTP_GET:[self url:kUrlCompanySearch] parameters:filter success:^(id object) {
         
         data[SEARCH_RESULT_COMPANY] = (id)[object mutableCopy];
+        data[SEARCH_RESULT_COMPANY_FILTER] = (id)filter;
         
         success(data);
     } failure:^(id object) {

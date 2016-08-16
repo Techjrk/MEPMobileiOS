@@ -322,8 +322,13 @@
     
     NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
     
+    NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",ErrorResponse);
+    
     NSInteger errorCode = response.statusCode;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Error Code : %li", (long)errorCode] preferredStyle:UIAlertControllerStyleAlert];
+    NSString *url = response.URL.absoluteString;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
                                                           style:UIAlertActionStyleDestructive

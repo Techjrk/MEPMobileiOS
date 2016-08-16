@@ -101,13 +101,19 @@
     return itemList.count;
 }
 
+- (NSInteger)getCollectionCountForTitle:(NSString*)string {
+    
+    NSMutableDictionary *collectionItems = items[string];
+    return [collectionItems[@"total"] integerValue];
+}
+
 - (void)setInfo {
     
-    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCount:SEARCH_RESULT_PROJECT]<=1?@"SEARCH_RESULT_COUNT_PROJECT":@"SEARCH_RESULT_COUNT_PROJECTS"), [self getCollectionCount:SEARCH_RESULT_PROJECT]] forState:UIControlStateNormal];
+    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_PROJECT]<=1?@"SEARCH_RESULT_COUNT_PROJECT":@"SEARCH_RESULT_COUNT_PROJECTS"), [self getCollectionCountForTitle:SEARCH_RESULT_PROJECT]] forState:UIControlStateNormal];
 
-    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCount:SEARCH_RESULT_COMPANY]<=1?@"SEARCH_RESULT_COUNT_COMPANY":@"SEARCH_RESULT_COUNT_COMPANIES"), [self getCollectionCount:SEARCH_RESULT_COMPANY]] forState:UIControlStateNormal];
+    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_COMPANY]<=1?@"SEARCH_RESULT_COUNT_COMPANY":@"SEARCH_RESULT_COUNT_COMPANIES"), [self getCollectionCountForTitle:SEARCH_RESULT_COMPANY]] forState:UIControlStateNormal];
 
-    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCount:SEARCH_RESULT_CONTACT]<=1?@"SEARCH_RESULT_COUNT_CONTACT":@"SEARCH_RESULT_COUNT_CONTACTS"), [self getCollectionCount:SEARCH_RESULT_CONTACT]] forState:UIControlStateNormal];
+    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_CONTACT]<=1?@"SEARCH_RESULT_COUNT_CONTACT":@"SEARCH_RESULT_COUNT_CONTACTS"), [self getCollectionCountForTitle:SEARCH_RESULT_CONTACT]] forState:UIControlStateNormal];
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
