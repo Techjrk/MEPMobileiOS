@@ -396,6 +396,8 @@ typedef enum {
         
         [_projectState clearSelection];
 
+        [self tappedBackButton:nil];
+        
     } failure:^(id object) {
         
     }];
@@ -502,6 +504,7 @@ typedef enum {
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    //Project Detail Share
     [[DataManager sharedManager] featureNotAvailable];
 }
 

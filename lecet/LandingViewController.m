@@ -79,11 +79,17 @@
     NSString *dateString = [DerivedNSManagedObject shortDateStringFromDate:[NSDate date]];
     NSDate *currentDate = [DerivedNSManagedObject dateFromShortDateString:dateString];
     
-    [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
-        DashboardViewController *controller = [DashboardViewController new];
-        controller.dashboardViewControllerDelegate = self;
-        [self.navigationController pushViewController:controller animated:YES];
+    [[DataManager sharedManager] hiddentProjects:^(id object) {
+
+        [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
+            DashboardViewController *controller = [DashboardViewController new];
+            controller.dashboardViewControllerDelegate = self;
+            [self.navigationController pushViewController:controller animated:YES];
+        } failure:^(id object) {
+        }];
+
     } failure:^(id object) {
+        
     }];
 
 }

@@ -84,6 +84,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReloadDashboard:) name:NOTIFICATION_RELOAD_DASHBOARD object:nil];
+    
     bidItemsHappeningSoon = [NSMutableArray new];
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
     
@@ -152,6 +154,11 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)notificationReloadDashboard:(NSNotification*)notification {
+    
+    [self pageChangedForced:YES];
+    
+}
 #pragma mark - CHART ROUTINES
 
 - (void)createSegmentTagForChart:(NSMutableDictionary*)segment count:(NSInteger)count {
@@ -193,7 +200,7 @@
 - (NSMutableArray*)loadBidsRecentlyMade {
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.projectGroupId IN %@", kCategory];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.isHidden = NO AND relationshipProject.projectGroupId IN %@", kCategory];
     bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
     
     for (DB_Bid *item in bidItemsRecentlyMade) {
@@ -242,7 +249,7 @@
 
     NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND bidYearMonth == %@",yearMonth];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND isHidden == NO AND bidYearMonth == %@",yearMonth];
     bidItemsHappeningSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
     
     for (DB_Project *item in bidItemsHappeningSoon) {
@@ -280,7 +287,7 @@
 - (NSMutableArray*)loadBidsRecentlyUpdated {
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND projectGroupId IN %@", kCategory];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
     bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
     
     
@@ -306,7 +313,7 @@
 - (NSMutableArray*)loadBidsRecentlyAdded {
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND projectGroupId IN %@", kCategory];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
     bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
     
     for (DB_Project *item in bidItemsRecentlyAdded) {
@@ -430,7 +437,7 @@
     
     if (state == CalendarItemStateSelected) {
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonthDay == %@", itemtag];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonthDay == %@ AND isHidden = NO", itemtag];
         
         currentBidItems = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
 
@@ -466,6 +473,7 @@
 
         switch (currentPage) {
             case 0: {
+                [self loadBidsRecentlyMade];
                 currentBidItems = bidItemsRecentlyMade;
                 [_menuHeader setTitleFromCount:currentBidItems.count  title:NSLocalizedLanguage(@"MENUHEADER_LABEL_COUNT_MADE_TEXT")];
                 break;

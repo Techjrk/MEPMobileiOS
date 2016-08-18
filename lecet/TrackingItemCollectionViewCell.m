@@ -42,6 +42,6 @@
     if (projects == nil) {
         projects = info[@"companyIds"];
     }
-    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"),(long)projects.count];
+    _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(projects.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"),(long)projects.count];
 }
 @end

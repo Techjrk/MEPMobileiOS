@@ -223,7 +223,9 @@
 "HIDDEN_PROJECT_COUNT"                      =               "%li Hidden Projects";
 
 //TrackingItemCollectionConstants.xib
-"TRACK_ITEM_COUNT"                          =               "%li Projects";
+"TRACK_ITEM_COUNT_SINGLE"                   =               "%li Project";
+"TRACK_ITEM_COUNT_PLURAL"                   =               "%li Projects";
+"TRACK_ITEM_COUNT"                   =               "%li Projects";
 
 //Dashboard Tracking Lists
 "PROJECT_TRACKING_LIST"                     =               "Project lists";
@@ -269,6 +271,7 @@
 "COMPANY_TRACK_SELECTION_MOVE"              =               "Move selected companies to %@";
 "COMPANY_TRACK_SELECTION_REMOVE"            =               "Remove selected companies from %@";
 "COMPANIES_COUNT_TITLE"                     =               "Companies";
+"COMPANIES_COUNT_TITLE_SINGLE"              =               "Company";
 
 //FilterSelectionViewController.xib
 "PROJECT_FILTER_BIDDING_TITLE"              =               "Bidding Within";

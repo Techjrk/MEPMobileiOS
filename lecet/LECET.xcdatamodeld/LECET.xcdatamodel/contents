@@ -234,6 +234,7 @@
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isHappenSoon" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isHidden" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isRecentAdded" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isRecentUpdate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
@@ -276,6 +277,6 @@
         <element name="DB_CompanyContact" positionX="18" positionY="180" width="128" height="180"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="990"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="1005"/>
     </elements>
 </model>

@@ -52,7 +52,7 @@ typedef enum  {
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSArray *projectIds = self.cargo[@"projectIds"];
-    [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"), (long)projectIds.count]];
+    [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(projectIds.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"), (long)projectIds.count]];
     [_topBar setContractorName:self.cargo[@"name"]];
     
     _topBar.projectNavViewDelegate = self;
@@ -169,7 +169,7 @@ typedef enum  {
         
         [_collectionView reloadData];
         
-        [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"), (long)self.collectionItems.count]];
+        [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(self.collectionItems.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"), (long)self.collectionItems.count]];
 
         [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
         
@@ -386,7 +386,7 @@ typedef enum  {
             
             [_collectionView reloadData];
             
-            [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(@"TRACK_ITEM_COUNT"), (long)self.collectionItems.count]];
+            [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(self.collectionItems.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"), (long)self.collectionItems.count]];
 
             [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
             

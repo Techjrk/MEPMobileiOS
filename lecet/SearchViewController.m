@@ -538,11 +538,18 @@ typedef enum : NSUInteger {
         }
 
     } else if (sectionType == SearchSectionSavedProject) {
+        NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
+        
+        NSDictionary *filter = items[indexPath.row];
+        [self search:filter[@"query"]];
         
         [[DataManager sharedManager] featureNotAvailable];
         
     } else if (sectionType == SearchSectionSavedCompany) {
+       
+        NSArray *items = collectionItems[SEARCH_RESULT_SAVED_COMPANY];
         
+        NSDictionary *filter = items[indexPath.row];
         [[DataManager sharedManager] featureNotAvailable];
         
     }
@@ -689,10 +696,10 @@ typedef enum : NSUInteger {
 
 #pragma mark - Search 
 
-- (void)search {
+- (void)search:(NSString*)searchString {
 
     
-    [[DataManager sharedManager] projectSearch:[@{@"q": _labeSearch.text, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy] data:collectionItems success:^(id object) {
+    [[DataManager sharedManager] projectSearch:[@{@"q": searchString, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy] data:collectionItems success:^(id object) {
        
         [_collectionView reloadData];
         
@@ -702,7 +709,7 @@ typedef enum : NSUInteger {
     
     
     
-    [[DataManager sharedManager] companySearch:[@{@"q": _labeSearch.text} mutableCopy] data:collectionItems success:^(id object) {
+    [[DataManager sharedManager] companySearch:[@{@"q": searchString} mutableCopy] data:collectionItems success:^(id object) {
    
         [_collectionView reloadData];
     } failure:^(id object) {
@@ -710,7 +717,7 @@ typedef enum : NSUInteger {
     }];
     
     
-    [[DataManager sharedManager] contactSearch:[@{@"q": _labeSearch.text, @"filter[include][0]":@"company"} mutableCopy] data:collectionItems success:^(id object) {
+    [[DataManager sharedManager] contactSearch:[@{@"q": searchString, @"filter[include][0]":@"company"} mutableCopy] data:collectionItems success:^(id object) {
 
         [_collectionView reloadData];
 
@@ -733,7 +740,7 @@ typedef enum : NSUInteger {
         }
         
         [[DataManager sharedManager] cancellAllRequests];
-        [self search];
+        [self search: _labeSearch.text];
     } else {
         searchMode = NO;
         showResult = NO;

@@ -67,7 +67,7 @@ typedef enum  {
 - (void)viewWillAppear:(BOOL)animated {
     [_editViewList setInfo:collectionDataItems];
     [_navView setContractorName:trackingInfo[@"name"]];
-    NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(collectionDataItems.count<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     [_navView setProjectTitle:countString];
 }
 - (void)didReceiveMemoryWarning {
@@ -303,7 +303,7 @@ typedef enum  {
         }
         
         
-         NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+        NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(collectionDataItems.count<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
         [_navView setProjectTitle:countString];
         [_editViewList setInfoToReload:collectionDataItems];
         [self chageEditMode:NO count:(int)collectionDataItems.count];
@@ -541,7 +541,7 @@ typedef enum  {
             [self chageEditMode:NO count:(int)selectedDataItems.count];
 
             
-            [_navView setProjectTitle:[NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")]];
+            [_navView setProjectTitle:[NSString stringWithFormat:@"%lu %@",(unsigned long)collectionDataItems.count,NSLocalizedLanguage(collectionDataItems.count<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")]];
             
         } failure:^(id object) {
             

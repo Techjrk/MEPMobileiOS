@@ -186,6 +186,7 @@
     
     if (record == nil) {
         record = [DB_Project createEntity];
+        record.isHidden = [NSNumber numberWithBool:NO];
     }
     
     record.recordId = @([recordId integerValue]);
@@ -490,7 +491,9 @@
         //NSDictionary *results = object[@"results"];
         NSArray *results = object;
         for (NSDictionary *item in results) {
-            [self saveManageObjectProject:item].isHappenSoon = [NSNumber numberWithBool:YES];;
+            
+            DB_Project *project = [self saveManageObjectProject:item];
+            project.isHappenSoon = [NSNumber numberWithBool:YES];
         }
         [self saveContext];
         
@@ -855,6 +858,10 @@
 
     NSString *url = [NSString stringWithFormat:kUrlProjectHide, (long)recordId.integerValue ];
     [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+        DB_Project *project = [self saveManageObjectProject:object];
+        project.isHidden = [NSNumber numberWithBool:YES];
+        [self saveContext];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RELOAD_DASHBOARD object:nil];
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -866,6 +873,17 @@
 
     NSString *url = [NSString stringWithFormat:kUrlProjectUnhide, (long)recordId.integerValue ];
     [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+        
+        DB_Project *record = [DB_Project fetchObjectForPredicate:predicate key:nil ascending:YES];
+
+        if (record != nil) {
+            record.isHidden = [NSNumber numberWithBool:NO];
+            [self saveContext];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RELOAD_DASHBOARD object:nil];
+        
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -1013,6 +1031,14 @@
     NSString *url = [self url:[NSString stringWithFormat:kUrlHiddenProjects, (long)userId.integerValue ]];
     
     [self HTTP_GET:url parameters:@{@"filter[include]":@"hiddenProjects"} success:^(id object) {
+        
+        for (NSDictionary *item in object[@"hiddenProjects"]) {
+            
+            DB_Project *project = [self saveManageObjectProject:item];
+            project.isHidden = [NSNumber numberWithBool:YES];
+            [self saveContext];
+            
+        }
         success(object);
     } failure:^(id object) {
         failure(object);

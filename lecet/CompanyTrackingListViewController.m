@@ -54,7 +54,7 @@
     
     
     
-    NSString *countString = [NSString stringWithFormat:@"%lu %@",[trackingInfo[@"companyIds"] count],NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",[trackingInfo[@"companyIds"] count],NSLocalizedLanguage([trackingInfo[@"companyIds"] count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     [_navBarView setProjectTitle:countString];
     
     
@@ -123,7 +123,7 @@
 - (void)tappedCancelDoneButton:(id)items {
     dataItems = items;
     
-    NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)[dataItems count],NSLocalizedLanguage(@"COMPANIES_COUNT_TITLE")];
+    NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)[dataItems count],NSLocalizedLanguage([dataItems count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     [_navBarView setProjectTitle:countString];
     [_companyTrackingListView setItemToReload:dataItems];
 }

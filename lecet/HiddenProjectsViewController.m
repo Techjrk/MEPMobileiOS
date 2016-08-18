@@ -111,7 +111,7 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+    //[[DataManager sharedManager] featureNotAvailable];
 }
 
 #pragma mark - Nav Delegate

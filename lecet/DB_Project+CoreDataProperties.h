@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 6/14/16.
+//  Created by Harry Herrys Camigla on 8/16/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *details;
 @property (nullable, nonatomic, retain) NSString *dodgeNumber;
 @property (nullable, nonatomic, retain) NSNumber *dodgeVersion;
+@property (nullable, nonatomic, retain) NSDecimalNumber *estHigh;
 @property (nullable, nonatomic, retain) NSDecimalNumber *estLow;
 @property (nullable, nonatomic, retain) NSString *fipsCounty;
 @property (nullable, nonatomic, retain) NSString *firstPublishDate;
@@ -71,13 +72,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *targetFinishDate;
 @property (nullable, nonatomic, retain) NSString *targetStartDate;
 @property (nullable, nonatomic, retain) NSString *title;
+@property (nullable, nonatomic, retain) NSString *unionDesignation;
 @property (nullable, nonatomic, retain) NSString *zip5;
 @property (nullable, nonatomic, retain) NSString *zipPlus4;
-@property (nullable, nonatomic, retain) NSString *unionDesignation;
-@property (nullable, nonatomic, retain) NSDecimalNumber *estHigh;
+@property (nullable, nonatomic, retain) NSNumber *isHidden;
 @property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
-@property (nullable, nonatomic, retain) NSSet<DB_Participant *> *relationshipParticipants;
 @property (nullable, nonatomic, retain) DB_Company *relationshipCompany;
+@property (nullable, nonatomic, retain) NSSet<DB_Participant *> *relationshipParticipants;
 
 @end
 
