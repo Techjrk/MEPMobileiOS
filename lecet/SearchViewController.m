@@ -698,7 +698,6 @@ typedef enum : NSUInteger {
 
 - (void)search:(NSString*)searchString {
 
-    
     [[DataManager sharedManager] projectSearch:[@{@"q": searchString, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy] data:collectionItems success:^(id object) {
        
         [_collectionView reloadData];
