@@ -21,7 +21,20 @@
 #import "AppDelegate.h"
 #import "BusyViewController.h"
 
+//Set kProduction = 1 (Production), 0 (Staging)
+#define kProduction                         0
+
+#if kProduction
+
+#define kbaseUrl                            @"https://mepmobile.lecet.org/api/"
+
+#else
+
 #define kbaseUrl                            @"http://lecet.dt-staging.com/api/"
+
+#endif
+
+
 #define kUrlLogin                           @"LecetUsers/login"
 #define kUrlBidsRecentlyMade                @"Bids/"
 #define kUrlBidsHappeningSoon               @"Projects?"
@@ -285,14 +298,16 @@
     NSDictionary *bids = project[@"bids"];
     if (bids != nil) {
         for (NSDictionary *bidItem in bids) {
-            [self saveManageObjectBid:bidItem].relationshipProject = record;
+            DB_Bid *bid = [self saveManageObjectBid:bidItem];
+            bid.relationshipProject = record;
         }
     }
     
     NSDictionary *participants = project[@"contacts"];
     if (participants != nil) {
         for (NSDictionary *participant in participants) {
-            [self saveManageObjectParticipant:participant].relationshipProject = record;
+            DB_Participant *item =[self saveManageObjectParticipant:participant];
+            item.relationshipProject = record;
         }
     }
     
@@ -598,6 +613,8 @@
     NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]=projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
     
     [self HTTP_GET:url parameters:nil success:^(id object) {
+        
+        NSLog(@"%@",[object description]);
         
         DB_Project *item = [self saveManageObjectProject:object];
         
