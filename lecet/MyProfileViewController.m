@@ -68,7 +68,33 @@
 }
 
 - (void)saveData {
-    [[DataManager sharedManager] featureNotAvailable];
+    //[[DataManager sharedManager] featureNotAvailable];
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    
+    [dict setValue:[_myProfileView getFirstName] forKey:@"first_name"];
+    [dict setValue:[_myProfileView getLastName] forKey:@"last_name"];
+    [dict setValue:[_myProfileView getEmail] forKey:@"email"];
+    [dict setValue:[_myProfileView getEmail] forKey:@"email"];
+    [dict setValue:[_myProfileView getTitle] forKey:@"title"];
+    [dict setValue:[_myProfileView getOrganization] forKey:@"organization"];
+    [dict setValue:[_myProfileView getPhone] forKey:@"phoneNumber"];
+    [dict setValue:[_myProfileView getStreetAddress] forKey:@"address"];
+    [dict setValue:[_myProfileView getCity] forKey:@"city"];
+    [dict setValue:[_myProfileView getState] forKey:@"state"];
+    [dict setValue:[_myProfileView getCity] forKey:@"city"];
+    [dict setValue:[_myProfileView getZip] forKey:@"zip"];
+    
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    NSNumber *num = @([userId intValue]);
+    [[DataManager sharedManager] updateUserInformation:num userUpdateData:dict success:^(id Object) {
+        
+        myProfileInfo = Object;
+        [self setTextFieldText];
+        [[DataManager sharedManager] promptMessage:@"Successfully Updated"];
+        
+    }failure:^(id fObject) {
+        //NSLog(@"F = %@",fObject);
+    }];
 }
 
 - (void)setInfo:(id)info {

@@ -176,11 +176,15 @@
 - (void)setOrganization:(NSString *)text {
     if ([DerivedNSManagedObject objectOrNil:text]) {
         CGSize size = [self totalHeightContentInTextFieldView:text];
-        NSLayoutConstraint *height = _constraintOrganizationHeight;
-        _constraintOrganizationHeight.constant = height.constant + size.height ;
+        //NSLayoutConstraint *height = _constraintOrganizationHeight;
+        CGFloat height = kDeviceHeight * 0.132;
+        _constraintOrganizationHeight.constant = height + size.height ;
     }
     [_organizationTextFieldView setTextFielText:text];
 }
+
+
+
 
 - (void)setOrganizationPlaceholder:(NSString *)text {
     [_organizationTextFieldView setTextFieldPlaceholder:text];
