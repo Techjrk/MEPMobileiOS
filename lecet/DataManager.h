@@ -10,6 +10,14 @@
 
 #import "LocationManager.h"
 
+#define kProduction                         0
+
+#if kProduction
+#define kHost                               @"https://mepmobile.lecet.org/"
+#else
+#define kHost                               @"http://lecet.dt-staging.com/"
+#endif
+
 #define kKeychainServiceName            @"lecet_api"
 #define kKeychainAccessToken            @"access_token"
 #define kKeychainUserId                 @"userId"

@@ -17,7 +17,7 @@
 #define LOGIN_SIGNUP_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12.0)
 #define LOGIN_SIGNUP_COLOR                  RGB(72, 72, 74)
 
-#define LOGIN_SIGNUP_URL                    @"http://www.google.com"
+#define LOGIN_SIGNUP_URL                    [kHost stringByAppendingString:@"#/onboarding"]
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet CustomTextField *textFieldEmail;
