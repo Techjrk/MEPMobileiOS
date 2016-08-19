@@ -22,18 +22,8 @@
 #import "BusyViewController.h"
 
 //Set kProduction = 1 (Production), 0 (Staging)
-#define kProduction                         0
 
-#if kProduction
-
-#define kbaseUrl                            @"https://mepmobile.lecet.org/api/"
-
-#else
-
-#define kbaseUrl                            @"http://lecet.dt-staging.com/api/"
-
-#endif
-
+#define kbaseUrl                            [kHost stringByAppendingString:@"api/"]
 
 #define kUrlLogin                           @"LecetUsers/login"
 #define kUrlBidsRecentlyMade                @"Bids/"

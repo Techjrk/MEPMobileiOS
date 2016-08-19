@@ -172,7 +172,15 @@ typedef enum : NSUInteger {
 
 - (IBAction)tappedButtonBack:(id)sender {
 
-    [self.navigationController popViewControllerAnimated:YES];
+    if (showResult) {
+        showResult = NO;
+        [_collectionView reloadData];
+    } else if (searchMode) {
+        searchMode = NO;
+        [_collectionView reloadData];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 
@@ -539,18 +547,18 @@ typedef enum : NSUInteger {
 
     } else if (sectionType == SearchSectionSavedProject) {
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
-        
+        searchMode = YES;
+        showResult = YES;
         NSDictionary *filter = items[indexPath.row];
-        [self search:filter[@"query"]];
-        
-        [[DataManager sharedManager] featureNotAvailable];
+        [self search:filter[@"query"] filter:filter];
         
     } else if (sectionType == SearchSectionSavedCompany) {
        
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_COMPANY];
-        
+        searchMode = YES;
+        showResult = YES;
         NSDictionary *filter = items[indexPath.row];
-        [[DataManager sharedManager] featureNotAvailable];
+        [self search:filter[@"query"] filter:filter];
         
     }
     
@@ -695,10 +703,55 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - Search 
+- (void)getSearchFilter:(NSMutableDictionary*)destfilter searchFilter:(NSDictionary*)filter {
+    
+    NSDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+    
+    for(NSString *propertyName in searchFilter.allKeys) {
+        
+        NSDictionary *propertyNameDict = searchFilter[propertyName];
+        
+        for (NSString *subProperty in propertyNameDict.allKeys) {
+            
+            NSString *filterName = [NSString stringWithFormat:@"filter[searchFilter][%@][%@]", propertyName, subProperty];
+            
+            id subValue = propertyNameDict[subProperty];
+            
+            if ([subValue isKindOfClass:[NSArray class]]) {
+                
+                NSArray *filterValues = subValue;
+                
+                if (filterValues.count<=1) {
+                    filterName = [filterName stringByAppendingString:@"[]"];
+                }
+                for (NSString *filterItem in filterValues) {
+                    
+                    [destfilter addEntriesFromDictionary:@{filterName:filterItem}];
+                }
+            } else if ([subValue class]==[NSString class]) {
+                
+                [destfilter addEntriesFromDictionary:@{filterName:subValue}];
+                
+            }
+            
+            
+        }
+        
+    }
 
-- (void)search:(NSString*)searchString {
+}
 
-    [[DataManager sharedManager] projectSearch:[@{@"q": searchString, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy] data:collectionItems success:^(id object) {
+- (void)search:(NSString*)searchString filter:(NSDictionary*)filter{
+
+    NSMutableDictionary *projectFilter = [@{@"q": searchString, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy];
+   
+    if (filter) {
+        if ([filter[@"modelName"] isEqualToString:@"Project"]) {
+            [self getSearchFilter:projectFilter searchFilter:filter];
+        }
+    }
+    
+    [[DataManager sharedManager] projectSearch:projectFilter data:collectionItems success:^(id object) {
        
         [_collectionView reloadData];
         
@@ -706,9 +759,17 @@ typedef enum : NSUInteger {
         
     }];
     
+
+    NSMutableDictionary *companyFilter = [@{@"q": searchString} mutableCopy];
+
+    if (filter) {
+        if ([filter[@"modelName"] isEqualToString:@"Company"]) {
+            [self getSearchFilter:companyFilter searchFilter:filter];
+        }
+    }
+
     
-    
-    [[DataManager sharedManager] companySearch:[@{@"q": searchString} mutableCopy] data:collectionItems success:^(id object) {
+    [[DataManager sharedManager] companySearch:companyFilter data:collectionItems success:^(id object) {
    
         [_collectionView reloadData];
     } failure:^(id object) {
@@ -716,7 +777,9 @@ typedef enum : NSUInteger {
     }];
     
     
-    [[DataManager sharedManager] contactSearch:[@{@"q": searchString, @"filter[include][0]":@"company"} mutableCopy] data:collectionItems success:^(id object) {
+    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter[include][0]":@"company"} mutableCopy];
+    
+    [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
 
         [_collectionView reloadData];
 
@@ -739,7 +802,7 @@ typedef enum : NSUInteger {
         }
         
         [[DataManager sharedManager] cancellAllRequests];
-        [self search: _labeSearch.text];
+        [self search: _labeSearch.text filter:nil];
     } else {
         searchMode = NO;
         showResult = NO;
