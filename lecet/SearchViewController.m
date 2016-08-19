@@ -172,7 +172,15 @@ typedef enum : NSUInteger {
 
 - (IBAction)tappedButtonBack:(id)sender {
 
-    [self.navigationController popViewControllerAnimated:YES];
+    if (showResult) {
+        showResult = NO;
+        [_collectionView reloadData];
+    } else if (searchMode) {
+        searchMode = NO;
+        [_collectionView reloadData];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 
@@ -540,6 +548,7 @@ typedef enum : NSUInteger {
     } else if (sectionType == SearchSectionSavedProject) {
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
         searchMode = YES;
+        showResult = YES;
         NSDictionary *filter = items[indexPath.row];
         [self search:filter[@"query"] filter:filter];
         
@@ -547,6 +556,7 @@ typedef enum : NSUInteger {
        
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_COMPANY];
         searchMode = YES;
+        showResult = YES;
         NSDictionary *filter = items[indexPath.row];
         [self search:filter[@"query"] filter:filter];
         
