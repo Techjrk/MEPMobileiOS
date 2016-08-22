@@ -290,13 +290,10 @@
         [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
             id returnObject = object;
             
-            [[DataManager sharedManager] companyProjectBids:item[@"id"] success:^(id object) {
-                CompanyDetailViewController *controller = [CompanyDetailViewController new];
-                controller.view.hidden = NO;
-                [controller setInfo:returnObject];
-                [self.navigationController pushViewController:controller animated:YES];
-            } failure:^(id object) {
-            }];
+            CompanyDetailViewController *controller = [CompanyDetailViewController new];
+            controller.view.hidden = NO;
+            [controller setInfo:returnObject];
+            [self.navigationController pushViewController:controller animated:YES];
             
         } failure:^(id object) {
         }];

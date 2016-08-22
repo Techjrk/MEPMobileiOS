@@ -279,15 +279,12 @@ typedef enum {
     _participantsView.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         id returnObject = object;
-        [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
-            CompanyDetailViewController *controller = [CompanyDetailViewController new];
-            controller.view.hidden = NO;
-            [controller setInfo:returnObject];
-            [self.navigationController pushViewController:controller animated:YES];
-            _participantsView.userInteractionEnabled = YES;
-        } failure:^(id object) {
-            _participantsView.userInteractionEnabled = YES;
-        }];
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:returnObject];
+        [self.navigationController pushViewController:controller animated:YES];
+        _participantsView.userInteractionEnabled = YES;
+        
     } failure:^(id object) {
         _participantsView.userInteractionEnabled = YES;
     }];
@@ -409,16 +406,13 @@ typedef enum {
     _projectBidder.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:bid.relationshipCompany.recordId success:^(id object) {
         id returnObject = object;
-        [[DataManager sharedManager] companyProjectBids:bid.relationshipCompany.recordId success:^(id object) {
+        
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:returnObject];
+        [self.navigationController pushViewController:controller animated:YES];
+        _projectBidder.userInteractionEnabled = YES;
 
-            CompanyDetailViewController *controller = [CompanyDetailViewController new];
-            controller.view.hidden = NO;
-            [controller setInfo:returnObject];
-            [self.navigationController pushViewController:controller animated:YES];
-            _projectBidder.userInteractionEnabled = YES;
-        } failure:^(id object) {
-            _projectBidder.userInteractionEnabled = YES;
-        }];
     } failure:^(id object) {
         _projectBidder.userInteractionEnabled = YES;
     }];

@@ -114,15 +114,12 @@
     _collectionView.userInteractionEnabled = NO;
     [[DataManager sharedManager] companyDetail:record.companyId success:^(id object) {
         id returnObject = object;
-        [[DataManager sharedManager] companyProjectBids:record.companyId success:^(id object) {
-            CompanyDetailViewController *controller = [CompanyDetailViewController new];
-            controller.view.hidden = NO;
-            [controller setInfo:returnObject];
-            [self.navigationController pushViewController:controller animated:YES];
-            _collectionView.userInteractionEnabled = YES;
-        } failure:^(id object) {
-            _collectionView.userInteractionEnabled = YES;
-        }];
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:returnObject];
+        [self.navigationController pushViewController:controller animated:YES];
+        _collectionView.userInteractionEnabled = YES;
+
     } failure:^(id object) {
         _collectionView.userInteractionEnabled = YES;
     }];
