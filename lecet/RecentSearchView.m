@@ -122,19 +122,13 @@
         [[DataManager sharedManager] companyDetail:recordId success:^(id object) {
             
             id returnObject = object;
+            CompanyDetailViewController *controller = [CompanyDetailViewController new];
+            controller.view.hidden = NO;
+            [controller setInfo:returnObject];
             
-            [[DataManager sharedManager] companyProjectBids:recordId success:^(id object) {
-                
-                CompanyDetailViewController *controller = [CompanyDetailViewController new];
-                controller.view.hidden = NO;
-                [controller setInfo:returnObject];
-   
-                UIViewController *navController = [[DataManager sharedManager] getActiveViewController];
-                [navController.navigationController pushViewController:controller animated:YES];
-                
-            } failure:^(id object) {
-            }];
-            
+            UIViewController *navController = [[DataManager sharedManager] getActiveViewController];
+            [navController.navigationController pushViewController:controller animated:YES];
+                        
         } failure:^(id object) {
         }];
         

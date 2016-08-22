@@ -44,7 +44,6 @@
 //API DETAIL INFO
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
-- (void)companyProjectBids:(NSNumber*)companyId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)contactInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)getCompanyInfo:(NSNumber*)firstCompanyId lastCompanyId:(NSNumber*)lastCompanyId success:(APIBlock)success failure:(APIBlock)failure;

@@ -510,16 +510,11 @@ typedef enum : NSUInteger {
             
             [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
                 id returnObject = object;
-                
-                [[DataManager sharedManager] companyProjectBids:item[@"id"] success:^(id object) {
-                    CompanyDetailViewController *controller = [CompanyDetailViewController new];
-                    controller.view.hidden = NO;
-                    [controller setInfo:returnObject];
-                    isPushingController = NO;
-                    [self.navigationController pushViewController:controller animated:YES];
-                } failure:^(id object) {
-                    isPushingController = NO;
-                }];
+                CompanyDetailViewController *controller = [CompanyDetailViewController new];
+                controller.view.hidden = NO;
+                [controller setInfo:returnObject];
+                isPushingController = NO;
+                [self.navigationController pushViewController:controller animated:YES];
                 
             } failure:^(id object) {
                 
@@ -703,54 +698,31 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - Search 
-- (void)getSearchFilter:(NSMutableDictionary*)destfilter searchFilter:(NSDictionary*)filter {
-    
-    NSDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
-    
-    for(NSString *propertyName in searchFilter.allKeys) {
-        
-        NSDictionary *propertyNameDict = searchFilter[propertyName];
-        
-        for (NSString *subProperty in propertyNameDict.allKeys) {
-            
-            NSString *filterName = [NSString stringWithFormat:@"filter[searchFilter][%@][%@]", propertyName, subProperty];
-            
-            id subValue = propertyNameDict[subProperty];
-            
-            if ([subValue isKindOfClass:[NSArray class]]) {
-                
-                NSArray *filterValues = subValue;
-                
-                if (filterValues.count<=1) {
-                    filterName = [filterName stringByAppendingString:@"[]"];
-                }
-                for (NSString *filterItem in filterValues) {
-                    
-                    [destfilter addEntriesFromDictionary:@{filterName:filterItem}];
-                }
-            } else if ([subValue class]==[NSString class]) {
-                
-                [destfilter addEntriesFromDictionary:@{filterName:subValue}];
-                
-            }
-            
-            
-        }
-        
-    }
-
-}
 
 - (void)search:(NSString*)searchString filter:(NSDictionary*)filter{
 
-    NSMutableDictionary *projectFilter = [@{@"q": searchString, @"filter[include][0][primaryProjectType][projectCategory]": @"projectGroup"} mutableCopy];
+    NSMutableDictionary *projectFilter = [@{@"q": searchString} mutableCopy];
    
+    NSMutableDictionary *searchFilter = [NSMutableDictionary new];
+    
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Project"]) {
-            [self getSearchFilter:projectFilter searchFilter:filter];
+            
+            searchFilter = filter[@"filter"];
         }
+        
+    } else {
+        
+        [searchFilter addEntriesFromDictionary: @{@"include":@[@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
     }
+
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:searchFilter options:0 error:&error];
     
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    [projectFilter addEntriesFromDictionary:@{@"filter":jsonString}];
+
     [[DataManager sharedManager] projectSearch:projectFilter data:collectionItems success:^(id object) {
        
         [_collectionView reloadData];
@@ -764,7 +736,16 @@ typedef enum : NSUInteger {
 
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Company"]) {
-            [self getSearchFilter:companyFilter searchFilter:filter];
+            
+            NSMutableDictionary *searchFilter = filter[@"filter"];
+            
+            NSError *error = nil;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:searchFilter options:0 error:&error];
+            
+            NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            [companyFilter addEntriesFromDictionary:@{@"filter":jsonString}];
+     
         }
     }
 
@@ -777,7 +758,7 @@ typedef enum : NSUInteger {
     }];
     
     
-    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter[include][0]":@"company"} mutableCopy];
+    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
     
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
 

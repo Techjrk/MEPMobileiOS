@@ -335,9 +335,9 @@
     
     if (record == nil) {
         record = [DB_Company createEntity];
+        record.recordId = recordId;
     }
     
-    record.recordId = recordId;
     record.name = [DerivedNSManagedObject objectOrNil:company[@"name"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:company[@"address1"]];
     record.address2 = [DerivedNSManagedObject objectOrNil:company[@"address2"]];
@@ -441,17 +441,10 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:dateFilter daysAhead:-30];
     
-    NSDictionary *parameter = @{@"filter[include][0][project][primaryProjectType][projectCategory]":@"projectGroup",
-                                @"filter[include][1]":@"company",
-                                @"filter[include][2]":@"contact",
-                                @"filter[where][createDate][gt]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth],
-                                @"filter[order]":@"createDate DESC",
-                                @"filter[limit]":@"100",
-                                @"filter[where][rank]":@"1"};
-    
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}}, {\"rank\":1}]}}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     NSString *url = [self url:kUrlBidsRecentlyMade];
     
-    [self HTTP_GET:url parameters:parameter success:^(id object) {
+    [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
         
         NSArray *currrentRecords = [DB_Bid fetchObjectsForPredicate:nil key:nil ascending:NO];
         if (currrentRecords != nil) {
@@ -475,16 +468,11 @@
 
 - (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     
-    /*
-     NSDictionary *filter =@{@"filter[searchFilter][biddingInNext]":[NSNumber numberWithInteger:numberOfDays], @"filter[order]":@"bidDate ASC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
-     */
-    
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
     
-    NSDictionary *filter =@{@"filter[where][bidDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][bidDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lte\":\"%@\"}}]}, \"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     
-    
-    [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:filter success:^(id object) {
+    [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:@{@"filter":filter} success:^(id object) {
         
         NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
         if (currrentRecords != nil) {
@@ -493,7 +481,6 @@
             }
         }
         
-        //NSDictionary *results = object[@"results"];
         NSArray *results = object;
         for (NSDictionary *item in results) {
             
@@ -513,9 +500,9 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:currentDate daysAhead:-30];
     
-    NSDictionary *filter =@{@"filter[where][firstPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"firstPublishDate\":{\"gte\":\"%@\"}}, \"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     
-    [self HTTP_GET:[self url:kUrlBidsRecentlyAdded] parameters:filter success:^(id object) {
+    [self HTTP_GET:[self url:kUrlBidsRecentlyAdded] parameters:@{@"filter":filter} success:^(id object) {
         
         NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
         if (currrentRecords != nil) {
@@ -540,17 +527,13 @@
 }
 
 - (void)bidsRecentlyUpdated:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
-    /*
-    NSDictionary *filter =@{@"filter[searchFilter][updatedInLast]":[NSString stringWithFormat:@"%li",(long)numberOfDays],
-                            @"filter[order]":@"lastPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup" };
-     */
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-(numberOfDays)];
     
-    NSDictionary *filter =@{@"filter[where][lastPublishDate][gte]":[DerivedNSManagedObject dateStringFromDateDay:previousMonth], @"filter[where][lastPublishDate][lte]":[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]],@"filter[order]":@"firstPublishDate DESC", @"filter[include]":@"projectStage", @"filter[include][primaryProjectType][projectCategory]":@"projectGroup", @"filter[limit]":@"250"};
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"lte\":\"%@\"}}, \"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
 
     
-    [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:filter success:^(id object) {
+    [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:@{@"filter":filter} success:^(id object) {
         
         NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
         if (currrentRecords != nil) {
@@ -559,7 +542,6 @@
             }
         }
         
-        //NSDictionary *results = object[@"results"];
         NSDictionary *results = object;
         for (NSDictionary *item in results) {
             [self saveManageObjectProject:item].isRecentUpdate = [NSNumber numberWithBool:YES];;
@@ -600,12 +582,10 @@
 
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [[self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]  ]stringByAppendingString:@"filter[include][0]=bids&filter[include][1][bids]=contact&filter[include][2][bids]=company&filter[include][3]=projectStage&filter[include][4][primaryProjectType][projectCategory]=projectGroup&filter[include][5][contacts]=contactType&filter[include][6][contacts]=company"];
-    
-    [self HTTP_GET:url parameters:nil success:^(id object) {
-        
-        NSLog(@"%@",[object description]);
-        
+    NSString *url = [self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]];
+    NSString *filter = @"{\"include\":[{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},\"secondaryProjectTypes\",\"projectStage\",{\"bids\":[\"company\",\"contact\"]},{\"contacts\":[\"contactType\",\"company\"]}]}";
+    [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
+                
         DB_Project *item = [self saveManageObjectProject:object];
         
         [self saveContext];
@@ -618,8 +598,9 @@
 }
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
-    NSDictionary *filter = @{@"filter[include][0]":@"contacts", @"filter[include][1][projects]":@"projectStage", @"filter[include][2][projects][primaryProjectType][projectCategory]":@"projectGroup"};
-    [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:filter success:^(id object) {
+    
+    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\"]}]}";
+    [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:@{@"filter":filter} success:^(id object) {
         
         DB_Company *item = [self saveManageObjectCompany:object];
         
@@ -803,10 +784,11 @@
 
 - (void)projectTrackingList:(NSNumber *)trackId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup",@"filter[include]":@"updates"};
+    //NSDictionary *parameter = @{@"filter[include][0][primaryProjectType][projectCategory]":@"projectGroup",@"filter[include]":@"updates"};
     
+    NSString *filter = @"{\"include\":[\"updates\",{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}]}";
     NSString *url = [NSString stringWithFormat:kUrlProjectTrackingList, (long)trackId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:parameter success:^(id object) {
+    [self HTTP_GET:[self url:url] parameters:@{@"filter":filter} success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -1037,7 +1019,9 @@
     
     NSString *url = [self url:[NSString stringWithFormat:kUrlHiddenProjects, (long)userId.integerValue ]];
     
-    [self HTTP_GET:url parameters:@{@"filter[include]":@"hiddenProjects"} success:^(id object) {
+    NSString *hiddenProjects = @"{\"include\":\"hiddenProjects\"}";
+    //[self HTTP_GET:url parameters:@{@"filter[include]":@"hiddenProjects"} success:^(id object) {
+    [self HTTP_GET:url parameters:@{@"filter":hiddenProjects} success:^(id object) {
         
         for (NSDictionary *item in object[@"hiddenProjects"]) {
             
