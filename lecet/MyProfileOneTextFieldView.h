@@ -20,4 +20,5 @@
 - (NSString *)getText;
 - (void)setScrollableEnabled:(BOOL)enabled;
 - (void)setTextFieldPlaceholder:(NSString *)text;
+- (CGFloat)getNumLines;
 @end
