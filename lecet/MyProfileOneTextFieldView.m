@@ -46,6 +46,7 @@
         _textFieldView.textColor = [UIColor lightGrayColor];
         _textFieldView.text = textFieldViewPlaceHolder;
     }
+    
 }
 
 - (void)setTextFieldPlaceholder:(NSString *)text {
@@ -111,4 +112,7 @@
     [_textFieldView setScrollEnabled:enabled];
 }
 
+- (CGFloat)getNumLines {
+    return _textFieldView.contentSize.height /  _textFieldView.font.lineHeight;
+}
 @end

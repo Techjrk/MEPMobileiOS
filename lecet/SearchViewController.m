@@ -142,6 +142,7 @@ typedef enum : NSUInteger {
     } failure:^(id object) {
         
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -469,7 +470,7 @@ typedef enum : NSUInteger {
     SearchSection sectionType = (SearchSection)indexPath.section;
     
     if (sectionType == SearchSectionSuggested) {
-        [self showSaveSearches:YES];
+       // [self showSaveSearches:YES];
         _resultIndex = [NSNumber numberWithInteger:indexPath.row];
         showResult = YES;
         [_collectionView reloadData];

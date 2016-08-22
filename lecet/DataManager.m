@@ -759,6 +759,17 @@
 
 }
 
+- (void)updateUserInformation:(NSNumber*)userId userUpdateData:(id)paramData success:(APIBlock)success failure:(APIBlock)failure{
+    
+    NSString *url = [self url:[NSString stringWithFormat:kUrlUserInfo, (long)userId.integerValue ]];
+    
+    [self HTTP_PUT_BODY:url parameters:paramData success:^(id object)  {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
 #pragma mark - PROJECT TRACK LISTS HTTP REQUEST
 
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {

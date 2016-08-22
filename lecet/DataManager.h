@@ -52,6 +52,7 @@
 - (void)parentStage:(APIBlock)success failure:(APIBlock)failure;
 - (void)jurisdiction:(APIBlock)success failure:(APIBlock)failure;
 - (void)recentlyViewed:(APIBlock)success failure:(APIBlock)failure;
+- (void)updateUserInformation:(NSNumber*)userId userUpdateData:(id)paramData success:(APIBlock)success failure:(APIBlock)failure;
 
 //PROJECT TRACK LISTS
 - (void)userProjectTrackingList:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;

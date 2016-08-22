@@ -46,6 +46,7 @@
 
 - (void)awakeFromNib {
 
+    
     [_containerView setBackgroundColor:MYPROFILE_CONTAINERVIEW_BG_COLOR];
     [self.view setBackgroundColor:MYPROFILE_CONTAINERVIEW_BG_COLOR];
     
@@ -174,12 +175,13 @@
 }
 
 - (void)setOrganization:(NSString *)text {
-    if ([DerivedNSManagedObject objectOrNil:text]) {
-        CGSize size = [self totalHeightContentInTextFieldView:text];
-        NSLayoutConstraint *height = _constraintOrganizationHeight;
-        _constraintOrganizationHeight.constant = height.constant + size.height ;
-    }
+     CGFloat height = (kDeviceHeight * 0.132) - ((kDeviceHeight *0.1195) / 2);
+    
     [_organizationTextFieldView setTextFielText:text];
+    if ((int)[_organizationTextFieldView getNumLines] > 1) {
+        _constraintOrganizationHeight.constant = (height * [_organizationTextFieldView getNumLines])/ 2;
+    }
+    
 }
 
 - (void)setOrganizationPlaceholder:(NSString *)text {
@@ -308,14 +310,6 @@
     
     
 }
-- (CGSize)totalHeightContentInTextFieldView:(NSString *)text {
-    UITextView *textView = [UITextView new];
-    [textView setText:text];
-    CGSize size = [textView sizeThatFits:CGSizeMake(self.view.frame.size.width, FLT_MAX)];
-    
-    return size;
-}
-
 
 #pragma mark - KeyBoard
 - (void)keyboardDidShow:(NSNotification *)notification
