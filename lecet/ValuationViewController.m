@@ -18,7 +18,7 @@
 #define TEXTFIELD_FONT                              fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12.0)
 #define TEXTFIELD_FONT_COLOR                        RGB(34, 34, 34)
 
-@interface ValuationViewController ()<ProfileNavViewDelegate>
+@interface ValuationViewController ()<ProfileNavViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
@@ -114,4 +114,14 @@
         }
     }
 }
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [[UIMenuController sharedMenuController] setMenuVisible:NO animated:NO];
+    }];
+    return [super canPerformAction:action withSender:sender];
+    
+}
+
 @end

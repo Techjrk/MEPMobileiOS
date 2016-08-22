@@ -165,7 +165,6 @@ typedef enum : NSUInteger {
     [self.navigationController pushViewController:controller animated:YES];
     
     /*
-    
     RefineSearchViewController *controller = [RefineSearchViewController new];
     [self.navigationController pushViewController:controller animated:YES];
      */
@@ -465,7 +464,6 @@ typedef enum : NSUInteger {
     return 0;
 }
 
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SearchSection sectionType = (SearchSection)indexPath.section;
     
@@ -734,7 +732,6 @@ typedef enum : NSUInteger {
                 [destfilter addEntriesFromDictionary:@{filterName:subValue}];
                 
             }
-            
             
         }
         

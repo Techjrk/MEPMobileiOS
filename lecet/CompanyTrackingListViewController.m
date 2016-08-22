@@ -52,11 +52,8 @@
     }
     [_navBarView setContractorName:trackingInfo[@"name"]];
     
-    
-    
     NSString *countString = [NSString stringWithFormat:@"%lu %@",[trackingInfo[@"companyIds"] count],NSLocalizedLanguage([trackingInfo[@"companyIds"] count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     [_navBarView setProjectTitle:countString];
-    
     
 }
 
@@ -108,6 +105,7 @@
 }
 
 - (void)editTabButtonTapped {
+    
     EditViewController *controller = [EditViewController new];
     controller.editViewControllerDelegate = self;
     [controller setInfo:[_companyTrackingListView getdata]];
@@ -127,10 +125,10 @@
     [_navBarView setProjectTitle:countString];
     [_companyTrackingListView setItemToReload:dataItems];
 }
+
 - (void)tappedBackButton {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -148,7 +146,6 @@
             break;
         }
         case CompanySortItemLastAlphabetical: {
-            
             
             NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
             dataItems = [[[_companyTrackingListView getdata] sortedArrayUsingDescriptors:@[descriptor]] mutableCopy];

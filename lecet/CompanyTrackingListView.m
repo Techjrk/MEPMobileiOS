@@ -170,7 +170,6 @@
         
     }
     
-   
     return size;
 }
 
@@ -203,7 +202,6 @@
    [dict setValue:flagTochange forKey:COMPANYDATA_BUTTON_STATE];
     [collectionDataItems replaceObjectAtIndex:tag withObject:dict];
  
-    
     tempTag = tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(NSInteger)tag inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
@@ -215,7 +213,6 @@
     shouldShowUpdates = isOn;
     [_collectionView reloadData];
 }
-
 
 - (id)getdata {
     return collectionDataItems;
