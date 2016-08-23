@@ -19,7 +19,8 @@
 #define BUTTON_OPTION_DOWN                  [NSString stringWithFormat:@"%C", 0xf107]
 #define BUTTON_OPTION_UP                    [NSString stringWithFormat:@"%C", 0xf106]
 
-#define FIELD_VIEW_HEIGHT                   kDeviceHeight * 0.117
+//#define FIELD_VIEW_HEIGHT                   kDeviceHeight * 0.117
+#define FIELD_VIEW_HEIGHT                     kDeviceHeight * 0.095
 
 @interface ProjectFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate>{
     BOOL isExpanded;
@@ -275,14 +276,16 @@
     
     int collectionViewContentSizeHeight = CELL_FILTER_ORIGINAL_HEIGHT;
     NSLayoutConstraint *constraintHeight;
+    int rowNumber = 0;
     
     if (filterModel == FilterModelLocation) {
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
         constraintHeight = _constraintFieldHeight;
     }
-    if (filterModel == FilterModelType) {
+    if (filterModel == FilterModelProjectType) {
         collectionViewContentSizeHeight = _fieldType.collectionView.contentSize.height;
         constraintHeight = _constraintFieldTypeHeight;
+        [_fieldType.collectionView layoutIfNeeded];
     }
     if (filterModel == FilterModelValue) {
         collectionViewContentSizeHeight = _fieldValue.collectionView.contentSize.height;
@@ -290,12 +293,25 @@
     }
     
     CGFloat additionalHeight;
-
     CGFloat extraHeight;
+    int heightToMultiplyWithRow;
     
+    rowNumber = collectionViewContentSizeHeight / (kDeviceHeight * 0.035);
     int filterHeigthOrig = CELL_FILTER_ORIGINAL_HEIGHT;
     if (collectionViewContentSizeHeight > filterHeigthOrig) {
-        extraHeight = collectionViewContentSizeHeight + (kDeviceHeight * 0.025);
+        if (rowNumber == 2) {
+            heightToMultiplyWithRow  = (FIELD_VIEW_HEIGHT * 0.25);
+        } else if (rowNumber == 4 ) {
+            heightToMultiplyWithRow  = (FIELD_VIEW_HEIGHT * 0.34);
+        } else if (rowNumber > 4 ) {
+            heightToMultiplyWithRow  = (FIELD_VIEW_HEIGHT * 0.34);
+        }
+        else {
+            heightToMultiplyWithRow  = (FIELD_VIEW_HEIGHT * 0.3);
+        }
+        
+        
+        extraHeight = heightToMultiplyWithRow * rowNumber;
     } else {
         extraHeight = 0;
     }
