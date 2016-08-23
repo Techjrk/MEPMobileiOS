@@ -95,7 +95,23 @@
             break;
         }
         case FilterModelValue:{
+            NSDictionary *dict = val;
+            NSString *value;
             
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            
+            NSNumber *min = dict[@"min"];
+            NSNumber *max = dict[@"max"];
+            
+            if (max) {
+                value = [NSString stringWithFormat:@"$ %@ - $ %@", [formatter stringFromNumber:min], [formatter stringFromNumber:max]];
+            } else {
+                value = [NSString stringWithFormat:@"$ %@ - MAX", [formatter stringFromNumber:min]];
+            }
+            
+            [_filterValue setInfo:@[@{@"entryID": @(0), @"entryTitle": value}]];
+       
             break;
         }
         case FilterModelUpdated:{
@@ -103,7 +119,8 @@
             break;
         }
         case FilterModelJurisdiction:{
-            
+            NSArray *items = val;
+            [_fieldJurisdiction setValue:[items componentsJoinedByString:@","]];
             break;
         }
         case FilterModelStage:{
@@ -130,8 +147,8 @@
             break;
         }
         case FilterModelProjectType:{
-            NSArray *projectType = val;
-        //    _filterProjectType setValue:<#(NSString *)#>
+            NSArray *items = val;
+            [_filterProjectType setValue:[items componentsJoinedByString:@","]];
             break;
         }
             

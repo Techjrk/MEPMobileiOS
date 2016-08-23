@@ -614,7 +614,6 @@
     if (_companyFilter.hidden) {
         [_projectFilter setFilterModelInfo:selectedModel value:selectedLocationItems];
     } else {
- //       [_companyFilter setLocationInfo:selectedLocationItems];
         [_companyFilter setFilterModelInfo:selectedModel value:selectedLocationItems];
     }
 
@@ -662,16 +661,25 @@
 #pragma mark - Valuation Delegate
 
 - (void)tappedValuationApplyButton:(id)items {
+    if (_companyFilter.hidden) {
+        _projectFilter.searchFilter[@"projectValue"] = items;
+        [_projectFilter setFilterModelInfo:selectedModel value:items];
+        
+    } else {
+        [_companyFilter setFilterModelInfo:selectedModel value:items];
+        
+    }
     
 }
 
 - (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles{
     
-    if (!_projectFilter.hidden) {
+    if (_companyFilter.hidden) {
         _projectFilter.searchFilter[key] = @{@"inq":selectedItems};
         [_projectFilter setFilterModelInfo:selectedModel value:titles];
         
     } else {
+        [_companyFilter setFilterModelInfo:selectedModel value:titles];
         
     }
 }
