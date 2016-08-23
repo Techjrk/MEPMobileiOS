@@ -19,6 +19,7 @@
 #import "ProjectFilterLocationViewController.h"
 #import "ValuationViewController.h"
 #import "FilterSelectionViewController.h"
+#import "ProjectFilterSelectionViewList.h"
 
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 14)
 #define TITLE_COLOR                         RGB(255, 255, 255)
@@ -36,7 +37,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ProjectFilterTypesViewControllerDelegate,ProjectFilterLocationViewControllerDelegate,ValuationViewControllerDelegate>{
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ProjectFilterTypesViewControllerDelegate,ProjectFilterLocationViewControllerDelegate,ValuationViewControllerDelegate, FilterViewControllerDelegate>{
     
     FilterModel selectedModel;
     NSMutableArray *selectedLocationItems;
@@ -182,7 +183,7 @@
                 break;
             }
                 
-            case FilterModelType: {
+            case FilterModelProjectType: {
                 //[self filterTypes:view];
                 [self filterProjectTypes:view];
                 break;
@@ -363,6 +364,8 @@
         controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
         controller.listViewItems = listItems;
         controller.singleSelect = YES;
+        controller.fieldValue = @"jurisdictions";
+        controller.filterViewControllerDelegate = self;
         [self.navigationController pushViewController:controller animated:YES];
 
     } failure:^(id object) {
@@ -405,6 +408,8 @@
         FilterViewController *controller = [FilterViewController new];
         controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
         controller.listViewItems = listItems;
+        controller.filterViewControllerDelegate = self;
+        controller.fieldValue = @"projectStageId";
         controller.singleSelect = YES;
         [self.navigationController pushViewController:controller animated:YES];
         
@@ -465,7 +470,8 @@
         FilterViewController *controller = [FilterViewController new];
         controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
         controller.listViewItems = listItems;
-       
+        controller.filterViewControllerDelegate = self;
+        controller.fieldValue = @"projectTypeId";
         controller.singleSelect = _companyFilter.hidden?NO:YES;
         [self.navigationController pushViewController:controller animated:YES];
         
@@ -510,12 +516,12 @@
     
     NSArray *array = @[
                        @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                       @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(1),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
                        @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                       @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
-                       @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6*30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12*30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
                        ];
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
@@ -529,12 +535,12 @@
 - (void)filterBiddingWithin:(UIView*)view {
     NSArray *array = @[
                        @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                       @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(24),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(1),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
                        @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 90 Days",PROJECT_SELECTION_VALUE:@(90),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                       @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
-                       @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 6 Months",PROJECT_SELECTION_VALUE:@(6*30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
+                       @{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12*30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
                        ];
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
@@ -548,9 +554,9 @@
 - (void)filterBH:(UIView*)view {
     
     NSArray *array = @[
-                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@(102),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
-                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@(101),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@[@"B", @"H"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@[@"B"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
+                       @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@[@"H"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        ];
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
@@ -606,9 +612,10 @@
     [self getLocationData:items];
 
     if (_companyFilter.hidden) {
-        [_projectFilter setLocationInfo:selectedLocationItems];
+        [_projectFilter setFilterModelInfo:selectedModel value:selectedLocationItems];
     } else {
-        [_companyFilter setLocationInfo:selectedLocationItems];
+ //       [_companyFilter setLocationInfo:selectedLocationItems];
+        [_companyFilter setFilterModelInfo:selectedModel value:selectedLocationItems];
     }
 
     
@@ -658,5 +665,15 @@
     
 }
 
+- (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles{
+    
+    if (!_projectFilter.hidden) {
+        _projectFilter.searchFilter[key] = @{@"inq":selectedItems};
+        [_projectFilter setFilterModelInfo:selectedModel value:titles];
+        
+    } else {
+        
+    }
+}
 
 @end

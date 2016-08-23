@@ -53,6 +53,17 @@ NSLocalizedLanguage(NSString *key){
     return NSLocalizedStringFromTable(key, table, nil);
 };
 
+CG_INLINE NSDate*
+dateAdd(NSInteger numberOfDays) {
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = numberOfDays;
+    
+    NSCalendar *theCalendar = [NSCalendar currentCalendar];
+    NSDate *date = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+    
+    return date;
+}
+
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
 #define FONT_NAME_LATO_SEMIBOLD                  @"Lato-Semibold"
 #define FONT_NAME_LATO_BOLD                      @"Lato-Bold"

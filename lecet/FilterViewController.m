@@ -22,23 +22,31 @@
 
 @interface FilterViewController ()<CustomListViewDelegate, ListItemExpandingViewCellDelegate, ListItemCollectionViewCellDelegate>{
     ListViewItemArray *localListViewItems;
+    NSMutableArray *checkedItems;
+    NSMutableArray *checkedTitles;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
 @property (weak, nonatomic) IBOutlet CustomListView *listView;
 @property (weak, nonatomic) IBOutlet UIView *viewbackground;
 - (IBAction)tappedBackButton:(id)sender;
+- (IBAction)tappedButtonApply:(id)sender;
 @end
 
 @implementation FilterViewController
 @synthesize listViewItems;
 @synthesize searchTitle;
 @synthesize singleSelect;
+@synthesize fieldValue;
+@synthesize filterViewControllerDelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self enableTapGesture:YES];
+    
+    checkedItems = [NSMutableArray new];
+    checkedTitles = [NSMutableArray new];
     
     [_buttonApply setTitleColor:BUTTON_FILTER_COLOR forState:UIControlStateNormal];
     _buttonApply.titleLabel.font = BUTTON_FILTER_FONT;
@@ -49,6 +57,7 @@
     _viewbackground.layer.masksToBounds = YES;
 
     localListViewItems = [ListViewItemArray new];
+    
     
     for (ListViewItemDictionary *item in self.listViewItems) {
         ListViewItemDictionary *mutableItem = item;
@@ -86,6 +95,23 @@
 - (IBAction)tappedBackButton:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)tappedButtonApply:(id)sender {
+    
+    [self getCheckItems:localListViewItems];
+
+    if (checkedItems.count>0) {
+        if (self.filterViewControllerDelegate) {
+            
+            [self.filterViewControllerDelegate tappedFilterViewControllerApply:checkedItems key:self.fieldValue titles:checkedTitles];
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [[DataManager sharedManager] promptMessage:@"Please select an item from the list"];
+    }
+
 }
 
 #pragma mark - Custom List View Delegate
@@ -207,6 +233,23 @@
     }
 }
 
+- (void)getCheckItems:(ListViewItemArray*)items {
+    
+    for (ListViewItemDictionary *item in items) {
+        NSNumber *checkedItem = item[STATUS_CHECK];
+        
+        if (checkedItem.boolValue) {
+            [checkedItems addObject:item[LIST_VIEW_VALUE]];
+            [checkedTitles addObject:item[LIST_VIEW_NAME]];
+        }
+        ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+        
+        if (subItems) {
+            [self getCheckItems:subItems];
+        }
+    }
+}
+
 #pragma mark - Search Function
 
 -(void)textFieldDidChange :(UITextField *)textField{
@@ -217,53 +260,9 @@
         filter = nil;
     }
     [localListViewItems filterSubItems:filter];
-    /*
-    searchResult = [ListViewItemArray new];
-    
-    if (textField.text.length > 0) {
-        [self searchItem:tempLocalListViewItems search:textField.text parentItem:nil];
-        localListViewItems = (ListViewItemArray *)[self expandSearchResult:(ListViewItemArray *)[searchResult mutableCopy]];
-    }
-    
-    if (textField.text.length == 0) {
-        
-        localListViewItems = tempLocalListViewItems;
-        [self unexpand:localListViewItems];
-    }
-    */
     [_listView reloadData];
      
 }
-/*
-- (void)searchItem:(id)items search:(NSString *)sText parentItem:(id)pitem {
-    
-    NSString *searchText = [NSString stringWithFormat:@"%@*",sText];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.LIST_VIEW_NAME like[cd] %@", searchText];
-    NSArray *filteredFirstLayer = [[items copy] filteredArrayUsingPredicate:resultPredicate];
-    
-    if (filteredFirstLayer.count > 0) {
-        
-        if (pitem != nil) {
-            pitem[LIST_VIEW_SUBITEMS] = [filteredFirstLayer mutableCopy];
-            [searchResult addObject:pitem];
-        } else {
-            searchResult = [filteredFirstLayer mutableCopy];
-        }
-        
-    } else {
-        
-        for (ListViewItemDictionary *item in items) {
-            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
-            
-            if (subItems) {
-                [self searchItem:subItems search:sText parentItem:item];
-            }
-        }
-        
-    }
-
-}
-*/
 
 - (NSMutableArray *)expandSearchResult:(ListViewItemArray*)items {
     for (ListViewItemDictionary *item in items) {

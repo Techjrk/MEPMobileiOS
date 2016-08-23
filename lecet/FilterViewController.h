@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
+@protocol FilterViewControllerDelegate
+- (void)tappedFilterViewControllerApply:(NSMutableArray*)selectedItems key:(NSString*)key titles:(NSMutableArray*)titles;
+@end
 
 @interface FilterViewController : BaseViewController
+@property (weak, nonatomic) id<FilterViewControllerDelegate>filterViewControllerDelegate;
 @property (strong, nonatomic) NSMutableArray *listViewItems;
 @property (weak, nonatomic) NSString *searchTitle;
+@property (strong, nonatomic) NSString *fieldValue;
 @property (nonatomic) BOOL singleSelect;
 @end

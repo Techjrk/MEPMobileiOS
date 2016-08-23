@@ -10,6 +10,7 @@
 
 #import "FilterEntryView.h"
 #import "FilterLabelView.h"
+#import "ProjectFilterSelectionViewList.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define BUTTON_COLOR                        RGB(121, 120, 120)
@@ -47,10 +48,12 @@
 @implementation ProjectFilterView
 @synthesize scrollView;
 @synthesize projectFilterViewDelegate;
+@synthesize searchFilter;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 
+    self.searchFilter = [NSMutableDictionary new];
     CGFloat fieldHeight = FIELD_VIEW_HEIGHT;
     _constraintFieldHeight.constant = fieldHeight;
     _constraintFieldTypeHeight.constant = fieldHeight;
@@ -62,7 +65,7 @@
     _fieldType.filterModel = FilterModelLocation;
     
     [_fieldType setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_TYPE")];
-    _fieldType.filterModel = FilterModelType;
+    _fieldType.filterModel = FilterModelProjectType;
     
     [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_VALUE")];
     _fieldValue.filterModel = FilterModelValue;
@@ -163,7 +166,7 @@
     NSString *title;
     switch (filterModel) {
         case FilterModelLocation:{
-            
+            [_fieldLocation setInfo:val];
             break;
         }
         case FilterModelType:{
@@ -176,30 +179,61 @@
         }
         case FilterModelUpdated:{
 
-            title = [self getItem:val keyName:@"TITLE"];
+            title = [self getItem:val keyName:PROJECT_SELECTION_TITLE];
             [_fieldUpdated setValue:title];
+            
+            NSNumber *value = (NSNumber*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
+            
+            if (value.integerValue>0) {
+                
+                NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
+                
+                self.searchFilter[@"updatedWithin"] = @{ @"min": date };
+                
+            } else {
+                [self.searchFilter removeObjectForKey:@"updatedWithin"];
+            }
             
             break;
         }
         case FilterModelJurisdiction:{
-            
+            NSArray *juristiction = val;
+            [_fieldJurisdiction setValue:[juristiction componentsJoinedByString:@","]];
             break;
         }
         case FilterModelStage:{
+            NSArray *stage = val;
+            [_fieldStage setValue:[stage componentsJoinedByString:@","]];
             
             break;
         }
         case FilterModelBidding:{
             
-            title = [self getItem:val keyName:@"TITLE"];
+            title = [self getItem:val keyName:PROJECT_SELECTION_TITLE];
             [_fieldBidding setValue:title];
             
+            NSNumber *value = (NSNumber*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
+            
+            if (value.integerValue>0) {
+                
+                NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
+                
+                self.searchFilter[@"biddingWithin"] = @{ @"min": date };
+                
+            } else {
+                [self.searchFilter removeObjectForKey:@"biddingWithin"];
+            }
+
             break;
         }
         case FilterModelBH:{
             
-            title = [self getItem:val keyName:@"TITLE"];
+            title = [self getItem:val keyName:PROJECT_SELECTION_TITLE];
             [_fieldBH setValue:title];
+            
+            NSArray *value = (NSArray*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
+            
+            self.searchFilter[@"buildingOrHighway"] = value;
             
             break;
         }
@@ -207,6 +241,7 @@
             
             title = [self getItem:val keyName:@"title"];
             [_fieldOwner setValue:title];
+            self.searchFilter[@"ownerType"] = @{ @"inq":@[title]};
             
             break;
         }
@@ -214,10 +249,17 @@
             
             title = [self getItem:val keyName:@"title"];
             [_fieldWork setValue:title];
+            self.searchFilter[@"workTypeId"] = @{ @"inq":@[val[@"id"]]};
             
             break;
         }
         case FilterModelProjectType:{
+            NSMutableArray *items = [NSMutableArray new];
+            for (NSString *item in val) {
+                [items addObject:@{@"entryID": @(0), @"entryTitle": item}];
+            }
+            
+            [_fieldType setInfo:items];
             
             break;
         }
@@ -270,6 +312,16 @@
 
 - (void)setLocationInfo:(id)info {
     [_fieldLocation setInfo:info];
+}
+
+- (NSDate*)dateAdd:(NSInteger)numberOfDays {
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = numberOfDays;
+    
+    NSCalendar *theCalendar = [NSCalendar currentCalendar];
+    NSDate *date = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+
+    return date;
 }
 
 @end

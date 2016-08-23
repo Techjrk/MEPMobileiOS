@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+
+typedef enum  {
+    ProjectFilterItemAny = 0,
+    ProjectFilterItemHours = 1,
+    ProjectFilterItemDays = 2,
+    ProjectFilterItemMonths = 3,
+} ProjectFilterItem;
+
+#define PROJECT_SELECTION_TITLE @"TITLE"
+#define PROJECT_SELECTION_VALUE @"VALUE"
+#define PROJECT_SELECTION_TYPE  @"TYPE"
+
 @protocol ProjectFilterSelectionViewListDelegate <NSObject>
 - (void)selectedItem:(NSDictionary *)dict;
 @end

@@ -24,6 +24,8 @@ typedef enum : NSUInteger {
     FilterModelProjectType
 } FilterModel;
 
+
+
 @protocol ProjectFilterViewDelegate <NSObject>
 - (void)tappedProjectFilterItem:(id)object view:(UIView*)view;
 @end
@@ -31,6 +33,7 @@ typedef enum : NSUInteger {
 @interface ProjectFilterView : BaseViewClass
 @property (weak, nonatomic) id<ProjectFilterViewDelegate>projectFilterViewDelegate;
 @property (weak, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) NSMutableDictionary *searchFilter;
 - (void) setConstraint:(NSLayoutConstraint*)constraint;
 - (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
 - (void)setLocationInfo:(id)info;

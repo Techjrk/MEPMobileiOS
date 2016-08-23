@@ -86,6 +86,7 @@
     NSString *title;
     switch (filterModel) {
         case FilterModelLocation:{
+            [_fieldLocation setInfo:val];
             
             break;
         }
@@ -129,14 +130,15 @@
             break;
         }
         case FilterModelProjectType:{
-            
+            NSArray *projectType = val;
+        //    _filterProjectType setValue:<#(NSString *)#>
             break;
         }
             
     }
 }
 
-- (NSString *)getItem:(id)info keyName:(id)key {
+- (id)getItem:(id)info keyName:(id)key {
     return info[key];
 }
 
