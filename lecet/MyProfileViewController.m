@@ -22,7 +22,6 @@
 
 @implementation MyProfileViewController
 
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
@@ -35,7 +34,6 @@
     
     [_profileNavView setNavTitleLabel:@"My Profile"];
     _profileNavView.profileNavViewDelegate = self;
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissedKeyboard ) name:NOTIFYTODISMISSKEYBOARD object:nil];
 }
@@ -63,8 +61,7 @@
             [self saveData];
             break;
     }
-    
-    
+
 }
 
 - (void)saveData {
@@ -103,7 +100,6 @@
 
 - (void)setTextFieldText {
 
-    
     [_myProfileView setFirstNamePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME")];
     [_myProfileView setFirstName:myProfileInfo[@"first_name"]];
     
@@ -149,7 +145,6 @@
 
 - (void)dismissedKeyboard {
     [self.view endEditing:YES];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
