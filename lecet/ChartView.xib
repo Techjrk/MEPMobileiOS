@@ -31,19 +31,19 @@
                     <rect key="frame" x="16" y="248" width="367" height="70"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1Z-kT-FPl">
-                            <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="70"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SA-5R-5dZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="70"/>
                                     <connections>
                                         <action selector="tappedButtonHousing:" destination="-1" eventType="touchUpInside" id="2b8-cr-Afi"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_housing" translatesAutoresizingMaskIntoConstraints="NO" id="VmW-8S-1jj">
-                                    <rect key="frame" x="33" y="0.0" width="25" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGy-rx-0Pm">
-                                    <rect key="frame" x="0.0" y="35" width="92" height="35"/>
+                                    <rect key="frame" x="0.0" y="35" width="0.0" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -56,6 +56,7 @@
                                 <constraint firstItem="VmW-8S-1jj" firstAttribute="centerX" secondItem="b1Z-kT-FPl" secondAttribute="centerX" id="6g0-I0-Eq4"/>
                                 <constraint firstItem="VmW-8S-1jj" firstAttribute="top" secondItem="b1Z-kT-FPl" secondAttribute="top" id="BmB-Bk-mcL"/>
                                 <constraint firstItem="qGy-rx-0Pm" firstAttribute="top" secondItem="VmW-8S-1jj" secondAttribute="bottom" id="BvO-lO-uZp"/>
+                                <constraint firstAttribute="width" id="F9r-Mi-cTf"/>
                                 <constraint firstAttribute="bottom" secondItem="3SA-5R-5dZ" secondAttribute="bottom" id="MyE-3P-HQ3"/>
                                 <constraint firstItem="qGy-rx-0Pm" firstAttribute="height" secondItem="b1Z-kT-FPl" secondAttribute="height" multiplier="0.5" id="O47-RC-jXC"/>
                                 <constraint firstItem="VmW-8S-1jj" firstAttribute="leading" secondItem="b1Z-kT-FPl" secondAttribute="leading" id="VcY-GR-zyq"/>
@@ -74,19 +75,19 @@
                             </variation>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0n9-mt-Owl">
-                            <rect key="frame" x="92" y="0.0" width="92" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="183.5" height="70"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvv-KH-KlX">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="183.5" height="70"/>
                                     <connections>
                                         <action selector="tappedButtonEngineering:" destination="-1" eventType="touchUpInside" id="quE-aq-MZq"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_engineering" translatesAutoresizingMaskIntoConstraints="NO" id="hfc-GH-IF0">
-                                    <rect key="frame" x="33" y="0.0" width="25.5" height="49"/>
+                                    <rect key="frame" x="78" y="0.0" width="28" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFy-If-i96">
-                                    <rect key="frame" x="0.0" y="35" width="92" height="35"/>
+                                    <rect key="frame" x="0.0" y="35" width="183.5" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -107,7 +108,7 @@
                                 <constraint firstAttribute="trailing" secondItem="HFy-If-i96" secondAttribute="trailing" id="aOM-t6-r6M"/>
                                 <constraint firstItem="hfc-GH-IF0" firstAttribute="top" secondItem="0n9-mt-Owl" secondAttribute="top" id="nS2-Kc-lum"/>
                                 <constraint firstItem="hfc-GH-IF0" firstAttribute="height" secondItem="0n9-mt-Owl" secondAttribute="height" multiplier="0.7" id="oxs-oH-ZVi"/>
-                                <constraint firstItem="hfc-GH-IF0" firstAttribute="width" secondItem="0n9-mt-Owl" secondAttribute="width" multiplier="0.27" id="x6L-wq-rKp"/>
+                                <constraint firstItem="hfc-GH-IF0" firstAttribute="width" secondItem="0n9-mt-Owl" secondAttribute="width" multiplier="0.15" id="x6L-wq-rKp"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -117,19 +118,19 @@
                             </variation>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APK-NO-qU5">
-                            <rect key="frame" x="184" y="0.0" width="92" height="70"/>
+                            <rect key="frame" x="183" y="0.0" width="184" height="70"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-it-I22">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="184" height="70"/>
                                     <connections>
                                         <action selector="tappedButtonBuilding:" destination="-1" eventType="touchUpInside" id="0G8-sJ-0xd"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_building" translatesAutoresizingMaskIntoConstraints="NO" id="92l-yt-cvm">
-                                    <rect key="frame" x="35" y="0.0" width="22.5" height="49"/>
+                                    <rect key="frame" x="79.5" y="0.0" width="25.5" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3J-0v-EAQ">
-                                    <rect key="frame" x="0.0" y="35" width="92" height="35"/>
+                                    <rect key="frame" x="0.0" y="35" width="184" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -146,7 +147,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Rjp-it-I22" secondAttribute="bottom" id="g0r-0U-Cub"/>
                                 <constraint firstItem="Rjp-it-I22" firstAttribute="leading" secondItem="APK-NO-qU5" secondAttribute="leading" id="iVP-pk-9Ap"/>
                                 <constraint firstItem="p3J-0v-EAQ" firstAttribute="top" secondItem="92l-yt-cvm" secondAttribute="bottom" id="n9C-tB-vGi"/>
-                                <constraint firstItem="92l-yt-cvm" firstAttribute="width" secondItem="APK-NO-qU5" secondAttribute="width" multiplier="0.24" id="onC-Ax-Gyk"/>
+                                <constraint firstItem="92l-yt-cvm" firstAttribute="width" secondItem="APK-NO-qU5" secondAttribute="width" multiplier="0.14" id="onC-Ax-Gyk"/>
                                 <constraint firstItem="p3J-0v-EAQ" firstAttribute="height" secondItem="APK-NO-qU5" secondAttribute="height" multiplier="0.5" id="vz4-Vx-H3a"/>
                                 <constraint firstItem="Rjp-it-I22" firstAttribute="top" secondItem="APK-NO-qU5" secondAttribute="top" id="x6U-Fg-e8s"/>
                                 <constraint firstAttribute="bottom" secondItem="p3J-0v-EAQ" secondAttribute="bottom" id="y8F-Ea-RjS"/>
@@ -160,19 +161,19 @@
                             </variation>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-tm-o5T">
-                            <rect key="frame" x="276" y="0.0" width="92" height="70"/>
+                            <rect key="frame" x="367.5" y="0.0" width="0.0" height="70"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn1-XM-Jll">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="70"/>
                                     <connections>
                                         <action selector="tappedButtonUtilities:" destination="-1" eventType="touchUpInside" id="3Z0-Fq-JWy"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_utilities" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-Ib-PWh">
-                                    <rect key="frame" x="37" y="0.0" width="18" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-p9-hDo">
-                                    <rect key="frame" x="0.0" y="35" width="92" height="35"/>
+                                    <rect key="frame" x="0.0" y="35" width="0.0" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -185,6 +186,7 @@
                                 <constraint firstItem="GvH-Ib-PWh" firstAttribute="centerX" secondItem="fxG-tm-o5T" secondAttribute="centerX" id="Ker-Vw-RYh"/>
                                 <constraint firstItem="bJ3-p9-hDo" firstAttribute="top" secondItem="GvH-Ib-PWh" secondAttribute="bottom" id="NQn-TN-Ank"/>
                                 <constraint firstAttribute="trailing" secondItem="bJ3-p9-hDo" secondAttribute="trailing" id="UCl-4D-fqB"/>
+                                <constraint firstAttribute="width" id="VfM-MY-aUk"/>
                                 <constraint firstItem="fn1-XM-Jll" firstAttribute="top" secondItem="fxG-tm-o5T" secondAttribute="top" id="eUU-tm-ZTF"/>
                                 <constraint firstAttribute="bottom" secondItem="fn1-XM-Jll" secondAttribute="bottom" id="gcK-fb-7Ec"/>
                                 <constraint firstItem="GvH-Ib-PWh" firstAttribute="top" secondItem="fxG-tm-o5T" secondAttribute="top" id="pLy-mz-P0z"/>
@@ -206,6 +208,7 @@
                     <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="b1Z-kT-FPl" firstAttribute="top" secondItem="ulA-L3-yo0" secondAttribute="top" id="5SY-p6-cc1"/>
+                        <constraint firstItem="0n9-mt-Owl" firstAttribute="width" secondItem="ulA-L3-yo0" secondAttribute="width" multiplier="0.5" id="GNH-2k-2F3"/>
                         <constraint firstItem="APK-NO-qU5" firstAttribute="top" secondItem="0n9-mt-Owl" secondAttribute="top" id="J54-6F-cMz"/>
                         <constraint firstItem="0n9-mt-Owl" firstAttribute="top" secondItem="b1Z-kT-FPl" secondAttribute="top" id="J6k-ou-Jbp"/>
                         <constraint firstItem="fxG-tm-o5T" firstAttribute="top" secondItem="APK-NO-qU5" secondAttribute="top" id="MSL-Tt-8rQ"/>
@@ -220,8 +223,17 @@
                         <constraint firstItem="fxG-tm-o5T" firstAttribute="height" secondItem="APK-NO-qU5" secondAttribute="height" id="gzj-tu-WTm"/>
                         <constraint firstItem="APK-NO-qU5" firstAttribute="leading" secondItem="0n9-mt-Owl" secondAttribute="trailing" id="iNr-al-7ab"/>
                         <constraint firstItem="b1Z-kT-FPl" firstAttribute="leading" secondItem="ulA-L3-yo0" secondAttribute="leading" id="jeB-qj-VKb"/>
+                        <constraint firstItem="APK-NO-qU5" firstAttribute="width" secondItem="0n9-mt-Owl" secondAttribute="width" id="olx-KR-jSp"/>
                         <constraint firstItem="APK-NO-qU5" firstAttribute="height" secondItem="0n9-mt-Owl" secondAttribute="height" id="p8B-sc-jXc"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="efM-VF-HhU"/>
+                            <exclude reference="ORR-5K-4cz"/>
+                            <exclude reference="as1-VN-4CI"/>
+                            <exclude reference="TD9-JH-k3H"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-vc-KJU" customClass="CustomPieChart">
                     <rect key="frame" x="0.0" y="0.0" width="399" height="248"/>
@@ -232,14 +244,14 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaF-kj-rAP">
-                    <rect key="frame" x="0.0" y="149.5" width="32" height="28.5"/>
+                    <rect key="frame" x="0.0" y="149" width="32" height="28.5"/>
                     <state key="normal" image="icon_arrowLeft"/>
                     <connections>
                         <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="zMc-8z-W4h"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1X-xJ-3Pv">
-                    <rect key="frame" x="367" y="149.5" width="32" height="28.5"/>
+                    <rect key="frame" x="367" y="149" width="32" height="28.5"/>
                     <state key="normal" image="icon_arrowRight"/>
                     <connections>
                         <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="tld-Jw-prv"/>

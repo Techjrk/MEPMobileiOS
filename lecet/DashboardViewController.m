@@ -207,6 +207,23 @@
     for (DB_Bid *item in bidItemsRecentlyMade) {
         
         NSString *tag = [NSString stringWithFormat:@"%li", (long)item.relationshipProject.projectGroupId.integerValue];
+        
+        if ([tag isEqualToString:@"103"]) {
+            tag = @"102";
+        }
+        
+        if ([tag isEqualToString:@"105"]) {
+            DB_Project *project = item.relationshipProject;
+            NSString *bh = project.primaryProjectTypeBuildingOrHighway;
+            if ([bh isEqualToString:@"H"]) {
+                tag = @"101";
+            } else {
+                tag = @"102";
+            }
+        }
+        
+        item.relationshipProject.projectGroupId = [NSNumber numberWithInteger:[tag integerValue]];
+        
         NSMutableDictionary *itemDict = segment[tag];
         
         if (itemDict == nil) {
@@ -218,6 +235,7 @@
         
     }
     
+    [[DataManager sharedManager] saveContext];
     [self createSegmentTagForChart:segment count:bidItemsRecentlyMade.count];
     [_chartRecentlyMade setSegmentItems:segment];
 
@@ -295,6 +313,22 @@
     for (DB_Project *item in bidItemsRecentlyUpdated) {
         
         NSString *tag = [NSString stringWithFormat:@"%li", (long)item.projectGroupId.integerValue];
+        
+        if ([tag isEqualToString:@"103"]) {
+            tag = @"102";
+        }
+        
+        if ([tag isEqualToString:@"105"]) {
+            NSString *bh = item.primaryProjectTypeBuildingOrHighway;
+            if ([bh isEqualToString:@"H"]) {
+                tag = @"101";
+            } else {
+                tag = @"102";
+            }
+        }
+        
+        item.projectGroupId = [NSNumber numberWithInteger:[tag integerValue]];
+        
         NSMutableDictionary *itemDict = segment[tag];
         
         if (itemDict == nil) {
@@ -305,7 +339,7 @@
         segment[tag] = itemDict;
         
     }
-    
+    [[DataManager sharedManager] saveContext];
     [self createSegmentTagForChart:segment count:bidItemsRecentlyUpdated.count];
     [_chartRecentlyUpdated setSegmentItems:segment];
     return bidItemsRecentlyUpdated;
@@ -320,6 +354,23 @@
     for (DB_Project *item in bidItemsRecentlyAdded) {
         
         NSString *tag = [NSString stringWithFormat:@"%li", (long)item.projectGroupId.integerValue];
+        
+        if ([tag isEqualToString:@"103"]) {
+            tag = @"102";
+        }
+        
+        if ([tag isEqualToString:@"105"]) {
+            DB_Project *project = item;
+            NSString *bh = project.primaryProjectTypeBuildingOrHighway;
+            if ([bh isEqualToString:@"H"]) {
+                tag = @"101";
+            } else {
+                tag = @"102";
+            }
+        }
+        
+        item.projectGroupId = [NSNumber numberWithInteger:[tag integerValue]];
+        
         NSMutableDictionary *itemDict = segment[tag];
         
         if (itemDict == nil) {
@@ -330,7 +381,7 @@
         segment[tag] = itemDict;
         
     }
-    
+    [[DataManager sharedManager] saveContext];
     [self createSegmentTagForChart:segment count:bidItemsRecentlyAdded.count];
     [_chartRecentlyAdded setSegmentItems:segment];
     return bidItemsRecentlyAdded;

@@ -18,7 +18,7 @@
 @property (nonatomic) CGFloat endAngle;
 @property (strong, nonatomic) UIColor *layerColor;
 @property (nonatomic) CGPathRef piePath;
-@property (weak, nonatomic) UIImage *focusImage;
+@property (strong, nonatomic) UIImage *focusImage;
 @property (weak, nonatomic) UIImageView *focusImageView;
 @property (weak, nonatomic) NSString* tagName;
 @property (weak) id <CustomPieChartLayerDelegate> customPieChartLayerDelegate;
