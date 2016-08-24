@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
                 <outlet property="button" destination="sls-4e-22C" id="guO-rr-HVN"/>
+                <outlet property="buttonDirection" destination="aN0-1j-kaN" id="3WY-RX-o3Q"/>
                 <outlet property="mapView" destination="Wyi-PA-wsC" id="siu-1V-aYg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,10 +37,19 @@
                         <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="085-RT-eGS"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aN0-1j-kaN">
+                    <rect key="frame" x="269" y="33" width="145" height="33"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedButtonDirection:" destination="-1" eventType="touchUpInside" id="c8Y-II-KVy"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="sls-4e-22C" firstAttribute="top" secondItem="ycB-I5-LC2" secondAttribute="bottom" id="0es-Zt-u0d"/>
+                <constraint firstItem="aN0-1j-kaN" firstAttribute="top" secondItem="sls-4e-22C" secondAttribute="top" id="Das-Xv-mvD"/>
+                <constraint firstAttribute="trailing" secondItem="aN0-1j-kaN" secondAttribute="trailing" id="UOk-Ah-n7P"/>
                 <constraint firstItem="ycB-I5-LC2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WZK-yL-Yfp"/>
                 <constraint firstItem="sls-4e-22C" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.12" id="XRN-XR-sEt"/>
                 <constraint firstAttribute="trailing" secondItem="sls-4e-22C" secondAttribute="trailing" id="XUr-fe-TKz"/>
@@ -51,6 +61,8 @@
                 <constraint firstAttribute="bottom" secondItem="Wyi-PA-wsC" secondAttribute="bottom" id="hsa-ib-whB"/>
                 <constraint firstItem="Wyi-PA-wsC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kn0-i8-eWo"/>
                 <constraint firstItem="ycB-I5-LC2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="n2E-6u-1WJ"/>
+                <constraint firstItem="aN0-1j-kaN" firstAttribute="height" secondItem="sls-4e-22C" secondAttribute="height" id="nRC-qc-pV7"/>
+                <constraint firstItem="aN0-1j-kaN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.35" id="wKP-Yk-JOJ"/>
                 <constraint firstItem="Wyi-PA-wsC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z3J-fb-aHh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

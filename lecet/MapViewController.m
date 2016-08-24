@@ -10,6 +10,8 @@
 
 #import <MapKit/MapKit.h>
 
+#define COMPANY_DIRECTION                           fontNameWithSize(FONT_NAME_LATO_BLACK, 12)
+
 @interface MapViewController ()<MKMapViewDelegate>{
     CGFloat geoLat;
     CGFloat geoLng;
@@ -17,7 +19,9 @@
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDirection;
 - (IBAction)tappedButton:(id)sender;
+- (IBAction)tappedButtonDirection:(id)sender;
 @end
 
 @implementation MapViewController
@@ -25,6 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self UpdateLocation];
+    [_buttonDirection setTitle:NSLocalizedLanguage(@"COMPANY_HEADER_DIRECTION") forState:UIControlStateNormal];
+    _buttonDirection.titleLabel.font = COMPANY_DIRECTION;
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +92,18 @@
 - (IBAction)tappedButton:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)tappedButtonDirection:(id)sender {
+    CLLocationCoordinate2D endingCoord = CLLocationCoordinate2DMake(geoLat, geoLng);
+    MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:endingCoord addressDictionary:nil];
+    MKMapItem *endingItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
+    
+    NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+    [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+    
+    [endingItem openInMapsWithLaunchOptions:launchOptions];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {

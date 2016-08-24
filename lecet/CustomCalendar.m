@@ -157,8 +157,6 @@
     NSDate *lastDayOfMonthDate = [[DataManager sharedManager] getDateLastDay:calendarDate];
     NSDateComponents *componentsLastDay = [[DataManager sharedManager] getDateComponents:lastDayOfMonthDate];
     NSInteger lastDay = componentsLastDay.day;
-    NSInteger lastWeekRow = componentsLastDay.weekdayOrdinal;
-    NSInteger lastWeekDay = componentsLastDay.weekday;
     
     NSInteger nextStartDay = 0;
     for (int i = 0; i< lastDay; i++) {

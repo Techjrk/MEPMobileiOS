@@ -374,4 +374,5 @@
 "SAVE_SEARCH_CANCEL"                        =               "CANCEL";
 "SAVE_SEARCH_SAVECHANGES"                   =               "SAVE CHANGES";
 
-
+//CompanyHeaderView
+"COMPANY_HEADER_DIRECTION"                  =               "GET DIRECTIONS";
