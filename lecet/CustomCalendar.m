@@ -25,7 +25,8 @@
     NSInteger day;
     NSInteger noOfDays;
     
-    NSObject *dayArray[35];
+    NSObject *dayArray[6*7];
+    NSInteger weeksCount;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *contentContainer;
@@ -93,8 +94,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return 5 * 7;
+    return weeksCount * 7;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -104,7 +104,7 @@
     CGSize size;
     
     CGFloat cellWidth =  collectionView.frame.size.width / 7;
-    CGFloat cellHeight = collectionView.frame.size.height / 5;
+    CGFloat cellHeight = collectionView.frame.size.height / weeksCount;
     size = CGSizeMake( cellWidth, cellHeight);
     return size;
 }
@@ -136,6 +136,12 @@
 
     currentDate = calendarDate;
     
+    NSDate *date = currentDate;
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSRange weekRange = [calender rangeOfUnit:NSCalendarUnitWeekOfMonth inUnit:NSCalendarUnitMonth forDate:date];
+    weeksCount=weekRange.length;
+
+    
     NSDateComponents *componentsBase = [[DataManager sharedManager] getDateComponents:calendarDate];
 
     NSDate *firstDayOfMonthDate = [[DataManager sharedManager] getDateFirstDay:calendarDate];
@@ -154,16 +160,18 @@
     NSInteger lastWeekRow = componentsLastDay.weekdayOrdinal;
     NSInteger lastWeekDay = componentsLastDay.weekday;
     
+    NSInteger nextStartDay = 0;
     for (int i = 0; i< lastDay; i++) {
         
         NSString *yearMonthDay = [NSString stringWithFormat:@"%li-%02d-%02d",(long)componentsFirstDay.year, (int)componentsFirstDay.month, i +1 ];
         
         dayArray[i+startDay] = @{kItemActive:[NSNumber numberWithBool:YES], kItemDay:@(i + 1), kItemTag:yearMonthDay};
-        //daysOver = i;
+        nextStartDay = i+startDay;
     }
     
+    nextStartDay++;
     NSInteger addedDay = 1;
-    for (long i = (7*lastWeekRow)-(7-lastWeekDay) ; i<35; i++) {
+    for (long i = nextStartDay ; i<(weeksCount*7); i++) {
         dayArray[i] = @{kItemActive:[NSNumber numberWithBool:NO], kItemDay:@( addedDay )};
         addedDay++;
     }
