@@ -9,6 +9,7 @@
 #import "FilterEntryView.h"
 #import "CustomTitleLabel.h"
 #import "FilterEntryCollectionViewCell.h"
+#import "CustomCollectionViewFlowLayout.h"
 
 #define kCellIdentifier             @"kCellIdentifier"
 #define LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
@@ -109,6 +110,7 @@
     return kDeviceHeight * 0.008;
 }
 
+
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     return kDeviceHeight * 0.008;
@@ -116,8 +118,10 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
+    //UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
     return UIEdgeInsetsMake(kDeviceHeight * 0.005, kDeviceHeight * 0.008, kDeviceHeight * 0.005, kDeviceHeight * 0.008);
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
