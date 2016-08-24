@@ -329,8 +329,7 @@
         else {
             heightToMultiplyWithRow  = (FIELD_VIEW_HEIGHT * 0.3);
         }
-        
-        
+
         extraHeight = heightToMultiplyWithRow * rowNumber;
     } else {
         extraHeight = 0;

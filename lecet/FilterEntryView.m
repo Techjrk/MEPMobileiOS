@@ -15,7 +15,7 @@
 #define LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_FONT_COLOR            RGB(34,34,34)
 
-#define LABEL_HINT_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define LABEL_HINT_FONT             fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define LABEL_HINT_FONT_COLOR       [UIColor lightGrayColor]
 
 @interface FilterEntryView() <UICollectionViewDelegate, UICollectionViewDataSource,FilterEntryCollectionViewCellDelegate> {
