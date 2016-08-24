@@ -13,7 +13,7 @@
 
 #define LABEL_FONT                          fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define LABEL_COLOR                         RGB(34, 34, 34)
-#define FILTER_VIEW_HEIGHT                  kDeviceHeight * 0.117
+#define FILTER_VIEW_HEIGHT                  kDeviceHeight * 0.095
 
 @interface CompanyFilterView()<FilterLabelViewDelegate, FilterEntryViewDelegate> {
     NSLayoutConstraint *constraintObject;
@@ -67,6 +67,9 @@
     [_fieldJurisdiction setValue:NSLocalizedLanguage(@"COMPANY_FILTER_ANY")];
     [_filterBidding setValue:NSLocalizedLanguage(@"COMPANY_FILTER_ANY")];
     [_filterProjectType setValue:NSLocalizedLanguage(@"COMPANY_FILTER_ANY")];
+    
+    [_fieldLocation setHint:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
+    [_filterValue setHint:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_VALUE")];
     
     _fieldLocation.filterEntryViewDelegate = self;
     _filterValue.filterEntryViewDelegate = self;
@@ -165,6 +168,7 @@
 
     int collectionViewContentSizeHeight = FILTER_VIEW_HEIGHT;
     NSLayoutConstraint *constraintHeight;
+    int rowNumber = 0;
     
     if (filterModel == FilterModelLocation) {
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
@@ -177,12 +181,24 @@
     }
   
     CGFloat additionalHeight;
-    
     CGFloat extraHeight;
+    int heightToMultiplyWithRow;
     
+    rowNumber = collectionViewContentSizeHeight / (kDeviceHeight * 0.035);
     int filterHeigthOrig = CELL_FILTER_ORIGINAL_HEIGHT;
     if (collectionViewContentSizeHeight > filterHeigthOrig) {
-        extraHeight = collectionViewContentSizeHeight + (kDeviceHeight * 0.025);
+        if (rowNumber == 2) {
+            heightToMultiplyWithRow  = (FILTER_VIEW_HEIGHT * 0.25);
+        } else if (rowNumber == 4 ) {
+            heightToMultiplyWithRow  = (FILTER_VIEW_HEIGHT * 0.34);
+        } else if (rowNumber > 4 ) {
+            heightToMultiplyWithRow  = (FILTER_VIEW_HEIGHT * 0.34);
+        }
+        else {
+            heightToMultiplyWithRow  = (FILTER_VIEW_HEIGHT * 0.3);
+        }
+        
+        extraHeight = heightToMultiplyWithRow * rowNumber;
     } else {
         extraHeight = 0;
     }

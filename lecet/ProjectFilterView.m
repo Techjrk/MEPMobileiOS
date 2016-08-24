@@ -100,6 +100,10 @@
     [_fieldOwner setValue:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
     [_fieldWork setValue:NSLocalizedLanguage(@"PROJECT_FILTER_ANY")];
     
+    [_fieldLocation setHint:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
+    [_fieldType setHint:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_TYPE")];
+    [_fieldValue setHint:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_VALUE")];
+    
     _fieldLocation.filterEntryViewDelegate = self;
     _fieldType.filterEntryViewDelegate = self;
     _fieldValue.filterEntryViewDelegate = self;
@@ -325,8 +329,7 @@
         else {
             heightToMultiplyWithRow  = (FIELD_VIEW_HEIGHT * 0.3);
         }
-        
-        
+
         extraHeight = heightToMultiplyWithRow * rowNumber;
     } else {
         extraHeight = 0;

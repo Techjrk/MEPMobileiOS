@@ -12,6 +12,7 @@
                 <outlet property="collectionView" destination="zr3-BF-Sx1" id="TL6-e8-eoq"/>
                 <outlet property="constraintCustomLabelHeight" destination="VPV-1l-vr5" id="YzT-b6-ifh"/>
                 <outlet property="constriantTopViewHeight" destination="dbQ-GF-5AH" id="obQ-Xz-Tbg"/>
+                <outlet property="labelHint" destination="A3u-Oh-xpV" id="2Gj-J5-Muo"/>
                 <outlet property="labelTitle" destination="Nun-Rm-UVY" id="wd0-Uk-Xfu"/>
             </connections>
         </placeholder>
@@ -47,6 +48,12 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3u-Oh-xpV">
+                    <rect key="frame" x="16" y="55" width="287" height="46"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R64-ts-RpQ">
                     <rect key="frame" x="0.0" y="55" width="319" height="46"/>
                     <connections>
@@ -63,6 +70,9 @@
                 <constraint firstAttribute="trailing" secondItem="sjj-ab-p62" secondAttribute="trailing" id="13w-Bk-7vI"/>
                 <constraint firstItem="R64-ts-RpQ" firstAttribute="top" secondItem="zr3-BF-Sx1" secondAttribute="top" id="8Xt-b1-WiL"/>
                 <constraint firstItem="R64-ts-RpQ" firstAttribute="height" secondItem="zr3-BF-Sx1" secondAttribute="height" id="DIR-lp-FlU"/>
+                <constraint firstItem="A3u-Oh-xpV" firstAttribute="centerY" secondItem="zr3-BF-Sx1" secondAttribute="centerY" id="DJN-LK-dNl"/>
+                <constraint firstItem="A3u-Oh-xpV" firstAttribute="height" secondItem="zr3-BF-Sx1" secondAttribute="height" id="LIR-xZ-dar"/>
+                <constraint firstItem="A3u-Oh-xpV" firstAttribute="centerX" secondItem="zr3-BF-Sx1" secondAttribute="centerX" id="Mx9-pb-sN0"/>
                 <constraint firstItem="sjj-ab-p62" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P1E-fJ-sRZ"/>
                 <constraint firstAttribute="bottom" secondItem="zr3-BF-Sx1" secondAttribute="bottom" id="POL-zt-PEn"/>
                 <constraint firstAttribute="trailing" secondItem="Nun-Rm-UVY" secondAttribute="trailing" id="QJ5-qj-P3c"/>
@@ -78,6 +88,7 @@
                 <constraint firstItem="zr3-BF-Sx1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.39" id="r8k-aM-L0m"/>
                 <constraint firstItem="Fsj-H2-1p1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ru0-zZ-awj"/>
                 <constraint firstItem="Fsj-H2-1p1" firstAttribute="top" secondItem="Nun-Rm-UVY" secondAttribute="bottom" id="uAd-Ut-pPg"/>
+                <constraint firstItem="A3u-Oh-xpV" firstAttribute="width" secondItem="zr3-BF-Sx1" secondAttribute="width" multiplier="0.9" id="xGf-z9-aV8"/>
                 <constraint firstItem="R64-ts-RpQ" firstAttribute="centerX" secondItem="zr3-BF-Sx1" secondAttribute="centerX" id="zIn-od-Y39"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

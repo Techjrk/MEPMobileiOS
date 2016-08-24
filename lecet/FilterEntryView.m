@@ -15,6 +15,9 @@
 #define LABEL_FONT                  fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_FONT_COLOR            RGB(34,34,34)
 
+#define LABEL_HINT_FONT             fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define LABEL_HINT_FONT_COLOR       [UIColor lightGrayColor]
+
 @interface FilterEntryView() <UICollectionViewDelegate, UICollectionViewDataSource,FilterEntryCollectionViewCellDelegate> {
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
@@ -24,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet CustomTitleLabel *labelTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCustomLabelHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constriantTopViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *labelHint;
 - (IBAction)tappedButton:(id)sender;
 @end
 
@@ -47,6 +51,9 @@
      UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedButton:)];
     tapRecognizer.cancelsTouchesInView = YES;
     [_collectionView addGestureRecognizer:tapRecognizer];
+    
+    _labelHint.font = LABEL_HINT_FONT;
+    _labelHint.textColor = LABEL_HINT_FONT_COLOR;
 }
 
 - (void)setInfo:(id)info {
@@ -55,11 +62,16 @@
     [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.25];
 
     _button.hidden = collectionDataItems.count > 0?YES:NO;
+    _labelHint.hidden = collectionDataItems.count > 0?YES:NO;
 
 }
 
 - (void)setTitle:(NSString *)title {
     _labelTitle.text = title;
+}
+
+- (void)setHint:(NSString *)text {
+    _labelHint.text = text;
 }
 
 - (IBAction)tappedButton:(id)sender {
