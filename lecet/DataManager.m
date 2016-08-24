@@ -68,6 +68,8 @@
 #define kUrlProjectTypes                    @"ProjectGroups"
 
 #define kUrlWorkTypes                       @"WorkTypes?"
+
+#define kNotificationKey                    @"kNotificationKey"
 @interface DataManager()
 @end
 @implementation DataManager
@@ -1111,6 +1113,20 @@
 
 - (void)dismissPopup {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DISMISS_POPUP object:nil];
+}
+
+- (void)setNotification:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setObject:@(enabled) forKey:kNotificationKey];
+}
+
+- (BOOL)isNotificationEnabled {
+    NSNumber *enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kNotificationKey];
+    
+    if (enabled == nil) {
+        return NO;
+    } else {
+        return enabled.boolValue;
+    }
 }
 
 @end

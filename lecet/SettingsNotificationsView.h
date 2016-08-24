@@ -15,4 +15,5 @@
 
 @interface SettingsNotificationsView : BaseViewClass
 @property (nonatomic,assign) id<SettingsNotificationsViewDelegate> settingsNotificationsViewDelegate;
+@property (weak, nonatomic) IBOutlet UISwitch *switchButton;
 @end

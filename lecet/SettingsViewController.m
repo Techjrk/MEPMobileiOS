@@ -73,6 +73,8 @@
 
 - (void)switchButtonStateChange:(BOOL)isOn {
     
+    [[DataManager sharedManager] setNotification:isOn];
+    
 }
 
 - (void)selectedSettings:(SettingItems)items {

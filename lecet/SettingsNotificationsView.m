@@ -13,27 +13,29 @@
 #define SETTINGS_SWITCHBUTTON_BG_COLOR      RGB(168,195,230)
 
 @interface SettingsNotificationsView ()
-@property (weak, nonatomic) IBOutlet UISwitch *switchButton;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
 @implementation SettingsNotificationsView
+@synthesize switchButton;
 
 - (void)awakeFromNib {
     _label.font = SETTINGS_LABEL_FONT;
     _label.textColor = SETTINGS_LABEL_FONT_COLOR;
-    [_switchButton setOnTintColor:SETTINGS_SWITCHBUTTON_BG_COLOR];
+    [self.switchButton setOnTintColor:SETTINGS_SWITCHBUTTON_BG_COLOR];
     _label.text = NSLocalizedLanguage(@"SETTING_NOTIFICATIONS_TEXT");
     
     if(isiPhone4) {
-        _switchButton.transform = CGAffineTransformMakeScale(0.80, 0.75);
+        self.switchButton.transform = CGAffineTransformMakeScale(0.80, 0.75);
     }
     
+    self.switchButton.on = [[DataManager sharedManager] isNotificationEnabled];
+
 }
 
 - (IBAction)switchButtonClicked:(id)sender {
-    [_settingsNotificationsViewDelegate switchButtonStateChange:[_switchButton isOn]];
+    [_settingsNotificationsViewDelegate switchButtonStateChange:[self.switchButton isOn]];
 }
 
 
