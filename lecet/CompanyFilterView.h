@@ -17,6 +17,7 @@
 
 @interface CompanyFilterView : BaseViewClass
 @property (weak, nonatomic) id<CompanyFilterViewDelegate>companyFilterViewDelegate;
+@property (strong, nonatomic) NSMutableDictionary *searchFilter;
 - (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
 - (void)setLocationInfo:(id)info;
 

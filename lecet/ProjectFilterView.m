@@ -249,7 +249,7 @@
             
             NSArray *value = (NSArray*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
             
-            self.searchFilter[@"buildingOrHighway"] = value;
+            self.searchFilter[@"buildingOrHighway"] = @{@"inq":value};
             
             break;
         }

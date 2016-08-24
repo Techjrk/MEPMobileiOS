@@ -33,10 +33,12 @@
 
 @implementation CompanyFilterView
 @synthesize companyFilterViewDelegate;
+@synthesize searchFilter;
 
 - (void)awakeFromNib {
     
     [super awakeFromNib];
+    self.searchFilter = [NSMutableDictionary new];
     CGFloat fieldFilterHeight = FILTER_VIEW_HEIGHT;
     _constraintFilterHeight.constant = fieldFilterHeight;
     _constraintFilterValueHeight.constant = fieldFilterHeight;

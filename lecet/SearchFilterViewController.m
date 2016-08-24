@@ -137,7 +137,9 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
-    [[DataManager sharedManager] featureNotAvailable];
+    [self.searchFilterViewControllerDelegate tappedSearchFilterViewControllerApply:_projectFilter.searchFilter companyFilter:_companyFilter.searchFilter];
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 #pragma mark - ProjectFilterViewDelegate
@@ -666,6 +668,7 @@
         [_projectFilter setFilterModelInfo:selectedModel value:items];
         
     } else {
+        _companyFilter.searchFilter[@"valuation"] = items;
         [_companyFilter setFilterModelInfo:selectedModel value:items];
         
     }
