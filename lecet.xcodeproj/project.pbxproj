@@ -134,6 +134,7 @@
 		B6F56D8C1D01B752009B81F5 /* ProjectAllBidsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F56D8A1D01B752009B81F5 /* ProjectAllBidsView.xib */; };
 		B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F7DD391D00A4DA00B86B9D /* ProjectTabView.m */; };
 		B6F7DD3C1D00A4DA00B86B9D /* ProjectTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F7DD3A1D00A4DA00B86B9D /* ProjectTabView.xib */; };
+		B6F7FC841D6DA76B00884685 /* CustomCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F7FC831D6DA76B00884685 /* CustomCollectionViewFlowLayout.m */; };
 		B6FC235C1D042D3800296386 /* ProjectAllAssociatedProjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */; };
 		B6FC235D1D042D3800296386 /* ProjectAllAssociatedProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */; };
 		B6FD04361D1D26D000E12123 /* ProjectFilterSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FD04341D1D26D000E12123 /* ProjectFilterSelectionView.m */; };
@@ -583,6 +584,8 @@
 		B6F7DD381D00A4DA00B86B9D /* ProjectTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabView.h; sourceTree = "<group>"; };
 		B6F7DD391D00A4DA00B86B9D /* ProjectTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabView.m; sourceTree = "<group>"; };
 		B6F7DD3A1D00A4DA00B86B9D /* ProjectTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTabView.xib; sourceTree = "<group>"; };
+		B6F7FC821D6DA76B00884685 /* CustomCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		B6F7FC831D6DA76B00884685 /* CustomCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		B6FC23591D042D3800296386 /* ProjectAllAssociatedProjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectAllAssociatedProjectView.h; sourceTree = "<group>"; };
 		B6FC235A1D042D3800296386 /* ProjectAllAssociatedProjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectAllAssociatedProjectView.m; sourceTree = "<group>"; };
 		B6FC235B1D042D3800296386 /* ProjectAllAssociatedProjectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectAllAssociatedProjectView.xib; sourceTree = "<group>"; };
@@ -2233,6 +2236,8 @@
 				B7F10A211CDB3E4100847FA3 /* SFHFKeychainUtils */,
 				B7F109EF1CDB3E3300847FA3 /* AFNetworking */,
 				B7F109FD1CDB3E3300847FA3 /* UIKit+AFNetworking */,
+				B6F7FC821D6DA76B00884685 /* CustomCollectionViewFlowLayout.h */,
+				B6F7FC831D6DA76B00884685 /* CustomCollectionViewFlowLayout.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -2613,6 +2618,7 @@
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */,
+				B6F7FC841D6DA76B00884685 /* CustomCollectionViewFlowLayout.m in Sources */,
 				B7BF60F11D22B48400B3BDD7 /* RecentSearchView.m in Sources */,
 				B73EFA951D080CAF00C6B3B2 /* ProjectPointAnnotation.m in Sources */,
 				B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */,
