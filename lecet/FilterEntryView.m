@@ -7,7 +7,6 @@
 //
 
 #import "FilterEntryView.h"
-
 #import "CustomTitleLabel.h"
 #import "FilterEntryCollectionViewCell.h"
 
@@ -18,9 +17,12 @@
 @interface FilterEntryView() <UICollectionViewDelegate, UICollectionViewDataSource,FilterEntryCollectionViewCellDelegate> {
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet CustomTitleLabel *labelTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCustomLabelHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constriantTopViewHeight;
 - (IBAction)tappedButton:(id)sender;
 @end
 
@@ -37,6 +39,9 @@
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    
+    _constriantTopViewHeight.constant = (kDeviceHeight * 0.035) * 0.12;
+    _constraintCustomLabelHeight.constant = kDeviceHeight * 0.035;
     
      UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedButton:)];
     tapRecognizer.cancelsTouchesInView = YES;

@@ -24,6 +24,7 @@
     self.layer.masksToBounds = YES;
     self.layer.borderWidth=1.0f;
     self.layer.borderColor= BORDER_COLOR.CGColor;
+    
 
 }
 
