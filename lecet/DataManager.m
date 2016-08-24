@@ -160,6 +160,7 @@
     
     NSNumber *amount = [DerivedNSManagedObject objectOrNil:bid[@"amount"]];
     if (amount != nil) {
+        
         record.amount = [NSNumber numberWithFloat:amount.floatValue];
     }
     

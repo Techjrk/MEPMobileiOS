@@ -10,7 +10,7 @@
 
 #import "LocationManager.h"
 
-#define kProduction                         1
+#define kProduction                         0
 
 #if kProduction
 #define kHost                               @"https://mepmobile.lecet.org/"
