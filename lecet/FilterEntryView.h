@@ -26,5 +26,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 - (void)setTitle:(NSString*)title;
 - (void)setInfo:(id)info;
+- (void)setHint:(NSString *)text;
 
 @end
