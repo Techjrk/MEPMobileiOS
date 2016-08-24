@@ -95,6 +95,7 @@
     _bidsCollectionView.backgroundColor = DASHBOARD_BIDS_BG_COLOR;
     
     currentDate = [DerivedNSManagedObject dateFromDayString:[DerivedNSManagedObject dateStringFromDateDay:[NSDate date]]];
+    
     [_calendarView setCalendarDate:currentDate];
     
     currentPage = 0;
