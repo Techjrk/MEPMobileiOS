@@ -43,7 +43,7 @@ typedef enum : NSUInteger {
 } SearchSection;
 
 
-@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate>{
+@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate, SearchFilterViewControllerDelegate>{
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
@@ -56,7 +56,6 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak,nonatomic) IBOutlet UIButton *clearButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintCollectionBottomLeading;
 - (IBAction)tappedButtonBack:(id)sender;
 @end
 
@@ -92,6 +91,7 @@ typedef enum : NSUInteger {
     [button setImage:[UIImage imageNamed:@"icon_filter"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"icon_filter_apply"] forState:UIControlStateSelected];
     button.showsTouchWhenHighlighted = YES;
+    button.enabled = NO;
     [button addTarget:self action:@selector(tappedButtonFilter:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -162,12 +162,19 @@ typedef enum : NSUInteger {
 - (void)tappedButtonFilter:(id)sender {
     
     SearchFilterViewController *controller = [SearchFilterViewController new];
+    controller.searchFilterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     
     /*
     RefineSearchViewController *controller = [RefineSearchViewController new];
     [self.navigationController pushViewController:controller animated:YES];
      */
+}
+
+- (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
+    [self searchForProject:_labeSearch.text filter:projectFilter.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilter}}:nil];
+    [self searchForCompany:_labeSearch.text filter:companyFilter.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilter}}:nil];
+
 }
 
 - (IBAction)tappedButtonBack:(id)sender {
@@ -543,16 +550,20 @@ typedef enum : NSUInteger {
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
         searchMode = YES;
         showResult = YES;
-        NSDictionary *filter = items[indexPath.row];
-        [self search:filter[@"query"] filter:filter];
+        NSMutableDictionary *filter = [items[indexPath.row] mutableCopy];
+        [self searchForProject:filter[@"query"] filter:filter];
+        [self searchForCompany:filter[@"query"] filter:filter];
+        [self searchForContact:filter[@"query"] filter:filter];
         
     } else if (sectionType == SearchSectionSavedCompany) {
        
-        NSArray *items = collectionItems[SEARCH_RESULT_SAVED_COMPANY];
+        NSArray *items = [collectionItems[SEARCH_RESULT_SAVED_COMPANY] mutableCopy];
         searchMode = YES;
         showResult = YES;
-        NSDictionary *filter = items[indexPath.row];
-        [self search:filter[@"query"] filter:filter];
+        NSMutableDictionary *filter = items[indexPath.row];
+        [self searchForProject:filter[@"query"] filter:filter];
+        [self searchForCompany:filter[@"query"] filter:filter];
+        [self searchForContact:filter[@"query"] filter:filter];
         
     }
     
@@ -734,29 +745,32 @@ typedef enum : NSUInteger {
 
 }
 
-- (void)search:(NSString*)searchString filter:(NSDictionary*)filter{
+- (void)searchForProject:(NSString*)searchString filter:(NSDictionary*)filter{
 
     NSMutableDictionary *projectFilter = [@{@"q": searchString} mutableCopy];
    
-    NSMutableDictionary *searchFilter = [NSMutableDictionary new];
-    
+    NSMutableDictionary *_filter = [NSMutableDictionary new];
+    [_filter addEntriesFromDictionary: @{@"include":@[@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
+ 
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Project"]) {
             
-            searchFilter = filter[@"filter"];
+            NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+            _filter[@"searchFilter"] = searchFilter;
+
+            NSError *error = nil;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
+            
+            NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            [projectFilter addEntriesFromDictionary:@{@"filter":jsonString}];
+
         }
         
     } else {
         
-        [searchFilter addEntriesFromDictionary: @{@"include":@[@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
     }
 
-    NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:searchFilter options:0 error:&error];
-    
-    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    [projectFilter addEntriesFromDictionary:@{@"filter":jsonString}];
 
     [[DataManager sharedManager] projectSearch:projectFilter data:collectionItems success:^(id object) {
        
@@ -766,21 +780,25 @@ typedef enum : NSUInteger {
         
     }];
     
+}
+
+- (void)searchForCompany:(NSString*)searchString filter:(NSDictionary*)filter{
 
     NSMutableDictionary *companyFilter = [@{@"q": searchString} mutableCopy];
-
+    NSMutableDictionary *_filter = [NSMutableDictionary new];
+    
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Company"]) {
             
-            NSMutableDictionary *searchFilter = filter[@"filter"];
-            
+            NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+            _filter[@"searchFilter"] = searchFilter;
+     
             NSError *error = nil;
-            NSData *data = [NSJSONSerialization dataWithJSONObject:searchFilter options:0 error:&error];
+            NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
             
             NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             [companyFilter addEntriesFromDictionary:@{@"filter":jsonString}];
-     
         }
     }
 
@@ -792,7 +810,11 @@ typedef enum : NSUInteger {
         
     }];
     
-    
+}
+
+- (void)searchForContact:(NSString*)searchString filter:(NSDictionary*)filter{
+
+
     NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
     
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
@@ -818,14 +840,18 @@ typedef enum : NSUInteger {
         }
         
         [[DataManager sharedManager] cancellAllRequests];
-        [self search: _labeSearch.text filter:nil];
+        
+        [self searchForProject:_labeSearch.text filter:nil];
+        [self searchForCompany:_labeSearch.text filter:nil];
+        [self searchForContact:_labeSearch.text filter:nil];
+
     } else {
         searchMode = NO;
         showResult = NO;
         
         [_collectionView reloadData];
     }
-
+    button.enabled = _labeSearch.text.length>0;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -944,8 +970,9 @@ typedef enum : NSUInteger {
     searchMode = NO;
     showResult = NO;
     [_collectionView reloadData];
-
     [_clearButton setHidden:YES];
+    button.enabled = _labeSearch.text.length>0;
+
 }
 
 #pragma mark - Save Sarche Delegate

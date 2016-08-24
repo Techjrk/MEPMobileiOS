@@ -10,6 +10,10 @@
 
 #import "BaseViewController.h"
 
-@interface SearchFilterViewController : BaseViewController
+@protocol SearchFilterViewControllerDelegate <NSObject>
+- (void)tappedSearchFilterViewControllerApply:(NSDictionary*)projectFilter companyFilter:(NSDictionary*)companyFilter;
+@end
 
+@interface SearchFilterViewController : BaseViewController
+@property (weak, nonatomic) id<SearchFilterViewControllerDelegate>searchFilterViewControllerDelegate;
 @end

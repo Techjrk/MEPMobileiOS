@@ -176,6 +176,22 @@
         }
         case FilterModelValue:{
             
+            NSDictionary *dict = val;
+            NSString *value;
+            
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            
+            NSNumber *min = dict[@"min"];
+            NSNumber *max = dict[@"max"];
+            
+            if (max) {
+                value = [NSString stringWithFormat:@"$ %@ - $ %@", [formatter stringFromNumber:min], [formatter stringFromNumber:max]];
+            } else {
+                value = [NSString stringWithFormat:@"$ %@ - MAX", [formatter stringFromNumber:min]];
+            }
+                
+            [_fieldValue setInfo:@[@{@"entryID": @(0), @"entryTitle": value}]];
             break;
         }
         case FilterModelUpdated:{
@@ -234,7 +250,7 @@
             
             NSArray *value = (NSArray*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
             
-            self.searchFilter[@"buildingOrHighway"] = value;
+            self.searchFilter[@"buildingOrHighway"] = @{@"inq":value};
             
             break;
         }

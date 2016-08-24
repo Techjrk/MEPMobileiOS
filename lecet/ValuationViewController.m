@@ -108,8 +108,20 @@
         }
         case ProfileNavItemSaveButton:{
             
-            NSDictionary * dict = @{@"MIN":_leftTextField.text,@"MAX":_rightTextField.text};
+            
+            NSNumber *min = [NSNumber numberWithInteger:_leftTextField.text.length==0?0:[_leftTextField.text integerValue]];
+            NSNumber *max = [NSNumber numberWithInteger:_rightTextField.text.length==0?0:[_rightTextField.text integerValue]];
+            
+            NSDictionary * dict;
+            if (max.integerValue>0) {
+                dict = @{@"min":min,@"max":max};
+            } else {
+                dict = @{@"min":min};
+                
+            }
             [_valuationViewControllerDelegate tappedValuationApplyButton:dict];
+            [self.navigationController popViewControllerAnimated:YES];
+            
             break;
         }
     }
