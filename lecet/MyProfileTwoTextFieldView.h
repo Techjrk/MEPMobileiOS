@@ -26,4 +26,7 @@
 
 - (void)setTextFieldLeftPlaceholder:(NSString *)text;
 - (void)setTextFielRightPlaceholder:(NSString *)text;
+
+- (void)enableAutoNumFormatter:(BOOL)format;
+
 @end

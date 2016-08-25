@@ -9,7 +9,9 @@
 #import "MyProfileTwoTextFieldView.h"
 #import "MyProfileHeaderView.h"
 
-@interface MyProfileTwoTextFieldView ()<UITextFieldDelegate>
+@interface MyProfileTwoTextFieldView ()<UITextFieldDelegate> {
+    BOOL isAutoNumFormatterEnable;
+}
 @property (weak, nonatomic) IBOutlet MyProfileHeaderView *myProfileHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldLeft;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldRight;
@@ -67,9 +69,18 @@
 }
 
 - (NSString *)getTextLeft {
+    if (isAutoNumFormatterEnable) {
+       _textFieldLeft.text = [_textFieldLeft.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }
+    
     return _textFieldLeft.text;
 }
 - (NSString *)getTextRight {
+    
+    if (isAutoNumFormatterEnable) {
+        _textFieldRight.text = [_textFieldRight.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }
+    
     return _textFieldRight.text;
 }
 - (void)setSecureTextFieldLeft:(BOOL)secure {
@@ -97,6 +108,50 @@
     }
     
     return NO;
+}
+
+- (void)enableAutoNumFormatter:(BOOL)format {
+    isAutoNumFormatterEnable = format;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    
+    if (isAutoNumFormatterEnable) {
+        if([string length]==0)
+        {
+            [formatter setGroupingSeparator:@"-"];
+            [formatter setGroupingSize:4];
+            [formatter setUsesGroupingSeparator:YES];
+            [formatter setSecondaryGroupingSize:3];
+            NSString *num = textField.text ;
+            num= [num stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            NSString *str = [formatter stringFromNumber:[NSNumber numberWithDouble:[num doubleValue]]];
+            
+            textField.text=str;
+            return YES;
+        }
+        else {
+            [formatter setGroupingSeparator:@"-"];
+            [formatter setGroupingSize:3];
+            [formatter setUsesGroupingSeparator:YES];
+            [formatter setSecondaryGroupingSize:3];
+            NSString *num = textField.text ;
+            if(![num isEqualToString:@""])
+            {
+                num= [num stringByReplacingOccurrencesOfString:@"-" withString:@""];
+                NSString *str = [formatter stringFromNumber:[NSNumber numberWithDouble:[num doubleValue]]];
+                
+                textField.text=str;
+            }
+            
+            return YES;
+        }
+
+    } else {
+        return YES;
+    }
 }
 
 @end
