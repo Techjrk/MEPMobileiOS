@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -12,10 +12,13 @@
                 <outlet property="constaintContainerHeight" destination="YxW-88-HVI" id="qwB-um-rWW"/>
                 <outlet property="constraintSpaceTop" destination="Tk1-r8-4Ic" id="U8H-zQ-DbW"/>
                 <outlet property="constraintUpdateContainerHeight" destination="acp-tx-DNF" id="Uwr-ml-CCm"/>
+                <outlet property="constrintLeftLabelWidth" destination="el7-hF-iLV" id="FgI-DR-xDG"/>
                 <outlet property="container" destination="cSf-yq-GSx" id="BsG-0Z-SmD"/>
                 <outlet property="imageView" destination="KvX-R6-VOQ" id="Onu-ze-WCM"/>
                 <outlet property="labelContainer" destination="dOD-4c-KXg" id="6tC-bq-sa9"/>
+                <outlet property="labelLeftDesc" destination="nsM-I7-5VP" id="IyD-pd-UVZ"/>
                 <outlet property="labelLocation" destination="3yv-ne-7sW" id="vTc-Ee-AAT"/>
+                <outlet property="labelRightDesc" destination="Uj4-kT-Jgr" id="p5Y-ET-7UL"/>
                 <outlet property="labelTitle" destination="cxn-bu-OnP" id="jWg-Fm-Yto"/>
                 <outlet property="labelType" destination="Ulj-ws-ePI" id="Iem-EM-Ubd"/>
                 <outlet property="labelUpdateDetails" destination="Red-cc-DOA" id="xfw-e1-ePv"/>
@@ -167,9 +170,25 @@
                             <rect key="frame" x="10" y="53" width="389" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" The work includes, but is not limited to, concrete replacement, structural updates too…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Red-cc-DOA">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Red-cc-DOA">
                             <rect key="frame" x="19" y="53" width="370" height="59"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsM-I7-5VP">
+                            <rect key="frame" x="19" y="53" width="0.0" height="59"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" id="el7-hF-iLV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uj4-kT-Jgr">
+                            <rect key="frame" x="19" y="53" width="370" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -180,22 +199,27 @@
                         <constraint firstItem="Red-cc-DOA" firstAttribute="height" secondItem="Oew-6h-71g" secondAttribute="height" multiplier="1.1" id="1z1-YC-8Nj"/>
                         <constraint firstItem="dOD-4c-KXg" firstAttribute="width" secondItem="Oew-6h-71g" secondAttribute="width" id="43P-Vu-uzK"/>
                         <constraint firstItem="Oew-6h-71g" firstAttribute="centerX" secondItem="cSf-yq-GSx" secondAttribute="centerX" id="45x-Hb-dec"/>
+                        <constraint firstItem="nsM-I7-5VP" firstAttribute="trailing" secondItem="Red-cc-DOA" secondAttribute="trailing" id="8dd-CP-bb2"/>
                         <constraint firstItem="Red-cc-DOA" firstAttribute="top" secondItem="Oew-6h-71g" secondAttribute="bottom" id="BD4-hU-rQe"/>
+                        <constraint firstItem="nsM-I7-5VP" firstAttribute="leading" secondItem="Red-cc-DOA" secondAttribute="leading" id="DWS-Vp-fYB"/>
+                        <constraint firstItem="Uj4-kT-Jgr" firstAttribute="trailing" secondItem="Red-cc-DOA" secondAttribute="trailing" id="Edq-Cn-6rA"/>
+                        <constraint firstItem="nsM-I7-5VP" firstAttribute="height" secondItem="Red-cc-DOA" secondAttribute="height" id="EoF-Mf-laT"/>
                         <constraint firstItem="dOD-4c-KXg" firstAttribute="height" secondItem="Red-cc-DOA" secondAttribute="height" id="FDi-GF-LmO"/>
                         <constraint firstItem="dOD-4c-KXg" firstAttribute="top" secondItem="Red-cc-DOA" secondAttribute="top" id="LEA-sl-UvO"/>
+                        <constraint firstItem="Uj4-kT-Jgr" firstAttribute="leading" secondItem="nsM-I7-5VP" secondAttribute="trailing" id="NNv-eW-xsk"/>
                         <constraint firstItem="dOD-4c-KXg" firstAttribute="centerX" secondItem="Red-cc-DOA" secondAttribute="centerX" id="RjR-1N-mxj"/>
-                        <constraint firstItem="Red-cc-DOA" firstAttribute="leading" secondItem="Oew-6h-71g" secondAttribute="trailing" constant="-389" id="UAo-Uh-R2x"/>
                         <constraint firstItem="Red-cc-DOA" firstAttribute="width" secondItem="Oew-6h-71g" secondAttribute="width" multiplier="0.95" id="ZSS-6h-kJd"/>
                         <constraint firstAttribute="height" constant="116" id="acp-tx-DNF"/>
-                        <constraint firstItem="dOD-4c-KXg" firstAttribute="width" secondItem="Red-cc-DOA" secondAttribute="width" id="bfW-f8-NlO"/>
+                        <constraint firstItem="Uj4-kT-Jgr" firstAttribute="height" secondItem="Red-cc-DOA" secondAttribute="height" id="gGZ-o9-i4l"/>
                         <constraint firstItem="Red-cc-DOA" firstAttribute="centerX" secondItem="Oew-6h-71g" secondAttribute="centerX" id="qJD-3w-Pjt"/>
                         <constraint firstItem="Oew-6h-71g" firstAttribute="width" secondItem="cSf-yq-GSx" secondAttribute="width" multiplier="0.95" id="r88-B6-FMX"/>
+                        <constraint firstItem="nsM-I7-5VP" firstAttribute="centerY" secondItem="Red-cc-DOA" secondAttribute="centerY" id="uDv-sq-VHg"/>
                         <constraint firstItem="Oew-6h-71g" firstAttribute="top" secondItem="cSf-yq-GSx" secondAttribute="top" id="waB-Es-J5e"/>
+                        <constraint firstItem="Uj4-kT-Jgr" firstAttribute="centerY" secondItem="Red-cc-DOA" secondAttribute="centerY" id="xca-xo-uB4"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="bfW-f8-NlO"/>
-                            <exclude reference="UAo-Uh-R2x"/>
+                            <exclude reference="8dd-CP-bb2"/>
                         </mask>
                     </variation>
                 </view>

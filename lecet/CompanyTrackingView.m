@@ -128,13 +128,19 @@
         
     }
     
-    else if ([modelType isEqual:@"Bid"]) {
+    if ([modelType isEqual:@"Bid"]) {
         _constraintLefLabelWidth.constant = _labelContainer.frame.size.width * 0.44;
-        //[_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
         _leftLabelPriceDesc.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"estLow"]];
         
         [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
         _labelUpdateDescription.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"name"]];
+    }
+    
+    if ([modelType isEqual:@"ProjectStage"]) {
+        _labelUpdateDescription.text = @"";
+    }
+    
+    if ([modelType isEqual:@"WorkType"]) {
         
     }
 }
@@ -173,7 +179,14 @@
     
     if ([modelType isEqual:@"Bid"]) {
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
-        //[_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+        
+    }
+    if ([modelType isEqual:@"ProjectStage"]) {
+        _rightImageIcon.image = [UIImage imageNamed:@"Info"];
+        
+    }
+    
+    if ([modelType isEqual:@"WorkType"]) {
         
     }
     
