@@ -91,7 +91,6 @@ typedef enum : NSUInteger {
     [button setImage:[UIImage imageNamed:@"icon_filter"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"icon_filter_apply"] forState:UIControlStateSelected];
     button.showsTouchWhenHighlighted = YES;
-    button.enabled = NO;
     [button addTarget:self action:@selector(tappedButtonFilter:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -561,6 +560,7 @@ typedef enum : NSUInteger {
         searchMode = YES;
         showResult = YES;
         NSMutableDictionary *filter = items[indexPath.row];
+        _labeSearch.text = filter[@"query"];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
         [self searchForContact:filter[@"query"] filter:filter];
@@ -758,18 +758,24 @@ typedef enum : NSUInteger {
             NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
             _filter[@"searchFilter"] = searchFilter;
 
-            NSError *error = nil;
-            NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
-            
-            NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            [projectFilter addEntriesFromDictionary:@{@"filter":jsonString}];
 
+        } else {
+            _filter[@"searchFilter"] = @"{}";
+            
         }
         
     } else {
         
+        _filter[@"searchFilter"] = @"{}";
+
     }
+
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    projectFilter[@"filter"] = jsonString;
 
 
     [[DataManager sharedManager] projectSearch:projectFilter data:collectionItems success:^(id object) {
@@ -793,15 +799,19 @@ typedef enum : NSUInteger {
             NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
             _filter[@"searchFilter"] = searchFilter;
      
-            NSError *error = nil;
-            NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
-            
-            NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            [companyFilter addEntriesFromDictionary:@{@"filter":jsonString}];
+        } else {
+            _filter[@"searchFilter"] = @"{}";
         }
+    } else {
+        _filter[@"searchFilter"] = @"{}";
     }
 
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    [companyFilter addEntriesFromDictionary:@{@"filter":jsonString}];
     
     [[DataManager sharedManager] companySearch:companyFilter data:collectionItems success:^(id object) {
    
@@ -815,7 +825,7 @@ typedef enum : NSUInteger {
 - (void)searchForContact:(NSString*)searchString filter:(NSDictionary*)filter{
 
 
-    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
+    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"],\"searchFilter\":{}}"} mutableCopy];
     
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
 
@@ -851,7 +861,6 @@ typedef enum : NSUInteger {
         
         [_collectionView reloadData];
     }
-    button.enabled = _labeSearch.text.length>0;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -971,8 +980,7 @@ typedef enum : NSUInteger {
     showResult = NO;
     [_collectionView reloadData];
     [_clearButton setHidden:YES];
-    button.enabled = _labeSearch.text.length>0;
-
+   
 }
 
 #pragma mark - Save Sarche Delegate

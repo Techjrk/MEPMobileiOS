@@ -36,6 +36,7 @@ typedef void(^APIBlock)(id object);
 - (BOOL)connected;
 - (UIViewController*)getActiveViewController;
 - (void)cancellAllRequests;
+- (BOOL)isDebugMode;
 
 //HTTP
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated;

@@ -88,7 +88,6 @@
 - (void)featureNotAvailable;
 - (void)showBusyScreen;
 - (void)promptMessage:(NSString*)message;
-- (BOOL)isDebugMode;
 - (void)dismissPopup;
 - (void)setNotification:(BOOL)enabled;
 - (BOOL)isNotificationEnabled;

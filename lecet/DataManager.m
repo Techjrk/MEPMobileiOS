@@ -750,7 +750,7 @@
 
     NSString *url = [self url:[NSString stringWithFormat:kUrlRecentlyViewed,userId.integerValue]];
                      
-    [self HTTP_GET:url parameters:@{@"filter[where][code][inq][0]":@"VIEW_PROJECT", @"filter[where][code][inq][1]":@"VIEW_COMPANY", @"limit":@"10", @"filter[include][0]":@"project", @"filter[include][1]":@"company"} success:^(id object) {
+    [self HTTP_GET:url parameters:@{@"filter":@"{\"include\":[\"project\",\"company\"],\"where\":{\"code\":{\"inq\":[\"VIEW_PROJECT\",\"VIEW_COMPANY\"]}},\"limit\":10,\"order\":\"updatedAt DESC\"}"} success:^(id object) {
         
         success(object);
         
@@ -1102,13 +1102,6 @@
     [alert addAction:closeAction];
     
     [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
-    
-}
-
-- (BOOL)isDebugMode {
-
-    NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
-    return [processInfo containsObject:@"IS_DEBUG"];
     
 }
 
