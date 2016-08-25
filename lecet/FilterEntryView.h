@@ -27,5 +27,5 @@
 - (void)setTitle:(NSString*)title;
 - (void)setInfo:(id)info;
 - (void)setHint:(NSString *)text;
-
+- (NSArray *)getCollectionItemsData;
 @end

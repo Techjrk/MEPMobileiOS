@@ -28,6 +28,7 @@ typedef enum {
 - (void)setButtonTag:(int)tag;
 - (void)changeCaretToUp:(BOOL)up;
 - (void)setImage:(id)info;
-- (void)setLabelDescription:(NSString *)text;
+//- (void)setLabelDescription:(NSString *)text;
 - (void)searchForLocationGeocode;
+- (void)setUpdateInfo:(id)info;
 @end

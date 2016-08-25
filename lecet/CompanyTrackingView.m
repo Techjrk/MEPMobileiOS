@@ -48,6 +48,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerButtonAndTextHeight;
 @property (weak, nonatomic) IBOutlet UIImageView *rightImageIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLefLabelWidth;
 
 @end
 
@@ -113,6 +114,31 @@
     
 }
 
+- (void)setUpdateInfo:(id)info {
+
+    id modelType = [DerivedNSManagedObject objectOrNil:info[@"modelType"]];
+
+    if ([modelType isEqual:@"ProjectContact"]) {
+    
+        _constraintLefLabelWidth.constant = _labelContainer.frame.size.width * 0.44;
+        _leftLabelPriceDesc.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"name"]];
+        
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
+        _labelUpdateDescription.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"contact"][@"title"]];
+        
+    }
+    
+    else if ([modelType isEqual:@"Bid"]) {
+        _constraintLefLabelWidth.constant = _labelContainer.frame.size.width * 0.44;
+        //[_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+        _leftLabelPriceDesc.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"estLow"]];
+        
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
+        _labelUpdateDescription.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"name"]];
+        
+    }
+}
+
 - (IBAction)tappedButton:(id)sender {
  
     UIButton *button = sender;
@@ -143,13 +169,11 @@
     
     if ([modelType isEqual:@"ProjectContact"]) {
         _rightImageIcon.image = [UIImage imageNamed:@"addAcct_icon"];
-        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
-    
     }
     
     if ([modelType isEqual:@"Bid"]) {
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
-        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+        //[_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
         
     }
     

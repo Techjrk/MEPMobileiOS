@@ -15,5 +15,6 @@
 
 @interface ProjectFilterLocationViewController : BaseViewController
 @property (nonatomic,assign) id <ProjectFilterLocationViewControllerDelegate> projectFilterLocationViewControllerDelegate;
+@property (nonatomic,strong) NSArray *dataSelected;
 - (void)setInfo:(id)info;
 @end

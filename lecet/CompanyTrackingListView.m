@@ -115,7 +115,8 @@
         [cell setButtonLabelTitle:titleUpdates];
         id modelType = [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"modelType"];
         [cell setImage:modelType];
-        [cell setUpdateDescription:titleName];
+        //[cell setUpdateDescription:titleName];
+        [cell setUpdateInfo:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]];
     }
     
     NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];
