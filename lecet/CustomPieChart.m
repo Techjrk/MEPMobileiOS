@@ -67,7 +67,7 @@
 }
 
 - (void)addPieItem:(NSString *)tagItem percent:(NSNumber *)percent legendColor:(UIColor *)legendColor  focusImage:(UIImage*)focusImage {
-    pieItems[tagItem] = @{@"PERCENT":percent, @"COLOR":legendColor,@"IMAGE":focusImage};
+    pieItems[tagItem] = @{@"PERCENT":percent, @"COLOR":legendColor,@"IMAGE":[focusImage copy]};
 }
 
 

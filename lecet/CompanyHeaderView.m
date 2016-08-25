@@ -35,6 +35,7 @@
     
     _labelTitle.font = COMPANY_HEADER_TITLE_TEXT_FONT;
     _labelTitle.textColor = COMPANY_HEADER_TITLE_TEXT_COLOR;
+    
 }
 
 - (void)setHeaderInfo:(id)headerInfo {
@@ -121,6 +122,5 @@
     [_mapView addAnnotation:annotation];
     
 }
-
 
 @end

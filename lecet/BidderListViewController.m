@@ -67,7 +67,7 @@
     DB_Bid *bidItem = self.collectionItems[indexPath.row];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    
+    formatter.maximumFractionDigits = 0;
     NSString *estLow = bidItem.amount != nil?[formatter stringFromNumber:[NSNumber numberWithFloat:bidItem.amount.floatValue]]: @"0";
     
     [cell setItem:[NSString stringWithFormat:@"$ %@",estLow] line1:bidItem.relationshipCompany.name line2:[bidItem.relationshipCompany address]];
