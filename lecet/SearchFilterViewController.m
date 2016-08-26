@@ -681,6 +681,7 @@
 - (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles{
     
     if (_companyFilter.hidden) {
+        
         _projectFilter.searchFilter[key] = @{@"inq":selectedItems};
         [_projectFilter setFilterModelInfo:selectedModel value:titles];
         

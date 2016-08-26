@@ -49,6 +49,10 @@ typedef enum : NSUInteger {
     NSMutableDictionary *collectionItems;
     BOOL isPushingController;
     UIButton *button;
+    
+    NSDictionary *projectFilterGlobal;
+    NSDictionary *companyFilterGlobal;
+    
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
@@ -172,13 +176,15 @@ typedef enum : NSUInteger {
 }
 
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
-    [self searchForProject:_labeSearch.text filter:projectFilter.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilter}}:nil];
-    [self searchForCompany:_labeSearch.text filter:companyFilter.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilter}}:nil];
-
+    
+    projectFilterGlobal = projectFilter;
+    companyFilterGlobal = companyFilter;
+    [self showSaveSearches:YES];
+    
 }
 
 - (IBAction)tappedButtonBack:(id)sender {
-
+    [self showSaveSearches:NO];
     if (showResult) {
         showResult = NO;
         [_collectionView reloadData];
@@ -473,7 +479,7 @@ typedef enum : NSUInteger {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SearchSection sectionType = (SearchSection)indexPath.section;
-    
+    [self showSaveSearches:NO];
     if (sectionType == SearchSectionSuggested) {
        // [self showSaveSearches:YES];
         _resultIndex = [NSNumber numberWithInteger:indexPath.row];
@@ -483,6 +489,7 @@ typedef enum : NSUInteger {
     } else if (sectionType == SearchSectionProjects) {
       
         if (!isPushingController) {
+            
             isPushingController = YES;
             NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
             NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
@@ -980,7 +987,9 @@ typedef enum : NSUInteger {
 - (void)tappedButtonSaveSearchesItem:(SaveSearchChangeItem)item {
     switch (item) {
         case SaveSearchChangeItemSave:{
-            [[DataManager sharedManager] featureNotAvailable];
+            [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
+            [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+            [self showSaveSearches:NO];
             break;
         }
         case SaveSearchChangeItemCancel:{
