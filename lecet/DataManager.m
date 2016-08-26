@@ -763,8 +763,19 @@
 
 }
 
-- (void)userActivities:(NSString*)activity recordId:(NSNumber*)recordId success:(APIBlock) success failure:(APIBlock)failure {
+- (void)userActivitiesForRecordId:(NSNumber*)recordId viewType:(NSUInteger)viewType success:(APIBlock) success failure:(APIBlock)failure {
     
+    NSString *url = [self url:kUrlActivities];
+    
+    NSString *view = viewType == 0?@"VIEW_PROJECT":@"VIEW_COMPANY";
+    NSString *field = viewType == 0?@"projectId":@"companyId";
+    NSDictionary *parameter = @{@"code":view, field:recordId};
+    [self HTTP_POST_BODY:url parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
 }
 
 - (void)updateUserInformation:(NSNumber*)userId userUpdateData:(id)paramData success:(APIBlock)success failure:(APIBlock)failure{
