@@ -1029,12 +1029,13 @@ typedef enum : NSUInteger {
         height = 0;
     }
     
+    /*
     [UIView animateWithDuration:0.25 animations:^{
         _constraintSaveSearchesHeight.constant = height;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [_collectionView reloadData];
-    }];
+    }];*/
 
 }
 
