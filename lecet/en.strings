@@ -328,9 +328,9 @@
 "PROJECT_FILTER_FEW"                        =               "Fewer Options";
 "PROJECT_FILTER_ANY"                        =               "Any";
 
-"PROJECT_FILTER_HINT_LOCATION"              =               "Location";
-"PROJECT_FILTER_HINT_TYPE"                  =               "Type";
-"PROJECT_FILTER_HINT_VALUE"                 =               "Value";
+"PROJECT_FILTER_HINT_LOCATION"              =               "Everywhere";
+"PROJECT_FILTER_HINT_TYPE"                  =               "All types";
+"PROJECT_FILTER_HINT_VALUE"                 =               "No Min - No Max";
 
 
 //CompanyFilterView.xib
