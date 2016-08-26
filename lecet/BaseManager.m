@@ -85,6 +85,17 @@
 
 #pragma mark - HTTP METHODS AND PARAMETERS
 
+- (void)logURLRequest:(AFHTTPSessionManager*)manager url:(NSString*)url parameters:(NSDictionary*)parameters {
+    
+    if ([self isDebugMode]) {
+        
+        NSString *params = parameters!=nil?[[parameters description] stringByReplacingOccurrencesOfString:@"\\" withString:@""]:@"";
+        
+        NSLog(@"URL: %@ \nHEADERS : %@\nPARAM %@: ", url,[manager.requestSerializer.HTTPRequestHeaders description], params);
+    }
+
+}
+
 
 - (void)HTTP_GET:(NSString*)url parameters:(id)paramters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
     
@@ -106,6 +117,9 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self enableUserTouch:YES];
             [self connectionError:error];
+            
+            [self logURLRequest:manager url:url parameters:paramters];
+
             failure(error);
         }];
     }
@@ -132,10 +146,62 @@
             if (![NSStringFromClass([[self getActiveViewController]  class]) isEqualToString:@"LoginViewController"]) {
                 [self connectionError:error];
             }
+            
+            [self logURLRequest:manager url:url parameters:paramters];
+
             failure(error);
         }];
     }
 }
+
+- (void)HTTP_POST_BODY:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
+    
+    if ([self connected]) {
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:nil error:nil];
+        
+        [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        if ([parameters isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = parameters;
+            
+            NSError *error = nil;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+            
+            [req setHTTPBody:data];
+        }
+        
+        if (authenticated) {
+            
+            NSString *accessToken = [self getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
+            
+            
+            
+            [req setValue:accessToken forHTTPHeaderField:@"Authorization"];
+            
+        }
+        
+        [self enableUserTouch:NO];
+        
+        [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            
+            if (error == nil) {
+                [self enableUserTouch:YES];
+                success(responseObject);
+            } else {
+                [self enableUserTouch:YES];
+                [self connectionError:error];
+                
+                failure(responseObject);
+            }
+        }] resume];
+        
+    }
+}
+
 
 - (void)HTTP_PUT:(NSString*)url parameters:(id)parameters success:(APIBlock)success failure:(APIBlock)failure authenticated:(BOOL)authenticated{
     
@@ -157,6 +223,9 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self enableUserTouch:YES];
             [self connectionError:error];
+            
+            [self logURLRequest:manager url:url parameters:parameters];
+
             failure(error);
         }];
     }
@@ -203,9 +272,6 @@
                 [self enableUserTouch:YES];
                 [self connectionError:error];
                 
-                
-               
-                
                 failure(responseObject);
             }
         }] resume];
@@ -234,6 +300,9 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self enableUserTouch:YES];
             [self connectionError:error];
+            
+            [self logURLRequest:manager url:url parameters:parameters];
+    
             failure(error);
         }];
     }
@@ -299,6 +368,13 @@
     
 }
 
+- (BOOL)isDebugMode {
+    
+    NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
+    return [processInfo containsObject:@"IS_DEBUG"];
+    
+}
+
 - (void)noInternet {
         
     if (!isNoInternetShown) {
@@ -323,8 +399,10 @@
     NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
     
     NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@",ErrorResponse);
+   
+    if ([self isDebugMode]) {
+        NSLog(@"%@",ErrorResponse);
+    }
     
     NSInteger errorCode = response.statusCode;
     NSString *url = response.URL.absoluteString;

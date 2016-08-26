@@ -32,7 +32,7 @@
 
 //ChartView.xib
 "CHART_VIEW_LABEL_HOUSING"                  =               "HOUSING";
-"CHART_VIEW_LABEL_ENGINEERING"              =               "ENGINEERING";
+"CHART_VIEW_LABEL_ENGINEERING"              =               "HEAVY-HIGHWAY";
 "CHART_VIEW_LABEL_BUILDING"                 =               "BUILDING";
 "CHART_VIEW_LABEL_UTILITIES"                =               "UTILITIES";
 

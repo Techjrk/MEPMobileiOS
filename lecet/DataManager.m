@@ -48,6 +48,7 @@
 #define kUrlParentStage                     @"ProjectParentStages"
 #define kUrlJurisdiction                    @"Regions/tree"
 #define kUrlRecentlyViewed                  @"LecetUsers/%li/activities"
+#define kUrlActivities                      @"Activities"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
@@ -750,7 +751,7 @@
 
     NSString *url = [self url:[NSString stringWithFormat:kUrlRecentlyViewed,userId.integerValue]];
                      
-    [self HTTP_GET:url parameters:@{@"filter[where][code][inq][0]":@"VIEW_PROJECT", @"filter[where][code][inq][1]":@"VIEW_COMPANY", @"limit":@"10", @"filter[include][0]":@"project", @"filter[include][1]":@"company"} success:^(id object) {
+    [self HTTP_GET:url parameters:@{@"filter":@"{\"include\":[\"project\",\"company\"],\"where\":{\"code\":{\"inq\":[\"VIEW_PROJECT\",\"VIEW_COMPANY\"]}},\"limit\":10,\"order\":\"updatedAt DESC\"}"} success:^(id object) {
         
         success(object);
         
@@ -758,6 +759,21 @@
         
         failure(object);
         
+    } authenticated:YES];
+
+}
+
+- (void)userActivitiesForRecordId:(NSNumber*)recordId viewType:(NSUInteger)viewType success:(APIBlock) success failure:(APIBlock)failure {
+    
+    NSString *url = [self url:kUrlActivities];
+    
+    NSString *view = viewType == 0?@"VIEW_PROJECT":@"VIEW_COMPANY";
+    NSString *field = viewType == 0?@"projectId":@"companyId";
+    NSDictionary *parameter = @{@"code":view, field:recordId};
+    [self HTTP_POST_BODY:url parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
     } authenticated:YES];
 
 }
@@ -1102,13 +1118,6 @@
     [alert addAction:closeAction];
     
     [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
-    
-}
-
-- (BOOL)isDebugMode {
-
-    NSArray *processInfo = [[NSProcessInfo processInfo] arguments];
-    return [processInfo containsObject:@"IS_DEBUG"];
     
 }
 

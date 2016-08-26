@@ -166,6 +166,12 @@ typedef enum {
     projectTitle = project.title;
     recordId = project.recordId;
     
+    [[DataManager sharedManager] userActivitiesForRecordId:recordId viewType:0 success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];
+    
     NSString *address1 = project.address1 == nil ? @"": project.address1;
     [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
     
