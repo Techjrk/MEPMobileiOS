@@ -19,6 +19,7 @@
 #import "EditTabView.h"
 #import "SelectMoveView.h"
 #import "TrackingListCellCollectionViewCell.h"
+#import "ProjectDetailViewController.h"
 
 typedef enum  {
     PopupModeSort,
@@ -656,6 +657,20 @@ typedef enum  {
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             
+        }];
+
+    } else {
+        
+        NSNumber *projectId = [self getProjectId:indexPath];
+        
+        [[DataManager sharedManager] projectDetail:projectId success:^(id object) {
+            ProjectDetailViewController *detail = [ProjectDetailViewController new];
+            detail.view.hidden = NO;
+            
+            [detail detailsFromProject:object];
+            [self.navigationController pushViewController:detail animated:YES];
+
+        } failure:^(id object) {
         }];
 
     }

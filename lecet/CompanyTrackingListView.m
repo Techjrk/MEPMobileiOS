@@ -9,8 +9,7 @@
 #import "CompanyTrackingListView.h"
 #import "CompanyTrackingCollectionViewCell.h"
 #import "EditViewList.h"
-
-
+#import "CompanyDetailViewController.h"
 
 @interface CompanyTrackingListView ()<UICollectionViewDelegate, UICollectionViewDataSource,CompanyTrackingCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;
@@ -190,6 +189,20 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSNumber *recordId = collectionDataItems[indexPath.row][@"id"];
+    [[DataManager sharedManager] companyDetail:recordId success:^(id object) {
+        
+        id returnObject = object;
+        CompanyDetailViewController *controller = [CompanyDetailViewController new];
+        controller.view.hidden = NO;
+        [controller setInfo:returnObject];
+        
+        UIViewController *navController = [[DataManager sharedManager] getActiveViewController];
+        [navController.navigationController pushViewController:controller animated:YES];
+        
+    } failure:^(id object) {
+    }];
+
 }
 
 - (void)tappedButtonAtTag:(int)tag {

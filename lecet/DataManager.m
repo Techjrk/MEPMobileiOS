@@ -48,6 +48,7 @@
 #define kUrlParentStage                     @"ProjectParentStages"
 #define kUrlJurisdiction                    @"Regions/tree"
 #define kUrlRecentlyViewed                  @"LecetUsers/%li/activities"
+#define kUrlActivities                      @"Activities"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
@@ -760,6 +761,10 @@
         
     } authenticated:YES];
 
+}
+
+- (void)userActivities:(NSString*)activity recordId:(NSNumber*)recordId success:(APIBlock) success failure:(APIBlock)failure {
+    
 }
 
 - (void)updateUserInformation:(NSNumber*)userId userUpdateData:(id)paramData success:(APIBlock)success failure:(APIBlock)failure{

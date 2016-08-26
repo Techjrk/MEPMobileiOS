@@ -760,13 +760,13 @@ typedef enum : NSUInteger {
 
 
         } else {
-            _filter[@"searchFilter"] = @"{}";
+           // _filter[@"searchFilter"] = @"{}";
             
         }
         
     } else {
         
-        _filter[@"searchFilter"] = @"{}";
+        //_filter[@"searchFilter"] = @"{}";
 
     }
 
@@ -800,10 +800,10 @@ typedef enum : NSUInteger {
             _filter[@"searchFilter"] = searchFilter;
      
         } else {
-            _filter[@"searchFilter"] = @"{}";
+            //_filter[@"searchFilter"] = @"{}";
         }
     } else {
-        _filter[@"searchFilter"] = @"{}";
+        //_filter[@"searchFilter"] = @"{}";
     }
 
     NSError *error = nil;
@@ -825,7 +825,8 @@ typedef enum : NSUInteger {
 - (void)searchForContact:(NSString*)searchString filter:(NSDictionary*)filter{
 
 
-    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"],\"searchFilter\":{}}"} mutableCopy];
+    //NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"],\"searchFilter\":{}}"} mutableCopy];
+    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
     
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
 

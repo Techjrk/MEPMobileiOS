@@ -32,6 +32,7 @@
 - (NSDate*)getDateLastDay:(NSDate*)date;
 // API USER
 - (void)userLogin:(NSString*)email password:(NSString*)password success:(APIBlock)success failure:(APIBlock)failure;
+- (void)userActivities:(NSString*)activity recordId:(NSNumber*)recordId success:(APIBlock) success failure:(APIBlock)failure;
 
 //API BIDS
 - (void)bidsRecentlyMade:(NSDate*)dateFilter success:(APIBlock)success failure:(APIBlock)failure;
