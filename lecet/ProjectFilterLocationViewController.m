@@ -22,11 +22,13 @@
 @end
 
 @implementation ProjectFilterLocationViewController
+@synthesize dataSelected;
 
 #define PROJECTGROUPID              @"id"
 
 #define INDEXFORSEARCHRESULT        @"index"
 #define DATARESULTINSECONDLAYER     @"dataresultInSecondLayer"
+#define ENTRY_ID                    @"entryID"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,17 +44,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     
-    NSArray *array = @[@{TITLENAME:@"California",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
+    NSArray *array = @[@{TITLENAME:@"California",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@0,
                          SUBCATEGORYDATA:
-                             @[@{TITLENAME:@"San Francisco",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
-                               @{TITLENAME:@"San Jose",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag},
-                               @{TITLENAME:@"Santa Ana",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}
+                             @[@{TITLENAME:@"San Francisco",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@1},
+                               @{TITLENAME:@"San Jose",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@2},
+                               @{TITLENAME:@"Santa Ana",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@3}
                                ],                         },
-                       @{TITLENAME:@"Utah",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[@{TITLENAME:@"Salt Lake City",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]
+                       @{TITLENAME:@"Utah",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@4,
+                         SUBCATEGORYDATA:@[@{TITLENAME:@"Salt Lake City",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@5}]
                          },
-                       @{TITLENAME:@"Texas",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,
-                         SUBCATEGORYDATA:@[@{TITLENAME:@"San Antonio",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag}]}
+                       @{TITLENAME:@"Texas",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@6,
+                         SUBCATEGORYDATA:@[@{TITLENAME:@"San Antonio",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@7}]}
                        ];
     
     dataInfo = [array mutableCopy];
@@ -127,7 +129,6 @@
                     [searchReultFromSubCat addObject:dict];
                 }
             }
-            
             
             NSMutableArray *secondSubCatSearchResult = [self configuredSearchResult:searchReultFromSubCat];
             [_listView setInfoToReload:[secondSubCatSearchResult copy]];
@@ -230,6 +231,38 @@
     
 }
 
-
+- (void)selectTheDataThatBeenSelected:(id)dInfo {
+    
+    NSMutableDictionary *dict;
+    NSMutableDictionary *dictMSec;
+    NSMutableArray *arrayFL = [NSMutableArray new];
+    NSMutableArray *arraySub = [NSMutableArray new];
+    
+    for (id data in dInfo) {
+        dict = [data mutableCopy];
+        if([dataSelected containsObject:data[ENTRY_ID]]) {
+            [dict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+            [dict setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
+        }
+        
+        /*
+        for (id dataSec in data[SUBCATEGORYDATA]) {
+            dictMSec = [dataSec mutableCopy];
+            if([dataSelected containsObject:data[ENTRY_ID]]) {
+                [dictMSec setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+                [dictMSec setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
+            }
+            
+            [arraySub addObject:dictMSec];
+        }
+        
+        [dict setValue:dictMSec forKey:SUBCATEGORYDATA];
+        */
+        
+        [arrayFL addObject:dict];
+    }
+    
+    dataInfo = arrayFL;
+}
 
 @end

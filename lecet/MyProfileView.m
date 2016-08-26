@@ -68,6 +68,7 @@
     [_phoneFaxTextFieldView setHideTitleRightLabel:NO];
     [_phoneFaxTextFieldView setTileRightLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_FAX")];
     [_phoneFaxTextFieldView setRightTFKeyboard:UIKeyboardTypePhonePad];
+    [_phoneFaxTextFieldView enableAutoNumFormatter:YES];
     
     [_streetAddressTextFieldView setTileLeftLabelText:NSLocalizedLanguage(@"MYPROFILE_HEADER_TEXT_STREETADDRESS")];
     [_streetAddressTextFieldView setHideTitleRightLabel:YES];

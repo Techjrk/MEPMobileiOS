@@ -150,4 +150,7 @@
     [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.25];
 }
 
+- (NSArray *)getCollectionItemsData {
+    return [collectionDataItems copy];
+}
 @end

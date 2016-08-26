@@ -21,6 +21,7 @@
 - (void)setButtontag:(int)tag;
 - (void)changeCaretToUp:(BOOL)up;
 - (void)setImage:(id)imageName;
-- (void)setUpdateDescription:(NSString *)text;
+//- (void)setUpdateDescription:(NSString *)text;
 - (void)searchLocationGeoCode;
+- (void)setUpdateInfo:(id)info;
 @end

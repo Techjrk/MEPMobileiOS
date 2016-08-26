@@ -98,7 +98,10 @@
     
     NSString *titleName = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_NAME];
     NSString *addressTop = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ADDRESSONE];
-    NSString *addressCon = [NSString stringWithFormat:@"%@, %@ %@",[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_COUNTY],[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_STATE],[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ZIP5]];
+    
+    NSString *zip5 = [DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ZIP5]];
+    zip5 = zip5 == nil || [zip5 isEqual:[NSNull null]]?@"":zip5;
+    NSString *addressCon = [NSString stringWithFormat:@"%@, %@ %@",[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_COUNTY],[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_STATE],zip5];
     
     NSString *addressBelow = addressCon;
     
@@ -114,7 +117,8 @@
         [cell setButtonLabelTitle:titleUpdates];
         id modelType = [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"modelType"];
         [cell setImage:modelType];
-        [cell setUpdateDescription:titleName];
+        //[cell setUpdateDescription:titleName];
+        [cell setUpdateInfo:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]];
     }
     
     NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];

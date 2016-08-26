@@ -61,10 +61,14 @@
 }
 
 - (void)setUpdateDescription:(NSString *)text {
-    [_companyTrackingView setLabelDescription:text];
+    //[_companyTrackingView setLabelDescription:text];
 }
 
 - (void)searchLocationGeoCode {
     [_companyTrackingView searchForLocationGeocode];
+}
+
+- (void)setUpdateInfo:(id)info {
+    [_companyTrackingView setUpdateInfo:info];
 }
 @end

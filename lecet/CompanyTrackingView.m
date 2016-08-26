@@ -48,6 +48,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *caretImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintContainerButtonAndTextHeight;
 @property (weak, nonatomic) IBOutlet UIImageView *rightImageIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLefLabelWidth;
 
 @end
 
@@ -113,6 +114,37 @@
     
 }
 
+- (void)setUpdateInfo:(id)info {
+
+    id modelType = [DerivedNSManagedObject objectOrNil:info[@"modelType"]];
+
+    if ([modelType isEqual:@"ProjectContact"]) {
+    
+        _constraintLefLabelWidth.constant = _labelContainer.frame.size.width * 0.44;
+        _leftLabelPriceDesc.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"name"]];
+        
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
+        _labelUpdateDescription.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"contact"][@"title"]];
+        
+    }
+    
+    if ([modelType isEqual:@"Bid"]) {
+        _constraintLefLabelWidth.constant = _labelContainer.frame.size.width * 0.44;
+        _leftLabelPriceDesc.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"estLow"]];
+        
+        [_labelUpdateDescription setTextAlignment:NSTextAlignmentRight];
+        _labelUpdateDescription.text = [DerivedNSManagedObject objectOrNil:info[@"modelObject"][@"company"][@"name"]];
+    }
+    
+    if ([modelType isEqual:@"ProjectStage"]) {
+        _labelUpdateDescription.text = @"";
+    }
+    
+    if ([modelType isEqual:@"WorkType"]) {
+        
+    }
+}
+
 - (IBAction)tappedButton:(id)sender {
  
     UIButton *button = sender;
@@ -143,13 +175,18 @@
     
     if ([modelType isEqual:@"ProjectContact"]) {
         _rightImageIcon.image = [UIImage imageNamed:@"addAcct_icon"];
-        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
-    
     }
     
     if ([modelType isEqual:@"Bid"]) {
         _rightImageIcon.image = [UIImage imageNamed:@"icon_trackUpdateTypeBid"];
-        [_labelUpdateDescription setTextAlignment:NSTextAlignmentLeft];
+        
+    }
+    if ([modelType isEqual:@"ProjectStage"]) {
+        _rightImageIcon.image = [UIImage imageNamed:@"Info"];
+        
+    }
+    
+    if ([modelType isEqual:@"WorkType"]) {
         
     }
     

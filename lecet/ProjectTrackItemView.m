@@ -43,9 +43,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSpaceTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constaintContainerHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintUpdateContainerHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrintLeftLabelWidth;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *labelUpdateType;
+@property (weak, nonatomic) IBOutlet UILabel *labelLeftDesc;
+@property (weak, nonatomic) IBOutlet UILabel *labelRightDesc;
 - (IBAction)tappedButtonExppand:(id)sender;
 @end
 
@@ -74,6 +77,13 @@
     _labelUpdateDetails.font = PROJECT_TRACK_UPDATE_FONT;
     _labelUpdateDetails.textColor = PROJECT_TRACK_UPDATE_COLOR;
     
+    _labelLeftDesc.font = PROJECT_TRACK_UPDATE_FONT;
+    _labelLeftDesc.textColor = PROJECT_TRACK_UPDATE_COLOR;
+    
+    _labelRightDesc.font = PROJECT_TRACK_UPDATE_FONT;
+    _labelRightDesc.textColor = PROJECT_TRACK_UPDATE_COLOR;
+    [_labelRightDesc setTextAlignment:NSTextAlignmentRight];
+    
     _labelUpdateType.font = PROJECT_TRACK_UPDATE_FONT;
     _labelUpdateType.textColor = PROJECT_TRACK_UPDATE_COLOR;
     
@@ -84,8 +94,10 @@
     [_buttonExpand setTitleColor:PROJECT_TRACK_CARET_COLOR forState:UIControlStateNormal];
     _buttonExpand.titleLabel.font = PROJECT_TRACK_CARET_FONT;
     
-    _container.hidden = YES;
+    _constrintLeftLabelWidth.constant = _labelUpdateDetails.frame.size.width * 0.45;
     
+    _container.hidden = YES;
+    [self hideLeftAndRightLavel:YES];
 }
 
 - (void)setButtonTitle:(BOOL)isExpanded {
@@ -169,10 +181,12 @@
                 switch ((long)updateType) {
                     case ProjectTrackUpdateTypeNewBid:{
                         [self updateNewBidInfo:update];
+                        [self hideLeftAndRightLavel:NO];
                         break;
                     }
                     case ProjectTrackUpdateTypeStage: {
                         [self updateNewStage:update];
+                        [self hideLeftAndRightLavel:YES];
                         break;
                     }
                         
@@ -183,12 +197,13 @@
                     }
                     case ProjectTrackUpdateTypeContact: {
                         [self updateNewContactInfo:update];
+                        [self hideLeftAndRightLavel:NO];
                         break;
                     }
                         
                     case ProjectTrackUpdateTypeNewNote: {
                         _labelUpdateType.text = NSLocalizedLanguage(@"PROJECT_UPDATE_NEW_NOTE");
-                        
+                        [self hideLeftAndRightLavel:YES];
                         break;
                     }
                         
@@ -309,7 +324,10 @@
     }
     
     _labelUpdateType.text = summary;
-    _labelUpdateDetails.text = detailsUpdate;
+    //_labelUpdateDetails.text = detailsUpdate;
+    _labelLeftDesc.text = amountDetails;
+    _labelRightDesc.text = detailsUpdate;
+    
 }
 
 - (void)updateNewContactInfo:(id)update{
@@ -327,7 +345,10 @@
     }
 
     _labelUpdateType.text = summary;
-    _labelUpdateDetails.text = company;
+    //_labelUpdateDetails.text = company;
+    _labelLeftDesc.text = company;
+    _labelRightDesc.text = contactTitle;
+    
 }
 
 - (void)updateNewStage:(id)update {
@@ -338,6 +359,11 @@
     }
     
     _labelUpdateType.text = summary;
+}
+
+- (void)hideLeftAndRightLavel:(BOOL)hide {
+    [_labelLeftDesc setHidden:hide];
+    [_labelRightDesc setHidden:hide];
 }
 
 #pragma mark - Map Delegate

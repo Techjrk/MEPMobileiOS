@@ -41,6 +41,7 @@
     
     FilterModel selectedModel;
     NSMutableArray *selectedLocationItems;
+    id  objectEntry;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
@@ -161,6 +162,7 @@
 
 - (void)tappedProjectFilterItem:(id)object view:(UIView *)view {
     
+    objectEntry = object;
     FilterModel model = 0;
     BOOL shouldProcess = NO;
     
@@ -501,6 +503,7 @@
 - (void)filterLocation:(UIView*)view {
 
     ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
+    controller.dataSelected = [(FilterEntryView *)objectEntry getCollectionItemsData];
     controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 
@@ -627,7 +630,7 @@
     for (NSDictionary *item in items) {
         
         if ([item[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
-            [selectedLocationItems addObject:@{ENTRYTITLE:item[@"title"],ENTRYID:@0}];
+            [selectedLocationItems addObject:@{ENTRYTITLE:item[@"title"],ENTRYID:item[ENTRYID]}];
         }
         
         NSArray *subArray = [DerivedNSManagedObject objectOrNil:item[@"SubData"]];
