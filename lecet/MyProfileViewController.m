@@ -75,6 +75,7 @@
     [dict setValue:[_myProfileView getTitle] forKey:@"title"];
     [dict setValue:[_myProfileView getOrganization] forKey:@"organization"];
     [dict setValue:[_myProfileView getPhone] forKey:@"phoneNumber"];
+    [dict setValue:[_myProfileView getFax] forKey:@"faxNumber"];
     [dict setValue:[_myProfileView getStreetAddress] forKey:@"address"];
     [dict setValue:[_myProfileView getCity] forKey:@"city"];
     [dict setValue:[_myProfileView getState] forKey:@"state"];
@@ -123,7 +124,7 @@
     
     //[_myProfileView setFax:@"(718) 432-9873"];
     [_myProfileView setFaxPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_FAX")];
-    [_myProfileView setFax:@"(718) 432-9873"];
+    [_myProfileView setFax:myProfileInfo[@"faxNumber"]];
     
     //[_myProfileView setStreetAddress:@"905 16th St NW"];
     [_myProfileView setStreetAddressPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS")];

@@ -178,7 +178,18 @@ typedef enum : NSUInteger {
     
     projectFilterGlobal = projectFilter;
     companyFilterGlobal = companyFilter;
-    [self showSaveSearches:YES];
+    
+    [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
+    [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+    
+    
+    if (projectFilterGlobal.count > 0) {
+        [self showSaveSearches:YES];
+    }
+    
+    if (companyFilterGlobal.count > 0) {
+        [self showSaveSearches:YES];
+    }
     
 }
 
@@ -831,7 +842,6 @@ typedef enum : NSUInteger {
 
 - (void)searchForContact:(NSString*)searchString filter:(NSDictionary*)filter{
 
-
     //NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"],\"searchFilter\":{}}"} mutableCopy];
     NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
     
@@ -996,8 +1006,7 @@ typedef enum : NSUInteger {
 - (void)tappedButtonSaveSearchesItem:(SaveSearchChangeItem)item {
     switch (item) {
         case SaveSearchChangeItemSave:{
-            [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
-            [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+            
             [self showSaveSearches:NO];
             break;
         }
