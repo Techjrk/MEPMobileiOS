@@ -38,7 +38,9 @@ typedef enum : NSUInteger {
 
 @interface ChartView : BaseViewClass
 @property (strong, nonatomic) id<ChartViewDelegate>chartViewDelegate;
+@property (nonatomic) BOOL isButton;
 - (void)setSegmentItems:(NSMutableDictionary*)items;
 - (void)hideLeftButton:(BOOL)hide;
 - (void)hideRightButton:(BOOL)hide;
+
 @end

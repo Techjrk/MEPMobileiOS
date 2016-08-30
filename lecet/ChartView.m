@@ -36,7 +36,7 @@
 @end
 
 @implementation ChartView
-
+@synthesize isButton;
 -(void)awakeFromNib {
 
     [super awakeFromNib];
@@ -108,18 +108,22 @@
 }
 
 - (IBAction)tappedButtonHousing:(id)sender {
+    self.isButton = YES;
     [_piechart tappedPieSegmentByTagName:kTagNameHousing];
 }
 
 - (IBAction)tappedButtonEngineering:(id)sender {
+    self.isButton = YES;
     [_piechart tappedPieSegmentByTagName:kTagNameEngineering];
 }
 
 - (IBAction)tappedButtonBuilding:(id)sender {
+    self.isButton = YES;
     [_piechart tappedPieSegmentByTagName:kTagNameBuilding];
 }
 
 - (IBAction)tappedButtonUtilities:(id)sender {
+    self.isButton = YES;
     [_piechart tappedPieSegmentByTagName:kTagNameUtilities];
 }
 
@@ -182,7 +186,6 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
-    
     [self.chartViewDelegate tappedChartNavButton:[sender isEqual:_buttonLeft]?ChartButtonLeft:ChartButtonRight];
     
 }

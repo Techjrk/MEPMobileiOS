@@ -568,6 +568,7 @@ typedef enum : NSUInteger {
         searchMode = YES;
         showResult = YES;
         NSMutableDictionary *filter = [items[indexPath.row] mutableCopy];
+        [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
         [self searchForContact:filter[@"query"] filter:filter];
@@ -579,6 +580,7 @@ typedef enum : NSUInteger {
         showResult = YES;
         NSMutableDictionary *filter = items[indexPath.row];
         _labeSearch.text = filter[@"query"];
+        [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
         [self searchForContact:filter[@"query"] filter:filter];
@@ -726,42 +728,6 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - Search 
-- (void)getSearchFilter:(NSMutableDictionary*)destfilter searchFilter:(NSDictionary*)filter {
-    
-    NSDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
-    
-    for(NSString *propertyName in searchFilter.allKeys) {
-        
-        NSDictionary *propertyNameDict = searchFilter[propertyName];
-        
-        for (NSString *subProperty in propertyNameDict.allKeys) {
-            
-            NSString *filterName = [NSString stringWithFormat:@"filter[searchFilter][%@][%@]", propertyName, subProperty];
-            
-            id subValue = propertyNameDict[subProperty];
-            
-            if ([subValue isKindOfClass:[NSArray class]]) {
-                
-                NSArray *filterValues = subValue;
-                
-                if (filterValues.count<=1) {
-                    filterName = [filterName stringByAppendingString:@"[]"];
-                }
-                for (NSString *filterItem in filterValues) {
-                    
-                    [destfilter addEntriesFromDictionary:@{filterName:filterItem}];
-                }
-            } else if ([subValue class]==[NSString class]) {
-                
-                [destfilter addEntriesFromDictionary:@{filterName:subValue}];
-                
-            }
-            
-        }
-        
-    }
-
-}
 
 - (void)searchForProject:(NSString*)searchString filter:(NSDictionary*)filter{
 
@@ -778,14 +744,19 @@ typedef enum : NSUInteger {
 
 
         } else {
-           // _filter[@"searchFilter"] = @"{}";
+            
+            if (searchString.length==0) {
+                _filter[@"searchFilter"] = @"{}";
+            }
             
         }
         
     } else {
         
-        //_filter[@"searchFilter"] = @"{}";
-
+        if (searchString.length==0) {
+            _filter[@"searchFilter"] = @"{}";
+        }
+        
     }
 
     NSError *error = nil;
@@ -818,10 +789,14 @@ typedef enum : NSUInteger {
             _filter[@"searchFilter"] = searchFilter;
      
         } else {
-            //_filter[@"searchFilter"] = @"{}";
+            if (searchString.length==0) {
+                _filter[@"searchFilter"] = @"{}";
+            }
         }
     } else {
-        //_filter[@"searchFilter"] = @"{}";
+        if (searchString.length==0) {
+            _filter[@"searchFilter"] = @"{}";
+        }
     }
 
     NSError *error = nil;
@@ -842,8 +817,13 @@ typedef enum : NSUInteger {
 
 - (void)searchForContact:(NSString*)searchString filter:(NSDictionary*)filter{
 
-    //NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"],\"searchFilter\":{}}"} mutableCopy];
-    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
+    NSString *defaultFilter = @"{\"include\":[\"company\"]}";
+    
+    if (searchString.length==0) {
+        defaultFilter = @"{\"include\":[\"company\"],\"searchFilter\":{}}";
+    }
+
+    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":defaultFilter} mutableCopy];
     
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
 
@@ -924,6 +904,7 @@ typedef enum : NSUInteger {
         
         if (!searchMode) {
             searchMode = YES;
+            [[GAManager sharedManager] trackSearchBar];
             [_collectionView reloadData];
         }
         

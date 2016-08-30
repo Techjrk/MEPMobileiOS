@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "LandingViewController.h"
-
+#import "GoogleAnalytics/Library/GAI.h"
 @import HockeySDK;
 
 @interface AppDelegate ()
@@ -21,6 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[GAManager sharedManager] initializeTacker];
+    
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"977079279ce743d6a7d25b89897dbbcc"];
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
@@ -30,6 +32,7 @@
     [[DataManager sharedManager] startMonitoring];
 
     [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

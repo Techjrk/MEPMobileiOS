@@ -531,6 +531,7 @@
                 break;
             }
             case 1: {
+                [[GAManager sharedManager] trackProjectsHappeningSoon];
                 [_calendarView clearSelection];
                 
                 [self loadBidsHappeningSoon];
@@ -625,7 +626,8 @@
     if ([record class] == [DB_Project class]) {
         [detail detailsFromProject:record];
     }
-    
+
+    [[GAManager sharedManager] trackProjectCard];
     [self.navigationController pushViewController:detail animated:YES];
     
     
@@ -642,6 +644,7 @@
         case MenuHeaderNear:{
 
             shouldUsePushZoomAnimation = NO;
+            [[GAManager sharedManager] trackProjectsNearMe];
             [self.navigationController pushViewController:[ProjectsNearMeViewController new] animated:YES];
             
             break;
@@ -672,6 +675,9 @@
                     controller.popupWidth = 0.98;
                     controller.isGreyedBackground = YES;
                     controller.customCollectionViewDelegate = self;
+
+                    [[GAManager sharedManager] trackTrackingListIcon];
+
                     controller.modalPresentationStyle = UIModalPresentationCustom;
                     [self presentViewController:controller animated:NO completion:nil];
                     
@@ -687,7 +693,7 @@
         }
         case MenuHeaderSearch:{
             shouldUsePushZoomAnimation = NO;
-            
+            [[GAManager sharedManager] trackSearch];
             SearchViewController *controller = [SearchViewController new];
             [self.navigationController pushViewController:controller animated:YES];
             break;
@@ -888,11 +894,30 @@
 
 - (void)selectedItemChart:(NSString *)itemTag chart:(id)chart hasfocus:(BOOL)hasFocus {
     
+    ChartView *chartView = chart;
     if ([chart isEqual:_chartRecentlyMade]) {
+        if (!chartView.isButton) {
+            [[GAManager sharedManager] trackBidsRecentlyMadeGraph];
+        } else {
+            [[GAManager sharedManager] trackBidsRecentlyMadeButton];
+        }
+        chartView.isButton = NO;
         [self displayChartItemsForRecentlyMade:itemTag hasFocus:hasFocus];
     } else if([chart isEqual:_chartRecentlyUpdated]) {
+        if (!chartView.isButton) {
+            [[GAManager sharedManager] trackBidsRecentlyUpdatedGraph];
+        } else {
+            [[GAManager sharedManager] trackBidsRecentlyUpdatedButton];
+        }
+        chartView.isButton = NO;
         [self displayChartItemsForRecentlyUpdated:itemTag hasFocus:hasFocus];
     } else {
+        if (!chartView.isButton) {
+            [[GAManager sharedManager] trackBidsRecentlyAddedGraph];
+        } else {
+            [[GAManager sharedManager] trackBidsRecentlyAddedButton];
+        }
+        chartView.isButton = NO;
         [self displayChartItemsForRecentlyAdded:itemTag hasFocus:hasFocus];
     }
 }
@@ -940,6 +965,9 @@
     if (isProject) {
         
         [[DataManager sharedManager] projectTrackingList:trackItemInfo[@"id"] success:^(id object) {
+            
+            [[GAManager sharedManager] trackProjectTrackingList];
+            
             ProjectTrackingViewController *controller = [ProjectTrackingViewController new];
             controller.cargo = [trackItemInfo mutableCopy];
             controller.collectionItems = [(NSArray*)object mutableCopy] ;
@@ -951,6 +979,7 @@
         
         [self companyTrackingListAndUpdatesFiltered:trackItemInfo success:^(id object){
             
+            [[GAManager sharedManager] trackCompanyTrackingList];
             CompanyTrackingListViewController *controller = [CompanyTrackingListViewController new];
             [controller setTrackingInfo:trackItemInfo];
             [controller setInfo:object];
