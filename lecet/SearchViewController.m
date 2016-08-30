@@ -728,42 +728,6 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - Search 
-- (void)getSearchFilter:(NSMutableDictionary*)destfilter searchFilter:(NSDictionary*)filter {
-    
-    NSDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
-    
-    for(NSString *propertyName in searchFilter.allKeys) {
-        
-        NSDictionary *propertyNameDict = searchFilter[propertyName];
-        
-        for (NSString *subProperty in propertyNameDict.allKeys) {
-            
-            NSString *filterName = [NSString stringWithFormat:@"filter[searchFilter][%@][%@]", propertyName, subProperty];
-            
-            id subValue = propertyNameDict[subProperty];
-            
-            if ([subValue isKindOfClass:[NSArray class]]) {
-                
-                NSArray *filterValues = subValue;
-                
-                if (filterValues.count<=1) {
-                    filterName = [filterName stringByAppendingString:@"[]"];
-                }
-                for (NSString *filterItem in filterValues) {
-                    
-                    [destfilter addEntriesFromDictionary:@{filterName:filterItem}];
-                }
-            } else if ([subValue class]==[NSString class]) {
-                
-                [destfilter addEntriesFromDictionary:@{filterName:subValue}];
-                
-            }
-            
-        }
-        
-    }
-
-}
 
 - (void)searchForProject:(NSString*)searchString filter:(NSDictionary*)filter{
 
