@@ -852,8 +852,68 @@ typedef enum : NSUInteger {
     } failure:^(id object) {
         
     }];
-    
 
+}
+
+#pragma mark - SaveSearches Request
+
+- (void)saveSearchForProject:(NSString*)searchString filter:(NSDictionary*)filter{
+    NSMutableDictionary *projectFilter = [@{@"query": searchString,@"title":_labeSearch.text,@"modelName":@"Project"} mutableCopy];
+    
+    NSMutableDictionary *_filter = [NSMutableDictionary new];
+    if (filter) {
+        if ([filter[@"modelName"] isEqualToString:@"Project"]) {
+            
+            NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+            _filter[@"searchFilter"] = searchFilter;
+            
+        } else {
+            // _filter[@"searchFilter"] = @"{}";
+        }
+        
+    } else {
+        //_filter[@"searchFilter"] = @"{}";
+    }
+    
+    projectFilter[@"filter"] = _filter;
+    
+    [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems success:^(id object) {
+        
+        [_collectionView reloadData];
+        
+    } failure:^(id object) {
+    
+    }];
+    
+}
+
+- (void)saveSearchForCompany:(NSString*)searchString filter:(NSDictionary*)filter{
+    
+    NSMutableDictionary *companyFilter = [@{@"query": searchString,@"title":searchString,@"modelName":@"Company"} mutableCopy];
+    NSMutableDictionary *_filter = [NSMutableDictionary new];
+    
+    if (filter) {
+        if ([filter[@"modelName"] isEqualToString:@"Company"]) {
+            
+            NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+            _filter[@"searchFilter"] = searchFilter;
+            
+        } else {
+            //_filter[@"searchFilter"] = @"{}";
+        }
+    } else {
+        //_filter[@"searchFilter"] = @"{}";
+    }
+    
+    [companyFilter addEntriesFromDictionary:@{@"filter":_filter}];
+    
+    [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems success:^(id object) {
+        
+        [_collectionView reloadData];
+    } failure:^(id object) {
+        
+    }];
+    
 }
 
 #pragma mark - UITextField Delegate
@@ -983,7 +1043,6 @@ typedef enum : NSUInteger {
 
 -(void) onEditing:(id)sender {
     
-    
     if(![_labeSearch.text isEqualToString:@""]){
         [_clearButton setHidden:NO];
     }else{
@@ -1001,16 +1060,28 @@ typedef enum : NSUInteger {
    
 }
 
-#pragma mark - Save Sarche Delegate
+#pragma mark - Save Searches Delegate
 
 - (void)tappedButtonSaveSearchesItem:(SaveSearchChangeItem)item {
     switch (item) {
         case SaveSearchChangeItemSave:{
             
+            if (projectFilterGlobal.count > 0) {
+                [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
+                [self showSaveSearches:YES];
+            }
+            
+            if (companyFilterGlobal.count > 0) {
+                [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+                [self showSaveSearches:YES];
+            }
+
             [self showSaveSearches:NO];
             break;
         }
         case SaveSearchChangeItemCancel:{
+            
+           
             [self showSaveSearches:NO];
             
             break;
@@ -1029,13 +1100,12 @@ typedef enum : NSUInteger {
         height = 0;
     }
     
-    /*
     [UIView animateWithDuration:0.25 animations:^{
         _constraintSaveSearchesHeight.constant = height;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [_collectionView reloadData];
-    }];*/
+    }];
 
 }
 

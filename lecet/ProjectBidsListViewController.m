@@ -78,7 +78,6 @@
         NSArray *bids = [bidList mutableCopy];
         NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createDate" ascending:NO];
         NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-        NSLog(@"Test Sorting = %@",sorted);
         
     }
 }
