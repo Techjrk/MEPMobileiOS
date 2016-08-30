@@ -15,5 +15,6 @@
 #import "constants.h"
 #import "Utilities.h"
 #import "DerivedNSManagedObject.h"
+#import "GoogleAnalytics.h"
 
 #endif /* PrefixHeader_pch */

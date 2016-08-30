@@ -353,11 +353,11 @@
             controller.view.userInteractionEnabled = YES;
             
         } else {
-            controller.view.userInteractionEnabled = enabled;
+            controller.view.userInteractionEnabled = YES;
         }
     
     } else {
-        controller.view.userInteractionEnabled = enabled;
+        controller.view.userInteractionEnabled = YES;
     }
 }
 
@@ -402,6 +402,8 @@
    
     if ([self isDebugMode]) {
         NSLog(@"%@",ErrorResponse);
+    } else {
+        ErrorResponse = @"";
     }
     
     NSInteger errorCode = response.statusCode;

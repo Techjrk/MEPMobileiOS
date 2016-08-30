@@ -134,7 +134,7 @@ typedef enum {
     
     companyName = record.name;
     companyRecordId = record.recordId;
-    
+        
     [[DataManager sharedManager] userActivitiesForRecordId:companyRecordId viewType:1 success:^(id object) {
         
     } failure:^(id object) {

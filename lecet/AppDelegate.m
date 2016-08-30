@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "LandingViewController.h"
-
+#import "GoogleAnalytics/Library/GAI.h"
 @import HockeySDK;
 
 @interface AppDelegate ()
@@ -21,6 +21,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    [GAI sharedInstance].optOut = NO;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelInfo];
+    [GAI sharedInstance].dispatchInterval = -1;
+    [[GAI sharedInstance] trackerWithTrackingId:kGAI_TRACKER_ID];
+
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"977079279ce743d6a7d25b89897dbbcc"];
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
@@ -30,6 +37,8 @@
     [[DataManager sharedManager] startMonitoring];
 
     [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
+    
+    [[GAManager sharedManager] initializeTacker];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

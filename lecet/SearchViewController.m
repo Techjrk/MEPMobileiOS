@@ -557,6 +557,7 @@ typedef enum : NSUInteger {
         searchMode = YES;
         showResult = YES;
         NSMutableDictionary *filter = [items[indexPath.row] mutableCopy];
+        [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
         [self searchForContact:filter[@"query"] filter:filter];
@@ -568,6 +569,7 @@ typedef enum : NSUInteger {
         showResult = YES;
         NSMutableDictionary *filter = items[indexPath.row];
         _labeSearch.text = filter[@"query"];
+        [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
         [self searchForContact:filter[@"query"] filter:filter];
@@ -854,6 +856,7 @@ typedef enum : NSUInteger {
         
         if (!searchMode) {
             searchMode = YES;
+            [[GAManager sharedManager] trackSearchBar];
             [_collectionView reloadData];
         }
         
