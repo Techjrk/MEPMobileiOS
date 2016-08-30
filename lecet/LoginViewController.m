@@ -75,6 +75,12 @@
         //[_textFieldPassword setText:@"H8YhofaeZ4SLKMd2ajR03vdxnkVrvOMG"];
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
+        //[_textFieldEmail setText: @"brickard@liuna.org"];
+        //[_textFieldPassword setText: @"H8YhofaeZ4SLKMd2ajR03vdxnkVrvOMG"];
+        /*
+         brickard@liuna.org
+         H8YhofaeZ4SLKMd2ajR03vdxnkVrvOMG
+         */
 
     }
     

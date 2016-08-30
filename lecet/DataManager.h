@@ -92,4 +92,8 @@
 - (void)dismissPopup;
 - (void)setNotification:(BOOL)enabled;
 - (BOOL)isNotificationEnabled;
+
+//SaveSearches
+- (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure;
+- (void)companySaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure;
 @end

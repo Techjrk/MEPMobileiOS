@@ -71,6 +71,9 @@
 #define kUrlWorkTypes                       @"WorkTypes?"
 
 #define kNotificationKey                    @"kNotificationKey"
+
+#define kUrlSearches                   @"Searches"
+
 @interface DataManager()
 @end
 @implementation DataManager
@@ -860,9 +863,8 @@
 }
 
 - (void)projectSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
-
-    [self HTTP_GET:[self url:kUrlProjectSearch] parameters:filter success:^(id object) {
     
+    [self HTTP_GET:[self url:kUrlProjectSearch] parameters:filter success:^(id object) {
         data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
         data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
         
@@ -1137,6 +1139,35 @@
     } else {
         return enabled.boolValue;
     }
+}
+
+#pragma mark - SaveSearches Request 
+
+- (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+    
+    [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
+        
+        data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+        data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+        success(data);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)companySaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+    
+    [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
+        
+        data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+        data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+        
+        success(data);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
 }
 
 @end
