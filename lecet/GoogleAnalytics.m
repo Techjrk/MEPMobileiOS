@@ -28,14 +28,12 @@
 }
 
 - (void)initializeTacker {
-    
-    /*
-    [GAI sharedInstance].optOut = NO;
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelInfo];
-    [GAI sharedInstance].dispatchInterval = -1;
-    [[GAI sharedInstance] trackerWithTrackingId:kGAI_TRACKER_ID];
-     */
+
+     [GAI sharedInstance].optOut = NO;
+     [GAI sharedInstance].trackUncaughtExceptions = YES;
+     [[GAI sharedInstance].logger setLogLevel:kGAILogLevelInfo];
+     [GAI sharedInstance].dispatchInterval = -1;
+     [[GAI sharedInstance] trackerWithTrackingId:kGAI_TRACKER_ID];
  
 }
 
@@ -58,11 +56,11 @@
 }
 
 - (void)trackProjectCard {
-    [self trackEventItem:@"ALL PAGES" event:@"PROJECT CARD" action:@"TOUCHED" label:nil value:nil];
+    [self trackEventItem:@"ALL PAGES" event:@"PROJECT CARD" action:@"TOUCHED" label:@"" value:nil];
 }
 
 - (void)trackTrackingListIcon {
-    [self trackEventItem:@"MAIN MENU" event:@"TRACKING LIST ICON" action:@"TOUCHED" label:nil value:nil];
+    [self trackEventItem:@"MAIN MENU" event:@"TRACKING LIST ICON" action:@"TOUCHED" label:@"" value:nil];
 }
 
 - (void)trackProjectTrackingList {
@@ -119,7 +117,7 @@
 }
 
 - (void)trackProjectsHappeningSoon {
-    [self trackEventItem:@"BID CALENDAY" event:@"PROJECTS BIDDING SOON" action:@"TOUCHED" label:@"SELECTING CALENDAR" value:nil];
+    [self trackEventItem:@"BID CALENDAR" event:@"PROJECTS BIDDING SOON" action:@"TOUCHED" label:@"SELECTING CALENDAR" value:nil];
 }
 
 @end

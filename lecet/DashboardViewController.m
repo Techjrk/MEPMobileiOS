@@ -531,7 +531,7 @@
                 break;
             }
             case 1: {
-                [[DataManager sharedManager] trackProjectsHappeningSoon];
+                [[GAManager sharedManager] trackProjectsHappeningSoon];
                 [_calendarView clearSelection];
                 
                 [self loadBidsHappeningSoon];
