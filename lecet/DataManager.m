@@ -72,7 +72,8 @@
 
 #define kNotificationKey                    @"kNotificationKey"
 
-#define kUrlSearches                   @"Searches"
+#define kUrlSearches                        @"Searches"
+#define kURLChangePassword                  @"LecetUsers/%li/changePassword"
 
 @interface DataManager()
 @end
@@ -1168,6 +1169,21 @@
         failure(object);
     } authenticated:YES];
     
+}
+
+#pragma mark - CHage Password
+- (void)changePassword:(NSMutableDictionary *)parameter success:(APIBlock)success failure:(APIBlock)failure{
+    
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    //NSNumber *num = [NSNumber numberWithInteger:userId.integerValue];
+    
+    NSString *url = [NSString stringWithFormat:kURLChangePassword,(long)userId.integerValue];
+    
+    [self HTTP_PUT_BODY:[self url:url] parameters:parameter success:^(id object) {
+        success(success);
+    }failure:^(id object) {
+        failure(object);
+    }authenticated:YES];
 }
 
 @end

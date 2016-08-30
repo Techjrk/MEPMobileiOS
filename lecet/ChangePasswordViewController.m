@@ -59,7 +59,26 @@
         NSString *newPassword = [_chnagePasswordView getNewPasswordText];
         NSString *confirmPassword = [_chnagePasswordView getConfirmPasswordText];
         
-        [[DataManager sharedManager] featureNotAvailable];
+        NSDictionary *changePasswordDict = @{@"oldPassword":currentPassword,@"password":newPassword,@"confirmation":confirmPassword};
+        
+        if (currentPassword.length > 0 && newPassword.length > 0 && confirmPassword.length > 0) {
+            
+            if ([newPassword isEqualToString:confirmPassword]) {
+                
+                [[DataManager sharedManager] changePassword:[changePasswordDict mutableCopy] success:^(id object) {
+                    
+                    [[DataManager sharedManager] promptMessage:@"Change pasword had been \n Successfull"];
+                    
+                }failure:^(id object) {
+                    
+                }];
+
+            } else {
+                [[DataManager sharedManager] promptMessage:@"New Password and Confirm Pasword didn't match"];
+            }
+    
+        }
+        
     }else {
         [self.navigationController popViewControllerAnimated:YES];
     }
