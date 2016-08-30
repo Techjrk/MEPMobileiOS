@@ -780,14 +780,19 @@ typedef enum : NSUInteger {
 
 
         } else {
-           // _filter[@"searchFilter"] = @"{}";
+            
+            if (searchString.length==0) {
+                _filter[@"searchFilter"] = @"{}";
+            }
             
         }
         
     } else {
         
-        //_filter[@"searchFilter"] = @"{}";
-
+        if (searchString.length==0) {
+            _filter[@"searchFilter"] = @"{}";
+        }
+        
     }
 
     NSError *error = nil;
@@ -820,10 +825,14 @@ typedef enum : NSUInteger {
             _filter[@"searchFilter"] = searchFilter;
      
         } else {
-            //_filter[@"searchFilter"] = @"{}";
+            if (searchString.length==0) {
+                _filter[@"searchFilter"] = @"{}";
+            }
         }
     } else {
-        //_filter[@"searchFilter"] = @"{}";
+        if (searchString.length==0) {
+            _filter[@"searchFilter"] = @"{}";
+        }
     }
 
     NSError *error = nil;
@@ -844,8 +853,13 @@ typedef enum : NSUInteger {
 
 - (void)searchForContact:(NSString*)searchString filter:(NSDictionary*)filter{
 
-    //NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"],\"searchFilter\":{}}"} mutableCopy];
-    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":@"{\"include\":[\"company\"]}"} mutableCopy];
+    NSString *defaultFilter = @"{\"include\":[\"company\"]}";
+    
+    if (searchString.length==0) {
+        defaultFilter = @"{\"include\":[\"company\"],\"searchFilter\":{}}";
+    }
+
+    NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":defaultFilter} mutableCopy];
     
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
 
