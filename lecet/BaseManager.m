@@ -397,24 +397,57 @@
 - (void)connectionError:(NSError*)error {
     
     NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
+    BOOL disableAutoLogout;
+    NSData *data = (NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+    NSString* ErrorResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary  *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-   
     if ([self isDebugMode]) {
         NSLog(@"%@",ErrorResponse);
     } else {
         ErrorResponse = @"";
     }
+
+    NSDictionary *errorDict;
     
     NSInteger errorCode = response.statusCode;
     NSString *url = response.URL.absoluteString;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url] preferredStyle:UIAlertControllerStyleAlert];
+    NSString *responseMessage;
+    
+    switch (errorCode) {
+        case 401:{
+           
+            errorDict = [DerivedNSManagedObject objectOrNil:dict[@"error"]];
+            
+            if (errorDict) {
+                if ([DerivedNSManagedObject objectOrNil:errorDict[@"message"]]) {
+                    responseMessage = [DerivedNSManagedObject objectOrNil:errorDict[@"message"]];
+                    disableAutoLogout = YES;
+                } else {
+                    responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
+                }
+            }
+            
+            break;
+        }
+        default: {
+            responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
+            break;
+        }
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:responseMessage preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
                                                           style:UIAlertActionStyleDestructive
                                                         handler:^(UIAlertAction *action) {
                                                             if (errorCode == 401) {
-                                                                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UNAUTHORIZED object:nil];
+                                                                if (!disableAutoLogout) {
+                                                                    
+                                                                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UNAUTHORIZED object:nil];
+                                                                    
+                                                                }
+                                                                
                                                             }
                                                         }];
     
