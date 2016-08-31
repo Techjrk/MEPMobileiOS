@@ -168,6 +168,8 @@
          } error:^{
              
          } viewController:self];
+     } else {
+         [[DataManager sharedManager] promptMessage:str];
      }
     
 
