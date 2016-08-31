@@ -11,6 +11,7 @@
                 <outlet property="blurView" destination="n56-D8-pAz" id="5rb-oh-05H"/>
                 <outlet property="buttonLogin" destination="7F6-Rz-min" id="8HJ-nS-AYN"/>
                 <outlet property="buttonSignUp" destination="Lu2-9K-RFo" id="hCu-4Q-5kA"/>
+                <outlet property="buttonTouchId" destination="BKF-WP-WcW" id="e5F-cq-4Ze"/>
                 <outlet property="constraintContainerHeight" destination="mzX-Qt-Icw" id="pJh-QL-yM2"/>
                 <outlet property="constraintTopSpace" destination="zNZ-eh-OTD" id="fA4-jt-Y3K"/>
                 <outlet property="scrollView" destination="3yk-ui-WUA" id="Qie-AR-9aW"/>
@@ -32,7 +33,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdt-Un-Fza">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxF-kt-odB">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
@@ -80,6 +81,17 @@
                                         <action selector="tappedButtonSignUp:" destination="-1" eventType="touchUpInside" id="3rt-EW-jBn"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-ML-DaX">
+                                    <rect key="frame" x="0.0" y="348" width="600" height="60"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKF-WP-WcW">
+                                    <rect key="frame" x="240" y="408" width="120" height="60"/>
+                                    <state key="normal" image="icon_touchId"/>
+                                    <connections>
+                                        <action selector="tappedTouchId:" destination="-1" eventType="touchUpInside" id="M0C-Hi-jpT"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -97,13 +109,17 @@
                                 <constraint firstItem="IRX-Vk-kOq" firstAttribute="height" secondItem="xJ3-KN-eTd" secondAttribute="height" multiplier="0.9" id="Kjn-6I-ipC"/>
                                 <constraint firstAttribute="height" constant="300" id="KrO-rj-QYr"/>
                                 <constraint firstItem="DYG-rs-WQF" firstAttribute="top" secondItem="0Lj-TS-mJO" secondAttribute="bottom" id="OoE-Vj-EOi"/>
+                                <constraint firstItem="aYW-ML-DaX" firstAttribute="width" secondItem="gdt-Un-Fza" secondAttribute="width" id="Qhq-oN-es3"/>
                                 <constraint firstItem="xJ3-KN-eTd" firstAttribute="centerX" secondItem="0Lj-TS-mJO" secondAttribute="centerX" id="T2R-oO-Cu0"/>
                                 <constraint firstItem="3Ke-WB-YQy" firstAttribute="centerX" secondItem="DxF-kt-odB" secondAttribute="centerX" id="Tj6-DK-pob"/>
                                 <constraint firstItem="xJ3-KN-eTd" firstAttribute="top" secondItem="0Lj-TS-mJO" secondAttribute="bottom" id="TvU-Cd-Uj7"/>
                                 <constraint firstItem="7F6-Rz-min" firstAttribute="top" secondItem="IRX-Vk-kOq" secondAttribute="bottom" id="VOm-dT-AUQ"/>
                                 <constraint firstItem="7F6-Rz-min" firstAttribute="centerX" secondItem="IRX-Vk-kOq" secondAttribute="centerX" id="XAs-Mq-nc9"/>
+                                <constraint firstItem="BKF-WP-WcW" firstAttribute="centerX" secondItem="aYW-ML-DaX" secondAttribute="centerX" id="a33-yV-f4a"/>
                                 <constraint firstItem="0Lj-TS-mJO" firstAttribute="top" secondItem="y22-9z-gdY" secondAttribute="bottom" id="azq-G8-8m3"/>
+                                <constraint firstItem="BKF-WP-WcW" firstAttribute="width" secondItem="gdt-Un-Fza" secondAttribute="width" multiplier="0.2" id="bQK-f5-zC1"/>
                                 <constraint firstItem="xJ3-KN-eTd" firstAttribute="top" secondItem="DYG-rs-WQF" secondAttribute="bottom" id="bfk-y6-wnx"/>
+                                <constraint firstItem="BKF-WP-WcW" firstAttribute="top" secondItem="aYW-ML-DaX" secondAttribute="bottom" id="d2z-jh-WPH"/>
                                 <constraint firstItem="y22-9z-gdY" firstAttribute="width" secondItem="gdt-Un-Fza" secondAttribute="width" id="dEb-MQ-Agz"/>
                                 <constraint firstItem="xJ3-KN-eTd" firstAttribute="width" secondItem="0Lj-TS-mJO" secondAttribute="width" id="dX2-xO-5RX"/>
                                 <constraint firstItem="gvs-dm-pbr" firstAttribute="width" secondItem="7F6-Rz-min" secondAttribute="width" id="fEb-LI-sND"/>
@@ -116,10 +132,12 @@
                                 <constraint firstItem="DxF-kt-odB" firstAttribute="top" secondItem="gdt-Un-Fza" secondAttribute="top" id="koN-OR-4v9"/>
                                 <constraint firstItem="3Ke-WB-YQy" firstAttribute="top" secondItem="DxF-kt-odB" secondAttribute="bottom" id="ksw-MV-Tc2"/>
                                 <constraint firstItem="gvs-dm-pbr" firstAttribute="top" secondItem="7F6-Rz-min" secondAttribute="bottom" id="mWd-Rc-8cX"/>
-                                <constraint firstAttribute="height" constant="400" id="mzX-Qt-Icw"/>
+                                <constraint firstAttribute="height" constant="600" id="mzX-Qt-Icw"/>
                                 <constraint firstItem="DYG-rs-WQF" firstAttribute="width" secondItem="0Lj-TS-mJO" secondAttribute="width" id="nED-su-084"/>
                                 <constraint firstItem="0Lj-TS-mJO" firstAttribute="centerX" secondItem="y22-9z-gdY" secondAttribute="centerX" id="nra-z1-OAh"/>
+                                <constraint firstItem="aYW-ML-DaX" firstAttribute="centerX" secondItem="Lu2-9K-RFo" secondAttribute="centerX" id="tX7-eZ-mXE"/>
                                 <constraint firstItem="0Lj-TS-mJO" firstAttribute="width" secondItem="gdt-Un-Fza" secondAttribute="width" multiplier="0.65" id="yjr-2Z-Lsk"/>
+                                <constraint firstItem="aYW-ML-DaX" firstAttribute="top" secondItem="Lu2-9K-RFo" secondAttribute="bottom" id="zrx-Lr-30w"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -156,6 +174,7 @@
             <constraints>
                 <constraint firstItem="3yk-ui-WUA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="2yH-xN-8Wn"/>
                 <constraint firstItem="n56-D8-pAz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="98s-bQ-r0P"/>
+                <constraint firstItem="aYW-ML-DaX" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="B9Z-5z-Xjq"/>
                 <constraint firstItem="Lu2-9K-RFo" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05" id="DRo-dF-pcu"/>
                 <constraint firstItem="7F6-Rz-min" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="DgY-Xr-jzE"/>
                 <constraint firstItem="y22-9z-gdY" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05" id="HM8-aB-m49"/>
@@ -173,6 +192,7 @@
                 <constraint firstItem="3Ke-WB-YQy" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.11" id="e3i-DA-d8n"/>
                 <constraint firstAttribute="trailing" secondItem="n56-D8-pAz" secondAttribute="trailing" id="fVl-S0-q05"/>
                 <constraint firstItem="n56-D8-pAz" firstAttribute="width" secondItem="3yk-ui-WUA" secondAttribute="width" id="qNp-co-l1W"/>
+                <constraint firstItem="BKF-WP-WcW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="rdU-dQ-67f"/>
                 <constraint firstItem="0Lj-TS-mJO" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="y6o-CD-eFa"/>
                 <constraint firstItem="3yk-ui-WUA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zNZ-eh-OTD"/>
             </constraints>
@@ -188,5 +208,6 @@
     </objects>
     <resources>
         <image name="icon_app" width="300" height="134"/>
+        <image name="icon_touchId" width="421" height="420"/>
     </resources>
 </document>

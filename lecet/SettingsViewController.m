@@ -10,6 +10,7 @@
 #import "ProfileNavView.h"
 #import "SettingsView.h"
 #import "ChangePasswordViewController.h"
+#import "TouchIDManager.h"
 
 #define SETTINGS_VC_BG_COLOR RGB(245,245,245)
 #define BOTTOM_LABEL_FONT_COLOR             RGB(149,149,149)
@@ -108,6 +109,26 @@
             [alert addAction:noAction];
 
             [self presentViewController:alert animated:YES completion:nil];
+            break;
+        }
+        case SettingItemsTouchId: {
+            
+            NSString *str = [[TouchIDManager sharedTouchIDManager] canAuthenticate];
+            
+            if (str.length==0) {
+                [[TouchIDManager sharedTouchIDManager] setReason:NSLocalizedLanguage(@"SETTINGS_TOUCHID")];
+                [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
+               
+                    [[DataManager sharedManager] registerFingerPrintForSuccess:^(id object) {
+                        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"SETTINGS_TOUCHID_REGISTERED")];
+                    } failure:^(id object) {
+                        
+                    }];
+                } error:^{
+                    
+                } viewController:self];
+            }
+
             break;
         }
     }

@@ -12,6 +12,7 @@
 @interface TouchIDManager : NSObject
 
 + (instancetype)sharedTouchIDManager;
+- (void)setReason:(NSString*)reason;
 - (NSString *)canAuthenticate;
 - (void)authenticateWithSuccessHandler:(dispatch_block_t)successHandler
                                  error:(dispatch_block_t)errorHandler

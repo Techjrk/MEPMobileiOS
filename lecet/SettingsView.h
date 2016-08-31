@@ -12,6 +12,7 @@
 typedef enum {
     SettingItemsChangePassword = 0,
     SettingItemsSignOut = 1,
+    SettingItemsTouchId = 2
 } SettingItems;
 
 @protocol SettingViewDelegate <NSObject>

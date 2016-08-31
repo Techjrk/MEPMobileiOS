@@ -12,6 +12,7 @@
 
 #define SETTINGS_SIGNOUT_LABEL_FONT fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define SETTINGS_SIGNOUT_LABEL_FONT_COLOR RGB(149,149,149)
+#define SETTINGS_LABEL_FONT_COLOR           RGB(34,34,34)
 
 @interface SettingCollectionViewCell()<SettingsNotificationsViewDelegate>
 @property (weak, nonatomic) IBOutlet SettingsNotificationsView *notificationView;
@@ -29,6 +30,11 @@
     _labelSignOut.font = SETTINGS_SIGNOUT_LABEL_FONT;
     _labelSignOut.textColor = SETTINGS_SIGNOUT_LABEL_FONT_COLOR;
     _labelSignOut.text = NSLocalizedLanguage(@"SETTING_CVCELL_SIGNOUT");
+}
+
+- (void)setLabelText:(NSString *)text {
+    _labelSignOut.textColor = SETTINGS_LABEL_FONT_COLOR;
+    _labelSignOut.text = text;
 }
 
 - (void)setHideNotificationView:(BOOL)hide {

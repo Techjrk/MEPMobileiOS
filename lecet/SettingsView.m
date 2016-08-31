@@ -50,10 +50,13 @@
         if (indexPath.row == 0) {
             cell.settingCollectionViewCellDelegate = self;
             [cell setHideChangePassword:YES];
-        }
-        if (indexPath.row == 1) {
+        } else if (indexPath.row == 1) {
             [cell setHideNotificationView:YES];
             [cell setHideChangePassword:NO];
+        } else if (indexPath.row == 2) {
+            [cell setHideNotificationView:YES];
+            [cell setHideChangePassword:YES];
+            [cell setLabelText:NSLocalizedLanguage(@"SETTINGS_TOUCHID")];
         }
     }else {
         [cell setHideNotificationView:YES];
@@ -72,7 +75,7 @@
     if (section == 1) {
         return 1;
     }else{
-        return 2;
+        return 3;
     }
 }
 
@@ -82,7 +85,7 @@
 
     CGSize size;
     CGFloat cellWidth =  collectionView.frame.size.width;
-    cellHeight = collectionView.frame.size.height / 4;
+    cellHeight = collectionView.frame.size.height / 5;
     size = CGSizeMake( cellWidth, cellHeight);
     return size;
 }
@@ -115,6 +118,8 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {
             [_settingViewDelegate selectedSettings:SettingItemsChangePassword];
+        } else if (indexPath.row == 2) {
+            [_settingViewDelegate selectedSettings:SettingItemsTouchId];
         }
     }
     if (indexPath.section == 1) {
