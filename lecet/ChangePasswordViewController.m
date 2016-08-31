@@ -67,7 +67,7 @@
                 
                 [[DataManager sharedManager] changePassword:[changePasswordDict mutableCopy] success:^(id object) {
                     
-                    [[DataManager sharedManager] promptMessage:@"Change pasword had been \n Successfull"];
+                    [[DataManager sharedManager] promptMessage:@"Change password had been \n Successful"];
                     
                 }failure:^(id object) {
                     
