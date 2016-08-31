@@ -61,20 +61,24 @@
         
         NSDictionary *changePasswordDict = @{@"oldPassword":currentPassword,@"password":newPassword,@"confirmation":confirmPassword};
         
+        currentPassword = [self stripSpaces:currentPassword];
+        newPassword = [self stripSpaces:newPassword];
+        confirmPassword = [self stripSpaces:confirmPassword];
+        
         if (currentPassword.length > 0 && newPassword.length > 0 && confirmPassword.length > 0) {
             
             if ([newPassword isEqualToString:confirmPassword]) {
                 
                 [[DataManager sharedManager] changePassword:[changePasswordDict mutableCopy] success:^(id object) {
                     
-                    [[DataManager sharedManager] promptMessage:@"Change password had been \n Successful"];
+                    [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"CHANGEPASSWORD_SUCCES")];
                     
                 }failure:^(id object) {
                     
                 }];
 
             } else {
-                [[DataManager sharedManager] promptMessage:@"New Password and Confirm Pasword didn't match"];
+                [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"CHANGEPASSWORD_DIDNT_MATCH")];
             }
     
         }
@@ -83,6 +87,11 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     
+}
+
+- (NSString *)stripSpaces:(NSString *)string {
+    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return string;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

@@ -155,6 +155,8 @@
 
 //ChangePasswordViewController.xib
 "CHANGEPASSWORD_NAV_TITLE"                  =               "Change Password";
+"CHANGEPASSWORD_SUCCES"                     =               "Change password had been \n Successful";
+"CHANGEPASSWORD_DIDNT_MATCH"                =               "New Password and Confirm Pasword didn't match";
 
 //ChangePasswordView.h
 "CPASSWORD_LEFT_TITLE_CURRENT"              =               "Current";
