@@ -30,6 +30,8 @@
     NSString *fullName = [NSString stringWithFormat:@"%@ %@", infoDict[@"first_name"], infoDict[@"last_name"]];
     [_dropDownMoreMenuView setEmailAddress:infoDict[@"email"]];
     [_dropDownMoreMenuView setUserName:fullName];
+    
+    [[DataManager sharedManager] storeKeyChainValue:kKeychainEmail password:infoDict[@"email"] serviceName:kKeychainServiceName];
     [self addTappedGesture];
 }
 

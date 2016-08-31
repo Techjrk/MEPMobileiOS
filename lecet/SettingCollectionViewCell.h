@@ -18,5 +18,5 @@
 @property (nonatomic,assign) id<SettingCollectionViewCellDelegate> settingCollectionViewCellDelegate;
 - (void)setHideNotificationView:(BOOL)hide;
 - (void)setHideChangePassword:(BOOL)hide;
-
+- (void)setLabelText:(NSString*)text;
 @end

@@ -21,6 +21,8 @@
 #define kKeychainServiceName            @"lecet_api"
 #define kKeychainAccessToken            @"access_token"
 #define kKeychainUserId                 @"userId"
+#define kKeychainTouchIDToken           @"kKeychainTouchIDToken"
+#define kKeychainEmail                  @"kKeychainEmail"
 
 @interface DataManager : BaseManager
 //PROPERTIES
@@ -33,6 +35,9 @@
 // API USER
 - (void)userLogin:(NSString*)email password:(NSString*)password success:(APIBlock)success failure:(APIBlock)failure;
 - (void)userActivitiesForRecordId:(NSNumber*)recordId viewType:(NSUInteger)viewType success:(APIBlock) success failure:(APIBlock)failure;
+- (void)registerFingerPrintForSuccess:(APIBlock)success failure:(APIBlock)failure;
+- (void)loginFingerPrintForSuccess:(APIBlock)success failure:(APIBlock)failure;
+
 
 //API BIDS
 - (void)bidsRecentlyMade:(NSDate*)dateFilter success:(APIBlock)success failure:(APIBlock)failure;

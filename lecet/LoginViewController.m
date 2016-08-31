@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 #import "CustomTextField.h"
+#import "TouchIDManager.h"
 
 #define LOGIN_BUTTON_FONT                   fontNameWithSize(FONT_NAME_LATO_BOLD, 12.0)
 #define LOGIN_BUTTON_BG_COLOR               RGB(8, 73, 124)
@@ -28,9 +29,11 @@
 @property (weak, nonatomic) IBOutlet UIView *blurView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopSpace;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSignUp;
+@property (weak, nonatomic) IBOutlet UIButton *buttonTouchId;
 
 - (IBAction)tappedButtonSignUp:(id)sender;
 - (IBAction)tappedButtonLogin:(id)sender;
+- (IBAction)tappedTouchId:(id)sender;
 @end
 
 @implementation LoginViewController
@@ -68,6 +71,8 @@
    
     NSAttributedString *title = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"LOGIN_SIGNUP") attributes:@{NSFontAttributeName:LOGIN_SIGNUP_FONT, NSForegroundColorAttributeName:LOGIN_SIGNUP_COLOR, NSUnderlineStyleAttributeName:[NSNumber numberWithBool:YES]}];
     [_buttonSignUp setAttributedTitle:title forState:UIControlStateNormal];
+    
+    _buttonTouchId.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     if ([[DataManager sharedManager] isDebugMode]) {
         
@@ -108,6 +113,20 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)processLogin:(NSDictionary*)object {
+    NSString *token = object[@"id"];
+    NSNumber *userId = object[@"userId"];
+    
+    [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
+    
+    [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.loginDelegate login];
+        
+    }];
+
+}
 
 - (IBAction)tappedButtonLogin:(id)sender {
     
@@ -127,26 +146,47 @@
     }
     
     [[DataManager sharedManager] userLogin:[_textFieldEmail text] password:[_textFieldPassword text] success:^(id object) {
-        NSString *token = object[@"id"];
-        NSNumber *userId = object[@"userId"];
-        
-        [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
-
-        [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
-        
-        [self dismissViewControllerAnimated:YES completion:^{
-            [self.loginDelegate login];
-            
-        }];
+        [self processLogin:object];
     } failure:^(id object) {
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
     }];
 }
 
+- (IBAction)tappedTouchId:(id)sender {
+    
+    
+     NSString *str = [[TouchIDManager sharedTouchIDManager] canAuthenticate];
+     
+     if (str.length==0) {
+         [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
+             [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
+                 [self processLogin:object];
+             } failure:^(id object) {
+                 [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
+                 
+             }];
+         } error:^{
+             
+         } viewController:self];
+     }
+    
+
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
+    NSString *hash = [[DataManager sharedManager] getKeyChainValue:kKeychainTouchIDToken serviceName:kKeychainServiceName];
+    
+    
+    if (hash == nil) {
+        _buttonTouchId.hidden = YES;
+        _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
+    } else {
+        _buttonTouchId.hidden = NO;
+        _constraintContainerHeight.constant = _buttonTouchId.frame.size.height + _buttonTouchId.frame.origin.y;
+        
+    }
     
     [UIView animateWithDuration:0.5 animations:^{
         _blurView.alpha = 1;
@@ -156,6 +196,16 @@
             [UIView animateWithDuration:0.5 animations:^{
                 _scrollView.alpha = 1;
                 _constraintTopSpace.constant = 0;
+                
+                if (hash == nil) {
+                    _buttonTouchId.hidden = YES;
+                    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
+                } else {
+                    _buttonTouchId.hidden = NO;
+                    _constraintContainerHeight.constant = _buttonTouchId.frame.size.height + _buttonTouchId.frame.origin.y;
+                    
+                }
+
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
             }];

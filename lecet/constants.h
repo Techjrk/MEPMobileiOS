@@ -64,6 +64,21 @@ dateAdd(NSInteger numberOfDays) {
     return date;
 }
 
+CG_INLINE NSString *encryptStringUsingPassword(NSString *data, NSString *password) {
+    
+    NSString *str = [CryproLib encryptData:data key:password];
+    
+    return str;
+}
+
+CG_INLINE NSString *decryptStringUsingPassword(NSString *data, NSString *password) {
+    
+    NSString *str = [CryproLib dencryptData:data key:password];
+    
+    return str;
+}
+
+
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
 #define FONT_NAME_LATO_SEMIBOLD                  @"Lato-Semibold"
 #define FONT_NAME_LATO_BOLD                      @"Lato-Bold"

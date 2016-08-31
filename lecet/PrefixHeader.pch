@@ -12,9 +12,9 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIScreen.h>
 #import "DataManager.h"
+#import "CryproLib.h"
 #import "constants.h"
 #import "Utilities.h"
 #import "DerivedNSManagedObject.h"
 #import "GoogleAnalytics.h"
-
 #endif /* PrefixHeader_pch */

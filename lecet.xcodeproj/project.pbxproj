@@ -178,6 +178,7 @@
 		B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DACD1D756C6400B6CCC4 /* libz.tbd */; };
 		B725DAD21D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */; };
 		B725DAD51D7576B100B6CCC4 /* GoogleAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B725DAD41D7576B100B6CCC4 /* GoogleAnalytics.m */; };
+		B725DAE31D76F45200B6CCC4 /* CryproLib.m in Sources */ = {isa = PBXBuildFile; fileRef = B725DAE21D76F45200B6CCC4 /* CryproLib.m */; };
 		B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */; };
 		B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */; };
 		B73EFA861D01C2E200C6B3B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA851D01C2E200C6B3B2 /* LocationManager.m */; };
@@ -666,6 +667,8 @@
 		B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		B725DAD31D7576B100B6CCC4 /* GoogleAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalytics.h; sourceTree = "<group>"; };
 		B725DAD41D7576B100B6CCC4 /* GoogleAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalytics.m; sourceTree = "<group>"; };
+		B725DAE11D76F45200B6CCC4 /* CryproLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryproLib.h; sourceTree = "<group>"; };
+		B725DAE21D76F45200B6CCC4 /* CryproLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryproLib.m; sourceTree = "<group>"; };
 		B73EFA7E1D01AE0F00C6B3B2 /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareLocationViewController.h; sourceTree = "<group>"; };
 		B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareLocationViewController.m; sourceTree = "<group>"; };
 		B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareLocationViewController.xib; sourceTree = "<group>"; };
@@ -2177,6 +2180,15 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		B725DAE01D76F44600B6CCC4 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				B725DAE11D76F45200B6CCC4 /* CryproLib.h */,
+				B725DAE21D76F45200B6CCC4 /* CryproLib.m */,
+			);
+			name = Crypto;
+			sourceTree = "<group>";
+		};
 		B76C69351CD22413009E9F15 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
@@ -2290,6 +2302,7 @@
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B725DAE01D76F44600B6CCC4 /* Crypto */,
 				B725DABB1D756BCF00B6CCC4 /* GoogleAnalytics */,
 				B6BEE9841D46276600237BB9 /* EHFAuthenticator */,
 				B7F10A211CDB3E4100847FA3 /* SFHFKeychainUtils */,
@@ -2611,6 +2624,7 @@
 				B73EFA8D1D0301AC00C6B3B2 /* GoToSettingsViewController.m in Sources */,
 				B644746C1D00437E0001B244 /* ProjectSortViewController.m in Sources */,
 				B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */,
+				B725DAE31D76F45200B6CCC4 /* CryproLib.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,

@@ -167,6 +167,8 @@
 //SettingViewController.xib
 "SETTINGS_NAV_TITLE"                        =               "Settings";
 "SETTINGS_SIGNOUT"                          =               "Sign out from Lecet MEP?";
+"SETTINGS_TOUCHID"                          =               "Configure Touch ID access";
+"SETTINGS_TOUCHID_REGISTERED"               =               "Touch ID access successfully configured";
 
 //ProjectsNearMeViewController.xib
 "PROJECTS_NEAR_LOCATION_EMPTY"              =               "Please enter a location to search";

@@ -31,8 +31,8 @@ static TouchIDManager *_instance = nil;
     self = [super init];
     if (self) {
         [[EHFAuthenticator sharedInstance] setReason:@"To sign you into the application"];
-        [[EHFAuthenticator sharedInstance] setFallbackButtonTitle:@"Enter Password"];
-        [[EHFAuthenticator sharedInstance] setUseDefaultFallbackTitle:YES];
+        //[[EHFAuthenticator sharedInstance] setFallbackButtonTitle:@"Enter Password"];
+        //[[EHFAuthenticator sharedInstance] setUseDefaultFallbackTitle:YES];
     }
     return self;
 }
@@ -57,14 +57,14 @@ static TouchIDManager *_instance = nil;
                 break;
         }
     }
-    return authErrorString;
+    return error==nil?@"":authErrorString;
 }
 
 - (void)authenticateWithSuccessHandler:(dispatch_block_t)successHandler error:(dispatch_block_t)errorHandler viewController:(UIViewController *)viewController
 {
     [[EHFAuthenticator sharedInstance] authenticateWithSuccess:^(){
         
-        [self presentAlertControllerWithMessage:@"Successfully Authenticated!" viewController:viewController];
+        //[self presentAlertControllerWithMessage:@"Successfully Authenticated!" viewController:viewController];
         
         successHandler();
         
@@ -79,11 +79,11 @@ static TouchIDManager *_instance = nil;
                 authErrorString = @"User failed after a few attempts.";
                 break;
             case LAErrorUserCancel:
-                authErrorString = @"User cancelled.";
+                authErrorString = nil;
                 break;
                 
             case LAErrorUserFallback:
-                authErrorString = @"Fallback auth method should be implemented here.";
+                authErrorString = nil;
                 break;
             case LAErrorTouchIDNotEnrolled:
                 authErrorString = @"No Touch ID fingers enrolled.";
@@ -98,7 +98,10 @@ static TouchIDManager *_instance = nil;
                 authErrorString = @"Check your Touch ID Settings.";
                 break;
         }
-        [self presentAlertControllerWithMessage:authErrorString viewController:viewController];
+        
+        if (authErrorString) {
+            [self presentAlertControllerWithMessage:authErrorString viewController:viewController];
+        }
 
         errorHandler();
     }];
@@ -112,5 +115,8 @@ static TouchIDManager *_instance = nil;
     [viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-
+- (void)setReason:(NSString *)reason {
+    [[EHFAuthenticator sharedInstance] setReason:reason];
+    
+}
 @end

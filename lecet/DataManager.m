@@ -24,8 +24,9 @@
 //Set kProduction = 1 (Production), 0 (Staging)
 
 #define kbaseUrl                            [kHost stringByAppendingString:@"api/"]
-
+#define kPasswordHash                       @"Lecet MEP"
 #define kUrlLogin                           @"LecetUsers/login"
+#define kUrlLoginFingerPrint                @"LecetUsers/login/fingerprint"
 #define kUrlBidsRecentlyMade                @"Bids/"
 #define kUrlBidsHappeningSoon               @"Projects?"
 #define kUrlBidsRecentlyUpdated             @"Projects?"
@@ -49,6 +50,7 @@
 #define kUrlJurisdiction                    @"Regions/tree"
 #define kUrlRecentlyViewed                  @"LecetUsers/%li/activities"
 #define kUrlActivities                      @"Activities"
+#define kUrlFingerPrint                     @"LecetUsers/%li/fingerprint"
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
@@ -693,7 +695,7 @@
 
 - (void)savedSearches:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
 
     NSString *url = [NSString stringWithFormat:kUrlSavedSearches,(long)userId.integerValue ];
     
@@ -751,7 +753,7 @@
 
 - (void)recentlyViewed:(APIBlock)success failure:(APIBlock)failure {
   
-    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
 
     NSString *url = [self url:[NSString stringWithFormat:kUrlRecentlyViewed,userId.integerValue]];
                      
@@ -780,6 +782,49 @@
         failure(object);
     } authenticated:YES];
 
+}
+
+- (void)registerFingerPrintForSuccess:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    NSString *email =[self getKeyChainValue:kKeychainEmail serviceName:kKeychainServiceName];
+    
+   
+    NSString *url = [self url:[NSString stringWithFormat:kUrlFingerPrint,userId.integerValue]];
+
+    NSString *hash = encryptStringUsingPassword(email, kPasswordHash);
+    [self HTTP_PUT_BODY:url parameters:@{@"fingerprintHash":hash} success:^(id object) {\
+        
+        [self storeKeyChainValue:kKeychainTouchIDToken password:hash serviceName:kKeychainServiceName];
+        
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)loginFingerPrintForSuccess:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [self url:kUrlLoginFingerPrint];
+ 
+    NSString *email =[self getKeyChainValue:kKeychainEmail serviceName:kKeychainServiceName];
+    NSString *hash =[self getKeyChainValue:kKeychainTouchIDToken serviceName:kKeychainServiceName];
+    
+    [self HTTP_POST:url parameters:@{@"email":email,@"fingerprintHash":hash} success:^(id object) {
+        
+        NSString *token = object[@"id"];
+        NSNumber *userId = object[@"userId"];
+        
+        [self storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
+        
+        [self storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
+
+        success(object);
+        
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:NO];
+   
 }
 
 - (void)updateUserInformation:(NSNumber*)userId userUpdateData:(id)paramData success:(APIBlock)success failure:(APIBlock)failure{
@@ -1048,7 +1093,7 @@
 
 - (void)hiddentProjects:(APIBlock)success failure:(APIBlock)failure {
 
-    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
     
     NSString *url = [self url:[NSString stringWithFormat:kUrlHiddenProjects, (long)userId.integerValue ]];
     
@@ -1174,8 +1219,7 @@
 #pragma mark - CHage Password
 - (void)changePassword:(NSMutableDictionary *)parameter success:(APIBlock)success failure:(APIBlock)failure{
     
-    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
-    //NSNumber *num = [NSNumber numberWithInteger:userId.integerValue];
+    NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
     
     NSString *url = [NSString stringWithFormat:kURLChangePassword,(long)userId.integerValue];
     
