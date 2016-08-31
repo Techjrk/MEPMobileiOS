@@ -755,7 +755,7 @@
   
     NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
 
-    NSString *url = [self url:[NSString stringWithFormat:kUrlRecentlyViewed,userId.integerValue]];
+    NSString *url = [self url:[NSString stringWithFormat:kUrlRecentlyViewed,(long)userId.integerValue]];
                      
     [self HTTP_GET:url parameters:@{@"filter":@"{\"include\":[\"project\",\"company\"],\"where\":{\"code\":{\"inq\":[\"VIEW_PROJECT\",\"VIEW_COMPANY\"]}},\"limit\":10,\"order\":\"updatedAt DESC\"}"} success:^(id object) {
         
@@ -790,7 +790,7 @@
     NSString *email =[self getKeyChainValue:kKeychainEmail serviceName:kKeychainServiceName];
     
    
-    NSString *url = [self url:[NSString stringWithFormat:kUrlFingerPrint,userId.integerValue]];
+    NSString *url = [self url:[NSString stringWithFormat:kUrlFingerPrint,(long)userId.integerValue]];
 
     NSString *hash = encryptStringUsingPassword(email, kPasswordHash);
     [self HTTP_PUT_BODY:url parameters:@{@"fingerprintHash":hash} success:^(id object) {\
