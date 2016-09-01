@@ -84,6 +84,7 @@
         projectHidden = isHidden.boolValue;
     }
     
+    [self changeButtonMode];
     
     _labelTitle.text = info[@"title"];
     

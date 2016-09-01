@@ -30,7 +30,7 @@
 - (void)initializeTacker {
 
      [GAI sharedInstance].optOut = NO;
-     [GAI sharedInstance].trackUncaughtExceptions = YES;
+     [GAI sharedInstance].trackUncaughtExceptions = NO;
      [[GAI sharedInstance].logger setLogLevel:kGAILogLevelInfo];
      [GAI sharedInstance].dispatchInterval = -1;
      [[GAI sharedInstance] trackerWithTrackingId:kGAI_TRACKER_ID];

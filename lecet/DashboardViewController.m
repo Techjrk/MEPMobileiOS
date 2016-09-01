@@ -475,7 +475,7 @@
     
     if (state == CalendarItemStateSelected) {
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonthDay == %@ AND isHidden = NO", itemtag];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bidYearMonthDay == %@ AND isHidden = NO AND isHappenSoon == YES", itemtag];
         
         currentBidItems = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
 

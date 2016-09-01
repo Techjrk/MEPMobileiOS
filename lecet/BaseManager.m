@@ -399,8 +399,13 @@
     NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
     BOOL disableAutoLogout;
     NSData *data = (NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-    NSString* ErrorResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSDictionary  *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSString* ErrorResponse = @"";
+    NSDictionary  *dict = @{};
+    
+    if (data) {
+        ErrorResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    }
     
     if ([self isDebugMode]) {
         NSLog(@"%@",ErrorResponse);
@@ -422,7 +427,10 @@
             if (errorDict) {
                 if ([DerivedNSManagedObject objectOrNil:errorDict[@"message"]]) {
                     responseMessage = [DerivedNSManagedObject objectOrNil:errorDict[@"message"]];
-                    disableAutoLogout = YES;
+                    
+                    if (![[responseMessage uppercaseString] containsString:@"AUTHORIZATION REQUIRED"]) {
+                        disableAutoLogout = YES;
+                    }
                 } else {
                     responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
                 }
