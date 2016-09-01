@@ -193,9 +193,10 @@ typedef enum {
     contactAllList = contacts;
     [_fieldContacts setItems:contacts];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationshipCompany.recordId == %li", companyRecordId.integerValue];
     
-    NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+   // NSArray *fetchRecord = [DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO];
+    NSArray *fetchRecord = [record.relationshipBid allObjects];
 
     
     NSMutableArray *bidList = [fetchRecord mutableCopy];

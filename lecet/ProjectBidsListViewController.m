@@ -13,9 +13,10 @@
 #import "ProjectAllBidsView.h"
 #import "ProjectSortViewController.h"
 #import "ProjectDetailViewController.h"
+#import "DB_Project.h"
 
-@interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate, ProjectAllBidsViewDelegate>{
-    NSMutableArray *bidList;
+@interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate, ProjectAllBidsViewDelegate, ProjectTabViewDelegate>{
+    NSMutableArray *bidList, *upcomingBid, *pastBid;
     NSString *companyName;
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavigationView;
@@ -33,13 +34,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupList];
+    
     _projectNavigationView.projectNavViewDelegate = self;
     _projectAllBidsView.projectAllBidsViewDelegate = self;
+    _projectTabView.projectTabViewDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [_projectNavigationView setContractorName:companyName];
     [_projectAllBidsView setItems:bidList];
+}
+
+- (void)setupList {
+
+    if (bidList == nil) {
+        upcomingBid = [NSMutableArray new];
+        pastBid = [NSMutableArray new];
+        bidList = [NSMutableArray new];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,7 +108,29 @@
 #pragma mark - Project Bids Delegate
 - (void)setInfoForProjectBids:(NSArray *)bids {
 
-    bidList = [bids mutableCopy];
+    [self setupList];
+    
+    NSDate *currentDate = [NSDate date];
+    
+    for (DB_Bid *bidItem in bids) {
+        
+        DB_Project *project = bidItem.relationshipProject;
+        
+        if (project.bidDate) {
+            
+            NSDate *bidDate =[DerivedNSManagedObject dateFromDateAndTimeString:project.bidDate];
+            
+            NSTimeInterval interval = [currentDate timeIntervalSinceDate:bidDate];
+            if(  interval > 0) {
+                [pastBid addObject:bidItem];
+            } else {
+                [upcomingBid addObject:bidItem];
+            }
+            
+        } else {
+            [upcomingBid addObject:bidItem];
+        }
+    }
     
 }
 
@@ -104,6 +141,17 @@
     DB_Bid *bid = object;
     [detail detailsFromProject:bid.relationshipProject];
     [self.navigationController pushViewController:detail animated:YES];
+
+}
+
+- (void)tappedProjectTab:(ProjectTabItem)projectTabItem {
+    if (projectTabItem == ProjectTabPast) {
+        bidList = pastBid;
+    } else {
+        bidList = upcomingBid;
+    }
+    
+    [_projectAllBidsView setItems:bidList];
 
 }
 

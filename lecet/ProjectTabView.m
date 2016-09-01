@@ -68,7 +68,6 @@ static const float animationDuration = 0.25f;
     } completion:^(BOOL finished) {
         if (finished) {
             if (isShown) {
-                [[DataManager sharedManager] featureNotAvailable];
                 [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
             }
         }

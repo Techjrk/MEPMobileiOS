@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 8/16/16.
+//  Created by Harry Herrys Camigla on 9/1/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *geoLocationType;
 @property (nullable, nonatomic, retain) NSString *geoType;
 @property (nullable, nonatomic, retain) NSNumber *isHappenSoon;
+@property (nullable, nonatomic, retain) NSNumber *isHidden;
 @property (nullable, nonatomic, retain) NSNumber *isRecentAdded;
 @property (nullable, nonatomic, retain) NSNumber *isRecentUpdate;
 @property (nullable, nonatomic, retain) NSString *lastPublishDate;
@@ -75,7 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *unionDesignation;
 @property (nullable, nonatomic, retain) NSString *zip5;
 @property (nullable, nonatomic, retain) NSString *zipPlus4;
-@property (nullable, nonatomic, retain) NSNumber *isHidden;
 @property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
 @property (nullable, nonatomic, retain) DB_Company *relationshipCompany;
 @property (nullable, nonatomic, retain) NSSet<DB_Participant *> *relationshipParticipants;

@@ -228,6 +228,7 @@
     record.fipsCounty = [DerivedNSManagedObject objectOrNil:project[@"fipsCounty"]];
     record.firstPublishDate = [DerivedNSManagedObject objectOrNil:project[@"firstPublishDate"]];
     record.geoLocationType = [DerivedNSManagedObject objectOrNil:project[@"geoLocationType"]];
+    record.unionDesignation = [DerivedNSManagedObject objectOrNil:project[@"unionDesignation"]];
     
     NSDictionary *geoCode = [DerivedNSManagedObject objectOrNil:project[@"geocode"]];
     if (geoCode != nil) {
@@ -396,6 +397,14 @@
      
         for (NSDictionary *project in associatedProjects) {
             [record addRelationshipAssociatedProjectsObject:[self saveManageObjectProject:project]];
+        }
+    }
+
+    NSArray *bids = company[@"bids"];
+    if (bids) {
+        for (NSDictionary *bid in bids) {
+            DB_Bid *bidItem = [self saveManageObjectBid:bid];
+            [record addRelationshipBidObject:bidItem];
         }
     }
 
@@ -609,7 +618,7 @@
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\"]}]}";
+    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
     [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:@{@"filter":filter} success:^(id object) {
         
         DB_Company *item = [self saveManageObjectCompany:object];

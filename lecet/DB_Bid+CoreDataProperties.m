@@ -2,7 +2,7 @@
 //  DB_Bid+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 6/7/16.
+//  Created by Harry Herrys Camigla on 9/1/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,12 +13,12 @@
 
 @implementation DB_Bid (CoreDataProperties)
 
+@dynamic amount;
 @dynamic awardInd;
 @dynamic createDate;
 @dynamic isRecentMade;
-@dynamic recordId;
-@dynamic amount;
 @dynamic rank;
+@dynamic recordId;
 @dynamic relationshipCompany;
 @dynamic relationshipContact;
 @dynamic relationshipProject;

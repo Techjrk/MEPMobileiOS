@@ -154,7 +154,7 @@
         <attribute name="zip5" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipPlus4" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relationshipAssociatedProjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_Project" inverseName="relationshipCompany" inverseEntity="DB_Project" syncable="YES"/>
-        <relationship name="relationshipBid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Bid" inverseName="relationshipCompany" inverseEntity="DB_Bid" syncable="YES"/>
+        <relationship name="relationshipBid" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_Bid" inverseName="relationshipCompany" inverseEntity="DB_Bid" syncable="YES"/>
         <relationship name="relationshipCompanyContact" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DB_CompanyContact" inverseName="relationshipCompany" inverseEntity="DB_CompanyContact" syncable="YES"/>
     </entity>
     <entity name="DB_CompanyContact" representedClassName="DB_CompanyContact" syncable="YES">

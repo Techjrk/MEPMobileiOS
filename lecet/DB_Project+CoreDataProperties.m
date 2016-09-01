@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 8/16/16.
+//  Created by Harry Herrys Camigla on 9/1/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -43,6 +43,7 @@
 @dynamic geoLocationType;
 @dynamic geoType;
 @dynamic isHappenSoon;
+@dynamic isHidden;
 @dynamic isRecentAdded;
 @dynamic isRecentUpdate;
 @dynamic lastPublishDate;
@@ -73,7 +74,6 @@
 @dynamic unionDesignation;
 @dynamic zip5;
 @dynamic zipPlus4;
-@dynamic isHidden;
 @dynamic relationshipBid;
 @dynamic relationshipCompany;
 @dynamic relationshipParticipants;

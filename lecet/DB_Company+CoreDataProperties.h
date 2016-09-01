@@ -2,7 +2,7 @@
 //  DB_Company+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 6/7/16.
+//  Created by Harry Herrys Camigla on 9/1/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -33,23 +33,28 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *wwwUrl;
 @property (nullable, nonatomic, retain) NSString *zip5;
 @property (nullable, nonatomic, retain) NSString *zipPlus4;
-@property (nullable, nonatomic, retain) DB_Bid *relationshipBid;
-@property (nullable, nonatomic, retain) NSSet<DB_CompanyContact *> *relationshipCompanyContact;
 @property (nullable, nonatomic, retain) NSSet<DB_Project *> *relationshipAssociatedProjects;
+@property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
+@property (nullable, nonatomic, retain) NSSet<DB_CompanyContact *> *relationshipCompanyContact;
 
 @end
 
 @interface DB_Company (CoreDataGeneratedAccessors)
 
-- (void)addRelationshipCompanyContactObject:(DB_CompanyContact *)value;
-- (void)removeRelationshipCompanyContactObject:(DB_CompanyContact *)value;
-- (void)addRelationshipCompanyContact:(NSSet<DB_CompanyContact *> *)values;
-- (void)removeRelationshipCompanyContact:(NSSet<DB_CompanyContact *> *)values;
-
 - (void)addRelationshipAssociatedProjectsObject:(DB_Project *)value;
 - (void)removeRelationshipAssociatedProjectsObject:(DB_Project *)value;
 - (void)addRelationshipAssociatedProjects:(NSSet<DB_Project *> *)values;
 - (void)removeRelationshipAssociatedProjects:(NSSet<DB_Project *> *)values;
+
+- (void)addRelationshipBidObject:(DB_Bid *)value;
+- (void)removeRelationshipBidObject:(DB_Bid *)value;
+- (void)addRelationshipBid:(NSSet<DB_Bid *> *)values;
+- (void)removeRelationshipBid:(NSSet<DB_Bid *> *)values;
+
+- (void)addRelationshipCompanyContactObject:(DB_CompanyContact *)value;
+- (void)removeRelationshipCompanyContactObject:(DB_CompanyContact *)value;
+- (void)addRelationshipCompanyContact:(NSSet<DB_CompanyContact *> *)values;
+- (void)removeRelationshipCompanyContact:(NSSet<DB_CompanyContact *> *)values;
 
 @end
 

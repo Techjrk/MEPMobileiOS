@@ -420,7 +420,8 @@
     NSString *responseMessage;
     
     switch (errorCode) {
-        case 401:{
+        case 401:
+        case 422:{
            
             errorDict = [DerivedNSManagedObject objectOrNil:dict[@"error"]];
             
