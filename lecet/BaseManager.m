@@ -420,7 +420,24 @@
     NSString *responseMessage;
     
     switch (errorCode) {
-        case 401:
+        case 401: {
+            
+            errorDict = [DerivedNSManagedObject objectOrNil:dict[@"error"]];
+            
+            if (errorDict) {
+                if ([DerivedNSManagedObject objectOrNil:errorDict[@"message"]]) {
+                    responseMessage = [DerivedNSManagedObject objectOrNil:errorDict[@"message"]];
+                    
+                    if (![[responseMessage uppercaseString] containsString:@"AUTHORIZATION"]) {
+                        disableAutoLogout = YES;
+                    }
+                } else {
+                    responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
+                }
+            }
+            
+            break;
+        }
         case 422:{
            
             errorDict = [DerivedNSManagedObject objectOrNil:dict[@"error"]];
