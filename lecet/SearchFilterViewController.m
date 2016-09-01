@@ -545,7 +545,6 @@
     controller.dataSelected = [(FilterEntryView *)objectEntry getCollectionItemsData];
     controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-
 }
 
 - (void)filterValue:(UIView*)view {
