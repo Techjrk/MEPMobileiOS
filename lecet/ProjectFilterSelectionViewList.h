@@ -26,6 +26,7 @@ typedef enum  {
 
 @interface ProjectFilterSelectionViewList : BaseViewClass
 @property (nonatomic,assign) id <ProjectFilterSelectionViewListDelegate> projectFilterSelectionViewListDelegate;
+@property (nonatomic,strong) NSDictionary *dataSelected;
 - (void)setInfo:(NSArray *)item;
 
 @end
