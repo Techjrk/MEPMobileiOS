@@ -62,7 +62,12 @@
     for (ListViewItemDictionary *item in self.listViewItems) {
         ListViewItemDictionary *mutableItem = item;
         mutableItem[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
-        mutableItem[STATUS_CHECK] = [NSNumber numberWithBool:NO];
+        NSNumber *number = mutableItem[STATUS_CHECK];
+        
+        if (number == nil) {
+            mutableItem[STATUS_CHECK] = [NSNumber numberWithBool:NO];
+        }
+
         [localListViewItems addObject:mutableItem];
     }
     
@@ -93,7 +98,11 @@
 }
 
 - (IBAction)tappedBackButton:(id)sender {
+    [self getCheckItems:localListViewItems];
     
+    if (checkedItems.count>0) {
+        [self uncheckItem:localListViewItems];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

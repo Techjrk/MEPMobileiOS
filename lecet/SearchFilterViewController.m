@@ -42,6 +42,9 @@
     FilterModel selectedModel;
     NSMutableArray *selectedLocationItems;
     id  objectEntry;
+    ListViewItemArray *listItemsJurisdictions;
+    ListViewItemArray *listItemsProjectStageId;
+    ListViewItemArray *listItemsProjectTypeId;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
@@ -296,192 +299,228 @@
 
 - (void)filterJurisdiction:(UIView*)view {
     
-    ListViewItemArray *listItems = [ListViewItemArray new];
- 
-    [[DataManager sharedManager] jurisdiction:^(id object) {
+    if (listItemsJurisdictions == nil) {
 
-        NSArray *items = object;
+        ListViewItemArray *listItems = [ListViewItemArray new];
         
-        for (NSDictionary *item in items) {
+        [[DataManager sharedManager] jurisdiction:^(id object) {
             
-            NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
+            NSArray *items = object;
             
-            [listItems addObject:jurisdiction];
-            
-            NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"locals"]];
-            
-            if (locals != nil) {
+            for (NSDictionary *item in items) {
                 
-                if (locals.count>0) {
- 
-                    ListViewItemArray *localItems = [ListViewItemArray new];
+                NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
+                
+                [listItems addObject:jurisdiction];
+                
+                NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"locals"]];
+                
+                if (locals != nil) {
                     
-                    for (NSDictionary *local in locals) {
+                    if (locals.count>0) {
                         
-                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"local"];
+                        ListViewItemArray *localItems = [ListViewItemArray new];
+                        
+                        for (NSDictionary *local in locals) {
+                            
+                            NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"local"];
+                            
+                            [localItems addObject:localItem];
+                        }
+                        
+                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
+                        
+                    }
+                    
+                }
+                
+                NSArray *districtCouncils = [DerivedNSManagedObject objectOrNil:item[@"districtCouncils"]];
+                
+                if (districtCouncils != nil) {
+                    
+                    ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
+                    
+                    for (NSDictionary *districtItem in districtCouncils) {
+                        
+                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
                         
                         [localItems addObject:localItem];
-                    }
-                    
-                    jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
-                    
-                }
-                
-            }
-            
-            NSArray *districtCouncils = [DerivedNSManagedObject objectOrNil:item[@"districtCouncils"]];
-            
-            if (districtCouncils != nil) {
-                
-                ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
-                
-                for (NSDictionary *districtItem in districtCouncils) {
-                    
-                    NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
-                    
-                    [localItems addObject:localItem];
-                    
-                    
-                    NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
-                    
-                    ListViewItemArray *localDistrict = [ListViewItemArray new];
-                    
-                    for (NSDictionary *local in locals) {
                         
-                        NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
                         
-                        [localDistrict addObject:item];
+                        NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
+                        
+                        ListViewItemArray *localDistrict = [ListViewItemArray new];
+                        
+                        for (NSDictionary *local in locals) {
+                            
+                            NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
+                            
+                            [localDistrict addObject:item];
+                            
+                        }
+                        
+                        localItem[LIST_VIEW_SUBITEMS] = localDistrict;
+                        
                         
                     }
                     
-                    localItem[LIST_VIEW_SUBITEMS] = localDistrict;
-                    
-                    
                 }
+                
                 
             }
             
+            listItemsJurisdictions = listItems;
+            [self displayJurisdiction];
+        } failure:^(id object) {
             
-        }
-        
-        FilterViewController *controller = [FilterViewController new];
-        controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-        controller.listViewItems = listItems;
-        controller.singleSelect = YES;
-        controller.fieldValue = @"jurisdictions";
-        controller.filterViewControllerDelegate = self;
-        [self.navigationController pushViewController:controller animated:YES];
+        }];
 
-    } failure:^(id object) {
-        
-    }];
+    } else {
+        [self displayJurisdiction];
+    }
+
+}
+
+- (void)displayJurisdiction {
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
+    controller.listViewItems = listItemsJurisdictions;
+    controller.singleSelect = YES;
+    controller.fieldValue = @"jurisdictions";
+    controller.filterViewControllerDelegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
     
-
 }
 
 - (void)filterStage:(UIView*)view {
     
-    ListViewItemArray *listItems = [ListViewItemArray new];
-    
-    [[DataManager sharedManager] parentStage:^(id object) {
-        
-        for (NSDictionary *item in object) {
-            
-            ListViewItemDictionary *listItem = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"parentStage"];
-            
-            NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
-            
-            if (stages != nil) {
-                
-                ListViewItemArray *subItems = [ListViewItemArray new];
-                
-                for (NSDictionary *stage in stages) {
-                    
-                    ListViewItemDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
-                    [subItems addObject:subItem];
-                    
-                }
-                
-                listItem[LIST_VIEW_SUBITEMS] = subItems;
-            }
-            
-            [listItems addObject:listItem];
-            
-        }
-        
-        FilterViewController *controller = [FilterViewController new];
-        controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
-        controller.listViewItems = listItems;
-        controller.filterViewControllerDelegate = self;
-        controller.fieldValue = @"projectStageId";
-        controller.singleSelect = YES;
-        [self.navigationController pushViewController:controller animated:YES];
-        
-    } failure:^(id object) {
-        
-    }];
-
-}
-
-- (void)filterProjectTypes:(UIView*)view {
-    
-    [[DataManager sharedManager] projectTypes:^(id groups) {
+    if (listItemsProjectStageId == nil) {
         
         ListViewItemArray *listItems = [ListViewItemArray new];
-
-        for (NSDictionary *group in groups) {
+        
+        [[DataManager sharedManager] parentStage:^(id object) {
             
-            ListViewItemDictionary *groupItem = [ListItemCollectionViewCell createItem:group[@"title"] value:group[@"id"] model:@"projectGroup"];
-            
-            NSArray *categories = [DerivedNSManagedObject objectOrNil:group[@"projectCategories"]];
-            
-            if (categories) {
-   
-                ListViewItemArray *groupItems = [ListViewItemArray new];
+            for (NSDictionary *item in object) {
                 
-                for (NSDictionary *category in categories) {
+                ListViewItemDictionary *listItem = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"parentStage"];
+                
+                NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
+                
+                if (stages != nil) {
                     
-                    ListViewItemDictionary *categoryItem = [ListItemCollectionViewCell createItem:category[@"title"] value:category[@"id"] model:@"projectCategory"];
-                    [groupItems addObject:categoryItem];
+                    ListViewItemArray *subItems = [ListViewItemArray new];
                     
-                    NSArray *projectTypes = [DerivedNSManagedObject objectOrNil:category[@"projectTypes"]];
-                    
-                    if (projectTypes) {
+                    for (NSDictionary *stage in stages) {
                         
-                        ListViewItemArray *projectTypeItems = [ListViewItemArray new];
-                        
-                        for (NSDictionary *projectType in projectTypes) {
-                            
-                            ListViewItemDictionary *projectTypeItem = [ListItemCollectionViewCell createItem:projectType[@"title"] value:projectType[@"id"] model:@"projectType"];
-                            
-                            [projectTypeItems addObject:projectTypeItem];
-                        }
-      
-                        categoryItem[LIST_VIEW_SUBITEMS] = projectTypeItems;
+                        ListViewItemDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
+                        [subItems addObject:subItem];
                         
                     }
                     
+                    listItem[LIST_VIEW_SUBITEMS] = subItems;
                 }
                 
-                groupItem[LIST_VIEW_SUBITEMS] = groupItems;
+                [listItems addObject:listItem];
                 
             }
             
-            [listItems addObject:groupItem];
+            listItemsProjectStageId = listItems;
+            [self displayProjectStateId];
             
-        }
+        } failure:^(id object) {
+            
+        }];
+    } else {
         
-        FilterViewController *controller = [FilterViewController new];
-        controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
-        controller.listViewItems = listItems;
-        controller.filterViewControllerDelegate = self;
-        controller.fieldValue = @"projectTypeId";
-        controller.singleSelect = _companyFilter.hidden?NO:YES;
-        [self.navigationController pushViewController:controller animated:YES];
-        
-    } failure:^(id object) {
-        
-    }];
+        [self displayProjectStateId];
+    
+    }
+
+}
+
+- (void) displayProjectStateId {
+
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
+    controller.listViewItems = listItemsProjectStageId;
+    controller.filterViewControllerDelegate = self;
+    controller.fieldValue = @"projectStageId";
+    controller.singleSelect = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+
+}
+- (void)filterProjectTypes:(UIView*)view {
+    
+    if (listItemsProjectTypeId == nil) {
+        [[DataManager sharedManager] projectTypes:^(id groups) {
+            
+            ListViewItemArray *listItems = [ListViewItemArray new];
+            
+            for (NSDictionary *group in groups) {
+                
+                ListViewItemDictionary *groupItem = [ListItemCollectionViewCell createItem:group[@"title"] value:group[@"id"] model:@"projectGroup"];
+                
+                NSArray *categories = [DerivedNSManagedObject objectOrNil:group[@"projectCategories"]];
+                
+                if (categories) {
+                    
+                    ListViewItemArray *groupItems = [ListViewItemArray new];
+                    
+                    for (NSDictionary *category in categories) {
+                        
+                        ListViewItemDictionary *categoryItem = [ListItemCollectionViewCell createItem:category[@"title"] value:category[@"id"] model:@"projectCategory"];
+                        [groupItems addObject:categoryItem];
+                        
+                        NSArray *projectTypes = [DerivedNSManagedObject objectOrNil:category[@"projectTypes"]];
+                        
+                        if (projectTypes) {
+                            
+                            ListViewItemArray *projectTypeItems = [ListViewItemArray new];
+                            
+                            for (NSDictionary *projectType in projectTypes) {
+                                
+                                ListViewItemDictionary *projectTypeItem = [ListItemCollectionViewCell createItem:projectType[@"title"] value:projectType[@"id"] model:@"projectType"];
+                                
+                                [projectTypeItems addObject:projectTypeItem];
+                            }
+                            
+                            categoryItem[LIST_VIEW_SUBITEMS] = projectTypeItems;
+                            
+                        }
+                        
+                    }
+                    
+                    groupItem[LIST_VIEW_SUBITEMS] = groupItems;
+                    
+                }
+                
+                [listItems addObject:groupItem];
+                
+            }
+            
+            listItemsProjectTypeId = listItems;
+            
+            [self displayProjectTypeId];
+            
+        } failure:^(id object) {
+            
+        }];
+    } else {
+        [self displayProjectTypeId];
+    }
+
+}
+
+- (void)displayProjectTypeId {
+
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
+    controller.listViewItems = listItemsProjectTypeId;
+    controller.filterViewControllerDelegate = self;
+    controller.fieldValue = @"projectTypeId";
+    controller.singleSelect = _companyFilter.hidden?NO:YES;
+    [self.navigationController pushViewController:controller animated:YES];
+
 }
 
 #pragma mark - Work Types
