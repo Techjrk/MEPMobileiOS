@@ -25,5 +25,5 @@ typedef enum  {
 
 @interface ProjectTabView : BaseViewClass
 @property (nonatomic,assign) id<ProjectTabViewDelegate> projectTabViewDelegate;
-
+- (void)setCounts:(NSUInteger)upcoming past:(NSUInteger)past;
 @end

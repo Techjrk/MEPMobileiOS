@@ -38,8 +38,8 @@ static const float animationDuration = 0.25f;
     _buttonPast.titleLabel.font = PRODJECT_TAB_BUTTON_FONT;
     [_buttonPast setTitleColor:PRODJECT_TAB_BUTTON_FONT_COLOR forState:UIControlStateNormal];
     
-    NSString *upcomingText = [NSString stringWithFormat:@"12 %@",NSLocalizedLanguage(@"PROJECTTAB_UPCOMING_TEXT")];
-    NSString *pastText = [NSString stringWithFormat:@"64 %@",NSLocalizedLanguage(@"PROJECTTAB_PAST_TEXT")];
+    NSString *upcomingText = @"";
+    NSString *pastText = @"";
     [_buttonUpcoming setTitle:upcomingText forState:UIControlStateNormal];
     [_buttonPast setTitle:pastText forState:UIControlStateNormal];
     
@@ -49,6 +49,15 @@ static const float animationDuration = 0.25f;
     [_bottomLineView setBackgroundColor:PROJECT_TAB_SLIDING_VIEW_BG_COLOR];
     [self.view setBackgroundColor:[PROJECT_TAB_VIEW_BG_COLOR colorWithAlphaComponent:45.0f]];
    
+}
+
+- (void)setCounts:(NSUInteger)upcoming past:(NSUInteger)past {
+    
+    NSString *upcomingText = [NSString stringWithFormat:@"%li %@", upcoming,NSLocalizedLanguage(@"PROJECTTAB_UPCOMING_TEXT")];
+    NSString *pastText = [NSString stringWithFormat:@"%li %@", past,NSLocalizedLanguage(@"PROJECTTAB_PAST_TEXT")];
+    [_buttonUpcoming setTitle:upcomingText forState:UIControlStateNormal];
+    [_buttonPast setTitle:pastText forState:UIControlStateNormal];
+
 }
 
 - (IBAction)tappedButton:(id)sender {

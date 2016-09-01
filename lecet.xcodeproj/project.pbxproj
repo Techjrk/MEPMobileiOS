@@ -2418,7 +2418,7 @@
 				TargetAttributes = {
 					B70155171CD0C56A0050CF8A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = Y3TF9JQZ2B;
+						DevelopmentTeam = AS94HE7VCY;
 					};
 				};
 			};
@@ -2943,7 +2943,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "0209597e-8ba5-4369-8e3d-b8ff638c35cf";
+				PROVISIONING_PROFILE = "58b5787f-13a5-46c8-b99c-5b26754c7e56";
 			};
 			name = Debug;
 		};
@@ -2968,7 +2968,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "0209597e-8ba5-4369-8e3d-b8ff638c35cf";
+				PROVISIONING_PROFILE = "58b5787f-13a5-46c8-b99c-5b26754c7e56";
 			};
 			name = Release;
 		};

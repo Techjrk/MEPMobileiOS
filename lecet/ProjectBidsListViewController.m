@@ -151,6 +151,7 @@
         bidList = upcomingBid;
     }
     
+    [_projectTabView setCounts:upcomingBid.count past:pastBid.count];
     [_projectAllBidsView setItems:bidList];
 
 }
