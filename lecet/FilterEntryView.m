@@ -140,6 +140,7 @@
 }
 
 - (void)reloadData {
+    _labelHint.hidden = collectionDataItems.count > 0?YES:NO;
     [_filterEntryViewDelegate reloadDataBeenComplete:self.filterModel];
 }
 
