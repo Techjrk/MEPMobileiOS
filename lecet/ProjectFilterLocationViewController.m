@@ -42,8 +42,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-    
+
     NSArray *array = @[@{TITLENAME:@"California",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@0,
                          SUBCATEGORYDATA:
                              @[@{TITLENAME:@"San Francisco",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@1},
@@ -56,8 +55,12 @@
                        @{TITLENAME:@"Texas",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@6,
                          SUBCATEGORYDATA:@[@{TITLENAME:@"San Antonio",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@7}]}
                        ];
-    
+
     dataInfo = [array mutableCopy];
+    
+    if (dataSelected.count > 0) {
+        [self selectTheDataThatBeenSelected:dataInfo];
+    }
     
     [_listView setInfo:[dataInfo copy]];
     [_navView setSearchTextFieldPlaceHolder:NSLocalizedLanguage(@"PROJECT_LOCATION_SEARCH_PLACEHOLDER")];
@@ -236,33 +239,51 @@
     NSMutableDictionary *dict;
     NSMutableDictionary *dictMSec;
     NSMutableArray *arrayFL = [NSMutableArray new];
-    NSMutableArray *arraySub = [NSMutableArray new];
+    
     
     for (id data in dInfo) {
         dict = [data mutableCopy];
-        if([dataSelected containsObject:data[ENTRY_ID]]) {
-            [dict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
-            [dict setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
-        }
-        
-        /*
-        for (id dataSec in data[SUBCATEGORYDATA]) {
-            dictMSec = [dataSec mutableCopy];
-            if([dataSelected containsObject:data[ENTRY_ID]]) {
-                [dictMSec setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
-                [dictMSec setValue:SelectedFlag forKey:DROPDOWNFLAGNAME];
+    
+            if ([self isDataBeenSelected:dict[ENTRY_ID]]) {
+                [dict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+ 
             }
-            
-            [arraySub addObject:dictMSec];
-        }
+        NSArray *secondSub = [DerivedNSManagedObject objectOrNil:dict[SUBCATEGORYDATA]];
         
-        [dict setValue:dictMSec forKey:SUBCATEGORYDATA];
-        */
+        if (secondSub.count > 0) {
+            NSMutableArray *arraySub = [NSMutableArray new];
+            for (id dataSec in secondSub) {
+                dictMSec = [dataSec mutableCopy];
+                
+                 if ([self isDataBeenSelected:dictMSec[ENTRY_ID]])  {
+                        [dictMSec setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+                    }
+                
+                [arraySub addObject:dictMSec];
+            }
+
+            [dict setValue:arraySub forKey:SUBCATEGORYDATA];
+        }
         
         [arrayFL addObject:dict];
     }
+    dataInfo = [arrayFL mutableCopy];
     
-    dataInfo = arrayFL;
+}
+
+- (BOOL)isDataBeenSelected:(id)entryID {
+    
+    
+    for (id datSelect in dataSelected) {
+        
+        if (entryID == datSelect[ENTRY_ID]) {
+            return YES;
+           
+            break;
+        }
+    }
+    
+    return NO;
 }
 
 @end

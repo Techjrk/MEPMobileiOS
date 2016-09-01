@@ -246,7 +246,7 @@
 }
 
 - (void)tappedCompanyFilterItem:(id)object view:(UIView *)view {
-    
+    objectEntry = object;
     FilterModel model = 0;
     BOOL shouldProcess = NO;
     
@@ -545,7 +545,6 @@
     controller.dataSelected = [(FilterEntryView *)objectEntry getCollectionItemsData];
     controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-
 }
 
 - (void)filterValue:(UIView*)view {
