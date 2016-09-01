@@ -246,7 +246,7 @@
 }
 
 - (void)tappedCompanyFilterItem:(id)object view:(UIView *)view {
-    
+    objectEntry = object;
     FilterModel model = 0;
     BOOL shouldProcess = NO;
     
