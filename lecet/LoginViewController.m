@@ -82,10 +82,9 @@
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
         //[_textFieldEmail setText: @"brickard@liuna.org"];
         //[_textFieldPassword setText: @"H8YhofaeZ4SLKMd2ajR03vdxnkVrvOMG"];
-        /*
-         brickard@liuna.org
-         H8YhofaeZ4SLKMd2ajR03vdxnkVrvOMG
-         */
+
+        [_textFieldEmail setText: @"nprymek@iowalecet.org"];
+        [_textFieldPassword setText: @"1KnbXIuQ56L9laB0S7gysx60sIy5zawZ"];
 
     }
     
