@@ -198,6 +198,7 @@ typedef enum : NSUInteger {
 - (IBAction)tappedButtonBack:(id)sender {
     [self showSaveSearches:NO];
     saveSearchSelectedItem = nil;
+    isSuggestedListBeenTapped = NO;
     if (showResult) {
         showResult = NO;
         [_collectionView reloadData];
@@ -493,8 +494,8 @@ typedef enum : NSUInteger {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SearchSection sectionType = (SearchSection)indexPath.section;
     [self showSaveSearches:NO];
+    
     if (sectionType == SearchSectionSuggested) {
-       // [self showSaveSearches:YES];
         isSuggestedListBeenTapped = YES;
         _resultIndex = [NSNumber numberWithInteger:indexPath.row];
         showResult = YES;
@@ -568,6 +569,7 @@ typedef enum : NSUInteger {
         }
 
     } else if (sectionType == SearchSectionSavedProject) {
+        isSuggestedListBeenTapped = NO;
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
         searchMode = YES;
         showResult = YES;
@@ -580,7 +582,7 @@ typedef enum : NSUInteger {
         [self searchForContact:filter[@"query"] filter:filter];
         
     } else if (sectionType == SearchSectionSavedCompany) {
-       
+        isSuggestedListBeenTapped = NO;
         NSArray *items = [collectionItems[SEARCH_RESULT_SAVED_COMPANY] mutableCopy];
         searchMode = YES;
         showResult = YES;
