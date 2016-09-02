@@ -457,6 +457,8 @@
                 } else {
                     responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
                 }
+            } else {
+                responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
             }
             
             break;
