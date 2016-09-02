@@ -1266,10 +1266,14 @@
         
         NSString *uid = filter[@"id"];
         NSString *url = [NSString stringWithFormat:kUrlSearchesUpdate, (long)uid.integerValue];
+        [filter removeObjectForKey:@"title"];
         [self HTTP_PUT_BODY:[self url:url] parameters:filter success:^(id object) {
             
-            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
-            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            //data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            //data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            
+            data[SEARCH_RESULT_PROJECT_FILTER] = (id)[object mutableCopy];
+            
             success(data);
             
         } failure:^(id object) {
@@ -1280,8 +1284,10 @@
         
         [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
             
-            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
-            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            //data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            //data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            data[SEARCH_RESULT_PROJECT_FILTER] = (id)[object mutableCopy];
+            
             success(data);
             
         } failure:^(id object) {
@@ -1299,10 +1305,15 @@
         
         NSString *uid = filter[@"id"];
         NSString *url = [NSString stringWithFormat:kUrlSearchesUpdate, (long)uid.integerValue];
+        [filter removeObjectForKey:@"title"];
+        
         [self HTTP_PUT_BODY:[self url:url] parameters:filter success:^(id object) {
             
-            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
-            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            //data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            //data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+           
+            data[SEARCH_RESULT_COMPANY_FILTER] = (id)[object mutableCopy];
+
             success(data);
             
         } failure:^(id object) {
@@ -1313,8 +1324,11 @@
     
         [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
             
-            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
-            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            //data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            //data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            data[SEARCH_RESULT_COMPANY_FILTER] = (id)[object mutableCopy];
+
+            
             success(data);
             
         } failure:^(id object) {
