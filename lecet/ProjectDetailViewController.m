@@ -504,8 +504,20 @@ typedef enum {
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
-    //Project Detail Share
-    [[DataManager sharedManager] featureNotAvailable];
+
+    NSString *url = [[DataManager sharedManager] url:[NSString stringWithFormat:kUrlProjectDetailShare, (long)recordId.integerValue]];
+    
+    
+    if (indexPath.row == 0) {
+        NSString *html = [NSString stringWithFormat:@"<HTML><BODY>DODGE NUMBER :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", [_fieldProjectId getLine], url];
+        [[DataManager sharedManager] sendEmail:html];
+        
+    } else {
+        
+        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_PROJECT"), [_fieldProjectId getLine]];
+        [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
+        
+    }
 }
 
 - (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {

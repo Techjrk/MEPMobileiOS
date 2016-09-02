@@ -452,7 +452,20 @@ typedef enum {
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
-    [[DataManager sharedManager] featureNotAvailable];
+
+    NSString *url = [[DataManager sharedManager] url:[NSString stringWithFormat:kUrlCompanyDetailShare, (long)companyRecordId.integerValue]];
+
+    if (indexPath == 0) {
+        
+        NSString *html = [NSString stringWithFormat:@"<HTML><BODY>COMPANY NAME :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", companyName, url];
+        [[DataManager sharedManager] sendEmail:html];
+
+    } else {
+        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_COMPANY"), companyName];
+        [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
+
+    }
+    
     [_fieldCompanyState clearSelection];
 }
 

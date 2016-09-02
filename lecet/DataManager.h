@@ -10,7 +10,7 @@
 
 #import "LocationManager.h"
 
-#define kProduction                         0
+#define kProduction                         1
 
 #if kProduction
 #define kHost                               @"https://mepmobile.lecet.org/"
@@ -23,6 +23,8 @@
 #define kKeychainUserId                 @"userId"
 #define kKeychainTouchIDToken           @"kKeychainTouchIDToken"
 #define kKeychainEmail                  @"kKeychainEmail"
+#define kUrlProjectDetailShare          @"#/project/%li"
+#define kUrlCompanyDetailShare          @"#/company/%li"
 
 @interface DataManager : BaseManager
 //PROPERTIES
@@ -99,6 +101,7 @@
 - (BOOL)isNotificationEnabled;
 - (void)sendEmail:(NSString*)textEmail;
 - (void)copyTextToPasteBoard:(NSString*)text withMessage:(NSString*)message;
+- (NSString*)url:(NSString*)url;
 
 //SaveSearches
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure;
