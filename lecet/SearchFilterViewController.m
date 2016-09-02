@@ -45,6 +45,7 @@
     ListViewItemArray *listItemsJurisdictions;
     ListViewItemArray *listItemsProjectStageId;
     ListViewItemArray *listItemsProjectTypeId;
+    NSDictionary *dataSelected;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeader;
 @property (weak, nonatomic) IBOutlet UIView *markerView;
@@ -117,7 +118,6 @@
     UIButton *button = sender;
 
     _constraintMarkerLeading.constant = button.frame.origin.x;
-    
     
     [UIView animateWithDuration:0.25 animations:^{
     
@@ -569,6 +569,10 @@
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
     controller.filterSelectionViewControllerDelegate = self;
+    
+    NSString *ownerName = _companyFilter.hidden?@"Project":@"Company";
+    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"updatedWithin"]];
+    [controller setDataBeenSelected:dict];
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
@@ -588,6 +592,11 @@
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
     controller.filterSelectionViewControllerDelegate = self;
+    
+    NSString *ownerName = _companyFilter.hidden?@"Project":@"Company";
+    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"biddingWithin"]];
+    [controller setDataBeenSelected:dict];
+    
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
@@ -694,9 +703,14 @@
 - (void)tappedApplyButton:(id)items {
     
     NSDictionary *dict = items;
+    NSString *fieldName = [self dataSelectFieldName:selectedModel];
+    
     if (_companyFilter.hidden) {
+        
+        dataSelected = @{@"Project":@{fieldName:items}};
         [_projectFilter setFilterModelInfo:selectedModel value:dict];
     } else {
+        dataSelected = @{@"Company":@{fieldName:items}};
         [_companyFilter setFilterModelInfo:selectedModel value:dict];
     }
 }
@@ -727,6 +741,43 @@
         [_companyFilter setFilterModelInfo:selectedModel value:titles];
         
     }
+}
+
+- (NSString *)dataSelectFieldName:(FilterModel)filterModel{
+    NSString *title;
+    
+    switch (filterModel) {
+        
+        case FilterModelUpdated:{
+            
+            title = @"updatedWithin";
+            break;
+        }
+        
+        case FilterModelBidding:{
+            
+            title = @"biddingWithin";
+            break;
+        }
+        case FilterModelBH:{
+            
+            title = @"B/H";
+            break;
+        }
+        case FilterModelOwner:{
+            
+           title = @"ownerType";
+            break;
+        }
+        case FilterModelWork:{
+            
+            title = @"workType";
+            break;
+        }
+            
+    }
+    
+    return title;
 }
 
 @end

@@ -27,6 +27,7 @@
     _navView.profileNavViewDelegate = self;
     _projectFilterSlectionViewList.projectFilterSelectionViewListDelegate = self;
     
+    _projectFilterSlectionViewList.dataSelected = _dataBeenSelected;
     [_projectFilterSlectionViewList setInfo:_dataInfo];
     
     [_navView setNavTitleLabel:_navTitle];

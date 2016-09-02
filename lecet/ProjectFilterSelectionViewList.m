@@ -34,9 +34,16 @@
 
 - (void)setInfo:(NSArray *)item {
     
+    NSString *title = [DerivedNSManagedObject objectOrNil:_dataSelected[@"TITLE"]];
     [item enumerateObjectsUsingBlock:^(id obj,NSUInteger index, BOOL *stop){
         NSMutableDictionary *dict = [obj mutableCopy];
-        [dict setValue:UnSelectedFlag forKey:FLAGNAME];
+        
+        if ([dict[PROJECT_SELECTION_TITLE] isEqualToString:title]) {
+            [dict setValue:SelectedFlag forKey:FLAGNAME];
+        } else {
+            [dict setValue:UnSelectedFlag forKey:FLAGNAME];
+        }
+        
         [collectionDataItems addObject:dict];
     }];
     
