@@ -571,6 +571,7 @@ typedef enum : NSUInteger {
         showResult = YES;
         NSMutableDictionary *filter = [items[indexPath.row] mutableCopy];
         saveSearchSelectedItem = @{@"ProjectItem":filter};
+        _labeSearch.text = filter[@"query"];
         [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
@@ -841,10 +842,10 @@ typedef enum : NSUInteger {
 
 #pragma mark - SaveSearches Request
 
-- (void)saveSearchForProject:(NSString*)searchString filter:(NSDictionary*)filter{
+- (void)saveSearchForProject:(NSString*)searchString filter:(NSDictionary*)filter title:(NSString *)titleString{
     
     NSDictionary *dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"ProjectItem"]];
-    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:_labeSearch.text;
+    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:titleString;
     NSMutableDictionary *projectFilter = [@{@"query": searchString,@"title":title,@"modelName":@"Project"} mutableCopy];
     
     NSMutableDictionary *_filter = [NSMutableDictionary new];
@@ -876,11 +877,11 @@ typedef enum : NSUInteger {
     
 }
 
-- (void)saveSearchForCompany:(NSString*)searchString filter:(NSDictionary*)filter{
+- (void)saveSearchForCompany:(NSString*)searchString filter:(NSDictionary*)filter title:(NSString *)titleString{
     
     
     NSDictionary *dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"CompanyItem"]];
-    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:_labeSearch.text;
+    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:titleString;
     NSMutableDictionary *companyFilter = [@{@"query": searchString,@"title":title,@"modelName":@"Company"} mutableCopy];
     NSMutableDictionary *_filter = [NSMutableDictionary new];
     
@@ -1058,18 +1059,12 @@ typedef enum : NSUInteger {
 - (void)tappedButtonSaveSearchesItem:(SaveSearchChangeItem)item {
     switch (item) {
         case SaveSearchChangeItemSave:{
-            NSString *stringStripSpace = [self stripSpaces:_labeSearch.text];
-            
-            
+           
             if (showResult) {
-                [self doSaveSearches];
+                [self doSaveSearches:nil];
             } else {
+                [self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")];
                 
-                if (stringStripSpace.length > 0) {
-                    [self doSaveSearches];
-                } else {
-                    [self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")];
-                }
             }
         
             break;
@@ -1103,15 +1098,15 @@ typedef enum : NSUInteger {
 
 }
 
-- (void)doSaveSearches {
+- (void)doSaveSearches:(NSString *)title {
     
         if (projectFilterGlobal.count > 0) {
-            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
+            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil title:title];
             [self showSaveSearches:YES];
         }
         
         if (companyFilterGlobal.count > 0) {
-            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil title:title];
             [self showSaveSearches:YES];
         }
     
@@ -1148,8 +1143,8 @@ typedef enum : NSUInteger {
     
     okAlrtAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_OK") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-            _labeSearch.text = [[alert textFields][0] text];
-            [self doSaveSearches];
+     
+        [self doSaveSearches:[[alert textFields][0] text]];
 
     }];
     
