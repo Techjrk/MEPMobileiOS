@@ -29,19 +29,30 @@
 
     NSString *isLoginPersisted = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
     if (isLoginPersisted != nil & isLoginPersisted.length>0) {
+
         isLogin = YES;
-        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(login) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(autoLogin) userInfo:nil repeats:NO];
+        
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUnAuthorized:) name:NOTIFICATION_UNAUTHORIZED object:nil];
+}
+
+- (void)autoLogin {
+    [self login];
 }
 
 - (void)presentLogin {
 
     if (!isLogin) {
         isLogin = YES;
-        [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
+        if (![[DataManager sharedManager] shouldLoginUsingTouchId]) {
+            [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
+        } else {
+            [self login];
+        }
     }
+
 
 }
 
@@ -74,23 +85,45 @@
     [self presentViewController:controller animated:NO completion:nil];
 }
 
-- (void)login {
-    
+- (void)showDashboard {
     NSString *dateString = [DerivedNSManagedObject shortDateStringFromDate:[NSDate date]];
     NSDate *currentDate = [DerivedNSManagedObject dateFromShortDateString:dateString];
     
     [[DataManager sharedManager] hiddentProjects:^(id object) {
-
+        
         [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
             DashboardViewController *controller = [DashboardViewController new];
             controller.dashboardViewControllerDelegate = self;
             [self.navigationController pushViewController:controller animated:YES];
         } failure:^(id object) {
         }];
-
+        
     } failure:^(id object) {
         
     }];
+
+}
+
+- (void)login {
+    
+     if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {
+     
+         [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
+             [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
+                 [self showDashboard];
+             } failure:^(id object) {
+                 [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
+                 
+             }];
+         
+         } error:^{
+             [self showLogin];
+         } viewController:self];
+     
+     } else {
+         [self showDashboard];
+     }
+
 
 }
 

@@ -138,6 +138,14 @@
 - (void)userLogin:(NSString *)email password:(NSString *)password success:(APIBlock)success failure:(APIBlock)failure {
     
     [self HTTP_POST:[self url:kUrlLogin] parameters:@{@"email":email, @"password":password} success:^(id object) {
+
+        NSString *token = object[@"id"];
+        NSNumber *userId = object[@"userId"];
+        
+        [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
+        
+        [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
+
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -803,7 +811,7 @@
     NSString *url = [self url:[NSString stringWithFormat:kUrlFingerPrint,(long)userId.integerValue]];
 
     NSString *hash = encryptStringUsingPassword(email, kPasswordHash);
-    [self HTTP_PUT_BODY:url parameters:@{@"fingerprintHash":hash} success:^(id object) {\
+    [self HTTP_PUT_BODY:url parameters:@{@"fingerprintHash":hash} success:^(id object) {
         
         [self storeKeyChainValue:kKeychainTouchIDToken password:hash serviceName:kKeychainServiceName];
         
@@ -1240,7 +1248,18 @@
     [self promptMessage:message];
 }
 
-#pragma mark - SaveSearches Request 
+- (BOOL)shouldLoginUsingTouchId {
+    NSString *hash = [[DataManager sharedManager] getKeyChainValue:kKeychainTouchIDToken serviceName:kKeychainServiceName];
+    
+    if (hash == nil) {
+        hash = @"";
+    }
+    NSString *str = [[TouchIDManager sharedTouchIDManager] canAuthenticate];
+
+    return ((str.length == 0) & (hash.length > 0 ));
+}
+
+#pragma mark - SaveSearches Request
 
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
     

@@ -102,6 +102,7 @@
 - (void)sendEmail:(NSString*)textEmail;
 - (void)copyTextToPasteBoard:(NSString*)text withMessage:(NSString*)message;
 - (NSString*)url:(NSString*)url;
+- (BOOL)shouldLoginUsingTouchId;
 
 //SaveSearches
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure;

@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 
 #import "CustomTextField.h"
-#import "TouchIDManager.h"
 
 #define LOGIN_BUTTON_FONT                   fontNameWithSize(FONT_NAME_LATO_BOLD, 12.0)
 #define LOGIN_BUTTON_BG_COLOR               RGB(8, 73, 124)
@@ -55,6 +54,7 @@
     _scrollView.alpha = 0;
     
     _constraintTopSpace.constant = kDeviceHeight * 0.3;
+    _buttonTouchId.hidden = YES;
 
     [_textFieldEmail setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_EMAIL")];
     [_textFieldPassword setPlaceHolder:NSLocalizedLanguage(@"LOGIN_PLACEHOLDER_PASSWORD")];
@@ -88,6 +88,8 @@
 
     }
     
+    
+    
 }
 
 - (void)addBlurEffect:(UIView*)view {
@@ -113,12 +115,6 @@
 }
 
 - (void)processLogin:(NSDictionary*)object {
-    NSString *token = object[@"id"];
-    NSNumber *userId = object[@"userId"];
-    
-    [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:token serviceName:kKeychainServiceName];
-    
-    [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self.loginDelegate login];
@@ -152,42 +148,33 @@
 }
 
 - (IBAction)tappedTouchId:(id)sender {
-    
-    
+    [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
+        [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
+            [self processLogin:object];
+        } failure:^(id object) {
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
+            
+        }];
+    } error:^{
+        
+    } viewController:self];
+
+/*
      NSString *str = [[TouchIDManager sharedTouchIDManager] canAuthenticate];
      
      if (str.length==0) {
-         [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
-             [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
-                 [self processLogin:object];
-             } failure:^(id object) {
-                 [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
-                 
-             }];
-         } error:^{
-             
-         } viewController:self];
      } else {
          [[DataManager sharedManager] promptMessage:str];
      }
     
-
+*/
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSString *hash = [[DataManager sharedManager] getKeyChainValue:kKeychainTouchIDToken serviceName:kKeychainServiceName];
-    
-    
-    if (hash == nil) {
-        _buttonTouchId.hidden = YES;
-        _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
-    } else {
-        _buttonTouchId.hidden = NO;
-        _constraintContainerHeight.constant = _buttonTouchId.frame.size.height + _buttonTouchId.frame.origin.y;
-        
-    }
+    _buttonTouchId.hidden = YES;
+    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
     
     [UIView animateWithDuration:0.5 animations:^{
         _blurView.alpha = 1;
@@ -198,17 +185,12 @@
                 _scrollView.alpha = 1;
                 _constraintTopSpace.constant = 0;
                 
-                if (hash == nil) {
-                    _buttonTouchId.hidden = YES;
-                    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
-                } else {
-                    _buttonTouchId.hidden = NO;
-                    _constraintContainerHeight.constant = _buttonTouchId.frame.size.height + _buttonTouchId.frame.origin.y;
-                    
-                }
+                _buttonTouchId.hidden = YES;
+                _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
 
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
+                
             }];
         }
     }];

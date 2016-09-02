@@ -17,4 +17,6 @@
 #import "Utilities.h"
 #import "DerivedNSManagedObject.h"
 #import "GoogleAnalytics.h"
+#import "TouchIDManager.h"
+
 #endif /* PrefixHeader_pch */
