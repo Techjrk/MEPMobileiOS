@@ -76,6 +76,7 @@
 #define kNotificationKey                    @"kNotificationKey"
 
 #define kUrlSearches                        @"Searches"
+#define kUrlSearchesUpdate                  @"Searches/%li"
 #define kURLChangePassword                  @"LecetUsers/%li/changePassword"
 
 @interface DataManager()<MFMailComposeViewControllerDelegate>
@@ -1242,30 +1243,68 @@
 
 #pragma mark - SaveSearches Request 
 
-- (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
-    
-    [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
+- (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data updateOldData:(BOOL)update success:(APIBlock)success failure:(APIBlock)failure {
+
+    if (update) {
         
-        data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
-        data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
-        success(data);
-    } failure:^(id object) {
-        failure(object);
-    } authenticated:YES];
+        NSString *uid = filter[@"id"];
+        NSString *url = [NSString stringWithFormat:kUrlSearchesUpdate, (long)uid.integerValue];
+        [self HTTP_PUT_BODY:[self url:url] parameters:filter success:^(id object) {
+            
+            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            success(data);
+            
+        } failure:^(id object) {
+            failure(object);
+        } authenticated:YES];
+        
+    } else {
+        
+        [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
+            
+            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            success(data);
+            
+        } failure:^(id object) {
+            failure(object);
+        } authenticated:YES];
+    }
+    
+    
     
 }
 
-- (void)companySaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
+- (void)companySaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data updateOldData:(BOOL)update success:(APIBlock)success failure:(APIBlock)failure {
     
-    [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
+    if (update) {
         
-        data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
-        data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+        NSString *uid = filter[@"id"];
+        NSString *url = [NSString stringWithFormat:kUrlSearchesUpdate, (long)uid.integerValue];
+        [self HTTP_PUT_BODY:[self url:url] parameters:filter success:^(id object) {
+            
+            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            success(data);
+            
+        } failure:^(id object) {
+            failure(object);
+        } authenticated:YES];
         
-        success(data);
-    } failure:^(id object) {
-        failure(object);
-    } authenticated:YES];
+    } else {
+    
+        [self HTTP_POST_BODY:[self url:kUrlSearches] parameters:filter success:^(id object) {
+            
+            data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+            data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+            success(data);
+            
+        } failure:^(id object) {
+            failure(object);
+        } authenticated:YES];
+        
+    }
     
 }
 

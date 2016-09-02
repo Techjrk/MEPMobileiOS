@@ -54,6 +54,7 @@ typedef enum : NSUInteger {
     NSDictionary *companyFilterGlobal;
     UIAlertAction *okAlrtAction;
     
+    NSDictionary *saveSearchSelectedItem;
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
@@ -195,6 +196,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)tappedButtonBack:(id)sender {
     [self showSaveSearches:NO];
+    saveSearchSelectedItem = nil;
     if (showResult) {
         showResult = NO;
         [_collectionView reloadData];
@@ -568,6 +570,7 @@ typedef enum : NSUInteger {
         searchMode = YES;
         showResult = YES;
         NSMutableDictionary *filter = [items[indexPath.row] mutableCopy];
+        saveSearchSelectedItem = @{@"ProjectItem":filter};
         [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
         [self searchForCompany:filter[@"query"] filter:filter];
@@ -579,6 +582,7 @@ typedef enum : NSUInteger {
         searchMode = YES;
         showResult = YES;
         NSMutableDictionary *filter = items[indexPath.row];
+        saveSearchSelectedItem = @{@"CompanyItem":filter};
         _labeSearch.text = filter[@"query"];
         [[GAManager sharedManager] trackSaveSearchBar];
         [self searchForProject:filter[@"query"] filter:filter];
@@ -838,7 +842,10 @@ typedef enum : NSUInteger {
 #pragma mark - SaveSearches Request
 
 - (void)saveSearchForProject:(NSString*)searchString filter:(NSDictionary*)filter{
-    NSMutableDictionary *projectFilter = [@{@"query": searchString,@"title":_labeSearch.text,@"modelName":@"Project"} mutableCopy];
+    
+    NSDictionary *dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"ProjectItem"]];
+    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:_labeSearch.text;
+    NSMutableDictionary *projectFilter = [@{@"query": searchString,@"title":title,@"modelName":@"Project"} mutableCopy];
     
     NSMutableDictionary *_filter = [NSMutableDictionary new];
     if (filter) {
@@ -855,9 +862,11 @@ typedef enum : NSUInteger {
         //_filter[@"searchFilter"] = @"{}";
     }
     
+    
+    showResult?[projectFilter setValue:dict[@"id"] forKey:@"id"]:nil;
     projectFilter[@"filter"] = _filter;
     
-    [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems success:^(id object) {
+    [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems updateOldData:showResult success:^(id object) {
         
         [_collectionView reloadData];
         
@@ -869,7 +878,10 @@ typedef enum : NSUInteger {
 
 - (void)saveSearchForCompany:(NSString*)searchString filter:(NSDictionary*)filter{
     
-    NSMutableDictionary *companyFilter = [@{@"query": searchString,@"title":searchString,@"modelName":@"Company"} mutableCopy];
+    
+    NSDictionary *dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"CompanyItem"]];
+    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:_labeSearch.text;
+    NSMutableDictionary *companyFilter = [@{@"query": searchString,@"title":title,@"modelName":@"Company"} mutableCopy];
     NSMutableDictionary *_filter = [NSMutableDictionary new];
     
     if (filter) {
@@ -885,9 +897,10 @@ typedef enum : NSUInteger {
         //_filter[@"searchFilter"] = @"{}";
     }
     
+    showResult?[companyFilter setValue:dict[@"id"] forKey:@"id"]:nil;
     [companyFilter addEntriesFromDictionary:@{@"filter":_filter}];
     
-    [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems success:^(id object) {
+    [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems updateOldData:showResult success:^(id object) {
         
         [_collectionView reloadData];
     } failure:^(id object) {
@@ -1047,11 +1060,18 @@ typedef enum : NSUInteger {
         case SaveSearchChangeItemSave:{
             NSString *stringStripSpace = [self stripSpaces:_labeSearch.text];
             
-            if (stringStripSpace.length > 0) {
+            
+            if (showResult) {
                 [self doSaveSearches];
             } else {
-                [self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")];
+                
+                if (stringStripSpace.length > 0) {
+                    [self doSaveSearches];
+                } else {
+                    [self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")];
+                }
             }
+        
             break;
         }
         case SaveSearchChangeItemCancel:{
@@ -1084,20 +1104,22 @@ typedef enum : NSUInteger {
 }
 
 - (void)doSaveSearches {
-
-    if (projectFilterGlobal.count > 0) {
-        [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
-        [self showSaveSearches:YES];
-    }
     
-    if (companyFilterGlobal.count > 0) {
-        [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
-        [self showSaveSearches:YES];
-    }
+        if (projectFilterGlobal.count > 0) {
+            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
+            [self showSaveSearches:YES];
+        }
+        
+        if (companyFilterGlobal.count > 0) {
+            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+            [self showSaveSearches:YES];
+        }
     
     [self showSaveSearches:NO];
 
 }
+
+
 
 #pragma mark - MISC Method
 
