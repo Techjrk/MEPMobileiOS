@@ -96,6 +96,7 @@ typedef enum : NSUInteger {
     [button setImage:[UIImage imageNamed:@"icon_filter_apply"] forState:UIControlStateSelected];
     button.showsTouchWhenHighlighted = YES;
     [button addTarget:self action:@selector(tappedButtonFilter:) forControlEvents:UIControlEventTouchUpInside];
+    [button setEnabled:NO];
     
     
     [_clearButton addTarget:self action:@selector(clearText) forControlEvents:UIControlEventTouchUpInside];
@@ -900,8 +901,10 @@ typedef enum : NSUInteger {
 
 - (void) textFieldText:(id)notification {
 
-    if (_labeSearch.text.length>0) {
-        
+    NSString *stringStripSpace = [_labeSearch.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    if (stringStripSpace.length>0) {
+        [button setEnabled:YES];
         if (!searchMode) {
             searchMode = YES;
             [[GAManager sharedManager] trackSearchBar];
@@ -917,7 +920,7 @@ typedef enum : NSUInteger {
     } else {
         searchMode = NO;
         showResult = NO;
-        
+        [button setEnabled:NO];
         [_collectionView reloadData];
     }
 }
@@ -1033,10 +1036,12 @@ typedef enum : NSUInteger {
 }
 
 - (void)clearText {
+    
     _labeSearch.text = @"";
     searchMode = NO;
     showResult = NO;
     [_collectionView reloadData];
+    [button setEnabled:NO];
     [_clearButton setHidden:YES];
    
 }
