@@ -1260,8 +1260,6 @@
     return ((str.length == 0) & (hash.length > 0 ));
 }
 
-#pragma mark - SaveSearches Request
-
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data updateOldData:(BOOL)update success:(APIBlock)success failure:(APIBlock)failure {
 
     if (update) {
