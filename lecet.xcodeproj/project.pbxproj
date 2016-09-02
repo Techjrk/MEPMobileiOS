@@ -222,6 +222,7 @@
 		B73EFB0C1D14548100C6B3B2 /* ProjectTrackItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB0B1D14548100C6B3B2 /* ProjectTrackItemView.xib */; };
 		B73EFB101D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */; };
 		B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */; };
+		B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74FDB601D796F45003A1AFD /* MessageUI.framework */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -727,6 +728,7 @@
 		B73EFB0D1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTrackItemCollectionViewCell.h; sourceTree = "<group>"; };
 		B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTrackItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTrackItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B74FDB601D796F45003A1AFD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1016,6 +1018,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
 				B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */,
 				B725DACC1D756C5B00B6CCC4 /* libsqlite3.tbd in Frameworks */,
 				B725DACA1D756C3200B6CCC4 /* SystemConfiguration.framework in Frameworks */,
@@ -1736,6 +1739,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
 				B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */,
 				B725DACD1D756C6400B6CCC4 /* libz.tbd */,
 				B725DACB1D756C5B00B6CCC4 /* libsqlite3.tbd */,

@@ -12,4 +12,6 @@
 @interface CustomEntryField : BaseViewClass
 - (void)setTitle:(NSString*)title line1Text:(NSString*)line1Text line2Text:(NSString*)line2Text;
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint;
+- (NSString*)getLine;
+- (NSArray*)getLines;
 @end

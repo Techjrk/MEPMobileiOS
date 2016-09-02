@@ -62,6 +62,20 @@
     heightConstraint = constraint;
 }
 
+- (NSString *)getLine {
+
+    return _labelLine1.text;
+}
+
+- (NSArray *)getLines {
+    
+    if (_labelLine2.text == nil) {
+        return @[_labelLine1.text];
+    }
+    
+    return @[_labelLine1.text, _labelLine2.text];
+}
+
 - (void)layoutSubviews {
     UILabel *label = _labelLine2.text == nil | _labelLine2.text.length == 0? _labelLine1:_labelLine2;
     [label sizeToFit];

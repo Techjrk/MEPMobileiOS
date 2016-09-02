@@ -8,6 +8,7 @@
 
 #import "DataManager.h"
 
+#import <MessageUI/MessageUI.h>
 #import "DB_BidSoon.h"
 #import "DB_BidRecent.h"
 
@@ -77,7 +78,7 @@
 #define kUrlSearches                        @"Searches"
 #define kURLChangePassword                  @"LecetUsers/%li/changePassword"
 
-@interface DataManager()
+@interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
 @implementation DataManager
 @synthesize locationManager;
@@ -1198,7 +1199,40 @@
 
 - (void)sendEmail:(NSString*)textEmail {
     
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        mail.mailComposeDelegate = self;
+        [mail setMessageBody:textEmail isHTML:YES];
+        [mail setToRecipients:@[]];
+        
+        [[self getActiveViewController] presentViewController:mail animated:YES completion:NULL];
+    } else {
+        [self promptMessage:@"Email settings not configured."];
+    }
+
 }
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    NSString *message = @"";
+    switch (result) {
+        case MFMailComposeResultFailed:
+            message = @"Mail failed:  An error occurred when trying to compose this email";
+            break;
+        default:
+            message = @"An error occurred when trying to compose this email";
+            break;
+    }
+    
+    [controller dismissViewControllerAnimated:YES completion:NULL];
+    if (message.length>0) {
+        [self promptMessage:message];
+    }
+}
+
 
 - (void)copyTextToPasteBoard:(NSString*)text withMessage:(NSString *)message{
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];

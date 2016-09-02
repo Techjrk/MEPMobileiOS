@@ -428,6 +428,10 @@
                 if ([DerivedNSManagedObject objectOrNil:errorDict[@"message"]]) {
                     responseMessage = [DerivedNSManagedObject objectOrNil:errorDict[@"message"]];
                     
+                    if (responseMessage == nil) {
+                        responseMessage = @"";
+                    }
+
                     if (![[responseMessage uppercaseString] isEqualToString:@"AUTHORIZATION REQUIRED"]) {
                         disableAutoLogout = YES;
                     }
@@ -438,27 +442,25 @@
             
             break;
         }
-        case 422:{
-           
+        default: {
+            
             errorDict = [DerivedNSManagedObject objectOrNil:dict[@"error"]];
             
             if (errorDict) {
                 if ([DerivedNSManagedObject objectOrNil:errorDict[@"message"]]) {
                     responseMessage = [DerivedNSManagedObject objectOrNil:errorDict[@"message"]];
-                    
-                    if (![[responseMessage uppercaseString] containsString:@"AUTHORIZATION REQUIRED"]) {
-                        disableAutoLogout = YES;
+
+                    if (responseMessage == nil) {
+                        responseMessage = @"";
                     }
+                    
                 } else {
                     responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
                 }
             }
             
             break;
-        }
-        default: {
-            responseMessage = [NSString stringWithFormat:@"Error Code : %li\n%@", (long)errorCode, url];
-            break;
+        
         }
     }
     
