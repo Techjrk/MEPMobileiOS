@@ -397,7 +397,7 @@
 - (void)connectionError:(NSError*)error {
     
     NSHTTPURLResponse *response = [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
-    BOOL disableAutoLogout;
+    BOOL disableAutoLogout = NO;
     NSData *data = (NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
     NSString* ErrorResponse = @"";
     NSDictionary  *dict = @{};
@@ -428,7 +428,7 @@
                 if ([DerivedNSManagedObject objectOrNil:errorDict[@"message"]]) {
                     responseMessage = [DerivedNSManagedObject objectOrNil:errorDict[@"message"]];
                     
-                    if (![[responseMessage uppercaseString] containsString:@"AUTHORIZATION"]) {
+                    if (![[responseMessage uppercaseString] isEqualToString:@"AUTHORIZATION REQUIRED"]) {
                         disableAutoLogout = YES;
                     }
                 } else {
