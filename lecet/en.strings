@@ -15,6 +15,8 @@
 "BUTTON_NO"                                 =               "No";
 "COPY_TO_CLIPBOARD_PROJECT"                 =               "Web link to Project ID %@ has been copied to clipboard";
 "COPY_TO_CLIPBOARD_COMPANY"                 =               "Web link to Company ID %@ has been copied to clipboard";
+"BUTTON_OK"                                 =               "OK";
+"ALERT_TEXTFIELD_PLACEHOLDER"               =               "TITLE";
 
 //LoginViewController.xib
 "LOGIN_BUTTON_TEXT"                         =               "LOGIN";
@@ -271,6 +273,7 @@
 "SEARCH_SECTION_COMPANIES"                  =               "COMPANIES";
 "SEARCH_SECTION_CONTACTS"                   =               "CONTACTS";
 "SEARCH_SECTION_RESULT"                     =               "RESULT";
+"SEARCH_PROMPT_TITLE"                       =               "Please enter a title";
 
 //EditViewController.xib
 "COMPANY_TRACK_SELECTION_NONE"              =               "No item was selected from the company list";
