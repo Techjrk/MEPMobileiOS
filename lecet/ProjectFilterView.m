@@ -235,7 +235,7 @@
             
             NSNumber *value = (NSNumber*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
             
-            if (value.integerValue>0) {
+            if (value.integerValue!=0) {
                 
                 NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
                 
