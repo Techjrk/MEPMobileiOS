@@ -13,6 +13,8 @@
 "BUTTON_CLOSE"                              =               "Close";
 "BUTTON_YES"                                =               "Yes";
 "BUTTON_NO"                                 =               "No";
+"COPY_TO_CLIPBOARD_PROJECT"                 =               "Web link to Project ID %@ has been copied to clipboard";
+"COPY_TO_CLIPBOARD_COMPANY"                 =               "Web link to Company ID %@ has been copied to clipboard";
 
 //LoginViewController.xib
 "LOGIN_BUTTON_TEXT"                         =               "LOGIN";

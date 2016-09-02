@@ -1196,6 +1196,16 @@
     }
 }
 
+- (void)sendEmail:(NSString*)textEmail {
+    
+}
+
+- (void)copyTextToPasteBoard:(NSString*)text withMessage:(NSString *)message{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = text;
+    [self promptMessage:message];
+}
+
 #pragma mark - SaveSearches Request 
 
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {

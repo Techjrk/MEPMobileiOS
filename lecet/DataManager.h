@@ -10,7 +10,7 @@
 
 #import "LocationManager.h"
 
-#define kProduction                         1
+#define kProduction                         0
 
 #if kProduction
 #define kHost                               @"https://mepmobile.lecet.org/"
@@ -97,6 +97,8 @@
 - (void)dismissPopup;
 - (void)setNotification:(BOOL)enabled;
 - (BOOL)isNotificationEnabled;
+- (void)sendEmail:(NSString*)textEmail;
+- (void)copyTextToPasteBoard:(NSString*)text withMessage:(NSString*)message;
 
 //SaveSearches
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure;
