@@ -53,7 +53,7 @@
     if (projectNavItem == ProjectNavBackButton) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [[DataManager sharedManager] featureNotAvailable];
+        //[[DataManager sharedManager] featureNotAvailable];
     }
 }
 

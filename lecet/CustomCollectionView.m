@@ -11,6 +11,7 @@
 @interface CustomCollectionView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     BOOL isNibRegistered;
     NSLayoutConstraint *heightConstraint;
+    CGSize itemSize;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
@@ -71,7 +72,8 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [self.customCollectionViewDelegate collectionViewItemSize:self indexPath:indexPath cargo:self.cargo];
+    itemSize = [self.customCollectionViewDelegate collectionViewItemSize:self indexPath:indexPath cargo:self.cargo];
+    return itemSize;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
@@ -107,7 +109,9 @@
     [super layoutSubviews];
     
     if (heightConstraint!= nil) {
+        
         heightConstraint.constant = _collectionView.collectionViewLayout.collectionViewContentSize.height;
+        
         [_collectionView reloadData];
     }
 

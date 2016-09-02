@@ -78,7 +78,8 @@
 }
 
 - (CGFloat)viewHeight {
-    return _buttonHeader.frame.size.height + ( (isExpanded?infoDict.count:0) * cellHeight);
+    CGFloat count = infoDict.count;
+    return _buttonHeader.frame.size.height + ( (isExpanded?count:0) * cellHeight);
 }
 
 #pragma mark - CustomCollectionView Delegate

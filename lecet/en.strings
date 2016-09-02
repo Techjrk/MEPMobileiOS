@@ -231,7 +231,9 @@
 //TrackingItemCollectionConstants.xib
 "TRACK_ITEM_COUNT_SINGLE"                   =               "%li Project";
 "TRACK_ITEM_COUNT_PLURAL"                   =               "%li Projects";
-"TRACK_ITEM_COUNT"                   =               "%li Projects";
+"TRACK_ITEM_COUNT"                          =               "%li Projects";
+"TRACK_ITEM_COMPANY_COUNT_SINGLE"           =               "%li Company";
+"TRACK_ITEM_COMPANY_COUNT_PLURAL"           =               "%li Companies";
 
 //Dashboard Tracking Lists
 "PROJECT_TRACKING_LIST"                     =               "Project lists";

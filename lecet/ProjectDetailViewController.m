@@ -488,7 +488,7 @@ typedef enum {
         case ProjectDetailPopupModeTrack: {
             CGFloat defaultHeight = kDeviceHeight * 0.08;
             CGFloat cellHeight = kDeviceHeight * 0.06;
-            defaultHeight = defaultHeight+ (trackItemRecord.count*cellHeight);
+            defaultHeight = defaultHeight+ ((trackItemRecord.count<4?trackItemRecord.count:4.5)*cellHeight);
             return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
             break;
         }

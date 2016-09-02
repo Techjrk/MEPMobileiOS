@@ -1022,7 +1022,7 @@
     
     if (isExpanded) {
         CGFloat cellHeight = kDeviceHeight * 0.06;
-        defaultHeight = defaultHeight+ (item.count*cellHeight);
+        defaultHeight = defaultHeight+ ((item.count<4?item.count:4.25)*cellHeight);
     }
     
     return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);

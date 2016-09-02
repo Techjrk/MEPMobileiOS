@@ -65,7 +65,6 @@
 }
 
 - (void)saveData {
-    //[[DataManager sharedManager] featureNotAvailable];
     NSMutableDictionary *dict = [NSMutableDictionary new];
     
     [dict setValue:[_myProfileView getFirstName] forKey:@"first_name"];
