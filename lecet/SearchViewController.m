@@ -55,6 +55,7 @@ typedef enum : NSUInteger {
     UIAlertAction *okAlrtAction;
     
     NSDictionary *saveSearchSelectedItem;
+    BOOL isSuggestedListBeenTapped;
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
@@ -197,6 +198,7 @@ typedef enum : NSUInteger {
 - (IBAction)tappedButtonBack:(id)sender {
     [self showSaveSearches:NO];
     saveSearchSelectedItem = nil;
+    isSuggestedListBeenTapped = NO;
     if (showResult) {
         showResult = NO;
         [_collectionView reloadData];
@@ -492,8 +494,9 @@ typedef enum : NSUInteger {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SearchSection sectionType = (SearchSection)indexPath.section;
     [self showSaveSearches:NO];
+    
     if (sectionType == SearchSectionSuggested) {
-       // [self showSaveSearches:YES];
+        isSuggestedListBeenTapped = YES;
         _resultIndex = [NSNumber numberWithInteger:indexPath.row];
         showResult = YES;
         [_collectionView reloadData];
@@ -566,6 +569,7 @@ typedef enum : NSUInteger {
         }
 
     } else if (sectionType == SearchSectionSavedProject) {
+        isSuggestedListBeenTapped = NO;
         NSArray *items = collectionItems[SEARCH_RESULT_SAVED_PROJECT];
         searchMode = YES;
         showResult = YES;
@@ -578,7 +582,7 @@ typedef enum : NSUInteger {
         [self searchForContact:filter[@"query"] filter:filter];
         
     } else if (sectionType == SearchSectionSavedCompany) {
-       
+        isSuggestedListBeenTapped = NO;
         NSArray *items = [collectionItems[SEARCH_RESULT_SAVED_COMPANY] mutableCopy];
         searchMode = YES;
         showResult = YES;
@@ -844,8 +848,17 @@ typedef enum : NSUInteger {
 
 - (void)saveSearchForProject:(NSString*)searchString filter:(NSDictionary*)filter title:(NSString *)titleString{
     
-    NSDictionary *dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"ProjectItem"]];
-    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:titleString;
+    NSDictionary *dict;
+    NSString *title;
+    if (isSuggestedListBeenTapped) {
+        title = titleString;
+    } else {
+        
+        dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"ProjectItem"]];
+        title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:titleString;
+        
+    }
+    
     NSMutableDictionary *projectFilter = [@{@"query": searchString,@"title":title,@"modelName":@"Project"} mutableCopy];
     
     NSMutableDictionary *_filter = [NSMutableDictionary new];
@@ -863,11 +876,11 @@ typedef enum : NSUInteger {
         //_filter[@"searchFilter"] = @"{}";
     }
     
-    
-    showResult?[projectFilter setValue:dict[@"id"] forKey:@"id"]:nil;
+    isSuggestedListBeenTapped?nil:showResult?[projectFilter setValue:dict[@"id"] forKey:@"id"]:nil;
+
     projectFilter[@"filter"] = _filter;
     
-    [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems updateOldData:showResult success:^(id object) {
+    [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems updateOldData:isSuggestedListBeenTapped?NO:showResult success:^(id object) {
         
         [_collectionView reloadData];
         
@@ -880,8 +893,17 @@ typedef enum : NSUInteger {
 - (void)saveSearchForCompany:(NSString*)searchString filter:(NSDictionary*)filter title:(NSString *)titleString{
     
     
-    NSDictionary *dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"CompanyItem"]];
-    NSString *title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:titleString;
+    NSDictionary *dict;
+    NSString *title;
+    if (isSuggestedListBeenTapped) {
+        title = titleString;
+    } else {
+        
+        dict = [DerivedNSManagedObject objectOrNil:saveSearchSelectedItem[@"CompanyItem"]];
+        title = showResult?[DerivedNSManagedObject objectOrNil:dict[@"title"]]:titleString;
+        
+    }
+
     NSMutableDictionary *companyFilter = [@{@"query": searchString,@"title":title,@"modelName":@"Company"} mutableCopy];
     NSMutableDictionary *_filter = [NSMutableDictionary new];
     
@@ -898,10 +920,10 @@ typedef enum : NSUInteger {
         //_filter[@"searchFilter"] = @"{}";
     }
     
-    showResult?[companyFilter setValue:dict[@"id"] forKey:@"id"]:nil;
+    isSuggestedListBeenTapped?nil:showResult?[companyFilter setValue:dict[@"id"] forKey:@"id"]:nil;
     [companyFilter addEntriesFromDictionary:@{@"filter":_filter}];
     
-    [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems updateOldData:showResult success:^(id object) {
+    [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems updateOldData:isSuggestedListBeenTapped?NO:showResult success:^(id object) {
         
         [_collectionView reloadData];
     } failure:^(id object) {
@@ -1059,13 +1081,16 @@ typedef enum : NSUInteger {
 - (void)tappedButtonSaveSearchesItem:(SaveSearchChangeItem)item {
     switch (item) {
         case SaveSearchChangeItemSave:{
-           
+        
+            isSuggestedListBeenTapped?[self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")]:showResult?[self doSaveSearches:nil]:[self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")];
+          /*
             if (showResult) {
                 [self doSaveSearches:nil];
             } else {
                 [self promptAlertWithTextField:NSLocalizedLanguage(@"SEARCH_PROMPT_TITLE")];
                 
             }
+           */
         
             break;
         }
