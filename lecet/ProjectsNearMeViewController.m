@@ -24,6 +24,7 @@
     BOOL isSearchLocation;
     BOOL showPrompt;
     BOOL isLocationCaptured;
+    BOOL isDoneSearching;
 }
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
@@ -38,8 +39,13 @@ float MilesToMeters(float miles) {
     return 1609.344f * miles;
 }
 
+float MetersToMiles(float meters) {
+    return 0.000621371 * meters;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isDoneSearching = NO;
     [self enableTapGesture:YES];
     
     showPrompt = YES;
@@ -109,18 +115,21 @@ float MilesToMeters(float miles) {
 - (void)NotificationGPSLocation:(NSNotification*)notification {
     if (!isLocationCaptured) {
         isLocationCaptured = YES;
-        [self loadProjects:1 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+        [self loadProjects:1 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
     }
 }
 
-- (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate {
+- (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate regionValue:(CGFloat)regionValue {
     
     if (CLLocationCoordinate2DIsValid(coordinate)) {
         CGFloat lat = coordinate.latitude;
         CGFloat lng = coordinate.longitude;
         
+        isDoneSearching = NO;
         [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:nil success:^(id object) {
 
+            isDoneSearching = YES;
+            
             [mapItems removeAllObjects];
             [_mapView removeAnnotations:_mapView.annotations];
             
@@ -129,15 +138,22 @@ float MilesToMeters(float miles) {
                 
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
                 
-                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(distance), MilesToMeters(distance));
+                if (regionValue == 0) {
+                    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(distance), MilesToMeters(distance));
+                    [_mapView setRegion:region];
+                } else {
+                    [_mapView setRegion:self.mapView.region];
+                    
+                }
                 
-                [_mapView setRegion:region];
                 
                 [mapItems addObjectsFromArray:result];
                 [self addItemsToMap];
             } else {
+                
+                isDoneSearching = YES;
                 if (distance < 500) {
-                    [self loadProjects:distance + (distance==5?95:100) coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate];
+                    [self loadProjects:distance + (distance==5?95:100) coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:regionValue];
                 } else {
                     if (showPrompt) {
                         if (isSearchLocation) {
@@ -149,9 +165,10 @@ float MilesToMeters(float miles) {
                 }
             }
         } failure:^(id object) {
-            
+            isDoneSearching = YES;
         }];
     } else {
+        isDoneSearching = YES;
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
     }
 }
@@ -283,6 +300,7 @@ float MilesToMeters(float miles) {
 }
 
 - (void)searchForLocation {
+    
     NSString *location = _textFieldSearch.text;
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:location
@@ -296,7 +314,7 @@ float MilesToMeters(float miles) {
                          region.span.longitudeDelta /= 8.0;
                          region.span.latitudeDelta /= 8.0;
                          
-                         [self loadProjects:1 coordinate:region.center];
+                         [self loadProjects:1 coordinate:region.center regionValue:0];
                          
                      } else if (error != nil) {
                          BOOL connected = [[BaseManager sharedManager] connected];
@@ -329,5 +347,51 @@ float MilesToMeters(float miles) {
     
 }
 
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    
+    if (isDoneSearching) {
 
+        if (!animated) {
+            double lat = mapView.centerCoordinate.latitude;
+            double lng = mapView.centerCoordinate.longitude;
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+            
+            CGFloat miles = MetersToMiles([self getRadius]);
+            if (miles<1) {
+                miles = 2;
+            } else {
+                miles = round(miles);
+            }
+            [self loadProjects:miles coordinate:coordinate regionValue:miles];
+        }
+        
+    }
+    
+}
+
+- (CLLocationDistance)getRadius
+{
+    CLLocationCoordinate2D centerCoor = [self getCenterCoordinate];
+   
+    CLLocation *centerLocation = [[CLLocation alloc] initWithLatitude:centerCoor.latitude longitude:centerCoor.longitude];
+    
+    CLLocationCoordinate2D topCenterCoor = [self getTopCenterCoordinate];
+    CLLocation *topCenterLocation = [[CLLocation alloc] initWithLatitude:topCenterCoor.latitude longitude:topCenterCoor.longitude];
+    
+    CLLocationDistance radius = [centerLocation distanceFromLocation:topCenterLocation];
+    
+    return radius;
+}
+
+- (CLLocationCoordinate2D)getCenterCoordinate
+{
+    CLLocationCoordinate2D centerCoor = [self.mapView centerCoordinate];
+    return centerCoor;
+}
+
+- (CLLocationCoordinate2D)getTopCenterCoordinate
+{
+    CLLocationCoordinate2D topCenterCoor = [self.mapView convertPoint:CGPointMake(self.mapView.frame.size.width / 2.0f, 0) toCoordinateFromView:self.mapView];
+    return topCenterCoor;
+}
 @end
