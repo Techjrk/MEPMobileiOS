@@ -10,7 +10,7 @@
 
 #import "LocationManager.h"
 
-#define kProduction                         1
+#define kProduction                         0
 
 #if kProduction
 #define kHost                               @"https://mepmobile.lecet.org/"
@@ -22,6 +22,7 @@
 #define kKeychainAccessToken            @"access_token"
 #define kKeychainUserId                 @"userId"
 #define kKeychainTouchIDToken           @"kKeychainTouchIDToken"
+#define kKeychainTouchIDExpiration      @"kKeychainTouchIDExpiration"
 #define kKeychainEmail                  @"kKeychainEmail"
 #define kUrlProjectDetailShare          @"#/project/%li"
 #define kUrlCompanyDetailShare          @"#/company/%li"
