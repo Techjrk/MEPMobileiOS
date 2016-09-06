@@ -28,7 +28,7 @@
 "LOGIN_AUTH_ERROR_MSG"                      =               "Please verify your email and password and try again";
 
 //MenuHeaderView.xib
-"MENUHEADER_LABEL_HEADER_TEXT"              =               "BIDS";
+"MENUHEADER_LABEL_HEADER_TEXT"              =               "PROJECTS";
 "MENUHEADER_LABEL_COUNT_MADE_TEXT"          =               "PROJECTS RECENTLY BID";
 "MENUHEADER_LABEL_COUNT_SOON_TEXT"          =               "PROJECTS BIDDING SOON";
 "MENUHEADER_LABEL_COUNT_ADDED_TEXT"         =               "PROJECTS RECENTLY ADDED";

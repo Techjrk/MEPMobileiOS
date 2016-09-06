@@ -814,7 +814,11 @@
     NSString *hash = encryptStringUsingPassword(email, kPasswordHash);
     [self HTTP_PUT_BODY:url parameters:@{@"fingerprintHash":hash} success:^(id object) {
         
+        NSDate *expirationDate = dateAdd(1);
+        
         [self storeKeyChainValue:kKeychainTouchIDToken password:hash serviceName:kKeychainServiceName];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:expirationDate forKey:kKeychainTouchIDExpiration];
         
         success(object);
     } failure:^(id object) {

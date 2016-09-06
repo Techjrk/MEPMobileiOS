@@ -104,21 +104,40 @@
 
 }
 
+- (void)loginUsingTouchId {
+    [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
+        [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
+            [self showDashboard];
+        } failure:^(id object) {
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
+            
+        }];
+        
+    } error:^{
+        [self showLogin];
+    } viewController:self];
+
+}
+
 - (void)login {
     
      if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {
-     
-         [[TouchIDManager sharedTouchIDManager] authenticateWithSuccessHandler:^{
-             [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
+
+         NSDate *currentDate = [NSDate date];
+         NSDate *expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:kKeychainTouchIDExpiration];
+        
+         if (expirationDate != nil) {
+
+             NSTimeInterval interval = [currentDate timeIntervalSinceDate:expirationDate];
+             if(  interval > 0) {
+                 [self loginUsingTouchId];
+             } else {
                  [self showDashboard];
-             } failure:^(id object) {
-                 [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
-                 
-             }];
-         
-         } error:^{
-             [self showLogin];
-         } viewController:self];
+             }
+
+         } else {
+             [self loginUsingTouchId];
+         }
      
      } else {
          [self showDashboard];
