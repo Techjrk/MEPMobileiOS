@@ -791,6 +791,10 @@
             title = @"workType";
             break;
         }
+        default:{
+            break;
+        }
+            
             
     }
     
