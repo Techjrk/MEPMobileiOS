@@ -27,7 +27,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxQ-vJ-FUt">
                                 <rect key="frame" x="0.0" y="0.0" width="68" height="64"/>
                                 <connections>
-                                    <outlet property="delegate" destination="-1" id="gMG-fG-h8f"/>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="dyA-14-st8"/>
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NtM-m5-e9H">
