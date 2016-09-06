@@ -2947,7 +2947,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "58b5787f-13a5-46c8-b99c-5b26754c7e56";
+				PROVISIONING_PROFILE = "80238866-3151-4c60-82c6-d12b8db50ad0";
 			};
 			name = Debug;
 		};
@@ -2972,7 +2972,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "Lecet MEP";
-				PROVISIONING_PROFILE = "58b5787f-13a5-46c8-b99c-5b26754c7e56";
+				PROVISIONING_PROFILE = "80238866-3151-4c60-82c6-d12b8db50ad0";
 			};
 			name = Release;
 		};
