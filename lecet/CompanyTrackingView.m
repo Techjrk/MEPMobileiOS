@@ -203,7 +203,10 @@
 - (void)searchRecursiveLocationGeocode:(BOOL)failSearchZip {
     
     NSString *address;
-    NSArray *addressTwoArray = [_address2Label.text componentsSeparatedByString:@" "];
+    //NSArray *addressTwoArray = [_address2Label.text componentsSeparatedByString:@" "];
+    address = [NSString stringWithFormat:@"%@ %@",_addressLabel.text,_address2Label.text];
+    
+    /*
     NSString *zip = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:2]];
     NSString *city = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:0]];
     NSString *state = [DerivedNSManagedObject objectOrNil:[addressTwoArray objectAtIndex:1]];
@@ -217,6 +220,7 @@
             address = [addressTwoArray objectAtIndex:2];
         }
     }
+    */
     
     NSString *location = address;
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -230,11 +234,11 @@
                          
                      } else if (error != nil) {
                         
-                         [self searchRecursiveLocationGeocode:YES];
+                         //[self searchRecursiveLocationGeocode:YES];
                      }
                  }
      ];
-    
+
 }
 
 - (void)setMapInfoLatitude:(CLPlacemark *)coord {
