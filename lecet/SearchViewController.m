@@ -882,7 +882,11 @@ typedef enum : NSUInteger {
     
     [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems updateOldData:isSuggestedListBeenTapped?NO:showResult success:^(id object) {
         
-        [_collectionView reloadData];
+        [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
+            [_collectionView reloadData];
+        } failure:^(id object) {
+            
+        }];
         
     } failure:^(id object) {
     
@@ -925,7 +929,12 @@ typedef enum : NSUInteger {
     
     [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems updateOldData:isSuggestedListBeenTapped?NO:showResult success:^(id object) {
         
-        [_collectionView reloadData];
+        [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
+            [_collectionView reloadData];
+        } failure:^(id object) {
+            
+        }];
+
     } failure:^(id object) {
         
     }];
