@@ -575,11 +575,17 @@ typedef enum : NSUInteger {
         showResult = YES;
         NSMutableDictionary *filter = [items[indexPath.row] mutableCopy];
         saveSearchSelectedItem = @{@"ProjectItem":filter};
-        _labeSearch.text = filter[@"query"];
+        
+        NSString *queryString = [DerivedNSManagedObject objectOrNil:filter[@"query"]];
+        if (queryString == nil) {
+            queryString = @"";
+        }
+        
+        _labeSearch.text = queryString;
         [[GAManager sharedManager] trackSaveSearchBar];
-        [self searchForProject:filter[@"query"] filter:filter];
-        [self searchForCompany:filter[@"query"] filter:filter];
-        [self searchForContact:filter[@"query"] filter:filter];
+        [self searchForProject:queryString filter:filter];
+        [self searchForCompany:queryString filter:filter];
+        [self searchForContact:queryString filter:filter];
         
     } else if (sectionType == SearchSectionSavedCompany) {
         isSuggestedListBeenTapped = NO;
@@ -588,11 +594,17 @@ typedef enum : NSUInteger {
         showResult = YES;
         NSMutableDictionary *filter = items[indexPath.row];
         saveSearchSelectedItem = @{@"CompanyItem":filter};
-        _labeSearch.text = filter[@"query"];
+        
+        NSString *queryString = [DerivedNSManagedObject objectOrNil:filter[@"query"]];
+        if (queryString == nil) {
+            queryString = @"";
+        }
+
+        _labeSearch.text = queryString;
         [[GAManager sharedManager] trackSaveSearchBar];
-        [self searchForProject:filter[@"query"] filter:filter];
-        [self searchForCompany:filter[@"query"] filter:filter];
-        [self searchForContact:filter[@"query"] filter:filter];
+        [self searchForProject:queryString filter:filter];
+        [self searchForCompany:queryString filter:filter];
+        [self searchForContact:queryString filter:filter];
         
     }
     

@@ -49,6 +49,7 @@
         layer.endAngle = currentAngle + (360.0 * (percent/100));
         layer.layerColor = item[@"COLOR"];
         layer.focusImage = item[@"IMAGE"];
+        layer.count = item[@"COUNT"];
         
         layer.focusImageView = _selectedSegmentImageView;
         currentAngle =layer.endAngle;
@@ -66,8 +67,8 @@
     [pieItems removeAllObjects];
 }
 
-- (void)addPieItem:(NSString *)tagItem percent:(NSNumber *)percent legendColor:(UIColor *)legendColor  focusImage:(UIImage*)focusImage {
-    pieItems[tagItem] = @{@"PERCENT":percent, @"COLOR":legendColor,@"IMAGE":[focusImage copy]};
+- (void)addPieItem:(NSString *)tagItem percent:(NSNumber *)percent legendColor:(UIColor *)legendColor  focusImage:(UIImage*)focusImage count:(NSNumber*)count{
+    pieItems[tagItem] = @{@"PERCENT":percent, @"COLOR":legendColor,@"IMAGE":[focusImage copy], @"COUNT":count};
 }
 
 

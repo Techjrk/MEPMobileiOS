@@ -24,6 +24,7 @@
 @synthesize focusImageView;
 @synthesize tagName;
 @synthesize customPieChartLayerDelegate;
+@synthesize count;
 
 #define kHAS_FOCUS_SEGMENT @"kHAS_FOCUS_SEGMENT"
 
@@ -68,7 +69,7 @@
 
     CGContextAddPath(context, strokedArc);
     
-    //CGContextSetFlatness(context, 1.0);
+    //CGContextSetFlatness(context, 0.5);
     CGContextSetFillColorWithColor(context, self.layerColor.CGColor);
     CGContextSetStrokeColorWithColor(context, self.layerColor.CGColor);
     CGContextDrawPath(context, kCGPathFillStroke);
@@ -79,7 +80,18 @@
     self.piePath = arc;
     
     CGPathRelease(strokedArc);
- 
+/*
+    CGFloat angle = (_startAngle * 0.5);
+    CGFloat x = radius*cos(angle) + center.x;
+    CGFloat y = radius*sin(angle) + center.y;
+    
+    CGPoint point = CGPointMake(x, y)  ;
+    NSString *text = [NSString stringWithFormat:@"%li",(long)self.count.integerValue];
+    UIGraphicsPushContext(context);
+    [[UIColor redColor] set];
+    [text drawAtPoint:point withAttributes:@{}];
+     UIGraphicsPopContext();
+ */
 }
 
 - (void)layerTapped {

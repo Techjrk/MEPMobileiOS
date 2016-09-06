@@ -16,6 +16,6 @@
 @interface CustomPieChart : BaseViewClass
 @property (weak) id <CustomPieChartDelegate> customPieChartDelegate;
 - (void)clearLegends;
-- (void)addPieItem:(NSString*)tagItem percent:(NSNumber*)percent legendColor:(UIColor*)legendColor focusImage:(UIImage*)focusImage;
+- (void)addPieItem:(NSString*)tagItem percent:(NSNumber*)percent legendColor:(UIColor*)legendColor focusImage:(UIImage*)focusImage count:(NSNumber*)count;
 - (void)tappedPieSegmentByTagName:(NSString*)tagName;
 @end

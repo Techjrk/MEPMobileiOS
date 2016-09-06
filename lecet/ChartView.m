@@ -99,7 +99,7 @@
             [self enableButton:_buttonUtilities enabled:YES];
         }
         
-        [_piechart addPieItem:tag percent:percent legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] ];
+        [_piechart addPieItem:tag percent:percent legendColor:item[CHART_SEGMENT_COLOR] focusImage:item[CHART_SEGMENT_IMAGE] count:item[CHART_SEGMENT_COUNT] ];
         [_piechart setNeedsDisplay];
     }
     
