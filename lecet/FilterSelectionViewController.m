@@ -52,8 +52,14 @@
             break;
         }
         case ProfileNavItemSaveButton:{
-            [_filterSelectionViewControllerDelegate tappedApplyButton:dataSelected];
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            if (dataSelected) {
+                [_filterSelectionViewControllerDelegate tappedApplyButton:dataSelected];
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                [[DataManager sharedManager] promptMessage:@"Please select an item from the list"];
+            }
+            
             break;
         }
     }
