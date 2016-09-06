@@ -15,5 +15,6 @@
 
 @interface ValuationViewController : BaseViewController
 @property (nonatomic,assign) id <ValuationViewControllerDelegate> valuationViewControllerDelegate;
+@property (nonatomic, strong) NSDictionary *valuationValue;
 
 @end

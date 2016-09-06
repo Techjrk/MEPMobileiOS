@@ -74,6 +74,14 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+
+    if (_valuationValue) {
+        _leftTextField.text = [DerivedNSManagedObject objectOrNil:[_valuationValue[@"min"] stringValue]];
+        _rightTextField.text = [DerivedNSManagedObject objectOrNil:[_valuationValue[@"max"] stringValue]];
+    }
+}
+
 - (NSMutableAttributedString *)placeHolderForTextField {
     NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{NSFontAttributeName:TEXTFIELD_FONT, NSForegroundColorAttributeName:TEXTFIELD_FONT_COLOR}];
     
@@ -119,6 +127,7 @@
                 dict = @{@"min":min};
                 
             }
+            
             [_valuationViewControllerDelegate tappedValuationApplyButton:dict];
             [self.navigationController popViewControllerAnimated:YES];
             
