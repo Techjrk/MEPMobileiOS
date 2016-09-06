@@ -143,9 +143,15 @@
         }
         case ProfileNavItemSaveButton:{
             
-            NSDictionary *value = selectedData != nil?selectedData:nil;
-            [_workOwnerTypesViewControllerDelegate tappedApplyWorkOwnerButton:value];
-            [self.navigationController popViewControllerAnimated:YES];
+            if (selectedData) {
+                
+                NSDictionary *value = selectedData != nil?selectedData:nil;
+                [_workOwnerTypesViewControllerDelegate tappedApplyWorkOwnerButton:value];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            } else {
+                [[DataManager sharedManager] promptMessage:@"Please select an item from the list"];
+            }
             
             break;
         }

@@ -714,16 +714,22 @@
 - (void)tappedApplyButton:(id)items {
     
     NSDictionary *dict = items;
-    NSString *fieldName = [self dataSelectFieldName:selectedModel];
     
-    if (_companyFilter.hidden) {
+    if (dict) {
         
-        dataSelected = @{@"Project":@{fieldName:items}};
-        [_projectFilter setFilterModelInfo:selectedModel value:dict];
-    } else {
-        dataSelected = @{@"Company":@{fieldName:items}};
-        [_companyFilter setFilterModelInfo:selectedModel value:dict];
+        NSString *fieldName = [self dataSelectFieldName:selectedModel];
+        
+        if (_companyFilter.hidden) {
+            
+            dataSelected = @{@"Project":@{fieldName:items}};
+            [_projectFilter setFilterModelInfo:selectedModel value:dict];
+        } else {
+            dataSelected = @{@"Company":@{fieldName:items}};
+            [_companyFilter setFilterModelInfo:selectedModel value:dict];
+        }
+        
     }
+    
 }
 
 #pragma mark - Valuation Delegate
