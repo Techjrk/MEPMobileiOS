@@ -242,10 +242,20 @@ float MetersToMiles(float meters) {
 }
 
 - (void)addAnnotationCargo:(id)cargo{
-    NSDictionary *geoCode = cargo[@"geocode"];
-    
-    CGFloat lat = [geoCode[@"lat"] floatValue];
-    CGFloat lng = [geoCode[@"lng"] floatValue];
+    NSDictionary *geoCode = [DerivedNSManagedObject objectOrNil:cargo[@"geocode"]];
+
+    if (geoCode == nil) {
+        return;
+    }
+    CGFloat lat = 0;
+    CGFloat lng = 0;
+
+    if([DerivedNSManagedObject objectOrNil:geoCode[@"lat"]] != nil){
+        lat = [geoCode[@"lat"] floatValue];
+        lng = [geoCode[@"lng"] floatValue];
+    } else {
+        return;
+    }
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
     ProjectPointAnnotation *annotation = [[ProjectPointAnnotation alloc] init];
