@@ -7,6 +7,7 @@
 //
 
 #import "SearchCompanyCollectionViewCell.h"
+#import <MapKit/MapKit.h>
 
 #define LABEL_TITLE_FONT                    fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_TITLE_COLOR                   RGB(34, 34, 34)
@@ -14,10 +15,14 @@
 #define LABEL_LOCATION_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_LOCATION_COLOR                RGB(159, 164, 166)
 
-@interface SearchCompanyCollectionViewCell()
+@interface SearchCompanyCollectionViewCell()<MKMapViewDelegate>{
+    CGFloat geoCodeLat;
+    CGFloat geoCodeLng;
+}
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
 @implementation SearchCompanyCollectionViewCell
@@ -80,6 +85,70 @@
     }
     _labelLocation.text = addr;
 
+    [self searchRecursiveLocationGeocode];
+}
+
+- (void)searchRecursiveLocationGeocode {
+    
+    NSString *location = _labelLocation.text;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     
+                     if (placemarks && placemarks.count > 0) {
+                         
+                         CLPlacemark *result = [placemarks objectAtIndex:0];
+                         [self setMapInfoLatitude:result];
+                         
+                     } else if (error != nil) {
+                         
+                         //[self searchRecursiveLocationGeocode:YES];
+                     }
+                 }
+     ];
+    
+}
+
+- (void)setMapInfoLatitude:(CLPlacemark *)coord {
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(coord.location.coordinate.latitude, coord.location.coordinate.longitude);
+    
+    geoCodeLat = coord.location.coordinate.latitude;
+    geoCodeLng = coord.location.coordinate.longitude;
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+        
+    }
+    
+    return userAnnotationView;
+    
 }
 
 @end

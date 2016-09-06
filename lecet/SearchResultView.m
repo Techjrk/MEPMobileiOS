@@ -178,6 +178,7 @@
             [cellItem setTitleName:item[@"name"]];
             [cellItem setAddressTop:address1];
             [cellItem setAddressBelow:addr];
+            [cellItem searchLocationGeoCode];
 
             break;
         }

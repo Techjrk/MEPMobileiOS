@@ -313,7 +313,7 @@
                 
                 [listItems addObject:jurisdiction];
                 
-                NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"locals"]];
+                NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"localsWithNoDistrict"]];
                 
                 if (locals != nil) {
                     
@@ -799,6 +799,10 @@
             title = @"workType";
             break;
         }
+        default:{
+            break;
+        }
+            
             
     }
     
