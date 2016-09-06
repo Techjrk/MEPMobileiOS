@@ -550,6 +550,11 @@
 - (void)filterValue:(UIView*)view {
     
     ValuationViewController *controller =  [ValuationViewController new];
+    
+    NSString *ownerName = _companyFilter.hidden?@"Project":@"Company";
+    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"valuation"]];
+    
+    controller.valuationValue = dict;
     controller.valuationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     
@@ -735,11 +740,14 @@
 #pragma mark - Valuation Delegate
 
 - (void)tappedValuationApplyButton:(id)items {
+    
     if (_companyFilter.hidden) {
+        dataSelected = @{@"Project":@{@"valuation":items}};
         _projectFilter.searchFilter[@"projectValue"] = items;
         [_projectFilter setFilterModelInfo:selectedModel value:items];
         
     } else {
+        dataSelected = @{@"Company":@{@"valuation":items}};
         _companyFilter.searchFilter[@"valuation"] = items;
         [_companyFilter setFilterModelInfo:selectedModel value:items];
         

@@ -1139,8 +1139,6 @@ typedef enum : NSUInteger {
 
 }
 
-
-
 #pragma mark - MISC Method
 
 - (NSString *)stripSpaces:(NSString *)textFielsString {
