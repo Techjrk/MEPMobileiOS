@@ -22,6 +22,7 @@
 @property (weak, nonatomic) UIImageView *focusImageView;
 @property (weak, nonatomic) NSString* tagName;
 @property (weak) id <CustomPieChartLayerDelegate> customPieChartLayerDelegate;
+@property (strong, nonatomic) NSNumber *count;
 - (void)layerTapped;
 - (BOOL)segmentHasFocus;
 - (void)setSegmentFocus:(BOOL)focus hasLayerFocus:(BOOL)focusSegment;
