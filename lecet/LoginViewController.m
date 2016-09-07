@@ -83,8 +83,8 @@
         //[_textFieldEmail setText: @"brickard@liuna.org"];
         //[_textFieldPassword setText: @"H8YhofaeZ4SLKMd2ajR03vdxnkVrvOMG"];
 
-        [_textFieldEmail setText: @"amarocco@lecet.org"];
-        [_textFieldPassword setText: @"feelthepower905"];
+        //[_textFieldEmail setText: @"amarocco@lecet.org"];
+        //[_textFieldPassword setText: @"feelthepower905"];
 
     }
     
