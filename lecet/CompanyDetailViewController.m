@@ -453,7 +453,7 @@ typedef enum {
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
 
-    NSString *url = [[DataManager sharedManager] url:[NSString stringWithFormat:kUrlCompanyDetailShare, (long)companyRecordId.integerValue]];
+    NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlCompanyDetailShare, (long)companyRecordId.integerValue]];
 
     if (indexPath == 0) {
         
