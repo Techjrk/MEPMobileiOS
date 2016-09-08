@@ -129,7 +129,14 @@
          if (expirationDate != nil) {
 
              NSTimeInterval interval = [currentDate timeIntervalSinceDate:expirationDate];
-             if(  interval > 0) {
+             
+             NSString *accessToken = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
+             
+             if (accessToken == nil) {
+                 accessToken = @"";
+             }
+             
+             if( ( interval > 0) || (accessToken.length==0) ) {
                  [self loginUsingTouchId];
              } else {
                  [self showDashboard];
@@ -148,6 +155,7 @@
 
 - (void)logout {
     [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:@"" serviceName:kKeychainServiceName];
+    //[[DataManager sharedManager] storeKeyChainValue:kKeychainTouchIDToken password:@"" serviceName:kKeychainServiceName];
 
     [self.navigationController popToRootViewControllerAnimated:YES];
     isLogin = NO;
