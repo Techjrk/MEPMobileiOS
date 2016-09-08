@@ -59,6 +59,7 @@
             
         case ProfileNavItemSaveButton:
             [self saveData];
+            [self dismissedKeyboard];
             break;
     }
 
