@@ -26,6 +26,7 @@
 "LOGIN_REQUIRED_EMAIL"                      =               "User email is required";
 "LOGIN_REQUIRED_PASSWORD"                   =               "User password is required";
 "LOGIN_AUTH_ERROR_MSG"                      =               "Please verify your email and password and try again";
+"LOGIN_AUTH_ERROR_SERVER"                   =               "There was an error while connection to the server";
 
 //MenuHeaderView.xib
 "MENUHEADER_LABEL_HEADER_TEXT"              =               "PROJECTS";

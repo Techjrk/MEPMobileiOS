@@ -81,7 +81,20 @@
 - (void)setItemInfo:(id)info {
 
     DB_Project *item = info;
+ 
+    _groupDate.backgroundColor = BID_SOON_ITEMVIEW_GROUP_DATE_BG_COLOR;
+
+    NSString *unionDesignation = item.unionDesignation;
     
+    if ((unionDesignation != nil) & (unionDesignation.length>0)) {
+        
+        if ([[unionDesignation uppercaseString] isEqualToString:UNION_DESIGNATION_CODE]) {
+            
+            self.view.backgroundColor = LIUNA_ORANGE_COLOR;
+            
+        }
+    }
+
     recordId = item.recordId;
     
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.bidDate];

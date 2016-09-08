@@ -96,10 +96,15 @@
             controller.dashboardViewControllerDelegate = self;
             [self.navigationController pushViewController:controller animated:YES];
         } failure:^(id object) {
+            
+            [self promptForReloginWithMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_SERVER")];
+            
         }];
         
     } failure:^(id object) {
-        
+
+        [self promptForReloginWithMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_SERVER")];
+
     }];
 
 }
@@ -109,8 +114,9 @@
         [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
             [self showDashboard];
         } failure:^(id object) {
-            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
-            
+        
+            [self promptForReloginWithMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
+
         }];
         
     } error:^{
@@ -155,11 +161,25 @@
 
 - (void)logout {
     [[DataManager sharedManager] storeKeyChainValue:kKeychainAccessToken password:@"" serviceName:kKeychainServiceName];
-    //[[DataManager sharedManager] storeKeyChainValue:kKeychainTouchIDToken password:@"" serviceName:kKeychainServiceName];
-
+   
     [self.navigationController popToRootViewControllerAnimated:YES];
     isLogin = NO;
     [self presentLogin];
 }
 
+
+- (void)promptForReloginWithMessage:(NSString*)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                            [self login];
+                                                        }];
+    
+    [alert addAction:closeAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
 @end

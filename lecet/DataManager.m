@@ -612,7 +612,7 @@
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
     NSString *url = [self url:[NSString stringWithFormat:kUrlProjectDetail, (long)recordId.integerValue]];
-    NSString *filter = @"{\"include\":[{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},\"secondaryProjectTypes\",\"projectStage\",{\"bids\":[\"company\",\"contact\"]},{\"contacts\":[\"contactType\",\"company\"]},\"userNotes\"]}";
+    NSString *filter = @"{\"include\":[{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},\"secondaryProjectTypes\",\"projectStage\",{\"bids\":[\"company\",\"contact\"]},{\"contacts\":[\"contactType\",\"company\"]}]}";
     [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
                 
         DB_Project *item = [self saveManageObjectProject:object];

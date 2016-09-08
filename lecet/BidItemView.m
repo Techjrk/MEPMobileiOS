@@ -81,6 +81,18 @@
 - (void)setInfo:(id)info {
     DB_Bid *item = info;
     
+    self.view.backgroundColor = BID_ITEMVIEW_BG_COLOR;
+
+    NSString *unionDesignation = item.relationshipProject.unionDesignation;
+    
+    if ((unionDesignation != nil) & (unionDesignation.length>0)) {
+     
+        if ([[unionDesignation uppercaseString] isEqualToString:UNION_DESIGNATION_CODE]) {
+
+            self.view.backgroundColor = LIUNA_ORANGE_COLOR;
+            
+        }
+    }
     recordId = item.recordId;
     NSDate *date =[DerivedNSManagedObject dateFromDateAndTimeString:item.createDate];
     _labelDate.text = [DerivedNSManagedObject monthDayStringFromDate:date];

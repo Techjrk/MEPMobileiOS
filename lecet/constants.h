@@ -106,4 +106,7 @@ CG_INLINE NSString *decryptStringUsingPassword(NSString *data, NSString *passwor
 #define SEARCH_RESULT_SAVED_PROJECT              @"SEARCH_RESULT_SAVED_PROJECT"
 #define SEARCH_RESULT_SAVED_COMPANY              @"SEARCH_RESULT_SAVED_COMPANY"
 
+#define LIUNA_ORANGE_COLOR                      RGB(248, 152, 28)
+#define UNION_DESIGNATION_CODE                  @"U"
+
 #endif /* constants_h */

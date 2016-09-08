@@ -53,6 +53,19 @@
     
     recordId = item.recordId;
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    NSString *unionDesignation = item.unionDesignation;
+    
+    if ((unionDesignation != nil) & (unionDesignation.length>0)) {
+        
+        if ([[unionDesignation uppercaseString] isEqualToString:UNION_DESIGNATION_CODE]) {
+            
+            //self.view.backgroundColor = LIUNA_ORANGE_COLOR;
+            
+        }
+    }
+
+    
     _labelTitle.text = item.title;
     _labelLocation.text = [item address];
     

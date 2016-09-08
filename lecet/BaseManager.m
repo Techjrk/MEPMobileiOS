@@ -143,7 +143,9 @@
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self enableUserTouch:YES];
-            if (![NSStringFromClass([[self getActiveViewController]  class]) isEqualToString:@"LoginViewController"]) {
+            
+            NSString *controllerClass = NSStringFromClass([[self getActiveViewController] class] );
+            if ( (![controllerClass isEqualToString:@"LoginViewController"]) && (![controllerClass isEqualToString:@"LandingViewController"])) {
                 [self connectionError:error];
             }
             
