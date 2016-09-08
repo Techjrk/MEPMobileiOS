@@ -87,16 +87,53 @@
 }
 
 #pragma mark - ProjectSortViewController Delegate
+
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
+    NSArray *sorted;
+    
     if (projectSortItem == ProjectSortBidDate) {
-        
-        NSArray *bids = [bidList mutableCopy];
-        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createDate" ascending:NO];
-        NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.bidYearMonthDay" ascending:NO];
         
     }
+    if (projectSortItem == ProjectSortLastUpdated) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.lastPublishDate" ascending:NO];
+    }
+    
+    if (projectSortItem == ProjectSortDateAdded) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"createDate" ascending:NO];
+        
+    }
+    if (projectSortItem == ProjectSortHightToLow) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estLow" ascending:YES];
+    }
+    if (projectSortItem == ProjectSortLowToHigh) {
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estHigh" ascending:NO];
+    }
+    
+    bidList = [sorted mutableCopy];
+    [_projectAllBidsView setItems:bidList];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
+- (NSArray *)sortedAssociateProjectsDescriptorKey:(NSString *)keyString ascending:(BOOL)asc {
+    NSArray *bids = [bidList mutableCopy];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:keyString ascending:asc];
+    NSArray *sorted = [bids sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    return sorted;
+}
+
+- (void)selectedAssociatedProjectItem:(id)object {
+    ProjectDetailViewController *detail = [ProjectDetailViewController new];
+    detail.view.hidden = NO;
+    DB_Project *project = object;
+    [detail detailsFromProject:project];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+
+#pragma mark - Misc
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }

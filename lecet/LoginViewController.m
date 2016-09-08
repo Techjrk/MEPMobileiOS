@@ -85,8 +85,8 @@
 
         //[_textFieldEmail setText: @"amarocco@lecet.org"];
         //[_textFieldPassword setText: @"feelthepower905"];
-        [_textFieldEmail setText: @"kayle.saunar@domandtom.com"];
-        [_textFieldPassword setText: @"aaaa1234"];
+        //[_textFieldEmail setText: @"kayle.saunar@domandtom.com"];
+        //[_textFieldPassword setText: @"aaaa1234"];
 
     }
     
