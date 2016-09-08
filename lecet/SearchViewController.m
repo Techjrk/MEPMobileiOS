@@ -288,6 +288,7 @@ typedef enum : NSUInteger {
             cellItem.searchResultViewDelegate = self;
             [cellItem setCollectionItems:collectionItems tab:_resultIndex];
             [cellItem reloadData];
+
             break;
         }
             
@@ -586,6 +587,7 @@ typedef enum : NSUInteger {
         [self searchForProject:queryString filter:filter];
         [self searchForCompany:queryString filter:filter];
         [self searchForContact:queryString filter:filter];
+        _resultIndex = [NSNumber numberWithInt:0];
         
     } else if (sectionType == SearchSectionSavedCompany) {
         isSuggestedListBeenTapped = NO;
@@ -605,7 +607,8 @@ typedef enum : NSUInteger {
         [self searchForProject:queryString filter:filter];
         [self searchForCompany:queryString filter:filter];
         [self searchForContact:queryString filter:filter];
-        
+        _resultIndex = [NSNumber numberWithInt:1];
+
     }
     
 }
