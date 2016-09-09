@@ -250,6 +250,7 @@
         <attribute name="projectCategoryTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectGroupId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="projectGroupTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectNotes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectStage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="projectStageName" optional="YES" attributeType="String" syncable="YES"/>
@@ -259,6 +260,7 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statusProjDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statusText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stdIncludes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetFinishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetStartDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -277,6 +279,6 @@
         <element name="DB_CompanyContact" positionX="18" positionY="180" width="128" height="180"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="1005"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="1035"/>
     </elements>
 </model>
