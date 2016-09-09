@@ -2,7 +2,7 @@
 //  DB_Project+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 9/1/16.
+//  Created by Harry Herrys Camigla on 9/9/16.
 //  Copyright © 2016 Dom and TOm. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -74,6 +74,8 @@
 @dynamic unionDesignation;
 @dynamic zip5;
 @dynamic zipPlus4;
+@dynamic projectNotes;
+@dynamic stdIncludes;
 @dynamic relationshipBid;
 @dynamic relationshipCompany;
 @dynamic relationshipParticipants;

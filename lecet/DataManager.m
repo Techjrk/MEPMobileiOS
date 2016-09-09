@@ -250,7 +250,7 @@
     }
     
     record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
-    record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
+    //record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
     record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
     record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
     record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectTypeId"]];
@@ -266,6 +266,9 @@
     record.title = [DerivedNSManagedObject objectOrNil:project[@"title"]];
     record.zip5 = [DerivedNSManagedObject objectOrNil:project[@"zip5"]];
     record.zipPlus4 = [DerivedNSManagedObject objectOrNil:project[@"zipPlus4"]];
+    
+    record.projectNotes = [DerivedNSManagedObject objectOrNil:project[@"projectNotes"]];
+    record.stdIncludes = [DerivedNSManagedObject objectOrNil:project[@"stdIncludes"]];
     
     if (record.bidDate != nil) {
         

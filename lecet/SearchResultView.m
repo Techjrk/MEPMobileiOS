@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMakerLeading;
 - (IBAction)tappedButton:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintHeader;
 @end
 
 @implementation SearchResultView
@@ -83,10 +84,14 @@
     
 }
 
-- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab {
+- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab fromSavedSearch:(BOOL)fromSavedSearch {
     items = [collectionItems mutableCopy];
     currentTab = tab;
     _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab.integerValue;
+    
+    if (fromSavedSearch) {
+        //_contraintHeader.constant = -(self.frame.size.height * _contraintHeader.multiplier);
+    }
     [self setInfo];
     
 }
