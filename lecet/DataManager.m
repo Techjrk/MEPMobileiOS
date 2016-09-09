@@ -250,7 +250,7 @@
     }
     
     record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
-    record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
+    //record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
     record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
     record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
     record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectTypeId"]];

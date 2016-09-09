@@ -25,6 +25,7 @@
     
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"977079279ce743d6a7d25b89897dbbcc"];
     // Do some additional configuration if needed here
+    [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:YES];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator
      authenticateInstallation];
