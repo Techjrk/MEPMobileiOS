@@ -763,6 +763,7 @@
         [_projectFilter setFilterModelInfo:selectedModel value:titles];
         
     } else {
+        _companyFilter.searchFilter[key] = @{@"inq":selectedItems};
         [_companyFilter setFilterModelInfo:selectedModel value:titles];
         
     }
