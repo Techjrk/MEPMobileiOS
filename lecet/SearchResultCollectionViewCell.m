@@ -18,9 +18,9 @@
     [super awakeFromNib];
 }
 
-- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab {
+- (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab fromSavedSearch:(BOOL)fromSavedSearch {
  
-    [_cellItem setCollectionItems:collectionItems tab:tab];
+    [_cellItem setCollectionItems:collectionItems tab:tab fromSavedSearch:(BOOL)fromSavedSearch];
     
 }
 

@@ -56,6 +56,7 @@ typedef enum : NSUInteger {
     
     NSDictionary *saveSearchSelectedItem;
     BOOL isSuggestedListBeenTapped;
+    BOOL fromSavedSearch;
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
@@ -77,6 +78,7 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    fromSavedSearch = NO;
     collectionItems = [[NSMutableDictionary alloc] init];
     
     collectionItems[SEARCH_RESULT_PROJECT] = [[NSMutableDictionary alloc] init];
@@ -288,7 +290,7 @@ typedef enum : NSUInteger {
             SearchResultCollectionViewCell *cellItem = (SearchResultCollectionViewCell*)cell;
             cellItem.navigationController = self.navigationController;
             cellItem.searchResultViewDelegate = self;
-            [cellItem setCollectionItems:collectionItems tab:_resultIndex];
+            [cellItem setCollectionItems:collectionItems tab:_resultIndex fromSavedSearch:fromSavedSearch];
             [cellItem reloadData];
 
             break;
@@ -589,6 +591,7 @@ typedef enum : NSUInteger {
         [self searchForProject:queryString filter:filter];
         [self searchForCompany:queryString filter:filter];
         [self searchForContact:queryString filter:filter];
+        fromSavedSearch = YES;
         _resultIndex = [NSNumber numberWithInt:0];
         
     } else if (sectionType == SearchSectionSavedCompany) {
@@ -609,6 +612,7 @@ typedef enum : NSUInteger {
         [self searchForProject:queryString filter:filter];
         [self searchForCompany:queryString filter:filter];
         [self searchForContact:queryString filter:filter];
+        fromSavedSearch = YES;
         _resultIndex = [NSNumber numberWithInt:1];
 
     }
@@ -971,6 +975,7 @@ typedef enum : NSUInteger {
         
         [[DataManager sharedManager] cancellAllRequests];
         
+        fromSavedSearch = NO;
         [self searchForProject:_labeSearch.text filter:nil];
         [self searchForCompany:_labeSearch.text filter:nil];
         [self searchForContact:_labeSearch.text filter:nil];
