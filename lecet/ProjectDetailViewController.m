@@ -185,7 +185,26 @@ typedef enum {
     
     [_fieldProjectType setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_TYPE") line1Text:[project getProjectType] line2Text:nil];
     
-    [_notesView setNotes:project.notes];
+    NSString *notes = nil;
+    
+    if (project.projectNotes != nil) {
+        notes = project.projectNotes;
+        
+        if (project.stdIncludes != nil) {
+            notes = [notes stringByAppendingString:@"\n"];
+        }
+    }
+    
+    if (project.stdIncludes != nil) {
+        
+        if (notes == nil) {
+            notes = @"";
+        }
+        
+        notes = [notes stringByAppendingString:project.stdIncludes];
+    }
+    
+    [_notesView setNotes:notes];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
