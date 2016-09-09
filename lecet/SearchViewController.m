@@ -178,19 +178,21 @@ typedef enum : NSUInteger {
 
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
     
+    searchMode = YES;
     projectFilterGlobal = projectFilter;
     companyFilterGlobal = companyFilter;
     
     [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
     [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
     
-    
-    if (projectFilterGlobal.count > 0) {
-        [self showSaveSearches:YES];
-    }
-    
-    if (companyFilterGlobal.count > 0) {
-        [self showSaveSearches:YES];
+    if (isSuggestedListBeenTapped) {
+        if (projectFilterGlobal.count > 0) {
+            [self showSaveSearches:YES];
+        }
+        
+        if (companyFilterGlobal.count > 0) {
+            [self showSaveSearches:YES];
+        }
     }
     
 }
