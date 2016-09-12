@@ -164,6 +164,23 @@ typedef enum : NSUInteger {
     return YES;
 }
 
+- (NSDictionary *)removedUpdatedBiddingValueZeroForSearchFilter:(id)info {
+    NSMutableDictionary *tempDic = [info mutableCopy];
+    
+    BOOL biddingValZero  = [DerivedNSManagedObject objectOrNil:tempDic[@"biddingWithin"][@"valZero"]];
+    BOOL updatedWithinValZero  = [DerivedNSManagedObject objectOrNil:tempDic[@"updatedWithin"][@"valZero"]];
+    
+    if (biddingValZero) {
+        [tempDic removeObjectForKey:@"biddingWithin"];
+    }
+    
+    if (updatedWithinValZero) {
+        [tempDic removeObjectForKey:@"updatedWithin"];
+    }
+    
+    return [tempDic copy];
+}
+
 #pragma mark - Navigation Methods
 
 - (void)tappedButtonFilter:(id)sender {
@@ -184,8 +201,11 @@ typedef enum : NSUInteger {
     projectFilterGlobal = projectFilter;
     companyFilterGlobal = companyFilter;
     
-    [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil];
-    [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil];
+    NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
+    NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];
+    
+    [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":tempProject}}:nil];
+    [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":tempCompany}}:nil];
     
     if (isSuggestedListBeenTapped) {
         if (projectFilterGlobal.count > 0) {
@@ -1156,13 +1176,18 @@ typedef enum : NSUInteger {
 
 - (void)doSaveSearches:(NSString *)title {
     
+    
+    NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
+    NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];
+
         if (projectFilterGlobal.count > 0) {
-            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":projectFilterGlobal}}:nil title:title];
+            
+            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":tempProject}}:nil title:title];
             [self showSaveSearches:YES];
         }
         
         if (companyFilterGlobal.count > 0) {
-            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":companyFilterGlobal}}:nil title:title];
+            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":tempCompany}}:nil title:title];
             [self showSaveSearches:YES];
         }
     
