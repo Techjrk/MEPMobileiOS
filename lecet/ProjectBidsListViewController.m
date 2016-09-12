@@ -100,7 +100,7 @@
     }
     
     if (projectSortItem == ProjectSortDateAdded) {
-        sorted = [self sortedAssociateProjectsDescriptorKey:@"createDate" ascending:NO];
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.firstPublishDate" ascending:NO];
         
     }
     if (projectSortItem == ProjectSortHightToLow) {
