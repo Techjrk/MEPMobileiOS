@@ -869,8 +869,29 @@
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
   
     NSString *url = [NSString stringWithFormat:kUrlUserProjectTrackList, (long)userId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
-        success(object);
+    [self HTTP_GET:[self url:url] parameters:@{@"filter":@"{\"include\":[\"projects\"]}"} success:^(id object) {
+        
+        NSMutableArray *mutableArray = [object mutableCopy];
+        
+        for (int i=0; i<mutableArray.count; i++) {
+            NSDictionary *item = mutableArray[i];
+            NSMutableDictionary *mutableDict = [item mutableCopy];
+            
+            [mutableDict removeObjectForKey:@"projectIds"];
+            
+            NSArray *projects = mutableDict[@"projects"];
+            
+            NSMutableArray *newArray = [NSMutableArray new];
+            for (NSDictionary *project in projects) {
+                [newArray addObject:project[@"id"]];
+            }
+            
+            mutableDict[@"projectIds"] = newArray;
+            
+        }
+        
+        
+        success(mutableArray);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
@@ -989,8 +1010,28 @@
 - (void)userCompanyTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {
 
     NSString *url = [NSString stringWithFormat:kUrlUserCompanyTrackList, (long)userId.integerValue];
-    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
-        success(object);
+    [self HTTP_GET:[self url:url] parameters:@{@"filter":@"{\"include\":[\"companies\"]}"} success:^(id object) {
+        
+        NSMutableArray *mutableArray = [object mutableCopy];
+        
+        for (int i=0; i<mutableArray.count; i++) {
+            NSDictionary *item = mutableArray[i];
+            NSMutableDictionary *mutableDict = [item mutableCopy];
+            
+            [mutableDict removeObjectForKey:@"companyIds"];
+            
+            NSArray *projects = mutableDict[@"companies"];
+            
+            NSMutableArray *newArray = [NSMutableArray new];
+            for (NSDictionary *project in projects) {
+                [newArray addObject:project[@"id"]];
+            }
+            
+            mutableDict[@"companyIds"] = newArray;
+            
+        }
+
+        success(mutableArray);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];

@@ -37,10 +37,10 @@
 
 - (void)setInfo:(id)info {
     _labelTitle.text = info[@"name"];
-    NSArray *projects = info[@"projectIds"];
+    NSArray *projects = info[@"projects"];
     
     if (projects == nil) {
-        projects = info[@"companyIds"];
+        projects = info[@"companies"];
         _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(projects.count<=1?@"TRACK_ITEM_COMPANY_COUNT_SINGLE":@"TRACK_ITEM_COMPANY_COUNT_PLURAL"),(long)projects.count];
     } else {
         _labelCount.text = [NSString stringWithFormat:NSLocalizedLanguage(projects.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"),(long)projects.count];
