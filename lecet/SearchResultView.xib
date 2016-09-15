@@ -14,6 +14,8 @@
                 <outlet property="collectionView" destination="bmx-cM-O8U" id="JgD-2T-Jbf"/>
                 <outlet property="constraintMakerLeading" destination="JXV-c4-poT" id="jma-pc-N46"/>
                 <outlet property="contraintHeader" destination="ar6-3H-AXC" id="pFW-fN-85F"/>
+                <outlet property="labelHeader" destination="IwM-H1-8JF" id="BGZ-Fg-lx8"/>
+                <outlet property="viewLabelHeader" destination="fur-z9-Ekf" id="1on-Po-Hcv"/>
                 <outlet property="viewMarker" destination="4Fs-8u-8G8" id="t1u-xu-JoQ"/>
                 <outlet property="viewTopHeader" destination="hWA-3C-cDt" id="xZ7-m6-UFi"/>
             </connections>
@@ -23,6 +25,24 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fur-z9-Ekf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwM-H1-8JF">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IwM-H1-8JF" firstAttribute="leading" secondItem="fur-z9-Ekf" secondAttribute="leading" id="8pg-pd-MHO"/>
+                        <constraint firstAttribute="bottom" secondItem="IwM-H1-8JF" secondAttribute="bottom" id="I93-cA-oGN"/>
+                        <constraint firstItem="IwM-H1-8JF" firstAttribute="top" secondItem="fur-z9-Ekf" secondAttribute="top" id="JHO-5l-9o8"/>
+                        <constraint firstAttribute="trailing" secondItem="IwM-H1-8JF" secondAttribute="trailing" id="yyE-4i-Re1"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-3C-cDt">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
                     <subviews>
@@ -98,8 +118,12 @@
                 <constraint firstItem="hWA-3C-cDt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Wt-65-QRB"/>
                 <constraint firstItem="hWA-3C-cDt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ATy-9x-sYZ"/>
                 <constraint firstAttribute="trailing" secondItem="bmx-cM-O8U" secondAttribute="trailing" id="Feg-uz-evb"/>
+                <constraint firstItem="fur-z9-Ekf" firstAttribute="width" secondItem="hWA-3C-cDt" secondAttribute="width" id="TmR-mw-shD"/>
+                <constraint firstItem="fur-z9-Ekf" firstAttribute="top" secondItem="hWA-3C-cDt" secondAttribute="top" id="TtL-tp-3kF"/>
                 <constraint firstItem="hWA-3C-cDt" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.08" id="ar6-3H-AXC"/>
                 <constraint firstAttribute="trailing" secondItem="hWA-3C-cDt" secondAttribute="trailing" id="b8r-t6-v4V"/>
+                <constraint firstItem="fur-z9-Ekf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gf2-FS-tHM"/>
+                <constraint firstItem="fur-z9-Ekf" firstAttribute="height" secondItem="hWA-3C-cDt" secondAttribute="height" id="jEM-9u-A1b"/>
                 <constraint firstItem="bmx-cM-O8U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="koB-iO-DrT"/>
                 <constraint firstItem="bmx-cM-O8U" firstAttribute="top" secondItem="hWA-3C-cDt" secondAttribute="bottom" id="nAo-J6-RXP"/>
             </constraints>

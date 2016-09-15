@@ -186,7 +186,23 @@
         
         switch (model) {
             case FilterModelLocation: {
-                [self filterLocation:view];
+                
+                FilterEntryView *entryView = object;
+                
+                if (entryView.entryType == FilterEntryViewTypeOpenEntry) {
+                    
+                    if (entryView.openEntryFields == nil) {
+                        entryView.openEntryFields = [NSMutableArray new];
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"city",@"VALUE":@"",@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_CITY"} mutableCopy ]];
+         
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"zip5",@"VALUE":@"",@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
+                    }
+                    [entryView promptOpenEntryUsingViewController:self block:^(id object) {
+                        [_projectFilter setFilterModelInfo:model value:object];
+                    } title:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
+                } else {
+                    [self filterLocation:view];
+                }
                 break;
             }
                 
@@ -266,7 +282,27 @@
         switch (model) {
             
             case FilterModelLocation: {
-                [self filterLocation:view];
+                
+                FilterEntryView *entryView = object;
+                
+                if (entryView.entryType == FilterEntryViewTypeOpenEntry) {
+                    
+                    if (entryView.openEntryFields == nil) {
+                        entryView.openEntryFields = [NSMutableArray new];
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"city",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_CITY"} mutableCopy ]];
+                        
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"state",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_STATE"} mutableCopy ]];
+         
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"zip",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
+                        
+                    }
+                    [entryView promptOpenEntryUsingViewController:self block:^(id object) {
+                        [_companyFilter setFilterModelInfo:model value:object];
+                    } title:NSLocalizedLanguage(@"COMPANY_FILTER_HINT_LOCATION")];
+                } else {
+                    [self filterLocation:view];
+                }
+
                 break;
             }
             
@@ -340,6 +376,11 @@
                     
                     ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
                     
+                    if (localItems == nil) {
+                        localItems = [ListViewItemArray new];
+                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
+                        
+                    }
                     for (NSDictionary *districtItem in districtCouncils) {
                         
                         NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
@@ -743,7 +784,6 @@
     
     if (_companyFilter.hidden) {
         dataSelected = @{@"Project":@{@"valuation":items}};
-        _projectFilter.searchFilter[@"projectValue"] = items;
         [_projectFilter setFilterModelInfo:selectedModel value:items];
         
     } else {

@@ -15,6 +15,11 @@
 #define ENTRYID     @"entryID"
 #define CELL_FILTER_ORIGINAL_HEIGHT        (kDeviceHeight * 0.035) + ((kDeviceHeight * 0.005) * 2)
 
+typedef enum {
+    FilterEntryViewTypeList = 0,
+    FilterEntryViewTypeOpenEntry = 1
+} FilterEntryViewType;
+
 @protocol FilterEntryViewDelegate <NSObject>
 - (void)tappedFilterEntryViewDelegate:(id)object;
 - (void)reloadDataBeenComplete:(FilterModel)filterModel;
@@ -23,9 +28,12 @@
 @interface FilterEntryView : BaseViewClass
 @property (weak, nonatomic) id<FilterEntryViewDelegate>filterEntryViewDelegate;
 @property (nonatomic) FilterModel filterModel;
+@property (nonatomic) FilterEntryViewType entryType;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSMutableArray *openEntryFields;
 - (void)setTitle:(NSString*)title;
 - (void)setInfo:(id)info;
 - (void)setHint:(NSString *)text;
 - (NSArray *)getCollectionItemsData;
+- (void)promptOpenEntryUsingViewController:(UIViewController*)viewController block:(APIBlock)block title:(NSString*)title;
 @end

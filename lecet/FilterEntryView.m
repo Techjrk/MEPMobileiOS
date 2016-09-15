@@ -21,7 +21,6 @@
 @interface FilterEntryView() <UICollectionViewDelegate, UICollectionViewDataSource,FilterEntryCollectionViewCellDelegate> {
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
-    
 }
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet CustomTitleLabel *labelTitle;
@@ -33,10 +32,14 @@
 
 @implementation FilterEntryView
 @synthesize filterModel;
+@synthesize entryType;
+@synthesize openEntryFields;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 
+    self.entryType = FilterEntryViewTypeList;
+    
     [_collectionView registerNib:[UINib nibWithNibName:[[FilterEntryCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5].CGColor;
     _collectionView.layer.borderWidth = 1.0;
@@ -148,10 +151,71 @@
 - (void)tappedRemovedButtonAtIndex:(int)index {
     [collectionDataItems removeObjectAtIndex:index];
     [_collectionView reloadData];
+    
+    if (self.openEntryFields != nil) {
+        
+        for (int i=0; i<self.openEntryFields.count; i++) {
+            NSMutableDictionary *item = self.openEntryFields[i];
+            item[@"VALUE"] = @"";
+        }
+    }
     [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.25];
 }
 
 - (NSArray *)getCollectionItemsData {
     return [collectionDataItems copy];
+}
+
+- (void)promptOpenEntryUsingViewController:(UIViewController*)viewController block:(APIBlock)block title:(NSString *)title{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    for (int i=0; i<self.openEntryFields.count; i++) {
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            
+            NSMutableDictionary *dict = self.openEntryFields[i];
+            textField.text = dict[@"VALUE"];
+            textField.placeholder = NSLocalizedLanguage(dict[@"placeHolder"]);
+            textField.tag = i;
+        }];
+    }
+    
+    UIAlertAction *actionAccept = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION_ACCEPT") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSMutableArray *items = [NSMutableArray new];
+        NSString *value = @"";
+        NSString *current = @"";
+        for (int i=0; i<alert.textFields.count; i++) {
+            UITextField *alertTextField = alert.textFields[i];
+            
+            NSMutableDictionary *itemDict = self.openEntryFields[i];
+            itemDict[@"VALUE"] = alertTextField.text;
+            current = alertTextField.text;
+ 
+            if (current.length>0) {
+                
+                if (value.length>0) {
+                    value = [value stringByAppendingString:@", "];
+                }
+                value = [value stringByAppendingString:current];
+            }
+        }
+        
+        [items addObject:@{ENTRYID:@(0), ENTRYTITLE:value}];
+        
+        [self setInfo:items];
+        block(items);
+    }];
+    
+    [alert addAction:actionAccept];
+
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION_CANCEL") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:actionCancel];
+    
+    
+    [viewController presentViewController:alert animated:YES completion:nil];
+
 }
 @end

@@ -344,6 +344,16 @@
 "PROJECT_FILTER_HINT_TYPE"                  =               "All types";
 "PROJECT_FILTER_HINT_VALUE"                 =               "No Min - No Max";
 
+"PROJECT_FILTER_HINT_LOCATION"              =               "Project Location";
+"PROJECT_FILTER_HINT_LOCATION_CITY"         =               "Project City";
+"PROJECT_FILTER_HINT_LOCATION_ZIP"          =               "Zip/Postal Code";
+"PROJECT_FILTER_LOCATION_ACCEPT"            =               "Accept";
+"PROJECT_FILTER_LOCATION_CANCEL"            =               "Cancel";
+
+"COMPANY_FILTER_HINT_LOCATION"              =               "Company Location";
+"COMPANY_FILTER_HINT_LOCATION_CITY"         =               "City";
+"COMPANY_FILTER_HINT_LOCATION_STATE"        =               "State";
+"COMPANY_FILTER_HINT_LOCATION_ZIP"          =               "Zip";
 
 //CompanyFilterView.xib
 "COMPANY_FILTER_LOCATION"                   =               "LOCATION";

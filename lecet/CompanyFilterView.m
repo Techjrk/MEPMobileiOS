@@ -51,6 +51,7 @@
     
     [_fieldLocation setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_LOCATION")];
     _fieldLocation.filterModel = FilterModelLocation;
+    _fieldLocation.entryType = FilterEntryViewTypeOpenEntry;
     
     [_filterValue setTitle:NSLocalizedLanguage(@"COMPANY_FILTER_VALUE")];
     _filterValue.filterModel = FilterModelValue;
@@ -92,6 +93,19 @@
     switch (filterModel) {
         case FilterModelLocation:{
             [_fieldLocation setInfo:val];
+            
+            NSMutableDictionary *itemdict = [NSMutableDictionary new];
+            
+            for (NSDictionary *item in _fieldLocation.openEntryFields) {
+                NSString *field = item[@"FIELD"];
+                NSString *value = item[@"VALUE"];
+                
+                if (value.length>0) {
+                    itemdict[field] = value;
+                    self.searchFilter[field] = value;
+                }
+                
+            }
             
             break;
         }

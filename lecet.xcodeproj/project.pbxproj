@@ -606,7 +606,7 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
-		B70155181CD0C56A0050CF8A /* Lecet MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecet MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70155181CD0C56A0050CF8A /* LECET MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LECET MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B701551F1CD0C56A0050CF8A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1758,7 +1758,7 @@
 		B70155191CD0C56A0050CF8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B70155181CD0C56A0050CF8A /* Lecet MEP.app */,
+				B70155181CD0C56A0050CF8A /* LECET MEP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2408,7 +2408,7 @@
 			);
 			name = lecet;
 			productName = lecet;
-			productReference = B70155181CD0C56A0050CF8A /* Lecet MEP.app */;
+			productReference = B70155181CD0C56A0050CF8A /* LECET MEP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2946,7 +2946,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
-				PRODUCT_NAME = "Lecet MEP";
+				PRODUCT_NAME = "LECET MEP";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -2971,7 +2971,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
-				PRODUCT_NAME = "Lecet MEP";
+				PRODUCT_NAME = "LECET MEP";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

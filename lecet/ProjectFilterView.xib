@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -60,31 +60,31 @@
                         <constraint firstAttribute="height" constant="58.5" id="Tfv-7J-CW2"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-4s-QuB" customClass="FilterLabelView">
-                    <rect key="frame" x="11" y="323" width="325" height="58"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-4s-QuB" customClass="FilterLabelView">
+                    <rect key="frame" x="11" y="323" width="325" height="59"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vav-hB-Nd1" customClass="FilterLabelView">
-                    <rect key="frame" x="11" y="381" width="325" height="58"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vav-hB-Nd1" customClass="FilterLabelView">
+                    <rect key="frame" x="11" y="382" width="325" height="59"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6o-m0-w3n" customClass="FilterLabelView">
-                    <rect key="frame" x="11" y="439" width="325" height="59"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6o-m0-w3n" customClass="FilterLabelView">
+                    <rect key="frame" x="11" y="441" width="325" height="59"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-Yo-Dww">
-                    <rect key="frame" x="11" y="498" width="325" height="0.0"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-Yo-Dww">
+                    <rect key="frame" x="11" y="500" width="325" height="0.0"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7B-YC-1eW" customClass="FilterLabelView">
                             <rect key="frame" x="0.0" y="0.0" width="325" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-TM-3dS" customClass="FilterLabelView">
-                            <rect key="frame" x="0.0" y="59" width="325" height="58"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-TM-3dS" customClass="FilterLabelView">
+                            <rect key="frame" x="0.0" y="59" width="325" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeD-3e-kgq" customClass="FilterLabelView">
-                            <rect key="frame" x="0.0" y="117" width="325" height="59"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeD-3e-kgq" customClass="FilterLabelView">
+                            <rect key="frame" x="0.0" y="118" width="325" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -109,8 +109,8 @@
                         </mask>
                     </variation>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-zN-sti">
-                    <rect key="frame" x="105" y="498" width="138" height="73"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-zN-sti">
+                    <rect key="frame" x="105" y="500" width="138" height="73"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="tappedButtonOptions:" destination="-1" eventType="touchUpInside" id="lf2-ab-qrZ"/>

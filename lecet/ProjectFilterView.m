@@ -63,7 +63,8 @@
     _constraintLabelHeight.constant = kDeviceHeight * 0.079;
      
     [_fieldLocation setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION")];
-    _fieldType.filterModel = FilterModelLocation;
+    _fieldLocation.filterModel = FilterModelLocation;
+    _fieldLocation.entryType = FilterEntryViewTypeOpenEntry;
     
     [_fieldType setTitle:NSLocalizedLanguage(@"PROJECT_FILTER_TYPE")];
     _fieldType.filterModel = FilterModelProjectType;
@@ -172,6 +173,19 @@
     switch (filterModel) {
         case FilterModelLocation:{
             [_fieldLocation setInfo:val];
+            
+            NSMutableDictionary *itemdict = [NSMutableDictionary new];
+            
+            for (NSDictionary *item in _fieldLocation.openEntryFields) {
+                NSString *field = item[@"FIELD"];
+                NSString *value = item[@"VALUE"];
+                
+                if (value.length>0) {
+                    itemdict[field] = value;
+                }
+            }
+            
+            self.searchFilter[@"projectLocation"] = itemdict;
             break;
         }
         case FilterModelType:{
@@ -196,6 +210,9 @@
             }
                 
             [_fieldValue setInfo:@[@{@"entryID": @(0), @"entryTitle": value}]];
+            
+            self.searchFilter[@"projectValue"] = dict;
+
             break;
         }
         case FilterModelUpdated:{

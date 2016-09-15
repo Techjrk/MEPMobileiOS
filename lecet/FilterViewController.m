@@ -98,7 +98,7 @@
 }
 
 - (IBAction)tappedBackButton:(id)sender {
-    [self getCheckItems:localListViewItems];
+    [self getCheckItems:localListViewItems includeChild:NO];
     
     if (checkedItems.count>0) {
         [self uncheckItem:localListViewItems];
@@ -108,7 +108,7 @@
 
 - (IBAction)tappedButtonApply:(id)sender {
     
-    [self getCheckItems:localListViewItems];
+    [self getCheckItems:localListViewItems includeChild:NO];
 
     if (checkedItems.count>0) {
         if (self.filterViewControllerDelegate) {
@@ -242,19 +242,23 @@
     }
 }
 
-- (void)getCheckItems:(ListViewItemArray*)items {
+- (void)getCheckItems:(ListViewItemArray*)items includeChild:(BOOL)includeChild{
     
+    BOOL includeSubChild = NO |includeChild;
     for (ListViewItemDictionary *item in items) {
         NSNumber *checkedItem = item[STATUS_CHECK];
-        
-        if (checkedItem.boolValue) {
+  
+        if (checkedItem.boolValue | includeChild) {
             [checkedItems addObject:item[LIST_VIEW_VALUE]];
-            [checkedTitles addObject:item[LIST_VIEW_NAME]];
+            includeSubChild = YES;
+            if (checkedItem.boolValue) {
+                [checkedTitles addObject:item[LIST_VIEW_NAME]];
+            }
         }
         ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
         
         if (subItems) {
-            [self getCheckItems:subItems];
+            [self getCheckItems:subItems includeChild:includeSubChild];
         }
     }
 }

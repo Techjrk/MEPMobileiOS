@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMakerLeading;
 - (IBAction)tappedButton:(id)sender;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintHeader;
+@property (weak, nonatomic) IBOutlet UILabel *labelHeader;
+@property (weak, nonatomic) IBOutlet UIView *viewLabelHeader;
 @end
 
 @implementation SearchResultView
@@ -47,6 +49,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _viewTopHeader.backgroundColor = TOP_HEADER_BG_COLOR;
+    
+    _labelHeader.font = BUTTON_FONT;
+    _labelHeader.textColor = BUTTON_COLOR;
+    _viewLabelHeader.backgroundColor = TOP_HEADER_BG_COLOR;
     
     [_buttonProjects setTitleColor:BUTTON_COLOR forState:UIControlStateNormal];
     _buttonProjects.titleLabel.font = BUTTON_FONT;
@@ -88,11 +94,31 @@
     items = [collectionItems mutableCopy];
     currentTab = tab;
     _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab.integerValue;
+
+    [self setInfo];
     
     if (fromSavedSearch) {
-        //_contraintHeader.constant = -(self.frame.size.height * _contraintHeader.multiplier);
+        
+        _viewTopHeader.hidden = YES;
+        
+        switch (currentTab.integerValue) {
+            case 0: {
+                _labelHeader.text = _buttonProjects.titleLabel.text;
+                break;
+            }
+            case 1: {
+                _labelHeader.text = _buttonCompany.titleLabel.text;
+                break;
+            }
+            case 3: {
+                _labelHeader.text = _buttonContacts.titleLabel.text;
+                break;
+            }
+            default:
+                break;
+        }
+        
     }
-    [self setInfo];
     
 }
 
