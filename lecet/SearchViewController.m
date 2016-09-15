@@ -796,7 +796,7 @@ typedef enum : NSUInteger {
         } else {
             
             if (searchString.length==0) {
-                _filter[@"searchFilter"] = @"{}";
+                _filter[@"searchFilter"] = @"{\"dashboardTypes\": true}";
             }
             
         }
@@ -804,7 +804,7 @@ typedef enum : NSUInteger {
     } else {
         
         if (searchString.length==0) {
-            _filter[@"searchFilter"] = @"{}";
+            _filter[@"searchFilter"] = @"{\"dashboardTypes\": true}";
         }
         
     }
