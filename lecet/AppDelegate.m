@@ -23,7 +23,7 @@
     
     [[GAManager sharedManager] initializeTacker];
     
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"977079279ce743d6a7d25b89897dbbcc"];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:kHockeyID];
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:YES];
     [[BITHockeyManager sharedHockeyManager] startManager];

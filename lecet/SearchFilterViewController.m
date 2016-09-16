@@ -141,6 +141,76 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
+
+    NSMutableDictionary *companyDictFilter = _companyFilter.searchFilter;
+    NSMutableDictionary *projectDictFilter = _projectFilter.searchFilter;
+
+    if (_companyFilter.hidden) {
+        
+        NSMutableDictionary *projectLocDict = projectDictFilter[@"projectLocation"];
+        
+        if (projectLocDict != nil) {
+
+            if (companyDictFilter == nil) {
+                companyDictFilter = [NSMutableDictionary new];
+                _companyFilter.searchFilter = companyDictFilter;
+            }
+
+            NSString *city = projectLocDict[@"city"];
+            if (city != nil) {
+                companyDictFilter[@"city"] = city;
+            }
+            
+            NSString *state = projectLocDict[@"state"];
+            if (state != nil) {
+                companyDictFilter[@"state"] = state;
+            }
+            
+            NSString *zip = projectLocDict[@"zip"];
+            if (zip != nil) {
+                companyDictFilter[@"zip"] = zip;
+            }
+            
+            NSString *county = projectLocDict[@"county"];
+            if (county != nil) {
+                companyDictFilter[@"county"] = county;
+            }
+            
+        }
+    } else {
+        
+        if (projectDictFilter == nil) {
+            projectDictFilter = [NSMutableDictionary new];
+            _projectFilter.searchFilter = projectDictFilter;
+        }
+
+        NSMutableDictionary *dict = [NSMutableDictionary new];
+        
+        NSString *city = companyDictFilter[@"city"];
+        if (city != nil) {
+            dict[@"city"] = city;
+        }
+        
+        NSString *state = companyDictFilter[@"state"];
+        if (state != nil) {
+            dict[@"state"] = state;
+        }
+        
+        NSString *zip = companyDictFilter[@"zip"];
+        if (zip != nil) {
+            dict[@"zip5"] = zip;
+        }
+        
+        NSString *county = companyDictFilter[@"county"];
+        if (county != nil) {
+            dict[@"county"] = county;
+        }
+
+        if (dict.count>0) {
+            projectDictFilter[@"projectLocation"] = dict;
+        }
+    }
+    
     [self.searchFilterViewControllerDelegate tappedSearchFilterViewControllerApply:_projectFilter.searchFilter companyFilter:_companyFilter.searchFilter];
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -193,9 +263,15 @@
                     
                     if (entryView.openEntryFields == nil) {
                         entryView.openEntryFields = [NSMutableArray new];
+                       
                         [entryView.openEntryFields addObject:[@{@"FIELD":@"city",@"VALUE":@"",@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_CITY"} mutableCopy ]];
          
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"state",@"VALUE":@"",@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_STATE"} mutableCopy ]];
+             
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"county",@"VALUE":@"",@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_COUNTY"} mutableCopy ]];
+                 
                         [entryView.openEntryFields addObject:[@{@"FIELD":@"zip5",@"VALUE":@"",@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
+                        
                     }
                     [entryView promptOpenEntryUsingViewController:self block:^(id object) {
                         [_projectFilter setFilterModelInfo:model value:object];
@@ -293,6 +369,8 @@
                         
                         [entryView.openEntryFields addObject:[@{@"FIELD":@"state",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_STATE"} mutableCopy ]];
          
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"county",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_COUNTY"} mutableCopy ]];
+                        
                         [entryView.openEntryFields addObject:[@{@"FIELD":@"zip",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
                         
                     }

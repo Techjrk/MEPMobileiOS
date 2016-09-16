@@ -226,7 +226,7 @@ typedef enum {
     
     [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"$ 0" line2Text:nil];
     
-    [_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:project.ownerClass line2Text:nil];
+    //[_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:@"" line2Text:nil];
     
     [_fieldBuildingOrHighway setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_B_OR_H") line1Text:project.primaryProjectTypeBuildingOrHighway line2Text:nil];
     
@@ -238,6 +238,53 @@ typedef enum {
  
     participants = [project.relationshipParticipants allObjects] != nil? [[project.relationshipParticipants allObjects] mutableCopy]:[NSMutableArray new];
     [_participantsView setItems:participants];
+    
+    [[DataManager sharedManager] projectJurisdiction:recordId success:^(id object) {
+  
+        NSArray *districts = object;
+        NSString *jurisdiction = @"";
+        int index = 0;
+        for (NSDictionary *district in districts) {
+     
+            NSDictionary *dictrictCouncil = district[@"districtCouncil"];
+            NSString *current = dictrictCouncil[@"abbreviation"];
+            
+            if (current.length>0) {
+                jurisdiction = [jurisdiction stringByAppendingString:current];
+                
+                if (index<(districts.count-1)) {
+                    jurisdiction = [jurisdiction stringByAppendingString:@", "];
+                    
+                }
+            }
+   
+            index++;
+        }
+        
+        
+        /*
+        NSArray *regions = [DerivedNSManagedObject objectOrNil:dict[@"regions"]];
+        
+        if (regions != nil) {
+            NSString *current = @"abbreviation";
+            for (NSDictionary *region in regions) {
+                
+                current = region[@""]
+                if (current.length>0) {
+                    jurisdiction = [jurisdiction stringByAppendingString:@","]
+                }
+                
+            }
+        }
+        */
+        [_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:jurisdiction line2Text:nil];
+        
+        isShownContentAdjusted = NO;
+        [self layoutContentView];
+    } failure:^(id object) {
+        
+    }];
+
 }
 
 

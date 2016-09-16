@@ -10,12 +10,18 @@
 
 #import "LocationManager.h"
 
-#define kProduction                         0
+#define kProduction                         1
 
 #if kProduction
+
 #define kHost                               @"https://mepmobile.lecet.org/"
+#define kHockeyID                           @"977079279ce743d6a7d25b89897dbbcc"
+
 #else
+
 #define kHost                               @"http://lecet.dt-staging.com/"
+#define kHockeyID                           @"288c4a9d07b54027b04f0966a0f433e3"
+
 #endif
 
 #define kKeychainServiceName            @"lecet_api"
@@ -52,6 +58,7 @@
 
 //API DETAIL INFO
 - (void)projectDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)projectJurisdiction:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)contactInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;

@@ -60,6 +60,7 @@
 #define kUrlProjectSearch                   @"Projects/search"
 #define kUrlProjectHide                     @"Projects/%li/hide"
 #define kUrlProjectUnhide                   @"Projects/%li/unhide"
+#define kUrlProjectJurisdiction             @"Projects/%li/jurisdiction"
 
 #define kUrlCompanyTrackingList             @"companylists/%li/companies"
 #define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
@@ -623,6 +624,28 @@
         [self saveContext];
         
         success(item);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)projectJurisdiction:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
+  
+    NSString *url = [self url:[NSString stringWithFormat:kUrlProjectJurisdiction, (long)recordId.integerValue]];
+    [self HTTP_GET:url parameters:nil success:^(id object) {
+
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recordId == %li", recordId.integerValue];
+        
+        DB_Project *record = [DB_Project fetchObjectForPredicate:predicate key:nil ascending:YES];
+
+        if (record != nil) {
+            
+            //record.project
+        }
+        
+        success(object);
+        
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
