@@ -200,7 +200,9 @@
             }
         }
         
-        [items addObject:@{ENTRYID:@(0), ENTRYTITLE:value}];
+        if (value.length>0) {
+            [items addObject:@{ENTRYID:@(0), ENTRYTITLE:value}];
+        }
         
         [self setInfo:items];
         block(items);

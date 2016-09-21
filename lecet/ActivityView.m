@@ -97,7 +97,7 @@ return [super needsDisplayForKey:key];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    [super animationDidStop:anim finished:flag];
+    //[super animationDidStop:anim finished:flag];
     self.endAngle = 360;
     [self setNeedsDisplay];
 }

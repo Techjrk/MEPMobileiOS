@@ -25,6 +25,7 @@
 @interface SearchResultView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableDictionary *items;
     NSNumber *currentTab;
+    BOOL isFromSavedSearch;
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonProjects;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCompany;
@@ -95,23 +96,28 @@
     currentTab = tab;
     _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab.integerValue;
 
+    isFromSavedSearch = fromSavedSearch;
+
     [self setInfo];
     
-    if (fromSavedSearch) {
+}
+
+- (void)displayHeaderForProject:(NSString*)projectTitle companyTitle:(NSString*)companyTitle contactTitle:(NSString*)contactTitle {
+    if (isFromSavedSearch) {
         
         _viewTopHeader.hidden = YES;
         
         switch (currentTab.integerValue) {
             case 0: {
-                _labelHeader.text = _buttonProjects.titleLabel.text;
+                _labelHeader.text = projectTitle;
                 break;
             }
             case 1: {
-                _labelHeader.text = _buttonCompany.titleLabel.text;
+                _labelHeader.text = companyTitle;
                 break;
             }
             case 3: {
-                _labelHeader.text = _buttonContacts.titleLabel.text;
+                _labelHeader.text = contactTitle;
                 break;
             }
             default:
@@ -119,7 +125,7 @@
         }
         
     }
-    
+
 }
 
 - (void)setCollectionItems:(NSMutableDictionary *)collectionItems {
@@ -140,15 +146,19 @@
 
 - (void)setInfo {
     
-    [_buttonProjects setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_PROJECT]<=1?@"SEARCH_RESULT_COUNT_PROJECT":@"SEARCH_RESULT_COUNT_PROJECTS"), [self getCollectionCountForTitle:SEARCH_RESULT_PROJECT]] forState:UIControlStateNormal];
+    NSString *projectTitle = [NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_PROJECT]<=1?@"SEARCH_RESULT_COUNT_PROJECT":@"SEARCH_RESULT_COUNT_PROJECTS"), [self getCollectionCountForTitle:SEARCH_RESULT_PROJECT]];
+    [_buttonProjects setTitle:projectTitle forState:UIControlStateNormal];
 
-    [_buttonCompany setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_COMPANY]<=1?@"SEARCH_RESULT_COUNT_COMPANY":@"SEARCH_RESULT_COUNT_COMPANIES"), [self getCollectionCountForTitle:SEARCH_RESULT_COMPANY]] forState:UIControlStateNormal];
+    NSString *companyTitle = [NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_COMPANY]<=1?@"SEARCH_RESULT_COUNT_COMPANY":@"SEARCH_RESULT_COUNT_COMPANIES"), [self getCollectionCountForTitle:SEARCH_RESULT_COMPANY]];
+    [_buttonCompany setTitle:companyTitle forState:UIControlStateNormal];
 
-    [_buttonContacts setTitle:[NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_CONTACT]<=1?@"SEARCH_RESULT_COUNT_CONTACT":@"SEARCH_RESULT_COUNT_CONTACTS"), [self getCollectionCountForTitle:SEARCH_RESULT_CONTACT]] forState:UIControlStateNormal];
+    NSString *contactTitle = [NSString stringWithFormat:NSLocalizedLanguage([self getCollectionCountForTitle:SEARCH_RESULT_CONTACT]<=1?@"SEARCH_RESULT_COUNT_CONTACT":@"SEARCH_RESULT_COUNT_CONTACTS"), [self getCollectionCountForTitle:SEARCH_RESULT_CONTACT]];
+    [_buttonContacts setTitle:contactTitle forState:UIControlStateNormal];
     
+    [self displayHeaderForProject:projectTitle companyTitle:companyTitle contactTitle:contactTitle];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-
+    
 }
 
 #pragma mark - UICollectionView source and delegate
@@ -168,6 +178,7 @@
             ProjectTrackItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierProject forIndexPath:indexPath];
             cell = cellItem;
             [cellItem setInfo:itemList[indexPath.row]];
+ 
             break;
         }
         
@@ -234,6 +245,7 @@
                 companyName = @"";
             }
             [cellItem setItemInfo:@{CONTACT_NAME:item[@"name"], CONTACT_COMPANY:companyName}];
+
             break;
         }
             
