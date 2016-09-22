@@ -55,7 +55,7 @@
 @implementation CustomCallOut
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _containerCompany.backgroundColor = CALLOUT_COMPANY_COLOR;
     
     _labelBidStatus.font = CALLOUT_BID_STATUS_FONT;

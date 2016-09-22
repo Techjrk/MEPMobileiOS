@@ -56,7 +56,7 @@
 
 - (void)awakeFromNib {
     
-    
+    [super awakeFromNib];
     _mapLabelContainerConstraintHeight.constant = kDeviceHeight * 0.132f;
     _constraintContainerButtonAndTextHeight.constant = kDeviceHeight * 0.17f;
 

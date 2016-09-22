@@ -19,6 +19,7 @@
 @implementation ContactNavBarView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _labelContactTitle.font = CONTACT_NAV_TITLE_LABEL_FONT;
     _labelContactTitle.textColor = CONTACT_NAV_TITLE_LABEL_FONT_COLOR;
     [self.view setBackgroundColor:CONTACT_NAV_VIEW_BG_COLOR];

@@ -20,6 +20,7 @@
 @implementation ProjectFilterSelectionView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _labelTitle.font = PROJECTFILTER_SELECT_LABEL_FONT;
     _labelTitle.textColor = PROJECTFILTER_SELECT_LABEL_FONT_COLOR;
     

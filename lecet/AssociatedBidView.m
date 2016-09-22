@@ -32,7 +32,7 @@
 @implementation AssociatedBidView
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _labelProject.text = @"";
     _labelProject.font = ASSOCIATED_BID_LABEL_PROJECT_FONT;
     _labelProject.textColor = ASSOCIATED_BID_LABEL_PROJECT_COLOR;

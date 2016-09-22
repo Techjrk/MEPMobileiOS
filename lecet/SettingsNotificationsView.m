@@ -21,6 +21,7 @@
 @synthesize switchButton;
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _label.font = SETTINGS_LABEL_FONT;
     _label.textColor = SETTINGS_LABEL_FONT_COLOR;
     [self.switchButton setOnTintColor:SETTINGS_SWITCHBUTTON_BG_COLOR];

@@ -35,7 +35,7 @@
 
 - (void)awakeFromNib{
     
-    
+    [super awakeFromNib];
     self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
     

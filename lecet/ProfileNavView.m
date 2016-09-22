@@ -29,7 +29,7 @@
 @implementation ProfileNavView
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _constraintWidth.constant = 0;
     [self setBackgroundColor:PROFILE_NAV_VIEW_BG_COLOR];
     _leftNavButton.tag = ProfileNavItemBackButton;

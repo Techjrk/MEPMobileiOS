@@ -28,7 +28,7 @@
 static const float animationDuration = 0.25f;
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _buttonUpcoming.tag = ProjectTabUpcoming;
     _buttonPast.tag = ProjectTabPast;
     
@@ -53,8 +53,8 @@ static const float animationDuration = 0.25f;
 
 - (void)setCounts:(NSUInteger)upcoming past:(NSUInteger)past {
     
-    NSString *upcomingText = [NSString stringWithFormat:@"%li %@", upcoming,NSLocalizedLanguage(@"PROJECTTAB_UPCOMING_TEXT")];
-    NSString *pastText = [NSString stringWithFormat:@"%li %@", past,NSLocalizedLanguage(@"PROJECTTAB_PAST_TEXT")];
+    NSString *upcomingText = [NSString stringWithFormat:@"%li %@", (long)upcoming,NSLocalizedLanguage(@"PROJECTTAB_UPCOMING_TEXT")];
+    NSString *pastText = [NSString stringWithFormat:@"%li %@", (long)past,NSLocalizedLanguage(@"PROJECTTAB_PAST_TEXT")];
     [_buttonUpcoming setTitle:upcomingText forState:UIControlStateNormal];
     [_buttonPast setTitle:pastText forState:UIControlStateNormal];
 

@@ -26,7 +26,7 @@
 #define SelectedFlag                @"1"
 
 - (void)awakeFromNib {
-   
+   [super awakeFromNib];
   
     [_collectionView registerNib:[UINib nibWithNibName:[[EditViewCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.showsVerticalScrollIndicator = NO;

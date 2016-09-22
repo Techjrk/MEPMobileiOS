@@ -20,6 +20,7 @@
 @implementation SectionTitleView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _labelTitle.font = SECTION_TITLE_TEXT_FONT;
     _labelTitle.textColor = SECTION_TITLE_TEXT_COLOR;
     _lineView.backgroundColor = SECTION_TITLE_LINE_COLOR;

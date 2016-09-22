@@ -27,7 +27,7 @@
 @implementation ProjComTrackingTabView
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     [_switchButton setOnTintColor:PROJCOMTRACKINGTAB_SWITCHBUTTON_BG_COLOR];
     _label.font = PROJCOMTRACKINGTAB_LABEL_FONT;
     _label.textColor = PROJCOMTRACKINGTAB_LABEL_FONT_COLOR;

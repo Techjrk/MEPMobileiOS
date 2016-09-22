@@ -25,6 +25,7 @@
 #define kCellIdentifier     @"kCellIdentifier"
 
 -(void)awakeFromNib {
+    [super awakeFromNib];
     [_collectionView registerNib:[UINib nibWithNibName:[[CompanySortCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;

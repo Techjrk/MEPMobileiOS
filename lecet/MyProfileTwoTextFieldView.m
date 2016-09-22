@@ -22,6 +22,7 @@
 @implementation MyProfileTwoTextFieldView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_lineView setBackgroundColor:MYPROFILE_VERTICAL_LINE_BG_COLOR];
     
     [_textFieldLeft setFont:MYPROFILE_TEXTFIELD_FONT];

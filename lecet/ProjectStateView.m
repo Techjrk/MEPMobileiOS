@@ -31,6 +31,8 @@
 @synthesize projectStateViewDelegate;
 
 - (void)awakeFromNib {
+    
+    [super awakeFromNib];
     [self clearSelection];
     
     [_buttonShare setTitle:NSLocalizedLanguage(@"PROJECT_STATE_SHARE") forState:UIControlStateNormal];

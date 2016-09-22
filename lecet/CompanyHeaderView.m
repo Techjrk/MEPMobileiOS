@@ -29,7 +29,7 @@
 @implementation CompanyHeaderView
 
 - (void)awakeFromNib {
- 
+    [super awakeFromNib];
     self.view.backgroundColor = COMPANY_HEADER_BG_COLOR;
     _viewInfo.backgroundColor = COMPANY_HEADER_INFO_BG_COLOR;
     

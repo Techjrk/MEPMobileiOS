@@ -27,7 +27,7 @@
 @implementation EditView
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _addressOneLabel.font = EDITVIEW_TOP_LABEL_FONT;
     _addressOneLabel.textColor = EDITVIEW_TOP_LABEL_FONT_COLOR;
     

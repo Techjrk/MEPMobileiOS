@@ -22,6 +22,7 @@
 #define kCellIdentifier                 @"kCellIdentifier"
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactFieldCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 }
 

@@ -29,7 +29,7 @@
 @implementation MenuHeaderView
 
 - (void)awakeFromNib {
-
+    [super awakeFromNib];
     _labelHeader.font = MENUHEADER_LABEL_HEADER_FONT;
     _labelHeader.text = NSLocalizedLanguage(@"MENUHEADER_LABEL_HEADER_TEXT");
     _labelHeader.textColor = MENUHEADER_LABEL_HEADER_COLOR;

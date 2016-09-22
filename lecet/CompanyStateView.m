@@ -31,6 +31,7 @@
 #define kCellIdentifier                 @"kCellIdentifier"
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.layer.shadowColor = [COMPANY_STATE_SHADOW_COLOR colorWithAlphaComponent:0.5].CGColor;
     self.layer.shadowRadius = 2;
     self.layer.shadowOffset = CGSizeMake(2, 2);

@@ -31,6 +31,7 @@
 @implementation ProjectFilterSearchNavView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_containerTextView.layer setCornerRadius:4.0f];
     _containerTextView.layer.masksToBounds = YES;
     

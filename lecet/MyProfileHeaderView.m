@@ -17,7 +17,7 @@
 @implementation MyProfileHeaderView
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _leftLabel.font = MYPROFILE_HEADER_LABEL_FONT;
     _leftLabel.textColor = MYPROFILE_HEADER_LABEL_FONT_COLOR;
     

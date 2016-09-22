@@ -26,6 +26,7 @@
 @implementation SaveSearchChangeItemView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _labelTitle.font        = LABEL_FONT;
     _labelTitle.textColor   = LABEL_FONT_COLOR;
     

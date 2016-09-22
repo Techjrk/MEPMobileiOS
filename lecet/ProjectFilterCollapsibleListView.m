@@ -26,6 +26,7 @@
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectFilterCollapsibleCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.showsVerticalScrollIndicator = NO;
     collectionDataItems = [[NSMutableArray alloc] init];

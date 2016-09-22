@@ -25,7 +25,7 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>mepmobile.lecet.org</key>
@@ -41,6 +41,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow image</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Heavy.ttf</string>
@@ -62,7 +64,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow image</string>
 </dict>
 </plist>

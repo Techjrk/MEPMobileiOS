@@ -23,6 +23,7 @@
 @implementation ContactFieldView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _label.font = CONTACT_FIELD_LABEL_FONT;
     _label.textColor = CONTACT_FIELD_LABEL_COLOR;
 }

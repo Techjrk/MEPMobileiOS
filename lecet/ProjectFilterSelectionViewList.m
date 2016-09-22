@@ -26,6 +26,7 @@
 
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectFilterSelectionCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.showsVerticalScrollIndicator = NO;
     collectionDataItems = [[NSMutableArray alloc] init];

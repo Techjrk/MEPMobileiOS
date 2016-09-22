@@ -26,6 +26,7 @@
 @implementation ContactsView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _labelName.font = CONTACT_LABEL_NAME_FONT;
     _labelName.textColor = CONTACT_LABEL_NAME_COLOR;
     

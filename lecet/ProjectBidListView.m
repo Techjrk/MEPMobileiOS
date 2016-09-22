@@ -37,6 +37,7 @@
 #define kCellIdentifier             @"kCellIdentifier"
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_titleView setTitle:NSLocalizedLanguage(@"PROJECT_BIDS_VIEW_TITLE")];
     _constraintTitleHeight.constant = kDeviceHeight * 0.05;
     _constraintSpacerHeight.constant = kDeviceHeight * 0.015;

@@ -332,7 +332,7 @@
 }
 
 - (UIViewController*)getActiveViewController {
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     UIViewController *controller = app.navController.presentedViewController;
     if (controller == nil) {

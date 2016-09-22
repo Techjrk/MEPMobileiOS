@@ -21,7 +21,7 @@
 @implementation EditTabView
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     _cancelButton.tag = EditTabItemCancel;
     _doneButton.tag = EditTabItemDone;
     

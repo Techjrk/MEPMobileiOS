@@ -71,9 +71,9 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
     
-    UIView* view = sender.view;
-    CGPoint loc = [sender locationInView:view];
-    UIView* subview = [view hitTest:loc withEvent:nil];    
+    //UIView* view = sender.view;
+    //CGPoint loc = [sender locationInView:view];
+    //UIView* subview = [view hitTest:loc withEvent:nil];
 }
 
 - (void)didReceiveMemoryWarning {

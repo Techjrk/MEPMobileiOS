@@ -19,6 +19,7 @@
 
 @implementation SettingsCPView
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _label.font = SETTINGS_LABEL_FONT;
     _label.textColor = SETTINGS_LABEL_FONT_COLOR;
     _label.text = NSLocalizedLanguage(@"SETTING_CPVIEW_TEXT");

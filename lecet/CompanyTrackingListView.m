@@ -34,7 +34,7 @@
 #define kButtonToShow               @"false"
 
 - (void)awakeFromNib {
-    
+    [super awakeFromNib];
     CompanyTrackingCollectionViewCell *cell = (CompanyTrackingCollectionViewCell *)[CompanyTrackingCollectionViewCell class];
 
     [_collectionView registerNib:[UINib nibWithNibName:[cell description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];

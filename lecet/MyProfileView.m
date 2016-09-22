@@ -46,7 +46,7 @@
 
 - (void)awakeFromNib {
 
-    
+    [super awakeFromNib];
     [_containerView setBackgroundColor:MYPROFILE_CONTAINERVIEW_BG_COLOR];
     [self.view setBackgroundColor:MYPROFILE_CONTAINERVIEW_BG_COLOR];
     

@@ -32,6 +32,7 @@
 @implementation CustomEntryField
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     _labelName.font = CUSTOM_ENTRYFIELD_LABEL_FONT;
     _labelName.textColor = CUSTOM_ENTRYFIELD_LABEL_COLOR;
     

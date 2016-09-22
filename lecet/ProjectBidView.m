@@ -34,6 +34,7 @@
 @implementation ProjectBidView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.layer.shadowColor = [PROJECT_BID_SHADOW_COLOR colorWithAlphaComponent:0.5].CGColor;
     self.layer.shadowRadius = 2;
     self.layer.shadowOffset = CGSizeMake(2, 2);

@@ -23,6 +23,7 @@
 
 @implementation MyProfileOneTextFieldView
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [_textFieldView setFont:MYPROFILE_TEXTFIELD_FONT];
     [_textFieldView setTextColor:MYPROFILE_TEXTFIELD_FONT_COLOR];
 

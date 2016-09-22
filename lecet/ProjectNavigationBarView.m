@@ -24,7 +24,7 @@
 @implementation ProjectNavigationBarView
 
 -(void)awakeFromNib{
-    
+    [super awakeFromNib];
     _labelContractorName.font = PRODJECT_NAV_CONTRACTOR_LABEL_FONT;
     _labelContractorName.textColor = PRODJECT_NAV_CONTRACTOR_LABEL_FONT_COLOR;
     
