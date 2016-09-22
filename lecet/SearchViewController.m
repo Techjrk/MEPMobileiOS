@@ -308,6 +308,7 @@ typedef enum : NSUInteger {
             
         case SearchSectionResult: {
             SearchResultCollectionViewCell *cellItem = (SearchResultCollectionViewCell*)cell;
+            
             cellItem.navigationController = self.navigationController;
             cellItem.searchResultViewDelegate = self;
             [cellItem setCollectionItems:collectionItems tab:_resultIndex fromSavedSearch:fromSavedSearch];
@@ -356,6 +357,12 @@ typedef enum : NSUInteger {
     return cell;
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    SearchSection sectionType = (SearchSection)indexPath.section;
+ 
+    return sectionType != SearchSectionResult;
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     

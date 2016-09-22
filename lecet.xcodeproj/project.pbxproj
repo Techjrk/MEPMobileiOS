@@ -2948,6 +2948,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "LECET MEP";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
 			};
 			name = Debug;
 		};
@@ -2973,6 +2974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "LECET MEP";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
 			};
 			name = Release;
 		};

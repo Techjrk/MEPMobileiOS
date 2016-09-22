@@ -91,9 +91,11 @@
         //[_textFieldEmail setText: @"bdonohue@lecet.org"];
         //[_textFieldPassword setText: @"lecet1"];
         
-        [_textFieldEmail setText:@"dbianco@neliuna.org"];
-        [_textFieldPassword setText: @"liuna9"];
+        //[_textFieldEmail setText:@"dbianco@neliuna.org"];
+        //[_textFieldPassword setText: @"liuna9"];
         
+        //[_textFieldEmail setText:@"no1adzeman@yahoo.com"];
+        //[_textFieldPassword setText: @"local1421"];
     }
     
     

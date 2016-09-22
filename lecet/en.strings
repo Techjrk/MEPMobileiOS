@@ -242,6 +242,7 @@
 "PROJECT_TRACKING_LIST"                     =               "Project lists";
 "COMPANY_TRACKING_LIST"                     =               "Company lists";
 "PROJECT_TRACKING_MOVE"                     =               "Move to";
+"NO_TRACKING_LIST"                          =               "No tracking list available";
 
 //SelectMoveView.xib
 "SELECT_MOVE"                               =               "MOVE";

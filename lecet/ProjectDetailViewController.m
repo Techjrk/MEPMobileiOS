@@ -423,15 +423,22 @@ typedef enum {
     [[DataManager sharedManager] projectAvailableTrackingList:recordId success:^(id object) {
         
         trackItemRecord = object;
-        PopupViewController *controller = [PopupViewController new];
-        CGRect rect = [controller getViewPositionFromViewController:view controller:self];
-        controller.popupRect = rect;
-        controller.popupWidth = 0.98;
-        controller.isGreyedBackground = YES;
-        controller.customCollectionViewDelegate = self;
-        controller.popupViewControllerDelegate = self;
-        controller.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:controller animated:NO completion:nil];
+        
+        if (trackItemRecord.count>0) {
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.popupViewControllerDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+        } else {
+            
+            [_projectState clearSelection];
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"NO_TRACKING_LIST")];
+        }
         
     } failure:^(id object) {
         
@@ -571,18 +578,20 @@ typedef enum {
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
 
-    NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlProjectDetailShare, (long)recordId.integerValue]];
-    
-    
-    if (indexPath.row == 0) {
-        NSString *html = [NSString stringWithFormat:@"<HTML><BODY>DODGE NUMBER :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", [_fieldProjectId getLine], url];
-        [[DataManager sharedManager] sendEmail:html];
+    if (popupMode == ProjectDetailPopupModeShare) {
+        NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlProjectDetailShare, (long)recordId.integerValue]];
         
-    } else {
         
-        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_PROJECT"), [_fieldProjectId getLine]];
-        [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
-        
+        if (indexPath.row == 0) {
+            NSString *html = [NSString stringWithFormat:@"<HTML><BODY>DODGE NUMBER :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", [_fieldProjectId getLine], url];
+            [[DataManager sharedManager] sendEmail:html];
+            
+        } else {
+            
+            NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_PROJECT"), [_fieldProjectId getLine]];
+            [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
+            
+        }
     }
 }
 
