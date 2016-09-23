@@ -34,6 +34,9 @@
      [[GAI sharedInstance].logger setLogLevel:kGAILogLevelInfo];
      [GAI sharedInstance].dispatchInterval = -1;
      [[GAI sharedInstance] trackerWithTrackingId:kGAI_TRACKER_ID];
+    
+    id <GAITracker>tracker = [[GAI sharedInstance] defaultTracker];
+     tracker.allowIDFACollection = YES;
  
 }
 

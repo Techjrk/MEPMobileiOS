@@ -116,7 +116,7 @@
                 _labelHeader.text = companyTitle;
                 break;
             }
-            case 3: {
+            case 2: {
                 _labelHeader.text = contactTitle;
                 break;
             }

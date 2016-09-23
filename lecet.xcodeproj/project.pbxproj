@@ -356,6 +356,8 @@
 		B7BF61171D240DD100B3BDD7 /* ListItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61161D240DD100B3BDD7 /* ListItemCollectionViewCell.m */; };
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
+		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
+		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
 		B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */; };
 		B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */; };
@@ -940,6 +942,8 @@
 		B7BF61181D240F5300B3BDD7 /* ListItemExpandingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemExpandingViewCell.h; sourceTree = "<group>"; };
 		B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemExpandingViewCell.m; sourceTree = "<group>"; };
 		B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemExpandingViewCell.xib; sourceTree = "<group>"; };
+		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
 		B7E104301CEC6D7600EAD8E7 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
 		B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsView.xib; sourceTree = "<group>"; };
@@ -1018,7 +1022,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */,
 				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
+				B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */,
 				B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */,
 				B725DACC1D756C5B00B6CCC4 /* libsqlite3.tbd in Frameworks */,
 				B725DACA1D756C3200B6CCC4 /* SystemConfiguration.framework in Frameworks */,
@@ -1741,6 +1747,7 @@
 			children = (
 				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
 				B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */,
+				B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */,
 				B725DACD1D756C6400B6CCC4 /* libz.tbd */,
 				B725DACB1D756C5B00B6CCC4 /* libsqlite3.tbd */,
 				B725DAC91D756C3200B6CCC4 /* SystemConfiguration.framework */,
@@ -1752,6 +1759,7 @@
 				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
 				B701551A1CD0C56A0050CF8A /* lecet */,
 				B70155191CD0C56A0050CF8A /* Products */,
+				B7DD9CC91D942A9600978CC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2301,6 +2309,14 @@
 				B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		B7DD9CC91D942A9600978CC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {

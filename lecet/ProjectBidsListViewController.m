@@ -104,10 +104,13 @@
         
     }
     if (projectSortItem == ProjectSortHightToLow) {
-        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estLow" ascending:YES];
+        //sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estLow" ascending:YES];
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"amount" ascending:NO];
     }
     if (projectSortItem == ProjectSortLowToHigh) {
-        sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estHigh" ascending:NO];
+        //sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estHigh" ascending:NO];
+        sorted = [self sortedAssociateProjectsDescriptorKey:@"amount" ascending:YES];
+
     }
     
     bidList = [sorted mutableCopy];

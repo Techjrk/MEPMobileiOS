@@ -24,6 +24,8 @@
 #define isiPhone5  (kDeviceHeight == 568)?TRUE:FALSE
 #define isiPhone6  (kDeviceHeight == 667)?TRUE:FALSE
 #define isiPhone6Plus  (kDeviceHeight == 736)?TRUE:FALSE
+#define isiPhone7  (kDeviceHeight == 1334)?TRUE:FALSE
+#define isiPhone7Plus  (kDeviceHeight == 1920)?TRUE:FALSE
 
 //***** FONT XPLIER *****
 #define FONT_XPLIER                                                      fontXplier()
@@ -39,6 +41,10 @@ fontXplier() {
         returnValue              = 1.25;
     } else if (isiPhone6Plus){
         returnValue              = 1.4;
+    } else if (isiPhone7){
+        returnValue              = 1.6;
+    }else if (isiPhone7Plus){
+        returnValue              = 1.6;
     }
     return returnValue;
 }
