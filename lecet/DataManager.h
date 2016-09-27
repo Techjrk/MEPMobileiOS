@@ -116,6 +116,7 @@
 
 - (void)projectSaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data updateOldData:(BOOL)update success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companySaveSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data updateOldData:(BOOL)update success:(APIBlock)success failure:(APIBlock)failure;
+- (void)genericSearchUsingUrl:(NSString*)url filter:(NSMutableDictionary*)filter success:(APIBlock)success failure:(APIBlock)failure;
 
 //Change Password
 - (void)changePassword:(NSMutableDictionary *)parameter success:(APIBlock)success failure:(APIBlock)failure;

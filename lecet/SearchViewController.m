@@ -1129,6 +1129,7 @@ typedef enum : NSUInteger {
     _labeSearch.text = @"";
     searchMode = NO;
     showResult = NO;
+    fromSavedSearch = NO;
     [_collectionView reloadData];
     [_clearButton setHidden:YES];
    

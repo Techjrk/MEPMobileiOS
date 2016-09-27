@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ContactDetailViewController : UIViewController
+@interface ContactDetailViewController : BaseViewController
 - (void)setCompanyContactDetails:(id)item;
 - (void)setCompanyContactDetailsFromDictionary:(id)item;
 @end

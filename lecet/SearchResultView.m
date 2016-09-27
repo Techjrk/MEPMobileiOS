@@ -26,6 +26,16 @@
     NSMutableDictionary *items;
     NSNumber *currentTab;
     BOOL isFromSavedSearch;
+    
+    NSMutableArray *collectionItemsProjects;
+    BOOL isFetchingCollectionItemsProjects;
+
+    NSMutableArray *collectionItemsCompanies;
+    BOOL isFetchingCollectionItemsCompanies;
+
+    NSMutableArray *collectionItemsContacts;
+    BOOL isFetchingCollectionItemsContacts;
+
 }
 @property (weak, nonatomic) IBOutlet UIButton *buttonProjects;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCompany;
@@ -72,6 +82,9 @@
     
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierContact];
     
+    collectionItemsProjects = [NSMutableArray new];
+    collectionItemsCompanies = [NSMutableArray new];
+    collectionItemsContacts = [NSMutableArray new];
 }
 
 - (IBAction)tappedButton:(id)sender {
@@ -93,6 +106,28 @@
 
 - (void)setCollectionItems:(NSMutableDictionary *)collectionItems tab:(NSNumber*)tab fromSavedSearch:(BOOL)fromSavedSearch {
     items = [collectionItems mutableCopy];
+    
+    NSDictionary *itemsProject = items[SEARCH_RESULT_PROJECT];
+    if (itemsProject != nil) {
+        NSArray *results = itemsProject[@"results"];
+        [collectionItemsProjects removeAllObjects];
+        [collectionItemsProjects addObjectsFromArray:results];
+    }
+    
+    NSDictionary *itemsCompany = items[SEARCH_RESULT_COMPANY];
+    if (itemsCompany != nil) {
+        NSArray *results = itemsCompany[@"results"];
+        [collectionItemsCompanies removeAllObjects];
+        [collectionItemsCompanies addObjectsFromArray:results];
+    }
+
+    NSDictionary *itemsContacts = items[SEARCH_RESULT_CONTACT];
+    if (itemsContacts != nil) {
+        NSArray *results = itemsContacts[@"results"];
+        [collectionItemsContacts removeAllObjects];
+        [collectionItemsContacts addObjectsFromArray:results];
+    }
+
     currentTab = tab;
     _constraintMakerLeading.constant = (kDeviceWidth * 0.333) * currentTab.integerValue;
 
@@ -161,7 +196,32 @@
     
 }
 
+#pragma mark - Fetch Records
+
+- (void)fetchProjects{
+    
+}
+
 #pragma mark - UICollectionView source and delegate
+
+- (void)modifyFilterForSkip:(NSMutableArray*)collectionItems filter:(NSMutableDictionary*)filter {
+    
+    NSString *filterString = filter[@"filter"];
+    
+    NSData *data = [filterString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    
+    dict[@"skip"] = [NSNumber numberWithInteger:collectionItems.count];
+    
+    NSError *error = nil;
+    data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+
+    filterString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    filter[@"filter"] = filterString;
+
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -173,23 +233,45 @@
             
         case 0: {
             
-            collectionItems = items[SEARCH_RESULT_PROJECT];
-            NSArray *itemList = collectionItems[@"results"];
+            //collectionItems = items[SEARCH_RESULT_PROJECT];
+            //NSArray *itemList = collectionItems[@"results"];
             ProjectTrackItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierProject forIndexPath:indexPath];
             cell = cellItem;
-            [cellItem setInfo:itemList[indexPath.row]];
- 
+            [cellItem setInfo:collectionItemsProjects[indexPath.row]];
+
+            NSInteger totalCount =  [self getCollectionCountForTitle:SEARCH_RESULT_PROJECT];
+
+            if ( (indexPath.row == collectionItemsProjects.count-1) & (collectionItemsProjects.count<totalCount)) {
+                if (!isFetchingCollectionItemsProjects) {
+                    isFetchingCollectionItemsProjects = YES;
+                    
+                    NSMutableDictionary *filter = items[SEARCH_RESULT_PROJECT_FILTER];
+                    
+                    [self modifyFilterForSkip:collectionItemsProjects filter:filter];
+                    
+                    [[DataManager sharedManager] genericSearchUsingUrl:items[SEARCH_RESULT_PROJECT_URL] filter:filter success:^(id object) {
+                        
+                        NSArray *results = object[@"results"];
+                        [collectionItemsProjects addObjectsFromArray:results];
+                        [_collectionView reloadData];
+                        
+                        isFetchingCollectionItemsProjects = NO;
+                    } failure:^(id object) {
+                        isFetchingCollectionItemsProjects = NO;
+                    }];
+                }
+            }
             break;
         }
         
         case 1: {
-            collectionItems = items[SEARCH_RESULT_COMPANY];
-            NSArray *itemList = collectionItems[@"results"];
+            //collectionItems = items[SEARCH_RESULT_COMPANY];
+            //NSArray *itemList = collectionItems[@"results"];
             
             CompanyTrackingCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierCompany forIndexPath:indexPath];
             cell = cellItem;
             
-            NSDictionary *item = itemList[indexPath.row];
+            NSDictionary *item = collectionItemsCompanies[indexPath.row];
             NSString *address1 = [DerivedNSManagedObject objectOrNil:item[@"address1"]];
             
             NSString *addr = @"";
@@ -222,17 +304,39 @@
             [cellItem setAddressBelow:addr];
             [cellItem searchLocationGeoCode];
 
+            NSInteger totalCount =  [self getCollectionCountForTitle:SEARCH_RESULT_COMPANY];
+            
+            if ( (indexPath.row == collectionItemsCompanies.count-1) & (collectionItemsCompanies.count<totalCount)) {
+                if (!isFetchingCollectionItemsCompanies) {
+                    isFetchingCollectionItemsCompanies = YES;
+                    
+                    NSMutableDictionary *filter = items[SEARCH_RESULT_COMPANY_FILTER];
+                    
+                    [self modifyFilterForSkip:collectionItemsCompanies filter:filter];
+                    
+                    [[DataManager sharedManager] genericSearchUsingUrl:items[SEARCH_RESULT_COMPANY_URL] filter:filter success:^(id object) {
+                        
+                        NSArray *results = object[@"results"];
+                        [collectionItemsCompanies addObjectsFromArray:results];
+                        [_collectionView reloadData];
+                        
+                        isFetchingCollectionItemsCompanies = NO;
+                    } failure:^(id object) {
+                        isFetchingCollectionItemsCompanies = NO;
+                    }];
+                }
+            }
             break;
         }
             
         case 2: {
-            collectionItems = items[SEARCH_RESULT_CONTACT];
-            NSArray *itemList = collectionItems[@"results"];
+            //collectionItems = items[SEARCH_RESULT_CONTACT];
+            //NSArray *itemList = collectionItems[@"results"];
             
             ContactItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierContact forIndexPath:indexPath];
             cell = cellItem;
           
-            NSDictionary *item = itemList[indexPath.row];
+            NSDictionary *item = collectionItemsContacts[indexPath.row];
             
             NSDictionary *company = [DerivedNSManagedObject objectOrNil:item[@"company"]];
             NSString *companyName = @"";
@@ -245,6 +349,29 @@
                 companyName = @"";
             }
             [cellItem setItemInfo:@{CONTACT_NAME:item[@"name"], CONTACT_COMPANY:companyName}];
+
+            NSInteger totalCount =  [self getCollectionCountForTitle:SEARCH_RESULT_CONTACT];
+            
+            if ( (indexPath.row == collectionItemsContacts.count-1) & (collectionItemsContacts.count<totalCount)) {
+                if (!isFetchingCollectionItemsContacts) {
+                    isFetchingCollectionItemsContacts = YES;
+                    
+                    NSMutableDictionary *filter = items[SEARCH_RESULT_CONTACT_FILTER];
+                    
+                    [self modifyFilterForSkip:collectionItemsContacts filter:filter];
+                    
+                    [[DataManager sharedManager] genericSearchUsingUrl:items[SEARCH_RESULT_CONTACT_URL] filter:filter success:^(id object) {
+                        
+                        NSArray *results = object[@"results"];
+                        [collectionItemsContacts addObjectsFromArray:results];
+                        [_collectionView reloadData];
+                        
+                        isFetchingCollectionItemsContacts = NO;
+                    } failure:^(id object) {
+                        isFetchingCollectionItemsContacts = NO;
+                    }];
+                }
+            }
 
             break;
         }
@@ -266,16 +393,19 @@
     
     switch (currentTab.integerValue) {
         case 0: {
-            return [self getCollectionCount:SEARCH_RESULT_PROJECT];
+            //return [self getCollectionCount:SEARCH_RESULT_PROJECT];
+            return collectionItemsProjects.count;
             break;
         }
         case 1: {
-            return [self getCollectionCount:SEARCH_RESULT_COMPANY];
+            //return [self getCollectionCount:SEARCH_RESULT_COMPANY];
+            return collectionItemsCompanies.count;
             break;
         }
             
         case 2 : {
-            return [self getCollectionCount:SEARCH_RESULT_CONTACT];
+            //return [self getCollectionCount:SEARCH_RESULT_CONTACT];
+            return collectionItemsContacts.count;
             break;
         }
     }
@@ -311,9 +441,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (currentTab.integerValue == 0) {
         
-        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_PROJECT];
-        NSArray *itemList = collectionItems[@"results"];
-        NSDictionary *item = itemList[indexPath.row];
+        //NSMutableDictionary *collectionItems = items[SEARCH_RESULT_PROJECT];
+        //NSArray *itemList = collectionItems[@"results"];
+        NSDictionary *item = collectionItemsProjects[indexPath.row];
         
         [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
             
@@ -327,9 +457,9 @@
         
     } else if (currentTab.integerValue == 1) {
         
-        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
-        NSArray *itemList = collectionItems[@"results"];
-        NSDictionary *item = itemList[indexPath.row];
+        //NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
+        //NSArray *itemList = collectionItems[@"results"];
+        NSDictionary *item = collectionItemsCompanies[indexPath.row];
         
         [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
             id returnObject = object;
@@ -344,9 +474,9 @@
 
     } else if (currentTab.integerValue == 2) {
      
-        NSMutableDictionary *collectionItems = items[SEARCH_RESULT_CONTACT];
-        NSArray *itemList = collectionItems[@"results"];
-        NSDictionary *item = itemList[indexPath.row];
+        //NSMutableDictionary *collectionItems = items[SEARCH_RESULT_CONTACT];
+        //NSArray *itemList = collectionItems[@"results"];
+        NSDictionary *item = collectionItemsContacts[indexPath.row];
         
         ContactDetailViewController *controller = [ContactDetailViewController new];
         [controller setCompanyContactDetailsFromDictionary:item];

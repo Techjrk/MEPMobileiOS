@@ -474,7 +474,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:dateFilter daysAhead:-30];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}}, {\"rank\":1}]}}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}}, {\"rank\":1}]},\"dashboardTypes\":true}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     NSString *url = [self url:kUrlBidsRecentlyMade];
     
     [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
@@ -503,7 +503,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lte\":\"%@\"}}]}, \"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lte\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:@{@"filter":filter} success:^(id object) {
         
@@ -533,7 +533,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:currentDate daysAhead:-30];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"firstPublishDate\":{\"gte\":\"%@\"}}, \"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"firstPublishDate\":{\"gte\":\"%@\"}}, \"limit\":250,\"dashboardTypes\":true,\"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyAdded] parameters:@{@"filter":filter} success:^(id object) {
         
@@ -563,7 +563,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-(numberOfDays)];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"lte\":\"%@\"}}, \"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"lte\":\"%@\"}}, \"limit\":250,\"dashboardTypes\":true,\"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
 
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:@{@"filter":filter} success:^(id object) {
@@ -730,6 +730,7 @@
         
         data[SEARCH_RESULT_CONTACT] = (id)[object mutableCopy];
         data[SEARCH_RESULT_CONTACT_FILTER] = (id)filter;
+        data[SEARCH_RESULT_CONTACT_URL] = (id)[self url:kUrlContactSearch];
         
         success(data);
     } failure:^(id object) {
@@ -738,6 +739,19 @@
 
 }
 
+- (void)genericSearchUsingUrl:(NSString*)url filter:(NSMutableDictionary*)filter success:(APIBlock)success failure:(APIBlock)failure{
+
+    [self HTTP_GET:url parameters:filter success:^(id object) {
+        
+        success(object);
+        
+    } failure:^(id object) {
+        
+        failure(object);
+    
+    } authenticated:YES];
+
+}
 - (void)savedSearches:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
     
     NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
@@ -983,6 +997,7 @@
     [self HTTP_GET:[self url:kUrlProjectSearch] parameters:filter success:^(id object) {
         data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
         data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
+        data[SEARCH_RESULT_PROJECT_URL] = (id)[self url:kUrlProjectSearch];
         
         success(data);
     } failure:^(id object) {
@@ -1122,6 +1137,7 @@
         
         data[SEARCH_RESULT_COMPANY] = (id)[object mutableCopy];
         data[SEARCH_RESULT_COMPANY_FILTER] = (id)filter;
+        data[SEARCH_RESULT_COMPANY_URL] = (id)[self url:kUrlCompanySearch];
         
         success(data);
     } failure:^(id object) {

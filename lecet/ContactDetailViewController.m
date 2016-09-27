@@ -13,12 +13,13 @@
 #import "DB_CompanyContact.h"
 #import "DB_Company.h"
 #import <MapKit/MapKit.h>
+#import "CompanyDetailViewController.h"
 
 @interface ContactDetailViewController()<ContactNavViewDelegate,ContactDetailViewDelegate>{
     NSMutableArray *contactDetails;
     NSString *name;
     NSString *address;
-    
+    NSNumber *companyId;
 }
 @property (weak, nonatomic) IBOutlet ContactNavBarView *contactNavBarView;
 @property (weak, nonatomic) IBOutlet ContactDetailView *contactDetailView;
@@ -57,6 +58,8 @@
     DB_Company *recordCompany = record.relationshipCompany;
 
     name = record.name;
+    
+    companyId = record.relationshipCompany.recordId;
    
     NSMutableArray *contactItem = [NSMutableArray new];
     
@@ -89,6 +92,8 @@
 
     NSDictionary *recordCompany = [DerivedNSManagedObject objectOrNil:record[@"company"]];
     NSString *companyName = [DerivedNSManagedObject objectOrNil:recordCompany[@"name"]];
+    
+    companyId = [DerivedNSManagedObject objectOrNil:record[@"companyId"]];
     
     if (companyName == nil) {
         companyName = @"";
@@ -181,7 +186,15 @@
             break;
         }
         case ContactFieldTypeAccount:{
-            [self.navigationController popViewControllerAnimated:YES];
+            [[DataManager sharedManager] companyDetail:companyId success:^(id object) {
+                id returnObject = object;
+                CompanyDetailViewController *controller = [CompanyDetailViewController new];
+                controller.view.hidden = NO;
+                [controller setInfo:returnObject];
+                [self.navigationController pushViewController:controller animated:YES];
+                
+            } failure:^(id object) {
+            }];
             break;
         }
         case ContactFieldTypeLocation:{
