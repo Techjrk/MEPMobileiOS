@@ -46,6 +46,9 @@
     _labelLine1.text = @"El Dorado";
     _labelLine2.text = nil;
     
+    _labelLine1.textAlignment = NSTextAlignmentRight;
+    _labelLine2.textAlignment = NSTextAlignmentRight;
+    
     _lineView.backgroundColor = [CUSTOM_ENTRYFIELD_BOTTOM_LINE_COLOR colorWithAlphaComponent:0.5];
     
     _constraintTopSpace.constant = kDeviceHeight * 0.015;

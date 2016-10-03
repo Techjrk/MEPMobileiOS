@@ -455,7 +455,7 @@ typedef enum {
 
     NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlCompanyDetailShare, (long)companyRecordId.integerValue]];
 
-    if (indexPath == 0) {
+    if (indexPath.row == 0) {
         
         NSString *html = [NSString stringWithFormat:@"<HTML><BODY>COMPANY NAME :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", companyName, url];
         [[DataManager sharedManager] sendEmail:html];
