@@ -1002,7 +1002,7 @@ typedef enum : NSUInteger {
         
         [[DataManager sharedManager] cancellAllRequests];
         
-        fromSavedSearch = NO;
+        //fromSavedSearch = NO;
         [self searchForProject:_labeSearch.text filter:nil];
         [self searchForCompany:_labeSearch.text filter:nil];
         [self searchForContact:_labeSearch.text filter:nil];
@@ -1120,6 +1120,7 @@ typedef enum : NSUInteger {
         [_clearButton setHidden:NO];
     }else{
         [_clearButton setHidden:YES];
+        fromSavedSearch = NO;
     }
     
 }

@@ -2964,6 +2964,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
+				PROVISIONING_PROFILE = "9b9e0653-ba4f-4cfc-93f2-d2dd70be0257";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Debug;
@@ -2990,6 +2991,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
+				PROVISIONING_PROFILE = "9b9e0653-ba4f-4cfc-93f2-d2dd70be0257";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Release;

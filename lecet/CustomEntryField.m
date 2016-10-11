@@ -81,15 +81,16 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
     UILabel *label = _labelLine2.text == nil | _labelLine2.text.length == 0? _labelLine1:_labelLine2;
-    [label sizeToFit];
+    //[label sizeToFit];
     
     if (label.text.length == 0) {
         heightConstraint.constant = 0;
     } else {
         heightConstraint.constant = label.frame.origin.y+ label.frame.size.height + (kDeviceHeight * 0.008);
     }
-    
 }
 
 @end

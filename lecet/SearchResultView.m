@@ -138,6 +138,7 @@
 }
 
 - (void)displayHeaderForProject:(NSString*)projectTitle companyTitle:(NSString*)companyTitle contactTitle:(NSString*)contactTitle {
+    _viewTopHeader.hidden = NO;
     if (isFromSavedSearch) {
         
         _viewTopHeader.hidden = YES;
