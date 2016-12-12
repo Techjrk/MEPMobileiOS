@@ -64,7 +64,7 @@
 
 #define kUrlCompanyTrackingList             @"companylists/%li/companies"
 #define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
-#define kUrlCompanyTrackingListMoveIds      @"companylists/%li"
+#define kUrlCompanyTrackingListMoveIds      @"companylists/%li/syncItems"
 #define kUrlCompanyAddTrackingList          @"companylists/%li/companies/rel/%li"
 #define kUrlCompanySearch                   @"Companies/search"
 
@@ -1111,8 +1111,11 @@
 
 - (void)companyTrackingMoveIds:(NSNumber *)trackId recordIds:(NSDictionary*)track success:(APIBlock)success failure:(APIBlock)failure {
 
+    
     NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListMoveIds, (long)trackId.integerValue];
-    [self HTTP_PUT_BODY:[self url:url] parameters:track success:^(id object) {
+    NSArray *ids = [DerivedNSManagedObject objectOrNil:track[@"companyIds"]];
+    NSDictionary *dicTrack = @{@"itemIds":ids};
+    [self HTTP_PUT_BODY:[self url:url] parameters:dicTrack success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
