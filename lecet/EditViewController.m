@@ -283,7 +283,8 @@ typedef enum  {
 - (void)removeItem {
     
     NSMutableDictionary *currentCargo = [trackingInfo mutableCopy];
-    NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
+    //NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
+    NSMutableArray *currentIds = [self getCompaniesIDS:currentCargo];
     [currentIds removeObjectsInArray:selectedDataItems];
     currentCargo[@"companyIds"] = currentIds;
     
@@ -501,7 +502,8 @@ typedef enum  {
 - (void)moveTrackListIds:(NSIndexPath*)indexPath {
  
     NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
-    NSMutableArray *ids = [track[@"companyIds"] mutableCopy];
+    //NSMutableArray *ids = [track[@"companyIds"] mutableCopy];
+    NSMutableArray *ids = [self getCompaniesIDS:track];
     
     [selectedDataItems enumerateObjectsUsingBlock:^(id obj,NSUInteger countInt,BOOL *stop){
         
@@ -514,7 +516,8 @@ typedef enum  {
     }];
     track[@"companyIds"] = ids;
     NSMutableDictionary *currentCargo = [trackingInfo mutableCopy];
-    NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
+    //NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
+    NSMutableArray *currentIds = [self getCompaniesIDS:currentCargo];
     [currentIds removeObjectsInArray:selectedDataItems];
     currentCargo[@"companyIds"] = currentIds;
     trackingInfo = currentCargo;
@@ -551,6 +554,21 @@ typedef enum  {
         
     }];
 
+}
+
+
+- (NSMutableArray *)getCompaniesIDS:(id)info {
+    
+    NSMutableArray *ids = [NSMutableArray new];
+    NSArray *dataArray = [DerivedNSManagedObject objectOrNil:info[@"companies"]];
+    
+    for (id dataInfo in dataArray) {
+        if (dataInfo[@"id"] != nil) {
+            [ids addObject:dataInfo[@"id"]];
+        }
+        
+    }
+    return ids;
 }
 
 @end
