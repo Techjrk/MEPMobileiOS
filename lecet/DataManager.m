@@ -1115,7 +1115,13 @@
     
     NSString *url = [NSString stringWithFormat:kUrlCompanyTrackingListMoveIds, (long)trackId.integerValue];
     NSArray *ids = [DerivedNSManagedObject objectOrNil:track[@"companyIds"]];
-    NSDictionary *dicTrack = @{@"itemIds":ids};
+    NSDictionary *dicTrack;
+    if (ids.count > 0) {
+        dicTrack = @{@"itemIds":ids};
+    } else {
+        dicTrack = @{@"itemIds":@[]};
+    }
+    
     [self HTTP_PUT_BODY:[self url:url] parameters:dicTrack success:^(id object) {
         success(object);
     } failure:^(id object) {
