@@ -52,7 +52,9 @@
     }
     [_navBarView setContractorName:trackingInfo[@"name"]];
     
-    NSString *countString = [NSString stringWithFormat:@"%li %@",(long)[trackingInfo[@"companyIds"] count],NSLocalizedLanguage([trackingInfo[@"companyIds"] count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
+    //NSString *countString = [NSString stringWithFormat:@"%li %@",(long)[trackingInfo[@"companyIds"] count],NSLocalizedLanguage([trackingInfo[@"companyIds"] count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
+    NSString *countString = [NSString stringWithFormat:@"%li %@",(long)[dataItems count],NSLocalizedLanguage([dataItems count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
+    
     [_navBarView setProjectTitle:countString];
     
 }
