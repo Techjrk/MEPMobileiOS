@@ -287,6 +287,7 @@ typedef enum  {
     NSMutableArray *currentIds = [self getCompaniesIDS:currentCargo];
     [currentIds removeObjectsInArray:selectedDataItems];
     currentCargo[@"companyIds"] = currentIds;
+    [self removeSelectedCompanies];
     
     [[DataManager sharedManager] companyTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
         
@@ -519,8 +520,9 @@ typedef enum  {
     //NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
     NSMutableArray *currentIds = [self getCompaniesIDS:currentCargo];
     [currentIds removeObjectsInArray:selectedDataItems];
+    [self removeSelectedCompanies];
     currentCargo[@"companyIds"] = currentIds;
-    trackingInfo = currentCargo;
+    //trackingInfo = currentCargo;
     
     [[DataManager sharedManager] companyTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
@@ -569,6 +571,29 @@ typedef enum  {
         
     }
     return ids;
+}
+
+- (void)removeSelectedCompanies {
+    //trackingInfo = [NSMutableDictionary new];
+    NSMutableDictionary *dic = [trackingInfo mutableCopy];
+    NSMutableArray *arrayList = [DerivedNSManagedObject objectOrNil:dic[@"companies"]];
+    NSMutableArray *tempArray = [NSMutableArray new];
+    for (id dataInfo in arrayList) {
+        BOOL isSelected = false;
+        for (id obj in selectedDataItems) {
+            if ([obj isEqual:dataInfo[@"id"]]) {
+                isSelected = YES;
+            }
+        }
+        
+        if (!isSelected) {
+            [tempArray addObject:dataInfo];
+        }
+    }
+    
+    [dic setValue:tempArray forKey:@"companies"];
+    //trackingInfo = dic;
+    [self setTrackingInfo:[dic copy]];
 }
 
 @end
