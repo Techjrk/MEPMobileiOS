@@ -52,7 +52,7 @@ typedef enum  {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSArray *projectIds = self.cargo[@"projectIds"];
+    NSArray *projectIds = self.cargo[@"projects"];
     [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(projectIds.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"), (long)projectIds.count]];
     [_topBar setContractorName:self.cargo[@"name"]];
     
@@ -146,11 +146,28 @@ typedef enum  {
 #pragma Custom Delegates
 
 - (void)removeItem {
-    
+  
+    /*
     NSMutableDictionary *currentCargo = [self.cargo mutableCopy];
     NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
     [currentIds removeObjectsInArray:[self selectedItemForEdit]];
     currentCargo[@"projectIds"] = currentIds;
+    */
+    
+    
+    NSMutableDictionary *currentCargo = [NSMutableDictionary new];
+    currentCargo[@"id"] = self.cargo[@"id"];
+    //NSMutableArray *currentIds = [self.cargo[@"projectIds"] mutableCopy];
+    NSMutableArray *currentIds = [NSMutableArray new];
+    
+    for (NSDictionary *item in self.cargo[@"projects"]) {
+        
+        [currentIds addObject:item[@"id"]];
+    }
+    
+    
+    [currentIds removeObjectsInArray:[self selectedItemForEdit]];
+    currentCargo[@"itemIds"] = currentIds;
     
     [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
         
@@ -356,20 +373,41 @@ typedef enum  {
     
     NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
     
-    NSMutableArray *ids = [track[@"projectIds"] mutableCopy];
+    //NSMutableArray *ids = [track[@"projectIds"] mutableCopy];
+    
+    NSMutableArray *ids = [NSMutableArray new];
+    
+    for (NSDictionary *item in track[@"projects"]) {
+        
+        [ids addObject:item[@"id"]];
+    }
+    
     [ids removeObjectsInArray:[self selectedItemForEdit]];
     [ids addObjectsFromArray:[self selectedItemForEdit]];
     track[@"projectIds"] = ids;
+    NSMutableDictionary *trackToMove = [NSMutableDictionary new];
+    trackToMove[@"itemIds"] = ids;
     
     NSMutableDictionary *currentCargo = [self.cargo mutableCopy];
-    NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
+                                     
+    //NSMutableArray *currentIds = [currentCargo[@"projectIds"] mutableCopy];
+    
+    NSMutableArray *currentIds = [NSMutableArray new];
+    for (NSDictionary *item in currentCargo[@"projects"]) {
+        
+        [currentIds addObject:item[@"id"]];
+    }
+    
+                                     
     [currentIds removeObjectsInArray:[self selectedItemForEdit]];
     currentCargo[@"projectIds"] = currentIds;
+    NSMutableDictionary *cargoToMove = [NSMutableDictionary new];
+    cargoToMove[@"itemIds"] = currentIds;
     
-    [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
+    [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:trackToMove success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
         
-        [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
+        [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:cargoToMove success:^(id object) {
             
             NSMutableArray *movedItems = [[NSMutableArray alloc] init];
             for (NSDictionary *item in self.collectionItems) {

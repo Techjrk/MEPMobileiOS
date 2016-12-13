@@ -55,7 +55,8 @@
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
-#define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
+//#define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
+#define kUrlProjectTrackingListMoveIds      @"projectlists/%li/syncItems"
 #define kUrlProjectAddTrackingList          @"projectlists/%li/projects/rel/%li"
 #define kUrlProjectSearch                   @"Projects/search"
 #define kUrlProjectHide                     @"Projects/%li/hide"
