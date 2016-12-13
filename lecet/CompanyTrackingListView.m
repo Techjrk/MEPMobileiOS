@@ -101,7 +101,14 @@
     
     NSString *zip5 = [DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_ZIP5]];
     zip5 = zip5 == nil || [zip5 isEqual:[NSNull null]]?@"":zip5;
-    NSString *addressCon = [NSString stringWithFormat:@"%@, %@ %@",[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_COUNTY],[collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_STATE],zip5];
+    
+    NSString *county = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_COUNTY];
+    county = county == nil || [county isEqual:[NSNull null]]?@"":[NSString stringWithFormat:@"%@, ",county];
+    
+    NSString *state = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_STATE];
+    state = state == nil || [state isEqual:[NSNull null]]?@"":state;
+    
+    NSString *addressCon = [NSString stringWithFormat:@"%@%@ %@",county,state,zip5];
     
     NSString *addressBelow = addressCon;
     
