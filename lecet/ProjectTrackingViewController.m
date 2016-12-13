@@ -185,6 +185,7 @@ typedef enum  {
             [self.collectionItems removeObjectsInArray:movedItems];
         }
         
+        self.cargo = [object mutableCopy];
         [_collectionView reloadData];
         
         [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(self.collectionItems.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"), (long)self.collectionItems.count]];
@@ -423,6 +424,7 @@ typedef enum  {
                 [self.collectionItems removeObjectsInArray:movedItems];
             }
             
+            self.cargo = [object mutableCopy];
             [_collectionView reloadData];
             
             [_topBar setProjectTitle:[NSString stringWithFormat:NSLocalizedLanguage(self.collectionItems.count<=1?@"TRACK_ITEM_COUNT_SINGLE":@"TRACK_ITEM_COUNT_PLURAL"), (long)self.collectionItems.count]];
