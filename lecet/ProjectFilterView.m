@@ -369,6 +369,10 @@
     [_fieldLocation setInfo:info];
 }
 
+- (void)hideLocation:(BOOL)hidden {
+    self.constraintFieldHeight.constant =  hidden?0:FIELD_VIEW_HEIGHT;    
+}
+
 - (NSDate*)dateAdd:(NSInteger)numberOfDays {
     NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
     dayComponent.day = numberOfDays;

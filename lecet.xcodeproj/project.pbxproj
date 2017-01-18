@@ -2947,7 +2947,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2962,10 +2962,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "9b9e0653-ba4f-4cfc-93f2-d2dd70be0257";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
+				PROVISIONING_PROFILE = "40c8ef30-542c-45be-b252-bbb177cf5760";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
 			};
 			name = Debug;
 		};
@@ -2974,7 +2974,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2989,10 +2989,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "9b9e0653-ba4f-4cfc-93f2-d2dd70be0257";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
+				PROVISIONING_PROFILE = "40c8ef30-542c-45be-b252-bbb177cf5760";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
 			};
 			name = Release;
 		};
