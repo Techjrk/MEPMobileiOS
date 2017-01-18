@@ -15,6 +15,7 @@
 #import "CallOutViewController.h"
 #import "ProjectPointAnnotation.h"
 #import <MapKit/MapKit.h>
+#import "ProjectNearMeFilterViewController.h"
 
 #define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
@@ -240,6 +241,8 @@ float MetersToMiles(float meters) {
 }
 
 - (IBAction)tappedButtonFilter:(id)sender {
+    ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
+    [self presentViewController:controller animated:YES completion:nil];
 }
     
 - (IBAction)tappedLocListButton:(id)sender {
