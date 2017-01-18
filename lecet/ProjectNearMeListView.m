@@ -16,7 +16,7 @@
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 #define kCellIdentifier                     @"kCellIdentifier"
 
-@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource>
+@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
     @property (weak, nonatomic) IBOutlet UIButton *preBidButton;
     @property (weak, nonatomic) IBOutlet UIButton *postBidButton;
     @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -43,7 +43,6 @@
         _postBidButton.titleLabel.font = BUTTON_FONT;
         [_postBidButton setTitleColor:BUTTON_COLOR forState:UIControlStateNormal];
         [_postBidButton setTitle:NSLocalizedLanguage(@"Post Bid") forState:UIControlStateNormal];
-        
     }
     
 - (IBAction)tappedButton:(id)sender {
@@ -58,7 +57,6 @@
     } completion:^(BOOL finished) {
         
     }];
-
 }
     
 #pragma mark - UICollectionView Datasource
@@ -72,19 +70,19 @@
 
 #pragma mark - UICollectionView Delegate
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     ProjectNearMeListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     return cell;
-    
 }
     
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     CGSize size;
-    size = CGSizeMake( self.collectionView.frame.size.width, kDeviceHeight * 0.15);
+    size = CGSizeMake( self.collectionView.frame.size.width * 0.96, kDeviceHeight * 0.135);
     return size;
-    
 }
     
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+        return UIEdgeInsetsMake( 0, 0, 0, 0);
+}
 @end

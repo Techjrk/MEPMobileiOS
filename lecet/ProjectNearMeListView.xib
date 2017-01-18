@@ -26,6 +26,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJZ-gC-avy" customClass="RadialBackgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0A-oF-pbL">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                     <subviews>
@@ -91,8 +95,8 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KlX-C6-CHZ">
-                    <rect key="frame" x="0.0" y="54" width="375" height="613"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="65.5" width="375" height="601.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c2e-ng-CB0">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -104,17 +108,29 @@
                         <outlet property="delegate" destination="-1" id="TeH-Zm-EjF"/>
                     </connections>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-tr-Ohr">
+                    <rect key="frame" x="0.0" y="54" width="375" height="11.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="CRf-tr-Ohr" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.017" id="2gr-AH-vLV"/>
                 <constraint firstAttribute="bottom" secondItem="KlX-C6-CHZ" secondAttribute="bottom" id="87n-cd-Pfc"/>
                 <constraint firstItem="a0A-oF-pbL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="EmK-a6-nq8"/>
+                <constraint firstAttribute="trailing" secondItem="CRf-tr-Ohr" secondAttribute="trailing" id="GZF-Ob-MwJ"/>
                 <constraint firstItem="KlX-C6-CHZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jzo-HU-LUa"/>
+                <constraint firstItem="CRf-tr-Ohr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mh5-ug-gjT"/>
                 <constraint firstAttribute="trailing" secondItem="KlX-C6-CHZ" secondAttribute="trailing" id="TZc-oB-aYJ"/>
                 <constraint firstItem="a0A-oF-pbL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Tmf-OD-gFL"/>
+                <constraint firstItem="BJZ-gC-avy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WqR-Ci-wEu"/>
+                <constraint firstItem="KlX-C6-CHZ" firstAttribute="top" secondItem="CRf-tr-Ohr" secondAttribute="bottom" id="YDh-l9-Hml"/>
+                <constraint firstItem="BJZ-gC-avy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZuZ-kH-bUI"/>
                 <constraint firstItem="a0A-oF-pbL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="h8t-Bo-QyU"/>
+                <constraint firstItem="CRf-tr-Ohr" firstAttribute="top" secondItem="a0A-oF-pbL" secondAttribute="bottom" id="jy0-D3-7oY"/>
+                <constraint firstAttribute="bottom" secondItem="BJZ-gC-avy" secondAttribute="bottom" id="mUc-zE-AoP"/>
+                <constraint firstAttribute="trailing" secondItem="BJZ-gC-avy" secondAttribute="trailing" id="u4a-li-pDX"/>
                 <constraint firstItem="a0A-oF-pbL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="uZT-3K-rZ1"/>
-                <constraint firstItem="KlX-C6-CHZ" firstAttribute="top" secondItem="a0A-oF-pbL" secondAttribute="bottom" id="vv5-Ej-a27"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

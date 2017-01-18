@@ -24,35 +24,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="469" height="121"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jm-Lh-svo">
-                                <rect key="frame" x="0.0" y="0.0" width="14.5" height="121"/>
+                                <rect key="frame" x="0.0" y="0.0" width="15" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yE-KW-Phe">
-                                <rect key="frame" x="454.5" y="0.0" width="14.5" height="121"/>
+                                <rect key="frame" x="454" y="0.0" width="15" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xvt-qE-md1">
-                                <rect key="frame" x="14.5" y="14.5" width="91" height="91"/>
+                                <rect key="frame" x="15" y="16" width="89" height="89"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xvt-qE-md1" secondAttribute="height" multiplier="1:1" id="pPT-0F-CfI"/>
                                 </constraints>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np9-zd-d9j">
-                                <rect key="frame" x="105.5" y="0.0" width="14.5" height="121"/>
+                                <rect key="frame" x="104" y="0.0" width="15" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-BY-KSb">
-                                <rect key="frame" x="120" y="14.5" width="289" height="91"/>
+                                <rect key="frame" x="119" y="16" width="290" height="89"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIW-fr-DIE">
-                                <rect key="frame" x="409" y="0.0" width="45.5" height="121"/>
+                                <rect key="frame" x="409" y="0.0" width="45" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqR-Of-ig2">
-                                <rect key="frame" x="409" y="14.5" width="45.5" height="45.5"/>
+                                <rect key="frame" x="409" y="16" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.59901258680555558" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SqR-Of-ig2" secondAttribute="height" multiplier="1:1" id="kCA-N4-anX"/>
@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.95299150634458207" green="0.95720970812182737" blue="0.95706965724432858" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3jm-Lh-svo" firstAttribute="top" secondItem="Icq-9x-Iyh" secondAttribute="top" id="1QD-mx-aaY"/>
                             <constraint firstItem="SqR-Of-ig2" firstAttribute="width" secondItem="PIW-fr-DIE" secondAttribute="width" id="76F-2r-ie5"/>
@@ -81,7 +81,7 @@
                             <constraint firstItem="ta2-BY-KSb" firstAttribute="top" secondItem="Xvt-qE-md1" secondAttribute="top" id="Woc-rj-EP6"/>
                             <constraint firstItem="ta2-BY-KSb" firstAttribute="bottom" secondItem="Xvt-qE-md1" secondAttribute="bottom" id="YE2-Wp-ehH"/>
                             <constraint firstItem="Xvt-qE-md1" firstAttribute="leading" secondItem="3jm-Lh-svo" secondAttribute="trailing" id="YPi-eY-8UD"/>
-                            <constraint firstItem="Xvt-qE-md1" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.195" id="aaw-Ac-a3g"/>
+                            <constraint firstItem="Xvt-qE-md1" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.19" id="aaw-Ac-a3g"/>
                             <constraint firstItem="1yE-KW-Phe" firstAttribute="width" secondItem="3jm-Lh-svo" secondAttribute="width" id="flx-06-wU7"/>
                             <constraint firstItem="PIW-fr-DIE" firstAttribute="top" secondItem="Icq-9x-Iyh" secondAttribute="top" id="fnD-Pi-sPZ"/>
                             <constraint firstAttribute="trailing" secondItem="1yE-KW-Phe" secondAttribute="trailing" id="ktr-QV-aSg"/>
@@ -94,7 +94,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.59901258680000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.95299150629999996" green="0.95720970809999995" blue="0.95706965720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Icq-9x-Iyh" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="EVW-3i-ZOy"/>
                 <constraint firstItem="Icq-9x-Iyh" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="HfD-cA-2ff"/>
@@ -102,6 +102,11 @@
                 <constraint firstItem="Icq-9x-Iyh" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="TFe-65-FYZ"/>
             </constraints>
             <size key="customSize" width="469" height="121"/>
+            <connections>
+                <outlet property="mapView" destination="Xvt-qE-md1" id="d0M-zl-CY3"/>
+                <outlet property="titleLabel" destination="ta2-BY-KSb" id="SH0-Pd-ncn"/>
+                <outlet property="unionLabel" destination="SqR-Of-ig2" id="cSN-rQ-jgd"/>
+            </connections>
             <point key="canvasLocation" x="-80.5" y="12.5"/>
         </collectionViewCell>
     </objects>
