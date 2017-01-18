@@ -27,11 +27,13 @@
     BOOL isDoneSearching;
     BOOL showListView;
 }
-    @property (weak, nonatomic) IBOutlet UIButton *locListButton;
+@property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonFilter;
+
 - (IBAction)tappedButtonback:(id)sender;
 @end
 
@@ -235,6 +237,9 @@ float MetersToMiles(float meters) {
         isFirstLaunch = NO;
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
+}
+
+- (IBAction)tappedButtonFilter:(id)sender {
 }
     
 - (IBAction)tappedLocListButton:(id)sender {

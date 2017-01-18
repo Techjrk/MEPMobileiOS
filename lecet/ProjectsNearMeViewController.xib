@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectsNearMeViewController">
             <connections>
                 <outlet property="buttonBack" destination="R5M-wU-TD7" id="6Nz-Lm-EJ8"/>
+                <outlet property="buttonFilter" destination="faJ-0o-7ws" id="zaL-LR-Cjz"/>
                 <outlet property="locListButton" destination="vOv-oB-KhN" id="ckm-HO-Xc5"/>
                 <outlet property="mapView" destination="c4p-uc-d1n" id="MHH-7K-hkV"/>
                 <outlet property="textFieldSearch" destination="4X6-5H-z1L" id="CEQ-c7-b4P"/>
@@ -44,23 +45,34 @@
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-5H-z1L">
-                            <rect key="frame" x="50" y="30" width="352" height="40"/>
+                            <rect key="frame" x="50" y="30" width="290" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" spellCheckingType="no" returnKeyType="search"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="soE-es-dNA"/>
                             </connections>
                         </textField>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faJ-0o-7ws">
+                            <rect key="frame" x="340" y="30" width="74" height="40"/>
+                            <state key="normal" image="icon_filterNearMe"/>
+                            <connections>
+                                <action selector="tappedButtonFilter:" destination="-1" eventType="touchUpInside" id="lln-fd-JNh"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Ze1-Fk-hF2" firstAttribute="top" secondItem="AoB-Hl-8B6" secondAttribute="top" id="Blv-L5-vsk"/>
+                        <constraint firstItem="faJ-0o-7ws" firstAttribute="height" secondItem="4X6-5H-z1L" secondAttribute="height" id="FVe-Vq-ram"/>
                         <constraint firstItem="Ze1-Fk-hF2" firstAttribute="leading" secondItem="AoB-Hl-8B6" secondAttribute="leading" id="H4e-AJ-wKG"/>
                         <constraint firstItem="R5M-wU-TD7" firstAttribute="leading" secondItem="AoB-Hl-8B6" secondAttribute="leading" id="IpS-5Y-OPt"/>
+                        <constraint firstItem="faJ-0o-7ws" firstAttribute="centerY" secondItem="4X6-5H-z1L" secondAttribute="centerY" id="XqY-j5-oni"/>
                         <constraint firstItem="4X6-5H-z1L" firstAttribute="centerY" secondItem="R5M-wU-TD7" secondAttribute="centerY" id="YbY-qL-SGu"/>
                         <constraint firstAttribute="trailing" secondItem="Ze1-Fk-hF2" secondAttribute="trailing" id="bqw-O8-cgJ"/>
-                        <constraint firstItem="4X6-5H-z1L" firstAttribute="width" secondItem="AoB-Hl-8B6" secondAttribute="width" multiplier="0.85" id="fZN-fS-u54"/>
+                        <constraint firstAttribute="trailing" secondItem="faJ-0o-7ws" secondAttribute="trailing" id="fNq-M7-WZ6"/>
+                        <constraint firstItem="4X6-5H-z1L" firstAttribute="width" secondItem="AoB-Hl-8B6" secondAttribute="width" multiplier="0.7" id="fZN-fS-u54"/>
                         <constraint firstItem="R5M-wU-TD7" firstAttribute="height" secondItem="Ze1-Fk-hF2" secondAttribute="height" id="igC-BB-1Uo"/>
+                        <constraint firstItem="faJ-0o-7ws" firstAttribute="leading" secondItem="4X6-5H-z1L" secondAttribute="trailing" id="kbK-bA-FPd"/>
                         <constraint firstItem="R5M-wU-TD7" firstAttribute="top" secondItem="Ze1-Fk-hF2" secondAttribute="bottom" id="lue-6K-goT"/>
                         <constraint firstItem="R5M-wU-TD7" firstAttribute="width" secondItem="AoB-Hl-8B6" secondAttribute="width" multiplier="0.12" id="uMu-Re-LU7"/>
                         <constraint firstItem="4X6-5H-z1L" firstAttribute="leading" secondItem="R5M-wU-TD7" secondAttribute="trailing" id="uny-uz-2fh"/>
@@ -124,6 +136,7 @@
     </objects>
     <resources>
         <image name="icon_arrowLeft" width="10" height="24"/>
+        <image name="icon_filterNearMe" width="28" height="18"/>
         <image name="list_icon" width="53" height="53"/>
         <image name="locationArrow_icon " width="53" height="53"/>
     </resources>
