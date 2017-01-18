@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectsNearMeViewController">
             <connections>
                 <outlet property="buttonBack" destination="R5M-wU-TD7" id="6Nz-Lm-EJ8"/>
+                <outlet property="locListButton" destination="vOv-oB-KhN" id="ckm-HO-Xc5"/>
                 <outlet property="mapView" destination="c4p-uc-d1n" id="MHH-7K-hkV"/>
                 <outlet property="textFieldSearch" destination="4X6-5H-z1L" id="CEQ-c7-b4P"/>
                 <outlet property="topHeaderView" destination="AoB-Hl-8B6" id="jtb-ZG-7Iu"/>
@@ -22,7 +27,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPF-Bf-kON" customClass="RadialBackgroundView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoB-Hl-8B6">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
@@ -36,7 +41,7 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-Fk-hF2">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-5H-z1L">
                             <rect key="frame" x="50" y="30" width="352" height="40"/>
@@ -47,7 +52,7 @@
                             </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Ze1-Fk-hF2" firstAttribute="top" secondItem="AoB-Hl-8B6" secondAttribute="top" id="Blv-L5-vsk"/>
                         <constraint firstItem="Ze1-Fk-hF2" firstAttribute="leading" secondItem="AoB-Hl-8B6" secondAttribute="leading" id="H4e-AJ-wKG"/>
@@ -74,8 +79,15 @@
                         <action selector="tappedLocationRecenterButton:" destination="-1" eventType="touchUpInside" id="GTg-jZ-I7d"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOv-oB-KhN">
+                    <rect key="frame" x="336" y="593" width="53" height="53"/>
+                    <state key="normal" image="list_icon"/>
+                    <connections>
+                        <action selector="tappedLocListButton:" destination="-1" eventType="touchUpInside" id="sCh-Tk-q06"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="bPF-Bf-kON" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2cV-Ka-CnQ"/>
                 <constraint firstItem="Ze1-Fk-hF2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="5fm-6A-f7Z"/>
@@ -90,10 +102,14 @@
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bmm-7r-peQ"/>
                 <constraint firstItem="bPF-Bf-kON" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dFA-vE-3kd"/>
                 <constraint firstAttribute="trailing" secondItem="c4p-uc-d1n" secondAttribute="trailing" id="duG-zk-Ay0"/>
+                <constraint firstItem="vOv-oB-KhN" firstAttribute="leading" secondItem="bim-2D-c2L" secondAttribute="leading" id="hPb-Hn-Kl4"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.115" id="hZM-zy-4cG"/>
+                <constraint firstItem="vOv-oB-KhN" firstAttribute="trailing" secondItem="bim-2D-c2L" secondAttribute="trailing" id="iud-TI-McV"/>
+                <constraint firstItem="bim-2D-c2L" firstAttribute="top" secondItem="vOv-oB-KhN" secondAttribute="bottom" constant="12" id="kQR-A8-WnX"/>
                 <constraint firstAttribute="trailing" secondItem="AoB-Hl-8B6" secondAttribute="trailing" id="lcq-Ou-8Cb"/>
                 <constraint firstItem="c4p-uc-d1n" firstAttribute="top" secondItem="AoB-Hl-8B6" secondAttribute="bottom" id="pM2-w9-izc"/>
                 <constraint firstItem="R5M-wU-TD7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="qn8-VS-A8X"/>
+                <constraint firstItem="vOv-oB-KhN" firstAttribute="centerX" secondItem="bim-2D-c2L" secondAttribute="centerX" id="vEP-2V-Cln"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -108,6 +124,7 @@
     </objects>
     <resources>
         <image name="icon_arrowLeft" width="10" height="24"/>
+        <image name="list_icon" width="53" height="53"/>
         <image name="locationArrow_icon " width="53" height="53"/>
     </resources>
 </document>

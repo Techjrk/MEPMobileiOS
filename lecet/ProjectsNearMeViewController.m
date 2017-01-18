@@ -25,7 +25,9 @@
     BOOL showPrompt;
     BOOL isLocationCaptured;
     BOOL isDoneSearching;
+    BOOL showListView;
 }
+    @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
@@ -49,6 +51,7 @@ float MetersToMiles(float meters) {
     [self enableTapGesture:YES];
     
     showPrompt = YES;
+    
     mapItems = [NSMutableArray new];
     _textFieldSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _textFieldSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
@@ -68,6 +71,7 @@ float MetersToMiles(float meters) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_LOCATION_DENIED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationAllowed:) name:NOTIFICATION_LOCATION_ALLOWED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];    
+
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         
@@ -232,9 +236,14 @@ float MetersToMiles(float meters) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }
-
+    
+- (IBAction)tappedLocListButton:(id)sender {
+    showListView = !showListView;
+    NSString *imageName = showListView ? @"loc_List_icon" :@"list_icon";
+    [_locListButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+    
 #pragma mark - Map Routines
-
 - (void)addItemsToMap {
     for (NSDictionary *item in mapItems) {
         [self addAnnotationCargo:item];
