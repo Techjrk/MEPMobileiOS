@@ -41,6 +41,8 @@
 		B64474731D00449B0001B244 /* ProjectSortCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64474711D00449B0001B244 /* ProjectSortCVCell.xib */; };
 		B644747A1D0047F10001B244 /* ProjectSortView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64474781D0047F10001B244 /* ProjectSortView.m */; };
 		B644747B1D0047F10001B244 /* ProjectSortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64474791D0047F10001B244 /* ProjectSortView.xib */; };
+		B647D0A31E2F9BF100A864D1 /* ProjectNearMeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B647D0A11E2F9BF100A864D1 /* ProjectNearMeListView.m */; };
+		B647D0A41E2F9BF100A864D1 /* ProjectNearMeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A21E2F9BF100A864D1 /* ProjectNearMeListView.xib */; };
 		B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B65106481D12AD4000007759 /* ProjComTrackingTabView.m */; };
 		B651064B1D12AD4000007759 /* ProjComTrackingTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65106491D12AD4000007759 /* ProjComTrackingTabView.xib */; };
 		B65106511D12B80B00007759 /* CompanyTrackingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B651064F1D12B80B00007759 /* CompanyTrackingListView.m */; };
@@ -452,6 +454,9 @@
 		B64474771D0047F10001B244 /* ProjectSortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSortView.h; sourceTree = "<group>"; };
 		B64474781D0047F10001B244 /* ProjectSortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSortView.m; sourceTree = "<group>"; };
 		B64474791D0047F10001B244 /* ProjectSortView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectSortView.xib; sourceTree = "<group>"; };
+		B647D0A01E2F9BF100A864D1 /* ProjectNearMeListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearMeListView.h; sourceTree = "<group>"; };
+		B647D0A11E2F9BF100A864D1 /* ProjectNearMeListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearMeListView.m; sourceTree = "<group>"; };
+		B647D0A21E2F9BF100A864D1 /* ProjectNearMeListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearMeListView.xib; sourceTree = "<group>"; };
 		B65106471D12AD4000007759 /* ProjComTrackingTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjComTrackingTabView.h; sourceTree = "<group>"; };
 		B65106481D12AD4000007759 /* ProjComTrackingTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjComTrackingTabView.m; sourceTree = "<group>"; };
 		B65106491D12AD4000007759 /* ProjComTrackingTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjComTrackingTabView.xib; sourceTree = "<group>"; };
@@ -1179,6 +1184,16 @@
 				B64474791D0047F10001B244 /* ProjectSortView.xib */,
 			);
 			name = ProjectSortView;
+			sourceTree = "<group>";
+		};
+		B647D09F1E2F9BDE00A864D1 /* ProjectNearMeListView */ = {
+			isa = PBXGroup;
+			children = (
+				B647D0A01E2F9BF100A864D1 /* ProjectNearMeListView.h */,
+				B647D0A11E2F9BF100A864D1 /* ProjectNearMeListView.m */,
+				B647D0A21E2F9BF100A864D1 /* ProjectNearMeListView.xib */,
+			);
+			name = ProjectNearMeListView;
 			sourceTree = "<group>";
 		};
 		B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */ = {
@@ -2002,6 +2017,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B647D09F1E2F9BDE00A864D1 /* ProjectNearMeListView */,
 				B69FA8AA1D4F40AB0059A18F /* SaveSearchesChangeView */,
 				B6AF1CF61D21322100C95A8F /* ProjectFilterSearchNav */,
 				B6AF1CE31D212C2B00C95A8F /* ProjectFilterCollapsible */,
@@ -2489,6 +2505,7 @@
 				B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */,
 				B65106601D12D7AD00007759 /* CompanyTrackingCollectionViewCell.xib in Resources */,
 				B7BF609B1D1C234B00B3BDD7 /* SearchSectionCollectionViewCell.xib in Resources */,
+				B647D0A41E2F9BF100A864D1 /* ProjectNearMeListView.xib in Resources */,
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B7BF60901D1BE28100B3BDD7 /* SearchViewController.xib in Resources */,
@@ -2851,6 +2868,7 @@
 				B7F10A161CDB3E3300847FA3 /* AFURLResponseSerialization.m in Sources */,
 				B65106681D12DCA900007759 /* CompanyTrackingListViewController.m in Sources */,
 				B7BF609F1D1D63FE00B3BDD7 /* SearchSuggestedCollectionViewCell.m in Sources */,
+				B647D0A31E2F9BF100A864D1 /* ProjectNearMeListView.m in Sources */,
 				B6A81E681D0C888D0016B20F /* MyProfileCustomTextFieldView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
