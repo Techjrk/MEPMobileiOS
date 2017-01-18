@@ -35,7 +35,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet ProjectNearMeListView *projectNearMeListView;
-    
+@property (weak, nonatomic) IBOutlet UIButton *buttonFilter;
+
 - (IBAction)tappedButtonback:(id)sender;
 @end
 

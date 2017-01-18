@@ -7,19 +7,22 @@
 //
 
 #import "ProjectNearMeListView.h"
+#import "ProjectNearMeListCollectionViewCell.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
 #define BUTTON_MARKER_COLOR                 RGB(248, 152, 28)
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
+#define kCellIdentifier                     @"kCellIdentifier"
 
-@interface ProjectNearMeListView ()
+@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource>
     @property (weak, nonatomic) IBOutlet UIButton *preBidButton;
     @property (weak, nonatomic) IBOutlet UIButton *postBidButton;
     @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
     @property (weak, nonatomic) IBOutlet UIView *markerView;
     @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMarkerLeading;
+    @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -28,6 +31,7 @@
     - (void)awakeFromNib {
         [super awakeFromNib];
         
+         [self.collectionView registerNib:[UINib nibWithNibName:[[ProjectNearMeListCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
         
         _topHeaderView.backgroundColor = TOP_HEADER_BG_COLOR;
         _markerView.backgroundColor = BUTTON_MARKER_COLOR;
@@ -56,5 +60,31 @@
     }];
 
 }
+    
+#pragma mark - UICollectionView Datasource
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+    
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 3;
+}
 
+#pragma mark - UICollectionView Delegate
+- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ProjectNearMeListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    
+    return cell;
+    
+}
+    
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize size;
+    size = CGSizeMake( self.collectionView.frame.size.width, kDeviceHeight * 0.15);
+    return size;
+    
+}
+    
 @end
