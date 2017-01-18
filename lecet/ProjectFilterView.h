@@ -37,4 +37,5 @@ typedef enum : NSUInteger {
 - (void) setConstraint:(NSLayoutConstraint*)constraint;
 - (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
 - (void)setLocationInfo:(id)info;
+- (void)hideLocation:(BOOL)hidden;
 @end
