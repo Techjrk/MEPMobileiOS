@@ -413,3 +413,8 @@
 "PV_POSTBID"                                =               "%li Post Bid";
 "PV_PREBID"                                 =               "%li Pre Bid";
 
+//ProjectNearMeListCollectionViewCell
+"PLC_MILE"                                  =               "%li mile away";
+"PLC_MILES"                                 =               "%li miles away";
+"PLC_FEET"                                  =               "%li feet away";
+

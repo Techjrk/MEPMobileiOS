@@ -8,6 +8,7 @@
 
 #import "ProjectNearMeListCollectionViewCell.h"
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define fontTitleName                       fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define fontTitleAddress                    fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
@@ -22,7 +23,13 @@
 #define colorFontUnionLabel                 RGB(255,255,255)
 #define colorBackgroundView                 RGB(255,255,255)
 #define colorBackgroundContainerUnionView   RGB(0,63,114)
-@interface ProjectNearMeListCollectionViewCell ()
+
+#define distanceToFeet                      3.280
+#define distanceToMile                      0.000621371
+
+@interface ProjectNearMeListCollectionViewCell () {
+    CGFloat lat, lng;
+}
     @property (weak, nonatomic) IBOutlet MKMapView *mapView;
     @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
     @property (weak, nonatomic) IBOutlet UILabel *unionLabel;
@@ -30,6 +37,7 @@
     @property (weak, nonatomic) IBOutlet UILabel *titleAddressLabel;
     @property (weak, nonatomic) IBOutlet UILabel *titleFeetAwayLabel;
     @property (weak, nonatomic) IBOutlet UIImageView *addressIconImageView;
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintUnionWidth;
 
 @end
 
@@ -61,7 +69,23 @@
 - (void)setInitInfo {
     self.titleLabel.text = self.titleNameText;
     self.titleAddressLabel.text = self.titleAddressText;
+     [self setDistance];
     self.titleFeetAwayLabel.attributedText = [self convertToAttributedTextFeetAway:self.titleFeetAwayText priceDetails:self.titlePriceText];
+    
+    if (self.geoCode != nil) {
+        lat = [self.geoCode[@"lat"] floatValue];
+        lng = [self.geoCode[@"lng"] floatValue];
+        [self setMapInfoLatitudeAndLongtitude];
+    }
+    
+    if (!self.unionDesignation.length) {
+        self.contraintUnionWidth.constant = 0;
+        self.containerUnionView.hidden = YES;
+    } else {
+        self.contraintUnionWidth.constant  = self.frame.size.width * 0.095;
+        self.containerUnionView.hidden = NO;
+    }
+   
 }
 
 - (NSAttributedString *)convertToAttributedTextFeetAway:(NSString *)feetAway priceDetails:(NSString *)priceDetailText {
@@ -74,10 +98,43 @@
     return [feetAwayAttri copy];
 }
 
+- (void)setDistance {
+    
+    CGFloat currentLat = [[DataManager sharedManager] locationManager].currentLocation.coordinate.latitude;
+    CGFloat currentLng = [[DataManager sharedManager] locationManager].currentLocation.coordinate.longitude;
+    
+    CLLocation *currentLoc = [[CLLocation alloc] initWithLatitude:currentLat longitude:currentLng];
+    
+    CLLocation *projLoc = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+    
+    CLLocationDistance distance = [currentLoc distanceFromLocation:projLoc];
+    int feet = distance * distanceToFeet;
+    float miles = distance * distanceToMile;
+    
+    NSString *distanceAway = @"Away";
+    NSString *mileAway =  NSLocalizedLanguage(@"PLC_MILE");
+    NSString *milesAway = NSLocalizedLanguage(@"PLC_MILES");
+    NSString *feetAway = NSLocalizedLanguage(@"PLC_FEET");
+    
+    if ((int)miles == 1) {
+        distanceAway = [NSString stringWithFormat:mileAway,(int)miles];
+    }
+    
+    if (miles > 1) {
+         distanceAway = [NSString stringWithFormat:mileAway,milesAway];
+    }
+    
+    if (miles < 1) {
+         distanceAway = [NSString stringWithFormat:feetAway,feet];
+    }
+
+    self.titleFeetAwayText = distanceAway;
+}
+
 
 #pragma mark - MapView Delegate and Methods
-- (void)setMapInfoLatitude:(CLPlacemark *)coord {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(coord.location.coordinate.latitude, coord.location.coordinate.longitude);
+- (void)setMapInfoLatitudeAndLongtitude {
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
     
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
     MKCoordinateRegion region = {coordinate, span};

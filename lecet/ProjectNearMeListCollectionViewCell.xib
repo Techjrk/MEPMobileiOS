@@ -67,6 +67,7 @@
                                     <constraint firstItem="SqR-Of-ig2" firstAttribute="centerY" secondItem="PIW-fr-DIE" secondAttribute="centerY" id="PiP-fG-Sxd"/>
                                     <constraint firstItem="SqR-Of-ig2" firstAttribute="centerX" secondItem="PIW-fr-DIE" secondAttribute="centerX" id="b0Q-kb-FPE"/>
                                     <constraint firstAttribute="width" secondItem="PIW-fr-DIE" secondAttribute="height" multiplier="1:1" id="oT8-5o-eIh"/>
+                                    <constraint firstAttribute="width" constant="45" id="oue-bb-MTn"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidLocation" translatesAutoresizingMaskIntoConstraints="NO" id="kKf-0o-9WY">
@@ -97,7 +98,6 @@
                             <constraint firstItem="3jm-Lh-svo" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.03" id="HZb-Ag-wQy"/>
                             <constraint firstItem="ta2-BY-KSb" firstAttribute="leading" secondItem="Np9-zd-d9j" secondAttribute="trailing" id="M3l-jn-JHY"/>
                             <constraint firstItem="Np9-zd-d9j" firstAttribute="height" secondItem="3jm-Lh-svo" secondAttribute="height" id="Mvg-EC-Aut"/>
-                            <constraint firstItem="PIW-fr-DIE" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.095" id="Ouf-P8-hM9"/>
                             <constraint firstItem="PIW-fr-DIE" firstAttribute="leading" secondItem="TKe-EZ-AJB" secondAttribute="trailing" id="PTN-Af-xMX"/>
                             <constraint firstItem="Np9-zd-d9j" firstAttribute="leading" secondItem="Xvt-qE-md1" secondAttribute="trailing" id="QNC-AP-elm"/>
                             <constraint firstItem="Np9-zd-d9j" firstAttribute="centerY" secondItem="Icq-9x-Iyh" secondAttribute="centerY" id="Sxp-Nc-rSQ"/>
@@ -133,6 +133,7 @@
             <connections>
                 <outlet property="addressIconImageView" destination="kKf-0o-9WY" id="2TY-J1-zG8"/>
                 <outlet property="containerUnionView" destination="PIW-fr-DIE" id="cFI-0e-N9a"/>
+                <outlet property="contraintUnionWidth" destination="oue-bb-MTn" id="v5r-TN-QEH"/>
                 <outlet property="mapView" destination="Xvt-qE-md1" id="d0M-zl-CY3"/>
                 <outlet property="titleAddressLabel" destination="TKe-EZ-AJB" id="FZm-Wg-r1s"/>
                 <outlet property="titleFeetAwayLabel" destination="x83-bS-hNz" id="S1o-1w-z3Q"/>
