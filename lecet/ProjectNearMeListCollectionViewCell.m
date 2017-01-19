@@ -115,17 +115,15 @@
     NSString *mileAway =  NSLocalizedLanguage(@"PLC_MILE");
     NSString *milesAway = NSLocalizedLanguage(@"PLC_MILES");
     NSString *feetAway = NSLocalizedLanguage(@"PLC_FEET");
-    
-    if ((int)miles == 1) {
-        distanceAway = [NSString stringWithFormat:mileAway,(int)miles];
-    }
-    
-    if (miles > 1) {
-         distanceAway = [NSString stringWithFormat:mileAway,milesAway];
-    }
-    
-    if (miles < 1) {
-         distanceAway = [NSString stringWithFormat:feetAway,feet];
+
+    if (feet < 5280) {
+        distanceAway = [NSString stringWithFormat:feetAway,feet];
+    } else {
+        if ((int)miles == 1) {
+            distanceAway = [NSString stringWithFormat:mileAway,(int)miles];
+        } else if((int)miles > 1) {
+            distanceAway = [NSString stringWithFormat:milesAway,miles];
+        }
     }
 
     self.titleFeetAwayText = distanceAway;
