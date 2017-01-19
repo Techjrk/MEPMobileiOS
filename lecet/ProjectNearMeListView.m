@@ -71,7 +71,11 @@
 #pragma mark - UICollectionView Delegate
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ProjectNearMeListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
+    cell.titleNameText = @"Maline Creek CSO 051 & 052 Storage";
+    cell.titleAddressText = @"Saint Louis, MO";
+    cell.titleFeetAwayText = @"100 feet away";
+    cell.titlePriceText = @"$82,828,282";
+    [cell setInitInfo];
     return cell;
 }
     

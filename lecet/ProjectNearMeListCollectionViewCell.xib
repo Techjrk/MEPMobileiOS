@@ -36,12 +36,15 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xvt-qE-md1" secondAttribute="height" multiplier="1:1" id="pPT-0F-CfI"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="-1" id="ibO-7E-0sr"/>
+                                </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np9-zd-d9j">
                                 <rect key="frame" x="104" y="0.0" width="15" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-BY-KSb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-BY-KSb">
                                 <rect key="frame" x="119" y="16" width="290" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,10 +70,10 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidLocation" translatesAutoresizingMaskIntoConstraints="NO" id="kKf-0o-9WY">
-                                <rect key="frame" x="119" y="42" width="8" height="11"/>
+                                <rect key="frame" x="119" y="47" width="8" height="11"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKe-EZ-AJB">
-                                <rect key="frame" x="132" y="37" width="277" height="21"/>
+                                <rect key="frame" x="132" y="42" width="277" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -109,7 +112,7 @@
                             <constraint firstItem="Xvt-qE-md1" firstAttribute="centerY" secondItem="3jm-Lh-svo" secondAttribute="centerY" id="lFv-OI-y79"/>
                             <constraint firstItem="1yE-KW-Phe" firstAttribute="leading" secondItem="PIW-fr-DIE" secondAttribute="trailing" id="oWZ-ON-BQz"/>
                             <constraint firstItem="1yE-KW-Phe" firstAttribute="top" secondItem="Icq-9x-Iyh" secondAttribute="top" id="ppY-g8-1ZU"/>
-                            <constraint firstItem="TKe-EZ-AJB" firstAttribute="top" secondItem="ta2-BY-KSb" secondAttribute="bottom" id="tG8-e7-hzV"/>
+                            <constraint firstItem="TKe-EZ-AJB" firstAttribute="top" secondItem="ta2-BY-KSb" secondAttribute="bottom" constant="5" id="tG8-e7-hzV"/>
                             <constraint firstAttribute="bottom" secondItem="1yE-KW-Phe" secondAttribute="bottom" id="wMm-oo-hsC"/>
                             <constraint firstItem="kKf-0o-9WY" firstAttribute="centerY" secondItem="TKe-EZ-AJB" secondAttribute="centerY" id="xa0-0R-ti6"/>
                             <constraint firstItem="x83-bS-hNz" firstAttribute="bottom" secondItem="Xvt-qE-md1" secondAttribute="bottom" id="xzc-MZ-i0u"/>
