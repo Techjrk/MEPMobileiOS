@@ -10,5 +10,6 @@
 #import "BaseViewClass.h"
 
 @interface ProjectNearMeListView : BaseViewClass
+@property (weak, nonatomic) UIViewController *parentCtrl;
 - (void)setInfo:(id)info;
 @end

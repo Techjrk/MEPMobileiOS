@@ -8,6 +8,7 @@
 
 #import "ProjectNearMeListView.h"
 #import "ProjectNearMeListCollectionViewCell.h"
+#import "ProjectDetailViewController.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
@@ -33,6 +34,7 @@
 @end
 
 @implementation ProjectNearMeListView
+@synthesize parentCtrl;
 
     - (void)awakeFromNib {
         [super awakeFromNib];
@@ -155,6 +157,21 @@
     size = CGSizeMake( self.collectionView.frame.size.width * 0.96, kDeviceHeight * 0.135);
     return size;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dic = self.collectionItems[indexPath.row];
+    NSNumber *recordId = dic[@"id"];
+    [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
+        
+        ProjectDetailViewController *detail = [ProjectDetailViewController new];
+        detail.view.hidden = NO;
+        [detail detailsFromProject:object];
+        
+        [self.parentCtrl.navigationController pushViewController:detail animated:YES];
+    } failure:^(id object) {
+    }];
+}
+
     
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

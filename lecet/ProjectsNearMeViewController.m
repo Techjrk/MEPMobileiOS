@@ -144,6 +144,7 @@ float MetersToMiles(float meters) {
             
             NSArray *result = object[@"results"];
             if (result != nil & result.count>0) {
+                self.projectNearMeListView.parentCtrl = self;
                 [self.projectNearMeListView setInfo:result];
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
                 
