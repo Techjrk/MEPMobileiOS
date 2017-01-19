@@ -244,7 +244,7 @@ float MetersToMiles(float meters) {
 
 - (IBAction)tappedButtonFilter:(id)sender {
     ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
-    [self presentViewController:controller animated:YES completion:nil];
+    [self.navigationController pushViewController:controller animated:NO];
 }
     
 - (IBAction)tappedLocListButton:(id)sender {

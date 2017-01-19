@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ProjectNearMeFilterViewController : UIViewController
+@protocol ProjectNearMeFilterViewControllerDelegate
+- (void) applySearchFilter:(NSDictionary*)filter;
+@end
+
+@interface ProjectNearMeFilterViewController : BaseViewController
+// Properties
+@property (weak, nonatomic) id<ProjectNearMeFilterViewControllerDelegate>projectNearMeFilterViewControllerDelegate;
 
 @end

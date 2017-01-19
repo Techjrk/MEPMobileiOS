@@ -183,8 +183,14 @@
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_NEAR"    =               "No projects found near your location";
 "PROJECTS_NEAR_NO_PROJECT_LOCATION_SEARCH"  =               "No projects found using your searched location";
 
+//ProjectNearMeFilterViewController.xib
+"PNV_CANCEL"                                =               "CANCEL";
+"PNV_APPLY"                                 =               "APPLY";
+"PNV_TITLE"                                 =               "Filters";
+
 //BidderListViewController.xib
 "BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
+
 //SettingCollectionViewCell.xib
 "SETTING_CVCELL_SIGNOUT"                    =               "Sign out";
 
