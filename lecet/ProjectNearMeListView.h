@@ -10,5 +10,5 @@
 #import "BaseViewClass.h"
 
 @interface ProjectNearMeListView : BaseViewClass
-
+- (void)setInfo:(id)info;
 @end

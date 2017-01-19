@@ -402,3 +402,8 @@
 
 //CompanyHeaderView
 "COMPANY_HEADER_DIRECTION"                  =               "GET DIRECTIONS";
+
+//ProjectNearMeListView
+"PV_POSTBID"                                =               "%li Post Bid";
+"PV_PREBID"                                 =               "%li Pre Bid";
+

@@ -16,13 +16,19 @@
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 #define kCellIdentifier                     @"kCellIdentifier"
 
-@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
+    NSMutableArray *collectionItemsPostBid;
+    NSMutableArray *collectionItemsPreBid;
+    
+    BOOL isPostBidHidden;
+}
     @property (weak, nonatomic) IBOutlet UIButton *preBidButton;
     @property (weak, nonatomic) IBOutlet UIButton *postBidButton;
     @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
     @property (weak, nonatomic) IBOutlet UIView *markerView;
     @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMarkerLeading;
     @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+    @property (strong,nonatomic) NSArray *collectionItems;
 
 @end
 
@@ -38,24 +44,83 @@
         
         _preBidButton.titleLabel.font = BUTTON_FONT;
         [_preBidButton setTitleColor:BUTTON_COLOR forState:UIControlStateNormal];
-        [_preBidButton setTitle:NSLocalizedLanguage(@"Pre Bid") forState:UIControlStateNormal];
         
         _postBidButton.titleLabel.font = BUTTON_FONT;
         [_postBidButton setTitleColor:BUTTON_COLOR forState:UIControlStateNormal];
-        [_postBidButton setTitle:NSLocalizedLanguage(@"Post Bid") forState:UIControlStateNormal];
+    }
+
+#pragma mark - MISC Methods
+- (void)setInfo:(id)info {
+    isPostBidHidden = YES;
+    collectionItemsPreBid = [NSMutableArray new];
+    collectionItemsPostBid = [NSMutableArray new];
+    
+    for (NSDictionary *dicInfo in info) {
+        NSDictionary *projectStage = dicInfo[@"projectStage"];
+        
+        if (projectStage != nil) {
+            NSNumber *bidId = projectStage[@"parentId"];
+            if (bidId.integerValue != 102) {
+                [collectionItemsPostBid addObject:dicInfo];
+            } else {
+                [collectionItemsPreBid addObject:dicInfo];
+            }
+        }
+
+        
     }
     
+    NSString *postBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_POSTBID"),collectionItemsPostBid.count];
+    NSString *preBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_PREBID"),collectionItemsPreBid.count];
+    
+    [_preBidButton setTitle:preBidTitle forState:UIControlStateNormal];
+    [_postBidButton setTitle:postBidTitle forState:UIControlStateNormal];
+    
+    self.collectionItems = [collectionItemsPreBid copy];
+    [self.collectionView reloadData];
+}
+
+- (NSString *)setFullAddress:(id)info {
+    NSDictionary *dict = info;
+    
+    NSString *fullAddress = @"";
+    NSString *address1 = [DerivedNSManagedObject objectOrNil:dict[@"address1"]];
+    NSString *city = [DerivedNSManagedObject objectOrNil:dict[@"city"]];
+    NSString *state = [DerivedNSManagedObject objectOrNil:dict[@"state"]];
+    NSString *zip = [DerivedNSManagedObject objectOrNil:dict[@"zipPlus4"]];
+    
+    if (address1 != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:address1] stringByAppendingString:@" "];
+    }
+    
+    if (city != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:city] stringByAppendingString:@", "];
+    }
+    
+    if (state != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:state] stringByAppendingString:@" "];
+    }
+    
+    if (zip != nil) {
+        fullAddress = [[fullAddress stringByAppendingString:zip] stringByAppendingString:@" "];
+    }
+    
+    
+    return fullAddress;
+}
+#pragma mark - IBAction
 - (IBAction)tappedButton:(id)sender {
     UIButton *button = sender;
-    
+    isPostBidHidden = !isPostBidHidden;
     _constraintMarkerLeading.constant = button.frame.origin.x;
     
     [UIView animateWithDuration:0.25 animations:^{
-        
         [self.view layoutIfNeeded];
-        
     } completion:^(BOOL finished) {
-        
+        if (finished) {
+            self.collectionItems = isPostBidHidden ? collectionItemsPreBid : collectionItemsPostBid;
+            [self.collectionView reloadData];
+        }
     }];
 }
     
@@ -65,14 +130,17 @@
 }
     
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return self.collectionItems.count;
 }
 
 #pragma mark - UICollectionView Delegate
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ProjectNearMeListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.titleNameText = @"Maline Creek CSO 051 & 052 Storage";
-    cell.titleAddressText = @"Saint Louis, MO";
+    
+    NSDictionary *dicInfo = self.collectionItems[indexPath.row];
+    NSString *titleName = [DerivedNSManagedObject objectOrNil:dicInfo[@"title"]];
+    cell.titleNameText = titleName;
+    cell.titleAddressText = [self setFullAddress:dicInfo];
     cell.titleFeetAwayText = @"100 feet away";
     cell.titlePriceText = @"$82,828,282";
     [cell setInitInfo];
