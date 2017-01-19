@@ -14,6 +14,7 @@
 #import "ProjectPointAnnotation.h"
 #import "CallOutViewController.h"
 #import "ProjectPointAnnotation.h"
+#import "ProjectNearMeListView.h"
 #import <MapKit/MapKit.h>
 #import "ProjectNearMeFilterViewController.h"
 
@@ -26,13 +27,14 @@
     BOOL showPrompt;
     BOOL isLocationCaptured;
     BOOL isDoneSearching;
-    BOOL showListView;
+    BOOL isListViewHidden;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet ProjectNearMeListView *projectNearMeListView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonFilter;
 
 - (IBAction)tappedButtonback:(id)sender;
@@ -53,8 +55,8 @@ float MetersToMiles(float meters) {
     isDoneSearching = NO;
     [self enableTapGesture:YES];
     
+    isListViewHidden = YES;
     showPrompt = YES;
-    
     mapItems = [NSMutableArray new];
     _textFieldSearch.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     _textFieldSearch.layer.cornerRadius = kDeviceWidth * 0.0106;
@@ -246,9 +248,11 @@ float MetersToMiles(float meters) {
 }
     
 - (IBAction)tappedLocListButton:(id)sender {
-    showListView = !showListView;
-    NSString *imageName = showListView ? @"loc_List_icon" :@"list_icon";
+    isListViewHidden = !isListViewHidden;
+    NSString *imageName = isListViewHidden ? @"list_icon" : @"loc_List_icon";
     [_locListButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    
+    _projectNearMeListView.hidden = isListViewHidden;
 }
     
 #pragma mark - Map Routines

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-               BuildableName = "Lecet MEP.app"
+               BuildableName = "LECET MEP.app"
                BlueprintName = "lecet"
                ReferencedContainer = "container:lecet.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-            BuildableName = "Lecet MEP.app"
+            BuildableName = "LECET MEP.app"
             BlueprintName = "lecet"
             ReferencedContainer = "container:lecet.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-            BuildableName = "Lecet MEP.app"
+            BuildableName = "LECET MEP.app"
             BlueprintName = "lecet"
             ReferencedContainer = "container:lecet.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-            BuildableName = "Lecet MEP.app"
+            BuildableName = "LECET MEP.app"
             BlueprintName = "lecet"
             ReferencedContainer = "container:lecet.xcodeproj">
          </BuildableReference>

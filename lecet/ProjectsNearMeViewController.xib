@@ -16,6 +16,7 @@
                 <outlet property="buttonFilter" destination="faJ-0o-7ws" id="zaL-LR-Cjz"/>
                 <outlet property="locListButton" destination="vOv-oB-KhN" id="ckm-HO-Xc5"/>
                 <outlet property="mapView" destination="c4p-uc-d1n" id="MHH-7K-hkV"/>
+                <outlet property="projectNearMeListView" destination="wU7-Ly-k8k" id="GGu-Wc-nfC"/>
                 <outlet property="textFieldSearch" destination="4X6-5H-z1L" id="CEQ-c7-b4P"/>
                 <outlet property="topHeaderView" destination="AoB-Hl-8B6" id="jtb-ZG-7Iu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -84,6 +85,10 @@
                         <outlet property="delegate" destination="-1" id="bg0-y1-qB8"/>
                     </connections>
                 </mapView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wU7-Ly-k8k" customClass="ProjectNearMeListView">
+                    <rect key="frame" x="0.0" y="85" width="414" height="651"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bim-2D-c2L">
                     <rect key="frame" x="336" y="658" width="53" height="53"/>
                     <state key="normal" image="locationArrow_icon "/>
@@ -110,18 +115,22 @@
                 <constraint firstAttribute="bottom" secondItem="bPF-Bf-kON" secondAttribute="bottom" id="RAw-UF-wCd"/>
                 <constraint firstAttribute="trailing" secondItem="bPF-Bf-kON" secondAttribute="trailing" id="RXh-Rf-1ej"/>
                 <constraint firstAttribute="trailing" secondItem="bim-2D-c2L" secondAttribute="trailing" constant="25" id="VM3-h7-n0E"/>
+                <constraint firstAttribute="bottom" secondItem="wU7-Ly-k8k" secondAttribute="bottom" id="YQx-XF-gTx"/>
                 <constraint firstItem="c4p-uc-d1n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZXS-lj-GTr"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bmm-7r-peQ"/>
                 <constraint firstItem="bPF-Bf-kON" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dFA-vE-3kd"/>
                 <constraint firstAttribute="trailing" secondItem="c4p-uc-d1n" secondAttribute="trailing" id="duG-zk-Ay0"/>
                 <constraint firstItem="vOv-oB-KhN" firstAttribute="leading" secondItem="bim-2D-c2L" secondAttribute="leading" id="hPb-Hn-Kl4"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.115" id="hZM-zy-4cG"/>
+                <constraint firstItem="wU7-Ly-k8k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hc3-ej-Qqg"/>
                 <constraint firstItem="vOv-oB-KhN" firstAttribute="trailing" secondItem="bim-2D-c2L" secondAttribute="trailing" id="iud-TI-McV"/>
                 <constraint firstItem="bim-2D-c2L" firstAttribute="top" secondItem="vOv-oB-KhN" secondAttribute="bottom" constant="12" id="kQR-A8-WnX"/>
                 <constraint firstAttribute="trailing" secondItem="AoB-Hl-8B6" secondAttribute="trailing" id="lcq-Ou-8Cb"/>
                 <constraint firstItem="c4p-uc-d1n" firstAttribute="top" secondItem="AoB-Hl-8B6" secondAttribute="bottom" id="pM2-w9-izc"/>
                 <constraint firstItem="R5M-wU-TD7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="qn8-VS-A8X"/>
+                <constraint firstAttribute="trailing" secondItem="wU7-Ly-k8k" secondAttribute="trailing" id="siL-VF-bs0"/>
                 <constraint firstItem="vOv-oB-KhN" firstAttribute="centerX" secondItem="bim-2D-c2L" secondAttribute="centerX" id="vEP-2V-Cln"/>
+                <constraint firstItem="wU7-Ly-k8k" firstAttribute="top" secondItem="AoB-Hl-8B6" secondAttribute="bottom" id="wbl-5m-gdF"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
