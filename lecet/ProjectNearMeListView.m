@@ -9,6 +9,7 @@
 #import "ProjectNearMeListView.h"
 #import "ProjectNearMeListCollectionViewCell.h"
 #import "ProjectDetailViewController.h"
+#import <MapKit/MapKit.h>
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
@@ -20,6 +21,9 @@
 @interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     NSMutableArray *collectionItemsPostBid;
     NSMutableArray *collectionItemsPreBid;
+    
+    NSMutableArray *tempCollectionItemsPostBid;
+    NSMutableArray *tempCollectionItemsPreBid;
     
     BOOL isPostBidHidden;
 }
@@ -49,13 +53,23 @@
         
         _postBidButton.titleLabel.font = BUTTON_FONT;
         [_postBidButton setTitleColor:BUTTON_COLOR forState:UIControlStateNormal];
+        
+        NSString *postBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_POSTBID"),collectionItemsPostBid.count];
+        NSString *preBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_PREBID"),collectionItemsPreBid.count];
+        
+        [_preBidButton setTitle:preBidTitle forState:UIControlStateNormal];
+        [_postBidButton setTitle:postBidTitle forState:UIControlStateNormal];
     }
 
 #pragma mark - MISC Methods
 - (void)setInfo:(id)info {
     isPostBidHidden = YES;
+    
     collectionItemsPreBid = [NSMutableArray new];
     collectionItemsPostBid = [NSMutableArray new];
+    
+    tempCollectionItemsPreBid = [NSMutableArray new];
+    tempCollectionItemsPostBid = [NSMutableArray new];
     
     for (NSDictionary *dicInfo in info) {
         NSDictionary *projectStage = dicInfo[@"projectStage"];
@@ -63,14 +77,21 @@
         if (projectStage != nil) {
             NSNumber *bidId = projectStage[@"parentId"];
             if (bidId.integerValue != 102) {
-                [collectionItemsPostBid addObject:dicInfo];
+                [tempCollectionItemsPostBid addObject:dicInfo];
             } else {
-                [collectionItemsPreBid addObject:dicInfo];
+                [tempCollectionItemsPreBid addObject:dicInfo];
             }
-        }
-
-        
+        }        
     }
+
+}
+
+- (void)setDataBasedOnVisible {
+    [collectionItemsPreBid removeAllObjects];
+    collectionItemsPreBid = [self arrangeArrayListBasedOnVisible:tempCollectionItemsPreBid];
+    
+    [collectionItemsPostBid removeAllObjects];
+    collectionItemsPostBid =  [self arrangeArrayListBasedOnVisible:tempCollectionItemsPostBid];
     
     NSString *postBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_POSTBID"),collectionItemsPostBid.count];
     NSString *preBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_PREBID"),collectionItemsPreBid.count];
@@ -78,8 +99,30 @@
     [_preBidButton setTitle:preBidTitle forState:UIControlStateNormal];
     [_postBidButton setTitle:postBidTitle forState:UIControlStateNormal];
     
-    self.collectionItems = [collectionItemsPreBid copy];
+    self.collectionItems = isPostBidHidden ? [collectionItemsPreBid copy] : [collectionItemsPostBid copy];
     [self.collectionView reloadData];
+}
+
+- (NSMutableArray *)arrangeArrayListBasedOnVisible:(NSMutableArray *)listArray {
+    NSMutableArray *tempSetArray = [NSMutableArray new];
+    
+    for (id dicInfo in listArray) {
+        NSDictionary *geoCode  =  [DerivedNSManagedObject objectOrNil:dicInfo[@"geocode"]];
+        BOOL visible = NO;
+        
+        for (id<MKAnnotation> ann in self.visibleAnnotationArray) {
+            CLLocationCoordinate2D coord = ann.coordinate;
+            CGFloat lat, lng;
+            lat = [geoCode[@"lat"] floatValue];
+            lng = [geoCode[@"lng"] floatValue];
+            
+            if (lat == coord.latitude && lng == coord.longitude) {
+                visible = YES;
+            }
+        }
+        visible ? [tempSetArray addObject:dicInfo]:nil;
+    }
+    return tempSetArray;
 }
 
 - (NSString *)setFullAddress:(id)info {

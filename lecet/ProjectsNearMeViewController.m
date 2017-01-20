@@ -304,6 +304,8 @@ float MetersToMiles(float meters) {
         userAnnotationView.image = userAnnotationView.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
     }
     
+    [self getVisibleAnmotationsInMap];
+    
     return userAnnotationView;
     
 }
@@ -358,6 +360,14 @@ float MetersToMiles(float meters) {
                  }
      ];
 
+}
+
+-(void)getVisibleAnmotationsInMap {
+        MKMapRect visibleMapRect = self.mapView.visibleMapRect;
+        NSSet *visibleAnnotations = [self.mapView annotationsInMapRect:visibleMapRect];
+        NSArray *annotationArray = [visibleAnnotations allObjects];
+        self.projectNearMeListView.visibleAnnotationArray = annotationArray;
+        [self.projectNearMeListView setDataBasedOnVisible];
 }
 
 #pragma mark - TextField Delegate Methods

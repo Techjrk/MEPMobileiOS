@@ -11,5 +11,7 @@
 
 @interface ProjectNearMeListView : BaseViewClass
 @property (weak, nonatomic) UIViewController *parentCtrl;
+@property (strong, nonatomic) NSArray *visibleAnnotationArray;
 - (void)setInfo:(id)info;
+- (void)setDataBasedOnVisible;
 @end

@@ -101,7 +101,6 @@
 }
 
 - (void)setDistance {
-    
     CGFloat currentLat = [[DataManager sharedManager] locationManager].currentLocation.coordinate.latitude;
     CGFloat currentLng = [[DataManager sharedManager] locationManager].currentLocation.coordinate.longitude;
     
@@ -131,7 +130,6 @@
     self.titleFeetAwayText = distanceAway;
 }
 
-
 #pragma mark - MapView Delegate and Methods
 - (void)setMapInfoLatitudeAndLongtitude {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
@@ -158,14 +156,11 @@
         }
         else
             userAnnotationView.annotation = annotation;
-        
-        userAnnotationView.enabled = NO;
-        
-        userAnnotationView.canShowCallout = NO;
-        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+            userAnnotationView.enabled = NO;
+            userAnnotationView.canShowCallout = NO;
+            userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
         
     }
-    
     return userAnnotationView;
 }
 @end
