@@ -600,7 +600,7 @@
 
     NSDictionary *filterToAdd = (NSDictionary*)filter;
     if (filter != nil) {
-        [dictionary addEntriesFromDictionary:filterToAdd];
+        [dictionary addEntriesFromDictionary:@{@"searchFilter":filterToAdd}];
     }
     
 
