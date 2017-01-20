@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="width" secondItem="Xvt-qE-md1" secondAttribute="height" multiplier="1:1" id="pPT-0F-CfI"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="delegate" destination="-1" id="ibO-7E-0sr"/>
+                                    <outlet property="delegate" destination="-1" id="9jX-zM-KIj"/>
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np9-zd-d9j">
