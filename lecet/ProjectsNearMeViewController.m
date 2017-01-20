@@ -20,7 +20,7 @@
 
 #define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
-@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate>{
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate, ProjectNearMeFilterViewControllerDelegate>{
     BOOL isFirstLaunch;
     NSMutableArray *mapItems;
     BOOL isSearchLocation;
@@ -28,6 +28,7 @@
     BOOL isLocationCaptured;
     BOOL isDoneSearching;
     BOOL isListViewHidden;
+    NSDictionary *filterDictionary;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -83,6 +84,8 @@ float MetersToMiles(float meters) {
         [[[DataManager sharedManager] locationManager] startUpdatingLocation];
  
     }
+    
+    filterDictionary = [NSDictionary new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,7 +138,7 @@ float MetersToMiles(float meters) {
         CGFloat lng = coordinate.longitude;
         
         isDoneSearching = NO;
-        [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:nil success:^(id object) {
+        [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:filterDictionary success:^(id object) {
 
             isDoneSearching = YES;
             
@@ -245,6 +248,7 @@ float MetersToMiles(float meters) {
 
 - (IBAction)tappedButtonFilter:(id)sender {
     ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
+    controller.projectNearMeFilterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:NO];
 }
     
@@ -426,4 +430,20 @@ float MetersToMiles(float meters) {
     CLLocationCoordinate2D topCenterCoor = [self.mapView convertPoint:CGPointMake(self.mapView.frame.size.width / 2.0f, 0) toCoordinateFromView:self.mapView];
     return topCenterCoor;
 }
+
+- (void)applySearchFilter:(NSDictionary *)filter {
+
+    filterDictionary = filter;
+    
+    if (filterDictionary == nil) {
+        filterDictionary = [NSDictionary new];
+    }
+    
+    if (_textFieldSearch.text.length>0) {
+        [self searchForLocation];
+    } else {
+        [self mapView:self.mapView regionDidChangeAnimated:NO];
+    }
+}
+
 @end
