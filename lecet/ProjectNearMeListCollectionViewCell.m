@@ -27,7 +27,7 @@
 #define distanceToFeet                      3.280
 #define distanceToMile                      0.000621371
 
-@interface ProjectNearMeListCollectionViewCell () {
+@interface ProjectNearMeListCollectionViewCell ()<MKMapViewDelegate> {
     CGFloat lat, lng;
 }
     @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -62,6 +62,7 @@
     
     self.titleFeetAwayLabel.font = fontTitleFeetAway;
     self.titleFeetAwayLabel.textColor = colorFontTitleFeetAway;
+    self.mapView.delegate = self;
 }
 
 #pragma mark - Misc Methods
@@ -92,6 +93,7 @@
     feetAway = [NSString stringWithFormat:@"%@ | ",feetAway];
     NSMutableAttributedString *feetAwayAttri = [[NSMutableAttributedString alloc] initWithString:feetAway attributes:@{NSFontAttributeName:fontTitleFeetAway, NSForegroundColorAttributeName:colorFontTitleFeetAway}];
     
+    priceDetailText = !priceDetailText.length ? @"0": priceDetailText;
     NSMutableAttributedString *priceAttri = [[NSMutableAttributedString alloc] initWithString:priceDetailText attributes:@{NSFontAttributeName:fontTitlePrice, NSForegroundColorAttributeName:colorFontTitlePrice}];
     
     [feetAwayAttri appendAttributedString:priceAttri];
