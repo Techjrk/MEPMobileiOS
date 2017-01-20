@@ -591,7 +591,25 @@
 
 - (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng], @"dist":distance, @"filter":@"{\"include\":[\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}"};
+    NSString *allFilter = @"{\"include\":[\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
+    
+    NSData *data = [allFilter dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *errorData;
+    NSMutableDictionary *dictionary = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&errorData] mutableCopy];
+
+    NSDictionary *filterToAdd = (NSDictionary*)filter;
+    if (filter != nil) {
+        [dictionary addEntriesFromDictionary:filterToAdd];
+    }
+    
+
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    NSDictionary *parameter = @{@"lat":[NSNumber numberWithFloat:lat], @"lng":[NSNumber numberWithFloat:lng], @"dist":distance, @"filter":jsonString};
     [self HTTP_GET:[self url:kUrlProjectsNear] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
