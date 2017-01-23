@@ -253,6 +253,7 @@ float MetersToMiles(float meters) {
 }
     
 - (IBAction)tappedLocListButton:(id)sender {
+    [self getVisibleAnmotationsInMap];
     isListViewHidden = !isListViewHidden;
     NSString *imageName = isListViewHidden ? @"list_icon" : @"loc_List_icon";
     [_locListButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
@@ -397,6 +398,7 @@ float MetersToMiles(float meters) {
     
     if (isDoneSearching) {
 
+        [self getVisibleAnmotationsInMap];
         if (!animated) {
             double lat = mapView.centerCoordinate.latitude;
             double lng = mapView.centerCoordinate.longitude;
