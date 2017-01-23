@@ -188,7 +188,10 @@
     cell.titleAddressText = [self setFullAddress:dicInfo];
     cell.geoCode = [DerivedNSManagedObject objectOrNil:dicInfo[@"geocode"]];
     NSNumber *value = [DerivedNSManagedObject objectOrNil:dicInfo[@"estLow"]];
-    value =  value != nil ? value:0;
+    if (value == nil) {
+        value = @(0);
+    }
+    
     cell.titlePriceText = [NSString stringWithFormat:@"$%@",value];
     cell.unionDesignation = [DerivedNSManagedObject objectOrNil:dicInfo[@"unionDesignation"]];
     [cell setInitInfo];
