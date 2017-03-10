@@ -418,3 +418,18 @@
 "PLC_MILES"                                 =               "%li miles away";
 "PLC_FEET"                                  =               "%li feet away";
 
+//MobileProjectAddNoteViewController
+"MPANV_NAV_TITLE"                           =               "Add Note";
+"MPANV_NAV_CANCEL"                          =               "CANCEL";
+"MPANV_NAV_ADD"                             =               "ADD";
+"MPANV_POST_TITLE"                          =               "TITLE";
+"MPANV_POST_TITLE_DES"                      =               "Optional";
+"MPANV_POST_TITLE_COUNT"                    =               "%li/55";
+"MPANV_POST_TITLE_PLACEHOLDER"              =               "Post Title";
+"MPANV_BODY_TITLE"                          =               "BODY";
+"MPANV_BODY_PLACEHOLDER"                    =               "Post Body";
+"MPANV_FOOTER_TILE"                         =               "This post will be visible by all MEP Users.";
+
+
+
+
