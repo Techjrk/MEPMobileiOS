@@ -13,6 +13,8 @@
 		B620C1261D535371005CD4B6 /* FilterEntryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B620C1241D535371005CD4B6 /* FilterEntryCollectionViewCell.xib */; };
 		B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */; };
 		B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */; };
+		B62858BD1E7194FD00E82A5E /* MobileProjectAddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62858BB1E7194FD00E82A5E /* MobileProjectAddNoteViewController.m */; };
+		B62858BE1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B62858BC1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib */; };
 		B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411B9D1D096729002B6E88 /* SettingsViewController.m */; };
 		B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411B9E1D096729002B6E88 /* SettingsViewController.xib */; };
 		B6411BA51D096892002B6E88 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411BA31D096892002B6E88 /* SettingsView.m */; };
@@ -416,6 +418,9 @@
 		B623B20A1CFC9AC900793D67 /* ProjectListCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListCVCell.h; sourceTree = "<group>"; };
 		B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListCVCell.m; sourceTree = "<group>"; };
 		B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectListCVCell.xib; sourceTree = "<group>"; };
+		B62858BA1E7194FD00E82A5E /* MobileProjectAddNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectAddNoteViewController.h; sourceTree = "<group>"; };
+		B62858BB1E7194FD00E82A5E /* MobileProjectAddNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectAddNoteViewController.m; sourceTree = "<group>"; };
+		B62858BC1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectAddNoteViewController.xib; sourceTree = "<group>"; };
 		B6411B9C1D096729002B6E88 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B6411B9D1D096729002B6E88 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B6411B9E1D096729002B6E88 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -1084,6 +1089,16 @@
 				B623B20C1CFC9AC900793D67 /* ProjectListCVCell.xib */,
 			);
 			name = ProjectListCell;
+			sourceTree = "<group>";
+		};
+		B62858B91E7194CE00E82A5E /* MobileProjectAddNote */ = {
+			isa = PBXGroup;
+			children = (
+				B62858BA1E7194FD00E82A5E /* MobileProjectAddNoteViewController.h */,
+				B62858BB1E7194FD00E82A5E /* MobileProjectAddNoteViewController.m */,
+				B62858BC1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib */,
+			);
+			path = MobileProjectAddNote;
 			sourceTree = "<group>";
 		};
 		B6411B9B1D0966DD002B6E88 /* Settings */ = {
@@ -1845,6 +1860,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B62858B91E7194CE00E82A5E /* MobileProjectAddNote */,
 				B7690DA91E2F890E0016577F /* ProjectNearMeFilter */,
 				B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */,
 				B6855EA51D26604500553F0F /* Valuation */,
@@ -2616,6 +2632,7 @@
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
 				B65BCDC11D2529AF00FE9781 /* WorkOwnerTypesViewController.xib in Resources */,
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
+				B62858BE1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
 				B6411BBF1D09ACBF002B6E88 /* MyProfileViewController.xib in Resources */,
 				B7BF60AF1D1D85AA00B3BDD7 /* SearchContactCollectionViewCell.xib in Resources */,
@@ -2879,6 +2896,7 @@
 				B6411BAB1D096E1B002B6E88 /* SettingCollectionViewCell.m in Sources */,
 				B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */,
 				B6BDBAC21D181F66001FB41C /* EditViewList.m in Sources */,
+				B62858BD1E7194FD00E82A5E /* MobileProjectAddNoteViewController.m in Sources */,
 				B6A74EF41D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m in Sources */,
 				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
