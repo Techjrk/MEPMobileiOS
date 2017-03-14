@@ -92,4 +92,8 @@
     [self.mobileProjectNotePopUpViewControllerDelegate tappedDismissedPostNote];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 @end
