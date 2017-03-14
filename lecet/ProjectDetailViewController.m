@@ -31,6 +31,14 @@
 #import "ShareItemCollectionViewCell.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
+#define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
+#define BUTTON_TITLE_COLOR                          RGB(255, 255, 255)
+#define INDICATOR_COLOR                             RGB(248, 153, 0)
+#define PROJECT_NOTES_BUTTON_SHADOW_COLOR           RGB(0, 0, 0)
+#define PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE      RGB(0, 56, 114)
+
+#define PROJECT_STATE_BUTTON_TEXT_FONT              fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
+#define BUTTON_TITLE_FONT                           fontNameWithSize(FONT_NAME_LATO_BOLD, 11)
 
 typedef enum {
     ProjectDetailPopupModeTrack,
@@ -100,6 +108,16 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldJurisdiction;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFieldBuildingOrHighway;
 
+@property (weak, nonatomic) IBOutlet UIView *viewTab;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLocation;
+@property (weak, nonatomic) IBOutlet UIButton *buttonNotes;
+@property (weak, nonatomic) IBOutlet UIView *viewIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintIndicator;
+@property (weak, nonatomic) IBOutlet UIView *NotesContainerView;
+@property (weak, nonatomic) IBOutlet UIView *notesButtonContainer;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddNote;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddImage;
+
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
@@ -115,6 +133,7 @@ typedef enum {
     self.view.hidden = YES;
     _containerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _scrollView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
+    self.NotesContainerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _headerView.projectHeaderDelegate = self;
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
@@ -142,6 +161,31 @@ typedef enum {
     _projectState.projectStateViewDelegate = self;
     _seeAllView.seeAllViewDelegate = self;
     
+    self.viewTab.backgroundColor = VIEW_TAB_BG_COLOR;
+    [self.buttonLocation setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_LOCATION_INFO") forState:UIControlStateNormal];
+    [self.buttonLocation setTitleColor:BUTTON_TITLE_COLOR forState:UIControlStateNormal];
+    self.buttonLocation.titleLabel.font = BUTTON_TITLE_FONT;
+    
+    [self.buttonNotes setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_NOTES") forState:UIControlStateNormal];
+    [self.buttonNotes setTitleColor:BUTTON_TITLE_COLOR forState:UIControlStateNormal];
+    self.buttonNotes.titleLabel.font = BUTTON_TITLE_FONT;
+    
+    self.viewIndicator.backgroundColor = INDICATOR_COLOR;
+    self.NotesContainerView.hidden = YES;
+    
+    self.notesButtonContainer.layer.shadowColor = [PROJECT_NOTES_BUTTON_SHADOW_COLOR colorWithAlphaComponent:0.5].CGColor;
+    self.notesButtonContainer.layer.shadowRadius = 2;
+    self.notesButtonContainer.layer.shadowOffset = CGSizeMake(2, 2);
+    self.notesButtonContainer.layer.shadowOpacity = 0.25;
+    self.notesButtonContainer.layer.masksToBounds = NO;
+    
+    [self.buttonAddNote setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADD_NOTE") forState:UIControlStateNormal];
+    [self setupButton:self.buttonAddNote];
+    [self.buttonAddNote setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
+   
+    [self.buttonAddImage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADD_IMAGE") forState:UIControlStateNormal];
+    [self setupButton:self.buttonAddImage];
+    [self.buttonAddImage setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -670,5 +714,25 @@ typedef enum {
     
 }
 
+#pragma mark - Notes and Images
+
+- (IBAction)tappedButtonTab:(id)sender {
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.constraintIndicator.constant = [sender isEqual:self.buttonLocation]?0:kDeviceWidth * 0.5;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.NotesContainerView.hidden = [sender isEqual:self.buttonLocation];
+        }
+    }];
+}
+
+- (void)setupButton:(UIButton*)button {
+    button.titleLabel.font = PROJECT_STATE_BUTTON_TEXT_FONT;
+    button.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
+    button.layer.borderWidth = 0.5;
+    button.layer.masksToBounds = YES;
+}
 
 @end

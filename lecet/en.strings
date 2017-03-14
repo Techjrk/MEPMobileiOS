@@ -62,6 +62,10 @@
 "PROJECT_DETAIL_VALUE"                      =               "Value";
 "PROJECT_DETAIL_JURISDICTION"               =               "Jurisdiction";
 "PROJECT_DETAIL_B_OR_H"                     =               "B/H";
+"PROJECT_DETAIL_LOCATION_INFO"              =               "Location Info";
+"PROJECT_DETAIL_NOTES"                      =               "Notes & Updates";
+"PROJECT_DETAIL_ADD_NOTE"                   =               "Add note";
+"PROJECT_DETAIL_ADD_IMAGE"                  =               "Notes & Updates";
 
 //SeeAllView.xib
 "SEE_ALL_BUTTON_TITLE_SEE"                  =               "See All";
