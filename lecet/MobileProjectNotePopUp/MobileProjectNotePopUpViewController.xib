@@ -12,10 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MobileProjectNotePopUpViewController">
             <connections>
+                <outlet property="backgroundView" destination="siD-Ig-Yty" id="4XW-lY-tiV"/>
                 <outlet property="cancelButton" destination="1Vx-2V-Okq" id="oV6-Dc-0se"/>
                 <outlet property="popupView" destination="SpB-03-qzx" id="STl-wz-8Ec"/>
                 <outlet property="postNoteButton" destination="nYr-6t-nNJ" id="bz6-gz-cuE"/>
                 <outlet property="titleLabel" destination="Zfg-AA-kRR" id="Bc5-RT-z6R"/>
+                <outlet property="topView" destination="jFv-9a-CPL" id="Kkb-25-jpc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,6 +26,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siD-Ig-Yty">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.43493150684931509" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-9a-CPL">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -48,7 +54,7 @@
                             <state key="normal" title="CANCEL"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.45670797410000002" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="nYr-6t-nNJ" firstAttribute="width" secondItem="SpB-03-qzx" secondAttribute="width" multiplier="0.5" id="7ac-0u-HWC"/>
                         <constraint firstItem="nYr-6t-nNJ" firstAttribute="centerX" secondItem="SpB-03-qzx" secondAttribute="centerX" id="8ZQ-Oo-ZSh"/>
@@ -71,8 +77,12 @@
                 <constraint firstItem="SpB-03-qzx" firstAttribute="centerX" secondItem="jFv-9a-CPL" secondAttribute="centerX" id="65E-PG-X5u"/>
                 <constraint firstItem="SpB-03-qzx" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.225" id="6pc-AW-kd9"/>
                 <constraint firstItem="jFv-9a-CPL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="Itf-SN-OWX"/>
+                <constraint firstAttribute="bottom" secondItem="siD-Ig-Yty" secondAttribute="bottom" id="NkQ-Ke-DTd"/>
                 <constraint firstItem="SpB-03-qzx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.915" id="R7e-e1-pfs"/>
+                <constraint firstAttribute="trailing" secondItem="siD-Ig-Yty" secondAttribute="trailing" id="TuM-I9-s35"/>
+                <constraint firstItem="siD-Ig-Yty" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="coE-AV-l6H"/>
                 <constraint firstItem="jFv-9a-CPL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kdR-Yn-JC1"/>
+                <constraint firstItem="siD-Ig-Yty" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oIP-9w-stU"/>
                 <constraint firstAttribute="trailing" secondItem="jFv-9a-CPL" secondAttribute="trailing" id="v8J-GK-XEJ"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>

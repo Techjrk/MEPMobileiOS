@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *postNoteButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIView *popupView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @end
 
@@ -52,6 +54,10 @@
     [self.cancelButton setTitleColor:COLOR_FONT_POSTNOTE_CANCEL_BUTTON forState:UIControlStateNormal];
     self.cancelButton.titleLabel.font = FONT_POSTNOTE_CANCEL_BUTTON;
   
+    [self addTappedGesture];
+    
+    self.popupView.layer.cornerRadius = 2.0f;
+    self.popupView.layer.masksToBounds = YES;
     
 }
 
@@ -60,5 +66,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - MISC METHOD
+- (void)addTappedGesture {
+    
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectNotePopUp)];
+    tapped.numberOfTapsRequired = 1;
+    [self.topView addGestureRecognizer:tapped];
+    
+    UITapGestureRecognizer *tappedBG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectNotePopUp)];
+    tappedBG.numberOfTapsRequired = 1;
+    [self.backgroundView addGestureRecognizer:tappedBG];
+    
+}
+
+- (void)hideProjectNotePopUp {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
