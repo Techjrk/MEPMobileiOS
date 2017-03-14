@@ -31,20 +31,20 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.41342037671232879" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-9a-CPL">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SpB-03-qzx">
-                    <rect key="frame" x="16" y="200" width="343" height="150"/>
+                    <rect key="frame" x="34" y="187" width="307.5" height="150"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are about to post a public note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfg-AA-kRR">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="54"/>
+                            <rect key="frame" x="0.0" y="0.0" width="307.5" height="54"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYr-6t-nNJ">
-                            <rect key="frame" x="86" y="54" width="171" height="45"/>
+                            <rect key="frame" x="77" y="54" width="153" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.46179956900000002" colorSpace="calibratedRGB"/>
                             <state key="normal" title="POST NOTE"/>
                             <connections>
@@ -52,7 +52,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vx-2V-Okq">
-                            <rect key="frame" x="86" y="99" width="171" height="27"/>
+                            <rect key="frame" x="77" y="99" width="153" height="27"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="CANCEL"/>
@@ -83,9 +83,9 @@
                 <constraint firstItem="jFv-9a-CPL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4g3-y2-Mfb"/>
                 <constraint firstItem="SpB-03-qzx" firstAttribute="centerX" secondItem="jFv-9a-CPL" secondAttribute="centerX" id="65E-PG-X5u"/>
                 <constraint firstItem="SpB-03-qzx" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.225" id="6pc-AW-kd9"/>
-                <constraint firstItem="jFv-9a-CPL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="Itf-SN-OWX"/>
+                <constraint firstItem="jFv-9a-CPL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.28" id="Itf-SN-OWX"/>
                 <constraint firstAttribute="bottom" secondItem="siD-Ig-Yty" secondAttribute="bottom" id="NkQ-Ke-DTd"/>
-                <constraint firstItem="SpB-03-qzx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.915" id="R7e-e1-pfs"/>
+                <constraint firstItem="SpB-03-qzx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.82" id="R7e-e1-pfs"/>
                 <constraint firstAttribute="trailing" secondItem="siD-Ig-Yty" secondAttribute="trailing" id="TuM-I9-s35"/>
                 <constraint firstItem="siD-Ig-Yty" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="coE-AV-l6H"/>
                 <constraint firstItem="jFv-9a-CPL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kdR-Yn-JC1"/>
