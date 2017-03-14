@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MobileProjectNotePopUpViewController : UIViewController
+@protocol MobileProjectNotePopUpViewControllerDelegate <NSObject>
+@required
+- (void)tappedDismissedPostNote;
+- (void)tappedPostNoteButton;
+@end
 
+
+@interface MobileProjectNotePopUpViewController : UIViewController
+@property (nonatomic,assign) id<MobileProjectNotePopUpViewControllerDelegate> mobileProjectNotePopUpViewControllerDelegate;
 @end

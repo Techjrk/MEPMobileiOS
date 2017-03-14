@@ -65,6 +65,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)tappedPostNote:(id)sender {
+    
+}
+
+- (IBAction)tappedCancel:(id)sender {
+    [self hideProjectNotePopUp];
+}
+
 
 #pragma mark - MISC METHOD
 - (void)addTappedGesture {
@@ -81,6 +89,7 @@
 
 - (void)hideProjectNotePopUp {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.mobileProjectNotePopUpViewControllerDelegate tappedDismissedPostNote];
 }
 
 @end
