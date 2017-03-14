@@ -30,6 +30,8 @@
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
 
+#import "MobileProjectAddNoteViewController.h"
+
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
 #define BUTTON_TITLE_COLOR                          RGB(255, 255, 255)
@@ -726,6 +728,12 @@ typedef enum {
             self.NotesContainerView.hidden = [sender isEqual:self.buttonLocation];
         }
     }];
+}
+- (IBAction)tappedAddNoteButton:(id)sender {
+    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)setupButton:(UIButton*)button {
