@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60359531D01F2CA006E5231 /* ContactNavBarView.m */; };
 		B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60359541D01F2CA006E5231 /* ContactNavBarView.xib */; };
+		B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */; };
+		B611D8621E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */; };
 		B620C1251D535371005CD4B6 /* FilterEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */; };
 		B620C1261D535371005CD4B6 /* FilterEntryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B620C1241D535371005CD4B6 /* FilterEntryCollectionViewCell.xib */; };
 		B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */; };
@@ -411,6 +413,9 @@
 		B60359521D01F2CA006E5231 /* ContactNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactNavBarView.h; sourceTree = "<group>"; };
 		B60359531D01F2CA006E5231 /* ContactNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactNavBarView.m; sourceTree = "<group>"; };
 		B60359541D01F2CA006E5231 /* ContactNavBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactNavBarView.xib; sourceTree = "<group>"; };
+		B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectNotePopUpViewController.h; sourceTree = "<group>"; };
+		B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectNotePopUpViewController.m; sourceTree = "<group>"; };
+		B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectNotePopUpViewController.xib; sourceTree = "<group>"; };
 		B61F8BB01D0FFFA3009F70EF /* TextfieldViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldViewDelegate.h; sourceTree = "<group>"; };
 		B620C1221D535371005CD4B6 /* FilterEntryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterEntryCollectionViewCell.h; sourceTree = "<group>"; };
 		B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterEntryCollectionViewCell.m; sourceTree = "<group>"; };
@@ -1069,6 +1074,16 @@
 				B60359541D01F2CA006E5231 /* ContactNavBarView.xib */,
 			);
 			name = ContactNavBar;
+			sourceTree = "<group>";
+		};
+		B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */ = {
+			isa = PBXGroup;
+			children = (
+				B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */,
+				B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */,
+				B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */,
+			);
+			path = MobileProjectNotePopUp;
 			sourceTree = "<group>";
 		};
 		B620C1271D535386005CD4B6 /* FilterEntry */ = {
@@ -1860,6 +1875,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */,
 				B62858B91E7194CE00E82A5E /* MobileProjectAddNote */,
 				B7690DA91E2F890E0016577F /* ProjectNearMeFilter */,
 				B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */,
@@ -2586,6 +2602,7 @@
 				B6411BD11D09B2D8002B6E88 /* MyProfileHeaderView.xib in Resources */,
 				B7BF60D01D211B2D00B3BDD7 /* ProjectFilterView.xib in Resources */,
 				B73EFB061D1435C200C6B3B2 /* SelectMoveView.xib in Resources */,
+				B611D8621E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
 				B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */,
 				B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */,
@@ -2863,6 +2880,7 @@
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
 				B66544BC1D002CBD0033732F /* CDAssociatedProjectViewController.m in Sources */,
 				B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */,
+				B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */,
 				B7BF60DD1D2154C400B3BDD7 /* CompanyFilterView.m in Sources */,
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
