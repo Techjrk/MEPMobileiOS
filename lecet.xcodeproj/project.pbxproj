@@ -281,6 +281,10 @@
 		B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B771C60C1CEB7512004A628A /* AssociatedProjectsView.xib */; };
 		B77E08E71D2687D80087454F /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77E08E51D2687D80087454F /* FilterViewController.m */; };
 		B77E08E81D2687D80087454F /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B77E08E61D2687D80087454F /* FilterViewController.xib */; };
+		B78607061E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B78607041E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m */; };
+		B78607071E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607051E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib */; };
+		B786070B1E78129800F7CE3E /* ImageNotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B786070A1E78129800F7CE3E /* ImageNotesView.m */; };
+		B786070D1E7812B400F7CE3E /* ImageNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B786070C1E7812B400F7CE3E /* ImageNotesView.xib */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
@@ -825,6 +829,12 @@
 		B77E08E41D2687D80087454F /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		B77E08E51D2687D80087454F /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		B77E08E61D2687D80087454F /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		B78607031E76D34F00F7CE3E /* ImageNoteCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNoteCollectionViewCell.h; sourceTree = "<group>"; };
+		B78607041E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNoteCollectionViewCell.m; sourceTree = "<group>"; };
+		B78607051E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageNoteCollectionViewCell.xib; sourceTree = "<group>"; };
+		B78607091E78129800F7CE3E /* ImageNotesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNotesView.h; sourceTree = "<group>"; };
+		B786070A1E78129800F7CE3E /* ImageNotesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNotesView.m; sourceTree = "<group>"; };
+		B786070C1E7812B400F7CE3E /* ImageNotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageNotesView.xib; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Contact+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1950,6 +1960,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B78607021E76D2DF00F7CE3E /* ImageNote */,
 				B647D0A51E2FA50500A864D1 /* ProjectNearMeListViewCell */,
 				B620C1271D535386005CD4B6 /* FilterEntry */,
 				B65BCDC21D2534DE00FE9781 /* WorkOwnerTypeCell */,
@@ -2055,6 +2066,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B78607081E78127100F7CE3E /* ImageNotes */,
 				B647D09F1E2F9BDE00A864D1 /* ProjectNearMeListView */,
 				B69FA8AA1D4F40AB0059A18F /* SaveSearchesChangeView */,
 				B6AF1CF61D21322100C95A8F /* ProjectFilterSearchNav */,
@@ -2315,6 +2327,26 @@
 				B76C694F1CD24F05009E9F15 /* en.strings */,
 			);
 			name = Language;
+			sourceTree = "<group>";
+		};
+		B78607021E76D2DF00F7CE3E /* ImageNote */ = {
+			isa = PBXGroup;
+			children = (
+				B78607031E76D34F00F7CE3E /* ImageNoteCollectionViewCell.h */,
+				B78607041E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m */,
+				B78607051E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib */,
+			);
+			name = ImageNote;
+			sourceTree = "<group>";
+		};
+		B78607081E78127100F7CE3E /* ImageNotes */ = {
+			isa = PBXGroup;
+			children = (
+				B78607091E78129800F7CE3E /* ImageNotesView.h */,
+				B786070A1E78129800F7CE3E /* ImageNotesView.m */,
+				B786070C1E7812B400F7CE3E /* ImageNotesView.xib */,
+			);
+			name = ImageNotes;
 			sourceTree = "<group>";
 		};
 		B79615E81CF0B2FC0089BC32 /* HockeySDK.embeddedframework */ = {
@@ -2583,6 +2615,7 @@
 				B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
 				B6A74EFB1D15DBD3007CDFF3 /* CompanySortViewController.xib in Resources */,
+				B78607071E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib in Resources */,
 				B6411BD11D09B2D8002B6E88 /* MyProfileHeaderView.xib in Resources */,
 				B7BF60D01D211B2D00B3BDD7 /* ProjectFilterView.xib in Resources */,
 				B73EFB061D1435C200C6B3B2 /* SelectMoveView.xib in Resources */,
@@ -2630,6 +2663,7 @@
 				B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */,
 				B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */,
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
+				B786070D1E7812B400F7CE3E /* ImageNotesView.xib in Resources */,
 				B65BCDC11D2529AF00FE9781 /* WorkOwnerTypesViewController.xib in Resources */,
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
 				B62858BE1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib in Resources */,
@@ -2739,6 +2773,7 @@
 				B7F10A1F1CDB3E3300847FA3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				B79616081CF431000089BC32 /* RadialBackgroundView.m in Sources */,
 				B7F10A2B1CDB42FA00847FA3 /* DerivedNSManagedObject.m in Sources */,
+				B78607061E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m in Sources */,
 				B69FA8B31D4F469F0059A18F /* SaveSearchChangeItemView.m in Sources */,
 				B6411BA51D096892002B6E88 /* SettingsView.m in Sources */,
 				B6AA23761D22B0C4008B30E0 /* ProjectFilterTypesViewController.m in Sources */,
@@ -2767,6 +2802,7 @@
 				B796161B1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.m in Sources */,
 				B73EFB0A1D14546E00C6B3B2 /* ProjectTrackItemView.m in Sources */,
 				B7BF60A91D1D828900B3BDD7 /* SearchCompanyCollectionViewCell.m in Sources */,
+				B786070B1E78129800F7CE3E /* ImageNotesView.m in Sources */,
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
 				B65BCDC01D2529AF00FE9781 /* WorkOwnerTypesViewController.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,

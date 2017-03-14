@@ -30,6 +30,8 @@
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
 
+#import "MobileProjectAddNoteViewController.h"
+
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
 #define BUTTON_TITLE_COLOR                          RGB(255, 255, 255)
@@ -733,6 +735,15 @@ typedef enum {
     button.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     button.layer.borderWidth = 0.5;
     button.layer.masksToBounds = YES;
+}
+
+- (IBAction)tappedButtonAddNote:(id)sender {
+    
+    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (IBAction)tappedButtonAddImage:(id)sender {
 }
 
 @end
