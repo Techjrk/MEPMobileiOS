@@ -7,13 +7,19 @@
 //
 
 #import "MobileProjectAddNoteViewController.h"
+#import "MobileProjectNotePopUpViewController.h"
 
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define FONT_TILE                       fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define FONT_NAV_BUTTON                 fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 
 #pragma mark - COLOR
 #define COLOR_FONT_NAV_TITLE_LABEL      RGB(184,184,184)
 #define COLOR_BG_NAV_VIEW               RGB(5, 35, 74)
+#define COLOR_FONT_TILE                 RGB(8, 73, 124)
+#define COLOR_BORDER_TEXTVIEW           RGB(0, 0, 0)
+#define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
 @interface MobileProjectAddNoteViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -26,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
 @property (weak, nonatomic) IBOutlet UILabel *footerLabel;
 @property (weak, nonatomic) IBOutlet UIView *navView;
+@property (weak, nonatomic) IBOutlet UIView *bodyViewContainer;
 
 @end
 
@@ -35,32 +42,68 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navView.backgroundColor = COLOR_BG_NAV_VIEW;
+    
     self.navTitleLabel.text = NSLocalizedLanguage(@"MPANV_NAV_TITLE");
+    self.navTitleLabel.font = FONT_NAV_TITLE_LABEL;
+    self.navTitleLabel.textColor = COLOR_FONT_NAV_TITLE_LABEL;
+    
     [self.cancelButton setTitle:NSLocalizedLanguage(@"MPANV_NAV_CANCEL") forState:UIControlStateNormal];
+    [self.cancelButton setTitleColor:COLOR_FONT_NAV_BUTTON forState:UIControlStateNormal];
+    self.cancelButton.titleLabel.font = FONT_NAV_BUTTON;
+    
     [self.addButton setTitle:NSLocalizedLanguage(@"MPANV_NAV_ADD") forState:UIControlStateNormal];
+    [self.addButton setTitleColor:COLOR_FONT_NAV_BUTTON forState:UIControlStateNormal];
+    self.addButton.titleLabel.font = FONT_NAV_BUTTON;
+    
     
     self.postTitleLabel.text = NSLocalizedLanguage(@"MPANV_POST_TITLE");
+    self.postTitleLabel.font = FONT_TILE;
+    self.postTitleLabel.textColor = COLOR_FONT_TILE;
+    
     self.postTitleTextField.placeholder = NSLocalizedLanguage(@"MPANV_POST_TITLE_PLACEHOLDER");
+    self.postTitleTextField.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
+    self.postTitleTextField.layer.borderWidth = 0.5f;
+    self.postTitleTextField.leftView = [self paddingView];
+    self.postTitleTextField.leftViewMode = UITextFieldViewModeAlways;
+    
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
     
     self.bodyTitleLabel.text = NSLocalizedLanguage(@"MPANV_BODY_TITLE");
+    self.bodyTitleLabel.font = FONT_TILE;
+    self.bodyTitleLabel.textColor = COLOR_FONT_TILE;
+    
+    self.bodyTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
+    self.bodyTextView.layer.borderWidth = 0.5f;
+    
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
+    self.bodyViewContainer.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)tappedCancelButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
+
+- (IBAction)tappedAddButton:(id)sender {
+    MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - misc
+- (UIView *)paddingView {
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth * 0.017, kDeviceHeight * 0.025)];
+    return paddingView;
+}
 
 @end

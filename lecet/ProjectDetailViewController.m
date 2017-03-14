@@ -729,6 +729,12 @@ typedef enum {
         }
     }];
 }
+- (IBAction)tappedAddNoteButton:(id)sender {
+    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
 
 - (void)setupButton:(UIButton*)button {
     button.titleLabel.font = PROJECT_STATE_BUTTON_TEXT_FONT;
