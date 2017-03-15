@@ -26,13 +26,14 @@
 #define COLOR_FONT_POSTNOTE_CANCEL_BUTTON                   RGB(0, 63, 144)
 
 
-@interface MobileProjectNotePopUpViewController ()
+@interface MobileProjectNotePopUpViewController () 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postNoteButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIView *popupView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
+
 
 @end
 
@@ -58,7 +59,7 @@
     
     self.popupView.layer.cornerRadius = 2.0f;
     self.popupView.layer.masksToBounds = YES;
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +67,9 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)tappedPostNote:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.mobileProjectNotePopUpViewControllerDelegate tappedPostNoteButton];
+    }];
     
 }
 

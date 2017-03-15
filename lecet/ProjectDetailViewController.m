@@ -740,6 +740,7 @@ typedef enum {
 - (IBAction)tappedButtonAddNote:(id)sender {
     
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    controller.projectID = recordId;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MobileProjectAddNoteViewController : UIViewController
-
+@property (strong,nonatomic) NSNumber *projectID;
 @end

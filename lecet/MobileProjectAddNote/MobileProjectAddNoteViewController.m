@@ -21,7 +21,7 @@
 #define COLOR_BORDER_TEXTVIEW           RGB(0, 0, 0)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate>
+@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
@@ -34,7 +34,6 @@
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bodyViewContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTextViewHeight;
-
 
 @end
 
@@ -85,6 +84,8 @@
     self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
+    self.addButton.userInteractionEnabled = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,6 +98,7 @@
 
 - (IBAction)tappedAddButton:(id)sender {
     MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
+    controller.mobileProjectNotePopUpViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController presentViewController:controller animated:YES completion:nil];
@@ -181,6 +183,31 @@
 -(void)onEditing:(id)sender {
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
+    
+    NSString *stripString = [self.postTitleTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (stripString.length > 0) {
+        self.addButton.userInteractionEnabled = YES;
+    } else {
+        self.addButton.userInteractionEnabled = NO;
+    }
+    
+}
+
+#pragma mark - MobileProjectNotePopUpViewControllerDelegate
+
+- (void)tappedPostNoteButton {
+    
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
+    [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
+        [self.navigationController popViewControllerAnimated:YES];
+    }failure:^(id object){
+        NSLog(@"Failed request");
+    }];
+    
+}
+
+- (void)tappedDismissedPostNote {
+    
 }
 
 

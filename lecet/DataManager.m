@@ -81,6 +81,8 @@
 #define kUrlSearchesUpdate                  @"Searches/%li"
 #define kURLChangePassword                  @"LecetUsers/%li/changePassword"
 
+#define kUrlProjectUserNotes                @"Projects/%li/userNotes"
+
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
 @implementation DataManager
@@ -1454,7 +1456,7 @@
     
 }
 
-#pragma mark - CHage Password
+#pragma mark - Change Password
 - (void)changePassword:(NSMutableDictionary *)parameter success:(APIBlock)success failure:(APIBlock)failure{
     
     NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
@@ -1466,6 +1468,26 @@
     }failure:^(id object) {
         failure(object);
     }authenticated:YES];
+}
+
+#pragma mark - Project USer Notes
+- (void)projectUserNotes:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlProjectUserNotes, (long)projectID.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)addProjectUserNotes:(NSNumber *)projectID parameter:(NSDictionary *)param success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlProjectUserNotes, (long)projectID.integerValue];
+    [self HTTP_POST_BODY:[self url:url] parameters:param success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
 }
 
 @end
