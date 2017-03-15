@@ -287,6 +287,8 @@
 		B78607071E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607051E76D34F00F7CE3E /* ImageNoteCollectionViewCell.xib */; };
 		B786070B1E78129800F7CE3E /* ImageNotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B786070A1E78129800F7CE3E /* ImageNotesView.m */; };
 		B786070D1E7812B400F7CE3E /* ImageNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B786070C1E7812B400F7CE3E /* ImageNotesView.xib */; };
+		B78607121E7932FD00F7CE3E /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78607101E7932FD00F7CE3E /* PhotoViewController.m */; };
+		B78607131E7932FD00F7CE3E /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607111E7932FD00F7CE3E /* PhotoViewController.xib */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
@@ -840,6 +842,9 @@
 		B78607091E78129800F7CE3E /* ImageNotesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNotesView.h; sourceTree = "<group>"; };
 		B786070A1E78129800F7CE3E /* ImageNotesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNotesView.m; sourceTree = "<group>"; };
 		B786070C1E7812B400F7CE3E /* ImageNotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageNotesView.xib; sourceTree = "<group>"; };
+		B786070F1E7932FD00F7CE3E /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		B78607101E7932FD00F7CE3E /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		B78607111E7932FD00F7CE3E /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Contact+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1885,6 +1890,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B786070E1E79329F00F7CE3E /* PhotoViewer */,
 				B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */,
 				B62858B91E7194CE00E82A5E /* MobileProjectAddNote */,
 				B7690DA91E2F890E0016577F /* ProjectNearMeFilter */,
@@ -2365,6 +2371,16 @@
 			name = ImageNotes;
 			sourceTree = "<group>";
 		};
+		B786070E1E79329F00F7CE3E /* PhotoViewer */ = {
+			isa = PBXGroup;
+			children = (
+				B786070F1E7932FD00F7CE3E /* PhotoViewController.h */,
+				B78607101E7932FD00F7CE3E /* PhotoViewController.m */,
+				B78607111E7932FD00F7CE3E /* PhotoViewController.xib */,
+			);
+			name = PhotoViewer;
+			sourceTree = "<group>";
+		};
 		B79615E81CF0B2FC0089BC32 /* HockeySDK.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -2583,6 +2599,7 @@
 				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
 				B6411BEC1D09CEC8002B6E88 /* BidderListViewController.xib in Resources */,
 				B683372B1D082154004226D3 /* CPCustomTextFieldView.xib in Resources */,
+				B78607131E7932FD00F7CE3E /* PhotoViewController.xib in Resources */,
 				B6EC8B401D2BC3F600F4780A /* FilterSelectionViewController.xib in Resources */,
 				B644747B1D0047F10001B244 /* ProjectSortView.xib in Resources */,
 				B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */,
@@ -2768,6 +2785,7 @@
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,
 				B7E104541CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m in Sources */,
+				B78607121E7932FD00F7CE3E /* PhotoViewController.m in Sources */,
 				B7690DAD1E2F893F0016577F /* ProjectNearMeFilterViewController.m in Sources */,
 				B73EFB041D1435AF00C6B3B2 /* SelectMoveView.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
@@ -3073,7 +3091,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3088,10 +3106,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "40c8ef30-542c-45be-b252-bbb177cf5760";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
+				PROVISIONING_PROFILE = "c22ba540-0638-40d1-b30e-1232d8c458b8";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Debug;
 		};
@@ -3100,7 +3118,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3115,10 +3133,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "40c8ef30-542c-45be-b252-bbb177cf5760";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
+				PROVISIONING_PROFILE = "c22ba540-0638-40d1-b30e-1232d8c458b8";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Release;
 		};

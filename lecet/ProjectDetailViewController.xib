@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,6 +56,7 @@
                 <outlet property="fieldTargetStartDate" destination="3gF-xe-jfg" id="8Jd-VC-39H"/>
                 <outlet property="fieldValue" destination="9rn-oQ-f46" id="n9o-bc-yj7"/>
                 <outlet property="headerView" destination="YnS-qN-9py" id="p78-Px-jlX"/>
+                <outlet property="imageNoteView" destination="mbp-Oq-k56" id="eLE-Qn-rw4"/>
                 <outlet property="notesButtonContainer" destination="hwE-OH-K3C" id="0oa-Qg-4TV"/>
                 <outlet property="notesView" destination="ZiS-Ms-5tj" id="MYk-At-TZP"/>
                 <outlet property="participantsView" destination="Yvc-qB-JBc" id="nDW-VE-IWm"/>
@@ -119,7 +120,7 @@
                                                     <rect key="frame" x="0.0" y="43" width="188" height="5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-Lz-K8W">
-                                                            <rect key="frame" x="37" y="0.0" width="113" height="5"/>
+                                                            <rect key="frame" x="38" y="0.0" width="112" height="5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -158,64 +159,64 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-h2-8gS" customClass="ProjectStateView">
-                                    <rect key="frame" x="18" y="413" width="338" height="38"/>
+                                    <rect key="frame" x="19" y="413" width="337" height="38"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-Ns-3v6">
-                                    <rect key="frame" x="-1" y="451" width="375" height="14"/>
+                                    <rect key="frame" x="0.0" y="451" width="375" height="14"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzV-o1-dcv" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="465" width="319" height="30"/>
+                                    <rect key="frame" x="28" y="465" width="319" height="30"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="qU4-h6-eKJ"/>
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-3k-Zp2" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="495" width="319" height="70"/>
+                                    <rect key="frame" x="28" y="495" width="319" height="70"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="Qbt-eR-sPJ"/>
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-A5-s8D" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="565" width="319" height="70"/>
+                                    <rect key="frame" x="28" y="565" width="319" height="70"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70.5" id="ELw-OG-eb0"/>
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABx-A0-JKU" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="635" width="319" height="70"/>
+                                    <rect key="frame" x="28" y="635" width="319" height="70"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="58K-WT-52Z"/>
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xf-0o-iWM" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="705" width="319" height="71"/>
+                                    <rect key="frame" x="28" y="705" width="319" height="71"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70.5" id="cWA-di-JNi"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oR0-e6-B2F" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="776" width="319" height="70"/>
+                                    <rect key="frame" x="28" y="776" width="319" height="70"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="0nR-5N-6B1"/>
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67k-zk-hsU" customClass="CustomEntryField">
-                                    <rect key="frame" x="27" y="846" width="319" height="70"/>
+                                    <rect key="frame" x="28" y="846" width="319" height="70"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="I7u-mG-4HD"/>
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99K-F8-mee">
-                                    <rect key="frame" x="27" y="916" width="319" height="490"/>
+                                    <rect key="frame" x="28" y="916" width="319" height="490"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-Zd-6vt" customClass="CustomEntryField">
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="70"/>
@@ -304,25 +305,25 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-K4-TIP" customClass="SeeAllView">
-                                    <rect key="frame" x="27" y="1406" width="319" height="49"/>
+                                    <rect key="frame" x="28" y="1406" width="319" height="49"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiS-Ms-5tj" customClass="NotesView">
-                                    <rect key="frame" x="27" y="1455" width="319" height="128"/>
+                                    <rect key="frame" x="28" y="1455" width="319" height="128"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="ICC-rh-dXP"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-qB-JBc" customClass="PariticpantsView">
-                                    <rect key="frame" x="27" y="1583" width="319" height="128"/>
+                                    <rect key="frame" x="28" y="1583" width="319" height="128"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="6Rb-fb-JEk"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wye-8d-g1S" customClass="ProjectBidderView">
-                                    <rect key="frame" x="27" y="1711" width="319" height="100"/>
+                                    <rect key="frame" x="28" y="1711" width="319" height="100"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="qZv-w0-ZdH"/>
@@ -332,17 +333,17 @@
                                     <rect key="frame" x="0.0" y="413" width="375" height="837"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-OH-K3C">
-                                            <rect key="frame" x="18" y="0.0" width="338" height="38"/>
+                                            <rect key="frame" x="19" y="0.0" width="337" height="38"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjt-9z-7iJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="169" height="38"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="38"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="tappedButtonAddNote:" destination="-1" eventType="touchUpInside" id="9o6-2w-jWf"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClE-Nr-Xcr">
-                                                    <rect key="frame" x="169" y="0.0" width="169" height="38"/>
+                                                    <rect key="frame" x="168" y="0.0" width="168" height="38"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="tappedButtonAddImage:" destination="-1" eventType="touchUpInside" id="qy7-ak-wDp"/>

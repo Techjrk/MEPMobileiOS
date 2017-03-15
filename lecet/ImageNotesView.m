@@ -8,8 +8,10 @@
 
 #import "ImageNotesView.h"
 #import "ImageNoteCollectionViewCell.h"
+#import "PhotoViewController.h"
 
 #define kCellIdentifier             @"kCellIdentifier"
+
 #define BG_COLOR                    RGB(245, 245, 245)
 
 @interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate>
@@ -63,6 +65,12 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    ImageNoteCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    
+    [self.imageNotesViewDelegate viewNoteAndImage:cell.titleView.text detail:cell.note.text image:cell.image.image];
 }
 
 @end
