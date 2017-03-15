@@ -743,4 +743,13 @@ typedef enum {
     button.layer.masksToBounds = YES;
 }
 
+- (IBAction)tappedButtonAddNote:(id)sender {
+    
+    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (IBAction)tappedButtonAddImage:(id)sender {
+}
+
 @end

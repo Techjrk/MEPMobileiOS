@@ -119,7 +119,7 @@
                                                     <rect key="frame" x="0.0" y="43" width="188" height="5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-Lz-K8W">
-                                                            <rect key="frame" x="39" y="0.0" width="112" height="5"/>
+                                                            <rect key="frame" x="37" y="0.0" width="113" height="5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -158,7 +158,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-h2-8gS" customClass="ProjectStateView">
-                                    <rect key="frame" x="19" y="413" width="337" height="38"/>
+                                    <rect key="frame" x="18" y="413" width="338" height="38"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-Ns-3v6">
@@ -332,18 +332,21 @@
                                     <rect key="frame" x="0.0" y="413" width="375" height="837"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-OH-K3C">
-                                            <rect key="frame" x="19" y="0.0" width="337" height="38"/>
+                                            <rect key="frame" x="18" y="0.0" width="338" height="38"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjt-9z-7iJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="38"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="169" height="38"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="tappedAddNoteButton:" destination="-1" eventType="touchUpInside" id="Q56-ct-sma"/>
+                                                        <action selector="tappedButtonAddNote:" destination="-1" eventType="touchUpInside" id="9o6-2w-jWf"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClE-Nr-Xcr">
-                                                    <rect key="frame" x="168" y="0.0" width="169" height="38"/>
+                                                    <rect key="frame" x="169" y="0.0" width="169" height="38"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="tappedButtonAddImage:" destination="-1" eventType="touchUpInside" id="qy7-ak-wDp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -358,10 +361,25 @@
                                                 <constraint firstItem="Rjt-9z-7iJ" firstAttribute="width" secondItem="hwE-OH-K3C" secondAttribute="width" multiplier="0.5" id="k7t-II-scI"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSg-Oo-tma">
+                                            <rect key="frame" x="-1" y="38" width="376" height="14"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbp-Oq-k56" customClass="ImageNotesView">
+                                            <rect key="frame" x="-1" y="52" width="376" height="785"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="0.12660496469999999" blue="0.65176883149999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="mbp-Oq-k56" firstAttribute="centerX" secondItem="cSg-Oo-tma" secondAttribute="centerX" id="6s1-YT-aME"/>
+                                        <constraint firstItem="cSg-Oo-tma" firstAttribute="top" secondItem="hwE-OH-K3C" secondAttribute="bottom" id="7eo-Ga-foM"/>
+                                        <constraint firstAttribute="bottom" secondItem="mbp-Oq-k56" secondAttribute="bottom" id="H8G-P9-X9h"/>
+                                        <constraint firstItem="mbp-Oq-k56" firstAttribute="top" secondItem="cSg-Oo-tma" secondAttribute="bottom" id="M27-ci-e5a"/>
+                                        <constraint firstItem="cSg-Oo-tma" firstAttribute="width" secondItem="u15-fC-i3v" secondAttribute="width" id="QdQ-0g-KKj"/>
                                         <constraint firstItem="hwE-OH-K3C" firstAttribute="top" secondItem="u15-fC-i3v" secondAttribute="top" id="gbi-v5-8EJ"/>
+                                        <constraint firstItem="cSg-Oo-tma" firstAttribute="centerX" secondItem="u15-fC-i3v" secondAttribute="centerX" id="jgy-kr-BKA"/>
+                                        <constraint firstItem="mbp-Oq-k56" firstAttribute="width" secondItem="u15-fC-i3v" secondAttribute="width" id="kdY-wK-e1E"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -499,6 +517,7 @@
                 <constraint firstItem="Gws-3k-Zp2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="KrY-HO-pbe"/>
                 <constraint firstItem="YnS-qN-9py" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="MbD-eT-wJR"/>
                 <constraint firstItem="0xf-0o-iWM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" priority="250" id="PrN-4p-Zrv"/>
+                <constraint firstItem="cSg-Oo-tma" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.02" id="Qp2-AH-kXV"/>
                 <constraint firstItem="y8n-K4-TIP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="StU-Ai-CAL"/>
                 <constraint firstItem="Y8l-w9-9Lk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Zim-is-DAl"/>
                 <constraint firstItem="sxs-xz-Nnu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bXH-D7-n7Z"/>
