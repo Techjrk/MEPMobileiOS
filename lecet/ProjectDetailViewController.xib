@@ -96,30 +96,30 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMG-zi-PLJ">
-                                    <rect key="frame" x="-1" y="350" width="376" height="63"/>
+                                    <rect key="frame" x="-0.5" y="350" width="375" height="63"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-kz-FIk">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-1i-CFw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="188" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="43"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="tappedButtonTab:" destination="-1" eventType="touchUpInside" id="3vf-oh-jW2"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ka3-Wr-gqW">
-                                                    <rect key="frame" x="188" y="0.0" width="188" height="43"/>
+                                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="43"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="tappedButtonTab:" destination="-1" eventType="touchUpInside" id="Sf6-cd-T0e"/>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpq-fn-pqJ">
-                                                    <rect key="frame" x="0.0" y="43" width="188" height="5"/>
+                                                    <rect key="frame" x="0.0" y="43" width="187.5" height="5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-Lz-K8W">
-                                                            <rect key="frame" x="37" y="0.0" width="113" height="5"/>
+                                                            <rect key="frame" x="37" y="0.0" width="112.5" height="5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -158,7 +158,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-h2-8gS" customClass="ProjectStateView">
-                                    <rect key="frame" x="18" y="413" width="338" height="38"/>
+                                    <rect key="frame" x="18.5" y="413" width="337" height="38"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-Ns-3v6">
@@ -332,17 +332,17 @@
                                     <rect key="frame" x="0.0" y="413" width="375" height="837"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-OH-K3C">
-                                            <rect key="frame" x="18" y="0.0" width="338" height="38"/>
+                                            <rect key="frame" x="18.5" y="0.0" width="337" height="38"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjt-9z-7iJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="169" height="38"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="38"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="tappedButtonAddNote:" destination="-1" eventType="touchUpInside" id="9o6-2w-jWf"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClE-Nr-Xcr">
-                                                    <rect key="frame" x="169" y="0.0" width="169" height="38"/>
+                                                    <rect key="frame" x="168.5" y="0.0" width="168.5" height="38"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="tappedButtonAddImage:" destination="-1" eventType="touchUpInside" id="qy7-ak-wDp"/>
@@ -362,11 +362,11 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSg-Oo-tma">
-                                            <rect key="frame" x="-1" y="38" width="376" height="14"/>
+                                            <rect key="frame" x="-0.5" y="38" width="375" height="14"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbp-Oq-k56" customClass="ImageNotesView">
-                                            <rect key="frame" x="-1" y="52" width="376" height="785"/>
+                                            <rect key="frame" x="-0.5" y="52" width="375" height="785"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
