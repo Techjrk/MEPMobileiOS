@@ -21,7 +21,7 @@
 #define COLOR_BORDER_TEXTVIEW           RGB(0, 0, 0)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface MobileProjectAddNoteViewController ()
+@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *footerLabel;
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bodyViewContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTextViewHeight;
 
 @end
 
@@ -73,11 +74,18 @@
     self.bodyTitleLabel.font = FONT_TILE;
     self.bodyTitleLabel.textColor = COLOR_FONT_TILE;
     
+    self.bodyTextView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+    self.bodyTextView.textColor = [UIColor lightGrayColor];
     self.bodyTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     self.bodyTextView.layer.borderWidth = 0.5f;
     
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
+    self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+    [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
+    
+    self.addButton.userInteractionEnabled = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +98,7 @@
 
 - (IBAction)tappedAddButton:(id)sender {
     MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
+    controller.mobileProjectNotePopUpViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController presentViewController:controller animated:YES completion:nil];
@@ -105,5 +114,101 @@
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth * 0.017, kDeviceHeight * 0.025)];
     return paddingView;
 }
+
+#pragma mark - UITextViewDelegate
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+    
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        if (fin) {
+            NSString *stripSpaceString = [textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+            if (stripSpaceString.length == 0) {
+                textView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+                textView.textColor = [UIColor lightGrayColor];
+            }
+        }
+    }];
+}
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    textView.text = @"";
+    textView.textColor = [UIColor blackColor];
+    return YES;
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //[self.bodyTextView resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+
+    return YES;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+}
+
+-(void)onEditing:(id)sender {
+    NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
+    self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
+    
+    NSString *stripString = [self.postTitleTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (stripString.length > 0) {
+        self.addButton.userInteractionEnabled = YES;
+    } else {
+        self.addButton.userInteractionEnabled = NO;
+    }
+    
+}
+
+#pragma mark - MobileProjectNotePopUpViewControllerDelegate
+
+- (void)tappedPostNoteButton {
+    
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
+    [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
+        [self.navigationController popViewControllerAnimated:YES];
+    }failure:^(id object){
+        NSLog(@"Failed request");
+    }];
+    
+}
+
+- (void)tappedDismissedPostNote {
+    
+}
+
 
 @end

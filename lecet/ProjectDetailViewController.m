@@ -735,12 +735,6 @@ typedef enum {
         }
     }];
 }
-- (IBAction)tappedAddNoteButton:(id)sender {
-    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
-    
-    [self.navigationController pushViewController:controller animated:YES];
-    
-}
 
 - (void)setupButton:(UIButton*)button {
     button.titleLabel.font = PROJECT_STATE_BUTTON_TEXT_FONT;
@@ -752,7 +746,8 @@ typedef enum {
 - (IBAction)tappedButtonAddNote:(id)sender {
     
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
-    [self presentViewController:controller animated:YES completion:nil];
+    controller.projectID = recordId;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)tappedButtonAddImage:(id)sender {

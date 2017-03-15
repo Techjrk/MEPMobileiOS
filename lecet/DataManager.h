@@ -121,4 +121,8 @@
 //Change Password
 - (void)changePassword:(NSMutableDictionary *)parameter success:(APIBlock)success failure:(APIBlock)failure;
 
+//Project Notes
+- (void)projectUserNotes:(NSNumber*)projectID success:(APIBlock)success failure:(APIBlock)failure;
+- (void)addProjectUserNotes:(NSNumber *)projectID parameter:(NSDictionary *)param success:(APIBlock)success failure:(APIBlock)failure;
+
 @end
