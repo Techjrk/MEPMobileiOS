@@ -75,6 +75,8 @@
     self.bodyTitleLabel.font = FONT_TILE;
     self.bodyTitleLabel.textColor = COLOR_FONT_TILE;
     
+    self.bodyTextView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+    self.bodyTextView.textColor = [UIColor lightGrayColor];
     self.bodyTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     self.bodyTextView.layer.borderWidth = 0.5f;
     
@@ -129,10 +131,21 @@
         self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
         [self.view layoutIfNeeded];
     }completion:^(BOOL fin){
-        
+        if (fin) {
+            NSString *stripSpaceString = [textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+            if (stripSpaceString.length == 0) {
+                textView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+                textView.textColor = [UIColor lightGrayColor];
+            }
+        }
     }];
+}
 
-
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    textView.text = @"";
+    textView.textColor = [UIColor blackColor];
+    return YES;
 }
 
 
