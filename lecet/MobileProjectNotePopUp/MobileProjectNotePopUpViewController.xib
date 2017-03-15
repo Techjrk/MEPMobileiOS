@@ -44,7 +44,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYr-6t-nNJ">
-                            <rect key="frame" x="77" y="54" width="153" height="45"/>
+                            <rect key="frame" x="77" y="54" width="153" height="37.5"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.46179956900000002" colorSpace="calibratedRGB"/>
                             <state key="normal" title="POST NOTE"/>
                             <connections>
@@ -52,7 +52,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vx-2V-Okq">
-                            <rect key="frame" x="77" y="99" width="153" height="27"/>
+                            <rect key="frame" x="77" y="91.5" width="153" height="27"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="CANCEL"/>
@@ -66,7 +66,7 @@
                         <constraint firstItem="nYr-6t-nNJ" firstAttribute="width" secondItem="SpB-03-qzx" secondAttribute="width" multiplier="0.5" id="7ac-0u-HWC"/>
                         <constraint firstItem="nYr-6t-nNJ" firstAttribute="centerX" secondItem="SpB-03-qzx" secondAttribute="centerX" id="8ZQ-Oo-ZSh"/>
                         <constraint firstItem="1Vx-2V-Okq" firstAttribute="centerX" secondItem="SpB-03-qzx" secondAttribute="centerX" id="97r-Qc-mms"/>
-                        <constraint firstItem="nYr-6t-nNJ" firstAttribute="height" secondItem="SpB-03-qzx" secondAttribute="height" multiplier="0.3" id="E01-8f-j94"/>
+                        <constraint firstItem="nYr-6t-nNJ" firstAttribute="height" secondItem="SpB-03-qzx" secondAttribute="height" multiplier="0.25" id="E01-8f-j94"/>
                         <constraint firstItem="Zfg-AA-kRR" firstAttribute="height" secondItem="SpB-03-qzx" secondAttribute="height" multiplier="0.36" id="G7O-w5-H3r"/>
                         <constraint firstItem="1Vx-2V-Okq" firstAttribute="top" secondItem="nYr-6t-nNJ" secondAttribute="bottom" id="LOg-Kl-ea6"/>
                         <constraint firstItem="1Vx-2V-Okq" firstAttribute="width" secondItem="nYr-6t-nNJ" secondAttribute="width" id="Vp4-A3-Emg"/>

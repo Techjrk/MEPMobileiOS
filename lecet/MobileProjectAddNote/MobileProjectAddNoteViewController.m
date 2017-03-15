@@ -21,7 +21,7 @@
 #define COLOR_BORDER_TEXTVIEW           RGB(0, 0, 0)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface MobileProjectAddNoteViewController ()
+@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *footerLabel;
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bodyViewContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTextViewHeight;
+
 
 @end
 
@@ -78,6 +80,8 @@
     
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
+    self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,6 +108,60 @@
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth * 0.017, kDeviceHeight * 0.025)];
     return paddingView;
+}
+
+#pragma mark - UITextViewDelegate
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+    
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+
+
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //[self.bodyTextView resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+
+    return YES;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
 }
 
 @end
