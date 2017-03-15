@@ -83,6 +83,7 @@
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
     self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+    [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
 }
 
@@ -176,5 +177,11 @@
         
     }];
 }
+
+-(void)onEditing:(id)sender {
+    NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
+    self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
+}
+
 
 @end
