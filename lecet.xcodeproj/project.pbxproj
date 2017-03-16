@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60359531D01F2CA006E5231 /* ContactNavBarView.m */; };
 		B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60359541D01F2CA006E5231 /* ContactNavBarView.xib */; };
+		B60909BE1E7986EB00DEAA17 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = B60909BC1E7986EB00DEAA17 /* CustomCamera.m */; };
+		B60909BF1E7986EB00DEAA17 /* CustomCamera.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60909BD1E7986EB00DEAA17 /* CustomCamera.xib */; };
 		B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */; };
 		B611D8621E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */; };
 		B620C1251D535371005CD4B6 /* FilterEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */; };
@@ -417,6 +419,9 @@
 		B60359521D01F2CA006E5231 /* ContactNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactNavBarView.h; sourceTree = "<group>"; };
 		B60359531D01F2CA006E5231 /* ContactNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactNavBarView.m; sourceTree = "<group>"; };
 		B60359541D01F2CA006E5231 /* ContactNavBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactNavBarView.xib; sourceTree = "<group>"; };
+		B60909BB1E7986EB00DEAA17 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCamera.h; sourceTree = "<group>"; };
+		B60909BC1E7986EB00DEAA17 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCamera.m; sourceTree = "<group>"; };
+		B60909BD1E7986EB00DEAA17 /* CustomCamera.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCamera.xib; sourceTree = "<group>"; };
 		B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectNotePopUpViewController.h; sourceTree = "<group>"; };
 		B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectNotePopUpViewController.m; sourceTree = "<group>"; };
 		B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectNotePopUpViewController.xib; sourceTree = "<group>"; };
@@ -1084,6 +1089,16 @@
 				B60359541D01F2CA006E5231 /* ContactNavBarView.xib */,
 			);
 			name = ContactNavBar;
+			sourceTree = "<group>";
+		};
+		B60909B71E797F4200DEAA17 /* CustomCamera */ = {
+			isa = PBXGroup;
+			children = (
+				B60909BB1E7986EB00DEAA17 /* CustomCamera.h */,
+				B60909BC1E7986EB00DEAA17 /* CustomCamera.m */,
+				B60909BD1E7986EB00DEAA17 /* CustomCamera.xib */,
+			);
+			path = CustomCamera;
 			sourceTree = "<group>";
 		};
 		B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */ = {
@@ -2243,6 +2258,7 @@
 		B707BC391CEE114B0003C836 /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
+				B60909B71E797F4200DEAA17 /* CustomCamera */,
 				B707BC3A1CEE11590003C836 /* PushZoomAnimator.h */,
 				B707BC3B1CEE11590003C836 /* PushZoomAnimator.m */,
 			);
@@ -2742,6 +2758,7 @@
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
 				B7E104391CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib in Resources */,
 				B73EFA8E1D0301AC00C6B3B2 /* GoToSettingsViewController.xib in Resources */,
+				B60909BF1E7986EB00DEAA17 /* CustomCamera.xib in Resources */,
 				B68337251D081C3F004226D3 /* ChangePasswordViewController.xib in Resources */,
 				B647D0AA1E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib in Resources */,
 				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
@@ -2764,6 +2781,7 @@
 				B644746C1D00437E0001B244 /* ProjectSortViewController.m in Sources */,
 				B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */,
 				B725DAE31D76F45200B6CCC4 /* CryproLib.m in Sources */,
+				B60909BE1E7986EB00DEAA17 /* CustomCamera.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,
