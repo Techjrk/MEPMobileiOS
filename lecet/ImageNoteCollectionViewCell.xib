@@ -117,7 +117,7 @@
                 <outlet property="constraintTitleHeight" destination="Eo1-E5-Zgs" id="Zs9-ch-WuI"/>
                 <outlet property="image" destination="ZXu-CH-Nbl" id="w2J-KD-sYt"/>
                 <outlet property="note" destination="f5e-dj-MkU" id="SeN-CH-m0z"/>
-                <outlet property="title" destination="p7Q-tu-M1N" id="2Z4-Qw-gs1"/>
+                <outlet property="titleView" destination="p7Q-tu-M1N" id="pCm-C2-S73"/>
             </connections>
             <point key="canvasLocation" x="61.5" y="184"/>
         </collectionViewCell>

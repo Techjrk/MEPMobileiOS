@@ -31,6 +31,8 @@
 #import "ShareItemCollectionViewCell.h"
 
 #import "MobileProjectAddNoteViewController.h"
+#import "ImageNotesView.h"
+#import "PhotoViewController.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -47,7 +49,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -120,6 +122,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNote;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddImage;
 
+@property (weak, nonatomic) IBOutlet ImageNotesView *imageNoteView;
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
@@ -137,6 +140,9 @@ typedef enum {
     _scrollView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     self.NotesContainerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _headerView.projectHeaderDelegate = self;
+    
+    self.imageNoteView.imageNotesViewDelegate = self;
+    
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
     [_fieldAddress changeConstraintHeight: _constraintFieldAddress];
@@ -745,6 +751,13 @@ typedef enum {
 }
 
 - (IBAction)tappedButtonAddImage:(id)sender {
+}
+
+#pragma mark - ImageNoteViewDelegate
+- (void)viewNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image {
+ 
+    PhotoViewController *controller = [PhotoViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

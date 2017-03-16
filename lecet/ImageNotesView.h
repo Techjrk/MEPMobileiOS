@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-@interface ImageNotesView : BaseViewClass
+@protocol ImageNotesViewDelegate
+- (void)viewNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image;
+@end
 
+
+@interface ImageNotesView : BaseViewClass
+@property (weak, nonatomic) id<ImageNotesViewDelegate>imageNotesViewDelegate;
 @end
