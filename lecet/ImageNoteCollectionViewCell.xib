@@ -33,7 +33,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7Q-tu-M1N">
-                        <rect key="frame" x="3.5" y="160" width="328" height="24"/>
+                        <rect key="frame" x="4" y="160" width="328" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="Eo1-E5-Zgs"/>
                         </constraints>
@@ -70,7 +70,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TM-tb-lez">
-                        <rect key="frame" x="251.5" y="0.0" width="83.5" height="50"/>
+                        <rect key="frame" x="252" y="0.0" width="83" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="aRp-rg-VAx"/>
                         </constraints>

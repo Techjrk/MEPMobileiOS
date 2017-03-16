@@ -289,6 +289,7 @@
 		B786070D1E7812B400F7CE3E /* ImageNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B786070C1E7812B400F7CE3E /* ImageNotesView.xib */; };
 		B78607121E7932FD00F7CE3E /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78607101E7932FD00F7CE3E /* PhotoViewController.m */; };
 		B78607131E7932FD00F7CE3E /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607111E7932FD00F7CE3E /* PhotoViewController.xib */; };
+		B78607151E7ABBF800F7CE3E /* landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B78607141E7ABBF800F7CE3E /* landscape.jpg */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
@@ -845,6 +846,7 @@
 		B786070F1E7932FD00F7CE3E /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		B78607101E7932FD00F7CE3E /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		B78607111E7932FD00F7CE3E /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
+		B78607141E7ABBF800F7CE3E /* landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landscape.jpg; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Contact+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1872,6 +1874,7 @@
 				B70155221CD0C56A0050CF8A /* ViewController.m */,
 				B70155271CD0C56A0050CF8A /* Assets.xcassets */,
 				B701552C1CD0C56A0050CF8A /* Info.plist */,
+				B78607141E7ABBF800F7CE3E /* landscape.jpg */,
 				B701551B1CD0C56A0050CF8A /* Supporting Files */,
 				B70155451CD0F7F60050CF8A /* LaunchScreen.storyboard */,
 				B76C692E1CD21B6E009E9F15 /* PrefixHeader.pch */,
@@ -2756,6 +2759,7 @@
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
 				B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
+				B78607151E7ABBF800F7CE3E /* landscape.jpg in Resources */,
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
 				B7E104391CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.xib in Resources */,
 				B73EFA8E1D0301AC00C6B3B2 /* GoToSettingsViewController.xib in Resources */,
