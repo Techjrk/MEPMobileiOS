@@ -18,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet UITextView *note;
 
 + (CGFloat)itemSize;
++ (CGFloat)itemSizeWithImage;
 @end
