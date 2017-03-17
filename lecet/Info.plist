@@ -41,6 +41,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
+    <key>NSCameraUsageDescription</key>
+    <string>$(PRODUCT_NAME) needs acces to camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow image</string>
 	<key>UIAppFonts</key>

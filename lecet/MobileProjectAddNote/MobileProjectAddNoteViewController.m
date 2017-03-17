@@ -8,7 +8,6 @@
 
 #import "MobileProjectAddNoteViewController.h"
 #import "MobileProjectNotePopUpViewController.h"
-#import "CustomCamera.h"
 
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
@@ -22,7 +21,7 @@
 #define COLOR_BORDER_TEXTVIEW           RGB(0, 0, 0)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
@@ -204,33 +203,16 @@
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
 
 - (void)tappedPostNoteButton {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.showsCameraControls = YES;
-    picker.cameraOverlayView = self.view;
-    picker.delegate = self;
-    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    [self presentImagePickerController:picker];
-    /*
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id object){
         NSLog(@"Failed request");
     }];
-    */
 }
 
 - (void)tappedDismissedPostNote {
     
-}
-
-- (void)presentImagePickerController:(UIViewController *)pickerController
-{
-    if (self.presentedViewController) {
-        [self.presentedViewController presentViewController:pickerController animated:YES completion:^{}];
-    } else {
-        [self.navigationController presentViewController:pickerController animated:YES completion:^{}];
-    }
 }
 
 @end

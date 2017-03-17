@@ -33,6 +33,7 @@
 #import "MobileProjectAddNoteViewController.h"
 #import "ImageNotesView.h"
 #import "PhotoViewController.h"
+#import "CustomCamera.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -751,13 +752,21 @@ typedef enum {
 }
 
 - (IBAction)tappedButtonAddImage:(id)sender {
+    [self showCustomCamera];
 }
 
 #pragma mark - ImageNoteViewDelegate
 - (void)viewNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image {
- 
     PhotoViewController *controller = [PhotoViewController new];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - Custom Camera Method
+
+- (void)showCustomCamera {
+    
+    [CustomCamera sharedInstance].controller = self;
+    [[CustomCamera sharedInstance] showCamera];
 }
 
 @end

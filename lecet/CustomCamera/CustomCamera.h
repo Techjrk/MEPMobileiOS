@@ -2,14 +2,15 @@
 //  CustomCamera.h
 //  lecet
 //
-//  Created by Michael San Minay on 15/03/2017.
+//  Created by Michael San Minay on 16/03/2017.
 //  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "BaseViewClass.h"
-@interface CustomCamera : BaseViewClass
+#import <Foundation/Foundation.h>
+
+@interface CustomCamera : NSObject
 + (instancetype)sharedInstance;
 @property (strong,nonatomic) UIViewController *controller;
-- (void)captureCamera;
+- (void)showCamera;
+
 @end
