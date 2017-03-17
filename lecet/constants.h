@@ -96,6 +96,7 @@ CG_INLINE CGFloat textHeight(NSAttributedString *attributedString, CGFloat conta
 #define FONT_NAME_LATO_BLACK                     @"Lato-Black"
 #define FONT_NAME_LATO_HEAVY                     @"Lato-Heavy"
 #define FONT_NAME_AWESOME                        @"FontAwesome"
+#define FONT_NAME_LATO_ITALIC                    @"Lato-Italic"
 
 #define NOTIFICATION_APP_BECOME_ACTIVE           @"NOTIFICATION_APP_BECOME_ACTIVE"
 #define NOTIFICATION_LOCATION_DENIED             @"NOTIFICATION_LOCATION_DENIED"

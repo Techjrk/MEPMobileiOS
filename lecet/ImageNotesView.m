@@ -16,10 +16,16 @@
 #define NOTE_ITEM_FONT              fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define NOTE_ITEM_COLOR             RGB(34, 34, 34)
 
+#define NONE_COLOR                  RGBA(34, 34, 34, 50)
+#define NONE_FONT                   fontNameWithSize(FONT_NAME_LATO_ITALIC, 13)
+
 #define DATA_TEXT                   @"this is a long text. very long text that needs to be displayed properly. without this it is not going to be juggled up"
 
 @interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *viewNone;
+@property (weak, nonatomic) IBOutlet UILabel *labelNone;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintNoneMsgHeight;
 @end
 
 @implementation ImageNotesView
@@ -30,10 +36,17 @@
     self.items = [NSMutableArray new];
     [self.collectionView registerNib:[UINib nibWithNibName:[[ImageNoteCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     self.collectionView.backgroundColor = BG_COLOR;
+    
+    self.labelNone.text = NSLocalizedLanguage(@"PROJECT_DETAIL_ADD_IMAGE_NOTE");
+    self.labelNone.textColor = NONE_COLOR;
+    self.labelNone.font = NONE_FONT;
+    self.constraintNoneMsgHeight.constant = kDeviceHeight * 0.15;
+    self.viewNone.hidden = YES;
 }
 
 #pragma mark - Custom Methods
 - (void)reloadData {
+    self.viewNone.hidden = self.items.count>0;
     [self.collectionView reloadData];
 }
 
