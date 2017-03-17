@@ -10,7 +10,7 @@
 
 #define CONSTRAINT_IMAGE_HEIGHT                 kDeviceHeight * 0.35
 #define CONSTRAINT_IMAGE_BOTTOM_SPACER          kDeviceHeight * 0.005
-#define CONSTRAINT_TITLE_HEIGHT                 kDeviceHeight * 0.04
+#define CONSTRAINT_TITLE_HEIGHT                 kDeviceHeight * 0.05
 #define CONSTRAINT_BOTTOM_TITLE_SPACER          kDeviceHeight * 0.003
 #define CONSTRAINT_BOTTOM_NOTE_SPACER           kDeviceHeight * 0.005
 #define CONSTRAINT_USER                         kDeviceHeight * 0.05
@@ -38,12 +38,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomTitleSpacer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintUserHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomNoteSpacer;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonHeight;
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UIView *titleLine;
 @property (weak, nonatomic) IBOutlet UILabel *user;
 @property (weak, nonatomic) IBOutlet UILabel *stamp;
+@property (weak, nonatomic) IBOutlet UIButton *buttonEdit;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDelete;
 
 @end
 
@@ -58,8 +59,6 @@
     self.constraintBottomNoteSpacer.constant = CONSTRAINT_BOTTOM_NOTE_SPACER;
     self.constraintUserHeight.constant = CONSTRAINT_USER;
    
-    self.constraintButtonHeight.constant = kDeviceHeight * 0.05;
-    
     self.layer.shadowColor = [SHADOW_COLOR colorWithAlphaComponent:0.5].CGColor;
     self.layer.shadowRadius = 2;
     self.layer.shadowOffset = CGSizeMake(2, 2);

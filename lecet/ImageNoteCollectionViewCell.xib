@@ -98,12 +98,13 @@
                             <constraint firstItem="GoQ-xJ-PT2" firstAttribute="width" secondItem="7ls-Y8-O3f" secondAttribute="width" multiplier="0.1" id="yQ0-Yu-tcc"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TM-tb-lez">
-                        <rect key="frame" x="252" y="0.0" width="83" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="aRp-rg-VAx"/>
-                        </constraints>
-                        <state key="normal" title="EDIT"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TM-tb-lez">
+                        <rect key="frame" x="295" y="0.0" width="40" height="24"/>
+                        <state key="normal" image="icon_editNote"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1j-Q7-OYs">
+                        <rect key="frame" x="255" y="0.0" width="40" height="24"/>
+                        <state key="normal" image="icon_deleteNote"/>
                     </button>
                 </subviews>
             </view>
@@ -117,15 +118,19 @@
                 <constraint firstItem="XgQ-F0-GKb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AXH-Rv-uFD"/>
                 <constraint firstItem="p7Q-tu-M1N" firstAttribute="top" secondItem="XgQ-F0-GKb" secondAttribute="bottom" id="Bof-CS-DYq"/>
                 <constraint firstItem="p7Q-tu-M1N" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.96" id="D7K-Vc-uDi"/>
+                <constraint firstItem="t1j-Q7-OYs" firstAttribute="width" secondItem="1TM-tb-lez" secondAttribute="width" id="DBm-Ji-10o"/>
+                <constraint firstItem="1TM-tb-lez" firstAttribute="height" secondItem="p7Q-tu-M1N" secondAttribute="height" id="H45-I7-c6y"/>
                 <constraint firstItem="f5e-dj-MkU" firstAttribute="top" secondItem="zyA-eV-Kgi" secondAttribute="bottom" id="KMn-o0-B05"/>
                 <constraint firstItem="ZXu-CH-Nbl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KdA-Hi-2FW"/>
                 <constraint firstItem="7ls-Y8-O3f" firstAttribute="top" secondItem="Aop-Sb-fZH" secondAttribute="bottom" id="Lyw-tb-FhM"/>
                 <constraint firstItem="zyA-eV-Kgi" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.95" id="N4E-5U-5xL"/>
-                <constraint firstItem="1TM-tb-lez" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.25" id="VFd-Mg-efK"/>
+                <constraint firstItem="1TM-tb-lez" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.12" id="VFd-Mg-efK"/>
+                <constraint firstItem="t1j-Q7-OYs" firstAttribute="height" secondItem="1TM-tb-lez" secondAttribute="height" id="XmX-Eu-tpG"/>
                 <constraint firstItem="ZXu-CH-Nbl" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Xqj-ff-mdn"/>
                 <constraint firstItem="XgQ-F0-GKb" firstAttribute="top" secondItem="ZXu-CH-Nbl" secondAttribute="bottom" id="YPF-ef-HYu"/>
                 <constraint firstItem="zyA-eV-Kgi" firstAttribute="centerX" secondItem="p7Q-tu-M1N" secondAttribute="centerX" id="aTI-kQ-bXB"/>
                 <constraint firstItem="f5e-dj-MkU" firstAttribute="centerX" secondItem="zyA-eV-Kgi" secondAttribute="centerX" id="dBv-Oh-imJ"/>
+                <constraint firstItem="t1j-Q7-OYs" firstAttribute="top" secondItem="1TM-tb-lez" secondAttribute="top" id="dDR-RC-pOB"/>
                 <constraint firstItem="Aop-Sb-fZH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iA5-u4-TOw"/>
                 <constraint firstAttribute="trailing" secondItem="7ls-Y8-O3f" secondAttribute="trailing" id="iK8-kI-Idh"/>
                 <constraint firstAttribute="trailing" secondItem="Aop-Sb-fZH" secondAttribute="trailing" id="jC6-P4-kOF"/>
@@ -134,12 +139,14 @@
                 <constraint firstAttribute="trailing" secondItem="1TM-tb-lez" secondAttribute="trailing" id="w1h-1w-Xe7"/>
                 <constraint firstItem="zyA-eV-Kgi" firstAttribute="top" secondItem="p7Q-tu-M1N" secondAttribute="bottom" id="wxE-xU-Frz"/>
                 <constraint firstItem="f5e-dj-MkU" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.97" id="xXC-na-L8V"/>
+                <constraint firstItem="1TM-tb-lez" firstAttribute="leading" secondItem="t1j-Q7-OYs" secondAttribute="trailing" id="yTG-wv-iuT"/>
             </constraints>
             <size key="customSize" width="335" height="356"/>
             <connections>
+                <outlet property="buttonDelete" destination="t1j-Q7-OYs" id="D6K-5I-ZQn"/>
+                <outlet property="buttonEdit" destination="1TM-tb-lez" id="W7j-Xg-zMc"/>
                 <outlet property="constraintBottomNoteSpacer" destination="Nvc-uD-bmo" id="oLZ-4W-zyH"/>
                 <outlet property="constraintBottomTitleSpacer" destination="7Aa-v2-F5a" id="cwH-Ke-RwX"/>
-                <outlet property="constraintButtonHeight" destination="aRp-rg-VAx" id="Ayx-cC-Ac3"/>
                 <outlet property="constraintImageBottomSpacer" destination="1Tb-DV-3ht" id="L3v-z8-k0z"/>
                 <outlet property="constraintImageHeight" destination="XKg-5F-8bb" id="ChM-5S-lir"/>
                 <outlet property="constraintTitleHeight" destination="Eo1-E5-Zgs" id="Zs9-ch-WuI"/>
@@ -155,6 +162,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="icon_deleteNote" width="19" height="20"/>
+        <image name="icon_editNote" width="18" height="18"/>
         <image name="icon_postUser" width="12" height="12"/>
         <image name="image_splashBG" width="375" height="667"/>
     </resources>
