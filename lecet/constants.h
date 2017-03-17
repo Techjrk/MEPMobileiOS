@@ -84,6 +84,11 @@ CG_INLINE NSString *decryptStringUsingPassword(NSString *data, NSString *passwor
     return str;
 }
 
+CG_INLINE CGFloat textHeight(NSAttributedString *attributedString, CGFloat containerWidth, CGFloat fontHeight)
+{
+    CGSize size = [attributedString boundingRectWithSize:CGSizeMake(containerWidth, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin  context:nil].size;
+    return  size.height + (fontHeight*1.25);
+}
 
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
 #define FONT_NAME_LATO_SEMIBOLD                  @"Lato-Semibold"

@@ -61,6 +61,7 @@ typedef enum {
     NSArray *trackItemRecord;
     NSNumber *recordId;
     ProjectDetailPopupMode popupMode;
+    NSMutableArray *imageNotesItems;
 }
 
 //Views
@@ -733,8 +734,50 @@ typedef enum {
     } completion:^(BOOL finished) {
         if (finished) {
             self.NotesContainerView.hidden = [sender isEqual:self.buttonLocation];
+            if (!self.NotesContainerView.hidden) {
+                [self loadNotes];
+            }
         }
     }];
+}
+
+- (void)loadNotes {
+    if (imageNotesItems == nil) {
+        imageNotesItems = [NSMutableArray new];
+        [[DataManager sharedManager] projectUserNotes:recordId success:^(id object) {
+
+            NSArray *notes = object;
+            for (NSDictionary *item in notes) {
+                NSMutableDictionary *mutableItem = [item mutableCopy];
+                mutableItem[@"cellType"] = @"note";
+                [imageNotesItems addObject:mutableItem];
+            }
+            [self loadImages];
+        } failure:^(id object) {
+            
+        }];
+    }
+
+}
+
+- (void)loadImages {
+    [[DataManager sharedManager] projectUserImages:recordId success:^(id object) {
+      
+        NSArray *images = object;
+        for (NSDictionary *item in images) {
+            NSMutableDictionary *mutableItem = [item mutableCopy];
+            mutableItem[@"cellType"] = @"image";
+            [imageNotesItems addObject:mutableItem];
+        }
+        [self showImageNotes];
+    } failure:^(id object) {
+        
+    }];
+}
+
+- (void)showImageNotes {
+    self.imageNoteView.items = imageNotesItems;
+    [self.imageNoteView reloadData];
 }
 
 - (void)setupButton:(UIButton*)button {

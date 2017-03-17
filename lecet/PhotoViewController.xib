@@ -12,8 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoViewController">
             <connections>
+                <outlet property="buttonBack" destination="Ydm-MI-2oX" id="AwA-xl-Dbp"/>
                 <outlet property="imageView" destination="VYx-2b-D9K" id="oCl-0w-AUc"/>
                 <outlet property="scrollView" destination="eg0-uU-Oyc" id="tCf-oq-q2z"/>
+                <outlet property="textView" destination="cCB-nG-slM" id="7a9-Oo-vhT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,12 +28,19 @@
                     <rect key="frame" x="67" y="269" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-uU-Oyc">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-uU-Oyc">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="ZiK-nu-9Ks"/>
                     </connections>
                 </scrollView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cCB-nG-slM">
+                    <rect key="frame" x="0.0" y="500.5" width="375" height="166.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydm-MI-2oX">
                     <rect key="frame" x="0.0" y="0.0" width="75" height="67"/>
                     <state key="normal" image="icon_back"/>
@@ -44,10 +53,14 @@
             <constraints>
                 <constraint firstItem="Ydm-MI-2oX" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="1iI-9K-e8l"/>
                 <constraint firstItem="Ydm-MI-2oX" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.2" id="BAZ-bj-spi"/>
+                <constraint firstItem="cCB-nG-slM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.25" id="Ijl-6x-mwI"/>
+                <constraint firstAttribute="bottom" secondItem="cCB-nG-slM" secondAttribute="bottom" id="QhE-d7-4Gj"/>
                 <constraint firstAttribute="bottom" secondItem="eg0-uU-Oyc" secondAttribute="bottom" id="QuF-MV-L5G"/>
                 <constraint firstAttribute="trailing" secondItem="eg0-uU-Oyc" secondAttribute="trailing" id="YCn-EN-aG6"/>
                 <constraint firstItem="eg0-uU-Oyc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YdV-Bi-vag"/>
                 <constraint firstItem="Ydm-MI-2oX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aYC-4s-9I1"/>
+                <constraint firstItem="cCB-nG-slM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gkM-NX-jR0"/>
+                <constraint firstAttribute="trailing" secondItem="cCB-nG-slM" secondAttribute="trailing" id="pxg-bB-eV1"/>
                 <constraint firstItem="Ydm-MI-2oX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yca-WA-WdR"/>
                 <constraint firstItem="eg0-uU-Oyc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zpi-CD-Rdd"/>
             </constraints>
