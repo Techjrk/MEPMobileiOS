@@ -42,7 +42,6 @@
     return nil;
 }
 
-
 + (NSDate *)dateFromDateAndTimeString:(NSString *)dateString
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

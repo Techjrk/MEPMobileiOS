@@ -86,6 +86,13 @@
     
     self.addButton.userInteractionEnabled = NO;
     
+    /*
+    [[DataManager sharedManager] projectUserNotes:self.projectID success:^(id object){
+        
+    }failure:^(id object){
+        
+    }];
+    */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -196,19 +203,16 @@
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
 
 - (void)tappedPostNoteButton {
-    
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id object){
         NSLog(@"Failed request");
     }];
-    
 }
 
 - (void)tappedDismissedPostNote {
     
 }
-
 
 @end

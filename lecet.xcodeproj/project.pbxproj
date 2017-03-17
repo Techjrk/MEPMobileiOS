@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60359531D01F2CA006E5231 /* ContactNavBarView.m */; };
 		B60359561D01F2CA006E5231 /* ContactNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60359541D01F2CA006E5231 /* ContactNavBarView.xib */; };
+		B60909D41E7AB79B00DEAA17 /* CustomCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60909D21E7AB79B00DEAA17 /* CustomCameraViewController.m */; };
+		B60909D51E7AB79B00DEAA17 /* CustomCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60909D31E7AB79B00DEAA17 /* CustomCameraViewController.xib */; };
+		B60909D81E7AD9A700DEAA17 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = B60909D71E7AD9A700DEAA17 /* CustomCamera.m */; };
+		B60909DD1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60909DB1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m */; };
+		B60909DE1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60909DC1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib */; };
+		B60909F41E7C0F7D00DEAA17 /* CameraControlListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60909F21E7C0F7D00DEAA17 /* CameraControlListView.m */; };
+		B60909F51E7C0F7D00DEAA17 /* CameraControlListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60909F31E7C0F7D00DEAA17 /* CameraControlListView.xib */; };
 		B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */; };
 		B611D8621E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */; };
 		B620C1251D535371005CD4B6 /* FilterEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */; };
@@ -420,6 +427,17 @@
 		B60359521D01F2CA006E5231 /* ContactNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactNavBarView.h; sourceTree = "<group>"; };
 		B60359531D01F2CA006E5231 /* ContactNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactNavBarView.m; sourceTree = "<group>"; };
 		B60359541D01F2CA006E5231 /* ContactNavBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactNavBarView.xib; sourceTree = "<group>"; };
+		B60909D11E7AB79B00DEAA17 /* CustomCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraViewController.h; sourceTree = "<group>"; };
+		B60909D21E7AB79B00DEAA17 /* CustomCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraViewController.m; sourceTree = "<group>"; };
+		B60909D31E7AB79B00DEAA17 /* CustomCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraViewController.xib; sourceTree = "<group>"; };
+		B60909D61E7AD9A700DEAA17 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCamera.h; sourceTree = "<group>"; };
+		B60909D71E7AD9A700DEAA17 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCamera.m; sourceTree = "<group>"; };
+		B60909DA1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraCollectionViewCell.h; sourceTree = "<group>"; };
+		B60909DB1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraCollectionViewCell.m; sourceTree = "<group>"; };
+		B60909DC1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraCollectionViewCell.xib; sourceTree = "<group>"; };
+		B60909F11E7C0F7D00DEAA17 /* CameraControlListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraControlListView.h; sourceTree = "<group>"; };
+		B60909F21E7C0F7D00DEAA17 /* CameraControlListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlListView.m; sourceTree = "<group>"; };
+		B60909F31E7C0F7D00DEAA17 /* CameraControlListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraControlListView.xib; sourceTree = "<group>"; };
 		B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectNotePopUpViewController.h; sourceTree = "<group>"; };
 		B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectNotePopUpViewController.m; sourceTree = "<group>"; };
 		B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectNotePopUpViewController.xib; sourceTree = "<group>"; };
@@ -1091,6 +1109,45 @@
 				B60359541D01F2CA006E5231 /* ContactNavBarView.xib */,
 			);
 			name = ContactNavBar;
+			sourceTree = "<group>";
+		};
+		B60909B71E797F4200DEAA17 /* CustomCamera */ = {
+			isa = PBXGroup;
+			children = (
+				B60909D61E7AD9A700DEAA17 /* CustomCamera.h */,
+				B60909D71E7AD9A700DEAA17 /* CustomCamera.m */,
+			);
+			path = CustomCamera;
+			sourceTree = "<group>";
+		};
+		B60909D01E7AB76600DEAA17 /* CustomCamerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B60909D11E7AB79B00DEAA17 /* CustomCameraViewController.h */,
+				B60909D21E7AB79B00DEAA17 /* CustomCameraViewController.m */,
+				B60909D31E7AB79B00DEAA17 /* CustomCameraViewController.xib */,
+			);
+			path = CustomCamerViewController;
+			sourceTree = "<group>";
+		};
+		B60909D91E7BF7A400DEAA17 /* CustomCameraViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B60909DA1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.h */,
+				B60909DB1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m */,
+				B60909DC1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib */,
+			);
+			path = CustomCameraViewCell;
+			sourceTree = "<group>";
+		};
+		B60909EB1E7C0E4200DEAA17 /* CameraControlList */ = {
+			isa = PBXGroup;
+			children = (
+				B60909F11E7C0F7D00DEAA17 /* CameraControlListView.h */,
+				B60909F21E7C0F7D00DEAA17 /* CameraControlListView.m */,
+				B60909F31E7C0F7D00DEAA17 /* CameraControlListView.xib */,
+			);
+			path = CameraControlList;
 			sourceTree = "<group>";
 		};
 		B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */ = {
@@ -1893,6 +1950,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B60909D01E7AB76600DEAA17 /* CustomCamerViewController */,
 				B786070E1E79329F00F7CE3E /* PhotoViewer */,
 				B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */,
 				B62858B91E7194CE00E82A5E /* MobileProjectAddNote */,
@@ -1985,6 +2043,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B60909D91E7BF7A400DEAA17 /* CustomCameraViewCell */,
 				B78607021E76D2DF00F7CE3E /* ImageNote */,
 				B647D0A51E2FA50500A864D1 /* ProjectNearMeListViewCell */,
 				B620C1271D535386005CD4B6 /* FilterEntry */,
@@ -2091,6 +2150,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B60909EB1E7C0E4200DEAA17 /* CameraControlList */,
 				B78607081E78127100F7CE3E /* ImageNotes */,
 				B647D09F1E2F9BDE00A864D1 /* ProjectNearMeListView */,
 				B69FA8AA1D4F40AB0059A18F /* SaveSearchesChangeView */,
@@ -2252,6 +2312,7 @@
 		B707BC391CEE114B0003C836 /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
+				B60909B71E797F4200DEAA17 /* CustomCamera */,
 				B707BC3A1CEE11590003C836 /* PushZoomAnimator.h */,
 				B707BC3B1CEE11590003C836 /* PushZoomAnimator.m */,
 			);
@@ -2596,6 +2657,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60909DE1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib in Resources */,
 				B73EFB011D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.xib in Resources */,
 				B7BF60AA1D1D828900B3BDD7 /* SearchCompanyCollectionViewCell.xib in Resources */,
 				B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */,
@@ -2646,6 +2708,7 @@
 				B73EFAD71D117B5C00C6B3B2 /* CustomCollectionView.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
 				B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */,
+				B60909D51E7AB79B00DEAA17 /* CustomCameraViewController.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B73EFACC1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib in Resources */,
 				B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */,
@@ -2723,6 +2786,7 @@
 				B70155461CD0F7F60050CF8A /* LaunchScreen.storyboard in Resources */,
 				B6BDBAB61D180452001FB41C /* EditView.xib in Resources */,
 				B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */,
+				B60909F51E7C0F7D00DEAA17 /* CameraControlListView.xib in Resources */,
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B6411BC51D09ACEF002B6E88 /* MyProfileView.xib in Resources */,
 				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
@@ -2785,6 +2849,7 @@
 				B644746C1D00437E0001B244 /* ProjectSortViewController.m in Sources */,
 				B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */,
 				B725DAE31D76F45200B6CCC4 /* CryproLib.m in Sources */,
+				B60909D41E7AB79B00DEAA17 /* CustomCameraViewController.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,
@@ -2808,6 +2873,7 @@
 				B6F56D8B1D01B752009B81F5 /* ProjectAllBidsView.m in Sources */,
 				B796160E1CF437720089BC32 /* BusyViewController.m in Sources */,
 				B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */,
+				B60909D81E7AD9A700DEAA17 /* CustomCamera.m in Sources */,
 				B7F10A1D1CDB3E3300847FA3 /* UIImageView+AFNetworking.m in Sources */,
 				B7F10A1F1CDB3E3300847FA3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				B79616081CF431000089BC32 /* RadialBackgroundView.m in Sources */,
@@ -2832,6 +2898,7 @@
 				B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */,
 				B6EFFE971D04592A00727323 /* ContactAllListViewController.m in Sources */,
 				B7F10A191CDB3E3300847FA3 /* AFImageDownloader.m in Sources */,
+				B60909F41E7C0F7D00DEAA17 /* CameraControlListView.m in Sources */,
 				B6BEE9831D46275800237BB9 /* TouchIDManager.m in Sources */,
 				B79616511D004D7A0089BC32 /* TriangleView.m in Sources */,
 				B70FDF841CEA0BEE0035A6D9 /* NotesView.m in Sources */,
@@ -2879,6 +2946,7 @@
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
 				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
+				B60909DD1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m in Sources */,
 				B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
 				B7BF60CE1D211B1D00B3BDD7 /* ProjectFilterView.m in Sources */,

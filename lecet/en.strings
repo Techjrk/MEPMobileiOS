@@ -435,10 +435,20 @@
 "MPANV_FOOTER_TILE"                         =               "This post will be visible by all MEP Users.";
 
 //MobileProjectNotePopUpViewController
-
 "MPNPV_TITLE"                               =               "You are about to post a public note.";
 "MPNPV_POST_NOTE"                           =               "POST NOTE";
 "MPNPV_CANCEL"                              =               "CANCEL";
+
+//CustomCameraViewController
+"CCVC_TITLE"                                =               "Add Photo";
+"CCVC_CANCEL"                               =               "CANCEL";
+"CCVC_LIBRARY"                              =               "LIBRARY";
+"CCVC_PHOTO"                                =               "PHOTO";
+"CCVC_PANO"                                 =               "PANO";
+"CCVC_360"                                  =               "360";
+"CCVC_RETAKE"                               =               "Retake";
+"CCVC_PREVIEW"                              =               "PREVIEW";
+"CCVC_USE"                                  =               "Use";
 
 
 
