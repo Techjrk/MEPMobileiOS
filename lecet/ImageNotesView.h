@@ -13,7 +13,8 @@
 - (void)viewNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image;
 @end
 
-
 @interface ImageNotesView : BaseViewClass
+@property (strong, nonatomic) NSMutableArray *items;
 @property (weak, nonatomic) id<ImageNotesViewDelegate>imageNotesViewDelegate;
+- (void)reloadData;
 @end

@@ -82,6 +82,7 @@
 #define kURLChangePassword                  @"LecetUsers/%li/changePassword"
 
 #define kUrlProjectUserNotes                @"Projects/%li/userNotes"
+#define kUrlProjectUserImages               @"Projects/%li/images"
 
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
@@ -1470,7 +1471,7 @@
     }authenticated:YES];
 }
 
-#pragma mark - Project USer Notes
+#pragma mark - Project User Notes
 - (void)projectUserNotes:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlProjectUserNotes, (long)projectID.integerValue];
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
@@ -1490,4 +1491,13 @@
     
 }
 
+#pragma mark - Project Images
+- (void)projectUserImages:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlProjectUserImages, (long)projectID.integerValue];
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
 @end

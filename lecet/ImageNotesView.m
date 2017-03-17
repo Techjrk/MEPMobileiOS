@@ -19,12 +19,18 @@
 @end
 
 @implementation ImageNotesView
+@synthesize items;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.items = [NSMutableArray new];
     [self.collectionView registerNib:[UINib nibWithNibName:[[ImageNoteCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     self.collectionView.backgroundColor = BG_COLOR;
+}
+
+#pragma mark - Custom Methods
+- (void)reloadData {
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionDelegate and UICollectionDataSource
@@ -34,7 +40,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.items.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
