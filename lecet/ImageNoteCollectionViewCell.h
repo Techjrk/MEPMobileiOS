@@ -16,7 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *titleView;
 @property (weak, nonatomic) IBOutlet UITextView *note;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) NSNumber *imageId;
 
 + (CGFloat)itemSize;
 + (CGFloat)itemSizeWithImage;
+
+- (void)loadImage:(UIImage*)image;
 @end

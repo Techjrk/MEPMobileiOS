@@ -9,6 +9,7 @@
 #import "ImageNotesView.h"
 #import "ImageNoteCollectionViewCell.h"
 #import "PhotoViewController.h"
+#import "AFImageDownloader.h"
 
 #define kCellIdentifier             @"kCellIdentifier"
 #define BG_COLOR                    RGB(245, 245, 245)
@@ -67,15 +68,65 @@
     NSDictionary *item = self.items[indexPath.row];
     
     if ([item[@"cellType"] isEqualToString:@"note"] ) {
+        cell.imageId = nil;
         cell.image.image = nil;
-        cell.titleView.text = item[@"title"];
-      
-        NSString *text = item[@"text"];
-        text = DATA_TEXT;
-        NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
+    } else {
+        NSString *urlString = item[@"url"];
+        NSNumber *imageId = item[@"id"];
+        
+        AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        BOOL isPNG = [[[url pathExtension] lowercaseString] isEqualToString:@"png"];
 
-        cell.note.attributedText = attributedString;
+        NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+
+        if (isPNG) {
+            fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+        }
+        NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            [cell loadImage:image];
+        } else {
+            
+            [cell.activityIndicator startAnimating];
+            __weak __typeof(cell)weakCell = cell;
+            [downloader downloadImageForURLRequest:[NSURLRequest requestWithURL:url] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull responseObject) {
+                
+                BOOL isPNG = [[[request.URL.absoluteString pathExtension] lowercaseString] isEqualToString:@"png"];
+                
+                weakCell.image.image = responseObject;
+                
+                if (isPNG) {
+                    NSString *fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+                    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+                    [UIImagePNGRepresentation(responseObject) writeToFile:filePath atomically:YES];
+                } else {
+                    NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+                    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+                    
+                    [UIImageJPEGRepresentation(responseObject, 1.0) writeToFile:filePath atomically:YES];
+                }
+                
+            } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+                
+            }];
+        }
+        
+
     }
+    
+    cell.titleView.text = item[@"title"];
+    
+    NSString *text = item[@"text"];
+    text = DATA_TEXT;
+    NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
+    
+    cell.note.attributedText = attributedString;
+
     
     return cell;
 }

@@ -49,6 +49,7 @@
 @end
 
 @implementation ImageNoteCollectionViewCell
+@synthesize imageId;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -64,7 +65,7 @@
     self.layer.shadowOffset = CGSizeMake(2, 2);
     self.layer.shadowOpacity = 0.25;
     self.layer.masksToBounds = NO;
-
+    
     self.titleView.font = TITLE_FONT;
     self.titleView.textColor = TITLE_COLOR;
     self.titleLine.backgroundColor = TITLE_LINE_COLOR;
@@ -77,6 +78,7 @@
     self.stamp.textColor = STAMP_COLOR;
     self.stamp.font = STAMP_FONT;
 
+    self.activityIndicator.hidden = YES;
 }
 
 -(void)layoutSubviews {
@@ -97,4 +99,9 @@
     return ITEM_SIZE + CONSTRAINT_IMAGE_HEIGHT;
 }
 
+- (void)loadImage:(UIImage *)image {
+    self.image.image = image;
+    [self.activityIndicator stopAnimating];
+    self.activityIndicator.hidden = YES;
+}
 @end
