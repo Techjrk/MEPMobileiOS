@@ -95,11 +95,32 @@
     [self.collectionView reloadData];
     
     if (cameraItems.count > 2) {
-        //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-        //[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
- 
+        [self performSelector:@selector(selectInFirstLoad) withObject:nil afterDelay:0.1];
+    }
+}
+
+- (void)selectInFirstLoad {
+    
+    int index = 0;
+    int count = 0;
+    for (id info in self.cameraItems) {
+        count++;
+        if (info != nil && ![info isEqual:@""]) {
+            CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
+            
+            if (items == CameraControlListViewPhoto) {
+                index = (count - 1);
+                break;
+            }
+            if (items == CameraControlListViewPreview) {
+                index = (count - 1);
+                break;
+            }
+        }
     }
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
 }
 
 @end
