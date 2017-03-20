@@ -126,6 +126,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddImage;
 
 @property (weak, nonatomic) IBOutlet ImageNotesView *imageNoteView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonEditProject;
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
@@ -145,6 +146,7 @@ typedef enum {
     _headerView.projectHeaderDelegate = self;
     self.imageNoteView.imageNotesViewDelegate = self;
     
+    self.buttonEditProject.hidden = YES;
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
     [_fieldAddress changeConstraintHeight: _constraintFieldAddress];
@@ -783,6 +785,7 @@ typedef enum {
     self.imageNoteView.items = imageNotesItems;
     [self.imageNoteView reloadData];
     
+    self.buttonEditProject.hidden = YES;
     if (referenceProject.dodgeNumber != nil) {
         _headerView.pinType = pinTypeOrange;
         
@@ -790,6 +793,7 @@ typedef enum {
             _headerView.pinType = pinTypeOrageUpdate;
         }
     } else {
+        self.buttonEditProject.hidden = NO;
         _headerView.pinType = pinTypeUser;
         if (imageNotesItems.count>0) {
             _headerView.pinType = pinTypeUserUpdate;
