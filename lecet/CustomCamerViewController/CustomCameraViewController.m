@@ -81,6 +81,7 @@
     self.constriantCollectionHeight.constant = hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
     
     NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];
+    self.cameraControlListView.isImageCaptured = hide;
     [self.cameraControlListView setCameraItemsInfo:cameraItems];
 }
 
@@ -93,7 +94,7 @@
 
 - (IBAction)tappedTakePhotoButton:(id)sender {
     [self.customCameraViewControllerDelegate tapppedTakePhoto];
-        
+    
     [self hideDefaultCameraControl:YES];
     
 }

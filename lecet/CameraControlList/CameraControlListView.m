@@ -16,12 +16,17 @@
 #define COLOR_FONT_CELL_TITLE    RGB(255,255,255)
 
 #define kCellIdentifier                     @"kCellIdentifier"
-@interface CameraControlListView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CameraControlListView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
+    NSIndexPath *selectedIndex;
+    BOOL isImageCaptured;
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong,nonatomic) NSArray *cameraItems;
 @end
 
 @implementation CameraControlListView
+@synthesize isImageCaptured;
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -49,7 +54,11 @@
     NSDictionary *info = self.cameraItems[indexPath.row];
 
     cell.titleLabel.font = FONT_CELL_TITLE;
-    cell.titleLabel.textColor = COLOR_FONT_CELL_TITLE;
+    cell.titleLabel.textColor = self.isImageCaptured?COLOR_FONT_CELL_TITLE:[COLOR_FONT_CELL_TITLE colorWithAlphaComponent:0.5];
+    
+    if (selectedIndex == indexPath) {
+        cell.titleLabel.textColor = COLOR_FONT_CELL_TITLE;
+    }
     
     if (info != nil && ![info isEqual:@""]) {
         NSString *title = info[@"title"];
@@ -80,13 +89,13 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     NSDictionary *info = self.cameraItems[indexPath.row];
     if (info != nil && ![info isEqual:@""]) {
+        selectedIndex = indexPath;
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
         [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
+        [self.collectionView reloadData];
     }
-    
 }
 
 #pragma mark - Misc Method
