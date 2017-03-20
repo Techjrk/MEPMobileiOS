@@ -8,6 +8,7 @@
 
 #import "CustomCameraViewController.h"
 #import "CustomCameraCollectionViewCell.h"
+#import "CameraControlListViewItem.h"
 #import "CameraControlListView.h"
  
 #pragma mark - FONT
@@ -22,7 +23,7 @@
 #define COLOR_BG_BOTTOM_VIEW            RGB(5, 35, 74)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface CustomCameraViewController ()
+@interface CustomCameraViewController ()<CameraControlListViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
@@ -51,8 +52,10 @@
     [self.navCancelButton setTitle:NSLocalizedLanguage(@"CCVC_CANCEL") forState:UIControlStateNormal];
     self.navCancelButton.titleLabel.font = FONT_NAV_BUTTON;
     [self.navCancelButton setTitleColor:COLOR_FONT_NAV_BUTTON forState:UIControlStateNormal];
+   
+    NSArray *cameraItems = [self firstSetCameraItems];
     
-    NSArray *cameraItems = @[@"",NSLocalizedLanguage(@"CCVC_LIBRARY"),NSLocalizedLanguage(@"CCVC_PHOTO"),NSLocalizedLanguage(@"CCVC_PANO"),NSLocalizedLanguage(@"CCVC_360"),@""];
+    self.cameraControlListView.cameraControlListViewDelegate = self;
     [self.cameraControlListView setCameraItemsInfo:cameraItems];
     
     self.capturedImage.hidden = YES;
@@ -66,8 +69,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Camera Controls Button
+
+- (void)hideDefaultCameraControl:(BOOL)hide {
+    
+    self.cameraSwitchButton.hidden = hide;
+    self.flashButton.hidden = hide;
+    self.takePhotoButton.hidden = hide;
+
+    self.capturedImage.hidden = !hide;
+    self.constriantCollectionHeight.constant = hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
+    
+    NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];
+    [self.cameraControlListView setCameraItemsInfo:cameraItems];
+}
+
 - (IBAction)tappedCancelButton:(id)sender {
     self.capturedImage.image = nil;
     self.capturedImage.hidden = YES;
@@ -77,14 +93,8 @@
 
 - (IBAction)tappedTakePhotoButton:(id)sender {
     [self.customCameraViewControllerDelegate tapppedTakePhoto];
-    self.capturedImage.hidden = NO;
-    self.cameraSwitchButton.hidden = YES;
-    self.flashButton.hidden = YES;
-    self.takePhotoButton.hidden = YES;
-    
-    self.constriantCollectionHeight.constant = kDeviceHeight * 0.2;
-    NSArray *cameraItems = @[NSLocalizedLanguage(@"CCVC_RETAKE"),NSLocalizedLanguage(@"CCVC_PREVIEW"),NSLocalizedLanguage(@"CCVC_USE")];
-    [self.cameraControlListView setCameraItemsInfo:cameraItems];
+        
+    [self hideDefaultCameraControl:YES];
     
 }
 - (IBAction)tappedFlashButton:(id)sender {
@@ -94,5 +104,71 @@
     [self.customCameraViewControllerDelegate tappedCameraSwitch];
 }
 
+#pragma mark - CameraControlListDelegate
+
+- (void)cameraControlListDidSelect:(id)info {
+    
+    if (info != nil && ![info isEqual:@""]) {
+        CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
+        switch (items) {
+            case CameraControlListViewPreview : {
+                
+                break;
+            }
+            case CameraControlListViewUse: {
+
+                break;
+            }
+            case CameraControlListViewRetake: {
+                [self hideDefaultCameraControl:NO];
+                break;
+            }
+            case CameraControlListViewPano: {
+                
+                break;
+            }
+            case CameraControlListViewPhoto: {
+                
+                break;
+            }
+            case CameraControlListViewLibrary: {
+                
+                break;
+            }
+            case CameraControlListView360: {
+                
+                break;
+            }
+            default: {
+               
+                break;
+            }
+        }
+    }
+    
+    [self.customCameraViewControllerDelegate customCameraControlListDidSelect:info];
+}
+
+#pragma mark - MISC Method
+
+- (NSArray*)firstSetCameraItems {
+    NSArray *cameraItems = @[@"",@{@"title":NSLocalizedLanguage(@"CCVC_LIBRARY"),@"type":@(CameraControlListViewLibrary)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_PHOTO"),@"type":@(CameraControlListViewPhoto)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_PANO"),@"type":@(CameraControlListViewPano)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_360"),@"type":@(CameraControlListViewPano)},@""];
+    
+    return cameraItems;
+}
+
+- (NSArray *)secondSetCameraItems {
+    NSArray *cameraItems = @[
+                             @{@"title":NSLocalizedLanguage(@"CCVC_RETAKE"),@"type":@(CameraControlListViewRetake)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_PREVIEW"),@"type":@(CameraControlListViewPreview)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_USE"),@"type":@(CameraControlListViewUse)}
+                             ];
+    
+    return cameraItems;
+    
+}
 
 @end

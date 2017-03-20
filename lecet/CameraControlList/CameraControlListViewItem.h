@@ -18,6 +18,6 @@ typedef enum {
     CameraControlListViewPreview = 5,
     CameraControlListViewUse = 6
     
-}CameraControlListViewItem;
+}CameraControlListViewItems;
 
 #endif /* CameraControlListViewItem_h */

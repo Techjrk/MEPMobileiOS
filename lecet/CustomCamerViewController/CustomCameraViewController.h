@@ -14,6 +14,7 @@
 - (void)tappedCameraSwitch;
 - (void)tappedFlash;
 - (void)tappedCancel;
+- (void)customCameraControlListDidSelect:(id)info;
 @end
 
 @interface CustomCameraViewController : UIViewController

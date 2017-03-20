@@ -45,12 +45,18 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CustomCameraCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    NSString *title = self.cameraItems[indexPath.row];
     
+    NSDictionary *info = self.cameraItems[indexPath.row];
+
     cell.titleLabel.font = FONT_CELL_TITLE;
     cell.titleLabel.textColor = COLOR_FONT_CELL_TITLE;
     
-    cell.titleLabel.text = title;
+    if (info != nil && ![info isEqual:@""]) {
+        NSString *title = info[@"title"];
+        cell.titleLabel.text = title;
+    } else {
+        cell.titleLabel.text = @"";
+    }
     return cell;
 }
 
@@ -75,10 +81,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *title = self.cameraItems[indexPath.row];
-    NSString *strip = [title stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (strip.length > 0) {
+    NSDictionary *info = self.cameraItems[indexPath.row];
+    if (info != nil && ![info isEqual:@""]) {
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+        [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
     }
     
 }

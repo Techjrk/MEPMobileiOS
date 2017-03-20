@@ -885,10 +885,16 @@ typedef enum {
     isFlashOn = !isFlashOn;
     self.picker.cameraFlashMode = isFlashOn ? UIImagePickerControllerCameraFlashModeOn:UIImagePickerControllerCameraFlashModeOff;
 }
+
 - (void)tappedCancel {
     [self.picker dismissViewControllerAnimated:YES completion:^{
         self.customCameraVC.customCameraViewControllerDelegate = nil;
     }];
 }
+
+- (void)customCameraControlListDidSelect:(id)info {
+    
+}
+
 
 @end
