@@ -47,7 +47,6 @@
     self.navController = navigationViewController;
     [self.window makeKeyAndVisible];
 
-    
     return YES;
 }
 

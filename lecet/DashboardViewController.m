@@ -131,6 +131,14 @@
             
         }];*/
     }
+    
+    /*
+    [[DataManager sharedManager] addProjectUserImage:@(259406) title:@"title" text:@"test" image:[UIImage imageNamed:@"icon_app"] success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];*/
+
 }
 
 - (void)didReceiveMemoryWarning {
