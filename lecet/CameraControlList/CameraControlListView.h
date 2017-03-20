@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+#import "CameraControlListViewItem.h"
 
+@protocol CameraControlListViewDelegate <NSObject>
+@required
+- (void)cameraControlListDidSelect:(id)info;
+@end
 @interface CameraControlListView : BaseViewClass
+@property (strong,nonatomic) id<CameraControlListViewDelegate> cameraControlListViewDelegate;
 - (void)setCameraItemsInfo:(NSArray *)cameraItems;
 
 @end

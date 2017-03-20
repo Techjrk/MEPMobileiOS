@@ -90,7 +90,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-K6-A97">
-                    <rect key="frame" x="10" y="80" width="356" height="580.5"/>
+                    <rect key="frame" x="10" y="80" width="356" height="581"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-Tb-mUz">
                             <rect key="frame" x="0.0" y="0.0" width="356" height="29"/>
@@ -123,7 +123,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="  Post Body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7SO-d0-p8u">
-                            <rect key="frame" x="8" y="112" width="340" height="406.5"/>
+                            <rect key="frame" x="8" y="112" width="340" height="407"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="406.5" id="0KS-I4-7Zt"/>
@@ -136,7 +136,7 @@
                             </connections>
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This post will be visible by all MEP Users" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9v-Tc-6fi">
-                            <rect key="frame" x="64" y="518.5" width="229" height="40"/>
+                            <rect key="frame" x="64" y="519" width="229" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>

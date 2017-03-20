@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CustomCameraViewControllerDelegate <NSObject>
+@required
+- (void)tapppedTakePhoto;
+- (void)tappedCameraSwitch;
+- (void)tappedFlash;
+- (void)tappedCancel;
+- (void)customCameraControlListDidSelect:(id)info;
+@end
+
 @interface CustomCameraViewController : UIViewController
+
+@property (strong,nonatomic) id<CustomCameraViewControllerDelegate> customCameraViewControllerDelegate;
+@property (weak, nonatomic) IBOutlet UIImageView *capturedImage;
 
 @end
