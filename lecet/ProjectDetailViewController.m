@@ -50,7 +50,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -63,6 +63,7 @@ typedef enum {
     ProjectDetailPopupMode popupMode;
     NSMutableArray *imageNotesItems;
     BOOL isFlashOn;
+    DB_Project *referenceProject;
 }
 
 @property (strong, nonatomic) UIImagePickerController *picker;
@@ -128,7 +129,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddImage;
 
 @property (weak, nonatomic) IBOutlet ImageNotesView *imageNoteView;
-@property (strong, nonatomic) CustomCameraViewController *customCameraVC;
+@property (weak, nonatomic) IBOutlet UIButton *buttonEditProject;
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
