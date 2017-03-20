@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MobileProjectAddNoteViewControllerDelegate <NSObject>
+- (void) tappedUpdateUserNotes;
+@end
+
 @interface MobileProjectAddNoteViewController : UIViewController
+@property id<MobileProjectAddNoteViewControllerDelegate>mobileProjectAddNoteViewControllerDelegate;
 @property (strong,nonatomic) NSNumber *projectID;
 @end

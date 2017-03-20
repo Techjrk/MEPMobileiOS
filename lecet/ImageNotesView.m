@@ -20,8 +20,6 @@
 #define NONE_COLOR                  RGBA(34, 34, 34, 50)
 #define NONE_FONT                   fontNameWithSize(FONT_NAME_LATO_ITALIC, 13)
 
-#define DATA_TEXT                   @"this is a long text. very long text that needs to be displayed properly. without this it is not going to be juggled up"
-
 @interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *viewNone;
@@ -131,7 +129,6 @@
     cell.titleView.text = item[@"title"];
     
     NSString *text = item[@"text"];
-    text = DATA_TEXT;
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
     
     cell.note.attributedText = attributedString;
@@ -149,7 +146,6 @@
     
     NSDictionary *item = self.items[indexPath.row];
     NSString *text = item[@"text"];
-    text = DATA_TEXT;
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
     
     CGFloat width = collectionView.frame.size.width * 0.9;

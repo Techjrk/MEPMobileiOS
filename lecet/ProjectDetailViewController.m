@@ -50,7 +50,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate, MobileProjectAddNoteViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -62,6 +62,7 @@ typedef enum {
     NSNumber *recordId;
     ProjectDetailPopupMode popupMode;
     NSMutableArray *imageNotesItems;
+    DB_Project *referenceProject;
 }
 
 //Views
@@ -142,7 +143,6 @@ typedef enum {
     _scrollView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     self.NotesContainerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _headerView.projectHeaderDelegate = self;
-    
     self.imageNoteView.imageNotesViewDelegate = self;
     
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
@@ -220,14 +220,18 @@ typedef enum {
     projectTitle = project.title;
     recordId = project.recordId;
     
+    
+    referenceProject = project;
+    [self loadNotes];
+    
     [[DataManager sharedManager] userActivitiesForRecordId:recordId viewType:0 success:^(id object) {
         
     } failure:^(id object) {
         
     }];
     
-    NSString *address1 = project.address1 == nil ? @"": project.address1;
-    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
+//    NSString *address1 = project.address1 == nil ? @"": project.address1;
+//    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
     
     [_fieldCounty setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_COUNTY") line1Text:project.county line2Text:nil];
     
@@ -778,6 +782,23 @@ typedef enum {
 - (void)showImageNotes {
     self.imageNoteView.items = imageNotesItems;
     [self.imageNoteView reloadData];
+    
+    if (referenceProject.dodgeNumber != nil) {
+        _headerView.pinType = pinTypeOrange;
+        
+        if (imageNotesItems.count>0) {
+            _headerView.pinType = pinTypeOrageUpdate;
+        }
+    } else {
+        _headerView.pinType = pinTypeUser;
+        if (imageNotesItems.count>0) {
+            _headerView.pinType = pinTypeUserUpdate;
+        }
+    }
+
+    NSString *address1 = referenceProject.address1 == nil ? @"": referenceProject.address1;
+    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:referenceProject.geocodeLat, PROJECT_GEOCODE_LNG:referenceProject.geocodeLng, PROJECT_TITLE:referenceProject.title, PROJECT_LOCATION: address1}];
+
 }
 
 - (void)setupButton:(UIButton*)button {
@@ -791,7 +812,13 @@ typedef enum {
     
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
+    controller.mobileProjectAddNoteViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)tappedUpdateUserNotes {
+    imageNotesItems = nil;
+    [self loadNotes];
 }
 
 - (IBAction)tappedButtonAddImage:(id)sender {
