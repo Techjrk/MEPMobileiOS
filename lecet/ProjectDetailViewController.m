@@ -146,9 +146,9 @@ typedef enum {
     _scrollView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     self.NotesContainerView.backgroundColor = PROJECT_DETAIL_CONTAINER_BG_COLOR;
     _headerView.projectHeaderDelegate = self;
-    
     self.imageNoteView.imageNotesViewDelegate = self;
     
+    self.buttonEditProject.hidden = YES;
     [_fieldCounty changeConstraintHeight: _constraintFieldCounty];
     [_fieldProjectId changeConstraintHeight: _constraintFieldProjectID];
     [_fieldAddress changeConstraintHeight: _constraintFieldAddress];
@@ -225,14 +225,18 @@ typedef enum {
     projectTitle = project.title;
     recordId = project.recordId;
     
+    
+    referenceProject = project;
+    [self loadNotes];
+    
     [[DataManager sharedManager] userActivitiesForRecordId:recordId viewType:0 success:^(id object) {
         
     } failure:^(id object) {
         
     }];
     
-    NSString *address1 = project.address1 == nil ? @"": project.address1;
-    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
+//    NSString *address1 = project.address1 == nil ? @"": project.address1;
+//    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:project.geocodeLat, PROJECT_GEOCODE_LNG:project.geocodeLng, PROJECT_TITLE:project.title, PROJECT_LOCATION: address1}];
     
     [_fieldCounty setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_COUNTY") line1Text:project.county line2Text:nil];
     
@@ -783,6 +787,25 @@ typedef enum {
 - (void)showImageNotes {
     self.imageNoteView.items = imageNotesItems;
     [self.imageNoteView reloadData];
+    
+    self.buttonEditProject.hidden = YES;
+    if (referenceProject.dodgeNumber != nil) {
+        _headerView.pinType = pinTypeOrange;
+        
+        if (imageNotesItems.count>0) {
+            _headerView.pinType = pinTypeOrageUpdate;
+        }
+    } else {
+        self.buttonEditProject.hidden = NO;
+        _headerView.pinType = pinTypeUser;
+        if (imageNotesItems.count>0) {
+            _headerView.pinType = pinTypeUserUpdate;
+        }
+    }
+
+    NSString *address1 = referenceProject.address1 == nil ? @"": referenceProject.address1;
+    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:referenceProject.geocodeLat, PROJECT_GEOCODE_LNG:referenceProject.geocodeLng, PROJECT_TITLE:referenceProject.title, PROJECT_LOCATION: address1}];
+
 }
 
 - (void)setupButton:(UIButton*)button {
@@ -796,7 +819,13 @@ typedef enum {
     
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
+    controller.mobileProjectAddNoteViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)tappedUpdateUserNotes {
+    imageNotesItems = nil;
+    [self loadNotes];
 }
 
 - (IBAction)tappedButtonAddImage:(id)sender {

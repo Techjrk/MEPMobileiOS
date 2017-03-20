@@ -90,12 +90,35 @@ CG_INLINE CGFloat textHeight(NSAttributedString *attributedString, CGFloat conta
     return  size.height + (fontHeight*1.25);
 }
 
+CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
+{
+    
+    double difference = [[NSDate date] timeIntervalSince1970] - seconds;
+    if (difference<60) {
+        return @"just now";
+    } else {
+        NSMutableArray *periods = [NSMutableArray arrayWithObjects:@"sec", @"min", @"hr", @"d", @"w", @"m", @"yr", @"decade", nil];
+        NSArray *lengths = [NSArray arrayWithObjects:@60, @60, @24, @7, @4.35, @12, @10, @100, nil];
+        int j = 0;
+        for(j=0; difference >= [[lengths objectAtIndex:j] doubleValue]; j++)
+        {
+            difference /= [[lengths objectAtIndex:j] doubleValue];
+        }
+        difference = roundl(difference);
+        if(difference != 1)
+        {
+        }
+        return [NSString stringWithFormat:@"%li %@%@", (long)difference, [periods objectAtIndex:j], @" ago"];
+    }
+}
+
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
 #define FONT_NAME_LATO_SEMIBOLD                  @"Lato-Semibold"
 #define FONT_NAME_LATO_BOLD                      @"Lato-Bold"
 #define FONT_NAME_LATO_BLACK                     @"Lato-Black"
 #define FONT_NAME_LATO_HEAVY                     @"Lato-Heavy"
 #define FONT_NAME_AWESOME                        @"FontAwesome"
+#define FONT_NAME_LATO_ITALIC                    @"Lato-Italic"
 
 #define NOTIFICATION_APP_BECOME_ACTIVE           @"NOTIFICATION_APP_BECOME_ACTIVE"
 #define NOTIFICATION_LOCATION_DENIED             @"NOTIFICATION_LOCATION_DENIED"

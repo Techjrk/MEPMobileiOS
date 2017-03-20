@@ -53,6 +53,7 @@
 		<string>Lato-Semibold.ttf</string>
 		<string>Lato-Regular.ttf</string>
 		<string>FontAwesome.otf</string>
+		<string>Lato-Italic.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

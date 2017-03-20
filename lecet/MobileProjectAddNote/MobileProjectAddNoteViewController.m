@@ -205,6 +205,7 @@
 - (void)tappedPostNoteButton {
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
+        [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id object){
         NSLog(@"Failed request");

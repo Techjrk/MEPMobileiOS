@@ -32,6 +32,7 @@
 
 @implementation ProjectHeaderView
 @synthesize projectHeaderDelegate;
+@synthesize pinType;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -85,7 +86,23 @@
         userAnnotationView.enabled = NO;
         
         userAnnotationView.canShowCallout = NO;
-        userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+        switch (self.pinType) {
+            case pinTypeOrange:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+                break;
+                
+            case pinTypeOrageUpdate:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_dodgeProjectUpdates"];
+                break;
+                
+            case pinTypeUser:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_userProject"];
+                break;
+           
+            default:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_userProjectUpdates"];
+                break;
+        }
         
     }
     

@@ -41,14 +41,14 @@
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UIView *titleLine;
-@property (weak, nonatomic) IBOutlet UILabel *user;
-@property (weak, nonatomic) IBOutlet UILabel *stamp;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEdit;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDelete;
 
 @end
 
 @implementation ImageNoteCollectionViewCell
+@synthesize imageId;
+@synthesize userId;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -64,7 +64,7 @@
     self.layer.shadowOffset = CGSizeMake(2, 2);
     self.layer.shadowOpacity = 0.25;
     self.layer.masksToBounds = NO;
-
+    
     self.titleView.font = TITLE_FONT;
     self.titleView.textColor = TITLE_COLOR;
     self.titleLine.backgroundColor = TITLE_LINE_COLOR;
@@ -77,14 +77,29 @@
     self.stamp.textColor = STAMP_COLOR;
     self.stamp.font = STAMP_FONT;
 
+    self.activityIndicator.hidden = YES;
+    self.imageId = nil;
 }
 
 -(void)layoutSubviews {
     [super layoutSubviews];
-    if (self.image.image != nil) {
+    
+    if (self.imageId != nil) {
         self.constraintImageHeight.constant = CONSTRAINT_IMAGE_HEIGHT;
     } else {
         self.constraintImageHeight.constant = 0;
+    }
+    
+    NSString *userIdentity =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+   if ( userIdentity.integerValue == self.userId.integerValue) {
+        
+        if (self.imageId == nil) {
+            [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteNote"] forState:UIControlStateNormal];
+            [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editNote"] forState:UIControlStateNormal];
+        } else {
+            [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteImage"] forState:UIControlStateNormal];
+            [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editImage"] forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -97,4 +112,9 @@
     return ITEM_SIZE + CONSTRAINT_IMAGE_HEIGHT;
 }
 
+- (void)loadImage:(UIImage *)image {
+    self.image.image = image;
+    [self.activityIndicator stopAnimating];
+    self.activityIndicator.hidden = YES;
+}
 @end

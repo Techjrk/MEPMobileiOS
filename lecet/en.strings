@@ -66,6 +66,7 @@
 "PROJECT_DETAIL_NOTES"                      =               "Notes & Updates";
 "PROJECT_DETAIL_ADD_NOTE"                   =               "Add Note";
 "PROJECT_DETAIL_ADD_IMAGE"                  =               "Add Image";
+"PROJECT_DETAIL_ADD_IMAGE_NOTE"             =               "Select above to add a Note or Image";
 
 //SeeAllView.xib
 "SEE_ALL_BUTTON_TITLE_SEE"                  =               "See All";

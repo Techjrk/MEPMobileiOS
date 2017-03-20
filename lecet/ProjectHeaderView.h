@@ -14,12 +14,20 @@
 #define PROJECT_TITLE                               @"PROJECT_TITLE"
 #define PROJECT_LOCATION                            @"PROJECT_LOCATION"
 
+typedef enum : NSUInteger {
+    pinTypeOrange,
+    pinTypeOrageUpdate,
+    pinTypeUser,
+    pinTypeUserUpdate
+} PinType;
+
 @protocol ProjectHeaderDelegate <NSObject>
 - (void)tappedProjectMapViewLat:(CGFloat)lat lng:(CGFloat)lng;
 @end
 
 @interface ProjectHeaderView : BaseViewClass
 @property (strong, nonatomic) id<ProjectHeaderDelegate>projectHeaderDelegate;
+@property (nonatomic) PinType pinType;
 - (void)setHeaderInfo:(id)headerInfo;
 - (CGRect)mapFrame;
 @end

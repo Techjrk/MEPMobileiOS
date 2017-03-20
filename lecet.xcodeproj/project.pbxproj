@@ -297,6 +297,7 @@
 		B78607121E7932FD00F7CE3E /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78607101E7932FD00F7CE3E /* PhotoViewController.m */; };
 		B78607131E7932FD00F7CE3E /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607111E7932FD00F7CE3E /* PhotoViewController.xib */; };
 		B78607151E7ABBF800F7CE3E /* landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B78607141E7ABBF800F7CE3E /* landscape.jpg */; };
+		B78607171E7C3AFA00F7CE3E /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
@@ -866,6 +867,7 @@
 		B78607101E7932FD00F7CE3E /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		B78607111E7932FD00F7CE3E /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		B78607141E7ABBF800F7CE3E /* landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landscape.jpg; sourceTree = "<group>"; };
+		B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79615EE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Contact+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -2379,6 +2381,7 @@
 				B70FDF671CE639450035A6D9 /* FontAwesome.otf */,
 				B76C693C1CD22898009E9F15 /* Lato-Heavy.ttf */,
 				B76C693A1CD2282E009E9F15 /* Lato-Black.ttf */,
+				B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */,
 				B76C69391CD227C9009E9F15 /* Lato-Bold.ttf */,
 				B76C693B1CD2284C009E9F15 /* Lato-Semibold.ttf */,
 				B76C69381CD227B6009E9F15 /* Lato-Regular.ttf */,
@@ -2693,6 +2696,7 @@
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
 				B76C693D1CD22DC5009E9F15 /* Lato-Heavy.ttf in Resources */,
+				B78607171E7C3AFA00F7CE3E /* Lato-Italic.ttf in Resources */,
 				B771C60D1CEB7512004A628A /* AssociatedProjectsView.xib in Resources */,
 				B707BC411CEF0B960003C836 /* LandingViewController.xib in Resources */,
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
