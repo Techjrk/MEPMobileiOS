@@ -83,6 +83,7 @@
 
 #define kUrlProjectUserNotes                @"Projects/%li/userNotes"
 #define kUrlProjectUserImages               @"Projects/%li/images"
+#define kUrlProjectUserImageUpload          @"Projects/%li/uploadImage"
 
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
@@ -1499,5 +1500,18 @@
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
+}
+
+- (void)addProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *encodedImage = [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectUserImageUpload, (long)projectID.integerValue];
+    [self HTTP_POST:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
 }
 @end
