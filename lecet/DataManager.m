@@ -1495,7 +1495,7 @@
 #pragma mark - Project Images
 - (void)projectUserImages:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlProjectUserImages, (long)projectID.integerValue];
-    [self HTTP_GET:[self url:url] parameters:@{@"filter":@"{\"include\":[\"author\"]}"} success:^(id object) {
+    [self HTTP_GET:[self url:url] parameters:@{@"filter":@"{\"include\":[\"user\"]}"} success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

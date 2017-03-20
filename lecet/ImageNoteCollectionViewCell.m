@@ -114,7 +114,10 @@
 
 - (void)loadImage:(UIImage *)image {
     self.image.image = image;
+    self.image.hidden = NO;
     [self.activityIndicator stopAnimating];
     self.activityIndicator.hidden = YES;
+    self.constraintImageHeight.constant = CONSTRAINT_IMAGE_HEIGHT;
+    [self layoutSubviews];
 }
 @end
