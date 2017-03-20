@@ -130,6 +130,7 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet ImageNotesView *imageNoteView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEditProject;
+@property (strong,nonatomic) CustomCameraViewController *customCameraVC;
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
