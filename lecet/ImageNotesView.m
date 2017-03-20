@@ -66,13 +66,22 @@
     ImageNoteCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     NSDictionary *item = self.items[indexPath.row];
+
+    cell.user.text = [NSString stringWithFormat:@"%@ %@",item[@"author"][@"first_name"], item[@"author"][@"last_name"]];
+
+    NSString *timeStamp = item[@"createdAt"];
+    NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
+    cell.stamp.text = timeAgoFromUnixTime([date timeIntervalSince1970]);
     
     if ([item[@"cellType"] isEqualToString:@"note"] ) {
         cell.imageId = nil;
         cell.image.image = nil;
+        cell.userId = item[@"authorId"];
+        
     } else {
         NSString *urlString = item[@"url"];
         NSNumber *imageId = item[@"id"];
+        cell.userId = item[@"authorId"];
         
         AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
         NSURL *url = [NSURL URLWithString:urlString];
@@ -127,6 +136,7 @@
     
     cell.note.attributedText = attributedString;
 
+    [cell layoutSubviews];
     
     return cell;
 }
