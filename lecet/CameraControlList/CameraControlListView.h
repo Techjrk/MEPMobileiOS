@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
+#import "CameraControlListViewItem.h"
 
 @interface CameraControlListView : BaseViewClass
 - (void)setCameraItemsInfo:(NSArray *)cameraItems;

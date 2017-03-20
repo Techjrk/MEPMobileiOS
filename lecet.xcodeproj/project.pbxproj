@@ -441,6 +441,7 @@
 		B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectNotePopUpViewController.h; sourceTree = "<group>"; };
 		B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectNotePopUpViewController.m; sourceTree = "<group>"; };
 		B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectNotePopUpViewController.xib; sourceTree = "<group>"; };
+		B61B52F81E800A5D00BF56F5 /* CameraControlListViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraControlListViewItem.h; sourceTree = "<group>"; };
 		B61F8BB01D0FFFA3009F70EF /* TextfieldViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldViewDelegate.h; sourceTree = "<group>"; };
 		B620C1221D535371005CD4B6 /* FilterEntryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterEntryCollectionViewCell.h; sourceTree = "<group>"; };
 		B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterEntryCollectionViewCell.m; sourceTree = "<group>"; };
@@ -1146,6 +1147,7 @@
 				B60909F11E7C0F7D00DEAA17 /* CameraControlListView.h */,
 				B60909F21E7C0F7D00DEAA17 /* CameraControlListView.m */,
 				B60909F31E7C0F7D00DEAA17 /* CameraControlListView.xib */,
+				B61B52F81E800A5D00BF56F5 /* CameraControlListViewItem.h */,
 			);
 			path = CameraControlList;
 			sourceTree = "<group>";
@@ -2630,7 +2632,7 @@
 				TargetAttributes = {
 					B70155171CD0C56A0050CF8A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = AS94HE7VCY;
+						DevelopmentTeam = ECK5REHKPH;
 					};
 				};
 			};
@@ -3162,9 +3164,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael San Minay (UVH772DPE2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael San Minay (UVH772DPE2)";
+				DEVELOPMENT_TEAM = ECK5REHKPH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -3178,10 +3180,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
 				PRODUCT_NAME = "LECET MEP";
 				PROVISIONING_PROFILE = "c22ba540-0638-40d1-b30e-1232d8c458b8";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
+				PROVISIONING_PROFILE_SPECIFIER = "Dom & Tom Generic Development";
 			};
 			name = Debug;
 		};
@@ -3189,9 +3191,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael San Minay (UVH772DPE2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael San Minay (UVH772DPE2)";
+				DEVELOPMENT_TEAM = ECK5REHKPH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -3205,10 +3207,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
 				PRODUCT_NAME = "LECET MEP";
 				PROVISIONING_PROFILE = "c22ba540-0638-40d1-b30e-1232d8c458b8";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
+				PROVISIONING_PROFILE_SPECIFIER = "Dom & Tom Generic Development";
 			};
 			name = Release;
 		};

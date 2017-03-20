@@ -33,7 +33,7 @@
 #import "MobileProjectAddNoteViewController.h"
 #import "ImageNotesView.h"
 #import "PhotoViewController.h"
-#import "CustomCamera.h"
+#import "CustomCameraViewController.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -50,7 +50,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -62,7 +62,10 @@ typedef enum {
     NSNumber *recordId;
     ProjectDetailPopupMode popupMode;
     NSMutableArray *imageNotesItems;
+    BOOL isFlashOn;
 }
+
+@property (strong, nonatomic) UIImagePickerController *picker;
 
 //Views
 @property (weak, nonatomic) IBOutlet ProjectHeaderView *headerView;
@@ -125,6 +128,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddImage;
 
 @property (weak, nonatomic) IBOutlet ImageNotesView *imageNoteView;
+@property (strong, nonatomic) CustomCameraViewController *customCameraVC;
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
@@ -196,6 +200,7 @@ typedef enum {
     [self.buttonAddImage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ADD_IMAGE") forState:UIControlStateNormal];
     [self setupButton:self.buttonAddImage];
     [self.buttonAddImage setTitleColor:PROJECT_STATE_BUTTON_TEXT_COLOR_ACTIVE forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -808,8 +813,82 @@ typedef enum {
 
 - (void)showCustomCamera {
     
-    [CustomCamera sharedInstance].controller = self;
-    [[CustomCamera sharedInstance] showCamera];
+    [self showCamera];
+}
+
+- (void)showCamera{
+    self.picker = [[UIImagePickerController alloc] init];
+    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.picker.showsCameraControls = NO;
+    
+    
+    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.picker.showsCameraControls = NO;
+    self.picker.extendedLayoutIncludesOpaqueBars = YES;
+    self.picker.edgesForExtendedLayout = YES;
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
+    self.picker.cameraViewTransform = translate;
+    
+    self.customCameraVC =  [CustomCameraViewController new];
+    self.customCameraVC.customCameraViewControllerDelegate = self;
+    [self addChildViewController:self.customCameraVC];
+    
+    UIView *customView = self.customCameraVC.view;
+    customView.frame = self.picker.view.frame;
+    self.picker.cameraOverlayView = customView;
+    self.picker.delegate = self;
+    [self presentImagePickerController:self.picker];
+    
+}
+
+- (void)presentImagePickerController:(UIViewController *)pickerController
+{
+    if (self.presentedViewController) {
+        [self.presentedViewController presentViewController:pickerController animated:YES completion:^{}];
+    } else {
+        [self.navigationController presentViewController:pickerController animated:YES completion:^{}];
+    }
+}
+
+
+#pragma mark - Camera Deleggare
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image =  [info valueForKey:UIImagePickerControllerOriginalImage];
+    self.customCameraVC.capturedImage.image = image;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+}
+
+#pragma mark - CustomCameraViewController Delegate
+
+- (void)tappedCameraSwitch{
+    [UIView transitionWithView:self.picker.view duration:1.0 options:UIViewAnimationOptionAllowAnimatedContent | UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        if (self.picker.cameraDevice == UIImagePickerControllerCameraDeviceRear) {
+            self.picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        }
+        else {
+            self.picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        }
+    }
+    completion:nil];
+}
+
+- (void)tapppedTakePhoto {
+    [self.picker takePicture];
+    
+}
+
+- (void)tappedFlash {
+    isFlashOn = !isFlashOn;
+    self.picker.cameraFlashMode = isFlashOn ? UIImagePickerControllerCameraFlashModeOn:UIImagePickerControllerCameraFlashModeOff;
+}
+- (void)tappedCancel {
+    [self.picker dismissViewControllerAnimated:YES completion:^{
+        self.customCameraVC.customCameraViewControllerDelegate = nil;
+    }];
 }
 
 @end

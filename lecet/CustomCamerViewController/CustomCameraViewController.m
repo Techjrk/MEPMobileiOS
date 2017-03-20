@@ -9,7 +9,7 @@
 #import "CustomCameraViewController.h"
 #import "CustomCameraCollectionViewCell.h"
 #import "CameraControlListView.h"
-
+ 
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define FONT_TILE                       fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
@@ -26,10 +26,12 @@
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
-@property (weak, nonatomic) IBOutlet UIButton *splashButton;
+@property (weak, nonatomic) IBOutlet UIButton *flashButton;
+@property (weak, nonatomic) IBOutlet UIButton *cameraSwitchButton;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *navCancelButton;
 @property (weak, nonatomic) IBOutlet CameraControlListView *cameraControlListView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constriantCollectionHeight;
 
 
 @end
@@ -52,6 +54,10 @@
     
     NSArray *cameraItems = @[@"",NSLocalizedLanguage(@"CCVC_LIBRARY"),NSLocalizedLanguage(@"CCVC_PHOTO"),NSLocalizedLanguage(@"CCVC_PANO"),NSLocalizedLanguage(@"CCVC_360"),@""];
     [self.cameraControlListView setCameraItemsInfo:cameraItems];
+    
+    self.capturedImage.hidden = YES;
+    
+    self.constriantCollectionHeight.constant = kDeviceHeight * 0.1;
 }
 
 
@@ -63,10 +69,30 @@
 
 #pragma mark - Camera Controls Button
 - (IBAction)tappedCancelButton:(id)sender {
+    self.capturedImage.image = nil;
+    self.capturedImage.hidden = YES;
+    [self.customCameraViewControllerDelegate tappedCancel];
+    [self removeFromParentViewController];
 }
 
 - (IBAction)tappedTakePhotoButton:(id)sender {
+    [self.customCameraViewControllerDelegate tapppedTakePhoto];
+    self.capturedImage.hidden = NO;
+    self.cameraSwitchButton.hidden = YES;
+    self.flashButton.hidden = YES;
+    self.takePhotoButton.hidden = YES;
+    
+    self.constriantCollectionHeight.constant = kDeviceHeight * 0.2;
+    NSArray *cameraItems = @[NSLocalizedLanguage(@"CCVC_RETAKE"),NSLocalizedLanguage(@"CCVC_PREVIEW"),NSLocalizedLanguage(@"CCVC_USE")];
+    [self.cameraControlListView setCameraItemsInfo:cameraItems];
+    
 }
-- (IBAction)tappedSplashButton:(id)sender {
+- (IBAction)tappedFlashButton:(id)sender {
+    [self.customCameraViewControllerDelegate tappedFlash];
 }
+- (IBAction)tappedCameraSwitchButton:(id)sender {
+    [self.customCameraViewControllerDelegate tappedCameraSwitch];
+}
+
+
 @end

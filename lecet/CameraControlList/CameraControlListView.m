@@ -87,6 +87,13 @@
 - (void)setCameraItemsInfo:(NSArray *)cameraItems {
     self.cameraItems = cameraItems;
     [self.collectionView reloadData];
+    
+    if (cameraItems.count > 2) {
+        //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+        //[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+ 
+    }
+    
 }
 
 @end
