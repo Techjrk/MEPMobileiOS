@@ -127,4 +127,5 @@
 
 //Project Image
 - (void)projectUserImages:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure ;
+- (void)addProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure;
 @end
