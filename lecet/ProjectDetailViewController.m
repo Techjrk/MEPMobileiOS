@@ -850,18 +850,24 @@ typedef enum {
 #pragma mark - Custom Camera Method
 
 - (void)showCustomCamera {
+#if TARGET_IPHONE_SIMULATOR
     
-    [self showCamera];
+#else
+     [self showCamera];
+#endif
+    
 }
 
 - (void)showCamera{
     self.picker = [[UIImagePickerController alloc] init];
-    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.picker.showsCameraControls = NO;
     
-    
-    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.picker.showsCameraControls = NO;
+    BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (isCamera) {
+        self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.picker.showsCameraControls = NO;
+    } else {
+        self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
     self.picker.extendedLayoutIncludesOpaqueBars = YES;
     self.picker.edgesForExtendedLayout = YES;
     CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);

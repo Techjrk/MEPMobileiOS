@@ -92,7 +92,7 @@
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
     self.addButton.userInteractionEnabled = NO;
-    self.capturedImageView.contentMode = UIViewContentModeScaleToFill;
+    self.capturedImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.capturedImageView.image = self.capturedImage;
 }
 
@@ -174,7 +174,9 @@
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
-    textView.text = @"";
+    if ([textView.text isEqualToString:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")]) {
+     textView.text = @"";
+    }
     textView.textColor = [UIColor blackColor];
     return YES;
 }
