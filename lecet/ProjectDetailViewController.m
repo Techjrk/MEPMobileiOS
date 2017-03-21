@@ -788,7 +788,11 @@ typedef enum {
 }
 
 - (void)showImageNotes {
-    self.imageNoteView.items = imageNotesItems;
+    
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
+    NSArray *sorted = [imageNotesItems sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+
+    self.imageNoteView.items = [sorted mutableCopy];
     [self.imageNoteView reloadData];
     
     self.buttonEditProject.hidden = YES;
