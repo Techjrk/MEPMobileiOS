@@ -64,6 +64,7 @@ typedef enum {
     NSMutableArray *imageNotesItems;
     BOOL isFlashOn;
     DB_Project *referenceProject;
+    UIImage *capturedImage;
 }
 
 @property (strong, nonatomic) UIImagePickerController *picker;
@@ -887,6 +888,7 @@ typedef enum {
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image =  [info valueForKey:UIImagePickerControllerOriginalImage];
     self.customCameraVC.capturedImage.image = image;
+    capturedImage = image;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -924,7 +926,53 @@ typedef enum {
 }
 
 - (void)customCameraControlListDidSelect:(id)info {
-    
+    if (info != nil && ![info isEqual:@""]) {
+        CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
+        switch (items) {
+            case CameraControlListViewPreview : {
+                
+                break;
+            }
+            case CameraControlListViewUse: {
+                
+                [self.picker dismissViewControllerAnimated:YES completion:^{
+                    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+                    controller.projectID = recordId;
+                    controller.isAddPhoto = YES;
+                    controller.capturedImage = capturedImage;
+                    controller.mobileProjectAddNoteViewControllerDelegate = self;
+                    [self.navigationController pushViewController:controller animated:YES];
+                    
+                }];
+                
+                break;
+            }
+            case CameraControlListViewRetake: {
+                
+                break;
+            }
+            case CameraControlListViewPano: {
+                
+                break;
+            }
+            case CameraControlListViewPhoto: {
+                
+                break;
+            }
+            case CameraControlListViewLibrary: {
+                
+                break;
+            }
+            case CameraControlListView360: {
+                
+                break;
+            }
+            default: {
+                
+                break;
+            }
+        }
+    }
 }
 
 

@@ -8,7 +8,6 @@
 
 #import "CustomCameraViewController.h"
 #import "CustomCameraCollectionViewCell.h"
-#import "CameraControlListViewItem.h"
 #import "CameraControlListView.h"
  
 #pragma mark - FONT

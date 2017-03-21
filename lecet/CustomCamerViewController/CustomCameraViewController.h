@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraControlListViewItem.h"
 
 @protocol CustomCameraViewControllerDelegate <NSObject>
 @required
