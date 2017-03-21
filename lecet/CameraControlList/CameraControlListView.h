@@ -16,6 +16,7 @@
 @end
 @interface CameraControlListView : BaseViewClass
 @property (strong,nonatomic) id<CameraControlListViewDelegate> cameraControlListViewDelegate;
+@property (nonatomic,assign)  BOOL isImageCaptured;
 - (void)setCameraItemsInfo:(NSArray *)cameraItems;
 
 @end
