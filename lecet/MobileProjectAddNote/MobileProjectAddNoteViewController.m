@@ -10,16 +10,18 @@
 #import "MobileProjectNotePopUpViewController.h"
 
 #pragma mark - FONT
-#define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
-#define FONT_TILE                       fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
-#define FONT_NAV_BUTTON                 fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define FONT_NAV_TITLE_LABEL                fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define FONT_TILE                           fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define FONT_TITLE_SECOND_LABEL             fontNameWithSize(FONT_NAME_LATO_ITALIC, 9)
+#define FONT_NAV_BUTTON                     fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 
 #pragma mark - COLOR
-#define COLOR_FONT_NAV_TITLE_LABEL      RGB(184,184,184)
-#define COLOR_BG_NAV_VIEW               RGB(5, 35, 74)
-#define COLOR_FONT_TILE                 RGB(8, 73, 124)
-#define COLOR_BORDER_TEXTVIEW           RGB(0, 0, 0)
-#define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
+#define COLOR_FONT_NAV_TITLE_LABEL          RGB(184,184,184)
+#define COLOR_BG_NAV_VIEW                   RGB(5, 35, 74)
+#define COLOR_FONT_TILE                     RGB(8, 73, 124)
+#define COLOR_FONT_TITLE_SECOND_LABEL       RGB(34,34,34)
+#define COLOR_BORDER_TEXTVIEW               RGB(0, 0, 0)
+#define COLOR_FONT_NAV_BUTTON               RGB(168,195,230)
 
 @interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
@@ -60,11 +62,7 @@
     [self.addButton setTitleColor:COLOR_FONT_NAV_BUTTON forState:UIControlStateNormal];
     self.addButton.titleLabel.font = FONT_NAV_BUTTON;
     
-    
-    self.postTitleLabel.text = NSLocalizedLanguage(@"MPANV_POST_TITLE");
-    self.postTitleLabel.font = FONT_TILE;
-    self.postTitleLabel.textColor = COLOR_FONT_TILE;
-    
+    self.postTitleLabel.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_POST_TITLE") label:NSLocalizedLanguage(@"MPANV_POST_TITLE_DES")];
     self.postTitleTextField.placeholder = NSLocalizedLanguage(@"MPANV_POST_TITLE_PLACEHOLDER");
     self.postTitleTextField.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     self.postTitleTextField.layer.borderWidth = 0.5f;
@@ -74,11 +72,13 @@
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
     
-    self.bodyTitleLabel.text = NSLocalizedLanguage(@"MPANV_BODY_TITLE");
-    self.bodyTitleLabel.font = FONT_TILE;
-    self.bodyTitleLabel.textColor = COLOR_FONT_TILE;
+    if (self.isAddPhoto) {
+        self.bodyTitleLabel.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_BODY_TITLE") label:NSLocalizedLanguage(@"MPANV_POST_TITLE_DES")];
+    } else {
+        self.bodyTitleLabel.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_BODY_TITLE") label:@""];
+    }
     
-    self.bodyTextView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+    [self bodyTextView];
     self.bodyTextView.textColor = [UIColor lightGrayColor];
     self.bodyTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     self.bodyTextView.layer.borderWidth = 0.5f;
@@ -144,6 +144,28 @@
     self.constraintTextViewHeight.constant = kDeviceHeight * (self.isAddPhoto? 0.4:0.6);
 }
 
+- (void)bodyTextViewPlaceHolder {
+    if (self.isAddPhoto) {
+        self.bodyTextView.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER") label:NSLocalizedLanguage(@"MPANV_POST_TITLE_DES")];
+    } else {
+        self.bodyTextView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+    }
+}
+
+- (NSAttributedString *)addLabelInTitle:(NSString *)title label:(NSString *)lText {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",title]  attributes:@{NSFontAttributeName: FONT_TILE, NSForegroundColorAttributeName: COLOR_FONT_TILE}];
+    
+    [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:lText attributes:@{NSFontAttributeName: FONT_TITLE_SECOND_LABEL, NSForegroundColorAttributeName: [COLOR_FONT_TITLE_SECOND_LABEL colorWithAlphaComponent:0.5]}]];
+
+    return [attributedString copy];
+}
+
+- (NSString *)stripStringAndToLowerCaser:(NSString *)text {
+    text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    return [text lowercaseString];
+}
+
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -165,7 +187,7 @@
         if (fin) {
             NSString *stripSpaceString = [textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
             if (stripSpaceString.length == 0) {
-                textView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+                [self bodyTextViewPlaceHolder];
                 textView.textColor = [UIColor lightGrayColor];
             }
         }
@@ -174,7 +196,12 @@
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")]) {
+    NSString *placeHolder = [NSString stringWithFormat:@"%@ %@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER"),NSLocalizedLanguage(@"MPANV_POST_TITLE_DES")];
+    NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
+    NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
+    NSString *text = [self stripStringAndToLowerCaser:textView.text];
+    
+    if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto]) {
      textView.text = @"";
     }
     textView.textColor = [UIColor blackColor];
