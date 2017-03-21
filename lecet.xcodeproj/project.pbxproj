@@ -3204,8 +3204,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "c22ba540-0638-40d1-b30e-1232d8c458b8";
-				PROVISIONING_PROFILE_SPECIFIER = "Dom & Tom Generic Development";
+				PROVISIONING_PROFILE = "458c689d-6268-4014-a16e-f83ad7f27db5";
+				PROVISIONING_PROFILE_SPECIFIER = "Dom &amp; Tom Generic Development";
 			};
 			name = Debug;
 		};
@@ -3231,8 +3231,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "c22ba540-0638-40d1-b30e-1232d8c458b8";
-				PROVISIONING_PROFILE_SPECIFIER = "Dom & Tom Generic Development";
+				PROVISIONING_PROFILE = "458c689d-6268-4014-a16e-f83ad7f27db5";
+				PROVISIONING_PROFILE_SPECIFIER = "Dom &amp; Tom Generic Development";
 			};
 			name = Release;
 		};

@@ -22,6 +22,7 @@
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
 @interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
@@ -34,6 +35,10 @@
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bodyViewContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTextViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *containerCapturedImage;
+@property (weak, nonatomic) IBOutlet UIButton *trashcanButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightContainerCapturedImage;
+@property (weak, nonatomic) IBOutlet UIImageView *capturedImageView;
 
 @end
 
@@ -43,8 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navView.backgroundColor = COLOR_BG_NAV_VIEW;
-    
-    self.navTitleLabel.text = NSLocalizedLanguage(@"MPANV_NAV_TITLE");
+    self.navTitleLabel.text = self.isAddPhoto?NSLocalizedLanguage(@"MPANV_NAV_PHOTO_TITLE"): NSLocalizedLanguage(@"MPANV_NAV_TITLE");
     self.navTitleLabel.font = FONT_NAV_TITLE_LABEL;
     self.navTitleLabel.textColor = COLOR_FONT_NAV_TITLE_LABEL;
     
@@ -81,34 +85,48 @@
     
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
-    self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+    
+    [self updateHeighForBodyTextEndEditing];
+    self.constraintHeightContainerCapturedImage.constant = self.isAddPhoto ? kDeviceHeight * 0.15 :0;
+    
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
     self.addButton.userInteractionEnabled = NO;
-    
-    /*
-    [[DataManager sharedManager] projectUserNotes:self.projectID success:^(id object){
-        
-    }failure:^(id object){
-        
-    }];
-    */
+    self.capturedImageView.contentMode = UIViewContentModeScaleToFill;
+    self.capturedImageView.image = self.capturedImage;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - IBActions
 - (IBAction)tappedCancelButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)tappedAddButton:(id)sender {
-    MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
-    controller.mobileProjectNotePopUpViewControllerDelegate = self;
-    controller.modalPresentationStyle = UIModalPresentationCustom;
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
+    if (self.isAddPhoto) {
+        [self.loadingIndicator startAnimating];
+        [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
+            [self.loadingIndicator stopAnimating];
+            [self.navigationController popViewControllerAnimated:YES];
+        }failure:^(id fail){
+            [self.loadingIndicator stopAnimating];
+            NSLog(@"Failed request");
+        }];
+    } else {
+        MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
+        controller.mobileProjectNotePopUpViewControllerDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self.navigationController presentViewController:controller animated:YES completion:nil];
+    }
+}
+- (IBAction)tappedTrashcanButton:(id)sender {
+    self.capturedImageView.image = nil;
+    self.capturedImage = nil;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -122,8 +140,11 @@
     return paddingView;
 }
 
-#pragma mark - UITextViewDelegate
+- (void)updateHeighForBodyTextEndEditing {
+    self.constraintTextViewHeight.constant = kDeviceHeight * (self.isAddPhoto? 0.4:0.6);
+}
 
+#pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
     [UIView animateWithDuration:0.5 animations:^{
@@ -138,7 +159,7 @@
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     [UIView animateWithDuration:0.5 animations:^{
-        self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+        [self updateHeighForBodyTextEndEditing];
         [self.view layoutIfNeeded];
     }completion:^(BOOL fin){
         if (fin) {
@@ -160,7 +181,6 @@
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    //[self.bodyTextView resignFirstResponder];
     [self.view endEditing:YES];
 }
 
@@ -180,7 +200,7 @@
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
     [UIView animateWithDuration:0.5 animations:^{
-        self.constraintTextViewHeight.constant = kDeviceHeight * 0.6;
+        [self updateHeighForBodyTextEndEditing];
         [self.view layoutIfNeeded];
     }completion:^(BOOL fin){
         
@@ -203,11 +223,14 @@
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
 
 - (void)tappedPostNoteButton {
+    [self.loadingIndicator startAnimating];
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
+        [self.loadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id object){
+        [self.loadingIndicator stopAnimating];
         NSLog(@"Failed request");
     }];
 }
