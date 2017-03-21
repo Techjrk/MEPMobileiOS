@@ -237,6 +237,8 @@
 		B73EFB0C1D14548100C6B3B2 /* ProjectTrackItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB0B1D14548100C6B3B2 /* ProjectTrackItemView.xib */; };
 		B73EFB101D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */; };
 		B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */; };
+		B74C0AA21E8167D400E91FA9 /* NewProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C0AA01E8167D400E91FA9 /* NewProjectViewController.m */; };
+		B74C0AA31E8167D400E91FA9 /* NewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B74C0AA11E8167D400E91FA9 /* NewProjectViewController.xib */; };
 		B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74FDB601D796F45003A1AFD /* MessageUI.framework */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
@@ -779,6 +781,9 @@
 		B73EFB0D1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTrackItemCollectionViewCell.h; sourceTree = "<group>"; };
 		B73EFB0E1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTrackItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B73EFB0F1D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTrackItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B74C0A9F1E8167D400E91FA9 /* NewProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewProjectViewController.h; sourceTree = "<group>"; };
+		B74C0AA01E8167D400E91FA9 /* NewProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProjectViewController.m; sourceTree = "<group>"; };
+		B74C0AA11E8167D400E91FA9 /* NewProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectViewController.xib; sourceTree = "<group>"; };
 		B74FDB601D796F45003A1AFD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
@@ -1954,6 +1959,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B74C0A9E1E8167B200E91FA9 /* NewProject */,
 				B60909D01E7AB76600DEAA17 /* CustomCamerViewController */,
 				B786070E1E79329F00F7CE3E /* PhotoViewer */,
 				B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */,
@@ -2357,6 +2363,16 @@
 			name = Crypto;
 			sourceTree = "<group>";
 		};
+		B74C0A9E1E8167B200E91FA9 /* NewProject */ = {
+			isa = PBXGroup;
+			children = (
+				B74C0A9F1E8167D400E91FA9 /* NewProjectViewController.h */,
+				B74C0AA01E8167D400E91FA9 /* NewProjectViewController.m */,
+				B74C0AA11E8167D400E91FA9 /* NewProjectViewController.xib */,
+			);
+			name = NewProject;
+			sourceTree = "<group>";
+		};
 		B7690DA91E2F890E0016577F /* ProjectNearMeFilter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2731,6 +2747,7 @@
 				B7BF60A01D1D63FE00B3BDD7 /* SearchSuggestedCollectionViewCell.xib in Resources */,
 				B76C69461CD2489B009E9F15 /* CustomTextField.xib in Resources */,
 				B6AF1D001D21492C00C95A8F /* ProjectFilterCollapsibleListView.xib in Resources */,
+				B74C0AA31E8167D400E91FA9 /* NewProjectViewController.xib in Resources */,
 				B76C69811CDA04FC009E9F15 /* CalendarItemCollectionViewCell.xib in Resources */,
 				B771C6071CEB6C65004A628A /* AssociatedBidView.xib in Resources */,
 				B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */,
@@ -3017,6 +3034,7 @@
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B73EFAC01D0ED11200C6B3B2 /* HiddenProjectsViewController.m in Sources */,
+				B74C0AA21E8167D400E91FA9 /* NewProjectViewController.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
 				B79616011CF318D60089BC32 /* DB_Project.m in Sources */,
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,

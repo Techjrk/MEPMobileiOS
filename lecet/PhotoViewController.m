@@ -62,7 +62,6 @@
 
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n",self.photoTitle]  attributes:@{NSFontAttributeName: TITLE_FONT, NSForegroundColorAttributeName: TITLE_COLOR_BLUE, NSParagraphStyleAttributeName: paragraphStyle}];
   
-    self.text = @"dfsdf sdfsdf sdfsdfsdf sdfsd fsd sdf sdf sdfsdfsdfd sdfsdfsdfdfdf sdfsdfdfsdf sdfsdfsd sdfsdfsdfsdf sdfsd sd sdf sdf sdf sdfsdsdfdsfsdfsdf ssdfsdfdsf";
     [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: DETAIL_FONT, NSForegroundColorAttributeName: DETAIL_COLOR_BLUE, NSParagraphStyleAttributeName: paragraphStyle}]];
 
     self.textView.attributedText = attributedString;
