@@ -837,8 +837,14 @@ typedef enum {
 
 #pragma mark - ImageNoteViewDelegate
 - (void)viewNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image {
-    PhotoViewController *controller = [PhotoViewController new];
-    [self.navigationController pushViewController:controller animated:YES];
+    
+    if (image != nil) {
+        PhotoViewController *controller = [PhotoViewController new];
+        controller.image = image;
+        controller.photoTitle = title;
+        controller.text = detail;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 #pragma mark - Custom Camera Method

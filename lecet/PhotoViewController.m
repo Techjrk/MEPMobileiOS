@@ -8,6 +8,15 @@
 
 #import "PhotoViewController.h"
 
+
+#define TITLE_FONT              fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define TITLE_COLOR_BLUE        RGB(5, 31, 73)
+#define TITLE_COLOR_WHITE       RGB(255, 255, 7255)
+
+#define DETAIL_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define DETAIL_COLOR_BLUE        RGB(5, 31, 73)
+#define DETAIL_COLOR_WHITE       RGB(255, 255, 7255)
+
 @interface PhotoViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -16,26 +25,26 @@
 @end
 
 @implementation PhotoViewController
+@synthesize image;
+@synthesize photoTitle;
+@synthesize text;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImage *image = [UIImage imageNamed:@"landscape.jpg"];
-    //UIImage *image = [UIImage imageNamed:@"splashImage"];
-
-    self.imageView.image = image;
+    self.imageView.image = self.image;
     
     CGRect frame = CGRectZero;
     
-    if (image.size.width>image.size.height) {
-        CGFloat height = (1-((image.size.width-image.size.height)/image.size.width)) * kDeviceWidth;
+    if (self.image.size.width>self.image.size.height) {
+        CGFloat height = (1-((self.image.size.width-self.image.size.height)/self.image.size.width)) * kDeviceWidth;
         frame = CGRectMake(0, (kDeviceHeight - height)/2.0, kDeviceWidth, height);
     } else {
-        CGFloat width = (1-((image.size.height-image.size.width)/image.size.height)) * kDeviceHeight;
+        CGFloat width = (1-((self.image.size.height-self.image.size.width)/self.image.size.height)) * kDeviceHeight;
         
         CGFloat yPos = 0;
-        if (image.size.height<kDeviceHeight) {
-            yPos = (kDeviceHeight-image.size.height)/2;
+        if (self.image.size.height<kDeviceHeight) {
+            yPos = (kDeviceHeight-self.image.size.height)/2;
         }
         
         frame = CGRectMake(0, yPos, width, kDeviceHeight - (yPos*2));
@@ -48,6 +57,15 @@
     self.scrollView.zoomScale = 1.0;
     self.scrollView.contentSize = self.imageView.frame.size;
     
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:TITLE_FONT.pointSize * 0.6];
+
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n",self.photoTitle]  attributes:@{NSFontAttributeName: TITLE_FONT, NSForegroundColorAttributeName: TITLE_COLOR_BLUE, NSParagraphStyleAttributeName: paragraphStyle}];
+  
+    self.text = @"dfsdf sdfsdf sdfsdfsdf sdfsd fsd sdf sdf sdfsdfsdfd sdfsdfsdfdfdf sdfsdfdfsdf sdfsdfsd sdfsdfsdfsdf sdfsd sd sdf sdf sdf sdfsdsdfdsfsdfsdf ssdfsdfdsf";
+    [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: DETAIL_FONT, NSForegroundColorAttributeName: DETAIL_COLOR_BLUE, NSParagraphStyleAttributeName: paragraphStyle}]];
+
+    self.textView.attributedText = attributedString;
     self.buttonBack.hidden = YES;
     self.textView.hidden = YES;
     self.textView.backgroundColor = [self.textView.backgroundColor colorWithAlphaComponent:0.5];

@@ -88,6 +88,7 @@
         self.constraintImageHeight.constant = CONSTRAINT_IMAGE_HEIGHT;
     } else {
         self.constraintImageHeight.constant = 0;
+        self.image.hidden = YES;
     }
     
     NSString *userIdentity =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];

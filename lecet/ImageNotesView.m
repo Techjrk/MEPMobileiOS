@@ -79,7 +79,8 @@
     } else {
         NSString *urlString = item[@"url"];
         NSNumber *imageId = item[@"id"];
-        cell.userId = item[@"authorId"];
+        cell.imageId = imageId;
+        cell.userId = item[@"userId"];
         
         cell.user.text = [NSString stringWithFormat:@"%@ %@",item[@"user"][@"first_name"], item[@"user"][@"last_name"]];
         
@@ -178,7 +179,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ImageNoteCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    ImageNoteCollectionViewCell *cell = (ImageNoteCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     
     [self.imageNotesViewDelegate viewNoteAndImage:cell.titleView.text detail:cell.note.text image:cell.image.image];
 }
