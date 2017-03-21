@@ -10,5 +10,7 @@
 #import "BaseViewController.h"
 
 @interface PhotoViewController : BaseViewController
-
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *photoTitle;
+@property (strong, nonatomic) NSString *text;
 @end
