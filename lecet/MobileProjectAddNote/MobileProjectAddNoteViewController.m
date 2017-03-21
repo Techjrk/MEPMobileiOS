@@ -194,6 +194,22 @@
     }];
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    NSString *placeHolder = [NSString stringWithFormat:@"%@ %@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER"),NSLocalizedLanguage(@"MPANV_POST_TITLE_DES")];
+    NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
+    NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
+    NSString *text = [self stripStringAndToLowerCaser:textView.text];
+    
+    if (!self.isAddPhoto) {
+        if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
+            self.addButton.userInteractionEnabled = NO;
+        } else {
+            self.addButton.userInteractionEnabled = YES;
+        }
+    }
+}
+
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
     NSString *placeHolder = [NSString stringWithFormat:@"%@ %@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER"),NSLocalizedLanguage(@"MPANV_POST_TITLE_DES")];
@@ -239,14 +255,14 @@
 -(void)onEditing:(id)sender {
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
-    
+    /*
     NSString *stripString = [self.postTitleTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (stripString.length > 0) {
         self.addButton.userInteractionEnabled = YES;
     } else {
         self.addButton.userInteractionEnabled = NO;
     }
-    
+     */
 }
 
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
