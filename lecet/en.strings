@@ -424,6 +424,7 @@
 "PLC_FEET"                                  =               "%li feet away";
 
 //MobileProjectAddNoteViewController
+"MPANV_NAV_PHOTO_TITLE"                     =               "Add Photo";
 "MPANV_NAV_TITLE"                           =               "Add Note";
 "MPANV_NAV_CANCEL"                          =               "CANCEL";
 "MPANV_NAV_ADD"                             =               "ADD";

@@ -48,8 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navView.backgroundColor = COLOR_BG_NAV_VIEW;
-    
-    self.navTitleLabel.text = NSLocalizedLanguage(@"MPANV_NAV_TITLE");
+    self.navTitleLabel.text = self.isAddPhoto?NSLocalizedLanguage(@"MPANV_NAV_PHOTO_TITLE"): NSLocalizedLanguage(@"MPANV_NAV_TITLE");
     self.navTitleLabel.font = FONT_NAV_TITLE_LABEL;
     self.navTitleLabel.textColor = COLOR_FONT_NAV_TITLE_LABEL;
     
