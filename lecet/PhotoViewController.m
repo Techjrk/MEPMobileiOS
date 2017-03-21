@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
+@property (weak, nonatomic) IBOutlet UIView *viewtextBackground;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
 
@@ -66,8 +67,8 @@
 
     self.textView.attributedText = attributedString;
     self.buttonBack.hidden = YES;
-    self.textView.hidden = YES;
-    self.textView.backgroundColor = [self.textView.backgroundColor colorWithAlphaComponent:0.5];
+    self.viewtextBackground.hidden = YES;
+    self.viewtextBackground.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self enableTapGesture:YES];
 }
 
@@ -103,13 +104,13 @@
         self.buttonBack.alpha = self.buttonBack.hidden?0:1;
         self.buttonBack.hidden = !self.buttonBack.hidden;
         
-        self.textView.alpha = self.buttonBack.alpha;
-        self.textView.hidden = self.buttonBack.hidden;
+        self.viewtextBackground.alpha = self.buttonBack.alpha;
+        self.viewtextBackground.hidden = self.buttonBack.hidden;
         
         [UIView animateWithDuration:0.25 animations:^{
             
             self.buttonBack.alpha = self.buttonBack.hidden?0:1;
-            self.textView.alpha = self.buttonBack.alpha;
+            self.viewtextBackground.alpha = self.buttonBack.alpha;
             
         } completion:^(BOOL finished) {
             if (finished) {
