@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchFilterViewController">
@@ -36,7 +40,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nW-xe-zTf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="26"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Uv-RE-e0V">
                                     <rect key="frame" x="0.0" y="26" width="124" height="61"/>
@@ -55,11 +59,11 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6Z-ee-phb">
                                     <rect key="frame" x="0.0" y="26" width="414" height="61"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="4Uv-RE-e0V" secondAttribute="bottom" id="3mx-pP-Laj"/>
                                 <constraint firstAttribute="trailing" secondItem="0nW-xe-zTf" secondAttribute="trailing" id="7gk-mL-vWy"/>
@@ -97,10 +101,10 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ar6-qh-yTT">
                                                     <rect key="frame" x="41" y="0.0" width="125" height="4"/>
-                                                    <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.2633280643" green="1" blue="0.24540750010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="ar6-qh-yTT" firstAttribute="centerX" secondItem="8Lu-XB-pRI" secondAttribute="centerX" id="IIS-tt-LyS"/>
                                                 <constraint firstItem="ar6-qh-yTT" firstAttribute="top" secondItem="8Lu-XB-pRI" secondAttribute="top" id="RTz-VN-rXd"/>
@@ -116,7 +120,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="8Lu-XB-pRI" firstAttribute="width" secondItem="Cf3-cS-LuB" secondAttribute="width" id="4ze-XI-7BK"/>
                                         <constraint firstAttribute="bottom" secondItem="8Lu-XB-pRI" secondAttribute="bottom" id="LRv-S9-2B9"/>
@@ -133,7 +137,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="0A9-Do-HUn" firstAttribute="leading" secondItem="J0F-3L-wvz" secondAttribute="leading" id="G6i-hh-amT"/>
                                 <constraint firstItem="0A9-Do-HUn" firstAttribute="height" secondItem="J0F-3L-wvz" secondAttribute="height" multiplier="0.85" id="MAr-Fx-UfJ"/>
@@ -146,14 +150,14 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8J-EU-uzH" customClass="CompanyFilterView">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDH-pP-jmN">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grR-J8-jgo" customClass="ProjectFilterView">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="590" id="4mw-CX-zSF"/>
                                             </constraints>
@@ -167,7 +171,7 @@
                                     </constraints>
                                 </scrollView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="grR-J8-jgo" firstAttribute="width" secondItem="MUt-RM-RTN" secondAttribute="width" id="281-tX-YEX"/>
                                 <constraint firstItem="qDH-pP-jmN" firstAttribute="leading" secondItem="MUt-RM-RTN" secondAttribute="leading" id="3wQ-1j-v1n"/>
@@ -181,7 +185,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="6L7-r8-r5m" firstAttribute="leading" secondItem="sfR-2H-agw" secondAttribute="leading" id="2Xc-lT-sej"/>
                         <constraint firstItem="6L7-r8-r5m" firstAttribute="height" secondItem="sfR-2H-agw" secondAttribute="height" multiplier="0.118" id="Bqz-Xq-jo2"/>
@@ -198,7 +202,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="sfR-2H-agw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J98-h1-kbA"/>
                 <constraint firstAttribute="bottom" secondItem="sfR-2H-agw" secondAttribute="bottom" id="TiV-EC-gSB"/>

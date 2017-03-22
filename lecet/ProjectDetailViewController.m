@@ -30,6 +30,7 @@
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
 
+#import "NewProjectViewController.h"
 #import "MobileProjectAddNoteViewController.h"
 #import "ImageNotesView.h"
 #import "PhotoViewController.h"
@@ -824,6 +825,9 @@ typedef enum {
 }
 
 - (IBAction)tappedButtonAddNote:(id)sender {
+    
+    //NewProjectViewController *controller = [NewProjectViewController new];
+    //[self.navigationController pushViewController:controller animated:YES];
     
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
