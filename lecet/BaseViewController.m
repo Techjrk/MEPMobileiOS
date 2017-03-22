@@ -50,7 +50,11 @@
     
     controller.navigationController.delegate = controller;
     
-    return [controller animationObjectForOperation:operation];
+    if ([controller respondsToSelector:@selector(animationObjectForOperation:)]) {
+        return [controller animationObjectForOperation:operation];
+    } else {
+        return nil;
+    }
 }
 
 - animationObjectForOperation:(UINavigationControllerOperation)operation {
