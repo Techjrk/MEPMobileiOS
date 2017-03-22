@@ -23,7 +23,9 @@
 #define COLOR_BORDER_TEXTVIEW               RGB(0, 0, 0)
 #define COLOR_FONT_NAV_BUTTON               RGB(168,195,230)
 
-@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>
+@interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>{
+    BOOL isKeyboardShown;
+}
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -88,12 +90,34 @@
     
     [self updateHeighForBodyTextEndEditing];
     self.constraintHeightContainerCapturedImage.constant = self.isAddPhoto ? kDeviceHeight * 0.15 :0;
+    isKeyboardShown = NO;
     
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
     self.addButton.userInteractionEnabled = NO;
     self.capturedImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.capturedImageView.image = self.capturedImage;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidHideNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -169,29 +193,37 @@
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
-        [self.view layoutIfNeeded];
-    }completion:^(BOOL fin){
-        
-    }];
-    
+    /*
+    if (!isKeyboardShown) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+            [self.view layoutIfNeeded];
+        }completion:^(BOOL fin){
+            isKeyboardShown = YES;
+        }];
+    }
+    */
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        [self updateHeighForBodyTextEndEditing];
-        [self.view layoutIfNeeded];
-    }completion:^(BOOL fin){
-        if (fin) {
-            NSString *stripSpaceString = [textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-            if (stripSpaceString.length == 0) {
-                [self bodyTextViewPlaceHolder];
-                textView.textColor = [UIColor lightGrayColor];
+    /*
+    if (isKeyboardShown) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self updateHeighForBodyTextEndEditing];
+            [self.view layoutIfNeeded];
+        }completion:^(BOOL fin){
+            if (fin) {
+                NSString *stripSpaceString = [textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+                if (stripSpaceString.length == 0) {
+                    [self bodyTextViewPlaceHolder];
+                    textView.textColor = [UIColor lightGrayColor];
+                }
+                isKeyboardShown = NO;
             }
-        }
-    }];
+        }];
+    }
+    */
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
@@ -233,23 +265,32 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
-        [self.view layoutIfNeeded];
-    }completion:^(BOOL fin){
-        
-    }];
+    /*
+    if (!isKeyboardShown) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+            [self.view layoutIfNeeded];
+        }completion:^(BOOL fin){
+            isKeyboardShown = YES;
+        }];
 
+    }
+    */
     return YES;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
-    [UIView animateWithDuration:0.5 animations:^{
-        [self updateHeighForBodyTextEndEditing];
-        [self.view layoutIfNeeded];
-    }completion:^(BOOL fin){
-        
-    }];
+
+    /*
+    if (isKeyboardShown) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self updateHeighForBodyTextEndEditing];
+            [self.view layoutIfNeeded];
+        }completion:^(BOOL fin){
+            isKeyboardShown = NO;
+        }];
+    }
+    */
 }
 
 -(void)onEditing:(id)sender {
@@ -282,6 +323,30 @@
 
 - (void)tappedDismissedPostNote {
     
+}
+
+#pragma mark - Keyboard Observer
+
+- (void)keyboardDidShow: (NSNotification *) notif{
+    // Do something here
+    [UIView animateWithDuration:0.2 animations:^{
+        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+        
+    }];
+
+}
+
+- (void)keyboardDidHide: (NSNotification *) notif{
+    // Do something here
+    [UIView animateWithDuration:0.2 animations:^{
+        [self updateHeighForBodyTextEndEditing];
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL fin){
+       
+    }];
+
 }
 
 @end
