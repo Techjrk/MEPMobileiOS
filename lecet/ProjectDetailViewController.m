@@ -34,6 +34,7 @@
 #import "ImageNotesView.h"
 #import "PhotoViewController.h"
 #import "CustomCameraViewController.h"
+#import <Photos/Photos.h>
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -869,24 +870,24 @@ typedef enum {
     if (isCamera) {
         self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         self.picker.showsCameraControls = NO;
+        self.picker.extendedLayoutIncludesOpaqueBars = YES;
+        self.picker.edgesForExtendedLayout = YES;
+        CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
+        self.picker.cameraViewTransform = translate;
+        self.customCameraVC =  [CustomCameraViewController new];
+        self.customCameraVC.customCameraViewControllerDelegate = self;
+        [self addChildViewController:self.customCameraVC];
+        
+        UIView *customView = self.customCameraVC.view;
+        customView.frame = self.picker.view.frame;
+        self.picker.cameraOverlayView = customView;
+        
     } else {
         self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.picker.modalPresentationStyle = UIModalPresentationCustom;;
     }
-    self.picker.extendedLayoutIncludesOpaqueBars = YES;
-    self.picker.edgesForExtendedLayout = YES;
-    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
-    self.picker.cameraViewTransform = translate;
-    
-    self.customCameraVC =  [CustomCameraViewController new];
-    self.customCameraVC.customCameraViewControllerDelegate = self;
-    [self addChildViewController:self.customCameraVC];
-    
-    UIView *customView = self.customCameraVC.view;
-    customView.frame = self.picker.view.frame;
-    self.picker.cameraOverlayView = customView;
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker];
-    
 }
 
 - (void)presentImagePickerController:(UIViewController *)pickerController
@@ -894,7 +895,7 @@ typedef enum {
     if (self.presentedViewController) {
         [self.presentedViewController presentViewController:pickerController animated:YES completion:^{}];
     } else {
-        [self.navigationController presentViewController:pickerController animated:YES completion:^{}];
+        [self presentViewController:pickerController animated:NO completion:^{}];
     }
 }
 
@@ -908,7 +909,9 @@ typedef enum {
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - CustomCameraViewController Delegate
@@ -976,7 +979,13 @@ typedef enum {
                 break;
             }
             case CameraControlListViewLibrary: {
-                
+                [self.picker dismissViewControllerAnimated:YES completion:^{
+                    self.picker = [[UIImagePickerController alloc] init];
+                    self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
+                    self.picker.delegate = self;
+                    [self presentImagePickerController:self.picker];
+                }];
                 break;
             }
             case CameraControlListView360: {
