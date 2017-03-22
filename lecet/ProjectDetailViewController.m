@@ -856,7 +856,11 @@ typedef enum {
 
 - (void)showCustomCamera {
 #if TARGET_IPHONE_SIMULATOR
-    
+    self.picker = [[UIImagePickerController alloc] init];
+    self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
+    self.picker.delegate = self;
+    [self presentImagePickerController:self.picker];
 #else
      [self showCamera];
 #endif
