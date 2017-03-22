@@ -8,11 +8,19 @@
 
 #import "NewProjectViewController.h"
 
+#pragma mark - Fonts
+
+#pragma mark - Colors
+
+
 @interface NewProjectViewController ()
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @end
 
 @implementation NewProjectViewController
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
