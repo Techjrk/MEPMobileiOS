@@ -857,7 +857,7 @@ typedef enum {
 - (void)showCustomCamera {
 #if TARGET_IPHONE_SIMULATOR
     self.picker = [[UIImagePickerController alloc] init];
-    self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     self.picker.modalPresentationStyle = UIModalPresentationCustom;;
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker];
@@ -887,7 +887,7 @@ typedef enum {
         self.picker.cameraOverlayView = customView;
         
     } else {
-        self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         self.picker.modalPresentationStyle = UIModalPresentationCustom;;
     }
     self.picker.delegate = self;
@@ -899,13 +899,12 @@ typedef enum {
     if (self.presentedViewController) {
         [self.presentedViewController presentViewController:pickerController animated:YES completion:^{}];
     } else {
-        [self presentViewController:pickerController animated:NO completion:^{}];
+        [self.navigationController presentViewController:pickerController animated:NO completion:^{}];
     }
 }
 
 
-#pragma mark - Camera Deleggare
-
+#pragma mark - Camera Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image =  [info valueForKey:UIImagePickerControllerOriginalImage];
     self.customCameraVC.capturedImage.image = image;
