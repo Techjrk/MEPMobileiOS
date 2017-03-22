@@ -24,7 +24,7 @@
 #define COLOR_FONT_NAV_BUTTON               RGB(168,195,230)
 
 @interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>{
-    BOOL isKeyboardShown;
+    CGFloat defaultBodyTextViewHeight;
 }
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -89,8 +89,9 @@
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
     
     [self updateHeighForBodyTextEndEditing];
+    defaultBodyTextViewHeight = self.constraintTextViewHeight.constant;
+    
     self.constraintHeightContainerCapturedImage.constant = self.isAddPhoto ? kDeviceHeight * 0.15 :0;
-    isKeyboardShown = NO;
     
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
@@ -328,18 +329,21 @@
 #pragma mark - Keyboard Observer
 
 - (void)keyboardDidShow: (NSNotification *) notif{
-    // Do something here
+    NSDictionary *info  = notif.userInfo;
+    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect rawFrame      = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+    
     [UIView animateWithDuration:0.2 animations:^{
-        self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
+        self.constraintTextViewHeight.constant = (defaultBodyTextViewHeight - keyboardFrame.size.height);
         [self.view layoutIfNeeded];
     }completion:^(BOOL fin){
         
     }];
-
 }
 
 - (void)keyboardDidHide: (NSNotification *) notif{
-    // Do something here
     [UIView animateWithDuration:0.2 animations:^{
         [self updateHeighForBodyTextEndEditing];
         [self.view layoutIfNeeded];
