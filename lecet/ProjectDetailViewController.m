@@ -867,6 +867,15 @@ typedef enum {
     
 }
 
+- (void)showAddPhotoScreen{
+    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    controller.projectID = recordId;
+    controller.isAddPhoto = YES;
+    controller.capturedImage = capturedImage;
+    controller.mobileProjectAddNoteViewControllerDelegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)showCamera{
     self.picker = [[UIImagePickerController alloc] init];
     
@@ -909,6 +918,12 @@ typedef enum {
     UIImage *image =  [info valueForKey:UIImagePickerControllerOriginalImage];
     self.customCameraVC.capturedImage.image = image;
     capturedImage = image;
+    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
+        [self.picker dismissViewControllerAnimated:YES completion:^{
+            [self showAddPhotoScreen];
+        }];
+    }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -956,17 +971,9 @@ typedef enum {
                 break;
             }
             case CameraControlListViewUse: {
-                
                 [self.picker dismissViewControllerAnimated:YES completion:^{
-                    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
-                    controller.projectID = recordId;
-                    controller.isAddPhoto = YES;
-                    controller.capturedImage = capturedImage;
-                    controller.mobileProjectAddNoteViewControllerDelegate = self;
-                    [self.navigationController pushViewController:controller animated:YES];
-                    
+                    [self showAddPhotoScreen];
                 }];
-                
                 break;
             }
             case CameraControlListViewRetake: {
