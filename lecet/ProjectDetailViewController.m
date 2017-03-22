@@ -991,7 +991,7 @@ typedef enum {
             case CameraControlListViewLibrary: {
                 [self.picker dismissViewControllerAnimated:YES completion:^{
                     self.picker = [[UIImagePickerController alloc] init];
-                    self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
                     self.picker.modalPresentationStyle = UIModalPresentationCustom;;
                     self.picker.delegate = self;
                     [self presentImagePickerController:self.picker];
