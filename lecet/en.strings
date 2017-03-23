@@ -462,6 +462,18 @@
 "CPLVC_RETAKE"                              =               "Retake";
 "CPLVC_PREVIEW"                             =               "PREVIEW";
 "CPLVC_USE"                                 =               "Use";
+//NewProjectViewController
+"NPVC_TITLE"                                =               "New Project";
+"NPVC_CANCEL"                               =               "CANCEL";
+"NPVC_SAVE"                                 =               "SAVE";
+"NPVC_LABEL_TITLE"                          =               "TITLE";
+"NPVC_LABEL_ADDRESS"                        =               "ADDRESS";
+"NPVC_PROJECT_TITLE"                        =               "Project Title";
+"NPVC_STREET1"                              =               "Street 1";
+"NPVC_STREET2"                              =               "Street 2";
+"NPVC_CITY"                                 =               "City";
+"NPVC_STATE"                                =               "State";
+"NPVC_ZIP"                                  =               "Zip";
 
 
 

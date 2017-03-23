@@ -28,7 +28,9 @@
 
 #define cellSpace                       kDeviceWidth * 0.05
 
-@interface CustomPhotoLibraryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CameraControlListViewDelegate,PHPhotoLibraryChangeObserver,CameraControlListViewDelegate>
+@interface CustomPhotoLibraryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,CameraControlListViewDelegate,PHPhotoLibraryChangeObserver,CameraControlListViewDelegate>{
+    BOOL isLibrarySelected;
+}
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *navCancelButton;
@@ -68,7 +70,9 @@
     self.cameraControlListView.cameraControlListViewDelegate = self;
     self.cameraControlListView.focusOnItem = CameraControlListViewLibrary;
     [self.cameraControlListView setCameraItemsInfo:items];
-        
+    
+    isLibrarySelected = NO;
+    
     self.imageManager = [PHCachingImageManager new];
     
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
@@ -157,6 +161,7 @@
         NSArray *items = [self secondSetCameraItems];
         self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
         [self.cameraControlListView setCameraItemsInfo:items];
+        isLibrarySelected = NO;
         
     }];
 }
@@ -166,36 +171,41 @@
         CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
         switch (items) {
             case CameraControlListViewPreview : {
-                
+                isLibrarySelected = NO;
                 break;
             }
             case CameraControlListViewUse: {
-                
+                isLibrarySelected = NO;
                 break;
             }
             case CameraControlListViewRetake: {
-                
+                isLibrarySelected = NO;
                 break;
             }
             case CameraControlListViewPano: {
-                
+                isLibrarySelected = NO;
                 break;
             }
             case CameraControlListViewPhoto: {
-                
+                isLibrarySelected = NO;
                 break;
             }
             case CameraControlListViewLibrary: {
-                self.capturedImageView.hidden = YES;
-                self.capturedImageView.image = nil;
+                if (!isLibrarySelected) {
+                    self.capturedImageView.hidden = YES;
+                    self.capturedImageView.image = nil;
+                    
+                    NSArray *items = [self firstSetCameraItems];
+                    self.cameraControlListView.focusOnItem = CameraControlListViewLibrary;
+                    [self.cameraControlListView setCameraItemsInfo:items];
+                    isLibrarySelected = YES;
+                    
+                }
                 
-                NSArray *items = [self firstSetCameraItems];
-                self.cameraControlListView.focusOnItem = CameraControlListViewLibrary;
-                [self.cameraControlListView setCameraItemsInfo:items];
                 break;
             }
             case CameraControlListView360: {
-                
+                isLibrarySelected = NO;
                 break;
             }
             default: {
