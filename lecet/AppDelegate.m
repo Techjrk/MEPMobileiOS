@@ -34,7 +34,11 @@
 
     [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
     
+    // Handle Push Configuration
+    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     id vc = [LandingViewController new];
@@ -182,5 +186,29 @@
     }
 }
 
+#pragma mark - Push Notification
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    self.pushToken = [NSString stringWithFormat:@"%@", deviceToken];
+    
+    self.pushToken = [self.pushToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    self.pushToken = [self.pushToken stringByReplacingOccurrencesOfString:@">" withString:@""];
+    self.pushToken = [self.pushToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    
+}
+
+// Handle your remote RemoteNotification
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    if (application.applicationState == UIApplicationStateActive ) {
+        //NSDictionary *aps = userInfo[@"aps"];
+        //NSString *message = aps[@"alert"];
+        //[[DataManager sharedManager] promptMessage:message];
+    }
+}
 
 @end

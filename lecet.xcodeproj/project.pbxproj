@@ -794,6 +794,7 @@
 		B74C0A9F1E8167D400E91FA9 /* NewProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewProjectViewController.h; sourceTree = "<group>"; };
 		B74C0AA01E8167D400E91FA9 /* NewProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProjectViewController.m; sourceTree = "<group>"; };
 		B74C0AA11E8167D400E91FA9 /* NewProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectViewController.xib; sourceTree = "<group>"; };
+		B74C0AA41E83FA6400E91FA9 /* LECET MEP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LECET MEP.entitlements"; sourceTree = "<group>"; };
 		B74FDB601D796F45003A1AFD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
@@ -1952,6 +1953,7 @@
 		B701551A1CD0C56A0050CF8A /* lecet */ = {
 			isa = PBXGroup;
 			children = (
+				B74C0AA41E83FA6400E91FA9 /* LECET MEP.entitlements */,
 				B6E032E51CF2ED0200D3D02C /* Util */,
 				B707BC391CEE114B0003C836 /* CustomClass */,
 				B7A1D32D1CE098AA004E94B3 /* Data */,
@@ -2683,7 +2685,12 @@
 				TargetAttributes = {
 					B70155171CD0C56A0050CF8A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = ECK5REHKPH;
+						DevelopmentTeam = AS94HE7VCY;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -3222,9 +3229,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael San Minay (UVH772DPE2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael San Minay (UVH772DPE2)";
-				DEVELOPMENT_TEAM = ECK5REHKPH;
+				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -3238,10 +3246,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "458c689d-6268-4014-a16e-f83ad7f27db5";
-				PROVISIONING_PROFILE_SPECIFIER = "Dom &amp; Tom Generic Development";
+				PROVISIONING_PROFILE = "150160cd-aa74-46a9-b341-17e6c9bb1b95";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Debug;
 		};
@@ -3249,9 +3257,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael San Minay (UVH772DPE2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael San Minay (UVH772DPE2)";
-				DEVELOPMENT_TEAM = ECK5REHKPH;
+				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -3265,10 +3274,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.domandtom.lecet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "458c689d-6268-4014-a16e-f83ad7f27db5";
-				PROVISIONING_PROFILE_SPECIFIER = "Dom &amp; Tom Generic Development";
+				PROVISIONING_PROFILE = "150160cd-aa74-46a9-b341-17e6c9bb1b95";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Release;
 		};

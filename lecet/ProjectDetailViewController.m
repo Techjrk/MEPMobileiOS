@@ -830,6 +830,7 @@ typedef enum {
     //NewProjectViewController *controller = [NewProjectViewController new];
     //[self.navigationController pushViewController:controller animated:YES];
     
+    
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
     controller.mobileProjectAddNoteViewControllerDelegate = self;
