@@ -36,6 +36,7 @@
 #import "PhotoViewController.h"
 #import "CustomCameraViewController.h"
 #import <Photos/Photos.h>
+#import "CustomPhotoLibraryViewController.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -860,13 +861,18 @@ typedef enum {
 
 - (void)showCustomCamera {
 #if TARGET_IPHONE_SIMULATOR
+    /*
     self.picker = [[UIImagePickerController alloc] init];
     self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     self.picker.modalPresentationStyle = UIModalPresentationCustom;;
     self.picker.delegate = self;
-    [self presentImagePickerController:self.picker];
+    [self presentImagePickerController:self.picker animated:YES];
+    */
+    CustomPhotoLibraryViewController *controller = [CustomPhotoLibraryViewController new];
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+
 #else
-     [self showCamera];
+    [self showCameraAnimated:YES];
 #endif
     
 }
@@ -880,7 +886,7 @@ typedef enum {
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)showCamera{
+- (void)showCameraAnimated:(BOOL)animate{
     self.picker = [[UIImagePickerController alloc] init];
     
     BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
@@ -904,15 +910,15 @@ typedef enum {
         self.picker.modalPresentationStyle = UIModalPresentationCustom;;
     }
     self.picker.delegate = self;
-    [self presentImagePickerController:self.picker];
+    [self presentImagePickerController:self.picker animated:YES];
 }
 
-- (void)presentImagePickerController:(UIViewController *)pickerController
+- (void)presentImagePickerController:(UIViewController *)pickerController animated:(BOOL)animate
 {
     if (self.presentedViewController) {
-        [self.presentedViewController presentViewController:pickerController animated:YES completion:^{}];
+        [self.presentedViewController presentViewController:pickerController animated:animate completion:^{}];
     } else {
-        [self.navigationController presentViewController:pickerController animated:NO completion:^{}];
+        [self.navigationController presentViewController:pickerController animated:animate completion:^{}];
     }
 }
 
@@ -993,12 +999,12 @@ typedef enum {
                 break;
             }
             case CameraControlListViewLibrary: {
-                [self.picker dismissViewControllerAnimated:YES completion:^{
+                [self.picker dismissViewControllerAnimated:NO completion:^{
                     self.picker = [[UIImagePickerController alloc] init];
                     self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
                     self.picker.modalPresentationStyle = UIModalPresentationCustom;;
                     self.picker.delegate = self;
-                    [self presentImagePickerController:self.picker];
+                    [self presentImagePickerController:self.picker animated:NO];
                 }];
                 break;
             }

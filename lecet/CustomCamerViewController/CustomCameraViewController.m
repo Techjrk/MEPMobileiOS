@@ -55,6 +55,7 @@
     NSArray *cameraItems = [self firstSetCameraItems];
     
     self.cameraControlListView.cameraControlListViewDelegate = self;
+    self.cameraControlListView.focusOnItem = CameraControlListViewPhoto;
     [self.cameraControlListView setCameraItemsInfo:cameraItems];
     
     self.capturedImage.hidden = YES;
@@ -81,6 +82,7 @@
     
     NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];
     self.cameraControlListView.isImageCaptured = hide;
+    self.cameraControlListView.focusOnItem = hide?CameraControlListViewPreview:CameraControlListViewPhoto;
     [self.cameraControlListView setCameraItemsInfo:cameraItems];
 }
 
@@ -105,7 +107,6 @@
 }
 
 #pragma mark - CameraControlListDelegate
-
 - (void)cameraControlListDidSelect:(id)info {
     
     if (info != nil && ![info isEqual:@""]) {

@@ -10,16 +10,18 @@
 #import "CustomCameraCollectionViewCell.h"
 
 #pragma mark - FONT
-#define FONT_CELL_TITLE          fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define FONT_CELL_TITLE             fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 
 #pragma mark - COLOR
-#define COLOR_FONT_CELL_TITLE    RGB(255,255,255)
+#define COLOR_FONT_CELL_TITLE       RGB(255,255,255)
+#define COLOR_BG_LINE_VIEW          RGB(255,255,255)
 
 #define kCellIdentifier                     @"kCellIdentifier"
 @interface CameraControlListView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSIndexPath *selectedIndex;
     BOOL isImageCaptured;
 }
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong,nonatomic) NSArray *cameraItems;
 @end
@@ -33,6 +35,7 @@
     [self.collectionView registerNib:[UINib nibWithNibName:[[CustomCameraCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
+    self.lineView.backgroundColor = COLOR_BG_LINE_VIEW;
   
 }
 
@@ -117,14 +120,17 @@
         if (info != nil && ![info isEqual:@""]) {
             CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
             
-            if (items == CameraControlListViewPhoto) {
+            //if (items == CameraControlListViewPhoto) {
+            if (items == self.focusOnItem) {
                 index = (count - 1);
                 break;
             }
+            /*
             if (items == CameraControlListViewPreview) {
                 index = (count - 1);
                 break;
             }
+             */
         }
     }
     
