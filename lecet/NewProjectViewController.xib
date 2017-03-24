@@ -14,7 +14,13 @@
             <connections>
                 <outlet property="buttonCancel" destination="lcs-q3-z9d" id="dUd-SH-HBG"/>
                 <outlet property="buttonSave" destination="58p-FM-Vnz" id="Zwq-jL-dsh"/>
+                <outlet property="constraintViewHeight" destination="fN9-yv-fbW" id="Gp8-Fp-A2i"/>
+                <outlet property="fieldBidStatus" destination="xcQ-Bv-diU" id="YE0-a7-S4B"/>
                 <outlet property="fieldCounty" destination="zYw-L5-4NA" id="6E5-m9-7uQ"/>
+                <outlet property="fieldEstLow" destination="DIe-zC-tN2" id="6ga-Qg-f89"/>
+                <outlet property="fieldStage" destination="XA2-8y-JuI" id="g6z-kD-zFs"/>
+                <outlet property="fieldTargetSetDate" destination="LNJ-Y0-aPS" id="tgp-vL-Qyf"/>
+                <outlet property="fieldType" destination="dvb-RP-I0A" id="esO-KT-ua2"/>
                 <outlet property="headerView" destination="IRU-G1-Tbj" id="w4o-25-coY"/>
                 <outlet property="labelAddress" destination="eRe-MZ-hCI" id="YfV-NX-dHM"/>
                 <outlet property="labelProjectTitle" destination="7uK-1d-mGd" id="K4R-Cc-quL"/>
@@ -241,22 +247,62 @@
                                     <rect key="frame" x="12.5" y="491" width="351" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcQ-Bv-diU" customClass="FilterLabelView">
+                                    <rect key="frame" x="12.5" y="435" width="351" height="56"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvb-RP-I0A" customClass="FilterLabelView">
+                                    <rect key="frame" x="12.5" y="491" width="351" height="56"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIe-zC-tN2" customClass="FilterLabelView">
+                                    <rect key="frame" x="12.5" y="547" width="351" height="56"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XA2-8y-JuI" customClass="FilterLabelView">
+                                    <rect key="frame" x="12.5" y="603" width="351" height="56"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNJ-Y0-aPS" customClass="FilterLabelView">
+                                    <rect key="frame" x="12.5" y="659" width="351" height="56"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="DIe-zC-tN2" firstAttribute="top" secondItem="dvb-RP-I0A" secondAttribute="bottom" id="40G-XO-D7L"/>
+                                <constraint firstItem="LNJ-Y0-aPS" firstAttribute="top" secondItem="XA2-8y-JuI" secondAttribute="bottom" id="4Ob-ya-uHO"/>
+                                <constraint firstItem="XA2-8y-JuI" firstAttribute="centerX" secondItem="DIe-zC-tN2" secondAttribute="centerX" id="CYK-2D-nu7"/>
+                                <constraint firstItem="XA2-8y-JuI" firstAttribute="height" secondItem="DIe-zC-tN2" secondAttribute="height" id="Cji-pI-mkv"/>
+                                <constraint firstItem="DIe-zC-tN2" firstAttribute="height" secondItem="dvb-RP-I0A" secondAttribute="height" id="Hia-VW-Wdt"/>
+                                <constraint firstItem="dvb-RP-I0A" firstAttribute="top" secondItem="xcQ-Bv-diU" secondAttribute="bottom" id="Ic4-hg-5uA"/>
                                 <constraint firstAttribute="trailing" secondItem="Giy-xL-DOj" secondAttribute="trailing" id="Ijw-YD-yOa"/>
+                                <constraint firstItem="xcQ-Bv-diU" firstAttribute="width" secondItem="zYw-L5-4NA" secondAttribute="width" id="J5l-cs-GEs"/>
                                 <constraint firstItem="vb0-A6-XcH" firstAttribute="leading" secondItem="2Mb-GO-RHK" secondAttribute="leading" id="LJD-fX-j3L"/>
                                 <constraint firstItem="Giy-xL-DOj" firstAttribute="leading" secondItem="2Mb-GO-RHK" secondAttribute="leading" id="NkH-ea-0WK"/>
+                                <constraint firstItem="DIe-zC-tN2" firstAttribute="width" secondItem="dvb-RP-I0A" secondAttribute="width" id="NtU-ZK-iLm"/>
+                                <constraint firstItem="dvb-RP-I0A" firstAttribute="height" secondItem="xcQ-Bv-diU" secondAttribute="height" id="Oaf-FX-8O6"/>
                                 <constraint firstItem="aW0-FM-WHu" firstAttribute="leading" secondItem="2Mb-GO-RHK" secondAttribute="leading" id="PzX-ql-yor"/>
                                 <constraint firstItem="zYw-L5-4NA" firstAttribute="top" secondItem="vb0-A6-XcH" secondAttribute="bottom" id="QAS-dK-NRH"/>
                                 <constraint firstItem="vb0-A6-XcH" firstAttribute="top" secondItem="aW0-FM-WHu" secondAttribute="bottom" id="RKX-GE-iFF"/>
                                 <constraint firstItem="zYw-L5-4NA" firstAttribute="width" secondItem="ftj-Ss-w4c" secondAttribute="width" id="RnR-Nj-X7L"/>
+                                <constraint firstItem="LNJ-Y0-aPS" firstAttribute="height" secondItem="XA2-8y-JuI" secondAttribute="height" id="SiB-OW-gSm"/>
+                                <constraint firstItem="zYw-L5-4NA" firstAttribute="top" secondItem="xcQ-Bv-diU" secondAttribute="bottom" id="UVQ-uZ-6cn"/>
                                 <constraint firstAttribute="trailing" secondItem="vb0-A6-XcH" secondAttribute="trailing" id="UxB-qY-29O"/>
+                                <constraint firstItem="xcQ-Bv-diU" firstAttribute="height" secondItem="zYw-L5-4NA" secondAttribute="height" id="XWW-hu-gEv"/>
+                                <constraint firstItem="XA2-8y-JuI" firstAttribute="width" secondItem="DIe-zC-tN2" secondAttribute="width" id="bas-a1-U4h"/>
                                 <constraint firstItem="aW0-FM-WHu" firstAttribute="top" secondItem="Giy-xL-DOj" secondAttribute="bottom" id="cTq-jg-1Io"/>
+                                <constraint firstItem="XA2-8y-JuI" firstAttribute="top" secondItem="DIe-zC-tN2" secondAttribute="bottom" id="dTf-oD-kx5"/>
                                 <constraint firstAttribute="trailing" secondItem="aW0-FM-WHu" secondAttribute="trailing" id="eDY-v8-9C9"/>
                                 <constraint firstAttribute="height" constant="600" id="fN9-yv-fbW"/>
+                                <constraint firstItem="DIe-zC-tN2" firstAttribute="centerX" secondItem="dvb-RP-I0A" secondAttribute="centerX" id="feX-CN-D0I"/>
                                 <constraint firstItem="Giy-xL-DOj" firstAttribute="top" secondItem="2Mb-GO-RHK" secondAttribute="top" id="gbV-0e-xnO"/>
+                                <constraint firstItem="LNJ-Y0-aPS" firstAttribute="width" secondItem="XA2-8y-JuI" secondAttribute="width" id="gtI-8I-S73"/>
+                                <constraint firstItem="dvb-RP-I0A" firstAttribute="width" secondItem="xcQ-Bv-diU" secondAttribute="width" id="iWr-zQ-Ogl"/>
+                                <constraint firstItem="xcQ-Bv-diU" firstAttribute="centerX" secondItem="zYw-L5-4NA" secondAttribute="centerX" id="klk-ig-sGw"/>
+                                <constraint firstItem="dvb-RP-I0A" firstAttribute="centerX" secondItem="xcQ-Bv-diU" secondAttribute="centerX" id="oT0-ti-5WS"/>
                                 <constraint firstItem="zYw-L5-4NA" firstAttribute="centerX" secondItem="vb0-A6-XcH" secondAttribute="centerX" id="q1n-Wx-KM9"/>
+                                <constraint firstItem="LNJ-Y0-aPS" firstAttribute="centerX" secondItem="XA2-8y-JuI" secondAttribute="centerX" id="xm5-Sa-Q6A"/>
                             </constraints>
                         </view>
                     </subviews>

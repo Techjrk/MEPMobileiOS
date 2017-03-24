@@ -158,7 +158,7 @@
     _labelType.text = projectType;
     stateStatus = info[kStateStatus];
     
-    if (stateStatus != nil) {
+     if (stateStatus != nil) {
 
         BOOL shouldShowUpdates = [stateStatus[kStateShowUpdate] boolValue];
         
@@ -317,10 +317,13 @@
     
     if (update != nil) {
         
-        summary = update[@"summary"];
-        detailsUpdate = update[@"modelObject"][@"company"][@"name"];
-        NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
-        amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
+        summary = [DerivedNSManagedObject objectOrNil:update[@"summary"]];
+        
+        if (summary != nil) {
+            detailsUpdate = update[@"modelObject"][@"company"][@"name"];
+            NSString *amount = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"amount"]];
+            amountDetails = [amount isEqual:(id)[NSNull null]] || amount == nil?@"$0":[NSString stringWithFormat:@"$%@",amount];
+        }
     }
     
     _labelUpdateType.text = summary;
@@ -338,9 +341,12 @@
     
     if (update != nil) {
         
-        summary = update[@"summary"];
-        company = update[@"modelObject"][@"company"][@"name"];
-        contactTitle = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"contact"][@"title"]];
+        summary = [DerivedNSManagedObject objectOrNil:update[@"summary"]];
+        
+        if (summary!=nil) {
+            company = update[@"modelObject"][@"company"][@"name"];
+            contactTitle = [DerivedNSManagedObject objectOrNil:update[@"modelObject"][@"contact"][@"title"]];
+        }
         
     }
 
