@@ -16,6 +16,7 @@
 - (void)tappedFlash;
 - (void)tappedCancel;
 - (void)customCameraControlListDidSelect:(id)info;
+- (void)customPhotoLibDidSelect:(UIImage*)image;
 @end
 
 @interface CustomCameraViewController : UIViewController

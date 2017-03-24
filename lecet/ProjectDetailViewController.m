@@ -869,13 +869,16 @@ typedef enum {
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker animated:YES];
     */
-    CustomPhotoLibraryViewController *controller = [CustomPhotoLibraryViewController new];
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
-
+    
+    [self showCustomLibraryAnimated:YES];
 #else
     [self showCameraAnimated:YES];
 #endif
-    
+}
+
+- (void)showCustomLibraryAnimated:(BOOL)animate {
+    CustomPhotoLibraryViewController *controller = [CustomPhotoLibraryViewController new];
+    [self.navigationController presentViewController:controller animated:animate completion:nil];
 }
 
 - (void)showAddPhotoScreen{
@@ -1000,13 +1003,14 @@ typedef enum {
                 break;
             }
             case CameraControlListViewLibrary: {
-                [self.picker dismissViewControllerAnimated:NO completion:^{
-                    self.picker = [[UIImagePickerController alloc] init];
-                    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-                    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
-                    self.picker.delegate = self;
-                    [self presentImagePickerController:self.picker animated:NO];
-                }];
+              //  [self.picker dismissViewControllerAnimated:NO completion:^{
+//                    self.picker = [[UIImagePickerController alloc] init];
+//                    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+//                    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
+//                    self.picker.delegate = self;
+//                    [self presentImagePickerController:self.picker animated:NO];
+             //   }];
+
                 break;
             }
             case CameraControlListView360: {
@@ -1021,5 +1025,10 @@ typedef enum {
     }
 }
 
+#pragma mark - CustomPhotoLibraryDelegate
+- (void)customPhotoLibDidSelect:(UIImage *)image {
+    self.customCameraVC.capturedImage.image = image;
+    capturedImage = image;
+}
 
 @end

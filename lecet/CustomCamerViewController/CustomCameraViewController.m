@@ -9,6 +9,7 @@
 #import "CustomCameraViewController.h"
 #import "CustomCameraCollectionViewCell.h"
 #import "CameraControlListView.h"
+#import "CustomPhotoLibView.h"
  
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
@@ -22,7 +23,10 @@
 #define COLOR_BG_BOTTOM_VIEW            RGB(5, 35, 74)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface CustomCameraViewController ()<CameraControlListViewDelegate>
+@interface CustomCameraViewController ()<CameraControlListViewDelegate,CustomPhotoLibViewDelegate>{
+    BOOL isLibrarySelected;
+    BOOL isPhotoSelected;
+}
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
@@ -32,7 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *navCancelButton;
 @property (weak, nonatomic) IBOutlet CameraControlListView *cameraControlListView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constriantCollectionHeight;
-
+@property (weak, nonatomic) IBOutlet UIView *customPhotoLibraryContainer;
+@property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
 
 @end
 
@@ -56,11 +61,18 @@
     
     self.cameraControlListView.cameraControlListViewDelegate = self;
     self.cameraControlListView.focusOnItem = CameraControlListViewPhoto;
-    [self.cameraControlListView setCameraItemsInfo:cameraItems];
+    [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:YES];
+    
+    self.customPhotoLibView.customPhotoLibViewDelegate = self;
+    self.customPhotoLibView.hidden = YES;
     
     self.capturedImage.hidden = YES;
     
     self.constriantCollectionHeight.constant = kDeviceHeight * 0.1;
+    
+    isLibrarySelected = NO;
+    isPhotoSelected = YES;
+
 }
 
 
@@ -83,7 +95,21 @@
     NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];
     self.cameraControlListView.isImageCaptured = hide;
     self.cameraControlListView.focusOnItem = hide?CameraControlListViewPreview:CameraControlListViewPhoto;
-    [self.cameraControlListView setCameraItemsInfo:cameraItems];
+    [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:hide?NO:YES];
+}
+
+- (void)hideLibraryControl:(BOOL)hide {
+    self.cameraSwitchButton.hidden = hide?YES:NO;
+    self.flashButton.hidden = hide?YES:NO;
+    self.takePhotoButton.hidden = hide?YES:NO;
+    
+    self.capturedImage.hidden = hide;
+    self.constriantCollectionHeight.constant = !hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
+    
+    NSArray *cameraItems = hide?[self firstSetCameraItems]: [self itemsOnceImageSelected];
+    self.cameraControlListView.isImageCaptured = !hide;
+    self.cameraControlListView.focusOnItem = hide?CameraControlListViewLibrary:CameraControlListViewPreview;
+    [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:hide];
 }
 
 - (IBAction)tappedCancelButton:(id)sender {
@@ -113,30 +139,49 @@
         CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
         switch (items) {
             case CameraControlListViewPreview : {
-                
+                isLibrarySelected = NO;
+                isPhotoSelected = NO;
                 break;
             }
             case CameraControlListViewUse: {
-
+                isLibrarySelected = NO;
+                isPhotoSelected = NO;
                 break;
             }
             case CameraControlListViewRetake: {
+                self.customPhotoLibView.hidden = NO;
                 [self hideDefaultCameraControl:NO];
+                isLibrarySelected = NO;
+                isPhotoSelected = NO;
                 break;
             }
             case CameraControlListViewPano: {
-                
+                isLibrarySelected = NO;
+                isPhotoSelected = NO;
                 break;
             }
             case CameraControlListViewPhoto: {
-                
+                if (!isPhotoSelected) {
+                    self.customPhotoLibView.hidden = YES;
+                    isLibrarySelected = NO;
+                    [self hideDefaultCameraControl:NO];
+                    isPhotoSelected = YES;
+                }
                 break;
             }
             case CameraControlListViewLibrary: {
-                
+                if (!isLibrarySelected) {
+                    self.customPhotoLibView.hidden = NO;
+                    self.capturedImage.hidden = YES;
+                    [self hideLibraryControl:YES];
+                    isLibrarySelected = YES;
+                    isPhotoSelected = NO;
+                }
                 break;
             }
             case CameraControlListView360: {
+                isLibrarySelected = NO;
+                isPhotoSelected = NO;
                 
                 break;
             }
@@ -148,6 +193,21 @@
     }
     
     [self.customCameraViewControllerDelegate customCameraControlListDidSelect:info];
+}
+
+#pragma mark - CustomPhotoLibDelegate
+- (void)customPhotoLibDidSelect:(UIImage *)image {
+    self.customPhotoLibView.hidden  = YES;
+    self.capturedImage.hidden = NO;
+    
+    self.constriantCollectionHeight.constant = kDeviceHeight * 0.2;
+    
+    NSArray *cameraItems = [self itemsOnceImageSelected];
+    self.cameraControlListView.isImageCaptured = YES;
+    self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
+    [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:NO];
+    [self.customCameraViewControllerDelegate customPhotoLibDidSelect:image];
+    
 }
 
 #pragma mark - MISC Method
@@ -170,6 +230,17 @@
     
     return cameraItems;
     
+}
+
+- (NSArray *)itemsOnceImageSelected {
+    NSArray *cameraItems = @[
+                             @{@"title":NSLocalizedLanguage(@"CCVC_LIBRARY"),@"type":@(CameraControlListViewLibrary)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_PREVIEW"),@"type":@(CameraControlListViewPreview)},
+                             @{@"title":NSLocalizedLanguage(@"CCVC_USE"),@"type":@(CameraControlListViewUse)}
+                             ];
+    
+    return cameraItems;
+
 }
 
 @end

@@ -18,6 +18,7 @@
 @property (strong,nonatomic) id<CameraControlListViewDelegate> cameraControlListViewDelegate;
 @property (nonatomic,assign)  BOOL isImageCaptured;
 @property (nonatomic,assign) CameraControlListViewItems focusOnItem;
-- (void)setCameraItemsInfo:(NSArray *)cameraItems;
+
+- (void)setCameraItemsInfo:(NSArray *)cameraItems hideLineView:(BOOL)hide;
 
 @end
