@@ -452,6 +452,16 @@
 "CCVC_PREVIEW"                              =               "PREVIEW";
 "CCVC_USE"                                  =               "Use";
 
+//CustomPhotoLibraryViewController
+"CPLVC_TITLE"                               =               "Add Photo";
+"CPLVC_CANCEL"                              =               "CANCEL";
+"CPLVC_LIBRARY"                             =               "LIBRARY";
+"CPLVC_PHOTO"                               =               "PHOTO";
+"CPLVC_PANO"                                =               "PANO";
+"CPLVC_360"                                 =               "360";
+"CPLVC_RETAKE"                              =               "Retake";
+"CPLVC_PREVIEW"                             =               "PREVIEW";
+"CPLVC_USE"                                 =               "Use";
 //NewProjectViewController
 "NPVC_TITLE"                                =               "New Project";
 "NPVC_CANCEL"                               =               "CANCEL";
@@ -470,5 +480,7 @@
 "NPVC_ESTLOW"                               =               "EST LOW";
 "NPVC_STAGE"                                =               "STAGE";
 "NPVC_TARGET_DATE"                          =               "TARGET SET DATE";
+
+
 
 
