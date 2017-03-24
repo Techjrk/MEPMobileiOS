@@ -464,5 +464,11 @@
 "NPVC_CITY"                                 =               "City";
 "NPVC_STATE"                                =               "State";
 "NPVC_ZIP"                                  =               "Zip";
+"NPVC_COUNTY"                               =               "COUNTY";
+"NPVC_BIDSTATUS"                            =               "BID STATUS";
+"NPVC_TYPE"                                 =               "TYPE";
+"NPVC_ESTLOW"                               =               "EST LOW";
+"NPVC_STAGE"                                =               "STAGE";
+"NPVC_TARGET_DATE"                          =               "TARGET SET DATE";
 
 

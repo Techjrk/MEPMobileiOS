@@ -120,12 +120,24 @@
     [cell searchLocationGeoCode];
     
     if ([DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]]) {
-        NSString *titleUpdates =  [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"summary"];
+        NSString *titleUpdates =  [DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"summary"] ];
+        
+        if (titleUpdates == nil) {
+            titleUpdates = @"";
+        }
         [cell setButtonLabelTitle:titleUpdates];
-        id modelType = [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"modelType"];
+        id modelType = [DerivedNSManagedObject objectOrNil:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"][@"modelType"]];
+        
+        if (modelType == nil) {
+            modelType = @"";
+        }
         [cell setImage:modelType];
         //[cell setUpdateDescription:titleName];
-        [cell setUpdateInfo:[collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"]];
+        NSString *updateInfo = [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"];
+        if (updateInfo == nil) {
+            updateInfo = @"";
+        }
+        [cell setUpdateInfo:updateInfo];
     }
     
     NSString *flag = [collectionDataItems objectAtIndex:indexPath.row][COMPANYDATA_BUTTON_STATE];

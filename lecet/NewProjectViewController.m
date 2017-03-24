@@ -43,6 +43,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldState;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldZip;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldCounty;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldBidStatus;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldType;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldEstLow;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldStage;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldTargetSetDate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewHeight;
 @end
 
 @implementation NewProjectViewController
@@ -66,6 +72,13 @@
      "NPVC_STATE"                                =               "State";
      "NPVC_ZIP"                                  =               "Zip";
 
+     "NPVC_COUNTY"                               =               "COUNTY";
+     "NPVC_BIDSTATUS"                            =               "BID STATUS";
+     "NPVC_TYPE"                                 =               "TYPE";
+     "NPVC_ESTLOW"                               =               "EST LOW";
+     "NPVC_STAGE"                                =               "STAGE";
+     "NPVC_TARGET_DATE"                          =               "TARGET SET DATE";
+
      */
     self.headerView.backgroundColor = HEADER_BGROUND;
     self.spacerView.backgroundColor = HEADER_BGROUND;
@@ -88,13 +101,19 @@
     self.labelAddress.text = NSLocalizedLanguage(@"NPVC_LABEL_ADDRESS");
     [self changeLabelStyle:self.labelAddress];
     
-    
     [self changeTextFieldStyle:self.textFieldProjectTitle placeHolder:NSLocalizedLanguage(@"NPVC_PROJECT_TITLE")];
     [self changeTextFieldStyle:self.textFieldAddress1 placeHolder:NSLocalizedLanguage(@"NPVC_STREET1")];
     [self changeTextFieldStyle:self.textFieldAddress2 placeHolder:NSLocalizedLanguage(@"NPVC_STREET2")];
     [self changeTextFieldStyle:self.textFieldCity placeHolder:NSLocalizedLanguage(@"NPVC_CITY")];
     [self changeTextFieldStyle:self.textFieldState placeHolder:NSLocalizedLanguage(@"NPVC_STATE")];
     [self changeTextFieldStyle:self.textFieldZip placeHolder:NSLocalizedLanguage(@"NPVC_ZIP")];
+    
+    [self.fieldCounty setTitle:NSLocalizedLanguage(@"NPVC_COUNTY")];
+    [self.fieldBidStatus setTitle:NSLocalizedLanguage(@"NPVC_BIDSTATUS")];
+    [self.fieldType setTitle:NSLocalizedLanguage(@"NPVC_TYPE")];
+    [self.fieldEstLow setTitle:NSLocalizedLanguage(@"NPVC_ESTLOW")];
+    [self.fieldStage setTitle:NSLocalizedLanguage(@"NPVC_STAGE")];
+    [self.fieldTargetSetDate setTitle:NSLocalizedLanguage(@"NPVC_TARGET_DATE")];
 
 }
 
@@ -120,7 +139,7 @@
 - (void)changeTextFieldStyle:(UITextField*)textField placeHolder:(NSString*)placeHolder{
     textField.layer.borderWidth = 0.5;
     textField.layer.borderColor = LINE_COLOR.CGColor;
-    
+    textField.layer.sublayerTransform = CATransform3DMakeTranslation(kDeviceWidth*0.02, 0, 0);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSFontAttributeName:PLACEHOLDER_FONT, NSForegroundColorAttributeName:PLACEHOLDER_COLOR}];
     textField.attributedPlaceholder = attributedString;
 }
