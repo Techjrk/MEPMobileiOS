@@ -42,11 +42,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.titleLabel.text = NSLocalizedLanguage(@"MPNPV_TITLE");
+    NSString *title = self.isAddImage?NSLocalizedLanguage(@"MPNPV_TITLE_PHOTO"):NSLocalizedLanguage(@"MPNPV_TITLE");
+    self.titleLabel.text = title;
     self.titleLabel.font = FONT_PN_POPUP_TITLE;
     self.titleLabel.textColor = COLOR_FONT_POPUP_TITLE;
     
-    [self.postNoteButton setTitle:NSLocalizedLanguage(@"MPNPV_POST_NOTE") forState:UIControlStateNormal];
+    NSString *titleButton = self.isAddImage?NSLocalizedLanguage(@"MPNPV_POST_IMAGE"):NSLocalizedLanguage(@"MPNPV_POST_NOTE");
+    [self.postNoteButton setTitle:titleButton forState:UIControlStateNormal];
     [self.postNoteButton setTitleColor:COLOR_FONT_POSTNOTE_BUTTON_TITLE forState:UIControlStateNormal];
     self.postNoteButton.titleLabel.font = FONT_POSTNOTE_BUTTON_TITLE;
     self.postNoteButton.backgroundColor = COLOR_BG_POSTNOTE_BUTTON;

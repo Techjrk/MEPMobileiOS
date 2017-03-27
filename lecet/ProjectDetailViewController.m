@@ -53,7 +53,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate,CustomPhotoLibraryViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -863,13 +863,7 @@ typedef enum {
 
 - (void)showCustomCamera {
 #if TARGET_IPHONE_SIMULATOR
-    /*
-    self.picker = [[UIImagePickerController alloc] init];
-    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
-    self.picker.delegate = self;
-    [self presentImagePickerController:self.picker animated:YES];
-    */
+    
     [self showCustomLibraryAnimated:YES];
 #else
     [self showCameraAnimated:YES];
@@ -878,6 +872,7 @@ typedef enum {
 
 - (void)showCustomLibraryAnimated:(BOOL)animate {
     CustomPhotoLibraryViewController *controller = [CustomPhotoLibraryViewController new];
+    controller.customPhotoLibraryViewControllerDelegate = self;
     [self.navigationController presentViewController:controller animated:animate completion:nil];
 }
 
@@ -985,9 +980,14 @@ typedef enum {
                 break;
             }
             case CameraControlListViewUse: {
-                [self.picker dismissViewControllerAnimated:YES completion:^{
+                if (self.picker) {
+                    [self.picker dismissViewControllerAnimated:YES completion:^{
+                        [self showAddPhotoScreen];
+                    }];
+                    
+                } else {
                     [self showAddPhotoScreen];
-                }];
+                }
                 break;
             }
             case CameraControlListViewRetake: {

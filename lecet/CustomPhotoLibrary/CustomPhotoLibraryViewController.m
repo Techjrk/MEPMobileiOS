@@ -162,7 +162,7 @@
         self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
         [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
         isLibrarySelected = NO;
-        
+        [self.customPhotoLibraryViewControllerDelegate customCameraPhotoLibDidSelect:resultImage];
     }];
 }
 #pragma mark - CameraControlListDelegate
@@ -176,6 +176,9 @@
             }
             case CameraControlListViewUse: {
                 isLibrarySelected = NO;
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [self.customPhotoLibraryViewControllerDelegate customCameraControlListDidSelect:info];
+                }];
                 break;
             }
             case CameraControlListViewRetake: {

@@ -95,7 +95,7 @@
     
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
-    self.addButton.userInteractionEnabled = NO;
+    self.addButton.userInteractionEnabled = self.isAddPhoto?YES:NO;
     self.capturedImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.capturedImageView.image = self.capturedImage;
     
@@ -132,6 +132,7 @@
 }
 
 - (IBAction)tappedAddButton:(id)sender {
+    /*
     if (self.isAddPhoto) {
         [self.loadingIndicator startAnimating];
         [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
@@ -142,12 +143,14 @@
             NSLog(@"Failed request");
         }];
     } else {
+        */
         MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
         controller.mobileProjectNotePopUpViewControllerDelegate = self;
+        controller.isAddImage = self.isAddPhoto;
         controller.modalPresentationStyle = UIModalPresentationCustom;
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self.navigationController presentViewController:controller animated:YES completion:nil];
-    }
+    //}
 }
 - (IBAction)tappedTrashcanButton:(id)sender {
     self.capturedImageView.image = nil;
@@ -194,37 +197,11 @@
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    /*
-    if (!isKeyboardShown) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
-            [self.view layoutIfNeeded];
-        }completion:^(BOOL fin){
-            isKeyboardShown = YES;
-        }];
-    }
-    */
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    /*
-    if (isKeyboardShown) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [self updateHeighForBodyTextEndEditing];
-            [self.view layoutIfNeeded];
-        }completion:^(BOOL fin){
-            if (fin) {
-                NSString *stripSpaceString = [textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-                if (stripSpaceString.length == 0) {
-                    [self bodyTextViewPlaceHolder];
-                    textView.textColor = [UIColor lightGrayColor];
-                }
-                isKeyboardShown = NO;
-            }
-        }];
-    }
-    */
+    
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
@@ -266,60 +243,44 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    /*
-    if (!isKeyboardShown) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.constraintTextViewHeight.constant = kDeviceHeight * 0.25;
-            [self.view layoutIfNeeded];
-        }completion:^(BOOL fin){
-            isKeyboardShown = YES;
-        }];
 
-    }
-    */
     return YES;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
 
-    /*
-    if (isKeyboardShown) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [self updateHeighForBodyTextEndEditing];
-            [self.view layoutIfNeeded];
-        }completion:^(BOOL fin){
-            isKeyboardShown = NO;
-        }];
-    }
-    */
 }
 
 -(void)onEditing:(id)sender {
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
-    /*
-    NSString *stripString = [self.postTitleTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (stripString.length > 0) {
-        self.addButton.userInteractionEnabled = YES;
-    } else {
-        self.addButton.userInteractionEnabled = NO;
-    }
-     */
 }
 
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
 
 - (void)tappedPostNoteButton {
     [self.loadingIndicator startAnimating];
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
-    [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
-        [self.loadingIndicator stopAnimating];
-        [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
-        [self.navigationController popViewControllerAnimated:YES];
-    }failure:^(id object){
-        [self.loadingIndicator stopAnimating];
-        NSLog(@"Failed request");
-    }];
+    if (self.isAddPhoto) {
+        [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
+            [self.loadingIndicator stopAnimating];
+            [self.navigationController popViewControllerAnimated:YES];
+        }failure:^(id fail){
+            [self.loadingIndicator stopAnimating];
+            NSLog(@"Failed request");
+        }];
+    } else {
+        NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
+        [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
+            [self.loadingIndicator stopAnimating];
+            [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
+            [self.navigationController popViewControllerAnimated:YES];
+        }failure:^(id object){
+            [self.loadingIndicator stopAnimating];
+            NSLog(@"Failed request");
+        }];
+
+    }
+    
 }
 
 - (void)tappedDismissedPostNote {
