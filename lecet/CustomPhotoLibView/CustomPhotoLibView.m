@@ -28,20 +28,22 @@
     [self.collectionView registerNib:[UINib nibWithNibName:[[CustomPhotoLibraryCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     self.imageManager = [PHCachingImageManager new];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
+    
+    [self performSelector:@selector(setInfo) withObject:nil afterDelay:2];
+}
+
+- (void)setInfo {
     if (self.fetchresult == nil) {
         PHFetchOptions *options = [PHFetchOptions new];
         //options.sortDescriptors = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:YES];
         self.fetchresult = [PHAsset fetchAssetsWithOptions:options];
         [self.collectionView reloadData];
     }
-
-    
 }
 
-#pragma mark - UICollectionView Delegate and Datasource
 #pragma mark Photo LibraryDelegate
 - (void)photoLibraryDidChange:(PHChange *)changeInstance {
-    
+    [self.collectionView reloadData];
 }
 
 

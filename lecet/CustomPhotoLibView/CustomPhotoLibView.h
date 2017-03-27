@@ -15,5 +15,6 @@
 
 @interface CustomPhotoLibView : BaseViewClass
 @property (strong,nonatomic) id<CustomPhotoLibViewDelegate> customPhotoLibViewDelegate;
+- (void)setInfo;
 
 @end

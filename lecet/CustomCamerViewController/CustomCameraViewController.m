@@ -75,7 +75,6 @@
 
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -90,12 +89,17 @@
     self.takePhotoButton.hidden = hide;
 
     self.capturedImage.hidden = !hide;
-    self.constriantCollectionHeight.constant = hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
-    
+
     NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];
     self.cameraControlListView.isImageCaptured = hide;
     self.cameraControlListView.focusOnItem = hide?CameraControlListViewPreview:CameraControlListViewPhoto;
     [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:hide?NO:YES];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constriantCollectionHeight.constant = hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
+        [self.view layoutIfNeeded];
+    }];
+    
 }
 
 - (void)hideLibraryControl:(BOOL)hide {
@@ -104,12 +108,18 @@
     self.takePhotoButton.hidden = hide?YES:NO;
     
     self.capturedImage.hidden = hide;
-    self.constriantCollectionHeight.constant = !hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
+    
     
     NSArray *cameraItems = hide?[self firstSetCameraItems]: [self itemsOnceImageSelected];
     self.cameraControlListView.isImageCaptured = !hide;
     self.cameraControlListView.focusOnItem = hide?CameraControlListViewLibrary:CameraControlListViewPreview;
     [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:hide];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constriantCollectionHeight.constant = !hide?kDeviceHeight * 0.2:kDeviceHeight * 0.1;
+        [self.view layoutIfNeeded];
+    }];
+    
 }
 
 - (IBAction)tappedCancelButton:(id)sender {
@@ -199,19 +209,23 @@
 - (void)customPhotoLibDidSelect:(UIImage *)image {
     self.customPhotoLibView.hidden  = YES;
     self.capturedImage.hidden = NO;
+    if (isLibrarySelected) {
+        NSArray *cameraItems = [self itemsOnceImageSelected];
+        self.cameraControlListView.isImageCaptured = YES;
+        self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
+        [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:NO];
+    }
+    [self.customCameraViewControllerDelegate customCameraPhotoLibDidSelect:image];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constriantCollectionHeight.constant = kDeviceHeight * 0.2;
+        [self.view layoutIfNeeded];
+    }];
+
     
-    self.constriantCollectionHeight.constant = kDeviceHeight * 0.2;
-    
-    NSArray *cameraItems = [self itemsOnceImageSelected];
-    self.cameraControlListView.isImageCaptured = YES;
-    self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
-    [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:NO];
-    [self.customCameraViewControllerDelegate customPhotoLibDidSelect:image];
     
 }
 
 #pragma mark - MISC Method
-
 - (NSArray*)firstSetCameraItems {
     NSArray *cameraItems = @[@"",@{@"title":NSLocalizedLanguage(@"CCVC_LIBRARY"),@"type":@(CameraControlListViewLibrary)},
                              @{@"title":NSLocalizedLanguage(@"CCVC_PHOTO"),@"type":@(CameraControlListViewPhoto)},

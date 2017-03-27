@@ -870,7 +870,6 @@ typedef enum {
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker animated:YES];
     */
-    
     [self showCustomLibraryAnimated:YES];
 #else
     [self showCameraAnimated:YES];
@@ -1004,13 +1003,6 @@ typedef enum {
                 break;
             }
             case CameraControlListViewLibrary: {
-              //  [self.picker dismissViewControllerAnimated:NO completion:^{
-//                    self.picker = [[UIImagePickerController alloc] init];
-//                    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-//                    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
-//                    self.picker.delegate = self;
-//                    [self presentImagePickerController:self.picker animated:NO];
-             //   }];
 
                 break;
             }
@@ -1027,7 +1019,7 @@ typedef enum {
 }
 
 #pragma mark - CustomPhotoLibraryDelegate
-- (void)customPhotoLibDidSelect:(UIImage *)image {
+- (void)customCameraPhotoLibDidSelect:(UIImage *)image {
     self.customCameraVC.capturedImage.image = image;
     capturedImage = image;
 }
