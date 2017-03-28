@@ -10,6 +10,7 @@
 
 @protocol ImageNoteCollectionViewCellDelegate
 - (void)tappedButtonEdit:(UIImage*)image title:(NSString*)string detail:(NSString*)detail recordID:(NSNumber *)recordID;
+- (void)tappedDelete:(UIImage*)image itemID:(NSNumber *)itemID;
 @end
 
 @interface ImageNoteCollectionViewCell : UICollectionViewCell

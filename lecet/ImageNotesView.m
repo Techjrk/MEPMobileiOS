@@ -47,6 +47,9 @@
 - (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail recordID:(NSNumber *)recordID {
     [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image recordID:recordID];
 }
+- (void)tappedDelete:(UIImage *)image itemID:(NSNumber *)itemID {
+    [self.imageNotesViewDelegate deleteNoteAndImage:itemID image:image];
+}
 
 #pragma mark - Custom Methods
 - (void)reloadData {

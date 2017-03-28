@@ -874,7 +874,7 @@ typedef enum {
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)deleteNoteAndImage:(id)itemsID recordID:(NSNumber *)reocrdID{
+- (void)deleteNoteAndImage:(NSNumber *)itemsID image:(UIImage *)image{
     
 }
 

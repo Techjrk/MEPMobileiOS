@@ -128,7 +128,7 @@
 }
 
 - (IBAction)tappedButtonDelete:(id)sender {
-    
+    [self.imageNoteCollectionViewCellDelegate tappedDelete:self.image.image itemID:self.recordID];
 }
 
 @end
