@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "ProjectHeaderView.h"
 
 @interface NewProjectViewController : BaseViewController
-
+@property (strong, nonatomic) CLLocation *location;
+@property (nonatomic) PinType pinType;
 @end

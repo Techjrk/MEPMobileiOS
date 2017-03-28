@@ -30,4 +30,5 @@ typedef enum : NSUInteger {
 @property (nonatomic) PinType pinType;
 - (void)setHeaderInfo:(id)headerInfo;
 - (CGRect)mapFrame;
+- (CLLocation*)location;
 @end

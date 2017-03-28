@@ -118,4 +118,9 @@
     return _mapView.frame;
 }
 
+- (CLLocation *)location {
+    MKPointAnnotation *annotation = _mapView.annotations[0];
+
+    return [[CLLocation new] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+}
 @end
