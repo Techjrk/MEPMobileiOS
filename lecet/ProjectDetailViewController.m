@@ -838,13 +838,14 @@ typedef enum {
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (IBAction)tappedButtonAddImage:(id)sender {
+    [self showCustomCamera];
+}
+
+#pragma mark - MobileProjectAddNoteViewControllerDelegate
 - (void)tappedUpdateUserNotes {
     imageNotesItems = nil;
     [self loadNotes];
-}
-
-- (IBAction)tappedButtonAddImage:(id)sender {
-    [self showCustomCamera];
 }
 
 #pragma mark - ImageNoteViewDelegate
@@ -857,6 +858,22 @@ typedef enum {
         controller.text = detail;
         [self.navigationController pushViewController:controller animated:YES];
     }
+}
+
+- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image{
+    MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+    controller.projectID = recordId;
+    if (image != nil) {
+        controller.isAddPhoto = YES;
+    }
+    controller.mobileProjectAddNoteViewControllerDelegate = self;
+    controller.capturedImage = image;
+    controller.itemsToBeUpdate = @{@"title":title,@"detail":detail};
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)deleteNoteAndImage:(id)itemsID {
+    
 }
 
 #pragma mark - Custom Camera Method

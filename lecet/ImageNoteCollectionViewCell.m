@@ -121,4 +121,14 @@
     self.constraintImageHeight.constant = CONSTRAINT_IMAGE_HEIGHT;
     [self layoutSubviews];
 }
+
+#pragma mark - IBActions
+- (IBAction)tappedButtonEdit:(id)sender {
+    [self.imageNoteCollectionViewCellDelegate tappedButtonEdit:self.image.image title:self.titleView.text detail:self.note.text];
+}
+
+- (IBAction)tappedButtonDelete:(id)sender {
+    
+}
+
 @end

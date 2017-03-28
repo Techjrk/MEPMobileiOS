@@ -11,6 +11,8 @@
 
 @protocol ImageNotesViewDelegate
 - (void)viewNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image;
+- (void)updateNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image;
+- (void)deleteNoteAndImage:(id)itemsID;
 @end
 
 @interface ImageNotesView : BaseViewClass

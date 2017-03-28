@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ImageNoteCollectionViewCell
+@protocol ImageNoteCollectionViewCellDelegate
 - (void)tappedButtonEdit:(UIImage*)image title:(NSString*)string detail:(NSString*)detail;
 @end
 
@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *user;
 @property (weak, nonatomic) IBOutlet UILabel *stamp;
+
+@property (strong,nonatomic) id<ImageNoteCollectionViewCellDelegate> imageNoteCollectionViewCellDelegate;
 
 @property (strong, nonatomic) NSNumber *imageId;
 @property (strong, nonatomic) NSNumber *userId;

@@ -1567,6 +1567,7 @@
         failure(object);
     }authenticated:YES];
 }
+
 - (void)deleteProjectUserImage:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
     [self HTTP_DELETE:[self url:url] parameters:nil success:^(id object){

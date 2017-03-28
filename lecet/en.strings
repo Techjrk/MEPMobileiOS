@@ -435,6 +435,9 @@
 "MPANV_BODY_TITLE"                          =               "BODY";
 "MPANV_BODY_PLACEHOLDER"                    =               "Post Body";
 "MPANV_FOOTER_TILE"                         =               "This post will be visible by all MEP Users.";
+"MPANV_NAV_PHOTO_TITLE_UPDATE"              =               "Update Photo";
+"MPANV_NAV_TITLE_UPDATE"                    =               "Update Note";
+"MPANV_NAV_UPDATE"                          =               "Update";
 
 //MobileProjectNotePopUpViewController
 "MPNPV_TITLE"                               =               "You are about to post a public note.";

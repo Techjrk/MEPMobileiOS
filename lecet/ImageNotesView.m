@@ -20,7 +20,7 @@
 #define NONE_COLOR                  RGBA(34, 34, 34, 50)
 #define NONE_FONT                   fontNameWithSize(FONT_NAME_LATO_ITALIC, 13)
 
-@interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate,ImageNoteCollectionViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *viewNone;
 @property (weak, nonatomic) IBOutlet UILabel *labelNone;
@@ -43,6 +43,11 @@
     self.viewNone.hidden = YES;
 }
 
+#pragma mark - ImageNoteCollectionViewCell Delegate
+- (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail {
+    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image];
+}
+
 #pragma mark - Custom Methods
 - (void)reloadData {
     self.viewNone.hidden = self.items.count>0;
@@ -62,6 +67,8 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ImageNoteCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    
+    cell.imageNoteCollectionViewCellDelegate = self;
     
     NSDictionary *item = self.items[indexPath.row];
 

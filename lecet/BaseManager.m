@@ -180,8 +180,6 @@
             
             NSString *accessToken = [self getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
             
-            
-            
             [req setValue:accessToken forHTTPHeaderField:@"Authorization"];
             
         }
