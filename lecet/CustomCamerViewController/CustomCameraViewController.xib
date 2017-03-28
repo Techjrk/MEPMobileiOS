@@ -18,6 +18,7 @@
                 <outlet property="cameraSwitchButton" destination="wti-Lb-UOL" id="9jI-xq-6yb"/>
                 <outlet property="capturedImage" destination="Bwx-T5-8zM" id="7rt-A1-GfX"/>
                 <outlet property="constriantCollectionHeight" destination="xW2-7N-ibv" id="BrZ-O9-MPh"/>
+                <outlet property="customPhotoLibView" destination="tFi-6c-fux" id="QGP-Ik-rfe"/>
                 <outlet property="flashButton" destination="Zay-7c-8uQ" id="SGu-rT-p8V"/>
                 <outlet property="navCancelButton" destination="O9p-6x-B8x" id="hHI-Gh-Pn4"/>
                 <outlet property="navTitleLabel" destination="fDq-jG-iPw" id="CKg-La-dpn"/>
@@ -146,9 +147,14 @@
                         <constraint firstAttribute="height" constant="67" id="xW2-7N-ibv"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-6c-fux" customClass="CustomPhotoLibView">
+                    <rect key="frame" x="0.0" y="84" width="375" height="516"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="tFi-6c-fux" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2b2-UE-tdc"/>
                 <constraint firstItem="dTv-4F-WYu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6d3-9Y-GCS"/>
                 <constraint firstItem="hFP-TY-kfv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6hh-Tl-644"/>
                 <constraint firstItem="dTv-4F-WYu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.125" id="9D6-tq-23E"/>
@@ -161,11 +167,14 @@
                 <constraint firstItem="4cB-gD-bcY" firstAttribute="top" secondItem="kq9-9i-Tle" secondAttribute="bottom" multiplier="0.92" id="RhP-w0-TG6"/>
                 <constraint firstItem="4cB-gD-bcY" firstAttribute="top" secondItem="Bwx-T5-8zM" secondAttribute="bottom" id="VVr-vu-NEo"/>
                 <constraint firstAttribute="trailing" secondItem="yUZ-RC-q2g" secondAttribute="trailing" id="YNc-Ar-Edb"/>
+                <constraint firstItem="tFi-6c-fux" firstAttribute="top" secondItem="dTv-4F-WYu" secondAttribute="bottom" id="YkB-ae-zMD"/>
                 <constraint firstAttribute="bottom" secondItem="yUZ-RC-q2g" secondAttribute="bottom" id="b0b-s2-TA8"/>
+                <constraint firstAttribute="trailing" secondItem="tFi-6c-fux" secondAttribute="trailing" id="bJI-js-vml"/>
                 <constraint firstAttribute="bottom" secondItem="hFP-TY-kfv" secondAttribute="bottom" id="efI-SR-XB5"/>
                 <constraint firstItem="dTv-4F-WYu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="euf-7u-9gq"/>
                 <constraint firstItem="Bwx-T5-8zM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="neg-kp-dRe"/>
                 <constraint firstAttribute="trailing" secondItem="dTv-4F-WYu" secondAttribute="trailing" id="oVv-aA-wTZ"/>
+                <constraint firstItem="yUZ-RC-q2g" firstAttribute="top" secondItem="tFi-6c-fux" secondAttribute="bottom" id="q4Y-Hs-vdo"/>
                 <constraint firstItem="Bwx-T5-8zM" firstAttribute="top" secondItem="dTv-4F-WYu" secondAttribute="bottom" id="rsw-L9-mlJ"/>
                 <constraint firstItem="hFP-TY-kfv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="zv0-uU-mzN"/>
             </constraints>

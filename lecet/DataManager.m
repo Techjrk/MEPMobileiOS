@@ -85,6 +85,9 @@
 #define kUrlProjectUserImages               @"Projects/%li/images"
 #define kUrlProjectUserImageUpload          @"Projects/%li/uploadImage"
 
+#define kUrlNotes                           @"Notes/%li"
+#define kUrlImage                           @"Images/%li"
+
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
 @implementation DataManager
@@ -1492,6 +1495,24 @@
     
 }
 
+- (void)updateProjectUserNotes:(NSNumber *)projectID parameter:(NSDictionary *)param success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlNotes, (long)projectID.integerValue];
+    [self HTTP_PUT:[self url:url] parameters:param success:^(id object){
+        success(object);
+    }failure:^(id object){
+        failure(object);
+    }authenticated:YES];
+}
+
+- (void)deleteProjectUserNotes:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlNotes, (long)projectID.integerValue];
+    [self HTTP_DELETE:[self url:url] parameters:nil success:^(id object){
+        success(object);
+    }failure:^(id object){
+        failure(object);
+    }authenticated:YES];
+}
+
 #pragma mark - Project Images
 - (void)projectUserImages:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlProjectUserImages, (long)projectID.integerValue];
@@ -1524,4 +1545,35 @@
     } authenticated:YES];
 
 }
+
+- (void)updateProjectUserImage:(NSNumber *)projectID title:(NSString *)title text:(NSString *)text image:(UIImage *)image success:(APIBlock)success failure:(APIBlock)failure{
+    CGSize imageSize = image.size;
+    
+    imageSize.width = imageSize.width * 0.3;
+    imageSize.height = imageSize.height * 0.3;
+    
+    UIGraphicsBeginImageContext( imageSize );
+    [image drawInRect:CGRectMake(0,0,imageSize.width,imageSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.5) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
+    
+    [self HTTP_PUT:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object){
+        success(object);
+    }failure:^(id object){
+        failure(object);
+    }authenticated:YES];
+}
+- (void)deleteProjectUserImage:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
+    NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
+    [self HTTP_DELETE:[self url:url] parameters:nil success:^(id object){
+        success(object);
+    }failure:^(id object){
+        failure(object);
+    }authenticated:YES];
+}
+
 @end

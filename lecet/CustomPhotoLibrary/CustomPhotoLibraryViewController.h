@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CustomPhotoLibraryViewControllerDelegate <NSObject>
+- (void)customCameraPhotoLibDidSelect:(UIImage *)image;
+- (void)customCameraControlListDidSelect:(id)info ;
+@end
+
 @interface CustomPhotoLibraryViewController : UIViewController
+@property(strong,nonatomic) id<CustomPhotoLibraryViewControllerDelegate> customPhotoLibraryViewControllerDelegate;
+
 
 @end

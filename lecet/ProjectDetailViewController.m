@@ -53,7 +53,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate,CustomPhotoLibraryViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -864,20 +864,17 @@ typedef enum {
 
 - (void)showCustomCamera {
 #if TARGET_IPHONE_SIMULATOR
-    /*
-    self.picker = [[UIImagePickerController alloc] init];
-    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
-    self.picker.delegate = self;
-    [self presentImagePickerController:self.picker animated:YES];
-    */
-    CustomPhotoLibraryViewController *controller = [CustomPhotoLibraryViewController new];
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
-
+    
+    [self showCustomLibraryAnimated:YES];
 #else
     [self showCameraAnimated:YES];
 #endif
-    
+}
+
+- (void)showCustomLibraryAnimated:(BOOL)animate {
+    CustomPhotoLibraryViewController *controller = [CustomPhotoLibraryViewController new];
+    controller.customPhotoLibraryViewControllerDelegate = self;
+    [self.navigationController presentViewController:controller animated:animate completion:nil];
 }
 
 - (void)showAddPhotoScreen{
@@ -984,9 +981,14 @@ typedef enum {
                 break;
             }
             case CameraControlListViewUse: {
-                [self.picker dismissViewControllerAnimated:YES completion:^{
+                if (self.picker) {
+                    [self.picker dismissViewControllerAnimated:YES completion:^{
+                        [self showAddPhotoScreen];
+                    }];
+                    
+                } else {
                     [self showAddPhotoScreen];
-                }];
+                }
                 break;
             }
             case CameraControlListViewRetake: {
@@ -1002,13 +1004,7 @@ typedef enum {
                 break;
             }
             case CameraControlListViewLibrary: {
-                [self.picker dismissViewControllerAnimated:NO completion:^{
-                    self.picker = [[UIImagePickerController alloc] init];
-                    self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-                    self.picker.modalPresentationStyle = UIModalPresentationCustom;;
-                    self.picker.delegate = self;
-                    [self presentImagePickerController:self.picker animated:NO];
-                }];
+
                 break;
             }
             case CameraControlListView360: {
@@ -1023,5 +1019,10 @@ typedef enum {
     }
 }
 
+#pragma mark - CustomPhotoLibraryDelegate
+- (void)customCameraPhotoLibDidSelect:(UIImage *)image {
+    self.customCameraVC.capturedImage.image = image;
+    capturedImage = image;
+}
 
 @end

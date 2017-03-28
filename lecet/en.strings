@@ -438,7 +438,9 @@
 
 //MobileProjectNotePopUpViewController
 "MPNPV_TITLE"                               =               "You are about to post a public note.";
+"MPNPV_TITLE_PHOTO"                         =               "You are about to post a public image.";
 "MPNPV_POST_NOTE"                           =               "POST NOTE";
+"MPNPV_POST_IMAGE"                          =               "POST IMAGE";
 "MPNPV_CANCEL"                              =               "CANCEL";
 
 //CustomCameraViewController

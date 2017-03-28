@@ -20,6 +20,7 @@
 @interface CameraControlListView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSIndexPath *selectedIndex;
     BOOL isImageCaptured;
+    BOOL hideLineView;
 }
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -35,7 +36,9 @@
     [self.collectionView registerNib:[UINib nibWithNibName:[[CustomCameraCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
-    self.lineView.backgroundColor = COLOR_BG_LINE_VIEW;
+    self.lineView.backgroundColor = [COLOR_BG_LINE_VIEW colorWithAlphaComponent:0.5];
+    self.lineView.hidden = YES;
+    
   
 }
 
@@ -102,7 +105,8 @@
 }
 
 #pragma mark - Misc Method
-- (void)setCameraItemsInfo:(NSArray *)cameraItems {
+- (void)setCameraItemsInfo:(NSArray *)cameraItems hideLineView:(BOOL)hide {
+    self.lineView.hidden = hide;
     self.cameraItems = cameraItems;
     [self.collectionView reloadData];
     

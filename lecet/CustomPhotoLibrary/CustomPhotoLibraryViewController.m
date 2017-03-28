@@ -69,12 +69,12 @@
     NSArray *items = [self firstSetCameraItems];
     self.cameraControlListView.cameraControlListViewDelegate = self;
     self.cameraControlListView.focusOnItem = CameraControlListViewLibrary;
-    [self.cameraControlListView setCameraItemsInfo:items];
+    [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
     
     isLibrarySelected = NO;
     
     self.imageManager = [PHCachingImageManager new];
-    
+
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
     if (self.fetchresult == nil) {
         PHFetchOptions *options = [PHFetchOptions new];
@@ -160,9 +160,9 @@
         
         NSArray *items = [self secondSetCameraItems];
         self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
-        [self.cameraControlListView setCameraItemsInfo:items];
+        [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
         isLibrarySelected = NO;
-        
+        [self.customPhotoLibraryViewControllerDelegate customCameraPhotoLibDidSelect:resultImage];
     }];
 }
 #pragma mark - CameraControlListDelegate
@@ -176,6 +176,9 @@
             }
             case CameraControlListViewUse: {
                 isLibrarySelected = NO;
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [self.customPhotoLibraryViewControllerDelegate customCameraControlListDidSelect:info];
+                }];
                 break;
             }
             case CameraControlListViewRetake: {
@@ -197,7 +200,7 @@
                     
                     NSArray *items = [self firstSetCameraItems];
                     self.cameraControlListView.focusOnItem = CameraControlListViewLibrary;
-                    [self.cameraControlListView setCameraItemsInfo:items];
+                    [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
                     isLibrarySelected = YES;
                     
                 }
