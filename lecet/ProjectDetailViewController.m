@@ -861,7 +861,7 @@ typedef enum {
     }
 }
 
-- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image{
+- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image recordID:(NSNumber *)reocrdID{
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
     if (image != nil) {
@@ -869,11 +869,12 @@ typedef enum {
     }
     controller.mobileProjectAddNoteViewControllerDelegate = self;
     controller.capturedImage = image;
+    controller.projectID = reocrdID;
     controller.itemsToBeUpdate = @{@"title":title,@"detail":detail};
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)deleteNoteAndImage:(id)itemsID {
+- (void)deleteNoteAndImage:(id)itemsID recordID:(NSNumber *)reocrdID{
     
 }
 

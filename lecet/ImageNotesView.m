@@ -44,8 +44,8 @@
 }
 
 #pragma mark - ImageNoteCollectionViewCell Delegate
-- (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail {
-    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image];
+- (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail recordID:(NSNumber *)recordID {
+    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image recordID:recordID];
 }
 
 #pragma mark - Custom Methods
@@ -82,12 +82,14 @@
         cell.imageId = nil;
         cell.image.image = nil;
         cell.userId = item[@"authorId"];
+        cell.recordID = item[@"id"];
         
     } else {
         NSString *urlString = item[@"url"];
         NSNumber *imageId = item[@"id"];
         cell.imageId = imageId;
         cell.userId = item[@"userId"];
+        cell.recordID = item[@"id"];
         
         cell.user.text = [NSString stringWithFormat:@"%@ %@",item[@"user"][@"first_name"], item[@"user"][@"last_name"]];
         
