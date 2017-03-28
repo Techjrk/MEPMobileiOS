@@ -485,6 +485,8 @@
 "NPVC_ESTLOW"                               =               "EST LOW";
 "NPVC_STAGE"                                =               "STAGE";
 "NPVC_TARGET_DATE"                          =               "TARGET SET DATE";
+"NPVC_NONE"                                 =               "None";
+"NPVC_SELECT"                               =               "Select";
 
 
 

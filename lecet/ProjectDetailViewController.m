@@ -826,9 +826,10 @@ typedef enum {
 }
 
 - (IBAction)tappedButtonAddNote:(id)sender {
-    
     /*
     NewProjectViewController *controller = [NewProjectViewController new];
+    controller.location = [self.headerView location];
+    controller.pinType = self.headerView.pinType;
     [self.navigationController pushViewController:controller animated:YES];
     */
     

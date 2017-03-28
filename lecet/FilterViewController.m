@@ -39,6 +39,7 @@
 @synthesize singleSelect;
 @synthesize fieldValue;
 @synthesize filterViewControllerDelegate;
+@synthesize parentOnly;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,7 +58,7 @@
     _viewbackground.layer.masksToBounds = YES;
 
     localListViewItems = [ListViewItemArray new];
-    
+    //self.parentOnly = NO;
     
     for (ListViewItemDictionary *item in self.listViewItems) {
         ListViewItemDictionary *mutableItem = item;
@@ -250,7 +251,10 @@
   
         if (checkedItem.boolValue | includeChild) {
             [checkedItems addObject:item[LIST_VIEW_VALUE]];
-            includeSubChild = YES;
+            
+            if (!self.parentOnly) {
+                includeSubChild = YES;
+            }
             if (checkedItem.boolValue) {
                 [checkedTitles addObject:item[LIST_VIEW_NAME]];
             }

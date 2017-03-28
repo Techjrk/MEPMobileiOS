@@ -8,6 +8,10 @@
 
 #import "NewProjectViewController.h"
 #import "FilterLabelView.h"
+#import "SearchFilterViewController.h"
+#import "CameraControlListViewItem.h"
+#import "ListItemCollectionViewCell.h"
+#import "FilterViewController.h"
 #import <MapKit/MapKit.h>
 
 //#define LABEL_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
@@ -27,7 +31,10 @@
 #define HEADER_BGROUND                      RGBA(21, 78, 132, 95)
 #define PLACEHOLDER_COLOR                   RGBA(34, 34, 34, 50)
 
-@interface NewProjectViewController ()
+@interface NewProjectViewController ()<FilterLabelViewDelegate, SearchFilterViewControllerDelegate, FilterViewControllerDelegate, MKMapViewDelegate>{
+    ListViewItemArray *listItemsProjectTypeId;
+    ListViewItemArray *listItemsProjectStageId;
+}
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
@@ -49,37 +56,21 @@
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldStage;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldTargetSetDate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewHeight;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) id<SearchFilterViewControllerDelegate>searchFilterViewControllerDelegate;
+@property (weak, nonatomic) id<FilterViewControllerDelegate>filterViewControllerDelegate;
+
+
 @end
 
 @implementation NewProjectViewController
+@synthesize location;
 
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-     "NPVC_TITLE"                                =               "New Project";
-     "NPVC_CANCEL"                               =               "CANCEL";
-     "NPVC_SAVE"                                 =               "SAVE";
-     "NPVC_LABEL_TITLE"                          =               "TITLE";
-     "NPVC_LABEL_ADDRESS"                        =               "ADDRESS";
-     
-     "NPVC_PROJECT_TITLE"                        =               "Project Title";
-     "NPVC_STREET1"                              =               "Street 1";
-     "NPVC_STREET2"                              =               "Street 2";
-     "NPVC_CITY"                                 =               "City";
-     "NPVC_STATE"                                =               "State";
-     "NPVC_ZIP"                                  =               "Zip";
-
-     "NPVC_COUNTY"                               =               "COUNTY";
-     "NPVC_BIDSTATUS"                            =               "BID STATUS";
-     "NPVC_TYPE"                                 =               "TYPE";
-     "NPVC_ESTLOW"                               =               "EST LOW";
-     "NPVC_STAGE"                                =               "STAGE";
-     "NPVC_TARGET_DATE"                          =               "TARGET SET DATE";
-
-     */
     self.headerView.backgroundColor = HEADER_BGROUND;
     self.spacerView.backgroundColor = HEADER_BGROUND;
     
@@ -103,17 +94,45 @@
     
     [self changeTextFieldStyle:self.textFieldProjectTitle placeHolder:NSLocalizedLanguage(@"NPVC_PROJECT_TITLE")];
     [self changeTextFieldStyle:self.textFieldAddress1 placeHolder:NSLocalizedLanguage(@"NPVC_STREET1")];
+    self.textFieldAddress1.userInteractionEnabled = NO;
+    
     [self changeTextFieldStyle:self.textFieldAddress2 placeHolder:NSLocalizedLanguage(@"NPVC_STREET2")];
+    self.textFieldAddress2.userInteractionEnabled = NO;
+    
     [self changeTextFieldStyle:self.textFieldCity placeHolder:NSLocalizedLanguage(@"NPVC_CITY")];
+    self.textFieldCity.userInteractionEnabled = NO;
+    
     [self changeTextFieldStyle:self.textFieldState placeHolder:NSLocalizedLanguage(@"NPVC_STATE")];
+    self.textFieldState.userInteractionEnabled = NO;
+    
     [self changeTextFieldStyle:self.textFieldZip placeHolder:NSLocalizedLanguage(@"NPVC_ZIP")];
+    self.textFieldZip.userInteractionEnabled = NO;
     
     [self.fieldCounty setTitle:NSLocalizedLanguage(@"NPVC_COUNTY")];
+    
+    [self.fieldBidStatus setValue:NSLocalizedLanguage(@"NPVC_SELECT")];
     [self.fieldBidStatus setTitle:NSLocalizedLanguage(@"NPVC_BIDSTATUS")];
+    
+    [self.fieldType setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldType setTitle:NSLocalizedLanguage(@"NPVC_TYPE")];
+    self.fieldType.filterModel = FilterModelProjectType;
+    self.fieldType.filterLabelViewDelegate = self;
+  
+    [self.fieldEstLow setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldEstLow setTitle:NSLocalizedLanguage(@"NPVC_ESTLOW")];
+  
+    [self.fieldStage setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldStage setTitle:NSLocalizedLanguage(@"NPVC_STAGE")];
+    self.fieldStage.filterModel = FilterModelStage;
+    self.fieldStage.filterLabelViewDelegate = self;
+    
+    [self.fieldTargetSetDate setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldTargetSetDate setTitle:NSLocalizedLanguage(@"NPVC_TARGET_DATE")];
+    
+    if (self.location != nil) {
+        [self findLocation];
+        [self setMap];
+    }
 
 }
 
@@ -127,6 +146,13 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.constraintViewHeight.constant = self.fieldTargetSetDate.frame.origin.y + self.fieldTargetSetDate.frame.size.height + (kDeviceHeight * 0.01);
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.constraintViewHeight.constant  );
 }
 
 #pragma mark - Custom Methods
@@ -144,12 +170,252 @@
     textField.attributedPlaceholder = attributedString;
 }
 
+#pragma mark - FindLocation
+
+- (void)findLocation {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:self.location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     
+                     if (placemarks && placemarks.count > 0) {
+                         
+                         CLPlacemark *result = [placemarks objectAtIndex:0];
+                         NSDictionary *address = result.addressDictionary;
+                         NSLog(@"%@", [address description]);
+                         
+                         self.textFieldAddress1.text = [DerivedNSManagedObject objectOrNil:address[@"Street"]];
+                    
+                         self.textFieldCity.text = [DerivedNSManagedObject objectOrNil:address[@"City"]];
+                         
+                         self.textFieldState.text = [DerivedNSManagedObject objectOrNil:address[@"State"]];
+                         
+                         self.textFieldZip.text = [DerivedNSManagedObject objectOrNil:address[@"ZIP"]];
+                         
+                     } else if (error != nil) {
+                         
+                         //[self searchRecursiveLocationGeocode:YES];
+                     }
+                 }
+     ];
+}
 #pragma mark - IBActions
 - (IBAction)tappedCancel:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)tappedSave:(id)sender {
+}
+
+#pragma mark - FilterLabelViewDelegate
+
+- (void)tappedFilterLabelView:(id)object {
+    if ([self.fieldType isEqual:object]) {
+        [self filterProjectTypes:object];
+    } else if ([self.fieldStage isEqual:object]) {
+        [self filterStage:object];
+    }
+}
+
+#pragma mark - SearchFilterViewControllerDelegate
+- (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
+    
+}
+
+#pragma mark - Project Types
+- (void)filterProjectTypes:(UIView*)view {
+    
+    if (listItemsProjectTypeId == nil) {
+        [[DataManager sharedManager] projectTypes:^(id groups) {
+            
+            ListViewItemArray *listItems = [ListViewItemArray new];
+            
+            for (NSDictionary *group in groups) {
+                
+                ListViewItemDictionary *groupItem = [ListItemCollectionViewCell createItem:group[@"title"] value:group[@"id"] model:@"projectGroup"];
+                
+                NSArray *categories = [DerivedNSManagedObject objectOrNil:group[@"projectCategories"]];
+                
+                if (categories) {
+                    
+                    ListViewItemArray *groupItems = [ListViewItemArray new];
+                    
+                    for (NSDictionary *category in categories) {
+                        
+                        ListViewItemDictionary *categoryItem = [ListItemCollectionViewCell createItem:category[@"title"] value:category[@"id"] model:@"projectCategory"];
+                        [groupItems addObject:categoryItem];
+                        
+                        NSArray *projectTypes = [DerivedNSManagedObject objectOrNil:category[@"projectTypes"]];
+                        
+                        if (projectTypes) {
+                            
+                            ListViewItemArray *projectTypeItems = [ListViewItemArray new];
+                            
+                            for (NSDictionary *projectType in projectTypes) {
+                                
+                                ListViewItemDictionary *projectTypeItem = [ListItemCollectionViewCell createItem:projectType[@"title"] value:projectType[@"id"] model:@"projectType"];
+                                
+                                [projectTypeItems addObject:projectTypeItem];
+                            }
+                            
+                            categoryItem[LIST_VIEW_SUBITEMS] = projectTypeItems;
+                            
+                        }
+                        
+                    }
+                    
+                    groupItem[LIST_VIEW_SUBITEMS] = groupItems;
+                    
+                }
+                
+                [listItems addObject:groupItem];
+                
+            }
+            
+            listItemsProjectTypeId = listItems;
+            
+            [self displayProjectTypeId];
+            
+        } failure:^(id object) {
+            
+        }];
+    } else {
+        [self displayProjectTypeId];
+    }
+    
+}
+
+- (void)displayProjectTypeId {
+    
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
+    controller.listViewItems = listItemsProjectTypeId;
+    controller.filterViewControllerDelegate = self;
+    controller.fieldValue = @"projectTypeId";
+    controller.singleSelect = YES;
+    controller.parentOnly = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+
+- (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles {
+    
+}
+
+#pragma mark - Stage
+
+- (void)filterStage:(UIView*)view {
+    
+    if (listItemsProjectStageId == nil) {
+        
+        ListViewItemArray *listItems = [ListViewItemArray new];
+        
+        [[DataManager sharedManager] parentStage:^(id object) {
+            
+            for (NSDictionary *item in object) {
+                
+                ListViewItemDictionary *listItem = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"parentStage"];
+                
+                NSArray *stages = [DerivedNSManagedObject objectOrNil:item[@"stages"]];
+                
+                if (stages != nil) {
+                    
+                    ListViewItemArray *subItems = [ListViewItemArray new];
+                    
+                    for (NSDictionary *stage in stages) {
+                        
+                        ListViewItemDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
+                        [subItems addObject:subItem];
+                        
+                    }
+                    
+                    listItem[LIST_VIEW_SUBITEMS] = subItems;
+                }
+                
+                [listItems addObject:listItem];
+                
+            }
+            
+            listItemsProjectStageId = listItems;
+            [self displayProjectStageId];
+            
+        } failure:^(id object) {
+            
+        }];
+    } else {
+        
+        [self displayProjectStageId];
+        
+    }
+    
+}
+
+- (void) displayProjectStageId {
+    
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
+    controller.listViewItems = listItemsProjectStageId;
+    controller.filterViewControllerDelegate = self;
+    controller.fieldValue = @"projectStageId";
+    controller.singleSelect = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+
+#pragma mark - Pin
+
+- (void)setMap {
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.location.coordinate.latitude, self.location.coordinate.longitude);
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    MKCoordinateRegion region = {coordinate, span};
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    
+    [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView setRegion:region];
+    [_mapView addAnnotation:annotation];
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *userAnnotationView = nil;
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        userAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+        if (userAnnotationView == nil)  {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+        }
+        else
+            userAnnotationView.annotation = annotation;
+        
+        userAnnotationView.enabled = NO;
+        
+        userAnnotationView.canShowCallout = NO;
+        switch (self.pinType) {
+            case pinTypeOrange:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
+                break;
+                
+            case pinTypeOrageUpdate:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_dodgeProjectUpdates"];
+                break;
+                
+            case pinTypeUser:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_userProject"];
+                break;
+                
+            default:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_userProjectUpdates"];
+                break;
+        }
+        
+    }
+    
+    return userAnnotationView;
+    
 }
 
 @end
