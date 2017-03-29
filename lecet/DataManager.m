@@ -1497,11 +1497,12 @@
 
 - (void)updateProjectUserNotes:(NSNumber *)projectID parameter:(NSDictionary *)param success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlNotes, (long)projectID.integerValue];
-    [self HTTP_PUT:[self url:url] parameters:param success:^(id object){
+    [self HTTP_PUT_BODY:[self url:url] parameters:param success:^(id object){
         success(object);
     }failure:^(id object){
         failure(object);
     }authenticated:YES];
+    
 }
 
 - (void)deleteProjectUserNotes:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
@@ -1561,12 +1562,12 @@
     
     NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
     
-    [self HTTP_PUT:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object){
+    [self HTTP_PUT_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object){
         success(object);
     }failure:^(id object){
         failure(object);
-    }authenticated:YES];
-}
+    }authenticated:YES];}
+
 - (void)deleteProjectUserImage:(NSNumber *)projectID success:(APIBlock)success failure:(APIBlock)failure {
     NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
     [self HTTP_DELETE:[self url:url] parameters:nil success:^(id object){

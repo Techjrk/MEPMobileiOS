@@ -68,6 +68,7 @@ typedef enum {
     BOOL isFlashOn;
     DB_Project *referenceProject;
     UIImage *capturedImage;
+    NSDictionary *imageItemsToBeUpdated;
 }
 
 @property (strong, nonatomic) UIImagePickerController *picker;
@@ -839,13 +840,19 @@ typedef enum {
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (IBAction)tappedButtonAddImage:(id)sender {
+    [self showCustomCamera];
+}
+
+#pragma mark - MobileProjectAddNoteViewControllerDelegate
 - (void)tappedUpdateUserNotes {
     imageNotesItems = nil;
+    imageItemsToBeUpdated = nil;
     [self loadNotes];
 }
 
-- (IBAction)tappedButtonAddImage:(id)sender {
-    [self showCustomCamera];
+- (void)tappedCancelAddUpdateNoteImage{
+    imageItemsToBeUpdated = nil;
 }
 
 #pragma mark - ImageNoteViewDelegate
@@ -858,6 +865,76 @@ typedef enum {
         controller.text = detail;
         [self.navigationController pushViewController:controller animated:YES];
     }
+}
+
+- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image recordID:(NSNumber *)reocrdID{
+    if (image == nil) {
+        MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
+        controller.projectID = recordId;
+        /*
+        if (image != nil) {
+            controller.isAddPhoto = YES;
+        }
+        */
+        controller.mobileProjectAddNoteViewControllerDelegate = self;
+        //controller.capturedImage = image;
+        controller.projectID = reocrdID;
+        controller.itemsToBeUpdate = @{@"title":title,@"detail":detail};
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    } else {
+        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":recordId};
+        [self showCustomCamera];
+    }
+    
+}
+
+- (void)deleteNoteAndImage:(NSNumber *)itemsID image:(UIImage *)image{
+    
+    NSString *message = image != nil?NSLocalizedLanguage(@"PROJECT_DETAIL_DELETE_IMAGE"):NSLocalizedLanguage(@"PROJECT_DETAIL_DELETE_NOTES");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_BUTTON_YES")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          if (image != nil) {
+                                                              [self deleteImage:itemsID];
+                                                          } else {
+                                                              [self deleteNotes:itemsID];
+                                                          }
+                                                      }];
+    
+    [alert addAction:yesAction];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_BUTTON_NO")
+                                                       style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction *action) {
+                                                         
+                                                     }];
+    
+    [alert addAction:noAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
+
+#pragma mark - Request For Deleting Notes and Images
+
+- (void)deleteNotes:(NSNumber *)notesID {
+    [[DataManager sharedManager] deleteProjectUserNotes:notesID success:^(id object){
+        [self loadNotes];
+    
+    }failure:^(id object){
+        
+    }];
+}
+
+- (void)deleteImage:(NSNumber *)imageID {
+    [[DataManager sharedManager] deleteProjectUserImage:imageID success:^(id object){
+        [self loadImages];
+    }failure:^(id object){
+        
+    }];
 }
 
 #pragma mark - Custom Camera Method
@@ -877,12 +954,18 @@ typedef enum {
     [self.navigationController presentViewController:controller animated:animate completion:nil];
 }
 
-- (void)showAddPhotoScreen{
+- (void)showAddPhotoScreenItems:(NSDictionary *)items{
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
-    controller.projectID = recordId;
+    
     controller.isAddPhoto = YES;
     controller.capturedImage = capturedImage;
     controller.mobileProjectAddNoteViewControllerDelegate = self;
+    if (items != nil && items.count > 0) {
+        controller.itemsToBeUpdate = items;
+        controller.projectID = items[@"itemID"];
+    } else{
+        controller.projectID = recordId;
+    }
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -931,14 +1014,14 @@ typedef enum {
     
     if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
         [self.picker dismissViewControllerAnimated:YES completion:^{
-            [self showAddPhotoScreen];
+            [self showAddPhotoScreenItems:imageItemsToBeUpdated];
         }];
     }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:^{
-        
+        imageItemsToBeUpdated = nil;
     }];
 }
 
@@ -983,11 +1066,11 @@ typedef enum {
             case CameraControlListViewUse: {
                 if (self.picker) {
                     [self.picker dismissViewControllerAnimated:YES completion:^{
-                        [self showAddPhotoScreen];
+                        [self showAddPhotoScreenItems:imageItemsToBeUpdated];
                     }];
                     
                 } else {
-                    [self showAddPhotoScreen];
+                    [self showAddPhotoScreenItems:imageItemsToBeUpdated];
                 }
                 break;
             }

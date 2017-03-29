@@ -20,7 +20,7 @@
 #define NONE_COLOR                  RGBA(34, 34, 34, 50)
 #define NONE_FONT                   fontNameWithSize(FONT_NAME_LATO_ITALIC, 13)
 
-@interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate,ImageNoteCollectionViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *viewNone;
 @property (weak, nonatomic) IBOutlet UILabel *labelNone;
@@ -43,6 +43,14 @@
     self.viewNone.hidden = YES;
 }
 
+#pragma mark - ImageNoteCollectionViewCell Delegate
+- (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail recordID:(NSNumber *)recordID {
+    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image recordID:recordID];
+}
+- (void)tappedDelete:(UIImage *)image itemID:(NSNumber *)itemID {
+    [self.imageNotesViewDelegate deleteNoteAndImage:itemID image:image];
+}
+
 #pragma mark - Custom Methods
 - (void)reloadData {
     self.viewNone.hidden = self.items.count>0;
@@ -63,6 +71,8 @@
     
     ImageNoteCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
+    cell.imageNoteCollectionViewCellDelegate = self;
+    
     NSDictionary *item = self.items[indexPath.row];
 
     NSString *timeStamp = item[@"createdAt"];
@@ -75,12 +85,14 @@
         cell.imageId = nil;
         cell.image.image = nil;
         cell.userId = item[@"authorId"];
+        cell.recordID = item[@"id"];
         
     } else {
         NSString *urlString = item[@"url"];
         NSNumber *imageId = item[@"id"];
         cell.imageId = imageId;
         cell.userId = item[@"userId"];
+        cell.recordID = item[@"id"];
         
         cell.user.text = [NSString stringWithFormat:@"%@ %@",item[@"user"][@"first_name"], item[@"user"][@"last_name"]];
         

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ImageNoteCollectionViewCell
-- (void)tappedButtonEdit:(UIImage*)image title:(NSString*)string detail:(NSString*)detail;
+@protocol ImageNoteCollectionViewCellDelegate
+- (void)tappedButtonEdit:(UIImage*)image title:(NSString*)string detail:(NSString*)detail recordID:(NSNumber *)recordID;
+- (void)tappedDelete:(UIImage*)image itemID:(NSNumber *)itemID;
 @end
 
 @interface ImageNoteCollectionViewCell : UICollectionViewCell
@@ -20,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *user;
 @property (weak, nonatomic) IBOutlet UILabel *stamp;
 
+@property (strong,nonatomic) id<ImageNoteCollectionViewCellDelegate> imageNoteCollectionViewCellDelegate;
+
+@property (strong, nonatomic) NSNumber *recordID;
 @property (strong, nonatomic) NSNumber *imageId;
 @property (strong, nonatomic) NSNumber *userId;
 + (CGFloat)itemSize;
