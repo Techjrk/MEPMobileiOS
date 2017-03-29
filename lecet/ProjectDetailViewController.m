@@ -876,6 +876,50 @@ typedef enum {
 
 - (void)deleteNoteAndImage:(NSNumber *)itemsID image:(UIImage *)image{
     
+    NSString *message = image != nil?NSLocalizedLanguage(@"PROJECT_DETAIL_DELETE_IMAGE"):NSLocalizedLanguage(@"PROJECT_DETAIL_DELETE_NOTES");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_BUTTON_YES")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          if (image != nil) {
+                                                              [self deleteImage:itemsID];
+                                                          } else {
+                                                              [self deleteNotes:itemsID];
+                                                          }
+                                                      }];
+    
+    [alert addAction:yesAction];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_BUTTON_NO")
+                                                       style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction *action) {
+                                                         
+                                                     }];
+    
+    [alert addAction:noAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
+
+#pragma mark - Request For Deleting Notes and Images
+
+- (void)deleteNotes:(NSNumber *)notesID {
+    [[DataManager sharedManager] deleteProjectUserNotes:notesID success:^(id object){
+        [self loadNotes];
+    
+    }failure:^(id object){
+        
+    }];
+}
+
+- (void)deleteImage:(NSNumber *)imageID {
+    [[DataManager sharedManager] deleteProjectUserImage:imageID success:^(id object){
+        
+    }failure:^(id object){
+        
+    }];
 }
 
 #pragma mark - Custom Camera Method
