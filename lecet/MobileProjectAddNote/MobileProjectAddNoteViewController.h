@@ -10,6 +10,7 @@
 
 @protocol MobileProjectAddNoteViewControllerDelegate <NSObject>
 - (void) tappedUpdateUserNotes;
+- (void) tappedCancelAddUpdateNoteImage;
 @end
 
 @interface MobileProjectAddNoteViewController : UIViewController

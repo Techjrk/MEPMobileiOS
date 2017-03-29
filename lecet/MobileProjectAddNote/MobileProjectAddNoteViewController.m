@@ -125,6 +125,7 @@
 
 #pragma mark - IBActions
 - (IBAction)tappedCancelButton:(id)sender {
+    [self.mobileProjectAddNoteViewControllerDelegate tappedCancelAddUpdateNoteImage];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
