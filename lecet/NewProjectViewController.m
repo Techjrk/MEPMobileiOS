@@ -31,9 +31,17 @@
 #define HEADER_BGROUND                      RGBA(21, 78, 132, 95)
 #define PLACEHOLDER_COLOR                   RGBA(34, 34, 34, 50)
 
+#define KEY_PROJECTSTAGEID                  @"projectStageId"
+#define KEY_TYPEID                          @"projectTypeId"
+
 @interface NewProjectViewController ()<FilterLabelViewDelegate, SearchFilterViewControllerDelegate, FilterViewControllerDelegate, MKMapViewDelegate>{
     ListViewItemArray *listItemsProjectTypeId;
     ListViewItemArray *listItemsProjectStageId;
+    
+    NSNumber *typeId;
+    NSNumber *estLow;
+    NSNumber *stageId;
+    NSString *targetDate;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
@@ -59,7 +67,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) id<SearchFilterViewControllerDelegate>searchFilterViewControllerDelegate;
 @property (weak, nonatomic) id<FilterViewControllerDelegate>filterViewControllerDelegate;
-
+@property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
+@property (weak, nonatomic) IBOutlet UIView *viewPicker;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDone;
 
 @end
 
@@ -70,6 +80,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self enableTapGesture:YES];
     
     self.headerView.backgroundColor = HEADER_BGROUND;
     self.spacerView.backgroundColor = HEADER_BGROUND;
@@ -120,20 +132,28 @@
   
     [self.fieldEstLow setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldEstLow setTitle:NSLocalizedLanguage(@"NPVC_ESTLOW")];
-  
+    self.fieldEstLow.filterModel = FilterModelEstLow;
+    self.fieldEstLow.filterLabelViewDelegate = self;
+    
     [self.fieldStage setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldStage setTitle:NSLocalizedLanguage(@"NPVC_STAGE")];
     self.fieldStage.filterModel = FilterModelStage;
     self.fieldStage.filterLabelViewDelegate = self;
     
     [self.fieldTargetSetDate setValue:NSLocalizedLanguage(@"NPVC_NONE")];
+    
     [self.fieldTargetSetDate setTitle:NSLocalizedLanguage(@"NPVC_TARGET_DATE")];
+    self.fieldTargetSetDate.filterLabelViewDelegate = self;
     
     if (self.location != nil) {
         [self findLocation];
         [self setMap];
     }
 
+    self.viewPicker.hidden = YES;
+    self.dateTimePicker.backgroundColor = [UIColor whiteColor];
+    
+    [self.buttonDone setTitle:NSLocalizedLanguage(@"NPVC_DONE") forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,6 +166,12 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+- (IBAction)tappedDoneButton:(id)sender {
+    self.viewPicker.hidden = YES;
+    
+    [self.fieldTargetSetDate setValue:[DerivedNSManagedObject shortDateStringFromDate:self.dateTimePicker.date]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -193,7 +219,6 @@
                          
                      } else if (error != nil) {
                          
-                         //[self searchRecursiveLocationGeocode:YES];
                      }
                  }
      ];
@@ -213,7 +238,43 @@
         [self filterProjectTypes:object];
     } else if ([self.fieldStage isEqual:object]) {
         [self filterStage:object];
+    } else if ([self.fieldTargetSetDate isEqual:object]) {
+        self.viewPicker.hidden = NO;
+        self.dateTimePicker.date = [NSDate date];
+    } if ([self.fieldEstLow isEqual:object]) {
+        [self promptEstLow];
     }
+}
+
+- (void) promptEstLow {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedLanguage(@"NPVC_ESTLOW_TITLE") message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
+        textField.placeholder = @"0.00";
+        textField.keyboardType = UIKeyboardTypeDecimalPad;
+    }];
+    
+    UIAlertAction *actionAccept = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION_ACCEPT") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        for (int i=0; i<alert.textFields.count; i++) {
+            UITextField *alertTextField = alert.textFields[i];
+            estLow = [NSNumber numberWithFloat: [alertTextField.text floatValue]];
+        }
+        
+    }];
+    
+    [alert addAction:actionAccept];
+    
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION_CANCEL") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:actionCancel];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 #pragma mark - SearchFilterViewControllerDelegate
@@ -299,6 +360,13 @@
 
 - (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles {
     
+    if ([key isEqualToString:KEY_PROJECTSTAGEID]) {
+        [self.fieldStage setValue:titles[0]];
+        stageId = selectedItems[0];
+    } else if ([key isEqualToString:KEY_TYPEID]) {
+        [self.fieldType setValue:titles[0]];
+        typeId = selectedItems[0];
+    }
 }
 
 #pragma mark - Stage
@@ -357,6 +425,7 @@
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectStageId";
     controller.singleSelect = YES;
+    controller.parentOnly = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -418,4 +487,10 @@
     
 }
 
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender {
+    [super handleSingleTap:sender];
+    if (!self.viewPicker.hidden) {
+        self.viewPicker.hidden = YES;
+    }
+}
 @end

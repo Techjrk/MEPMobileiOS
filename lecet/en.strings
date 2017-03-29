@@ -484,6 +484,8 @@
 "NPVC_TARGET_DATE"                          =               "TARGET SET DATE";
 "NPVC_NONE"                                 =               "None";
 "NPVC_SELECT"                               =               "Select";
+"NPVC_DONE"                                 =               "DONE";
+"NPVC_ESTLOW_TITLE"                         =               "EST LOW VALUE";
 
 
 
