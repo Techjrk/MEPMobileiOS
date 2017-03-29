@@ -932,7 +932,9 @@ typedef enum {
 
 - (void)deleteImage:(NSNumber *)imageID {
     [[DataManager sharedManager] deleteProjectUserImage:imageID success:^(id object){
-        [self loadImages];
+        //[self loadImages];
+        imageNotesItems = nil;
+        [self loadNotes];
     }failure:^(id object){
         
     }];
