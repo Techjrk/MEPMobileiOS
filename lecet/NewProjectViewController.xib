@@ -13,8 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewProjectViewController">
             <connections>
                 <outlet property="buttonCancel" destination="lcs-q3-z9d" id="dUd-SH-HBG"/>
+                <outlet property="buttonDone" destination="Zd2-q0-Wiq" id="SGe-a0-Wbe"/>
                 <outlet property="buttonSave" destination="58p-FM-Vnz" id="Zwq-jL-dsh"/>
                 <outlet property="constraintViewHeight" destination="fN9-yv-fbW" id="Gp8-Fp-A2i"/>
+                <outlet property="dateTimePicker" destination="PGv-Ma-2W5" id="nGH-gf-K7l"/>
                 <outlet property="fieldBidStatus" destination="xcQ-Bv-diU" id="YE0-a7-S4B"/>
                 <outlet property="fieldCounty" destination="zYw-L5-4NA" id="6E5-m9-7uQ"/>
                 <outlet property="fieldEstLow" destination="DIe-zC-tN2" id="6ga-Qg-f89"/>
@@ -35,6 +37,7 @@
                 <outlet property="textFieldState" destination="x8R-O8-MzO" id="e3P-Ge-mgQ"/>
                 <outlet property="textFieldZip" destination="pRb-gV-cvI" id="RS0-yN-KPw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewPicker" destination="Did-yt-E9f" id="XJs-hN-H9D"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -317,19 +320,53 @@
                         <constraint firstAttribute="bottom" secondItem="2Mb-GO-RHK" secondAttribute="bottom" priority="250" id="umz-Ja-GPL"/>
                     </constraints>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Did-yt-E9f">
+                    <rect key="frame" x="0.0" y="433.5" width="375" height="233.5"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-Ma-2W5">
+                            <rect key="frame" x="0.0" y="46.5" width="375" height="187"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <date key="date" timeIntervalSinceReferenceDate="512405332.62869602">
+                                <!--2017-03-28 14:48:52 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd2-q0-Wiq">
+                            <rect key="frame" x="281.5" y="0.0" width="93.5" height="46.5"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="tappedDoneButton:" destination="-1" eventType="touchUpInside" id="x4o-E2-Yt0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="PGv-Ma-2W5" firstAttribute="width" secondItem="Did-yt-E9f" secondAttribute="width" id="1vD-5p-n4l"/>
+                        <constraint firstItem="PGv-Ma-2W5" firstAttribute="top" secondItem="Zd2-q0-Wiq" secondAttribute="bottom" id="DSc-2n-hBl"/>
+                        <constraint firstItem="Zd2-q0-Wiq" firstAttribute="width" secondItem="Did-yt-E9f" secondAttribute="width" multiplier="0.25" id="SDH-0y-TYU"/>
+                        <constraint firstAttribute="trailing" secondItem="Zd2-q0-Wiq" secondAttribute="trailing" id="SN9-Qx-160"/>
+                        <constraint firstItem="PGv-Ma-2W5" firstAttribute="height" secondItem="Did-yt-E9f" secondAttribute="height" multiplier="0.8" id="TKs-5t-5O4"/>
+                        <constraint firstAttribute="bottom" secondItem="PGv-Ma-2W5" secondAttribute="bottom" id="d4M-XP-6a1"/>
+                        <constraint firstItem="Zd2-q0-Wiq" firstAttribute="top" secondItem="Did-yt-E9f" secondAttribute="top" id="g40-qJ-4Y1"/>
+                        <constraint firstItem="PGv-Ma-2W5" firstAttribute="leading" secondItem="Did-yt-E9f" secondAttribute="leading" id="gPa-zs-Qoq"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Did-yt-E9f" secondAttribute="trailing" id="1RT-ZR-ki9"/>
                 <constraint firstItem="cIf-Vu-yeE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9A0-Mv-Ymi"/>
                 <constraint firstItem="IRU-G1-Tbj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AfA-SQ-dX4"/>
                 <constraint firstAttribute="bottom" secondItem="cIf-Vu-yeE" secondAttribute="bottom" id="Ftr-p2-2KC"/>
                 <constraint firstItem="zYw-L5-4NA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.083" id="L7c-qZ-R9y"/>
                 <constraint firstItem="O0b-Ye-hSX" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.046" id="Par-OT-NS7"/>
                 <constraint firstAttribute="trailing" secondItem="IRU-G1-Tbj" secondAttribute="trailing" id="VMZ-fF-d2C"/>
+                <constraint firstAttribute="bottom" secondItem="Did-yt-E9f" secondAttribute="bottom" id="Z21-dd-s3W"/>
                 <constraint firstItem="cIf-Vu-yeE" firstAttribute="top" secondItem="ADN-4Q-UjA" secondAttribute="bottom" id="cEI-3H-cIQ"/>
                 <constraint firstItem="IRU-G1-Tbj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dQB-JF-CCx"/>
                 <constraint firstAttribute="trailing" secondItem="cIf-Vu-yeE" secondAttribute="trailing" id="gpu-uz-Ekp"/>
+                <constraint firstItem="Did-yt-E9f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hNe-uz-Beb"/>
                 <constraint firstItem="Giy-xL-DOj" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.33" id="kfq-hM-ggs"/>
+                <constraint firstItem="Did-yt-E9f" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.35" id="lBB-yr-heg"/>
                 <constraint firstItem="vb0-A6-XcH" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.48" id="pGP-96-sRl"/>
                 <constraint firstItem="7uK-1d-mGd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.044" id="pqH-29-JDZ"/>
                 <constraint firstItem="aW0-FM-WHu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.005" id="q1h-ki-WCd"/>

@@ -21,7 +21,8 @@ typedef enum : NSUInteger {
     FilterModelBH,
     FilterModelOwner,
     FilterModelWork,
-    FilterModelProjectType
+    FilterModelProjectType,
+    FilterModelEstLow
 } FilterModel;
 
 
