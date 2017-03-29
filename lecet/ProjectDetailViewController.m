@@ -922,6 +922,7 @@ typedef enum {
 
 - (void)deleteNotes:(NSNumber *)notesID {
     [[DataManager sharedManager] deleteProjectUserNotes:notesID success:^(id object){
+        imageNotesItems = nil;
         [self loadNotes];
     
     }failure:^(id object){
