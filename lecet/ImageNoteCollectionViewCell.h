@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol ImageNoteCollectionViewCellDelegate
-- (void)tappedButtonEdit:(UIImage*)image title:(NSString*)string detail:(NSString*)detail recordID:(NSNumber *)recordID;
+- (void)tappedButtonEdit:(UIImage*)image title:(NSString*)string detail:(NSString*)detail recordID:(NSNumber *)recordID indexPath:(NSIndexPath *)indexPath;
 - (void)tappedDelete:(UIImage*)image itemID:(NSNumber *)itemID;
 @end
 
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSNumber *recordID;
 @property (strong, nonatomic) NSNumber *imageId;
 @property (strong, nonatomic) NSNumber *userId;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 + (CGFloat)itemSize;
 + (CGFloat)itemSizeWithImage;
 

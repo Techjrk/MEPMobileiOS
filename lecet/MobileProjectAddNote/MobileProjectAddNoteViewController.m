@@ -240,11 +240,26 @@
     return [text lowercaseString];
 }
 
+- (void)deleteImageFromFileManager {
+    NSString *urlString = [DerivedNSManagedObject objectOrNil:self.itemsToBeUpdate[@"imageLink"]];
+    if (urlString.length > 0 && urlString != nil) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:urlString]) {
+            NSError *error;
+            BOOL success = [[NSFileManager defaultManager] removeItemAtPath:urlString error:&error];
+            if (success) {
+                NSLog(@"Deleted");
+            }
+        }
+        
+    }
+}
+
 #pragma mark - Request Method
 
 - (void)addProjectUserImage {
     [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
         [self.loadingIndicator stopAnimating];
+        [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id fail){
         [self.loadingIndicator stopAnimating];
@@ -254,6 +269,8 @@
 
 - (void)updateProjectUserImage {
     [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
+        [self deleteImageFromFileManager];
+        [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.loadingIndicator stopAnimating];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id fail){

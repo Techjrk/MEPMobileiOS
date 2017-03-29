@@ -124,7 +124,7 @@
 
 #pragma mark - IBActions
 - (IBAction)tappedButtonEdit:(id)sender {
-    [self.imageNoteCollectionViewCellDelegate tappedButtonEdit:self.image.image title:self.titleView.text detail:self.note.text recordID:self.recordID];
+    [self.imageNoteCollectionViewCellDelegate tappedButtonEdit:self.image.image title:self.titleView.text detail:self.note.text recordID:self.recordID indexPath:self.indexPath];
 }
 
 - (IBAction)tappedButtonDelete:(id)sender {

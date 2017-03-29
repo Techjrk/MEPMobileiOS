@@ -867,23 +867,17 @@ typedef enum {
     }
 }
 
-- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image recordID:(NSNumber *)reocrdID{
+- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image itemID:(NSNumber *)itemID imageLink:(NSString *)link{
     if (image == nil) {
         MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
         controller.projectID = recordId;
-        /*
-        if (image != nil) {
-            controller.isAddPhoto = YES;
-        }
-        */
         controller.mobileProjectAddNoteViewControllerDelegate = self;
-        //controller.capturedImage = image;
-        controller.projectID = reocrdID;
+        controller.projectID = itemID;
         controller.itemsToBeUpdate = @{@"title":title,@"detail":detail};
         [self.navigationController pushViewController:controller animated:YES];
         
     } else {
-        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":recordId};
+        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":itemID,@"imageLink":link};
         [self showCustomCamera];
     }
     
