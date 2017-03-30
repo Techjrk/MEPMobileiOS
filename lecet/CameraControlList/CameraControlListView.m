@@ -97,10 +97,15 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *info = self.cameraItems[indexPath.row];
     if (info != nil && ![info isEqual:@""]) {
-        selectedIndex = indexPath;
-        [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-        [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
-        [self.collectionView reloadData];
+        CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
+        if (items == CameraControlListViewPano || items == CameraControlListView360) {
+            
+        } else {
+            selectedIndex = indexPath;
+            [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+            [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
+            [self.collectionView reloadData];
+        }
     }
 }
 

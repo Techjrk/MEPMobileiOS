@@ -241,7 +241,7 @@
     NSArray *cameraItems = @[@"",@{@"title":NSLocalizedLanguage(@"CCVC_LIBRARY"),@"type":@(CameraControlListViewLibrary)},
                              @{@"title":NSLocalizedLanguage(@"CCVC_PHOTO"),@"type":@(CameraControlListViewPhoto)},
                              @{@"title":NSLocalizedLanguage(@"CCVC_PANO"),@"type":@(CameraControlListViewPano)},
-                             @{@"title":NSLocalizedLanguage(@"CCVC_360"),@"type":@(CameraControlListViewPano)},@""];
+                             @{@"title":NSLocalizedLanguage(@"CCVC_360"),@"type":@(CameraControlListView360)},@""];
     
     return cameraItems;
 }
