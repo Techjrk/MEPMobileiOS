@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomCameraViewController">
             <connections>
+                <outlet property="backgroundView" destination="QYM-pl-7a1" id="ZxX-un-OGF"/>
                 <outlet property="bottomView" destination="4cB-gD-bcY" id="fiE-1X-9HR"/>
                 <outlet property="cameraControlListView" destination="yUZ-RC-q2g" id="agg-NC-ImA"/>
                 <outlet property="cameraSwitchButton" destination="wti-Lb-UOL" id="9jI-xq-6yb"/>
@@ -32,6 +33,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYM-pl-7a1" customClass="CameraRadialView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.4629976455" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTv-4F-WYu">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                     <subviews>
@@ -158,14 +163,18 @@
                 <constraint firstItem="dTv-4F-WYu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6d3-9Y-GCS"/>
                 <constraint firstItem="hFP-TY-kfv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6hh-Tl-644"/>
                 <constraint firstItem="dTv-4F-WYu" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.125" id="9D6-tq-23E"/>
+                <constraint firstItem="QYM-pl-7a1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ARH-lR-Krc"/>
+                <constraint firstAttribute="trailing" secondItem="QYM-pl-7a1" secondAttribute="trailing" id="CgL-gR-X3V"/>
                 <constraint firstItem="yUZ-RC-q2g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ghd-dx-dly"/>
                 <constraint firstItem="4cB-gD-bcY" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="HDg-Cg-drX"/>
                 <constraint firstItem="kq9-9i-Tle" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.117" id="Hq9-Ch-ls8"/>
                 <constraint firstAttribute="trailing" secondItem="hFP-TY-kfv" secondAttribute="trailing" id="LEH-Qo-7sG"/>
                 <constraint firstItem="kq9-9i-Tle" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LSG-df-4Us"/>
                 <constraint firstAttribute="trailing" secondItem="Bwx-T5-8zM" secondAttribute="trailing" id="ObL-2m-CSL"/>
+                <constraint firstItem="QYM-pl-7a1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QDs-W6-182"/>
                 <constraint firstItem="4cB-gD-bcY" firstAttribute="top" secondItem="kq9-9i-Tle" secondAttribute="bottom" multiplier="0.92" id="RhP-w0-TG6"/>
                 <constraint firstItem="4cB-gD-bcY" firstAttribute="top" secondItem="Bwx-T5-8zM" secondAttribute="bottom" id="VVr-vu-NEo"/>
+                <constraint firstAttribute="bottom" secondItem="QYM-pl-7a1" secondAttribute="bottom" id="Vse-XU-6Td"/>
                 <constraint firstAttribute="trailing" secondItem="yUZ-RC-q2g" secondAttribute="trailing" id="YNc-Ar-Edb"/>
                 <constraint firstItem="tFi-6c-fux" firstAttribute="top" secondItem="dTv-4F-WYu" secondAttribute="bottom" id="YkB-ae-zMD"/>
                 <constraint firstAttribute="bottom" secondItem="yUZ-RC-q2g" secondAttribute="bottom" id="b0b-s2-TA8"/>

@@ -30,6 +30,8 @@
 		B62C517D1E83E0C60044830F /* CustomPhotoLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B62C517B1E83E0C60044830F /* CustomPhotoLibraryViewController.xib */; };
 		B62C51821E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B62C51801E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.m */; };
 		B62C51831E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B62C51811E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib */; };
+		B63AC2F01E8D4913004738D7 /* CameraRadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63AC2EE1E8D4913004738D7 /* CameraRadialView.m */; };
+		B63AC2F11E8D4913004738D7 /* CameraRadialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B63AC2EF1E8D4913004738D7 /* CameraRadialView.xib */; };
 		B6411B9F1D096729002B6E88 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411B9D1D096729002B6E88 /* SettingsViewController.m */; };
 		B6411BA01D096729002B6E88 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6411B9E1D096729002B6E88 /* SettingsViewController.xib */; };
 		B6411BA51D096892002B6E88 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6411BA31D096892002B6E88 /* SettingsView.m */; };
@@ -470,6 +472,9 @@
 		B62C517F1E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoLibraryCollectionViewCell.h; sourceTree = "<group>"; };
 		B62C51801E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoLibraryCollectionViewCell.m; sourceTree = "<group>"; };
 		B62C51811E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoLibraryCollectionViewCell.xib; sourceTree = "<group>"; };
+		B63AC2ED1E8D4913004738D7 /* CameraRadialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraRadialView.h; sourceTree = "<group>"; };
+		B63AC2EE1E8D4913004738D7 /* CameraRadialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraRadialView.m; sourceTree = "<group>"; };
+		B63AC2EF1E8D4913004738D7 /* CameraRadialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraRadialView.xib; sourceTree = "<group>"; };
 		B6411B9C1D096729002B6E88 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B6411B9D1D096729002B6E88 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B6411B9E1D096729002B6E88 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -1243,6 +1248,16 @@
 				B62C51811E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib */,
 			);
 			path = CustomPhotoLibraryCell;
+			sourceTree = "<group>";
+		};
+		B63AC2EC1E8D48F7004738D7 /* CameraRadialBG */ = {
+			isa = PBXGroup;
+			children = (
+				B63AC2ED1E8D4913004738D7 /* CameraRadialView.h */,
+				B63AC2EE1E8D4913004738D7 /* CameraRadialView.m */,
+				B63AC2EF1E8D4913004738D7 /* CameraRadialView.xib */,
+			);
+			path = CameraRadialBG;
 			sourceTree = "<group>";
 		};
 		B6411B9B1D0966DD002B6E88 /* Settings */ = {
@@ -2209,6 +2224,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B63AC2EC1E8D48F7004738D7 /* CameraRadialBG */,
 				B60BEFA11E854EA500C69640 /* CustomPhotoLibView */,
 				B60909EB1E7C0E4200DEAA17 /* CameraControlList */,
 				B78607081E78127100F7CE3E /* ImageNotes */,
@@ -2846,6 +2862,7 @@
 				B771C5F51CEB1C64004A628A /* CompanyDetailViewController.xib in Resources */,
 				B786070D1E7812B400F7CE3E /* ImageNotesView.xib in Resources */,
 				B65BCDC11D2529AF00FE9781 /* WorkOwnerTypesViewController.xib in Resources */,
+				B63AC2F11E8D4913004738D7 /* CameraRadialView.xib in Resources */,
 				B7E104491CEC8B7D00EAD8E7 /* ProjectBidListView.xib in Resources */,
 				B62858BE1E7194FD00E82A5E /* MobileProjectAddNoteViewController.xib in Resources */,
 				B76C69681CD7552E009E9F15 /* BidItemView.xib in Resources */,
@@ -3076,6 +3093,7 @@
 				B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */,
 				B6411BF01D09CED8002B6E88 /* CDProjectBidsViewController.m in Sources */,
 				B7BF60C11D1EAC7400B3BDD7 /* SearchResultView.m in Sources */,
+				B63AC2F01E8D4913004738D7 /* CameraRadialView.m in Sources */,
 				B6411BB71D097426002B6E88 /* SettingsCPView.m in Sources */,
 				B79616221CF600460089BC32 /* DB_Participant+CoreDataProperties.m in Sources */,
 				B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */,

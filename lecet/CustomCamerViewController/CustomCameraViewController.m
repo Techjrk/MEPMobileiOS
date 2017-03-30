@@ -10,6 +10,7 @@
 #import "CustomCameraCollectionViewCell.h"
 #import "CameraControlListView.h"
 #import "CustomPhotoLibView.h"
+#import "CameraRadialView.h"
  
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
@@ -19,6 +20,7 @@
 #pragma mark - COLOR
 #define COLOR_FONT_NAV_TITLE_LABEL      RGB(184,184,184)
 #define COLOR_BG_NAV_VIEW               RGB(5, 35, 74)
+#define COLORGRADIENT_BG_NAV_VIEW       @[(id)RGB(21, 78, 132).CGColor, (id)RGB(3, 35, 77).CGColor]
 #define COLOR_FONT_TILE                 RGB(8, 73, 124)
 #define COLOR_BG_BOTTOM_VIEW            RGB(5, 35, 74)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
@@ -38,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constriantCollectionHeight;
 @property (weak, nonatomic) IBOutlet UIView *customPhotoLibraryContainer;
 @property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
+@property (weak, nonatomic) IBOutlet CameraRadialView *backgroundView;
 
 @end
 
@@ -50,9 +53,10 @@
     self.navTitleLabel.font = FONT_NAV_TITLE_LABEL;
     self.navTitleLabel.textColor = COLOR_FONT_NAV_TITLE_LABEL;
     
-    self.navView.backgroundColor = COLOR_BG_NAV_VIEW;
-    self.bottomView.backgroundColor = COLOR_BG_BOTTOM_VIEW;
+    [self setNavBottomViewClearColor:NO];
     
+    self.backgroundView.hidden = YES;
+ 
     [self.navCancelButton setTitle:NSLocalizedLanguage(@"CCVC_CANCEL") forState:UIControlStateNormal];
     self.navCancelButton.titleLabel.font = FONT_NAV_BUTTON;
     [self.navCancelButton setTitleColor:COLOR_FONT_NAV_BUTTON forState:UIControlStateNormal];
@@ -65,6 +69,7 @@
     
     self.customPhotoLibView.customPhotoLibViewDelegate = self;
     self.customPhotoLibView.hidden = YES;
+    self.customPhotoLibView.backgroundColor = [UIColor clearColor];
     
     self.capturedImage.hidden = YES;
     
@@ -151,31 +156,36 @@
             case CameraControlListViewPreview : {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
+                [self setNavBottomViewClearColor:NO];
                 break;
             }
             case CameraControlListViewUse: {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
+                [self setNavBottomViewClearColor:NO];
                 break;
             }
             case CameraControlListViewRetake: {
                 self.customPhotoLibView.hidden = NO;
-                [self hideDefaultCameraControl:NO];
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
+                [self hideDefaultCameraControl:NO];
+                [self setNavBottomViewClearColor:NO];
                 break;
             }
             case CameraControlListViewPano: {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
+                [self setNavBottomViewClearColor:NO];
                 break;
             }
             case CameraControlListViewPhoto: {
                 if (!isPhotoSelected) {
                     self.customPhotoLibView.hidden = YES;
                     isLibrarySelected = NO;
-                    [self hideDefaultCameraControl:NO];
                     isPhotoSelected = YES;
+                    [self hideDefaultCameraControl:NO];
+                    [self setNavBottomViewClearColor:NO];
                 }
                 break;
             }
@@ -183,16 +193,17 @@
                 if (!isLibrarySelected) {
                     self.customPhotoLibView.hidden = NO;
                     self.capturedImage.hidden = YES;
-                    [self hideLibraryControl:YES];
                     isLibrarySelected = YES;
                     isPhotoSelected = NO;
+                    [self hideLibraryControl:YES];
+                    [self setNavBottomViewClearColor:YES];
                 }
                 break;
             }
             case CameraControlListView360: {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
-                
+                [self setNavBottomViewClearColor:NO];
                 break;
             }
             default: {
@@ -255,6 +266,18 @@
     
     return cameraItems;
 
+}
+
+- (void)setNavBottomViewClearColor:(BOOL)clear {
+    if (clear) {
+        self.navView.backgroundColor = [UIColor clearColor];
+        self.bottomView.backgroundColor = [UIColor clearColor];
+        self.backgroundView.hidden = NO;
+    } else {
+        self.navView.backgroundColor = COLOR_BG_NAV_VIEW;
+        self.bottomView.backgroundColor = COLOR_BG_BOTTOM_VIEW;
+        self.backgroundView.hidden = YES;
+    }
 }
 
 @end
