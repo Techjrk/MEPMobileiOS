@@ -18,7 +18,7 @@
 #define FONT_NAV_BUTTON                 fontNameWithSize(FONT_NAME_LATO_BOLD, 16)
 
 #pragma mark - COLOR
-#define COLOR_FONT_NAV_TITLE_LABEL      RGB(184,184,184)
+#define COLOR_FONT_NAV_TITLE_LABEL      RGB(255,255,255)
 #define COLOR_BG_NAV_VIEW               RGB(5, 35, 74)
 #define COLORGRADIENT_BG_NAV_VIEW       @[(id)RGB(21, 78, 132).CGColor, (id)RGB(3, 35, 77).CGColor]
 #define COLOR_FONT_TILE                 RGB(8, 73, 124)

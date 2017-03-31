@@ -17,10 +17,10 @@
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define FONT_TILE                       fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
-#define FONT_NAV_BUTTON                 fontNameWithSize(FONT_NAME_LATO_BOLD, 16)
+#define FONT_NAV_BUTTON                 fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 
 #pragma mark - COLOR
-#define COLOR_FONT_NAV_TITLE_LABEL      RGB(184,184,184)
+#define COLOR_FONT_NAV_TITLE_LABEL      RGB(255,255,255)
 #define COLOR_BG_NAV_VIEW               RGB(5, 35, 74)
 #define COLOR_FONT_TILE                 RGB(8, 73, 124)
 #define COLOR_BG_BOTTOM_VIEW            RGB(5, 35, 74)
@@ -43,6 +43,7 @@
 @property (strong, nonatomic) PHAssetCollection *assetCollection;
 @property (strong, nonatomic) PHFetchResult<PHAsset *> *fetchresult;
 @property (strong, nonatomic) PHCachingImageManager *imageManager;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomViewHeight;
 
 @end
 
@@ -162,8 +163,15 @@
         self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
         [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
         isLibrarySelected = NO;
+    
         [self.customPhotoLibraryViewControllerDelegate customCameraPhotoLibDidSelect:resultImage];
     }];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.constraintBottomViewHeight.constant = kDeviceHeight * 0.075;
+        [self.view layoutIfNeeded];
+    }];
+    
 }
 #pragma mark - CameraControlListDelegate
 - (void)cameraControlListDidSelect:(id)info{
@@ -202,7 +210,10 @@
                     self.cameraControlListView.focusOnItem = CameraControlListViewLibrary;
                     [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
                     isLibrarySelected = YES;
-                    
+                    [UIView animateWithDuration:0.5 animations:^{
+                        self.constraintBottomViewHeight.constant = self.constraintBottomViewHeight.multiplier;
+                        [self.view layoutIfNeeded];
+                    }];
                 }
                 
                 break;

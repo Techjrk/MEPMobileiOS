@@ -10,7 +10,7 @@
 #import "CustomCameraCollectionViewCell.h"
 
 #pragma mark - FONT
-#define FONT_CELL_TITLE             fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define FONT_CELL_TITLE             fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
 
 #pragma mark - COLOR
 #define COLOR_FONT_CELL_TITLE       RGB(255,255,255)
@@ -101,10 +101,16 @@
         if (items == CameraControlListViewPano || items == CameraControlListView360) {
             
         } else {
-            selectedIndex = indexPath;
-            [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-            [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
-            [self.collectionView reloadData];
+            BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+            if (!isCamera && items == CameraControlListViewPhoto) {
+                
+            } else {
+                selectedIndex = indexPath;
+                [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+                [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
+                [self.collectionView reloadData];
+            }
+            
         }
     }
 }
