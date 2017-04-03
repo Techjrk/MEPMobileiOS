@@ -139,17 +139,20 @@
                 BOOL isPNG = [[[request.URL.absoluteString pathExtension] lowercaseString] isEqualToString:@"png"];
                 
                 weakCell.image.image = responseObject;
-                
+                NSString *fileNameD;
+                NSString *filePathD;
                 if (isPNG) {
-                    NSString *fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
-                    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+                    fileNameD = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+                    filePathD = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
                     [UIImagePNGRepresentation(responseObject) writeToFile:filePath atomically:YES];
                 } else {
-                    NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
-                    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
-                    
+                    fileNameD = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+                    filePathD = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
                     [UIImageJPEGRepresentation(responseObject, 1.0) writeToFile:filePath atomically:YES];
                 }
+                
+                UIImage *image = [UIImage imageWithContentsOfFile:filePathD];
+                [cell loadImage:image];
                 
             } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
                 
