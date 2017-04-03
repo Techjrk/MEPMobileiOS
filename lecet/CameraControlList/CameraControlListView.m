@@ -10,7 +10,7 @@
 #import "CustomCameraCollectionViewCell.h"
 
 #pragma mark - FONT
-#define FONT_CELL_TITLE             fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define FONT_CELL_TITLE             fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
 
 #pragma mark - COLOR
 #define COLOR_FONT_CELL_TITLE       RGB(255,255,255)
@@ -97,10 +97,21 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *info = self.cameraItems[indexPath.row];
     if (info != nil && ![info isEqual:@""]) {
-        selectedIndex = indexPath;
-        [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-        [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
-        [self.collectionView reloadData];
+        CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
+        if (items == CameraControlListViewPano || items == CameraControlListView360) {
+            
+        } else {
+            BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+            if (!isCamera && items == CameraControlListViewPhoto) {
+                
+            } else {
+                selectedIndex = indexPath;
+                [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+                [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
+                [self.collectionView reloadData];
+            }
+            
+        }
     }
 }
 

@@ -29,7 +29,7 @@
     self.imageManager = [PHCachingImageManager new];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
     
-    [self performSelector:@selector(setInfo) withObject:nil afterDelay:2];
+    [self performSelector:@selector(setInfo) withObject:nil afterDelay:3];
 }
 
 - (void)setInfo {
@@ -95,13 +95,6 @@
     CGRect imageFrame = self.frame;
     CGSize size=CGSizeMake(imageFrame.size.width, imageFrame.size.height);
     [self.imageManager requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFill options:nil resultHandler:^(UIImage *resultImage, NSDictionary *info) {
-//        self.capturedImageView.hidden = NO;
-//        self.capturedImageView.image = resultImage;
-//        
-//        NSArray *items = [self secondSetCameraItems];
-//        self.cameraControlListView.focusOnItem = CameraControlListViewPreview;
-//        [self.cameraControlListView setCameraItemsInfo:items hideLineView:NO];
-//        isLibrarySelected = NO;
         [self.customPhotoLibViewDelegate customPhotoLibDidSelect:resultImage];
     }];
 }

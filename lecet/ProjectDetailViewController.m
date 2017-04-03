@@ -867,23 +867,17 @@ typedef enum {
     }
 }
 
-- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image recordID:(NSNumber *)reocrdID{
+- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image itemID:(NSNumber *)itemID imageLink:(NSString *)link{
     if (image == nil) {
         MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
         controller.projectID = recordId;
-        /*
-        if (image != nil) {
-            controller.isAddPhoto = YES;
-        }
-        */
         controller.mobileProjectAddNoteViewControllerDelegate = self;
-        //controller.capturedImage = image;
-        controller.projectID = reocrdID;
+        controller.projectID = itemID;
         controller.itemsToBeUpdate = @{@"title":title,@"detail":detail};
         [self.navigationController pushViewController:controller animated:YES];
         
     } else {
-        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":recordId};
+        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":itemID,@"imageLink":link};
         [self showCustomCamera];
     }
     
@@ -922,6 +916,7 @@ typedef enum {
 
 - (void)deleteNotes:(NSNumber *)notesID {
     [[DataManager sharedManager] deleteProjectUserNotes:notesID success:^(id object){
+        imageNotesItems = nil;
         [self loadNotes];
     
     }failure:^(id object){
@@ -931,7 +926,9 @@ typedef enum {
 
 - (void)deleteImage:(NSNumber *)imageID {
     [[DataManager sharedManager] deleteProjectUserImage:imageID success:^(id object){
-        [self loadImages];
+        //[self loadImages];
+        imageNotesItems = nil;
+        [self loadNotes];
     }failure:^(id object){
         
     }];
@@ -940,12 +937,13 @@ typedef enum {
 #pragma mark - Custom Camera Method
 
 - (void)showCustomCamera {
-#if TARGET_IPHONE_SIMULATOR
-    
-    [self showCustomLibraryAnimated:YES];
-#else
-    [self showCameraAnimated:YES];
-#endif
+
+    BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (isCamera) {
+        [self showCameraAnimated:YES];
+    } else {
+        [self showCustomLibraryAnimated:YES];
+    }
 }
 
 - (void)showCustomLibraryAnimated:(BOOL)animate {
@@ -972,28 +970,23 @@ typedef enum {
 - (void)showCameraAnimated:(BOOL)animate{
     self.picker = [[UIImagePickerController alloc] init];
     
-    BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-    if (isCamera) {
-        self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        self.picker.showsCameraControls = NO;
-        self.picker.extendedLayoutIncludesOpaqueBars = YES;
-        self.picker.edgesForExtendedLayout = YES;
-        CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
-        self.picker.cameraViewTransform = translate;
-        self.customCameraVC =  [CustomCameraViewController new];
-        self.customCameraVC.customCameraViewControllerDelegate = self;
-        [self addChildViewController:self.customCameraVC];
+    
+    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.picker.showsCameraControls = NO;
+    self.picker.extendedLayoutIncludesOpaqueBars = YES;
+    self.picker.edgesForExtendedLayout = YES;
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
+    self.picker.cameraViewTransform = translate;
+    self.customCameraVC =  [CustomCameraViewController new];
+    self.customCameraVC.customCameraViewControllerDelegate = self;
+    [self addChildViewController:self.customCameraVC];
         
-        UIView *customView = self.customCameraVC.view;
-        customView.frame = self.picker.view.frame;
-        self.picker.cameraOverlayView = customView;
-        
-    } else {
-        self.picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        self.picker.modalPresentationStyle = UIModalPresentationCustom;;
-    }
+    UIView *customView = self.customCameraVC.view;
+    customView.frame = self.picker.view.frame;
+    self.picker.cameraOverlayView = customView;
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker animated:YES];
+
 }
 
 - (void)presentImagePickerController:(UIViewController *)pickerController animated:(BOOL)animate

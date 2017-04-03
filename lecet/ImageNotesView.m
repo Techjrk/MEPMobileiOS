@@ -44,8 +44,26 @@
 }
 
 #pragma mark - ImageNoteCollectionViewCell Delegate
-- (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail recordID:(NSNumber *)recordID {
-    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image recordID:recordID];
+- (void)tappedButtonEdit:(UIImage *)image title:(NSString *)string detail:(NSString *)detail recordID:(NSNumber *)recordID indexPath:(NSIndexPath *)indexPath{
+    NSDictionary *item = self.items[indexPath.row];
+    NSString *urlString;
+    if (![item[@"cellType"] isEqualToString:@"note"] ) {
+        NSNumber *imageId = item[@"id"];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        BOOL isPNG = [[[url pathExtension] lowercaseString] isEqualToString:@"png"];
+        
+        NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+        
+        if (isPNG) {
+            fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+        }
+        NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+        
+        urlString = filePath;
+    }
+    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image itemID:recordID imageLink:urlString];
 }
 - (void)tappedDelete:(UIImage *)image itemID:(NSNumber *)itemID {
     [self.imageNotesViewDelegate deleteNoteAndImage:itemID image:image];
@@ -70,7 +88,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ImageNoteCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
+    cell.indexPath = indexPath;
     cell.imageNoteCollectionViewCellDelegate = self;
     
     NSDictionary *item = self.items[indexPath.row];
@@ -121,17 +139,20 @@
                 BOOL isPNG = [[[request.URL.absoluteString pathExtension] lowercaseString] isEqualToString:@"png"];
                 
                 weakCell.image.image = responseObject;
-                
+                NSString *fileNameD;
+                NSString *filePathD;
                 if (isPNG) {
-                    NSString *fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
-                    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+                    fileNameD = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+                    filePathD = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
                     [UIImagePNGRepresentation(responseObject) writeToFile:filePath atomically:YES];
                 } else {
-                    NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
-                    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
-                    
+                    fileNameD = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+                    filePathD = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
                     [UIImageJPEGRepresentation(responseObject, 1.0) writeToFile:filePath atomically:YES];
                 }
+                
+                UIImage *image = [UIImage imageWithContentsOfFile:filePathD];
+                [cell loadImage:image];
                 
             } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
                 
