@@ -18,7 +18,8 @@ typedef enum : NSUInteger {
     pinTypeOrange,
     pinTypeOrageUpdate,
     pinTypeUser,
-    pinTypeUserUpdate
+    pinTypeUserUpdate,
+    pinTypeUserNew
 } PinType;
 
 @protocol ProjectHeaderDelegate <NSObject>
