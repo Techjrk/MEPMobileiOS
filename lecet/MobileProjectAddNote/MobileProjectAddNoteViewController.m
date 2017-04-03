@@ -10,13 +10,13 @@
 #import "MobileProjectNotePopUpViewController.h"
 
 #pragma mark - FONT
-#define FONT_NAV_TITLE_LABEL                fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
+#define FONT_NAV_TITLE_LABEL                fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define FONT_TILE                           fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
 #define FONT_TITLE_SECOND_LABEL             fontNameWithSize(FONT_NAME_LATO_ITALIC, 9)
 #define FONT_NAV_BUTTON                     fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 
 #pragma mark - COLOR
-#define COLOR_FONT_NAV_TITLE_LABEL          RGB(184,184,184)
+#define COLOR_FONT_NAV_TITLE_LABEL          RGB(255,255,255)
 #define COLOR_BG_NAV_VIEW                   RGB(5, 35, 74)
 #define COLOR_FONT_TILE                     RGB(8, 73, 124)
 #define COLOR_FONT_TITLE_SECOND_LABEL       RGB(34,34,34)
