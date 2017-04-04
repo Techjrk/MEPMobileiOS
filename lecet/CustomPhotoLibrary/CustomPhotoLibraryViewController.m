@@ -102,9 +102,12 @@
 
 #pragma mark Photo LibraryDelegate
 - (void)photoLibraryDidChange:(PHChange *)changeInstance {
+    PHFetchResultChangeDetails *change = [changeInstance changeDetailsForFetchResult:self.fetchresult];
     
-}
+    self.fetchresult = change.fetchResultAfterChanges;
 
+    [self.collectionView reloadData];
+}
 
 #pragma mark - UICollectionViewDelegate and DataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
