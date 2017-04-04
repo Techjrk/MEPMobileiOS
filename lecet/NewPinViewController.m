@@ -1,29 +1,22 @@
 //
-//  UserLocationPinViewController.m
+//  NewPinViewController.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 3/29/17.
+//  Created by Harry Herrys Camigla on 4/4/17.
 //  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
-#import "UserLocationPinViewController.h"
-
-#define MYLOCATION_COLOR            RGB(59, 59, 59)
-#define MYLOCATION_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 10)
+#import "NewPinViewController.h"
 
 #define CREATEPIN_COLOR             RGB(7, 34, 73)
 #define CREATEPIN_FONT              fontNameWithSize(FONT_NAME_LATO_REGULAR, 10)
 
-#define LINE_COLOR                  RGB(193, 193, 193)
-
-@interface UserLocationPinViewController ()<UIPopoverPresentationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *labelLocation;
+@interface NewPinViewController ()<UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *buttonCreatePin;
-@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end
 
-@implementation UserLocationPinViewController
+@implementation NewPinViewController
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -40,16 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.labelLocation.text = NSLocalizedLanguage(@"ULP_MYLOCATION");
-    self.labelLocation.textColor = MYLOCATION_COLOR;
-    self.labelLocation.font = MYLOCATION_FONT;
-    
     [self.buttonCreatePin setTitle:NSLocalizedLanguage(@"ULP_CREATE") forState:UIControlStateNormal];
     [self.buttonCreatePin setTitleColor:CREATEPIN_COLOR forState:UIControlStateNormal];
     [self.buttonCreatePin setImage:[UIImage imageNamed:@"icon_createPin"] forState:UIControlStateNormal];
     self.buttonCreatePin.titleLabel.font = CREATEPIN_FONT;
-    
-    self.lineView.backgroundColor = LINE_COLOR;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +49,7 @@
 }
 
 - (CGSize)preferredContentSize {
-    return CGSizeMake(kDeviceWidth * 0.44, kDeviceHeight * 0.12);
+    return CGSizeMake(kDeviceWidth * 0.44, kDeviceHeight * 0.06);
 }
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
@@ -79,12 +67,10 @@
     
 }
 
-- (IBAction)tappedCreatePinButton:(id)sender {
-    
+- (IBAction)tappedButtonCreatePin:(id)sender {
     [self dismissViewControllerAnimated:NO completion:^{
         [self.createProjectPinDelegate createProjectUsingLocation:self.location];
     }];
-    
 }
 
 @end

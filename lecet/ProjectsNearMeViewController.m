@@ -20,6 +20,9 @@
 #import "UserLocationPinViewController.h"
 #import "NewProjectViewController.h"
 #import "ProjectHeaderView.h"
+#import "NewProjectAnnotationView.h"
+#import "NewProjectAnnotation.h"
+#import "NewPinViewController.h"
 
 #define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
@@ -162,14 +165,19 @@ float MetersToMiles(float meters) {
                     
                 }
                 
-                
                 [mapItems addObjectsFromArray:result];
                 [self addItemsToMap];
+                
+                if (isSearchLocation) {
+                    [self addNewProjectPin];
+                }
             } else {
                 
                 isDoneSearching = YES;
                 if (distance < 500) {
                     [self loadProjects:distance + (distance==5?95:100) coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:regionValue];
+                    
+                    
                 } else {
                     if (showPrompt) {
                         if (isSearchLocation) {
@@ -295,24 +303,44 @@ float MetersToMiles(float meters) {
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    ProjectAnnotationView *userAnnotationView = nil;
+    
+    id annotationView = nil;
+    
     if (![annotation isKindOfClass:MKUserLocation.class])
     {
-        userAnnotationView = (ProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
-        if (userAnnotationView == nil)  {
-            userAnnotationView = [[ProjectAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
-        } else
-            userAnnotationView.annotation = annotation;
-        
-        userAnnotationView.rightCalloutAccessoryView = nil;
-        userAnnotationView.enabled = YES;
-        userAnnotationView.canShowCallout = YES;
-        userAnnotationView.image = userAnnotationView.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
+        if ([annotation isKindOfClass:[ProjectPointAnnotation class]]) {
+            ProjectAnnotationView *userAnnotationView = (ProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
+            if (userAnnotationView == nil)  {
+                userAnnotationView = [[ProjectAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
+            } else
+                userAnnotationView.annotation = annotation;
+            
+            userAnnotationView.rightCalloutAccessoryView = nil;
+            userAnnotationView.enabled = YES;
+            userAnnotationView.canShowCallout = YES;
+            userAnnotationView.image = userAnnotationView.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
+            
+            annotationView = userAnnotationView;
+        } else {
+            
+            NewProjectAnnotationView *userAnnotationView = (NewProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"NewPin"];
+            if (userAnnotationView == nil)  {
+                userAnnotationView = [[NewProjectAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"NewPin"];
+            } else
+                userAnnotationView.annotation = annotation;
+            userAnnotationView.rightCalloutAccessoryView = nil;
+            userAnnotationView.enabled = YES;
+            userAnnotationView.canShowCallout = YES;
+            userAnnotationView.image = [UIImage imageNamed:@"icon_userPinNew"];
+            
+            annotationView = userAnnotationView;
+            
+        }
     }
     
     [self getVisibleAnmotationsInMap];
     
-    return userAnnotationView;
+    return annotationView;
     
 }
 
@@ -324,6 +352,12 @@ float MetersToMiles(float meters) {
             view.canShowCallout = NO;
         }
     }
+}
+
+- (void) addNewProjectPin {
+    NewProjectAnnotation *annotation = [[NewProjectAnnotation alloc] init];
+    annotation.coordinate = self.mapView.centerCoordinate;
+    [self.mapView addAnnotation:annotation];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
@@ -358,6 +392,17 @@ float MetersToMiles(float meters) {
         controller.createProjectPinDelegate = self;
         [self.navigationController presentViewController:controller animated:NO completion:nil];
         
+    } else if([subview class] == [NewProjectAnnotationView class]) {
+   
+        NewProjectAnnotationView *annotationView = (NewProjectAnnotationView*)subview;
+        MKUserLocation *userLocation = annotationView.annotation;
+        NewPinViewController *controller = [NewPinViewController new];
+        controller.location = [[CLLocation alloc] initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
+        
+        controller.popoverPresentationController.sourceView = subview;
+        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, subview.frame.size.width, subview.frame.size.height);
+        controller.createProjectPinDelegate = self;
+        [self.navigationController presentViewController:controller animated:NO completion:nil];
     }
 }
 
@@ -377,6 +422,7 @@ float MetersToMiles(float meters) {
                          region.span.latitudeDelta /= 8.0;
                          
                          [self loadProjects:1 coordinate:region.center regionValue:0];
+                         
                          
                      } else if (error != nil) {
                          BOOL connected = [[BaseManager sharedManager] connected];
