@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomCallOut">
@@ -32,16 +36,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="254" height="221"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92n-OT-BKO">
-                                    <rect key="frame" x="0.0" y="0.0" width="254" height="26.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="254" height="27"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uS7-6P-3GE">
-                                            <rect key="frame" x="12" y="0.0" width="229" height="26.5"/>
+                                            <rect key="frame" x="12" y="0.0" width="229" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="uS7-6P-3GE" firstAttribute="centerX" secondItem="92n-OT-BKO" secondAttribute="centerX" id="RIi-2o-Lvh"/>
                                         <constraint firstAttribute="bottom" secondItem="uS7-6P-3GE" secondAttribute="bottom" id="Rco-bU-ECG"/>
@@ -50,22 +54,22 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Ye-yjT">
-                                    <rect key="frame" x="0.0" y="26" width="254" height="68.5"/>
+                                    <rect key="frame" x="0.0" y="26" width="254" height="69"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BI-sQ-Sls">
-                                            <rect key="frame" x="12" y="0.0" width="229" height="41.5"/>
+                                            <rect key="frame" x="12" y="0.0" width="229" height="42"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwY-le-8g3">
-                                            <rect key="frame" x="12" y="23.5" width="229" height="44.5"/>
+                                            <rect key="frame" x="12" y="24" width="229" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="QwY-le-8g3" firstAttribute="height" secondItem="xpZ-Ye-yjT" secondAttribute="height" multiplier="0.65" id="CqM-2R-aWQ"/>
                                         <constraint firstItem="8BI-sQ-Sls" firstAttribute="centerX" secondItem="xpZ-Ye-yjT" secondAttribute="centerX" id="G49-eb-yWG"/>
@@ -85,23 +89,23 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUE-zA-cXe">
                                     <rect key="frame" x="13" y="95" width="229" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh8-H9-3cc">
-                                    <rect key="frame" x="12.5" y="188" width="229" height="33"/>
+                                    <rect key="frame" x="13" y="188" width="229" height="33"/>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="tappedButtonDirection:" destination="-1" eventType="touchUpInside" id="t70-27-lgd"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxZ-2K-gdO">
-                                    <rect key="frame" x="13" y="139" width="229" height="20.5"/>
+                                    <rect key="frame" x="13" y="139" width="229" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="250" constant="49" id="IDL-te-qOk"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAH-Dg-Izf">
@@ -111,7 +115,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="vh8-H9-3cc" firstAttribute="centerX" secondItem="dOC-v1-H5d" secondAttribute="centerX" id="3pJ-bv-ugY"/>
                                 <constraint firstItem="vh8-H9-3cc" firstAttribute="width" secondItem="QUE-zA-cXe" secondAttribute="width" id="8sT-bp-7oG"/>
@@ -148,7 +152,7 @@
                             </variation>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="dOC-v1-H5d" secondAttribute="trailing" id="Ei7-ow-4Ux"/>
                         <constraint firstItem="dOC-v1-H5d" firstAttribute="leading" secondItem="0gC-Z7-g9Y" secondAttribute="leading" id="IQQ-aF-hfp"/>
@@ -157,7 +161,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="0gC-Z7-g9Y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8zC-s0-Zai"/>
                 <constraint firstItem="0gC-Z7-g9Y" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="I7j-gD-rfG"/>

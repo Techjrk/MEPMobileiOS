@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserLocationPinViewController">
+            <connections>
+                <outlet property="buttonCreatePin" destination="37c-3z-aNd" id="C7w-Y4-Rae"/>
+                <outlet property="labelLocation" destination="Osl-Xr-qTc" id="ZJH-0A-Ryx"/>
+                <outlet property="lineView" destination="Olf-oj-tHv" id="V4n-yH-cx9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osl-Xr-qTc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="334"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olf-oj-tHv">
+                    <rect key="frame" x="0.0" y="334" width="375" height="1"/>
+                    <color key="backgroundColor" red="1" green="0.12660496469999999" blue="0.65176883149999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="ffm-ut-jDC"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37c-3z-aNd">
+                    <rect key="frame" x="0.0" y="335" width="375" height="332"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tappedCreatePinButton:" destination="-1" eventType="touchUpInside" id="eoJ-EC-Xd2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="37c-3z-aNd" secondAttribute="trailing" id="1BA-7F-ldh"/>
+                <constraint firstItem="37c-3z-aNd" firstAttribute="top" secondItem="Olf-oj-tHv" secondAttribute="bottom" id="7g3-bT-WJV"/>
+                <constraint firstItem="37c-3z-aNd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="A4j-jY-rPn"/>
+                <constraint firstAttribute="trailing" secondItem="Osl-Xr-qTc" secondAttribute="trailing" id="GXf-jy-fXu"/>
+                <constraint firstAttribute="trailing" secondItem="Olf-oj-tHv" secondAttribute="trailing" id="Hgc-gt-KTk"/>
+                <constraint firstAttribute="bottom" secondItem="37c-3z-aNd" secondAttribute="bottom" id="Jkk-MW-NCj"/>
+                <constraint firstItem="Olf-oj-tHv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OVS-Nl-WRA"/>
+                <constraint firstItem="Osl-Xr-qTc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="S9M-sb-O6Y"/>
+                <constraint firstItem="Olf-oj-tHv" firstAttribute="top" secondItem="Osl-Xr-qTc" secondAttribute="bottom" id="hhr-rf-oBP"/>
+                <constraint firstItem="Osl-Xr-qTc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o36-0S-Ng2"/>
+                <constraint firstItem="Osl-Xr-qTc" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="vi3-wE-Jy9"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

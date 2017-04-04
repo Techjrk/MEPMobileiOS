@@ -248,6 +248,8 @@
 		B74C0AA21E8167D400E91FA9 /* NewProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C0AA01E8167D400E91FA9 /* NewProjectViewController.m */; };
 		B74C0AA31E8167D400E91FA9 /* NewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B74C0AA11E8167D400E91FA9 /* NewProjectViewController.xib */; };
 		B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74FDB601D796F45003A1AFD /* MessageUI.framework */; };
+		B75EB7951E8BF24C00F147D6 /* UserLocationPinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75EB7931E8BF24C00F147D6 /* UserLocationPinViewController.m */; };
+		B75EB7961E8BF24C00F147D6 /* UserLocationPinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B75EB7941E8BF24C00F147D6 /* UserLocationPinViewController.xib */; };
 		B7637A361CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */; };
 		B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */; };
 		B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7637A391CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m */; };
@@ -806,6 +808,9 @@
 		B74C0AA11E8167D400E91FA9 /* NewProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectViewController.xib; sourceTree = "<group>"; };
 		B74C0AA41E83FA6400E91FA9 /* LECET MEP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LECET MEP.entitlements"; sourceTree = "<group>"; };
 		B74FDB601D796F45003A1AFD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B75EB7921E8BF24C00F147D6 /* UserLocationPinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocationPinViewController.h; sourceTree = "<group>"; };
+		B75EB7931E8BF24C00F147D6 /* UserLocationPinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocationPinViewController.m; sourceTree = "<group>"; };
+		B75EB7941E8BF24C00F147D6 /* UserLocationPinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserLocationPinViewController.xib; sourceTree = "<group>"; };
 		B7637A331CEA24BB00F0FA2F /* ParticipantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCollectionViewCell.h; sourceTree = "<group>"; };
 		B7637A341CEA24BB00F0FA2F /* ParticipantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCollectionViewCell.m; sourceTree = "<group>"; };
 		B7637A351CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -2021,6 +2026,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B75EB7911E8BF23100F147D6 /* UserLocationPin */,
 				B62C51781E83E0460044830F /* CustomPhotoLibrary */,
 				B74C0A9E1E8167B200E91FA9 /* NewProject */,
 				B60909D01E7AB76600DEAA17 /* CustomCamerViewController */,
@@ -2439,6 +2445,16 @@
 			name = NewProject;
 			sourceTree = "<group>";
 		};
+		B75EB7911E8BF23100F147D6 /* UserLocationPin */ = {
+			isa = PBXGroup;
+			children = (
+				B75EB7921E8BF24C00F147D6 /* UserLocationPinViewController.h */,
+				B75EB7931E8BF24C00F147D6 /* UserLocationPinViewController.m */,
+				B75EB7941E8BF24C00F147D6 /* UserLocationPinViewController.xib */,
+			);
+			name = UserLocationPin;
+			sourceTree = "<group>";
+		};
 		B7690DA91E2F890E0016577F /* ProjectNearMeFilter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2827,6 +2843,7 @@
 				B62C51831E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib in Resources */,
 				B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */,
 				B7BF60D51D21248700B3BDD7 /* FilterEntryView.xib in Resources */,
+				B75EB7961E8BF24C00F147D6 /* UserLocationPinViewController.xib in Resources */,
 				B7BF608B1D19723A00B3BDD7 /* ShareItemCollectionViewCell.xib in Resources */,
 				B62C517D1E83E0C60044830F /* CustomPhotoLibraryViewController.xib in Resources */,
 				B7BF61001D23DB1F00B3BDD7 /* SeeAllCollectionViewCell.xib in Resources */,
@@ -3117,6 +3134,7 @@
 				B76C696C1CD75AEF009E9F15 /* BidItemCollectionViewCell.m in Sources */,
 				B6855EA91D2660B400553F0F /* ValuationViewController.m in Sources */,
 				B73EFAD11D11518700C6B3B2 /* PopupViewController.m in Sources */,
+				B75EB7951E8BF24C00F147D6 /* UserLocationPinViewController.m in Sources */,
 				B6BDBABC1D181EA9001FB41C /* EditViewCollectionViewCell.m in Sources */,
 				B7E104471CEC8B5400EAD8E7 /* ProjectBidListView.m in Sources */,
 				B7BF60D81D212E7400B3BDD7 /* FilterLabelView.m in Sources */,

@@ -17,10 +17,13 @@
 #import "ProjectNearMeListView.h"
 #import <MapKit/MapKit.h>
 #import "ProjectNearMeFilterViewController.h"
+#import "UserLocationPinViewController.h"
+#import "NewProjectViewController.h"
+#import "ProjectHeaderView.h"
 
 #define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
-@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate, ProjectNearMeFilterViewControllerDelegate>{
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate, ProjectNearMeFilterViewControllerDelegate, CreateProjectPinDelegate>{
     BOOL isFirstLaunch;
     NSMutableArray *mapItems;
     BOOL isSearchLocation;
@@ -298,12 +301,10 @@ float MetersToMiles(float meters) {
         userAnnotationView = (ProjectAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"UserLocation"];
         if (userAnnotationView == nil)  {
             userAnnotationView = [[ProjectAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
-            userAnnotationView.enabled = YES;
-            userAnnotationView.canShowCallout = YES;
-        }
-        else
+        } else
             userAnnotationView.annotation = annotation;
         
+        userAnnotationView.rightCalloutAccessoryView = nil;
         userAnnotationView.enabled = YES;
         userAnnotationView.canShowCallout = YES;
         userAnnotationView.image = userAnnotationView.isPreBid?[UIImage imageNamed:@"icon_pinGreen"]:[UIImage imageNamed:@"icon_pinRed"];
@@ -313,6 +314,16 @@ float MetersToMiles(float meters) {
     
     return userAnnotationView;
     
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray<MKAnnotationView *> *)views {
+    for (MKAnnotationView* view in views)
+    {
+        if ([view.annotation isKindOfClass:[MKUserLocation class]])
+        {
+            view.canShowCallout = NO;
+        }
+    }
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
@@ -335,6 +346,18 @@ float MetersToMiles(float meters) {
         controller.projectPin = annotationView;
         controller.parentCtrl = self;
         [self.navigationController presentViewController:controller animated:NO completion:nil];
+    } else if ([subview class ] == NSClassFromString(@"MKModernUserLocationView")) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView*)subview;
+        MKUserLocation *userLocation = annotationView.annotation;
+        UserLocationPinViewController *controller = [UserLocationPinViewController new];
+        controller.location = [[CLLocation alloc] initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
+        
+        controller.popoverPresentationController.sourceView = subview;
+        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, subview.frame.size.width, subview.frame.size.height);
+        controller.createProjectPinDelegate = self;
+        [self.navigationController presentViewController:controller animated:NO completion:nil];
+        
     }
 }
 
@@ -456,6 +479,15 @@ float MetersToMiles(float meters) {
     } else {
         [self mapView:self.mapView regionDidChangeAnimated:NO];
     }
+}
+
+- (void)createProjectUsingLocation:(CLLocation *)location {
+    
+     NewProjectViewController *controller = [NewProjectViewController new];
+     controller.location = location;
+     controller.pinType = pinTypeUserNew;
+     [self.navigationController pushViewController:controller animated:YES];
+
 }
 
 @end

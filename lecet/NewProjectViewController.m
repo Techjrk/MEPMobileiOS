@@ -464,6 +464,10 @@
         
         userAnnotationView.canShowCallout = NO;
         switch (self.pinType) {
+            case pinTypeUserNew:
+                userAnnotationView.image = [UIImage imageNamed:@"icon_userPinNew"];
+                break;
+                
             case pinTypeOrange:
                 userAnnotationView.image = [UIImage imageNamed:@"icon_pinOrange"];
                 break;
