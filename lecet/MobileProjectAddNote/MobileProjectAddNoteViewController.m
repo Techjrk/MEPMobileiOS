@@ -369,6 +369,7 @@
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
 
 - (void)tappedPostNoteButton {
+    [self.view endEditing:YES];
     [self.loadingIndicator startAnimating];
     if (self.itemsToBeUpdate != nil && self.itemsToBeUpdate.count > 0) {
         if (self.isAddPhoto) {

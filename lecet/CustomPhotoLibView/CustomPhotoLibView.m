@@ -28,8 +28,8 @@
     [self.collectionView registerNib:[UINib nibWithNibName:[[CustomPhotoLibraryCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     self.imageManager = [PHCachingImageManager new];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
-    
-    [self performSelector:@selector(setInfo) withObject:nil afterDelay:3];
+    [self setInfo];
+    //[self performSelector:@selector(setInfo) withObject:nil afterDelay:3];
 }
 
 - (void)setInfo {
@@ -38,14 +38,21 @@
         //options.sortDescriptors = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:YES];
         self.fetchresult = [PHAsset fetchAssetsWithOptions:options];
         [self.collectionView reloadData];
+        
     }
 }
 
 #pragma mark Photo LibraryDelegate
 - (void)photoLibraryDidChange:(PHChange *)changeInstance {
-    [self.collectionView reloadData];
-}
 
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PHFetchResultChangeDetails *change = [changeInstance changeDetailsForFetchResult:self.fetchresult];
+        if (change.hasIncrementalChanges || change.fetchResultAfterChanges.count > 0) {
+            self.fetchresult = change.fetchResultAfterChanges;
+            [self.collectionView reloadData];
+        }
+    });
+}
 
 #pragma mark - UICollectionViewDelegate and DataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

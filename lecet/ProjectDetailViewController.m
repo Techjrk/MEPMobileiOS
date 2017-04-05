@@ -1009,6 +1009,10 @@ typedef enum {
         [self.picker dismissViewControllerAnimated:YES completion:^{
             [self showAddPhotoScreenItems:imageItemsToBeUpdated];
         }];
+    } else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        });
     }
 }
 
