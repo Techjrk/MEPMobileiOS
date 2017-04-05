@@ -20,6 +20,7 @@
                 <outlet property="fieldBidStatus" destination="xcQ-Bv-diU" id="YE0-a7-S4B"/>
                 <outlet property="fieldCounty" destination="zYw-L5-4NA" id="6E5-m9-7uQ"/>
                 <outlet property="fieldEstLow" destination="DIe-zC-tN2" id="6ga-Qg-f89"/>
+                <outlet property="fieldJurisdiction" destination="h5u-Nt-90i" id="1Ml-uB-NpO"/>
                 <outlet property="fieldStage" destination="XA2-8y-JuI" id="g6z-kD-zFs"/>
                 <outlet property="fieldTargetSetDate" destination="LNJ-Y0-aPS" id="tgp-vL-Qyf"/>
                 <outlet property="fieldType" destination="dvb-RP-I0A" id="esO-KT-ua2"/>
@@ -113,15 +114,15 @@
                                     <rect key="frame" x="0.0" y="224" width="375" height="320"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9E-uy-xqn">
-                                            <rect key="frame" x="0.0" y="0.0" width="12" height="320"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="11.5" height="320"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBn-NY-hgi">
-                                            <rect key="frame" x="363" y="0.0" width="12" height="320"/>
+                                            <rect key="frame" x="364" y="0.0" width="11" height="320"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uK-1d-mGd">
-                                            <rect key="frame" x="12" y="12" width="187.5" height="29"/>
+                                            <rect key="frame" x="11.5" y="12" width="187.5" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -131,59 +132,59 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0b-Ye-hSX">
-                                            <rect key="frame" x="12" y="41" width="351" height="31"/>
+                                            <rect key="frame" x="11.5" y="41" width="352.5" height="31"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSU-gJ-rq8">
-                                            <rect key="frame" x="12" y="72" width="351" height="12"/>
+                                            <rect key="frame" x="11.5" y="72" width="352.5" height="12"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-MZ-hCI">
-                                            <rect key="frame" x="12" y="84" width="187.5" height="29"/>
+                                            <rect key="frame" x="11.5" y="84" width="187.5" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjH-Kh-80j">
-                                            <rect key="frame" x="12" y="113" width="351" height="31"/>
+                                            <rect key="frame" x="11.5" y="113" width="352.5" height="31"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2a-mZ-aPq">
-                                            <rect key="frame" x="12" y="144" width="351" height="9"/>
+                                            <rect key="frame" x="11.5" y="144" width="352.5" height="9"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH2-Fk-09z">
-                                            <rect key="frame" x="12" y="153" width="351" height="31"/>
+                                            <rect key="frame" x="11.5" y="153" width="352.5" height="31"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ews-QD-SQ9">
-                                            <rect key="frame" x="12" y="184" width="351" height="9"/>
+                                            <rect key="frame" x="11.5" y="184" width="352.5" height="9"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftj-Ss-w4c">
-                                            <rect key="frame" x="12" y="193" width="351" height="31"/>
+                                            <rect key="frame" x="11.5" y="193" width="352.5" height="31"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPy-SC-wxH">
-                                            <rect key="frame" x="12" y="224" width="351" height="9"/>
+                                            <rect key="frame" x="11.5" y="224" width="352.5" height="9"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8R-O8-MzO">
-                                            <rect key="frame" x="12" y="233" width="170.5" height="31"/>
+                                            <rect key="frame" x="11.5" y="233" width="170.5" height="31"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pRb-gV-cvI">
-                                            <rect key="frame" x="192.5" y="233" width="170.5" height="31"/>
+                                            <rect key="frame" x="193" y="233" width="171" height="31"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -251,27 +252,31 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYw-L5-4NA" customClass="FilterLabelView">
-                                    <rect key="frame" x="12.5" y="544" width="351" height="56"/>
+                                    <rect key="frame" x="12" y="544" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcQ-Bv-diU" customClass="FilterLabelView">
-                                    <rect key="frame" x="12.5" y="488" width="351" height="56"/>
+                                    <rect key="frame" x="12" y="488" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvb-RP-I0A" customClass="FilterLabelView">
-                                    <rect key="frame" x="12.5" y="544" width="351" height="56"/>
+                                    <rect key="frame" x="12" y="544" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIe-zC-tN2" customClass="FilterLabelView">
-                                    <rect key="frame" x="12.5" y="600" width="351" height="56"/>
+                                    <rect key="frame" x="12" y="600" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XA2-8y-JuI" customClass="FilterLabelView">
-                                    <rect key="frame" x="12.5" y="656" width="351" height="56"/>
+                                    <rect key="frame" x="12" y="656" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNJ-Y0-aPS" customClass="FilterLabelView">
-                                    <rect key="frame" x="12.5" y="712" width="351" height="56"/>
+                                    <rect key="frame" x="12" y="712" width="352.5" height="56"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5u-Nt-90i" customClass="FilterLabelView">
+                                    <rect key="frame" x="11.5" y="768" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
@@ -281,6 +286,8 @@
                                 <constraint firstItem="LNJ-Y0-aPS" firstAttribute="top" secondItem="XA2-8y-JuI" secondAttribute="bottom" id="4Ob-ya-uHO"/>
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="centerX" secondItem="DIe-zC-tN2" secondAttribute="centerX" id="CYK-2D-nu7"/>
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="height" secondItem="DIe-zC-tN2" secondAttribute="height" id="Cji-pI-mkv"/>
+                                <constraint firstItem="h5u-Nt-90i" firstAttribute="width" secondItem="LNJ-Y0-aPS" secondAttribute="width" id="FIM-IE-TnX"/>
+                                <constraint firstItem="h5u-Nt-90i" firstAttribute="centerX" secondItem="LNJ-Y0-aPS" secondAttribute="centerX" id="FUW-T6-cvu"/>
                                 <constraint firstItem="DIe-zC-tN2" firstAttribute="height" secondItem="dvb-RP-I0A" secondAttribute="height" id="Hia-VW-Wdt"/>
                                 <constraint firstItem="dvb-RP-I0A" firstAttribute="top" secondItem="xcQ-Bv-diU" secondAttribute="bottom" id="Ic4-hg-5uA"/>
                                 <constraint firstAttribute="trailing" secondItem="Giy-xL-DOj" secondAttribute="trailing" id="Ijw-YD-yOa"/>
@@ -296,6 +303,7 @@
                                 <constraint firstItem="LNJ-Y0-aPS" firstAttribute="height" secondItem="XA2-8y-JuI" secondAttribute="height" id="SiB-OW-gSm"/>
                                 <constraint firstItem="zYw-L5-4NA" firstAttribute="top" secondItem="xcQ-Bv-diU" secondAttribute="bottom" id="UVQ-uZ-6cn"/>
                                 <constraint firstAttribute="trailing" secondItem="vb0-A6-XcH" secondAttribute="trailing" id="UxB-qY-29O"/>
+                                <constraint firstItem="h5u-Nt-90i" firstAttribute="top" secondItem="LNJ-Y0-aPS" secondAttribute="bottom" id="WhU-cX-Jg3"/>
                                 <constraint firstItem="xcQ-Bv-diU" firstAttribute="height" secondItem="zYw-L5-4NA" secondAttribute="height" id="XWW-hu-gEv"/>
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="width" secondItem="DIe-zC-tN2" secondAttribute="width" id="bas-a1-U4h"/>
                                 <constraint firstItem="aW0-FM-WHu" firstAttribute="top" secondItem="Giy-xL-DOj" secondAttribute="bottom" id="cTq-jg-1Io"/>
@@ -309,6 +317,7 @@
                                 <constraint firstItem="xcQ-Bv-diU" firstAttribute="centerX" secondItem="zYw-L5-4NA" secondAttribute="centerX" id="klk-ig-sGw"/>
                                 <constraint firstItem="dvb-RP-I0A" firstAttribute="centerX" secondItem="xcQ-Bv-diU" secondAttribute="centerX" id="oT0-ti-5WS"/>
                                 <constraint firstItem="zYw-L5-4NA" firstAttribute="centerX" secondItem="vb0-A6-XcH" secondAttribute="centerX" id="q1n-Wx-KM9"/>
+                                <constraint firstItem="h5u-Nt-90i" firstAttribute="height" secondItem="LNJ-Y0-aPS" secondAttribute="height" id="sjm-pW-9ZO"/>
                                 <constraint firstItem="LNJ-Y0-aPS" firstAttribute="centerX" secondItem="XA2-8y-JuI" secondAttribute="centerX" id="xm5-Sa-Q6A"/>
                             </constraints>
                         </view>
@@ -321,17 +330,17 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Did-yt-E9f">
-                    <rect key="frame" x="0.0" y="433.5" width="375" height="233.5"/>
+                    <rect key="frame" x="0.0" y="434" width="375" height="233"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-Ma-2W5">
-                            <rect key="frame" x="0.0" y="46.5" width="375" height="187"/>
+                            <rect key="frame" x="0.0" y="46" width="375" height="187"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <date key="date" timeIntervalSinceReferenceDate="512405332.62869602">
                                 <!--2017-03-28 14:48:52 +0000-->
                             </date>
                         </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd2-q0-Wiq">
-                            <rect key="frame" x="281.5" y="0.0" width="93.5" height="46.5"/>
+                            <rect key="frame" x="282" y="0.0" width="93" height="46"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="tappedDoneButton:" destination="-1" eventType="touchUpInside" id="x4o-E2-Yt0"/>

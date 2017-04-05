@@ -493,10 +493,11 @@
 "NPVC_SELECT"                               =               "Select";
 "NPVC_DONE"                                 =               "DONE";
 "NPVC_ESTLOW_TITLE"                         =               "EST LOW VALUE";
+"NPVC_JURISDICTION"                         =               "JURISDICTION";
 
 //UserLocationPinViewController
 "ULP_MYLOCATION"                            =               "My Location";
-"ULP_CREATE"                                =               "Create Pin";
+"ULP_CREATE"                                =               " Create Pin";
 
 
 
