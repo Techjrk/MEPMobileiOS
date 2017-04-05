@@ -338,6 +338,8 @@
 		B79AA7AB1E93875D00BA1B04 /* NewPinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7A91E93875D00BA1B04 /* NewPinViewController.xib */; };
 		B79AA7AE1E93900200BA1B04 /* NewProjectAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7AD1E93900200BA1B04 /* NewProjectAnnotation.m */; };
 		B79AA7B11E93917E00BA1B04 /* NewProjectAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7B01E93917E00BA1B04 /* NewProjectAnnotationView.m */; };
+		B79AA7B61E9530F400BA1B04 /* SaveNewProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7B41E9530F400BA1B04 /* SaveNewProjectViewController.m */; };
+		B79AA7B71E9530F400BA1B04 /* SaveNewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7B51E9530F400BA1B04 /* SaveNewProjectViewController.xib */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -955,6 +957,9 @@
 		B79AA7AD1E93900200BA1B04 /* NewProjectAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProjectAnnotation.m; sourceTree = "<group>"; };
 		B79AA7AF1E93917E00BA1B04 /* NewProjectAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewProjectAnnotationView.h; sourceTree = "<group>"; };
 		B79AA7B01E93917E00BA1B04 /* NewProjectAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProjectAnnotationView.m; sourceTree = "<group>"; };
+		B79AA7B31E9530F400BA1B04 /* SaveNewProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveNewProjectViewController.h; sourceTree = "<group>"; };
+		B79AA7B41E9530F400BA1B04 /* SaveNewProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveNewProjectViewController.m; sourceTree = "<group>"; };
+		B79AA7B51E9530F400BA1B04 /* SaveNewProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveNewProjectViewController.xib; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -2037,6 +2042,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B79AA7B21E9530D500BA1B04 /* SaveNewProject */,
 				B79AA7A61E93874100BA1B04 /* NewPinViewController */,
 				B75EB7911E8BF23100F147D6 /* UserLocationPin */,
 				B62C51781E83E0460044830F /* CustomPhotoLibrary */,
@@ -2592,6 +2598,16 @@
 			name = NewPinViewController;
 			sourceTree = "<group>";
 		};
+		B79AA7B21E9530D500BA1B04 /* SaveNewProject */ = {
+			isa = PBXGroup;
+			children = (
+				B79AA7B31E9530F400BA1B04 /* SaveNewProjectViewController.h */,
+				B79AA7B41E9530F400BA1B04 /* SaveNewProjectViewController.m */,
+				B79AA7B51E9530F400BA1B04 /* SaveNewProjectViewController.xib */,
+			);
+			name = SaveNewProject;
+			sourceTree = "<group>";
+		};
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -2821,6 +2837,7 @@
 				B79616171CF5C6440089BC32 /* BidItemRecent.xib in Resources */,
 				B771C6021CEB6C28004A628A /* AssociatedBidCollectionViewCell.xib in Resources */,
 				B7BF60901D1BE28100B3BDD7 /* SearchViewController.xib in Resources */,
+				B79AA7B71E9530F400BA1B04 /* SaveNewProjectViewController.xib in Resources */,
 				B6FD04371D1D26D000E12123 /* ProjectFilterSelectionView.xib in Resources */,
 				B771C5F01CEB1B32004A628A /* CompanyHeaderView.xib in Resources */,
 				B76C69561CD376BE009E9F15 /* MenuHeaderView.xib in Resources */,
@@ -3194,6 +3211,7 @@
 				B6A74EF41D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m in Sources */,
 				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
+				B79AA7B61E9530F400BA1B04 /* SaveNewProjectViewController.m in Sources */,
 				B7BF610D1D240CD000B3BDD7 /* CustomListView.m in Sources */,
 				B70FDF7F1CEA0BBD0035A6D9 /* PariticpantsView.m in Sources */,
 				B7E104411CEC7DEF00EAD8E7 /* ProjectBidView.m in Sources */,

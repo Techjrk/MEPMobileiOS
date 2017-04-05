@@ -12,6 +12,7 @@
 #import "CameraControlListViewItem.h"
 #import "ListItemCollectionViewCell.h"
 #import "FilterViewController.h"
+#import "SaveNewProjectViewController.h"
 #import <MapKit/MapKit.h>
 
 //#define LABEL_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
@@ -35,7 +36,7 @@
 #define KEY_TYPEID                          @"projectTypeId"
 #define KEY_JURISDICTION                    @"jurisdictions"
 
-@interface NewProjectViewController ()<FilterLabelViewDelegate, SearchFilterViewControllerDelegate, FilterViewControllerDelegate, MKMapViewDelegate>{
+@interface NewProjectViewController ()<FilterLabelViewDelegate, SearchFilterViewControllerDelegate, FilterViewControllerDelegate, MKMapViewDelegate, SaveNewProjectViewControllerDelegate>{
     ListViewItemArray *listItemsProjectTypeId;
     ListViewItemArray *listItemsProjectStageId;
     ListViewItemArray *listItemsJurisdictions;
@@ -242,7 +243,17 @@
 }
 
 - (IBAction)tappedSave:(id)sender {
-    
+    SaveNewProjectViewController *controller = [SaveNewProjectViewController new];
+    controller.saveNewProjectViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
+}
+
+- (void)tappedSaveNewProject {
+    [self saveNewProject];
+}
+
+- (void)saveNewProject {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     
     dict[@"title"] = self.textFieldProjectTitle.text;
@@ -254,11 +265,11 @@
     if (self.textFieldAddress2.text.length>0) {
         dict[@"address2"] = self.textFieldAddress2.text;
     }
-
+    
     if (self.textFieldCity.text.length>0) {
         dict[@"city"] = self.textFieldCity.text;
     }
-  
+    
     if (self.textFieldState.text.length>0) {
         dict[@"state"] = self.textFieldState.text;
     }
@@ -272,11 +283,11 @@
     geoCode[@"lng"] = [NSNumber numberWithFloat:self.location.coordinate.longitude];
     
     dict[@"geocode"] = geoCode;
-
+    
     if (typeId != nil) {
         dict[@"primaryProjectTypeId"] = typeId;
     }
-  
+    
     if (stageId != nil) {
         dict[@"projectStageId"] = stageId;
     }
@@ -315,6 +326,7 @@
     } failure:^(id object) {
         
     }];
+    
 }
 
 #pragma mark - FilterLabelViewDelegate

@@ -499,5 +499,8 @@
 "ULP_MYLOCATION"                            =               "My Location";
 "ULP_CREATE"                                =               " Create Pin";
 
-
+//SaveNewProjectViewController
+"SNP_TITLE"                                 =               "You are about to save this new project";
+"SNP_SAVE_BUTTON"                           =               "SAVE PROJECT";
+"SNP_CANCEL_BUTTON"                         =               "CANCEL";
 
