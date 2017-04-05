@@ -280,4 +280,10 @@
     }
 }
 
+- (void)setFlashOn:(BOOL)on {
+    NSString *imageName = on?@"flash50_icon":@"splash_icon";
+    UIImage *image = [UIImage imageNamed:imageName];
+    [self.flashButton setImage:image forState:UIControlStateNormal];
+}
+
 @end
