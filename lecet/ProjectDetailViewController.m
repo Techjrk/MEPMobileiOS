@@ -317,7 +317,7 @@ typedef enum {
         for (NSDictionary *district in districts) {
      
             NSDictionary *dictrictCouncil = district[@"districtCouncil"];
-            NSString *current = dictrictCouncil[@"abbreviation"];
+            NSString *current = [DerivedNSManagedObject objectOrNil:dictrictCouncil[@"abbreviation"]];
             
             if (current.length>0) {
                 jurisdiction = [jurisdiction stringByAppendingString:current];

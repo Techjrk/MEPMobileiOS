@@ -88,6 +88,9 @@
 #define kUrlNotes                           @"Notes/%li"
 #define kUrlImage                           @"Images/%li"
 
+#define kUrlPins                            @"Pins"
+#define kUrlNewProject                      @"Projects/createInstance"
+
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
 @implementation DataManager
@@ -1577,4 +1580,23 @@
     }authenticated:YES];
 }
 
+#pragma mark - New Project
+
+- (void)createPin:(CLLocation*)location projectId:(NSNumber*)projectId success:(APIBlock)success failure:(APIBlock)failure;{
+    [self HTTP_POST_BODY:[self url:kUrlPins] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+
+}
+
+- (void)createProject:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure {
+    [self HTTP_POST_BODY:[self url:kUrlNewProject] parameters:project success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
 @end

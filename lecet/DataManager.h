@@ -132,4 +132,9 @@
 - (void)addProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure;
 - (void)updateProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure;
 - (void)deleteProjectUserImage:(NSNumber*)projectID success:(APIBlock)success failure:(APIBlock)failure;
+
+//New Project
+- (void)createPin:(CLLocation*)location projectId:(NSNumber*)projectId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)createProject:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure;
+
 @end

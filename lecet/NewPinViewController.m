@@ -33,9 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.buttonCreatePin setImage:[UIImage imageNamed:@"icon_createPin"] forState:UIControlStateNormal];
     [self.buttonCreatePin setTitle:NSLocalizedLanguage(@"ULP_CREATE") forState:UIControlStateNormal];
     [self.buttonCreatePin setTitleColor:CREATEPIN_COLOR forState:UIControlStateNormal];
-    [self.buttonCreatePin setImage:[UIImage imageNamed:@"icon_createPin"] forState:UIControlStateNormal];
+    
     self.buttonCreatePin.titleLabel.font = CREATEPIN_FONT;
 
 }

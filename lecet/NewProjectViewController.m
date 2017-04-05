@@ -33,15 +33,20 @@
 
 #define KEY_PROJECTSTAGEID                  @"projectStageId"
 #define KEY_TYPEID                          @"projectTypeId"
+#define KEY_JURISDICTION                    @"jurisdictions"
 
 @interface NewProjectViewController ()<FilterLabelViewDelegate, SearchFilterViewControllerDelegate, FilterViewControllerDelegate, MKMapViewDelegate>{
     ListViewItemArray *listItemsProjectTypeId;
     ListViewItemArray *listItemsProjectStageId;
+    ListViewItemArray *listItemsJurisdictions;
     
     NSNumber *typeId;
     NSNumber *estLow;
     NSNumber *stageId;
     NSString *targetDate;
+    NSString *county;
+    NSString *countryCode;
+    NSNumber *jurisdictionId;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
@@ -70,6 +75,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 @property (weak, nonatomic) IBOutlet UIView *viewPicker;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDone;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
 
 @end
 
@@ -141,9 +147,13 @@
     self.fieldStage.filterLabelViewDelegate = self;
     
     [self.fieldTargetSetDate setValue:NSLocalizedLanguage(@"NPVC_NONE")];
-    
     [self.fieldTargetSetDate setTitle:NSLocalizedLanguage(@"NPVC_TARGET_DATE")];
     self.fieldTargetSetDate.filterLabelViewDelegate = self;
+    
+    [self.fieldJurisdiction setValue:NSLocalizedLanguage(@"NPVC_NONE")];
+    [self.fieldJurisdiction setTitle:NSLocalizedLanguage(@"NPVC_JURISDICTION")];
+    self.fieldStage.filterModel = FilterModelJurisdiction;
+    self.fieldJurisdiction.filterLabelViewDelegate = self;
     
     if (self.location != nil) {
         [self findLocation];
@@ -176,7 +186,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.constraintViewHeight.constant = self.fieldTargetSetDate.frame.origin.y + self.fieldTargetSetDate.frame.size.height + (kDeviceHeight * 0.01);
+    self.constraintViewHeight.constant = self.fieldJurisdiction.frame.origin.y + self.fieldJurisdiction.frame.size.height + (kDeviceHeight * 0.01);
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.constraintViewHeight.constant  );
 }
@@ -217,6 +227,9 @@
                          
                          self.textFieldZip.text = [DerivedNSManagedObject objectOrNil:address[@"ZIP"]];
                          
+                         countryCode = [DerivedNSManagedObject objectOrNil:address[@"CountryCode"]];
+                         
+                         county = [DerivedNSManagedObject objectOrNil:address[@"SubAdministrativeArea"]];
                      } else if (error != nil) {
                          
                      }
@@ -229,6 +242,79 @@
 }
 
 - (IBAction)tappedSave:(id)sender {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    
+    dict[@"title"] = self.textFieldProjectTitle.text;
+    
+    if (self.textFieldAddress1.text.length>0) {
+        dict[@"address1"] = self.textFieldAddress1.text;
+    }
+    
+    if (self.textFieldAddress2.text.length>0) {
+        dict[@"address2"] = self.textFieldAddress2.text;
+    }
+
+    if (self.textFieldCity.text.length>0) {
+        dict[@"city"] = self.textFieldCity.text;
+    }
+  
+    if (self.textFieldState.text.length>0) {
+        dict[@"state"] = self.textFieldState.text;
+    }
+    
+    if (self.textFieldZip.text.length>0) {
+        dict[@"zip5"] = self.textFieldZip.text;
+    }
+    
+    NSMutableDictionary *geoCode = [NSMutableDictionary new];
+    geoCode[@"lat"] = [NSNumber numberWithFloat:self.location.coordinate.latitude];
+    geoCode[@"lng"] = [NSNumber numberWithFloat:self.location.coordinate.longitude];
+    
+    dict[@"geocode"] = geoCode;
+
+    if (typeId != nil) {
+        dict[@"primaryProjectTypeId"] = typeId;
+    }
+  
+    if (stageId != nil) {
+        dict[@"projectStageId"] = stageId;
+    }
+    
+    if (targetDate != nil) {
+        dict[@"targetStartDate"] = targetDate;
+    }
+    
+    if (estLow != nil) {
+        dict[@"estLow"] = estLow;
+    }
+    
+    if (countryCode != nil) {
+        dict[@"country"] = countryCode;
+    }
+    
+    if (county != nil) {
+        dict[@"county"] = county;
+    }
+    
+    if (jurisdictionId != nil) {
+        dict[@"jurisdictionCityId"] = jurisdictionId;
+    }
+    [[DataManager sharedManager] createProject:dict success:^(id object) {
+        
+        NSNumber *projectId = object[@"id"];
+        [[DataManager sharedManager] createPin:self.location projectId:projectId success:^(id object) {
+            
+            [self.navigationController popViewControllerAnimated:NO];
+            [self.projectViewControllerDelegate tappedSavedNewProject:projectId];
+            
+        } failure:^(id object) {
+            
+        }];
+        
+    } failure:^(id object) {
+        
+    }];
 }
 
 #pragma mark - FilterLabelViewDelegate
@@ -241,8 +327,10 @@
     } else if ([self.fieldTargetSetDate isEqual:object]) {
         self.viewPicker.hidden = NO;
         self.dateTimePicker.date = [NSDate date];
-    } if ([self.fieldEstLow isEqual:object]) {
+    } else if ([self.fieldEstLow isEqual:object]) {
         [self promptEstLow];
+    } else if ([self.fieldJurisdiction isEqual:object]) {
+        [self filterJurisdiction:object];
     }
 }
 
@@ -366,6 +454,9 @@
     } else if ([key isEqualToString:KEY_TYPEID]) {
         [self.fieldType setValue:titles[0]];
         typeId = selectedItems[0];
+    } else if ([key isEqualToString:KEY_JURISDICTION]){
+        [self.fieldJurisdiction setValue:titles[0]];
+        jurisdictionId = selectedItems[0];
     }
 }
 
@@ -426,6 +517,109 @@
     controller.fieldValue = @"projectStageId";
     controller.singleSelect = YES;
     controller.parentOnly = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+
+#pragma mark - Jurisdiction
+
+- (void)filterJurisdiction:(UIView*)view {
+    
+    if (listItemsJurisdictions == nil) {
+        
+        ListViewItemArray *listItems = [ListViewItemArray new];
+        
+        [[DataManager sharedManager] jurisdiction:^(id object) {
+            
+            NSArray *items = object;
+            
+            for (NSDictionary *item in items) {
+                
+                NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
+                
+                [listItems addObject:jurisdiction];
+                
+                NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"localsWithNoDistrict"]];
+                
+                if (locals != nil) {
+                    
+                    if (locals.count>0) {
+                        
+                        ListViewItemArray *localItems = [ListViewItemArray new];
+                        
+                        for (NSDictionary *local in locals) {
+                            
+                            NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"local"];
+                            
+                            [localItems addObject:localItem];
+                        }
+                        
+                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
+                        
+                    }
+                    
+                }
+                
+                NSArray *districtCouncils = [DerivedNSManagedObject objectOrNil:item[@"districtCouncils"]];
+                
+                if (districtCouncils != nil) {
+                    
+                    ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
+                    
+                    if (localItems == nil) {
+                        localItems = [ListViewItemArray new];
+                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
+                        
+                    }
+                    for (NSDictionary *districtItem in districtCouncils) {
+                        
+                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
+                        
+                        [localItems addObject:localItem];
+                        
+                        
+                        NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
+                        
+                        ListViewItemArray *localDistrict = [ListViewItemArray new];
+                        
+                        for (NSDictionary *local in locals) {
+                            
+                            NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
+                            
+                            [localDistrict addObject:item];
+                            
+                        }
+                        
+                        localItem[LIST_VIEW_SUBITEMS] = localDistrict;
+                        
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            
+            listItemsJurisdictions = listItems;
+            [self displayJurisdiction];
+        } failure:^(id object) {
+            
+        }];
+        
+    } else {
+        [self displayJurisdiction];
+    }
+    
+}
+
+- (void)displayJurisdiction {
+    FilterViewController *controller = [FilterViewController new];
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
+    controller.listViewItems = listItemsJurisdictions;
+    controller.singleSelect = YES;
+    controller.parentOnly = YES;
+    controller.fieldValue = @"jurisdictions";
+    controller.filterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     
 }

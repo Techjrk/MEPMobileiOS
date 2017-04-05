@@ -23,10 +23,11 @@
 #import "NewProjectAnnotationView.h"
 #import "NewProjectAnnotation.h"
 #import "NewPinViewController.h"
+#import "ProjectDetailViewController.h"
 
 #define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
-@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate, ProjectNearMeFilterViewControllerDelegate, CreateProjectPinDelegate>{
+@interface ProjectsNearMeViewController ()<ShareLocationDelegate, GoToSettingsDelegate, MKMapViewDelegate, UITextFieldDelegate, ProjectNearMeFilterViewControllerDelegate, CreateProjectPinDelegate, NewProjectViewControllerDelegate>{
     BOOL isFirstLaunch;
     NSMutableArray *mapItems;
     BOOL isSearchLocation;
@@ -529,11 +530,24 @@ float MetersToMiles(float meters) {
 
 - (void)createProjectUsingLocation:(CLLocation *)location {
     
-     NewProjectViewController *controller = [NewProjectViewController new];
-     controller.location = location;
-     controller.pinType = pinTypeUserNew;
-     [self.navigationController pushViewController:controller animated:YES];
+    NewProjectViewController *controller = [NewProjectViewController new];
+    controller.location = location;
+    controller.pinType = pinTypeUserNew;
+    controller.projectViewControllerDelegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
 
 }
 
+- (void)tappedSavedNewProject:(id)object {
+    [[DataManager sharedManager] projectDetail:object success:^(id object) {
+        
+        ProjectDetailViewController *detail = [ProjectDetailViewController new];
+        detail.view.hidden = NO;
+        [detail detailsFromProject:object];
+        
+        [self.navigationController pushViewController:detail animated:YES];
+    } failure:^(id object) {
+    }];
+
+}
 @end
