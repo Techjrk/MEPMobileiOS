@@ -305,6 +305,9 @@
         NSNumber *projectId = object[@"id"];
         [[DataManager sharedManager] createPin:self.location projectId:projectId success:^(id object) {
             
+            [self.navigationController popViewControllerAnimated:NO];
+            [self.projectViewControllerDelegate tappedSavedNewProject:projectId];
+            
         } failure:^(id object) {
             
         }];

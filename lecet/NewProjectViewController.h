@@ -10,7 +10,12 @@
 #import "BaseViewController.h"
 #import "ProjectHeaderView.h"
 
+@protocol NewProjectViewControllerDelegate <NSObject>
+- (void)tappedSavedNewProject:(id)object;
+@end
+
 @interface NewProjectViewController : BaseViewController
+@property (strong, nonatomic) id<NewProjectViewControllerDelegate>projectViewControllerDelegate;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) PinType pinType;
 @end

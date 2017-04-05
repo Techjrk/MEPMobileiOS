@@ -228,7 +228,7 @@
     
     UICollectionViewCell *cell;
     
-    NSMutableDictionary *collectionItems = nil;
+    //NSMutableDictionary *collectionItems = nil;
     
     switch (currentTab.integerValue) {
             
