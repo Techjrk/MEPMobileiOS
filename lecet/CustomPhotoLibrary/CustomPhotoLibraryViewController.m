@@ -102,11 +102,13 @@
 
 #pragma mark Photo LibraryDelegate
 - (void)photoLibraryDidChange:(PHChange *)changeInstance {
-    PHFetchResultChangeDetails *change = [changeInstance changeDetailsForFetchResult:self.fetchresult];
-    
-    self.fetchresult = change.fetchResultAfterChanges;
-
-    [self.collectionView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PHFetchResultChangeDetails *change = [changeInstance changeDetailsForFetchResult:self.fetchresult];
+        if (change.hasIncrementalChanges || change.fetchResultAfterChanges.count > 0) {
+            self.fetchresult = change.fetchResultAfterChanges;
+            [self.collectionView reloadData];
+        }
+    });
 }
 
 #pragma mark - UICollectionViewDelegate and DataSource
