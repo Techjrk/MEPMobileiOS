@@ -98,11 +98,11 @@
             
             for (NSDictionary *item in _fieldLocation.openEntryFields) {
                 NSString *field = item[@"FIELD"];
-                NSString *value = item[@"VALUE"];
+                NSString *value = [item[@"VALUE"] uppercaseString];
                 
                 if (value.length>0) {
                     itemdict[field] = value;
-                    self.searchFilter[field] = value;
+                    self.searchFilter[@"companyLocation"] = itemdict;
                 }
                 
             }

@@ -154,26 +154,30 @@
             if (companyDictFilter == nil) {
                 companyDictFilter = [NSMutableDictionary new];
                 _companyFilter.searchFilter = companyDictFilter;
+                
             }
+            NSMutableDictionary *companyLocation = [NSMutableDictionary new];
+            
+            companyDictFilter[@"companyLocation"] = companyLocation;
 
             NSString *city = projectLocDict[@"city"];
             if (city != nil) {
-                companyDictFilter[@"city"] = city;
+                companyLocation[@"city"] = city;
             }
             
             NSString *state = projectLocDict[@"state"];
             if (state != nil) {
-                companyDictFilter[@"state"] = state;
+                companyLocation[@"state"] = state;
             }
             
-            NSString *zip = projectLocDict[@"zip"];
+            NSString *zip = projectLocDict[@"zip5"];
             if (zip != nil) {
-                companyDictFilter[@"zip"] = zip;
+                companyLocation[@"zip5"] = zip;
             }
             
             NSString *county = projectLocDict[@"county"];
             if (county != nil) {
-                companyDictFilter[@"county"] = county;
+                companyLocation[@"county"] = county;
             }
             
         }
@@ -186,24 +190,28 @@
 
         NSMutableDictionary *dict = [NSMutableDictionary new];
         
-        NSString *city = companyDictFilter[@"city"];
-        if (city != nil) {
-            dict[@"city"] = city;
-        }
+        NSDictionary *companyLocation = companyDictFilter[@"companyLocation"];
         
-        NSString *state = companyDictFilter[@"state"];
-        if (state != nil) {
-            dict[@"state"] = state;
-        }
-        
-        NSString *zip = companyDictFilter[@"zip"];
-        if (zip != nil) {
-            dict[@"zip5"] = zip;
-        }
-        
-        NSString *county = companyDictFilter[@"county"];
-        if (county != nil) {
-            dict[@"county"] = county;
+        if (companyLocation != nil) {
+            NSString *city = companyLocation[@"city"];
+            if (city != nil) {
+                dict[@"city"] = city;
+            }
+            
+            NSString *state = companyLocation[@"state"];
+            if (state != nil) {
+                dict[@"state"] = state;
+            }
+            
+            NSString *zip = companyLocation[@"zip5"];
+            if (zip != nil) {
+                dict[@"zip5"] = zip;
+            }
+            
+            NSString *county = companyLocation[@"county"];
+            if (county != nil) {
+                dict[@"county"] = county;
+            }
         }
 
         if (dict.count>0) {
@@ -371,7 +379,7 @@
          
                         [entryView.openEntryFields addObject:[@{@"FIELD":@"county",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_COUNTY"} mutableCopy ]];
                         
-                        [entryView.openEntryFields addObject:[@{@"FIELD":@"zip",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
+                        [entryView.openEntryFields addObject:[@{@"FIELD":@"zip5",@"VALUE":@"",@"placeHolder":@"COMPANY_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
                         
                     }
                     [entryView promptOpenEntryUsingViewController:self block:^(id object) {
