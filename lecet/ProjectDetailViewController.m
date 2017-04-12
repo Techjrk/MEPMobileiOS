@@ -37,6 +37,7 @@
 #import "CustomCameraViewController.h"
 #import <Photos/Photos.h>
 #import "CustomPhotoLibraryViewController.h"
+#import "PhotoShutterViewController.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -827,17 +828,12 @@ typedef enum {
 }
 
 - (IBAction)tappedButtonAddNote:(id)sender {
-    
-    /*
-    NewProjectViewController *controller = [NewProjectViewController new];
-    controller.location = [self.headerView location];
-    controller.pinType = self.headerView.pinType;
-    [self.navigationController pushViewController:controller animated:YES];*/
-    
+ 
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
     controller.mobileProjectAddNoteViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (IBAction)tappedButtonAddImage:(id)sender {
@@ -968,9 +964,9 @@ typedef enum {
 }
 
 - (void)showCameraAnimated:(BOOL)animate{
+    
+    
     self.picker = [[UIImagePickerController alloc] init];
-    
-    
     self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.picker.showsCameraControls = NO;
     self.picker.extendedLayoutIncludesOpaqueBars = YES;
@@ -986,7 +982,12 @@ typedef enum {
     self.picker.cameraOverlayView = customView;
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker animated:YES];
-
+   
+    /*
+    PhotoShutterViewController *controller = [PhotoShutterViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+    */
+    
 }
 
 - (void)presentImagePickerController:(UIViewController *)pickerController animated:(BOOL)animate

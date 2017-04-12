@@ -99,7 +99,10 @@
     if (info != nil && ![info isEqual:@""]) {
         CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
         if (items == CameraControlListViewPano || items == CameraControlListView360) {
-            
+            selectedIndex = indexPath;
+            [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+            [self.cameraControlListViewDelegate cameraControlListDidSelect:info];
+            [self.collectionView reloadData];
         } else {
             BOOL isCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
             if (!isCamera && items == CameraControlListViewPhoto) {

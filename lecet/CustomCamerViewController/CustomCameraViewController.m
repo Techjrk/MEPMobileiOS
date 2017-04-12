@@ -11,7 +11,8 @@
 #import "CameraControlListView.h"
 #import "CustomPhotoLibView.h"
 #import "CameraRadialView.h"
- 
+#import "PhotoShutterViewController.h"
+
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define FONT_TILE                       fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
@@ -41,7 +42,7 @@
 @property (weak, nonatomic) IBOutlet UIView *customPhotoLibraryContainer;
 @property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
 @property (weak, nonatomic) IBOutlet CameraRadialView *backgroundView;
-
+@property (strong, nonatomic) PhotoShutterViewController *shutter;
 @end
 
 @implementation CustomCameraViewController
@@ -87,6 +88,26 @@
 
 #pragma mark - Camera Controls Button
 
+- (void)showShutter:(BOOL)show {
+
+    if ((self.shutter == nil) && show) {
+        self.shutter = [PhotoShutterViewController new];
+        self.shutter.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
+        [self.view addSubview:self.shutter.view];
+        [self.view sendSubviewToBack:self.shutter.view];
+        [self.view sendSubviewToBack:self.backgroundView];
+        self.shutter.view.hidden = NO;
+    } else {
+        
+        self.shutter.view.hidden = !show;
+        if (show) {
+            [self.shutter startShutter];
+        } else {
+            [self.shutter stopShutter];
+        }
+   }
+}
+
 - (void)hideDefaultCameraControl:(BOOL)hide {
     
     self.cameraSwitchButton.hidden = hide;
@@ -105,6 +126,12 @@
         [self.view layoutIfNeeded];
     }];
     
+}
+
+- (void)hideControlForPanoramicMode {
+    self.cameraSwitchButton.hidden = YES;
+    self.flashButton.hidden = YES;
+    self.navTitleLabel.hidden = YES;
 }
 
 - (void)hideLibraryControl:(BOOL)hide {
@@ -157,12 +184,14 @@
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
                 [self setNavBottomViewClearColor:NO];
+                [self showShutter:NO];
                 break;
             }
             case CameraControlListViewUse: {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
                 [self setNavBottomViewClearColor:NO];
+                [self showShutter:NO];
                 break;
             }
             case CameraControlListViewRetake: {
@@ -171,12 +200,15 @@
                 isPhotoSelected = NO;
                 [self hideDefaultCameraControl:NO];
                 [self setNavBottomViewClearColor:NO];
+                [self showShutter:NO];
                 break;
             }
             case CameraControlListViewPano: {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
-                [self setNavBottomViewClearColor:NO];
+                [self setNavBottomViewClearColor:YES];
+                [self hideControlForPanoramicMode];
+                [self showShutter:YES];
                 break;
             }
             case CameraControlListViewPhoto: {
@@ -187,6 +219,7 @@
                     [self hideDefaultCameraControl:NO];
                     [self setNavBottomViewClearColor:NO];
                 }
+                [self showShutter:NO];
                 break;
             }
             case CameraControlListViewLibrary: {
@@ -198,6 +231,7 @@
                     [self hideLibraryControl:YES];
                     [self setNavBottomViewClearColor:YES];
                 }
+                [self showShutter:NO];
                 break;
             }
             case CameraControlListView360: {

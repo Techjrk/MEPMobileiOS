@@ -340,6 +340,18 @@
 		B79AA7B11E93917E00BA1B04 /* NewProjectAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7B01E93917E00BA1B04 /* NewProjectAnnotationView.m */; };
 		B79AA7B61E9530F400BA1B04 /* SaveNewProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7B41E9530F400BA1B04 /* SaveNewProjectViewController.m */; };
 		B79AA7B71E9530F400BA1B04 /* SaveNewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7B51E9530F400BA1B04 /* SaveNewProjectViewController.xib */; };
+		B79AA7B91E9CBE4400BA1B04 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7B81E9CBE4400BA1B04 /* CoreVideo.framework */; };
+		B79AA7BB1E9CBE4F00BA1B04 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7BA1E9CBE4F00BA1B04 /* CoreMedia.framework */; };
+		B79AA7BD1E9CBE5B00BA1B04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7BC1E9CBE5B00BA1B04 /* Security.framework */; };
+		B79AA7BF1E9CBE6F00BA1B04 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7BE1E9CBE6F00BA1B04 /* AssetsLibrary.framework */; };
+		B79AA7C11E9CBE7800BA1B04 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7C01E9CBE7800BA1B04 /* CoreMotion.framework */; };
+		B79AA7C31E9CBE8600BA1B04 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7C21E9CBE8600BA1B04 /* AVFoundation.framework */; };
+		B79AA7C51E9CBE9100BA1B04 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */; };
+		B79AA7C71E9CBEA100BA1B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7C61E9CBEA100BA1B04 /* Foundation.framework */; };
+		B79AA7F61E9CBF5400BA1B04 /* DMDAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7F41E9CBF5400BA1B04 /* DMDAssets.bundle */; };
+		B79AA7F71E9CBF5400BA1B04 /* libDMD_LITE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7F51E9CBF5400BA1B04 /* libDMD_LITE.a */; };
+		B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */; };
+		B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */; };
 		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
@@ -960,6 +972,20 @@
 		B79AA7B31E9530F400BA1B04 /* SaveNewProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveNewProjectViewController.h; sourceTree = "<group>"; };
 		B79AA7B41E9530F400BA1B04 /* SaveNewProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveNewProjectViewController.m; sourceTree = "<group>"; };
 		B79AA7B51E9530F400BA1B04 /* SaveNewProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveNewProjectViewController.xib; sourceTree = "<group>"; };
+		B79AA7B81E9CBE4400BA1B04 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		B79AA7BA1E9CBE4F00BA1B04 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B79AA7BC1E9CBE5B00BA1B04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B79AA7BE1E9CBE6F00BA1B04 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		B79AA7C01E9CBE7800BA1B04 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B79AA7C21E9CBE8600BA1B04 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		B79AA7C61E9CBEA100BA1B04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B79AA7F31E9CBF5400BA1B04 /* DMD_LITE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMD_LITE.h; sourceTree = "<group>"; };
+		B79AA7F41E9CBF5400BA1B04 /* DMDAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DMDAssets.bundle; sourceTree = "<group>"; };
+		B79AA7F51E9CBF5400BA1B04 /* libDMD_LITE.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDMD_LITE.a; sourceTree = "<group>"; };
+		B79AA7F91E9CC6C700BA1B04 /* PhotoShutterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoShutterViewController.h; sourceTree = "<group>"; };
+		B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShutterViewController.m; sourceTree = "<group>"; };
+		B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoShutterViewController.xib; sourceTree = "<group>"; };
 		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -1132,6 +1158,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79AA7C71E9CBEA100BA1B04 /* Foundation.framework in Frameworks */,
+				B79AA7F71E9CBF5400BA1B04 /* libDMD_LITE.a in Frameworks */,
+				B79AA7C51E9CBE9100BA1B04 /* OpenGLES.framework in Frameworks */,
+				B79AA7C31E9CBE8600BA1B04 /* AVFoundation.framework in Frameworks */,
+				B79AA7C11E9CBE7800BA1B04 /* CoreMotion.framework in Frameworks */,
+				B79AA7BF1E9CBE6F00BA1B04 /* AssetsLibrary.framework in Frameworks */,
+				B79AA7BD1E9CBE5B00BA1B04 /* Security.framework in Frameworks */,
+				B79AA7BB1E9CBE4F00BA1B04 /* CoreMedia.framework in Frameworks */,
+				B79AA7B91E9CBE4400BA1B04 /* CoreVideo.framework in Frameworks */,
 				B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */,
 				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
 				B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */,
@@ -2042,6 +2077,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B79AA7F81E9CC69600BA1B04 /* PhotoShutter */,
 				B79AA7B21E9530D500BA1B04 /* SaveNewProject */,
 				B79AA7A61E93874100BA1B04 /* NewPinViewController */,
 				B75EB7911E8BF23100F147D6 /* UserLocationPin */,
@@ -2608,6 +2644,26 @@
 			name = SaveNewProject;
 			sourceTree = "<group>";
 		};
+		B79AA7C81E9CBF1400BA1B04 /* PanoLite */ = {
+			isa = PBXGroup;
+			children = (
+				B79AA7F31E9CBF5400BA1B04 /* DMD_LITE.h */,
+				B79AA7F41E9CBF5400BA1B04 /* DMDAssets.bundle */,
+				B79AA7F51E9CBF5400BA1B04 /* libDMD_LITE.a */,
+			);
+			path = PanoLite;
+			sourceTree = "<group>";
+		};
+		B79AA7F81E9CC69600BA1B04 /* PhotoShutter */ = {
+			isa = PBXGroup;
+			children = (
+				B79AA7F91E9CC6C700BA1B04 /* PhotoShutterViewController.h */,
+				B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */,
+				B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */,
+			);
+			name = PhotoShutter;
+			sourceTree = "<group>";
+		};
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -2651,6 +2707,14 @@
 		B7DD9CC91D942A9600978CC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B79AA7C61E9CBEA100BA1B04 /* Foundation.framework */,
+				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
+				B79AA7C21E9CBE8600BA1B04 /* AVFoundation.framework */,
+				B79AA7C01E9CBE7800BA1B04 /* CoreMotion.framework */,
+				B79AA7BE1E9CBE6F00BA1B04 /* AssetsLibrary.framework */,
+				B79AA7BC1E9CBE5B00BA1B04 /* Security.framework */,
+				B79AA7BA1E9CBE4F00BA1B04 /* CoreMedia.framework */,
+				B79AA7B81E9CBE4400BA1B04 /* CoreVideo.framework */,
 				B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */,
 			);
 			name = Frameworks;
@@ -2659,6 +2723,7 @@
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B79AA7C81E9CBF1400BA1B04 /* PanoLite */,
 				B725DAE01D76F44600B6CCC4 /* Crypto */,
 				B725DABB1D756BCF00B6CCC4 /* GoogleAnalytics */,
 				B6BEE9841D46276600237BB9 /* EHFAuthenticator */,
@@ -2935,6 +3000,7 @@
 				B7BF60DF1D2154D500B3BDD7 /* CompanyFilterView.xib in Resources */,
 				B7BF60C81D1EED6B00B3BDD7 /* SearchFilterViewController.xib in Resources */,
 				B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */,
+				B79AA7F61E9CBF5400BA1B04 /* DMDAssets.bundle in Resources */,
 				B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */,
 				B7BF60B41D1E36F000B3BDD7 /* SearchSavedCollectionViewCell.xib in Resources */,
 				B683371F1D081BD0004226D3 /* ChangePasswordView.xib in Resources */,
@@ -2969,6 +3035,7 @@
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
 				B6AA23771D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib in Resources */,
+				B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */,
 				B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
 				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
@@ -3012,6 +3079,7 @@
 				B60909D41E7AB79B00DEAA17 /* CustomCameraViewController.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
+				B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */,
 				B62C51821E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.m in Sources */,
 				B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */,
 				B7E104541CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.m in Sources */,
@@ -3335,6 +3403,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -3347,6 +3416,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/lecet/PanoLite",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
@@ -3363,6 +3433,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -3375,6 +3446,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/lecet/PanoLite",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
