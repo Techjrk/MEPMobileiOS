@@ -116,7 +116,7 @@
     self.cameraSwitchButton.hidden = hide;
     self.flashButton.hidden = hide;
     self.takePhotoButton.hidden = hide;
-
+    self.navTitleLabel.hidden = hide;
     self.capturedImage.hidden = !hide;
 
     NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];

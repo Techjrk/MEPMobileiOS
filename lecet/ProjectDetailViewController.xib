@@ -93,6 +93,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkn-IH-oMZ">
                                     <rect key="frame" x="300" y="210" width="75" height="70"/>
                                     <state key="normal" image="icon_editProject"/>
+                                    <connections>
+                                        <action selector="tappedEditButton:" destination="-1" eventType="touchUpInside" id="FWr-GI-I9F"/>
+                                    </connections>
                                 </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-sj-2hU">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
