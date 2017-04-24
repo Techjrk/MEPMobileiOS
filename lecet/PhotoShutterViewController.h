@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PhotoShutterViewControllerDelegate <NSObject>
+@optional
+- (void)photoTaken:(UIImage *)image;
+@end
+
 @interface PhotoShutterViewController : UIViewController
+@property (nonatomic,assign) id<PhotoShutterViewControllerDelegate> photoShutterViewControllerDelegate;
+- (void)tappedTakePanoramaPhoto;
 - (void)startShutter;
 - (void)stopShutter;
 @end

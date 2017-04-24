@@ -17,6 +17,7 @@
 - (void)tappedCancel;
 - (void)customCameraControlListDidSelect:(id)info;
 - (void)customCameraPhotoLibDidSelect:(UIImage*)image;
+- (void)customPanoImageTaken:(UIImage*)image;
 @end
 
 @interface CustomCameraViewController : UIViewController

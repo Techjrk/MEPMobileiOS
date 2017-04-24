@@ -26,9 +26,10 @@
 #define COLOR_BG_BOTTOM_VIEW            RGB(5, 35, 74)
 #define COLOR_FONT_NAV_BUTTON           RGB(168,195,230)
 
-@interface CustomCameraViewController ()<CameraControlListViewDelegate,CustomPhotoLibViewDelegate>{
+@interface CustomCameraViewController ()<CameraControlListViewDelegate,CustomPhotoLibViewDelegate,PhotoShutterViewControllerDelegate>{
     BOOL isLibrarySelected;
     BOOL isPhotoSelected;
+    BOOL isPanoSelected;
 }
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -43,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
 @property (weak, nonatomic) IBOutlet CameraRadialView *backgroundView;
 @property (strong, nonatomic) PhotoShutterViewController *shutter;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewPano;
 @end
 
 @implementation CustomCameraViewController
@@ -92,6 +94,7 @@
 
     if ((self.shutter == nil) && show) {
         self.shutter = [PhotoShutterViewController new];
+        self.shutter.photoShutterViewControllerDelegate = self;
         self.shutter.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
         [self.view addSubview:self.shutter.view];
         [self.view sendSubviewToBack:self.shutter.view];
@@ -162,10 +165,14 @@
 }
 
 - (IBAction)tappedTakePhotoButton:(id)sender {
-    [self.customCameraViewControllerDelegate tapppedTakePhoto];
     
-    [self hideDefaultCameraControl:YES];
     
+    if (isPanoSelected) {
+        [self.shutter tappedTakePanoramaPhoto];
+    } else {
+        [self.customCameraViewControllerDelegate tapppedTakePhoto];
+        [self hideDefaultCameraControl:YES];
+    }
 }
 - (IBAction)tappedFlashButton:(id)sender {
     [self.customCameraViewControllerDelegate tappedFlash];
@@ -183,6 +190,7 @@
             case CameraControlListViewPreview : {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
+                isPanoSelected = NO;
                 [self setNavBottomViewClearColor:NO];
                 [self showShutter:NO];
                 break;
@@ -190,6 +198,7 @@
             case CameraControlListViewUse: {
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
+                isPanoSelected = NO;
                 [self setNavBottomViewClearColor:NO];
                 [self showShutter:NO];
                 break;
@@ -204,16 +213,20 @@
                 break;
             }
             case CameraControlListViewPano: {
-                isLibrarySelected = NO;
-                isPhotoSelected = NO;
-                [self setNavBottomViewClearColor:YES];
-                [self hideControlForPanoramicMode];
-                [self showShutter:YES];
+                if (!isPanoSelected) {
+                    isPanoSelected = YES;
+                    isLibrarySelected = NO;
+                    isPhotoSelected = NO;
+                    [self setNavBottomViewClearColor:YES];
+                    [self hideControlForPanoramicMode];
+                    [self showShutter:YES];
+                }
                 break;
             }
             case CameraControlListViewPhoto: {
                 if (!isPhotoSelected) {
                     self.customPhotoLibView.hidden = YES;
+                    isPanoSelected = NO;
                     isLibrarySelected = NO;
                     isPhotoSelected = YES;
                     [self hideDefaultCameraControl:NO];
@@ -224,6 +237,7 @@
             }
             case CameraControlListViewLibrary: {
                 if (!isLibrarySelected) {
+                    isPanoSelected = NO;
                     self.customPhotoLibView.hidden = NO;
                     self.capturedImage.hidden = YES;
                     isLibrarySelected = YES;
@@ -235,6 +249,7 @@
                 break;
             }
             case CameraControlListView360: {
+                isPanoSelected = NO;
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
                 [self setNavBottomViewClearColor:NO];
@@ -319,5 +334,13 @@
     UIImage *image = [UIImage imageNamed:imageName];
     [self.flashButton setImage:image forState:UIControlStateNormal];
 }
+
+#pragma mark - PhotoShutterViewControllerDelegate
+
+- (void)photoTaken:(UIImage *)image{
+    [self.customCameraViewControllerDelegate customPanoImageTaken:image];
+    [self hideDefaultCameraControl:YES];
+}
+
 
 @end
