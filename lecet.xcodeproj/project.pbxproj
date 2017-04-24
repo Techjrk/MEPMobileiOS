@@ -2315,6 +2315,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B68B22C51EA65CEF00C7512E /* PanomaraIndicatorListView */,
 				B63AC2EC1E8D48F7004738D7 /* CameraRadialBG */,
 				B60BEFA11E854EA500C69640 /* CustomPhotoLibView */,
 				B60909EB1E7C0E4200DEAA17 /* CameraControlList */,
