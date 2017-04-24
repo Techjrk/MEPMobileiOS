@@ -1583,7 +1583,11 @@
 #pragma mark - New Project
 
 - (void)createPin:(CLLocation*)location projectId:(NSNumber*)projectId success:(APIBlock)success failure:(APIBlock)failure;{
-    [self HTTP_POST_BODY:[self url:kUrlPins] parameters:nil success:^(id object) {
+    
+    NSString *userId =[self getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    
+    NSDictionary *parameter = @{@"geocode": @{@"lat": [NSNumber numberWithFloat:location.coordinate.latitude], @"lng":[NSNumber numberWithFloat:location.coordinate.longitude]}, @"projectId":projectId, @"userId":userId};
+    [self HTTP_POST_BODY:[self url:kUrlPins] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

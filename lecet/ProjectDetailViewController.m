@@ -140,6 +140,8 @@ typedef enum {
 
 //Actions
 - (IBAction)tappedBackButton:(id)sender;
+- (IBAction)tappedEditButton:(id)sender;
+
 @end
 
 @implementation ProjectDetailViewController
@@ -227,6 +229,9 @@ typedef enum {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)tappedEditButton:(id)sender {
+}
+
 - (void)detailsFromProject:(DB_Project*)record {
     
     DB_Project *project = record;
@@ -248,7 +253,14 @@ typedef enum {
     
     [_fieldCounty setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_COUNTY") line1Text:project.county line2Text:nil];
     
-    NSString *projectId = [NSString stringWithFormat:@"%@ %@", project.dodgeNumber, (project.dodgeVersion == nil ? @"":[NSString stringWithFormat:@"(v%@)", project.dodgeVersion]) ];
+    NSString *projectId = nil;
+    
+    NSString *dodgeNumber = [DerivedNSManagedObject objectOrNil:project.dodgeNumber];
+    
+    if (dodgeNumber) {
+        projectId = [NSString stringWithFormat:@"%@ %@", project.dodgeNumber, (project.dodgeVersion == nil ? @"":[NSString stringWithFormat:@"(v%@)", project.dodgeVersion]) ];
+    }
+    
     [_fieldProjectId setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_PROJECT_ID") line1Text:projectId line2Text:nil];
 
     NSString *address = [project fullAddress];
