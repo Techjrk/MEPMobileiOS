@@ -30,6 +30,9 @@
     BOOL isLibrarySelected;
     BOOL isPhotoSelected;
     BOOL isPanoSelected;
+    BOOL isPreviewSelected;
+    BOOL is360Selected;
+
 }
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -44,7 +47,7 @@
 @property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
 @property (weak, nonatomic) IBOutlet CameraRadialView *backgroundView;
 @property (strong, nonatomic) PhotoShutterViewController *shutter;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPano;
+
 @end
 
 @implementation CustomCameraViewController
@@ -80,7 +83,7 @@
     
     isLibrarySelected = NO;
     isPhotoSelected = YES;
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,7 +114,7 @@
    }
 }
 
-- (void)hideDefaultCameraControl:(BOOL)hide {
+- (void)hideDefaultCameraControl:(BOOL)hide isPanoRetake:(BOOL)panorama{
     
     self.cameraSwitchButton.hidden = hide;
     self.flashButton.hidden = hide;
@@ -121,7 +124,12 @@
 
     NSArray *cameraItems = hide?[self secondSetCameraItems]: [self firstSetCameraItems];
     self.cameraControlListView.isImageCaptured = hide;
-    self.cameraControlListView.focusOnItem = hide?CameraControlListViewPreview:CameraControlListViewPhoto;
+    if (panorama) {
+        self.cameraControlListView.focusOnItem = CameraControlListViewPano;
+    } else {
+        self.cameraControlListView.focusOnItem = hide?CameraControlListViewPreview:CameraControlListViewPhoto;
+    }
+    
     [self.cameraControlListView setCameraItemsInfo:cameraItems hideLineView:hide?NO:YES];
     
     [UIView animateWithDuration:0.5 animations:^{
@@ -135,6 +143,8 @@
     self.cameraSwitchButton.hidden = YES;
     self.flashButton.hidden = YES;
     self.navTitleLabel.hidden = YES;
+    self.customPhotoLibView.hidden = YES;
+    self.capturedImage.image = nil;
 }
 
 - (void)hideLibraryControl:(BOOL)hide {
@@ -171,7 +181,7 @@
         [self.shutter tappedTakePanoramaPhoto];
     } else {
         [self.customCameraViewControllerDelegate tapppedTakePhoto];
-        [self hideDefaultCameraControl:YES];
+        [self hideDefaultCameraControl:YES isPanoRetake:NO];
     }
 }
 - (IBAction)tappedFlashButton:(id)sender {
@@ -188,35 +198,58 @@
         CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
         switch (items) {
             case CameraControlListViewPreview : {
-                isLibrarySelected = NO;
-                isPhotoSelected = NO;
-                isPanoSelected = NO;
-                [self setNavBottomViewClearColor:NO];
-                [self showShutter:NO];
+                if (!isPreviewSelected) {
+                    isPreviewSelected = YES;
+                    is360Selected = NO;
+                    isLibrarySelected = NO;
+                    isPhotoSelected = NO;
+                
+                    if (!isPanoSelected) {
+                        isPanoSelected = NO;
+                    }
+                    [self setNavBottomViewClearColor:NO];
+                    [self showShutter:NO];
+                }
+                
                 break;
             }
             case CameraControlListViewUse: {
+                is360Selected = NO;
                 isLibrarySelected = NO;
                 isPhotoSelected = NO;
                 isPanoSelected = NO;
+                isPreviewSelected = NO;
                 [self setNavBottomViewClearColor:NO];
                 [self showShutter:NO];
                 break;
             }
             case CameraControlListViewRetake: {
-                self.customPhotoLibView.hidden = NO;
+                
+                if (isPanoSelected) {
+                    isPanoSelected = NO;
+                    [self hideDefaultCameraControl:NO isPanoRetake:YES];
+                    return;
+                } else{
+                    [self hideDefaultCameraControl:NO isPanoRetake:NO];
+                    [self setNavBottomViewClearColor:NO];
+                    [self showShutter:NO];
+                    return;
+                }
                 isLibrarySelected = NO;
+                is360Selected = NO;
                 isPhotoSelected = NO;
-                [self hideDefaultCameraControl:NO];
-                [self setNavBottomViewClearColor:NO];
-                [self showShutter:NO];
+                isPanoSelected = NO;
+                isPreviewSelected = NO;
+
                 break;
             }
             case CameraControlListViewPano: {
                 if (!isPanoSelected) {
+                    is360Selected = NO;
                     isPanoSelected = YES;
                     isLibrarySelected = NO;
                     isPhotoSelected = NO;
+                    isPreviewSelected = NO;
                     [self setNavBottomViewClearColor:YES];
                     [self hideControlForPanoramicMode];
                     [self showShutter:YES];
@@ -225,11 +258,13 @@
             }
             case CameraControlListViewPhoto: {
                 if (!isPhotoSelected) {
+                    is360Selected = NO;
                     self.customPhotoLibView.hidden = YES;
                     isPanoSelected = NO;
                     isLibrarySelected = NO;
                     isPhotoSelected = YES;
-                    [self hideDefaultCameraControl:NO];
+                    isPreviewSelected = NO;
+                    [self hideDefaultCameraControl:NO isPanoRetake:NO];
                     [self setNavBottomViewClearColor:NO];
                 }
                 [self showShutter:NO];
@@ -237,6 +272,8 @@
             }
             case CameraControlListViewLibrary: {
                 if (!isLibrarySelected) {
+                    is360Selected = NO;
+                    isPreviewSelected = NO;
                     isPanoSelected = NO;
                     self.customPhotoLibView.hidden = NO;
                     self.capturedImage.hidden = YES;
@@ -249,14 +286,19 @@
                 break;
             }
             case CameraControlListView360: {
-                isPanoSelected = NO;
-                isLibrarySelected = NO;
-                isPhotoSelected = NO;
-                [self setNavBottomViewClearColor:NO];
+                if (!is360Selected) {
+                    is360Selected = YES;
+                    isPanoSelected = NO;
+                    isLibrarySelected = NO;
+                    isPhotoSelected = NO;
+                    isPreviewSelected = NO;
+                    [self setNavBottomViewClearColor:NO];
+                }
+                
                 break;
             }
             default: {
-               
+                
                 break;
             }
         }
@@ -339,8 +381,9 @@
 
 - (void)photoTaken:(UIImage *)image{
     [self.customCameraViewControllerDelegate customPanoImageTaken:image];
-    [self hideDefaultCameraControl:YES];
+    [self hideDefaultCameraControl:YES isPanoRetake:NO];
 }
+
 
 
 @end
