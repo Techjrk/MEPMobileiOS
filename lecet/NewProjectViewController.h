@@ -18,4 +18,12 @@
 @property (strong, nonatomic) id<NewProjectViewControllerDelegate>projectViewControllerDelegate;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) PinType pinType;
+@property (nonatomic) BOOL updateProject;
+
+- (void)setProjectTitle:(NSString*)projectTitleParam;
+- (void)setType:(NSNumber*)typeIdParam;
+- (void)setStage:(NSNumber*)stageIdParam;
+- (void)setDate:(NSString*)dateParam;
+- (void)setJurisdiction:(NSNumber*)jurisdictionIdParam;
+
 @end

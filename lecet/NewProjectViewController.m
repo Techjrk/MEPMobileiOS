@@ -40,9 +40,10 @@
     ListViewItemArray *listItemsProjectTypeId;
     ListViewItemArray *listItemsProjectStageId;
     ListViewItemArray *listItemsJurisdictions;
-    
+  
+    NSString *projectTitle;
     NSNumber *typeId;
-    NSNumber *estLow;
+    NSNumber* estLow;
     NSNumber *stageId;
     NSString *targetDate;
     NSString *county;
@@ -64,9 +65,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldState;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldZip;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldCounty;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldBidStatus;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldType;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldEstLow;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldStage;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldTargetSetDate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewHeight;
@@ -129,19 +128,11 @@
     
     [self.fieldCounty setTitle:NSLocalizedLanguage(@"NPVC_COUNTY")];
     
-    [self.fieldBidStatus setValue:NSLocalizedLanguage(@"NPVC_SELECT")];
-    [self.fieldBidStatus setTitle:NSLocalizedLanguage(@"NPVC_BIDSTATUS")];
-    
     [self.fieldType setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldType setTitle:NSLocalizedLanguage(@"NPVC_TYPE")];
     self.fieldType.filterModel = FilterModelProjectType;
     self.fieldType.filterLabelViewDelegate = self;
   
-    [self.fieldEstLow setValue:NSLocalizedLanguage(@"NPVC_NONE")];
-    [self.fieldEstLow setTitle:NSLocalizedLanguage(@"NPVC_ESTLOW")];
-    self.fieldEstLow.filterModel = FilterModelEstLow;
-    self.fieldEstLow.filterLabelViewDelegate = self;
-    
     [self.fieldStage setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldStage setTitle:NSLocalizedLanguage(@"NPVC_STAGE")];
     self.fieldStage.filterModel = FilterModelStage;
@@ -165,6 +156,18 @@
     self.dateTimePicker.backgroundColor = [UIColor whiteColor];
     
     [self.buttonDone setTitle:NSLocalizedLanguage(@"NPVC_DONE") forState:UIControlStateNormal];
+    
+    if (targetDate != nil) {
+        [self.fieldTargetSetDate setValue:targetDate];
+    }
+
+    if (typeId != nil) {
+        [[DataManager sharedManager] projectType:typeId success:^(id object) {
+            
+        } failure:^(id object) {
+            
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,7 +185,8 @@
 - (IBAction)tappedDoneButton:(id)sender {
     self.viewPicker.hidden = YES;
     
-    [self.fieldTargetSetDate setValue:[DerivedNSManagedObject shortDateStringFromDate:self.dateTimePicker.date]];
+    targetDate = [DerivedNSManagedObject dateStringFromDateDay:self.dateTimePicker.date];
+    [self.fieldTargetSetDate setValue:targetDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -231,6 +235,7 @@
                          countryCode = [DerivedNSManagedObject objectOrNil:address[@"CountryCode"]];
                          
                          county = [DerivedNSManagedObject objectOrNil:address[@"SubAdministrativeArea"]];
+                         [self.fieldCounty setValue:county];
                      } else if (error != nil) {
                          
                      }
@@ -296,10 +301,6 @@
         dict[@"targetStartDate"] = targetDate;
     }
     
-    if (estLow != nil) {
-        dict[@"estLow"] = estLow;
-    }
-    
     if (countryCode != nil) {
         dict[@"country"] = countryCode;
     }
@@ -311,21 +312,29 @@
     if (jurisdictionId != nil) {
         dict[@"jurisdictionCityId"] = jurisdictionId;
     }
-    [[DataManager sharedManager] createProject:dict success:^(id object) {
-        
-        NSNumber *projectId = object[@"id"];
-        [[DataManager sharedManager] createPin:self.location projectId:projectId success:^(id object) {
+    
+    if (!self.updateProject) {
+        [[DataManager sharedManager] createProject:dict success:^(id object) {
             
-            [self.navigationController popViewControllerAnimated:NO];
-            [self.projectViewControllerDelegate tappedSavedNewProject:projectId];
+            NSNumber *projectId = object[@"id"];
+            
+            [[DataManager sharedManager] createPin:self.location projectId:projectId success:^(id object) {
+                
+                [self.navigationController popViewControllerAnimated:NO];
+                [self.projectViewControllerDelegate tappedSavedNewProject:projectId];
+                
+            } failure:^(id object) {
+                
+            }];
             
         } failure:^(id object) {
             
         }];
-        
-    } failure:^(id object) {
-        
-    }];
+    } else {
+        [self.navigationController popViewControllerAnimated:NO];
+        [self.projectViewControllerDelegate tappedSavedNewProject:dict];
+    }
+    
     
 }
 
@@ -339,8 +348,6 @@
     } else if ([self.fieldTargetSetDate isEqual:object]) {
         self.viewPicker.hidden = NO;
         self.dateTimePicker.date = [NSDate date];
-    } else if ([self.fieldEstLow isEqual:object]) {
-        [self promptEstLow];
     } else if ([self.fieldJurisdiction isEqual:object]) {
         [self filterJurisdiction:object];
     }
@@ -703,4 +710,25 @@
         self.viewPicker.hidden = YES;
     }
 }
+
+- (void)setProjectTitle:(NSString*)projectTitleParam {
+    projectTitle = projectTitleParam;
+}
+
+- (void)setType:(NSNumber*)typeIdParam {
+    typeId = typeIdParam;
+}
+
+- (void)setStage:(NSNumber*)stageIdParam {
+    stageId = stageIdParam;
+}
+
+- (void)setDate:(NSString*)dateParam {
+    targetDate = dateParam;
+}
+
+- (void)setJurisdiction:(NSNumber*)jurisdictionIdParam {
+    jurisdictionId = jurisdictionIdParam;
+}
+
 @end

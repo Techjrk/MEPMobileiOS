@@ -90,6 +90,7 @@
 
 #define kUrlPins                            @"Pins"
 #define kUrlNewProject                      @"Projects/createInstance"
+#define kUrlEditProject                     @"Projects/%li/editInstance"
 
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
@@ -1597,10 +1598,34 @@
 
 - (void)createProject:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure {
     [self HTTP_POST_BODY:[self url:kUrlNewProject] parameters:project success:^(id object) {
+        [self saveManageObjectProject:object];
+        [self saveContext];
         success(object);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
     
 }
+
+- (void)updateProject:(NSNumber*)projectId project:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [NSString stringWithFormat:kUrlEditProject, projectId.integerValue];
+    
+    [self HTTP_PUT_BODY:[self url:url] parameters:project success:^(id object) {
+        [self saveManageObjectProject:object];
+        [self saveContext];
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)projectType:(NSNumber*)typeId success:(APIBlock)success failure:(APIBlock)failure {
+    [self HTTP_GET:@"" parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
 @end
