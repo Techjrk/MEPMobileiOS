@@ -1147,4 +1147,12 @@ typedef enum {
     capturedImage = image;
 }
 
+#pragma mark - CustomPanorama
+
+- (void)customPanoImageTaken:(UIImage *)image {
+    self.customCameraVC.capturedImage.image = image;
+    capturedImage = image;
+    
+
+}
 @end

@@ -64,6 +64,8 @@
 		B647D0A41E2F9BF100A864D1 /* ProjectNearMeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A21E2F9BF100A864D1 /* ProjectNearMeListView.xib */; };
 		B647D0A91E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647D0A71E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m */; };
 		B647D0AA1E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A81E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib */; };
+		B64F17711EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */; };
+		B64F17721EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */; };
 		B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B65106481D12AD4000007759 /* ProjComTrackingTabView.m */; };
 		B651064B1D12AD4000007759 /* ProjComTrackingTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65106491D12AD4000007759 /* ProjComTrackingTabView.xib */; };
 		B65106511D12B80B00007759 /* CompanyTrackingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B651064F1D12B80B00007759 /* CompanyTrackingListView.m */; };
@@ -98,6 +100,8 @@
 		B68337381D083102004226D3 /* ChnagePasswordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68337361D083102004226D3 /* ChnagePasswordCollectionViewCell.xib */; };
 		B6855EA91D2660B400553F0F /* ValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6855EA71D2660B400553F0F /* ValuationViewController.m */; };
 		B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6855EA81D2660B400553F0F /* ValuationViewController.xib */; };
+		B68B22C91EA65D0E00C7512E /* PanoramaIndicatorListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B22C71EA65D0E00C7512E /* PanoramaIndicatorListView.m */; };
+		B68B22CA1EA65D0E00C7512E /* PanoramaIndicatorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68B22C81EA65D0E00C7512E /* PanoramaIndicatorListView.xib */; };
 		B69C3AD01D0DB2D3003DD918 /* MyProfileOneTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C3ACE1D0DB2D3003DD918 /* MyProfileOneTextFieldView.m */; };
 		B69C3AD11D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69C3ACF1D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib */; };
 		B69C3AD61D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C3AD41D0DBB2C003DD918 /* MyProfileTwoTextFieldView.m */; };
@@ -543,6 +547,9 @@
 		B647D0A61E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearMeListCollectionViewCell.h; sourceTree = "<group>"; };
 		B647D0A71E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearMeListCollectionViewCell.m; sourceTree = "<group>"; };
 		B647D0A81E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearMeListCollectionViewCell.xib; sourceTree = "<group>"; };
+		B64F176E1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoIndiListCollectionViewCell.h; sourceTree = "<group>"; };
+		B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoIndiListCollectionViewCell.m; sourceTree = "<group>"; };
+		B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoIndiListCollectionViewCell.xib; sourceTree = "<group>"; };
 		B65106471D12AD4000007759 /* ProjComTrackingTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjComTrackingTabView.h; sourceTree = "<group>"; };
 		B65106481D12AD4000007759 /* ProjComTrackingTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjComTrackingTabView.m; sourceTree = "<group>"; };
 		B65106491D12AD4000007759 /* ProjComTrackingTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjComTrackingTabView.xib; sourceTree = "<group>"; };
@@ -594,6 +601,9 @@
 		B6855EA61D2660B400553F0F /* ValuationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuationViewController.h; sourceTree = "<group>"; };
 		B6855EA71D2660B400553F0F /* ValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuationViewController.m; sourceTree = "<group>"; };
 		B6855EA81D2660B400553F0F /* ValuationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuationViewController.xib; sourceTree = "<group>"; };
+		B68B22C61EA65D0E00C7512E /* PanoramaIndicatorListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaIndicatorListView.h; sourceTree = "<group>"; };
+		B68B22C71EA65D0E00C7512E /* PanoramaIndicatorListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaIndicatorListView.m; sourceTree = "<group>"; };
+		B68B22C81EA65D0E00C7512E /* PanoramaIndicatorListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoramaIndicatorListView.xib; sourceTree = "<group>"; };
 		B69C3ACD1D0DB2D3003DD918 /* MyProfileOneTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileOneTextFieldView.h; sourceTree = "<group>"; };
 		B69C3ACE1D0DB2D3003DD918 /* MyProfileOneTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileOneTextFieldView.m; sourceTree = "<group>"; };
 		B69C3ACF1D0DB2D3003DD918 /* MyProfileOneTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileOneTextFieldView.xib; sourceTree = "<group>"; };
@@ -1456,6 +1466,16 @@
 			name = FilterSelectionViewController;
 			sourceTree = "<group>";
 		};
+		B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B64F176E1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.h */,
+				B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */,
+				B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */,
+			);
+			path = PanoIndiListCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		B65106401D12A9BD00007759 /* CompanyTrackingListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1633,6 +1653,16 @@
 				B6855EA81D2660B400553F0F /* ValuationViewController.xib */,
 			);
 			name = Valuation;
+			sourceTree = "<group>";
+		};
+		B68B22C51EA65CEF00C7512E /* PanomaraIndicatorListView */ = {
+			isa = PBXGroup;
+			children = (
+				B68B22C61EA65D0E00C7512E /* PanoramaIndicatorListView.h */,
+				B68B22C71EA65D0E00C7512E /* PanoramaIndicatorListView.m */,
+				B68B22C81EA65D0E00C7512E /* PanoramaIndicatorListView.xib */,
+			);
+			path = PanomaraIndicatorListView;
 			sourceTree = "<group>";
 		};
 		B6972B881CF327D00092D5CD /* ProjectDetailState */ = {
@@ -2176,6 +2206,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */,
 				B62C517E1E83F1C40044830F /* CustomPhotoLibraryCell */,
 				B60909D91E7BF7A400DEAA17 /* CustomCameraViewCell */,
 				B78607021E76D2DF00F7CE3E /* ImageNote */,
@@ -2284,6 +2315,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B68B22C51EA65CEF00C7512E /* PanomaraIndicatorListView */,
 				B63AC2EC1E8D48F7004738D7 /* CameraRadialBG */,
 				B60BEFA11E854EA500C69640 /* CustomPhotoLibView */,
 				B60909EB1E7C0E4200DEAA17 /* CameraControlList */,
@@ -2892,6 +2924,7 @@
 				B76C69731CD787A4009E9F15 /* CustomPieChart.xib in Resources */,
 				B65BCDC71D2535D400FE9781 /* WorkOwnerTypesCollectionViewCell.xib in Resources */,
 				B7BF60C31D1EAC8400B3BDD7 /* SearchResultView.xib in Resources */,
+				B68B22CA1EA65D0E00C7512E /* PanoramaIndicatorListView.xib in Resources */,
 				B6411BA61D096892002B6E88 /* SettingsView.xib in Resources */,
 				B7E104431CEC7DFD00EAD8E7 /* ProjectBidView.xib in Resources */,
 				B644746D1D00437E0001B244 /* ProjectSortViewController.xib in Resources */,
@@ -3059,6 +3092,7 @@
 				B6AF1CF51D2130CA00C95A8F /* ProjectFilterLocationViewController.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B7BF60E41D215E7D00B3BDD7 /* RefineSearchViewController.xib in Resources */,
+				B64F17721EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib in Resources */,
 				B76C693F1CD22DCB009E9F15 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3077,6 +3111,7 @@
 				B6CF76481CF867B200BF6C69 /* ProjectDetailStateViewController.m in Sources */,
 				B725DAE31D76F45200B6CCC4 /* CryproLib.m in Sources */,
 				B60909D41E7AB79B00DEAA17 /* CustomCameraViewController.m in Sources */,
+				B64F17711EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m in Sources */,
 				B6E032E81CF2ED0F00D3D02C /* Utilities.m in Sources */,
 				B79616041CF318D60089BC32 /* DB_Bid+CoreDataProperties.m in Sources */,
 				B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */,
@@ -3175,6 +3210,7 @@
 				B7637A3B1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.m in Sources */,
 				B771C5FA1CEB554F004A628A /* CompanyStateView.m in Sources */,
 				B771C5F41CEB1C64004A628A /* CompanyDetailViewController.m in Sources */,
+				B68B22C91EA65D0E00C7512E /* PanoramaIndicatorListView.m in Sources */,
 				B60909DD1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m in Sources */,
 				B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
