@@ -139,6 +139,7 @@
         
     }];*/
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,6 +155,13 @@
     [self pageChangedForced:YES];
     
 }
+
+- (void)navigateHome:(NSNotification*)notification {
+
+    [self.navigationController popToViewController:self animated:NO];
+    
+}
+
 #pragma mark - CHART ROUTINES
 
 - (void)createSegmentTagForChart:(NSMutableDictionary*)segment count:(NSInteger)count {
