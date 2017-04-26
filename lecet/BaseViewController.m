@@ -12,6 +12,7 @@
     BOOL previousControllerHidden;
 }
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 @end
 
 @implementation BaseViewController
@@ -25,7 +26,22 @@
     [self enableTapGesture:NO];
     self.navigationController.delegate = self;
 
+    self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
+    self.longPress.minimumPressDuration = 1.0f;
+    self.longPress.allowableMovement = 100.0f;
+    
+    [self.view addGestureRecognizer:self.longPress];
+}
 
+- (void)handleLongPressGestures:(UILongPressGestureRecognizer*)recognizer {
+    
+    if (self.navigationController == nil) {
+        [self dismissViewControllerAnimated:NO completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HOME object:nil];
+        }];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HOME object:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

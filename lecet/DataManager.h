@@ -97,6 +97,9 @@
 - (void)projectTypes:(APIBlock)success failure:(APIBlock)failure;
 - (void)hiddentProjects:(APIBlock)success failure:(APIBlock)failure;
 
+//USER PROJECT
+- (void)projectType:(NSNumber*)typeId success:(APIBlock)success failure:(APIBlock)failure;
+
 //WORK TYPES
 - (void)workTypes:(APIBlock)success failure:(APIBlock)failure;
 
@@ -136,5 +139,6 @@
 //New Project
 - (void)createPin:(CLLocation*)location projectId:(NSNumber*)projectId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)createProject:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure;
-
+- (void)updateProject:(NSNumber*)projectId project:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure;
+- (void)notify:(APIBlock)success failure:(APIBlock)failure;
 @end

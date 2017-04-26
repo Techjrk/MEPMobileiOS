@@ -84,6 +84,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        [[[DataManager sharedManager] locationManager] startUpdatingLocation];
+        
+    } else {
+        [[[DataManager sharedManager] locationManager] requestAlways];
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReloadDashboard:) name:NOTIFICATION_RELOAD_DASHBOARD object:nil];
     
     bidItemsHappeningSoon = [NSMutableArray new];
@@ -139,6 +147,7 @@
         
     }];*/
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,6 +163,13 @@
     [self pageChangedForced:YES];
     
 }
+
+- (void)navigateHome:(NSNotification*)notification {
+
+    [self.navigationController popToViewController:self animated:NO];
+    
+}
+
 #pragma mark - CHART ROUTINES
 
 - (void)createSegmentTagForChart:(NSMutableDictionary*)segment count:(NSInteger)count {

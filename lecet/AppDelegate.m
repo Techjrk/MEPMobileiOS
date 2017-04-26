@@ -12,8 +12,9 @@
 #import "GoogleAnalytics/Library/GAI.h"
 @import HockeySDK;
 
-@interface AppDelegate ()
-
+@interface AppDelegate (){
+    BOOL isCheckingNotification;
+}
 @end
 
 @implementation AppDelegate
@@ -21,6 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    isCheckingNotification = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];
+
     [[GAManager sharedManager] initializeTacker];
     
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:kHockeyID];
@@ -50,7 +54,9 @@
     self.window.rootViewController = navigationViewController;
     self.navController = navigationViewController;
     [self.window makeKeyAndVisible];
-
+  
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     return YES;
 }
 
@@ -75,6 +81,31 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [self checkForNotifications];
+}
+
+- (void)NotificationGPSLocation:(NSNotification*)notification {
+    [self checkForNotifications];
+}
+
+- (void)checkForNotifications {
+    if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        if (!isCheckingNotification) {
+            isCheckingNotification = YES;
+
+            [[DataManager sharedManager] notify:^(id object) {
+            
+                isCheckingNotification = NO;
+            } failure:^(id object) {
+                isCheckingNotification = NO;
+            }];
+        }
+        
+    }
 }
 
 #pragma mark - Core Data stack

@@ -38,6 +38,7 @@
 #import <Photos/Photos.h>
 #import "CustomPhotoLibraryViewController.h"
 #import "PhotoShutterViewController.h"
+#import "NewProjectViewController.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -54,7 +55,7 @@ typedef enum {
     ProjectDetailPopupModeShare
 } ProjectDetailPopupMode;
 
-@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate,CustomPhotoLibraryViewControllerDelegate>{
+@interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate,CustomPhotoLibraryViewControllerDelegate, NewProjectViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;
     BOOL isProjectDetailStateHidden;
@@ -230,6 +231,26 @@ typedef enum {
 }
 
 - (IBAction)tappedEditButton:(id)sender {
+
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:referenceProject.geocodeLat.floatValue longitude:referenceProject.geocodeLng.floatValue];
+
+    NewProjectViewController *controller = [NewProjectViewController new];
+    controller.location = location;
+    controller.pinType = _headerView.pinType;
+    controller.projectViewControllerDelegate = self;
+    controller.updateProject = YES;
+    [controller setProjectTitle:referenceProject.title];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (void)tappedSavedNewProject:(id)object {
+    
+    [[DataManager sharedManager] updateProject:recordId project:object success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];
+    
 }
 
 - (void)detailsFromProject:(DB_Project*)record {
@@ -828,7 +849,14 @@ typedef enum {
     }
 
     NSString *address1 = referenceProject.address1 == nil ? @"": referenceProject.address1;
-    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:referenceProject.geocodeLat, PROJECT_GEOCODE_LNG:referenceProject.geocodeLng, PROJECT_TITLE:referenceProject.title, PROJECT_LOCATION: address1}];
+    
+    NSString *title = [DerivedNSManagedObject objectOrNil:referenceProject.title];
+    
+    if (title == nil) {
+        title = @"";
+    }
+    
+    [_headerView setHeaderInfo:@{PROJECT_GEOCODE_LAT:referenceProject.geocodeLat, PROJECT_GEOCODE_LNG:referenceProject.geocodeLng, PROJECT_TITLE:title, PROJECT_LOCATION: address1}];
 
 }
 
