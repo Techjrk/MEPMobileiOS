@@ -18,4 +18,5 @@
 - (void)tappedTakePanoramaPhoto;
 - (void)startShutter;
 - (void)stopShutter;
+- (void)setIs360Selected:(BOOL)selected;
 @end

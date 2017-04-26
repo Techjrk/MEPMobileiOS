@@ -43,7 +43,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *navCancelButton;
 @property (weak, nonatomic) IBOutlet CameraControlListView *cameraControlListView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constriantCollectionHeight;
-@property (weak, nonatomic) IBOutlet UIView *customPhotoLibraryContainer;
 @property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
 @property (weak, nonatomic) IBOutlet CameraRadialView *backgroundView;
 @property (strong, nonatomic) PhotoShutterViewController *shutter;
@@ -78,6 +77,8 @@
     self.customPhotoLibView.backgroundColor = [UIColor clearColor];
     
     self.capturedImage.hidden = YES;
+    self.capturedImage.contentMode = UIViewContentModeScaleAspectFit;
+
     
     self.constriantCollectionHeight.constant = kDeviceHeight * 0.1;
     
@@ -98,6 +99,7 @@
     if ((self.shutter == nil) && show) {
         self.shutter = [PhotoShutterViewController new];
         self.shutter.photoShutterViewControllerDelegate = self;
+        [self.shutter setIs360Selected:is360Selected];
         self.shutter.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
         [self.view addSubview:self.shutter.view];
         [self.view sendSubviewToBack:self.shutter.view];
@@ -107,6 +109,7 @@
         
         self.shutter.view.hidden = !show;
         if (show) {
+            [self.shutter setIs360Selected:is360Selected];
             [self.shutter startShutter];
         } else {
             [self.shutter stopShutter];
@@ -114,7 +117,7 @@
    }
 }
 
-- (void)hideDefaultCameraControl:(BOOL)hide isPanoRetake:(BOOL)panorama{
+- (void)hideDefaultCameraControl:(BOOL)hide isPanoRetake:(BOOL)panorama is360Retake:(BOOL)is360{
     
     self.cameraSwitchButton.hidden = hide;
     self.flashButton.hidden = hide;
@@ -126,7 +129,9 @@
     self.cameraControlListView.isImageCaptured = hide;
     if (panorama) {
         self.cameraControlListView.focusOnItem = CameraControlListViewPano;
-    } else {
+    } else if(is360){
+        self.cameraControlListView.focusOnItem = CameraControlListView360;
+    }else {
         self.cameraControlListView.focusOnItem = hide?CameraControlListViewPreview:CameraControlListViewPhoto;
     }
     
@@ -177,11 +182,11 @@
 - (IBAction)tappedTakePhotoButton:(id)sender {
     
     
-    if (isPanoSelected) {
+    if (isPanoSelected || is360Selected) {
         [self.shutter tappedTakePanoramaPhoto];
     } else {
         [self.customCameraViewControllerDelegate tapppedTakePhoto];
-        [self hideDefaultCameraControl:YES isPanoRetake:NO];
+        [self hideDefaultCameraControl:YES isPanoRetake:NO is360Retake:NO];
     }
 }
 - (IBAction)tappedFlashButton:(id)sender {
@@ -198,18 +203,18 @@
         CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
         switch (items) {
             case CameraControlListViewPreview : {
-                if (!isPreviewSelected) {
+
+                if (isLibrarySelected || isPhotoSelected || isPreviewSelected) {
                     isPreviewSelected = YES;
                     is360Selected = NO;
                     isLibrarySelected = NO;
                     isPhotoSelected = NO;
+                    isPanoSelected = NO;
+                    is360Selected = NO;
                 
-                    if (!isPanoSelected) {
-                        isPanoSelected = NO;
-                    }
-                    [self setNavBottomViewClearColor:NO];
-                    [self showShutter:NO];
                 }
+                [self setNavBottomViewClearColor:YES];
+                [self showShutter:NO];
                 
                 break;
             }
@@ -227,10 +232,13 @@
                 
                 if (isPanoSelected) {
                     isPanoSelected = NO;
-                    [self hideDefaultCameraControl:NO isPanoRetake:YES];
+                    [self hideDefaultCameraControl:NO isPanoRetake:YES is360Retake:NO];
                     return;
-                } else{
-                    [self hideDefaultCameraControl:NO isPanoRetake:NO];
+                } else if(is360Selected){
+                    is360Selected = NO;
+                    [self hideDefaultCameraControl:NO isPanoRetake:NO is360Retake:YES];
+                }else {
+                    [self hideDefaultCameraControl:NO isPanoRetake:NO is360Retake:NO];
                     [self setNavBottomViewClearColor:NO];
                     [self showShutter:NO];
                     return;
@@ -245,6 +253,7 @@
             }
             case CameraControlListViewPano: {
                 if (!isPanoSelected) {
+                    //[self showShutter:NO];
                     is360Selected = NO;
                     isPanoSelected = YES;
                     isLibrarySelected = NO;
@@ -264,7 +273,7 @@
                     isLibrarySelected = NO;
                     isPhotoSelected = YES;
                     isPreviewSelected = NO;
-                    [self hideDefaultCameraControl:NO isPanoRetake:NO];
+                    [self hideDefaultCameraControl:NO isPanoRetake:NO is360Retake:NO];
                     [self setNavBottomViewClearColor:NO];
                 }
                 [self showShutter:NO];
@@ -292,7 +301,10 @@
                     isLibrarySelected = NO;
                     isPhotoSelected = NO;
                     isPreviewSelected = NO;
-                    [self setNavBottomViewClearColor:NO];
+                    
+                    [self setNavBottomViewClearColor:YES];
+                    [self hideControlForPanoramicMode];
+                    [self showShutter:YES];
                 }
                 
                 break;
@@ -381,7 +393,7 @@
 
 - (void)photoTaken:(UIImage *)image{
     [self.customCameraViewControllerDelegate customPanoImageTaken:image];
-    [self hideDefaultCameraControl:YES isPanoRetake:NO];
+    [self hideDefaultCameraControl:YES isPanoRetake:NO is360Retake:NO];
 }
 
 

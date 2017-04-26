@@ -17,7 +17,7 @@
 @class PHLivePhotoView;
 
 @interface PhotoShutterViewController ()<MonitorDelegate>{
-    
+    BOOL is360Selected;
 }
 
 @property (nonatomic) BOOL isFlashOn;
@@ -35,7 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isFlashOn = NO;
-    self.maxFrame = 6;
+    
+    self.maxFrame =is360Selected?12:6;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,7 +81,6 @@
     [library writeImageDataToSavedPhotosAlbum:[NSData dataWithContentsOfFile:ename] metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
         if (assetURL)
         {
-
             __weak __typeof(self)wSelf = self;
             [self latestPhotoWithCompletion:^(UIImage *photo) {
                 
@@ -97,7 +97,13 @@
             }
         }
     }];
+}
 
+- (void)setIs360Selected:(BOOL)selected {
+    is360Selected = selected;
+    self.maxFrame =is360Selected?12:6;
+    self.frameCount = 0;
+    [self restart];
 }
 
 #pragma mark - MonitorDelegate
