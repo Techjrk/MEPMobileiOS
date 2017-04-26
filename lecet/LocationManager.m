@@ -8,7 +8,9 @@
 
 #import "LocationManager.h"
 
-@interface LocationManager()<CLLocationManagerDelegate>
+@interface LocationManager()<CLLocationManagerDelegate>{
+    NSDate *currentDateTime;
+}
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
@@ -51,7 +53,20 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     self.currentLocation = [[locations lastObject] copy];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
+    
+    NSDate *dateTime = [NSDate date];
+    
+    
+    if (currentDateTime == nil) {
+        currentDateTime = [NSDate date];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
+    } else{
+        NSTimeInterval interval = [dateTime timeIntervalSinceDate:currentDateTime];
+        if (interval > (5 * 60)) {
+            currentDateTime = [NSDate date];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
+        }
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
