@@ -50,7 +50,9 @@
     self.window.rootViewController = navigationViewController;
     self.navController = navigationViewController;
     [self.window makeKeyAndVisible];
-
+  
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     return YES;
 }
 
@@ -75,6 +77,19 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        [[DataManager sharedManager] notify:^(id object) {
+            
+        } failure:^(id object) {
+            
+        }];
+        
+    }
+
 }
 
 #pragma mark - Core Data stack

@@ -64,6 +64,7 @@
     if (status == kCLAuthorizationStatusDenied) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOCATION_DENIED object:nil];
     } else if (status == kCLAuthorizationStatusAuthorizedAlways){
+        [self startUpdatingLocation];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOCATION_ALLOWED object:nil];
     }
 }

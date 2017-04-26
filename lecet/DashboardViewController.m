@@ -84,6 +84,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        [[[DataManager sharedManager] locationManager] startUpdatingLocation];
+        
+    } else {
+        [[[DataManager sharedManager] locationManager] requestAlways];
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReloadDashboard:) name:NOTIFICATION_RELOAD_DASHBOARD object:nil];
     
     bidItemsHappeningSoon = [NSMutableArray new];
