@@ -19,6 +19,7 @@
 
 #else
 
+//#define kHost                               @"http://lecet-v2.dt-staging.com/"
 #define kHost                               @"http://lecet.dt-staging.com/"
 #define kHockeyID                           @"288c4a9d07b54027b04f0966a0f433e3"
 

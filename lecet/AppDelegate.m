@@ -95,7 +95,7 @@
 
 - (void)checkForNotifications {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
-        
+        /*
         if (!isCheckingNotification) {
             isCheckingNotification = YES;
 
@@ -106,7 +106,7 @@
                 isCheckingNotification = NO;
             }];
         }
-        
+        */
     }
 }
 
