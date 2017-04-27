@@ -141,4 +141,5 @@
 - (void)createProject:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure;
 - (void)updateProject:(NSNumber*)projectId project:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure;
 - (void)notify:(APIBlock)success failure:(APIBlock)failure;
+- (void)checkForImageNotes:(NSNumber*)projectId success:(APIBlock)success failure:(APIBlock)failure;
 @end

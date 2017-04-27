@@ -183,6 +183,7 @@
     ProjectNearMeListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     NSDictionary *dicInfo = self.collectionItems[indexPath.row];
+    cell.projectId = dicInfo[@"id"];
     NSString *titleName = [DerivedNSManagedObject objectOrNil:dicInfo[@"title"]];
     cell.titleNameText = titleName;
     cell.titleAddressText = [self setFullAddress:dicInfo];
