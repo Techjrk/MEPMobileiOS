@@ -61,11 +61,7 @@
     [super viewWillDisappear:animated];
 }
 - (IBAction)tappedDoneButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-        [self.panoramaViewerViewControllerDelegate tappedDoneButtonPanoramaViewer];
-    }];
-    
+    [self.panoramaViewerViewControllerDelegate tappedDoneButtonPanoramaViewer];
 }
 
 #pragma mark DMD Viewer

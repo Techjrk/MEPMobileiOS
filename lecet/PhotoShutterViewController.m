@@ -28,6 +28,7 @@
 @property (nonatomic) NSInteger frameCount;
 @property (strong, nonatomic) NSNumber *mode;
 @property (strong, nonatomic) IBOutlet ShooterView *shooterView;
+@property (strong, nonatomic) CustomLandscapeNavigationViewController *navPanoramaViewer;
 
 @end
 
@@ -148,13 +149,13 @@
     [self savePhoto];
     
     PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
-    controller.view.frame = CGRectMake(0, 0, kDeviceWidth - 100, kDeviceHeight - 100);
+    controller.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
     controller.panoramaViewerViewControllerDelegate = self;
-    [self.view addSubview:controller.view];
-    [self.view sendSubviewToBack:controller.view];
-    //[self.view bringSubviewToFront:controller.view];
-    //CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
-    //[self.controller presentViewController:nav animated:YES completion:nil];
+    CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
+    self.navPanoramaViewer = nav;
+    [self.controller.view addSubview:self.navPanoramaViewer.view];
+    [self.controller.view bringSubviewToFront:self.navPanoramaViewer.view];
+    
 }
 
 - (void)shootingCompleted {
@@ -238,8 +239,10 @@
 
 #pragma mark - PanoramaViewerViewControllerDelegate
 - (void)tappedDoneButtonPanoramaViewer {
+    [self.navPanoramaViewer.view removeFromSuperview];
     __weak __typeof(self)wSelf = self;
     [wSelf.photoShutterViewControllerDelegate photoTaken:capturedImage];
+    
     
 }
 @end

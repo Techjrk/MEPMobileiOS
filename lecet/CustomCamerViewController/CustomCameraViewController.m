@@ -101,7 +101,7 @@
         self.shutter = [PhotoShutterViewController new];
         self.shutter.photoShutterViewControllerDelegate = self;
         [self.shutter setIs360Selected:is360Selected];
-        self.shutter.controller = self.controller;
+        self.shutter.controller = self;
         self.shutter.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
         [self.view addSubview:self.shutter.view];
         [self.view sendSubviewToBack:self.shutter.view];
