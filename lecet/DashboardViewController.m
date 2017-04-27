@@ -38,7 +38,7 @@
 #import "ProjectTrackingViewController.h"
 #import "CompanyTrackingListViewController.h"
 #import "SearchViewController.h"
-
+#import "AppDelegate.h"
 
 #define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
 #define DASHBOARD_BIDS_BG_COLOR                 RGB(245, 245, 245)
@@ -83,6 +83,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    appDelegate.isLogged = YES;
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         

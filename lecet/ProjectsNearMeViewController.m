@@ -132,6 +132,7 @@ float MetersToMiles(float meters) {
 }
 
 - (void)NotificationGPSLocation:(NSNotification*)notification {
+    
     if (!isLocationCaptured) {
         isLocationCaptured = YES;
         [self loadProjects:1 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
