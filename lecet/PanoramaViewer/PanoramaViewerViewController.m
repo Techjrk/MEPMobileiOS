@@ -9,6 +9,8 @@
 #import "PanoramaViewerViewController.h"
 
 @interface PanoramaViewerViewController ()
+@property (weak, nonatomic) IBOutlet UIView *navView;
+
 
 @end
 
@@ -28,29 +30,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (instancetype)init {
-    self = [super init];
-
-    return self;
-}
-*/
 - (void)loadView {
-    
-    CGRect frame = [[UIScreen mainScreen] applicationFrame];
-    
+
     _panoViewer = [[PanoViewer alloc] initWithFrame:CGRectMake(0, 0, kDeviceHeight, kDeviceWidth)];
+    
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc]
                                                 initWithTarget:self action:@selector(showNavBar:)];
     [singleFingerTap requireGestureRecognizerToFail:_panoViewer.doubleTapGR];
+    
 
     self.view = _panoViewer;
-    
+    [self.view addSubview:self.navView];
 }
 
 - (void)showNavBar:(UIGestureRecognizer*)gestureRecognizer
 {
-    //[self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     return;
 }
 
@@ -64,6 +59,13 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [self stopViewer];
     [super viewWillDisappear:animated];
+}
+- (IBAction)tappedDoneButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+        [self.panoramaViewerViewControllerDelegate tappedDoneButtonPanoramaViewer];
+    }];
+    
 }
 
 #pragma mark DMD Viewer
@@ -88,7 +90,7 @@
     nav.navigationBar.barStyle = UIBarStyleBlack;
     nav.navigationBar.translucent = YES;
     
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(continueShooting:)] ;
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(tappedDoneButton:)] ;
     nav.topViewController.navigationItem.rightBarButtonItem = back;
 }
 

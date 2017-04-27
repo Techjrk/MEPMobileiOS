@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "DMD_LITE.h"
+
+@protocol PanoramaViewerViewControllerDelegate <NSObject>
+
+- (void)tappedDoneButtonPanoramaViewer;
+
+@end
+
 @interface PanoramaViewerViewController : UIViewController {
-     //PanoViewer *_panoViewer;
 }
 @property (strong, nonatomic) PanoViewer *panoViewer;
+@property (strong, nonatomic) id<PanoramaViewerViewControllerDelegate> panoramaViewerViewControllerDelegate;
 @end
