@@ -66,6 +66,7 @@
             currentDateTime = [NSDate date];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION_NEAR object:nil];
     }
 }
 

@@ -83,7 +83,7 @@ float MetersToMiles(float meters) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationAppBecomeActive:) name:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationDenied:) name:NOTIFICATION_LOCATION_DENIED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationLocationAllowed:) name:NOTIFICATION_LOCATION_ALLOWED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION_NEAR object:nil];
 
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
@@ -544,7 +544,7 @@ float MetersToMiles(float meters) {
         ProjectDetailViewController *detail = [ProjectDetailViewController new];
         detail.view.hidden = NO;
         [detail detailsFromProject:object];
-        
+        isLocationCaptured = NO;
         [self.navigationController pushViewController:detail animated:YES];
     } failure:^(id object) {
     }];
