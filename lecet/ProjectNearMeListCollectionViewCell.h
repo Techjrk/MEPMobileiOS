@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ProjectNearMeListCollectionViewCell : UICollectionViewCell
+    @property (strong,nonatomic) NSNumber *projectId;
     @property (strong,nonatomic) NSString *titleNameText;
     @property (strong,nonatomic) NSString *titleAddressText;
     @property (strong,nonatomic) NSString *titleFeetAwayText;

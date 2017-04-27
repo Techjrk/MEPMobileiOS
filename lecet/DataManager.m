@@ -1639,4 +1639,28 @@
     } authenticated:YES];
 }
 
+- (void)checkForImageNotes:(NSNumber*)projectId success:(APIBlock)success failure:(APIBlock)failure {
+        [[DataManager sharedManager] projectUserNotes:projectId success:^(id object) {
+            
+            NSArray *notes = object;
+            NSInteger noteCount = notes.count;
+            
+            [[DataManager sharedManager] projectUserImages:projectId success:^(id object) {
+                NSArray *images = object;
+                NSInteger imageCount = images.count;
+                success(@{@"projectId":projectId, @"count":[NSNumber numberWithInteger:noteCount + imageCount]});
+            } failure:^(id object) {
+                if (noteCount>0) {
+                    success(@{@"projectId":projectId, @"count":[NSNumber numberWithInteger:noteCount]});
+                } else {
+                    failure(object);
+                }
+            }];
+
+        } failure:^(id object) {
+            failure(object);
+        }];
+    
+}
+
 @end

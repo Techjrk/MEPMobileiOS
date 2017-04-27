@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *iconUpdateMarker;
+@property (strong, nonatomic) NSNumber *projectId;
+
 @end
 
 @implementation SearchProjectCollectionViewCell
@@ -43,6 +46,7 @@
 - (void)setInfo:(id)info {
     NSDictionary *item = info;
     
+    self.iconUpdateMarker.hidden = YES;
     _labelTitle.text = item[@"title"];
     
     NSString *addr = @"";
@@ -91,7 +95,24 @@
         _mapView.hidden = YES;
     }
 
-    
+    self.projectId = item[@"id"];
+    [[DataManager sharedManager] checkForImageNotes:self.projectId success:^(id object) {
+        
+        NSDictionary *dict = object;
+        
+        NSNumber *prjId = dict[@"projectId"];
+        if (prjId.integerValue == self.projectId.integerValue) {
+            NSNumber *count = dict[@"count"];
+            self.iconUpdateMarker.hidden = count.integerValue == 0;
+        } else {
+            self.iconUpdateMarker.hidden = YES;
+        }
+        
+    } failure:^(id object) {
+        
+        self.iconUpdateMarker.hidden = YES;
+    }];
+
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {

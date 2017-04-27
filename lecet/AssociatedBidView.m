@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelProject;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
 @property (weak, nonatomic) IBOutlet UILabel *labelTag;
+@property (weak, nonatomic) IBOutlet UIImageView *iconUpdateMarker;
+@property (strong, nonatomic) NSNumber *projectId;
 @end
 
 @implementation AssociatedBidView
@@ -60,6 +62,7 @@
 - (void)setInfo:(id)info {
     NSDictionary *infoDict = info;
     
+    self.iconUpdateMarker.hidden = YES;
     _labelProject.text = infoDict[ASSOCIATED_BID_NAME];
     _labelLocation.text = infoDict[ASSOCIATED_BID_LOCATION];
     
@@ -84,6 +87,24 @@
     
     [_mapView setRegion:region];
     [_mapView addAnnotation:annotation];
+
+    self.projectId = infoDict[ASSOCIATED_BID_ID];
+    [[DataManager sharedManager] checkForImageNotes:self.projectId success:^(id object) {
+        
+        NSDictionary *dict = object;
+        
+        NSNumber *prjId = dict[@"projectId"];
+        if (prjId.integerValue == self.projectId.integerValue) {
+            NSNumber *count = dict[@"count"];
+            self.iconUpdateMarker.hidden = count.integerValue == 0;
+        } else {
+            self.iconUpdateMarker.hidden = YES;
+        }
+        
+    } failure:^(id object) {
+        
+        self.iconUpdateMarker.hidden = YES;
+    }];
 
 }
 

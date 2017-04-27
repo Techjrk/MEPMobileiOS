@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -87,14 +87,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_updateMarker" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-p0-2wY">
+                                <rect key="frame" x="422" y="78.5" width="47" height="42.5"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="G1J-p0-2wY" secondAttribute="trailing" id="0i9-4Q-oVF"/>
                             <constraint firstItem="3jm-Lh-svo" firstAttribute="top" secondItem="Icq-9x-Iyh" secondAttribute="top" id="1QD-mx-aaY"/>
                             <constraint firstItem="x83-bS-hNz" firstAttribute="trailing" secondItem="ta2-BY-KSb" secondAttribute="trailing" id="2q2-s1-xbt"/>
                             <constraint firstItem="PIW-fr-DIE" firstAttribute="top" secondItem="Xvt-qE-md1" secondAttribute="top" id="4i2-HD-KJ7"/>
+                            <constraint firstItem="G1J-p0-2wY" firstAttribute="height" secondItem="Icq-9x-Iyh" secondAttribute="height" multiplier="0.35" id="Cxv-1v-9fN"/>
                             <constraint firstItem="3jm-Lh-svo" firstAttribute="leading" secondItem="Icq-9x-Iyh" secondAttribute="leading" id="E2T-AP-hap"/>
                             <constraint firstItem="Np9-zd-d9j" firstAttribute="width" secondItem="3jm-Lh-svo" secondAttribute="width" id="FkF-Gt-Wd7"/>
+                            <constraint firstAttribute="bottom" secondItem="G1J-p0-2wY" secondAttribute="bottom" id="Gim-7C-bGg"/>
                             <constraint firstItem="3jm-Lh-svo" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.03" id="HZb-Ag-wQy"/>
                             <constraint firstItem="ta2-BY-KSb" firstAttribute="leading" secondItem="Np9-zd-d9j" secondAttribute="trailing" id="M3l-jn-JHY"/>
                             <constraint firstItem="Np9-zd-d9j" firstAttribute="height" secondItem="3jm-Lh-svo" secondAttribute="height" id="Mvg-EC-Aut"/>
@@ -106,6 +112,7 @@
                             <constraint firstItem="ta2-BY-KSb" firstAttribute="top" secondItem="Xvt-qE-md1" secondAttribute="top" id="Woc-rj-EP6"/>
                             <constraint firstItem="Xvt-qE-md1" firstAttribute="leading" secondItem="3jm-Lh-svo" secondAttribute="trailing" id="YPi-eY-8UD"/>
                             <constraint firstItem="Xvt-qE-md1" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.19" id="aaw-Ac-a3g"/>
+                            <constraint firstItem="G1J-p0-2wY" firstAttribute="width" secondItem="Icq-9x-Iyh" secondAttribute="width" multiplier="0.1" id="cME-Lt-84I"/>
                             <constraint firstItem="1yE-KW-Phe" firstAttribute="width" secondItem="3jm-Lh-svo" secondAttribute="width" id="flx-06-wU7"/>
                             <constraint firstItem="x83-bS-hNz" firstAttribute="leading" secondItem="Np9-zd-d9j" secondAttribute="trailing" id="h6w-dd-XTz"/>
                             <constraint firstAttribute="trailing" secondItem="1yE-KW-Phe" secondAttribute="trailing" id="ktr-QV-aSg"/>
@@ -134,6 +141,7 @@
                 <outlet property="addressIconImageView" destination="kKf-0o-9WY" id="2TY-J1-zG8"/>
                 <outlet property="containerUnionView" destination="PIW-fr-DIE" id="cFI-0e-N9a"/>
                 <outlet property="contraintUnionWidth" destination="oue-bb-MTn" id="v5r-TN-QEH"/>
+                <outlet property="iconMarker" destination="G1J-p0-2wY" id="aIl-f0-igh"/>
                 <outlet property="mapView" destination="Xvt-qE-md1" id="d0M-zl-CY3"/>
                 <outlet property="titleAddressLabel" destination="TKe-EZ-AJB" id="FZm-Wg-r1s"/>
                 <outlet property="titleFeetAwayLabel" destination="x83-bS-hNz" id="S1o-1w-z3Q"/>
@@ -145,5 +153,6 @@
     </objects>
     <resources>
         <image name="icon_bidLocation" width="8" height="11"/>
+        <image name="icon_updateMarker" width="33" height="33"/>
     </resources>
 </document>
