@@ -10,6 +10,7 @@
 
 #import "BaseViewClass.h"
 
+#define ASSOCIATED_BID_ID                               @"ASSOCIATED_BID_ID"
 #define ASSOCIATED_BID_NAME                             @"ASSOCIATED_BID_NAME"
 #define ASSOCIATED_BID_LOCATION                         @"ASSOCIATED_BID_LOCATION"
 #define ASSOCIATED_BID_DESIGNATION                      @"ASSOCIATED_BID_DESIGNATION"
