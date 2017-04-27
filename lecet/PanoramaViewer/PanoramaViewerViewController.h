@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DMD_LITE.h"
 @interface PanoramaViewerViewController : UIViewController {
-    PanoViewer *_panoViewer;
+     //PanoViewer *_panoViewer;
 }
-
+@property (strong, nonatomic) PanoViewer *panoViewer;
 @end

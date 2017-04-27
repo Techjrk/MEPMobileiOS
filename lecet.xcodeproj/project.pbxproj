@@ -459,6 +459,7 @@
 		B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */; };
 		B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */; };
 		B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */; };
+		B7FC244A1EB229E10002802D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24491EB229E10002802D /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1169,6 +1170,7 @@
 		B7F10A351CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSoonItemCollectionViewCell.h; sourceTree = "<group>"; };
 		B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B7FC24491EB229E10002802D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2126,6 +2128,7 @@
 		B701551B1CD0C56A0050CF8A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B7FC24491EB229E10002802D /* Entitlements.plist */,
 				B701551C1CD0C56A0050CF8A /* main.m */,
 			);
 			name = "Supporting Files";
@@ -3104,6 +3107,7 @@
 				B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */,
 				B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
+				B7FC244A1EB229E10002802D /* Entitlements.plist in Resources */,
 				B623B20E1CFC9AC900793D67 /* ProjectListCVCell.xib in Resources */,
 				B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */,
 				B7BF60BE1D1EA53000B3BDD7 /* SearchResultCollectionViewCell.xib in Resources */,

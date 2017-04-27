@@ -26,20 +26,28 @@
 
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskLandscape;
+    //return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    return UIInterfaceOrientationLandscapeRight;
+    return UIInterfaceOrientationPortrait;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+- (BOOL)isNavigationBarHidden {
+    return YES;
+}
 /*
 #pragma mark - Navigation
 
