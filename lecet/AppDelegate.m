@@ -88,7 +88,9 @@
 }
 
 - (void)NotificationGPSLocation:(NSNotification*)notification {
-    [self checkForNotifications];
+    if (self.isLogged) {
+        [self checkForNotifications];
+    }
 }
 
 - (void)checkForNotifications {
@@ -236,9 +238,9 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     if (application.applicationState == UIApplicationStateActive ) {
-        //NSDictionary *aps = userInfo[@"aps"];
-        //NSString *message = aps[@"alert"];
-        //[[DataManager sharedManager] promptMessage:message];
+        NSDictionary *aps = userInfo[@"aps"];
+        NSString *message = aps[@"alert"];
+        [[DataManager sharedManager] promptMessage:message];
     }
 }
 

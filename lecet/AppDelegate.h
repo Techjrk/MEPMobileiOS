@@ -17,5 +17,6 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonnull) NSString *pushToken;
+@property (nonatomic) BOOL isLogged;
 @end
 

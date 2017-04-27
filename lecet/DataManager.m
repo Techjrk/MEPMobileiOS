@@ -152,7 +152,15 @@
 
 - (void)userLogin:(NSString *)email password:(NSString *)password success:(APIBlock)success failure:(APIBlock)failure {
     
-    [self HTTP_POST:[self url:kUrlLogin] parameters:@{@"email":email, @"password":password} success:^(id object) {
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSDictionary *parameter = @{@"email":email, @"password":password, @"deviceType": @"iOS"};
+    
+    if (appDelegate.pushToken != nil) {
+        parameter = @{@"email":email, @"password":password,@"deviceToken": appDelegate.pushToken, @"deviceType": @"iOS"};
+    }
+    
+    [self HTTP_POST:[self url:kUrlLogin] parameters: parameter success:^(id object) {
 
         NSString *token = object[@"id"];
         NSNumber *userId = object[@"userId"];
