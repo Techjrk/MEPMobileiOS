@@ -7,6 +7,7 @@
 //
 
 #import "LocationManager.h"
+#import "AppDelegate.h"
 
 @interface LocationManager()<CLLocationManagerDelegate>{
     NSDate *currentDateTime;
@@ -62,7 +63,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
     } else{
         NSTimeInterval interval = [dateTime timeIntervalSinceDate:currentDateTime];
-        if (interval > (5 * 60)) {
+        
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        if ((interval > ( 60)) ) {
             currentDateTime = [NSDate date];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
         }
