@@ -12,7 +12,8 @@
 #import "CustomPhotoLibView.h"
 #import "CameraRadialView.h"
 #import "PhotoShutterViewController.h"
-
+#import "PanoramaViewerViewController.h"
+#import "CustomLandscapeNavigationViewController.h"
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 #define FONT_TILE                       fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
@@ -100,6 +101,7 @@
         self.shutter = [PhotoShutterViewController new];
         self.shutter.photoShutterViewControllerDelegate = self;
         [self.shutter setIs360Selected:is360Selected];
+        self.shutter.controller = self.controller;
         self.shutter.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
         [self.view addSubview:self.shutter.view];
         [self.view sendSubviewToBack:self.shutter.view];
@@ -171,7 +173,7 @@
     }];
     
 }
-
+#pragma mark - IBAction
 - (IBAction)tappedCancelButton:(id)sender {
     self.capturedImage.image = nil;
     self.capturedImage.hidden = YES;
@@ -180,7 +182,6 @@
 }
 
 - (IBAction)tappedTakePhotoButton:(id)sender {
-    
     
     if (isPanoSelected || is360Selected) {
         [self.shutter tappedTakePanoramaPhoto];
@@ -194,6 +195,11 @@
 }
 - (IBAction)tappedCameraSwitchButton:(id)sender {
     [self.customCameraViewControllerDelegate tappedCameraSwitch];
+}
+- (IBAction)tappedCapturedImageButton:(id)sender {
+//    PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
+//    UINavigationController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
+//    [self.controller presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - CameraControlListDelegate

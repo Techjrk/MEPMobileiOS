@@ -24,6 +24,8 @@
 
 @property (strong,nonatomic) id<CustomCameraViewControllerDelegate> customCameraViewControllerDelegate;
 @property (weak, nonatomic) IBOutlet UIImageView *capturedImage;
+@property (strong,nonatomic) UIViewController *controller;
 - (void)setFlashOn:(BOOL)on;
+
 
 @end

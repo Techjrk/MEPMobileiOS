@@ -1015,6 +1015,7 @@ typedef enum {
     self.picker.cameraViewTransform = translate;
     self.customCameraVC =  [CustomCameraViewController new];
     self.customCameraVC.customCameraViewControllerDelegate = self;
+    self.customCameraVC.controller = self.picker;
     [self addChildViewController:self.customCameraVC];
         
     UIView *customView = self.customCameraVC.view;

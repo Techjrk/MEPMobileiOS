@@ -15,6 +15,7 @@
 
 @interface PhotoShutterViewController : UIViewController
 @property (nonatomic,assign) id<PhotoShutterViewControllerDelegate> photoShutterViewControllerDelegate;
+@property (strong,nonatomic) UIViewController *controller;
 - (void)tappedTakePanoramaPhoto;
 - (void)startShutter;
 - (void)stopShutter;

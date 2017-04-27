@@ -11,6 +11,8 @@
 #import "DMD_LITE.h"
 #import "CustomCameraViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "PanoramaViewerViewController.h"
+#import "CustomLandscapeNavigationViewController.h"
 
 #define TMP_DIR [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"DMD_tmp"]
 
@@ -141,6 +143,10 @@
 
 - (void)stitchingCompleted:(NSDictionary *)dict {
     [self savePhoto];
+    
+    PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
+    UINavigationController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
+    [self.controller presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)shootingCompleted {
