@@ -154,10 +154,10 @@
     
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    NSDictionary *parameter = @{@"email":email, @"password":password, @"deviceType": @"iOS"};
+    NSDictionary *parameter = @{@"email":email, @"password":password, @"deviceType": @"ios"};
     
     if (appDelegate.pushToken != nil) {
-        parameter = @{@"email":email, @"password":password,@"deviceToken": appDelegate.pushToken, @"deviceType": @"iOS"};
+        parameter = @{@"email":email, @"password":password,@"deviceToken": appDelegate.pushToken, @"deviceType": @"ios"};
     }
     
     [self HTTP_POST:[self url:kUrlLogin] parameters: parameter success:^(id object) {
