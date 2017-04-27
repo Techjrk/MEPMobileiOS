@@ -73,11 +73,13 @@
 - (void)savePhoto {
     
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
     NSString *imageName = [dateFormatter stringFromDate:[NSDate date]];
     [[NSFileManager defaultManager] createDirectoryAtPath:TMP_DIR withIntermediateDirectories:YES attributes:nil error:NULL];
-    NSString *ename = [TMP_DIR stringByAppendingPathComponent:imageName];
-    [[Monitor instance] genEquiAt:ename withHeight:800 andWidth:0 andMaxWidth:0];
+
+    NSString *ename = [TMP_DIR stringByAppendingPathComponent:[imageName stringByAppendingString:@".jpeg"]];
+   
+    [[Monitor instance] genEquiAt:ename withHeight:kDeviceHeight andWidth:0 andMaxWidth:0];
 
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [library writeImageDataToSavedPhotosAlbum:[NSData dataWithContentsOfFile:ename] metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
@@ -87,7 +89,7 @@
             [self latestPhotoWithCompletion:^(UIImage *photo) {
                 
                 UIImageRenderingMode renderingMode = /* DISABLES CODE */ (YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
-                [wSelf.photoShutterViewControllerDelegate photoTaken:[photo imageWithRenderingMode:renderingMode]];
+                //[wSelf.photoShutterViewControllerDelegate photoTaken:[photo imageWithRenderingMode:renderingMode]];
                 
             }];
         }

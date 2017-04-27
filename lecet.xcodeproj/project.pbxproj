@@ -101,7 +101,6 @@
 		B6855EA91D2660B400553F0F /* ValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6855EA71D2660B400553F0F /* ValuationViewController.m */; };
 		B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6855EA81D2660B400553F0F /* ValuationViewController.xib */; };
 		B68680C21EB1F46F006B9651 /* PanoramaViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68680C01EB1F46F006B9651 /* PanoramaViewerViewController.m */; };
-		B68680C31EB1F46F006B9651 /* PanoramaViewerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68680C11EB1F46F006B9651 /* PanoramaViewerViewController.xib */; };
 		B68680CA1EB20427006B9651 /* CustomLandscapeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68680C91EB20427006B9651 /* CustomLandscapeNavigationViewController.m */; };
 		B68B22C91EA65D0E00C7512E /* PanoramaIndicatorListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B22C71EA65D0E00C7512E /* PanoramaIndicatorListView.m */; };
 		B68B22CA1EA65D0E00C7512E /* PanoramaIndicatorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68B22C81EA65D0E00C7512E /* PanoramaIndicatorListView.xib */; };
@@ -607,7 +606,6 @@
 		B6855EA81D2660B400553F0F /* ValuationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuationViewController.xib; sourceTree = "<group>"; };
 		B68680BF1EB1F46F006B9651 /* PanoramaViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaViewerViewController.h; sourceTree = "<group>"; };
 		B68680C01EB1F46F006B9651 /* PanoramaViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaViewerViewController.m; sourceTree = "<group>"; };
-		B68680C11EB1F46F006B9651 /* PanoramaViewerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoramaViewerViewController.xib; sourceTree = "<group>"; };
 		B68680C81EB20427006B9651 /* CustomLandscapeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLandscapeNavigationViewController.h; sourceTree = "<group>"; };
 		B68680C91EB20427006B9651 /* CustomLandscapeNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLandscapeNavigationViewController.m; sourceTree = "<group>"; };
 		B68B22C61EA65D0E00C7512E /* PanoramaIndicatorListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaIndicatorListView.h; sourceTree = "<group>"; };
@@ -1670,7 +1668,6 @@
 			children = (
 				B68680BF1EB1F46F006B9651 /* PanoramaViewerViewController.h */,
 				B68680C01EB1F46F006B9651 /* PanoramaViewerViewController.m */,
-				B68680C11EB1F46F006B9651 /* PanoramaViewerViewController.xib */,
 			);
 			path = PanoramaViewer;
 			sourceTree = "<group>";
@@ -3008,7 +3005,6 @@
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
 				B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */,
 				B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */,
-				B68680C31EB1F46F006B9651 /* PanoramaViewerViewController.xib in Resources */,
 				B7BF60A01D1D63FE00B3BDD7 /* SearchSuggestedCollectionViewCell.xib in Resources */,
 				B76C69461CD2489B009E9F15 /* CustomTextField.xib in Resources */,
 				B6AF1D001D21492C00C95A8F /* ProjectFilterCollapsibleListView.xib in Resources */,
