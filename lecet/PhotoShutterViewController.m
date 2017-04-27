@@ -18,8 +18,9 @@
 
 @class PHLivePhotoView;
 
-@interface PhotoShutterViewController ()<MonitorDelegate>{
+@interface PhotoShutterViewController ()<MonitorDelegate,PanoramaViewerViewControllerDelegate>{
     BOOL is360Selected;
+    UIImage *capturedImage;
 }
 
 @property (nonatomic) BOOL isFlashOn;
@@ -85,11 +86,11 @@
     [library writeImageDataToSavedPhotosAlbum:[NSData dataWithContentsOfFile:ename] metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
         if (assetURL)
         {
-            __weak __typeof(self)wSelf = self;
             [self latestPhotoWithCompletion:^(UIImage *photo) {
                 
                 UIImageRenderingMode renderingMode = /* DISABLES CODE */ (YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
                 //[wSelf.photoShutterViewControllerDelegate photoTaken:[photo imageWithRenderingMode:renderingMode]];
+                capturedImage  = [photo imageWithRenderingMode:renderingMode];
                 
             }];
         }
@@ -147,8 +148,13 @@
     [self savePhoto];
     
     PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
-    UINavigationController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
-    [self.controller presentViewController:nav animated:YES completion:nil];
+    controller.view.frame = CGRectMake(0, 0, kDeviceWidth - 100, kDeviceHeight - 100);
+    controller.panoramaViewerViewControllerDelegate = self;
+    [self.view addSubview:controller.view];
+    [self.view sendSubviewToBack:controller.view];
+    //[self.view bringSubviewToFront:controller.view];
+    //CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
+    //[self.controller presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)shootingCompleted {
@@ -230,4 +236,10 @@
     
 }
 
+#pragma mark - PanoramaViewerViewControllerDelegate
+- (void)tappedDoneButtonPanoramaViewer {
+    __weak __typeof(self)wSelf = self;
+    [wSelf.photoShutterViewControllerDelegate photoTaken:capturedImage];
+    
+}
 @end
