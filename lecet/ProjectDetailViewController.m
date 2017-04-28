@@ -39,6 +39,9 @@
 #import "CustomPhotoLibraryViewController.h"
 #import "PhotoShutterViewController.h"
 #import "NewProjectViewController.h"
+#import "DMD_LITE.h"
+#import "PanoramaViewerViewController.h"
+#import "CustomLandscapeNavigationViewController.h"
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -892,14 +895,34 @@ typedef enum {
 }
 
 #pragma mark - ImageNoteViewDelegate
-- (void)viewNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image {
+- (void)viewNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image imageNoteId:(NSNumber*)imageNoteId{
     
     if (image != nil) {
-        PhotoViewController *controller = [PhotoViewController new];
-        controller.image = image;
-        controller.photoTitle = title;
-        controller.text = detail;
-        [self.navigationController pushViewController:controller animated:YES];
+        
+        if (image.size.width > (image.size.height*3) ) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:TMP_DIR withIntermediateDirectories:YES attributes:nil error:NULL];
+            
+            NSString *imageName = [NSString stringWithFormat:@"imageNote%li",(long)imageNoteId.integerValue];
+            NSString *ename = [TMP_DIR stringByAppendingPathComponent:[imageName stringByAppendingString:@".jpeg"]];
+            
+            if ([UIImageJPEGRepresentation(image, 1.0) writeToFile:ename atomically:YES]) {
+                [[Monitor instance] restart];
+                [[Monitor instance] genEquiAt:ename withHeight:kDeviceHeight andWidth:0 andMaxWidth:0];
+                
+                PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
+                controller.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
+                CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
+
+                [self presentViewController:nav animated:NO completion:nil];
+            }
+            
+        } else {
+            PhotoViewController *controller = [PhotoViewController new];
+            controller.image = image;
+            controller.photoTitle = title;
+            controller.text = detail;
+            [self.navigationController pushViewController:controller animated:YES];
+        }
     }
 }
 

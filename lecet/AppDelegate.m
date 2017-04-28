@@ -78,6 +78,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
+    application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -14,8 +14,6 @@
 #import "PanoramaViewerViewController.h"
 #import "CustomLandscapeNavigationViewController.h"
 
-#define TMP_DIR [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"DMD_tmp"]
-
 @class PHLivePhotoView;
 
 @interface PhotoShutterViewController ()<MonitorDelegate,PanoramaViewerViewControllerDelegate>{

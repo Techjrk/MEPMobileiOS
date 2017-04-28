@@ -112,6 +112,8 @@ CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
     }
 }
 
+#define TMP_DIR [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"DMD_tmp"]
+
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
 #define FONT_NAME_LATO_SEMIBOLD                  @"Lato-Semibold"
 #define FONT_NAME_LATO_BOLD                      @"Lato-Bold"

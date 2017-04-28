@@ -214,7 +214,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     ImageNoteCollectionViewCell *cell = (ImageNoteCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     
-    [self.imageNotesViewDelegate viewNoteAndImage:cell.titleView.text detail:cell.note.text image:cell.image.image];
+    [self.imageNotesViewDelegate viewNoteAndImage:cell.titleView.text detail:cell.note.text image:cell.image.image imageNoteId:cell.imageId];
 }
 
 @end

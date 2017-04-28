@@ -10,7 +10,7 @@
 #import "BaseViewClass.h"
 
 @protocol ImageNotesViewDelegate
-- (void)viewNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image;
+- (void)viewNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image imageNoteId:(NSNumber*)imageNoteId;
 - (void)updateNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image itemID:(NSNumber *)itemID imageLink:(NSString *)link;
 - (void)deleteNoteAndImage:(NSNumber *)itemsID image:(UIImage*)image;
 @end

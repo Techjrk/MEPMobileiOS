@@ -61,7 +61,11 @@
     [super viewWillDisappear:animated];
 }
 - (IBAction)tappedDoneButton:(id)sender {
-    [self.panoramaViewerViewControllerDelegate tappedDoneButtonPanoramaViewer];
+    if (self.panoramaViewerViewControllerDelegate == nil) {
+        [self dismissViewControllerAnimated:NO completion:nil];
+    } else {
+        [self.panoramaViewerViewControllerDelegate tappedDoneButtonPanoramaViewer];
+    }
 }
 
 #pragma mark DMD Viewer
