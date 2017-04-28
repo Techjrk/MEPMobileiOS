@@ -22,6 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    self.isLogged = NO;
     isCheckingNotification = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];
 
@@ -84,29 +85,39 @@
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    [self checkForNotifications];
+    
+    //completionHandler(UIBackgroundFetchResultNewData);
+    [self checkForNotifications:completionHandler];
 }
 
 - (void)NotificationGPSLocation:(NSNotification*)notification {
     if (self.isLogged) {
-        [self checkForNotifications];
+        [self checkForNotifications:nil];
     }
 }
 
-- (void)checkForNotifications {
+- (void)checkForNotifications:(void (^)(UIBackgroundFetchResult))completionHandler {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
-        /*
+        
+        
         if (!isCheckingNotification) {
             isCheckingNotification = YES;
 
             [[DataManager sharedManager] notify:^(id object) {
             
                 isCheckingNotification = NO;
+                
+                if (completionHandler) {
+                    completionHandler(UIBackgroundFetchResultNewData);
+                }
             } failure:^(id object) {
                 isCheckingNotification = NO;
+                if (completionHandler) {
+                    completionHandler(UIBackgroundFetchResultNewData);
+                }
             }];
         }
-        */
+        
     }
 }
 
