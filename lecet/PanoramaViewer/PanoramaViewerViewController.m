@@ -8,9 +8,17 @@
 
 #import "PanoramaViewerViewController.h"
 
-@interface PanoramaViewerViewController ()
-@property (weak, nonatomic) IBOutlet UIView *navView;
+#pragma mark - FONT
+#define FONT_NAV_BUTTON                     fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
 
+#pragma mark - COLOR
+#define COLOR_FONT_NAV_BUTTON               RGB(168,195,230)
+
+@interface PanoramaViewerViewController () {
+    NSTimer *hideTimer;
+}
+@property (weak, nonatomic) IBOutlet UIView *navView;
+//@property (strong, nonatomic) NSTimer *hideTimer;
 
 @end
 
@@ -25,6 +33,12 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setHideTimer:1.5];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -32,21 +46,30 @@
 
 - (void)loadView {
 
-    _panoViewer = [[PanoViewer alloc] initWithFrame:CGRectMake(0, 0, kDeviceHeight, kDeviceWidth)];
+    self.panoViewer = [[PanoViewer alloc] initWithFrame:CGRectMake(0, 0, kDeviceHeight, kDeviceWidth)];
     
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc]
                                                 initWithTarget:self action:@selector(showNavBar:)];
     [singleFingerTap requireGestureRecognizerToFail:_panoViewer.doubleTapGR];
-    
+    [self.panoViewer addGestureRecognizer:singleFingerTap];
 
-    self.view = _panoViewer;
+
+    self.view = self.panoViewer;
     [self.view addSubview:self.navView];
 }
 
 - (void)showNavBar:(UIGestureRecognizer*)gestureRecognizer
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self setHideTimer:5.0];
+
     return;
+}
+
+- (void)hideNavBar:(NSTimer*)theTimer
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    hideTimer = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,17 +99,22 @@
     [_panoViewer performSelector:@selector(stop) onThread:[Monitor instance].engineMgr.thread withObject:nil waitUntilDone:NO];
 }
 
+
+#pragma mark - MISC METHOD
+
 - (void)setupNavigationController:(UINavigationController*)nav
 {
     nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     nav.toolbarHidden = YES;
-    nav.toolbar.barStyle = UIBarStyleBlack;
+    nav.toolbar.barStyle = UIBarStyleBlackTranslucent;
     nav.toolbar.translucent = YES;
-    nav.navigationBar.hidden = NO;
-    nav.navigationBar.barStyle = UIBarStyleBlack;
+    nav.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     nav.navigationBar.translucent = YES;
     
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(tappedDoneButton:)] ;
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(tappedDoneButton:)];
+    [back setTitle:@"DONE"];
+    [back setTitleTextAttributes:@{NSFontAttributeName:FONT_NAV_BUTTON,NSForegroundColorAttributeName:COLOR_FONT_NAV_BUTTON}  forState:UIControlStateNormal];
+    
     nav.topViewController.navigationItem.rightBarButtonItem = back;
 }
 
@@ -96,5 +124,13 @@
         ;
     }];
 }
+
+- (void)setHideTimer:(NSTimeInterval)ti
+{
+    [hideTimer invalidate];
+    hideTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(hideNavBar:) userInfo:nil repeats:NO];
+}
+
+
 
 @end

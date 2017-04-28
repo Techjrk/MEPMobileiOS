@@ -149,9 +149,9 @@
     [self savePhoto];
     
     PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
-    controller.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
     controller.panoramaViewerViewControllerDelegate = self;
     CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
+    nav.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
     self.navPanoramaViewer = nav;
     [self.controller.view addSubview:self.navPanoramaViewer.view];
     [self.controller.view bringSubviewToFront:self.navPanoramaViewer.view];
