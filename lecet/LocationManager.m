@@ -53,25 +53,30 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+
     self.currentLocation = [[locations lastObject] copy];
     
-    NSDate *dateTime = [NSDate date];
-    
-    
-    if (currentDateTime == nil) {
-        currentDateTime = [NSDate date];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
-    } else{
-        NSTimeInterval interval = [dateTime timeIntervalSinceDate:currentDateTime];
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    if (appDelegate.isLogged) {
+        NSDate *dateTime = [NSDate date];
         
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        
-        if ((interval > ( 60)) ) {
+        if (currentDateTime == nil) {
             currentDateTime = [NSDate date];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION_NEAR object:nil];
+        } else{
+            
+            NSTimeInterval interval = [dateTime timeIntervalSinceDate:currentDateTime];
+            
+            if ((interval > (5 * 60)) ) {
+                currentDateTime = [NSDate date];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION_NEAR object:nil];
+        }        
     }
+
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
