@@ -12,7 +12,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @class EAGLView;
-@class PanoramaViewer;
+class PanoramaViewer;
 
 @interface DMDViewerController : UIViewController <UIGestureRecognizerDelegate>
 {

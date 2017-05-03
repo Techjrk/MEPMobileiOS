@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 Dermandar. All rights reserved.
 //
 
-//#include "PanoramaViewer.h"
+#include "PanoramaViewer.h"
 
 #ifndef __CylindricalPanoramaViewer__
 #define __CylindricalPanoramaViewer__

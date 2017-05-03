@@ -43,8 +43,7 @@
 #import "PanoramaSceneViewController.h"
 #import "CustomLandscapeNavigationViewController.h"
 
-@class PanoramaViewer;
-#import "DMDViewerController.h"
+//#import "DMDViewerController.h"
 #import <OpenGLES/ES2/gl.h>
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
@@ -924,7 +923,7 @@ typedef enum {
                 [self presentViewController:nav animated:NO completion:nil]; */
                 
                 UIImage *image = [UIImage imageWithContentsOfFile:ename] ;
-                
+                /*
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     DMDViewerController *dmdViewerCtrlr= [[DMDViewerController alloc] init];
                     int fovx=360.0;
@@ -937,7 +936,7 @@ typedef enum {
                     else {
                         NSLog(@"Failed to load the given image.");
                     }
-                });
+                });*/
             }
             
         } else {
