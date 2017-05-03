@@ -82,6 +82,7 @@
 
     
     self.constriantCollectionHeight.constant = kDeviceHeight * 0.1;
+    [self.takePhotoButton setImage:[UIImage imageNamed:@"takePhoto_icon"] forState:UIControlStateNormal];
     
     isLibrarySelected = NO;
     isPhotoSelected = YES;
@@ -178,6 +179,7 @@
     self.capturedImage.image = nil;
     self.capturedImage.hidden = YES;
     [self.customCameraViewControllerDelegate tappedCancel];
+    [self setTakePhotoButtonImageToTakenPano:NO];
     [self removeFromParentViewController];
 }
 
@@ -185,6 +187,8 @@
     
     if (isPanoSelected || is360Selected) {
         [self.shutter tappedTakePanoramaPhoto];
+        [self setTakePhotoButtonImageToTakenPano:YES];
+
     } else {
         [self.customCameraViewControllerDelegate tapppedTakePhoto];
         [self hideDefaultCameraControl:YES isPanoRetake:NO is360Retake:NO];
@@ -268,6 +272,7 @@
                     [self setNavBottomViewClearColor:YES];
                     [self hideControlForPanoramicMode];
                     [self showShutter:YES];
+                    [self setTakePhotoButtonImageToTakenPano:NO];
                 }
                 break;
             }
@@ -281,6 +286,7 @@
                     isPreviewSelected = NO;
                     [self hideDefaultCameraControl:NO isPanoRetake:NO is360Retake:NO];
                     [self setNavBottomViewClearColor:NO];
+                    [self setTakePhotoButtonImageToTakenPano:NO];
                 }
                 [self showShutter:NO];
                 break;
@@ -311,6 +317,7 @@
                     [self setNavBottomViewClearColor:YES];
                     [self hideControlForPanoramicMode];
                     [self showShutter:YES];
+                    [self setTakePhotoButtonImageToTakenPano:NO];
                 }
                 
                 break;
@@ -375,6 +382,11 @@
     
     return cameraItems;
 
+}
+
+- (void)setTakePhotoButtonImageToTakenPano:(BOOL)taken {
+    NSString *imageName = taken?@"panoTakePhoto_icon":@"takePhoto_icon";
+    [self.takePhotoButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
 
 - (void)setNavBottomViewClearColor:(BOOL)clear {
