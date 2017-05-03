@@ -11,12 +11,12 @@
 #import "DMD_LITE.h"
 #import "CustomCameraViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "PanoramaViewerViewController.h"
+#import "PanoramaSceneViewController.h"
 #import "CustomLandscapeNavigationViewController.h"
 
 @class PHLivePhotoView;
 
-@interface PhotoShutterViewController ()<MonitorDelegate,PanoramaViewerViewControllerDelegate>{
+@interface PhotoShutterViewController ()<MonitorDelegate,PanoramaSceneViewControllerDelegate>{
     BOOL is360Selected;
     UIImage *capturedImage;
 }
@@ -146,7 +146,7 @@
 - (void)stitchingCompleted:(NSDictionary *)dict {
     [self savePhoto];
     
-    PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
+    PanoramaSceneViewController *controller = [PanoramaSceneViewController new];
     controller.panoramaViewerViewControllerDelegate = self;
     CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
     nav.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);

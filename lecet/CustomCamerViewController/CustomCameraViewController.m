@@ -12,7 +12,7 @@
 #import "CustomPhotoLibView.h"
 #import "CameraRadialView.h"
 #import "PhotoShutterViewController.h"
-#import "PanoramaViewerViewController.h"
+#import "PanoramaSceneViewController.h"
 #import "CustomLandscapeNavigationViewController.h"
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL            fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
