@@ -362,6 +362,12 @@
 }
 
 -(void)onEditing:(id)sender {
+    
+    if (self.postTitleTextField.text.length > 55) {
+        self.postTitleTextField.text = [self.postTitleTextField.text substringToIndex:self.postTitleTextField.text.length - 1];
+        return;
+    }
+    
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
 }

@@ -1541,8 +1541,8 @@
 
     CGSize imageSize = image.size;
     
-    imageSize.width = imageSize.width * 0.3;
-    imageSize.height = imageSize.height * 0.3;
+    imageSize.width = imageSize.width * 0.6;
+    imageSize.height = imageSize.height * 0.6;
     
     UIGraphicsBeginImageContext( imageSize );
     [image drawInRect:CGRectMake(0,0,imageSize.width,imageSize.height)];
@@ -1563,8 +1563,8 @@
 - (void)updateProjectUserImage:(NSNumber *)projectID title:(NSString *)title text:(NSString *)text image:(UIImage *)image success:(APIBlock)success failure:(APIBlock)failure{
     CGSize imageSize = image.size;
     
-    imageSize.width = imageSize.width * 0.3;
-    imageSize.height = imageSize.height * 0.3;
+    imageSize.width = imageSize.width * 0.6;
+    imageSize.height = imageSize.height * 0.6;
     
     UIGraphicsBeginImageContext( imageSize );
     [image drawInRect:CGRectMake(0,0,imageSize.width,imageSize.height)];
