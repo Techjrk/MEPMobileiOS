@@ -100,7 +100,6 @@
 		B68337381D083102004226D3 /* ChnagePasswordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68337361D083102004226D3 /* ChnagePasswordCollectionViewCell.xib */; };
 		B6855EA91D2660B400553F0F /* ValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6855EA71D2660B400553F0F /* ValuationViewController.m */; };
 		B6855EAA1D2660B400553F0F /* ValuationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6855EA81D2660B400553F0F /* ValuationViewController.xib */; };
-		B68680C21EB1F46F006B9651 /* PanoramaViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68680C01EB1F46F006B9651 /* PanoramaViewerViewController.m */; };
 		B68680CA1EB20427006B9651 /* CustomLandscapeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68680C91EB20427006B9651 /* CustomLandscapeNavigationViewController.m */; };
 		B68B22C91EA65D0E00C7512E /* PanoramaIndicatorListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B22C71EA65D0E00C7512E /* PanoramaIndicatorListView.m */; };
 		B68B22CA1EA65D0E00C7512E /* PanoramaIndicatorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B68B22C81EA65D0E00C7512E /* PanoramaIndicatorListView.xib */; };
@@ -221,10 +220,6 @@
 		B73EFAA41D0847C100C6B3B2 /* CustomCallOut.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAA31D0847C100C6B3B2 /* CustomCallOut.m */; };
 		B73EFAA61D0847D200C6B3B2 /* CustomCallOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFAA51D0847D200C6B3B2 /* CustomCallOut.xib */; };
 		B73EFAB11D09546B00C6B3B2 /* CallOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA9E1D08441E00C6B3B2 /* CallOutViewController.m */; };
-		B73EFAB61D09985A00C6B3B2 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		B73EFAB71D09985A00C6B3B2 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		B73EFABB1D09ABC400C6B3B2 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		B73EFABC1D09ABC400C6B3B2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		B73EFAC01D0ED11200C6B3B2 /* HiddenProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFABE1D0ED11200C6B3B2 /* HiddenProjectsViewController.m */; };
 		B73EFAC11D0ED11200C6B3B2 /* HiddenProjectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFABF1D0ED11200C6B3B2 /* HiddenProjectsViewController.xib */; };
 		B73EFAC51D0EF3FB00C6B3B2 /* HiddenProjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFAC41D0EF3FB00C6B3B2 /* HiddenProjectView.m */; };
@@ -459,6 +454,11 @@
 		B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */; };
 		B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */; };
 		B7FC244A1EB229E10002802D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24491EB229E10002802D /* Entitlements.plist */; };
+		B7FC246C1EBA02AC0002802D /* DMDViewerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24691EBA02AC0002802D /* DMDViewerController.mm */; };
+		B7FC246D1EBA02AC0002802D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC246B1EBA02AC0002802D /* EAGLView.m */; };
+		B7FC24831EBA13780002802D /* PanoramaSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24811EBA13780002802D /* PanoramaSceneViewController.m */; };
+		B7FC24841EBA13780002802D /* PanoramaSceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24821EBA13780002802D /* PanoramaSceneViewController.xib */; };
+		B7FC24871EBA15D60002802D /* libDMDViewerSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FC24861EBA15D60002802D /* libDMDViewerSample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -604,8 +604,6 @@
 		B6855EA61D2660B400553F0F /* ValuationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuationViewController.h; sourceTree = "<group>"; };
 		B6855EA71D2660B400553F0F /* ValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuationViewController.m; sourceTree = "<group>"; };
 		B6855EA81D2660B400553F0F /* ValuationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuationViewController.xib; sourceTree = "<group>"; };
-		B68680BF1EB1F46F006B9651 /* PanoramaViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaViewerViewController.h; sourceTree = "<group>"; };
-		B68680C01EB1F46F006B9651 /* PanoramaViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaViewerViewController.m; sourceTree = "<group>"; };
 		B68680C81EB20427006B9651 /* CustomLandscapeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLandscapeNavigationViewController.h; sourceTree = "<group>"; };
 		B68680C91EB20427006B9651 /* CustomLandscapeNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLandscapeNavigationViewController.m; sourceTree = "<group>"; };
 		B68B22C61EA65D0E00C7512E /* PanoramaIndicatorListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaIndicatorListView.h; sourceTree = "<group>"; };
@@ -1169,6 +1167,18 @@
 		B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B7F10A371CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B7FC24491EB229E10002802D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		B7FC24681EBA02AC0002802D /* DMDViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMDViewerController.h; sourceTree = "<group>"; };
+		B7FC24691EBA02AC0002802D /* DMDViewerController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DMDViewerController.mm; sourceTree = "<group>"; };
+		B7FC246A1EBA02AC0002802D /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		B7FC246B1EBA02AC0002802D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		B7FC24741EBA0AF20002802D /* libDMDViewerSample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDMDViewerSample.a; path = lecet/PanoLite/viewer/libDMDViewerSample.a; sourceTree = "<group>"; };
+		B7FC24781EBA0E660002802D /* CylindricalPanoramaViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CylindricalPanoramaViewer.h; sourceTree = "<group>"; };
+		B7FC247B1EBA0E660002802D /* SphericalPanoramaViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericalPanoramaViewer.h; sourceTree = "<group>"; };
+		B7FC24801EBA13780002802D /* PanoramaSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaSceneViewController.h; sourceTree = "<group>"; };
+		B7FC24811EBA13780002802D /* PanoramaSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaSceneViewController.m; sourceTree = "<group>"; };
+		B7FC24821EBA13780002802D /* PanoramaSceneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoramaSceneViewController.xib; sourceTree = "<group>"; };
+		B7FC24851EBA158E0002802D /* PanoramaViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanoramaViewer.h; sourceTree = "<group>"; };
+		B7FC24861EBA15D60002802D /* libDMDViewerSample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDMDViewerSample.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1176,10 +1186,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79AA7C51E9CBE9100BA1B04 /* OpenGLES.framework in Frameworks */,
 				B79AA7C71E9CBEA100BA1B04 /* Foundation.framework in Frameworks */,
 				B79AA7F71E9CBF5400BA1B04 /* libDMD_LITE.a in Frameworks */,
-				B79AA7C51E9CBE9100BA1B04 /* OpenGLES.framework in Frameworks */,
 				B79AA7C31E9CBE8600BA1B04 /* AVFoundation.framework in Frameworks */,
+				B7FC24871EBA15D60002802D /* libDMDViewerSample.a in Frameworks */,
 				B79AA7C11E9CBE7800BA1B04 /* CoreMotion.framework in Frameworks */,
 				B79AA7BF1E9CBE6F00BA1B04 /* AssetsLibrary.framework in Frameworks */,
 				B79AA7BD1E9CBE5B00BA1B04 /* Security.framework in Frameworks */,
@@ -1663,15 +1674,6 @@
 			name = Valuation;
 			sourceTree = "<group>";
 		};
-		B68680BE1EB1F444006B9651 /* PanoramaViewer */ = {
-			isa = PBXGroup;
-			children = (
-				B68680BF1EB1F46F006B9651 /* PanoramaViewerViewController.h */,
-				B68680C01EB1F46F006B9651 /* PanoramaViewerViewController.m */,
-			);
-			path = PanoramaViewer;
-			sourceTree = "<group>";
-		};
 		B68680C41EB202F2006B9651 /* CustomLandscapeNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2066,6 +2068,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
 				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
 				B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */,
 				B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */,
@@ -2134,7 +2137,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B68680BE1EB1F444006B9651 /* PanoramaViewer */,
+				B7FC247F1EBA13780002802D /* PanoramaScene */,
 				B79AA7F81E9CC69600BA1B04 /* PhotoShutter */,
 				B79AA7B21E9530D500BA1B04 /* SaveNewProject */,
 				B79AA7A61E93874100BA1B04 /* NewPinViewController */,
@@ -2708,6 +2711,8 @@
 		B79AA7C81E9CBF1400BA1B04 /* PanoLite */ = {
 			isa = PBXGroup;
 			children = (
+				B7FC246E1EBA02B60002802D /* viewer */,
+				B7FC24671EBA02AC0002802D /* ios */,
 				B79AA7F31E9CBF5400BA1B04 /* DMD_LITE.h */,
 				B79AA7F41E9CBF5400BA1B04 /* DMDAssets.bundle */,
 				B79AA7F51E9CBF5400BA1B04 /* libDMD_LITE.a */,
@@ -2768,8 +2773,8 @@
 		B7DD9CC91D942A9600978CC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7FC24741EBA0AF20002802D /* libDMDViewerSample.a */,
 				B79AA7C61E9CBEA100BA1B04 /* Foundation.framework */,
-				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
 				B79AA7C21E9CBE8600BA1B04 /* AVFoundation.framework */,
 				B79AA7C01E9CBE7800BA1B04 /* CoreMotion.framework */,
 				B79AA7BE1E9CBE6F00BA1B04 /* AssetsLibrary.framework */,
@@ -2870,6 +2875,38 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		B7FC24671EBA02AC0002802D /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC24681EBA02AC0002802D /* DMDViewerController.h */,
+				B7FC24691EBA02AC0002802D /* DMDViewerController.mm */,
+				B7FC246A1EBA02AC0002802D /* EAGLView.h */,
+				B7FC246B1EBA02AC0002802D /* EAGLView.m */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		B7FC246E1EBA02B60002802D /* viewer */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC24861EBA15D60002802D /* libDMDViewerSample.a */,
+				B7FC24851EBA158E0002802D /* PanoramaViewer.h */,
+				B7FC24781EBA0E660002802D /* CylindricalPanoramaViewer.h */,
+				B7FC247B1EBA0E660002802D /* SphericalPanoramaViewer.h */,
+			);
+			path = viewer;
+			sourceTree = "<group>";
+		};
+		B7FC247F1EBA13780002802D /* PanoramaScene */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC24801EBA13780002802D /* PanoramaSceneViewController.h */,
+				B7FC24811EBA13780002802D /* PanoramaSceneViewController.m */,
+				B7FC24821EBA13780002802D /* PanoramaSceneViewController.xib */,
+			);
+			path = PanoramaScene;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2896,7 +2933,7 @@
 		B70155101CD0C56A0050CF8A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Dom and TOm";
 				TargetAttributes = {
 					B70155171CD0C56A0050CF8A = {
@@ -2977,7 +3014,6 @@
 				B707BC411CEF0B960003C836 /* LandingViewController.xib in Resources */,
 				B70FDF6F1CE9B74F0035A6D9 /* CustomEntryField.xib in Resources */,
 				B6FC235D1D042D3800296386 /* ProjectAllAssociatedProjectView.xib in Resources */,
-				B73EFAB71D09985A00C6B3B2 /* (null) in Resources */,
 				B707BC0D1CEDA18C0003C836 /* MapViewController.xib in Resources */,
 				B6411BAC1D096E1B002B6E88 /* SettingCollectionViewCell.xib in Resources */,
 				B76C696D1CD75AEF009E9F15 /* BidItemCollectionViewCell.xib in Resources */,
@@ -3015,6 +3051,7 @@
 				B6AF1CEF1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib in Resources */,
 				B73EFB0C1D14548100C6B3B2 /* ProjectTrackItemView.xib in Resources */,
 				B62C51831E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib in Resources */,
+				B7FC24841EBA13780002802D /* PanoramaSceneViewController.xib in Resources */,
 				B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */,
 				B7BF60D51D21248700B3BDD7 /* FilterEntryView.xib in Resources */,
 				B75EB7961E8BF24C00F147D6 /* UserLocationPinViewController.xib in Resources */,
@@ -3041,7 +3078,6 @@
 				B60BEFA61E854EC500C69640 /* CustomPhotoLibView.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
 				B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */,
-				B73EFABC1D09ABC400C6B3B2 /* (null) in Resources */,
 				B69FA8B41D4F469F0059A18F /* SaveSearchChangeItemView.xib in Resources */,
 				B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */,
 				B651064B1D12AD4000007759 /* ProjComTrackingTabView.xib in Resources */,
@@ -3206,6 +3242,7 @@
 				B73EFB0A1D14546E00C6B3B2 /* ProjectTrackItemView.m in Sources */,
 				B7BF60A91D1D828900B3BDD7 /* SearchCompanyCollectionViewCell.m in Sources */,
 				B786070B1E78129800F7CE3E /* ImageNotesView.m in Sources */,
+				B7FC24831EBA13780002802D /* PanoramaSceneViewController.m in Sources */,
 				B79616231CF600460089BC32 /* DB_Participant.m in Sources */,
 				B65BCDC01D2529AF00FE9781 /* WorkOwnerTypesViewController.m in Sources */,
 				B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */,
@@ -3263,6 +3300,7 @@
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */,
 				B6BEE9871D46278300237BB9 /* EHFAuthenticator.m in Sources */,
+				B7FC246D1EBA02AC0002802D /* EAGLView.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
 				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
 				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
@@ -3273,7 +3311,6 @@
 				B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */,
 				B76C69841CDA0532009E9F15 /* CalendarItem.m in Sources */,
 				B68337371D083102004226D3 /* ChnagePasswordCollectionViewCell.m in Sources */,
-				B73EFABB1D09ABC400C6B3B2 /* (null) in Sources */,
 				B79AA7AA1E93875D00BA1B04 /* NewPinViewController.m in Sources */,
 				B73EFA891D01D77A00C6B3B2 /* ProjectsNearMeViewController.m in Sources */,
 				B7F10A1C1CDB3E3300847FA3 /* UIButton+AFNetworking.m in Sources */,
@@ -3311,7 +3348,6 @@
 				B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */,
 				B7BF60DD1D2154C400B3BDD7 /* CompanyFilterView.m in Sources */,
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
-				B68680C21EB1F46F006B9651 /* PanoramaViewerViewController.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
 				B73EFAC01D0ED11200C6B3B2 /* HiddenProjectsViewController.m in Sources */,
 				B74C0AA21E8167D400E91FA9 /* NewProjectViewController.m in Sources */,
@@ -3347,6 +3383,7 @@
 				B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */,
 				B6BDBAC21D181F66001FB41C /* EditViewList.m in Sources */,
 				B62858BD1E7194FD00E82A5E /* MobileProjectAddNoteViewController.m in Sources */,
+				B7FC246C1EBA02AC0002802D /* DMDViewerController.mm in Sources */,
 				B6A74EF41D15DBAC007CDFF3 /* CompanySortCollectionViewCell.m in Sources */,
 				B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */,
 				B70FDF791CEA09710035A6D9 /* SectionTitleView.m in Sources */,
@@ -3358,7 +3395,6 @@
 				B69C3AD01D0DB2D3003DD918 /* MyProfileOneTextFieldView.m in Sources */,
 				B7BF608F1D1BE28100B3BDD7 /* SearchViewController.m in Sources */,
 				B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */,
-				B73EFAB61D09985A00C6B3B2 /* (null) in Sources */,
 				B76C69711CD78794009E9F15 /* CustomPieChart.m in Sources */,
 				B62C517C1E83E0C60044830F /* CustomPhotoLibraryViewController.m in Sources */,
 				B6EA88B41CF439F400BB3180 /* ProjectDetailStateView.m in Sources */,
@@ -3396,8 +3432,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3441,8 +3479,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3488,6 +3528,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/lecet/PanoLite",
+					"$(PROJECT_DIR)/lecet",
+					"$(PROJECT_DIR)/lecet/viewer",
+					"$(PROJECT_DIR)/lecet/PanoLite/viewer",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
@@ -3518,6 +3561,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/lecet/PanoLite",
+					"$(PROJECT_DIR)/lecet",
+					"$(PROJECT_DIR)/lecet/viewer",
+					"$(PROJECT_DIR)/lecet/PanoLite/viewer",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
-#import "PanoramaViewerViewController.h"
+#import "PanoramaSceneViewController.h"
 
 #pragma mark - FONT
 #define FONT_NAV_BUTTON                     fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
@@ -14,7 +14,7 @@
 #pragma mark - COLOR
 #define COLOR_FONT_NAV_BUTTON               RGB(168,195,230)
 
-@interface PanoramaViewerViewController () {
+@interface PanoramaSceneViewController () {
     NSTimer *hideTimer;
 }
 @property (weak, nonatomic) IBOutlet UIView *navView;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation PanoramaViewerViewController
+@implementation PanoramaSceneViewController
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;
@@ -95,12 +95,12 @@
 
 - (void)startViewer
 {
-    [_panoViewer performSelector:@selector(start) onThread:[Monitor instance].engineMgr.thread withObject:nil waitUntilDone:NO];
+    [_panoViewer performSelector:@selector(start) onThread:[Monitor instance].engineMgr.thread withObject:self.image waitUntilDone:NO];
 }
 
 - (void)stopViewer
 {
-    [_panoViewer performSelector:@selector(stop) onThread:[Monitor instance].engineMgr.thread withObject:nil waitUntilDone:NO];
+    [_panoViewer performSelector:@selector(stop) onThread:[Monitor instance].engineMgr.thread withObject:self.image waitUntilDone:NO];
 }
 
 
