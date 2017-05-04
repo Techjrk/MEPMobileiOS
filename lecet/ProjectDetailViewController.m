@@ -45,6 +45,7 @@
 
 #import "DMDViewerController.h"
 #import <OpenGLES/ES2/gl.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 #define VIEW_TAB_BG_COLOR                           RGB(19, 86, 141)
@@ -1056,6 +1057,41 @@ typedef enum {
     
 }
 
+- (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
+{
+    
+    ALAssetsLibrary *library=[[ALAssetsLibrary alloc] init];
+    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
+    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        
+        // Within the group enumeration block, filter to enumerate just photos.
+        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+        
+        // For this example, we're only interested in the last item [group numberOfAssets]-1 = last.
+        if ([group numberOfAssets] > 0) {
+            [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets]-1] options:0
+                                 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+                                     // The end of the enumeration is signaled by asset == nil.
+                                     if (alAsset) {
+                                         ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                                         // Do something interesting with the AV asset.
+                                         UIImage *img = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                                         
+                                         // completion
+                                         completion(img);
+                                         
+                                         // we only need the first (most recent) photo -- stop the enumeration
+                                         *innerStop = YES;
+                                     }
+                                 }];
+        }
+    } failureBlock: ^(NSError *error) {
+        // Typically you should handle an error more gracefully than this.
+    }];
+    
+    
+}
+
 - (void)presentImagePickerController:(UIViewController *)pickerController animated:(BOOL)animate
 {
     if (self.presentedViewController) {
@@ -1070,16 +1106,38 @@ typedef enum {
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image =  [info valueForKey:UIImagePickerControllerOriginalImage];
     self.customCameraVC.capturedImage.image = image;
-    capturedImage = image;
-    
+    //capturedImage = image;
     if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
+        capturedImage = image;
         [self.picker dismissViewControllerAnimated:YES completion:^{
             [self showAddPhotoScreenItems:imageItemsToBeUpdated];
         }];
     } else {
+        //capturedImage = [self reducedImageOnceCapture:image];
+        /*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         });
+        */
+        NSData *imageData =  UIImageJPEGRepresentation(image, 1);
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [library writeImageDataToSavedPhotosAlbum:imageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+            if (assetURL)
+            {
+                [self latestPhotoWithCompletion:^(UIImage *photo) {
+                    UIImageRenderingMode renderingMode = /* DISABLES CODE */ (YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
+                    capturedImage  = [photo imageWithRenderingMode:renderingMode];
+                    
+                }];
+            }
+            else if (error)
+            {
+                if (error.code == ALAssetsLibraryAccessUserDeniedError || error.code == ALAssetsLibraryAccessGloballyDeniedError)
+                {
+                    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Permission needed to access camera roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                }
+            }
+        }];
     }
 }
 
