@@ -22,7 +22,11 @@ CGFloat distanceBetweenPoints(float scaleFactor, CGPoint first, CGPoint second)
 #pragma mark -
 #pragma mark DMDWebViewerController (Private)
 
-@interface DMDViewerController ()
+class PanoramaViewer;
+
+@interface DMDViewerController (){
+    PanoramaViewer *viewer;
+}
 
 - (void)clean;
 - (void)drawFrame;
@@ -85,13 +89,13 @@ CGFloat distanceBetweenPoints(float scaleFactor, CGPoint first, CGPoint second)
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-	return UIInterfaceOrientationMaskLandscape;
+	return UIInterfaceOrientationMaskPortrait;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
 	UIDeviceOrientation ori = [UIDevice currentDevice].orientation;
-	UIInterfaceOrientation intOri = UIDeviceOrientationIsLandscape(ori)?(UIInterfaceOrientation)ori:UIInterfaceOrientationLandscapeRight;
+	UIInterfaceOrientation intOri = UIDeviceOrientationIsPortrait(ori)?(UIInterfaceOrientation)ori:UIInterfaceOrientationPortrait;
 	return intOri;
 }
 

@@ -12,12 +12,10 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @class EAGLView;
-class PanoramaViewer;
 
 @interface DMDViewerController : UIViewController <UIGestureRecognizerDelegate>
 {
 @private
-    PanoramaViewer *viewer;
     CADisplayLink *displayLink;
 	NSMutableArray *curTouches;
 

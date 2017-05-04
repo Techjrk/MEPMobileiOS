@@ -43,7 +43,7 @@
 #import "PanoramaSceneViewController.h"
 #import "CustomLandscapeNavigationViewController.h"
 
-//#import "DMDViewerController.h"
+#import "DMDViewerController.h"
 #import <OpenGLES/ES2/gl.h>
 
 #define PROJECT_DETAIL_CONTAINER_BG_COLOR           RGB(245, 245, 245)
@@ -903,42 +903,21 @@ typedef enum {
     if (image != nil) {
         
         if (image.size.width > (image.size.height*3) ) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:TMP_DIR withIntermediateDirectories:YES attributes:nil error:NULL];
-            
-            NSString *imageName = [NSString stringWithFormat:@"imageNote%li",(long)imageNoteId.integerValue];
-            NSString *ename = [TMP_DIR stringByAppendingPathComponent:[imageName stringByAppendingString:@".jepg"]];
-            
-            if (imageNoteId.integerValue == 70) {
-                
-                /*
-            //if ([UIImageJPEGRepresentation(image, 1.0) writeToFile:ename atomically:YES]) {
-                [[Monitor instance] restart];
-                [[Monitor instance] genEquiAt:ename withHeight:image.size.height andWidth:0 andMaxWidth:0];
-                
-                PanoramaViewerViewController *controller = [PanoramaViewerViewController new];
-                controller.view.frame = CGRectMake(0, 0, kDeviceWidth, kDeviceHeight);
-                controller.image = ename;
-                CustomLandscapeNavigationViewController *nav = [[CustomLandscapeNavigationViewController alloc] initWithRootViewController:controller];
 
-                [self presentViewController:nav animated:NO completion:nil]; */
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                DMDViewerController *dmdViewerCtrlr= [[DMDViewerController alloc] init];
+                int fovx=360.0;
+                BOOL isSpherical = NO;
                 
-                UIImage *image = [UIImage imageWithContentsOfFile:ename] ;
-                /*
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    DMDViewerController *dmdViewerCtrlr= [[DMDViewerController alloc] init];
-                    int fovx=360.0;
-                    BOOL isSpherical = YES;
-                    
-                    if(isSpherical?[dmdViewerCtrlr loadSphericalPanoramaFromUIImage:image]:[dmdViewerCtrlr loadPanoramaFromUIImage:
-                                        image fovx:fovx]) {
-                        [self.presentedViewController presentViewController:dmdViewerCtrlr animated:NO completion:nil];
-                    }
-                    else {
-                        NSLog(@"Failed to load the given image.");
-                    }
-                });*/
-            }
-            
+                if(isSpherical?[dmdViewerCtrlr loadSphericalPanoramaFromUIImage:image]:[dmdViewerCtrlr loadPanoramaFromUIImage:
+                                                                                        image fovx:fovx]) {
+                    [self presentViewController:dmdViewerCtrlr animated:NO completion:nil];
+                }
+                else {
+                    NSLog(@"Failed to load the given image.");
+                }
+            });
+
         } else {
             PhotoViewController *controller = [PhotoViewController new];
             controller.image = image;
