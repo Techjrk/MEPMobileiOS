@@ -442,6 +442,10 @@
 "MPANV_NAV_PHOTO_TITLE_UPDATE"              =               "Update Photo";
 "MPANV_NAV_TITLE_UPDATE"                    =               "Update Note";
 "MPANV_NAV_UPDATE"                          =               "Update";
+"MPANV_BUTTON_DELETE"                       =               "DELETE";
+"MPANV_BUTTON_CANCEL"                       =               "CANCEL";
+"MPANV_ALERT_TITLE"                         =               "WARNING!";
+"MPANV_ALERT_MESSAGE"                       =               "All field will be cleared! Are you sure you want to continue?";
 
 //MobileProjectNotePopUpViewController
 "MPNPV_TITLE"                               =               "You are about to post a public note.";

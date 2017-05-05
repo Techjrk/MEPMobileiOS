@@ -164,8 +164,30 @@
     //}
 }
 - (IBAction)tappedTrashcanButton:(id)sender {
-    self.capturedImageView.image = nil;
-    self.capturedImage = nil;
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedLanguage(@"MPANV_ALERT_TITLE") message:NSLocalizedLanguage(@"MPANV_ALERT_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"MPANV_BUTTON_CANCEL") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+
+    }];
+    
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"MPANV_BUTTON_DELETE") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        self.capturedImageView.image = nil;
+        self.capturedImage = nil;
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.mobileProjectAddNoteViewControllerDelegate tappedDeleteImage];
+        
+    }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:closeAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

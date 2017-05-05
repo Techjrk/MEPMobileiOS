@@ -898,6 +898,11 @@ typedef enum {
     imageItemsToBeUpdated = nil;
 }
 
+- (void)tappedDeleteImage {
+    //imageItemsToBeUpdated = nil;
+    [self showCustomCamera];
+}
+
 #pragma mark - ImageNoteViewDelegate
 - (void)viewNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image imageNoteId:(NSNumber*)imageNoteId{
     
