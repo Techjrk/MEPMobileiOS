@@ -79,7 +79,7 @@
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
     if (self.fetchresult == nil) {
         PHFetchOptions *options = [PHFetchOptions new];
-        //options.sortDescriptors = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:YES];
+        options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO],];
         self.fetchresult = [PHAsset fetchAssetsWithOptions:options];
         [self.collectionView reloadData];
     }
@@ -129,6 +129,7 @@
     PHAsset *asset = self.fetchresult[indexPath.row];
     CGSize size=CGSizeMake(90, 90);
     [self.imageManager requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFill options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.imageView.image = result;
     }];
     

@@ -120,7 +120,7 @@
 
 #pragma mark - Misc Method
 - (void)setCameraItemsInfo:(NSArray *)cameraItems hideLineView:(BOOL)hide {
-    self.lineView.hidden = hide;
+    //self.lineView.hidden = hide;
     self.cameraItems = cameraItems;
     [self.collectionView reloadData];
     
