@@ -37,7 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isFlashOn = NO;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartShutterNotification:) name:RESTART_SHUTTER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopShutterNotification:) name:STOP_SHUTTER object:nil];
     self.maxFrame =is360Selected?12:6;
 }
 
@@ -68,6 +69,18 @@
         view.hidden = YES;
     }
     
+}
+
+- (void)restartShutterNotification:(NSNotification*)notification {
+    if (!self.view.hidden) {
+        [self restart];
+    }
+}
+
+- (void)stopShutterNotification:(NSNotification*)notification {
+    if (!self.view.hidden) {
+        [self stopShutter];
+    }
 }
 
 - (void)savePhoto {

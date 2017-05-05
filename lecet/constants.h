@@ -150,6 +150,9 @@ CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
 #define SEARCH_RESULT_SAVED_PROJECT              @"SEARCH_RESULT_SAVED_PROJECT"
 #define SEARCH_RESULT_SAVED_COMPANY              @"SEARCH_RESULT_SAVED_COMPANY"
 
+#define RESTART_SHUTTER                          @"RESTART_SHUTTER"
+#define STOP_SHUTTER                             @"STOP_SHUTTER"
+
 #define LIUNA_ORANGE_COLOR                      RGB(248, 152, 28)
 #define UNION_DESIGNATION_CODE                  @"U"
 
