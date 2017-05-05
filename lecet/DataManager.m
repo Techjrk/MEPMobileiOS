@@ -1549,7 +1549,7 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.5) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, .7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
     NSString *url = [NSString stringWithFormat:kUrlProjectUserImageUpload, (long)projectID.integerValue];
     [self HTTP_POST:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object) {
