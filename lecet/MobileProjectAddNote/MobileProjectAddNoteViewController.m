@@ -106,6 +106,19 @@
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
     
+    float widthRatio = self.capturedImageView.bounds.size.width / self.capturedImageView.image.size.width;
+    float heightRatio = self.capturedImageView.bounds.size.height / self.capturedImageView.image.size.height;
+    
+    float scale = MIN(widthRatio, heightRatio);
+    float imageWidth = scale * self.capturedImageView.image.size.width;;
+
+    CGRect containerImageFrame = self.containerCapturedImage.frame;
+    
+    if (imageWidth == containerImageFrame.size.width || imageWidth > containerImageFrame.size.width) {
+        UIImage *imageButton = [UIImage imageNamed:@"trashcan_icon"];
+        [self.trashcanButton setImage:imageButton forState:UIControlStateNormal];
+    }
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
