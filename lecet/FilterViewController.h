@@ -19,5 +19,6 @@
 @property (weak, nonatomic) NSString *searchTitle;
 @property (strong, nonatomic) NSString *fieldValue;
 @property (nonatomic) BOOL singleSelect;
+@property (nonatomic) BOOL selectOnlyChild;
 @property (nonatomic) BOOL parentOnly;
 @end

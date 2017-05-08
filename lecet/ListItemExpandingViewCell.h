@@ -19,6 +19,7 @@
 @interface ListItemExpandingViewCell : ListItemCollectionViewCell
 @property (weak, nonatomic) id<ListItemExpandingViewCellDelegate>listItemExpandingViewCellDelegate;
 @property (weak, nonatomic) id<ListItemCollectionViewCellDelegate>listItemCollectionViewCellDelegate;
+@property (nonatomic) BOOL shouldOnlySelectChild;
 + (CGFloat)itemHeight;
 - (void)reloadData;
 @end

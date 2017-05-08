@@ -148,6 +148,7 @@
     [cell setItem:localListViewItems[indexPath.row]];
     cell.listItemCollectionViewCellDelegate = self;
     cell.listItemExpandingViewCellDelegate = self;
+    cell.shouldOnlySelectChild = self.selectOnlyChild;
     [cell reloadData];
     return cell;
 }

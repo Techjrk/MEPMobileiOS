@@ -285,6 +285,7 @@
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectTypeId";
     controller.singleSelect = NO;
+    controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -422,6 +423,7 @@
     controller.singleSelect = YES;
     controller.fieldValue = @"jurisdictions";
     controller.filterViewControllerDelegate = self;
+    controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -480,6 +482,7 @@
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectStageId";
     controller.singleSelect = YES;
+    controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }

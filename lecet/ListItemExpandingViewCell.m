@@ -124,6 +124,8 @@
     [cell setItem:subItems[indexPath.row]];
     cell.listItemExpandingViewCellDelegate = self;
     cell.listItemCollectionViewCellDelegate = self;
+    cell.shouldOnlySelectChild = self.shouldOnlySelectChild;
+    
     [cell reloadData];
     return cell;
 }
@@ -139,6 +141,18 @@
         NSArray *items = item[LIST_VIEW_SUBITEMS];
         itemHeight = itemHeight + [self currentHeight:items];
         
+    }
+    
+    if (self.shouldOnlySelectChild) {
+        if ( (subItems != nil) && (subItems.count>0)) {
+            self.buttonCheck.hidden = YES;
+            self.imageCheckView.hidden = self.buttonCheck.hidden;
+            self.constraintButtonCheckWidth.constant = 0;
+        } else {
+            self.buttonCheck.hidden = NO;
+            self.imageCheckView.hidden = self.buttonCheck.hidden;
+            self.constraintButtonCheckWidth.constant = kDeviceWidth * 0.112;
+        }
     }
     
     return CGSizeMake(_listView.frame.size.width, itemHeight);

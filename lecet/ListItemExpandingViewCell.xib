@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,20 +17,21 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbl-ox-pb6">
                         <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4a-as-0VC">
                                 <rect key="frame" x="343" y="0.0" width="30" height="120"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="1zF-7S-tpl"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sU-4X-aIf">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="zOy-ii-kGH"/>
                                 </constraints>
@@ -35,14 +40,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="373" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-mm-lJr">
-                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="44"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="19" height="44"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_stateDeselected" translatesAutoresizingMaskIntoConstraints="NO" id="0G3-U8-cJM">
-                                        <rect key="frame" x="18" y="0.0" width="25" height="44"/>
+                                        <rect key="frame" x="19" y="0.0" width="25" height="44"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIT-ZT-mqf">
-                                        <rect key="frame" x="18.5" y="0.0" width="40" height="44"/>
+                                        <rect key="frame" x="19" y="0.0" width="40" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="q8v-If-V6G"/>
                                         </constraints>
@@ -60,13 +65,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwE-hf-oIW">
-                                        <rect key="frame" x="58.5" y="0.0" width="268" height="44"/>
+                                        <rect key="frame" x="59" y="0.0" width="268" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="0G3-U8-cJM" firstAttribute="width" secondItem="uIT-ZT-mqf" secondAttribute="width" multiplier="0.68" id="1LE-fR-7Gw"/>
                                     <constraint firstItem="byc-8d-3fC" firstAttribute="top" secondItem="Eie-FX-7rq" secondAttribute="top" id="7tZ-8w-65j"/>
@@ -109,20 +114,20 @@
                                         <exclude reference="Q3x-bq-TBv"/>
                                         <exclude reference="hba-bB-2o4"/>
                                         <exclude reference="y6S-9T-bkt"/>
+                                        <exclude reference="Je9-fZ-COn"/>
+                                        <exclude reference="eCq-H5-Zm4"/>
                                         <exclude reference="bgh-QU-3Ec"/>
                                         <exclude reference="kiB-aO-Ig4"/>
                                         <exclude reference="p7j-bN-pSx"/>
-                                        <exclude reference="Je9-fZ-COn"/>
-                                        <exclude reference="eCq-H5-Zm4"/>
                                     </mask>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rp9-Hy-Vig" customClass="CustomListView">
                                 <rect key="frame" x="37" y="44" width="336" height="76"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rp9-Hy-Vig" firstAttribute="top" secondItem="Eie-FX-7rq" secondAttribute="bottom" id="5ev-VU-HQI"/>
                             <constraint firstAttribute="trailing" secondItem="9sU-4X-aIf" secondAttribute="trailing" id="5zk-Py-fiz"/>
@@ -152,13 +157,12 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8b-Ov-fJh">
-                        <rect key="frame" x="0.0" y="0.0" width="7.5" height="120"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="0.0" y="0.0" width="8" height="120"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Nbl-ox-pb6" secondAttribute="bottom" id="0kX-9V-OtY"/>
                 <constraint firstItem="r8b-Ov-fJh" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Q9p-66-9JJ"/>
