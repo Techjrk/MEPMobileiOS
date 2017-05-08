@@ -732,8 +732,8 @@
 - (void)userInformation:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure{
     
     NSString *url = [self url:[NSString stringWithFormat:kUrlUserInfo, (long)userId.integerValue ]];
-    
-    [self HTTP_GET:url parameters:nil success:^(id object) {
+    NSString *filter = @"{\"include\":[\"roles\",{\"jurisdiction\":[\"regions\",\"districts\",\"locals\"]}]}";
+    [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
