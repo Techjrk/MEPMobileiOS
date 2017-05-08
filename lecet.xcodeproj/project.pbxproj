@@ -459,6 +459,7 @@
 		B7FC24831EBA13780002802D /* PanoramaSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24811EBA13780002802D /* PanoramaSceneViewController.m */; };
 		B7FC24841EBA13780002802D /* PanoramaSceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24821EBA13780002802D /* PanoramaSceneViewController.xib */; };
 		B7FC24871EBA15D60002802D /* libDMDViewerSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FC24861EBA15D60002802D /* libDMDViewerSample.a */; };
+		B7FC24C41EC099B70002802D /* DMDViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C31EC099B70002802D /* DMDViewerController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1179,6 +1180,7 @@
 		B7FC24821EBA13780002802D /* PanoramaSceneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoramaSceneViewController.xib; sourceTree = "<group>"; };
 		B7FC24851EBA158E0002802D /* PanoramaViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanoramaViewer.h; sourceTree = "<group>"; };
 		B7FC24861EBA15D60002802D /* libDMDViewerSample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDMDViewerSample.a; sourceTree = "<group>"; };
+		B7FC24C31EC099B70002802D /* DMDViewerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMDViewerController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2880,6 +2882,7 @@
 			children = (
 				B7FC24681EBA02AC0002802D /* DMDViewerController.h */,
 				B7FC24691EBA02AC0002802D /* DMDViewerController.mm */,
+				B7FC24C31EC099B70002802D /* DMDViewerController.xib */,
 				B7FC246A1EBA02AC0002802D /* EAGLView.h */,
 				B7FC246B1EBA02AC0002802D /* EAGLView.m */,
 			);
@@ -3080,6 +3083,7 @@
 				B6FD04441D1D325800E12123 /* ProjectFilterSelectionViewList.xib in Resources */,
 				B69FA8B41D4F469F0059A18F /* SaveSearchChangeItemView.xib in Resources */,
 				B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */,
+				B7FC24C41EC099B70002802D /* DMDViewerController.xib in Resources */,
 				B651064B1D12AD4000007759 /* ProjComTrackingTabView.xib in Resources */,
 				B64474731D00449B0001B244 /* ProjectSortCVCell.xib in Resources */,
 				B6411BF11D09CED8002B6E88 /* CDProjectBidsViewController.xib in Resources */,

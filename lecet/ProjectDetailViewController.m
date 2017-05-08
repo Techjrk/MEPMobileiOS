@@ -912,6 +912,8 @@ typedef enum {
 
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 DMDViewerController *dmdViewerCtrlr= [[DMDViewerController alloc] init];
+                dmdViewerCtrlr.photoTitle = title;
+                dmdViewerCtrlr.text = detail;
                 int fovx=360.0;
                 BOOL isSpherical = NO;
                 

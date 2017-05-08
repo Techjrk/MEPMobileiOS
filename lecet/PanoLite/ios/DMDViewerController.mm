@@ -13,6 +13,14 @@
 
 #define DMD_ARCENABLED() __has_feature(objc_arc)
 
+#define TITLE_FONT              fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define TITLE_COLOR_BLUE        RGB(5, 31, 73)
+#define TITLE_COLOR_WHITE       RGB(255, 255, 7255)
+
+#define DETAIL_FONT             fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
+#define DETAIL_COLOR_BLUE        RGB(5, 31, 73)
+#define DETAIL_COLOR_WHITE       RGB(255, 255, 7255)
+
 CGFloat distanceBetweenPoints(float scaleFactor, CGPoint first, CGPoint second)
 {
 	CGFloat deltaX=second.x*scaleFactor-first.x*scaleFactor, deltaY=second.y*scaleFactor-first.y*scaleFactor;
@@ -26,6 +34,8 @@ class PanoramaViewer;
 
 @interface DMDViewerController (){
     PanoramaViewer *viewer;
+    UIButton *backButton;
+    UIView *viewtextBackground;
 }
 
 - (void)clean;
@@ -40,6 +50,8 @@ class PanoramaViewer;
 #pragma mark DMDWebViewerController implementation
 
 @implementation DMDViewerController
+@synthesize photoTitle;
+@synthesize text;
 
 #pragma mark -
 #pragma mark OpenGL Default Context
@@ -113,11 +125,56 @@ class PanoramaViewer;
      autorelease]
 #endif
     ;
+    
+}
+
+- (void)loadInfo {
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight * 0.1)];
+    [view setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:view];
+    
+    backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(0, 0, view.frame.size.width * 0.2, view.frame.size.height);
+    
+    [view addSubview:backButton];
+    backButton.backgroundColor = [UIColor clearColor];
+    backButton.hidden = YES;
+    
+    [backButton setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(tappedButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    CGFloat height = kDeviceHeight * 0.25;
+    viewtextBackground = [[UIView alloc] initWithFrame:CGRectMake(0, kDeviceHeight - height, kDeviceWidth, height)];
+    viewtextBackground.backgroundColor = [UIColor redColor];
+    [view addSubview:viewtextBackground];
+    
+    viewtextBackground.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+    viewtextBackground.hidden = YES;
+    
+    CGFloat width = kDeviceWidth * 0.85;
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake((kDeviceWidth - width)/2.0, 0, width, viewtextBackground.frame.size.height)];
+    [viewtextBackground addSubview:textView];
+    textView.backgroundColor = [UIColor clearColor];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:TITLE_FONT.pointSize * 0.6];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n",self.photoTitle]  attributes:@{NSFontAttributeName: TITLE_FONT, NSForegroundColorAttributeName: TITLE_COLOR_BLUE, NSParagraphStyleAttributeName: paragraphStyle}];
+    
+    [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: DETAIL_FONT, NSForegroundColorAttributeName: DETAIL_COLOR_BLUE, NSParagraphStyleAttributeName: paragraphStyle}]];
+    
+    textView.attributedText = attributedString;
+
 }
 
 - (bool)isLandscape
 {
     return self.view.frame.size.width>self.view.frame.size.height;
+}
+
+- (void)tappedButton:(id)object {
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)viewDidLoad
@@ -154,6 +211,8 @@ class PanoramaViewer;
     ;
     dTapGesture.delegate = self;
     [self.view addGestureRecognizer:tapGesture];
+    
+    [self loadInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -248,12 +307,37 @@ class PanoramaViewer;
     double imgX=0, imgY=0;
     viewer->getImageXandY(tapPoint.x*self.view.contentScaleFactor, tapPoint.y*self.view.contentScaleFactor,imgX,imgY);
     printf("%fpx, %fpx\n",imgX*w, imgY*h);
+    
+    UIView *view = gestureRecognizer.view;
+    CGPoint point = [gestureRecognizer locationInView:view];
+    UIView* subview = [view hitTest:point withEvent:nil];
+    
+    if ([subview isEqual:self.view]) {
+        backButton.alpha = backButton.hidden?0:1;
+        backButton.hidden = !backButton.hidden;
+        
+        viewtextBackground.alpha = backButton.alpha;
+        viewtextBackground.hidden = backButton.hidden;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            
+            backButton.alpha = backButton.hidden?0:1;
+            viewtextBackground.alpha = backButton.alpha;
+            
+        } completion:^(BOOL finished) {
+            if (finished) {
+                
+            }
+        }];
+    }
+
 }
 
 - (void)userDTapped:(UIGestureRecognizer*)gestureRecognizer
 {
     CGPoint tapPoint = [(UITapGestureRecognizer*)gestureRecognizer locationInView:self.view];
     viewer->zoom(tapPoint.x*self.view.contentScaleFactor, tapPoint.y*self.view.contentScaleFactor);
+    
 }
 
 #pragma mark -

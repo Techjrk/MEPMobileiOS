@@ -28,6 +28,9 @@
     float sc;
 }
 
+@property (strong, nonatomic) NSString *photoTitle;
+@property (strong, nonatomic) NSString *text;
+
 - (void)startAnimation;
 - (void)stopAnimation;
 
