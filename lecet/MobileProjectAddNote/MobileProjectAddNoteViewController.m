@@ -8,7 +8,7 @@
 
 #import "MobileProjectAddNoteViewController.h"
 #import "MobileProjectNotePopUpViewController.h"
-//#import "CustomActivityIndicatorView.h"
+#import "CustomActivityIndicatorView.h"
 
 #pragma mark - FONT
 #define FONT_NAV_TITLE_LABEL                fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
@@ -43,7 +43,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *trashcanButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightContainerCapturedImage;
 @property (weak, nonatomic) IBOutlet UIImageView *capturedImageView;
-//@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
 
 @end
 
@@ -297,11 +297,11 @@
 - (void)addProjectUserImage {
     [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
 
-        //[self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id fail){
-       // [self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         NSLog(@"Failed request");
     }];
 }
@@ -310,10 +310,10 @@
     [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
         [self deleteImageFromFileManager];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
-        //[self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id fail){
-       // [self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         NSLog(@"Failed request");
     }];
 
@@ -322,11 +322,11 @@
 - (void)addProjetUserNotes {
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
-       // [self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id object){
-        //[self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         NSLog(@"Failed request");
     }];
 }
@@ -334,11 +334,11 @@
 - (void)updataProjetUserNotes {
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
     [[DataManager sharedManager] updateProjectUserNotes:self.projectID parameter:dic success:^(id object){
-        //[self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.navigationController popViewControllerAnimated:YES];
     }failure:^(id object){
-       // [self.customLoadingIndicator stopAnimating];
+        [self.customLoadingIndicator stopAnimating];
         NSLog(@"Failed request");
     }];
 }
@@ -415,7 +415,7 @@
 
 - (void)tappedPostNoteButton {
     [self.view endEditing:YES];
-    //[self.customLoadingIndicator startAnimating];
+    [self.customLoadingIndicator startAnimating];
     
     if (self.itemsToBeUpdate != nil && self.itemsToBeUpdate.count > 0) {
         if (self.isAddPhoto) {

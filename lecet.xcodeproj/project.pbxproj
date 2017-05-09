@@ -129,6 +129,8 @@
 		B6AF1CFB1D21325F00C95A8F /* ProjectFilterSearchNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CF91D21325F00C95A8F /* ProjectFilterSearchNavView.xib */; };
 		B6AF1CFF1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CFD1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m */; };
 		B6AF1D001D21492C00C95A8F /* ProjectFilterCollapsibleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CFE1D21492C00C95A8F /* ProjectFilterCollapsibleListView.xib */; };
+		B6B25A321EC23EC300DB5006 /* CustomActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B25A301EC23EC300DB5006 /* CustomActivityIndicatorView.m */; };
+		B6B25A331EC23EC300DB5006 /* CustomActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B25A311EC23EC300DB5006 /* CustomActivityIndicatorView.xib */; };
 		B6BDBAAE1D17FD21001FB41C /* EditTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAAC1D17FD21001FB41C /* EditTabView.m */; };
 		B6BDBAAF1D17FD21001FB41C /* EditTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BDBAAD1D17FD21001FB41C /* EditTabView.xib */; };
 		B6BDBAB51D180452001FB41C /* EditView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDBAB31D180452001FB41C /* EditView.m */; };
@@ -650,6 +652,9 @@
 		B6AF1CFD1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterCollapsibleListView.m; sourceTree = "<group>"; };
 		B6AF1CFE1D21492C00C95A8F /* ProjectFilterCollapsibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterCollapsibleListView.xib; sourceTree = "<group>"; };
 		B6AF1D011D215B7900C95A8F /* ProjectFilterCollapsibleDataInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectFilterCollapsibleDataInfo.h; sourceTree = "<group>"; };
+		B6B25A2F1EC23EC300DB5006 /* CustomActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActivityIndicatorView.h; sourceTree = "<group>"; };
+		B6B25A301EC23EC300DB5006 /* CustomActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActivityIndicatorView.m; sourceTree = "<group>"; };
+		B6B25A311EC23EC300DB5006 /* CustomActivityIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomActivityIndicatorView.xib; sourceTree = "<group>"; };
 		B6BDBAAB1D17FD21001FB41C /* EditTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTabView.h; sourceTree = "<group>"; };
 		B6BDBAAC1D17FD21001FB41C /* EditTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTabView.m; sourceTree = "<group>"; };
 		B6BDBAAD1D17FD21001FB41C /* EditTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTabView.xib; sourceTree = "<group>"; };
@@ -1845,6 +1850,16 @@
 			name = ProjectFilterSearchNav;
 			sourceTree = "<group>";
 		};
+		B6B25A2E1EC23EC300DB5006 /* CustomLoadingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				B6B25A2F1EC23EC300DB5006 /* CustomActivityIndicatorView.h */,
+				B6B25A301EC23EC300DB5006 /* CustomActivityIndicatorView.m */,
+				B6B25A311EC23EC300DB5006 /* CustomActivityIndicatorView.xib */,
+			);
+			path = CustomLoadingIndicator;
+			sourceTree = "<group>";
+		};
 		B6BDBAAA1D17FD05001FB41C /* Edit Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -2348,6 +2363,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B6B25A2E1EC23EC300DB5006 /* CustomLoadingIndicator */,
 				B68680C41EB202F2006B9651 /* CustomLandscapeNavigation */,
 				B68B22C51EA65CEF00C7512E /* PanomaraIndicatorListView */,
 				B63AC2EC1E8D48F7004738D7 /* CameraRadialBG */,
@@ -3120,6 +3136,7 @@
 				B76C69411CD22DD0009E9F15 /* Lato-Regular.ttf in Resources */,
 				B6411BC51D09ACEF002B6E88 /* MyProfileView.xib in Resources */,
 				B7E1044E1CEC8D1900EAD8E7 /* ProjectBidItemCollectionViewCell.xib in Resources */,
+				B6B25A331EC23EC300DB5006 /* CustomActivityIndicatorView.xib in Resources */,
 				B73EFAD21D11518700C6B3B2 /* PopupViewController.xib in Resources */,
 				B76C69501CD24F05009E9F15 /* en.strings in Resources */,
 				B6AF1CE21D21240700C95A8F /* ProjectFilterCollapsibleView.xib in Resources */,
@@ -3265,6 +3282,7 @@
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
 				B6F7DD3B1D00A4DA00B86B9D /* ProjectTabView.m in Sources */,
 				B6F7FC841D6DA76B00884685 /* CustomCollectionViewFlowLayout.m in Sources */,
+				B6B25A321EC23EC300DB5006 /* CustomActivityIndicatorView.m in Sources */,
 				B7BF60F11D22B48400B3BDD7 /* RecentSearchView.m in Sources */,
 				B73EFA951D080CAF00C6B3B2 /* ProjectPointAnnotation.m in Sources */,
 				B6F56D841D018699009B81F5 /* ProjectNavigationBarView.m in Sources */,
