@@ -78,6 +78,7 @@ typedef enum {
     DB_Project *referenceProject;
     UIImage *capturedImage;
     NSDictionary *imageItemsToBeUpdated;
+    NSNumber *jurisdictionIdentifier;
 }
 
 @property (strong, nonatomic) UIImagePickerController *picker;
@@ -247,6 +248,15 @@ typedef enum {
     controller.projectViewControllerDelegate = self;
     controller.updateProject = YES;
     [controller setProjectTitle:referenceProject.title];
+    controller.projectId = referenceProject.recordId;
+    [controller setType: referenceProject.primaryProjectTypeId];
+    
+    [controller setStage: referenceProject.projectStageId];
+    
+    [controller setDate: referenceProject.targetStartDate];
+    
+    [controller setJurisdiction:jurisdictionIdentifier];
+
     [self.navigationController pushViewController:controller animated:NO];
 }
 
@@ -355,7 +365,10 @@ typedef enum {
         NSArray *districts = object;
         NSString *jurisdiction = @"";
         int index = 0;
+        
         for (NSDictionary *district in districts) {
+
+            jurisdictionIdentifier = district[@"id"];
      
             NSDictionary *dictrictCouncil = district[@"districtCouncil"];
             NSString *current = [DerivedNSManagedObject objectOrNil:dictrictCouncil[@"abbreviation"]];
@@ -372,22 +385,6 @@ typedef enum {
             index++;
         }
         
-        
-        /*
-        NSArray *regions = [DerivedNSManagedObject objectOrNil:dict[@"regions"]];
-        
-        if (regions != nil) {
-            NSString *current = @"abbreviation";
-            for (NSDictionary *region in regions) {
-                
-                current = region[@""]
-                if (current.length>0) {
-                    jurisdiction = [jurisdiction stringByAppendingString:@","]
-                }
-                
-            }
-        }
-        */
         [_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:jurisdiction line2Text:nil];
         
         isShownContentAdjusted = NO;

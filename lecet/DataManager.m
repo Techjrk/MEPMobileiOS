@@ -93,6 +93,9 @@
 #define kUrlEditProject                     @"Projects/%li/editInstance"
 #define kUrlNotify                          @"Projects/notify"
 
+#define kUrlProjectType                     @"ProjectTypes/%li"
+#define kUrlProjectStage                    @"ProjectStages/%li"
+
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
 @implementation DataManager
@@ -1630,7 +1633,32 @@
 }
 
 - (void)projectType:(NSNumber*)typeId success:(APIBlock)success failure:(APIBlock)failure {
-    [self HTTP_GET:@"" parameters:nil success:^(id object) {
+  
+    NSString *url = [NSString stringWithFormat:kUrlProjectType, typeId.integerValue];
+    
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)projectStage:(NSNumber*)stageId success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectStage, stageId.integerValue];
+    
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)projectJuridictionId:(NSNumber*)jurisdictionId success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = [NSString stringWithFormat:kUrlProjectStage, jurisdictionId.integerValue];
+    
+    [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

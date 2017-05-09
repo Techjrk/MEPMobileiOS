@@ -157,16 +157,59 @@
     
     [self.buttonDone setTitle:NSLocalizedLanguage(@"NPVC_DONE") forState:UIControlStateNormal];
     
+    if (projectTitle != nil) {
+        self.textFieldProjectTitle.text = projectTitle;
+    }
+    
     if (targetDate != nil) {
         [self.fieldTargetSetDate setValue:targetDate];
     }
 
     if (typeId != nil) {
         [[DataManager sharedManager] projectType:typeId success:^(id object) {
+            [self.fieldType setValue:object[@"title"]];
+        } failure:^(id object) {
+            
+        }];
+    }
+    
+    if (stageId != nil) {
+        [[DataManager sharedManager] projectStage:stageId success:^(id object) {
+            [self.fieldStage setValue:object[@"name"]];
+        } failure:^(id object) {
+            
+        }];
+    }
+    
+    if (jurisdictionId != nil) {
+        [[DataManager sharedManager] projectJurisdiction:self.projectId success:^(id object) {
+            
+            NSArray *districts = object;
+            NSString *jurisdiction = @"";
+            int index = 0;
+            
+            for (NSDictionary *district in districts) {
+                
+                NSDictionary *dictrictCouncil = district[@"districtCouncil"];
+                NSString *current = [DerivedNSManagedObject objectOrNil:dictrictCouncil[@"abbreviation"]];
+                
+                if (current.length>0) {
+                    jurisdiction = [jurisdiction stringByAppendingString:current];
+                    
+                    if (index<(districts.count-1)) {
+                        jurisdiction = [jurisdiction stringByAppendingString:@", "];
+                        
+                    }
+                }
+                index++;
+            }
+
+            [self.fieldJurisdiction setValue:jurisdiction];
             
         } failure:^(id object) {
             
         }];
+
     }
 }
 
@@ -461,6 +504,7 @@
     controller.fieldValue = @"projectTypeId";
     controller.singleSelect = YES;
     controller.parentOnly = YES;
+    controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -536,6 +580,7 @@
     controller.fieldValue = @"projectStageId";
     controller.singleSelect = YES;
     controller.parentOnly = YES;
+    controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -639,6 +684,7 @@
     controller.parentOnly = YES;
     controller.fieldValue = @"jurisdictions";
     controller.filterViewControllerDelegate = self;
+    controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
     
 }
@@ -724,7 +770,10 @@
 }
 
 - (void)setDate:(NSString*)dateParam {
-    targetDate = dateParam;
+    
+    if(dateParam) {
+        targetDate = [dateParam substringToIndex:10];
+    }
 }
 
 - (void)setJurisdiction:(NSNumber*)jurisdictionIdParam {

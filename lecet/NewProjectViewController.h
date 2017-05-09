@@ -19,6 +19,7 @@
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) PinType pinType;
 @property (nonatomic) BOOL updateProject;
+@property (strong, nonatomic) NSNumber *projectId;
 
 - (void)setProjectTitle:(NSString*)projectTitleParam;
 - (void)setType:(NSNumber*)typeIdParam;
