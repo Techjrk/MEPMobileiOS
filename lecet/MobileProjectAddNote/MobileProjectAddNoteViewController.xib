@@ -22,8 +22,8 @@
                 <outlet property="constraintHeightContainerCapturedImage" destination="GDG-PN-aGp" id="xhE-xb-2rn"/>
                 <outlet property="constraintTextViewHeight" destination="0KS-I4-7Zt" id="YLG-cS-EhY"/>
                 <outlet property="containerCapturedImage" destination="M2l-3Q-xtW" id="YhQ-a6-uEC"/>
+                <outlet property="customLoadingIndicator" destination="FbM-Y3-k3s" id="fbB-c8-zmg"/>
                 <outlet property="footerLabel" destination="e9v-Tc-6fi" id="dBv-lJ-dvw"/>
-                <outlet property="loadingIndicator" destination="Ilh-ou-OhZ" id="WfA-zH-feW"/>
                 <outlet property="navTitleLabel" destination="91b-jD-Acy" id="XH2-jM-vzT"/>
                 <outlet property="navView" destination="izU-PO-bNj" id="HLE-Pc-okp"/>
                 <outlet property="postTitleCountLabel" destination="Icr-if-39Y" id="h5k-bB-87R"/>
@@ -176,10 +176,13 @@
                                 <constraint firstAttribute="bottom" secondItem="yDu-Er-alo" secondAttribute="bottom" id="xRP-cV-SwS"/>
                             </constraints>
                         </view>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ilh-ou-OhZ">
-                            <rect key="frame" x="159" y="222" width="37" height="37"/>
-                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </activityIndicatorView>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbM-Y3-k3s" customClass="CustomActivityIndicatorView">
+                            <rect key="frame" x="84.5" y="147" width="187.5" height="187.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="FbM-Y3-k3s" secondAttribute="height" multiplier="1:1" id="HXA-lO-CE6"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.49547838179999998" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -216,14 +219,15 @@
                 <constraint firstItem="Qgq-K6-A97" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.95" id="MgY-Ue-7Fe"/>
                 <constraint firstItem="5wF-oW-K3r" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.03" id="NPa-Ub-oio"/>
                 <constraint firstItem="5wF-oW-K3r" firstAttribute="top" secondItem="izU-PO-bNj" secondAttribute="bottom" id="OFW-KN-SvS"/>
-                <constraint firstItem="Ilh-ou-OhZ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="P5R-OK-C1E"/>
                 <constraint firstItem="5wF-oW-K3r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q7B-JF-8Zx"/>
+                <constraint firstItem="FbM-Y3-k3s" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="R7R-Ft-fxm"/>
                 <constraint firstItem="izU-PO-bNj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UXt-Nv-87k"/>
-                <constraint firstItem="Ilh-ou-OhZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Y7N-tE-29O"/>
                 <constraint firstItem="Wht-Tb-mUz" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.048" id="YI2-Ap-s0k"/>
                 <constraint firstItem="izU-PO-bNj" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.109" id="cqD-8X-jsL"/>
                 <constraint firstAttribute="trailing" secondItem="5wF-oW-K3r" secondAttribute="trailing" id="fjp-LE-CO4"/>
+                <constraint firstItem="FbM-Y3-k3s" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="krI-cB-sRe"/>
                 <constraint firstItem="FmD-em-9vN" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.048" id="tea-O2-Svp"/>
+                <constraint firstItem="FbM-Y3-k3s" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="tjw-cz-6Py"/>
                 <constraint firstItem="Qgq-K6-A97" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.87" id="vCq-0g-qgf"/>
                 <constraint firstItem="izU-PO-bNj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wbS-bJ-hit"/>
                 <constraint firstItem="Qgq-K6-A97" firstAttribute="top" secondItem="5wF-oW-K3r" secondAttribute="bottom" id="xCJ-IL-ENb"/>

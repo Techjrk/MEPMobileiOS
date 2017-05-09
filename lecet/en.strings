@@ -508,3 +508,6 @@
 "SNP_SAVE_BUTTON"                           =               "SAVE PROJECT";
 "SNP_CANCEL_BUTTON"                         =               "CANCEL";
 
+
+//CustomActivityIndicatorView
+"CAIV_TITLE"                                =               "Loading...";
