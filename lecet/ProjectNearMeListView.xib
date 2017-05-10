@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +15,7 @@
             <connections>
                 <outlet property="collectionView" destination="KlX-C6-CHZ" id="c2T-Ao-xRG"/>
                 <outlet property="constraintMarkerLeading" destination="pUv-tR-2LQ" id="gCp-fA-i0P"/>
+                <outlet property="customLoadingIndicator" destination="hze-9d-UW3" id="nCL-d9-BrJ"/>
                 <outlet property="markerView" destination="DNY-73-EL6" id="A4H-bf-wGF"/>
                 <outlet property="postBidButton" destination="9qG-Sb-TQa" id="VJC-Xu-Rds"/>
                 <outlet property="preBidButton" destination="tTL-dX-u3q" id="UyL-hP-6Yx"/>
@@ -112,10 +114,20 @@
                     <rect key="frame" x="0.0" y="54" width="375" height="11.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hze-9d-UW3" customClass="CustomActivityIndicatorView">
+                    <rect key="frame" x="93.5" y="240" width="187.5" height="187.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hze-9d-UW3" secondAttribute="height" multiplier="1:1" id="QxI-mv-3S1"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="CRf-tr-Ohr" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.017" id="2gr-AH-vLV"/>
+                <constraint firstItem="hze-9d-UW3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="5l9-A8-S3Y"/>
+                <constraint firstItem="hze-9d-UW3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="5xq-3S-fI9"/>
+                <constraint firstItem="hze-9d-UW3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6vU-iy-Fsz"/>
                 <constraint firstAttribute="bottom" secondItem="KlX-C6-CHZ" secondAttribute="bottom" id="87n-cd-Pfc"/>
                 <constraint firstItem="a0A-oF-pbL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="EmK-a6-nq8"/>
                 <constraint firstAttribute="trailing" secondItem="CRf-tr-Ohr" secondAttribute="trailing" id="GZF-Ob-MwJ"/>
