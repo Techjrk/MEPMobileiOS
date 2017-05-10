@@ -24,6 +24,7 @@
 #import "RecentSearchCollectionViewCell.h"
 #import "SeeAllCollectionViewCell.h"
 #import "SaveSearchChangeItemView.h"
+#import "CustomActivityIndicatorView.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -64,6 +65,9 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UITextField *labeSearch;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak,nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
+
+
 - (IBAction)tappedButtonBack:(id)sender;
 @end
 
@@ -143,11 +147,12 @@ typedef enum : NSUInteger {
     showResult = NO;
     
     _resultIndex = [NSNumber numberWithInteger:0];
-    
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
         [_collectionView reloadData];
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
     }];
     
 }
@@ -542,8 +547,9 @@ typedef enum : NSUInteger {
             NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
             NSDictionary *item = items[indexPath.row];
             
+            [self.customLoadingIndicator startAnimating];
             [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
-                
+                [self.customLoadingIndicator stopAnimating];
                 ProjectDetailViewController *detail = [ProjectDetailViewController new];
                 detail.view.hidden = NO;
                 [detail detailsFromProject:object];
@@ -552,7 +558,7 @@ typedef enum : NSUInteger {
                 [self.navigationController pushViewController:detail animated:YES];
                 
             } failure:^(id object) {
-                
+                [self.customLoadingIndicator stopAnimating];
                 isPushingController = NO;
                 
             }];
@@ -567,8 +573,9 @@ typedef enum : NSUInteger {
             NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
             NSArray *items = result[@"results"] != nil?result[@"results"]:[NSArray new];
             NSDictionary *item = items[indexPath.row];
-            
+            [self.customLoadingIndicator startAnimating];
             [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
+                [self.customLoadingIndicator stopAnimating];
                 id returnObject = object;
                 CompanyDetailViewController *controller = [CompanyDetailViewController new];
                 controller.view.hidden = NO;
@@ -577,7 +584,7 @@ typedef enum : NSUInteger {
                 [self.navigationController pushViewController:controller animated:YES];
                 
             } failure:^(id object) {
-                
+                [self.customLoadingIndicator stopAnimating];
                 isPushingController = YES;
                 
             }];
@@ -823,13 +830,13 @@ typedef enum : NSUInteger {
     
     projectFilter[@"filter"] = jsonString;
 
-
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] projectSearch:projectFilter data:collectionItems success:^(id object) {
-       
+       [self.customLoadingIndicator stopAnimating];
         [_collectionView reloadData];
         
     } failure:^(id object) {
-        
+       [self.customLoadingIndicator stopAnimating];
     }];
     
 }
@@ -862,12 +869,12 @@ typedef enum : NSUInteger {
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     [companyFilter addEntriesFromDictionary:@{@"filter":jsonString}];
-    
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] companySearch:companyFilter data:collectionItems success:^(id object) {
-   
+        [self.customLoadingIndicator stopAnimating];
         [_collectionView reloadData];
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
     }];
     
 }
@@ -881,13 +888,13 @@ typedef enum : NSUInteger {
     }
 
     NSMutableDictionary *contactFilter = [@{@"q": searchString, @"filter":defaultFilter} mutableCopy];
-    
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] contactSearch:contactFilter data:collectionItems success:^(id object) {
-
+        [self.customLoadingIndicator stopAnimating];
         [_collectionView reloadData];
 
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
     }];
 
 }
@@ -927,17 +934,17 @@ typedef enum : NSUInteger {
     isSuggestedListBeenTapped?nil:showResult?[projectFilter setValue:dict[@"id"] forKey:@"id"]:nil;
 
     projectFilter[@"filter"] = _filter;
-    
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] projectSaveSearch:projectFilter data:collectionItems updateOldData:isSuggestedListBeenTapped?NO:showResult success:^(id object) {
-        
         [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
+            [self.customLoadingIndicator stopAnimating];
             [_collectionView reloadData];
         } failure:^(id object) {
-            
+            [self.customLoadingIndicator stopAnimating];
         }];
         
     } failure:^(id object) {
-    
+        [self.customLoadingIndicator stopAnimating];
     }];
     
 }
@@ -974,17 +981,19 @@ typedef enum : NSUInteger {
     
     isSuggestedListBeenTapped?nil:showResult?[companyFilter setValue:dict[@"id"] forKey:@"id"]:nil;
     [companyFilter addEntriesFromDictionary:@{@"filter":_filter}];
-    
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] companySaveSearch:companyFilter data:collectionItems updateOldData:isSuggestedListBeenTapped?NO:showResult success:^(id object) {
         
         [[DataManager sharedManager] savedSearches:collectionItems success:^(id object) {
+            [self.customLoadingIndicator stopAnimating];
             [_collectionView reloadData];
         } failure:^(id object) {
+            [self.customLoadingIndicator stopAnimating];
             
         }];
 
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
     }];
     
 }

@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +19,7 @@
                 <outlet property="collectionView" destination="bmx-cM-O8U" id="JgD-2T-Jbf"/>
                 <outlet property="constraintMakerLeading" destination="JXV-c4-poT" id="jma-pc-N46"/>
                 <outlet property="contraintHeader" destination="ar6-3H-AXC" id="pFW-fN-85F"/>
+                <outlet property="customLoadingIndicator" destination="ShR-5u-usa" id="8YA-TT-x4H"/>
                 <outlet property="labelHeader" destination="IwM-H1-8JF" id="BGZ-Fg-lx8"/>
                 <outlet property="viewLabelHeader" destination="fur-z9-Ekf" id="1on-Po-Hcv"/>
                 <outlet property="viewMarker" destination="4Fs-8u-8G8" id="t1u-xu-JoQ"/>
@@ -27,8 +32,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fur-z9-Ekf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwM-H1-8JF">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -43,25 +50,31 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-3C-cDt">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0a-O9-ggE">
+                            <rect key="frame" x="0.0" y="0.0" width="138" height="56"/>
                             <connections>
                                 <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="4YF-Jh-6bH"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPR-Gh-2mT">
+                            <rect key="frame" x="138" y="0.0" width="137.5" height="56"/>
                             <connections>
                                 <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="Ycq-rx-mJL"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qg3-5Y-E5N">
+                            <rect key="frame" x="275.5" y="0.0" width="138" height="56"/>
                             <connections>
                                 <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="o4d-tV-qsb"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5X-UB-nYX">
+                            <rect key="frame" x="0.0" y="56" width="138" height="3"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fs-8u-8G8">
+                                    <rect key="frame" x="20.5" y="0.0" width="96.5" height="3"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
@@ -95,6 +108,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bmx-cM-O8U">
+                    <rect key="frame" x="0.0" y="59" width="414" height="677"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9x1-86-rVU">
                         <size key="itemSize" width="50" height="50"/>
@@ -103,17 +117,27 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ShR-5u-usa" customClass="CustomActivityIndicatorView">
+                    <rect key="frame" x="103.5" y="264.5" width="207" height="207"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ShR-5u-usa" secondAttribute="height" multiplier="1:1" id="mNo-aW-oIl"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bmx-cM-O8U" secondAttribute="bottom" id="0sM-hH-yxg"/>
                 <constraint firstItem="hWA-3C-cDt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Wt-65-QRB"/>
                 <constraint firstItem="hWA-3C-cDt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ATy-9x-sYZ"/>
+                <constraint firstItem="ShR-5u-usa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="DBZ-d5-eQ4"/>
                 <constraint firstAttribute="trailing" secondItem="bmx-cM-O8U" secondAttribute="trailing" id="Feg-uz-evb"/>
+                <constraint firstItem="ShR-5u-usa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SKc-fK-BgP"/>
                 <constraint firstItem="fur-z9-Ekf" firstAttribute="width" secondItem="hWA-3C-cDt" secondAttribute="width" id="TmR-mw-shD"/>
                 <constraint firstItem="fur-z9-Ekf" firstAttribute="top" secondItem="hWA-3C-cDt" secondAttribute="top" id="TtL-tp-3kF"/>
                 <constraint firstItem="hWA-3C-cDt" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.08" id="ar6-3H-AXC"/>
                 <constraint firstAttribute="trailing" secondItem="hWA-3C-cDt" secondAttribute="trailing" id="b8r-t6-v4V"/>
+                <constraint firstItem="ShR-5u-usa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fx3-0b-3dr"/>
                 <constraint firstItem="fur-z9-Ekf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gf2-FS-tHM"/>
                 <constraint firstItem="fur-z9-Ekf" firstAttribute="height" secondItem="hWA-3C-cDt" secondAttribute="height" id="jEM-9u-A1b"/>
                 <constraint firstItem="bmx-cM-O8U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="koB-iO-DrT"/>

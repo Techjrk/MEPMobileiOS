@@ -53,7 +53,6 @@
         }
     }
 
-
 }
 
 - (void)notificationUnAuthorized:(NSNotification*)notification {
