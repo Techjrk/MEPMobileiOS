@@ -30,6 +30,9 @@
                 <constraint firstAttribute="trailing" secondItem="iQ8-qO-QaX" secondAttribute="trailing" id="fF3-ZT-hhe"/>
                 <constraint firstItem="iQ8-qO-QaX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vbg-od-fjA"/>
             </constraints>
+            <connections>
+                <outlet property="recentSearchView" destination="iQ8-qO-QaX" id="E7t-iw-xCG"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

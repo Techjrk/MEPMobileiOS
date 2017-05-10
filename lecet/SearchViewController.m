@@ -44,7 +44,7 @@ typedef enum : NSUInteger {
 } SearchSection;
 
 
-@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate, SearchFilterViewControllerDelegate>{
+@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate, SearchFilterViewControllerDelegate,RecentSearchCollectionViewCellDelegate>{
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
@@ -252,6 +252,7 @@ typedef enum : NSUInteger {
         case SearchSectionRecent: {
             
             RecentSearchCollectionViewCell *cellItem = (RecentSearchCollectionViewCell*)cell;
+            cellItem.recentSearchCollectionViewCellDelegate = self;
             [cellItem setInfo:nil];
             break;
         }
@@ -1265,6 +1266,16 @@ typedef enum : NSUInteger {
         
     }
     
+}
+
+#pragma mark - RecentSearchCollectionViewCellDelegate
+
+- (void)tappedRecentSearchView {
+    [self.customLoadingIndicator startAnimating];
+}
+
+- (void)endRequestRecentSearchView {
+    [self.customLoadingIndicator stopAnimating];
 }
 
 @end
