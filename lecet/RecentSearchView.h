@@ -10,6 +10,13 @@
 
 #import "BaseViewClass.h"
 
-@interface RecentSearchView : BaseViewClass
+@protocol RecentSearchViewDelegate <NSObject>
+@optional
+- (void)tappedRecentSearch;
+- (void)endRequestRecentSearch;
 
+@end
+
+@interface RecentSearchView : BaseViewClass
+@property (strong, nonatomic) id <RecentSearchViewDelegate> recentSearchViewDelegate;
 @end

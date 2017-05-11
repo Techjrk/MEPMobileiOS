@@ -103,9 +103,9 @@
     }
 
     if (isProject) {
-        
+        [self.recentSearchViewDelegate tappedRecentSearch];
         [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
-        
+            [self.recentSearchViewDelegate endRequestRecentSearch];
             ProjectDetailViewController *detail = [ProjectDetailViewController new];
             detail.view.hidden = NO;
             [detail detailsFromProject:object];
@@ -114,13 +114,13 @@
             [controller.navigationController pushViewController:detail animated:YES];
    
         } failure:^(id object) {
-        
+            [self.recentSearchViewDelegate endRequestRecentSearch];
         }];
 
     } else {
-        
+        [self.recentSearchViewDelegate tappedRecentSearch];
         [[DataManager sharedManager] companyDetail:recordId success:^(id object) {
-            
+            [self.recentSearchViewDelegate endRequestRecentSearch];
             id returnObject = object;
             CompanyDetailViewController *controller = [CompanyDetailViewController new];
             controller.view.hidden = NO;
@@ -130,6 +130,7 @@
             [navController.navigationController pushViewController:controller animated:YES];
                         
         } failure:^(id object) {
+            [self.recentSearchViewDelegate endRequestRecentSearch];
         }];
         
     }

@@ -10,6 +10,7 @@
 #import "ProjectNearMeListCollectionViewCell.h"
 #import "ProjectDetailViewController.h"
 #import <MapKit/MapKit.h>
+#import "CustomActivityIndicatorView.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
@@ -34,6 +35,7 @@
     @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMarkerLeading;
     @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
     @property (strong,nonatomic) NSArray *collectionItems;
+    @property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
 
 @end
 
@@ -209,14 +211,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dic = self.collectionItems[indexPath.row];
     NSNumber *recordId = dic[@"id"];
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
         ProjectDetailViewController *detail = [ProjectDetailViewController new];
         detail.view.hidden = NO;
         [detail detailsFromProject:object];
         
         [self.parentCtrl.navigationController pushViewController:detail animated:YES];
     } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
     }];
 }
 

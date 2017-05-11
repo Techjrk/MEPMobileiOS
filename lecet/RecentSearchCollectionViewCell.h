@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol RecentSearchCollectionViewCellDelegate <NSObject>
+@optional
+- (void)tappedRecentSearchView;
+- (void)endRequestRecentSearchView;
+
+@end
+
 @interface RecentSearchCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) id<RecentSearchCollectionViewCellDelegate> recentSearchCollectionViewCellDelegate;
 - (void)setInfo:(id)info;
 @end

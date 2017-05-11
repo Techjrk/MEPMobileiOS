@@ -15,6 +15,7 @@
 #import "ProjectDetailViewController.h"
 #import "CompanyDetailViewController.h"
 #import "ContactDetailViewController.h"
+#import "CustomActivityIndicatorView.h"
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 
@@ -48,6 +49,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintHeader;
 @property (weak, nonatomic) IBOutlet UILabel *labelHeader;
 @property (weak, nonatomic) IBOutlet UIView *viewLabelHeader;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
+
 @end
 
 @implementation SearchResultView
@@ -250,14 +253,17 @@
                     
                     [self modifyFilterForSkip:collectionItemsProjects filter:filter];
                     
+                    [self.customLoadingIndicator startAnimating];
                     [[DataManager sharedManager] genericSearchUsingUrl:items[SEARCH_RESULT_PROJECT_URL] filter:filter success:^(id object) {
                         
                         NSArray *results = object[@"results"];
                         [collectionItemsProjects addObjectsFromArray:results];
+                        [self.customLoadingIndicator stopAnimating];
                         [_collectionView reloadData];
                         
                         isFetchingCollectionItemsProjects = NO;
                     } failure:^(id object) {
+                        [self.customLoadingIndicator stopAnimating];
                         isFetchingCollectionItemsProjects = NO;
                     }];
                 }
@@ -314,15 +320,17 @@
                     NSMutableDictionary *filter = items[SEARCH_RESULT_COMPANY_FILTER];
                     
                     [self modifyFilterForSkip:collectionItemsCompanies filter:filter];
-                    
+                    [self.customLoadingIndicator startAnimating];
                     [[DataManager sharedManager] genericSearchUsingUrl:items[SEARCH_RESULT_COMPANY_URL] filter:filter success:^(id object) {
                         
                         NSArray *results = object[@"results"];
                         [collectionItemsCompanies addObjectsFromArray:results];
                         [_collectionView reloadData];
+                        [self.customLoadingIndicator stopAnimating];
                         
                         isFetchingCollectionItemsCompanies = NO;
                     } failure:^(id object) {
+                        [self.customLoadingIndicator stopAnimating];
                         isFetchingCollectionItemsCompanies = NO;
                     }];
                 }
@@ -361,14 +369,16 @@
                     
                     [self modifyFilterForSkip:collectionItemsContacts filter:filter];
                     
+                    [self.customLoadingIndicator startAnimating];
                     [[DataManager sharedManager] genericSearchUsingUrl:items[SEARCH_RESULT_CONTACT_URL] filter:filter success:^(id object) {
                         
                         NSArray *results = object[@"results"];
                         [collectionItemsContacts addObjectsFromArray:results];
                         [_collectionView reloadData];
-                        
+                        [self.customLoadingIndicator stopAnimating];
                         isFetchingCollectionItemsContacts = NO;
                     } failure:^(id object) {
+                        [self.customLoadingIndicator stopAnimating];
                         isFetchingCollectionItemsContacts = NO;
                     }];
                 }
@@ -446,14 +456,16 @@
         //NSArray *itemList = collectionItems[@"results"];
         NSDictionary *item = collectionItemsProjects[indexPath.row];
         
+        [self.customLoadingIndicator startAnimating];
         [[DataManager sharedManager] projectDetail:item[@"id"] success:^(id object) {
-            
+            [self.customLoadingIndicator stopAnimating];
             ProjectDetailViewController *detail = [ProjectDetailViewController new];
             detail.view.hidden = NO;
             [detail detailsFromProject:object];
             
             [self.navigationController pushViewController:detail animated:YES];
         } failure:^(id object) {
+            [self.customLoadingIndicator stopAnimating];
         }];
         
     } else if (currentTab.integerValue == 1) {
@@ -461,16 +473,17 @@
         //NSMutableDictionary *collectionItems = items[SEARCH_RESULT_COMPANY];
         //NSArray *itemList = collectionItems[@"results"];
         NSDictionary *item = collectionItemsCompanies[indexPath.row];
-        
+        [self.customLoadingIndicator startAnimating];
         [[DataManager sharedManager] companyDetail:item[@"id"] success:^(id object) {
             id returnObject = object;
-            
+            [self.customLoadingIndicator stopAnimating];
             CompanyDetailViewController *controller = [CompanyDetailViewController new];
             controller.view.hidden = NO;
             [controller setInfo:returnObject];
             [self.navigationController pushViewController:controller animated:YES];
             
         } failure:^(id object) {
+            [self.customLoadingIndicator stopAnimating];
         }];
 
     } else if (currentTab.integerValue == 2) {
