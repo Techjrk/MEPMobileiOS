@@ -68,7 +68,7 @@
 "PROJECT_DETAIL_ADD_IMAGE"                  =               "Add Image";
 "PROJECT_DETAIL_ADD_IMAGE_NOTE"             =               "Select above to add a Note or Image";
 "PROJECT_DETAIL_DELETE_IMAGE"               =               "Are you sure you want to DELETE this image";
-"PROJECT_DETAIL_DELETE_NOTES"               =               "Are you sure you want to DELETE this notes";
+"PROJECT_DETAIL_DELETE_NOTES"               =               "Are you sure you want to DELETE this note";
 "PROJECT_DETAIL_BUTTON_YES"                 =               "YES";
 "PROJECT_DETAIL_BUTTON_NO"                  =               "NO";
 
