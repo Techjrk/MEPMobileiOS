@@ -16,7 +16,9 @@
 #define LABEL_LOCATION_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_LOCATION_COLOR                RGB(159, 164, 166)
 
-@interface SearchProjectCollectionViewCell()<MKMapViewDelegate>
+@interface SearchProjectCollectionViewCell()<MKMapViewDelegate>{
+    BOOL isUserProject;
+}
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
@@ -48,6 +50,8 @@
     
     self.iconUpdateMarker.hidden = YES;
     _labelTitle.text = item[@"title"];
+   
+    isUserProject = [DerivedNSManagedObject objectOrNil:item[@"dodgeNumber"]] == nil;
     
     NSString *addr = @"";
     
@@ -129,8 +133,13 @@
         userAnnotationView.enabled = NO;
         
         userAnnotationView.canShowCallout = NO;
-        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
-        
+     
+        if (isUserProject) {
+            userAnnotationView.image = [UIImage imageNamed:@"icon_userPinNew"];
+        } else {
+            userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        }
+
     }
     
     return userAnnotationView;

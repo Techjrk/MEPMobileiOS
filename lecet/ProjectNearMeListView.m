@@ -189,6 +189,7 @@
     NSString *titleName = [DerivedNSManagedObject objectOrNil:dicInfo[@"title"]];
     cell.titleNameText = titleName;
     cell.titleAddressText = [self setFullAddress:dicInfo];
+    cell.dodgeNumber = [DerivedNSManagedObject objectOrNil:dicInfo[@"dodgeNumber"]];
     cell.geoCode = [DerivedNSManagedObject objectOrNil:dicInfo[@"geocode"]];
     NSNumber *value = [DerivedNSManagedObject objectOrNil:dicInfo[@"estLow"]];
     if (value == nil) {

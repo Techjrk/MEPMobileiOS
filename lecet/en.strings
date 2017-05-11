@@ -68,7 +68,7 @@
 "PROJECT_DETAIL_ADD_IMAGE"                  =               "Add Image";
 "PROJECT_DETAIL_ADD_IMAGE_NOTE"             =               "Select above to add a Note or Image";
 "PROJECT_DETAIL_DELETE_IMAGE"               =               "Are you sure you want to DELETE this image";
-"PROJECT_DETAIL_DELETE_NOTES"               =               "Are you sure you want to DELETE this notes";
+"PROJECT_DETAIL_DELETE_NOTES"               =               "Are you sure you want to DELETE this note";
 "PROJECT_DETAIL_BUTTON_YES"                 =               "YES";
 "PROJECT_DETAIL_BUTTON_NO"                  =               "NO";
 
@@ -195,7 +195,7 @@
 //ProjectNearMeFilterViewController.xib
 "PNV_CANCEL"                                =               "CANCEL";
 "PNV_APPLY"                                 =               "APPLY";
-"PNV_TITLE"                                 =               "Filters";
+"PNV_TITLE"                                 =               "Refine Search";
 
 //BidderListViewController.xib
 "BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
@@ -475,6 +475,7 @@
 "CPLVC_RETAKE"                              =               "Retake";
 "CPLVC_PREVIEW"                             =               "PREVIEW";
 "CPLVC_USE"                                 =               "Use";
+
 //NewProjectViewController
 "NPVC_TITLE"                                =               "New Project";
 "NPVC_CANCEL"                               =               "CANCEL";
@@ -498,6 +499,8 @@
 "NPVC_DONE"                                 =               "DONE";
 "NPVC_ESTLOW_TITLE"                         =               "EST LOW VALUE";
 "NPVC_JURISDICTION"                         =               "JURISDICTION";
+"NPVC_TITLE_REQUIRED"                       =               "Project Title is required";
+"NPVC_OK"                                   =               "Ok";
 
 //UserLocationPinViewController
 "ULP_MYLOCATION"                            =               "My Location";
@@ -511,3 +514,6 @@
 
 //CustomActivityIndicatorView
 "CAIV_TITLE"                                =               "Loading...";
+
+//LongPressViewController
+"RETURN_HOME"                               =               "Return to Home";

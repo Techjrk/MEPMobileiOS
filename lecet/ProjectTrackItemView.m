@@ -32,6 +32,7 @@
 
 @interface ProjectTrackItemView()<MKMapViewDelegate>{
     NSMutableDictionary *stateStatus;
+    BOOL isUserProject;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
@@ -113,6 +114,8 @@
         project = info;
     }
     _labelTitle.text = project[@"title"];
+    
+    isUserProject = [DerivedNSManagedObject objectOrNil:project[@"dodgeNumber"]] == nil;
     
     NSString *addr = @"";
     
@@ -388,7 +391,12 @@
         userAnnotationView.enabled = NO;
         
         userAnnotationView.canShowCallout = NO;
-        userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        
+        if (isUserProject) {
+            userAnnotationView.image = [UIImage imageNamed:@"icon_userPinNew"];
+        } else {
+            userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        }
         
     }
     

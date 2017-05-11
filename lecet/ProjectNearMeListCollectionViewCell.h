@@ -16,5 +16,6 @@
     @property (strong,nonatomic) NSString *titlePriceText;
     @property (strong,nonatomic) NSDictionary *geoCode;
     @property (strong,nonatomic) NSString *unionDesignation;
+    @property (strong, nonatomic) NSString *dodgeNumber;
     - (void)setInitInfo;
 @end

@@ -298,10 +298,36 @@
 }
 
 - (void)tappedSaveNewProject {
+    NSString *projectTitleStr = [self.textFieldProjectTitle.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (projectTitleStr.length == 0) {
+        
+        [self promptUserForTitle];
+        return;
+    }
+
     [self saveNewProject];
 }
 
+- (void)promptUserForTitle{
+    
+    NSString *message = NSLocalizedLanguage(@"NPVC_TITLE_REQUIRED");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"NPVC_OK")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                       
+                                                      }];
+    
+    [alert addAction:closeAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
+
 - (void)saveNewProject {
+    
     NSMutableDictionary *dict = [NSMutableDictionary new];
     
     dict[@"title"] = self.textFieldProjectTitle.text;

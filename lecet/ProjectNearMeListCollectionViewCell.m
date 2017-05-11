@@ -177,7 +177,12 @@
             userAnnotationView.annotation = annotation;
             userAnnotationView.enabled = NO;
             userAnnotationView.canShowCallout = NO;
+        
+        if (self.dodgeNumber == nil) {
+            userAnnotationView.image = [UIImage imageNamed:@"icon_userPinNew"];
+        } else {
             userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
+        }
         
     }
     return userAnnotationView;

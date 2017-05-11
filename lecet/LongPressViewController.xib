@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LongPressViewController">
+            <connections>
+                <outlet property="labelTitle" destination="i0P-pp-5Gz" id="tRD-Mj-FtC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT6-0E-ZZn">
+                    <rect key="frame" x="0.0" y="0.0" width="50.5" height="86.5"/>
+                    <state key="normal" image="icon_arrowLeft"/>
+                    <connections>
+                        <action selector="tappedButtonHome:" destination="-1" eventType="touchUpInside" id="6O4-7c-Jvu"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0P-pp-5Gz">
+                    <rect key="frame" x="50.5" y="0.0" width="324.5" height="86.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="i0P-pp-5Gz" secondAttribute="trailing" id="Cx5-5Y-j3v"/>
+                <constraint firstItem="i0P-pp-5Gz" firstAttribute="leading" secondItem="rT6-0E-ZZn" secondAttribute="trailing" id="Kj7-G0-e6l"/>
+                <constraint firstItem="rT6-0E-ZZn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.13" id="Zmq-2Z-RiE"/>
+                <constraint firstItem="rT6-0E-ZZn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bb4-9v-8Yb"/>
+                <constraint firstItem="i0P-pp-5Gz" firstAttribute="height" secondItem="rT6-0E-ZZn" secondAttribute="height" id="fMv-QL-anL"/>
+                <constraint firstItem="i0P-pp-5Gz" firstAttribute="centerY" secondItem="rT6-0E-ZZn" secondAttribute="centerY" id="hiW-J4-Hdd"/>
+                <constraint firstItem="rT6-0E-ZZn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iS9-yB-Go1"/>
+                <constraint firstItem="rT6-0E-ZZn" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.135" id="wO2-hs-9ge"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_arrowLeft" width="10" height="24"/>
+    </resources>
+</document>
