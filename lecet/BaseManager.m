@@ -329,6 +329,12 @@
     return isConnected ;
 }
 
+- (BOOL)hasInternet {
+    
+    BOOL isConnected = [AFNetworkReachabilityManager sharedManager].reachable;
+    return isConnected;
+}
+
 - (UIViewController*)getActiveViewController {
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     

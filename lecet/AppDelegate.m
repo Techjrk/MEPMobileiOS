@@ -103,24 +103,25 @@
 - (void)checkForNotifications:(void (^)(UIBackgroundFetchResult))completionHandler {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         
-        
-        if (!isCheckingNotification) {
-            isCheckingNotification = YES;
-
-            [[DataManager sharedManager] notify:^(id object) {
-            
-                isCheckingNotification = NO;
+        if ([[DataManager sharedManager] hasInternet]) {
+            if (!isCheckingNotification) {
+                isCheckingNotification = YES;
                 
-                if (completionHandler) {
-                    completionHandler(UIBackgroundFetchResultNewData);
-                }
-            } failure:^(id object) {
-                isCheckingNotification = NO;
-                if (completionHandler) {
-                    completionHandler(UIBackgroundFetchResultNewData);
-                }
-            }];
-        }
+                [[DataManager sharedManager] notify:^(id object) {
+                    
+                    isCheckingNotification = NO;
+                    
+                    if (completionHandler) {
+                        completionHandler(UIBackgroundFetchResultNewData);
+                    }
+                } failure:^(id object) {
+                    isCheckingNotification = NO;
+                    if (completionHandler) {
+                        completionHandler(UIBackgroundFetchResultNewData);
+                    }
+                }];
+            }
+        }        
         
     }
 }
