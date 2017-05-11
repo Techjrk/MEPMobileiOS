@@ -195,7 +195,7 @@
 //ProjectNearMeFilterViewController.xib
 "PNV_CANCEL"                                =               "CANCEL";
 "PNV_APPLY"                                 =               "APPLY";
-"PNV_TITLE"                                 =               "Filters";
+"PNV_TITLE"                                 =               "Refine Search";
 
 //BidderListViewController.xib
 "BIDDER_LIST_BOTTOM_LABEL"                  =               "PROJECTS BIDDERS";
