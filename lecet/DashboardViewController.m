@@ -156,6 +156,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.customLoadingIndicator stopAnimating];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
