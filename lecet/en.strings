@@ -511,3 +511,6 @@
 
 //CustomActivityIndicatorView
 "CAIV_TITLE"                                =               "Loading...";
+
+//LongPressViewController
+"RETURN_HOME"                               =               "Return to Home";

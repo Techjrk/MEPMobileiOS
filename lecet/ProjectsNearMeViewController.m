@@ -547,6 +547,7 @@ float MetersToMiles(float meters) {
         [detail detailsFromProject:object];
         isLocationCaptured = NO;
         [self.navigationController pushViewController:detail animated:YES];
+        [self mapView:self.mapView regionDidChangeAnimated:NO];
     } failure:^(id object) {
     }];
 

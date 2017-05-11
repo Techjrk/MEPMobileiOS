@@ -462,6 +462,8 @@
 		B7FC24841EBA13780002802D /* PanoramaSceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24821EBA13780002802D /* PanoramaSceneViewController.xib */; };
 		B7FC24871EBA15D60002802D /* libDMDViewerSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FC24861EBA15D60002802D /* libDMDViewerSample.a */; };
 		B7FC24C41EC099B70002802D /* DMDViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C31EC099B70002802D /* DMDViewerController.xib */; };
+		B7FC24C91EC361E50002802D /* LongPressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24C71EC361E40002802D /* LongPressViewController.m */; };
+		B7FC24CA1EC361E50002802D /* LongPressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C81EC361E40002802D /* LongPressViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1186,6 +1188,9 @@
 		B7FC24851EBA158E0002802D /* PanoramaViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanoramaViewer.h; sourceTree = "<group>"; };
 		B7FC24861EBA15D60002802D /* libDMDViewerSample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDMDViewerSample.a; sourceTree = "<group>"; };
 		B7FC24C31EC099B70002802D /* DMDViewerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMDViewerController.xib; sourceTree = "<group>"; };
+		B7FC24C61EC361E40002802D /* LongPressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongPressViewController.h; sourceTree = "<group>"; };
+		B7FC24C71EC361E40002802D /* LongPressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongPressViewController.m; sourceTree = "<group>"; };
+		B7FC24C81EC361E40002802D /* LongPressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongPressViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2154,6 +2159,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B7FC24C51EC361CA0002802D /* LongPress */,
 				B7FC247F1EBA13780002802D /* PanoramaScene */,
 				B79AA7F81E9CC69600BA1B04 /* PhotoShutter */,
 				B79AA7B21E9530D500BA1B04 /* SaveNewProject */,
@@ -2926,6 +2932,16 @@
 			path = PanoramaScene;
 			sourceTree = "<group>";
 		};
+		B7FC24C51EC361CA0002802D /* LongPress */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC24C61EC361E40002802D /* LongPressViewController.h */,
+				B7FC24C71EC361E40002802D /* LongPressViewController.m */,
+				B7FC24C81EC361E40002802D /* LongPressViewController.xib */,
+			);
+			name = LongPress;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3046,6 +3062,7 @@
 				B79AA7AB1E93875D00BA1B04 /* NewPinViewController.xib in Resources */,
 				B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */,
 				B6EFFE981D04592A00727323 /* ContactAllListViewController.xib in Resources */,
+				B7FC24CA1EC361E50002802D /* LongPressViewController.xib in Resources */,
 				B60909D51E7AB79B00DEAA17 /* CustomCameraViewController.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B73EFACC1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib in Resources */,
@@ -3319,6 +3336,7 @@
 				B6411BD01D09B2D8002B6E88 /* MyProfileHeaderView.m in Sources */,
 				B6FD04431D1D325800E12123 /* ProjectFilterSelectionViewList.m in Sources */,
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
+				B7FC24C91EC361E50002802D /* LongPressViewController.m in Sources */,
 				B79616031CF318D60089BC32 /* DB_Company.m in Sources */,
 				B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */,
 				B6BEE9871D46278300237BB9 /* EHFAuthenticator.m in Sources */,

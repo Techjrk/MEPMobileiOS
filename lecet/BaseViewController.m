@@ -8,7 +8,10 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()<UINavigationControllerDelegate>{
+#import "LongPressViewController.h"
+#import "DashboardViewController.h"
+
+@interface BaseViewController ()<UINavigationControllerDelegate, LongPressViewControllerDelegate>{
     BOOL previousControllerHidden;
 }
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
@@ -35,13 +38,13 @@
 
 - (void)handleLongPressGestures:(UILongPressGestureRecognizer*)recognizer {
     
-    if (self.navigationController == nil) {
-        [self dismissViewControllerAnimated:NO completion:^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HOME object:nil];
-        }];
-    } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HOME object:nil];
+    if ([self class] != [DashboardViewController class]) {
+        LongPressViewController *controller = [LongPressViewController new];
+        controller.longPressViewControllerDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:controller animated:NO completion:nil];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,5 +84,14 @@
     
 }
 
+- (void)tappedHome {
+    if (self.navigationController == nil) {
+        [self dismissViewControllerAnimated:NO completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HOME object:nil];
+        }];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HOME object:nil];
+    }
 
+}
 @end
