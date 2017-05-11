@@ -1552,7 +1552,11 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, .7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//    encodedImage = [[encodedImage componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+//    NSData* myData = [encodedImage dataUsingEncoding:NSUTF8StringEncoding];
+//    NSLog(@"File size is : %.2f MB",(float)myData.length/1024.0f/1024.0f);
     
     NSString *url = [NSString stringWithFormat:kUrlProjectUserImageUpload, (long)projectID.integerValue];
     [self HTTP_POST:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object) {
@@ -1574,7 +1578,7 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.5) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
     NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
     

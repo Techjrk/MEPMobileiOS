@@ -1,13 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyTrackingListView">
             <connections>
                 <outlet property="collectionView" destination="Gmx-iJ-UMW" id="GRd-Qe-UVY"/>
+                <outlet property="customLoadingIndicator" destination="trQ-cj-HMX" id="kYk-yZ-Oxb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +25,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gmx-iJ-UMW">
                     <rect key="frame" x="0.0" y="0.0" width="584" height="381"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xTk-4u-O5P">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -26,11 +33,21 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trQ-cj-HMX" customClass="CustomActivityIndicatorView">
+                    <rect key="frame" x="146" y="44" width="292" height="292"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="trQ-cj-HMX" secondAttribute="height" multiplier="1:1" id="5f6-qR-CC3"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="trQ-cj-HMX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NGn-gd-pYt"/>
                 <constraint firstItem="Gmx-iJ-UMW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VNJ-qL-CJF"/>
+                <constraint firstItem="trQ-cj-HMX" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="ZnY-YE-Np5"/>
                 <constraint firstAttribute="bottom" secondItem="Gmx-iJ-UMW" secondAttribute="bottom" id="dEs-2A-evH"/>
+                <constraint firstItem="trQ-cj-HMX" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="i0r-1g-kKL"/>
                 <constraint firstAttribute="trailing" secondItem="Gmx-iJ-UMW" secondAttribute="trailing" id="q4h-Jd-DYm"/>
                 <constraint firstItem="Gmx-iJ-UMW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qva-Rd-c6m"/>
             </constraints>
