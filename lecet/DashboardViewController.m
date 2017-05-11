@@ -39,6 +39,7 @@
 #import "CompanyTrackingListViewController.h"
 #import "SearchViewController.h"
 #import "AppDelegate.h"
+#import "CustomActivityIndicatorView.h"
 
 #define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
 #define DASHBOARD_BIDS_BG_COLOR                 RGB(245, 245, 245)
@@ -70,6 +71,8 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet MenuHeaderView *menuHeader;
 @property (weak,nonatomic) IBOutlet UIView *dimDropDownMenuBackgroundView;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
+
 @end
 
 @implementation DashboardViewController
@@ -674,12 +677,12 @@
             [trackingListInfo removeAllObjects];
             
             NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
-        
+            [self.customLoadingIndicator startAnimating];
             [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
                 
                 trackingListInfo[kTrackList[0]] = [object mutableCopy];
                 [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
-            
+                    [self.customLoadingIndicator stopAnimating];
                     trackingListInfo[kTrackList[1]] = [object mutableCopy];
                     PopupViewController *controller = [PopupViewController new];
                     CGRect rect = [controller getViewPositionFromViewController:view controller:self];
@@ -695,10 +698,10 @@
                     [self presentViewController:controller animated:NO completion:nil];
                     
                 } failure:^(id object) {
-                    
+                    [self.customLoadingIndicator stopAnimating];
                 }];
             } failure:^(id object) {
-                
+                [self.customLoadingIndicator stopAnimating];
             }];
             
             break;
@@ -976,9 +979,9 @@
     shouldUsePushZoomAnimation = NO;
     
     if (isProject) {
-        
+        [self.customLoadingIndicator startAnimating];
         [[DataManager sharedManager] projectTrackingList:trackItemInfo[@"id"] success:^(id object) {
-            
+            [self.customLoadingIndicator stopAnimating];
             [[GAManager sharedManager] trackProjectTrackingList];
             
             ProjectTrackingViewController *controller = [ProjectTrackingViewController new];
@@ -986,19 +989,19 @@
             controller.collectionItems = [(NSArray*)object mutableCopy] ;
             [self.navigationController pushViewController:controller animated:YES];
         } failure:^(id object) {
-            
+            [self.customLoadingIndicator stopAnimating];
         }];
     } else {
-        
+        [self.customLoadingIndicator startAnimating];
         [self companyTrackingListAndUpdatesFiltered:trackItemInfo success:^(id object){
-            
+            [self.customLoadingIndicator stopAnimating];
             [[GAManager sharedManager] trackCompanyTrackingList];
             CompanyTrackingListViewController *controller = [CompanyTrackingListViewController new];
             [controller setTrackingInfo:trackItemInfo];
             [controller setInfo:object];
             [self.navigationController pushViewController:controller animated:YES];
         }fail:^(id obj){
-            
+            [self.customLoadingIndicator stopAnimating];
         }];
         
     }

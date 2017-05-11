@@ -10,6 +10,7 @@
 #import "CompanyTrackingCollectionViewCell.h"
 #import "EditViewList.h"
 #import "CompanyDetailViewController.h"
+#import "CustomActivityIndicatorView.h"
 
 @interface CompanyTrackingListView ()<UICollectionViewDelegate, UICollectionViewDataSource,CompanyTrackingCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;
@@ -22,6 +23,7 @@
     
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
 
 @end
 
@@ -211,10 +213,10 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.customLoadingIndicator startAnimating];
     NSNumber *recordId = collectionDataItems[indexPath.row][@"id"];
     [[DataManager sharedManager] companyDetail:recordId success:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
         id returnObject = object;
         CompanyDetailViewController *controller = [CompanyDetailViewController new];
         controller.view.hidden = NO;
@@ -224,6 +226,7 @@
         [navController.navigationController pushViewController:controller animated:YES];
         
     } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
     }];
 
 }

@@ -20,6 +20,7 @@
 #import "SelectMoveView.h"
 #import "TrackingListCellCollectionViewCell.h"
 #import "ProjectDetailViewController.h"
+#import "CustomActivityIndicatorView.h"
 
 typedef enum  {
     PopupModeSort,
@@ -39,6 +40,8 @@ typedef enum  {
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet SelectMoveView *selectMoveView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
+
 @end
 
 @implementation ProjectTrackingViewController
@@ -168,9 +171,9 @@ typedef enum  {
     
     [currentIds removeObjectsInArray:[self selectedItemForEdit]];
     currentCargo[@"itemIds"] = currentIds;
-    
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:currentCargo success:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
         NSMutableArray *movedItems = [[NSMutableArray alloc] init];
         for (NSDictionary *item in self.collectionItems) {
             NSNumber *recordId = item[@"id"];
@@ -193,7 +196,7 @@ typedef enum  {
         [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
         
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
     }];
 
 }
@@ -203,8 +206,10 @@ typedef enum  {
         UIView *objectView = object;
         
         NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
-        
+        [self.customLoadingIndicator startAnimating];
         [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue]  success:^(id object) {
+            
+            [self.customLoadingIndicator stopAnimating];
 
             NSMutableArray *array = [object mutableCopy];
             
@@ -405,11 +410,12 @@ typedef enum  {
     NSMutableDictionary *cargoToMove = [NSMutableDictionary new];
     cargoToMove[@"itemIds"] = currentIds;
     
+    [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] projectTrackingMoveIds:track[@"id"] recordIds:trackToMove success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
         
         [[DataManager sharedManager] projectTrackingMoveIds:currentCargo[@"id"] recordIds:cargoToMove success:^(id object) {
-            
+            [self.customLoadingIndicator stopAnimating];
             NSMutableArray *movedItems = [[NSMutableArray alloc] init];
             for (NSDictionary *item in self.collectionItems) {
                 NSNumber *recordId = item[@"id"];
@@ -432,11 +438,11 @@ typedef enum  {
             [_selectMoveView setSelectionCount:[self selectedItemForEdit].count];
             
         } failure:^(id object) {
-            
+            [self.customLoadingIndicator stopAnimating];
         }];
         
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
     }];
 
 }
@@ -703,14 +709,16 @@ typedef enum  {
         
         NSNumber *projectId = [self getProjectId:indexPath];
         
+        [self.customLoadingIndicator startAnimating];
         [[DataManager sharedManager] projectDetail:projectId success:^(id object) {
             ProjectDetailViewController *detail = [ProjectDetailViewController new];
             detail.view.hidden = NO;
-            
+            [self.customLoadingIndicator stopAnimating];
             [detail detailsFromProject:object];
             [self.navigationController pushViewController:detail animated:YES];
 
         } failure:^(id object) {
+            [self.customLoadingIndicator stopAnimating];
         }];
 
     }

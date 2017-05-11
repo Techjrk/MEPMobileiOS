@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +15,7 @@
             <connections>
                 <outlet property="collectionView" destination="sEa-wz-fIG" id="3aa-5d-Ot8"/>
                 <outlet property="constraintEditViewHeight" destination="3Vj-ET-uqp" id="h6Y-wE-Zqt"/>
+                <outlet property="customLoadingIndicator" destination="zT0-4r-KjA" id="FM9-Gs-a6Y"/>
                 <outlet property="editModeView" destination="wbn-81-rqB" id="fcg-dg-xnA"/>
                 <outlet property="editView" destination="z6V-KB-GLX" id="clg-FO-MPZ"/>
                 <outlet property="selectMoveView" destination="A65-Dp-w9P" id="2S3-Xt-ISz"/>
@@ -99,18 +101,28 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zT0-4r-KjA" customClass="CustomActivityIndicatorView">
+                    <rect key="frame" x="103.5" y="264.5" width="207" height="207"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="zT0-4r-KjA" secondAttribute="height" multiplier="1:1" id="OAl-9i-oj1"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xls-hf-owS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.115" id="64o-Y7-U75"/>
                 <constraint firstItem="T2K-4I-Agb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6hI-nw-efC"/>
                 <constraint firstItem="xls-hf-owS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="72l-TM-46t"/>
+                <constraint firstItem="zT0-4r-KjA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="8YS-hh-3oV"/>
                 <constraint firstAttribute="trailing" secondItem="xls-hf-owS" secondAttribute="trailing" id="KlP-bg-Oij"/>
+                <constraint firstItem="zT0-4r-KjA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MSo-LQ-Rko"/>
                 <constraint firstAttribute="bottom" secondItem="T2K-4I-Agb" secondAttribute="bottom" id="ZCy-fd-Yax"/>
                 <constraint firstItem="xXT-L8-LUJ" firstAttribute="top" secondItem="xls-hf-owS" secondAttribute="bottom" id="aJ8-33-hFv"/>
                 <constraint firstItem="xls-hf-owS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ck0-te-qAD"/>
                 <constraint firstItem="T2K-4I-Agb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gBG-Py-om8"/>
                 <constraint firstAttribute="trailing" secondItem="T2K-4I-Agb" secondAttribute="trailing" id="pe4-wY-0YL"/>
+                <constraint firstItem="zT0-4r-KjA" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="qxw-mI-s34"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
