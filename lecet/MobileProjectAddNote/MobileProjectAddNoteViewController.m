@@ -295,7 +295,8 @@
 #pragma mark - Request Method
 
 - (void)addProjectUserImage {
-    [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
+    NSString *textBody = [self bodyText];
+    [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody image:self.capturedImage success:^(id object){
 
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -307,7 +308,8 @@
 }
 
 - (void)updateProjectUserImage {
-    [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
+    NSString *textBody = [self bodyText];
+    [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody image:self.capturedImage success:^(id object){
         [self deleteImageFromFileManager];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.customLoadingIndicator stopAnimating];
@@ -320,7 +322,9 @@
 }
 
 - (void)addProjetUserNotes {
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
+    
+    NSString *textBody = [self bodyText];
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -332,7 +336,9 @@
 }
 
 - (void)updataProjetUserNotes {
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":self.bodyTextView.text};
+    
+    NSString *textBody = [self bodyText];
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody};
     [[DataManager sharedManager] updateProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -479,4 +485,17 @@
 
 }
 
+- (NSString *)bodyText {
+    NSString *tempString = self.bodyTextView.text;
+    NSString *placeHolder = [NSString stringWithFormat:@"%@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
+    NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
+    NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
+    NSString *text = [self stripStringAndToLowerCaser:self.bodyTextView.text];
+    if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
+        tempString = @"";
+    }
+    
+    return tempString;
+
+}
 @end

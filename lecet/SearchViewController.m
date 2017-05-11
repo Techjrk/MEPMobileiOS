@@ -157,6 +157,10 @@ typedef enum : NSUInteger {
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.customLoadingIndicator stopAnimating];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
