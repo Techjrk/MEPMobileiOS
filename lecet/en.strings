@@ -475,6 +475,7 @@
 "CPLVC_RETAKE"                              =               "Retake";
 "CPLVC_PREVIEW"                             =               "PREVIEW";
 "CPLVC_USE"                                 =               "Use";
+
 //NewProjectViewController
 "NPVC_TITLE"                                =               "New Project";
 "NPVC_CANCEL"                               =               "CANCEL";
@@ -498,6 +499,8 @@
 "NPVC_DONE"                                 =               "DONE";
 "NPVC_ESTLOW_TITLE"                         =               "EST LOW VALUE";
 "NPVC_JURISDICTION"                         =               "JURISDICTION";
+"NPVC_TITLE_REQUIRED"                       =               "Project Title is required";
+"NPVC_OK"                                   =               "Ok";
 
 //UserLocationPinViewController
 "ULP_MYLOCATION"                            =               "My Location";
