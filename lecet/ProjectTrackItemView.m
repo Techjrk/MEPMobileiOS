@@ -33,6 +33,7 @@
 @interface ProjectTrackItemView()<MKMapViewDelegate>{
     NSMutableDictionary *stateStatus;
     BOOL isUserProject;
+    NSNumber *projectId;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
@@ -50,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelUpdateType;
 @property (weak, nonatomic) IBOutlet UILabel *labelLeftDesc;
 @property (weak, nonatomic) IBOutlet UILabel *labelRightDesc;
+@property (weak, nonatomic) IBOutlet UIImageView *iconMarker;
 - (IBAction)tappedButtonExppand:(id)sender;
 @end
 
@@ -249,6 +251,26 @@
         [_mapView removeAnnotations:_mapView.annotations];
         _mapView.hidden = YES;
     }
+    
+    self.iconMarker.hidden = YES;
+    projectId = project[@"id"];
+    [[DataManager sharedManager] checkForImageNotes:projectId success:^(id object) {
+        
+        NSDictionary *dict = object;
+        
+        NSNumber *prjId = dict[@"projectId"];
+        if (prjId.integerValue == projectId.integerValue) {
+            NSNumber *count = dict[@"count"];
+            self.iconMarker.hidden = count.integerValue == 0;
+        } else {
+            self.iconMarker.hidden = YES;
+        }
+        
+    } failure:^(id object) {
+        
+        self.iconMarker.hidden = YES;
+    }];
+
 
 }
 
