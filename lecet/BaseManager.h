@@ -34,6 +34,7 @@ typedef void(^APIBlock)(id object);
 //MISC
 - (void)startMonitoring;
 - (BOOL)connected;
+- (BOOL)hasInternet;
 - (UIViewController*)getActiveViewController;
 - (void)cancellAllRequests;
 - (BOOL)isDebugMode;

@@ -18,6 +18,7 @@
                 <outlet property="constraintUpdateContainerHeight" destination="acp-tx-DNF" id="Uwr-ml-CCm"/>
                 <outlet property="constrintLeftLabelWidth" destination="el7-hF-iLV" id="FgI-DR-xDG"/>
                 <outlet property="container" destination="cSf-yq-GSx" id="BsG-0Z-SmD"/>
+                <outlet property="iconMarker" destination="QLo-jO-vzv" id="oaa-T0-OyM"/>
                 <outlet property="imageView" destination="KvX-R6-VOQ" id="Onu-ze-WCM"/>
                 <outlet property="labelContainer" destination="dOD-4c-KXg" id="6tC-bq-sa9"/>
                 <outlet property="labelLeftDesc" destination="nsM-I7-5VP" id="IyD-pd-UVZ"/>
@@ -79,6 +80,9 @@
                             <rect key="frame" x="101" y="28" width="5" height="57"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_updateMarker" translatesAutoresizingMaskIntoConstraints="NO" id="QLo-jO-vzv">
+                            <rect key="frame" x="360" y="42.5" width="66" height="42.5"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -86,7 +90,9 @@
                         <constraint firstAttribute="trailing" secondItem="Ulj-ws-ePI" secondAttribute="trailing" id="34y-ZE-Gkj"/>
                         <constraint firstItem="jii-0t-TvV" firstAttribute="leading" secondItem="OTa-hl-H3w" secondAttribute="leading" id="4hd-IF-hgF"/>
                         <constraint firstItem="jii-0t-TvV" firstAttribute="width" secondItem="OTa-hl-H3w" secondAttribute="width" multiplier="0.19" id="6X4-Xi-6uW"/>
+                        <constraint firstItem="QLo-jO-vzv" firstAttribute="height" secondItem="jii-0t-TvV" secondAttribute="height" multiplier="0.5" id="7zn-4w-c8T"/>
                         <constraint firstItem="3yv-ne-7sW" firstAttribute="leading" secondItem="sVA-t9-qxp" secondAttribute="trailing" id="Cth-eb-lzw"/>
+                        <constraint firstItem="QLo-jO-vzv" firstAttribute="bottom" secondItem="Ulj-ws-ePI" secondAttribute="bottom" id="EyN-df-BuE"/>
                         <constraint firstItem="hK4-bp-thr" firstAttribute="centerY" secondItem="3yv-ne-7sW" secondAttribute="centerY" id="KlT-El-iXH"/>
                         <constraint firstItem="3yv-ne-7sW" firstAttribute="width" secondItem="Ulj-ws-ePI" secondAttribute="width" id="LSX-Oa-OU7"/>
                         <constraint firstItem="sVA-t9-qxp" firstAttribute="leading" secondItem="p0u-9S-1p3" secondAttribute="trailing" id="OIy-oX-o9c"/>
@@ -235,11 +241,13 @@
                 <constraint firstItem="pgA-HD-Ilb" firstAttribute="height" secondItem="xGt-ht-zbl" secondAttribute="height" id="B5P-8G-vJZ"/>
                 <constraint firstItem="pgA-HD-Ilb" firstAttribute="centerX" secondItem="OTa-hl-H3w" secondAttribute="centerX" id="KVG-jo-RGo"/>
                 <constraint firstItem="cSf-yq-GSx" firstAttribute="centerX" secondItem="OTa-hl-H3w" secondAttribute="centerX" id="OfI-5I-x2Z"/>
+                <constraint firstAttribute="trailing" secondItem="QLo-jO-vzv" secondAttribute="trailing" id="RDa-mO-eKO"/>
                 <constraint firstItem="cSf-yq-GSx" firstAttribute="top" secondItem="pgA-HD-Ilb" secondAttribute="bottom" id="VC3-RZ-zCV"/>
                 <constraint firstItem="pgA-HD-Ilb" firstAttribute="width" secondItem="xGt-ht-zbl" secondAttribute="width" id="XUw-9O-Gfz"/>
                 <constraint firstItem="xGt-ht-zbl" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="YSs-Sz-dPj"/>
                 <constraint firstItem="cSf-yq-GSx" firstAttribute="width" secondItem="OTa-hl-H3w" secondAttribute="width" id="fup-g6-rCq"/>
                 <constraint firstItem="Oew-6h-71g" firstAttribute="height" secondItem="OTa-hl-H3w" secondAttribute="height" multiplier="0.62" id="nEa-2M-jQA"/>
+                <constraint firstItem="QLo-jO-vzv" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.15" id="nur-wa-K5E"/>
                 <constraint firstItem="cSf-yq-GSx" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.48" id="pgp-hn-K8w"/>
                 <constraint firstItem="xGt-ht-zbl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="trX-n6-hw3"/>
                 <constraint firstItem="pgA-HD-Ilb" firstAttribute="top" secondItem="OTa-hl-H3w" secondAttribute="bottom" id="u4b-2o-K8I"/>
@@ -262,5 +270,6 @@
         <image name="icon_bidLocation" width="8" height="11"/>
         <image name="icon_bidType" width="10" height="10"/>
         <image name="icon_trackUpdateTypeBid" width="11" height="11"/>
+        <image name="icon_updateMarker" width="33" height="33"/>
     </resources>
 </document>
