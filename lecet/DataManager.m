@@ -1542,44 +1542,52 @@
 
 - (void)addProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure {
 
-    CGSize imageSize = image.size;
-    
-    imageSize.width = imageSize.width * 0.6;
-    imageSize.height = imageSize.height * 0.6;
-    
-    UIGraphicsBeginImageContext( imageSize );
-    [image drawInRect:CGRectMake(0,0,imageSize.width,imageSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    
-    NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-//    encodedImage = [[encodedImage componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
-//    NSData* myData = [encodedImage dataUsingEncoding:NSUTF8StringEncoding];
-//    NSLog(@"File size is : %.2f MB",(float)myData.length/1024.0f/1024.0f);
-    
+    NSString *encodedImage = [self base64StringForImage:image];
+
     NSString *url = [NSString stringWithFormat:kUrlProjectUserImageUpload, (long)projectID.integerValue];
-    [self HTTP_POST:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object) {
+
+    [self HTTP_POST_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
+    
+}
 
+- (NSString *)base64StringForImage:(UIImage *)image
+{
+    CGFloat compression = 1.0f;
+    CGFloat maxCompression = 0.1f;
+    int maxFileSize = 250*1024;
+    NSLog(@"File size is : %.2f MB",maxFileSize/1024.0f/1024.0f);
+    NSData *imageData = UIImageJPEGRepresentation(image, compression);
+    
+    while ([imageData length] > maxFileSize && compression > maxCompression)
+    {
+        compression -= 0.1;
+        imageData = UIImageJPEGRepresentation(image, compression);
+    }
+    
+    //    NSLog(@"compression: %f", compression);
+    
+    NSString *base64Image = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
+    return base64Image;
 }
 
 - (void)updateProjectUserImage:(NSNumber *)projectID title:(NSString *)title text:(NSString *)text image:(UIImage *)image success:(APIBlock)success failure:(APIBlock)failure{
-    CGSize imageSize = image.size;
     
+    /*
+    CGSize imageSize = image.size;
     imageSize.width = imageSize.width * 0.6;
     imageSize.height = imageSize.height * 0.6;
-    
     UIGraphicsBeginImageContext( imageSize );
     [image drawInRect:CGRectMake(0,0,imageSize.width,imageSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     NSString *encodedImage = [UIImageJPEGRepresentation(newImage, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    */
     
+    NSString *encodedImage = [self base64StringForImage:image];
     NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
     
     [self HTTP_PUT_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object){
