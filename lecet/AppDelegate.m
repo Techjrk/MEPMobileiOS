@@ -102,26 +102,37 @@
 
 - (void)checkForNotifications:(void (^)(UIBackgroundFetchResult))completionHandler {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
-        
-        if ([[DataManager sharedManager] hasInternet]) {
-            if (!isCheckingNotification) {
-                isCheckingNotification = YES;
-                
-                [[DataManager sharedManager] notify:^(id object) {
+
+        BOOL isLogin = NO;
+        NSString *isLoginPersisted = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
+        if (isLoginPersisted != nil & isLoginPersisted.length>0) {
+            
+            isLogin = YES;
+            
+        }
+
+        if (isLogin) {
+            if ([[DataManager sharedManager] hasInternet]) {
+                if (!isCheckingNotification) {
+                    isCheckingNotification = YES;
                     
-                    isCheckingNotification = NO;
-                    
-                    if (completionHandler) {
-                        completionHandler(UIBackgroundFetchResultNewData);
-                    }
-                } failure:^(id object) {
-                    isCheckingNotification = NO;
-                    if (completionHandler) {
-                        completionHandler(UIBackgroundFetchResultNewData);
-                    }
-                }];
+                    [[DataManager sharedManager] notify:^(id object) {
+                        
+                        isCheckingNotification = NO;
+                        
+                        if (completionHandler) {
+                            completionHandler(UIBackgroundFetchResultNewData);
+                        }
+                    } failure:^(id object) {
+                        isCheckingNotification = NO;
+                        if (completionHandler) {
+                            completionHandler(UIBackgroundFetchResultNewData);
+                        }
+                    }];
+                }
             }
         }
+        
         
     }
 }
