@@ -273,6 +273,7 @@
                     [self hideControlForPanoramicMode];
                     [self showShutter:YES];
                     [self setTakePhotoButtonImageToTakenPano:NO];
+                    self.takePhotoButton.hidden = NO;
                 }
                 break;
             }
@@ -313,11 +314,11 @@
                     isLibrarySelected = NO;
                     isPhotoSelected = NO;
                     isPreviewSelected = NO;
-                    
                     [self setNavBottomViewClearColor:YES];
                     [self hideControlForPanoramicMode];
                     [self showShutter:YES];
                     [self setTakePhotoButtonImageToTakenPano:NO];
+                    self.takePhotoButton.hidden = NO;
                 }
                 
                 break;
