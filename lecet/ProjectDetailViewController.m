@@ -934,6 +934,10 @@ typedef enum {
 }
 
 - (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image itemID:(NSNumber *)itemID imageLink:(NSString *)link{
+    
+    if (title == nil) {
+        title = @"";
+    }
     if (image == nil) {
         MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
         controller.projectID = recordId;
