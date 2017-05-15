@@ -385,8 +385,8 @@
 - (void)updateNewStage:(id)update {
     NSString *summary;
  
-    if (update != nil) {
-        summary = update[@"summary"];
+    if ([DerivedNSManagedObject objectOrNil:update] != nil) {
+        summary = [DerivedNSManagedObject objectOrNil:update[@"summary"]];
     }
     
     _labelUpdateType.text = summary;

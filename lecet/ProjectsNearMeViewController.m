@@ -177,7 +177,7 @@ float MetersToMiles(float meters) {
                 
                 isDoneSearching = YES;
                 if (distance < 500) {
-                    [self loadProjects:distance + (distance==5?95:100) coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:regionValue];
+                    [self loadProjects:distance + (distance==5?95:100) coordinate:coordinate regionValue:regionValue];
                     
                     
                 } else {
@@ -423,7 +423,7 @@ float MetersToMiles(float meters) {
                          region.span.longitudeDelta /= 8.0;
                          region.span.latitudeDelta /= 8.0;
                          
-                         [self loadProjects:1 coordinate:region.center regionValue:0];
+                         [self loadProjects:5 coordinate:region.center regionValue:0];
                          
                          
                      } else if (error != nil) {
