@@ -26,6 +26,7 @@
 
 @interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>{
     CGFloat defaultBodyTextViewHeight;
+    BOOL isEndEditingInTextView;
 }
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -120,7 +121,7 @@
         [self.trashcanButton setImage:imageButton forState:UIControlStateNormal];
     }
     
-    
+    isEndEditingInTextView = YES;
 
 }
 
@@ -352,11 +353,12 @@
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
+    isEndEditingInTextView = NO;
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    
+    isEndEditingInTextView = YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
@@ -372,6 +374,10 @@
         } else {
             self.addButton.userInteractionEnabled = YES;
         }
+    }
+    
+    if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
+        textView.text = @"";
     }
 }
 
@@ -477,8 +483,10 @@
             NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
             NSString *text = [self stripStringAndToLowerCaser:self.bodyTextView.text];
             if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
-                self.bodyTextView.text = placeHolder;
-                self.bodyTextView.textColor = [UIColor lightGrayColor];
+                if (isEndEditingInTextView) {
+                    self.bodyTextView.text = placeHolder;
+                    self.bodyTextView.textColor = [UIColor lightGrayColor];
+                }
             }
         }
     }];
