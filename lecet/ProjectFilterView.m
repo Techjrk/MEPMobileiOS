@@ -226,11 +226,12 @@
                 
                 NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
                 
-                self.searchFilter[@"updatedWithin"] = @{ @"min": date };
-                
+                //self.searchFilter[@"updatedWithin"] = @{ @"min": date };
+                self.searchFilter[@"updatedInLast"] = value;
             } else {
                 //[self.searchFilter removeObjectForKey:@"updatedWithin"];
-                self.searchFilter[@"updatedWithin"] = @{ @"valZero": @(YES) };
+                //self.searchFilter[@"updatedWithin"] = @{ @"valZero": @(YES) };
+                self.searchFilter[@"updatedInLast"] = @(0);
             }
             
             break;
@@ -258,11 +259,13 @@
                 
                 NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
                 
-                self.searchFilter[@"biddingWithin"] = @{ @"min": date };
+                //self.searchFilter[@"biddingWithin"] = @{ @"min": date };
+                self.searchFilter[@"biddingInNext"] = value;
                 
             } else {
                 //[self.searchFilter removeObjectForKey:@"biddingWithin"];
-                self.searchFilter[@"biddingWithin"] = @{ @"valZero": @(YES) };
+                //self.searchFilter[@"biddingWithin"] = @{ @"valZero": @(YES) };
+                self.searchFilter[@"biddingInNext"] = @(0);
             }
             
             break;
