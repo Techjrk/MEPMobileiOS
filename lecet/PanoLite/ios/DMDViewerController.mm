@@ -36,6 +36,7 @@ class PanoramaViewer;
     PanoramaViewer *viewer;
     UIButton *backButton;
     UIView *viewtextBackground;
+    UITextView *textView;
 }
 
 - (void)clean;
@@ -130,6 +131,16 @@ class PanoramaViewer;
 
 - (void)loadInfo {
 
+    self.photoTitle = [DerivedNSManagedObject objectOrNil:self.photoTitle];
+    if (self.photoTitle == nil) {
+        self.photoTitle = @"";
+    }
+    
+    self.text = [DerivedNSManagedObject objectOrNil:self.text];
+    if (self.text == nil) {
+        self.text = @"";
+    }
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight * 0.1)];
     [view setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:view];
@@ -153,7 +164,7 @@ class PanoramaViewer;
     viewtextBackground.hidden = YES;
     
     CGFloat width = kDeviceWidth * 0.85;
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake((kDeviceWidth - width)/2.0, 0, width, viewtextBackground.frame.size.height)];
+    textView = [[UITextView alloc] initWithFrame:CGRectMake((kDeviceWidth - width)/2.0, 0, width, viewtextBackground.frame.size.height)];
     [viewtextBackground addSubview:textView];
     textView.backgroundColor = [UIColor clearColor];
     
@@ -319,11 +330,19 @@ class PanoramaViewer;
         viewtextBackground.alpha = backButton.alpha;
         viewtextBackground.hidden = backButton.hidden;
         
+        if (textView.attributedText.length == 1) {
+            viewtextBackground.hidden = YES;
+        }
+        
         [UIView animateWithDuration:0.25 animations:^{
             
             backButton.alpha = backButton.hidden?0:1;
             viewtextBackground.alpha = backButton.alpha;
-            
+
+            if (textView.attributedText.length == 1) {
+                viewtextBackground.hidden = YES;
+            }
+          
         } completion:^(BOOL finished) {
             if (finished) {
                 
