@@ -175,7 +175,8 @@ typedef enum : NSUInteger {
 
 - (NSDictionary *)removedUpdatedBiddingValueZeroForSearchFilter:(id)info {
     NSMutableDictionary *tempDic = [info mutableCopy];
-    
+
+    /*
     BOOL biddingValZero  = [DerivedNSManagedObject objectOrNil:tempDic[@"biddingWithin"][@"valZero"]];
     BOOL updatedWithinValZero  = [DerivedNSManagedObject objectOrNil:tempDic[@"updatedWithin"][@"valZero"]];
     
@@ -186,6 +187,18 @@ typedef enum : NSUInteger {
     if (updatedWithinValZero) {
         [tempDic removeObjectForKey:@"updatedWithin"];
     }
+    */
+    NSNumber *biddingValZero  = [DerivedNSManagedObject objectOrNil:tempDic[@"biddingInNext"]];
+    NSNumber *updatedWithinValZero  = [DerivedNSManagedObject objectOrNil:tempDic[@"updatedInLast"]];
+    
+    if (biddingValZero.integerValue ==0) {
+        [tempDic removeObjectForKey:@"biddingInNext"];
+    }
+    
+    if (updatedWithinValZero.integerValue == 0) {
+        [tempDic removeObjectForKey:@"updatedInLast"];
+    }
+
     
     return [tempDic copy];
 }
