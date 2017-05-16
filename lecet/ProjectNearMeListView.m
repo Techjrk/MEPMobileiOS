@@ -42,7 +42,7 @@
 @implementation ProjectNearMeListView
 @synthesize parentCtrl;
 
-    - (void)awakeFromNib {
+- (void)awakeFromNib {
         [super awakeFromNib];
         
          [self.collectionView registerNib:[UINib nibWithNibName:[[ProjectNearMeListCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
@@ -61,11 +61,12 @@
         
         [_preBidButton setTitle:preBidTitle forState:UIControlStateNormal];
         [_postBidButton setTitle:postBidTitle forState:UIControlStateNormal];
-    }
+        
+        isPostBidHidden = YES;
+}
 
 #pragma mark - MISC Methods
 - (void)setInfo:(id)info {
-    isPostBidHidden = YES;
     
     collectionItemsPreBid = [NSMutableArray new];
     collectionItemsPostBid = [NSMutableArray new];
@@ -80,6 +81,7 @@
             NSNumber *bidId = projectStage[@"parentId"];
             if (bidId.integerValue != 102) {
                 [tempCollectionItemsPostBid addObject:dicInfo];
+                
             } else {
                 [tempCollectionItemsPreBid addObject:dicInfo];
             }
@@ -87,6 +89,7 @@
     }
 
 }
+
 
 - (void)setDataBasedOnVisible {
     [collectionItemsPreBid removeAllObjects];
@@ -158,7 +161,7 @@
 #pragma mark - IBAction
 - (IBAction)tappedButton:(id)sender {
     UIButton *button = sender;
-    isPostBidHidden = !isPostBidHidden;
+    isPostBidHidden = YES;
     _constraintMarkerLeading.constant = button.frame.origin.x;
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -169,6 +172,21 @@
             [self.collectionView reloadData];
         }
     }];
+}
+- (IBAction)tappedPostBidButton:(id)sender {
+    UIButton *button = sender;
+    isPostBidHidden = NO;
+    _constraintMarkerLeading.constant = button.frame.origin.x;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.collectionItems = isPostBidHidden ? collectionItemsPreBid : collectionItemsPostBid;
+            [self.collectionView reloadData];
+        }
+    }];
+
 }
     
 #pragma mark - UICollectionView Datasource
