@@ -177,7 +177,13 @@ float MetersToMiles(float meters) {
                 
                 isDoneSearching = YES;
                 if (distance < 500) {
-                    [self loadProjects:distance + (distance==5?95:100) coordinate:coordinate regionValue:regionValue];
+            
+                    CGFloat newDistance = distance + (distance==5?95:100);
+                    
+                    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(newDistance), MilesToMeters(newDistance));
+                    [_mapView setRegion:region];
+            
+                    [self loadProjects:newDistance coordinate:coordinate regionValue:regionValue];
                     
                     
                 } else {
