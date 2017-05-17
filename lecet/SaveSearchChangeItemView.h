@@ -22,7 +22,6 @@ typedef enum {
 @end
 
 @interface SaveSearchChangeItemView : BaseViewClass
-
 @property (nonatomic,assign)id <SaveSearchChangeItemViewDelegate> saveSearchChangeItemViewDelegate;
 
 @end

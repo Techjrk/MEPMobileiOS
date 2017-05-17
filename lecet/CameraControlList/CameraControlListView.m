@@ -38,19 +38,14 @@
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.lineView.backgroundColor = [COLOR_BG_LINE_VIEW colorWithAlphaComponent:0.5];
     self.lineView.hidden = YES;
-    
-  
 }
 
 #pragma mark - UICollectionViewDelegate and DataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    
     return self.cameraItems.count;
 }
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
 }
 
@@ -120,7 +115,6 @@
 
 #pragma mark - Misc Method
 - (void)setCameraItemsInfo:(NSArray *)cameraItems hideLineView:(BOOL)hide {
-    //self.lineView.hidden = hide;
     self.cameraItems = cameraItems;
     [self.collectionView reloadData];
     
@@ -138,17 +132,10 @@
         if (info != nil && ![info isEqual:@""]) {
             CameraControlListViewItems items = (CameraControlListViewItems)[info[@"type"] intValue];
             
-            //if (items == CameraControlListViewPhoto) {
             if (items == self.focusOnItem) {
                 index = (count - 1);
                 break;
             }
-            /*
-            if (items == CameraControlListViewPreview) {
-                index = (count - 1);
-                break;
-            }
-             */
         }
     }
     

@@ -41,7 +41,6 @@
 #import "NewProjectViewController.h"
 #import "DMD_LITE.h"
 #import "PanoramaSceneViewController.h"
-#import "CustomLandscapeNavigationViewController.h"
 
 #import "DMDViewerController.h"
 #import <OpenGLES/ES2/gl.h>
