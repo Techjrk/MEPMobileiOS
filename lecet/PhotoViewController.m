@@ -58,6 +58,16 @@
     self.scrollView.zoomScale = 1.0;
     self.scrollView.contentSize = self.imageView.frame.size;
     
+    self.photoTitle = [DerivedNSManagedObject objectOrNil:self.photoTitle];
+    if (self.photoTitle == nil) {
+        self.photoTitle = @"";
+    }
+    
+    self.text = [DerivedNSManagedObject objectOrNil:self.text];
+    if (self.text == nil) {
+        self.text = @"";
+    }
+
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:TITLE_FONT.pointSize * 0.6];
 
@@ -106,12 +116,19 @@
         
         self.viewtextBackground.alpha = self.buttonBack.alpha;
         self.viewtextBackground.hidden = self.buttonBack.hidden;
+
+        if (self.textView.attributedText.length <= 1) {
+            self.viewtextBackground.hidden = YES;
+        }
         
         [UIView animateWithDuration:0.25 animations:^{
             
             self.buttonBack.alpha = self.buttonBack.hidden?0:1;
             self.viewtextBackground.alpha = self.buttonBack.alpha;
             
+            if (self.textView.attributedText.length <= 1) {
+                self.viewtextBackground.hidden = YES;
+            }
         } completion:^(BOOL finished) {
             if (finished) {
                 

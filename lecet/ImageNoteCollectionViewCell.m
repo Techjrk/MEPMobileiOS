@@ -101,6 +101,14 @@
             [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteImage"] forState:UIControlStateNormal];
             [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editImage"] forState:UIControlStateNormal];
         }
+   } else {
+       self.buttonEdit.hidden = YES;
+       self.buttonDelete.hidden = YES;
+   }
+    
+    if ([[DataManager sharedManager] isAdmin]) {
+        self.buttonEdit.hidden = NO;
+        self.buttonDelete.hidden = NO;
     }
 }
 

@@ -330,7 +330,7 @@ class PanoramaViewer;
         viewtextBackground.alpha = backButton.alpha;
         viewtextBackground.hidden = backButton.hidden;
         
-        if (textView.attributedText.length == 1) {
+        if (textView.attributedText.length <= 1) {
             viewtextBackground.hidden = YES;
         }
         
@@ -339,7 +339,7 @@ class PanoramaViewer;
             backButton.alpha = backButton.hidden?0:1;
             viewtextBackground.alpha = backButton.alpha;
 
-            if (textView.attributedText.length == 1) {
+            if (textView.attributedText.length <= 1) {
                 viewtextBackground.hidden = YES;
             }
           

@@ -163,6 +163,8 @@
         parameter = @{@"email":email, @"password":password,@"deviceToken": appDelegate.pushToken, @"deviceType": @"ios"};
     }
     
+    [[DataManager sharedManager] storeKeyChainValue:kKeychainUserIsAdmin password:@"0" serviceName:kKeychainServiceName];
+
     [self HTTP_POST:[self url:kUrlLogin] parameters: parameter success:^(id object) {
 
         NSString *token = object[@"id"];
@@ -172,7 +174,21 @@
         
         [[DataManager sharedManager] storeKeyChainValue:kKeychainUserId password:[NSString stringWithFormat:@"%li",(long)userId.integerValue] serviceName:kKeychainServiceName];
 
-        success(object);
+        [self userInformation:userId success:^(id object) {
+            
+            NSArray *roles = object[@"roles"];
+            for (NSDictionary *role in roles) {
+                
+                NSString *name = role[@"name"];
+                if ([name isEqualToString:@"superAdmin"]) {
+                    [[DataManager sharedManager] storeKeyChainValue:kKeychainUserIsAdmin password:@"1" serviceName:kKeychainServiceName];
+                }
+
+            }
+            success(object);
+        } failure:^(id object) {
+            failure(object);
+        }];
     } failure:^(id object) {
         failure(object);
     } authenticated:NO];
@@ -943,6 +959,11 @@
     } authenticated:YES];
 }
 
+- (BOOL)isAdmin {
+    NSString *userType =[[DataManager sharedManager] getKeyChainValue:kKeychainUserIsAdmin serviceName:kKeychainServiceName];
+
+    return userType.integerValue == 1;
+}
 #pragma mark - PROJECT TRACK LISTS HTTP REQUEST
 
 - (void)userProjectTrackingList:(NSNumber *)userId success:(APIBlock)success failure:(APIBlock)failure {

@@ -28,6 +28,7 @@
 #define kKeychainServiceName            @"lecet_api"
 #define kKeychainAccessToken            @"access_token"
 #define kKeychainUserId                 @"userId"
+#define kKeychainUserIsAdmin            @"isAdmin"
 #define kKeychainTouchIDToken           @"kKeychainTouchIDToken"
 #define kKeychainTouchIDExpiration      @"kKeychainTouchIDExpiration"
 #define kKeychainEmail                  @"kKeychainEmail"
@@ -70,7 +71,7 @@
 - (void)jurisdiction:(APIBlock)success failure:(APIBlock)failure;
 - (void)recentlyViewed:(APIBlock)success failure:(APIBlock)failure;
 - (void)updateUserInformation:(NSNumber*)userId userUpdateData:(id)paramData success:(APIBlock)success failure:(APIBlock)failure;
-
+- (BOOL)isAdmin;
 //PROJECT TRACK LISTS
 - (void)userProjectTrackingList:(NSNumber*)userId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectAvailableTrackingList:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;

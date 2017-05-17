@@ -180,9 +180,6 @@ float MetersToMiles(float meters) {
             
                     CGFloat newDistance = distance + (distance==5?95:100);
                     
-                    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, MilesToMeters(newDistance), MilesToMeters(newDistance));
-                    [_mapView setRegion:region];
-            
                     [self loadProjects:newDistance coordinate:coordinate regionValue:regionValue];
                     
                     
