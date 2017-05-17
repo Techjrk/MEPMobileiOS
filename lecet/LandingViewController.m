@@ -85,27 +85,50 @@
 }
 
 - (void)showDashboard {
-    NSString *dateString = [DerivedNSManagedObject shortDateStringFromDate:[NSDate date]];
-    NSDate *currentDate = [DerivedNSManagedObject dateFromShortDateString:dateString];
-    
-    [[DataManager sharedManager] hiddentProjects:^(id object) {
+  
+    [[DataManager sharedManager] storeKeyChainValue:kKeychainUserIsAdmin password:@"0" serviceName:kKeychainServiceName];
+
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+
+    [[DataManager sharedManager] userInformation:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
         
-        [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
-            DashboardViewController *controller = [DashboardViewController new];
-            controller.dashboardViewControllerDelegate = self;
-            [self.navigationController pushViewController:controller animated:YES];
+        NSArray *roles = object[@"roles"];
+        for (NSDictionary *role in roles) {
+            
+            NSString *name = role[@"name"];
+            if ([name isEqualToString:@"superAdmin"]) {
+                [[DataManager sharedManager] storeKeyChainValue:kKeychainUserIsAdmin password:@"1" serviceName:kKeychainServiceName];
+            }
+            
+        }
+        
+        NSString *dateString = [DerivedNSManagedObject shortDateStringFromDate:[NSDate date]];
+        NSDate *currentDate = [DerivedNSManagedObject dateFromShortDateString:dateString];
+        
+        [[DataManager sharedManager] hiddentProjects:^(id object) {
+            
+            [[DataManager sharedManager] bidsRecentlyMade:currentDate success:^(id object) {
+                DashboardViewController *controller = [DashboardViewController new];
+                controller.dashboardViewControllerDelegate = self;
+                [self.navigationController pushViewController:controller animated:YES];
+            } failure:^(id object) {
+                
+                [self promptForReloginWithMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_SERVER")];
+                
+            }];
+            
         } failure:^(id object) {
             
             [self promptForReloginWithMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_SERVER")];
             
         }];
-        
-    } failure:^(id object) {
 
+    } failure:^(id object) {
+        
         [self promptForReloginWithMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_SERVER")];
 
     }];
-
+    
 }
 
 - (void)loginUsingTouchId {
