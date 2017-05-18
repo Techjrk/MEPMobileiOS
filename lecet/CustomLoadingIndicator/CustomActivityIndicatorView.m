@@ -62,13 +62,11 @@
     rotation.duration = 1.1; // Speed
     rotation.repeatCount = HUGE_VALF; // Repeat forever. Can be a finite number.
     [view.layer addAnimation:rotation forKey:@"Spin"];
-    
     self.hidden = NO;
 }
 
 - (void) stopRotateAnimate: (UIView *) view {
     [view.layer removeAnimationForKey:@"Spin"];
-    //[self animateDisplay:self.loadingImageView];
     
 }
 

@@ -23,13 +23,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
 }
 
 #pragma mark - UICollectionViewDelegate and DataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    
     return self.collectionItems.count;
 }
 
@@ -51,25 +48,8 @@
     return size;
 }
 
-/*
-- (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(cellSpace,cellSpace,cellSpace,cellSpace);
-}
-
-- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return cellSpace;
-}
-
-- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
-}
-*/
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 }
-
-
-
 
 @end

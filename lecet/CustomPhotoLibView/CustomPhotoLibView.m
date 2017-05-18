@@ -29,7 +29,6 @@
     self.imageManager = [PHCachingImageManager new];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
     [self setInfo];
-    //[self performSelector:@selector(setInfo) withObject:nil afterDelay:3];
 }
 
 - (void)setInfo {
@@ -56,13 +55,10 @@
 
 #pragma mark - UICollectionViewDelegate and DataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    
     return self.fetchresult.count;
 }
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
 }
 
