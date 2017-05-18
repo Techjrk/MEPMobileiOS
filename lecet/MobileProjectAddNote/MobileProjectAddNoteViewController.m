@@ -421,6 +421,10 @@
     
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
+    
+    if (!self.addButton.userInteractionEnabled) {
+        self.addButton.userInteractionEnabled = YES;
+    }
 }
 
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
