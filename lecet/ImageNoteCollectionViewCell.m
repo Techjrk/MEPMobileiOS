@@ -93,14 +93,7 @@
     
     NSString *userIdentity =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
    if ( userIdentity.integerValue == self.userId.integerValue) {
-        
-        if (self.imageId == nil) {
-            [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteNote"] forState:UIControlStateNormal];
-            [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editNote"] forState:UIControlStateNormal];
-        } else {
-            [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteImage"] forState:UIControlStateNormal];
-            [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editImage"] forState:UIControlStateNormal];
-        }
+       [self setButtomImages];
    } else {
        self.buttonEdit.hidden = YES;
        self.buttonDelete.hidden = YES;
@@ -109,6 +102,17 @@
     if ([[DataManager sharedManager] isAdmin]) {
         self.buttonEdit.hidden = NO;
         self.buttonDelete.hidden = NO;
+        [self setButtomImages];
+    }
+}
+
+- (void)setButtomImages {
+    if (self.imageId == nil) {
+        [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteNote"] forState:UIControlStateNormal];
+        [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editNote"] forState:UIControlStateNormal];
+    } else {
+        [self.buttonDelete setImage:[UIImage imageNamed:@"icon_deleteImage"] forState:UIControlStateNormal];
+        [self.buttonEdit setImage:[UIImage imageNamed:@"icon_editImage"] forState:UIControlStateNormal];
     }
 }
 
