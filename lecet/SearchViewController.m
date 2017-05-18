@@ -867,9 +867,37 @@ typedef enum : NSUInteger {
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Company"]) {
             
-            NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+            NSMutableDictionary *searchFilter = [filter[@"filter"][@"searchFilter"] mutableCopy];
             _filter[@"searchFilter"] = searchFilter;
-     
+    
+            NSMutableDictionary *esFilter = [NSMutableDictionary new];
+            
+            NSDictionary *esLocation = searchFilter[@"companyLocation"];
+            if (esLocation) {
+                esFilter[@"projectLocation"] = esLocation;
+            }
+            
+            NSDictionary *esJurisdiction = searchFilter[@"jurisdictions"];
+            if (esJurisdiction) {
+                [searchFilter removeObjectForKey:@"jurisdictions"];
+                esFilter[@"jurisdictions"] = esJurisdiction;
+            }
+            
+            NSDictionary *esProjectType = searchFilter[@"projectTypeId"];
+            if (esProjectType) {
+                [searchFilter removeObjectForKey:@"projectTypeId"];
+                esFilter[@"projectTypes"] = esProjectType;
+            }
+            
+            NSDictionary *esValue = searchFilter[@"valuation"];
+            if (esValue) {
+                esFilter[@"projectValue"] = esValue;
+            }
+            
+            if (esFilter.count>0) {
+                searchFilter[@"esFilter"] = esFilter;
+            }
+            
         } else {
             if (searchString.length==0) {
                 _filter[@"searchFilter"] = @"{}";
