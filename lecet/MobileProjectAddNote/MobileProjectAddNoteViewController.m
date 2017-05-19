@@ -159,12 +159,22 @@
         }];
     } else {
         */
-        MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
-        controller.mobileProjectNotePopUpViewControllerDelegate = self;
-        controller.isAddImage = self.isAddPhoto;
-        controller.modalPresentationStyle = UIModalPresentationCustom;
-        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self.navigationController presentViewController:controller animated:YES completion:nil];
+    
+    if (!self.isAddPhoto) {
+        
+        if (self.bodyTextView.text.length==0) {
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"MPANV_ALERT_BODY_REQUIRED")];
+            return;
+        }
+    }
+
+    MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
+    controller.mobileProjectNotePopUpViewControllerDelegate = self;
+    controller.isAddImage = self.isAddPhoto;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+
     //}
 }
 - (IBAction)tappedTrashcanButton:(id)sender {

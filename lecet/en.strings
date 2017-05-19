@@ -446,6 +446,7 @@
 "MPANV_BUTTON_CANCEL"                       =               "CANCEL";
 "MPANV_ALERT_TITLE"                         =               "WARNING!";
 "MPANV_ALERT_MESSAGE"                       =               "All field will be cleared! Are you sure you want to continue?";
+"MPANV_ALERT_BODY_REQUIRED"                 =               "Post body is required!";
 
 //MobileProjectNotePopUpViewController
 "MPNPV_TITLE"                               =               "You are about to post a public note.";
