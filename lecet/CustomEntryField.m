@@ -67,12 +67,10 @@
 }
 
 - (NSString *)getLine {
-
     return _labelLine1.text;
 }
 
 - (NSArray *)getLines {
-    
     if (_labelLine2.text == nil) {
         return @[_labelLine1.text];
     }

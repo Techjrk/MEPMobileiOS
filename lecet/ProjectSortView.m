@@ -9,16 +9,12 @@
 #import "ProjectSortView.h"
 #import "ProjectSortCVCell.h"
 
-
 @interface ProjectSortView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
- 
     NSArray *projectSortDataItems;
-    
 }
 @property (weak, nonatomic) IBOutlet UIView *sortTitleView;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitleSort;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @end
 
 @implementation ProjectSortView
@@ -29,13 +25,10 @@
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectSortCVCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    //[_collectionView setBackgroundColor:PROJECTSORT_LINE_COLOR];
-
     _collectionView.bounces = NO;
     
     [self.layer setCornerRadius:5.0f];
     self.layer.masksToBounds = YES;
-
     
     [_labelTitleSort setFont:PROJECTSORT_SORTTITLE_LABEL_FONT];
     [_labelTitleSort setTextColor:PROJECTSORT_SORTTITLE_LABEL_FONT_COLOR];
@@ -44,9 +37,7 @@
     [_sortTitleView setBackgroundColor:PROJECTSORT_TITLEVIEW_BG_COLOR];
     
     [self setProjectSortDataItem];
-    
 }
-
 
 - (void)setProjectSortDataItem {
     projectSortDataItems= @[NSLocalizedLanguage(@"PROJECTSORT_BID_DATE_TEXT"),
@@ -57,11 +48,9 @@
     
 }
 
-
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     ProjectSortCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     NSString *title = [projectSortDataItems objectAtIndex:indexPath.row];
     cell.labelTitle.text = title;
@@ -90,10 +79,8 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    //return 0.5f;
     return 0;
 }
-
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
@@ -101,12 +88,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [_projectSortViewDelegate selectedProjectSort:(ProjectSortItems)indexPath.row];
-    
+    [_projectSortViewDelegate selectedProjectSort:(ProjectSortItems)indexPath.row];    
 }
-
-
-
-
 
 @end

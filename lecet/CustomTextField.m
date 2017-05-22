@@ -35,7 +35,6 @@
     _textField.textColor = CUSTOM_TEXTFIELD_FIELD_COLOR;
     
     _lineView.backgroundColor = CUSTOM_TEXTFIELD_LAYER_COLOR;
-    
 }
 
 -(void)setPlaceHolder:(NSString *)placeHolder {

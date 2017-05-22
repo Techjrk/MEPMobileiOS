@@ -8,10 +8,8 @@
 
 #import "CalendarItemCollectionViewCell.h"
 
-
 @interface CalendarItemCollectionViewCell()<CalendarItemDelegate>
 @property (weak, nonatomic) IBOutlet CalendarItem *calendarItem;
-
 @end
 
 @implementation CalendarItemCollectionViewCell

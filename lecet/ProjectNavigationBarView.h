@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-
 typedef enum  {
     ProjectNavBackButton = 0,
     ProjectNavReOrder = 1,

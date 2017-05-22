@@ -23,7 +23,6 @@
     self.layer.shadowOpacity = 0.5;
     self.layer.shadowColor = [UIColor darkGrayColor].CGColor;
     self.layer.masksToBounds = NO;
-
 }
 
 - (void)setItemInfo:(id)info {

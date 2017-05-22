@@ -37,12 +37,10 @@
     
     _backButton.tag = ProjectNavBackButton;
     _reOrderButton.tag = ProjectNavReOrder;
-    
 }
 
 - (void)setContractorName:(NSString *)contractorName {
     _labelContractorName.text = contractorName;
-    
 }
 
 - (void)setProjectTitle:(NSString *)projectTitle {
@@ -59,9 +57,7 @@
 }
 
 - (UIView*)reOrderButton {
-
     return _reOrderButton;
-
 }
 
 @end

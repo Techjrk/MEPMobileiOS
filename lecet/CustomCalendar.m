@@ -18,7 +18,6 @@
 #define CALENDAR_LABEL_MONTH_TEXT_COLOR                         RGB(255, 255, 255)
 #define CALENDAR_LABEL_MONTH_TEXT_FONT                          fontNameWithSize(FONT_NAME_LATO_BLACK, 17)
 
-
 @interface CustomCalendar()<UICollectionViewDelegate, UICollectionViewDataSource, CalendarItemCollectionViewCellDelegate>{
     NSDate *currentDate;
     
@@ -68,7 +67,6 @@
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     CalendarItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     cell.calendarItemCollectionViewCellDelegate = self;
@@ -202,7 +200,6 @@
 }
 
 - (IBAction)tappedButton:(id)sender {
-    
     [self.customCalendarDelegate tappedCalendarNavButton:[sender isEqual:_buttonLeft]?CalendarButtonLeft:CalendarButtonRight];
 }
 @end

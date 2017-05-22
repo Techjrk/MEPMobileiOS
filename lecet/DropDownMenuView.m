@@ -8,7 +8,6 @@
 
 #import "DropDownMenuView.h"
 
-
 @interface DropDownMenuView ()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailAddressLabel;
@@ -23,7 +22,6 @@
 @implementation DropDownMenuView
 
 -(void)awakeFromNib{
-    
     [super awakeFromNib];
     _userNameLabel.font = DROPDOWN_MENU_LABEL_USERNAME_FONT;
     _emailAddressLabel.font = DROPDOWN_MENU_LABEL_EMAIL_ADDRESS_FONT;
@@ -58,17 +56,14 @@
 - (IBAction)tappedDropDownButtonMenu:(id)sender{
     UIButton *button = sender;
     [_dropDownMenuDelegate tappedDropDownMenu:(DropDownMenuItem)button.tag];
-    
 }
 
 - (void)setUserName:(NSString *)username {
     _userNameLabel.text = username;
-    
 }
 
 - (void)setEmailAddress:(NSString *)emailAddress {
     _emailAddressLabel.text = emailAddress;
-    
 }
 
 @end

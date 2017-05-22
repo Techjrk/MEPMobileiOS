@@ -49,6 +49,4 @@
     [_editViewCollectionViewCellDelegate tappedButtonSelectAtTag:tag];
 }
 
-
-
 @end

@@ -25,7 +25,6 @@
     self.backgroundColor = [UIColor clearColor];
     self.opaque = YES;
     pieItems = [[NSMutableDictionary alloc] init];
-    
 }
 
 -(void)drawRect:(CGRect)rect {
@@ -59,7 +58,6 @@
         [self.view.layer addSublayer:layer];
         [pieLayers addObject:layer];
         [layer setNeedsDisplay];
-        
     }
 }
 
@@ -93,7 +91,6 @@
 }
 
 - (void)tappedPieSegmentLayer:(id)object hasFocus:(BOOL)hasFocus{
-    
     for (CustomPieChartLayer *layer in pieLayers) {
         if (![layer isEqual:object ]) {
             [layer setSegmentFocus:NO hasLayerFocus:hasFocus];
@@ -117,7 +114,5 @@
         }
     }
     [self.customPieChartDelegate tappedPieSegment:nil chartView:self.customPieChartDelegate];
-    
 }
-
 @end

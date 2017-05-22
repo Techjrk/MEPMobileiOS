@@ -43,34 +43,25 @@ static const float animationDuration = 0.25f;
     [_buttonUpcoming setTitle:upcomingText forState:UIControlStateNormal];
     [_buttonPast setTitle:pastText forState:UIControlStateNormal];
     
-    
     [_buttonUpcoming setBackgroundColor:[UIColor clearColor]];
     [_buttonPast setBackgroundColor:[UIColor clearColor]];
     [_bottomLineView setBackgroundColor:PROJECT_TAB_SLIDING_VIEW_BG_COLOR];
     [self.view setBackgroundColor:[PROJECT_TAB_VIEW_BG_COLOR colorWithAlphaComponent:45.0f]];
-   
 }
 
 - (void)setCounts:(NSUInteger)upcoming past:(NSUInteger)past {
-    
     NSString *upcomingText = [NSString stringWithFormat:@"%li %@", (long)upcoming,NSLocalizedLanguage(@"PROJECTTAB_UPCOMING_TEXT")];
     NSString *pastText = [NSString stringWithFormat:@"%li %@", (long)past,NSLocalizedLanguage(@"PROJECTTAB_PAST_TEXT")];
     [_buttonUpcoming setTitle:upcomingText forState:UIControlStateNormal];
     [_buttonPast setTitle:pastText forState:UIControlStateNormal];
-
 }
 
 - (IBAction)tappedButton:(id)sender {
-
     UIButton *button = sender;
-    
     CGRect buttonRect = button.frame;
     CGFloat lineWidth = _bottomLineView.frame.size.width;
-
     float constantForConstraint = buttonRect.origin.x + ((buttonRect.size.width - lineWidth)/2.0);
-    
     [UIView animateWithDuration:animationDuration animations:^{
-        
         _constraintLeftSideLeadingSpace.constant = constantForConstraint;
         [self.view layoutIfNeeded];
         
@@ -80,9 +71,7 @@ static const float animationDuration = 0.25f;
                 [_projectTabViewDelegate tappedProjectTab:(ProjectTabItem)button.tag];
             }
         }
-        
     }];
-    
 }
 
 - (void)layoutSubviews {
@@ -92,6 +81,5 @@ static const float animationDuration = 0.25f;
         isShown = YES;
     }
 }
-
 
 @end

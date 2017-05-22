@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ProjectListCVCell : UICollectionViewCell
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonProjectTrackList;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumberOfProject;
-
 @end

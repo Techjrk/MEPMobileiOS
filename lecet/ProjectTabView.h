@@ -14,13 +14,9 @@ typedef enum  {
     ProjectTabPast = 1,
 } ProjectTabItem;
 
-
-
 @protocol ProjectTabViewDelegate <NSObject>
-
 @required
 -(void)tappedProjectTab:(ProjectTabItem)projectTabItem;
-
 @end
 
 @interface ProjectTabView : BaseViewClass

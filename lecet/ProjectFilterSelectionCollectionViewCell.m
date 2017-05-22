@@ -13,7 +13,6 @@
     
 }
 @property (weak, nonatomic) IBOutlet ProjectFilterSelectionView *projectFilterSelectionView;
-
 @end
 
 @implementation ProjectFilterSelectionCollectionViewCell
@@ -35,7 +34,6 @@
 - (void)setButtonTag:(int)tag {
     [_projectFilterSelectionView setButtonTag:tag];
 }
-
 
 - (void)tappedCheckButtonAtTag:(int)tag {
     [_projectFilterSelectionCollectionViewCellDelegate tappedCheckButtonAtTag:tag];

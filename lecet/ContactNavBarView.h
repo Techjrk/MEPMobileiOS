@@ -9,12 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-
 @protocol ContactNavViewDelegate <NSObject>
-
 @required
 -(void)tappedContactNavBackButton;
-
 @end
 
 @interface ContactNavBarView : BaseViewClass

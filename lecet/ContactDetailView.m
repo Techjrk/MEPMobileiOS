@@ -34,9 +34,7 @@
 
 }
 
-
 - (void)setItems:(NSMutableArray*)items {
-    
     collectionItems = items;
     cellHeight = 0;
     constraintHeight.constant = 0;
@@ -48,7 +46,6 @@
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     ContactFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     [cell setInfo:collectionItems[indexPath.row]];

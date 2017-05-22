@@ -29,7 +29,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [_collectionView registerNib:[UINib nibWithNibName:[[ContactItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-    
 }
 
 - (void)setItems:(NSMutableArray*)items {
@@ -43,7 +42,6 @@
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     ContactItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     DB_CompanyContact *item = collectionItems[indexPath.row];
@@ -51,17 +49,14 @@
     [cell setItemInfo:@{CONTACT_NAME:item.name, CONTACT_COMPANY:item.relationshipCompany.name}];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
-    
     return cell;
 }
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     NSInteger count = collectionItems.count;
     return count;
 }
@@ -91,9 +86,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
     [self.contactAllListViewDelegate selectedContact:collectionItems[indexPath.row]];
-
 }
 
 @end

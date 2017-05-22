@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ProjectSortCVCell : UICollectionViewCell
-
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @end

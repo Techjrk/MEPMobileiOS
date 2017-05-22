@@ -31,14 +31,12 @@
 @synthesize projectStateViewDelegate;
 
 - (void)awakeFromNib {
-    
     [super awakeFromNib];
     [self clearSelection];
     
     [_buttonShare setTitle:NSLocalizedLanguage(@"PROJECT_STATE_SHARE") forState:UIControlStateNormal];
     [_buttonHide setTitle:NSLocalizedLanguage(@"PROJECT_STATE_HIDE") forState:UIControlStateNormal];
     [_buttonTrack setTitle:NSLocalizedLanguage(@"PROJECT_STATE_TRACK") forState:UIControlStateNormal];
-    
     
     self.layer.shadowColor = [PROJECT_STATE_BUTTON_SHADOW_COLOR colorWithAlphaComponent:0.5].CGColor;
     self.layer.shadowRadius = 2;
@@ -49,7 +47,6 @@
     _buttonTrack.tag = StateViewTrack;
     _buttonShare.tag = StateViewShare;
     _buttonHide.tag = StateViewHide;
-
 }
 
 - (void)clearSelection {
@@ -66,7 +63,6 @@
 }
 
 - (void)setupButton:(UIButton*)button {
-    
     BOOL isSelected = button.selected;
     button.selected = NO;
     
@@ -91,12 +87,9 @@
   
     [self setupSelection];
     [self.projectStateViewDelegate selectedStateViewItem:(StateView)button.tag view:button];
-    
 }
 
 - (IBAction)tappedButton:(id)sender {
     [self selectButton:sender];
 }
-
-
 @end

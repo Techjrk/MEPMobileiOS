@@ -37,7 +37,6 @@
     [_collapsibleView setSelectionButtonSelected:selected];
 }
 
-
 #pragma mark - CollapsibleView Delegate
 
 - (void)tappedSelectionButton:(id)tag senderView:(UIView *)senderView{
@@ -45,9 +44,6 @@
 }
 
 - (void)tappedDropDownButton:(id)tag senderView:(UIView *)senderView{
-
-
 }
-
 
 @end

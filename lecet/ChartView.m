@@ -38,9 +38,7 @@
 @implementation ChartView
 @synthesize isButton;
 -(void)awakeFromNib {
-
     [super awakeFromNib];
-    
     _buttonLeft.imageView.contentMode = UIViewContentModeScaleAspectFit;
     _buttonRight.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
@@ -65,7 +63,6 @@
     _labelUtilities.textColor = CHART_BUTTON_UTILITIES_COLOR;
     
     _piechart.customPieChartDelegate = self;
-        
 }
 
 - (void)enableButton:(UIButton*)button enabled:(BOOL)enabled {
@@ -187,7 +184,6 @@
 
 - (IBAction)tappedButton:(id)sender {
     [self.chartViewDelegate tappedChartNavButton:[sender isEqual:_buttonLeft]?ChartButtonLeft:ChartButtonRight];
-    
 }
 
 - (void)hideLeftButton:(BOOL)hide {

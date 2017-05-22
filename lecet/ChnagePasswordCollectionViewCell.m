@@ -11,8 +11,8 @@
 
 @interface ChnagePasswordCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet CPCustomTextFieldView *changePasswordView;
-
 @end
+
 @implementation ChnagePasswordCollectionViewCell
 
 - (void)awakeFromNib {

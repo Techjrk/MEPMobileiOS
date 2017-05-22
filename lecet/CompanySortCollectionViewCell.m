@@ -13,7 +13,6 @@
 
 @interface CompanySortCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
-
 @end
 
 @implementation CompanySortCollectionViewCell

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ProjectFilterCollapsibleDataInfo.h"
 
-
 @protocol ProjectFilterCollapsibleCollectionViewCellDelegate <NSObject>
 - (void)tappedSelectionButton:(id)tag;
 - (void)tappedDropDownButton:(id)tag;
@@ -28,7 +27,6 @@
 - (void)setIndePathForCollapsible:(NSIndexPath *)index;
 - (void)setCollapsibleRightButtonHidden:(BOOL)hide;
 - (void)setLineViewHidden:(BOOL)hide;
-
 
 //Second Sub
 - (void)setSecSubCatInfo:(id)info;

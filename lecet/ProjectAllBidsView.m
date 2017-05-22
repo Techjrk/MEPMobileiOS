@@ -28,7 +28,6 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     [_collectionView registerNib:[UINib nibWithNibName:[[ProjectBidItemCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-
 }
 
 - (void)setItems:(NSMutableArray*)items {
@@ -38,12 +37,9 @@
     [_collectionView reloadData];
 }
 
-
-
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
     ProjectBidItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     DB_Bid *bid = collectionItems[indexPath.row];
@@ -54,17 +50,14 @@
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];
     
-    
     return cell;
 }
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     NSInteger count = collectionItems.count;
     return count;
 }
@@ -74,7 +67,6 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGSize size;
-    
     cellHeight = kDeviceHeight * 0.15;
     size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
     return size;
@@ -82,7 +74,6 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    
     return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
 }
 
@@ -97,6 +88,5 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.projectAllBidsViewDelegate selectedProjectAllBidItem:collectionItems[indexPath.row]];
 }
-
 
 @end

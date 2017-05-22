@@ -26,15 +26,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCancelHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCancelButtonBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHideButtom;
-
 - (IBAction)tappedProjectDetailState:(id)sender;
-
 @end
 
 @implementation ProjectDetailStateView
-
 - (void)awakeFromNib{
-    
     [super awakeFromNib];
     self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
@@ -58,7 +54,6 @@
 }
 
 - (void)drawShadow {
-    
     CGRect screenRect = self.bounds;
     CGRect customDimRect = screenRect;
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:customDimRect];
@@ -71,13 +66,11 @@
 }
 
 - (IBAction)tappedProjectDetailState:(id)sender {
-    
     UIButton *button = sender;
     [_projectDetailStateDelegate tappedProjectDetailState:(ProjectDetailStateItem)button.tag];
 }
 
 - (void)setAutoLayoutInIncompatibleDevice {
-    
     if (isiPhone4) {
         _constraintButtonHideProjectHeight.constant = 25;
         _constraintHideProjectLeading.constant = 70;
@@ -85,7 +78,6 @@
         _constraintCancelButtonBottom.constant = 5;
         _constraintHideButtom.constant = 10;
     }
-    
     if (isiPhone5) {
         _constraintButtonHideProjectHeight.constant = 30;
         _constraintHideProjectLeading.constant = 60;
@@ -93,6 +85,4 @@
         _constraintCancelHeight.constant = 22;
     }
 }
-
-
 @end

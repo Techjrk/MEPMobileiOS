@@ -9,25 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
-
 typedef enum  {
     ProjectDetailStateHideProject = 0,
     ProjectDetailStateCancel = 1,
 } ProjectDetailStateItem;
 
-
-
-
 @protocol ProjectDetailStateDelegate <NSObject>
 @required
 - (void)tappedProjectDetailState:(ProjectDetailStateItem)projectDetailStteItem;
-
 @end
-
 
 @interface ProjectDetailStateView : BaseViewClass
 @property (nonatomic,assign) id<ProjectDetailStateDelegate> projectDetailStateDelegate;
-
-
-
 @end

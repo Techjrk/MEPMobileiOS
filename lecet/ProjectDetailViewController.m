@@ -1113,7 +1113,7 @@ typedef enum {
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image =  [info valueForKey:UIImagePickerControllerOriginalImage];
     self.customCameraVC.capturedImage.image = image;
-    //capturedImage = image;
+    capturedImage = image;
     if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
         capturedImage = image;
         [self.picker dismissViewControllerAnimated:YES completion:^{
@@ -1121,20 +1121,21 @@ typedef enum {
         }];
     } else {
         //capturedImage = [self reducedImageOnceCapture:image];
-        /*
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         });
-        */
+        
+        /*
         NSData *imageData =  UIImageJPEGRepresentation(image, 1);
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         [library writeImageDataToSavedPhotosAlbum:imageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
             if (assetURL)
             {
                 [self latestPhotoWithCompletion:^(UIImage *photo) {
-                    UIImageRenderingMode renderingMode = /* DISABLES CODE */ (YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
-                    capturedImage  = [photo imageWithRenderingMode:renderingMode];
-                    
+                    UIImageRenderingMode renderingMode = /* DISABLES CODE */ //(YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
+                    //capturedImage  = [photo imageWithRenderingMode:renderingMode];
+        /*
                 }];
             }
             else if (error)
@@ -1145,6 +1146,7 @@ typedef enum {
                 }
             }
         }];
+        */
     }
 }
 

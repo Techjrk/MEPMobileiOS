@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol SettingCollectionViewCellDelegate <NSObject>
-
 - (void)switchButtonStateChange:(BOOL)isOn;
-
 @end
 
 @interface SettingCollectionViewCell : UICollectionViewCell

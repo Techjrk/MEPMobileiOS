@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ChnagePasswordCollectionViewCell : UICollectionViewCell
-
 - (NSString *)getText;
 - (void)setTitle:(NSString *)title;
 - (void)setPlaceHolderForTextField:(NSString *)placeHolderText;
 - (void)setSecureTextField:(BOOL)secure;
-
 @end

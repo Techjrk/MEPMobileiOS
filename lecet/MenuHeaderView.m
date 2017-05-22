@@ -42,7 +42,6 @@
     _buttonTracking.tag = MenuHeaderTrack;
     _buttonSearch.tag = MenuHeaderSearch;
     _buttonMore.tag = MenuHeaderMore;
-
 }
 
 - (void)setTitleFromCount:(NSInteger)count title:(NSString*)title {
@@ -51,7 +50,6 @@
     [titleCount appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:@{NSFontAttributeName:MENUHEADER_LABEL_TEXT_FONT, NSForegroundColorAttributeName:MENUHEADER_LABEL_COUNT_COLOR}]];
     
     _labelCount.attributedText = titleCount;
-    
 }
 
 - (IBAction)tappedButtonMenu:(id)sender {

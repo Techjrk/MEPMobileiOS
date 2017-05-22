@@ -134,7 +134,6 @@
             modelType = @"";
         }
         [cell setImage:modelType];
-        //[cell setUpdateDescription:titleName];
         NSString *updateInfo = [collectionDataItems objectAtIndex:indexPath.row][@"UPDATES"];
         if (updateInfo == nil) {
             updateInfo = @"";

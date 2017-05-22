@@ -105,7 +105,6 @@
     
         self.iconMarker.hidden = YES;
     }];
-    
 }
 
 - (NSAttributedString *)convertToAttributedTextFeetAway:(NSString *)feetAway priceDetails:(NSString *)priceDetailText {

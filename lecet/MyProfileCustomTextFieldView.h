@@ -10,8 +10,6 @@
 #import "BaseViewClass.h"
 #import "TextfieldViewDelegate.h"
 
-
-
 @interface MyProfileCustomTextFieldView : BaseViewClass
 @property (nonatomic,assign) id <TextfieldViewDelegate> textFieldViewDelegate;
 - (void)setTileLeftLabelText:(NSString *)title;

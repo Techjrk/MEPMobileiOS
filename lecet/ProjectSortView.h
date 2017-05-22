@@ -11,14 +11,10 @@
 #import "ProjectSortViewController.h"
 
 @protocol ProjectSortViewDelegate <NSObject>
-
 @required
 -(void)selectedProjectSort:(ProjectSortItems)projectSortItem;
-
 @end
-
 
 @interface ProjectSortView : BaseViewClass
 @property (nonatomic,assign) id<ProjectSortViewDelegate> projectSortViewDelegate;
-
 @end

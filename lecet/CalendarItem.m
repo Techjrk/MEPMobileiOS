@@ -44,7 +44,6 @@
 }
 
 - (void)clearSelection:(NSNotification*)notification{
-    
     if ([self isDescendantOfView:notification.object]) {
         state = previousState;
         [self setNeedsDisplay];
@@ -58,7 +57,6 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
 }
 
 - (void)drawRect:(CGRect)rect {

@@ -48,7 +48,6 @@
 }
 
 - (void)setHeaderInfo:(id)headerInfo {
-    
     NSDictionary *info = headerInfo;
     
     _labelTitle.text = info[PROJECT_TITLE];
@@ -69,7 +68,6 @@
     
     [_mapView setRegion:region];
     [_mapView addAnnotation:annotation];
-
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -120,7 +118,6 @@
 
 - (CLLocation *)location {
     MKPointAnnotation *annotation = _mapView.annotations[0];
-
     return [[CLLocation new] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
 }
 @end

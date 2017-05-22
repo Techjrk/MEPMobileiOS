@@ -29,7 +29,6 @@
     [_collectionView registerNib:[UINib nibWithNibName:[[AssociatedBidCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
 }
 
-
 - (void)changeConstraintHeight:(NSLayoutConstraint*)constraint {
     constraintHeight = constraint;
 }
@@ -45,7 +44,6 @@
 #pragma mark - UICollectionView source and delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     AssociatedBidCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
   
     DB_Project *project = collectionItems[indexPath.row];
@@ -57,13 +55,11 @@
     return cell;
 }
 
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     NSInteger count = collectionItems.count;
     return count;
 }
@@ -73,7 +69,6 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGSize size;
-    
     cellHeight = kDeviceHeight * 0.148;
     size = CGSizeMake( _collectionView.frame.size.width, cellHeight);
     return size;
@@ -81,7 +76,6 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 {
-    
     return UIEdgeInsetsMake(0, 0, kDeviceHeight * 0.015, 0);
 }
 
@@ -94,7 +88,6 @@
 {
     return 0;
 }
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.projectAllAssociatedProjectViewDelegate selectedAssociatedProjectItem:collectionItems[indexPath.row]];

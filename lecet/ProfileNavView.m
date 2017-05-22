@@ -40,9 +40,7 @@
     
     _rightNavButton.titleLabel.font = PROFILE_NAV_SAVE_BUTTON_FONT;
     [_rightNavButton setTitleColor:PROFILE_NAV_SAVE_BUTTON_FONT_COLOR forState:UIControlStateNormal];
-    //if (!setTitleFromController) {
-         [_rightNavButton setTitle:NSLocalizedLanguage(@"PROFILE_NAV_RIGHT_BUTTON_TEXT") forState:UIControlStateNormal];
-    //}
+    [_rightNavButton setTitle:NSLocalizedLanguage(@"PROFILE_NAV_RIGHT_BUTTON_TEXT") forState:UIControlStateNormal];
    
 }
 
@@ -60,7 +58,6 @@
 }
 
 - (void)setNavRightButtonTitle:(NSString *)text {
-    //setTitleFromController = YES;
     [_rightNavButton setTitle:text forState:UIControlStateNormal];
 }
 

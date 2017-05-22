@@ -7,9 +7,7 @@
 //
 
 #import "BidSoonItem.h"
-
 #import <MapKit/MapKit.h>
-
 #import "DB_Project.h"
 
 #define BID_SOON_ITEMVIEW_BG_COLOR                           RGB(14, 75, 132)
@@ -79,7 +77,6 @@
 }
 
 - (void)setItemInfo:(id)info {
-
     DB_Project *item = info;
  
     _groupDate.backgroundColor = BID_SOON_ITEMVIEW_GROUP_DATE_BG_COLOR;
@@ -116,7 +113,6 @@
     
     [_mapView setRegion:region];
     [_mapView addAnnotation:annotation];
-
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -136,9 +132,7 @@
         userAnnotationView.image = [UIImage imageNamed:@"icon_pin"];
                 
     }
-    
     return userAnnotationView;
-    
 }
 
 

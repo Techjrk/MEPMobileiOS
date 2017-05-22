@@ -37,7 +37,6 @@
     [title appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@", expand?SEE_ALL_ANGLE_UP_TEXT :SEE_ALL_ANGLE_DOWN_TEXT] attributes:@{NSFontAttributeName:SEE_ALL_ANGLE_FONT, NSForegroundColorAttributeName:SEE_ALL_BUTTON_TEXT_COLOR}]];
     
     [_buttonSeeAll setAttributedTitle:title forState:UIControlStateNormal];
-    
 }
 
 - (IBAction)tappedButtonSeeAll:(id)sender {

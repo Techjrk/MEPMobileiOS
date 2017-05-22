@@ -11,7 +11,6 @@
 #define BG_COLOR        RGB(238,238,238)
 #define BORDER_COLOR    RGB(224,224,224)
 
-
 @interface FilterEntryCollectionViewCell ()
 @end
 @implementation FilterEntryCollectionViewCell
@@ -24,8 +23,6 @@
     self.layer.masksToBounds = YES;
     self.layer.borderWidth=1.0f;
     self.layer.borderColor= BORDER_COLOR.CGColor;
-    
-
 }
 
 - (void)setLabelAttributedText:(id)attriText {

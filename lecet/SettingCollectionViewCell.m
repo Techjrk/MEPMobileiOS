@@ -39,7 +39,6 @@
 
 - (void)setHideNotificationView:(BOOL)hide {
     [_notificationView setHidden:hide];
-    
 }
 
 - (void)setHideChangePassword:(BOOL)hide {

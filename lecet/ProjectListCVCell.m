@@ -22,17 +22,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
     [self setBackgroundColor:[UIColor whiteColor]];
     _buttonProjectTrackList.titleLabel.font = DROPDOWN_PROJECTLISTCELL_BUTTON_FONT;
     [_buttonProjectTrackList setTitleColor:DROPDOWN_PROJECTLISTCELL_BUTTON_FONT_COLOR forState:UIControlStateNormal];
     
-    
     _labelNumberOfProject.textColor = DROPDOWN_PROJECTLIST_LABEL_FONT_COLOR;
     _labelNumberOfProject.font = DROPDOWN_PROJECTLISTCELL_LABEL_FONT;
 }
-
-
-
-
 @end
