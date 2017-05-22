@@ -10,9 +10,7 @@
 #import "DMD_LITE.h"
 
 @protocol PanoramaSceneViewControllerDelegate <NSObject>
-
 - (void)tappedDoneButtonPanoramaViewer;
-
 @end
 
 @interface PanoramaSceneViewController : UIViewController {

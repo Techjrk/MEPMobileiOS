@@ -25,7 +25,6 @@
 @synthesize settingsViewControllerDelegate;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -53,9 +52,7 @@
 }
 
 #pragma mark - Nav View Delegate
-
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
-    
     switch (profileNavItem) {
         case ProfileNavItemBackButton:{
             [self.navigationController popViewControllerAnimated:YES];
@@ -70,15 +67,11 @@
 
 
 #pragma mark - Setting View Delegate
-
 - (void)switchButtonStateChange:(BOOL)isOn {
-    
     [[DataManager sharedManager] setNotification:isOn];
-    
 }
 
 - (void)selectedSettings:(SettingItems)items {
-    
     switch (items) {
         case SettingItemsChangePassword:{
             ChangePasswordViewController *controller = [ChangePasswordViewController new];
@@ -133,7 +126,6 @@
             break;
         }
     }
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

@@ -15,6 +15,4 @@
 
 @interface CustomPhotoLibraryViewController : UIViewController
 @property(strong,nonatomic) id<CustomPhotoLibraryViewControllerDelegate> customPhotoLibraryViewControllerDelegate;
-
-
 @end

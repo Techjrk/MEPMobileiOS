@@ -10,13 +10,10 @@
 
 @protocol FilterSelectionViewControllerDelegate <NSObject>
 - (void)tappedApplyButton:(id)items;
-
 @end
 
 @interface FilterSelectionViewController : UIViewController
-
 @property (nonatomic,assign) id <FilterSelectionViewControllerDelegate> filterSelectionViewControllerDelegate;
-
 @property (nonatomic,strong) NSDictionary *dataBeenSelected;
 @property (nonatomic,strong) NSArray *dataInfo;
 @property (nonatomic,weak) NSString *navTitle;

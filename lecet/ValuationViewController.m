@@ -34,7 +34,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
    
-    
     _navView.profileNavViewDelegate = self;
 
     _leftLabel.font = LABEL_FONT;
@@ -71,11 +70,9 @@
     [self enableTapGesture:YES];
     
     [_leftTextField becomeFirstResponder];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
     if (_valuationValue) {
         _leftTextField.text = [DerivedNSManagedObject objectOrNil:[_valuationValue[@"min"] stringValue]];
         _rightTextField.text = [DerivedNSManagedObject objectOrNil:[_valuationValue[@"max"] stringValue]];
@@ -106,7 +103,6 @@
 }
 
 #pragma mark - NavViewDelegate
-
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
     switch (profileNavItem) {
         case ProfileNavItemBackButton:{
@@ -137,12 +133,9 @@
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [[UIMenuController sharedMenuController] setMenuVisible:NO animated:NO];
     }];
     return [super canPerformAction:action withSender:sender];
-    
 }
-
 @end

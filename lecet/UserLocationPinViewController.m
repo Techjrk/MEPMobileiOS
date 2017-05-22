@@ -76,15 +76,12 @@
     if ([subview isEqual:self.view]) {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
-    
 }
 
 - (IBAction)tappedCreatePinButton:(id)sender {
-    
     [self dismissViewControllerAnimated:NO completion:^{
         [self.createProjectPinDelegate createProjectUsingLocation:self.location];
     }];
-    
 }
 
 @end

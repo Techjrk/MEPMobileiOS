@@ -31,16 +31,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     [_profileNavView setNavTitleLabel:@"My Profile"];
     _profileNavView.profileNavViewDelegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissedKeyboard ) name:NOTIFYTODISMISSKEYBOARD object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated {
-   
     [self setTextFieldText];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,9 +46,7 @@
 }
 
 #pragma mark - Nav View Delegate
-
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
-    
     switch (profileNavItem) {
         case ProfileNavItemBackButton:
             [self.navigationController popViewControllerAnimated:YES];
@@ -62,7 +57,6 @@
             [self dismissedKeyboard];
             break;
     }
-
 }
 
 - (void)saveData {
@@ -100,7 +94,6 @@
 }
 
 - (void)setTextFieldText {
-
     [_myProfileView setFirstNamePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_FIRSTNAME")];
     [_myProfileView setFirstName:myProfileInfo[@"first_name"]];
     
@@ -110,38 +103,29 @@
     [_myProfileView setEmailAddressPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_EMAIL_ADDRESS")];
     [_myProfileView setEmailAddress:myProfileInfo[@"email"]];
     
-    //[_myProfileView setTitle:@"Director of Operations"];
     [_myProfileView setTitlePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_TITLE")];
     [_myProfileView setTitle:myProfileInfo[@"title"]];
     
-    //[_myProfileView setOrganization:@"Laborers-Employers CooperaMon and EducaMon Trust (LECET)"];
     [_myProfileView setOrganizationPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_ORGANIZATION")];
     [_myProfileView setOrganization:myProfileInfo[@"organization"]];
     
-    //[_myProfileView setPhone:@"(718) 501-1234"];
     [_myProfileView setPhonePlaceHolder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_PHONE")];
     [_myProfileView setPhone:myProfileInfo[@"phoneNumber"]];
     
-    //[_myProfileView setFax:@"(718) 432-9873"];
     [_myProfileView setFaxPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_FAX")];
     [_myProfileView setFax:myProfileInfo[@"faxNumber"]];
     
-    //[_myProfileView setStreetAddress:@"905 16th St NW"];
     [_myProfileView setStreetAddressPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_STREETADDRESS")];
     [_myProfileView setStreetAddress:myProfileInfo[@"address"]];
     
-    //[_myProfileView setCity:@"Washington"];
     [_myProfileView setCityPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_CITY")];
     [_myProfileView setCity:myProfileInfo[@"city"]];
     
-    //[_myProfileView setState:@"DC"];
     [_myProfileView setStatePlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_STATE")];
     [_myProfileView setState:myProfileInfo[@"state"]];
     
-    //[_myProfileView setZIP:@"20006"];
     [_myProfileView setZIPPlaceholder:NSLocalizedLanguage(@"MYPROFILE_PLACEHOLDER_TEXT_ZIP")];
     [_myProfileView setZIP:myProfileInfo[@"zip"]];
-    
 }
 
 - (void)dismissedKeyboard {

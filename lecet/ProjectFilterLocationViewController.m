@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet ProjectFilterSearchNavView *navView;
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleListView *listView;
 
-
 @end
 
 @implementation ProjectFilterLocationViewController
@@ -33,16 +32,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     _navView.projectFilterSearchNavViewDelegate = self;
     _listView.projectFilterCollapsibleListViewDelegate = self;
     [self enableTapGesture:YES];
     
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
-
     NSArray *array = @[@{TITLENAME:@"California",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@0,
                          SUBCATEGORYDATA:
                              @[@{TITLENAME:@"San Francisco",SELECTIONFLAGNAME:UnSelectedFlag,DROPDOWNFLAGNAME:UnSelectedFlag,ENTRY_ID:@1},
@@ -64,7 +60,6 @@
     
     [_listView setInfo:[dataInfo copy]];
     [_navView setSearchTextFieldPlaceHolder:NSLocalizedLanguage(@"PROJECT_LOCATION_SEARCH_PLACEHOLDER")];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,14 +72,11 @@
 }
 
 - (void)setInfo:(id)info {
-    
     dataInfo = info;
 }
 
 #pragma mark Nav Delegate
-
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item {
-    
     switch (item) {
             
         case ProjectFilterSearchNavItemBack:{
@@ -102,7 +94,6 @@
 }
 
 - (void)textFieldChanged:(UITextField *)textField {
-    
     if (textField.text.length > 0) {
         NSString *searchText = [NSString stringWithFormat:@"%@*",textField.text];
         NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.title like[cd] %@", searchText];
@@ -145,7 +136,6 @@
 }
 
 #pragma mark - Misc Method
-
 - (NSMutableArray *)changeDropDownSelectionValueOnceSearch:(NSArray *)array {
     NSMutableArray *resArray = [NSMutableArray new];
     
@@ -231,11 +221,9 @@
             
         }
     dataSelected = resArray;
-    
 }
 
 - (void)selectTheDataThatBeenSelected:(id)dInfo {
-    
     NSMutableDictionary *dict;
     NSMutableDictionary *dictMSec;
     NSMutableArray *arrayFL = [NSMutableArray new];
@@ -268,12 +256,9 @@
         [arrayFL addObject:dict];
     }
     dataInfo = [arrayFL mutableCopy];
-    
 }
 
 - (BOOL)isDataBeenSelected:(id)entryID {
-    
-    
     for (id datSelect in dataSelected) {
         
         if (entryID == datSelect[ENTRY_ID]) {

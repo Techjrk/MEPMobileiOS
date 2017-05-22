@@ -16,18 +16,15 @@
 #define BOTTOM_LABEL_FONT                   fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 9.0f)
 
 @interface ChangePasswordViewController ()<ProfileNavViewDelegate>{
-    
 }
 @property (weak, nonatomic) IBOutlet ProfileNavView *profileNavView;
 @property (weak, nonatomic) IBOutlet ChangePasswordView *chnagePasswordView;
 @property (weak, nonatomic) IBOutlet UILabel *bottomLabel;
-
 @end
 
 @implementation ChangePasswordViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -42,7 +39,6 @@
     _profileNavView.profileNavViewDelegate = self;
     [_profileNavView setNavTitleLabel:NSLocalizedLanguage(@"CHANGEPASSWORD_NAV_TITLE")];
     [self enableTapGesture:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +48,6 @@
 
 #pragma mark - ProfileNav Delegate
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
-    
     if (profileNavItem == ProfileNavItemSaveButton) {
         
         NSString *currentPassword = [_chnagePasswordView getCurrentPasswordText];
@@ -86,7 +81,6 @@
     }else {
         [self.navigationController popViewControllerAnimated:YES];
     }
-    
 }
 
 - (NSString *)stripSpaces:(NSString *)string {

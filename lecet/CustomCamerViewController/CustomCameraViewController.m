@@ -33,7 +33,6 @@
     BOOL isPanoSelected;
     BOOL isPreviewSelected;
     BOOL is360Selected;
-
 }
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -47,7 +46,6 @@
 @property (weak, nonatomic) IBOutlet CustomPhotoLibView *customPhotoLibView;
 @property (weak, nonatomic) IBOutlet CameraRadialView *backgroundView;
 @property (strong, nonatomic) PhotoShutterViewController *shutter;
-
 @end
 
 @implementation CustomCameraViewController
@@ -86,7 +84,6 @@
     
     isLibrarySelected = NO;
     isPhotoSelected = YES;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,7 +92,6 @@
 }
 
 #pragma mark - Camera Controls Button
-
 - (void)showShutter:(BOOL)show {
 
     if ((self.shutter == nil) && show) {
@@ -161,7 +157,6 @@
     self.takePhotoButton.hidden = hide?YES:NO;
     
     self.capturedImage.hidden = hide;
-    
     
     NSArray *cameraItems = hide?[self firstSetCameraItems]: [self itemsOnceImageSelected];
     self.cameraControlListView.isImageCaptured = !hide;
@@ -409,12 +404,8 @@
 }
 
 #pragma mark - PhotoShutterViewControllerDelegate
-
 - (void)photoTaken:(UIImage *)image{
     [self.customCameraViewControllerDelegate customPanoImageTaken:image];
     [self hideDefaultCameraControl:YES isPanoRetake:NO is360Retake:NO];
 }
-
-
-
 @end

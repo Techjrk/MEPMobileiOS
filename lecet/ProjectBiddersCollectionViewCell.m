@@ -24,6 +24,4 @@
 - (void)setItem:(NSString*)title line1:(NSString*)line1 line2:(NSString*)line2 {
     [_fieldItem setTitle:title line1Text:line1 line2Text:line2];
 }
-
-
 @end

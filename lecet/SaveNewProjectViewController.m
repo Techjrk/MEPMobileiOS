@@ -50,14 +50,12 @@
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
-    
     UIView* view = sender.view;
     CGPoint loc = [sender locationInView:view];
     UIView* subview = [view hitTest:loc withEvent:nil];
     if ([subview isEqual:self.view]) {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
-    
 }
 
 - (IBAction)tappedButtonSave:(id)sender {

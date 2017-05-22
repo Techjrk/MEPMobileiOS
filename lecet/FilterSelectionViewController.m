@@ -15,7 +15,6 @@
 }
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet ProjectFilterSelectionViewList *projectFilterSlectionViewList;
-
 @end
 
 @implementation FilterSelectionViewController
@@ -33,7 +32,6 @@
     [_navView setNavTitleLabel:_navTitle];
     [_navView setNavRightButtonTitle:NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_RIGHTBUTTON_TITLE")];
     [_navView setRigthBorder:10];
-    
 }
 
 
@@ -43,7 +41,6 @@
 }
 
 #pragma mark - NavViewDelegate
-
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
     switch (profileNavItem) {
         case ProfileNavItemBackButton:{
@@ -70,7 +67,6 @@
 }
 
 #pragma mark - ProjectFilterViewList Delegate
-
 - (void)selectedItem:(NSDictionary *)dict {
       dataSelected = dict;
 }

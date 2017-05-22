@@ -14,7 +14,6 @@
 #import "EditViewController.h"
 
 @interface CompanyTrackingListViewController ()<ProjectNavViewDelegate,ProjComTrackingTabViewDelegate,EditViewControllerDelegate,CompanySortDelegate>{
-    
     id dataItems;
     id dataItemsFromEdit;
     BOOL firstLoad;
@@ -23,13 +22,11 @@
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *navBarView;
 @property (weak, nonatomic) IBOutlet ProjComTrackingTabView *tabBarView;
 @property (weak, nonatomic) IBOutlet CompanyTrackingListView *companyTrackingListView;
-
 @end
 
 @implementation CompanyTrackingListViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -39,8 +36,6 @@
     // Do any additional setup after loading the view from its nib.
     _navBarView.projectNavViewDelegate = self;
     _tabBarView.projComTrackingTabViewDelegate = self;
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,11 +47,9 @@
     }
     [_navBarView setContractorName:trackingInfo[@"name"]];
     
-    //NSString *countString = [NSString stringWithFormat:@"%li %@",(long)[trackingInfo[@"companyIds"] count],NSLocalizedLanguage([trackingInfo[@"companyIds"] count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     NSString *countString = [NSString stringWithFormat:@"%li %@",(long)[dataItems count],NSLocalizedLanguage([dataItems count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     
     [_navBarView setProjectTitle:countString];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,11 +64,8 @@
     trackingInfo = item;
 }
 
-
 #pragma mark - Nav View Delegate
-
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
-
     switch (projectNavItem) {
         case ProjectNavBackButton:{
             
@@ -95,19 +85,14 @@
         default:
             break;
     }
-    
 }
 
 #pragma mark - Tab Delegate
-
 - (void)switchTabButtonStateChange:(BOOL)isOn {
-    
     [_companyTrackingListView switchButtonChange:isOn];
-    
 }
 
 - (void)editTabButtonTapped {
-    
     EditViewController *controller = [EditViewController new];
     controller.editViewControllerDelegate = self;
     [controller setInfo:[_companyTrackingListView getdata]];
@@ -115,14 +100,11 @@
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller  animated:NO completion:nil];
-
 }
 
 #pragma mark - EditViewControllerDelegate
-
 - (void)tappedCancelDoneButton:(id)items {
     dataItems = items;
-    
     NSString *countString = [NSString stringWithFormat:@"%lu %@",(unsigned long)[dataItems count],NSLocalizedLanguage([dataItems count]<=1?@"COMPANIES_COUNT_TITLE_SINGLE":@"COMPANIES_COUNT_TITLE")];
     [_navBarView setProjectTitle:countString];
     [_companyTrackingListView setItemToReload:dataItems];
@@ -137,7 +119,6 @@
 }
 
 #pragma mark - CompanySort Delegate
-
 - (void)selectedSort:(CompanySortItem)item {
     switch (item) {
         case CompanySortItemLastUpdated: {
@@ -157,7 +138,5 @@
 
     }
 }
-
-
 
 @end

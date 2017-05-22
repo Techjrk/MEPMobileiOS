@@ -11,7 +11,6 @@
 @protocol WorkOwnerTypesViewControllerDelegate <NSObject>
 @required
 - (void)tappedApplyWorkOwnerButton:(id)item;
-
 @end
 
 @interface WorkOwnerTypesViewController : UIViewController

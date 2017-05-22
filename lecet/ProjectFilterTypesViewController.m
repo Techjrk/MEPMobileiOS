@@ -10,7 +10,6 @@
 #import "ProjectFilterSearchNavView.h"
 #import "ProjectFilterCollapsibleListView.h"
 
-
 @interface ProjectFilterTypesViewController ()<ProjectFilterSearchNavViewDelegate,ProjectFilterCollapsibleListViewDelegate>{
     NSMutableArray *dataInfo;
     NSArray *dataSelected;
@@ -18,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet ProjectFilterSearchNavView *navView;
 @property (weak, nonatomic) IBOutlet ProjectFilterCollapsibleListView *listView;
 @property (strong,nonatomic) NSOperationQueue *operationQueue;
-
 @end
 
 @implementation ProjectFilterTypesViewController
@@ -39,7 +37,6 @@
 }
 
 - (void)setInfoGroupList:(id)obj categoryList:(id)catList {
-    
    dataInfo =  [self manipulatedDataInfoGroupListInfo:obj categoryListInfo:catList];
 }
 
@@ -55,7 +52,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [_listView setInfo:[dataInfo copy]];
     [_navView setSearchTextFieldPlaceHolder:NSLocalizedLanguage(@"PROJECT_TYPES_SEARCH_PLACEHOLDER")];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +65,6 @@
 
 #pragma mark Nav Delegate
 - (void)tappedFilterSearchNavButton:(ProjectFilterSearchNavItem)item {
-    
     switch (item) {
             
         case ProjectFilterSearchNavItemBack:{
@@ -87,7 +82,6 @@
 }
 
 - (void)textFieldChanged:(UITextField *)textField {
-    
     if (textField.text.length > 0) {
         NSString *searchText = [NSString stringWithFormat:@"%@*",textField.text];
         NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.title like[cd] %@", searchText];
@@ -131,7 +125,6 @@
 }
 
 #pragma mark - Misc Method
-
 - (void)requestSubData:(int)index {
     [_operationQueue addOperationWithBlock:^{
         
@@ -161,12 +154,10 @@
         }];
 
     }];
-
 }
 
 - (NSMutableArray *)changeDropDownSelectionValueOnceSearch:(NSArray *)array {
     NSMutableArray *resArray = [NSMutableArray new];
-    
     for (id obj in [array mutableCopy]) {
         NSMutableDictionary *resDict = [obj mutableCopy];
         [resDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
@@ -176,11 +167,8 @@
     return resArray;
 }
 
-
-
 - (NSMutableArray *)configuredSearchResult:(NSMutableArray *)mutableArray {
     NSMutableArray *resArray = [NSMutableArray new];
-    
     for (id searchResult in mutableArray) {
         
         int indexID = [searchResult[INDEXFORSEARCHRESULT] intValue];
@@ -192,10 +180,8 @@
         [resArray addObject:dic];
         
     }
-    
     return resArray;
 }
-
 
 - (NSMutableArray *)configuredSearchResultWithAutoSelect:(NSMutableArray *)mutableArray {
     NSMutableArray *resArray = [NSMutableArray new];
@@ -225,15 +211,11 @@
 
     }
     
-   
     return resArray;
 }
 
-
 #pragma mark - Data Manipulation Two
-
 - (NSMutableArray *)dataManipulationGroupListInfo:(id)obj {
- 
     NSMutableArray *mutArray = [NSMutableArray new];
     
     for (id headerObj in obj) {
@@ -245,12 +227,9 @@
     }
     
     return mutArray;
-    
 }
 
-
 #pragma mark - Data Manipulation
-
 - (NSMutableArray *)manipulatedDataInfoGroupListInfo:(id)obj categoryListInfo:(id)catObj {
     NSMutableArray *mutArray = [NSMutableArray new];
     
@@ -263,11 +242,9 @@
     }
     
     return mutArray;
-
 }
 
 - (NSMutableArray *)filteredArray:(NSMutableArray *)array projectGroupId:(NSNumber *)numID {
-    
     NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary* evaluatedObject, NSDictionary *bindings) {
         return [[evaluatedObject valueForKey:@"projectGroupId"] isEqual:numID];
     }]];
@@ -275,9 +252,7 @@
     return [filtered mutableCopy];
 }
 
-
 - (NSMutableArray *)addDropDownButtonAndSelectionFlagInArray:(NSArray *)subCatArray {
-    
     NSMutableArray *array = [NSMutableArray new];
     
     for (id  result in [subCatArray mutableCopy]) {
@@ -291,9 +266,7 @@
 }
 
 #pragma mark - Selected Items
-
 - (void)tappedSelectionButton:(id)items {
- 
     NSMutableArray *resArray = [NSMutableArray new];
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.selectionFlag == %@", @"1"];
     

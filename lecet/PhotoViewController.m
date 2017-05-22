@@ -91,19 +91,16 @@
 }
 
 #pragma mark - IBAction
-
 - (IBAction)tappedBackButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
-
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
 }
 
 #pragma mark - TapGesture
-
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
 
     UIView *view = sender.view;

@@ -12,6 +12,7 @@
 @protocol SettingsViewControllerDelegate <NSObject>
 - (void)tappedLogout;
 @end
+
 @interface SettingsViewController : BaseViewController
 @property (strong, nonatomic) id<SettingsViewControllerDelegate>settingsViewControllerDelegate;
 @end

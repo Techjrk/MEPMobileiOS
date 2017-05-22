@@ -24,7 +24,6 @@
 @implementation ContactAllListViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -52,15 +51,11 @@
 }
 
 - (void)setInfoForContactList:(NSMutableArray *)contacts {
-    
     contactList = contacts;
 }
 
-
 #pragma mark - ProjectNav Delegate
-
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
-    
     if (projectNavItem == ProjectNavReOrder) {
         [self tappedReOrderButton];
     }

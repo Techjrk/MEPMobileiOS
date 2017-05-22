@@ -14,7 +14,6 @@
 - (void)tappedPostNoteButton;
 @end
 
-
 @interface MobileProjectNotePopUpViewController : UIViewController
 @property (nonatomic,assign) BOOL isAddImage;
 @property (nonatomic,assign) id<MobileProjectNotePopUpViewControllerDelegate> mobileProjectNotePopUpViewControllerDelegate;

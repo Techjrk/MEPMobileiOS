@@ -15,7 +15,6 @@
 }
 @property (weak, nonatomic) IBOutlet DropDownMenuView *dropDownMoreMenuView;
 @property (weak, nonatomic) IBOutlet TriangleView *triangleView;
-
 @end
 
 @implementation MoreMenuViewController
@@ -23,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //DropDownMenuMore
     _dropDownMoreMenuView.dropDownMenuDelegate = self;
     [_triangleView setObjectColor:[UIColor whiteColor]];
     
@@ -41,11 +39,9 @@
 }
 
 - (void)addTappedGesture {
-    
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDropDownViewController)];
     tapped.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapped];
-    
 }
 
 - (void)dismissDropDownViewController {
@@ -54,16 +50,13 @@
 
 #pragma mark - DropDown MenuView Delegate
 - (void)tappedDropDownMenu:(DropDownMenuItem)menuDropDownItem {
-    
     [self dismissViewControllerAnimated:YES completion:^{
         [_moreMenuViewControllerDelegate tappedDropDownMenu:menuDropDownItem];
     }];
-    
 }
 
 - (void)setInfo:(id)info {
     infoDict = info;
-  
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

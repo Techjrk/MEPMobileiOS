@@ -12,5 +12,4 @@
 
 @interface CompanySortViewController : BaseViewController
 @property (nonatomic,assign) id<CompanySortDelegate> companySortDelegate;
-
 @end

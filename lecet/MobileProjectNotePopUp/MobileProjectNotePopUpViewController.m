@@ -8,15 +8,12 @@
 
 #import "MobileProjectNotePopUpViewController.h"
 
-
 #define PROJECTDETAIL_CANCEL_BUTTON_FONT_COLOR              RGB(0, 63, 144)
-
 
 #pragma mark - FONT
 #define FONT_PN_POPUP_TITLE                                 fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 13)
 #define FONT_POSTNOTE_BUTTON_TITLE                          fontNameWithSize(FONT_NAME_LATO_BOLD, 11)
 #define FONT_POSTNOTE_CANCEL_BUTTON                         fontNameWithSize(FONT_NAME_LATO_BOLD, 10)
-
 
 #pragma mark - COLOR
 #define COLOR_FONT_POPUP_TITLE                              RGB(33, 33, 33)
@@ -25,7 +22,6 @@
 #define COLOR_FONT_POSTNOTE_BUTTON_TITLE                    RGB(255, 255, 255)
 #define COLOR_FONT_POSTNOTE_CANCEL_BUTTON                   RGB(0, 63, 144)
 
-
 @interface MobileProjectNotePopUpViewController () 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postNoteButton;
@@ -33,8 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIView *popupView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
-
-
 @end
 
 @implementation MobileProjectNotePopUpViewController
@@ -79,10 +73,8 @@
     [self hideProjectNotePopUp];
 }
 
-
 #pragma mark - MISC METHOD
 - (void)addTappedGesture {
-    
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectNotePopUp)];
     tapped.numberOfTapsRequired = 1;
     [self.topView addGestureRecognizer:tapped];
@@ -90,7 +82,6 @@
     UITapGestureRecognizer *tappedBG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideProjectNotePopUp)];
     tappedBG.numberOfTapsRequired = 1;
     [self.backgroundView addGestureRecognizer:tappedBG];
-    
 }
 
 - (void)hideProjectNotePopUp {

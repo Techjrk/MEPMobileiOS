@@ -12,35 +12,29 @@
 
 @interface ProjectSortViewController ()<ProjectSortViewDelegate,ProjectSortViewDelegate>
 @property (weak, nonatomic) IBOutlet ProjectSortView *projectSortView;
-
 @property (weak, nonatomic) IBOutlet TriangleView *triangleView;
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 @property (weak, nonatomic) IBOutlet UIView *tempNavigationBar;
-
 @end
 
 @implementation ProjectSortViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     [_triangleView setObjectColor:PROJECTSORT_TITLEVIEW_BG_COLOR];
     [self addTappedGesture];
     _projectSortView.projectSortViewDelegate = self;
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Project Sort View Delegate
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem {
@@ -59,7 +53,6 @@
 
 - (void)dismissDropDownViewController {
     [self dismissViewControllerAnimated:YES completion:Nil];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

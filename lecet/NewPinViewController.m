@@ -38,7 +38,6 @@
     [self.buttonCreatePin setTitleColor:CREATEPIN_COLOR forState:UIControlStateNormal];
     
     self.buttonCreatePin.titleLabel.font = CREATEPIN_FONT;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +64,6 @@
     if ([subview isEqual:self.view]) {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
-    
 }
 
 - (IBAction)tappedButtonCreatePin:(id)sender {

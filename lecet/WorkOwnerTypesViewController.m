@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
 @property (weak, nonatomic) IBOutlet UIView *containerCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @end
 
 @implementation WorkOwnerTypesViewController
@@ -46,7 +45,6 @@
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,16 +57,13 @@
 }
 
 - (void)setInfo:(id)info {
-    
     NSMutableArray *array = [NSMutableArray new];
     for (id dict in info) {
         NSMutableDictionary *resDict =  [dict mutableCopy];
         [resDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
         [array addObject:resDict];
     }
-
     collectionDataItems  = array;
-
 }
 
 - (void)setNavTitle:(NSString *)text {
@@ -76,9 +71,7 @@
 }
 
 #pragma mark - Collection DataSource and Delegate
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     WorkOwnerTypesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.workOwnerTypesCollectionViewCellDelegate = self;
     [cell setIndexPath:indexPath];
@@ -97,14 +90,10 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return [collectionDataItems count];
-    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     CGSize size;
     cellHeight = kDeviceHeight * 0.08;
     
@@ -128,12 +117,9 @@
     return 0;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
 }
 
 #pragma mark - NavViewDelegate
-
 - (void)tappedProfileNav:(ProfileNavItem)profileNavItem {
     switch (profileNavItem) {
         case ProfileNavItemBackButton:{
@@ -163,9 +149,7 @@
 }
 
 #pragma mark - Cell Delegate
-
 - (void)tappedSelectionButton:(id)tag {
-    
     NSIndexPath *index = tag;
     
     if (prevTag != index.row) {
@@ -212,7 +196,6 @@
     [queue setSuspended: NO];
     [queue waitUntilAllOperationsAreFinished];
     [_collectionView reloadData];
-    
 }
 
 @end

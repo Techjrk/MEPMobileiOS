@@ -22,7 +22,6 @@ typedef enum  {
 #define PROJECTSORT_TITLEVIEW_BG_COLOR                  RGB(245,245,245)
 #define PROJECTSORT_LINE_COLOR                          RGB(193,193,193)
 
-
 @protocol ProjectSortViewControllerDelegate <NSObject>
 @required
 -(void)selectedProjectSort:(ProjectSortItems)projectSortItem;
@@ -30,5 +29,4 @@ typedef enum  {
 
 @interface ProjectSortViewController : UIViewController
 @property (nonatomic,assign) id<ProjectSortViewControllerDelegate> projectSortViewControllerDelegate;
-
 @end

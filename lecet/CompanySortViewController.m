@@ -20,7 +20,6 @@
 @implementation CompanySortViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -51,24 +50,17 @@
 }
 - (void)dismissDropDownViewController {
     [self dismissViewControllerAnimated:YES completion:Nil];
-    
 }
 
 #pragma mark - CompanySortViewDelegate
-
 - (void)selectedSort:(CompanySortItem)item {
-    
-    
     [self dismissViewControllerAnimated:YES completion:^{
         [_companySortDelegate selectedSort:item];
     }];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
-
 
 @end

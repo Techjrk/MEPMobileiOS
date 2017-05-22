@@ -23,13 +23,11 @@
 }
 @property (weak, nonatomic) IBOutlet ContactNavBarView *contactNavBarView;
 @property (weak, nonatomic) IBOutlet ContactDetailView *contactDetailView;
-
 @end
 
 @implementation ContactDetailViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -37,7 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     _contactNavBarView.contactNavViewDelegate =self;
     _contactDetailView.contactDetailViewDelegate = self;
 }
@@ -53,7 +50,6 @@
 }
 
 - (void)setCompanyContactDetails:(id)item {
-    
     DB_CompanyContact *record = item;
     DB_Company *recordCompany = record.relationshipCompany;
 
@@ -82,11 +78,9 @@
     }
     
     contactDetails = contactItem;
-    
 }
 
 - (void)setCompanyContactDetailsFromDictionary:(id)item {
-    
     NSDictionary *record = item;
     name = record[@"name"];
 
@@ -134,7 +128,6 @@
         
     }
 
-    
     if (fullAddr) {
         NSString *contactAddressInfo = fullAddr;
         address = contactAddressInfo;
@@ -153,29 +146,23 @@
     }
     
     contactDetails = contactItem;
-
 }
 
 - (NSString *)determineIfTitleIsEmpty:(NSString *)title {
-    
     if (title) {
         return [NSString stringWithFormat:@"%@ at",title];
     }else{
         return @"";
     }
-    
 }
-
 
 #pragma mark - Contact Nav Delegate
 - (void)tappedContactNavBackButton {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 #pragma mark - ContactView Delegate
 - (void)selectedContactDetails:(id)item {
-    
     NSNumber *fieldType = item[CONTACT_FIELD_TYPE];
     NSString *fieldData = item[CONTACT_FIELD_DATA];
     
@@ -218,7 +205,6 @@
             break;
         }
     }
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -245,8 +231,6 @@
                      }
                  }
      ];
-    
 }
-
 
 @end

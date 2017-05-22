@@ -101,7 +101,6 @@
             [self latestPhotoWithCompletion:^(UIImage *photo) {
                 
                 UIImageRenderingMode renderingMode = /* DISABLES CODE */ (YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
-                //[wSelf.photoShutterViewControllerDelegate photoTaken:[photo imageWithRenderingMode:renderingMode]];
                 capturedImage  = [photo imageWithRenderingMode:renderingMode];
                 
             }];
@@ -147,13 +146,10 @@
 }
 
 - (void)photoTaken {
-    
     self.frameCount++;
-    //[self savePhoto];
     if (self.frameCount == self.maxFrame) {
         [self finishCapturing];
     }
-    
 }
 
 - (void)stitchingCompleted:(NSDictionary *)dict {
@@ -166,30 +162,23 @@
     self.navPanoramaViewer = nav;
     [self.controller.view addSubview:self.navPanoramaViewer.view];
     [self.controller.view bringSubviewToFront:self.navPanoramaViewer.view];
-    
 }
 
 - (void)shootingCompleted {
-    
 }
 
 - (void)deviceVerticalityChanged:(NSNumber *)isVertical {
-    
 }
 
 - (void)compassEvent:(NSDictionary *)info {
-    
 }
 
-
 #pragma mark - SDK Interaction
-
 - (void)restart {
     [[Monitor instance] restart];
 }
 
 #pragma mark - CustomCameraViewControllerDelegate
-
 - (void)stopCapture {
     [[Monitor instance] stopShooting];
 }
@@ -215,7 +204,6 @@
 #pragma mark - MISC
 - (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
 {
-    
     ALAssetsLibrary *library=[[ALAssetsLibrary alloc] init];
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
     [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -244,8 +232,6 @@
     } failureBlock: ^(NSError *error) {
         // Typically you should handle an error more gracefully than this.
     }];
-    
-    
 }
 
 #pragma mark - PanoramaViewerViewControllerDelegate
@@ -253,7 +239,5 @@
     [self.navPanoramaViewer.view removeFromSuperview];
     __weak __typeof(self)wSelf = self;
     [wSelf.photoShutterViewControllerDelegate photoTaken:capturedImage];
-    
-    
 }
 @end

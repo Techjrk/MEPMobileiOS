@@ -10,5 +10,4 @@
 #import "BaseViewController.h"
 
 @interface ChangePasswordViewController : BaseViewController
-
 @end

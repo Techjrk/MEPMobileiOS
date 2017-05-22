@@ -36,7 +36,6 @@ typedef enum  {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintEditViewHeight;
 @property (weak, nonatomic) IBOutlet SelectMoveView *selectMoveView;
 @property (weak, nonatomic) IBOutlet EditViewList *editViewList;
-
 @end
 
 @implementation EditViewController
@@ -46,7 +45,6 @@ typedef enum  {
 #define SelectedFlag                @"1"
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -61,7 +59,6 @@ typedef enum  {
     _editViewList.editViewListDelegate = self;
     
     [_selectMoveView setBackgroundColor:BOTTOMVIEW_BG_COLOR];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,11 +74,9 @@ typedef enum  {
 
 - (void)setInfo:(id)items {
     collectionDataItems = items;
-    
 }
 
 #pragma mark - Nav Delegate
-
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
     switch (projectNavItem) {
         case ProjectNavBackButton:{
@@ -106,10 +101,7 @@ typedef enum  {
 }
 
 #pragma mark - EdittabViewDelgate
-
 - (void)selectedEditTabButton:(EditTabItem)item {
-
-    
     switch (item) {
         case EditTabItemCancel:{
             [self unCheckedAllChekedBox];
@@ -123,13 +115,9 @@ typedef enum  {
             break;
         }
     }
-    
-    
-
 }
 
 - (void)unCheckedAllChekedBox {
-    
     NSOperationQueue* queue= [NSOperationQueue new];
     queue.maxConcurrentOperationCount=1;
     [queue setSuspended: YES];
@@ -157,17 +145,12 @@ typedef enum  {
     
     selectedDataItems = nil;
     [self chageEditMode:NO count:(int)selectedDataItems.count];
-    
-    
 }
 
 #pragma mark - Misc Method
-
 - (void)chageEditMode:(BOOL)editMode count:(int)count{
     isInEditMode = editMode;
     
-
-   
     if (!isInEditMode) {
         _constraintEditViewHeight.constant = 0;
         CGFloat heightPopUpView = kDeviceHeight * (count > 0?0.09:0);
@@ -180,13 +163,10 @@ typedef enum  {
             
         }];
     }
-    
 }
 
 #pragma mark - EditViewListDelegate
-
 - (void)selectedItem:(id)items {
-    
     selectedDataItems = items;
     int count = (int)[items count];
     [_selectMoveView setSelectionCount:(NSInteger)count];
@@ -198,7 +178,6 @@ typedef enum  {
 }
 
 #pragma mark - CompanySortDelegate
-
 - (void)selectedSort:(CompanySortItem)item {
     switch (item) {
         case CompanySortItemLastUpdated: {
@@ -227,9 +206,7 @@ typedef enum  {
 }
 
 #pragma mark - Custom Delegates
-
 - (void)tappedMoveItem:(id)object shouldMove:(BOOL)shouldMove {
-    
     if (shouldMove) {
         UIView *objectView = object;
         
@@ -277,13 +254,10 @@ typedef enum  {
         [self presentViewController:alert animated:YES completion:nil];
         
     }
-
 }
 
 - (void)removeItem {
-    
     NSMutableDictionary *currentCargo = [trackingInfo mutableCopy];
-    //NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
     NSMutableArray *currentIds = [self getCompaniesIDS:currentCargo];
     [currentIds removeObjectsInArray:selectedDataItems];
     currentCargo[@"companyIds"] = currentIds;
@@ -314,7 +288,6 @@ typedef enum  {
     } failure:^(id object) {
       
     }];
-    
 }
 
 - (NSArray *)companyTrackingListToMove:(NSArray *)object {
@@ -339,13 +312,10 @@ typedef enum  {
     [queue waitUntilAllOperationsAreFinished];
   
     return [mutableObject copy];
-    
 }
 
 #pragma mark - CustomCollectionView Delegate
-
 - (void)collectionViewItemClassRegister:(id)customCollectionView {
-    
     CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
     
     switch (popupMode) {
@@ -367,7 +337,6 @@ typedef enum  {
 }
 
 - (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
-    
     switch (popupMode) {
             
         case PopupModeSort: {
@@ -389,7 +358,6 @@ typedef enum  {
 }
 
 - (NSInteger)collectionViewItemCount {
-    
     switch (popupMode) {
             
         case PopupModeSort: {
@@ -433,11 +401,9 @@ typedef enum  {
     }
     
     return CGSizeZero;
-    
 }
 
 - (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
-    
     if (indexPath.row>0) {
         
         ///BOOL isDesc = indexPath.row != 4;
@@ -464,14 +430,10 @@ typedef enum  {
         [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"COMPANY_TRACKING_LIST")];
         
     }
-    
 }
 
-
 #pragma mark - Tracking Delegate
-
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
-    
     NSIndexPath *indexPath = object;
     
     NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
@@ -501,9 +463,7 @@ typedef enum  {
 }
 
 - (void)moveTrackListIds:(NSIndexPath*)indexPath {
- 
     NSMutableDictionary *track = [trackItemRecord[indexPath.row] mutableCopy];
-    //NSMutableArray *ids = [track[@"companyIds"] mutableCopy];
     NSMutableArray *ids = [self getCompaniesIDS:track];
     
     [selectedDataItems enumerateObjectsUsingBlock:^(id obj,NSUInteger countInt,BOOL *stop){
@@ -517,12 +477,10 @@ typedef enum  {
     }];
     track[@"companyIds"] = ids;
     NSMutableDictionary *currentCargo = [trackingInfo mutableCopy];
-    //NSMutableArray *currentIds = [currentCargo[@"companyIds"] mutableCopy];
     NSMutableArray *currentIds = [self getCompaniesIDS:currentCargo];
     [currentIds removeObjectsInArray:selectedDataItems];
     [self removeSelectedCompanies];
     currentCargo[@"companyIds"] = currentIds;
-    //trackingInfo = currentCargo;
     
     [[DataManager sharedManager] companyTrackingMoveIds:track[@"id"] recordIds:track success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
@@ -555,12 +513,9 @@ typedef enum  {
     } failure:^(id object) {
         
     }];
-
 }
 
-
 - (NSMutableArray *)getCompaniesIDS:(id)info {
-    
     NSMutableArray *ids = [NSMutableArray new];
     NSArray *dataArray = [DerivedNSManagedObject objectOrNil:info[@"companies"]];
     
@@ -574,7 +529,6 @@ typedef enum  {
 }
 
 - (void)removeSelectedCompanies {
-    //trackingInfo = [NSMutableDictionary new];
     NSMutableDictionary *dic = [trackingInfo mutableCopy];
     NSMutableArray *arrayList = [DerivedNSManagedObject objectOrNil:dic[@"companies"]];
     NSMutableArray *tempArray = [NSMutableArray new];
@@ -592,7 +546,6 @@ typedef enum  {
     }
     
     [dic setValue:tempArray forKey:@"companies"];
-    //trackingInfo = dic;
     [self setTrackingInfo:[dic copy]];
 }
 

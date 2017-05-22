@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-
 @interface ProjectBidsListViewController : BaseViewController
-
 - (void)setInfoForProjectBids:(NSArray *)bids;
 - (void)setContractorName:(NSString *)name;
-
 @end

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @protocol ProjectDetailStateViewControllerDelegate <NSObject>
 @required
 - (void)tappedDismissed;

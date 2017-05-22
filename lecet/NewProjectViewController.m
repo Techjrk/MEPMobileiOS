@@ -15,9 +15,6 @@
 #import "SaveNewProjectViewController.h"
 #import <MapKit/MapKit.h>
 
-//#define LABEL_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
-//#define LABEL_COLOR                         RGB(34, 34, 34)
-
 #pragma mark - Fonts
 #define TITLE_FONT                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 13)
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_REGULAR, 13)
@@ -309,7 +306,6 @@
 }
 
 - (void)promptUserForTitle{
-    
     NSString *message = NSLocalizedLanguage(@"NPVC_TITLE_REQUIRED");
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -322,12 +318,9 @@
     [alert addAction:closeAction];
     
     [self presentViewController:alert animated:YES completion:nil];
-    
-    
 }
 
 - (void)saveNewProject {
-    
     NSMutableDictionary *dict = [NSMutableDictionary new];
     
     dict[@"title"] = self.textFieldProjectTitle.text;
@@ -403,8 +396,6 @@
         [self.navigationController popViewControllerAnimated:NO];
         [self.projectViewControllerDelegate tappedSavedNewProject:dict];
     }
-    
-    
 }
 
 #pragma mark - FilterLabelViewDelegate
@@ -450,17 +441,14 @@
     
     
     [self presentViewController:alert animated:YES completion:nil];
-
 }
 
 #pragma mark - SearchFilterViewControllerDelegate
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
-    
 }
 
 #pragma mark - Project Types
 - (void)filterProjectTypes:(UIView*)view {
-    
     if (listItemsProjectTypeId == nil) {
         [[DataManager sharedManager] projectTypes:^(id groups) {
             
@@ -518,11 +506,9 @@
     } else {
         [self displayProjectTypeId];
     }
-    
 }
 
 - (void)displayProjectTypeId {
-    
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
     controller.listViewItems = listItemsProjectTypeId;
@@ -532,11 +518,9 @@
     controller.parentOnly = YES;
     controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles {
-    
     if ([key isEqualToString:KEY_PROJECTSTAGEID]) {
         [self.fieldStage setValue:titles[0]];
         stageId = selectedItems[0];
@@ -552,7 +536,6 @@
 #pragma mark - Stage
 
 - (void)filterStage:(UIView*)view {
-    
     if (listItemsProjectStageId == nil) {
         
         ListViewItemArray *listItems = [ListViewItemArray new];
@@ -594,11 +577,9 @@
         [self displayProjectStageId];
         
     }
-    
 }
 
 - (void) displayProjectStageId {
-    
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
     controller.listViewItems = listItemsProjectStageId;
@@ -608,17 +589,13 @@
     controller.parentOnly = YES;
     controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 #pragma mark - Jurisdiction
-
 - (void)filterJurisdiction:(UIView*)view {
-    
     if (listItemsJurisdictions == nil) {
         
         ListViewItemArray *listItems = [ListViewItemArray new];
-        
         [[DataManager sharedManager] jurisdiction:^(id object) {
             
             NSArray *items = object;
@@ -699,7 +676,6 @@
     } else {
         [self displayJurisdiction];
     }
-    
 }
 
 - (void)displayJurisdiction {
@@ -718,7 +694,6 @@
 #pragma mark - Pin
 
 - (void)setMap {
-    
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.location.coordinate.latitude, self.location.coordinate.longitude);
     
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
@@ -731,7 +706,6 @@
     
     [_mapView setRegion:region];
     [_mapView addAnnotation:annotation];
-    
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -773,7 +747,6 @@
     }
     
     return userAnnotationView;
-    
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {

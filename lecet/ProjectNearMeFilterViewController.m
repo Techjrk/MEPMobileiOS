@@ -206,9 +206,7 @@
 }
 
 #pragma mark - Filters
-
 - (void)filterLocation:(UIView*)view {
-    
     ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
     controller.dataSelected = [(FilterEntryView *)objectEntry getCollectionItemsData];
     controller.projectFilterLocationViewControllerDelegate = self;
@@ -216,7 +214,6 @@
 }
 
 - (void)filterProjectTypes:(UIView*)view {
-    
     if (listItemsProjectTypeId == nil) {
         [[DataManager sharedManager] projectTypes:^(id groups) {
             
@@ -274,11 +271,9 @@
     } else {
         [self displayProjectTypeId];
     }
-    
 }
 
 - (void)displayProjectTypeId {
-    
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
     controller.listViewItems = listItemsProjectTypeId;
@@ -286,11 +281,9 @@
     controller.fieldValue = @"projectTypeId";
     controller.singleSelect = NO;
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)filterValue:(UIView*)view {
-    
     ValuationViewController *controller =  [ValuationViewController new];
     
     NSString *ownerName = @"Project";
@@ -299,11 +292,9 @@
     controller.valuationValue = dict;
     controller.valuationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)filterUpdatedWithin:(UIView*)view {
-    
     NSArray *array = @[
                        @{PROJECT_SELECTION_TITLE:@"Any",PROJECT_SELECTION_VALUE:@(0),PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        @{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(1),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
@@ -318,17 +309,14 @@
     controller.filterSelectionViewControllerDelegate = self;
     
     NSString *ownerName = @"Project";
-    //NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"updatedWithin"]];
     NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"updatedInLast"]];
     [controller setDataBeenSelected:dict];
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)filterJurisdiction:(UIView*)view {
-    
     if (listItemsJurisdictions == nil) {
         
         ListViewItemArray *listItems = [ListViewItemArray new];
@@ -413,7 +401,6 @@
     } else {
         [self displayJurisdiction];
     }
-    
 }
 
 - (void)displayJurisdiction {
@@ -428,7 +415,6 @@
 }
 
 - (void)filterStage:(UIView*)view {
-    
     if (listItemsProjectStageId == nil) {
         
         ListViewItemArray *listItems = [ListViewItemArray new];
@@ -470,11 +456,9 @@
         [self displayProjectStateId];
         
     }
-    
 }
 
 - (void) displayProjectStateId {
-    
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
     controller.listViewItems = listItemsProjectStageId;
@@ -482,7 +466,6 @@
     controller.fieldValue = @"projectStageId";
     controller.singleSelect = YES;
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)filterBiddingWithin:(UIView*)view {
@@ -496,33 +479,25 @@
                        @{PROJECT_SELECTION_TITLE:@"Next 21 Days",PROJECT_SELECTION_VALUE:@(21),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        
                        @{PROJECT_SELECTION_TITLE:@"Next 30 Days",PROJECT_SELECTION_VALUE:@(30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
-                       
-                       //@{PROJECT_SELECTION_TITLE:@"Last 24 Hours",PROJECT_SELECTION_VALUE:@(1),PROJECT_SELECTION_TYPE:@(ProjectFilterItemHours)},
-                       
-                       
                        @{PROJECT_SELECTION_TITLE:@"Last 7 Days",PROJECT_SELECTION_VALUE:@(-7),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 14 Days",PROJECT_SELECTION_VALUE:@(-14),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 21 Days",PROJECT_SELECTION_VALUE:@(-21),PROJECT_SELECTION_TYPE:@(ProjectFilterItemDays)},
                        @{PROJECT_SELECTION_TITLE:@"Last 30 Days",PROJECT_SELECTION_VALUE:@(-30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)}//,
-                       //@{PROJECT_SELECTION_TITLE:@"Last 12 Months",PROJECT_SELECTION_VALUE:@(12*30),PROJECT_SELECTION_TYPE:@(ProjectFilterItemMonths)},
                        ];
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
     controller.filterSelectionViewControllerDelegate = self;
     
     NSString *ownerName = @"Project";
-    //NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"biddingWithin"]];
     NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"biddingInNext"]];
     [controller setDataBeenSelected:dict];
     
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)filterBH:(UIView*)view {
-    
     NSArray *array = @[
                        @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@[@"B", @"H"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@[@"B"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
@@ -534,11 +509,9 @@
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BH_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)filterOwner:(UIView*)view {
-    
     NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
                              @{@"title":@"Local Government",@"id":@(2)},
                              @{@"title":@"Military",@"id":@(3)},
@@ -551,7 +524,6 @@
     [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
     controller.workOwnerTypesViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-    
 }
 
 - (void)pushWorkTypes:(UIView*)view {
@@ -569,7 +541,6 @@
 }
 
 #pragma mark - Delegates
-
 - (void)tappedLocationApplyButton:(id)items {
     selectedLocationItems = [NSMutableArray new];
     [self getLocationData:items];
@@ -577,7 +548,6 @@
 }
 
 - (void)getLocationData:(id)items {
-    
     for (NSDictionary *item in items) {
         
         if ([item[SELECTIONFLAGNAME] isEqualToString:SelectedFlag]) {
@@ -589,13 +559,11 @@
             [self getLocationData:subArray];
         }
     }
-    
 }
 
 - (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles {
     self.projectFilter.searchFilter[key] = @{@"inq":selectedItems};
     [self.projectFilter setFilterModelInfo:selectedModel value:titles];
-
 }
 
 - (void)tappedValuationApplyButton:(id)items {
@@ -604,7 +572,6 @@
 }
 
 - (void)tappedApplyButton:(id)items {
-    
     NSDictionary *dict = items;
     if (dict) {
         NSString *fieldName = [self dataSelectFieldName:selectedModel];
@@ -621,7 +588,6 @@
             
         case FilterModelUpdated:{
             
-            //title = @"updatedWithin";
             title = @"updatedInLast";
             break;
         }
@@ -657,11 +623,9 @@
 }
 
 - (void)tappedApplyWorkOwnerButton:(id)item {
-    
     NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
     NSDictionary *value = item != nil?item:emptyDic;
     [_projectFilter setFilterModelInfo:selectedModel value:value];
-    
 }
 
 @end

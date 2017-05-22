@@ -27,7 +27,6 @@
 @implementation ProjectBidsListViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -48,7 +47,6 @@
 }
 
 - (void)setupList {
-
     if (bidList == nil) {
         upcomingBid = [NSMutableArray new];
         pastBid = [NSMutableArray new];
@@ -63,13 +61,10 @@
 
 - (void)setContractorName:(NSString *)name {
     companyName =name;
-    
 }
 
 #pragma mark - ProjectNav Delegate
-
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
-    
     if (projectNavItem == ProjectNavReOrder) {
         [self tappedReOrderButton];
     }
@@ -87,7 +82,6 @@
 }
 
 #pragma mark - ProjectSortViewController Delegate
-
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
     NSArray *sorted;
     
@@ -104,20 +98,16 @@
         
     }
     if (projectSortItem == ProjectSortHightToLow) {
-        //sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estLow" ascending:YES];
         sorted = [self sortedAssociateProjectsDescriptorKey:@"amount" ascending:NO];
     }
     if (projectSortItem == ProjectSortLowToHigh) {
-        //sorted = [self sortedAssociateProjectsDescriptorKey:@"relationshipProject.estHigh" ascending:NO];
         sorted = [self sortedAssociateProjectsDescriptorKey:@"amount" ascending:YES];
-
     }
     
     bidList = [sorted mutableCopy];
     [_projectAllBidsView setItems:bidList];
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (NSArray *)sortedAssociateProjectsDescriptorKey:(NSString *)keyString ascending:(BOOL)asc {
@@ -147,7 +137,6 @@
 
 #pragma mark - Project Bids Delegate
 - (void)setInfoForProjectBids:(NSArray *)bids {
-
     [self setupList];
     
     NSDate *currentDate = [NSDate date];
@@ -171,17 +160,14 @@
             [upcomingBid addObject:bidItem];
         }
     }
-    
 }
 
 - (void)selectedProjectAllBidItem:(id)object {
-
     ProjectDetailViewController *detail = [ProjectDetailViewController new];
     detail.view.hidden = NO;
     DB_Bid *bid = object;
     [detail detailsFromProject:bid.relationshipProject];
     [self.navigationController pushViewController:detail animated:YES];
-
 }
 
 - (void)tappedProjectTab:(ProjectTabItem)projectTabItem {
@@ -193,7 +179,6 @@
     
     [_projectTabView setCounts:upcomingBid.count past:pastBid.count];
     [_projectAllBidsView setItems:bidList];
-
 }
 
 @end

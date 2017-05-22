@@ -45,7 +45,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightContainerCapturedImage;
 @property (weak, nonatomic) IBOutlet UIImageView *capturedImageView;
 @property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
-
 @end
 
 @implementation MobileProjectAddNoteViewController
@@ -122,7 +121,6 @@
     }
     
     isEndEditingInTextView = YES;
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -168,8 +166,6 @@
     //}
 }
 - (IBAction)tappedTrashcanButton:(id)sender {
-    
-    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedLanguage(@"MPANV_ALERT_TITLE") message:NSLocalizedLanguage(@"MPANV_ALERT_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
     
     
@@ -191,7 +187,6 @@
     [alert addAction:closeAction];
     
     [self presentViewController:alert animated:YES completion:nil];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -319,11 +314,9 @@
         [self.customLoadingIndicator stopAnimating];
         NSLog(@"Failed request");
     }];
-
 }
 
 - (void)addProjetUserNotes {
-    
     NSString *textBody = [self bodyText];
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
@@ -404,16 +397,13 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-
     return YES;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
-
 }
 
 -(void)onEditing:(id)sender {
-    
     if (self.postTitleTextField.text.length > 55) {
         self.postTitleTextField.text = [self.postTitleTextField.text substringToIndex:self.postTitleTextField.text.length - 1];
         return;
@@ -428,7 +418,6 @@
 }
 
 #pragma mark - MobileProjectNotePopUpViewControllerDelegate
-
 - (void)tappedPostNoteButton {
     [self.view endEditing:YES];
     [self.customLoadingIndicator startAnimating];
@@ -454,11 +443,9 @@
 }
 
 - (void)tappedDismissedPostNote {
-    
 }
 
 #pragma mark - Keyboard Observer
-
 - (void)keyboardDidShow: (NSNotification *) notif{
     NSDictionary *info  = notif.userInfo;
     NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
@@ -508,6 +495,5 @@
     }
     
     return tempString;
-
 }
 @end

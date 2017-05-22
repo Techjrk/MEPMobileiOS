@@ -18,8 +18,6 @@
     NSTimer *hideTimer;
 }
 @property (weak, nonatomic) IBOutlet UIView *navView;
-//@property (strong, nonatomic) NSTimer *hideTimer;
-
 @end
 
 @implementation PanoramaSceneViewController
@@ -134,7 +132,4 @@
     [hideTimer invalidate];
     hideTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(hideNavBar:) userInfo:nil repeats:NO];
 }
-
-
-
 @end

@@ -83,7 +83,6 @@
         self.fetchresult = [PHAsset fetchAssetsWithOptions:options];
         [self.collectionView reloadData];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,13 +112,10 @@
 
 #pragma mark - UICollectionViewDelegate and DataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    
     return self.fetchresult.count;
 }
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
 }
 
@@ -132,8 +128,6 @@
         cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.imageView.image = result;
     }];
-    
-    //cell.imageView.image = [UIImage imageNamed:@"icon_app"];
     return cell;
 }
 
@@ -177,8 +171,8 @@
         self.constraintBottomViewHeight.constant = kDeviceHeight * 0.075;
         [self.view layoutIfNeeded];
     }];
-    
 }
+
 #pragma mark - CameraControlListDelegate
 - (void)cameraControlListDidSelect:(id)info{
     if (info != nil && ![info isEqual:@""]) {
@@ -234,7 +228,6 @@
             }
         }
     }
-
 }
 
 #pragma mark - MISC Method
@@ -256,9 +249,5 @@
                              ];
     
     return cameraItems;
-    
 }
-
-
-
 @end

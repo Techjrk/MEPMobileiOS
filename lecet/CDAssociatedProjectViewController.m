@@ -19,15 +19,11 @@
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavBarView;
 @property (weak, nonatomic) IBOutlet ProjectAllAssociatedProjectView *projectAllAssociatedProjectListView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeftSpace;
-
-//@property (strong,nonatomic) NSMutableArray *associatedProjectList;
-
 @end
 
 @implementation CDAssociatedProjectViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:[[self class] description] bundle:nibBundleOrNil];
     return self;
 }
@@ -45,7 +41,6 @@
     [_projectNavBarView setContractorName:companyName];
     [_projectNavBarView setProjectTitle:NSLocalizedLanguage(@"ASSOCIATE_ALL_LIST_PROJECT")];
     [_projectAllAssociatedProjectListView setItems:associatedProjectList];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,13 +53,9 @@
 }
 
 #pragma mark - ProjectNav Delegate
-
 - (void)tappedProjectNav:(ProjectNavItem)projectNavItem {
-    
     if (projectNavItem == ProjectNavReOrder) {
-        
         [self tappedReOrderButton];
-        
     }
     if (projectNavItem == ProjectNavBackButton) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -91,7 +82,6 @@
 #pragma mark - ProjectSortView Delegate
 - (void)selectedProjectSort:(ProjectSortItems)projectSortItem{
     NSArray *sorted;
-    
     if (projectSortItem == ProjectSortBidDate) {
         sorted = [self sortedAssociateProjectsDescriptorKey:@"bidDate" ascending:NO];
         
@@ -115,7 +105,6 @@
     [_projectAllAssociatedProjectListView setItems:associatedProjectList];
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (NSArray *)sortedAssociateProjectsDescriptorKey:(NSString *)keyString ascending:(BOOL)asc {
