@@ -35,7 +35,7 @@
     BOOL isLocationCaptured;
     BOOL isDoneSearching;
     BOOL isListViewHidden;
-    NSDictionary *filterDictionary;
+    NSMutableDictionary *filterDictionary;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -92,7 +92,7 @@ float MetersToMiles(float meters) {
  
     }
     
-    filterDictionary = [NSDictionary new];
+    filterDictionary = [NSMutableDictionary new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -264,6 +264,7 @@ float MetersToMiles(float meters) {
 
 - (IBAction)tappedButtonFilter:(id)sender {
     ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
+    controller.projectFilterDictionary = filterDictionary;
     controller.projectNearMeFilterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:NO];
 }
@@ -519,12 +520,16 @@ float MetersToMiles(float meters) {
 
 - (void)applySearchFilter:(NSDictionary *)filter {
 
-    filterDictionary = filter;
+    //filterDictionary = filter;
     
     if (filterDictionary == nil) {
-        filterDictionary = [NSDictionary new];
+        filterDictionary = [NSMutableDictionary new];
     }
     
+    for (NSString *key in filter.allKeys) {
+        filterDictionary[key] = filter[key];
+    }
+
     if (_textFieldSearch.text.length>0) {
         [self searchForLocation];
     } else {

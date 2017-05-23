@@ -80,7 +80,7 @@
     }
     
     if (zip != nil) {
-        addr = [addr stringByAppendingString:zip];
+        addr = [addr stringByAppendingString:[@" " stringByAppendingString:zip]];
 
     }
     _labelLocation.text = addr;

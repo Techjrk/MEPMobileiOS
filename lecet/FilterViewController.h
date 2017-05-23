@@ -10,7 +10,7 @@
 
 #import "BaseViewController.h"
 @protocol FilterViewControllerDelegate
-- (void)tappedFilterViewControllerApply:(NSMutableArray*)selectedItems key:(NSString*)key titles:(NSMutableArray*)titles;
+- (void)tappedFilterViewControllerApply:(NSMutableArray*)selectedItems key:(NSString*)key titles:(NSMutableArray*)titles nodes:(NSMutableArray*)nodes;
 @end
 
 @interface FilterViewController : BaseViewController

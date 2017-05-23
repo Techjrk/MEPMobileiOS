@@ -51,8 +51,8 @@ typedef enum : NSUInteger {
     BOOL isPushingController;
     UIButton *button;
     
-    NSDictionary *projectFilterGlobal;
-    NSDictionary *companyFilterGlobal;
+    NSMutableDictionary *projectFilterGlobal;
+    NSMutableDictionary *companyFilterGlobal;
     UIAlertAction *okAlrtAction;
     
     NSDictionary *saveSearchSelectedItem;
@@ -220,8 +220,24 @@ typedef enum : NSUInteger {
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
     
     searchMode = YES;
-    projectFilterGlobal = projectFilter;
-    companyFilterGlobal = companyFilter;
+    if (projectFilterGlobal == nil) {
+        projectFilterGlobal = [NSMutableDictionary new];
+    }
+    
+    for (NSString *key in projectFilter.allKeys) {
+        projectFilterGlobal[key] = projectFilter[key];
+    }
+    
+    if (companyFilterGlobal == nil) {
+        companyFilterGlobal = [NSMutableDictionary new];
+    }
+    
+    for (NSString *key in companyFilter.allKeys) {
+        companyFilterGlobal[key] = companyFilter[key];
+    }
+    
+    //projectFilterGlobal = projectFilter;
+    //companyFilterGlobal = companyFilter;
     
     NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
     NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];

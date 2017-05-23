@@ -535,7 +535,7 @@
     
 }
 
-- (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles {
+- (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles nodes:(NSMutableArray *)nodes{
     
     if ([key isEqualToString:KEY_PROJECTSTAGEID]) {
         [self.fieldStage setValue:titles[0]];

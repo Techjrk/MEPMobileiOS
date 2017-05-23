@@ -24,6 +24,7 @@
     ListViewItemArray *localListViewItems;
     NSMutableArray *checkedItems;
     NSMutableArray *checkedTitles;
+    NSMutableArray *checkedNodes;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -48,6 +49,7 @@
     
     checkedItems = [NSMutableArray new];
     checkedTitles = [NSMutableArray new];
+    checkedNodes = [NSMutableArray new];
     
     [_buttonApply setTitleColor:BUTTON_FILTER_COLOR forState:UIControlStateNormal];
     _buttonApply.titleLabel.font = BUTTON_FILTER_FONT;
@@ -114,7 +116,7 @@
     if (checkedItems.count>0) {
         if (self.filterViewControllerDelegate) {
             
-            [self.filterViewControllerDelegate tappedFilterViewControllerApply:checkedItems key:self.fieldValue titles:checkedTitles];
+            [self.filterViewControllerDelegate tappedFilterViewControllerApply:checkedItems key:self.fieldValue titles:checkedTitles nodes:checkedNodes];
         }
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -252,6 +254,7 @@
   
         if (checkedItem.boolValue | includeChild) {
             [checkedItems addObject:item[LIST_VIEW_VALUE]];
+            [checkedNodes addObject:item[LIST_VIEW_MODEL]];
             
             if (!self.parentOnly) {
                 includeSubChild = YES;

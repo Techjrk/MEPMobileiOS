@@ -156,4 +156,20 @@ CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
 #define LIUNA_ORANGE_COLOR                      RGB(248, 152, 28)
 #define UNION_DESIGNATION_CODE                  @"U"
 
+typedef enum : NSUInteger {
+    FilterModelLocation,
+    FilterModelType,
+    FilterModelValue,
+    FilterModelUpdated,
+    FilterModelJurisdiction,
+    FilterModelStage,
+    FilterModelBidding,
+    FilterModelBH,
+    FilterModelOwner,
+    FilterModelWork,
+    FilterModelProjectType,
+    FilterModelEstLow
+} FilterModel;
+
+
 #endif /* constants_h */
