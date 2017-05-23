@@ -231,14 +231,10 @@
     
     UICollectionViewCell *cell;
     
-    //NSMutableDictionary *collectionItems = nil;
-    
     switch (currentTab.integerValue) {
             
         case 0: {
             
-            //collectionItems = items[SEARCH_RESULT_PROJECT];
-            //NSArray *itemList = collectionItems[@"results"];
             ProjectTrackItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierProject forIndexPath:indexPath];
             cell = cellItem;
             [cellItem setInfo:collectionItemsProjects[indexPath.row]];
@@ -272,8 +268,6 @@
         }
         
         case 1: {
-            //collectionItems = items[SEARCH_RESULT_COMPANY];
-            //NSArray *itemList = collectionItems[@"results"];
             
             CompanyTrackingCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierCompany forIndexPath:indexPath];
             cell = cellItem;
@@ -339,8 +333,6 @@
         }
             
         case 2: {
-            //collectionItems = items[SEARCH_RESULT_CONTACT];
-            //NSArray *itemList = collectionItems[@"results"];
             
             ContactItemCollectionViewCell *cellItem = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifierContact forIndexPath:indexPath];
             cell = cellItem;

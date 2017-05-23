@@ -335,7 +335,6 @@
 
 #pragma mark - DetailsInfo
 - (void)updateNewBidInfo:(id)update {
-    
     NSString *summary;
     NSString *detailsUpdate;
     NSString *amountDetails = @"$0";
@@ -352,14 +351,12 @@
     }
     
     _labelUpdateType.text = summary;
-    //_labelUpdateDetails.text = detailsUpdate;
     _labelLeftDesc.text = amountDetails;
     _labelRightDesc.text = detailsUpdate;
     
 }
 
 - (void)updateNewContactInfo:(id)update{
-
     NSString *summary;
     NSString *contactTitle;
     NSString *company;
@@ -376,10 +373,8 @@
     }
 
     _labelUpdateType.text = summary;
-    //_labelUpdateDetails.text = company;
     _labelLeftDesc.text = company;
     _labelRightDesc.text = contactTitle;
-    
 }
 
 - (void)updateNewStage:(id)update {
@@ -423,7 +418,6 @@
     }
     
     return userAnnotationView;
-    
 }
 
 - (IBAction)tappedButtonExppand:(id)sender {
@@ -431,7 +425,5 @@
     stateStatus[kStateExpanded] = [NSNumber numberWithBool:!expanded];
     [self.projectTrackItemViewDelegate tappedButtonExpand:self view:nil];
 }
-
-
 
 @end

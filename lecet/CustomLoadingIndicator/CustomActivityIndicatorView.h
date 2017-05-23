@@ -10,9 +10,6 @@
 #import "BaseViewClass.h"
 
 @interface CustomActivityIndicatorView : BaseViewClass
-
 - (void)startAnimating;
 - (void)stopAnimating;
-
-
 @end

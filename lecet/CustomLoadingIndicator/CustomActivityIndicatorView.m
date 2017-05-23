@@ -53,7 +53,6 @@
 }
 
 #pragma mark - Image Rotation
-
 - (void) startRotateAnimation: (UIView *) view {
     CABasicAnimation *rotation;
     rotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
@@ -67,7 +66,6 @@
 
 - (void) stopRotateAnimate: (UIView *) view {
     [view.layer removeAnimationForKey:@"Spin"];
-    
 }
 
 - (void) animateDisplay: (UIView *) view {
@@ -82,7 +80,5 @@
         }
     }];
 }
-
-
 
 @end
