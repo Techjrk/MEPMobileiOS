@@ -15,6 +15,6 @@
 
 @interface WorkOwnerTypesViewController : UIViewController
 @property (nonatomic,assign) id <WorkOwnerTypesViewControllerDelegate> workOwnerTypesViewControllerDelegate;
-- (void)setInfo:(id)info;
+- (void)setInfo:(id)info selectedItem:(NSString*)selectedItem;
 - (void)setNavTitle:(NSString *)text;
 @end

@@ -16,5 +16,5 @@
 @interface ProjectNearMeFilterViewController : BaseViewController
 // Properties
 @property (weak, nonatomic) id<ProjectNearMeFilterViewControllerDelegate>projectNearMeFilterViewControllerDelegate;
-
+@property (strong, nonatomic) NSMutableDictionary *projectFilterDictionary;
 @end

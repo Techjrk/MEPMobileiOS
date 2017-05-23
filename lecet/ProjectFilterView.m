@@ -8,8 +8,6 @@
 
 #import "ProjectFilterView.h"
 
-#import "FilterEntryView.h"
-#import "FilterLabelView.h"
 #import "ProjectFilterSelectionViewList.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
@@ -26,16 +24,6 @@
     BOOL isExpanded;
     NSLayoutConstraint *constraintObject;
 }
-@property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
-@property (weak, nonatomic) IBOutlet FilterEntryView *fieldType;
-@property (weak, nonatomic) IBOutlet FilterEntryView *fieldValue;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldUpdated;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldStage;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldBidding;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldBH;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldOwner;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldWork;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOptions;
 @property (weak, nonatomic) IBOutlet UIView *viewOptions;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewOptionsHeight;
@@ -224,13 +212,8 @@
             
             if (value.integerValue>0) {
                 
-                NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
-                
-                //self.searchFilter[@"updatedWithin"] = @{ @"min": date };
                 self.searchFilter[@"updatedInLast"] = value;
             } else {
-                //[self.searchFilter removeObjectForKey:@"updatedWithin"];
-                //self.searchFilter[@"updatedWithin"] = @{ @"valZero": @(YES) };
                 self.searchFilter[@"updatedInLast"] = @(0);
             }
             
@@ -278,6 +261,7 @@
             NSArray *value = (NSArray*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
             
             self.searchFilter[@"buildingOrHighway"] = @{@"inq":value};
+            self.searchFilter[@"buildingOrHighway_node"] = title;
             
             break;
         }
@@ -286,6 +270,7 @@
             title = [self getItem:val keyName:@"title"];
             [_fieldOwner setValue:title];
             self.searchFilter[@"ownerType"] = @{ @"inq":@[title]};
+            self.searchFilter[@"ownerType_node"] = title;
             
             break;
         }
@@ -294,6 +279,7 @@
             title = [self getItem:val keyName:@"title"];
             [_fieldWork setValue:title];
             self.searchFilter[@"workTypeId"] = @{ @"inq":@[val[@"id"]]};
+            self.searchFilter[@"workTypeId_node"] = title;
             
             break;
         }
@@ -304,6 +290,7 @@
             }
             
             [_fieldType setInfo:items];
+            self.searchFilter[@"type_node"] = items;
             
             break;
         }

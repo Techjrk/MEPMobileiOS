@@ -60,7 +60,16 @@
     NSMutableArray *array = [NSMutableArray new];
     for (id dict in info) {
         NSMutableDictionary *resDict =  [dict mutableCopy];
+
+        NSString *title = resDict[@"title"];
+        
         [resDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+
+        if (selectedItem) {
+            if ([title isEqualToString:selectedItem]) {
+                [resDict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+            }
+        }
         [array addObject:resDict];
     }
     collectionDataItems  = array;

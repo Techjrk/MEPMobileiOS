@@ -180,7 +180,36 @@
                 companyLocation[@"county"] = county;
             }
             
+            NSMutableDictionary *eFilter = [NSMutableDictionary new];
+            eFilter[@"projectLocation"] = [companyLocation copy];
+            companyDictFilter[@"esFilter"] = eFilter;
         }
+        
+        NSMutableDictionary *esFilter = companyDictFilter[@"esFilter"];
+        
+        if (esFilter == nil) {
+            esFilter = [NSMutableDictionary new];
+        }
+        
+        NSDictionary *jurisdiction = projectDictFilter[@"jurisdictions"];
+        if (jurisdiction) {
+            esFilter[@"jurisdictions"] = jurisdiction;
+        }
+        
+        NSDictionary *projectTypes = projectDictFilter[@"projectTypeId"];
+        if (projectTypes) {
+            esFilter[@"projectTypes"] = projectTypes;
+        }
+        
+        NSNumber *biddingInNext = projectDictFilter[@"biddingWithin"];
+        if (biddingInNext) {
+            esFilter[@"biddingWithin"] = biddingInNext;
+        }
+        
+        if (esFilter.count>0) {
+            companyDictFilter[@"esFilter"] = esFilter;
+        }
+        
     } else {
         
         if (projectDictFilter == nil) {
@@ -217,6 +246,22 @@
         if (dict.count>0) {
             projectDictFilter[@"projectLocation"] = dict;
         }
+        
+        NSDictionary *jurisdiction = projectDictFilter[@"jurisdictions"];
+        if (jurisdiction) {
+            projectDictFilter[@"jurisdictions"] = jurisdiction;
+        }
+        
+        NSDictionary *projectTypes = projectDictFilter[@"projectTypes"];
+        if (projectTypes) {
+            projectDictFilter[@"projectTypeId"] = projectTypes;
+        }
+        
+        NSNumber *biddingInNext = projectDictFilter[@"biddingWithin"];
+        if (biddingInNext) {
+            projectDictFilter[@"biddingWithin"] = biddingInNext;
+        }
+        
     }
     
     [self.searchFilterViewControllerDelegate tappedSearchFilterViewControllerApply:_projectFilter.searchFilter companyFilter:_companyFilter.searchFilter];
@@ -656,7 +701,7 @@
     [[DataManager sharedManager] workTypes:^(id obj){
         
         WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
-        [controller setInfo:obj];
+        [controller setInfo:obj selectedItem:nil];
         [controller setNavTitle:NSLocalizedLanguage(@"WORK_TYPES_TITLE")];
         controller.workOwnerTypesViewControllerDelegate =self;
         [self.navigationController pushViewController:controller animated:YES];
@@ -774,7 +819,7 @@
                              ] mutableCopy];
     
     WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
-    [controller setInfo:obj];
+    [controller setInfo:obj selectedItem:nil];
     [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
     controller.workOwnerTypesViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
@@ -883,7 +928,7 @@
     
 }
 
-- (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles{
+- (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles nodes:(NSMutableArray *)nodes{
     
     if (_companyFilter.hidden) {
         

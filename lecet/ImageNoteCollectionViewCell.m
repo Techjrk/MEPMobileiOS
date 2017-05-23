@@ -93,6 +93,8 @@
     
     NSString *userIdentity =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
    if ( userIdentity.integerValue == self.userId.integerValue) {
+       self.buttonEdit.hidden = NO;
+       self.buttonDelete.hidden = NO;
        [self setButtomImages];
    } else {
        self.buttonEdit.hidden = YES;

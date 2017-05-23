@@ -47,4 +47,8 @@
     
 }
 
+- (NSString*)getValue {
+    return _labelValue.text;
+}
+
 @end

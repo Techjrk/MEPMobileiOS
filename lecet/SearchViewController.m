@@ -51,8 +51,8 @@ typedef enum : NSUInteger {
     BOOL isPushingController;
     UIButton *button;
     
-    NSDictionary *projectFilterGlobal;
-    NSDictionary *companyFilterGlobal;
+    NSMutableDictionary *projectFilterGlobal;
+    NSMutableDictionary *companyFilterGlobal;
     UIAlertAction *okAlrtAction;
     
     NSDictionary *saveSearchSelectedItem;
@@ -220,8 +220,24 @@ typedef enum : NSUInteger {
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
     
     searchMode = YES;
-    projectFilterGlobal = projectFilter;
-    companyFilterGlobal = companyFilter;
+    if (projectFilterGlobal == nil) {
+        projectFilterGlobal = [NSMutableDictionary new];
+    }
+    
+    for (NSString *key in projectFilter.allKeys) {
+        projectFilterGlobal[key] = projectFilter[key];
+    }
+    
+    if (companyFilterGlobal == nil) {
+        companyFilterGlobal = [NSMutableDictionary new];
+    }
+    
+    for (NSString *key in companyFilter.allKeys) {
+        companyFilterGlobal[key] = companyFilter[key];
+    }
+    
+    //projectFilterGlobal = projectFilter;
+    //companyFilterGlobal = companyFilter;
     
     NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
     NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];
@@ -867,9 +883,37 @@ typedef enum : NSUInteger {
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Company"]) {
             
-            NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
+            NSMutableDictionary *searchFilter = [filter[@"filter"][@"searchFilter"] mutableCopy];
             _filter[@"searchFilter"] = searchFilter;
-     
+    
+            NSMutableDictionary *esFilter = [NSMutableDictionary new];
+            
+            NSDictionary *esLocation = searchFilter[@"companyLocation"];
+            if (esLocation) {
+                esFilter[@"projectLocation"] = esLocation;
+            }
+            
+            NSDictionary *esJurisdiction = searchFilter[@"jurisdictions"];
+            if (esJurisdiction) {
+                [searchFilter removeObjectForKey:@"jurisdictions"];
+                esFilter[@"jurisdictions"] = esJurisdiction;
+            }
+            
+            NSDictionary *esProjectType = searchFilter[@"projectTypeId"];
+            if (esProjectType) {
+                [searchFilter removeObjectForKey:@"projectTypeId"];
+                esFilter[@"projectTypes"] = esProjectType;
+            }
+            
+            NSDictionary *esValue = searchFilter[@"valuation"];
+            if (esValue) {
+                esFilter[@"projectValue"] = esValue;
+            }
+            
+            if (esFilter.count>0) {
+                searchFilter[@"esFilter"] = esFilter;
+            }
+            
         } else {
             if (searchString.length==0) {
                 _filter[@"searchFilter"] = @"{}";
