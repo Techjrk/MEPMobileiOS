@@ -18,6 +18,13 @@
 @interface CompanyFilterView : BaseViewClass
 @property (weak, nonatomic) id<CompanyFilterViewDelegate>companyFilterViewDelegate;
 @property (strong, nonatomic) NSMutableDictionary *searchFilter;
+
+@property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
+@property (weak, nonatomic) IBOutlet FilterEntryView *filterValue;
+@property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
+@property (weak, nonatomic) IBOutlet FilterLabelView *filterBidding;
+@property (weak, nonatomic) IBOutlet FilterLabelView *filterProjectType;
+
 - (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
 - (void)setLocationInfo:(id)info;
 

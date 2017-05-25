@@ -16,4 +16,6 @@
 
 @interface SearchFilterViewController : BaseViewController
 @property (weak, nonatomic) id<SearchFilterViewControllerDelegate>searchFilterViewControllerDelegate;
+@property (strong, nonatomic) NSMutableDictionary *projectFilterDictionary;
+@property (strong, nonatomic) NSMutableDictionary *companytFilterDictionary;
 @end

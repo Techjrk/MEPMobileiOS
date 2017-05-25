@@ -23,12 +23,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLabelHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFilterValueHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintFilterTitleHeight;
-@property (weak, nonatomic) IBOutlet FilterEntryView *fieldLocation;
-@property (weak, nonatomic) IBOutlet FilterEntryView *filterValue;
 @property (weak, nonatomic) IBOutlet UILabel *labelProject;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
-@property (weak, nonatomic) IBOutlet FilterLabelView *filterBidding;
-@property (weak, nonatomic) IBOutlet FilterLabelView *filterProjectType;
 @end
 
 @implementation CompanyFilterView
