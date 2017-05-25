@@ -111,6 +111,8 @@
 - (void)featureNotAvailable;
 - (void)showBusyScreen;
 - (void)promptMessage:(NSString*)message;
+- (void)promptMessageUpdatedProject:(NSString *)message notificationPayload:(NSDictionary *)payload;
+- (void)showProjectDetail:(NSNumber *)recordID;
 - (void)dismissPopup;
 - (void)setNotification:(BOOL)enabled;
 - (BOOL)isNotificationEnabled;

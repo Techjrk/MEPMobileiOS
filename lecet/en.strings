@@ -17,6 +17,7 @@
 "COPY_TO_CLIPBOARD_COMPANY"                 =               "Web link to company %@ has been copied to clipboard";
 "BUTTON_OK"                                 =               "OK";
 "ALERT_TEXTFIELD_PLACEHOLDER"               =               "TITLE";
+"BUTTON_VIEW"                               =               "View";
 
 //LoginViewController.xib
 "LOGIN_BUTTON_TEXT"                         =               "LOGIN";

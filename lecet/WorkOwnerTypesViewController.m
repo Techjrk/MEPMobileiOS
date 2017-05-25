@@ -56,7 +56,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setInfo:(id)info {
+- (void)setInfo:(id)info selectedItem:(NSString*)selectedItem {
+    
     NSMutableArray *array = [NSMutableArray new];
     for (id dict in info) {
         NSMutableDictionary *resDict =  [dict mutableCopy];

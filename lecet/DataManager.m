@@ -22,6 +22,8 @@
 #import "AppDelegate.h"
 #import "BusyViewController.h"
 
+#import "ProjectDetailViewController.h"
+
 //Set kProduction = 1 (Production), 0 (Staging)
 
 #define kbaseUrl                            [kHost stringByAppendingString:@"api/"]
@@ -254,7 +256,7 @@
     }
     
     record.recordId = @([recordId integerValue]);
-    record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
+    //record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
     
     record.address2 = [DerivedNSManagedObject objectOrNil:project[@"address2"]];
@@ -293,12 +295,12 @@
     record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
     //record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
     record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
-    record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
+    //record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
     record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectTypeId"]];
     record.priorPublishDate = [DerivedNSManagedObject objectOrNil:project[@"priorPublishDate"]];
     record.projDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"projDlvrySys"]];
     record.projectStageId = [DerivedNSManagedObject objectOrNil:project[@"projectStageId"]];
-    record.specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
+    //record.specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
     record.state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
     record.statusProjDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"statusProjDlvrySys"]];
     record.statusText = [DerivedNSManagedObject objectOrNil:project[@"statusText"]];
@@ -1345,6 +1347,65 @@
     
     [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
     
+}
+
+
+- (void)promptMessageUpdatedProject:(NSString *)message notificationPayload:(NSDictionary *)payload {
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *viewAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_VIEW")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            [self showProjectDetail:[NSNumber numberWithInt:263793]];
+                                                        }];
+
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_CLOSE")
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:viewAction];
+    [alert addAction:closeAction];
+    
+    [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
+    
+}
+
+- (void)showProjectDetail:(NSNumber *)recordID {
+    if ([self isModal]) {
+        [[self getActiveViewController] dismissViewControllerAnimated:NO completion:^{
+            [self projectDetail:recordID success:^(id object){
+                ProjectDetailViewController *detail = [ProjectDetailViewController new];
+                detail.view.hidden = NO;
+                [detail detailsFromProject:object];
+                [[self getActiveViewController].navigationController pushViewController:detail animated:YES];
+            }failure:^(id fObject){
+            }];
+        }];
+    } else {
+        [self projectDetail:recordID success:^(id object){
+            ProjectDetailViewController *detail = [ProjectDetailViewController new];
+            detail.view.hidden = NO;
+            [detail detailsFromProject:object];
+            [[self getActiveViewController].navigationController pushViewController:detail animated:YES];
+        }failure:^(id fObject){
+        }];
+    }
+}
+
+- (BOOL)isModal {
+    if ([[self getActiveViewController] presentingViewController]) {
+        return YES;
+    }
+    else if ([[[self getActiveViewController] presentingViewController] presentedViewController] == [self getActiveViewController].navigationController) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 - (void)dismissPopup {

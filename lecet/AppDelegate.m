@@ -336,8 +336,11 @@
        } else {
            message = payLoad;
        }
-        [[DataManager sharedManager] promptMessage:message];
-    }
+        //[[DataManager sharedManager] promptMessage:message];
+       [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
+   } else {
+       [[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
+   }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
