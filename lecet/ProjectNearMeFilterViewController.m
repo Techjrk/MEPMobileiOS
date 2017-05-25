@@ -428,6 +428,7 @@
     return array;
 }
 
+
 - (NSDictionary*)filterUpdatedWithinDictionary:(NSArray*)array {
     
     NSDictionary *dict = nil;
@@ -728,7 +729,6 @@
     controller.filterSelectionViewControllerDelegate = self;
     
     NSString *ownerName = @"Project";
-    //NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"biddingWithin"]];
     NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"biddingInNext"]];
     
     if (dict == nil) {

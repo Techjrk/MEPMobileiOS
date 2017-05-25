@@ -81,8 +81,8 @@
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
         
-        [_textFieldEmail setText: @"kbailey@lecet.org"];
-        [_textFieldPassword setText: @"lecet123"];
+        //[_textFieldEmail setText: @"kbailey@lecet.org"];
+        //[_textFieldPassword setText: @"lecet123"];
   
         //[_textFieldEmail setText: @"kevin.herrera@domandtom.com"];
         //[_textFieldPassword setText: @"android1234"];

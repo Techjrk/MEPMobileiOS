@@ -194,9 +194,9 @@
             if (current.length>0) {
                 
                 if (value.length>0) {
-                    value = [value stringByAppendingString:@", "];
+                    value = [[value stringByAppendingString:@", "] uppercaseString];
                 }
-                value = [value stringByAppendingString:current];
+                value = [[value stringByAppendingString:current] uppercaseString];
             }
         }
         

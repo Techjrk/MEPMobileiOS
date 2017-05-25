@@ -3553,7 +3553,6 @@
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3574,7 +3573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "150160cd-aa74-46a9-b341-17e6c9bb1b95";
+				PROVISIONING_PROFILE = "bf39cdd4-5b99-470a-9126-f3bb82c7cdbe";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Debug;
@@ -3586,7 +3585,6 @@
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3607,7 +3605,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "150160cd-aa74-46a9-b341-17e6c9bb1b95";
+				PROVISIONING_PROFILE = "bf39cdd4-5b99-470a-9126-f3bb82c7cdbe";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Release;

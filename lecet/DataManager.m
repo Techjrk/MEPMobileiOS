@@ -254,7 +254,7 @@
     }
     
     record.recordId = @([recordId integerValue]);
-    record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
+    //record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
     
     record.address2 = [DerivedNSManagedObject objectOrNil:project[@"address2"]];
@@ -293,12 +293,12 @@
     record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
     //record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
     record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
-    record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
+    //record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
     record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectTypeId"]];
     record.priorPublishDate = [DerivedNSManagedObject objectOrNil:project[@"priorPublishDate"]];
     record.projDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"projDlvrySys"]];
     record.projectStageId = [DerivedNSManagedObject objectOrNil:project[@"projectStageId"]];
-    record.specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
+    //record.specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
     record.state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
     record.statusProjDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"statusProjDlvrySys"]];
     record.statusText = [DerivedNSManagedObject objectOrNil:project[@"statusText"]];

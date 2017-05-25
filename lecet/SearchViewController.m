@@ -209,6 +209,8 @@ typedef enum : NSUInteger {
     
     SearchFilterViewController *controller = [SearchFilterViewController new];
     controller.searchFilterViewControllerDelegate = self;
+    controller.projectFilterDictionary = [projectFilterGlobal mutableCopy];
+    controller.companytFilterDictionary = [companyFilterGlobal mutableCopy];
     [self.navigationController pushViewController:controller animated:YES];
     
     /*
@@ -235,9 +237,6 @@ typedef enum : NSUInteger {
     for (NSString *key in companyFilter.allKeys) {
         companyFilterGlobal[key] = companyFilter[key];
     }
-    
-    //projectFilterGlobal = projectFilter;
-    //companyFilterGlobal = companyFilter;
     
     NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
     NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];
