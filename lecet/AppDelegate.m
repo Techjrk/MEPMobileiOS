@@ -58,6 +58,14 @@
   
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
+    NSDictionary *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notification) {
+        [[DataManager sharedManager] promptMessage:[NSString stringWithFormat:@"%@",notification]];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self performSelector:@selector(test:) withObject:notification afterDelay:10.0f];
+//        });
+    }
+    
     return YES;
 }
 
@@ -339,6 +347,7 @@
         //[[DataManager sharedManager] promptMessage:message];
        [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
    } else {
+       
        [[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
    }
 }
