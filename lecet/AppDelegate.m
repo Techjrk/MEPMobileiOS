@@ -56,15 +56,23 @@
     self.navController = navigationViewController;
     [self.window makeKeyAndVisible];
   
-    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    NSString *accessToken = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
     
-    NSDictionary *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (notification) {
-        NSDictionary *body = notification[@"body"];
-        if (body) {
-            NSNumber *recordId = body[@"projectId"];
-            if (recordId) {
-                self.notificationPayloadRecordID = recordId;
+    if (accessToken == nil) {
+        accessToken = @"";
+    }
+
+    if (accessToken.length>0) {
+        [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+        
+        NSDictionary *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (notification) {
+            NSDictionary *body = notification[@"body"];
+            if (body) {
+                NSNumber *recordId = body[@"projectId"];
+                if (recordId) {
+                    self.notificationPayloadRecordID = recordId;
+                }
             }
         }
     }
