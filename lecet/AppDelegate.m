@@ -272,74 +272,77 @@
 
 // Handle your remote RemoteNotification
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-   if (application.applicationState == UIApplicationStateActive ) {
-        NSDictionary *aps = userInfo[@"aps"];
-       id payLoad = aps[@"alert"];
-
-       NSString *message = @"";
-       if ([payLoad isKindOfClass:[NSDictionary class]]) {
-        
-           NSDictionary *alert = aps[@"alert"];
-           NSDictionary *body = alert[@"body"];
-           
-           NSString *type = body[@"type"];
-           
-           NSString *title = alert[@"title"];
-           NSString *detail = @"";
-           
-           if (![type isEqualToString:@"updatedProject"]) {
-               detail = body[@"text"];
-           }
-           
-           NSString *address = @"";
-           
-           NSString *address1 = [DerivedNSManagedObject objectOrNil:body[@"address1"]];
-           NSString *address2 = [DerivedNSManagedObject objectOrNil:body[@"address2"]];
-           NSString *city = [DerivedNSManagedObject objectOrNil:body[@"city"]];
-           NSString *state = [DerivedNSManagedObject objectOrNil:body[@"state"]];
-           NSString *zip = [DerivedNSManagedObject objectOrNil:body[@"zip5"]];
-           
-           if ( address1!= nil) {
-               
-               address = [[address stringByAppendingString:address1] stringByAppendingString:@" "];
-               address = [address stringByAppendingString:[self addComma:address2]];
-           }
-           
-           
-           if (address2 != nil) {
-               address = [[address stringByAppendingString:address2] stringByAppendingString:@" "];
-               address = [address stringByAppendingString:[self addComma:city]];
-           }
-           
-           if (city != nil) {
-               address = [[address stringByAppendingString:city] stringByAppendingString:@" "];
-               address = [address stringByAppendingString:[self addComma:state]];
-           }
-           
-           if (state != nil) {
-               address = [[address stringByAppendingString:state] stringByAppendingString:@" "];
-               address = [address stringByAppendingString:[self addComma:zip]];
-               
-           }
-           
-           if (zip != nil) {
-               address = [address stringByAppendingString:zip];
-           }
-           
-           if (detail.length>0) {
-               title = [[title stringByAppendingString:@"\n"] stringByAppendingString:detail];
-           }
-           
-           message = [NSString stringWithFormat:@"%@\n%@", title, address];
-       
-       } else {
-           message = payLoad;
-       }
-       [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
-   } else {
-       [[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
-   }
+   
+    if (self.isLogged) {
+        if (application.applicationState == UIApplicationStateActive ) {
+            NSDictionary *aps = userInfo[@"aps"];
+            id payLoad = aps[@"alert"];
+            
+            NSString *message = @"";
+            if ([payLoad isKindOfClass:[NSDictionary class]]) {
+                
+                NSDictionary *alert = aps[@"alert"];
+                NSDictionary *body = alert[@"body"];
+                
+                NSString *type = body[@"type"];
+                
+                NSString *title = alert[@"title"];
+                NSString *detail = @"";
+                
+                if (![type isEqualToString:@"updatedProject"]) {
+                    detail = body[@"text"];
+                }
+                
+                NSString *address = @"";
+                
+                NSString *address1 = [DerivedNSManagedObject objectOrNil:body[@"address1"]];
+                NSString *address2 = [DerivedNSManagedObject objectOrNil:body[@"address2"]];
+                NSString *city = [DerivedNSManagedObject objectOrNil:body[@"city"]];
+                NSString *state = [DerivedNSManagedObject objectOrNil:body[@"state"]];
+                NSString *zip = [DerivedNSManagedObject objectOrNil:body[@"zip5"]];
+                
+                if ( address1!= nil) {
+                    
+                    address = [[address stringByAppendingString:address1] stringByAppendingString:@" "];
+                    address = [address stringByAppendingString:[self addComma:address2]];
+                }
+                
+                
+                if (address2 != nil) {
+                    address = [[address stringByAppendingString:address2] stringByAppendingString:@" "];
+                    address = [address stringByAppendingString:[self addComma:city]];
+                }
+                
+                if (city != nil) {
+                    address = [[address stringByAppendingString:city] stringByAppendingString:@" "];
+                    address = [address stringByAppendingString:[self addComma:state]];
+                }
+                
+                if (state != nil) {
+                    address = [[address stringByAppendingString:state] stringByAppendingString:@" "];
+                    address = [address stringByAppendingString:[self addComma:zip]];
+                    
+                }
+                
+                if (zip != nil) {
+                    address = [address stringByAppendingString:zip];
+                }
+                
+                if (detail.length>0) {
+                    title = [[title stringByAppendingString:@"\n"] stringByAppendingString:detail];
+                }
+                
+                message = [NSString stringWithFormat:@"%@\n%@", title, address];
+                
+            } else {
+                message = payLoad;
+            }
+            [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
+        } else {
+            [[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
+        }
+    }
+   
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
