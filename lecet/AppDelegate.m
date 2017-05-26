@@ -339,7 +339,7 @@
         //[[DataManager sharedManager] promptMessage:message];
        [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
    } else {
-       [[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
+       //[[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
    }
 }
 
