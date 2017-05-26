@@ -63,7 +63,7 @@
         NSDictionary *aps = notification[@"aps"];
         NSDictionary *body = aps[@"body"];
         if (body) {
-            NSNumber *recordId = body[@"id"];
+            NSNumber *recordId = body[@"projectId"];
             if (recordId) {
                 self.notificationPayloadRecordID = recordId;
             }
@@ -353,7 +353,7 @@
             
             NSDictionary *body = aps[@"body"];
             if (body) {
-                NSNumber *recordId = body[@"id"];
+                NSNumber *recordId = body[@"projectId"];
                 if (recordId) {
                     [[DataManager sharedManager] showProjectDetail:recordId];
                 }
