@@ -60,8 +60,7 @@
     
     NSDictionary *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notification) {
-        NSDictionary *aps = notification[@"aps"];
-        NSDictionary *body = aps[@"body"];
+        NSDictionary *body = notification[@"body"];
         if (body) {
             NSNumber *recordId = body[@"projectId"];
             if (recordId) {
@@ -351,7 +350,7 @@
             [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
         } else {
             
-            NSDictionary *body = aps[@"body"];
+            NSDictionary *body = userInfo[@"body"];
             if (body) {
                 NSNumber *recordId = body[@"projectId"];
                 if (recordId) {

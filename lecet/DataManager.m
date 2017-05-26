@@ -1374,15 +1374,10 @@
 
     NSNumber *recordId = nil;
     
-    NSDictionary *aps = payload[@"aps"];
-    if (aps) {
-        if (aps) {
-            NSDictionary *body = aps[@"body"];
-            if (body) {
-                recordId = body[@"projectId"];
-                
-            }
-        }
+    NSDictionary *body = payload[@"body"];
+    if (body) {
+        recordId = body[@"projectId"];
+        
     }
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
