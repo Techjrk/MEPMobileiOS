@@ -160,6 +160,14 @@
     [self.customLoadingIndicator stopAnimating];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.notificationPayloadRecordID) {
+        [[DataManager sharedManager] showProjectDetail:appDelegate.notificationPayloadRecordID];
+        appDelegate.notificationPayloadRecordID = nil;
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
