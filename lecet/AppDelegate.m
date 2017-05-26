@@ -274,8 +274,8 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
    
     if (self.isLogged) {
+        NSDictionary *aps = userInfo[@"aps"];
         if (application.applicationState == UIApplicationStateActive ) {
-            NSDictionary *aps = userInfo[@"aps"];
             id payLoad = aps[@"alert"];
             
             NSString *message = @"";
@@ -339,7 +339,15 @@
             }
             [[DataManager sharedManager] promptMessageUpdatedProject:message notificationPayload:userInfo];
         } else {
-            [[DataManager sharedManager] showProjectDetail:[NSNumber numberWithInt:263793]];
+            
+            NSDictionary *body = aps[@"body"];
+            if (body) {
+                NSNumber *recordId = body[@"id"];
+                if (recordId) {
+                    [[DataManager sharedManager] showProjectDetail:recordId];
+                }
+            }
+            
         }
     }
    

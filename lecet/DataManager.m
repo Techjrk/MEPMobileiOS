@@ -1372,12 +1372,25 @@
 
 - (void)promptMessageUpdatedProject:(NSString *)message notificationPayload:(NSDictionary *)payload {
 
+    NSNumber *recordId = nil;
+    
+    NSDictionary *aps = payload[@"aps"];
+    if (aps) {
+        if (aps) {
+            NSDictionary *body = aps[@"body"];
+            if (body) {
+                recordId = body[@"id"];
+                
+            }
+        }
+    }
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *viewAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_VIEW")
                                                           style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction *action) {
-                                                            [self showProjectDetail:[NSNumber numberWithInt:263793]];
+                                                            [self showProjectDetail:recordId];
                                                         }];
 
     
@@ -1387,7 +1400,10 @@
                                                             
                                                         }];
     
-    [alert addAction:viewAction];
+
+    if (recordId) {
+        [alert addAction:viewAction];
+    }
     [alert addAction:closeAction];
     
     [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
