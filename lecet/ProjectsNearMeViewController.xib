@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +15,7 @@
             <connections>
                 <outlet property="buttonBack" destination="R5M-wU-TD7" id="6Nz-Lm-EJ8"/>
                 <outlet property="buttonFilter" destination="faJ-0o-7ws" id="zaL-LR-Cjz"/>
+                <outlet property="customLoadingIndcator" destination="O0v-6v-ppz" id="0KA-dt-gyV"/>
                 <outlet property="locListButton" destination="vOv-oB-KhN" id="ckm-HO-Xc5"/>
                 <outlet property="mapView" destination="c4p-uc-d1n" id="MHH-7K-hkV"/>
                 <outlet property="projectNearMeListView" destination="wU7-Ly-k8k" id="GGu-Wc-nfC"/>
@@ -89,6 +91,13 @@
                     <rect key="frame" x="0.0" y="85" width="414" height="651"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0v-6v-ppz" customClass="CustomActivityIndicatorView">
+                    <rect key="frame" x="103.5" y="307" width="207" height="207"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="O0v-6v-ppz" secondAttribute="height" multiplier="1:1" id="S8C-Qx-TU1"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bim-2D-c2L">
                     <rect key="frame" x="336" y="658" width="53" height="53"/>
                     <state key="normal" image="locationArrow_icon "/>
@@ -110,6 +119,8 @@
                 <constraint firstItem="Ze1-Fk-hF2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="5fm-6A-f7Z"/>
                 <constraint firstAttribute="bottom" secondItem="c4p-uc-d1n" secondAttribute="bottom" id="7yL-5u-lBF"/>
                 <constraint firstAttribute="bottom" secondItem="bim-2D-c2L" secondAttribute="bottom" constant="25" id="8RS-st-yUg"/>
+                <constraint firstItem="O0v-6v-ppz" firstAttribute="centerY" secondItem="wU7-Ly-k8k" secondAttribute="centerY" id="Aaa-Tr-Hmi"/>
+                <constraint firstItem="O0v-6v-ppz" firstAttribute="width" secondItem="wU7-Ly-k8k" secondAttribute="width" multiplier="0.5" id="BbB-oA-vSV"/>
                 <constraint firstItem="4X6-5H-z1L" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.055" id="C9h-Gy-Moa"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PJk-Aw-GRi"/>
                 <constraint firstAttribute="bottom" secondItem="bPF-Bf-kON" secondAttribute="bottom" id="RAw-UF-wCd"/>
@@ -121,6 +132,7 @@
                 <constraint firstItem="bPF-Bf-kON" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dFA-vE-3kd"/>
                 <constraint firstAttribute="trailing" secondItem="c4p-uc-d1n" secondAttribute="trailing" id="duG-zk-Ay0"/>
                 <constraint firstItem="vOv-oB-KhN" firstAttribute="leading" secondItem="bim-2D-c2L" secondAttribute="leading" id="hPb-Hn-Kl4"/>
+                <constraint firstItem="O0v-6v-ppz" firstAttribute="centerX" secondItem="wU7-Ly-k8k" secondAttribute="centerX" id="hUG-2Q-AtU"/>
                 <constraint firstItem="AoB-Hl-8B6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.115" id="hZM-zy-4cG"/>
                 <constraint firstItem="wU7-Ly-k8k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hc3-ej-Qqg"/>
                 <constraint firstItem="vOv-oB-KhN" firstAttribute="trailing" secondItem="bim-2D-c2L" secondAttribute="trailing" id="iud-TI-McV"/>

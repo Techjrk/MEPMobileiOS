@@ -24,6 +24,7 @@
 #import "NewProjectAnnotation.h"
 #import "NewPinViewController.h"
 #import "ProjectDetailViewController.h"
+#import "CustomActivityIndicatorView.h"
 
 #define PROJECTS_TEXTFIELD_TEXT_FONT                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 12);
 
@@ -44,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet ProjectNearMeListView *projectNearMeListView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonFilter;
+@property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndcator;
 
 - (IBAction)tappedButtonback:(id)sender;
 @end
@@ -147,7 +149,7 @@ float MetersToMiles(float meters) {
         
         isDoneSearching = NO;
         [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:filterDictionary success:^(id object) {
-
+            [self.customLoadingIndcator stopAnimating];
             isDoneSearching = YES;
             
             [mapItems removeAllObjects];
@@ -197,6 +199,7 @@ float MetersToMiles(float meters) {
             isDoneSearching = YES;
         }];
     } else {
+        [self.customLoadingIndcator stopAnimating];
         isDoneSearching = YES;
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"PROJECTS_NEAR_LOCATION_INVALID")];
     }
@@ -529,7 +532,7 @@ float MetersToMiles(float meters) {
     for (NSString *key in filter.allKeys) {
         filterDictionary[key] = filter[key];
     }
-
+    [self.customLoadingIndcator startAnimating];
     if (_textFieldSearch.text.length>0) {
         [self searchForLocation];
     } else {
