@@ -3553,6 +3553,7 @@
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3585,6 +3586,7 @@
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
