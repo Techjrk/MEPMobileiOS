@@ -280,8 +280,8 @@
 
 // Handle your remote RemoteNotification
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-   if (application.applicationState == UIApplicationStateActive ) {
+   
+    if (self.isLogged) {
         NSDictionary *aps = userInfo[@"aps"];
        id payLoad = aps[@"alert"];
 

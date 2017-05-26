@@ -256,7 +256,14 @@
     }
     
     record.recordId = @([recordId integerValue]);
-    //record.addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
+    
+    NSNumber *addendaInd = [DerivedNSManagedObject objectOrNil:project[@"addendaInd"]];
+    
+    if (addendaInd == nil) {
+        addendaInd = @(0);
+    }
+    record.addendaInd = [addendaInd stringValue];
+    
     record.address1 = [DerivedNSManagedObject objectOrNil:project[@"address1"]];
     
     record.address2 = [DerivedNSManagedObject objectOrNil:project[@"address2"]];
@@ -295,12 +302,25 @@
     record.lastPublishDate = [DerivedNSManagedObject objectOrNil:project[@"lastPublishDate"]];
     //record.notes = [DerivedNSManagedObject objectOrNil:project[@"notes"]];
     record.ownerClass = [DerivedNSManagedObject objectOrNil:project[@"ownerClass"]];
-    //record.planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
+    
+    NSNumber *planInd = [DerivedNSManagedObject objectOrNil:project[@"planInd"]];
+    
+    if (planInd == nil) {
+        planInd = @(0);
+    }
+    record.planInd = [planInd stringValue];
+    
     record.primaryProjectTypeId = [DerivedNSManagedObject objectOrNil:project[@"primaryProjectTypeId"]];
     record.priorPublishDate = [DerivedNSManagedObject objectOrNil:project[@"priorPublishDate"]];
     record.projDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"projDlvrySys"]];
     record.projectStageId = [DerivedNSManagedObject objectOrNil:project[@"projectStageId"]];
-    //record.specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
+    
+    NSNumber *specAvailable = [DerivedNSManagedObject objectOrNil:project[@"specAvailable"]];
+    if (specAvailable == nil) {
+        specAvailable = @(0);
+    }
+    record.specAvailable = [specAvailable stringValue];
+    
     record.state = [DerivedNSManagedObject objectOrNil:project[@"state"]];
     record.statusProjDlvrySys = [DerivedNSManagedObject objectOrNil:project[@"statusProjDlvrySys"]];
     record.statusText = [DerivedNSManagedObject objectOrNil:project[@"statusText"]];
@@ -1352,12 +1372,25 @@
 
 - (void)promptMessageUpdatedProject:(NSString *)message notificationPayload:(NSDictionary *)payload {
 
+    NSNumber *recordId = nil;
+    
+    NSDictionary *aps = payload[@"aps"];
+    if (aps) {
+        if (aps) {
+            NSDictionary *body = aps[@"body"];
+            if (body) {
+                recordId = body[@"id"];
+                
+            }
+        }
+    }
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *viewAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_VIEW")
                                                           style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction *action) {
-                                                            [self showProjectDetail:[NSNumber numberWithInt:263793]];
+                                                            [self showProjectDetail:recordId];
                                                         }];
 
     
@@ -1367,7 +1400,10 @@
                                                             
                                                         }];
     
-    [alert addAction:viewAction];
+
+    if (recordId) {
+        [alert addAction:viewAction];
+    }
     [alert addAction:closeAction];
     
     [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
