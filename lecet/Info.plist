@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>54</string>
+	<string>55</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -42,7 +42,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs acces to camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow image</string>
 	<key>UIAppFonts</key>
