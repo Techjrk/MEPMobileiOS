@@ -106,8 +106,8 @@
         //[_textFieldEmail setText:@"nprymek@iowalecet.org"];
         //[_textFieldPassword setText: @"1KnbXIuQ56L9laB0S7gysx60sIy5zawZ"];
     
-        //[_textFieldEmail setText: @"lecet@domandtom.com"];
-        //[_textFieldPassword setText: @"HSyd8Xc1Y7ws842qMCW9a3KEX"];
+        [_textFieldEmail setText: @"lecet@domandtom.com"];
+        [_textFieldPassword setText: @"HSyd8Xc1Y7ws842qMCW9a3KEX"];
         
     }
     
