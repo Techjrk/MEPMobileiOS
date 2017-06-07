@@ -10,7 +10,6 @@
 #import "ProjectFilterView.h"
 #import "FilterLabelView.h"
 #import "FilterEntryView.h"
-#import "ListItemCollectionViewCell.h"
 #import "ProjectFilterLocationViewController.h"
 #import "ValuationViewController.h"
 #import "FilterViewController.h"
@@ -474,9 +473,14 @@
 }
 
 - (void)filterJurisdiction:(UIView*)view {
-    if (listItemsJurisdictions == nil) {
+    if ((listItemsJurisdictions == nil) || (listItemsJurisdictions.count == 0)) {
         
-        ListViewItemArray *listItems = [ListViewItemArray new];
+        ListViewItemArray *listItems = nil;
+        if (listItemsJurisdictions) {
+            listItems = listItemsJurisdictions;
+        } else {
+            listItems = [ListViewItemArray new];
+        }
         
         [[DataManager sharedManager] jurisdiction:^(id object) {
         
@@ -594,9 +598,15 @@
 }
 
 - (void)filterStage:(UIView*)view {
-    if (listItemsProjectStageId == nil) {
+    if ( (listItemsProjectStageId == nil) || (listItemsProjectStageId.count == 0)) {
         
-        ListViewItemArray *listItems = [ListViewItemArray new];
+        ListViewItemArray *listItems = nil;
+        if (listItemsProjectStageId) {
+            listItems = listItemsProjectStageId;
+        }else {
+            listItems = [ListViewItemArray new];
+        }
+        
         
         [[DataManager sharedManager] parentStage:^(id object) {
             
@@ -660,7 +670,7 @@
     controller.listViewItems = listItemsProjectStageId;
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectStageId";
-    controller.singleSelect = YES;
+    controller.singleSelect = NO;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -910,6 +920,15 @@
     NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
     NSDictionary *value = item != nil?item:emptyDic;
     [_projectFilter setFilterModelInfo:selectedModel value:value];
+}
+
+- (void)setJurisdictionItems:(ListViewItemArray*)jurisdictionItems{
+
+    listItemsJurisdictions = jurisdictionItems;
+}
+
+- (void)setStageItems:(ListViewItemArray*)statgeItems {
+    listItemsProjectStageId = statgeItems;
 }
 
 @end

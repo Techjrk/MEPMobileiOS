@@ -863,9 +863,14 @@
 
 - (void)filterStage:(UIView*)view {
     
-    if (listItemsProjectStageId == nil) {
+    if ((listItemsProjectStageId == nil) || (listItemsProjectStageId.count == 0)) {
         
-        ListViewItemArray *listItems = [ListViewItemArray new];
+        ListViewItemArray *listItems = nil;
+        if (listItemsProjectStageId) {
+            listItems = listItemsProjectStageId;
+        } else {
+            listItems = [ListViewItemArray new];
+        }
         
         [[DataManager sharedManager] parentStage:^(id object) {
             
@@ -914,7 +919,7 @@
     controller.listViewItems = listItemsProjectStageId;
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectStageId";
-    controller.singleSelect = YES;
+    controller.singleSelect = NO;
     [self.navigationController pushViewController:controller animated:YES];
 
 }
@@ -1379,6 +1384,10 @@
     }
     
     return title;
+}
+
+- (void)setStageItems:(ListViewItemArray*)statgeItems {
+    listItemsProjectStageId = statgeItems;
 }
 
 @end

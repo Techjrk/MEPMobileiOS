@@ -25,6 +25,7 @@
 #import "SeeAllCollectionViewCell.h"
 #import "SaveSearchChangeItemView.h"
 #import "CustomActivityIndicatorView.h"
+#import "ListItemCollectionViewCell.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
@@ -58,6 +59,8 @@ typedef enum : NSUInteger {
     NSDictionary *saveSearchSelectedItem;
     BOOL isSuggestedListBeenTapped;
     BOOL fromSavedSearch;
+    ListViewItemArray *statgeItems;
+    
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintSaveSearchesHeight;
@@ -209,6 +212,11 @@ typedef enum : NSUInteger {
     
     SearchFilterViewController *controller = [SearchFilterViewController new];
     controller.searchFilterViewControllerDelegate = self;
+    if (statgeItems == nil) {
+        statgeItems = [ListViewItemArray new];
+    }
+    [controller setStageItems:statgeItems];
+
     controller.projectFilterDictionary = [projectFilterGlobal mutableCopy];
     controller.companytFilterDictionary = [companyFilterGlobal mutableCopy];
     [self.navigationController pushViewController:controller animated:YES];

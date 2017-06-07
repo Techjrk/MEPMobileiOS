@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "ListItemCollectionViewCell.h"
 
 @protocol ProjectNearMeFilterViewControllerDelegate
 - (void) applySearchFilter:(NSDictionary*)filter;
@@ -17,4 +18,8 @@
 // Properties
 @property (weak, nonatomic) id<ProjectNearMeFilterViewControllerDelegate>projectNearMeFilterViewControllerDelegate;
 @property (strong, nonatomic) NSMutableDictionary *projectFilterDictionary;
+
+- (void)setJurisdictionItems:(ListViewItemArray*)jurisdictionItems;
+- (void)setStageItems:(ListViewItemArray*)statgeItems;
+
 @end

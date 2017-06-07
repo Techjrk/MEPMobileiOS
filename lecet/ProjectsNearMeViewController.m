@@ -37,6 +37,9 @@
     BOOL isDoneSearching;
     BOOL isListViewHidden;
     NSMutableDictionary *filterDictionary;
+    
+    ListViewItemArray *jurisdictionItems;
+    ListViewItemArray *statgeItems;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -137,7 +140,7 @@ float MetersToMiles(float meters) {
     
     if (!isLocationCaptured) {
         isLocationCaptured = YES;
-        [self loadProjects:1 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
+        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
     }
 }
 
@@ -178,9 +181,9 @@ float MetersToMiles(float meters) {
             } else {
                 
                 isDoneSearching = YES;
-                if (distance < 500) {
+                if (distance < 200) {
             
-                    CGFloat newDistance = distance + (distance==5?95:100);
+                    CGFloat newDistance = distance + (distance==5?45:50);
                     
                     [self loadProjects:newDistance coordinate:coordinate regionValue:regionValue];
                     
@@ -268,6 +271,11 @@ float MetersToMiles(float meters) {
 - (IBAction)tappedButtonFilter:(id)sender {
     ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
     controller.projectFilterDictionary = filterDictionary;
+    
+    if (statgeItems == nil) {
+        statgeItems = [ListViewItemArray new];
+    }
+    [controller setStageItems:statgeItems];
     controller.projectNearMeFilterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:NO];
 }

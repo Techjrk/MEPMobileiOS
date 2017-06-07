@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
+#import "ListItemCollectionViewCell.h"
 
 @protocol SearchFilterViewControllerDelegate <NSObject>
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary*)projectFilter companyFilter:(NSDictionary*)companyFilter;
@@ -18,4 +19,6 @@
 @property (weak, nonatomic) id<SearchFilterViewControllerDelegate>searchFilterViewControllerDelegate;
 @property (strong, nonatomic) NSMutableDictionary *projectFilterDictionary;
 @property (strong, nonatomic) NSMutableDictionary *companytFilterDictionary;
+- (void)setStageItems:(ListViewItemArray*)statgeItems;
+
 @end
