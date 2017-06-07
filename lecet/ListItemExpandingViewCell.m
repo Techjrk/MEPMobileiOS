@@ -70,13 +70,49 @@
  
 }
 
+- (void)uncheckItem:(ListViewItemArray*)items {
+    
+    for (ListViewItemDictionary *item in items) {
+        item[STATUS_CHECK] = [NSNumber numberWithBool:NO];
+        
+        ListViewItemArray *subItemsArray = item[LIST_VIEW_SUBITEMS];
+        
+        if (subItemsArray) {
+            [self uncheckItem:subItemsArray];
+        }
+    }
+}
+
+- (void)uncheckParentItem:(ListItemCollectionViewCell*)parentItem {
+    
+    if (parentItem) {
+        ListItemCollectionViewCell *listView = (ListItemCollectionViewCell*)[[[[[[parentItem superview]superview] superview]superview] superview]superview];
+        
+        if ([listView isKindOfClass:[ListItemCollectionViewCell class]]) {
+            ListViewItemDictionary *item = [listView localItem];
+            item[STATUS_CHECK] = [NSNumber numberWithBool:NO];
+            
+            [self uncheckParentItem:listView];
+        }
+    }
+}
+
 - (IBAction)tappedButtonCheck:(id)sender {
  
     NSNumber *checked = localItem[STATUS_CHECK];
+   
     
     if([self.listItemCollectionViewCellDelegate singleSelection]) {
         
+        
+        
     };
+    
+    if (subItems) {
+        [self uncheckItem:subItems];
+    }
+    
+    [self uncheckParentItem:self];
     
     localItem[STATUS_CHECK] = [NSNumber numberWithBool:!checked.boolValue];
     [self setCheckImage:!checked.boolValue];

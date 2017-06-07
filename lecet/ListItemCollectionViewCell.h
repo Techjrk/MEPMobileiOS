@@ -49,4 +49,5 @@
 + (ListViewItemDictionary*)createItem:(NSString*)name value:(NSString*)value model:(NSString*)model;
 - (void)setItem:(ListViewItemDictionary*)item;
 - (id)parentListView;
+- (ListViewItemDictionary *)localItem;
 @end

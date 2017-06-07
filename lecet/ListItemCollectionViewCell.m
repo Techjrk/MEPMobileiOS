@@ -218,4 +218,7 @@
     localItem = item;
 }
 
+- (ListViewItemDictionary *)localItem {
+    return localItem;
+}
 @end

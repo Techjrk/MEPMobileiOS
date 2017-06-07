@@ -227,8 +227,8 @@
         
         [self uncheckItem:localListViewItems];
         
-        [_listView reloadData];
     }
+    [_listView reloadData];
     
     return self.singleSelect;
 }
