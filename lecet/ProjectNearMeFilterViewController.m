@@ -582,7 +582,9 @@
         }];
         
     } else {
-        [self displayJurisdiction];
+        if (view) {
+            [self displayJurisdiction];
+        }
     }
 }
 
@@ -659,7 +661,9 @@
         }];
     } else {
         
-        [self displayProjectStateId];
+        if (view) {
+            [self displayProjectStateId];
+        }
         
     }
 }

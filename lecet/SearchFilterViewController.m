@@ -756,98 +756,11 @@
         }];
         
     } else {
-        [self displayJurisdiction];
-    }
-    
-}
-
-- (void)filterJurisdictionssss:(UIView*)view {
-    
-    if (listItemsJurisdictions == nil) {
-
-        ListViewItemArray *listItems = [ListViewItemArray new];
-        
-        [[DataManager sharedManager] jurisdiction:^(id object) {
-            
-            NSArray *items = object;
-            
-            for (NSDictionary *item in items) {
-                
-                NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
-                
-                [listItems addObject:jurisdiction];
-                
-                NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"localsWithNoDistrict"]];
-                
-                if (locals != nil) {
-                    
-                    if (locals.count>0) {
-                        
-                        ListViewItemArray *localItems = [ListViewItemArray new];
-                        
-                        for (NSDictionary *local in locals) {
-                            
-                            NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"local"];
-                            
-                            [localItems addObject:localItem];
-                        }
-                        
-                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
-                        
-                    }
-                    
-                }
-                
-                NSArray *districtCouncils = [DerivedNSManagedObject objectOrNil:item[@"districtCouncils"]];
-                
-                if (districtCouncils != nil) {
-                    
-                    ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
-                    
-                    if (localItems == nil) {
-                        localItems = [ListViewItemArray new];
-                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
-                        
-                    }
-                    for (NSDictionary *districtItem in districtCouncils) {
-                        
-                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
-                        
-                        [localItems addObject:localItem];
-                        
-                        
-                        NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
-                        
-                        ListViewItemArray *localDistrict = [ListViewItemArray new];
-                        
-                        for (NSDictionary *local in locals) {
-                            
-                            NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
-                            
-                            [localDistrict addObject:item];
-                            
-                        }
-                        
-                        localItem[LIST_VIEW_SUBITEMS] = localDistrict;
-                        
-                        
-                    }
-                    
-                }
-                
-                
-            }
-            
-            listItemsJurisdictions = listItems;
+        if (view) {
             [self displayJurisdiction];
-        } failure:^(id object) {
-            
-        }];
-
-    } else {
-        [self displayJurisdiction];
+        }
     }
-
+    
 }
 
 - (void)displayJurisdiction {
@@ -905,8 +818,9 @@
             
         }];
     } else {
-        
-        [self displayProjectStateId];
+        if (view) {
+            [self displayProjectStateId];
+        }
     
     }
 
