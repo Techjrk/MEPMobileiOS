@@ -663,9 +663,31 @@
         
         if (view) {
             [self displayProjectStateId];
+        }else {
+            NSString *stage = [[self getCheckItems:listItemsProjectStageId] componentsJoinedByString:@", "];
+            [self.projectFilter.fieldStage setValue:stage];
         }
         
     }
+}
+
+- (NSArray*)getCheckItems:(ListViewItemArray*)items {
+    NSMutableArray *checkedTitles = [NSMutableArray new];
+    
+    for (ListViewItemDictionary *item in items) {
+        NSNumber *checkedItem = item[STATUS_CHECK];
+        
+        if (checkedItem.boolValue) {
+            [checkedTitles addObject:item[LIST_VIEW_NAME]];
+        }
+        ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+        
+        if (subItems) {
+            [checkedTitles addObjectsFromArray:[self getCheckItems:subItems]];
+        }
+    }
+    
+    return checkedTitles;
 }
 
 - (void) displayProjectStateId {
