@@ -73,6 +73,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewPicker;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDone;
 @property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -231,9 +232,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self.containerView layoutIfNeeded];
+    
     self.constraintViewHeight.constant = self.fieldJurisdiction.frame.origin.y + self.fieldJurisdiction.frame.size.height + (kDeviceHeight * 0.01);
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.constraintViewHeight.constant  );
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.constraintViewHeight.constant);
+    
 }
 
 #pragma mark - Custom Methods
