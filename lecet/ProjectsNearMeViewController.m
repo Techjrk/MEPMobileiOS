@@ -183,7 +183,7 @@ float MetersToMiles(float meters) {
                 isDoneSearching = YES;
                 if (distance < 200) {
             
-                    CGFloat newDistance = distance + (distance==5?45:50);
+                    CGFloat newDistance = distance + 5;
                     
                     [self loadProjects:newDistance coordinate:coordinate regionValue:regionValue];
                     
