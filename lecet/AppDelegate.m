@@ -24,6 +24,9 @@
     
     self.isLogged = NO;
     isCheckingNotification = NO;
+ 
+    [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotificationGPSLocation:) name:NOTIFICATION_GPS_LOCATION object:nil];
 
     [[GAManager sharedManager] initializeTacker];
@@ -37,8 +40,6 @@
 
     [[DataManager sharedManager] startMonitoring];
 
-    [[DataManager sharedManager] setManagedObjectContext:self.managedObjectContext];
-    
     // Handle Push Configuration
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     
@@ -190,7 +191,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BCG.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"LECET.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -244,7 +245,7 @@
     if (!coordinator) {
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:/*NSPrivateQueueConcurrencyType*/NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }

@@ -15,7 +15,7 @@ typedef void(^APIBlock)(id object);
 @interface BaseManager : NSObject
 
 // Manager Functions
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 + (id)sharedManager;
 - (void)saveContext;

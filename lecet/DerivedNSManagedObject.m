@@ -30,7 +30,12 @@
     [request setEntity:[self entity]];
     [request setPredicate:predicate];
     
-    results = [[[BaseManager sharedManager] managedObjectContext] executeFetchRequest:request error:nil];
+    NSError *error = nil;
+    results = [[[BaseManager sharedManager] managedObjectContext] executeFetchRequest:request error:&error];
+    
+    if (error) {
+        
+    }
     return results;
 }
 

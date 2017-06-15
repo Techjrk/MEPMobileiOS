@@ -51,6 +51,7 @@
     NSManagedObjectContext *moc = self.managedObjectContext;
     if (moc != nil)
     {
+        moc.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
         if ([moc hasChanges] && ![moc save:&error])
         {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

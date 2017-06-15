@@ -632,8 +632,14 @@
         
         NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
         if (currrentRecords != nil) {
-            for (DB_Project *item in currrentRecords) {
-                item.isRecentUpdate = [NSNumber numberWithBool:NO];
+            if ([currrentRecords isKindOfClass:[NSArray class]]) {
+                for (DB_Project *item in currrentRecords) {
+                    if (!item.isDeleted) {
+                        item.isRecentUpdate = [NSNumber numberWithBool:NO];
+                    }
+                }
+            } else {
+                NSLog(@"error");
             }
         }
         
