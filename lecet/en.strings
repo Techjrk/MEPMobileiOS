@@ -410,6 +410,7 @@
 "FILTER_VIEW_STAGES"                        =               "stages";
 "FILTER_VIEW_PROJECTTYPE"                   =               "project types";
 "FILTER_VIEW_APPLY"                         =               "APPLY";
+"FILTER_VIEW_COUNTY"                        =               "county";
 
 //SaveSearchChangeItemView
 "SAVE_SEARCH_TITLE"                         =               "You have made changes to this saved search";
@@ -502,6 +503,7 @@
 "NPVC_ESTLOW_TITLE"                         =               "EST LOW VALUE";
 "NPVC_JURISDICTION"                         =               "JURISDICTION";
 "NPVC_TITLE_REQUIRED"                       =               "Project Title is required";
+"NPVC_COUNTY_REQUIRED"                      =               "County is required";
 "NPVC_OK"                                   =               "Ok";
 
 //UserLocationPinViewController

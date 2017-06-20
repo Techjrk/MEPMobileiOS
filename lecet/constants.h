@@ -168,7 +168,8 @@ typedef enum : NSUInteger {
     FilterModelOwner,
     FilterModelWork,
     FilterModelProjectType,
-    FilterModelEstLow
+    FilterModelEstLow,
+    FilterModelCounty
 } FilterModel;
 
 

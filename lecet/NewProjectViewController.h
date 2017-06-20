@@ -25,6 +25,5 @@
 - (void)setType:(NSNumber*)typeIdParam;
 - (void)setStage:(NSNumber*)stageIdParam;
 - (void)setDate:(NSString*)dateParam;
-- (void)setJurisdiction:(NSNumber*)jurisdictionIdParam;
-
+- (void)setCounty:(NSString*)countyParam code:(NSString*)code;
 @end

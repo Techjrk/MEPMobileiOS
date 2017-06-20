@@ -137,23 +137,12 @@
     [_chartRecentlyUpdated hideRightButton:YES];
     
     if ([[DataManager sharedManager] isDebugMode]) {
-        
-        /*
-        [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
-            
-        } failure:^(id object) {
-            
-        }];*/
     }
     
-    /*
-    [[DataManager sharedManager] addProjectUserImage:@(259406) title:@"title" text:@"test" image:[UIImage imageNamed:@"icon_app"] success:^(id object) {
-        
-    } failure:^(id object) {
-        
-    }];*/
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -249,13 +249,9 @@ typedef enum {
     [controller setProjectTitle:referenceProject.title];
     controller.projectId = referenceProject.recordId;
     [controller setType: referenceProject.primaryProjectTypeId];
-    
     [controller setStage: referenceProject.projectStageId];
-    
     [controller setDate: referenceProject.targetStartDate];
-    
-    [controller setJurisdiction:jurisdictionIdentifier];
-
+    [controller setCounty:referenceProject.county code:referenceProject.fipsCounty];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

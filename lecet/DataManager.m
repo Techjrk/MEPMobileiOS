@@ -97,6 +97,7 @@
 
 #define kUrlProjectType                     @"ProjectTypes/%li"
 #define kUrlProjectStage                    @"ProjectStages/%li"
+#define kUrlCounty                          @"Counties"
 
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
@@ -1752,7 +1753,7 @@
 
 - (void)updateProject:(NSNumber*)projectId project:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:kUrlEditProject, projectId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlEditProject, (long)projectId.integerValue];
     
     [self HTTP_PUT_BODY:[self url:url] parameters:project success:^(id object) {
         [self saveManageObjectProject:object];
@@ -1765,7 +1766,7 @@
 
 - (void)projectType:(NSNumber*)typeId success:(APIBlock)success failure:(APIBlock)failure {
   
-    NSString *url = [NSString stringWithFormat:kUrlProjectType, typeId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectType, (long)typeId.integerValue];
     
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
@@ -1776,7 +1777,7 @@
 
 - (void)projectStage:(NSNumber*)stageId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:kUrlProjectStage, stageId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectStage, (long)stageId.integerValue];
     
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
@@ -1787,9 +1788,29 @@
 
 - (void)projectJuridictionId:(NSNumber*)jurisdictionId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:kUrlProjectStage, jurisdictionId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectStage, (long)jurisdictionId.integerValue];
     
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)listCounties:(NSString*)code success:(APIBlock)success failure:(APIBlock)failure{
+    NSString *filter = [NSString stringWithFormat:@"{\"where\":{\"state\":\"%@\"},\"order\":\"countyName\"}", code];
+    NSDictionary *parameter = @{@"filter":filter};
+    [self HTTP_GET:[self url:kUrlCounty] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)findCounty:(NSString*)code success:(APIBlock)success failure:(APIBlock)failure{
+    NSString *filter = [NSString stringWithFormat:@"{\"where\":{\"fipsCountyId\":\"%@\"},\"order\":\"countyName\"}", code];
+    NSDictionary *parameter = @{@"filter":filter};
+    [self HTTP_GET:[self url:kUrlCounty] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
