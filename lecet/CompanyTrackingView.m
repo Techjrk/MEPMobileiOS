@@ -25,7 +25,7 @@
 
 #define COMPANYTRACKINGVIEW_TEXTVIEW_FONT_COLOR         RGB(255,255,255)
 
-@interface CompanyTrackingView () {
+@interface CompanyTrackingView ()<MKMapViewDelegate> {
     BOOL dataIsShown;
 }
 @property (weak, nonatomic) IBOutlet UIView *belowContainerView;
@@ -251,9 +251,11 @@
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     [annotation setCoordinate:coordinate];
     
+    _mapView.delegate = nil;
     [_mapView removeAnnotations:_mapView.annotations];
     
     [_mapView setRegion:region];
+    _mapView.delegate = self;
     [_mapView addAnnotation:annotation];
     
 }

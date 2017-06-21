@@ -42,6 +42,7 @@
         
     }
     
+    _mapView.delegate = nil;
     [_mapView removeAnnotations:_mapView.annotations];
     
     if (isProject) {
@@ -69,6 +70,7 @@
             [_mapView removeAnnotations:_mapView.annotations];
             
             [_mapView setRegion:region];
+            _mapView.delegate = self;
             [_mapView addAnnotation:annotation];
             
         }

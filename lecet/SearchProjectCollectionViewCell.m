@@ -72,7 +72,7 @@
     _labelLocation.text = addr;
 
     NSDictionary *geocode = [DerivedNSManagedObject objectOrNil:item[@"geocode"]];
-    
+    _mapView.delegate = nil;
     if (geocode != nil) {
         
         _mapView.hidden = NO;
@@ -91,6 +91,7 @@
         [_mapView removeAnnotations:_mapView.annotations];
         
         [_mapView setRegion:region];
+        _mapView.delegate = self;
         [_mapView addAnnotation:annotation];
         
     } else {

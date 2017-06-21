@@ -158,9 +158,12 @@
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     [annotation setCoordinate:coordinate];
     
+    _mapView.delegate = nil;
     [_mapView removeAnnotations:_mapView.annotations];
     
     [_mapView setRegion:region];
+    
+    _mapView.delegate = self;
     [_mapView addAnnotation:annotation];
 }
 
@@ -185,5 +188,13 @@
         
     }
     return userAnnotationView;
+}
+
+- (void)removeFromSuperview {
+    [super removeFromSuperview];
+}
+
+- (void)dealloc {
+    //[super dealloc];
 }
 @end

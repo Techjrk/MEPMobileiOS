@@ -414,6 +414,7 @@
 		B7BF61171D240DD100B3BDD7 /* ListItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61161D240DD100B3BDD7 /* ListItemCollectionViewCell.m */; };
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
+		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
 		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
 		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
@@ -1101,6 +1102,7 @@
 		B7BF61181D240F5300B3BDD7 /* ListItemExpandingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemExpandingViewCell.h; sourceTree = "<group>"; };
 		B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemExpandingViewCell.m; sourceTree = "<group>"; };
 		B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemExpandingViewCell.xib; sourceTree = "<group>"; };
+		B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LIUNA_HQ.gpx; sourceTree = "<group>"; };
 		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
@@ -2090,6 +2092,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */,
 				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
 				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
 				B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */,
@@ -3110,6 +3113,7 @@
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
 				B771C5FC1CEB5562004A628A /* CompanyStateView.xib in Resources */,
 				B7E1043E1CEC74FE00EAD8E7 /* ContactsListView.xib in Resources */,
+				B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */,
 				B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */,
 				B60BEFA61E854EC500C69640 /* CustomPhotoLibView.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,

@@ -79,8 +79,8 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "New York, NY, USA"
-         referenceType = "1">
+         identifier = "../../LIUNA_HQ.gpx"
+         referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
