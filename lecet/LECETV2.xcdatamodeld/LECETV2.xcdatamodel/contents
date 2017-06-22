@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="DB_Bid" representedClassName="DB_Bid" syncable="YES">
-        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="awardInd" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="awardInd" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="createDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isRecentMade" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="rank" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isRecentMade" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rank" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="relationshipCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Company" inverseName="relationshipBid" inverseEntity="DB_Company" syncable="YES"/>
         <relationship name="relationshipContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Contact" inverseName="relationshipBid" inverseEntity="DB_Contact" syncable="YES"/>
         <relationship name="relationshipProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Project" inverseName="relationshipBid" inverseEntity="DB_Project" syncable="YES"/>
@@ -16,10 +16,10 @@
         <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="availableFrom" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="bidAwardInd" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="bidAwardInd" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="bidCreateDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bidDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="bidId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="bidId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="bidSubmitTo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bidTimeZone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bondBidInd" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,7 +38,7 @@
         <attribute name="companyDcisFactorCntctCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyDcisFactorCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyFipsCounty" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyState" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyUpdatedAt" optional="YES" attributeType="String" syncable="YES"/>
@@ -46,10 +46,10 @@
         <attribute name="companyZip5" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyZipPlus4" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactCkmsContactId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="contactCompanyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="contactCompanyId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactFaxNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="contactId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="contactId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactPhoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactTitle" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,23 +59,23 @@
         <attribute name="currencyType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dodgeNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="estLow" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="estLow" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstPublishDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planInd" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="priorPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="specAvailable" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statusProjDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
@@ -107,23 +107,23 @@
         <attribute name="currencyType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dodgeNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="estLow" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="estLow" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstPublishDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planInd" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="priorPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="specAvailable" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statusProjDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
@@ -147,7 +147,7 @@
         <attribute name="dcisFactorCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wwwUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -159,23 +159,23 @@
     </entity>
     <entity name="DB_CompanyContact" representedClassName="DB_CompanyContact" syncable="YES">
         <attribute name="ckmsContactId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="faxNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relationshipCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Company" inverseName="relationshipCompanyContact" inverseEntity="DB_Company" syncable="YES"/>
     </entity>
     <entity name="DB_Contact" representedClassName="DB_Contact" syncable="YES">
         <attribute name="ckmsContactId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="faxNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relationshipBid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DB_Bid" inverseName="relationshipContact" inverseEntity="DB_Bid" syncable="YES"/>
     </entity>
@@ -185,8 +185,8 @@
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ckmsSiteId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cnCompanysiteUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="contactId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="companyId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="contactId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="contactTypeGroup" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="county" optional="YES" attributeType="String" syncable="YES"/>
@@ -195,7 +195,7 @@
         <attribute name="dcisFactorCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wwwUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -224,38 +224,39 @@
         <attribute name="currencyType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dodgeNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="dodgeVersion" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="estHigh" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="estLow" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="fipsCounty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstPublishDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="geocodeLat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="geocodeLng" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="geoLocationType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="geoType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isHappenSoon" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isHidden" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isRecentAdded" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isRecentUpdate" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasNotesImages" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isHappenSoon" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isHidden" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isRecentAdded" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isRecentUpdate" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planInd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="primaryProjectTypeBuildingOrHighway" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="primaryProjectTypeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="primaryProjectTypeTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="priorPublishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectCategoryId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectCategoryId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="projectCategoryTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectGroupId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectGroupId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="projectGroupTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectNotes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectStage" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectStageId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="projectStageName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectStageParentId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectStageParentId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="specAvailable" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statusProjDlvrySys" optional="YES" attributeType="String" syncable="YES"/>
@@ -279,6 +280,6 @@
         <element name="DB_CompanyContact" positionX="18" positionY="180" width="128" height="180"/>
         <element name="DB_Contact" positionX="-36" positionY="153" width="128" height="180"/>
         <element name="DB_Participant" positionX="0" positionY="171" width="128" height="375"/>
-        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="1035"/>
+        <element name="DB_Project" positionX="-54" positionY="135" width="128" height="1050"/>
     </elements>
 </model>

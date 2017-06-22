@@ -389,6 +389,10 @@
         }
     }
     
+    NSArray *userImages = project[@"images"];
+    NSArray *userNotes = project[@"userNotes"];
+    
+    record.hasNotesImages = @( (userImages.count>0)&&(userNotes.count>0) );
     return record;
 }
 
@@ -659,7 +663,7 @@
 
 - (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *allFilter = @"{\"include\":[\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
+    NSString *allFilter = @"{\"include\":[\"userNotes\",\"images\",\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
     
     NSData *data = [allFilter dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -741,7 +745,9 @@
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
+    //NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
+    
+    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":[{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},\"userNotes\",\"images\"]},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
     [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:@{@"filter":filter} success:^(id object) {
         
         DB_Company *item = [self saveManageObjectCompany:object];

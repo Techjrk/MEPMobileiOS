@@ -47,7 +47,7 @@
     AssociatedBidCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
   
     DB_Project *project = collectionItems[indexPath.row];
-    NSDictionary *dict = @{ASSOCIATED_BID_NAME:project.title, ASSOCIATED_BID_LOCATION:[project address], ASSOCIATED_BID_DESIGNATION:project.unionDesignation != nil?project.unionDesignation:@"", ASSOCIATED_BID_GEOCODE_LAT:project.geocodeLat, ASSOCIATED_BID_GEOCODE_LNG:project.geocodeLng, ASSOCIATED_BID_ID:project.recordId};
+    NSDictionary *dict = @{ASSOCIATED_BID_NAME:project.title, ASSOCIATED_BID_LOCATION:[project address], ASSOCIATED_BID_DESIGNATION:project.unionDesignation != nil?project.unionDesignation:@"", ASSOCIATED_BID_GEOCODE_LAT:project.geocodeLat, ASSOCIATED_BID_GEOCODE_LNG:project.geocodeLng, ASSOCIATED_BID_ID:project.recordId,ASSOCIATED_BID_HAS_NOTESIMAGES:project.hasNotesImages};
     [cell setInfo:dict];
     [[cell contentView] setFrame:[cell bounds]];
     [[cell contentView] layoutIfNeeded];

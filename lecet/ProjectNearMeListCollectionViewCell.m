@@ -89,22 +89,7 @@
         self.containerUnionView.hidden = NO;
     }
    
-    [[DataManager sharedManager] checkForImageNotes:self.projectId success:^(id object) {
-        
-        NSDictionary *dict = object;
-        
-        NSNumber *prjId = dict[@"projectId"];
-        if (prjId.integerValue == self.projectId.integerValue) {
-            NSNumber *count = dict[@"count"];
-            self.iconMarker.hidden = count.integerValue == 0;
-        } else {
-            self.iconMarker.hidden = YES;
-        }
-        
-    } failure:^(id object) {
-    
-        self.iconMarker.hidden = YES;
-    }];
+    self.iconMarker.hidden = !self.hasNoteAndImages;
 }
 
 - (NSAttributedString *)convertToAttributedTextFeetAway:(NSString *)feetAway priceDetails:(NSString *)priceDetailText {

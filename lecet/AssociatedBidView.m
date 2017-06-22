@@ -92,6 +92,9 @@
     [_mapView addAnnotation:annotation];
 
     self.projectId = infoDict[ASSOCIATED_BID_ID];
+    
+    NSNumber *hasNotesImages = infoDict[@"ASSOCIATED_BID_HAS_NOTESIMAGES"];
+    self.iconUpdateMarker.hidden = !hasNotesImages.boolValue;
     [[DataManager sharedManager] checkForImageNotes:self.projectId success:^(id object) {
         
         NSDictionary *dict = object;

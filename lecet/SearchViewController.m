@@ -839,7 +839,7 @@ typedef enum : NSUInteger {
     NSMutableDictionary *projectFilter = [@{@"q": searchString} mutableCopy];
    
     NSMutableDictionary *_filter = [NSMutableDictionary new];
-    [_filter addEntriesFromDictionary: @{@"include":@[@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
+    [_filter addEntriesFromDictionary: @{@"include":@[@"userNotes",@"images",@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
  
     if (filter) {
         if ([filter[@"modelName"] isEqualToString:@"Project"]) {

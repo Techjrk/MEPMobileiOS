@@ -17,5 +17,6 @@
     @property (strong,nonatomic) NSDictionary *geoCode;
     @property (strong,nonatomic) NSString *unionDesignation;
     @property (strong, nonatomic) NSString *dodgeNumber;
+    @property (nonatomic) BOOL hasNoteAndImages;
     - (void)setInitInfo;
 @end

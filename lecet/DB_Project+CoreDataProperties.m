@@ -2,16 +2,17 @@
 //  DB_Project+CoreDataProperties.m
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 9/9/16.
-//  Copyright © 2016 Dom and TOm. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Harry Herrys Camigla on 6/22/17.
+//  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
 #import "DB_Project+CoreDataProperties.h"
 
 @implementation DB_Project (CoreDataProperties)
+
++ (NSFetchRequest<DB_Project *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"DB_Project"];
+}
 
 @dynamic addendaInd;
 @dynamic address1;
@@ -59,6 +60,7 @@
 @dynamic projectCategoryTitle;
 @dynamic projectGroupId;
 @dynamic projectGroupTitle;
+@dynamic projectNotes;
 @dynamic projectStage;
 @dynamic projectStageId;
 @dynamic projectStageName;
@@ -68,14 +70,14 @@
 @dynamic state;
 @dynamic statusProjDlvrySys;
 @dynamic statusText;
+@dynamic stdIncludes;
 @dynamic targetFinishDate;
 @dynamic targetStartDate;
 @dynamic title;
 @dynamic unionDesignation;
 @dynamic zip5;
 @dynamic zipPlus4;
-@dynamic projectNotes;
-@dynamic stdIncludes;
+@dynamic hasNotesImages;
 @dynamic relationshipBid;
 @dynamic relationshipCompany;
 @dynamic relationshipParticipants;

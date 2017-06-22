@@ -216,6 +216,11 @@
     
     cell.titlePriceText = [NSString stringWithFormat:@"$%@",value];
     cell.unionDesignation = [DerivedNSManagedObject objectOrNil:dicInfo[@"unionDesignation"]];
+    
+    NSArray *userImages = dicInfo[@"images"];
+    NSArray *userNotes = dicInfo[@"userNotes"];
+    
+    cell.hasNoteAndImages = (userNotes.count>0) || (userImages.count>0);
     [cell setInitInfo];
     
     return cell;

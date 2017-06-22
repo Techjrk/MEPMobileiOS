@@ -317,7 +317,6 @@
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
 		B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F11CF318D60089BC32 /* DB_Contact.m */; };
-		B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */; };
 		B79616011CF318D60089BC32 /* DB_Project.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F51CF318D60089BC32 /* DB_Project.m */; };
 		B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */; };
 		B79616031CF318D60089BC32 /* DB_Company.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F91CF318D60089BC32 /* DB_Company.m */; };
@@ -355,7 +354,7 @@
 		B79AA7F71E9CBF5400BA1B04 /* libDMD_LITE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7F51E9CBF5400BA1B04 /* libDMD_LITE.a */; };
 		B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */; };
 		B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */; };
-		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
+		B7A1D3301CE098C7004E94B3 /* LECETV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECETV2.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
 		B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D33B1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m */; };
@@ -415,6 +414,7 @@
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
 		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
+		B7C525811EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C525801EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m */; };
 		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
 		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
@@ -947,8 +947,6 @@
 		B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Contact+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B79615F01CF318D60089BC32 /* DB_Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Contact.h; sourceTree = "<group>"; };
 		B79615F11CF318D60089BC32 /* DB_Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Contact.m; sourceTree = "<group>"; };
-		B79615F21CF318D60089BC32 /* DB_Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Project+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Project+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B79615F41CF318D60089BC32 /* DB_Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Project.h; sourceTree = "<group>"; };
 		B79615F51CF318D60089BC32 /* DB_Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Project.m; sourceTree = "<group>"; };
 		B79615F61CF318D60089BC32 /* DB_Company+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Company+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1010,7 +1008,7 @@
 		B79AA7F91E9CC6C700BA1B04 /* PhotoShutterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoShutterViewController.h; sourceTree = "<group>"; };
 		B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShutterViewController.m; sourceTree = "<group>"; };
 		B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoShutterViewController.xib; sourceTree = "<group>"; };
-		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
+		B7A1D32F1CE098C7004E94B3 /* LECETV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECETV2.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B7A1D3331CE0AD9D004E94B3 /* DB_BidSoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_BidSoon.h; sourceTree = "<group>"; };
@@ -1103,6 +1101,8 @@
 		B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemExpandingViewCell.m; sourceTree = "<group>"; };
 		B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemExpandingViewCell.xib; sourceTree = "<group>"; };
 		B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LIUNA_HQ.gpx; sourceTree = "<group>"; };
+		B7C5257F1EFBC54000E4F3AE /* DB_Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Project+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B7C525801EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Project+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
@@ -2760,7 +2760,7 @@
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */,
+				B7A1D32E1CE098C7004E94B3 /* LECETV2.xcdatamodeld */,
 				B79616491CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.h */,
 				B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */,
 				B796164B1CF892DF0089BC32 /* DB_CompanyContact.h */,
@@ -2773,10 +2773,10 @@
 				B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */,
 				B79615F01CF318D60089BC32 /* DB_Contact.h */,
 				B79615F11CF318D60089BC32 /* DB_Contact.m */,
-				B79615F21CF318D60089BC32 /* DB_Project+CoreDataProperties.h */,
-				B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */,
 				B79615F41CF318D60089BC32 /* DB_Project.h */,
 				B79615F51CF318D60089BC32 /* DB_Project.m */,
+				B7C5257F1EFBC54000E4F3AE /* DB_Project+CoreDataProperties.h */,
+				B7C525801EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m */,
 				B79615F61CF318D60089BC32 /* DB_Company+CoreDataProperties.h */,
 				B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */,
 				B79615F81CF318D60089BC32 /* DB_Company.h */,
@@ -3347,7 +3347,6 @@
 				B7FC246D1EBA02AC0002802D /* EAGLView.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
 				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
-				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
 				B683371E1D081BD0004226D3 /* ChangePasswordView.m in Sources */,
 				B79AA7AE1E93900200BA1B04 /* NewProjectAnnotation.m in Sources */,
 				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
@@ -3393,6 +3392,7 @@
 				B7BF60DD1D2154C400B3BDD7 /* CompanyFilterView.m in Sources */,
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
+				B7C525811EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m in Sources */,
 				B73EFAC01D0ED11200C6B3B2 /* HiddenProjectsViewController.m in Sources */,
 				B74C0AA21E8167D400E91FA9 /* NewProjectViewController.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
@@ -3410,7 +3410,7 @@
 				B66591121CFECA6B00CFD10C /* MoreMenuViewController.m in Sources */,
 				B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */,
 				B7BF608A1D19723A00B3BDD7 /* ShareItemCollectionViewCell.m in Sources */,
-				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
+				B7A1D3301CE098C7004E94B3 /* LECETV2.xcdatamodeld in Sources */,
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
 				B77E08E71D2687D80087454F /* FilterViewController.m in Sources */,
 				B6FD043D1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m in Sources */,
@@ -3638,13 +3638,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */ = {
+		B7A1D32E1CE098C7004E94B3 /* LECETV2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */,
+				B7A1D32F1CE098C7004E94B3 /* LECETV2.xcdatamodel */,
 			);
-			currentVersion = B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */;
-			path = LECET.xcdatamodeld;
+			currentVersion = B7A1D32F1CE098C7004E94B3 /* LECETV2.xcdatamodel */;
+			path = LECETV2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

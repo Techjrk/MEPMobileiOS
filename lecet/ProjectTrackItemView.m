@@ -256,23 +256,11 @@
     
     self.iconMarker.hidden = YES;
     projectId = project[@"id"];
-    [[DataManager sharedManager] checkForImageNotes:projectId success:^(id object) {
-        
-        NSDictionary *dict = object;
-        
-        NSNumber *prjId = dict[@"projectId"];
-        if (prjId.integerValue == projectId.integerValue) {
-            NSNumber *count = dict[@"count"];
-            self.iconMarker.hidden = count.integerValue == 0;
-        } else {
-            self.iconMarker.hidden = YES;
-        }
-        
-    } failure:^(id object) {
-        
-        self.iconMarker.hidden = YES;
-    }];
-
+    
+    NSArray *userImages = project[@"images"];
+    NSArray *userNotes = project[@"userNotes"];
+    
+    self.iconMarker.hidden = !((userImages.count>0)&&(userNotes.count>0));
 
 }
 
