@@ -154,7 +154,7 @@ float MetersToMiles(float meters) {
         [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:filterDictionary success:^(id object) {
             [self.customLoadingIndcator stopAnimating];
             isDoneSearching = YES;
-            
+            _mapView.delegate = nil;
             [mapItems removeAllObjects];
             [_mapView removeAnnotations:_mapView.annotations];
             
@@ -173,6 +173,7 @@ float MetersToMiles(float meters) {
                 }
                 
                 [mapItems addObjectsFromArray:result];
+                _mapView.delegate = self;
                 [self addItemsToMap];
                 
                 if (isSearchLocation) {

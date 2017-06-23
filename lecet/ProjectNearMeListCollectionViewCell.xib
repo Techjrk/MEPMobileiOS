@@ -31,7 +31,7 @@
                                 <rect key="frame" x="454" y="0.0" width="15" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvt-qE-md1">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvt-qE-md1">
                                 <rect key="frame" x="15" y="16" width="89" height="89"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xvt-qE-md1" secondAttribute="height" multiplier="1:1" id="pPT-0F-CfI"/>
