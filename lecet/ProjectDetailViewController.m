@@ -342,6 +342,10 @@ typedef enum {
 
         if (estLowValue>estHighValue) {
             [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
+            
+            if (estHighValue>0) {
+                [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+            }
         } else {
             [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
 
