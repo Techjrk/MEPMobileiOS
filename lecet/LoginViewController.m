@@ -81,8 +81,8 @@
         [_textFieldEmail setText: @"harry.camigla@domandtom.com"];
         [_textFieldPassword setText: @"3nB72JTrRB7Uu4mFRpFppV6PN"];
         
-        [_textFieldEmail setText: @"kbailey@lecet.org"];
-        [_textFieldPassword setText: @"LECET1234"];
+        //[_textFieldEmail setText: @"kbailey@lecet.org"];
+        //[_textFieldPassword setText: @"LECET1234"];
   
         //[_textFieldEmail setText: @"kevin.herrera@domandtom.com"];
         //[_textFieldPassword setText: @"android1234"];
@@ -109,8 +109,8 @@
         //[_textFieldEmail setText: @"lecet@domandtom.com"];
         //[_textFieldPassword setText: @"HSyd8Xc1Y7ws842qMCW9a3KEX"];
 
-        //[_textFieldEmail setText: @"smetts@lecet.org"];
-        //[_textFieldPassword setText: @"heidiho86"];
+        [_textFieldEmail setText: @"smetts@lecet.org"];
+        [_textFieldPassword setText: @"heidiho86"];
 
     }
     

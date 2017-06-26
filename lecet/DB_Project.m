@@ -69,7 +69,12 @@
     }
     NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
     NSString *currency = self.currencyType == nil?@"$":self.currencyType;
-    return [NSString stringWithFormat:@"%@ %@", currency, estLow ];
+    
+    if (estLow == 0) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", currency, estLow ];
+    }
     
 }
 
@@ -84,8 +89,13 @@
     }
     NSString *estHigh = [formatter stringFromNumber:[NSNumber numberWithFloat:esthigh]];
     NSString *currency = self.currencyType == nil?@"$":self.currencyType;
-    return [NSString stringWithFormat:@"%@ %@", currency, estHigh ];
     
+    if (estHigh == 0) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", currency, estHigh ];
+    }
+
 }
 
 - (NSString*)bidDateString {

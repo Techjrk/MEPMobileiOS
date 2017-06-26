@@ -25,6 +25,7 @@
     NSMutableArray *checkedItems;
     NSMutableArray *checkedTitles;
     NSMutableArray *checkedNodes;
+    NSMutableArray *idSelection;
 }
 @property (weak, nonatomic) IBOutlet UITextField *labelSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonApply;
@@ -110,13 +111,18 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
+    if (idSelection) {
+        [idSelection removeAllObjects];
+    } else {
+        idSelection = [NSMutableArray new];
+    }
     
     [self getCheckItems:localListViewItems includeChild:NO];
 
     if (checkedItems.count>0) {
         if (self.filterViewControllerDelegate) {
             
-            [self.filterViewControllerDelegate tappedFilterViewControllerApply:checkedItems key:self.fieldValue titles:checkedTitles nodes:checkedNodes];
+            [self.filterViewControllerDelegate tappedFilterViewControllerApply:idSelection key:self.fieldValue titles:checkedTitles nodes:checkedNodes];
         }
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -246,6 +252,27 @@
     }
 }
 
+- (void)getChildIds:(ListViewItemDictionary*)item {
+    
+    ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+    if (subItems) {
+
+        for (ListViewItemDictionary *item in subItems) {
+            [self getChildIds:item];
+        }
+        
+    } else {
+
+        id value = item[LIST_VIEW_VALUE];
+        
+        if (![idSelection containsObject:value]) {
+            [idSelection addObject:value];
+        }
+        
+    }
+
+}
+
 - (void)getCheckItems:(ListViewItemArray*)items includeChild:(BOOL)includeChild{
     
     BOOL includeSubChild = NO |includeChild;
@@ -262,12 +289,18 @@
             if (checkedItem.boolValue) {
                 [checkedTitles addObject:item[LIST_VIEW_NAME]];
             }
+
         }
-        ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
         
-        if (subItems) {
+        if (checkedItem.boolValue) {
+            [self getChildIds:item];
+        }
+        
+        if (item.subItemCount>0) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
             [self getCheckItems:subItems includeChild:includeSubChild];
         }
+        
     }
 }
 

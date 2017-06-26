@@ -491,9 +491,9 @@ float MetersToMiles(float meters) {
             double lng = mapView.centerCoordinate.longitude;
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
             
-            CGFloat miles = MetersToMiles([self getRadius]);
-            if (miles<1) {
-                miles = 2;
+            CGFloat miles = MetersToMiles([self getRadius]) * 0.5;
+            if (miles<5) {
+                miles = 5;
             } else {
                 miles = round(miles);
             }

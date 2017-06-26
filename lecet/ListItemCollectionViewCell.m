@@ -88,7 +88,12 @@
 
 - (NSInteger)subItemCount {
     ListViewItemArray *items = proxy[LIST_VIEW_SUBITEMS];
-    return items.count;
+    
+    if (items) {
+        return items.count;
+    } else {
+        return 0;
+    }
 }
 
 @end

@@ -324,9 +324,38 @@ typedef enum {
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
+    CGFloat estLowValue = 0;
+    CGFloat estHighValue =0;
+    
+    NSNumber *estLow = project.estLow;
+    NSNumber *estHigh = project.estHigh;
+    
+    if (estLow) {
+        estLowValue = estLow.floatValue;
+    }
+    
+    if (estHigh) {
+        estHighValue = estHigh.floatValue;
+    }
+    
+    if ((estHighValue+estLowValue)>0) {
 
-    [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+        if (estLowValue>estHighValue) {
+            [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
+        } else {
+            [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+
+        }
+
+
+    } else {
+        [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:@"" line2Text:nil];
+
+    }
+    
+
+    //[_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+    [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:@"" line2Text:nil];
 
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
@@ -340,7 +369,8 @@ typedef enum {
     
     [_fieldLastUpdated setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_LAST_UPDATE") line1Text:[project lastUpdateDateString] line2Text:nil];
     
-    [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"$ 0" line2Text:nil];
+    //[_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"$ 0" line2Text:nil];
+    [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"" line2Text:nil];
     
     //[_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:@"" line2Text:nil];
     
