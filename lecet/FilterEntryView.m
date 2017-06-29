@@ -220,4 +220,8 @@
     [viewController presentViewController:alert animated:YES completion:nil];
 
 }
+
+- (BOOL)isEmpty {
+    return collectionDataItems.count == 0;
+}
 @end

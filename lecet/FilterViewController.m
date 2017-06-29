@@ -8,7 +8,6 @@
 
 #import "FilterViewController.h"
 #import "CustomListView.h"
-#import "ListItemCollectionViewCell.h"
 #import "ListItemExpandingViewCell.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
@@ -61,19 +60,15 @@
     _viewbackground.layer.masksToBounds = YES;
 
     localListViewItems = [ListViewItemArray new];
-    //self.parentOnly = NO;
     
     for (ListViewItemDictionary *item in self.listViewItems) {
         ListViewItemDictionary *mutableItem = item;
         mutableItem[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
-        NSNumber *number = mutableItem[STATUS_CHECK];
-        
-        if (number == nil) {
-            mutableItem[STATUS_CHECK] = [NSNumber numberWithBool:NO];
-        }
 
         [localListViewItems addObject:mutableItem];
     }
+    
+    [self prepareListItem:localListViewItems];
     
     _listView.customListViewDelegate = self;
     _listView.singleSelection = self.singleSelect;
@@ -102,11 +97,8 @@
 }
 
 - (IBAction)tappedBackButton:(id)sender {
-    [self getCheckItems:localListViewItems includeChild:NO];
+    [self revertItems:localListViewItems];
     
-    if (checkedItems.count>0) {
-        [self uncheckItem:localListViewItems];
-    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -252,21 +244,21 @@
     }
 }
 
-- (void)getChildIds:(ListViewItemDictionary*)item {
++ (void)getChildIds:(ListViewItemDictionary*)item list:(NSMutableArray*)list{
     
     ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
     if (subItems) {
 
         for (ListViewItemDictionary *item in subItems) {
-            [self getChildIds:item];
+            [self getChildIds:item list:list];
         }
         
     } else {
 
         id value = item[LIST_VIEW_VALUE];
         
-        if (![idSelection containsObject:value]) {
-            [idSelection addObject:value];
+        if (![list containsObject:value]) {
+            [list addObject:value];
         }
         
     }
@@ -293,7 +285,9 @@
         }
         
         if (checkedItem.boolValue) {
-            [self getChildIds:item];
+            [FilterViewController getChildIds:item list:idSelection];
+        } else {
+            item[STATUS_PREV] = @(0);
         }
         
         if (item.subItemCount>0) {
@@ -302,6 +296,121 @@
         }
         
     }
+}
+
++ (void)getCheckItems:(ListViewItemArray*)items includeChild:(BOOL)includeChild list:(NSMutableArray*)list{
+    
+    BOOL includeSubChild = NO |includeChild;
+    for (ListViewItemDictionary *item in items) {
+        NSNumber *checkedItem = item[STATUS_CHECK];
+        
+        if (checkedItem.boolValue) {
+            [self getChildIds:item list:list];
+        } else {
+            item[STATUS_PREV] = @(0);
+        }
+        
+        if (item.subItemCount>0) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+            [self getCheckItems:subItems includeChild:includeSubChild list:list];
+        }
+        
+    }
+}
+
+- (void)revertItems:(ListViewItemArray*)items {
+    
+    for (ListViewItemDictionary *item in items) {
+        
+        NSNumber *prevStatus = item[STATUS_PREV];
+        
+        if (prevStatus) {
+            item[STATUS_CHECK] = prevStatus;
+        }
+        
+        if (item.subItemCount>0) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+            [self revertItems:subItems];
+        }
+        
+    }
+}
+
+- (void)prepareListItem:(ListViewItemArray*)listItem {
+    for (ListViewItemDictionary *item in listItem) {
+        
+        NSNumber *statusCheck = item[STATUS_CHECK];
+        NSNumber *prevStatus = item[STATUS_PREV];
+        
+        if (prevStatus == nil) {
+            item[STATUS_PREV] = @(0);
+        } else {
+            if (statusCheck.boolValue) {
+                item[STATUS_CHECK] = @(1);
+                item[STATUS_PREV] = @(1);
+            }
+        }
+        
+        if (item.subItemCount>0) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+            [self prepareListItem:subItems];
+        }
+        
+    }
+}
+
++ (NSMutableArray*)getCheckedTitles:(ListViewItemArray*)items list:(NSMutableArray*)list{
+   
+    NSMutableArray *array = list;
+    
+    if (list == nil) {
+        array = [NSMutableArray new];
+    }
+    
+    for (ListViewItemDictionary *item in items) {
+        NSNumber *checkedItem = item[STATUS_CHECK];
+        
+        if (checkedItem.boolValue) {
+            [array addObject:item[LIST_VIEW_NAME]];
+        }
+        
+        if (item.subItemCount>0) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+            NSArray *subarray = [self getCheckedTitles:subItems list:list];
+            
+            if (subarray.count>0) {
+                [array addObjectsFromArray:subarray];
+            }
+        }
+    }
+    
+    return array;
+}
+
++ (void)uncheckedTitles:(ListViewItemArray*)items list:(NSMutableArray*)list {
+    
+    for (ListViewItemDictionary *item in items) {
+        NSNumber *checkedItem = item[STATUS_CHECK];
+        
+        if (checkedItem.boolValue) {
+            
+            NSString *title = item[LIST_VIEW_NAME];
+            
+            if (![list containsObject:title]) {
+                [list removeObject:title];
+                item[STATUS_CHECK] = @(0);
+                item[STATUS_PREV] = @(0);
+            }
+            
+        }
+        
+        if (item.subItemCount>0) {
+            ListViewItemArray *subItems = item[LIST_VIEW_SUBITEMS];
+            [self uncheckedTitles:subItems list:list];
+        }
+    }
+    
+    
 }
 
 #pragma mark - Search Function

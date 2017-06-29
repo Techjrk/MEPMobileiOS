@@ -1150,33 +1150,11 @@ typedef enum {
             [self showAddPhotoScreenItems:imageItemsToBeUpdated];
         }];
     } else {
-        //capturedImage = [self reducedImageOnceCapture:image];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         });
         
-        /*
-        NSData *imageData =  UIImageJPEGRepresentation(image, 1);
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        [library writeImageDataToSavedPhotosAlbum:imageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
-            if (assetURL)
-            {
-                [self latestPhotoWithCompletion:^(UIImage *photo) {
-                    UIImageRenderingMode renderingMode = /* DISABLES CODE */ //(YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
-                    //capturedImage  = [photo imageWithRenderingMode:renderingMode];
-        /*
-                }];
-            }
-            else if (error)
-            {
-                if (error.code == ALAssetsLibraryAccessUserDeniedError || error.code == ALAssetsLibraryAccessGloballyDeniedError)
-                {
-                    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Permission needed to access camera roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                }
-            }
-        }];
-        */
     }
 }
 

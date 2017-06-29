@@ -30,6 +30,12 @@
 @synthesize companyFilterViewDelegate;
 @synthesize searchFilter;
 
+@synthesize dictLocation;
+@synthesize dictValue;
+@synthesize dictJurisdiction;
+@synthesize dictBidding;
+@synthesize dictProjectType;
+
 - (void)awakeFromNib {
     
     [super awakeFromNib];
@@ -83,95 +89,6 @@
     [self.companyFilterViewDelegate tappedCompanyFilterItem:object view:self];
 }
 
-- (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val{
-    NSString *title;
-    switch (filterModel) {
-        case FilterModelLocation:{
-            [_fieldLocation setInfo:val];
-            
-            NSMutableDictionary *itemdict = [NSMutableDictionary new];
-            
-            for (NSDictionary *item in _fieldLocation.openEntryFields) {
-                NSString *field = item[@"FIELD"];
-                NSString *value = [item[@"VALUE"] uppercaseString];
-                
-                if (value.length>0) {
-                    itemdict[field] = value;
-                    self.searchFilter[@"companyLocation"] = itemdict;
-                }
-                
-            }
-            
-            break;
-        }
-        case FilterModelType:{
-            
-            break;
-        }
-        case FilterModelValue:{
-            NSDictionary *dict = val;
-            NSString *value;
-            
-            NSNumberFormatter *formatter = [NSNumberFormatter new];
-            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            
-            NSNumber *min = dict[@"min"];
-            NSNumber *max = dict[@"max"];
-            
-            if (max) {
-                value = [NSString stringWithFormat:@"$ %@ - $ %@", [formatter stringFromNumber:min], [formatter stringFromNumber:max]];
-            } else {
-                value = [NSString stringWithFormat:@"$ %@ - MAX", [formatter stringFromNumber:min]];
-            }
-            
-            [_filterValue setInfo:@[@{@"entryID": @(0), @"entryTitle": value}]];
-       
-            break;
-        }
-        case FilterModelUpdated:{
-            
-            break;
-        }
-        case FilterModelJurisdiction:{
-            NSArray *items = val;
-            [_fieldJurisdiction setValue:[items componentsJoinedByString:@","]];
-            break;
-        }
-        case FilterModelStage:{
-            
-            break;
-        }
-        case FilterModelBidding:{
-            
-            title = [self getItem:val keyName:@"TITLE"];
-            [_filterBidding setValue:title];
-            
-            break;
-        }
-        case FilterModelBH:{
-
-            break;
-        }
-        case FilterModelOwner:{
-
-            break;
-        }
-        case FilterModelWork:{
-
-            break;
-        }
-        case FilterModelProjectType:{
-            NSArray *items = val;
-            [_filterProjectType setValue:[items componentsJoinedByString:@","]];
-            break;
-        }
-            
-        case FilterModelEstLow : {
-            break;
-        }
-    }
-}
-
 - (id)getItem:(id)info keyName:(id)key {
     return info[key];
 }
@@ -185,11 +102,19 @@
     if (filterModel == FilterModelLocation) {
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
         constraintHeight = _constraintFilterHeight;
+        
+        if ([_fieldLocation isEmpty]) {
+            self.dictLocation = nil;
+        }
     }
     
     if (filterModel == FilterModelValue) {
         collectionViewContentSizeHeight = _filterValue.collectionView.contentSize.height;
         constraintHeight = _constraintFilterValueHeight;
+        
+        if ([_filterValue isEmpty]) {
+            self.dictValue = nil;
+        }
     }
   
     CGFloat additionalHeight;
@@ -225,9 +150,104 @@
     
 }
 
-- (void)setLocationInfo:(id)info {
-    dataSelected = [info copy];
-    [_fieldLocation setInfo:info];
+- (void)setLocationValue:(id)value {
+    [_fieldLocation setInfo:value];
+    
+    NSMutableDictionary *itemdict = [NSMutableDictionary new];
+    
+    for (NSDictionary *item in _fieldLocation.openEntryFields) {
+        NSString *field = item[@"FIELD"];
+        NSString *value = [item[@"VALUE"] uppercaseString];
+        
+        if (value.length>0) {
+            itemdict[field] = value;
+        }
+        
+        if (itemdict.count>0) {
+            self.dictLocation = @{@"companyLocation": itemdict};
+        } else {
+            self.dictLocation = nil;
+
+        }
+        
+    }
+}
+
+- (void)setValuationValue:(id)value {
+    NSDictionary *dict = value;
+    NSString *stringValue;
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *min = dict[@"min"];
+    NSNumber *max = dict[@"max"];
+    
+    if (max) {
+        stringValue = [NSString stringWithFormat:@"$ %@ - $ %@", [formatter stringFromNumber:min], [formatter stringFromNumber:max]];
+    } else {
+        stringValue = [NSString stringWithFormat:@"$ %@ - MAX", [formatter stringFromNumber:min]];
+    }
+    
+    [_filterValue setInfo:@[@{@"entryID": @(0), @"entryTitle": stringValue}]];
+    
+    self.dictValue = @{@"valuation":dict};
+
+}
+
+- (void)setJurisdictionValue:(id)value titles:(NSArray*)titles{
+    self.dictJurisdiction = @{@"jurisdictions":@{@"inq":value}};
+    [_fieldJurisdiction setValue:titles[0]];
+}
+
+- (void)setBiddingValue:(id)value {
+    NSString *title = [self getItem:value keyName:@"TITLE"];
+    [_filterBidding setValue:title];
+    self.dictBidding = @{@"biddingInNext":[self getItem:value keyName:@"VALUE"]};
+}
+
+- (void)setProjectTypeValue:(id)value titles:(NSArray*)titles{
+    NSArray *items = titles;
+    [_filterProjectType setValue:[items componentsJoinedByString:@","]];
+    
+    self.dictProjectType = @{@"projectTypes":@{@"inq":value}};
+}
+
+- (NSMutableDictionary *)filter {
+    NSMutableDictionary *srchFilter = [NSMutableDictionary new];
+    NSMutableDictionary *esFilter = [NSMutableDictionary new];
+   
+    /*
+    @property (strong, nonatomic) NSDictionary *dictLocation;
+    @property (strong, nonatomic) NSDictionary *dictValue;
+    @property (strong, nonatomic) NSDictionary *dictJurisdiction;
+    @property (strong, nonatomic) NSDictionary *dictBidding;
+    @property (strong, nonatomic) NSDictionary *dictProjectType;
+     */
+    
+    if (self.dictLocation) {
+        [srchFilter addEntriesFromDictionary:self.dictLocation];
+        esFilter[@"projectLocation"] = self.dictLocation[@"companyLocation"];
+    }
+    
+    if (self.dictValue) {
+        [srchFilter addEntriesFromDictionary:self.dictValue];
+        esFilter[@"projectValue"] = self.dictValue[@"valuation"];
+    }
+
+    if (self.dictJurisdiction) {
+        [esFilter addEntriesFromDictionary:self.dictJurisdiction];
+    }
+    
+    if (self.dictBidding) {
+        [esFilter addEntriesFromDictionary:self.dictBidding];
+    }
+    
+    if (self.dictProjectType) {
+        [esFilter addEntriesFromDictionary:self.dictProjectType];
+    }
+    
+    return [@{@"filter":@{@"searchFilter":srchFilter, @"esFilter":esFilter}} mutableCopy] ;
 }
 
 @end

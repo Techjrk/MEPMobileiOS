@@ -663,6 +663,8 @@
 
 - (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
     
+    //NSString *allFilter = @"{\"include\":[\"userNotes\",\"images\",\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200,\"nolimit\":false, \"order\":\"id DESC\"}";
+    
     NSString *allFilter = @"{\"include\":[\"userNotes\",\"images\",\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
     
     NSData *data = [allFilter dataUsingEncoding:NSUTF8StringEncoding];
@@ -672,7 +674,7 @@
 
     NSDictionary *filterToAdd = (NSDictionary*)filter;
     if (filter != nil) {
-        [dictionary addEntriesFromDictionary:@{@"searchFilter":filterToAdd}];
+        [dictionary addEntriesFromDictionary:filterToAdd];
     }
     
 

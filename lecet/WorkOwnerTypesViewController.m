@@ -69,6 +69,7 @@
         if (selectedItem) {
             if ([title isEqualToString:selectedItem]) {
                 [resDict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+                selectedData = resDict;
             }
         }
         [array addObject:resDict];

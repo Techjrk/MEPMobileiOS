@@ -19,6 +19,8 @@
 @property (weak, nonatomic) id<SearchFilterViewControllerDelegate>searchFilterViewControllerDelegate;
 @property (strong, nonatomic) NSMutableDictionary *projectFilterDictionary;
 @property (strong, nonatomic) NSMutableDictionary *companytFilterDictionary;
-- (void)setStageItems:(ListViewItemArray*)statgeItems;
+@property (strong, nonatomic) ListViewItemArray *listItemsJurisdictions;
+@property (strong, nonatomic) ListViewItemArray *listItemsProjectStageId;
+@property (strong, nonatomic) ListViewItemArray *listItemsProjectTypeId;
 
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
+
+#import "ListItemCollectionViewCell.h"
+
 @protocol FilterViewControllerDelegate
 - (void)tappedFilterViewControllerApply:(NSMutableArray*)selectedItems key:(NSString*)key titles:(NSMutableArray*)titles nodes:(NSMutableArray*)nodes;
 @end
@@ -21,4 +24,9 @@
 @property (nonatomic) BOOL singleSelect;
 @property (nonatomic) BOOL selectOnlyChild;
 @property (nonatomic) BOOL parentOnly;
+
++ (NSMutableArray*)getCheckedTitles:(ListViewItemArray*)items list:(NSMutableArray*)list;
++ (void)uncheckedTitles:(ListViewItemArray*)items list:(NSMutableArray*)list;
++ (void)getCheckItems:(ListViewItemArray*)items includeChild:(BOOL)includeChild list:(NSMutableArray*)list;
+
 @end

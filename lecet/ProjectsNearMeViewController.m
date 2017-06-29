@@ -39,7 +39,8 @@
     NSMutableDictionary *filterDictionary;
     
     ListViewItemArray *jurisdictionItems;
-    ListViewItemArray *statgeItems;
+    ListViewItemArray *stageItems;
+    ListViewItemArray *projectTypeItems;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -273,10 +274,24 @@ float MetersToMiles(float meters) {
     ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
     controller.projectFilterDictionary = filterDictionary;
     
-    if (statgeItems == nil) {
-        statgeItems = [ListViewItemArray new];
+    if (stageItems == nil) {
+        stageItems = [ListViewItemArray new];
     }
-    [controller setStageItems:statgeItems];
+    
+    controller.listItemsProjectStageId = stageItems;
+    
+    if (jurisdictionItems == nil) {
+        jurisdictionItems = [ListViewItemArray new];
+    }
+    
+    controller.listItemsJurisdictions = jurisdictionItems;
+    
+    if (projectTypeItems == nil) {
+        projectTypeItems = [ListViewItemArray new];
+    }
+    
+    controller.listItemsProjectTypeId = projectTypeItems;
+    
     controller.projectNearMeFilterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:NO];
 }
