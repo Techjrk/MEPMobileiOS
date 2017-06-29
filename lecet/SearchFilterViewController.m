@@ -312,10 +312,45 @@
             [items addObject:@{ENTRYID:@(0), ENTRYTITLE:value}];
         }
         
-
+        [self prepareLocation:self.projectFilter.fieldLocation address:projectLocation];
+        [self prepareLocation:self.companyFilter.fieldLocation address:projectLocation];
+        
         [self.projectFilter.fieldLocation setInfo:items];
         [self.companyFilter.fieldLocation setInfo:items];
     }
+}
+
+- (void)prepareLocation:(FilterEntryView*)entryView  address:(NSDictionary*)address{
+    entryView.openEntryFields = [NSMutableArray new];
+    
+    NSString *city = address[@"city"];
+    NSString *state = address[@"state"];
+    NSString *county = address[@"county"];
+    NSString *zip5 = address[@"zip5"];
+    
+    if (city == nil) {
+        city = @"";
+    }
+    
+    if (state == nil) {
+        state = @"";
+    }
+    
+    if (zip5 == nil) {
+        zip5 = @"";
+    }
+    
+    if (county == nil) {
+        county = @"";
+    }
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"city",@"VALUE":city,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_CITY"} mutableCopy ]];
+    
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"state",@"VALUE":state,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_STATE"} mutableCopy ]];
+    
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"county",@"VALUE":county,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_COUNTY"} mutableCopy ]];
+    
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"zip5",@"VALUE":zip5,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
+
 }
 
 - (void)didReceiveMemoryWarning {
