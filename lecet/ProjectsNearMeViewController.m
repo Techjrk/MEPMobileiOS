@@ -162,7 +162,6 @@ float MetersToMiles(float meters) {
             NSArray *result = object[@"results"];
             if (result != nil & result.count>0) {
                 self.projectNearMeListView.parentCtrl = self;
-                [self.projectNearMeListView setInfo:result];
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
                 
                 if (regionValue == 0) {
@@ -175,7 +174,7 @@ float MetersToMiles(float meters) {
                 
                 [mapItems addObjectsFromArray:result];
                 _mapView.delegate = self;
-                [self addItemsToMap];
+                [self addItemsToMap:nil];
                 
                 if (isSearchLocation) {
                     [self addNewProjectPin];
@@ -306,10 +305,196 @@ float MetersToMiles(float meters) {
 }
     
 #pragma mark - Map Routines
-- (void)addItemsToMap {
-    for (NSDictionary *item in mapItems) {
-        [self addAnnotationCargo:item];
+- (void)addItemsToMap:(NSDictionary*)filter {
+    
+    NSMutableArray *filteredItems = [NSMutableArray new];
+    BOOL addAll = (filter == nil) || (filter.count<=1);
+    BOOL addItem = NO;
+    
+    NSNumber *projectValueMin = @(0);
+    NSNumber *projectValueMax = @(INTMAX_MAX);
+    NSArray *projectStage;
+    NSArray *jurisdictions;
+    NSArray *projectType;
+    NSArray *bldgHwy;
+    NSArray *ownerType;
+    NSArray *workTypes;
+    
+    if (!addAll) {
+        NSDictionary *projectValue = filter[@"projectValue"];
+        
+        if(projectValue[@"min"]) {
+            projectValueMin = projectValue[@"min"];
+        }
+        
+        if(projectValue[@"max"]) {
+            projectValueMax = projectValue[@"max"];
+        }
+        
+        if (filter[@"projectStageId"]) {
+            projectStage = filter[@"projectStageId"][@"inq"];
+        }
+        
+        if (filter[@"jurisdictions"]) {
+            jurisdictions = filter[@"jurisdictions"][@"inq"];
+        }
+        
+        if (filter[@"projectTypeId"]) {
+            projectType = filter[@"projectTypeId"][@"inq"];
+        }
+        
+        if (filter[@"buildingOrHighway"]) {
+            bldgHwy = filter[@"buildingOrHighway"][@"inq"];
+        }
+        
+        if (filter[@"ownerType"]) {
+            ownerType = filter[@"ownerType"][@"inq"];
+        }
+        
+        if (filter[@"workTypeId"]) {
+            workTypes = filter[@"workTypeId"][@"inq"];
+        }
     }
+    
+    
+    for (NSDictionary *item in mapItems) {
+        
+        addItem = YES;
+
+        if (!addAll) {
+
+            addItem = addItem && [self isValueInRange:item min:projectValueMin max:projectValueMax];
+            
+        }
+        
+        if (projectStage) {
+            NSNumber *stageId = [DerivedNSManagedObject objectOrNil:item[@"projectStageId"]];
+            if (stageId) {
+                addItem = addItem && [projectStage containsObject:stageId];
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (jurisdictions) {
+            NSArray *jurisdictionArray = [DerivedNSManagedObject objectOrNil:item[@"jurisdiction"]];
+            if (jurisdictionArray) {
+                if (jurisdictionArray.count>0) {
+                    
+                    BOOL found = NO;
+                    
+                    for (NSDictionary *itemJurisdiction in jurisdictionArray) {
+
+                        NSNumber *jurisdictionId = itemJurisdiction[@"id"];
+                        if (jurisdictionId) {
+                            
+                            if ([jurisdictions containsObject:jurisdictionId]) {
+                                found = YES;
+                            }
+                            
+                        }
+                    }
+                    
+                    if (found) {
+                        addItem = addItem && YES;
+                    }
+                } else {
+                    addItem = NO;
+                }
+                
+            }
+        }
+        
+        if (projectType) {
+            NSNumber *typeId = [DerivedNSManagedObject objectOrNil:item[@"primaryProjectTypeId"]];
+            if (typeId) {
+                addItem = addItem && [projectType containsObject:typeId];
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (bldgHwy) {
+            NSDictionary *blgDict = [DerivedNSManagedObject objectOrNil:item[@"primaryProjectType"]];
+            if (blgDict) {
+                NSString *bh = blgDict[@"buildingOrHighway"];
+                if (bh) {
+                    addItem = addItem && [bldgHwy containsObject:bh];
+                } else {
+                    addItem = NO;
+                }
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (ownerType) {
+            NSString *owner = [DerivedNSManagedObject objectOrNil:item[@"ownerClass"]];
+            if (owner) {
+                addItem = addItem && [ownerType containsObject:ownerType];
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (workTypes) {
+            BOOL found = NO;
+            NSArray *types = [DerivedNSManagedObject objectOrNil:item[@"workTypes"]];
+            if (types) {
+                
+                for (NSDictionary *typeItem in types) {
+                    NSNumber *typeId = typeItem[@"id"];
+                    if ([workTypes containsObject:typeId]) {
+                        found = YES;
+                    }
+                }
+                
+                if (found) {
+                    addItem = addItem && YES;
+                }
+                
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (addAll || addItem ) {
+            [self addAnnotationCargo:item];
+            
+            if (!addAll) {
+                [filteredItems addObject:item];
+            }
+        }
+    }
+    
+    if (addAll) {
+        [self.projectNearMeListView setInfo:mapItems];
+    } else {
+        [self.projectNearMeListView setInfo:filteredItems];
+    }
+    
+    [self.projectNearMeListView setDataBasedOnVisible];
+    
+}
+
+- (BOOL)isValueInRange:(NSDictionary*)item min:(NSNumber*)projectValueMin max:(NSNumber*)projectValueMax{
+
+    //Project Value
+    NSNumber *value = [DerivedNSManagedObject objectOrNil:item[@"estLow"]];
+    
+    if (value == nil) {
+        value = [DerivedNSManagedObject objectOrNil:item[@"estHigh"]];
+    }
+    
+    if (value == nil) {
+        value = @(0);
+    }
+    
+    if ((value.integerValue>=projectValueMin.integerValue) && (value.integerValue<=projectValueMax.integerValue)) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)addAnnotationCargo:(id)cargo{
@@ -371,7 +556,7 @@ float MetersToMiles(float meters) {
         }
     }
     
-    [self getVisibleAnmotationsInMap];
+    //[self getVisibleAnmotationsInMap];
     
     return annotationView;
     
@@ -470,11 +655,9 @@ float MetersToMiles(float meters) {
 }
 
 -(void)getVisibleAnmotationsInMap {
-        MKMapRect visibleMapRect = self.mapView.visibleMapRect;
-        NSSet *visibleAnnotations = [self.mapView annotationsInMapRect:visibleMapRect];
-        NSArray *annotationArray = [visibleAnnotations allObjects];
-        self.projectNearMeListView.visibleAnnotationArray = annotationArray;
-        [self.projectNearMeListView setDataBasedOnVisible];
+    NSArray *annotationArray = self.mapView.annotations;
+    self.projectNearMeListView.visibleAnnotationArray = annotationArray;
+    [self.projectNearMeListView setDataBasedOnVisible];
 }
 
 #pragma mark - TextField Delegate Methods
@@ -497,7 +680,7 @@ float MetersToMiles(float meters) {
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
+    /*
     if (isDoneSearching) {
 
         [self getVisibleAnmotationsInMap];
@@ -516,7 +699,7 @@ float MetersToMiles(float meters) {
         }
         
     }
-    
+    */
 }
 
 - (CLLocationDistance)getRadius
@@ -547,8 +730,6 @@ float MetersToMiles(float meters) {
 
 - (void)applySearchFilter:(NSDictionary *)filter {
 
-    //filterDictionary = filter;
-    
     if (filterDictionary == nil) {
         filterDictionary = [NSMutableDictionary new];
     }
@@ -556,12 +737,12 @@ float MetersToMiles(float meters) {
     for (NSString *key in filter.allKeys) {
         filterDictionary[key] = filter[key];
     }
-    [self.customLoadingIndcator startAnimating];
-    if (_textFieldSearch.text.length>0) {
-        [self searchForLocation];
-    } else {
-        [self mapView:self.mapView regionDidChangeAnimated:NO];
-    }
+
+    _mapView.delegate = nil;
+    [_mapView removeAnnotations:_mapView.annotations];
+    _mapView.delegate = self;
+    
+    [self addItemsToMap:filter[@"filter"][@"searchFilter"]];
 }
 
 - (void)createProjectUsingLocation:(CLLocation *)location {

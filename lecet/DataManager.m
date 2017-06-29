@@ -665,7 +665,7 @@
     
     //NSString *allFilter = @"{\"include\":[\"userNotes\",\"images\",\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200,\"nolimit\":false, \"order\":\"id DESC\"}";
     
-    NSString *allFilter = @"{\"include\":[\"userNotes\",\"images\",\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
+    NSString *allFilter = @"{\"include\":[\"workTypes\",\"userNotes\",\"images\",\"projectStage\",{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
     
     NSData *data = [allFilter dataUsingEncoding:NSUTF8StringEncoding];
     
