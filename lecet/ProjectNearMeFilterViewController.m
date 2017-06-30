@@ -10,7 +10,6 @@
 #import "ProjectFilterView.h"
 #import "FilterLabelView.h"
 #import "FilterEntryView.h"
-#import "ProjectFilterLocationViewController.h"
 #import "ValuationViewController.h"
 #import "FilterViewController.h"
 #import "FilterSelectionViewController.h"
@@ -29,7 +28,7 @@
 #define BUTTON_COLOR                    RGB(168, 195, 230)
 #define TITLE_COLOR                     RGB(255, 255, 255)
 
-@interface ProjectNearMeFilterViewController ()<ProjectFilterViewDelegate, ProjectFilterLocationViewControllerDelegate, FilterViewControllerDelegate, ValuationViewControllerDelegate, FilterSelectionViewControllerDelegate, WorkOwnerTypesViewControllerDelegate>{
+@interface ProjectNearMeFilterViewController ()<ProjectFilterViewDelegate,  FilterViewControllerDelegate, ValuationViewControllerDelegate, FilterSelectionViewControllerDelegate, WorkOwnerTypesViewControllerDelegate>{
     // Variables
     id  objectEntry;
     FilterModel selectedModel;
@@ -417,7 +416,7 @@
                         [_projectFilter setLocationValue:object];
                     } title:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
                 } else {
-                    [self filterLocation:view];
+                    //[self filterLocation:view];
                 }
                 break;
             }
@@ -477,13 +476,15 @@
 }
 
 #pragma mark - Filters
+
+/*
 - (void)filterLocation:(UIView*)view {
     ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
     controller.dataSelected = [(FilterEntryView *)objectEntry getCollectionItemsData];
     controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
+*/
 - (void)filterProjectTypes:(UIView*)view {
     
     if ((self.listItemsProjectTypeId == nil) || (self.listItemsProjectTypeId.count == 0)) {
@@ -906,12 +907,12 @@
     
     NSDictionary *workOwner = self.projectFilter.dictOwnerType[@"ownerType"];
     
-    NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
+    NSArray *obj = @[@{@"title":@"Federal",@"id":@(1)},
                              @{@"title":@"Local Government",@"id":@(2)},
                              @{@"title":@"Military",@"id":@(3)},
                              @{@"title":@"Private",@"id":@(4)},
                              @{@"title":@"State",@"id":@(5)}
-                             ] mutableCopy];
+                             ] ;
     
     if (workOwner) {
         NSArray *items = workOwner[@"inq"];

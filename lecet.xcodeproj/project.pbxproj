@@ -117,14 +117,10 @@
 		B6A74EFB1D15DBD3007CDFF3 /* CompanySortViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A74EF91D15DBD3007CDFF3 /* CompanySortViewController.xib */; };
 		B6A81E681D0C888D0016B20F /* MyProfileCustomTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */; };
 		B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */; };
-		B6AA23761D22B0C4008B30E0 /* ProjectFilterTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AA23741D22B0C4008B30E0 /* ProjectFilterTypesViewController.m */; };
-		B6AA23771D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AA23751D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib */; };
 		B6AF1CE11D21240700C95A8F /* ProjectFilterCollapsibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CDF1D21240700C95A8F /* ProjectFilterCollapsibleView.m */; };
 		B6AF1CE21D21240700C95A8F /* ProjectFilterCollapsibleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CE01D21240700C95A8F /* ProjectFilterCollapsibleView.xib */; };
 		B6AF1CEE1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CEC1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.m */; };
 		B6AF1CEF1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CED1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib */; };
-		B6AF1CF41D2130CA00C95A8F /* ProjectFilterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CF21D2130CA00C95A8F /* ProjectFilterLocationViewController.m */; };
-		B6AF1CF51D2130CA00C95A8F /* ProjectFilterLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CF31D2130CA00C95A8F /* ProjectFilterLocationViewController.xib */; };
 		B6AF1CFA1D21325F00C95A8F /* ProjectFilterSearchNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CF81D21325F00C95A8F /* ProjectFilterSearchNavView.m */; };
 		B6AF1CFB1D21325F00C95A8F /* ProjectFilterSearchNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CF91D21325F00C95A8F /* ProjectFilterSearchNavView.xib */; };
 		B6AF1CFF1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CFD1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m */; };
@@ -636,18 +632,12 @@
 		B6A81E651D0C888D0016B20F /* MyProfileCustomTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileCustomTextFieldView.h; sourceTree = "<group>"; };
 		B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileCustomTextFieldView.m; sourceTree = "<group>"; };
 		B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileCustomTextFieldView.xib; sourceTree = "<group>"; };
-		B6AA23731D22B0C4008B30E0 /* ProjectFilterTypesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterTypesViewController.h; sourceTree = "<group>"; };
-		B6AA23741D22B0C4008B30E0 /* ProjectFilterTypesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterTypesViewController.m; sourceTree = "<group>"; };
-		B6AA23751D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterTypesViewController.xib; sourceTree = "<group>"; };
 		B6AF1CDE1D21240700C95A8F /* ProjectFilterCollapsibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterCollapsibleView.h; sourceTree = "<group>"; };
 		B6AF1CDF1D21240700C95A8F /* ProjectFilterCollapsibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterCollapsibleView.m; sourceTree = "<group>"; };
 		B6AF1CE01D21240700C95A8F /* ProjectFilterCollapsibleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterCollapsibleView.xib; sourceTree = "<group>"; };
 		B6AF1CEB1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterCollapsibleCollectionViewCell.h; sourceTree = "<group>"; };
 		B6AF1CEC1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterCollapsibleCollectionViewCell.m; sourceTree = "<group>"; };
 		B6AF1CED1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterCollapsibleCollectionViewCell.xib; sourceTree = "<group>"; };
-		B6AF1CF11D2130CA00C95A8F /* ProjectFilterLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterLocationViewController.h; sourceTree = "<group>"; };
-		B6AF1CF21D2130CA00C95A8F /* ProjectFilterLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterLocationViewController.m; sourceTree = "<group>"; };
-		B6AF1CF31D2130CA00C95A8F /* ProjectFilterLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterLocationViewController.xib; sourceTree = "<group>"; };
 		B6AF1CF71D21325F00C95A8F /* ProjectFilterSearchNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSearchNavView.h; sourceTree = "<group>"; };
 		B6AF1CF81D21325F00C95A8F /* ProjectFilterSearchNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSearchNavView.m; sourceTree = "<group>"; };
 		B6AF1CF91D21325F00C95A8F /* ProjectFilterSearchNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSearchNavView.xib; sourceTree = "<group>"; };
@@ -1787,16 +1777,6 @@
 			name = MyProfileCustomTextFieldView;
 			sourceTree = "<group>";
 		};
-		B6AA23721D22B043008B30E0 /* ProjectFilterTypes */ = {
-			isa = PBXGroup;
-			children = (
-				B6AA23731D22B0C4008B30E0 /* ProjectFilterTypesViewController.h */,
-				B6AA23741D22B0C4008B30E0 /* ProjectFilterTypesViewController.m */,
-				B6AA23751D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib */,
-			);
-			name = ProjectFilterTypes;
-			sourceTree = "<group>";
-		};
 		B6AF1CD81D2121ED00C95A8F /* ProjectFilterCollapsibleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1835,16 +1815,6 @@
 				B6AF1CED1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib */,
 			);
 			name = ProjectFilterCollapsibleCell;
-			sourceTree = "<group>";
-		};
-		B6AF1CF01D21307300C95A8F /* ProjectFilterLocation */ = {
-			isa = PBXGroup;
-			children = (
-				B6AF1CF11D2130CA00C95A8F /* ProjectFilterLocationViewController.h */,
-				B6AF1CF21D2130CA00C95A8F /* ProjectFilterLocationViewController.m */,
-				B6AF1CF31D2130CA00C95A8F /* ProjectFilterLocationViewController.xib */,
-			);
-			name = ProjectFilterLocation;
 			sourceTree = "<group>";
 		};
 		B6AF1CF61D21322100C95A8F /* ProjectFilterSearchNav */ = {
@@ -2178,8 +2148,6 @@
 				B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */,
 				B6855EA51D26604500553F0F /* Valuation */,
 				B65BCDBC1D25295400FE9781 /* WorkOwnerTypes */,
-				B6AA23721D22B043008B30E0 /* ProjectFilterTypes */,
-				B6AF1CF01D21307300C95A8F /* ProjectFilterLocation */,
 				B6BDBAC41D1821A3001FB41C /* EditViewController */,
 				B6A74EF61D15DBBA007CDFF3 /* CompanySort */,
 				B65106611D12DC6100007759 /* CompanyTracking */,
@@ -3177,7 +3145,6 @@
 				B73EFAE61D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
-				B6AA23771D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib in Resources */,
 				B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */,
 				B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
@@ -3200,7 +3167,6 @@
 				B68337251D081C3F004226D3 /* ChangePasswordViewController.xib in Resources */,
 				B647D0AA1E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib in Resources */,
 				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
-				B6AF1CF51D2130CA00C95A8F /* ProjectFilterLocationViewController.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B7BF60E41D215E7D00B3BDD7 /* RefineSearchViewController.xib in Resources */,
 				B64F17721EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib in Resources */,
@@ -3256,7 +3222,6 @@
 				B78607061E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m in Sources */,
 				B69FA8B31D4F469F0059A18F /* SaveSearchChangeItemView.m in Sources */,
 				B6411BA51D096892002B6E88 /* SettingsView.m in Sources */,
-				B6AA23761D22B0C4008B30E0 /* ProjectFilterTypesViewController.m in Sources */,
 				B7BF60D31D21247300B3BDD7 /* FilterEntryView.m in Sources */,
 				B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */,
 				B71B6BFA1D18299300B916BA /* ProjectTrackEditCollectionViewCell.m in Sources */,
@@ -3297,7 +3262,6 @@
 				B68680CA1EB20427006B9651 /* CustomLandscapeNavigationViewController.m in Sources */,
 				B6BDBAC81D1821BD001FB41C /* EditViewController.m in Sources */,
 				B73EFAB11D09546B00C6B3B2 /* CallOutViewController.m in Sources */,
-				B6AF1CF41D2130CA00C95A8F /* ProjectFilterLocationViewController.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,

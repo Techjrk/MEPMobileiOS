@@ -319,6 +319,8 @@ float MetersToMiles(float meters) {
     NSArray *bldgHwy;
     NSArray *ownerType;
     NSArray *workTypes;
+    NSNumber *updatedWithin;
+    NSNumber *biddingWithin;
     
     if (!addAll) {
         NSDictionary *projectValue = filter[@"projectValue"];
@@ -345,6 +347,12 @@ float MetersToMiles(float meters) {
         
         if (filter[@"buildingOrHighway"]) {
             bldgHwy = filter[@"buildingOrHighway"][@"inq"];
+            
+            if (bldgHwy) {
+                if (bldgHwy.count>1) {
+                    bldgHwy = nil;
+                }
+            }
         }
         
         if (filter[@"ownerType"]) {
@@ -353,6 +361,14 @@ float MetersToMiles(float meters) {
         
         if (filter[@"workTypeId"]) {
             workTypes = filter[@"workTypeId"][@"inq"];
+        }
+        
+        if (filter[@"updatedInLast"]) {
+            updatedWithin = filter[@"updatedInLast"];
+        }
+        
+        if (filter[@"biddingInNext"]) {
+            biddingWithin = filter[@"biddingInNext"];
         }
     }
     
@@ -395,9 +411,7 @@ float MetersToMiles(float meters) {
                         }
                     }
                     
-                    if (found) {
-                        addItem = addItem && YES;
-                    }
+                    addItem = addItem && found;
                 } else {
                     addItem = NO;
                 }
@@ -431,17 +445,17 @@ float MetersToMiles(float meters) {
         if (ownerType) {
             NSString *owner = [DerivedNSManagedObject objectOrNil:item[@"ownerClass"]];
             if (owner) {
-                addItem = addItem && [ownerType containsObject:ownerType];
+                addItem = addItem && [ownerType containsObject:owner];
             } else {
                 addItem = NO;
             }
         }
         
         if (workTypes) {
-            BOOL found = NO;
             NSArray *types = [DerivedNSManagedObject objectOrNil:item[@"workTypes"]];
             if (types) {
                 
+                BOOL found = NO;
                 for (NSDictionary *typeItem in types) {
                     NSNumber *typeId = typeItem[@"id"];
                     if ([workTypes containsObject:typeId]) {
@@ -449,10 +463,44 @@ float MetersToMiles(float meters) {
                     }
                 }
                 
-                if (found) {
+                addItem = addItem && found;
+                
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (updatedWithin) {
+            NSString *lastPublishDate = [DerivedNSManagedObject objectOrNil:item[@"lastPublishDate"]];
+            if (lastPublishDate) {
+                NSDate *publishdate = [DerivedNSManagedObject dateFromDateAndTimeString:lastPublishDate];
+                
+                NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-updatedWithin.integerValue];
+                
+                if ([publishdate timeIntervalSinceDate:lastDate]>0){
                     addItem = addItem && YES;
+                } else {
+                    addItem = NO;
                 }
                 
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (biddingWithin) {
+            NSString *bidDate = [DerivedNSManagedObject objectOrNil:item[@"bidDate"]];
+            if (bidDate) {
+                
+                NSDate *dateBid = [DerivedNSManagedObject dateFromDateAndTimeString:bidDate];
+                
+                NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:biddingWithin.integerValue];
+                
+                if ([dateBid timeIntervalSinceDate:lastDate]>0){
+                    addItem = addItem && YES;
+                } else {
+                    addItem = NO;
+                }
             } else {
                 addItem = NO;
             }

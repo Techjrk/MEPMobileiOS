@@ -13,7 +13,6 @@
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
     NSString *navTitle;
-    int prevTag;
     id selectedData;
 }
 @property (weak, nonatomic) IBOutlet ProfileNavView *navView;
@@ -57,24 +56,26 @@
 }
 
 - (void)setInfo:(id)info selectedItem:(NSString*)selectedItem {
-    
-    NSMutableArray *array = [NSMutableArray new];
-    for (id dict in info) {
-        NSMutableDictionary *resDict =  [dict mutableCopy];
 
-        NSString *title = resDict[@"title"];
+    NSMutableArray *array = [NSMutableArray new];
+    
+    for (id dict in info) {
+        NSMutableDictionary *mutableDict = [dict mutableCopy];
+        NSString *title = mutableDict[@"title"];
         
-        [resDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
+        [mutableDict setValue:UnSelectedFlag forKey:SELECTIONFLAGNAME];
 
         if (selectedItem) {
             if ([title isEqualToString:selectedItem]) {
-                [resDict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
-                selectedData = resDict;
+                [mutableDict setValue:SelectedFlag forKey:SELECTIONFLAGNAME];
+                selectedData = mutableDict;
             }
         }
-        [array addObject:resDict];
+        
+        [array addObject:mutableDict];
     }
-    collectionDataItems  = array;
+    
+    collectionDataItems = array;
 }
 
 - (void)setNavTitle:(NSString *)text {
@@ -85,9 +86,12 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WorkOwnerTypesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.workOwnerTypesCollectionViewCellDelegate = self;
+    
+    NSDictionary *item = collectionDataItems[indexPath.row];
+    
     [cell setIndexPath:indexPath];
-    NSString *title = [collectionDataItems objectAtIndex:indexPath.row][TITLENAME];
-    NSString *currentflag = [collectionDataItems objectAtIndex:indexPath.row][SELECTIONFLAGNAME];
+    NSString *title = item[TITLENAME];
+    NSString *currentflag = item[SELECTIONFLAGNAME];
     BOOL selected = [currentflag isEqualToString:SelectedFlag]?YES:NO;
     [cell setSelectionButtonSelected:selected];
     
@@ -163,21 +167,17 @@
 - (void)tappedSelectionButton:(id)tag {
     NSIndexPath *index = tag;
     
-    if (prevTag != index.row) {
-        [self clearPrevSelection];
-    }
+    [self clearPrevSelection];
     
-    NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:index.row] mutableCopy];
-    NSString *currentflag = [collectionDataItems objectAtIndex:index.row][SELECTIONFLAGNAME];
+    NSMutableDictionary *dict = [collectionDataItems objectAtIndex:index.row];
+    NSString *currentflag = dict[SELECTIONFLAGNAME];
     NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
     [dict setValue:flagTochange forKey:SELECTIONFLAGNAME];    
-    [collectionDataItems replaceObjectAtIndex:index.row withObject:dict];
     
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:index, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
     
-    prevTag = (int)index.row;
-    NSDictionary *returnDict = [[collectionDataItems objectAtIndex:index.row][SELECTIONFLAGNAME] isEqualToString: SelectedFlag]?[collectionDataItems objectAtIndex:index.row]:nil;
+    NSDictionary *returnDict = [dict[SELECTIONFLAGNAME] isEqualToString: SelectedFlag]?dict:nil;
     selectedData = returnDict;
 }
 

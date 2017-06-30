@@ -15,8 +15,6 @@
 #import "FilterViewController.h"
 #import "ListItemExpandingViewCell.h"
 #import "WorkOwnerTypesViewController.h"
-#import "ProjectFilterTypesViewController.h"
-#import "ProjectFilterLocationViewController.h"
 #import "ValuationViewController.h"
 #import "FilterSelectionViewController.h"
 #import "ProjectFilterSelectionViewList.h"
@@ -37,7 +35,7 @@
 #define SelectedFlag                @"1"
 #define SELECTIONFLAGNAME           @"selectionFlag"
 
-@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ProjectFilterTypesViewControllerDelegate,ProjectFilterLocationViewControllerDelegate,ValuationViewControllerDelegate, FilterViewControllerDelegate>{
+@interface SearchFilterViewController ()<ProjectFilterViewDelegate, CompanyFilterViewDelegate,WorkOwnerTypesViewControllerDelegate,FilterSelectionViewControllerDelegate,ValuationViewControllerDelegate, FilterViewControllerDelegate>{
     
     FilterModel selectedModel;
     NSMutableArray *selectedLocationItems;
@@ -445,7 +443,7 @@
                         [_companyFilter setLocationValue:object];
                     } title:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
                 } else {
-                    [self filterLocation:view object:object];
+                    //[self filterLocation:view object:object];
                 }
                 break;
             }
@@ -545,7 +543,7 @@
                         [_projectFilter setLocationValue:object];
                     } title:NSLocalizedLanguage(@"COMPANY_FILTER_HINT_LOCATION")];
                 } else {
-                    [self filterLocation:view object:object];
+                    //[self filterLocation:view object:object];
                 }
 
                 break;
@@ -862,6 +860,7 @@
     }];
 }
 
+/*
 - (void)filterLocation:(UIView*)view object:(id)object{
 
     ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
@@ -869,7 +868,7 @@
     controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
+*/
 - (void)filterValue:(UIView*)view {
     
     ValuationViewController *controller =  [ValuationViewController new];
@@ -1049,23 +1048,6 @@
     controller.workOwnerTypesViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 
-}
-
-#pragma mark - ProjectFilter Types
-
-
-
-- (void)filterTypes:(UIView*)view {
-    
-    [[DataManager sharedManager] projectGroupRequest:^(id obj){
-        ProjectFilterTypesViewController *controller = [ProjectFilterTypesViewController new];
-        [controller setDataInfo:obj];
-        controller.projectFilterTypesViewControllerDelegate = self;
-        [self.navigationController pushViewController:controller animated:YES];
-    }failure:^(id obj){
-        
-    }];
-    
 }
 
 #pragma mark - FilterTypes Delegate
