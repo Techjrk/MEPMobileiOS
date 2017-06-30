@@ -441,6 +441,12 @@
                     [entryView promptOpenEntryUsingViewController:self block:^(id object) {
                         [_projectFilter setLocationValue:object];
                         [_companyFilter setLocationValue:object];
+                        
+                        if (_projectFilter.dictLocation) {
+                            _companyFilter.dictLocation = @{@"companyLocation":_projectFilter.dictLocation[@"projectLocation"]};
+                        } else {
+                            _companyFilter.dictLocation = nil;
+                        }
                     } title:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
                 } else {
                     //[self filterLocation:view object:object];
@@ -541,6 +547,12 @@
                     [entryView promptOpenEntryUsingViewController:self block:^(id object) {
                         [_companyFilter setLocationValue:object];
                         [_projectFilter setLocationValue:object];
+                        
+                        if (_companyFilter.dictLocation) {
+                            _projectFilter.dictLocation = @{@"projectLocation":_companyFilter.dictLocation[@"companyLocation"]};
+                        } else {
+                            _projectFilter.dictLocation = nil;
+                        }
                     } title:NSLocalizedLanguage(@"COMPANY_FILTER_HINT_LOCATION")];
                 } else {
                     //[self filterLocation:view object:object];

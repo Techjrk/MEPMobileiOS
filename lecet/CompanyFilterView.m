@@ -163,14 +163,15 @@
             itemdict[field] = value;
         }
         
-        if (itemdict.count>0) {
-            self.dictLocation = @{@"companyLocation": itemdict};
-        } else {
-            self.dictLocation = nil;
-
-        }
+    }
+    
+    if (itemdict.count>0) {
+        self.dictLocation = @{@"companyLocation": itemdict};
+    } else {
+        self.dictLocation = nil;
         
     }
+
 }
 
 - (void)setValuationValue:(id)value {

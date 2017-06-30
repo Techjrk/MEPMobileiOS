@@ -280,15 +280,15 @@
         if (value.length>0) {
             itemdict[field] = value;
         }
-        
-        if (itemdict.count>0) {
-            self.dictLocation = @{@"projectLocation": itemdict};
-        } else {
-            self.dictLocation = nil;
-            
-        }
+    }
+    
+    if (itemdict.count>0) {
+        self.dictLocation = @{@"projectLocation": itemdict};
+    } else {
+        self.dictLocation = nil;
         
     }
+
 }
 
 - (void)setProjectTypeValue:(id)value titles:(NSArray*)titles {

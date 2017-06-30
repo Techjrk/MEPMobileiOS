@@ -12,7 +12,6 @@
 @interface ProjectFilterSelectionViewList () <UICollectionViewDelegate, UICollectionViewDataSource,ProjectFilterSelectionCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;
     CGFloat cellHeight;
-    int prevTag;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -131,12 +130,7 @@
 
 - (void)tappedCheckButtonAtTag:(int)tag {
     
-    
-    if (prevTag != tag) {
-        [self clearPrevSelection];
-    }
-    
-    
+    [self clearPrevSelection];
     NSMutableDictionary *dict = [[collectionDataItems objectAtIndex:tag] mutableCopy];
     NSString *currentflag = [collectionDataItems objectAtIndex:tag][FLAGNAME];
     NSString *flagTochange = [currentflag isEqualToString:UnSelectedFlag]?SelectedFlag:UnSelectedFlag;
@@ -146,7 +140,6 @@
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
     [_collectionView reloadItemsAtIndexPaths:indexPaths];
 
-    prevTag = tag;
     NSDictionary *returnDict = [[collectionDataItems objectAtIndex:tag][FLAGNAME] isEqualToString: SelectedFlag]?[collectionDataItems objectAtIndex:tag]:nil;
     [_projectFilterSelectionViewListDelegate selectedItem:returnDict];
 }
