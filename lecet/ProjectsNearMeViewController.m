@@ -41,6 +41,9 @@
     ListViewItemArray *jurisdictionItems;
     ListViewItemArray *stageItems;
     ListViewItemArray *projectTypeItems;
+    
+    UILongPressGestureRecognizer *addPinGesture;
+    NewProjectAnnotation *newProjectAnnotation;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -99,6 +102,11 @@ float MetersToMiles(float meters) {
     }
     
     filterDictionary = [NSMutableDictionary new];
+    
+    addPinGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(addPinGesture:)];
+    
+    [self.mapView addGestureRecognizer:addPinGesture];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,6 +153,15 @@ float MetersToMiles(float meters) {
     }
 }
 
+- (void)addPinGesture:(UITapGestureRecognizer*)tapGesture {
+    
+    CGPoint touchPoint = [tapGesture locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+
+    [self addNewProjectPin:touchMapCoordinate];
+}
+
 - (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate regionValue:(CGFloat)regionValue {
     
     if (CLLocationCoordinate2DIsValid(coordinate)) {
@@ -176,9 +193,6 @@ float MetersToMiles(float meters) {
                 _mapView.delegate = self;
                 [self addItemsToMap:nil];
                 
-                if (isSearchLocation) {
-                    [self addNewProjectPin];
-                }
             } else {
                 
                 isDoneSearching = YES;
@@ -620,10 +634,15 @@ float MetersToMiles(float meters) {
     }
 }
 
-- (void) addNewProjectPin {
-    NewProjectAnnotation *annotation = [[NewProjectAnnotation alloc] init];
-    annotation.coordinate = self.mapView.centerCoordinate;
-    [self.mapView addAnnotation:annotation];
+- (void) addNewProjectPin:(CLLocationCoordinate2D)coordinate {
+    
+    if (newProjectAnnotation == nil) {
+        newProjectAnnotation = [[NewProjectAnnotation alloc] init];
+    } else {
+        [self.mapView removeAnnotation:newProjectAnnotation];
+    }
+    newProjectAnnotation.coordinate = coordinate;
+    [self.mapView addAnnotation:newProjectAnnotation];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {

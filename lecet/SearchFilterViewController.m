@@ -136,6 +136,7 @@
                 NSString *str = [title componentsJoinedByString:@", "];
                 
                 [self.projectFilter.fieldJurisdiction setValue:str];
+                [self.companyFilter.fieldJurisdiction setValue:str];
             }
 
         }
@@ -1152,9 +1153,49 @@
     } else if (selectedModel == FilterModelJurisdiction) {
         [_companyFilter setJurisdictionValue:selectedItems titles:titles];
         [_projectFilter setJurisdictionValue:selectedItems titles:titles];
+        
+        
+        if (self.companyFilter.hidden) {
+            
+            if (_projectFilter.dictJurisdiction) {
+                _companyFilter.dictJurisdiction = @{@"jurisdictions":_projectFilter.dictJurisdiction[@"jurisdictions"]};
+            } else {
+                _companyFilter.dictJurisdiction = nil;
+            }
+            
+        } else {
+            
+            if (_companyFilter.dictJurisdiction) {
+                _projectFilter.dictJurisdiction = @{@"jurisdictions":_companyFilter.dictJurisdiction[@"jurisdictions"]};
+            } else {
+                _projectFilter.dictJurisdiction = nil;
+            }
+            
+        }
+
+        
+        
     } else if (selectedModel == FilterModelProjectType) {
         [_companyFilter setProjectTypeValue:selectedItems titles:titles];
         [_projectFilter setProjectTypeValue:selectedItems titles:titles];
+        
+        if (self.companyFilter.hidden) {
+            
+            if (_projectFilter.dictProjectType) {
+                _companyFilter.dictProjectType = @{@"projectTypes":_projectFilter.dictProjectType[@"projectTypeId"]};
+            } else {
+                _companyFilter.dictProjectType = nil;
+            }
+            
+        } else {
+
+            if (_companyFilter.dictProjectType) {
+                _projectFilter.dictProjectType = @{@"projectTypeId":_companyFilter.dictProjectType[@"projectTypes"]};
+            } else {
+                _projectFilter.dictProjectType = nil;
+            }
+
+        }
     }
 
 }
