@@ -160,19 +160,23 @@
     }
 
     if (typeId != nil) {
-        [[DataManager sharedManager] projectType:typeId success:^(id object) {
-            [self.fieldType setValue:object[@"title"]];
-        } failure:^(id object) {
-            
-        }];
+        if (typeId.integerValue>0) {
+            [[DataManager sharedManager] projectType:typeId success:^(id object) {
+                [self.fieldType setValue:object[@"title"]];
+            } failure:^(id object) {
+                
+            }];
+        }
     }
     
     if (stageId != nil) {
-        [[DataManager sharedManager] projectStage:stageId success:^(id object) {
-            [self.fieldStage setValue:object[@"name"]];
-        } failure:^(id object) {
-            
-        }];
+        if (stageId.integerValue>0) {
+            [[DataManager sharedManager] projectStage:stageId success:^(id object) {
+                [self.fieldStage setValue:object[@"name"]];
+            } failure:^(id object) {
+                
+            }];
+        }
     }
     [self.fieldCounty setValue:@""];
     
@@ -276,13 +280,7 @@
 }
 
 - (IBAction)tappedSave:(id)sender {
-    SaveNewProjectViewController *controller = [SaveNewProjectViewController new];
-    controller.saveNewProjectViewControllerDelegate = self;
-    controller.modalPresentationStyle = UIModalPresentationCustom;
-    [self presentViewController:controller animated:NO completion:nil];
-}
 
-- (void)tappedSaveNewProject {
     NSString *projectTitleStr = [self.textFieldProjectTitle.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (projectTitleStr.length == 0) {
         
@@ -294,6 +292,19 @@
         [self promptUserForCounty];
         return;
     }
+    
+    if (typeId == nil) {
+        [self promptUserForType];
+        return;
+    }
+
+    SaveNewProjectViewController *controller = [SaveNewProjectViewController new];
+    controller.saveNewProjectViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
+}
+
+- (void)tappedSaveNewProject {
 
     [self saveNewProject];
 }
@@ -327,6 +338,22 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+- (void)promptUserForType{
+    NSString *message = NSLocalizedLanguage(@"NPVC_TYPE_REQUIRED");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"NPVC_OK")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:closeAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 - (void)saveNewProject {
     NSMutableDictionary *dict = [NSMutableDictionary new];
@@ -382,12 +409,12 @@
     if (fipsCounty) {
         dict[@"fipsCounty"] = fipsCounty;
     }
-    
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone localTimeZone]];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"];
+
     if (!self.updateProject) {
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setTimeZone:[NSTimeZone localTimeZone]];
-        [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"];
         
         NSString *date = [formatter stringFromDate:[NSDate date]];
         dict[@"firstPublishDate"] = date;
@@ -410,6 +437,10 @@
         }];
     } else {
         [self.navigationController popViewControllerAnimated:NO];
+        
+        NSString *date = [formatter stringFromDate:[NSDate date]];
+        dict[@"lastPublishDate"] = date;
+        
         [self.projectViewControllerDelegate tappedSavedNewProject:dict];
     }
 }

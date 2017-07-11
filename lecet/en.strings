@@ -504,6 +504,7 @@
 "NPVC_JURISDICTION"                         =               "JURISDICTION";
 "NPVC_TITLE_REQUIRED"                       =               "Project Title is required";
 "NPVC_COUNTY_REQUIRED"                      =               "County is required";
+"NPVC_TYPE_REQUIRED"                        =               "Type is required";
 "NPVC_OK"                                   =               "Ok";
 
 //UserLocationPinViewController

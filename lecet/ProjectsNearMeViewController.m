@@ -149,7 +149,24 @@ float MetersToMiles(float meters) {
     
     if (!isLocationCaptured) {
         isLocationCaptured = YES;
-        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
+        
+        if (self.textFieldSearch.text.length == 0) {
+            [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
+        } else {
+            double lat = mapView.centerCoordinate.latitude;
+            double lng = mapView.centerCoordinate.longitude;
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+            
+            CGFloat miles = MetersToMiles([self getRadius]) * 0.5;
+            if (miles<5) {
+                miles = 5;
+            } else {
+                miles = round(miles);
+            }
+            [self loadProjects:miles coordinate:coordinate regionValue:miles];
+
+        }
+        
     }
 }
 

@@ -114,6 +114,7 @@
     if (biddingInNext) {
         
         self.projectFilter.dictBiddingWithin = @{@"biddingInNext":biddingInNext};
+        self.companyFilter.dictBidding = @{@"biddingInNext":biddingInNext};
         
         NSDictionary *dict = [self filterBiddingWithinDictionary:[self filterBiddingWithinArray] value:biddingInNext];
         
