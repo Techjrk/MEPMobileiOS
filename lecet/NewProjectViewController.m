@@ -418,6 +418,7 @@
         
         NSString *date = [formatter stringFromDate:[NSDate date]];
         dict[@"firstPublishDate"] = date;
+        dict[@"lastPublishDate"] = date;
         
         [[DataManager sharedManager] createProject:dict success:^(id object) {
             
@@ -426,7 +427,7 @@
             [[DataManager sharedManager] createPin:self.location projectId:projectId success:^(id object) {
                 
                 [self.navigationController popViewControllerAnimated:NO];
-                [self.projectViewControllerDelegate tappedSavedNewProject:projectId];
+                [self.projectViewControllerDelegate tappedSavedNewProject:projectId isAdded:YES];
                 
             } failure:^(id object) {
                 
@@ -441,7 +442,7 @@
         NSString *date = [formatter stringFromDate:[NSDate date]];
         dict[@"lastPublishDate"] = date;
         
-        [self.projectViewControllerDelegate tappedSavedNewProject:dict];
+        [self.projectViewControllerDelegate tappedSavedNewProject:dict isAdded:NO];
     }
 }
 

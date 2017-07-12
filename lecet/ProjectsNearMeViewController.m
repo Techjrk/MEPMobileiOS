@@ -839,7 +839,7 @@ float MetersToMiles(float meters) {
 
 }
 
-- (void)tappedSavedNewProject:(id)object {
+- (void)tappedSavedNewProject:(id)object isAdded:(BOOL)isAdded {
     [[DataManager sharedManager] projectDetail:object success:^(id object) {
         
         ProjectDetailViewController *detail = [ProjectDetailViewController new];
@@ -848,6 +848,17 @@ float MetersToMiles(float meters) {
         isLocationCaptured = NO;
         [self.navigationController pushViewController:detail animated:YES];
         [self mapView:self.mapView regionDidChangeAnimated:NO];
+        
+        if (isAdded) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REFRESH_PROJECTS_ADDED object:nil];
+        } else {
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+ 
+        }
+
+        
     } failure:^(id object) {
     }];
 

@@ -11,7 +11,7 @@
 #import "ProjectHeaderView.h"
 
 @protocol NewProjectViewControllerDelegate <NSObject>
-- (void)tappedSavedNewProject:(id)object;
+- (void)tappedSavedNewProject:(id)object isAdded:(BOOL)isAdded;
 @end
 
 @interface NewProjectViewController : BaseViewController

@@ -99,7 +99,11 @@
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReloadDashboard:) name:NOTIFICATION_RELOAD_DASHBOARD object:nil];
-    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshAdded:) name:NOTIFICATION_REFRESH_PROJECTS_ADDED object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshUpdated:) name:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+
     bidItemsHappeningSoon = [NSMutableArray new];
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
     
@@ -170,6 +174,19 @@
     [self pageChangedForced:YES];
     
 }
+
+- (void)notificationRefreshAdded:(NSNotification*)notification {
+    
+    [self requestBidRecentlyAdded];
+    
+}
+
+- (void)notificationRefreshUpdated:(NSNotification*)notification {
+    
+    [self requestBidRecentlyUpdated];
+    
+}
+
 
 - (void)navigateHome:(NSNotification*)notification {
 
@@ -299,6 +316,11 @@
     
     [[DataManager sharedManager] bidsRecentlyUpdated:30 success:^(id object) {
         [self loadBidsRecentlyUpdated];
+        
+        if (currentPage == 3) {
+            [self pageChangedForced:YES];
+        }
+
     } failure:^(id object) {
         
     }];

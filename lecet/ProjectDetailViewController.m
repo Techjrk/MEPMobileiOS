@@ -255,9 +255,21 @@ typedef enum {
     [self.navigationController pushViewController:controller animated:NO];
 }
 
-- (void)tappedSavedNewProject:(id)object {
+- (void)tappedSavedNewProject:(id)obj isAdded:(BOOL)isAdded{
     
-    [[DataManager sharedManager] updateProject:recordId project:object success:^(id object) {
+    [[DataManager sharedManager] updateProject:recordId project:obj success:^(id object) {
+        
+        if (!isAdded) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+        }
+        
+        [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
+            
+            [self detailsFromProject:object];
+        
+        } failure:^(id object) {
+            
+        }];
         
     } failure:^(id object) {
         
