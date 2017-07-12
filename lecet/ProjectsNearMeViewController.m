@@ -527,7 +527,7 @@ float MetersToMiles(float meters) {
                 
                 NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:biddingWithin.integerValue];
                 
-                if ([dateBid timeIntervalSinceDate:lastDate]>0){
+                if (([dateBid timeIntervalSinceDate:lastDate]<0) && ( [dateBid timeIntervalSinceDate: dateAdd(-1)]>0 )){
                     addItem = addItem && YES;
                 } else {
                     addItem = NO;
