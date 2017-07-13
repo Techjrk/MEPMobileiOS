@@ -63,10 +63,15 @@
     
     for (ListViewItemDictionary *item in self.listViewItems) {
         ListViewItemDictionary *mutableItem = item;
+        
+        [item filterSubItems:nil];
+        
         mutableItem[STATUS_EXPAND] = [NSNumber numberWithBool:NO];
 
         [localListViewItems addObject:mutableItem];
     }
+    
+    
     
     [self prepareListItem:localListViewItems];
     
