@@ -388,7 +388,7 @@
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
-    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"firstPublishDate" ascending:NO] mutableCopy];
     
     for (DB_Project *item in bidItemsRecentlyAdded) {
         
