@@ -54,10 +54,10 @@
         
         BOOL isPNG = [[[url pathExtension] lowercaseString] isEqualToString:@"png"];
         
-        NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+        NSString *fileName = [NSString stringWithFormat:@"%li.jpg", (long)imageId.integerValue];
         
         if (isPNG) {
-            fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+            fileName = [NSString stringWithFormat:@"%li.png", (long)imageId.integerValue];
         }
         NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
         
@@ -120,10 +120,10 @@
         
         BOOL isPNG = [[[url pathExtension] lowercaseString] isEqualToString:@"png"];
 
-        NSString *fileName = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+        NSString *fileName = [NSString stringWithFormat:@"%li.jpg", (long)imageId.integerValue];
 
         if (isPNG) {
-            fileName = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+            fileName = [NSString stringWithFormat:@"%li.png", (long)imageId.integerValue];
         }
         NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
         
@@ -142,11 +142,11 @@
                 NSString *fileNameD;
                 NSString *filePathD;
                 if (isPNG) {
-                    fileNameD = [NSString stringWithFormat:@"%li.png", imageId.integerValue];
+                    fileNameD = [NSString stringWithFormat:@"%li.png", (long)imageId.integerValue];
                     filePathD = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
                     [UIImagePNGRepresentation(responseObject) writeToFile:filePath atomically:YES];
                 } else {
-                    fileNameD = [NSString stringWithFormat:@"%li.jpg", imageId.integerValue];
+                    fileNameD = [NSString stringWithFormat:@"%li.jpg", (long)imageId.integerValue];
                     filePathD = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
                     [UIImageJPEGRepresentation(responseObject, 1.0) writeToFile:filePath atomically:YES];
                 }
