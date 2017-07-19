@@ -37,6 +37,13 @@
     if(self.address1 != nil) {
         fullAddr = [fullAddr stringByAppendingString:self.address1];
         
+        if (self.city != nil | self.state != nil) {
+            fullAddr = [fullAddr stringByAppendingString:@", "];
+        }
+    }
+    
+    if (self.city != nil) {
+        fullAddr = [fullAddr stringByAppendingString:self.city];
         if (self.state != nil | self.zip5 != nil) {
             fullAddr = [fullAddr stringByAppendingString:@", "];
         }
