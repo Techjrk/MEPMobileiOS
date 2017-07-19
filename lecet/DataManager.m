@@ -286,6 +286,8 @@
     record.dodgeNumber = [DerivedNSManagedObject objectOrNil:project[@"dodgeNumber"]];
     record.dodgeVersion = [DerivedNSManagedObject objectOrNil:project[@"dodgeVersion"]];
     record.estLow = [DerivedNSManagedObject objectOrNil:project[@"estLow"]];
+    record.estHigh = [DerivedNSManagedObject objectOrNil:project[@"estHigh"]];
+    
     record.fipsCounty = [DerivedNSManagedObject objectOrNil:project[@"fipsCounty"]];
     record.firstPublishDate = [DerivedNSManagedObject objectOrNil:project[@"firstPublishDate"]];
     record.geoLocationType = [DerivedNSManagedObject objectOrNil:project[@"geoLocationType"]];
