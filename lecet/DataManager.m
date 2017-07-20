@@ -543,7 +543,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:dateFilter daysAhead:-30];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"order\":\"createDate DESC\", \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}},{\"rank\":1}]},\"dashboardTypes\":true}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",\"company\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"order\":\"createDate DESC\", \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}},{\"rank\":1}]},\"dashboardTypes\":true}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     NSString *url = [self url:kUrlBidsRecentlyMade];
     
     [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
@@ -588,6 +588,7 @@
             
             DB_Project *project = [self saveManageObjectProject:item];
             project.isHappenSoon = [NSNumber numberWithBool:YES];
+            
         }
         [self saveContext];
         

@@ -101,8 +101,8 @@
     projectId = project.recordId;
     
     CGFloat estlow = 0;
-    if (project.estLow != nil) {
-        estlow = project.estLow.floatValue;
+    if (item.amount != nil) {
+        estlow = item.amount.floatValue;
     }
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -111,7 +111,8 @@
     
     DB_Company *company = item.relationshipCompany;
     
-    _labelBidName.text = company.name;
+    NSString *companyName = company.name;
+    _labelBidName.text = companyName;
     
     _labelBidService.text = item.relationshipProject.title;
     _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", project.county, project.state];

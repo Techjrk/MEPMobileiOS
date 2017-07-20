@@ -112,6 +112,12 @@ CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
     }
 }
 
+CG_INLINE NSArray*
+CGSortArray(NSArray *array, NSString* sortKey, BOOL ascending){
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending];
+    return [array sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+}
+
 #define TMP_DIR [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"DMD_tmp"]
 
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
