@@ -380,6 +380,7 @@
         for (NSDictionary *bidItem in bids) {
             DB_Bid *bid = [self saveManageObjectBid:bidItem];
             bid.relationshipProject = record;
+            
         }
     }
     
@@ -576,7 +577,7 @@
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:@{@"filter":filter} success:^(id object) {
         
-        NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
+        NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:YES];
         if (currrentRecords != nil) {
             for (DB_Project *item in currrentRecords) {
                 item.isHappenSoon = [NSNumber numberWithBool:NO];

@@ -128,8 +128,8 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-    [formatter setTimeZone:timeZone];
+    //NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    //[formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"hh:mm a"];
     return [formatter stringFromDate:date];
 }
