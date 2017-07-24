@@ -346,7 +346,7 @@
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
-    bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"lastPublishDate", @"title"] ascending:NO] mutableCopy];
     
     
     for (DB_Project *item in bidItemsRecentlyUpdated) {
@@ -388,7 +388,7 @@
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
-    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"firstPublishDate" ascending:NO] mutableCopy];
+    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"firstPublishDate", @"title"] ascending:NO] mutableCopy];
     
     for (DB_Project *item in bidItemsRecentlyAdded) {
         
@@ -867,7 +867,7 @@
             predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li AND isRecentMade == YES", category];
         }
         
-        bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+        bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@[@"createDate", @"relationshipProject.title"] ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyMade;
         
