@@ -303,7 +303,7 @@
     NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND isHidden == NO AND bidYearMonth == %@",yearMonth];
-    bidItemsHappeningSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
+    bidItemsHappeningSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"bidDate", @"title"] ascending:YES] mutableCopy];
     
     for (DB_Project *item in bidItemsHappeningSoon) {
         bidMarker[item.bidYearMonthDay] = @"";

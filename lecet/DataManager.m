@@ -571,9 +571,24 @@
 
 - (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat=@"M";
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lte\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSInteger nextMonth = [[formatter stringFromDate:[NSDate date]] integerValue];
+    
+    if (nextMonth == 12) {
+        nextMonth = 1;
+    } else {
+        nextMonth = nextMonth + 1;
+    }
+   
+    formatter.dateFormat=@"yyyy";
+  
+    NSString *year = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *nextMonthDate = [NSString stringWithFormat:@"%@-%02ld-01", year, (long)nextMonth];
+    
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lt\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], nextMonthDate];
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:@{@"filter":filter} success:^(id object) {
         
