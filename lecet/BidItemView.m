@@ -102,7 +102,7 @@
     
     CGFloat estlow = 0;
     if (item.amount != nil) {
-        estlow = item.amount.floatValue;
+        estlow = item.amount.integerValue;
     }
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
