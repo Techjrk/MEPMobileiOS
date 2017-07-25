@@ -895,7 +895,7 @@
             predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li AND isRecentUpdate == YES", category];
         }
         
-        bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"lastPublishDate", @"title"] ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyUpdated;
         
@@ -923,7 +923,7 @@
             predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li AND isRecentAdded == YES", category];
         }
         
-        bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"lastPublishDate", @"title"] ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyAdded;
         
