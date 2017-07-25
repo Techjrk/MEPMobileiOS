@@ -36,4 +36,5 @@ typedef enum {
 - (void)setHint:(NSString *)text;
 - (NSArray *)getCollectionItemsData;
 - (void)promptOpenEntryUsingViewController:(UIViewController*)viewController block:(APIBlock)block title:(NSString*)title;
+- (BOOL)isEmpty;
 @end

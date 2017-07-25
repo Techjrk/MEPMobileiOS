@@ -39,7 +39,11 @@
     NSMutableDictionary *filterDictionary;
     
     ListViewItemArray *jurisdictionItems;
-    ListViewItemArray *statgeItems;
+    ListViewItemArray *stageItems;
+    ListViewItemArray *projectTypeItems;
+    
+    UILongPressGestureRecognizer *addPinGesture;
+    NewProjectAnnotation *newProjectAnnotation;
 }
 @property (weak, nonatomic) IBOutlet UIButton *locListButton;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -98,6 +102,11 @@ float MetersToMiles(float meters) {
     }
     
     filterDictionary = [NSMutableDictionary new];
+    
+    addPinGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(addPinGesture:)];
+    
+    [self.mapView addGestureRecognizer:addPinGesture];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -140,8 +149,34 @@ float MetersToMiles(float meters) {
     
     if (!isLocationCaptured) {
         isLocationCaptured = YES;
-        [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
+        
+        if (self.textFieldSearch.text.length == 0) {
+            [self loadProjects:5 coordinate:[[DataManager sharedManager] locationManager].currentLocation.coordinate regionValue:0];
+        } else {
+            double lat = self.mapView.centerCoordinate.latitude;
+            double lng = self.mapView.centerCoordinate.longitude;
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+            
+            CGFloat miles = MetersToMiles([self getRadius]) * 0.5;
+            if (miles<5) {
+                miles = 5;
+            } else {
+                miles = round(miles);
+            }
+            [self loadProjects:miles coordinate:coordinate regionValue:miles];
+
+        }
+        
     }
+}
+
+- (void)addPinGesture:(UITapGestureRecognizer*)tapGesture {
+    
+    CGPoint touchPoint = [tapGesture locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+
+    [self addNewProjectPin:touchMapCoordinate];
 }
 
 - (void)loadProjects:(int)distance coordinate:(CLLocationCoordinate2D)coordinate regionValue:(CGFloat)regionValue {
@@ -154,14 +189,13 @@ float MetersToMiles(float meters) {
         [[DataManager sharedManager] projectsNear:lat lng:lng distance:[NSNumber numberWithInt:distance] filter:filterDictionary success:^(id object) {
             [self.customLoadingIndcator stopAnimating];
             isDoneSearching = YES;
-            
+            _mapView.delegate = nil;
             [mapItems removeAllObjects];
             [_mapView removeAnnotations:_mapView.annotations];
             
             NSArray *result = object[@"results"];
             if (result != nil & result.count>0) {
                 self.projectNearMeListView.parentCtrl = self;
-                [self.projectNearMeListView setInfo:result];
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
                 
                 if (regionValue == 0) {
@@ -173,11 +207,9 @@ float MetersToMiles(float meters) {
                 }
                 
                 [mapItems addObjectsFromArray:result];
-                [self addItemsToMap];
+                _mapView.delegate = self;
+                [self addItemsToMap:nil];
                 
-                if (isSearchLocation) {
-                    [self addNewProjectPin];
-                }
             } else {
                 
                 isDoneSearching = YES;
@@ -272,10 +304,24 @@ float MetersToMiles(float meters) {
     ProjectNearMeFilterViewController *controller = [ProjectNearMeFilterViewController new];
     controller.projectFilterDictionary = filterDictionary;
     
-    if (statgeItems == nil) {
-        statgeItems = [ListViewItemArray new];
+    if (stageItems == nil) {
+        stageItems = [ListViewItemArray new];
     }
-    [controller setStageItems:statgeItems];
+    
+    controller.listItemsProjectStageId = stageItems;
+    
+    if (jurisdictionItems == nil) {
+        jurisdictionItems = [ListViewItemArray new];
+    }
+    
+    controller.listItemsJurisdictions = jurisdictionItems;
+    
+    if (projectTypeItems == nil) {
+        projectTypeItems = [ListViewItemArray new];
+    }
+    
+    controller.listItemsProjectTypeId = projectTypeItems;
+    
     controller.projectNearMeFilterViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:NO];
 }
@@ -290,10 +336,244 @@ float MetersToMiles(float meters) {
 }
     
 #pragma mark - Map Routines
-- (void)addItemsToMap {
-    for (NSDictionary *item in mapItems) {
-        [self addAnnotationCargo:item];
+- (void)addItemsToMap:(NSDictionary*)filter {
+    
+    NSMutableArray *filteredItems = [NSMutableArray new];
+    BOOL addAll = (filter == nil) || (filter.count<=1);
+    BOOL addItem = NO;
+    
+    NSNumber *projectValueMin = @(0);
+    NSNumber *projectValueMax = @(INTMAX_MAX);
+    NSArray *projectStage;
+    NSArray *jurisdictions;
+    NSArray *projectType;
+    NSArray *bldgHwy;
+    NSArray *ownerType;
+    NSArray *workTypes;
+    NSNumber *updatedWithin;
+    NSNumber *biddingWithin;
+    
+    if (!addAll) {
+        NSDictionary *projectValue = filter[@"projectValue"];
+        
+        if(projectValue[@"min"]) {
+            projectValueMin = projectValue[@"min"];
+        }
+        
+        if(projectValue[@"max"]) {
+            projectValueMax = projectValue[@"max"];
+        }
+        
+        if (filter[@"projectStageId"]) {
+            projectStage = filter[@"projectStageId"][@"inq"];
+        }
+        
+        if (filter[@"jurisdictions"]) {
+            jurisdictions = filter[@"jurisdictions"][@"inq"];
+        }
+        
+        if (filter[@"projectTypeId"]) {
+            projectType = filter[@"projectTypeId"][@"inq"];
+        }
+        
+        if (filter[@"buildingOrHighway"]) {
+            bldgHwy = filter[@"buildingOrHighway"][@"inq"];
+            
+            if (bldgHwy) {
+                if (bldgHwy.count>1) {
+                    bldgHwy = nil;
+                }
+            }
+        }
+        
+        if (filter[@"ownerType"]) {
+            ownerType = filter[@"ownerType"][@"inq"];
+        }
+        
+        if (filter[@"workTypeId"]) {
+            workTypes = filter[@"workTypeId"][@"inq"];
+        }
+        
+        if (filter[@"updatedInLast"]) {
+            updatedWithin = filter[@"updatedInLast"];
+        }
+        
+        if (filter[@"biddingInNext"]) {
+            biddingWithin = filter[@"biddingInNext"];
+        }
     }
+    
+    
+    for (NSDictionary *item in mapItems) {
+        
+        addItem = YES;
+
+        if (!addAll) {
+
+            addItem = addItem && [self isValueInRange:item min:projectValueMin max:projectValueMax];
+            
+        }
+        
+        if (projectStage) {
+            NSNumber *stageId = [DerivedNSManagedObject objectOrNil:item[@"projectStageId"]];
+            if (stageId) {
+                addItem = addItem && [projectStage containsObject:stageId];
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (jurisdictions) {
+            NSArray *jurisdictionArray = [DerivedNSManagedObject objectOrNil:item[@"jurisdiction"]];
+            if (jurisdictionArray) {
+                if (jurisdictionArray.count>0) {
+                    
+                    BOOL found = NO;
+                    
+                    for (NSDictionary *itemJurisdiction in jurisdictionArray) {
+
+                        NSNumber *jurisdictionId = itemJurisdiction[@"id"];
+                        if (jurisdictionId) {
+                            
+                            if ([jurisdictions containsObject:jurisdictionId]) {
+                                found = YES;
+                            }
+                            
+                        }
+                    }
+                    
+                    addItem = addItem && found;
+                } else {
+                    addItem = NO;
+                }
+                
+            }
+        }
+        
+        if (projectType) {
+            NSNumber *typeId = [DerivedNSManagedObject objectOrNil:item[@"primaryProjectTypeId"]];
+            if (typeId) {
+                addItem = addItem && [projectType containsObject:typeId];
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (bldgHwy) {
+            NSDictionary *blgDict = [DerivedNSManagedObject objectOrNil:item[@"primaryProjectType"]];
+            if (blgDict) {
+                NSString *bh = blgDict[@"buildingOrHighway"];
+                if (bh) {
+                    addItem = addItem && [bldgHwy containsObject:bh];
+                } else {
+                    addItem = NO;
+                }
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (ownerType) {
+            NSString *owner = [DerivedNSManagedObject objectOrNil:item[@"ownerClass"]];
+            if (owner) {
+                addItem = addItem && [ownerType containsObject:owner];
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (workTypes) {
+            NSArray *types = [DerivedNSManagedObject objectOrNil:item[@"workTypes"]];
+            if (types) {
+                
+                BOOL found = NO;
+                for (NSDictionary *typeItem in types) {
+                    NSNumber *typeId = typeItem[@"id"];
+                    if ([workTypes containsObject:typeId]) {
+                        found = YES;
+                    }
+                }
+                
+                addItem = addItem && found;
+                
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (updatedWithin) {
+            NSString *lastPublishDate = [DerivedNSManagedObject objectOrNil:item[@"lastPublishDate"]];
+            if (lastPublishDate) {
+                NSDate *publishdate = [DerivedNSManagedObject dateFromDateAndTimeString:lastPublishDate];
+                
+                NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-updatedWithin.integerValue];
+                
+                if ([publishdate timeIntervalSinceDate:lastDate]>0){
+                    addItem = addItem && YES;
+                } else {
+                    addItem = NO;
+                }
+                
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (biddingWithin) {
+            NSString *bidDate = [DerivedNSManagedObject objectOrNil:item[@"bidDate"]];
+            if (bidDate) {
+                
+                NSDate *dateBid = [DerivedNSManagedObject dateFromDateAndTimeString:bidDate];
+                
+                NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:biddingWithin.integerValue];
+                
+                if (([dateBid timeIntervalSinceDate:lastDate]<0) && ( [dateBid timeIntervalSinceDate: dateAdd(-1)]>0 )){
+                    addItem = addItem && YES;
+                } else {
+                    addItem = NO;
+                }
+            } else {
+                addItem = NO;
+            }
+        }
+        
+        if (addAll || addItem ) {
+            [self addAnnotationCargo:item];
+            
+            if (!addAll) {
+                [filteredItems addObject:item];
+            }
+        }
+    }
+    
+    if (addAll) {
+        [self.projectNearMeListView setInfo:mapItems];
+    } else {
+        [self.projectNearMeListView setInfo:filteredItems];
+    }
+    
+    [self.projectNearMeListView setDataBasedOnVisible];
+    
+}
+
+- (BOOL)isValueInRange:(NSDictionary*)item min:(NSNumber*)projectValueMin max:(NSNumber*)projectValueMax{
+
+    //Project Value
+    NSNumber *value = [DerivedNSManagedObject objectOrNil:item[@"estLow"]];
+    
+    if (value == nil) {
+        value = [DerivedNSManagedObject objectOrNil:item[@"estHigh"]];
+    }
+    
+    if (value == nil) {
+        value = @(0);
+    }
+    
+    if ((value.integerValue>=projectValueMin.integerValue) && (value.integerValue<=projectValueMax.integerValue)) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)addAnnotationCargo:(id)cargo{
@@ -355,7 +635,7 @@ float MetersToMiles(float meters) {
         }
     }
     
-    [self getVisibleAnmotationsInMap];
+    //[self getVisibleAnmotationsInMap];
     
     return annotationView;
     
@@ -371,10 +651,15 @@ float MetersToMiles(float meters) {
     }
 }
 
-- (void) addNewProjectPin {
-    NewProjectAnnotation *annotation = [[NewProjectAnnotation alloc] init];
-    annotation.coordinate = self.mapView.centerCoordinate;
-    [self.mapView addAnnotation:annotation];
+- (void) addNewProjectPin:(CLLocationCoordinate2D)coordinate {
+    
+    if (newProjectAnnotation == nil) {
+        newProjectAnnotation = [[NewProjectAnnotation alloc] init];
+    } else {
+        [self.mapView removeAnnotation:newProjectAnnotation];
+    }
+    newProjectAnnotation.coordinate = coordinate;
+    [self.mapView addAnnotation:newProjectAnnotation];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
@@ -454,11 +739,9 @@ float MetersToMiles(float meters) {
 }
 
 -(void)getVisibleAnmotationsInMap {
-        MKMapRect visibleMapRect = self.mapView.visibleMapRect;
-        NSSet *visibleAnnotations = [self.mapView annotationsInMapRect:visibleMapRect];
-        NSArray *annotationArray = [visibleAnnotations allObjects];
-        self.projectNearMeListView.visibleAnnotationArray = annotationArray;
-        [self.projectNearMeListView setDataBasedOnVisible];
+    NSArray *annotationArray = self.mapView.annotations;
+    self.projectNearMeListView.visibleAnnotationArray = annotationArray;
+    [self.projectNearMeListView setDataBasedOnVisible];
 }
 
 #pragma mark - TextField Delegate Methods
@@ -481,7 +764,7 @@ float MetersToMiles(float meters) {
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
+    /*
     if (isDoneSearching) {
 
         [self getVisibleAnmotationsInMap];
@@ -490,9 +773,9 @@ float MetersToMiles(float meters) {
             double lng = mapView.centerCoordinate.longitude;
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
             
-            CGFloat miles = MetersToMiles([self getRadius]);
-            if (miles<1) {
-                miles = 2;
+            CGFloat miles = MetersToMiles([self getRadius]) * 0.5;
+            if (miles<5) {
+                miles = 5;
             } else {
                 miles = round(miles);
             }
@@ -500,7 +783,7 @@ float MetersToMiles(float meters) {
         }
         
     }
-    
+    */
 }
 
 - (CLLocationDistance)getRadius
@@ -531,8 +814,6 @@ float MetersToMiles(float meters) {
 
 - (void)applySearchFilter:(NSDictionary *)filter {
 
-    //filterDictionary = filter;
-    
     if (filterDictionary == nil) {
         filterDictionary = [NSMutableDictionary new];
     }
@@ -540,12 +821,12 @@ float MetersToMiles(float meters) {
     for (NSString *key in filter.allKeys) {
         filterDictionary[key] = filter[key];
     }
-    [self.customLoadingIndcator startAnimating];
-    if (_textFieldSearch.text.length>0) {
-        [self searchForLocation];
-    } else {
-        [self mapView:self.mapView regionDidChangeAnimated:NO];
-    }
+
+    _mapView.delegate = nil;
+    [_mapView removeAnnotations:_mapView.annotations];
+    _mapView.delegate = self;
+    
+    [self addItemsToMap:filter[@"filter"][@"searchFilter"]];
 }
 
 - (void)createProjectUsingLocation:(CLLocation *)location {
@@ -558,7 +839,7 @@ float MetersToMiles(float meters) {
 
 }
 
-- (void)tappedSavedNewProject:(id)object {
+- (void)tappedSavedNewProject:(id)object isAdded:(BOOL)isAdded {
     [[DataManager sharedManager] projectDetail:object success:^(id object) {
         
         ProjectDetailViewController *detail = [ProjectDetailViewController new];
@@ -567,6 +848,17 @@ float MetersToMiles(float meters) {
         isLocationCaptured = NO;
         [self.navigationController pushViewController:detail animated:YES];
         [self mapView:self.mapView regionDidChangeAnimated:NO];
+        
+        if (isAdded) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REFRESH_PROJECTS_ADDED object:nil];
+        } else {
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+ 
+        }
+
+        
     } failure:^(id object) {
     }];
 

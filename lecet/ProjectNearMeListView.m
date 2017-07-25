@@ -23,9 +23,6 @@
     NSMutableArray *collectionItemsPostBid;
     NSMutableArray *collectionItemsPreBid;
     
-    NSMutableArray *tempCollectionItemsPostBid;
-    NSMutableArray *tempCollectionItemsPreBid;
-    
     BOOL isPostBidHidden;
 }
     @property (weak, nonatomic) IBOutlet UIButton *preBidButton;
@@ -71,32 +68,27 @@
     collectionItemsPreBid = [NSMutableArray new];
     collectionItemsPostBid = [NSMutableArray new];
     
-    tempCollectionItemsPreBid = [NSMutableArray new];
-    tempCollectionItemsPostBid = [NSMutableArray new];
-    
     for (NSDictionary *dicInfo in info) {
         NSDictionary *projectStage = dicInfo[@"projectStage"];
         
         if (projectStage != nil) {
             NSNumber *bidId = projectStage[@"parentId"];
             if (bidId.integerValue != 102) {
-                [tempCollectionItemsPostBid addObject:dicInfo];
+                [collectionItemsPostBid addObject:dicInfo];
                 
             } else {
-                [tempCollectionItemsPreBid addObject:dicInfo];
+                [collectionItemsPreBid addObject:dicInfo];
             }
-        }        
+        } else {
+            [collectionItemsPreBid addObject:dicInfo];
+            
+        }
     }
 
 }
 
 
 - (void)setDataBasedOnVisible {
-    [collectionItemsPreBid removeAllObjects];
-    collectionItemsPreBid = [self arrangeArrayListBasedOnVisible:tempCollectionItemsPreBid];
-    
-    [collectionItemsPostBid removeAllObjects];
-    collectionItemsPostBid =  [self arrangeArrayListBasedOnVisible:tempCollectionItemsPostBid];
     
     NSString *postBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_POSTBID"),collectionItemsPostBid.count];
     NSString *preBidTitle = [NSString stringWithFormat:NSLocalizedLanguage(@"PV_PREBID"),collectionItemsPreBid.count];
@@ -210,12 +202,22 @@
     cell.dodgeNumber = [DerivedNSManagedObject objectOrNil:dicInfo[@"dodgeNumber"]];
     cell.geoCode = [DerivedNSManagedObject objectOrNil:dicInfo[@"geocode"]];
     NSNumber *value = [DerivedNSManagedObject objectOrNil:dicInfo[@"estLow"]];
+
+    if (value == nil) {
+        value = [DerivedNSManagedObject objectOrNil:dicInfo[@"estHigh"]];
+    }
+
     if (value == nil) {
         value = @(0);
     }
     
     cell.titlePriceText = [NSString stringWithFormat:@"$%@",value];
     cell.unionDesignation = [DerivedNSManagedObject objectOrNil:dicInfo[@"unionDesignation"]];
+    
+    NSArray *userImages = dicInfo[@"images"];
+    NSArray *userNotes = dicInfo[@"userNotes"];
+    
+    cell.hasNoteAndImages = (userNotes.count>0) || (userImages.count>0);
     [cell setInitInfo];
     
     return cell;

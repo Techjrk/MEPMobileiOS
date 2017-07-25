@@ -101,8 +101,8 @@
     projectId = project.recordId;
     
     CGFloat estlow = 0;
-    if (project.estLow != nil) {
-        estlow = project.estLow.floatValue;
+    if (item.amount != nil) {
+        estlow = item.amount.integerValue;
     }
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -111,7 +111,8 @@
     
     DB_Company *company = item.relationshipCompany;
     
-    _labelBidName.text = company.name;
+    NSString *companyName = company.name;
+    _labelBidName.text = companyName;
     
     _labelBidService.text = item.relationshipProject.title;
     _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", project.county, project.state];
@@ -124,9 +125,12 @@
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     [annotation setCoordinate:coordinate];
     
+    _mapView.delegate = nil;
     [_mapView removeAnnotations:_mapView.annotations];
     
     [_mapView setRegion:region];
+    
+    _mapView.delegate = self;
     [_mapView addAnnotation:annotation];
 
 }

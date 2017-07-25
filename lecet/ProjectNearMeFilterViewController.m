@@ -10,7 +10,6 @@
 #import "ProjectFilterView.h"
 #import "FilterLabelView.h"
 #import "FilterEntryView.h"
-#import "ProjectFilterLocationViewController.h"
 #import "ValuationViewController.h"
 #import "FilterViewController.h"
 #import "FilterSelectionViewController.h"
@@ -29,13 +28,10 @@
 #define BUTTON_COLOR                    RGB(168, 195, 230)
 #define TITLE_COLOR                     RGB(255, 255, 255)
 
-@interface ProjectNearMeFilterViewController ()<ProjectFilterViewDelegate, ProjectFilterLocationViewControllerDelegate, FilterViewControllerDelegate, ValuationViewControllerDelegate, FilterSelectionViewControllerDelegate, WorkOwnerTypesViewControllerDelegate>{
+@interface ProjectNearMeFilterViewController ()<ProjectFilterViewDelegate,  FilterViewControllerDelegate, ValuationViewControllerDelegate, FilterSelectionViewControllerDelegate, WorkOwnerTypesViewControllerDelegate>{
     // Variables
     id  objectEntry;
     FilterModel selectedModel;
-    ListViewItemArray *listItemsProjectTypeId;
-    ListViewItemArray *listItemsJurisdictions;
-    ListViewItemArray *listItemsProjectStageId;
     NSDictionary *dataSelected;
     NSMutableArray *selectedLocationItems;
     NSNumber *jurisdictionId;
@@ -84,64 +80,133 @@
     
     [self.projectFilter hideLocation:true];
     self.projectFilter.projectFilterViewDelegate = self;
-    self.projectFilter.searchFilter = self.projectFilterDictionary;
     [self processDefaultValues];
 }
 
 - (void)processDefaultValues {
-
-    NSNumber *updatedInLast = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"updatedInLast"]];
+    
+    NSDictionary *searchFilter = self.projectFilterDictionary[@"filter"][@"searchFilter"];
+    
+    NSNumber *updatedInLast = [DerivedNSManagedObject objectOrNil:searchFilter[@"updatedInLast"]];
     if (updatedInLast) {
-        NSDictionary *dict = [self filterUpdatedWithinDictionary:[self filterUpdatedWithinArray]];
+        
+        self.projectFilter.dictUpdatedWithin = @{@"updatedInLast":updatedInLast};
+        
+        NSDictionary *dict = [self filterUpdatedWithinDictionary:[self filterUpdatedWithinArray] value:updatedInLast];
         [self.projectFilter.fieldUpdated setValue:dict[PROJECT_SELECTION_TITLE]];
     }
-
-    NSNumber *biddingInNext = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"biddingInNext"]];
+    
+    NSNumber *biddingInNext = [DerivedNSManagedObject objectOrNil:searchFilter[@"biddingInNext"]];
     
     if (biddingInNext) {
-        NSDictionary *dict = [self filterBiddingWithinDictionary:[self filterBiddingWithinArray]];
+        
+        self.projectFilter.dictBiddingWithin = @{@"biddingInNext":biddingInNext};
+        
+        NSDictionary *dict = [self filterBiddingWithinDictionary:[self filterBiddingWithinArray] value:biddingInNext];
         
         [self.projectFilter.fieldBidding setValue:dict[PROJECT_SELECTION_TITLE]];
+        
     }
     
-    NSDictionary *jurisdictions = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"jurisdictions"]];
+    NSDictionary *jurisdictions = [DerivedNSManagedObject objectOrNil:searchFilter[@"jurisdictions"]];
     if (jurisdictions) {
+        
+        self.projectFilter.dictJurisdiction = @{@"jurisdictions":jurisdictions};
+        
         NSArray *inq = jurisdictions[@"inq"];
         if (inq) {
-            jurisdictionId = inq[0];
-            [self filterJurisdiction:nil];
-            jurisdictionNode = self.projectFilterDictionary[@"jurisdictions_node"];
+            
+            if (self.listItemsJurisdictions.count>0) {
+                NSArray *title = [FilterViewController getCheckedTitles:self.listItemsJurisdictions list:nil];
+                NSString *str = [title componentsJoinedByString:@", "];
+                
+                [self.projectFilter.fieldJurisdiction setValue:str];
+            }
+            
         }
     }
     
-    NSDictionary *projectStage = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"projectStageId"]];
+    NSDictionary *projectStage = [DerivedNSManagedObject objectOrNil:searchFilter[@"projectStageId"]];
     if (projectStage) {
+        
+        self.projectFilter.dictProjectStage = @{@"projectStageId":projectStage};
+        
         NSArray *inq = projectStage[@"inq"];
         if (inq) {
-            stageId = inq[0];
-            [self filterStage:nil];
-            stageNode = self.projectFilterDictionary[@"projectStageId_node"];
+            
+            if (self.listItemsProjectStageId.count>0) {
+                NSArray *title = [FilterViewController getCheckedTitles:self.listItemsProjectStageId list:nil];
+                NSString *str = [title componentsJoinedByString:@", "];
+                
+                [self.projectFilter.fieldStage setValue:str];
+                
+            }
+            
         }
     }
     
-    NSString *buildingOrHighway = self.projectFilterDictionary[@"buildingOrHighway_node"];
+    NSDictionary *buildingOrHighway = searchFilter[@"buildingOrHighway"];
     
     if (buildingOrHighway) {
-        [self.projectFilter.fieldBH setValue:buildingOrHighway];
+        
+        self.projectFilter.dictBH = @{@"buildingOrHighway":buildingOrHighway};
+        
+        NSArray *buildingOrHighwayArray = buildingOrHighway[@"inq"];
+        
+        NSString *bh = @"";
+        
+        if (buildingOrHighwayArray.count == 1) {
+            
+            if ([buildingOrHighwayArray containsObject:@"B"]) {
+                bh = NSLocalizedLanguage(@"BH_TITLE_BLDG");
+            } else {
+                bh = NSLocalizedLanguage(@"BH_TITLE_HIGHWAY");
+            }
+            
+        } else {
+            bh = NSLocalizedLanguage(@"BH_TITLE_BOTH");
+        }
+        
+        [self.projectFilter.fieldBH setValue:bh];
+        
     }
     
-    NSString *ownerType = self.projectFilterDictionary[@"ownerType_node"];
+    NSDictionary *ownerType = searchFilter[@"ownerType"];
     if (ownerType) {
-        [self.projectFilter.fieldOwner setValue:ownerType];
+        self.projectFilter.dictOwnerType = @{@"ownerType":ownerType};
+        NSArray *workOwner = ownerType[@"inq"];
+        [self.projectFilter.fieldOwner setValue:workOwner[0]];
     }
     
-    NSString *workType = self.projectFilterDictionary[@"workTypeId_node"];
+    NSDictionary *workType = searchFilter[@"workTypeId"];
     if (workType) {
-        [self.projectFilter.fieldWork setValue:workType];
+        
+        self.projectFilter.dictWorkType = @{@"workTypeId":workType};
+        NSArray *items = workType[@"inq"];
+        NSNumber *record = items[0];
+        
+        [[DataManager sharedManager] workTypes:^(id obj){
+            
+            NSArray *array = obj;
+            
+            for (NSDictionary *item in array) {
+                NSNumber *recordId = item[@"id"];
+                
+                if (record.integerValue == recordId.integerValue) {
+                    [self.projectFilter.fieldWork setValue:item[@"title"]];
+                }
+            }
+            
+        }failure:^(id failObject){
+            
+        }];
+        
     }
     
-    NSDictionary *projectValue = self.projectFilterDictionary[@"projectValue"];
+    NSDictionary *projectValue = searchFilter[@"projectValue"];
     if (projectValue) {
+        
+        self.projectFilter.dictProjectValue = @{@"projectValue":projectValue};
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
         
@@ -156,14 +221,115 @@
         }
         
         [self.projectFilter.fieldValue setInfo:@[@{@"entryID": @(0), @"entryTitle": value}]];
-
     }
     
-    NSMutableArray *items = self.projectFilterDictionary[@"type_node"];
+    NSDictionary *items = searchFilter[@"projectTypeId"];
     if (items) {
-        [self.projectFilter.fieldType setInfo:items];
+        
+        self.projectFilter.dictProjectType = @{@"projectTypeId":items};
+        
+        [self displayProjectTypeTitles];
+        
     }
+    
+    NSDictionary *projectLocation = searchFilter[@"projectLocation"];
+    if (projectLocation) {
+        
+        self.projectFilter.dictLocation = @{@"projectLocation":projectLocation};
+        
+        NSMutableArray *array = [NSMutableArray new];
+        
+        NSString *city = projectLocation[@"city"];
+        NSString *state = projectLocation[@"state"];
+        NSString *county = projectLocation[@"county"];
+        NSString *zip5 = projectLocation[@"zip5"];
+        
+        if (city) {
+            [array addObject:city];
+        }
+        
+        if (state) {
+            [array addObject:state];
+        }
+        
+        if (county) {
+            [array addObject:county];
+        }
+        
+        if (zip5) {
+            [array addObject:zip5];
+        }
+        
+        NSMutableArray *items = [NSMutableArray new];
+        NSString *value = @"";
+        NSString *current = @"";
+        for (int i=0; i<array.count; i++) {
+            current = array[i];
+            
+            if (current.length>0) {
+                
+                if (value.length>0) {
+                    value = [value stringByAppendingString:@", "];
+                }
+                value = [value stringByAppendingString:current];
+            }
+        }
+        
+        if (value.length>0) {
+            [items addObject:@{ENTRYID:@(0), ENTRYTITLE:value}];
+        }
+        
+        [self prepareLocation:self.projectFilter.fieldLocation address:projectLocation];
+        [self.projectFilter.fieldLocation setInfo:items];
+    }
+}
 
+- (void)prepareLocation:(FilterEntryView*)entryView  address:(NSDictionary*)address{
+    entryView.openEntryFields = [NSMutableArray new];
+    
+    NSString *city = address[@"city"];
+    NSString *state = address[@"state"];
+    NSString *county = address[@"county"];
+    NSString *zip5 = address[@"zip5"];
+    
+    if (city == nil) {
+        city = @"";
+    }
+    
+    if (state == nil) {
+        state = @"";
+    }
+    
+    if (zip5 == nil) {
+        zip5 = @"";
+    }
+    
+    if (county == nil) {
+        county = @"";
+    }
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"city",@"VALUE":city,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_CITY"} mutableCopy ]];
+    
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"state",@"VALUE":state,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_STATE"} mutableCopy ]];
+    
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"county",@"VALUE":county,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_COUNTY"} mutableCopy ]];
+    
+    [entryView.openEntryFields addObject:[@{@"FIELD":@"zip5",@"VALUE":zip5,@"placeHolder":@"PROJECT_FILTER_HINT_LOCATION_ZIP"} mutableCopy ]];
+    
+}
+
+- (void)displayProjectTypeTitles {
+    if (self.listItemsProjectTypeId.count>0) {
+        NSArray *array = [FilterViewController getCheckedTitles:self.listItemsProjectTypeId list:nil];
+        
+        NSMutableArray *itemArray = [NSMutableArray new];
+        
+        for (NSString *item in array) {
+            NSDictionary *dict = @{ENTRYTITLE:item};
+            [itemArray addObject:dict];
+        }
+        
+        [self.projectFilter.fieldType setInfo:itemArray];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,15 +348,30 @@
 }
 
 - (IBAction)tappedButtonApply:(id)sender {
-    NSMutableDictionary *projectDictFilter = self.projectFilter.searchFilter;
+ 
     if (self.projectNearMeFilterViewControllerDelegate != nil) {
-        [self.projectNearMeFilterViewControllerDelegate applySearchFilter:projectDictFilter];
+        [self.projectNearMeFilterViewControllerDelegate applySearchFilter:[self.projectFilter filter]];
     }
     [self.navigationController popViewControllerAnimated:YES];
 
 }
 
 #pragma mark -ProjectFilterViewDelegate
+- (void)tappedProjectTypeChanged:(NSMutableArray *)items {
+ 
+    NSMutableArray *titles = items;
+    
+    [FilterViewController uncheckedTitles:self.listItemsProjectTypeId list:titles];
+    
+    NSMutableArray *list = [NSMutableArray new];
+    [FilterViewController getCheckItems:self.listItemsProjectTypeId includeChild:YES list:list];
+    
+    if (list.count>0) {
+        self.projectFilter.dictProjectType = @{@"projectTypeId":@{@"inq":list}};
+    } else {
+        self.projectFilter.dictProjectType = nil;
+    }
+}
 
 - (void)tappedProjectFilterItem:(id)object view:(UIView *)view {
     objectEntry = object;
@@ -232,16 +413,15 @@
                         
                     }
                     [entryView promptOpenEntryUsingViewController:self block:^(id object) {
-                        [_projectFilter setFilterModelInfo:model value:object];
+                        [_projectFilter setLocationValue:object];
                     } title:NSLocalizedLanguage(@"PROJECT_FILTER_HINT_LOCATION")];
                 } else {
-                    [self filterLocation:view];
+                    //[self filterLocation:view];
                 }
                 break;
             }
                 
             case FilterModelProjectType: {
-                //[self filterTypes:view];
                 [self filterProjectTypes:view];
                 break;
             }
@@ -296,39 +476,30 @@
 }
 
 #pragma mark - Filters
+
+/*
 - (void)filterLocation:(UIView*)view {
     ProjectFilterLocationViewController *controller = [ProjectFilterLocationViewController new];
     controller.dataSelected = [(FilterEntryView *)objectEntry getCollectionItemsData];
     controller.projectFilterLocationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
-- (void)checkedProjectType:(NSMutableDictionary*)display {
- 
-    NSMutableArray *items = self.projectFilterDictionary[@"type_node"];
-    if (items) {
-        for (NSDictionary *item in items) {
-
-            if ([display[LIST_VIEW_NAME] isEqualToString:item[@"entryTitle"]]) {
-                display[STATUS_CHECK] = @(1);
-            }
-
-        }
-    }
-
-}
-
+*/
 - (void)filterProjectTypes:(UIView*)view {
-    if (listItemsProjectTypeId == nil) {
+    
+    if ((self.listItemsProjectTypeId == nil) || (self.listItemsProjectTypeId.count == 0)) {
         [[DataManager sharedManager] projectTypes:^(id groups) {
             
-            ListViewItemArray *listItems = [ListViewItemArray new];
+            ListViewItemArray *listItems = nil;
+            if (self.listItemsProjectStageId) {
+                listItems = self.listItemsProjectTypeId;
+            } else {
+                listItems = [ListViewItemArray new];
+            }
             
             for (NSDictionary *group in groups) {
                 
                 ListViewItemDictionary *groupItem = [ListItemCollectionViewCell createItem:group[@"title"] value:group[@"id"] model:@"projectGroup"];
-                
-                [self checkedProjectType:groupItem];
                 
                 NSArray *categories = [DerivedNSManagedObject objectOrNil:group[@"projectCategories"]];
                 
@@ -341,8 +512,6 @@
                         ListViewItemDictionary *categoryItem = [ListItemCollectionViewCell createItem:category[@"title"] value:category[@"id"] model:@"projectCategory"];
                         [groupItems addObject:categoryItem];
                         
-                        [self checkedProjectType:categoryItem];
-                        
                         NSArray *projectTypes = [DerivedNSManagedObject objectOrNil:category[@"projectTypes"]];
                         
                         if (projectTypes) {
@@ -354,7 +523,6 @@
                                 ListViewItemDictionary *projectTypeItem = [ListItemCollectionViewCell createItem:projectType[@"title"] value:projectType[@"id"] model:@"projectType"];
                                 
                                 [projectTypeItems addObject:projectTypeItem];
-                                [self checkedProjectType:projectTypeItem];
                                 
                             }
                             
@@ -372,7 +540,7 @@
                 
             }
             
-            listItemsProjectTypeId = listItems;
+            self.listItemsProjectTypeId = listItems;
             
             [self displayProjectTypeId];
             
@@ -382,12 +550,13 @@
     } else {
         [self displayProjectTypeId];
     }
+    
 }
 
 - (void)displayProjectTypeId {
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_PROJECTTYPE");
-    controller.listViewItems = listItemsProjectTypeId;
+    controller.listViewItems = self.listItemsProjectTypeId;
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectTypeId";
     controller.singleSelect = NO;
@@ -395,15 +564,15 @@
 }
 
 - (void)filterValue:(UIView*)view {
+    
     ValuationViewController *controller =  [ValuationViewController new];
     
-    //NSString *ownerName = @"Project";
-    //NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"valuation"]];
-    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"projectValue"]];
+    NSDictionary *dict = _projectFilter.dictProjectValue[@"projectValue"];
     
     controller.valuationValue = dict;
     controller.valuationViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (NSArray*)filterUpdatedWithinArray {
@@ -419,11 +588,10 @@
     return array;
 }
 
-
-- (NSDictionary*)filterUpdatedWithinDictionary:(NSArray*)array {
+- (NSDictionary*)filterUpdatedWithinDictionary:(NSArray*)array value:(NSNumber*)value{
     
     NSDictionary *dict = nil;
-    NSNumber *selected = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"updatedInLast"]];
+    NSNumber *selected = value;
     if (selected) {
         for (NSDictionary *item in array) {
             NSNumber *value = item[PROJECT_SELECTION_VALUE];
@@ -433,30 +601,24 @@
             }
         }
     }
-
+    
     return dict;
 }
 
 - (void)filterUpdatedWithin:(UIView*)view {
     
-    NSArray *array = [self filterUpdatedWithinArray];
+    NSNumber *updatedInLast = self.projectFilter.dictUpdatedWithin[@"updatedInLast"];
     
+    NSDictionary *dict = [self filterUpdatedWithinDictionary:[self filterUpdatedWithinArray] value:updatedInLast];
+    
+    NSArray *array = [self filterUpdatedWithinArray];
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
     controller.filterSelectionViewControllerDelegate = self;
-    
-    NSString *ownerName = @"Project";
-    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"updatedInLast"]];
-    
-    if (dict == nil) {
-
-        dict = [self filterUpdatedWithinDictionary:[self filterUpdatedWithinArray]];
-
-    }
-    
     [controller setDataBeenSelected:dict];
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_UPDATED_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (NSDictionary*)checkStatus:(NSMutableDictionary*)dictionary itemId:(NSNumber*)itemId currentId:(NSNumber*)currentId nodeItem:(NSString*)nodeItem{
@@ -473,18 +635,17 @@
 }
 
 - (void)filterJurisdiction:(UIView*)view {
-    if ((listItemsJurisdictions == nil) || (listItemsJurisdictions.count == 0)) {
+    if ((self.listItemsJurisdictions == nil) || (self.listItemsJurisdictions.count == 0)) {
         
         ListViewItemArray *listItems = nil;
-        if (listItemsJurisdictions) {
-            listItems = listItemsJurisdictions;
+        if (self.listItemsJurisdictions) {
+            listItems = self.listItemsJurisdictions;
         } else {
             listItems = [ListViewItemArray new];
         }
         
         [[DataManager sharedManager] jurisdiction:^(id object) {
         
-            NSDictionary *checkedItem = nil;
             NSArray *items = object;
             
             for (NSDictionary *item in items) {
@@ -492,10 +653,6 @@
                 NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
                 
                 [listItems addObject:jurisdiction];
-                
-                if (checkedItem == nil) {
-                    checkedItem = [self checkStatus:jurisdiction itemId:item[@"id"] currentId:jurisdictionId nodeItem:jurisdictionNode];
-                }
                 
                 NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"localsWithNoDistrict"]];
                 
@@ -511,9 +668,6 @@
                             
                             [localItems addObject:localItem];
                             
-                            if (checkedItem == nil) {
-                                checkedItem = [self checkStatus:localItem itemId:local[@"id"] currentId:jurisdictionId nodeItem:jurisdictionNode];
-                            }
                         }
                         
                         jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
@@ -539,10 +693,6 @@
                         
                         [localItems addObject:localItem];
                         
-                        if (checkedItem == nil) {
-                            checkedItem = [self checkStatus:localItem itemId:districtItem[@"id"] currentId:jurisdictionId nodeItem:jurisdictionNode];
-                        }
-                        
                         NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
                         
                         ListViewItemArray *localDistrict = [ListViewItemArray new];
@@ -552,10 +702,6 @@
                             NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
                             
                             [localDistrict addObject:item];
-                            
-                            if (checkedItem == nil) {
-                                checkedItem = [self checkStatus:item itemId:local[@"id"] currentId:jurisdictionId nodeItem:jurisdictionNode];
-                            }
                             
                         }
                         
@@ -569,12 +715,10 @@
                 
             }
             
-            listItemsJurisdictions = listItems;
+            self.listItemsJurisdictions = listItems;
             
             if (view) {
                 [self displayJurisdiction];
-            } else if (jurisdictionId) {
-                [self.projectFilter.fieldJurisdiction setValue:checkedItem[LIST_VIEW_NAME]];
             }
             
         } failure:^(id object) {
@@ -591,7 +735,7 @@
 - (void)displayJurisdiction {
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-    controller.listViewItems = listItemsJurisdictions;
+    controller.listViewItems = self.listItemsJurisdictions;
     controller.singleSelect = YES;
     controller.fieldValue = @"jurisdictions";
     controller.filterViewControllerDelegate = self;
@@ -600,19 +744,16 @@
 }
 
 - (void)filterStage:(UIView*)view {
-    if ( (listItemsProjectStageId == nil) || (listItemsProjectStageId.count == 0)) {
+    if ( (self.listItemsProjectStageId == nil) || (self.listItemsProjectStageId.count == 0)) {
         
         ListViewItemArray *listItems = nil;
-        if (listItemsProjectStageId) {
-            listItems = listItemsProjectStageId;
+        if (self.listItemsProjectStageId) {
+            listItems = self.listItemsProjectStageId;
         }else {
             listItems = [ListViewItemArray new];
         }
         
-        
         [[DataManager sharedManager] parentStage:^(id object) {
-            
-            NSDictionary *checkedItem = nil;
             
             for (NSDictionary *item in object) {
                 
@@ -629,11 +770,6 @@
                         ListViewItemDictionary *subItem = [ListItemCollectionViewCell createItem:stage[@"name"] value:stage[@"id"] model:@"stage"];
                         [subItems addObject:subItem];
 
-                        if (checkedItem == nil) {
-                            checkedItem = [self checkStatus:subItem itemId:stage[@"id"] currentId:stageId nodeItem:stageNode];
-                        }
-
-                        
                     }
                     
                     listItem[LIST_VIEW_SUBITEMS] = subItems;
@@ -641,19 +777,12 @@
                 
                 [listItems addObject:listItem];
                 
-                if (checkedItem == nil) {
-                    checkedItem = [self checkStatus:listItem itemId:item[@"id"] currentId:jurisdictionId nodeItem:stageNode];
-                }
-
-                
             }
             
-            listItemsProjectStageId = listItems;
+            self.listItemsProjectStageId = listItems;
             
             if (view) {
                 [self displayProjectStateId];
-            }else if (stageId) {
-                [self.projectFilter.fieldStage setValue:checkedItem[LIST_VIEW_NAME]];
             }
             
         } failure:^(id object) {
@@ -663,9 +792,6 @@
         
         if (view) {
             [self displayProjectStateId];
-        }else {
-            NSString *stage = [[self getCheckItems:listItemsProjectStageId] componentsJoinedByString:@", "];
-            [self.projectFilter.fieldStage setValue:stage];
         }
         
     }
@@ -693,7 +819,7 @@
 - (void) displayProjectStateId {
     FilterViewController *controller = [FilterViewController new];
     controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_STAGES");
-    controller.listViewItems = listItemsProjectStageId;
+    controller.listViewItems = self.listItemsProjectStageId;
     controller.filterViewControllerDelegate = self;
     controller.fieldValue = @"projectStageId";
     controller.singleSelect = NO;
@@ -724,125 +850,81 @@
     return array;
 }
 
-- (NSDictionary*)filterBiddingWithinDictionary:(NSArray*)array {
-    
-    NSDictionary *dict = nil;
-    NSNumber *selected = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"biddingInNext"]];
-    if (selected) {
-        for (NSDictionary *item in array) {
-            NSNumber *value = item[PROJECT_SELECTION_VALUE];
-            
-            if (value.integerValue == selected.integerValue) {
-                dict = [item mutableCopy];
-            }
-        }
-    }
-
-    return dict;
-}
-
 - (void)filterBiddingWithin:(UIView*)view {
-
+    
+    NSNumber *biddingWithin = self.projectFilter.dictBiddingWithin[@"biddingInNext"];
+    
     NSArray *array = [self filterBiddingWithinArray];
+    NSDictionary *dict = [self filterBiddingWithinDictionary:array value:biddingWithin] ;
     
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
     controller.filterSelectionViewControllerDelegate = self;
-    
-    NSString *ownerName = @"Project";
-    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[ownerName][@"biddingInNext"]];
-    
-    if (dict == nil) {
-        
-        dict = [self filterBiddingWithinDictionary:array];
-    }
-    
     [controller setDataBeenSelected:dict];
-    
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BIDDING_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
-- (NSArray*)filterBHArray {
-
+- (void)filterBH:(UIView*)view {
+    
+    
     NSArray *array = @[
                        @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BOTH"),PROJECT_SELECTION_VALUE:@[@"B", @"H"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_BLDG"),PROJECT_SELECTION_VALUE:@[@"B"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        @{PROJECT_SELECTION_TITLE:NSLocalizedLanguage(@"BH_TITLE_HIGHWAY"),PROJECT_SELECTION_VALUE:@[@"H"],PROJECT_SELECTION_TYPE:@(ProjectFilterItemAny)},
                        ];
-
-    return array;
-}
-
-- (NSDictionary*)filterBHDictionary:(NSArray*)array {
     
     NSDictionary *dict = nil;
-    NSDictionary *selected = [DerivedNSManagedObject objectOrNil:self.projectFilterDictionary[@"buildingOrHighway"]];
-    if (selected) {
+    NSDictionary *buildingOrHighway = self.projectFilter.dictBH[@"buildingOrHighway"];
+    
+    if (buildingOrHighway) {
+        NSArray *buildingOrHighwayArray = buildingOrHighway[@"inq"];
         
-        NSArray *selectedItems = selected[@"inq"];
-        
-        for (NSDictionary *item in array) {
-            NSArray *values = item[PROJECT_SELECTION_VALUE];
+        if (buildingOrHighwayArray.count == 1) {
             
-            if (values) {
-                
-                if (selectedItems.count == values.count) {
-                    
-                    BOOL isEqual = YES;
-                    for (int i=0; i<=selectedItems.count-1; i++) {
-                        
-                        isEqual = isEqual && ( [selectedItems[i] isEqualToString:values[i]]);
-                    }
-                    
-                    if (isEqual) {
-                        dict = [item mutableCopy];
-                    }
-                    
-                }
-                
+            if ([buildingOrHighwayArray containsObject:@"B"]) {
+                dict = array[1];
+            } else {
+                dict = array[2];
             }
+            
+        } else {
+            dict = array[0];
         }
     }
     
-    return dict;
-}
-
-- (void)filterBH:(UIView*)view {
-    
-    NSArray *array = [self filterBHArray];
-    
     FilterSelectionViewController *controller = [FilterSelectionViewController new];
     controller.filterSelectionViewControllerDelegate = self;
-    
-    NSDictionary *dict  = [DerivedNSManagedObject objectOrNil:dataSelected[@"Project"][@"B/H"]];
-    
-    if (dict == nil) {
-        
-        dict = [self filterBHDictionary:[self filterBHArray]];
-        
-    }
-
     [controller setDataBeenSelected:dict];
     [controller setDataInfo:array];
     controller.navTitle = NSLocalizedLanguage(@"PROJECT_FILTER_BH_TITLE");
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)filterOwner:(UIView*)view {
-    NSMutableArray *obj = [@[@{@"title":@"Federal",@"id":@(1)},
+    
+    NSDictionary *workOwner = self.projectFilter.dictOwnerType[@"ownerType"];
+    
+    NSArray *obj = @[@{@"title":@"Federal",@"id":@(1)},
                              @{@"title":@"Local Government",@"id":@(2)},
                              @{@"title":@"Military",@"id":@(3)},
                              @{@"title":@"Private",@"id":@(4)},
                              @{@"title":@"State",@"id":@(5)}
-                             ] mutableCopy];
+                             ] ;
+    
+    if (workOwner) {
+        NSArray *items = workOwner[@"inq"];
+        [self.projectFilter.fieldOwner setValue:items[0]];
+    }
     
     WorkOwnerTypesViewController *controller = [WorkOwnerTypesViewController new];
-    
     [controller setInfo:obj selectedItem:[self.projectFilter.fieldOwner getValue]];
     [controller setNavTitle:NSLocalizedLanguage(@"OWNER_TYPES_TITLE")];
     controller.workOwnerTypesViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)pushWorkTypes:(UIView*)view {
@@ -863,7 +945,8 @@
 - (void)tappedLocationApplyButton:(id)items {
     selectedLocationItems = [NSMutableArray new];
     [self getLocationData:items];
-    [self.projectFilter setFilterModelInfo:selectedModel value:selectedLocationItems];
+    
+    [_projectFilter setLocationValue:selectedLocationItems];
 }
 
 - (void)getLocationData:(id)items {
@@ -881,23 +964,32 @@
 }
 
 - (void)tappedFilterViewControllerApply:(NSMutableArray *)selectedItems key:(NSString *)key titles:(NSMutableArray *)titles nodes:(NSMutableArray *)nodes{
-    self.projectFilter.searchFilter[key] = @{@"inq":selectedItems};
-    self.projectFilter.searchFilter[[key stringByAppendingString:@"_node"] ] = nodes[0];
-    [self.projectFilter setFilterModelInfo:selectedModel value:titles];
+
+    if (selectedModel == FilterModelStage) {
+        [_projectFilter setProjectStageValue:selectedItems titles:titles];
+    } else if (selectedModel == FilterModelJurisdiction) {
+        [_projectFilter setJurisdictionValue:selectedItems titles:titles];
+    } else if (selectedModel == FilterModelProjectType) {
+        [_projectFilter setProjectTypeValue:selectedItems titles:titles];
+    }
 }
 
 - (void)tappedValuationApplyButton:(id)items {
-    dataSelected = @{@"Project":@{@"valuation":items}};
-    [self.projectFilter setFilterModelInfo:selectedModel value:items];
+    [_projectFilter setValuationValue:items];
 }
 
 - (void)tappedApplyButton:(id)items {
     NSDictionary *dict = items;
     if (dict) {
-        NSString *fieldName = [self dataSelectFieldName:selectedModel];
-        
-        dataSelected = @{@"Project":@{fieldName:items}};
-        [self.projectFilter setFilterModelInfo:selectedModel value:dict];
+        if (selectedModel == FilterModelUpdated) {
+            [_projectFilter setUpdatedWithinValue:items];
+        } else if(selectedModel == FilterModelBH) {
+            [_projectFilter setBHValue:items];
+        } else if (selectedModel == FilterModelOwner) {
+            [_projectFilter setOwnerTypeValue:items];
+        } else if (selectedModel == FilterModelBidding) {
+            [_projectFilter setBiddingWithinValue:items];
+        }
     }
 }
 
@@ -943,18 +1035,33 @@
 }
 
 - (void)tappedApplyWorkOwnerButton:(id)item {
+
     NSDictionary *emptyDic= @{@"title":NSLocalizedLanguage(@"PROJECT_FILTER_ANY")};
     NSDictionary *value = item != nil?item:emptyDic;
-    [_projectFilter setFilterModelInfo:selectedModel value:value];
+
+    if (selectedModel == FilterModelOwner) {
+        [_projectFilter setOwnerTypeValue:value];
+    } else if(selectedModel == FilterModelWork) {
+        [_projectFilter setWorkTypeValue:value];
+    }
+
 }
 
-- (void)setJurisdictionItems:(ListViewItemArray*)jurisdictionItems{
-
-    listItemsJurisdictions = jurisdictionItems;
-}
-
-- (void)setStageItems:(ListViewItemArray*)statgeItems {
-    listItemsProjectStageId = statgeItems;
+- (NSDictionary*)filterBiddingWithinDictionary:(NSArray*)array value:(NSNumber*)value{
+    
+    NSDictionary *dict = nil;
+    NSNumber *selected = value;
+    if (selected) {
+        for (NSDictionary *item in array) {
+            NSNumber *value = item[PROJECT_SELECTION_VALUE];
+            
+            if (value.integerValue == selected.integerValue) {
+                dict = [item mutableCopy];
+            }
+        }
+    }
+    
+    return dict;
 }
 
 @end

@@ -143,7 +143,7 @@ typedef enum {
 
     [_companyHeader setHeaderInfo:@{COMPANY_TITLE:record.name, COMPANY_GEOCODE_LAT:@"47.606208801269531", COMPANY_GEOCODE_LNG:@"-122.33206939697266",
         COMPANY_GEO_ADDRESS:[record completeAddress]}];
-    [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record address] line2Text:nil];
+    [_fieldAddress setTitle:NSLocalizedLanguage(@"COMPANY_DETAIL_ADDRESS") line1Text:[record completeAddress] line2Text:nil];
     
     
     associatedProjects = [record.relationshipAssociatedProjects allObjects] != nil? [[record.relationshipAssociatedProjects allObjects] mutableCopy]:[NSMutableArray new];

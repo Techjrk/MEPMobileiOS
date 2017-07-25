@@ -19,7 +19,8 @@
 @property (weak, nonatomic) id<ProjectNearMeFilterViewControllerDelegate>projectNearMeFilterViewControllerDelegate;
 @property (strong, nonatomic) NSMutableDictionary *projectFilterDictionary;
 
-- (void)setJurisdictionItems:(ListViewItemArray*)jurisdictionItems;
-- (void)setStageItems:(ListViewItemArray*)statgeItems;
+@property (strong, nonatomic)ListViewItemArray *listItemsProjectStageId;
+@property (strong, nonatomic)ListViewItemArray *listItemsJurisdictions;
+@property (strong, nonatomic)ListViewItemArray *listItemsProjectTypeId;
 
 @end

@@ -37,6 +37,13 @@
     if(self.address1 != nil) {
         fullAddr = [fullAddr stringByAppendingString:self.address1];
         
+        if (self.city != nil | self.state != nil) {
+            fullAddr = [fullAddr stringByAppendingString:@", "];
+        }
+    }
+    
+    if (self.city != nil) {
+        fullAddr = [fullAddr stringByAppendingString:self.city];
         if (self.state != nil | self.zip5 != nil) {
             fullAddr = [fullAddr stringByAppendingString:@", "];
         }
@@ -69,7 +76,12 @@
     }
     NSString *estLow = [formatter stringFromNumber:[NSNumber numberWithFloat:estlow]];
     NSString *currency = self.currencyType == nil?@"$":self.currencyType;
-    return [NSString stringWithFormat:@"%@ %@", currency, estLow ];
+    
+    if (estLow == 0) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", currency, estLow ];
+    }
     
 }
 
@@ -84,8 +96,13 @@
     }
     NSString *estHigh = [formatter stringFromNumber:[NSNumber numberWithFloat:esthigh]];
     NSString *currency = self.currencyType == nil?@"$":self.currencyType;
-    return [NSString stringWithFormat:@"%@ %@", currency, estHigh ];
     
+    if (estHigh == 0) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", currency, estHigh ];
+    }
+
 }
 
 - (NSString*)bidDateString {

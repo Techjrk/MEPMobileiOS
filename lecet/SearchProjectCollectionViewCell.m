@@ -72,7 +72,7 @@
     _labelLocation.text = addr;
 
     NSDictionary *geocode = [DerivedNSManagedObject objectOrNil:item[@"geocode"]];
-    
+    _mapView.delegate = nil;
     if (geocode != nil) {
         
         _mapView.hidden = NO;
@@ -91,6 +91,7 @@
         [_mapView removeAnnotations:_mapView.annotations];
         
         [_mapView setRegion:region];
+        _mapView.delegate = self;
         [_mapView addAnnotation:annotation];
         
     } else {
@@ -100,22 +101,11 @@
     }
 
     self.projectId = item[@"id"];
-    [[DataManager sharedManager] checkForImageNotes:self.projectId success:^(id object) {
-        
-        NSDictionary *dict = object;
-        
-        NSNumber *prjId = dict[@"projectId"];
-        if (prjId.integerValue == self.projectId.integerValue) {
-            NSNumber *count = dict[@"count"];
-            self.iconUpdateMarker.hidden = count.integerValue == 0;
-        } else {
-            self.iconUpdateMarker.hidden = YES;
-        }
-        
-    } failure:^(id object) {
-        
-        self.iconUpdateMarker.hidden = YES;
-    }];
+    
+    NSArray *userImages = item[@"images"];
+    NSArray *userNotes = item[@"userNotes"];
+
+    self.iconUpdateMarker.hidden = !((userImages.count>0)&&(userNotes.count>0));
 
 }
 

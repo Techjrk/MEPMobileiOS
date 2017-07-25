@@ -10,6 +10,8 @@
 
 #import "LongPressViewController.h"
 #import "DashboardViewController.h"
+#import "LoginViewController.h"
+#import "LandingViewController.h"
 
 @interface BaseViewController ()<UINavigationControllerDelegate, LongPressViewControllerDelegate>{
     BOOL previousControllerHidden;
@@ -38,7 +40,9 @@
 
 - (void)handleLongPressGestures:(UILongPressGestureRecognizer*)recognizer {
     
-    if ([self class] != [DashboardViewController class]) {
+    if (([self class] != [DashboardViewController class]) &&
+        ([self class] != [LandingViewController class]) &&
+        ([self class] != [LoginViewController class])) {
         LongPressViewController *controller = [LongPressViewController new];
         controller.longPressViewControllerDelegate = self;
         controller.modalPresentationStyle = UIModalPresentationCustom;

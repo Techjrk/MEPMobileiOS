@@ -51,7 +51,11 @@
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoLat, geoLng);
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     [annotation setCoordinate:coordinate];
+    
+    _mapView.delegate = nil;
     [_mapView removeAnnotations:_mapView.annotations];
+    
+    _mapView.delegate = self;
     [_mapView addAnnotation:annotation];
 }
 

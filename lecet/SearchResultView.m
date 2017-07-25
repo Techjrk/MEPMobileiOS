@@ -212,19 +212,22 @@
     
     NSString *filterString = filter[@"filter"];
     
-    NSData *data = [filterString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    
-    dict[@"skip"] = [NSNumber numberWithInteger:collectionItems.count];
-    
-    NSError *error = nil;
-    data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    if ([filter respondsToSelector:@selector(dataUsingEncoding:)]) {
 
-    filterString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    filter[@"filter"] = filterString;
-
+        NSData *data = [filterString dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        dict[@"skip"] = [NSNumber numberWithInteger:collectionItems.count];
+        
+        NSError *error = nil;
+        data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+        
+        filterString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        filter[@"filter"] = filterString;
+       
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

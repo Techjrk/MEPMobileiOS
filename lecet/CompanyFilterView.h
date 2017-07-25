@@ -25,7 +25,17 @@
 @property (weak, nonatomic) IBOutlet FilterLabelView *filterBidding;
 @property (weak, nonatomic) IBOutlet FilterLabelView *filterProjectType;
 
-- (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val;
-- (void)setLocationInfo:(id)info;
+@property (strong, nonatomic) NSDictionary *dictLocation;
+@property (strong, nonatomic) NSDictionary *dictValue;
+@property (strong, nonatomic) NSDictionary *dictJurisdiction;
+@property (strong, nonatomic) NSDictionary *dictBidding;
+@property (strong, nonatomic) NSDictionary *dictProjectType;
+
+- (void)setLocationValue:(id)value;
+- (void)setValuationValue:(id)value;
+- (void)setJurisdictionValue:(id)value titles:(NSArray*)titles;
+- (void)setBiddingValue:(id)value;
+- (void)setProjectTypeValue:(id)value titles:(NSArray*)titles;
+- (NSMutableDictionary *)filter;
 
 @end

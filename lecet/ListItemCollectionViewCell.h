@@ -10,6 +10,7 @@
 
 #define STATUS_EXPAND                       @"EXPAND_STATUS"
 #define STATUS_CHECK                        @"STATUS_CHECK"
+#define STATUS_PREV                         @"STATUS_PREV"
 #define LIST_VIEW_SUBITEMS                  @"LIST_VIEW_SUBITEMS"
 #define LIST_VIEW_NAME                      @"LIST_VIEW_NAME"
 #define LIST_VIEW_VALUE                     @"LIST_VIEW_VALUE"

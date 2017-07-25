@@ -249,19 +249,27 @@ typedef enum {
     [controller setProjectTitle:referenceProject.title];
     controller.projectId = referenceProject.recordId;
     [controller setType: referenceProject.primaryProjectTypeId];
-    
     [controller setStage: referenceProject.projectStageId];
-    
     [controller setDate: referenceProject.targetStartDate];
-    
-    [controller setJurisdiction:jurisdictionIdentifier];
-
+    [controller setCounty:referenceProject.county code:referenceProject.fipsCounty];
     [self.navigationController pushViewController:controller animated:NO];
 }
 
-- (void)tappedSavedNewProject:(id)object {
+- (void)tappedSavedNewProject:(id)obj isAdded:(BOOL)isAdded{
     
-    [[DataManager sharedManager] updateProject:recordId project:object success:^(id object) {
+    [[DataManager sharedManager] updateProject:recordId project:obj success:^(id object) {
+        
+        if (!isAdded) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+        }
+        
+        [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
+            
+            [self detailsFromProject:object];
+        
+        } failure:^(id object) {
+            
+        }];
         
     } failure:^(id object) {
         
@@ -328,9 +336,42 @@ typedef enum {
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
+    CGFloat estLowValue = 0;
+    CGFloat estHighValue =0;
+    
+    NSNumber *estLow = project.estLow;
+    NSNumber *estHigh = project.estHigh;
+    
+    if (estLow) {
+        estLowValue = estLow.floatValue;
+    }
+    
+    if (estHigh) {
+        estHighValue = estHigh.floatValue;
+    }
+    
+    if ((estHighValue+estLowValue)>0) {
 
-    [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+        if ( (estLowValue>0) && (estHighValue>0) ) {
+          
+            [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[NSString stringWithFormat:@"%@ - %@ ", [project estLowAmountWithCurrency],[project estHighAmountWithCurrency]] line2Text:nil];
+            
+        } else if (estLowValue>0) {
+            
+            [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:[project estLowAmountWithCurrency] line2Text:nil];
+        }else if (estHighValue>0) {
+            
+                [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+        }
+
+    } else {
+        [_fieldEstLow setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTLOW") line1Text:@"" line2Text:nil];
+
+    }
+    
+
+    //[_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:[project estHighAmountWithCurrency] line2Text:nil];
+    [_fieldEstHigh setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_ESTHIGH") line1Text:@"" line2Text:nil];
 
     [_fieldStage setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_STAGE") line1Text:project.projectStageName line2Text:nil];
     
@@ -344,7 +385,8 @@ typedef enum {
     
     [_fieldLastUpdated setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_LAST_UPDATE") line1Text:[project lastUpdateDateString] line2Text:nil];
     
-    [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"$ 0" line2Text:nil];
+    //[_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"$ 0" line2Text:nil];
+    [_fieldValue setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_VALUE") line1Text:@"" line2Text:nil];
     
     //[_fieldJurisdiction setTitle:NSLocalizedLanguage(@"PROJECT_DETAIL_JURISDICTION") line1Text:@"" line2Text:nil];
     
@@ -1120,33 +1162,11 @@ typedef enum {
             [self showAddPhotoScreenItems:imageItemsToBeUpdated];
         }];
     } else {
-        //capturedImage = [self reducedImageOnceCapture:image];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         });
         
-        /*
-        NSData *imageData =  UIImageJPEGRepresentation(image, 1);
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        [library writeImageDataToSavedPhotosAlbum:imageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
-            if (assetURL)
-            {
-                [self latestPhotoWithCompletion:^(UIImage *photo) {
-                    UIImageRenderingMode renderingMode = /* DISABLES CODE */ //(YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
-                    //capturedImage  = [photo imageWithRenderingMode:renderingMode];
-        /*
-                }];
-            }
-            else if (error)
-            {
-                if (error.code == ALAssetsLibraryAccessUserDeniedError || error.code == ALAssetsLibraryAccessGloballyDeniedError)
-                {
-                    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Permission needed to access camera roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                }
-            }
-        }];
-        */
     }
 }
 

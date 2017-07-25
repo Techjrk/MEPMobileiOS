@@ -112,6 +112,12 @@ CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
     }
 }
 
+CG_INLINE NSArray*
+CGSortArray(NSArray *array, NSString* sortKey, BOOL ascending){
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending];
+    return [array sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+}
+
 #define TMP_DIR [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"DMD_tmp"]
 
 #define FONT_NAME_LATO_REGULAR                   @"Lato-Regular"
@@ -133,6 +139,8 @@ CG_INLINE NSString* timeAgoFromUnixTime(double seconds)
 #define NOTIFICATION_VIEW_PROJECT                @"NOTIFICATION_VIEW_PROJECT"
 #define NOTIFICATION_RELOAD_DASHBOARD            @"NOTIFICATION_RELOAD_DASHBOARD"
 #define NOTIFICATION_HOME                        @"NOTIFICATION_HOME"
+#define NOTIFICATION_REFRESH_PROJECTS_ADDED      @"NOTIFICATION_REFRESH_PROJECTS_ADDED"
+#define NOTIFICATION_REFRESH_PROJECTS_UPDATED    @"NOTIFICATION_REFRESH_PROJECTS_UPDATED"
 
 #define SEARCH_RESULT_PROJECT                    @"SEARCH_RESULT_PROJECT"
 #define SEARCH_RESULT_PROJECT_URL                @"SEARCH_RESULT_PROJECT_URL"
@@ -168,7 +176,8 @@ typedef enum : NSUInteger {
     FilterModelOwner,
     FilterModelWork,
     FilterModelProjectType,
-    FilterModelEstLow
+    FilterModelEstLow,
+    FilterModelCounty
 } FilterModel;
 
 

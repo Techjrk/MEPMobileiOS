@@ -59,7 +59,9 @@ typedef enum : NSUInteger {
     NSDictionary *saveSearchSelectedItem;
     BOOL isSuggestedListBeenTapped;
     BOOL fromSavedSearch;
-    ListViewItemArray *statgeItems;
+    ListViewItemArray *stageItems;
+    ListViewItemArray *jurisdictionItems;
+    ListViewItemArray *projectTypeItems;
     
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
@@ -212,19 +214,28 @@ typedef enum : NSUInteger {
     
     SearchFilterViewController *controller = [SearchFilterViewController new];
     controller.searchFilterViewControllerDelegate = self;
-    if (statgeItems == nil) {
-        statgeItems = [ListViewItemArray new];
+    if (stageItems == nil) {
+        stageItems = [ListViewItemArray new];
     }
-    [controller setStageItems:statgeItems];
+    
+    controller.listItemsProjectStageId = stageItems;
+    
+    if (jurisdictionItems == nil) {
+        jurisdictionItems = [ListViewItemArray new];
+    }
+    
+    controller.listItemsJurisdictions = jurisdictionItems;
+    
+    if (projectTypeItems == nil) {
+        projectTypeItems = [ListViewItemArray new];
+    }
+    
+    controller.listItemsProjectTypeId = projectTypeItems;
 
     controller.projectFilterDictionary = [projectFilterGlobal mutableCopy];
     controller.companytFilterDictionary = [companyFilterGlobal mutableCopy];
     [self.navigationController pushViewController:controller animated:YES];
     
-    /*
-    RefineSearchViewController *controller = [RefineSearchViewController new];
-    [self.navigationController pushViewController:controller animated:YES];
-     */
 }
 
 - (void)tappedSearchFilterViewControllerApply:(NSDictionary *)projectFilter companyFilter:(NSDictionary *)companyFilter {
@@ -246,11 +257,13 @@ typedef enum : NSUInteger {
         companyFilterGlobal[key] = companyFilter[key];
     }
     
-    NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
-    NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];
+    NSMutableDictionary *project = [projectFilter mutableCopy];
+    project[@"modelName"] = @"Project";
+    NSMutableDictionary *company = [companyFilter mutableCopy];
+    company[@"modelName"] = @"Company";
     
-    [self searchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":tempProject}}:nil];
-    [self searchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0?@{@"modelName":@"Company",@"filter":@{@"searchFilter":tempCompany}}:nil];
+    [self searchForProject:_labeSearch.text filter:project];
+    [self searchForCompany:_labeSearch.text filter:company];
     
     if (isSuggestedListBeenTapped) {
         if (projectFilterGlobal.count > 0) {
@@ -839,31 +852,19 @@ typedef enum : NSUInteger {
     NSMutableDictionary *projectFilter = [@{@"q": searchString} mutableCopy];
    
     NSMutableDictionary *_filter = [NSMutableDictionary new];
-    [_filter addEntriesFromDictionary: @{@"include":@[@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
+    [_filter addEntriesFromDictionary: @{@"include":@[@"userNotes",@"images",@"primaryProjectType",@"secondaryProjectTypes",@"bids", @"projectStage"]}];
  
-    if (filter) {
-        if ([filter[@"modelName"] isEqualToString:@"Project"]) {
-            
+    if ([filter[@"modelName"] isEqualToString:@"Project"]){
+        if (filter) {
             NSMutableDictionary *searchFilter = filter[@"filter"][@"searchFilter"];
             _filter[@"searchFilter"] = searchFilter;
-
-
-        } else {
-            
-            if (searchString.length==0) {
-                _filter[@"searchFilter"] = @"{\"dashboardTypes\": true}";
-            }
             
         }
-        
     } else {
-        
-        if (searchString.length==0) {
-            _filter[@"searchFilter"] = @"{\"dashboardTypes\": true}";
-        }
+        _filter[@"searchFilter"] = @"{}";
         
     }
-
+    
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
     
@@ -885,59 +886,18 @@ typedef enum : NSUInteger {
 - (void)searchForCompany:(NSString*)searchString filter:(NSDictionary*)filter{
 
     NSMutableDictionary *companyFilter = [@{@"q": searchString} mutableCopy];
-    NSMutableDictionary *_filter = [NSMutableDictionary new];
     
-    if (filter) {
-        if ([filter[@"modelName"] isEqualToString:@"Company"]) {
-            
-            NSMutableDictionary *searchFilter = [filter[@"filter"][@"searchFilter"] mutableCopy];
-            _filter[@"searchFilter"] = searchFilter;
-    
-            NSMutableDictionary *esFilter = [NSMutableDictionary new];
-            
-            NSDictionary *esLocation = searchFilter[@"companyLocation"];
-            if (esLocation) {
-                esFilter[@"projectLocation"] = esLocation;
-            }
-            
-            NSDictionary *esJurisdiction = searchFilter[@"jurisdictions"];
-            if (esJurisdiction) {
-                [searchFilter removeObjectForKey:@"jurisdictions"];
-                esFilter[@"jurisdictions"] = esJurisdiction;
-            }
-            
-            NSDictionary *esProjectType = searchFilter[@"projectTypeId"];
-            if (esProjectType) {
-                [searchFilter removeObjectForKey:@"projectTypeId"];
-                esFilter[@"projectTypes"] = esProjectType;
-            }
-            
-            NSDictionary *esValue = searchFilter[@"valuation"];
-            if (esValue) {
-                esFilter[@"projectValue"] = esValue;
-            }
-            
-            if (esFilter.count>0) {
-                searchFilter[@"esFilter"] = esFilter;
-            }
-            
-        } else {
-            if (searchString.length==0) {
-                _filter[@"searchFilter"] = @"{}";
-            }
-        }
+    if ([filter[@"modelName"] isEqualToString:@"Company"]) {
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:filter[@"filter"] options:0 error:&error];
+        
+        NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        companyFilter[@"filter"] =jsonString;
     } else {
-        if (searchString.length==0) {
-            _filter[@"searchFilter"] = @"{}";
-        }
+        companyFilter[@"filter"] = @"{\"searchFilter\":{}}";
     }
 
-    NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:_filter options:0 error:&error];
-    
-    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    [companyFilter addEntriesFromDictionary:@{@"filter":jsonString}];
     [self.customLoadingIndicator startAnimating];
     [[DataManager sharedManager] companySearch:companyFilter data:collectionItems success:^(id object) {
         [self.customLoadingIndicator stopAnimating];
@@ -1263,18 +1223,21 @@ typedef enum : NSUInteger {
 
 - (void)doSaveSearches:(NSString *)title {
     
-    
-    NSDictionary *tempProject = [self removedUpdatedBiddingValueZeroForSearchFilter:projectFilterGlobal];
-    NSDictionary *tempCompany = [self removedUpdatedBiddingValueZeroForSearchFilter:companyFilterGlobal];
-
         if (projectFilterGlobal.count > 0) {
-            
-            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? @{@"modelName":@"Project",@"filter":@{@"searchFilter":tempProject}}:nil title:title];
+
+            NSMutableDictionary *project = [projectFilterGlobal mutableCopy];
+            project[@"modelName"] = @"Project";
+
+            [self saveSearchForProject:_labeSearch.text filter:projectFilterGlobal.count>0? project:nil title:title];
             [self showSaveSearches:YES];
         }
         
         if (companyFilterGlobal.count > 0) {
-            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? @{@"modelName":@"Company",@"filter":@{@"searchFilter":tempCompany}}:nil title:title];
+            
+            NSMutableDictionary *company = [companyFilterGlobal mutableCopy];
+            company[@"modelName"] = @"Company";
+
+            [self saveSearchForCompany:_labeSearch.text filter:companyFilterGlobal.count>0? company:nil title:title];
             [self showSaveSearches:YES];
         }
     

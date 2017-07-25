@@ -99,7 +99,11 @@
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReloadDashboard:) name:NOTIFICATION_RELOAD_DASHBOARD object:nil];
-    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshAdded:) name:NOTIFICATION_REFRESH_PROJECTS_ADDED object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshUpdated:) name:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+
     bidItemsHappeningSoon = [NSMutableArray new];
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
     
@@ -137,23 +141,12 @@
     [_chartRecentlyUpdated hideRightButton:YES];
     
     if ([[DataManager sharedManager] isDebugMode]) {
-        
-        /*
-        [[DataManager sharedManager] loginFingerPrintForSuccess:^(id object) {
-            
-        } failure:^(id object) {
-            
-        }];*/
     }
     
-    /*
-    [[DataManager sharedManager] addProjectUserImage:@(259406) title:@"title" text:@"test" image:[UIImage imageNamed:@"icon_app"] success:^(id object) {
-        
-    } failure:^(id object) {
-        
-    }];*/
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -181,6 +174,19 @@
     [self pageChangedForced:YES];
     
 }
+
+- (void)notificationRefreshAdded:(NSNotification*)notification {
+    
+    [self requestBidRecentlyAdded];
+    
+}
+
+- (void)notificationRefreshUpdated:(NSNotification*)notification {
+    
+    [self requestBidRecentlyUpdated];
+    
+}
+
 
 - (void)navigateHome:(NSNotification*)notification {
 
@@ -230,7 +236,7 @@
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES AND relationshipProject.isHidden = NO AND relationshipProject.projectGroupId IN %@", kCategory];
-    bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+    bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@[@"createDate",@"relationshipProject.title"] ascending:NO] mutableCopy];
     
     for (DB_Bid *item in bidItemsRecentlyMade) {
         
@@ -297,7 +303,7 @@
     NSString *yearMonth = [DB_BidSoon yearMonthFromDate:currentDate];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isHappenSoon == YES AND isHidden == NO AND bidYearMonth == %@",yearMonth];
-    bidItemsHappeningSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@"bidDate" ascending:YES] mutableCopy];
+    bidItemsHappeningSoon = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"bidDate", @"title"] ascending:YES] mutableCopy];
     
     for (DB_Project *item in bidItemsHappeningSoon) {
         bidMarker[item.bidYearMonthDay] = @"";
@@ -310,6 +316,11 @@
     
     [[DataManager sharedManager] bidsRecentlyUpdated:30 success:^(id object) {
         [self loadBidsRecentlyUpdated];
+        
+        if (currentPage == 3) {
+            [self pageChangedForced:YES];
+        }
+
     } failure:^(id object) {
         
     }];
@@ -335,7 +346,7 @@
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
-    bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"lastPublishDate", @"title"] ascending:NO] mutableCopy];
     
     
     for (DB_Project *item in bidItemsRecentlyUpdated) {
@@ -377,7 +388,7 @@
     
     NSMutableDictionary *segment = [[NSMutableDictionary alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES AND isHidden == NO AND projectGroupId IN %@", kCategory];
-    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+    bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"firstPublishDate", @"title"] ascending:NO] mutableCopy];
     
     for (DB_Project *item in bidItemsRecentlyAdded) {
         
@@ -856,7 +867,7 @@
             predicate = [NSPredicate predicateWithFormat:@"relationshipProject.projectGroupId == %li AND isRecentMade == YES", category];
         }
         
-        bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@"createDate" ascending:NO] mutableCopy];
+        bidItemsRecentlyMade = [[DB_Bid fetchObjectsForPredicate:predicate key:@[@"createDate", @"relationshipProject.title"] ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyMade;
         
@@ -884,7 +895,7 @@
             predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li AND isRecentUpdate == YES", category];
         }
         
-        bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        bidItemsRecentlyUpdated = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"lastPublishDate", @"title"] ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyUpdated;
         
@@ -912,7 +923,7 @@
             predicate = [NSPredicate predicateWithFormat:@"projectGroupId == %li AND isRecentAdded == YES", category];
         }
         
-        bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@"lastPublishDate" ascending:NO] mutableCopy];
+        bidItemsRecentlyAdded = [[DB_Project fetchObjectsForPredicate:predicate key:@[@"lastPublishDate", @"title"] ascending:NO] mutableCopy];
         
         currentBidItems = bidItemsRecentlyAdded;
         

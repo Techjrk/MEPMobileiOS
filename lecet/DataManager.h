@@ -103,6 +103,8 @@
 - (void)projectType:(NSNumber*)typeId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectStage:(NSNumber*)stageId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)projectJuridictionId:(NSNumber*)jurisdictionId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)listCounties:(NSString*)code success:(APIBlock)success failure:(APIBlock)failure;
+- (void)findCounty:(NSString*)code success:(APIBlock)success failure:(APIBlock)failure;
 
 //WORK TYPES
 - (void)workTypes:(APIBlock)success failure:(APIBlock)failure;

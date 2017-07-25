@@ -11,7 +11,7 @@
 #import "ProjectHeaderView.h"
 
 @protocol NewProjectViewControllerDelegate <NSObject>
-- (void)tappedSavedNewProject:(id)object;
+- (void)tappedSavedNewProject:(id)object isAdded:(BOOL)isAdded;
 @end
 
 @interface NewProjectViewController : BaseViewController
@@ -25,6 +25,5 @@
 - (void)setType:(NSNumber*)typeIdParam;
 - (void)setStage:(NSNumber*)stageIdParam;
 - (void)setDate:(NSString*)dateParam;
-- (void)setJurisdiction:(NSNumber*)jurisdictionIdParam;
-
+- (void)setCounty:(NSString*)countyParam code:(NSString*)code;
 @end

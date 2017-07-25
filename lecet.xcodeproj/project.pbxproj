@@ -117,14 +117,10 @@
 		B6A74EFB1D15DBD3007CDFF3 /* CompanySortViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A74EF91D15DBD3007CDFF3 /* CompanySortViewController.xib */; };
 		B6A81E681D0C888D0016B20F /* MyProfileCustomTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */; };
 		B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */; };
-		B6AA23761D22B0C4008B30E0 /* ProjectFilterTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AA23741D22B0C4008B30E0 /* ProjectFilterTypesViewController.m */; };
-		B6AA23771D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AA23751D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib */; };
 		B6AF1CE11D21240700C95A8F /* ProjectFilterCollapsibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CDF1D21240700C95A8F /* ProjectFilterCollapsibleView.m */; };
 		B6AF1CE21D21240700C95A8F /* ProjectFilterCollapsibleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CE01D21240700C95A8F /* ProjectFilterCollapsibleView.xib */; };
 		B6AF1CEE1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CEC1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.m */; };
 		B6AF1CEF1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CED1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib */; };
-		B6AF1CF41D2130CA00C95A8F /* ProjectFilterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CF21D2130CA00C95A8F /* ProjectFilterLocationViewController.m */; };
-		B6AF1CF51D2130CA00C95A8F /* ProjectFilterLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CF31D2130CA00C95A8F /* ProjectFilterLocationViewController.xib */; };
 		B6AF1CFA1D21325F00C95A8F /* ProjectFilterSearchNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CF81D21325F00C95A8F /* ProjectFilterSearchNavView.m */; };
 		B6AF1CFB1D21325F00C95A8F /* ProjectFilterSearchNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AF1CF91D21325F00C95A8F /* ProjectFilterSearchNavView.xib */; };
 		B6AF1CFF1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF1CFD1D21492C00C95A8F /* ProjectFilterCollapsibleListView.m */; };
@@ -317,7 +313,6 @@
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79615FE1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */; };
 		B79615FF1CF318D60089BC32 /* DB_Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F11CF318D60089BC32 /* DB_Contact.m */; };
-		B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */; };
 		B79616011CF318D60089BC32 /* DB_Project.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F51CF318D60089BC32 /* DB_Project.m */; };
 		B79616021CF318D60089BC32 /* DB_Company+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */; };
 		B79616031CF318D60089BC32 /* DB_Company.m in Sources */ = {isa = PBXBuildFile; fileRef = B79615F91CF318D60089BC32 /* DB_Company.m */; };
@@ -355,7 +350,7 @@
 		B79AA7F71E9CBF5400BA1B04 /* libDMD_LITE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B79AA7F51E9CBF5400BA1B04 /* libDMD_LITE.a */; };
 		B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */; };
 		B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */; };
-		B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */; };
+		B7A1D3301CE098C7004E94B3 /* LECETV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D32E1CE098C7004E94B3 /* LECETV2.xcdatamodeld */; };
 		B7A1D3351CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */; };
 		B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3341CE0AD9D004E94B3 /* DB_BidSoon.m */; };
 		B7A1D33E1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D33B1CE1FFBD004E94B3 /* DB_BidRecent+CoreDataProperties.m */; };
@@ -414,6 +409,8 @@
 		B7BF61171D240DD100B3BDD7 /* ListItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61161D240DD100B3BDD7 /* ListItemCollectionViewCell.m */; };
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
+		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
+		B7C525811EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C525801EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m */; };
 		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
 		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
@@ -635,18 +632,12 @@
 		B6A81E651D0C888D0016B20F /* MyProfileCustomTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileCustomTextFieldView.h; sourceTree = "<group>"; };
 		B6A81E661D0C888D0016B20F /* MyProfileCustomTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileCustomTextFieldView.m; sourceTree = "<group>"; };
 		B6A81E671D0C888D0016B20F /* MyProfileCustomTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileCustomTextFieldView.xib; sourceTree = "<group>"; };
-		B6AA23731D22B0C4008B30E0 /* ProjectFilterTypesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterTypesViewController.h; sourceTree = "<group>"; };
-		B6AA23741D22B0C4008B30E0 /* ProjectFilterTypesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterTypesViewController.m; sourceTree = "<group>"; };
-		B6AA23751D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterTypesViewController.xib; sourceTree = "<group>"; };
 		B6AF1CDE1D21240700C95A8F /* ProjectFilterCollapsibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterCollapsibleView.h; sourceTree = "<group>"; };
 		B6AF1CDF1D21240700C95A8F /* ProjectFilterCollapsibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterCollapsibleView.m; sourceTree = "<group>"; };
 		B6AF1CE01D21240700C95A8F /* ProjectFilterCollapsibleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterCollapsibleView.xib; sourceTree = "<group>"; };
 		B6AF1CEB1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterCollapsibleCollectionViewCell.h; sourceTree = "<group>"; };
 		B6AF1CEC1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterCollapsibleCollectionViewCell.m; sourceTree = "<group>"; };
 		B6AF1CED1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterCollapsibleCollectionViewCell.xib; sourceTree = "<group>"; };
-		B6AF1CF11D2130CA00C95A8F /* ProjectFilterLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterLocationViewController.h; sourceTree = "<group>"; };
-		B6AF1CF21D2130CA00C95A8F /* ProjectFilterLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterLocationViewController.m; sourceTree = "<group>"; };
-		B6AF1CF31D2130CA00C95A8F /* ProjectFilterLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterLocationViewController.xib; sourceTree = "<group>"; };
 		B6AF1CF71D21325F00C95A8F /* ProjectFilterSearchNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSearchNavView.h; sourceTree = "<group>"; };
 		B6AF1CF81D21325F00C95A8F /* ProjectFilterSearchNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSearchNavView.m; sourceTree = "<group>"; };
 		B6AF1CF91D21325F00C95A8F /* ProjectFilterSearchNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSearchNavView.xib; sourceTree = "<group>"; };
@@ -946,8 +937,6 @@
 		B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Contact+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B79615F01CF318D60089BC32 /* DB_Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Contact.h; sourceTree = "<group>"; };
 		B79615F11CF318D60089BC32 /* DB_Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Contact.m; sourceTree = "<group>"; };
-		B79615F21CF318D60089BC32 /* DB_Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Project+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Project+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B79615F41CF318D60089BC32 /* DB_Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Project.h; sourceTree = "<group>"; };
 		B79615F51CF318D60089BC32 /* DB_Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Project.m; sourceTree = "<group>"; };
 		B79615F61CF318D60089BC32 /* DB_Company+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Company+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1009,7 +998,7 @@
 		B79AA7F91E9CC6C700BA1B04 /* PhotoShutterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoShutterViewController.h; sourceTree = "<group>"; };
 		B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShutterViewController.m; sourceTree = "<group>"; };
 		B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoShutterViewController.xib; sourceTree = "<group>"; };
-		B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECET.xcdatamodel; sourceTree = "<group>"; };
+		B7A1D32F1CE098C7004E94B3 /* LECETV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LECETV2.xcdatamodel; sourceTree = "<group>"; };
 		B7A1D3311CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_BidSoon+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B7A1D3321CE0AD9D004E94B3 /* DB_BidSoon+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_BidSoon+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B7A1D3331CE0AD9D004E94B3 /* DB_BidSoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_BidSoon.h; sourceTree = "<group>"; };
@@ -1101,6 +1090,9 @@
 		B7BF61181D240F5300B3BDD7 /* ListItemExpandingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemExpandingViewCell.h; sourceTree = "<group>"; };
 		B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemExpandingViewCell.m; sourceTree = "<group>"; };
 		B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemExpandingViewCell.xib; sourceTree = "<group>"; };
+		B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LIUNA_HQ.gpx; sourceTree = "<group>"; };
+		B7C5257F1EFBC54000E4F3AE /* DB_Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DB_Project+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B7C525801EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DB_Project+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
@@ -1785,16 +1777,6 @@
 			name = MyProfileCustomTextFieldView;
 			sourceTree = "<group>";
 		};
-		B6AA23721D22B043008B30E0 /* ProjectFilterTypes */ = {
-			isa = PBXGroup;
-			children = (
-				B6AA23731D22B0C4008B30E0 /* ProjectFilterTypesViewController.h */,
-				B6AA23741D22B0C4008B30E0 /* ProjectFilterTypesViewController.m */,
-				B6AA23751D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib */,
-			);
-			name = ProjectFilterTypes;
-			sourceTree = "<group>";
-		};
 		B6AF1CD81D2121ED00C95A8F /* ProjectFilterCollapsibleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1833,16 +1815,6 @@
 				B6AF1CED1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib */,
 			);
 			name = ProjectFilterCollapsibleCell;
-			sourceTree = "<group>";
-		};
-		B6AF1CF01D21307300C95A8F /* ProjectFilterLocation */ = {
-			isa = PBXGroup;
-			children = (
-				B6AF1CF11D2130CA00C95A8F /* ProjectFilterLocationViewController.h */,
-				B6AF1CF21D2130CA00C95A8F /* ProjectFilterLocationViewController.m */,
-				B6AF1CF31D2130CA00C95A8F /* ProjectFilterLocationViewController.xib */,
-			);
-			name = ProjectFilterLocation;
 			sourceTree = "<group>";
 		};
 		B6AF1CF61D21322100C95A8F /* ProjectFilterSearchNav */ = {
@@ -2090,6 +2062,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */,
 				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
 				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
 				B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */,
@@ -2176,8 +2149,6 @@
 				B649A4D81D2ABB4E0012D060 /* FilterSelectionViewController */,
 				B6855EA51D26604500553F0F /* Valuation */,
 				B65BCDBC1D25295400FE9781 /* WorkOwnerTypes */,
-				B6AA23721D22B043008B30E0 /* ProjectFilterTypes */,
-				B6AF1CF01D21307300C95A8F /* ProjectFilterLocation */,
 				B6BDBAC41D1821A3001FB41C /* EditViewController */,
 				B6A74EF61D15DBBA007CDFF3 /* CompanySort */,
 				B65106611D12DC6100007759 /* CompanyTracking */,
@@ -2765,7 +2736,7 @@
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */,
+				B7A1D32E1CE098C7004E94B3 /* LECETV2.xcdatamodeld */,
 				B79616491CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.h */,
 				B796164A1CF892DF0089BC32 /* DB_CompanyContact+CoreDataProperties.m */,
 				B796164B1CF892DF0089BC32 /* DB_CompanyContact.h */,
@@ -2778,10 +2749,10 @@
 				B79615EF1CF318D60089BC32 /* DB_Contact+CoreDataProperties.m */,
 				B79615F01CF318D60089BC32 /* DB_Contact.h */,
 				B79615F11CF318D60089BC32 /* DB_Contact.m */,
-				B79615F21CF318D60089BC32 /* DB_Project+CoreDataProperties.h */,
-				B79615F31CF318D60089BC32 /* DB_Project+CoreDataProperties.m */,
 				B79615F41CF318D60089BC32 /* DB_Project.h */,
 				B79615F51CF318D60089BC32 /* DB_Project.m */,
+				B7C5257F1EFBC54000E4F3AE /* DB_Project+CoreDataProperties.h */,
+				B7C525801EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m */,
 				B79615F61CF318D60089BC32 /* DB_Company+CoreDataProperties.h */,
 				B79615F71CF318D60089BC32 /* DB_Company+CoreDataProperties.m */,
 				B79615F81CF318D60089BC32 /* DB_Company.h */,
@@ -3121,6 +3092,7 @@
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
 				B771C5FC1CEB5562004A628A /* CompanyStateView.xib in Resources */,
 				B7E1043E1CEC74FE00EAD8E7 /* ContactsListView.xib in Resources */,
+				B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */,
 				B6EFFE9E1D0490A000727323 /* ContactDetailView.xib in Resources */,
 				B60BEFA61E854EC500C69640 /* CustomPhotoLibView.xib in Resources */,
 				B796160A1CF431140089BC32 /* RadialBackgroundView.xib in Resources */,
@@ -3184,7 +3156,6 @@
 				B73EFAE61D11AA2000C6B3B2 /* TrackingItemCollectionViewCell.xib in Resources */,
 				B7F10A391CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.xib in Resources */,
 				B76C69621CD3B442009E9F15 /* ChartView.xib in Resources */,
-				B6AA23771D22B0C4008B30E0 /* ProjectFilterTypesViewController.xib in Resources */,
 				B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */,
 				B6FD043E1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.xib in Resources */,
 				B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */,
@@ -3207,7 +3178,6 @@
 				B68337251D081C3F004226D3 /* ChangePasswordViewController.xib in Resources */,
 				B647D0AA1E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib in Resources */,
 				B70FDF7B1CEA097F0035A6D9 /* SectionTitleView.xib in Resources */,
-				B6AF1CF51D2130CA00C95A8F /* ProjectFilterLocationViewController.xib in Resources */,
 				B76C697B1CD9F0FC009E9F15 /* CustomCalendar.xib in Resources */,
 				B7BF60E41D215E7D00B3BDD7 /* RefineSearchViewController.xib in Resources */,
 				B64F17721EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib in Resources */,
@@ -3263,7 +3233,6 @@
 				B78607061E76D34F00F7CE3E /* ImageNoteCollectionViewCell.m in Sources */,
 				B69FA8B31D4F469F0059A18F /* SaveSearchChangeItemView.m in Sources */,
 				B6411BA51D096892002B6E88 /* SettingsView.m in Sources */,
-				B6AA23761D22B0C4008B30E0 /* ProjectFilterTypesViewController.m in Sources */,
 				B7BF60D31D21247300B3BDD7 /* FilterEntryView.m in Sources */,
 				B7F10A121CDB3E3300847FA3 /* AFHTTPSessionManager.m in Sources */,
 				B71B6BFA1D18299300B916BA /* ProjectTrackEditCollectionViewCell.m in Sources */,
@@ -3304,7 +3273,6 @@
 				B68680CA1EB20427006B9651 /* CustomLandscapeNavigationViewController.m in Sources */,
 				B6BDBAC81D1821BD001FB41C /* EditViewController.m in Sources */,
 				B73EFAB11D09546B00C6B3B2 /* CallOutViewController.m in Sources */,
-				B6AF1CF41D2130CA00C95A8F /* ProjectFilterLocationViewController.m in Sources */,
 				B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */,
 				B66DF8181D0076000071A6B5 /* ContactDetailViewController.m in Sources */,
 				B76C694D1CD24BDC009E9F15 /* BaseViewController.m in Sources */,
@@ -3354,7 +3322,6 @@
 				B7FC246D1EBA02AC0002802D /* EAGLView.m in Sources */,
 				B79616051CF318D60089BC32 /* DB_Bid.m in Sources */,
 				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
-				B79616001CF318D60089BC32 /* DB_Project+CoreDataProperties.m in Sources */,
 				B683371E1D081BD0004226D3 /* ChangePasswordView.m in Sources */,
 				B79AA7AE1E93900200BA1B04 /* NewProjectAnnotation.m in Sources */,
 				B7A1D3361CE0AD9D004E94B3 /* DB_BidSoon.m in Sources */,
@@ -3400,6 +3367,7 @@
 				B7BF60DD1D2154C400B3BDD7 /* CompanyFilterView.m in Sources */,
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B7F10A241CDB3E4100847FA3 /* SFHFKeychainUtils.m in Sources */,
+				B7C525811EFBC54000E4F3AE /* DB_Project+CoreDataProperties.m in Sources */,
 				B73EFAC01D0ED11200C6B3B2 /* HiddenProjectsViewController.m in Sources */,
 				B74C0AA21E8167D400E91FA9 /* NewProjectViewController.m in Sources */,
 				B7F10A281CDB41DE00847FA3 /* BaseManager.m in Sources */,
@@ -3417,7 +3385,7 @@
 				B66591121CFECA6B00CFD10C /* MoreMenuViewController.m in Sources */,
 				B771C60B1CEB7503004A628A /* AssociatedProjectsView.m in Sources */,
 				B7BF608A1D19723A00B3BDD7 /* ShareItemCollectionViewCell.m in Sources */,
-				B7A1D3301CE098C7004E94B3 /* LECET.xcdatamodeld in Sources */,
+				B7A1D3301CE098C7004E94B3 /* LECETV2.xcdatamodeld in Sources */,
 				B76C694A1CD2491F009E9F15 /* BaseViewClass.m in Sources */,
 				B77E08E71D2687D80087454F /* FilterViewController.m in Sources */,
 				B6FD043D1D1D2ED400E12123 /* ProjectFilterSelectionCollectionViewCell.m in Sources */,
@@ -3562,8 +3530,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3584,7 +3553,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "bf39cdd4-5b99-470a-9126-f3bb82c7cdbe";
+				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Debug;
@@ -3594,8 +3563,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Danny Tancredi (5LJM42WUN9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3616,7 +3586,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "bf39cdd4-5b99-470a-9126-f3bb82c7cdbe";
+				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Release;
@@ -3645,13 +3615,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B7A1D32E1CE098C7004E94B3 /* LECET.xcdatamodeld */ = {
+		B7A1D32E1CE098C7004E94B3 /* LECETV2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */,
+				B7A1D32F1CE098C7004E94B3 /* LECETV2.xcdatamodel */,
 			);
-			currentVersion = B7A1D32F1CE098C7004E94B3 /* LECET.xcdatamodel */;
-			path = LECET.xcdatamodeld;
+			currentVersion = B7A1D32F1CE098C7004E94B3 /* LECETV2.xcdatamodel */;
+			path = LECETV2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

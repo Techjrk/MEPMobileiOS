@@ -17,15 +17,33 @@
 
 #pragma mark - Class functions
 
-+ (nullable NSArray *)fetchObjectsForPredicate:(nullable NSPredicate *)predicate key:(nullable NSString *)key ascending:(BOOL)ascending {
++ (nullable NSArray *)fetchObjectsForPredicate:(nullable NSPredicate *)predicate key:(nullable id)key ascending:(BOOL)ascending {
     NSArray *results = nil;
     
     NSFetchRequest *request	= [[NSFetchRequest alloc] init];
     
     if (key) {
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:ascending];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-        [request setSortDescriptors:sortDescriptors];
+        
+        NSMutableArray *sort = [NSMutableArray new];
+        
+        if ([key isKindOfClass:[NSString class]]) {
+   
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:ascending];
+            
+            [sort addObject:sortDescriptor];
+            
+        } else {
+
+            for (NSString *field in key) {
+                
+                NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:field ascending:ascending];
+                ascending = YES;
+                [sort addObject:sortDescriptor];
+            }
+        }
+        
+        
+        [request setSortDescriptors:sort];
     }
     [request setEntity:[self entity]];
     [request setPredicate:predicate];
@@ -39,7 +57,7 @@
     return results;
 }
 
-+ (id)fetchObjectForPredicate:(nullable NSPredicate *)predicate key:(nullable NSString *)key ascending:(BOOL)ascending{
++ (id)fetchObjectForPredicate:(nullable NSPredicate *)predicate key:(nullable id)key ascending:(BOOL)ascending{
     NSArray *results = [self fetchObjectsForPredicate:predicate key:key ascending:ascending];
     if ([results count] > 0)
         return [results objectAtIndex:0];
@@ -110,8 +128,8 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-    [formatter setTimeZone:timeZone];
+    //NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    //[formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"hh:mm a"];
     return [formatter stringFromDate:date];
 }

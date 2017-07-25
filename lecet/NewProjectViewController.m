@@ -31,21 +31,21 @@
 
 #define KEY_PROJECTSTAGEID                  @"projectStageId"
 #define KEY_TYPEID                          @"projectTypeId"
-#define KEY_JURISDICTION                    @"jurisdictions"
+#define KEY_COUNTY                          @"county"
 
 @interface NewProjectViewController ()<FilterLabelViewDelegate, SearchFilterViewControllerDelegate, FilterViewControllerDelegate, MKMapViewDelegate, SaveNewProjectViewControllerDelegate>{
     ListViewItemArray *listItemsProjectTypeId;
     ListViewItemArray *listItemsProjectStageId;
-    ListViewItemArray *listItemsJurisdictions;
+    ListViewItemArray *listItemsfipsCounty;
   
     NSString *projectTitle;
     NSNumber *typeId;
     NSNumber* estLow;
     NSNumber *stageId;
     NSString *targetDate;
-    NSString *county;
+    NSString *fipsCounty;
+    NSString *countyName;
     NSString *countryCode;
-    NSNumber *jurisdictionId;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
@@ -72,7 +72,6 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 @property (weak, nonatomic) IBOutlet UIView *viewPicker;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDone;
-@property (weak, nonatomic) IBOutlet FilterLabelView *fieldJurisdiction;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
@@ -125,6 +124,8 @@
     self.textFieldZip.userInteractionEnabled = NO;
     
     [self.fieldCounty setTitle:NSLocalizedLanguage(@"NPVC_COUNTY")];
+    self.fieldCounty.filterModel = FilterModelCounty;
+    self.fieldCounty.filterLabelViewDelegate = self;
     
     [self.fieldType setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldType setTitle:NSLocalizedLanguage(@"NPVC_TYPE")];
@@ -139,11 +140,6 @@
     [self.fieldTargetSetDate setValue:NSLocalizedLanguage(@"NPVC_NONE")];
     [self.fieldTargetSetDate setTitle:NSLocalizedLanguage(@"NPVC_TARGET_DATE")];
     self.fieldTargetSetDate.filterLabelViewDelegate = self;
-    
-    [self.fieldJurisdiction setValue:NSLocalizedLanguage(@"NPVC_NONE")];
-    [self.fieldJurisdiction setTitle:NSLocalizedLanguage(@"NPVC_JURISDICTION")];
-    self.fieldStage.filterModel = FilterModelJurisdiction;
-    self.fieldJurisdiction.filterLabelViewDelegate = self;
     
     if (self.location != nil) {
         [self findLocation];
@@ -164,51 +160,42 @@
     }
 
     if (typeId != nil) {
-        [[DataManager sharedManager] projectType:typeId success:^(id object) {
-            [self.fieldType setValue:object[@"title"]];
-        } failure:^(id object) {
-            
-        }];
+        if (typeId.integerValue>0) {
+            [[DataManager sharedManager] projectType:typeId success:^(id object) {
+                [self.fieldType setValue:object[@"title"]];
+            } failure:^(id object) {
+                
+            }];
+        }
     }
     
     if (stageId != nil) {
-        [[DataManager sharedManager] projectStage:stageId success:^(id object) {
-            [self.fieldStage setValue:object[@"name"]];
-        } failure:^(id object) {
-            
-        }];
+        if (stageId.integerValue>0) {
+            [[DataManager sharedManager] projectStage:stageId success:^(id object) {
+                [self.fieldStage setValue:object[@"name"]];
+            } failure:^(id object) {
+                
+            }];
+        }
     }
+    [self.fieldCounty setValue:@""];
     
-    if (jurisdictionId != nil) {
-        [[DataManager sharedManager] projectJurisdiction:self.projectId success:^(id object) {
+    if (fipsCounty) {
+        
+        [[DataManager sharedManager] findCounty:fipsCounty success:^(id object) {
             
-            NSArray *districts = object;
-            NSString *jurisdiction = @"";
-            int index = 0;
-            
-            for (NSDictionary *district in districts) {
-                
-                NSDictionary *dictrictCouncil = district[@"districtCouncil"];
-                NSString *current = [DerivedNSManagedObject objectOrNil:dictrictCouncil[@"abbreviation"]];
-                
-                if (current.length>0) {
-                    jurisdiction = [jurisdiction stringByAppendingString:current];
-                    
-                    if (index<(districts.count-1)) {
-                        jurisdiction = [jurisdiction stringByAppendingString:@", "];
-                        
-                    }
-                }
-                index++;
+            NSArray *array = object;
+            if (array.count>0) {
+                NSDictionary *item = array[0];
+                countyName = item[@"countyName"];
+                fipsCounty = item[@"fipsCountyId"];
+                [self.fieldCounty setValue:countyName];
             }
-
-            [self.fieldJurisdiction setValue:jurisdiction];
-            
         } failure:^(id object) {
             
         }];
-
-    }
+    } 
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -235,7 +222,7 @@
     
     [self.containerView layoutIfNeeded];
     
-    self.constraintViewHeight.constant = self.fieldJurisdiction.frame.origin.y + self.fieldJurisdiction.frame.size.height + (kDeviceHeight * 0.01);
+    self.constraintViewHeight.constant = self.fieldTargetSetDate.frame.origin.y + self.fieldTargetSetDate.frame.size.height + (kDeviceHeight * 0.01);
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.constraintViewHeight.constant);
     
@@ -273,14 +260,14 @@
                     
                          self.textFieldCity.text = [DerivedNSManagedObject objectOrNil:address[@"City"]];
                          
-                         self.textFieldState.text = [DerivedNSManagedObject objectOrNil:address[@"State"]];
+                         NSString *state = [DerivedNSManagedObject objectOrNil:address[@"State"]];
+                         self.textFieldState.text = state;
                          
                          self.textFieldZip.text = [DerivedNSManagedObject objectOrNil:address[@"ZIP"]];
                          
                          countryCode = [DerivedNSManagedObject objectOrNil:address[@"CountryCode"]];
                          
-                         county = [DerivedNSManagedObject objectOrNil:address[@"SubAdministrativeArea"]];
-                         [self.fieldCounty setValue:county];
+                         
                      } else if (error != nil) {
                          
                      }
@@ -293,6 +280,24 @@
 }
 
 - (IBAction)tappedSave:(id)sender {
+
+    NSString *projectTitleStr = [self.textFieldProjectTitle.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (projectTitleStr.length == 0) {
+        
+        [self promptUserForTitle];
+        return;
+    }
+    
+    if (fipsCounty == nil) {
+        [self promptUserForCounty];
+        return;
+    }
+    
+    if (typeId == nil) {
+        [self promptUserForType];
+        return;
+    }
+
     SaveNewProjectViewController *controller = [SaveNewProjectViewController new];
     controller.saveNewProjectViewControllerDelegate = self;
     controller.modalPresentationStyle = UIModalPresentationCustom;
@@ -300,12 +305,6 @@
 }
 
 - (void)tappedSaveNewProject {
-    NSString *projectTitleStr = [self.textFieldProjectTitle.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (projectTitleStr.length == 0) {
-        
-        [self promptUserForTitle];
-        return;
-    }
 
     [self saveNewProject];
 }
@@ -324,6 +323,37 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+- (void)promptUserForCounty{
+    NSString *message = NSLocalizedLanguage(@"NPVC_COUNTY_REQUIRED");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"NPVC_OK")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:closeAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)promptUserForType{
+    NSString *message = NSLocalizedLanguage(@"NPVC_TYPE_REQUIRED");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"NPVC_OK")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                        }];
+    
+    [alert addAction:closeAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 - (void)saveNewProject {
     NSMutableDictionary *dict = [NSMutableDictionary new];
@@ -372,15 +402,24 @@
         dict[@"country"] = countryCode;
     }
     
-    if (county != nil) {
-        dict[@"county"] = county;
+    if (countyName != nil) {
+        dict[@"county"] = countyName;
     }
     
-    if (jurisdictionId != nil) {
-        dict[@"jurisdictionCityId"] = jurisdictionId;
+    if (fipsCounty) {
+        dict[@"fipsCounty"] = fipsCounty;
     }
-    
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone localTimeZone]];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"];
+
     if (!self.updateProject) {
+        
+        NSString *date = [formatter stringFromDate:[NSDate date]];
+        dict[@"firstPublishDate"] = date;
+        dict[@"lastPublishDate"] = date;
+        
         [[DataManager sharedManager] createProject:dict success:^(id object) {
             
             NSNumber *projectId = object[@"id"];
@@ -388,7 +427,7 @@
             [[DataManager sharedManager] createPin:self.location projectId:projectId success:^(id object) {
                 
                 [self.navigationController popViewControllerAnimated:NO];
-                [self.projectViewControllerDelegate tappedSavedNewProject:projectId];
+                [self.projectViewControllerDelegate tappedSavedNewProject:projectId isAdded:YES];
                 
             } failure:^(id object) {
                 
@@ -399,7 +438,11 @@
         }];
     } else {
         [self.navigationController popViewControllerAnimated:NO];
-        [self.projectViewControllerDelegate tappedSavedNewProject:dict];
+        
+        NSString *date = [formatter stringFromDate:[NSDate date]];
+        dict[@"lastPublishDate"] = date;
+        
+        [self.projectViewControllerDelegate tappedSavedNewProject:dict isAdded:NO];
     }
 }
 
@@ -413,8 +456,8 @@
     } else if ([self.fieldTargetSetDate isEqual:object]) {
         self.viewPicker.hidden = NO;
         self.dateTimePicker.date = [NSDate date];
-    } else if ([self.fieldJurisdiction isEqual:object]) {
-        [self filterJurisdiction:object];
+    } else if ([self.fieldCounty isEqual:object]) {
+        [self filterCounty:object];
     }
 }
 
@@ -533,9 +576,11 @@
     } else if ([key isEqualToString:KEY_TYPEID]) {
         [self.fieldType setValue:titles[0]];
         typeId = selectedItems[0];
-    } else if ([key isEqualToString:KEY_JURISDICTION]){
-        [self.fieldJurisdiction setValue:titles[0]];
-        jurisdictionId = selectedItems[0];
+    } else if([key isEqualToString:KEY_COUNTY]) {
+        fipsCounty = selectedItems[0];
+        countyName = titles[0];
+        
+        [self.fieldCounty setValue:countyName];
     }
 }
 
@@ -597,100 +642,50 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - Jurisdiction
-- (void)filterJurisdiction:(UIView*)view {
-    if (listItemsJurisdictions == nil) {
+- (void)filterCounty:(UIView*)view {
+    
+    if (listItemsfipsCounty == nil) {
+        NSString *state = self.textFieldState.text;
         
-        ListViewItemArray *listItems = [ListViewItemArray new];
-        [[DataManager sharedManager] jurisdiction:^(id object) {
-            
-            NSArray *items = object;
-            
-            for (NSDictionary *item in items) {
+        if (state && state.length>0) {
+            state = [state uppercaseString];
+            [[DataManager sharedManager] listCounties:state success:^(id object) {
                 
-                NSMutableDictionary *jurisdiction = [ListItemCollectionViewCell createItem:item[@"name"] value:item[@"id"] model:@"jurisdiction"];
+                ListViewItemArray *listItems = [ListViewItemArray new];
                 
-                [listItems addObject:jurisdiction];
-                
-                NSArray *locals = [DerivedNSManagedObject objectOrNil:item[@"localsWithNoDistrict"]];
-                
-                if (locals != nil) {
+                NSArray *items = object;
+                for (NSDictionary *item in items) {
                     
-                    if (locals.count>0) {
-                        
-                        ListViewItemArray *localItems = [ListViewItemArray new];
-                        
-                        for (NSDictionary *local in locals) {
-                            
-                            NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"local"];
-                            
-                            [localItems addObject:localItem];
+                    ListViewItemDictionary *countyItem = [ListItemCollectionViewCell createItem:item[@"countyName"] value:item[@"fipsCountyId"] model:@"county"];
+                    
+                    if (fipsCounty) {
+                        if ([fipsCounty isEqualToString:item[@"fipsCountyId"]]) {
+                            countyItem[STATUS_CHECK] = @(1);
                         }
-                        
-                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
-                        
                     }
                     
+                    [listItems addObject:countyItem];
                 }
                 
-                NSArray *districtCouncils = [DerivedNSManagedObject objectOrNil:item[@"districtCouncils"]];
+                listItemsfipsCounty = listItems;
+                [self displayCounty];
+            } failure:^(id object) {
                 
-                if (districtCouncils != nil) {
-                    
-                    ListViewItemArray *localItems = jurisdiction[LIST_VIEW_SUBITEMS];
-                    
-                    if (localItems == nil) {
-                        localItems = [ListViewItemArray new];
-                        jurisdiction[LIST_VIEW_SUBITEMS] = localItems;
-                        
-                    }
-                    for (NSDictionary *districtItem in districtCouncils) {
-                        
-                        NSMutableDictionary *localItem = [ListItemCollectionViewCell createItem:districtItem[@"name"] value:districtItem[@"id"] model:@"district"];
-                        
-                        [localItems addObject:localItem];
-                        
-                        
-                        NSArray *locals = [DerivedNSManagedObject objectOrNil:districtItem[@"locals"]];
-                        
-                        ListViewItemArray *localDistrict = [ListViewItemArray new];
-                        
-                        for (NSDictionary *local in locals) {
-                            
-                            NSMutableDictionary *item = [ListItemCollectionViewCell createItem:local[@"name"] value:local[@"id"] model:@"localDisctrict"];
-                            
-                            [localDistrict addObject:item];
-                            
-                        }
-                        
-                        localItem[LIST_VIEW_SUBITEMS] = localDistrict;
-                        
-                        
-                    }
-                    
-                }
-                
-                
-            }
-            
-            listItemsJurisdictions = listItems;
-            [self displayJurisdiction];
-        } failure:^(id object) {
-            
-        }];
-        
+            }];
+        }
     } else {
-        [self displayJurisdiction];
+        [self displayCounty];
     }
+
 }
 
-- (void)displayJurisdiction {
+- (void)displayCounty {
     FilterViewController *controller = [FilterViewController new];
-    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_JURISRICTION");
-    controller.listViewItems = listItemsJurisdictions;
+    controller.searchTitle = NSLocalizedLanguage(@"FILTER_VIEW_COUNTY");
+    controller.listViewItems = listItemsfipsCounty;
     controller.singleSelect = YES;
     controller.parentOnly = YES;
-    controller.fieldValue = @"jurisdictions";
+    controller.fieldValue = @"county";
     controller.filterViewControllerDelegate = self;
     controller.selectOnlyChild = YES;
     [self.navigationController pushViewController:controller animated:YES];
@@ -708,9 +703,11 @@
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     [annotation setCoordinate:coordinate];
     
+    _mapView.delegate = nil;
     [_mapView removeAnnotations:_mapView.annotations];
     
     [_mapView setRegion:region];
+    _mapView.delegate = self;
     [_mapView addAnnotation:annotation];
 }
 
@@ -781,8 +778,9 @@
     }
 }
 
-- (void)setJurisdiction:(NSNumber*)jurisdictionIdParam {
-    jurisdictionId = jurisdictionIdParam;
+- (void)setCounty:(NSString*)countyParam code:(NSString*)code{
+    countyName = countyParam;
+    fipsCounty = code;
 }
 
 @end

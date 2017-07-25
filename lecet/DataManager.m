@@ -97,6 +97,7 @@
 
 #define kUrlProjectType                     @"ProjectTypes/%li"
 #define kUrlProjectStage                    @"ProjectStages/%li"
+#define kUrlCounty                          @"Counties"
 
 @interface DataManager()<MFMailComposeViewControllerDelegate>
 @end
@@ -285,6 +286,8 @@
     record.dodgeNumber = [DerivedNSManagedObject objectOrNil:project[@"dodgeNumber"]];
     record.dodgeVersion = [DerivedNSManagedObject objectOrNil:project[@"dodgeVersion"]];
     record.estLow = [DerivedNSManagedObject objectOrNil:project[@"estLow"]];
+    record.estHigh = [DerivedNSManagedObject objectOrNil:project[@"estHigh"]];
+    
     record.fipsCounty = [DerivedNSManagedObject objectOrNil:project[@"fipsCounty"]];
     record.firstPublishDate = [DerivedNSManagedObject objectOrNil:project[@"firstPublishDate"]];
     record.geoLocationType = [DerivedNSManagedObject objectOrNil:project[@"geoLocationType"]];
@@ -377,6 +380,7 @@
         for (NSDictionary *bidItem in bids) {
             DB_Bid *bid = [self saveManageObjectBid:bidItem];
             bid.relationshipProject = record;
+            
         }
     }
     
@@ -388,6 +392,10 @@
         }
     }
     
+    NSArray *userImages = project[@"images"];
+    NSArray *userNotes = project[@"userNotes"];
+    
+    record.hasNotesImages = @( (userImages.count>0)&&(userNotes.count>0) );
     return record;
 }
 
@@ -536,7 +544,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:dateFilter daysAhead:-30];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}}, {\"rank\":1}]},\"dashboardTypes\":true}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"contact\",\"company\",{\"project\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}}], \"limit\":100, \"order\":\"createDate DESC\", \"where\":{\"and\":[{\"createDate\":{\"gt\":\"%@\"}},{\"rank\":1}]},\"dashboardTypes\":true}",[DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
     NSString *url = [self url:kUrlBidsRecentlyMade];
     
     [self HTTP_GET:url parameters:@{@"filter":filter} success:^(id object) {
@@ -563,13 +571,28 @@
 
 - (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:(numberOfDays)];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat=@"M";
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lte\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSInteger nextMonth = [[formatter stringFromDate:[NSDate date]] integerValue];
+    
+    if (nextMonth == 12) {
+        nextMonth = 1;
+    } else {
+        nextMonth = nextMonth + 1;
+    }
+   
+    formatter.dateFormat=@"yyyy";
+  
+    NSString *year = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *nextMonthDate = [NSString stringWithFormat:@"%@-%02ld-01", year, (long)nextMonth];
+    
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lt\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], nextMonthDate];
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:@{@"filter":filter} success:^(id object) {
         
-        NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:NO];
+        NSArray *currrentRecords = [DB_Project fetchObjectsForPredicate:nil key:nil ascending:YES];
         if (currrentRecords != nil) {
             for (DB_Project *item in currrentRecords) {
                 item.isHappenSoon = [NSNumber numberWithBool:NO];
@@ -581,6 +604,7 @@
             
             DB_Project *project = [self saveManageObjectProject:item];
             project.isHappenSoon = [NSNumber numberWithBool:YES];
+            
         }
         [self saveContext];
         
@@ -625,7 +649,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-(numberOfDays)];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"lte\":\"%@\"}}, \"limit\":250,\"dashboardTypes\":true,\"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"gte\":\"%@\"}}, \"limit\":250,\"dashboardTypes\":true,\"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
 
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:@{@"filter":filter} success:^(id object) {
@@ -658,7 +682,9 @@
 
 - (void)projectsNear:(CGFloat)lat lng:(CGFloat)lng distance:(NSNumber*)distance filter:(id)filter success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *allFilter = @"{\"include\":[\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
+    //NSString *allFilter = @"{\"include\":[\"userNotes\",\"images\",\"projectStage\",{\"contacts\":[\"company\"]}],\"limit\":200,\"nolimit\":false, \"order\":\"id DESC\"}";
+    
+    NSString *allFilter = @"{\"include\":[\"workTypes\",\"userNotes\",\"images\",\"projectStage\",{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},{\"contacts\":[\"company\"]}],\"limit\":200, \"order\":\"id DESC\"}";
     
     NSData *data = [allFilter dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -667,7 +693,7 @@
 
     NSDictionary *filterToAdd = (NSDictionary*)filter;
     if (filter != nil) {
-        [dictionary addEntriesFromDictionary:@{@"searchFilter":filterToAdd}];
+        [dictionary addEntriesFromDictionary:filterToAdd];
     }
     
 
@@ -740,7 +766,9 @@
 
 - (void)companyDetail:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
+    //NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
+    
+    NSString *filter = @"{\"include\":[\"contacts\",{\"projects\":[{\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}},\"userNotes\",\"images\"]},{\"bids\":[\"company\",\"contact\",\"project\"]}]}";
     [self HTTP_GET:[self url:[NSString stringWithFormat:kUrlCompanyDetail, (long)recordId.integerValue]] parameters:@{@"filter":filter} success:^(id object) {
         
         DB_Company *item = [self saveManageObjectCompany:object];
@@ -1752,7 +1780,7 @@
 
 - (void)updateProject:(NSNumber*)projectId project:(NSDictionary*)project success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:kUrlEditProject, projectId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlEditProject, (long)projectId.integerValue];
     
     [self HTTP_PUT_BODY:[self url:url] parameters:project success:^(id object) {
         [self saveManageObjectProject:object];
@@ -1765,7 +1793,7 @@
 
 - (void)projectType:(NSNumber*)typeId success:(APIBlock)success failure:(APIBlock)failure {
   
-    NSString *url = [NSString stringWithFormat:kUrlProjectType, typeId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectType, (long)typeId.integerValue];
     
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
@@ -1776,7 +1804,7 @@
 
 - (void)projectStage:(NSNumber*)stageId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:kUrlProjectStage, stageId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectStage, (long)stageId.integerValue];
     
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
         success(object);
@@ -1787,9 +1815,29 @@
 
 - (void)projectJuridictionId:(NSNumber*)jurisdictionId success:(APIBlock)success failure:(APIBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:kUrlProjectStage, jurisdictionId.integerValue];
+    NSString *url = [NSString stringWithFormat:kUrlProjectStage, (long)jurisdictionId.integerValue];
     
     [self HTTP_GET:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)listCounties:(NSString*)code success:(APIBlock)success failure:(APIBlock)failure{
+    NSString *filter = [NSString stringWithFormat:@"{\"where\":{\"state\":\"%@\"},\"order\":\"countyName\"}", code];
+    NSDictionary *parameter = @{@"filter":filter};
+    [self HTTP_GET:[self url:kUrlCounty] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+}
+
+- (void)findCounty:(NSString*)code success:(APIBlock)success failure:(APIBlock)failure{
+    NSString *filter = [NSString stringWithFormat:@"{\"where\":{\"fipsCountyId\":\"%@\"},\"order\":\"countyName\"}", code];
+    NSDictionary *parameter = @{@"filter":filter};
+    [self HTTP_GET:[self url:kUrlCounty] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

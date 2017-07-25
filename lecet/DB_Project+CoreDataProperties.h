@@ -2,82 +2,83 @@
 //  DB_Project+CoreDataProperties.h
 //  lecet
 //
-//  Created by Harry Herrys Camigla on 9/9/16.
-//  Copyright © 2016 Dom and TOm. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Harry Herrys Camigla on 6/22/17.
+//  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
 #import "DB_Project.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DB_Project (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *addendaInd;
-@property (nullable, nonatomic, retain) NSString *address1;
-@property (nullable, nonatomic, retain) NSString *address2;
-@property (nullable, nonatomic, retain) NSString *availableFrom;
-@property (nullable, nonatomic, retain) NSString *bidDate;
-@property (nullable, nonatomic, retain) NSString *bidSubmitTo;
-@property (nullable, nonatomic, retain) NSString *bidTimeZone;
-@property (nullable, nonatomic, retain) NSString *bidYearMonth;
-@property (nullable, nonatomic, retain) NSString *bidYearMonthDay;
-@property (nullable, nonatomic, retain) NSString *bondBidInd;
-@property (nullable, nonatomic, retain) NSString *bondPaymentInd;
-@property (nullable, nonatomic, retain) NSString *bondPfrmInd;
-@property (nullable, nonatomic, retain) NSString *city;
-@property (nullable, nonatomic, retain) NSString *cnProjectUrl;
-@property (nullable, nonatomic, retain) NSString *contractNbr;
-@property (nullable, nonatomic, retain) NSString *country;
-@property (nullable, nonatomic, retain) NSString *county;
-@property (nullable, nonatomic, retain) NSString *currencyType;
-@property (nullable, nonatomic, retain) NSString *details;
-@property (nullable, nonatomic, retain) NSString *dodgeNumber;
-@property (nullable, nonatomic, retain) NSNumber *dodgeVersion;
-@property (nullable, nonatomic, retain) NSDecimalNumber *estHigh;
-@property (nullable, nonatomic, retain) NSDecimalNumber *estLow;
-@property (nullable, nonatomic, retain) NSString *fipsCounty;
-@property (nullable, nonatomic, retain) NSString *firstPublishDate;
-@property (nullable, nonatomic, retain) NSNumber *geocodeLat;
-@property (nullable, nonatomic, retain) NSNumber *geocodeLng;
-@property (nullable, nonatomic, retain) NSString *geoLocationType;
-@property (nullable, nonatomic, retain) NSString *geoType;
-@property (nullable, nonatomic, retain) NSNumber *isHappenSoon;
-@property (nullable, nonatomic, retain) NSNumber *isHidden;
-@property (nullable, nonatomic, retain) NSNumber *isRecentAdded;
-@property (nullable, nonatomic, retain) NSNumber *isRecentUpdate;
-@property (nullable, nonatomic, retain) NSString *lastPublishDate;
-@property (nullable, nonatomic, retain) NSString *notes;
-@property (nullable, nonatomic, retain) NSString *ownerClass;
-@property (nullable, nonatomic, retain) NSString *planInd;
-@property (nullable, nonatomic, retain) NSString *primaryProjectTypeBuildingOrHighway;
-@property (nullable, nonatomic, retain) NSNumber *primaryProjectTypeId;
-@property (nullable, nonatomic, retain) NSString *primaryProjectTypeTitle;
-@property (nullable, nonatomic, retain) NSString *priorPublishDate;
-@property (nullable, nonatomic, retain) NSString *projDlvrySys;
-@property (nullable, nonatomic, retain) NSNumber *projectCategoryId;
-@property (nullable, nonatomic, retain) NSString *projectCategoryTitle;
-@property (nullable, nonatomic, retain) NSNumber *projectGroupId;
-@property (nullable, nonatomic, retain) NSString *projectGroupTitle;
-@property (nullable, nonatomic, retain) NSString *projectStage;
-@property (nullable, nonatomic, retain) NSNumber *projectStageId;
-@property (nullable, nonatomic, retain) NSString *projectStageName;
-@property (nullable, nonatomic, retain) NSNumber *projectStageParentId;
-@property (nullable, nonatomic, retain) NSNumber *recordId;
-@property (nullable, nonatomic, retain) NSString *specAvailable;
-@property (nullable, nonatomic, retain) NSString *state;
-@property (nullable, nonatomic, retain) NSString *statusProjDlvrySys;
-@property (nullable, nonatomic, retain) NSString *statusText;
-@property (nullable, nonatomic, retain) NSString *targetFinishDate;
-@property (nullable, nonatomic, retain) NSString *targetStartDate;
-@property (nullable, nonatomic, retain) NSString *title;
-@property (nullable, nonatomic, retain) NSString *unionDesignation;
-@property (nullable, nonatomic, retain) NSString *zip5;
-@property (nullable, nonatomic, retain) NSString *zipPlus4;
-@property (nullable, nonatomic, retain) NSString *projectNotes;
-@property (nullable, nonatomic, retain) NSString *stdIncludes;
++ (NSFetchRequest<DB_Project *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSString *addendaInd;
+@property (nullable, nonatomic, copy) NSString *address1;
+@property (nullable, nonatomic, copy) NSString *address2;
+@property (nullable, nonatomic, copy) NSString *availableFrom;
+@property (nullable, nonatomic, copy) NSString *bidDate;
+@property (nullable, nonatomic, copy) NSString *bidSubmitTo;
+@property (nullable, nonatomic, copy) NSString *bidTimeZone;
+@property (nullable, nonatomic, copy) NSString *bidYearMonth;
+@property (nullable, nonatomic, copy) NSString *bidYearMonthDay;
+@property (nullable, nonatomic, copy) NSString *bondBidInd;
+@property (nullable, nonatomic, copy) NSString *bondPaymentInd;
+@property (nullable, nonatomic, copy) NSString *bondPfrmInd;
+@property (nullable, nonatomic, copy) NSString *city;
+@property (nullable, nonatomic, copy) NSString *cnProjectUrl;
+@property (nullable, nonatomic, copy) NSString *contractNbr;
+@property (nullable, nonatomic, copy) NSString *country;
+@property (nullable, nonatomic, copy) NSString *county;
+@property (nullable, nonatomic, copy) NSString *currencyType;
+@property (nullable, nonatomic, copy) NSString *details;
+@property (nullable, nonatomic, copy) NSString *dodgeNumber;
+@property (nullable, nonatomic, copy) NSNumber *dodgeVersion;
+@property (nullable, nonatomic, copy) NSDecimalNumber *estHigh;
+@property (nullable, nonatomic, copy) NSDecimalNumber *estLow;
+@property (nullable, nonatomic, copy) NSString *fipsCounty;
+@property (nullable, nonatomic, copy) NSString *firstPublishDate;
+@property (nullable, nonatomic, copy) NSNumber *geocodeLat;
+@property (nullable, nonatomic, copy) NSNumber *geocodeLng;
+@property (nullable, nonatomic, copy) NSString *geoLocationType;
+@property (nullable, nonatomic, copy) NSString *geoType;
+@property (nullable, nonatomic, copy) NSNumber *isHappenSoon;
+@property (nullable, nonatomic, copy) NSNumber *isHidden;
+@property (nullable, nonatomic, copy) NSNumber *isRecentAdded;
+@property (nullable, nonatomic, copy) NSNumber *isRecentUpdate;
+@property (nullable, nonatomic, copy) NSString *lastPublishDate;
+@property (nullable, nonatomic, copy) NSString *notes;
+@property (nullable, nonatomic, copy) NSString *ownerClass;
+@property (nullable, nonatomic, copy) NSString *planInd;
+@property (nullable, nonatomic, copy) NSString *primaryProjectTypeBuildingOrHighway;
+@property (nullable, nonatomic, copy) NSNumber *primaryProjectTypeId;
+@property (nullable, nonatomic, copy) NSString *primaryProjectTypeTitle;
+@property (nullable, nonatomic, copy) NSString *priorPublishDate;
+@property (nullable, nonatomic, copy) NSString *projDlvrySys;
+@property (nullable, nonatomic, copy) NSNumber *projectCategoryId;
+@property (nullable, nonatomic, copy) NSString *projectCategoryTitle;
+@property (nullable, nonatomic, copy) NSNumber *projectGroupId;
+@property (nullable, nonatomic, copy) NSString *projectGroupTitle;
+@property (nullable, nonatomic, copy) NSString *projectNotes;
+@property (nullable, nonatomic, copy) NSString *projectStage;
+@property (nullable, nonatomic, copy) NSNumber *projectStageId;
+@property (nullable, nonatomic, copy) NSString *projectStageName;
+@property (nullable, nonatomic, copy) NSNumber *projectStageParentId;
+@property (nullable, nonatomic, copy) NSNumber *recordId;
+@property (nullable, nonatomic, copy) NSString *specAvailable;
+@property (nullable, nonatomic, copy) NSString *state;
+@property (nullable, nonatomic, copy) NSString *statusProjDlvrySys;
+@property (nullable, nonatomic, copy) NSString *statusText;
+@property (nullable, nonatomic, copy) NSString *stdIncludes;
+@property (nullable, nonatomic, copy) NSString *targetFinishDate;
+@property (nullable, nonatomic, copy) NSString *targetStartDate;
+@property (nullable, nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, copy) NSString *unionDesignation;
+@property (nullable, nonatomic, copy) NSString *zip5;
+@property (nullable, nonatomic, copy) NSString *zipPlus4;
+@property (nullable, nonatomic, copy) NSNumber *hasNotesImages;
 @property (nullable, nonatomic, retain) NSSet<DB_Bid *> *relationshipBid;
 @property (nullable, nonatomic, retain) DB_Company *relationshipCompany;
 @property (nullable, nonatomic, retain) NSSet<DB_Participant *> *relationshipParticipants;

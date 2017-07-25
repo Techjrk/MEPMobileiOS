@@ -19,7 +19,6 @@
                 <outlet property="containerView" destination="2Mb-GO-RHK" id="enb-IL-zPk"/>
                 <outlet property="dateTimePicker" destination="PGv-Ma-2W5" id="nGH-gf-K7l"/>
                 <outlet property="fieldCounty" destination="zYw-L5-4NA" id="6E5-m9-7uQ"/>
-                <outlet property="fieldJurisdiction" destination="h5u-Nt-90i" id="1Ml-uB-NpO"/>
                 <outlet property="fieldStage" destination="XA2-8y-JuI" id="g6z-kD-zFs"/>
                 <outlet property="fieldTargetSetDate" destination="LNJ-Y0-aPS" id="tgp-vL-Qyf"/>
                 <outlet property="fieldType" destination="dvb-RP-I0A" id="esO-KT-ua2"/>
@@ -266,10 +265,6 @@
                                     <rect key="frame" x="12" y="659" width="352.5" height="56"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5u-Nt-90i" customClass="FilterLabelView">
-                                    <rect key="frame" x="11.5" y="715" width="352.5" height="56"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -278,8 +273,6 @@
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="centerX" secondItem="dvb-RP-I0A" secondAttribute="centerX" id="5jW-C2-fN3"/>
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="height" secondItem="dvb-RP-I0A" secondAttribute="height" id="8FL-OZ-hjR"/>
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="width" secondItem="dvb-RP-I0A" secondAttribute="width" id="AGp-UD-Wg5"/>
-                                <constraint firstItem="h5u-Nt-90i" firstAttribute="width" secondItem="LNJ-Y0-aPS" secondAttribute="width" id="FIM-IE-TnX"/>
-                                <constraint firstItem="h5u-Nt-90i" firstAttribute="centerX" secondItem="LNJ-Y0-aPS" secondAttribute="centerX" id="FUW-T6-cvu"/>
                                 <constraint firstItem="dvb-RP-I0A" firstAttribute="height" secondItem="zYw-L5-4NA" secondAttribute="height" id="GnA-R4-1SL"/>
                                 <constraint firstItem="dvb-RP-I0A" firstAttribute="width" secondItem="zYw-L5-4NA" secondAttribute="width" id="IiR-4U-4LK"/>
                                 <constraint firstAttribute="trailing" secondItem="Giy-xL-DOj" secondAttribute="trailing" id="Ijw-YD-yOa"/>
@@ -292,7 +285,6 @@
                                 <constraint firstItem="LNJ-Y0-aPS" firstAttribute="height" secondItem="XA2-8y-JuI" secondAttribute="height" id="SiB-OW-gSm"/>
                                 <constraint firstItem="XA2-8y-JuI" firstAttribute="top" secondItem="dvb-RP-I0A" secondAttribute="bottom" id="TbJ-mz-4kn"/>
                                 <constraint firstAttribute="trailing" secondItem="vb0-A6-XcH" secondAttribute="trailing" id="UxB-qY-29O"/>
-                                <constraint firstItem="h5u-Nt-90i" firstAttribute="top" secondItem="LNJ-Y0-aPS" secondAttribute="bottom" id="WhU-cX-Jg3"/>
                                 <constraint firstItem="aW0-FM-WHu" firstAttribute="top" secondItem="Giy-xL-DOj" secondAttribute="bottom" id="cTq-jg-1Io"/>
                                 <constraint firstAttribute="trailing" secondItem="aW0-FM-WHu" secondAttribute="trailing" id="eDY-v8-9C9"/>
                                 <constraint firstAttribute="height" constant="600" id="fN9-yv-fbW"/>
@@ -300,7 +292,6 @@
                                 <constraint firstItem="LNJ-Y0-aPS" firstAttribute="width" secondItem="XA2-8y-JuI" secondAttribute="width" id="gtI-8I-S73"/>
                                 <constraint firstItem="dvb-RP-I0A" firstAttribute="centerX" secondItem="zYw-L5-4NA" secondAttribute="centerX" id="mD4-h1-nHG"/>
                                 <constraint firstItem="zYw-L5-4NA" firstAttribute="centerX" secondItem="vb0-A6-XcH" secondAttribute="centerX" id="q1n-Wx-KM9"/>
-                                <constraint firstItem="h5u-Nt-90i" firstAttribute="height" secondItem="LNJ-Y0-aPS" secondAttribute="height" id="sjm-pW-9ZO"/>
                                 <constraint firstItem="LNJ-Y0-aPS" firstAttribute="centerX" secondItem="XA2-8y-JuI" secondAttribute="centerX" id="xm5-Sa-Q6A"/>
                             </constraints>
                         </view>

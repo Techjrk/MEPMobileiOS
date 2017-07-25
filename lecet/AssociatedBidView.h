@@ -16,6 +16,7 @@
 #define ASSOCIATED_BID_DESIGNATION                      @"ASSOCIATED_BID_DESIGNATION"
 #define ASSOCIATED_BID_GEOCODE_LAT                      @"ASSOCIATED_BID_GEOCODE_LAT"
 #define ASSOCIATED_BID_GEOCODE_LNG                      @"ASSOCIATED_BID_GEOCODE_LNG"
+#define ASSOCIATED_BID_HAS_NOTESIMAGES                       @"ASSOCIATED_BID_HAS_NOTESIMAGES"
 
 @interface AssociatedBidView : BaseViewClass
 - (void)setInfo:(id)info;

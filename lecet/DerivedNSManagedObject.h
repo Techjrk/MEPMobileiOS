@@ -26,8 +26,8 @@
 + (nullable NSDate *) getDate:(nullable NSDate *)fromDate daysAhead:(NSUInteger)days;
 + (nullable id)objectOrNil:(nullable id)object;
 + (nonnull id)createEntity;
-+ (nullable id)fetchObjectForPredicate:(nullable NSPredicate *)predicate key:(nullable NSString *)key ascending:(BOOL)ascending;
-+ (nullable NSArray *)fetchObjectsForPredicate:(nullable NSPredicate *)predicate key:(nullable NSString *)key ascending:(BOOL)ascending;
++ (nullable id)fetchObjectForPredicate:(nullable NSPredicate *)predicate key:(nullable id)key ascending:(BOOL)ascending;
++ (nullable NSArray *)fetchObjectsForPredicate:(nullable NSPredicate *)predicate key:(nullable id)key ascending:(BOOL)ascending;
 
 // Instance Functions
 - (void)saveContext;

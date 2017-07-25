@@ -37,12 +37,19 @@
 @implementation ProjectFilterView
 @synthesize scrollView;
 @synthesize projectFilterViewDelegate;
-@synthesize searchFilter;
+@synthesize dictLocation;
+@synthesize dictProjectType;
+@synthesize dictProjectValue;
+@synthesize dictUpdatedWithin;
+@synthesize dictJurisdiction;
+@synthesize dictProjectStage;
+@synthesize dictBiddingWithin;
+@synthesize dictBH;
+@synthesize dictWorkType;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    self.searchFilter = [NSMutableDictionary new];
     CGFloat fieldHeight = FIELD_VIEW_HEIGHT;
     _constraintFieldHeight.constant = fieldHeight;
     _constraintFieldTypeHeight.constant = fieldHeight;
@@ -156,151 +163,6 @@
     
 }
 
-- (void)setFilterModelInfo:(FilterModel)filterModel value:(id)val{
-    NSString *title;
-    switch (filterModel) {
-        case FilterModelLocation:{
-            [_fieldLocation setInfo:val];
-            
-            NSMutableDictionary *itemdict = [NSMutableDictionary new];
-            
-            for (NSDictionary *item in _fieldLocation.openEntryFields) {
-                NSString *field = item[@"FIELD"];
-                NSString *value = [item[@"VALUE"] uppercaseString];
-                
-                if (value.length>0) {
-                    itemdict[field] = value;
-                }
-            }
-            
-            self.searchFilter[@"projectLocation"] = itemdict;
-            break;
-        }
-        case FilterModelType:{
-            
-            break;
-        }
-        case FilterModelValue:{
-            
-            NSDictionary *dict = val;
-            NSString *value;
-            
-            NSNumberFormatter *formatter = [NSNumberFormatter new];
-            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            
-            NSNumber *min = dict[@"min"];
-            NSNumber *max = dict[@"max"];
-            
-            if (max) {
-                value = [NSString stringWithFormat:@"$ %@ - $ %@", [formatter stringFromNumber:min], [formatter stringFromNumber:max]];
-            } else {
-                value = [NSString stringWithFormat:@"$ %@ - MAX", [formatter stringFromNumber:min]];
-            }
-                
-            [_fieldValue setInfo:@[@{@"entryID": @(0), @"entryTitle": value}]];
-            
-            self.searchFilter[@"projectValue"] = dict;
-
-            break;
-        }
-        case FilterModelUpdated:{
-
-            title = [self getItem:val keyName:PROJECT_SELECTION_TITLE];
-            [_fieldUpdated setValue:title];
-            
-            NSNumber *value = (NSNumber*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
-            
-            if (value.integerValue>0) {
-                
-                self.searchFilter[@"updatedInLast"] = value;
-            } else {
-                self.searchFilter[@"updatedInLast"] = @(0);
-            }
-            
-            break;
-        }
-        case FilterModelJurisdiction:{
-            NSArray *juristiction = val;
-            [_fieldJurisdiction setValue:[juristiction componentsJoinedByString:@","]];
-            break;
-        }
-        case FilterModelStage:{
-            NSArray *stage = val;
-            [_fieldStage setValue:[stage componentsJoinedByString:@","]];
-            
-            break;
-        }
-        case FilterModelBidding:{
-            
-            title = [self getItem:val keyName:PROJECT_SELECTION_TITLE];
-            [_fieldBidding setValue:title];
-            
-            NSNumber *value = (NSNumber*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
-            
-        
-            if (value.integerValue!=0) {
-                
-                NSString *date = [DerivedNSManagedObject dateStringFromDateDay:dateAdd(-(value.integerValue))];
-                
-                //self.searchFilter[@"biddingWithin"] = @{ @"min": date };
-                self.searchFilter[@"biddingInNext"] = value;
-                
-            } else {
-                //[self.searchFilter removeObjectForKey:@"biddingWithin"];
-                //self.searchFilter[@"biddingWithin"] = @{ @"valZero": @(YES) };
-                self.searchFilter[@"biddingInNext"] = @(0);
-            }
-            
-            break;
-        }
-        case FilterModelBH:{
-            
-            title = [self getItem:val keyName:PROJECT_SELECTION_TITLE];
-            [_fieldBH setValue:title];
-            
-            NSArray *value = (NSArray*)[self getItem:val keyName:PROJECT_SELECTION_VALUE];
-            
-            self.searchFilter[@"buildingOrHighway"] = @{@"inq":value};
-            self.searchFilter[@"buildingOrHighway_node"] = title;
-            
-            break;
-        }
-        case FilterModelOwner:{
-            
-            title = [self getItem:val keyName:@"title"];
-            [_fieldOwner setValue:title];
-            self.searchFilter[@"ownerType"] = @{ @"inq":@[title]};
-            self.searchFilter[@"ownerType_node"] = title;
-            
-            break;
-        }
-        case FilterModelWork:{
-            
-            title = [self getItem:val keyName:@"title"];
-            [_fieldWork setValue:title];
-            self.searchFilter[@"workTypeId"] = @{ @"inq":@[val[@"id"]]};
-            self.searchFilter[@"workTypeId_node"] = title;
-            
-            break;
-        }
-        case FilterModelProjectType:{
-            NSMutableArray *items = [NSMutableArray new];
-            for (NSString *item in val) {
-                [items addObject:@{@"entryID": @(0), @"entryTitle": item}];
-            }
-            
-            [_fieldType setInfo:items];
-            self.searchFilter[@"type_node"] = items;
-            
-            break;
-        }
-        case FilterModelEstLow : {
-            break;
-        }
-
-    }
-}
-
 - (NSString *)getItem:(id)info keyName:(id)key {
     return info[key];
 }
@@ -314,15 +176,45 @@
     if (filterModel == FilterModelLocation) {
         collectionViewContentSizeHeight = _fieldLocation.collectionView.contentSize.height;
         constraintHeight = _constraintFieldHeight;
+        
+        if ([_fieldLocation isEmpty]) {
+            self.dictLocation = nil;
+        }
     }
+    
     if (filterModel == FilterModelProjectType) {
         collectionViewContentSizeHeight = _fieldType.collectionView.contentSize.height;
         constraintHeight = _constraintFieldTypeHeight;
         [_fieldType.collectionView layoutIfNeeded];
+        
+        if ([_fieldType isEmpty]) {
+            self.dictProjectType = nil;
+            [self.projectFilterViewDelegate tappedProjectTypeChanged:[NSMutableArray new]];
+
+        } else {
+            [UIView animateWithDuration:0.5 animations:^{
+                
+            } completion:^(BOOL finished) {
+                
+                NSMutableArray *titles = [NSMutableArray new];
+                
+                for (NSDictionary *item in [_fieldType getCollectionItemsData]) {
+                    NSString *title = item[ENTRYTITLE];
+                    [titles addObject:title];
+                }
+                
+                [self.projectFilterViewDelegate tappedProjectTypeChanged:titles];
+            }];
+        }
     }
+    
     if (filterModel == FilterModelValue) {
         collectionViewContentSizeHeight = _fieldValue.collectionView.contentSize.height;
         constraintHeight = _constraintFieldValueHeight;
+        
+        if ([_fieldValue isEmpty]) {
+            self.dictProjectValue = nil;
+        }
     }
     
     CGFloat additionalHeight;
@@ -376,4 +268,166 @@
     return date;
 }
 
+- (void)setLocationValue:(id)value {
+    [_fieldLocation setInfo:value];
+    
+    NSMutableDictionary *itemdict = [NSMutableDictionary new];
+    
+    for (NSDictionary *item in _fieldLocation.openEntryFields) {
+        NSString *field = item[@"FIELD"];
+        NSString *value = [item[@"VALUE"] uppercaseString];
+        
+        if (value.length>0) {
+            itemdict[field] = value;
+        }
+    }
+    
+    if (itemdict.count>0) {
+        self.dictLocation = @{@"projectLocation": itemdict};
+    } else {
+        self.dictLocation = nil;
+        
+    }
+
+}
+
+- (void)setProjectTypeValue:(id)value titles:(NSArray*)titles {
+    NSMutableArray *items = [NSMutableArray new];
+    for (NSString *item in titles) {
+        [items addObject:@{@"entryID": @(0), @"entryTitle": item}];
+    }
+    
+    [_fieldType setInfo:items];
+    self.dictProjectType = @{@"projectTypeId":@{@"inq":value}};
+}
+
+- (void)setValuationValue:(id)value {
+    NSDictionary *dict = value;
+    NSString *stringValue;
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *min = dict[@"min"];
+    NSNumber *max = dict[@"max"];
+    
+    if (max) {
+        stringValue = [NSString stringWithFormat:@"$ %@ - $ %@", [formatter stringFromNumber:min], [formatter stringFromNumber:max]];
+    } else {
+        stringValue = [NSString stringWithFormat:@"$ %@ - MAX", [formatter stringFromNumber:min]];
+    }
+    
+    [_fieldValue setInfo:@[@{@"entryID": @(0), @"entryTitle": stringValue}]];
+    
+    self.dictProjectValue = @{@"projectValue":dict};
+    
+}
+
+- (void)setUpdatedWithinValue:(id)value {
+    NSString *title = [self getItem:value keyName:PROJECT_SELECTION_TITLE];
+    [_fieldUpdated setValue:title];
+    
+    NSNumber *numberValue = (NSNumber*)[self getItem:value keyName:PROJECT_SELECTION_VALUE];
+    
+    if (numberValue.integerValue>0) {
+        self.dictUpdatedWithin = @{@"updatedInLast": numberValue};
+    } else {
+        self.dictUpdatedWithin = nil;
+    }
+
+}
+
+- (void)setJurisdictionValue:(id)value titles:(NSArray*)titles{
+    self.dictJurisdiction = @{@"jurisdictions":@{@"inq":value}};
+    [_fieldJurisdiction setValue:titles[0]];
+}
+
+- (void)setProjectStageValue:(id)value titles:(NSArray*)titles {
+    [_fieldStage setValue:[titles componentsJoinedByString:@","]];
+    self.dictProjectStage = @{@"projectStageId":@{@"inq":value}};
+}
+
+- (void)setBiddingWithinValue:(id)value {
+    NSString *title = [self getItem:value keyName:PROJECT_SELECTION_TITLE];
+    [_fieldBidding setValue:title];
+    
+    NSNumber *numberValue = (NSNumber*)[self getItem:value keyName:PROJECT_SELECTION_VALUE];
+    
+    if (numberValue.integerValue!=0) {
+        self.dictBiddingWithin = @{@"biddingInNext":numberValue};
+    } else {
+        self.dictBiddingWithin = nil;
+    }
+}
+
+- (void)setBHValue:(id)value {
+    NSString *title = [self getItem:value keyName:PROJECT_SELECTION_TITLE];
+    [_fieldBH setValue:title];
+    
+    NSArray *array = (NSArray*)[self getItem:value keyName:PROJECT_SELECTION_VALUE];
+    
+    self.dictBH = @{@"buildingOrHighway":@{@"inq":array}};
+
+}
+
+- (void)setOwnerTypeValue:(id)value {
+    NSString *title = [self getItem:value keyName:@"title"];
+    [_fieldOwner setValue:title];
+    self.dictOwnerType = @{@"ownerType": @{ @"inq":@[title]}};
+}
+
+- (void)setWorkTypeValue:(id)value {
+    NSString *title = [self getItem:value keyName:@"title"];
+    [_fieldWork setValue:title];
+    self.dictWorkType = @{@"workTypeId":@{@"inq":@[value[@"id"]]}};
+}
+
+- (NSMutableDictionary *)filter {
+    
+    NSMutableDictionary *urlFilter = [NSMutableDictionary new];
+    
+    urlFilter[@"dashboardTypes"] = @(YES);
+    
+    if (self.dictLocation) {
+        [urlFilter addEntriesFromDictionary:self.dictLocation];
+    }
+    
+    if (self.dictProjectType) {
+        [urlFilter addEntriesFromDictionary:self.dictProjectType];
+    }
+
+    if (self.dictProjectValue) {
+        [urlFilter addEntriesFromDictionary:self.dictProjectValue];
+    }
+
+    if (self.dictUpdatedWithin) {
+        [urlFilter addEntriesFromDictionary:self.dictUpdatedWithin];
+    }
+
+    if (self.dictJurisdiction) {
+        [urlFilter addEntriesFromDictionary:self.dictJurisdiction];
+    }
+
+    if (self.dictProjectStage) {
+        [urlFilter addEntriesFromDictionary:self.dictProjectStage];
+    }
+
+    if (self.dictBiddingWithin) {
+        [urlFilter addEntriesFromDictionary:self.dictBiddingWithin];
+    }
+
+    if (self.dictBH) {
+        [urlFilter addEntriesFromDictionary:self.dictBH];
+    }
+
+    if (self.dictOwnerType) {
+        [urlFilter addEntriesFromDictionary:self.dictOwnerType];
+    }
+
+    if (self.dictWorkType) {
+        [urlFilter addEntriesFromDictionary:self.dictWorkType];
+    }
+    
+    return [@{@"filter":@{@"searchFilter":urlFilter}} mutableCopy] ;
+}
 @end

@@ -52,8 +52,8 @@
 "PROJECT_DETAIL_PROJECT_ID"                 =               "Project ID";
 "PROJECT_DETAIL_ADDRESS"                    =               "Address";
 "PROJECT_DETAIL_PROJECT_TYPE"               =               "Project Type(s)";
-"PROJECT_DETAIL_ESTLOW"                     =               "Est. Low";
-"PROJECT_DETAIL_ESTHIGH"                    =               "Est. High";
+"PROJECT_DETAIL_ESTLOW"                     =               "Valuation";
+"PROJECT_DETAIL_ESTHIGH"                    =               "Valuation";
 "PROJECT_DETAIL_STAGE"                      =               "Stage";
 "PROJECT_DETAIL_DATE_ADDED"                 =               "Date Added";
 "PROJECT_DETAIL_BIDDATE"                    =               "Bid Date";
@@ -410,6 +410,7 @@
 "FILTER_VIEW_STAGES"                        =               "stages";
 "FILTER_VIEW_PROJECTTYPE"                   =               "project types";
 "FILTER_VIEW_APPLY"                         =               "APPLY";
+"FILTER_VIEW_COUNTY"                        =               "county";
 
 //SaveSearchChangeItemView
 "SAVE_SEARCH_TITLE"                         =               "You have made changes to this saved search";
@@ -502,6 +503,8 @@
 "NPVC_ESTLOW_TITLE"                         =               "EST LOW VALUE";
 "NPVC_JURISDICTION"                         =               "JURISDICTION";
 "NPVC_TITLE_REQUIRED"                       =               "Project Title is required";
+"NPVC_COUNTY_REQUIRED"                      =               "County is required";
+"NPVC_TYPE_REQUIRED"                        =               "Type is required";
 "NPVC_OK"                                   =               "Ok";
 
 //UserLocationPinViewController
