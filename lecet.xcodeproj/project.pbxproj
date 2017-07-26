@@ -3519,8 +3519,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3540,10 +3540,10 @@
 					"$(PROJECT_DIR)/lecet/viewer",
 					"$(PROJECT_DIR)/lecet/PanoLite/viewer",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
+				PROVISIONING_PROFILE = "ab2ab9ce-085f-4cda-9045-664dc15f0fbc";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
 			};
 			name = Debug;
 		};
@@ -3552,8 +3552,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3573,10 +3573,10 @@
 					"$(PROJECT_DIR)/lecet/viewer",
 					"$(PROJECT_DIR)/lecet/PanoLite/viewer",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liuna;
 				PRODUCT_NAME = "LECET MEP";
-				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
+				PROVISIONING_PROFILE = "ab2ab9ce-085f-4cda-9045-664dc15f0fbc";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP AppStore";
 			};
 			name = Release;
 		};
