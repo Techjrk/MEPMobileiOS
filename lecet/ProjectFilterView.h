@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import <DataManagerSDK/constants.h>
+
 #import "BaseViewClass.h"
 #import "FilterEntryView.h"
 #import "FilterLabelView.h"

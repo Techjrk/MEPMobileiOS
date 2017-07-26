@@ -19,5 +19,8 @@
 @property (strong, nonnull) NSString *pushToken;
 @property (nonatomic,strong) NSNumber * _Nullable notificationPayloadRecordID;
 @property (nonatomic) BOOL isLogged;
+
+- (UINavigationController*)navigationController;
+
 @end
 

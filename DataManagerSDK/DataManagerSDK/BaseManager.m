@@ -9,8 +9,11 @@
 #import "BaseManager.h"
 
 #import "SFHFKeychainUtils.h"
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
 #import <Foundation/NSKeyedArchiver.h>
+#import "DerivedNSManagedObject.h"
+#import "DataManager.h"
+#import "constants.h"
 
 @interface BaseManager(){
     BOOL isNoInternetShown;
@@ -337,14 +340,19 @@
 }
 
 - (UIViewController*)getActiveViewController {
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    id app = self.application.delegate;
     
-    UIViewController *controller = app.navController.presentedViewController;
-    if (controller == nil) {
-        controller = app.navController.topViewController;
+    if([app respondsToSelector:@selector(navigationController)]){
+        UIViewController *controller = [app navigationController].presentedViewController;
+        if (controller == nil) {
+            controller = [app navigationController].topViewController;
+        }
+
+        return controller;
+
     }
-    
-    return controller;
+
+    return nil;
 }
 
 - (void)enableUserTouch:(BOOL)enabled {

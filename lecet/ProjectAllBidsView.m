@@ -9,8 +9,8 @@
 #import "ProjectAllBidsView.h"
 #import "ProjectBidItemCollectionViewCell.h"
 #import "ProjectBidView.h"
-#import "DB_Bid.h"
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Bid.h>
+#import <DataManagerSDK/DB_Project.h>
 #import "ProjectSortCVCell.h"
 
 @interface ProjectAllBidsView ()<UICollectionViewDelegate, UICollectionViewDataSource>{

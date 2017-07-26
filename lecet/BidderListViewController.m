@@ -11,8 +11,10 @@
 #import "ProjectNavigationBarView.h"
 #import "ProjectBiddersCollectionViewCell.h"
 #import "CompanyDetailViewController.h"
-#import "DB_Bid.h"
-#import "DB_Company.h"
+
+#import <DataManagerSDK/DB_Company.h>
+#import <DataManagerSDK/DB_Bid.h>
+
 
 #define PROJECT_BIDDER_CONTAINER_BG_COLOR           RGB(245, 245, 245)
 

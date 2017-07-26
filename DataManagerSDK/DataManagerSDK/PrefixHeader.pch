@@ -1,12 +1,13 @@
 //
 //  PrefixHeader.pch
-//  lecet
+//  DataManagerSDK
 //
-//  Created by Harry Herrys Camigla on 4/28/16.
-//  Copyright © 2016 Dom and TOm. All rights reserved.
+//  Created by Harry Herrys Camigla on 7/26/17.
+//  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
-#import <Availability.h>
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
 
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iOS SDK 3.0 and later."
@@ -29,13 +30,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIScreen.h>
-#import "Utilities.h"
-#import "GoogleAnalytics.h"
-#import <DataManagerSDK/constants.h>
-
-#import <DataManagerSDK/BaseManager.h>
-#import <DataManagerSDK/DataManager.h>
-#import <DataManagerSDK/DerivedNSManagedObject.h>
-#import "ProjectFilterView.h"
+#import "constants.h"
+#import "DerivedNSManagedObject.h"
 
 #endif /* PrefixHeader_pch */

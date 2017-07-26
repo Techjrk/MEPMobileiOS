@@ -41,6 +41,8 @@
 #import "AppDelegate.h"
 #import "CustomActivityIndicatorView.h"
 
+#import <Intents/Intents.h>
+
 #define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
 #define DASHBOARD_BIDS_BG_COLOR                 RGB(245, 245, 245)
 
@@ -146,7 +148,9 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
     
-    
+    [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
+        
+    } ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

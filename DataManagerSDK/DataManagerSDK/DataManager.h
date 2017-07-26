@@ -9,6 +9,7 @@
 #import "BaseManager.h"
 
 #import "LocationManager.h"
+#import "constants.h"
 
 #define kProduction                         0
 
@@ -44,7 +45,7 @@
 - (NSDate*)getDateFirstDay:(NSDate*) date;
 - (NSDate*)getDateLastDay:(NSDate*)date;
 // API USER
-- (void)userLogin:(NSString*)email password:(NSString*)password success:(APIBlock)success failure:(APIBlock)failure;
+- (void)userLogin:(NSString*)email password:(NSString*)password success:(APIBlock)success failure:(APIBlock)failure pushToken:(NSString*)pushToken;
 - (void)userActivitiesForRecordId:(NSNumber*)recordId viewType:(NSUInteger)viewType success:(APIBlock) success failure:(APIBlock)failure;
 - (void)registerFingerPrintForSuccess:(APIBlock)success failure:(APIBlock)failure;
 - (void)loginFingerPrintForSuccess:(APIBlock)success failure:(APIBlock)failure;

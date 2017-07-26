@@ -7,7 +7,8 @@
 //
 
 #import "LocationManager.h"
-#import "AppDelegate.h"
+
+#import "constants.h"
 
 @interface LocationManager()<CLLocationManagerDelegate>{
     NSDate *currentDateTime;
@@ -56,9 +57,16 @@
 
     self.currentLocation = [[locations lastObject] copy];
     
+#warning return this code
+    /*
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
     if (appDelegate.isLogged) {
+      */
+    //AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    if (YES) {
+        
         NSDate *dateTime = [NSDate date];
         
         if (currentDateTime == nil) {

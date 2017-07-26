@@ -29,6 +29,7 @@
 // Updated with ARC support.  Originally forked from:
 // https://github.com/beelsebob/F1Pad/commit/66ea68e08eef0a66c706c45583e071f0a032f3c8
 
+#import <AVFoundation/AVFoundation.h>
 
 @interface SFHFKeychainUtils : NSObject
 

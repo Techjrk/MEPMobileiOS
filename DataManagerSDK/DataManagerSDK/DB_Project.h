@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#import "DerivedNSManagedObject.h"
+
 @class DB_Bid, DB_Participant, DB_Company;
 
 NS_ASSUME_NONNULL_BEGIN

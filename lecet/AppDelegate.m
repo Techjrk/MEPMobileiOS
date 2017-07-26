@@ -119,6 +119,10 @@
     }
 }
 
+- (UINavigationController*)navigationController {
+    return self.navController;
+}
+
 - (void)checkForNotifications:(void (^)(UIBackgroundFetchResult))completionHandler {
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
 
@@ -373,7 +377,6 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    
 }
 
 @end

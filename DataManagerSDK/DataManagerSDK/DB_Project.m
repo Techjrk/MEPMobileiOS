@@ -8,6 +8,8 @@
 
 #import "DB_Project.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 @implementation DB_Project
 
 - (NSString *)getProjectType {

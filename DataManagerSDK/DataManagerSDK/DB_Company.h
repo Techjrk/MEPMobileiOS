@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#import "DerivedNSManagedObject.h"
+#import <AVFoundation/AVFoundation.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class DB_CompanyContact, DB_Bid, DB_Project;

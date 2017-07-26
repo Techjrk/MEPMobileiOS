@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#import "DerivedNSManagedObject.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DB_Contact : DerivedNSManagedObject

@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DataManagerSDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>ProjectNearMe.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>ProjectNearMeUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>lecet.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +28,26 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>B70155171CD0C56A0050CF8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B747C7CA1F28DEF5007BA14E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B796FC461F2793A600829E00</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B796FC501F2793A600829E00</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7A3ED7D1F28E0AD006ADEC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

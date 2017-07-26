@@ -16,6 +16,7 @@ typedef void(^APIBlock)(id object);
 
 // Manager Functions
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) UIApplication *application;
 
 + (id)sharedManager;
 - (void)saveContext;

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import <DataManagerSDK/constants.h>
+
 typedef enum  {
     ProjectSortBidDate = 0,
     ProjectSortLastUpdated = 1,

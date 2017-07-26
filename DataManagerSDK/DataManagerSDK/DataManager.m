@@ -19,10 +19,7 @@
 #import "DB_Participant.h"
 #import "DB_CompanyContact.h"
 
-#import "AppDelegate.h"
-#import "BusyViewController.h"
-
-#import "ProjectDetailViewController.h"
+#import "TouchIDManager.h"
 
 //Set kProduction = 1 (Production), 0 (Staging)
 
@@ -156,14 +153,12 @@
     return [kbaseUrl stringByAppendingString:url];
 }
 
-- (void)userLogin:(NSString *)email password:(NSString *)password success:(APIBlock)success failure:(APIBlock)failure {
-    
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+- (void)userLogin:(NSString *)email password:(NSString *)password success:(APIBlock)success failure:(APIBlock)failure pushToken:(NSString*)pushToken {
     
     NSDictionary *parameter = @{@"email":email, @"password":password, @"deviceType": @"ios"};
     
-    if (appDelegate.pushToken != nil) {
-        parameter = @{@"email":email, @"password":password,@"deviceToken": appDelegate.pushToken, @"deviceType": @"ios"};
+    if (pushToken != nil) {
+        parameter = @{@"email":email, @"password":password,@"deviceToken": pushToken, @"deviceType": @"ios"};
     }
     
     [[DataManager sharedManager] storeKeyChainValue:kKeychainUserIsAdmin password:@"0" serviceName:kKeychainServiceName];
@@ -739,7 +734,7 @@
     } failure:^(id object) {
         failure(object);
     } authenticated:YES];
-    
+ 
 }
 
 - (void)projectJurisdiction:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure {
@@ -1380,11 +1375,12 @@
 }
 
 - (void)showBusyScreen {
-    
+#warning return this code
+    /*
     BusyViewController *screen = [BusyViewController new];
     screen.modalPresentationStyle = UIModalPresentationCustom;
     [[self getActiveViewController] presentViewController:screen animated:NO completion:nil];
-    
+    */
 }
 
 - (void)promptMessage:(NSString*)message {
@@ -1440,6 +1436,8 @@
 }
 
 - (void)showProjectDetail:(NSNumber *)recordID {
+#warning return this code
+    /*
     if ([self isModal]) {
         [[self getActiveViewController] dismissViewControllerAnimated:NO completion:^{
             [self projectDetail:recordID success:^(id object){
@@ -1459,6 +1457,7 @@
         }failure:^(id fObject){
         }];
     }
+     */
 }
 
 - (BOOL)isModal {

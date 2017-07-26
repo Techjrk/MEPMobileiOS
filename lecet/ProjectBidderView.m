@@ -10,8 +10,8 @@
 
 #import "SectionTitleView.h"
 #import "ProjectBiddersCollectionViewCell.h"
-#import "DB_Bid.h"
-#import "DB_Company.h"
+#import <DataManagerSDK/DB_Bid.h>
+#import <DataManagerSDK/DB_Company.h>
 
 #define PROJECTBIDDERS_FONT                fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define PROJECTBIDDERS_COLOR               RGB(121, 120, 120)
