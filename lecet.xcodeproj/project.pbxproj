@@ -3521,7 +3521,6 @@
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3554,7 +3553,6 @@
 				CODE_SIGN_ENTITLEMENTS = "lecet/LECET MEP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Laborers-Employers Cooperation and Education Trust (AS94HE7VCY)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
