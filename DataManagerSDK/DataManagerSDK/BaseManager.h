@@ -15,12 +15,9 @@ typedef void(^APIBlock)(id object);
 @interface BaseManager : NSObject
 
 // Manager Functions
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UIApplication *application;
 
 + (id)sharedManager;
-- (void)saveContext;
-- (void)saveContext:(BOOL)logTime;
 
 //KEYCHAIN
 - (void)storeKeyChainValue:(NSString*)userName password:(NSString*)password serviceName:(NSString*)serviceName;

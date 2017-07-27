@@ -13,7 +13,7 @@
 #import "ProjectAllBidsView.h"
 #import "ProjectSortViewController.h"
 #import "ProjectDetailViewController.h"
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Project.h>
 
 @interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate, ProjectAllBidsViewDelegate, ProjectTabViewDelegate>{
     NSMutableArray *bidList, *upcomingBid, *pastBid;

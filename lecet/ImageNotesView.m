@@ -9,7 +9,7 @@
 #import "ImageNotesView.h"
 #import "ImageNoteCollectionViewCell.h"
 #import "PhotoViewController.h"
-#import "AFImageDownloader.h"
+#import <DataManagerSDK/AFImageDownloader.h>
 
 #define kCellIdentifier             @"kCellIdentifier"
 #define BG_COLOR                    RGB(245, 245, 245)

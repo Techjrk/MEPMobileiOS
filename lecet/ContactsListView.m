@@ -10,9 +10,9 @@
 
 #import "SectionTitleView.h"
 #import "ContactItemCollectionViewCell.h"
-#import "DB_CompanyContact.h"
+#import <DataManagerSDK/DB_CompanyContact.h>
 #import "ContactsView.h"
-#import "DB_Company.h"
+#import <DataManagerSDK/DB_Company.h>
 
 @interface ContactsListView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;

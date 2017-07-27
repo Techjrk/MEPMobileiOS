@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DB_Bid.h"
+#import <DataManagerSDK/DB_Bid.h>
 #import "BaseViewController.h"
 
 @interface ProjectDetailViewController : BaseViewController

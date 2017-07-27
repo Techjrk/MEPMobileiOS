@@ -20,7 +20,7 @@
 }
 @end
 @implementation BaseManager
-@synthesize managedObjectContext;
+@synthesize application;
 
 #pragma mark - MANAGER FUNCTIONS
 
@@ -39,32 +39,6 @@
     for (NSString *key in dictionary) {
         NSLog(@"key %@ class %@",key,[[dictionary valueForKey:key] class]);
     }
-}
-
-- (void)saveContext
-{
-    [self saveContext:NO];
-}
-
-- (void)saveContext:(BOOL)logTime
-{
-    NSDate *methodStart = [NSDate date];
-    
-    NSError *error = nil;
-    NSManagedObjectContext *moc = self.managedObjectContext;
-    if (moc != nil)
-    {
-        moc.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
-        if ([moc hasChanges] && ![moc save:&error])
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
-    
-    NSDate *methodFinish = [NSDate date];
-    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-    if (logTime) NSLog(@"executionTime = %f", executionTime);
 }
 
 #pragma mark - KEYCHAIN METHODS

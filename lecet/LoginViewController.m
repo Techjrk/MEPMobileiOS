@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 
 #import "CustomTextField.h"
+#import "AppDelegate.h"
+#import <DataManagerSDK/TouchIDManager.h>
 
 #define LOGIN_BUTTON_FONT                   fontNameWithSize(FONT_NAME_LATO_BOLD, 12.0)
 #define LOGIN_BUTTON_BG_COLOR               RGB(8, 73, 124)
@@ -166,11 +168,13 @@
         return;
     }
     
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
     [[DataManager sharedManager] userLogin:[_textFieldEmail text] password:[_textFieldPassword text] success:^(id object) {
         [self processLogin:object];
     } failure:^(id object) {
         [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"LOGIN_AUTH_ERROR_MSG")];
-    }];
+    } pushToken:appDelegate.pushToken];
 }
 
 - (IBAction)tappedTouchId:(id)sender {

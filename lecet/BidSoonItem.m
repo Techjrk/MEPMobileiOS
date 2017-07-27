@@ -8,7 +8,7 @@
 
 #import "BidSoonItem.h"
 #import <MapKit/MapKit.h>
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Project.h>
 
 #define BID_SOON_ITEMVIEW_BG_COLOR                           RGB(14, 75, 132)
 #define BID_SOON_ITEMVIEW_GROUP_DATE_BG_COLOR                RGB(4, 41, 90)

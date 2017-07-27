@@ -11,7 +11,7 @@
 #import "SectionTitleView.h"
 #import "AssociatedBidCollectionViewCell.h"
 #import "AssociatedBidView.h"
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Project.h>
 
 #define ASSOCIATED_PROJECTS_BUTTON_FONT                fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define ASSOCIATED_PROJECTS_BUTTON_COLOR               RGB(121, 120, 120)

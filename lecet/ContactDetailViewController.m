@@ -10,8 +10,8 @@
 #import "ContactNavBarView.h"
 #import "ContactDetailView.h"
 #import "ContactFieldView.h"
-#import "DB_CompanyContact.h"
-#import "DB_Company.h"
+#import <DataManagerSDK/DB_CompanyContact.h>
+#import <DataManagerSDK/DB_Company.h>
 #import <MapKit/MapKit.h>
 #import "CompanyDetailViewController.h"
 

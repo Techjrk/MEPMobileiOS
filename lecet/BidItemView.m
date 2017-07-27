@@ -9,9 +9,9 @@
 #import "BidItemView.h"
 
 #import <MapKit/MapKit.h>
-#import "DB_Bid.h"
-#import "DB_Project.h"
-#import "DB_Company.h"
+#import <DataManagerSDK/DB_Bid.h>
+#import <DataManagerSDK/DB_Project.h>
+#import <DataManagerSDK/DB_Company.h>
 
 #define BID_ITEMVIEW_BG_COLOR                           RGB(14, 75, 132)
 #define BID_ITEMVIEW_GROUP_DATE_BG_COLOR                RGB(4, 41, 90)

@@ -11,7 +11,7 @@
 #import "ProjectNavigationBarView.h"
 #import "ParticipantCollectionViewCell.h"
 #import "CompanyDetailViewController.h"
-#import "DB_Participant.h"
+#import <DataManagerSDK/DB_Participant.h>
 
 @interface ParticipantsListViewController ()<ProjectNavViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *topBar;

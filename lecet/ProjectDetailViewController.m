@@ -19,9 +19,9 @@
 #import "PushZoomAnimator.h"
 #import "CompanyDetailViewController.h"
 
-#import "DB_Project.h"
-#import "DB_Company.h"
-#import "DB_Participant.h"
+#import <DataManagerSDK/DB_Project.h>
+#import <DataManagerSDK/DB_Company.h>
+#import <DataManagerSDK/DB_Participant.h>
 
 #import "ProjectDetailStateViewController.h"
 #import "BidderListViewController.h"

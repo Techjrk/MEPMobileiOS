@@ -2059,7 +2059,6 @@
 		B701551A1CD0C56A0050CF8A /* lecet */ = {
 			isa = PBXGroup;
 			children = (
-				B70A7BA11EF2D05000F29101 /* Siri */,
 				B74C0AA41E83FA6400E91FA9 /* LECET MEP.entitlements */,
 				B6E032E51CF2ED0200D3D02C /* Util */,
 				B707BC391CEE114B0003C836 /* CustomClass */,
@@ -2479,13 +2478,6 @@
 				B707BC3B1CEE11590003C836 /* PushZoomAnimator.m */,
 			);
 			name = CustomClass;
-			sourceTree = "<group>";
-		};
-		B70A7BA11EF2D05000F29101 /* Siri */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Siri;
 			sourceTree = "<group>";
 		};
 		B725DABB1D756BCF00B6CCC4 /* GoogleAnalytics */ = {

@@ -38,7 +38,15 @@
 
 @interface DataManager : BaseManager
 //PROPERTIES
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) LocationManager *locationManager;
+@property (nonatomic) BOOL isLogged;
+
+- (void)saveContext;
+- (void)saveContext:(BOOL)logTime;
+- (BOOL)isModal;
 
 // DATE
 - (NSDateComponents*)getDateComponents:(NSDate*)date;
@@ -112,7 +120,6 @@
 
 //MISC
 - (void)featureNotAvailable;
-- (void)showBusyScreen;
 - (void)promptMessage:(NSString*)message;
 - (void)promptMessageUpdatedProject:(NSString *)message notificationPayload:(NSDictionary *)payload;
 - (void)showProjectDetail:(NSNumber *)recordID;

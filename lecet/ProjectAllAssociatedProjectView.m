@@ -9,7 +9,7 @@
 #import "ProjectAllAssociatedProjectView.h"
 #import "AssociatedBidCollectionViewCell.h"
 #import "AssociatedBidView.h"
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Project.h>
 
 @interface ProjectAllAssociatedProjectView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     NSMutableArray *collectionItems;

@@ -9,7 +9,7 @@
 #import "BidItemRecent.h"
 
 #import <MapKit/MapKit.h>
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Project.h>
 
 #define BID_ITEM_RECENT_LABEL_TITLE_COLOR                   RGB(34, 34, 34)
 #define BID_ITEM_RECENT_LABEL_TITLE_FONT                    fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)

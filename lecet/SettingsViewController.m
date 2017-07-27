@@ -10,6 +10,7 @@
 #import "ProfileNavView.h"
 #import "SettingsView.h"
 #import "ChangePasswordViewController.h"
+#import <DataManagerSDK/TouchIDManager.h>
 
 #define SETTINGS_VC_BG_COLOR RGB(245,245,245)
 #define BOTTOM_LABEL_FONT_COLOR             RGB(149,149,149)

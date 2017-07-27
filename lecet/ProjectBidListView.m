@@ -11,8 +11,8 @@
 #import "SectionTitleView.h"
 #import "ProjectBidItemCollectionViewCell.h"
 #import "ProjectBidView.h"
-#import "DB_Bid.h"
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_Bid.h>
+#import <DataManagerSDK/DB_Project.h>
 
 #define PROJECT_BID_LIST_BUTTON_FONT                fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define PROJECT_BID_LIST_BUTTON_COLOR               RGB(121, 120, 120)

@@ -10,6 +10,7 @@
 
 #import "LoginViewController.h"
 #import "DashboardViewController.h"
+#import <DataManagerSDK/TouchIDManager.h>
 
 @interface LandingViewController ()<LoginDelegate, DashboardViewControllerDelegate>{
     BOOL isLogin;

@@ -10,10 +10,11 @@
 
 #import "CustomCalendar.h"
 #import "CalendarItem.h"
-#import "DB_BidSoon.h"
-#import "DB_BidRecent.h"
-#import "DB_Bid.h"
-#import "DB_Project.h"
+#import <DataManagerSDK/DB_BidSoon.h>
+#import <DataManagerSDK/DB_BidRecent.h>
+#import <DataManagerSDK/DB_Bid.h>
+#import <DataManagerSDK/DB_Project.h>
+#import <DataManagerSDK/DataManager.h>
 #import "MenuHeaderView.h"
 #import "BidItemView.h"
 #import "BidSoonItem.h"
@@ -89,8 +90,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    appDelegate.isLogged = YES;
+    [[DataManager sharedManager] setIsLogged:YES];
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
         
@@ -160,8 +160,32 @@
 - (void)viewDidAppear:(BOOL)animated {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (appDelegate.notificationPayloadRecordID) {
-        [[DataManager sharedManager] showProjectDetail:appDelegate.notificationPayloadRecordID];
+        
+        [self showProjectDetailFromAPNS:appDelegate.notificationPayloadRecordID];
         appDelegate.notificationPayloadRecordID = nil;
+    }
+}
+
+- (void)showProjectDetailFromAPNS:(NSNumber *)recordID {
+    
+    if ([[DataManager sharedManager] isModal]) {
+        [[[DataManager sharedManager] getActiveViewController] dismissViewControllerAnimated:NO completion:^{
+            [[DataManager sharedManager] projectDetail:recordID success:^(id object){
+                ProjectDetailViewController *detail = [ProjectDetailViewController new];
+                detail.view.hidden = NO;
+                [detail detailsFromProject:object];
+                [[[DataManager sharedManager] getActiveViewController].navigationController pushViewController:detail animated:YES];
+            }failure:^(id fObject){
+            }];
+        }];
+    } else {
+        [[DataManager sharedManager] projectDetail:recordID success:^(id object){
+            ProjectDetailViewController *detail = [ProjectDetailViewController new];
+            detail.view.hidden = NO;
+            [detail detailsFromProject:object];
+            [[[DataManager sharedManager] getActiveViewController].navigationController pushViewController:detail animated:YES];
+        }failure:^(id fObject){
+        }];
     }
 }
 
