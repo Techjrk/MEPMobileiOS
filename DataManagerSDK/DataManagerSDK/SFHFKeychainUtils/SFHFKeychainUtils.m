@@ -231,8 +231,8 @@ static NSString *SFHFKeychainUtilsErrorDomain = @"SFHFKeychainUtilsErrorDomain";
     
 	// Set up a query dictionary with the base query attributes: item type (generic), username, and service
 	
-	NSArray *keys = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClass, kSecAttrAccount, kSecAttrService, nil];
-	NSArray *objects = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClassGenericPassword, username, serviceName, nil];
+	NSArray *keys = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClass, kSecAttrAccount, kSecAttrService, kSecAttrAccessGroup,nil];
+	NSArray *objects = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClassGenericPassword, username, serviceName, keychainGroup,nil];
 	
 	NSMutableDictionary *query = [[NSMutableDictionary alloc] initWithObjects: objects forKeys: keys];
 	
@@ -364,13 +364,15 @@ static NSString *SFHFKeychainUtilsErrorDomain = @"SFHFKeychainUtilsErrorDomain";
 			NSArray *keys = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClass, 
                              kSecAttrService, 
                              kSecAttrLabel, 
-                             kSecAttrAccount, 
+                             kSecAttrAccount,
+                             kSecAttrAccessGroup,
                              nil];
 			
 			NSArray *objects = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClassGenericPassword, 
                                 serviceName,
                                 serviceName,
                                 username,
+                                keychainGroup,
                                 nil];
 			
 			NSDictionary *query = [[NSDictionary alloc] initWithObjects: objects forKeys: keys];			
@@ -387,7 +389,8 @@ static NSString *SFHFKeychainUtilsErrorDomain = @"SFHFKeychainUtilsErrorDomain";
                          kSecAttrService, 
                          kSecAttrLabel, 
                          kSecAttrAccount, 
-                         kSecValueData, 
+                         kSecValueData,
+                         kSecAttrAccessGroup,
                          nil];
 		
 		NSArray *objects = [[NSArray alloc] initWithObjects: (__bridge_transfer NSString *) kSecClassGenericPassword, 
@@ -395,6 +398,7 @@ static NSString *SFHFKeychainUtilsErrorDomain = @"SFHFKeychainUtilsErrorDomain";
                             serviceName,
                             username,
                             [password dataUsingEncoding: NSUTF8StringEncoding],
+                            keychainGroup,
                             nil];
 		
 		NSDictionary *query = [[NSDictionary alloc] initWithObjects: objects forKeys: keys];			

@@ -263,7 +263,7 @@
             if (body) {
                 NSNumber *recordId = body[@"projectId"];
                 if (recordId) {
-                    [[DataManager sharedManager] showProjectDetail:recordId];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SHOW_PROJECT object:recordId];
                 }
             }
             

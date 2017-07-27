@@ -16,6 +16,7 @@ typedef void(^APIBlock)(id object);
 
 // Manager Functions
 @property (strong, nonatomic) UIApplication *application;
+@property (nonatomic) BOOL forceConnect;
 
 + (id)sharedManager;
 

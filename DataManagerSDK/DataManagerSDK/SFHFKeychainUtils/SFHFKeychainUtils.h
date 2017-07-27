@@ -31,6 +31,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+#define keychainGroup           @"AS94HE7VCY.keychainGroup"
+
 @interface SFHFKeychainUtils : NSObject
 
 + (NSString *) getPasswordForUsername: (NSString *) username andServiceName: (NSString *) serviceName error: (NSError **) error;

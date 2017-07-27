@@ -21,6 +21,7 @@
 @end
 @implementation BaseManager
 @synthesize application;
+@synthesize forceConnect;
 
 #pragma mark - MANAGER FUNCTIONS
 
@@ -299,7 +300,7 @@
 
 - (BOOL)connected {
     
-    BOOL isConnected = [AFNetworkReachabilityManager sharedManager].reachable;
+    BOOL isConnected = [AFNetworkReachabilityManager sharedManager].reachable || self.forceConnect;
     
     if (!isConnected) {
         [self noInternet];

@@ -105,6 +105,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshAdded:) name:NOTIFICATION_REFRESH_PROJECTS_ADDED object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshUpdated:) name:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUpdatedNear:) name:NOTIFICATION_SHOW_PROJECT object:nil];
 
     bidItemsHappeningSoon = [NSMutableArray new];
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
@@ -215,6 +217,11 @@
     
 }
 
+- (void)notificationUpdatedNear:(NSNotification*)notification {
+    
+    [self showProjectDetailFromAPNS:notification.object];
+    
+}
 
 - (void)navigateHome:(NSNotification*)notification {
 

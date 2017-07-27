@@ -305,6 +305,7 @@
 		B78607131E7932FD00F7CE3E /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607111E7932FD00F7CE3E /* PhotoViewController.xib */; };
 		B78607151E7ABBF800F7CE3E /* landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B78607141E7ABBF800F7CE3E /* landscape.jpg */; };
 		B78607171E7C3AFA00F7CE3E /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */; };
+		B79141C71F2A02A600603CD9 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79616081CF431000089BC32 /* RadialBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616071CF431000089BC32 /* RadialBackgroundView.m */; };
@@ -948,6 +949,8 @@
 		B78607111E7932FD00F7CE3E /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		B78607141E7ABBF800F7CE3E /* landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landscape.jpg; sourceTree = "<group>"; };
 		B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		B79141C81F2A0C4800603CD9 /* ProjectNearMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectNearMe.entitlements; sourceTree = "<group>"; };
+		B79141C91F2A0DA300603CD9 /* ProjectNearMeUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectNearMeUI.entitlements; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79616061CF431000089BC32 /* RadialBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialBackgroundView.h; sourceTree = "<group>"; };
@@ -1175,6 +1178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79141C71F2A02A600603CD9 /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2640,6 +2644,7 @@
 		B796FC481F2793A600829E00 /* ProjectNearMe */ = {
 			isa = PBXGroup;
 			children = (
+				B79141C81F2A0C4800603CD9 /* ProjectNearMe.entitlements */,
 				B796FC491F2793A600829E00 /* IntentHandler.h */,
 				B796FC4A1F2793A600829E00 /* IntentHandler.m */,
 				B796FC4C1F2793A600829E00 /* Info.plist */,
@@ -2650,6 +2655,7 @@
 		B796FC541F2793A700829E00 /* ProjectNearMeUI */ = {
 			isa = PBXGroup;
 			children = (
+				B79141C91F2A0DA300603CD9 /* ProjectNearMeUI.entitlements */,
 				B796FC551F2793A700829E00 /* IntentViewController.h */,
 				B796FC561F2793A700829E00 /* IntentViewController.m */,
 				B796FC581F2793A700829E00 /* MainInterface.storyboard */,
@@ -2870,6 +2876,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -2882,11 +2891,21 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = AS94HE7VCY;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					B796FC501F2793A600829E00 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = AS94HE7VCY;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -3560,8 +3579,9 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				CODE_SIGN_ENTITLEMENTS = ProjectNearMe/ProjectNearMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				INFOPLIST_FILE = ProjectNearMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -3577,8 +3597,9 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				CODE_SIGN_ENTITLEMENTS = ProjectNearMe/ProjectNearMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
 				INFOPLIST_FILE = ProjectNearMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;

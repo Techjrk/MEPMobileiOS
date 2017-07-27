@@ -1541,7 +1541,7 @@
     UIAlertAction *viewAction = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"BUTTON_VIEW")
                                                           style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction *action) {
-                                                            [self showProjectDetail:recordId];
+                                                            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SHOW_PROJECT object:recordId];
                                                         }];
 
     
@@ -1559,30 +1559,6 @@
     
     [[self getActiveViewController] presentViewController:alert animated:YES completion:nil];
     
-}
-
-- (void)showProjectDetail:(NSNumber *)recordID {
-    /*
-    if ([self isModal]) {
-        [[self getActiveViewController] dismissViewControllerAnimated:NO completion:^{
-            [self projectDetail:recordID success:^(id object){
-                ProjectDetailViewController *detail = [ProjectDetailViewController new];
-                detail.view.hidden = NO;
-                [detail detailsFromProject:object];
-                [[self getActiveViewController].navigationController pushViewController:detail animated:YES];
-            }failure:^(id fObject){
-            }];
-        }];
-    } else {
-        [self projectDetail:recordID success:^(id object){
-            ProjectDetailViewController *detail = [ProjectDetailViewController new];
-            detail.view.hidden = NO;
-            [detail detailsFromProject:object];
-            [[self getActiveViewController].navigationController pushViewController:detail animated:YES];
-        }failure:^(id fObject){
-        }];
-    }
-    */
 }
 
 - (BOOL)isModal {
