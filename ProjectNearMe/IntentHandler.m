@@ -43,6 +43,7 @@
 }
 
 
+
 #pragma mark - Siri MEP 
 
 
@@ -75,7 +76,17 @@
                                dateSent:[NSDate date]
                                sender:[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"sarah@example.com" type:INPersonHandleTypeEmailAddress] nameComponents:nil displayName:@"Sarah" image:nil contactIdentifier:nil customIdentifier:nil]
                                recipients:@[[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"+1-415-555-5555" type:INPersonHandleTypePhoneNumber] nameComponents:nil displayName:@"John" image:nil contactIdentifier:nil customIdentifier:nil]]
-                               ]];
+                               ],
+                              
+                              [[INMessage alloc]
+                               initWithIdentifier:@"identifier"
+                               content:@"I am so excited about SiriKit Lecet2!"
+                               dateSent:[NSDate date]
+                               sender:[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"sarah@example.com" type:INPersonHandleTypeEmailAddress] nameComponents:nil displayName:@"Sarah" image:nil contactIdentifier:nil customIdentifier:nil]
+                               recipients:@[[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"+1-415-555-5555" type:INPersonHandleTypePhoneNumber] nameComponents:nil displayName:@"John" image:nil contactIdentifier:nil customIdentifier:nil]]
+                               ]
+                              
+                              ];
         
         completion(response);
         
