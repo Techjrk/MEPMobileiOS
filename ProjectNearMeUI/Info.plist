@@ -29,8 +29,8 @@
 				<string>INSearchForMessagesIntent</string>
 			</array>
 		</dict>
-		<key>NSExtensionMainStoryboard</key>
-		<string>MainInterface</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>ProjectNearIntentViewController</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.intents-ui-service</string>
 	</dict>

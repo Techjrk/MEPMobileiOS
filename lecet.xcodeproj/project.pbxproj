@@ -202,6 +202,8 @@
 		B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DACD1D756C6400B6CCC4 /* libz.tbd */; };
 		B725DAD21D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */; };
 		B725DAD51D7576B100B6CCC4 /* GoogleAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B725DAD41D7576B100B6CCC4 /* GoogleAnalytics.m */; };
+		B72ABAEA1F2F5266002531F1 /* ProjectNearIntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */; };
+		B72ABAEB1F2F5266002531F1 /* ProjectNearIntentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72ABAE91F2F5266002531F1 /* ProjectNearIntentViewController.xib */; };
 		B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */; };
 		B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */; };
 		B73EFA881D01C31800C6B3B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B73EFA871D01C31800C6B3B2 /* CoreLocation.framework */; };
@@ -798,6 +800,9 @@
 		B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		B725DAD31D7576B100B6CCC4 /* GoogleAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalytics.h; sourceTree = "<group>"; };
 		B725DAD41D7576B100B6CCC4 /* GoogleAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalytics.m; sourceTree = "<group>"; };
+		B72ABAE71F2F5266002531F1 /* ProjectNearIntentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearIntentViewController.h; sourceTree = "<group>"; };
+		B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearIntentViewController.m; sourceTree = "<group>"; };
+		B72ABAE91F2F5266002531F1 /* ProjectNearIntentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearIntentViewController.xib; sourceTree = "<group>"; };
 		B73EFA7E1D01AE0F00C6B3B2 /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareLocationViewController.h; sourceTree = "<group>"; };
 		B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareLocationViewController.m; sourceTree = "<group>"; };
 		B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareLocationViewController.xib; sourceTree = "<group>"; };
@@ -2660,6 +2665,9 @@
 				B796FC561F2793A700829E00 /* IntentViewController.m */,
 				B796FC581F2793A700829E00 /* MainInterface.storyboard */,
 				B796FC5B1F2793A700829E00 /* Info.plist */,
+				B72ABAE71F2F5266002531F1 /* ProjectNearIntentViewController.h */,
+				B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */,
+				B72ABAE91F2F5266002531F1 /* ProjectNearIntentViewController.xib */,
 			);
 			path = ProjectNearMeUI;
 			sourceTree = "<group>";
@@ -3156,6 +3164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B72ABAEB1F2F5266002531F1 /* ProjectNearIntentViewController.xib in Resources */,
 				B796FC5A1F2793A700829E00 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3382,6 +3391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B72ABAEA1F2F5266002531F1 /* ProjectNearIntentViewController.m in Sources */,
 				B796FC571F2793A700829E00 /* IntentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
