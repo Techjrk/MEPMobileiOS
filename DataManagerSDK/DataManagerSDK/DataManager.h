@@ -35,6 +35,8 @@
 #define kKeychainEmail                  @"kKeychainEmail"
 #define kUrlProjectDetailShare          @"#/project/%li"
 #define kUrlCompanyDetailShare          @"#/company/%li"
+#define kKeychainLocationLat            @"LocationLat"
+#define kKeychainLocationLng            @"LocationLng"
 
 @interface DataManager : BaseManager
 //PROPERTIES

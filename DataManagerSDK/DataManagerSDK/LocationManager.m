@@ -74,7 +74,16 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION object:nil];
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GPS_LOCATION_NEAR object:nil];
-        }        
+            
+            
+            NSString *lat = [NSString stringWithFormat:@"%f", self.currentLocation.coordinate.latitude];
+            
+            NSString *lng = [NSString stringWithFormat:@"%f", self.currentLocation.coordinate.longitude];
+            
+            [[DataManager sharedManager] storeKeyChainValue:kKeychainLocationLat password:lat serviceName:kKeychainServiceName];
+       
+            [[DataManager sharedManager] storeKeyChainValue:kKeychainLocationLng password:lng serviceName:kKeychainServiceName];
+        }
     }
 
 

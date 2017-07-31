@@ -28,7 +28,9 @@
 - (id)handlerForIntent:(INIntent *)intent {
     // This is the default implementation.  If you want different objects to handle different intents,
     // you can override this and return the handler you want for that particular intent.
-   
+
+    [[DataManager sharedManager] setForceConnect:YES];
+    
     return self;
 }
 
@@ -36,13 +38,35 @@
 
 - (void)handleSearchForMessages:(INSearchForMessagesIntent *)intent completion:(void (^)(INSearchForMessagesIntentResponse *response))completion {
 
+    [self projectNearMe:intent completion:completion];
+    
+}
+
+
+#pragma mark - Siri MEP 
+
+
+- (void)projectNearMe:(INSearchForMessagesIntent *)intenet completion:(void (^)(INSearchForMessagesIntentResponse *response))completion {
+    
     NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:NSStringFromClass([INSearchForMessagesIntent class])];
     INSearchForMessagesIntentResponse *response = [[INSearchForMessagesIntentResponse alloc] initWithCode:INSearchForMessagesIntentResponseCodeSuccess userActivity:userActivity];
 
-    [[DataManager sharedManager] setForceConnect:YES];
-    [[DataManager sharedManager] projectsNear:38.9015923 lng:-77.0382126 distance:@(5) filter:nil success:^(id object) {
-
-        NSArray *array = object;
+    NSString *lat = [[DataManager sharedManager] getKeyChainValue:kKeychainLocationLat serviceName:kKeychainServiceName];
+    
+    NSString *lng = [[DataManager sharedManager] getKeyChainValue:kKeychainLocationLng serviceName:kKeychainServiceName];
+    
+    float floatLat = 0;
+    float floatLng = 0;
+    
+    if (lat) {
+        floatLat = [lat floatValue];
+    }
+    
+    if (lng) {
+        floatLng = [lng floatValue];
+    }
+    
+    [[DataManager sharedManager] projectsNear:floatLat lng:floatLng distance:@(5) filter:nil success:^(id object) {
         
         
         response.messages = @[[[INMessage alloc]
@@ -52,11 +76,11 @@
                                sender:[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"sarah@example.com" type:INPersonHandleTypeEmailAddress] nameComponents:nil displayName:@"Sarah" image:nil contactIdentifier:nil customIdentifier:nil]
                                recipients:@[[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"+1-415-555-5555" type:INPersonHandleTypePhoneNumber] nameComponents:nil displayName:@"John" image:nil contactIdentifier:nil customIdentifier:nil]]
                                ]];
-
+        
         completion(response);
-
+        
     } failure:^(id object) {
-
+        
         response.messages = @[[[INMessage alloc]
                                initWithIdentifier:@"identifier"
                                content:@"Error!"
@@ -64,12 +88,44 @@
                                sender:[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"sarah@example.com" type:INPersonHandleTypeEmailAddress] nameComponents:nil displayName:@"Sarah" image:nil contactIdentifier:nil customIdentifier:nil]
                                recipients:@[[[INPerson alloc] initWithPersonHandle:[[INPersonHandle alloc] initWithValue:@"+1-415-555-5555" type:INPersonHandleTypePhoneNumber] nameComponents:nil displayName:@"John" image:nil contactIdentifier:nil customIdentifier:nil]]
                                ]];
-
+        
         completion(response);
-
+        
     }];
-    
+
 }
 
+- (void)projectTrackingList:(INSearchForMessagesIntent *)intenet completion:(void (^)(INSearchForMessagesIntentResponse *response))completion {
+    
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    
+    [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:(long)userId.integerValue] success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];
+}
+
+
+- (void)companyTrackingList:(INSearchForMessagesIntent *)intenet completion:(void (^)(INSearchForMessagesIntentResponse *response))completion {
+    
+    NSString *userId =[[DataManager sharedManager] getKeyChainValue:kKeychainUserId serviceName:kKeychainServiceName];
+    
+    [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:(long)userId.integerValue] success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];
+}
+
+
+- (void)projectsRecentlyUpdated:(INSearchForMessagesIntent *)intenet completion:(void (^)(INSearchForMessagesIntentResponse *response))completion {
+    
+    [[DataManager sharedManager] bidsRecentlyUpdated:30 success:^(id object) {
+        
+    } failure:^(id object) {
+        
+    }];
+}
 
 @end
