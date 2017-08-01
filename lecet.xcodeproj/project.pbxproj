@@ -324,7 +324,6 @@
 		B796FC4B1F2793A600829E00 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B796FC4A1F2793A600829E00 /* IntentHandler.m */; };
 		B796FC531F2793A700829E00 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B796FC521F2793A700829E00 /* IntentsUI.framework */; };
 		B796FC571F2793A700829E00 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B796FC561F2793A700829E00 /* IntentViewController.m */; };
-		B796FC5A1F2793A700829E00 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B796FC581F2793A700829E00 /* MainInterface.storyboard */; };
 		B796FC5E1F2793A700829E00 /* ProjectNearMeUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B796FC511F2793A600829E00 /* ProjectNearMeUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B796FC611F2793A700829E00 /* ProjectNearMe.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B796FC471F2793A600829E00 /* ProjectNearMe.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79AA7AA1E93875D00BA1B04 /* NewPinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7A81E93875D00BA1B04 /* NewPinViewController.m */; };
@@ -738,7 +737,7 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
-		B70155181CD0C56A0050CF8A /* MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70155181CD0C56A0050CF8A /* Lecet MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecet MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B701551F1CD0C56A0050CF8A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -985,7 +984,6 @@
 		B796FC521F2793A700829E00 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		B796FC551F2793A700829E00 /* IntentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentViewController.h; sourceTree = "<group>"; };
 		B796FC561F2793A700829E00 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
-		B796FC591F2793A700829E00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B796FC5B1F2793A700829E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79AA7A71E93875D00BA1B04 /* NewPinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPinViewController.h; sourceTree = "<group>"; };
 		B79AA7A81E93875D00BA1B04 /* NewPinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPinViewController.m; sourceTree = "<group>"; };
@@ -2058,7 +2056,7 @@
 		B70155191CD0C56A0050CF8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B70155181CD0C56A0050CF8A /* MEP.app */,
+				B70155181CD0C56A0050CF8A /* Lecet MEP.app */,
 				B796FC471F2793A600829E00 /* ProjectNearMe.appex */,
 				B796FC511F2793A600829E00 /* ProjectNearMeUI.appex */,
 			);
@@ -2663,7 +2661,6 @@
 				B79141C91F2A0DA300603CD9 /* ProjectNearMeUI.entitlements */,
 				B796FC551F2793A700829E00 /* IntentViewController.h */,
 				B796FC561F2793A700829E00 /* IntentViewController.m */,
-				B796FC581F2793A700829E00 /* MainInterface.storyboard */,
 				B796FC5B1F2793A700829E00 /* Info.plist */,
 				B72ABAE71F2F5266002531F1 /* ProjectNearIntentViewController.h */,
 				B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */,
@@ -2831,7 +2828,7 @@
 			);
 			name = lecet;
 			productName = lecet;
-			productReference = B70155181CD0C56A0050CF8A /* MEP.app */;
+			productReference = B70155181CD0C56A0050CF8A /* Lecet MEP.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B796FC461F2793A600829E00 /* ProjectNearMe */ = {
@@ -2897,8 +2894,7 @@
 					};
 					B796FC461F2793A600829E00 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AS94HE7VCY;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -2907,8 +2903,7 @@
 					};
 					B796FC501F2793A600829E00 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AS94HE7VCY;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 0;
@@ -3165,7 +3160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72ABAEB1F2F5266002531F1 /* ProjectNearIntentViewController.xib in Resources */,
-				B796FC5A1F2793A700829E00 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3416,17 +3410,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		B796FC581F2793A700829E00 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B796FC591F2793A700829E00 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		B701552D1CD0C56A0050CF8A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3532,7 +3515,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3544,7 +3527,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = MEP;
+				PRODUCT_NAME = "Lecet MEP";
 				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
@@ -3566,7 +3549,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3578,7 +3561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = MEP;
+				PRODUCT_NAME = "Lecet MEP";
 				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
@@ -3592,12 +3575,14 @@
 				CODE_SIGN_ENTITLEMENTS = ProjectNearMe/ProjectNearMe.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjectNearMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -3610,12 +3595,14 @@
 				CODE_SIGN_ENTITLEMENTS = ProjectNearMe/ProjectNearMe.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjectNearMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -3627,12 +3614,14 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjectNearMeUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMeUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -3644,12 +3633,14 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjectNearMeUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMeUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

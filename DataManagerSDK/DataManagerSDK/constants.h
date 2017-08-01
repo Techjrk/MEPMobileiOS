@@ -170,6 +170,8 @@ CGSortArray(NSArray *array, NSString* sortKey, BOOL ascending){
 #define LIUNA_ORANGE_COLOR                      RGB(248, 152, 28)
 #define UNION_DESIGNATION_CODE                  @"U"
 
+#define kCategory               @[@(101), @(102), @(103), @(105)]
+
 typedef enum : NSUInteger {
     FilterModelLocation,
     FilterModelType,

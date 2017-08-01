@@ -26,11 +26,11 @@
 		<dict>
 			<key>IntentsRestrictedWhileLocked</key>
 			<array>
-				<string>INSearchForMessagesIntent</string>
+				<string>INSearchForNotebookItemsIntent</string>
 			</array>
 			<key>IntentsSupported</key>
 			<array>
-				<string>INSearchForMessagesIntent</string>
+				<string>INSearchForNotebookItemsIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

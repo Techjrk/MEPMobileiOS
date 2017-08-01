@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MEP</string>
+	<string>Lecet MEP</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -20,6 +20,23 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>78</string>
+	<key>INAlternativeAppNames</key>
+	<array>
+		<dict>
+			<key>INAlternativeAppName</key>
+			<string>MEP</string>
+		</dict>
+		<dict>
+			<key>INAlternativeAppName</key>
+			<string>lecet</string>
+			<key>INAlternativeAppNamePronunciationHint</key>
+			<string>Le Set</string>
+		</dict>
+		<dict>
+			<key>INAlternativeAppName</key>
+			<string>EWT</string>
+		</dict>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -43,8 +60,14 @@
 	<string>$(PRODUCT_NAME) needs acces to camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your photo library</string>
+	<key>NSSiriUsageDescription</key>
+	<string>You need to authorize Siri to enable voice enable features</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Heavy.ttf</string>
@@ -72,23 +95,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>NSSiriUsageDescription</key>
-	<string>You need to authorize Siri to enable voice enable features</string>
-	<key>INAlternativeAppNames</key>
-	<array>
-		<dict>
-			<key>INAlternativeAppName</key>
-			<string>MEP</string>
-		</dict>
-		<dict>
-			<key>INAlternativeAppName</key>
-			<string>projects</string>
-		</dict>
-		<dict>
-			<key>INAlternativeAppName</key>
-			<string>EWT</string>
-		</dict>
 	</array>
 </dict>
 </plist>

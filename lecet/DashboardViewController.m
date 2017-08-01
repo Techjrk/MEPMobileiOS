@@ -85,7 +85,6 @@
 #define kTrackListProject       @"kTrackListProject"
 #define kTrackListCompany       @"kTrackListCompany"
 #define kTrackList              @[kTrackListProject,kTrackListCompany]
-#define kCategory               @[@(101), @(102), @(103), @(105)]
 
 - (void)viewDidLoad {
     [super viewDidLoad];

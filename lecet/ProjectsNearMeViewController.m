@@ -520,6 +520,10 @@ float MetersToMiles(float meters) {
         }
         
         if (biddingWithin) {
+            
+            if ([item[@"id"] integerValue] == 364794) {
+                
+            }
             NSString *bidDate = [DerivedNSManagedObject objectOrNil:item[@"bidDate"]];
             if (bidDate) {
                 
@@ -527,10 +531,16 @@ float MetersToMiles(float meters) {
                 
                 NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:biddingWithin.integerValue];
                 
-                if (([dateBid timeIntervalSinceDate:lastDate]<0) && ( [dateBid timeIntervalSinceDate: dateAdd(-1)]>0 )){
+                BOOL isLast = biddingWithin.integerValue<0;
+                
+                NSTimeInterval bidDateGreaterThanLastDate = [lastDate timeIntervalSinceDate:dateBid];
+                
+                NSTimeInterval bidDateCurrentDate = [dateBid timeIntervalSinceDate: [NSDate date]];
+                
+                if ((bidDateGreaterThanLastDate>0) && (bidDateCurrentDate<0) && isLast ){// && (timeOver>0 )){
                     addItem = addItem && YES;
-                } else {
-                    addItem = NO;
+                } else if(bidDateCurrentDate>0 && !isLast) {
+                    addItem = addItem && YES;
                 }
             } else {
                 addItem = NO;

@@ -115,7 +115,7 @@
     _labelBidName.text = companyName;
     
     _labelBidService.text = item.relationshipProject.title;
-    _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", project.county, project.state];
+    _labelBidLocation.text = [NSString stringWithFormat:@"%@, %@", project.city, project.state];
     _labelBidType.text = [project getProjectType];
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([project.geocodeLat floatValue], [project.geocodeLng floatValue]);
     
