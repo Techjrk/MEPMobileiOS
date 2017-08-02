@@ -202,8 +202,6 @@
 		B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DACD1D756C6400B6CCC4 /* libz.tbd */; };
 		B725DAD21D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */; };
 		B725DAD51D7576B100B6CCC4 /* GoogleAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B725DAD41D7576B100B6CCC4 /* GoogleAnalytics.m */; };
-		B72ABAEA1F2F5266002531F1 /* ProjectNearIntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */; };
-		B72ABAEB1F2F5266002531F1 /* ProjectNearIntentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72ABAE91F2F5266002531F1 /* ProjectNearIntentViewController.xib */; };
 		B73EFA811D01AE0F00C6B3B2 /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */; };
 		B73EFA821D01AE0F00C6B3B2 /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */; };
 		B73EFA881D01C31800C6B3B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B73EFA871D01C31800C6B3B2 /* CoreLocation.framework */; };
@@ -307,7 +305,6 @@
 		B78607131E7932FD00F7CE3E /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78607111E7932FD00F7CE3E /* PhotoViewController.xib */; };
 		B78607151E7ABBF800F7CE3E /* landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B78607141E7ABBF800F7CE3E /* landscape.jpg */; };
 		B78607171E7C3AFA00F7CE3E /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */; };
-		B79141C71F2A02A600603CD9 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
 		B79615EC1CF0B2FC0089BC32 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */; };
 		B79615ED1CF0B2FC0089BC32 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */; };
 		B79616081CF431000089BC32 /* RadialBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616071CF431000089BC32 /* RadialBackgroundView.m */; };
@@ -321,11 +318,6 @@
 		B796161C1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B796161A1CF5C6E90089BC32 /* BitItemRecentCollectionViewCell.xib */; };
 		B79616511D004D7A0089BC32 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79616501D004D7A0089BC32 /* TriangleView.m */; };
 		B79616561D01840D0089BC32 /* ProjectsNearMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */; };
-		B796FC4B1F2793A600829E00 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B796FC4A1F2793A600829E00 /* IntentHandler.m */; };
-		B796FC531F2793A700829E00 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B796FC521F2793A700829E00 /* IntentsUI.framework */; };
-		B796FC571F2793A700829E00 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B796FC561F2793A700829E00 /* IntentViewController.m */; };
-		B796FC5E1F2793A700829E00 /* ProjectNearMeUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B796FC511F2793A600829E00 /* ProjectNearMeUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B796FC611F2793A700829E00 /* ProjectNearMe.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B796FC471F2793A600829E00 /* ProjectNearMe.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79AA7AA1E93875D00BA1B04 /* NewPinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7A81E93875D00BA1B04 /* NewPinViewController.m */; };
 		B79AA7AB1E93875D00BA1B04 /* NewPinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7A91E93875D00BA1B04 /* NewPinViewController.xib */; };
 		B79AA7AE1E93900200BA1B04 /* NewProjectAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7AD1E93900200BA1B04 /* NewProjectAnnotation.m */; };
@@ -401,6 +393,8 @@
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
 		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
+		B7D9C4661F31C80100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
+		B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
 		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
 		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
@@ -419,6 +413,12 @@
 		B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104531CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib */; };
 		B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104571CECE91600EAD8E7 /* ContactFieldView.m */; };
 		B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */; };
+		B7EECF451F31C6A0003E9E66 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EECF441F31C6A0003E9E66 /* IntentHandler.m */; };
+		B7EECF4C1F31C6A0003E9E66 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B796FC521F2793A700829E00 /* IntentsUI.framework */; };
+		B7EECF501F31C6A0003E9E66 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */; };
+		B7EECF531F31C6A0003E9E66 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */; };
+		B7EECF571F31C6A0003E9E66 /* SearchMessageUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B7EECF5A1F31C6A0003E9E66 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A301CDB898100847FA3 /* BidSoonItem.m */; };
 		B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */; };
 		B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */; };
@@ -435,20 +435,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B796FC5C1F2793A700829E00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B796FC501F2793A600829E00;
-			remoteInfo = ProjectNearMeUI;
-		};
-		B796FC5F1F2793A700829E00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B796FC461F2793A600829E00;
-			remoteInfo = ProjectNearMe;
-		};
 		B7A3EDD21F28E6DB006ADEC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B7A3EDCE1F28E6DA006ADEC5 /* DataManagerSDK.xcodeproj */;
@@ -463,6 +449,20 @@
 			remoteGlobalIDString = B7A3EDC21F28E6DA006ADEC5;
 			remoteInfo = DataManagerSDK;
 		};
+		B7EECF551F31C6A0003E9E66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7EECF4A1F31C6A0003E9E66;
+			remoteInfo = SearchMessageUI;
+		};
+		B7EECF581F31C6A0003E9E66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7EECF401F31C6A0003E9E66;
+			remoteInfo = SearchMessage;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -472,8 +472,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B796FC611F2793A700829E00 /* ProjectNearMe.appex in Embed App Extensions */,
-				B796FC5E1F2793A700829E00 /* ProjectNearMeUI.appex in Embed App Extensions */,
+				B7EECF571F31C6A0003E9E66 /* SearchMessageUI.appex in Embed App Extensions */,
+				B7EECF5A1F31C6A0003E9E66 /* SearchMessage.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,7 +737,7 @@
 		B6FD04401D1D325800E12123 /* ProjectFilterSelectionViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFilterSelectionViewList.h; sourceTree = "<group>"; };
 		B6FD04411D1D325800E12123 /* ProjectFilterSelectionViewList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFilterSelectionViewList.m; sourceTree = "<group>"; };
 		B6FD04421D1D325800E12123 /* ProjectFilterSelectionViewList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectFilterSelectionViewList.xib; sourceTree = "<group>"; };
-		B70155181CD0C56A0050CF8A /* Lecet MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecet MEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70155181CD0C56A0050CF8A /* MEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B701551C1CD0C56A0050CF8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B701551E1CD0C56A0050CF8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B701551F1CD0C56A0050CF8A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -799,9 +799,6 @@
 		B725DAD11D756C9D00B6CCC4 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		B725DAD31D7576B100B6CCC4 /* GoogleAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalytics.h; sourceTree = "<group>"; };
 		B725DAD41D7576B100B6CCC4 /* GoogleAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalytics.m; sourceTree = "<group>"; };
-		B72ABAE71F2F5266002531F1 /* ProjectNearIntentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearIntentViewController.h; sourceTree = "<group>"; };
-		B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearIntentViewController.m; sourceTree = "<group>"; };
-		B72ABAE91F2F5266002531F1 /* ProjectNearIntentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearIntentViewController.xib; sourceTree = "<group>"; };
 		B73EFA7E1D01AE0F00C6B3B2 /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareLocationViewController.h; sourceTree = "<group>"; };
 		B73EFA7F1D01AE0F00C6B3B2 /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareLocationViewController.m; sourceTree = "<group>"; };
 		B73EFA801D01AE0F00C6B3B2 /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareLocationViewController.xib; sourceTree = "<group>"; };
@@ -953,8 +950,6 @@
 		B78607111E7932FD00F7CE3E /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		B78607141E7ABBF800F7CE3E /* landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landscape.jpg; sourceTree = "<group>"; };
 		B78607161E7C35B800F7CE3E /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
-		B79141C81F2A0C4800603CD9 /* ProjectNearMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectNearMe.entitlements; sourceTree = "<group>"; };
-		B79141C91F2A0DA300603CD9 /* ProjectNearMeUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectNearMeUI.entitlements; sourceTree = "<group>"; };
 		B79615E91CF0B2FC0089BC32 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		B79615EB1CF0B2FC0089BC32 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		B79616061CF431000089BC32 /* RadialBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialBackgroundView.h; sourceTree = "<group>"; };
@@ -976,15 +971,7 @@
 		B79616521D01840D0089BC32 /* ProjectsNearMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsNearMeViewController.h; sourceTree = "<group>"; };
 		B79616531D01840D0089BC32 /* ProjectsNearMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsNearMeViewController.m; sourceTree = "<group>"; };
 		B79616541D01840D0089BC32 /* ProjectsNearMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsNearMeViewController.xib; sourceTree = "<group>"; };
-		B796FC471F2793A600829E00 /* ProjectNearMe.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ProjectNearMe.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B796FC491F2793A600829E00 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
-		B796FC4A1F2793A600829E00 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
-		B796FC4C1F2793A600829E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B796FC511F2793A600829E00 /* ProjectNearMeUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ProjectNearMeUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B796FC521F2793A700829E00 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		B796FC551F2793A700829E00 /* IntentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentViewController.h; sourceTree = "<group>"; };
-		B796FC561F2793A700829E00 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
-		B796FC5B1F2793A700829E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79AA7A71E93875D00BA1B04 /* NewPinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPinViewController.h; sourceTree = "<group>"; };
 		B79AA7A81E93875D00BA1B04 /* NewPinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPinViewController.m; sourceTree = "<group>"; };
 		B79AA7A91E93875D00BA1B04 /* NewPinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPinViewController.xib; sourceTree = "<group>"; };
@@ -1094,6 +1081,8 @@
 		B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemExpandingViewCell.m; sourceTree = "<group>"; };
 		B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemExpandingViewCell.xib; sourceTree = "<group>"; };
 		B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LIUNA_HQ.gpx; sourceTree = "<group>"; };
+		B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
+		B7D9C4651F31C76A00682F9C /* SearchMessageUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessageUI.entitlements; sourceTree = "<group>"; };
 		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
@@ -1120,6 +1109,15 @@
 		B7E104561CECE91600EAD8E7 /* ContactFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFieldView.h; sourceTree = "<group>"; };
 		B7E104571CECE91600EAD8E7 /* ContactFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFieldView.m; sourceTree = "<group>"; };
 		B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactFieldView.xib; sourceTree = "<group>"; };
+		B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7EECF431F31C6A0003E9E66 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
+		B7EECF441F31C6A0003E9E66 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
+		B7EECF461F31C6A0003E9E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessageUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7EECF4E1F31C6A0003E9E66 /* IntentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentViewController.h; sourceTree = "<group>"; };
+		B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
+		B7EECF521F31C6A0003E9E66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B7EECF541F31C6A0003E9E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7F10A2F1CDB898100847FA3 /* BidSoonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSoonItem.h; sourceTree = "<group>"; };
 		B7F10A301CDB898100847FA3 /* BidSoonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItem.m; sourceTree = "<group>"; };
 		B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItem.xib; sourceTree = "<group>"; };
@@ -1177,19 +1175,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B796FC441F2793A600829E00 /* Frameworks */ = {
+		B7EECF3E1F31C6A0003E9E66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79141C71F2A02A600603CD9 /* DataManagerSDK.framework in Frameworks */,
+				B7D9C4661F31C80100682F9C /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B796FC4E1F2793A600829E00 /* Frameworks */ = {
+		B7EECF481F31C6A0003E9E66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B796FC531F2793A700829E00 /* IntentsUI.framework in Frameworks */,
+				B7EECF4C1F31C6A0003E9E66 /* IntentsUI.framework in Frameworks */,
+				B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2046,8 +2045,8 @@
 				B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */,
 				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
 				B701551A1CD0C56A0050CF8A /* lecet */,
-				B796FC481F2793A600829E00 /* ProjectNearMe */,
-				B796FC541F2793A700829E00 /* ProjectNearMeUI */,
+				B7EECF421F31C6A0003E9E66 /* SearchMessage */,
+				B7EECF4D1F31C6A0003E9E66 /* SearchMessageUI */,
 				B70155191CD0C56A0050CF8A /* Products */,
 				B7DD9CC91D942A9600978CC7 /* Frameworks */,
 			);
@@ -2056,9 +2055,9 @@
 		B70155191CD0C56A0050CF8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B70155181CD0C56A0050CF8A /* Lecet MEP.app */,
-				B796FC471F2793A600829E00 /* ProjectNearMe.appex */,
-				B796FC511F2793A600829E00 /* ProjectNearMeUI.appex */,
+				B70155181CD0C56A0050CF8A /* MEP.app */,
+				B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */,
+				B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2644,31 +2643,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B796FC481F2793A600829E00 /* ProjectNearMe */ = {
-			isa = PBXGroup;
-			children = (
-				B79141C81F2A0C4800603CD9 /* ProjectNearMe.entitlements */,
-				B796FC491F2793A600829E00 /* IntentHandler.h */,
-				B796FC4A1F2793A600829E00 /* IntentHandler.m */,
-				B796FC4C1F2793A600829E00 /* Info.plist */,
-			);
-			path = ProjectNearMe;
-			sourceTree = "<group>";
-		};
-		B796FC541F2793A700829E00 /* ProjectNearMeUI */ = {
-			isa = PBXGroup;
-			children = (
-				B79141C91F2A0DA300603CD9 /* ProjectNearMeUI.entitlements */,
-				B796FC551F2793A700829E00 /* IntentViewController.h */,
-				B796FC561F2793A700829E00 /* IntentViewController.m */,
-				B796FC5B1F2793A700829E00 /* Info.plist */,
-				B72ABAE71F2F5266002531F1 /* ProjectNearIntentViewController.h */,
-				B72ABAE81F2F5266002531F1 /* ProjectNearIntentViewController.m */,
-				B72ABAE91F2F5266002531F1 /* ProjectNearIntentViewController.xib */,
-			);
-			path = ProjectNearMeUI;
-			sourceTree = "<group>";
-		};
 		B79AA7A61E93874100BA1B04 /* NewPinViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2741,6 +2715,29 @@
 				B796FC521F2793A700829E00 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7EECF421F31C6A0003E9E66 /* SearchMessage */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */,
+				B7EECF431F31C6A0003E9E66 /* IntentHandler.h */,
+				B7EECF441F31C6A0003E9E66 /* IntentHandler.m */,
+				B7EECF461F31C6A0003E9E66 /* Info.plist */,
+			);
+			path = SearchMessage;
+			sourceTree = "<group>";
+		};
+		B7EECF4D1F31C6A0003E9E66 /* SearchMessageUI */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9C4651F31C76A00682F9C /* SearchMessageUI.entitlements */,
+				B7EECF4E1F31C6A0003E9E66 /* IntentViewController.h */,
+				B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */,
+				B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */,
+				B7EECF541F31C6A0003E9E66 /* Info.plist */,
+			);
+			path = SearchMessageUI;
 			sourceTree = "<group>";
 		};
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {
@@ -2822,47 +2819,47 @@
 			buildRules = (
 			);
 			dependencies = (
-				B796FC5D1F2793A700829E00 /* PBXTargetDependency */,
-				B796FC601F2793A700829E00 /* PBXTargetDependency */,
 				B7A3EF011F28F80F006ADEC5 /* PBXTargetDependency */,
+				B7EECF561F31C6A0003E9E66 /* PBXTargetDependency */,
+				B7EECF591F31C6A0003E9E66 /* PBXTargetDependency */,
 			);
 			name = lecet;
 			productName = lecet;
-			productReference = B70155181CD0C56A0050CF8A /* Lecet MEP.app */;
+			productReference = B70155181CD0C56A0050CF8A /* MEP.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B796FC461F2793A600829E00 /* ProjectNearMe */ = {
+		B7EECF401F31C6A0003E9E66 /* SearchMessage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B796FC671F2793A700829E00 /* Build configuration list for PBXNativeTarget "ProjectNearMe" */;
+			buildConfigurationList = B7EECF5E1F31C6A0003E9E66 /* Build configuration list for PBXNativeTarget "SearchMessage" */;
 			buildPhases = (
-				B796FC431F2793A600829E00 /* Sources */,
-				B796FC441F2793A600829E00 /* Frameworks */,
-				B796FC451F2793A600829E00 /* Resources */,
+				B7EECF3D1F31C6A0003E9E66 /* Sources */,
+				B7EECF3E1F31C6A0003E9E66 /* Frameworks */,
+				B7EECF3F1F31C6A0003E9E66 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ProjectNearMe;
-			productName = ProjectNearMe;
-			productReference = B796FC471F2793A600829E00 /* ProjectNearMe.appex */;
+			name = SearchMessage;
+			productName = SearchMessage;
+			productReference = B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B796FC501F2793A600829E00 /* ProjectNearMeUI */ = {
+		B7EECF4A1F31C6A0003E9E66 /* SearchMessageUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B796FC661F2793A700829E00 /* Build configuration list for PBXNativeTarget "ProjectNearMeUI" */;
+			buildConfigurationList = B7EECF5B1F31C6A0003E9E66 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */;
 			buildPhases = (
-				B796FC4D1F2793A600829E00 /* Sources */,
-				B796FC4E1F2793A600829E00 /* Frameworks */,
-				B796FC4F1F2793A600829E00 /* Resources */,
+				B7EECF471F31C6A0003E9E66 /* Sources */,
+				B7EECF481F31C6A0003E9E66 /* Frameworks */,
+				B7EECF491F31C6A0003E9E66 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ProjectNearMeUI;
-			productName = ProjectNearMeUI;
-			productReference = B796FC511F2793A600829E00 /* ProjectNearMeUI.appex */;
+			name = SearchMessageUI;
+			productName = SearchMessageUI;
+			productReference = B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -2892,7 +2889,7 @@
 							};
 						};
 					};
-					B796FC461F2793A600829E00 = {
+					B7EECF401F31C6A0003E9E66 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -2901,12 +2898,12 @@
 							};
 						};
 					};
-					B796FC501F2793A600829E00 = {
+					B7EECF4A1F31C6A0003E9E66 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -2932,8 +2929,8 @@
 			projectRoot = "";
 			targets = (
 				B70155171CD0C56A0050CF8A /* lecet */,
-				B796FC461F2793A600829E00 /* ProjectNearMe */,
-				B796FC501F2793A600829E00 /* ProjectNearMeUI */,
+				B7EECF401F31C6A0003E9E66 /* SearchMessage */,
+				B7EECF4A1F31C6A0003E9E66 /* SearchMessageUI */,
 			);
 		};
 /* End PBXProject section */
@@ -3148,18 +3145,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B796FC451F2793A600829E00 /* Resources */ = {
+		B7EECF3F1F31C6A0003E9E66 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B796FC4F1F2793A600829E00 /* Resources */ = {
+		B7EECF491F31C6A0003E9E66 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72ABAEB1F2F5266002531F1 /* ProjectNearIntentViewController.xib in Resources */,
+				B7EECF531F31C6A0003E9E66 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3373,42 +3370,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B796FC431F2793A600829E00 /* Sources */ = {
+		B7EECF3D1F31C6A0003E9E66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B796FC4B1F2793A600829E00 /* IntentHandler.m in Sources */,
+				B7EECF451F31C6A0003E9E66 /* IntentHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B796FC4D1F2793A600829E00 /* Sources */ = {
+		B7EECF471F31C6A0003E9E66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72ABAEA1F2F5266002531F1 /* ProjectNearIntentViewController.m in Sources */,
-				B796FC571F2793A700829E00 /* IntentViewController.m in Sources */,
+				B7EECF501F31C6A0003E9E66 /* IntentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B796FC5D1F2793A700829E00 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B796FC501F2793A600829E00 /* ProjectNearMeUI */;
-			targetProxy = B796FC5C1F2793A700829E00 /* PBXContainerItemProxy */;
-		};
-		B796FC601F2793A700829E00 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B796FC461F2793A600829E00 /* ProjectNearMe */;
-			targetProxy = B796FC5F1F2793A700829E00 /* PBXContainerItemProxy */;
-		};
 		B7A3EF011F28F80F006ADEC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DataManagerSDK;
 			targetProxy = B7A3EF001F28F80F006ADEC5 /* PBXContainerItemProxy */;
 		};
+		B7EECF561F31C6A0003E9E66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7EECF4A1F31C6A0003E9E66 /* SearchMessageUI */;
+			targetProxy = B7EECF551F31C6A0003E9E66 /* PBXContainerItemProxy */;
+		};
+		B7EECF591F31C6A0003E9E66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7EECF401F31C6A0003E9E66 /* SearchMessage */;
+			targetProxy = B7EECF581F31C6A0003E9E66 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7EECF521F31C6A0003E9E66 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B701552D1CD0C56A0050CF8A /* Debug */ = {
@@ -3515,7 +3522,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3527,7 +3534,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = "Lecet MEP";
+				PRODUCT_NAME = MEP;
 				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
@@ -3549,7 +3556,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
 				INFOPLIST_FILE = lecet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3561,84 +3568,82 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = "Lecet MEP";
+				PRODUCT_NAME = MEP;
 				PROVISIONING_PROFILE = "621b1e68-97c6-4811-8ea9-93953816a090";
 				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage";
 			};
 			name = Release;
 		};
-		B796FC621F2793A700829E00 /* Debug */ = {
+		B7EECF5C1F31C6A0003E9E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = ProjectNearMe/ProjectNearMe.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SearchMessageUI/SearchMessageUI.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ProjectNearMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = SearchMessageUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		B796FC631F2793A700829E00 /* Release */ = {
+		B7EECF5D1F31C6A0003E9E66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = ProjectNearMe/ProjectNearMe.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SearchMessageUI/SearchMessageUI.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ProjectNearMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = SearchMessageUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		B796FC641F2793A700829E00 /* Debug */ = {
+		B7EECF5F1F31C6A0003E9E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = SearchMessage/SearchMessage.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ProjectNearMeUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = SearchMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMeUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		B796FC651F2793A700829E00 /* Release */ = {
+		B7EECF601F31C6A0003E9E66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = SearchMessage/SearchMessage.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ProjectNearMeUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = SearchMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.ProjectNearMeUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -3666,20 +3671,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B796FC661F2793A700829E00 /* Build configuration list for PBXNativeTarget "ProjectNearMeUI" */ = {
+		B7EECF5B1F31C6A0003E9E66 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B796FC641F2793A700829E00 /* Debug */,
-				B796FC651F2793A700829E00 /* Release */,
+				B7EECF5C1F31C6A0003E9E66 /* Debug */,
+				B7EECF5D1F31C6A0003E9E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B796FC671F2793A700829E00 /* Build configuration list for PBXNativeTarget "ProjectNearMe" */ = {
+		B7EECF5E1F31C6A0003E9E66 /* Build configuration list for PBXNativeTarget "SearchMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B796FC621F2793A700829E00 /* Debug */,
-				B796FC631F2793A700829E00 /* Release */,
+				B7EECF5F1F31C6A0003E9E66 /* Debug */,
+				B7EECF601F31C6A0003E9E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

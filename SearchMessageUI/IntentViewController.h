@@ -1,8 +1,8 @@
 //
 //  IntentViewController.h
-//  ProjectNearMeUI
+//  SearchMessageUI
 //
-//  Created by Harry Herrys Camigla on 7/25/17.
+//  Created by Harry Herrys Camigla on 8/2/17.
 //  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 

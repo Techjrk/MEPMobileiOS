@@ -7,17 +7,17 @@
 		<key>DataManagerSDK.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>ProjectNearMe.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>ProjectNearMeUI.xcscheme</key>
+		<key>SearchMessage.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
+		</dict>
+		<key>SearchMessageUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>lecet.xcscheme</key>
 		<dict>
@@ -48,6 +48,16 @@
 			<true/>
 		</dict>
 		<key>B7A3ED7D1F28E0AD006ADEC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7EECF401F31C6A0003E9E66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7EECF4A1F31C6A0003E9E66</key>
 		<dict>
 			<key>primary</key>
 			<true/>

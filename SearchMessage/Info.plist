@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>ProjectNearMeUI</string>
+	<string>SearchMessage</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,15 +24,19 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
+			<key>IntentsRestrictedWhileLocked</key>
+			<array>
+				<string>INSearchForMessagesIntent</string>
+			</array>
 			<key>IntentsSupported</key>
 			<array>
-				<string>INSearchForNotebookItemsIntent</string>
+				<string>INSearchForMessagesIntent</string>
 			</array>
 		</dict>
-		<key>NSExtensionPrincipalClass</key>
-		<string>ProjectNearIntentViewController</string>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.intents-ui-service</string>
+		<string>com.apple.intents-service</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>IntentHandler</string>
 	</dict>
 </dict>
 </plist>
