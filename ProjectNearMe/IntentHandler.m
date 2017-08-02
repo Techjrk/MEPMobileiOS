@@ -35,6 +35,7 @@
 
     [[DataManager sharedManager] setForceConnect:YES];
     NSLog(@"%@", [intent description]);
+    
     return self;
 }
 
@@ -64,7 +65,11 @@
         
             [self companyTrackingList:intent completion:completion];
         
+        } else {
+            [self responseSearchNoteCompletionError:completion];
         }
+    } else {
+        [self responseSearchNoteCompletionError:completion];
     }
     
     
@@ -80,6 +85,7 @@
 
 }
 
+
 - (void)resolveContentForSearchForNotebookItems:(INSearchForNotebookItemsIntent *)intent withCompletion:(void (^)(INStringResolutionResult * _Nonnull))completion {
     
     if (intent.content == nil) {
@@ -89,10 +95,21 @@
         INStringResolutionResult *resolution = [INStringResolutionResult confirmationRequiredWithStringToConfirm:intent.content];
         completion(resolution);
     }
-    
-    
 }
 
+/*
+- (void)resolveTitleForSearchForNotebookItems:(INSearchForNotebookItemsIntent *)intent withCompletion:(void (^)(INSpeakableStringResolutionResult * _Nonnull))completion {
+
+    if (intent.content == nil) {
+        INSpeakableStringResolutionResult *resolution = [INSpeakableStringResolutionResult confirmationRequiredWithStringToConfirm:intent.title];
+        completion(resolution);
+    } else {
+        INSpeakableStringResolutionResult *resolution = [INSpeakableStringResolutionResult confirmationRequiredWithStringToConfirm:intent.title];
+        completion(resolution);
+    }
+
+}
+*/
 #pragma mark - Generic
 
 - (NSUserActivity*)userActivitySearchNote {

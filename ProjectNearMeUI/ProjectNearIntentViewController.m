@@ -35,6 +35,9 @@
     }
 }
 
+- (void)configureViewForParameters:(NSSet<INParameter *> *)parameters ofInteraction:(INInteraction *)interaction interactiveBehavior:(INUIInteractiveBehavior)interactiveBehavior context:(INUIHostedViewContext)context completion:(void (^)(BOOL, NSSet<INParameter *> * _Nonnull, CGSize))completion {
+    
+}
 - (CGSize)desiredSize {
     return [self extensionContext].hostedViewMaximumAllowedSize;
 }

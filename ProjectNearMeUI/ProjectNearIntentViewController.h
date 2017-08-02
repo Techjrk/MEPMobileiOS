@@ -8,6 +8,6 @@
 
 #import <IntentsUI/IntentsUI.h>
 
-@interface ProjectNearIntentViewController : UIViewController <INUIHostedViewControlling>
+@interface ProjectNearIntentViewController : UIViewController <INUIHostedViewControlling, INUIHostedViewSiriProviding>
 
 @end
