@@ -27,10 +27,11 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>INSearchForMessagesIntent</string>
+				<string>INStartWorkoutIntent</string>
 			</array>
 		</dict>
-		<key>NSExtensionMainStoryboard</key>
-		<string>MainInterface</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>SearchMessageViewController</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.intents-ui-service</string>
 	</dict>

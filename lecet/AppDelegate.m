@@ -276,4 +276,16 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 }
 
+- (void)application:(UIApplication *)application didUpdateUserActivity:(NSUserActivity *)userActivity {
+    
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+    
+    return NO;
+}
+
+- (BOOL)application:(UIApplication *)application willContinueUserActivityWithType:(NSString *)userActivityType {
+    return NO;
+}
 @end

@@ -395,6 +395,9 @@
 		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
 		B7D9C4661F31C80100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
 		B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
+		B7D9C46B1F31DCED00682F9C /* SearchMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */; };
+		B7D9C46C1F31DCED00682F9C /* SearchMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */; };
+		B7D9C46E1F321E2100682F9C /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D9C46D1F321E2100682F9C /* AppIntentVocabulary.plist */; };
 		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
 		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
@@ -1083,6 +1086,10 @@
 		B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LIUNA_HQ.gpx; sourceTree = "<group>"; };
 		B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
 		B7D9C4651F31C76A00682F9C /* SearchMessageUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessageUI.entitlements; sourceTree = "<group>"; };
+		B7D9C4681F31DCED00682F9C /* SearchMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMessageViewController.h; sourceTree = "<group>"; };
+		B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMessageViewController.m; sourceTree = "<group>"; };
+		B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchMessageViewController.xib; sourceTree = "<group>"; };
+		B7D9C46D1F321E2100682F9C /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		B7E1042F1CEC6D7600EAD8E7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
@@ -2591,6 +2598,7 @@
 			isa = PBXGroup;
 			children = (
 				B76C694F1CD24F05009E9F15 /* en.strings */,
+				B7D9C46D1F321E2100682F9C /* AppIntentVocabulary.plist */,
 			);
 			name = Language;
 			sourceTree = "<group>";
@@ -2736,6 +2744,9 @@
 				B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */,
 				B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */,
 				B7EECF541F31C6A0003E9E66 /* Info.plist */,
+				B7D9C4681F31DCED00682F9C /* SearchMessageViewController.h */,
+				B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */,
+				B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */,
 			);
 			path = SearchMessageUI;
 			sourceTree = "<group>";
@@ -3008,6 +3019,7 @@
 				B60909D51E7AB79B00DEAA17 /* CustomCameraViewController.xib in Resources */,
 				B76C69401CD22DCE009E9F15 /* Lato-Semibold.ttf in Resources */,
 				B73EFACC1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.xib in Resources */,
+				B7D9C46E1F321E2100682F9C /* AppIntentVocabulary.plist in Resources */,
 				B6EA88B51CF439F400BB3180 /* ProjectDetailStateView.xib in Resources */,
 				B7637A371CEA24BB00F0FA2F /* ParticipantCollectionViewCell.xib in Resources */,
 				B6A74EFB1D15DBD3007CDFF3 /* CompanySortViewController.xib in Resources */,
@@ -3156,6 +3168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D9C46C1F31DCED00682F9C /* SearchMessageViewController.xib in Resources */,
 				B7EECF531F31C6A0003E9E66 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3382,6 +3395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D9C46B1F31DCED00682F9C /* SearchMessageViewController.m in Sources */,
 				B7EECF501F31C6A0003E9E66 /* IntentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
