@@ -18,7 +18,11 @@
 					<array>
 						<dict>
 							<key>VocabularyItemPhrase</key>
-							<string>Start service</string>
+							<string>near</string>
+							<key>VocabularyItemExamples</key>
+							<array>
+								<string>project near me</string>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -32,7 +36,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>get MEP </string>
+				<string>start project near me</string>
 			</array>
 		</dict>
 	</array>
