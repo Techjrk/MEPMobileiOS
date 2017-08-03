@@ -342,8 +342,6 @@
 		B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */; };
 		B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */; };
 		B7A1D3491CE4D3C9004E94B3 /* ProjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */; };
-		B7A3EEFE1F28F80F006ADEC5 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
-		B7A3EEFF1F28F80F006ADEC5 /* DataManagerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7BF60861D19371100B3BDD7 /* DownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60851D19371100B3BDD7 /* DownView.m */; };
 		B7BF608A1D19723A00B3BDD7 /* ShareItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF60881D19723A00B3BDD7 /* ShareItemCollectionViewCell.m */; };
 		B7BF608B1D19723A00B3BDD7 /* ShareItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF60891D19723A00B3BDD7 /* ShareItemCollectionViewCell.xib */; };
@@ -395,9 +393,6 @@
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
 		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
-		B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		B7D9C46B1F31DCED00682F9C /* SearchMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */; };
-		B7D9C46C1F31DCED00682F9C /* SearchMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */; };
 		B7D9C46E1F321E2100682F9C /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D9C46D1F321E2100682F9C /* AppIntentVocabulary.plist */; };
 		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
 		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
@@ -418,10 +413,6 @@
 		B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104571CECE91600EAD8E7 /* ContactFieldView.m */; };
 		B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */; };
 		B7EECF451F31C6A0003E9E66 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EECF441F31C6A0003E9E66 /* IntentHandler.m */; };
-		B7EECF4C1F31C6A0003E9E66 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B796FC521F2793A700829E00 /* IntentsUI.framework */; };
-		B7EECF501F31C6A0003E9E66 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */; };
-		B7EECF531F31C6A0003E9E66 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */; };
-		B7EECF571F31C6A0003E9E66 /* SearchMessageUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7EECF5A1F31C6A0003E9E66 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A301CDB898100847FA3 /* BidSoonItem.m */; };
 		B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */; };
@@ -436,31 +427,11 @@
 		B7FC24C41EC099B70002802D /* DMDViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C31EC099B70002802D /* DMDViewerController.xib */; };
 		B7FC24C91EC361E50002802D /* LongPressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24C71EC361E40002802D /* LongPressViewController.m */; };
 		B7FC24CA1EC361E50002802D /* LongPressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C81EC361E40002802D /* LongPressViewController.xib */; };
-		B7FF1CFE1F337F6800149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
+		B7FF1D2D1F338A9900149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1D031F338A9800149175 /* DataManagerSDK.framework */; };
+		B7FF1D2E1F338AD700149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1D031F338A9800149175 /* DataManagerSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B7A3EDD21F28E6DB006ADEC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B7A3EDCE1F28E6DA006ADEC5 /* DataManagerSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B7A3EDC31F28E6DA006ADEC5;
-			remoteInfo = DataManagerSDK;
-		};
-		B7A3EF001F28F80F006ADEC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B7A3EDCE1F28E6DA006ADEC5 /* DataManagerSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B7A3EDC21F28E6DA006ADEC5;
-			remoteInfo = DataManagerSDK;
-		};
-		B7EECF551F31C6A0003E9E66 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B7EECF4A1F31C6A0003E9E66;
-			remoteInfo = SearchMessageUI;
-		};
 		B7EECF581F31C6A0003E9E66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
@@ -477,7 +448,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B7EECF571F31C6A0003E9E66 /* SearchMessageUI.appex in Embed App Extensions */,
 				B7EECF5A1F31C6A0003E9E66 /* SearchMessage.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -489,7 +459,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B7A3EEFF1F28F80F006ADEC5 /* DataManagerSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1010,7 +979,6 @@
 		B7A1D3451CE4D3BD004E94B3 /* ProjectHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHeaderView.h; sourceTree = "<group>"; };
 		B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectHeaderView.m; sourceTree = "<group>"; };
 		B7A1D3481CE4D3C9004E94B3 /* ProjectHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectHeaderView.xib; sourceTree = "<group>"; };
-		B7A3EDCE1F28E6DA006ADEC5 /* DataManagerSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DataManagerSDK.xcodeproj; path = DataManagerSDK/DataManagerSDK.xcodeproj; sourceTree = "<group>"; };
 		B7BF60841D19371100B3BDD7 /* DownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownView.h; sourceTree = "<group>"; };
 		B7BF60851D19371100B3BDD7 /* DownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownView.m; sourceTree = "<group>"; };
 		B7BF60871D19723A00B3BDD7 /* ShareItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareItemCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1090,10 +1058,6 @@
 		B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemExpandingViewCell.xib; sourceTree = "<group>"; };
 		B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LIUNA_HQ.gpx; sourceTree = "<group>"; };
 		B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
-		B7D9C4651F31C76A00682F9C /* SearchMessageUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessageUI.entitlements; sourceTree = "<group>"; };
-		B7D9C4681F31DCED00682F9C /* SearchMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMessageViewController.h; sourceTree = "<group>"; };
-		B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMessageViewController.m; sourceTree = "<group>"; };
-		B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchMessageViewController.xib; sourceTree = "<group>"; };
 		B7D9C46D1F321E2100682F9C /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
@@ -1125,11 +1089,6 @@
 		B7EECF431F31C6A0003E9E66 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		B7EECF441F31C6A0003E9E66 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
 		B7EECF461F31C6A0003E9E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessageUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7EECF4E1F31C6A0003E9E66 /* IntentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentViewController.h; sourceTree = "<group>"; };
-		B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
-		B7EECF521F31C6A0003E9E66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		B7EECF541F31C6A0003E9E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7F10A2F1CDB898100847FA3 /* BidSoonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSoonItem.h; sourceTree = "<group>"; };
 		B7F10A301CDB898100847FA3 /* BidSoonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItem.m; sourceTree = "<group>"; };
 		B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItem.xib; sourceTree = "<group>"; };
@@ -1153,6 +1112,7 @@
 		B7FC24C61EC361E40002802D /* LongPressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongPressViewController.h; sourceTree = "<group>"; };
 		B7FC24C71EC361E40002802D /* LongPressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongPressViewController.m; sourceTree = "<group>"; };
 		B7FC24C81EC361E40002802D /* LongPressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongPressViewController.xib; sourceTree = "<group>"; };
+		B7FF1D031F338A9800149175 /* DataManagerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataManagerSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1171,7 +1131,7 @@
 				B79AA7BB1E9CBE4F00BA1B04 /* CoreMedia.framework in Frameworks */,
 				B79AA7B91E9CBE4400BA1B04 /* CoreVideo.framework in Frameworks */,
 				B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */,
-				B7A3EEFE1F28F80F006ADEC5 /* DataManagerSDK.framework in Frameworks */,
+				B7FF1D2E1F338AD700149175 /* DataManagerSDK.framework in Frameworks */,
 				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
 				B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */,
 				B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */,
@@ -1191,16 +1151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7FF1CFE1F337F6800149175 /* DataManagerSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7EECF481F31C6A0003E9E66 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B7EECF4C1F31C6A0003E9E66 /* IntentsUI.framework in Frameworks */,
-				B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */,
+				B7FF1D2D1F338A9900149175 /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2051,7 +2002,6 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
-				B7A3EDCE1F28E6DA006ADEC5 /* DataManagerSDK.xcodeproj */,
 				B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */,
 				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
 				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
@@ -2068,7 +2018,6 @@
 				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
 				B701551A1CD0C56A0050CF8A /* lecet */,
 				B7EECF421F31C6A0003E9E66 /* SearchMessage */,
-				B7EECF4D1F31C6A0003E9E66 /* SearchMessageUI */,
 				B70155191CD0C56A0050CF8A /* Products */,
 				B7DD9CC91D942A9600978CC7 /* Frameworks */,
 			);
@@ -2079,7 +2028,6 @@
 			children = (
 				B70155181CD0C56A0050CF8A /* MEP.app */,
 				B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */,
-				B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2716,14 +2664,6 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
-		B7A3EDCF1F28E6DA006ADEC5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		B7DD9CC91D942A9600978CC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2744,27 +2684,13 @@
 		B7EECF421F31C6A0003E9E66 /* SearchMessage */ = {
 			isa = PBXGroup;
 			children = (
+				B7FF1D031F338A9800149175 /* DataManagerSDK.framework */,
 				B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */,
 				B7EECF431F31C6A0003E9E66 /* IntentHandler.h */,
 				B7EECF441F31C6A0003E9E66 /* IntentHandler.m */,
 				B7EECF461F31C6A0003E9E66 /* Info.plist */,
 			);
 			path = SearchMessage;
-			sourceTree = "<group>";
-		};
-		B7EECF4D1F31C6A0003E9E66 /* SearchMessageUI */ = {
-			isa = PBXGroup;
-			children = (
-				B7D9C4651F31C76A00682F9C /* SearchMessageUI.entitlements */,
-				B7EECF4E1F31C6A0003E9E66 /* IntentViewController.h */,
-				B7EECF4F1F31C6A0003E9E66 /* IntentViewController.m */,
-				B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */,
-				B7EECF541F31C6A0003E9E66 /* Info.plist */,
-				B7D9C4681F31DCED00682F9C /* SearchMessageViewController.h */,
-				B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */,
-				B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */,
-			);
-			path = SearchMessageUI;
 			sourceTree = "<group>";
 		};
 		B7F109EE1CDB3E1D00847FA3 /* Libraries */ = {
@@ -2846,8 +2772,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B7A3EF011F28F80F006ADEC5 /* PBXTargetDependency */,
-				B7EECF561F31C6A0003E9E66 /* PBXTargetDependency */,
 				B7EECF591F31C6A0003E9E66 /* PBXTargetDependency */,
 			);
 			name = lecet;
@@ -2870,23 +2794,6 @@
 			name = SearchMessage;
 			productName = SearchMessage;
 			productReference = B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		B7EECF4A1F31C6A0003E9E66 /* SearchMessageUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B7EECF5B1F31C6A0003E9E66 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */;
-			buildPhases = (
-				B7EECF471F31C6A0003E9E66 /* Sources */,
-				B7EECF481F31C6A0003E9E66 /* Frameworks */,
-				B7EECF491F31C6A0003E9E66 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SearchMessageUI;
-			productName = SearchMessageUI;
-			productReference = B7EECF4B1F31C6A0003E9E66 /* SearchMessageUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -2926,16 +2833,6 @@
 							};
 						};
 					};
-					B7EECF4A1F31C6A0003E9E66 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AS94HE7VCY;
-						ProvisioningStyle = Manual;
-						SystemCapabilities = {
-							com.apple.Keychain = {
-								enabled = 1;
-							};
-						};
-					};
 				};
 			};
 			buildConfigurationList = B70155131CD0C56A0050CF8A /* Build configuration list for PBXProject "lecet" */;
@@ -2949,30 +2846,13 @@
 			mainGroup = B701550F1CD0C56A0050CF8A;
 			productRefGroup = B70155191CD0C56A0050CF8A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B7A3EDCF1F28E6DA006ADEC5 /* Products */;
-					ProjectRef = B7A3EDCE1F28E6DA006ADEC5 /* DataManagerSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B70155171CD0C56A0050CF8A /* lecet */,
 				B7EECF401F31C6A0003E9E66 /* SearchMessage */,
-				B7EECF4A1F31C6A0003E9E66 /* SearchMessageUI */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DataManagerSDK.framework;
-			remoteRef = B7A3EDD21F28E6DB006ADEC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B70155161CD0C56A0050CF8A /* Resources */ = {
@@ -3180,15 +3060,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7EECF491F31C6A0003E9E66 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B7D9C46C1F31DCED00682F9C /* SearchMessageViewController.xib in Resources */,
-				B7EECF531F31C6A0003E9E66 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3411,45 +3282,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7EECF471F31C6A0003E9E66 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B7D9C46B1F31DCED00682F9C /* SearchMessageViewController.m in Sources */,
-				B7EECF501F31C6A0003E9E66 /* IntentViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B7A3EF011F28F80F006ADEC5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DataManagerSDK;
-			targetProxy = B7A3EF001F28F80F006ADEC5 /* PBXContainerItemProxy */;
-		};
-		B7EECF561F31C6A0003E9E66 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B7EECF4A1F31C6A0003E9E66 /* SearchMessageUI */;
-			targetProxy = B7EECF551F31C6A0003E9E66 /* PBXContainerItemProxy */;
-		};
 		B7EECF591F31C6A0003E9E66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B7EECF401F31C6A0003E9E66 /* SearchMessage */;
 			targetProxy = B7EECF581F31C6A0003E9E66 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B7EECF511F31C6A0003E9E66 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B7EECF521F31C6A0003E9E66 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B701552D1CD0C56A0050CF8A /* Debug */ = {
@@ -3552,6 +3393,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SearchMessage",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
@@ -3586,6 +3428,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SearchMessage",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
@@ -3608,48 +3451,6 @@
 			};
 			name = Release;
 		};
-		B7EECF5C1F31C6A0003E9E66 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SearchMessageUI/SearchMessageUI.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
-				INFOPLIST_FILE = SearchMessageUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B7EECF5D1F31C6A0003E9E66 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SearchMessageUI/SearchMessageUI.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
-				INFOPLIST_FILE = SearchMessageUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		B7EECF5F1F31C6A0003E9E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3661,10 +3462,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = AS94HE7VCY;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/DataManagerSDK",
-					"$(PROJECT_DIR)/SearchMessage",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/SearchMessage";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SearchMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -3689,10 +3489,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = AS94HE7VCY;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/DataManagerSDK",
-					"$(PROJECT_DIR)/SearchMessage",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/SearchMessage";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SearchMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -3723,15 +3522,6 @@
 			buildConfigurations = (
 				B70155301CD0C56A0050CF8A /* Debug */,
 				B70155311CD0C56A0050CF8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B7EECF5B1F31C6A0003E9E66 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B7EECF5C1F31C6A0003E9E66 /* Debug */,
-				B7EECF5D1F31C6A0003E9E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
