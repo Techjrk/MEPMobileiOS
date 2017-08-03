@@ -427,8 +427,9 @@
 		B7FC24C41EC099B70002802D /* DMDViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C31EC099B70002802D /* DMDViewerController.xib */; };
 		B7FC24C91EC361E50002802D /* LongPressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24C71EC361E40002802D /* LongPressViewController.m */; };
 		B7FC24CA1EC361E50002802D /* LongPressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C81EC361E40002802D /* LongPressViewController.xib */; };
-		B7FF1D2D1F338A9900149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1D031F338A9800149175 /* DataManagerSDK.framework */; };
-		B7FF1D2E1F338AD700149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1D031F338A9800149175 /* DataManagerSDK.framework */; };
+		B7FF1DFC1F338F9600149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1DFB1F338F9600149175 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		B7FF1DFE1F338FA700149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1DFD1F338FA700149175 /* DataManagerSDK.framework */; };
+		B7FF1DFF1F338FA700149175 /* DataManagerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7FF1DFD1F338FA700149175 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -459,6 +460,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B7FF1DFF1F338FA700149175 /* DataManagerSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1112,7 +1114,8 @@
 		B7FC24C61EC361E40002802D /* LongPressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongPressViewController.h; sourceTree = "<group>"; };
 		B7FC24C71EC361E40002802D /* LongPressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongPressViewController.m; sourceTree = "<group>"; };
 		B7FC24C81EC361E40002802D /* LongPressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongPressViewController.xib; sourceTree = "<group>"; };
-		B7FF1D031F338A9800149175 /* DataManagerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataManagerSDK.framework; sourceTree = "<group>"; };
+		B7FF1DFB1F338F9600149175 /* DataManagerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataManagerSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/DataManagerSDK-fznwmsufmgmjpigqvfohruckjmvw/Build/Products/Debug-iphoneos/DataManagerSDK.framework"; sourceTree = "<group>"; };
+		B7FF1DFD1F338FA700149175 /* DataManagerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataManagerSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1131,7 +1134,7 @@
 				B79AA7BB1E9CBE4F00BA1B04 /* CoreMedia.framework in Frameworks */,
 				B79AA7B91E9CBE4400BA1B04 /* CoreVideo.framework in Frameworks */,
 				B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */,
-				B7FF1D2E1F338AD700149175 /* DataManagerSDK.framework in Frameworks */,
+				B7FF1DFE1F338FA700149175 /* DataManagerSDK.framework in Frameworks */,
 				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
 				B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */,
 				B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */,
@@ -1151,7 +1154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7FF1D2D1F338A9900149175 /* DataManagerSDK.framework in Frameworks */,
+				B7FF1DFC1F338F9600149175 /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2002,6 +2005,7 @@
 		B701550F1CD0C56A0050CF8A = {
 			isa = PBXGroup;
 			children = (
+				B7FF1DFD1F338FA700149175 /* DataManagerSDK.framework */,
 				B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */,
 				B79AA7C41E9CBE9100BA1B04 /* OpenGLES.framework */,
 				B74FDB601D796F45003A1AFD /* MessageUI.framework */,
@@ -2667,6 +2671,7 @@
 		B7DD9CC91D942A9600978CC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7FF1DFB1F338F9600149175 /* DataManagerSDK.framework */,
 				B7FC24741EBA0AF20002802D /* libDMDViewerSample.a */,
 				B79AA7C61E9CBEA100BA1B04 /* Foundation.framework */,
 				B79AA7C21E9CBE8600BA1B04 /* AVFoundation.framework */,
@@ -2684,7 +2689,6 @@
 		B7EECF421F31C6A0003E9E66 /* SearchMessage */ = {
 			isa = PBXGroup;
 			children = (
-				B7FF1D031F338A9800149175 /* DataManagerSDK.framework */,
 				B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */,
 				B7EECF431F31C6A0003E9E66 /* IntentHandler.h */,
 				B7EECF441F31C6A0003E9E66 /* IntentHandler.m */,
@@ -3394,6 +3398,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 					"$(PROJECT_DIR)/SearchMessage",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
@@ -3429,6 +3434,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 					"$(PROJECT_DIR)/SearchMessage",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lecet/PrefixHeader.pch;
@@ -3462,7 +3468,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = AS94HE7VCY;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/SearchMessage";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "";
@@ -3489,7 +3495,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = AS94HE7VCY;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/SearchMessage";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "";
