@@ -28,7 +28,7 @@
 }
 
 - (id)cargo {
-    return [NSNumber numberWithBool:[_listItem isExpanded]];
+    return [NSNumber numberWithBool:[_listItem isExpandedStatus]];
 }
 
 - (void)setTrackingListViewDelegate:(id<TrackingListViewDelegate>)trackingListViewDelegate {
@@ -38,4 +38,13 @@
 - (void)setHeaderDisabled:(BOOL)headerDisabled {
     _listItem.isHeaderDisabled = headerDisabled;
 }
+
+- (void)expanded:(BOOL)expanded {
+    [_listItem setExpanded:expanded];
+}
+
+- (BOOL)isExpandedInDefault {
+    return [_listItem isExpandedInDefault];
+}
+
 @end

@@ -109,6 +109,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SIRI_EVENT object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_APP_BECOME_ACTIVE object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:RESTART_SHUTTER object:nil];
     application.applicationIconBadgeNumber = 0;

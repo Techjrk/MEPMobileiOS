@@ -57,4 +57,8 @@
     [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)button.tag forView:sender];
 }
 
+- (void)tappedMenuTrackingList {
+    [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)MenuHeaderTrack forView:_buttonTracking];
+}
+
 @end

@@ -20,5 +20,7 @@
 @property (nonatomic) BOOL isHeaderDisabled;
 - (CGFloat)viewHeight;
 - (void)setInfo:(id)info;
-- (BOOL)isExpanded;
+- (BOOL)isExpandedStatus;
+- (void)setExpanded:(BOOL)expanded;
+- (BOOL)isExpandedInDefault;
 @end
