@@ -18,9 +18,12 @@ typedef enum  {
 
 @protocol MenuHeaderDelegate <NSObject>
 - (void)tappedMenu:(MenuHeaderItem)menuHeaderItem forView:(UIView*)view;
+
 @end
 
 @interface MenuHeaderView : BaseViewClass
 @property (strong, nonatomic) id<MenuHeaderDelegate>menuHeaderDelegate;
 - (void)setTitleFromCount:(NSInteger)count title:(NSString*)title;
+- (void)tappedMenuTrackingList;
+- (void)tappedMenuProjectNear;
 @end

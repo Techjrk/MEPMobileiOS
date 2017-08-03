@@ -23,6 +23,7 @@
 @interface TrackingListView()<CustomCollectionViewDelegate>{
     NSArray *infoDict;
     BOOL isExpanded;
+    BOOL isExpandedDefault;
 }
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet CustomCollectionView *collectionView;
@@ -45,7 +46,7 @@
     _constraintHeaderHeight.constant = kDeviceHeight * 0.08;
     _topView.backgroundColor = TRACK_LIST_TOPBAR_BG_COLOR;
     isExpanded = YES;
-    
+    isExpandedDefault = NO;
 }
 
 -(void)setInfo:(id)info {
@@ -60,7 +61,7 @@
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[self.headerTitle stringByAppendingString:@"  "] attributes:@{NSFontAttributeName:TRACK_LIST_TOPBAR_TITLE_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}];
     
     if (!self.isHeaderDisabled) {
-        [title appendAttributedString:[[NSAttributedString alloc] initWithString:!isExpanded?SEE_ALL_CARET_DOWN_TEXT:SEE_ALL_CARET_UP_TEXT attributes:@{NSFontAttributeName:SEE_ALL_CARET_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}]];
+        [title appendAttributedString:[[NSAttributedString alloc] initWithString:(!(isExpanded && isExpandedDefault))?SEE_ALL_CARET_DOWN_TEXT:SEE_ALL_CARET_UP_TEXT attributes:@{NSFontAttributeName:SEE_ALL_CARET_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}]];
     } else {
         _buttonHeader.enabled = NO;
     }
@@ -70,8 +71,15 @@
 
 - (IBAction)tappedButtonHeader:(id)sender {
     
+    if (!isExpandedDefault) {
+        isExpanded = NO;
+        isExpandedDefault = YES;
+    }
+    
     isExpanded = !isExpanded;
-    _collectionView.cargo = [NSNumber numberWithBool:isExpanded];
+  
+    _collectionView.cargo = [NSNumber numberWithBool:isExpanded && isExpandedDefault];
+    
     [self changeButtonTitle];
     [_collectionView reload];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
@@ -79,7 +87,15 @@
 
 - (CGFloat)viewHeight {
     CGFloat count = infoDict.count;
-    return _buttonHeader.frame.size.height + ( (isExpanded?count:0) * cellHeight);
+    return _buttonHeader.frame.size.height + ( (isExpanded && isExpandedDefault?count:0) * cellHeight);
+}
+
+- (void)setExpanded:(BOOL)expanded {
+    isExpandedDefault = expanded;
+}
+
+- (BOOL)isExpandedInDefault {
+    return isExpandedDefault;
 }
 
 #pragma mark - CustomCollectionView Delegate
@@ -95,7 +111,7 @@
 
 - (NSInteger)collectionViewItemCount {
  
-    return isExpanded?infoDict.count:0;
+    return isExpanded && isExpandedDefault?infoDict.count:0;
 }
 
 - (NSInteger)collectionViewSectionCount {
@@ -117,7 +133,7 @@
     
 }
 
-- (BOOL)isExpanded {
-    return isExpanded;
+- (BOOL)isExpandedStatus {
+    return isExpanded && isExpandedDefault;
 }
 @end

@@ -63,7 +63,9 @@
     BOOL isDoneLoadingRecentlyAdded;
     NSMutableDictionary *trackingListInfo;
     TrackingListCellCollectionViewCell *trackList[2];
-    
+    BOOL isProjectTrackingList;
+    BOOL isCompanyTrackingList;
+    BOOL isFirstLoad;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -89,6 +91,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    isFirstLoad = YES;
+    
     [[DataManager sharedManager] setIsLogged:YES];
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
@@ -106,6 +110,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshUpdated:) name:NOTIFICATION_REFRESH_PROJECTS_UPDATED object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUpdatedNear:) name:NOTIFICATION_SHOW_PROJECT object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSiri:) name:NOTIFICATION_SIRI_EVENT object:nil];
 
     bidItemsHappeningSoon = [NSMutableArray new];
     self.view.backgroundColor = DASHBOARD_BG_COLOR;
@@ -150,13 +156,6 @@
         
     } ];
     
-    NSString *intent = [[DataManager sharedManager] getKeyChainValue:kIntentType serviceName:kKeychainServiceName];
-    
-    if (intent.length>0) {
-        
-        [[DataManager sharedManager] promptMessage:intent];
-        [[DataManager sharedManager] storeKeyChainValue:kIntentType password:@"" serviceName:kKeychainServiceName];
-    }
 
 }
 
@@ -171,6 +170,55 @@
         [self showProjectDetailFromAPNS:appDelegate.notificationPayloadRecordID];
         appDelegate.notificationPayloadRecordID = nil;
     }
+    
+    if (isFirstLoad) {
+        isFirstLoad = NO;
+        [self siriEvent];
+    }
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Notifications
+
+- (void)notificationReloadDashboard:(NSNotification*)notification {
+    
+    [self pageChangedForced:YES];
+    
+}
+
+- (void)notificationRefreshAdded:(NSNotification*)notification {
+    
+    [self requestBidRecentlyAdded];
+    
+}
+
+- (void)notificationRefreshUpdated:(NSNotification*)notification {
+    
+    [self requestBidRecentlyUpdated];
+    
+}
+
+- (void)notificationUpdatedNear:(NSNotification*)notification {
+    
+    [self showProjectDetailFromAPNS:notification.object];
+    
+}
+
+- (void)notificationSiri:(NSNotification*)notification {
+    [self siriEvent];
+}
+
+- (void)navigateHome:(NSNotification*)notification {
+
+    [self.navigationController popToViewController:self animated:NO];
     
 }
 
@@ -197,43 +245,42 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-- (void)notificationReloadDashboard:(NSNotification*)notification {
+- (void)siriEvent {
+    NSString *intent = [[DataManager sharedManager] getKeyChainValue:kIntentType serviceName:kKeychainServiceName];
     
-    [self pageChangedForced:YES];
-    
-}
-
-- (void)notificationRefreshAdded:(NSNotification*)notification {
-    
-    [self requestBidRecentlyAdded];
-    
-}
-
-- (void)notificationRefreshUpdated:(NSNotification*)notification {
-    
-    [self requestBidRecentlyUpdated];
-    
-}
-
-- (void)notificationUpdatedNear:(NSNotification*)notification {
-    
-    [self showProjectDetailFromAPNS:notification.object];
-    
-}
-
-- (void)navigateHome:(NSNotification*)notification {
-
-    [self.navigationController popToViewController:self animated:NO];
+    isCompanyTrackingList = YES;
+    isProjectTrackingList = YES;
+    if (intent.length>0) {
+        
+        if ([[intent uppercaseString] isEqualToString:@"RECENTLY UPDATED"]) {
+            
+            [self navigateHome:nil];
+            
+            [self.scrollPageView setContentOffset:CGPointMake(kDeviceWidth * 2,0)];
+            [self pageChangedForced:YES];
+            
+        } else if ([[intent uppercaseString] isEqualToString:@"PROJECT TRACKING"]) {
+            
+            [self navigateHome:nil];
+            isCompanyTrackingList = NO;
+            [self.menuHeader tappedMenuTrackingList];
+        }else if ([[intent uppercaseString] isEqualToString:@"COMPANY TRACKING"]) {
+            
+            [self navigateHome:nil];
+            isProjectTrackingList = NO;
+            [self.menuHeader tappedMenuTrackingList];
+        } else if ([[intent uppercaseString] isEqualToString:@"PROJECT NEAR ME"]) {
+      
+            [self navigateHome:nil];
+            [self.menuHeader tappedMenuProjectNear];
+        }
+        
+        
+        [[DataManager sharedManager] storeKeyChainValue:kIntentType password:@"" serviceName:kKeychainServiceName];
+    }
     
 }
+
 
 #pragma mark - CHART ROUTINES
 
@@ -381,7 +428,6 @@
         
     }];
 }
-
 
 - (NSMutableArray*)loadBidsRecentlyUpdated {
     
@@ -759,7 +805,12 @@
                     [[GAManager sharedManager] trackTrackingListIcon];
 
                     controller.modalPresentationStyle = UIModalPresentationCustom;
-                    [self presentViewController:controller animated:NO completion:nil];
+                    
+                    [self presentViewController:controller animated:NO completion:^{
+                        isCompanyTrackingList = YES;
+                        isProjectTrackingList = YES;
+                        
+                    }];
                     
                 } failure:^(id object) {
                     [self.customLoadingIndicator stopAnimating];
@@ -1085,6 +1136,13 @@
     
         TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
         trackList[indexPath.row] = cellItem;
+        
+        if (indexPath.row == 0) {
+            [cellItem expanded:isProjectTrackingList];
+        } else {
+            [cellItem expanded: isCompanyTrackingList];
+        }
+        
         cellItem.trackingListViewDelegate = self;
         [cellItem setInfo:trackingListInfo[indexPath.row ==0 ? kTrackListProject: kTrackListCompany] withTitle:NSLocalizedLanguage(indexPath.row ==0 ? @"PROJECT_TRACKING_LIST": @"COMPANY_TRACKING_LIST")];
     
@@ -1110,15 +1168,25 @@
     TrackingListCellCollectionViewCell *cellItem = trackList[indexPath.row];
     CGFloat defaultHeight = kDeviceHeight * 0.08;
     BOOL isExpanded = YES;
+    
+    if (indexPath.row == 0) {
+        isExpanded = isProjectTrackingList;
+    } else {
+        isExpanded = isCompanyTrackingList;
+    }
+
     if (cellItem != nil) {
         isExpanded =  [[cellItem cargo] boolValue];
+        [cellItem expanded:YES];
     }
+
     
     if (isExpanded) {
         CGFloat cellHeight = kDeviceHeight * 0.06;
         defaultHeight = defaultHeight+ ((item.count<4?item.count:4.25)*cellHeight);
     }
-    
+
+ 
     return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
 }
 

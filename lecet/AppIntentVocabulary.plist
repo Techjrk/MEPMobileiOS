@@ -13,31 +13,6 @@
 			<array>
 				<dict>
 					<key>VocabularyItemIdentifier</key>
-					<string>project_near_me</string>
-					<key>VocabularyItemSynonyms</key>
-					<array>
-						<dict>
-							<key>VocabularyItemPhrase</key>
-							<string>project near me</string>
-							<key>VocabularyItemExamples</key>
-							<array>
-								<string>project near me</string>
-								<string>projects near me</string>
-							</array>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>ParameterNames</key>
-			<array>
-				<string>INStartWorkoutIntent.workoutName</string>
-			</array>
-			<key>ParameterVocabulary</key>
-			<array>
-				<dict>
-					<key>VocabularyItemIdentifier</key>
 					<string>recently_updated</string>
 					<key>VocabularyItemSynonyms</key>
 					<array>
@@ -105,6 +80,31 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>ParameterNames</key>
+			<array>
+				<string>INStartWorkoutIntent.workoutName</string>
+			</array>
+			<key>ParameterVocabulary</key>
+			<array>
+				<dict>
+					<key>VocabularyItemIdentifier</key>
+					<string>project_near_me</string>
+					<key>VocabularyItemSynonyms</key>
+					<array>
+						<dict>
+							<key>VocabularyItemPhrase</key>
+							<string>near me</string>
+							<key>VocabularyItemExamples</key>
+							<array>
+								<string>project near me</string>
+								<string>projects near me</string>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>IntentPhrases</key>
 	<array>
@@ -113,8 +113,10 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project near me in MEP</string>
-				<string>start projects near me in MEP</string>
+				<string>start project near me list in MEP</string>
+				<string>start projects near me list in MEP</string>
+				<string>start project near me</string>
+				<string>start projects near me</string>
 			</array>
 		</dict>
 		<dict>
@@ -124,6 +126,8 @@
 			<array>
 				<string>start project recently updated in MEP</string>
 				<string>start projects recently updated in MEP</string>
+				<string>start project recently updated</string>
+				<string>start projects recently updated</string>
 			</array>
 		</dict>
 		<dict>
@@ -134,6 +138,7 @@
 				<string>start project tracking list in MEP</string>
 				<string>start project track list in MEP</string>
 				<string>start project tracklist in MEP</string>
+				<string>start project tracking</string>
 			</array>
 		</dict>
 		<dict>
@@ -144,6 +149,7 @@
 				<string>start company tracking list in MEP</string>
 				<string>start company track list in MEP</string>
 				<string>start company tracklist in MEP</string>
+				<string>start company tracking</string>
 			</array>
 		</dict>
 	</array>
