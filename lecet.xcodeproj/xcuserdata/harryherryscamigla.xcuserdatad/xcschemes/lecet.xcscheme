@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0830"
    version = "1.8">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -24,7 +24,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-               BuildableName = "MEP.app"
+               BuildableName = "Lecet MEP.app"
                BlueprintName = "lecet"
                ReferencedContainer = "container:lecet.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-            BuildableName = "MEP.app"
+            BuildableName = "Lecet MEP.app"
             BlueprintName = "lecet"
             ReferencedContainer = "container:lecet.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-            BuildableName = "MEP.app"
+            BuildableName = "Lecet MEP.app"
             BlueprintName = "lecet"
             ReferencedContainer = "container:lecet.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B70155171CD0C56A0050CF8A"
-            BuildableName = "MEP.app"
+            BuildableName = "Lecet MEP.app"
             BlueprintName = "lecet"
             ReferencedContainer = "container:lecet.xcodeproj">
          </BuildableReference>
@@ -105,7 +105,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

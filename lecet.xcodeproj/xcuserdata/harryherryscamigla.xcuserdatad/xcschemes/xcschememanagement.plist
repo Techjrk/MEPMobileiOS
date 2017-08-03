@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>SearchMessageUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>lecet.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,7 +47,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B79F1F3C1F33ABBB001D2D92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B79F1F461F33ABBB001D2D92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B7A3ED7D1F28E0AD006ADEC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7E206341F339EF700075D81</key>
 		<dict>
 			<key>primary</key>
 			<true/>
