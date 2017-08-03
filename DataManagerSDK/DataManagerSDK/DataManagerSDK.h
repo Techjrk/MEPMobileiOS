@@ -15,3 +15,4 @@ FOUNDATION_EXPORT double DataManagerSDKVersionNumber;
 FOUNDATION_EXPORT const unsigned char DataManagerSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DataManagerSDK/PublicHeader.h>
+#import <DataManagerSDK/DataManager.h>

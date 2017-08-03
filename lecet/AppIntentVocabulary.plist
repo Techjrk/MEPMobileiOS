@@ -19,9 +19,12 @@
 						<dict>
 							<key>VocabularyItemPhrase</key>
 							<string>recently updated</string>
+							<key>VocabularyItemPronunciation</key>
+							<string>recent updated projects</string>
 							<key>VocabularyItemExamples</key>
 							<array>
 								<string>recently updated</string>
+								<string>recent updated projects</string>
 							</array>
 						</dict>
 					</array>
@@ -94,11 +97,12 @@
 					<array>
 						<dict>
 							<key>VocabularyItemPhrase</key>
-							<string>near me</string>
+							<string>project near me</string>
 							<key>VocabularyItemExamples</key>
 							<array>
 								<string>project near me</string>
 								<string>projects near me</string>
+								<string>project within my location</string>
 							</array>
 						</dict>
 					</array>
@@ -117,6 +121,7 @@
 				<string>start projects near me list in MEP</string>
 				<string>start project near me</string>
 				<string>start projects near me</string>
+				<string>start project within my location</string>
 			</array>
 		</dict>
 		<dict>
@@ -125,6 +130,7 @@
 			<key>IntentExamples</key>
 			<array>
 				<string>start project recently updated in MEP</string>
+				<string>start recent updated projects</string>
 				<string>start projects recently updated in MEP</string>
 				<string>start project recently updated</string>
 				<string>start projects recently updated</string>
