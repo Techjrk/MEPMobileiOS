@@ -45,6 +45,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightContainerCapturedImage;
 @property (weak, nonatomic) IBOutlet UIImageView *capturedImageView;
 @property (weak, nonatomic) IBOutlet CustomActivityIndicatorView *customLoadingIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *locationTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
+
 @end
 
 @implementation MobileProjectAddNoteViewController
@@ -72,6 +75,14 @@
     self.postTitleTextField.leftView = [self paddingView];
     self.postTitleTextField.leftViewMode = UITextFieldViewModeAlways;
     [self postTitleTextFieldText];
+
+    self.locationTitleLabel.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_LOCATION_TITLE") label:@""];
+    self.locationTextField.placeholder = NSLocalizedLanguage(@"MPANV_LOCATION_PLACEHOLDER");
+    self.locationTextField.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
+    self.locationTextField.layer.borderWidth = 0.5f;
+    self.locationTextField.leftView = [self paddingViewLoc];
+    self.locationTextField.leftViewMode = UITextFieldViewModeAlways;
+    
     
     NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
     self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
@@ -123,12 +134,15 @@
     isEndEditingInTextView = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.locationTextField.text = self.projectFullAddress;
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidHideNotification
                                                   object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
+        [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillShowNotification
                                                   object:nil];
 }
@@ -145,19 +159,6 @@
 }
 
 - (IBAction)tappedAddButton:(id)sender {
-    /*
-    if (self.isAddPhoto) {
-        [self.loadingIndicator startAnimating];
-        [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:self.bodyTextView.text image:self.capturedImage success:^(id object){
-            [self.loadingIndicator stopAnimating];
-            [self.navigationController popViewControllerAnimated:YES];
-        }failure:^(id fail){
-            [self.loadingIndicator stopAnimating];
-            NSLog(@"Failed request");
-        }];
-    } else {
-        */
-    
     if (!self.isAddPhoto) {
         
         if (self.bodyTextView.text.length==0) {
@@ -230,6 +231,18 @@
 - (UIView *)paddingView {
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth * 0.017, kDeviceHeight * 0.025)];
+    return paddingView;
+}
+
+- (UIView *)paddingViewLoc {
+
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth * 0.05, kDeviceHeight * 0.025)];
+    
+    UIImageView *imageViewpadding =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pin"]];
+    imageViewpadding.frame = CGRectMake(0, 0, kDeviceWidth * 0.03, kDeviceHeight * 0.025);
+    imageViewpadding.center = paddingView.center;
+    
+    [paddingView addSubview:imageViewpadding];
     return paddingView;
 }
 

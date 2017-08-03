@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-
 #import "CustomTextField.h"
 #import "AppDelegate.h"
 #import <DataManagerSDK/TouchIDManager.h>
@@ -120,6 +119,36 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    _buttonTouchId.hidden = YES;
+    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        _blurView.alpha = 1;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                _scrollView.alpha = 1;
+                _constraintTopSpace.constant = 0;
+                
+                _buttonTouchId.hidden = YES;
+                _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
+                
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+    }];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 - (void)addBlurEffect:(UIView*)view {
     
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -138,9 +167,7 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+
 
 - (void)processLogin:(NSDictionary*)object {
     
@@ -200,31 +227,6 @@
 */
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    _buttonTouchId.hidden = YES;
-    _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        _blurView.alpha = 1;
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [UIView animateWithDuration:0.5 animations:^{
-                _scrollView.alpha = 1;
-                _constraintTopSpace.constant = 0;
-                
-                _buttonTouchId.hidden = YES;
-                _constraintContainerHeight.constant = _buttonSignUp.frame.size.height + _buttonSignUp.frame.origin.y;
-
-                [self.view layoutIfNeeded];
-            } completion:^(BOOL finished) {
-                
-            }];
-        }
-    }];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
