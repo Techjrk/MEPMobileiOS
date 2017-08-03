@@ -37,6 +37,9 @@
 #define kUrlCompanyDetailShare          @"#/company/%li"
 #define kKeychainLocationLat            @"LocationLat"
 #define kKeychainLocationLng            @"LocationLng"
+#define kIntentType                     @"IntentType"
+
+
 
 @interface DataManager : BaseManager
 //PROPERTIES
