@@ -395,8 +395,7 @@
 		B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BF61191D240F5300B3BDD7 /* ListItemExpandingViewCell.m */; };
 		B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BF611A1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib */; };
 		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
-		B7D9C4661F31C80100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
-		B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
+		B7D9C4671F31C81100682F9C /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B7D9C46B1F31DCED00682F9C /* SearchMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9C4691F31DCED00682F9C /* SearchMessageViewController.m */; };
 		B7D9C46C1F31DCED00682F9C /* SearchMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D9C46A1F31DCED00682F9C /* SearchMessageViewController.xib */; };
 		B7D9C46E1F321E2100682F9C /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D9C46D1F321E2100682F9C /* AppIntentVocabulary.plist */; };
@@ -437,6 +436,7 @@
 		B7FC24C41EC099B70002802D /* DMDViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C31EC099B70002802D /* DMDViewerController.xib */; };
 		B7FC24C91EC361E50002802D /* LongPressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC24C71EC361E40002802D /* LongPressViewController.m */; };
 		B7FC24CA1EC361E50002802D /* LongPressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FC24C81EC361E40002802D /* LongPressViewController.xib */; };
+		B7FF1CFE1F337F6800149175 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A3EDD31F28E6DB006ADEC5 /* DataManagerSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1191,7 +1191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7D9C4661F31C80100682F9C /* DataManagerSDK.framework in Frameworks */,
+				B7FF1CFE1F337F6800149175 /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2918,6 +2918,7 @@
 					};
 					B7EECF401F31C6A0003E9E66 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = AS94HE7VCY;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -2927,6 +2928,7 @@
 					};
 					B7EECF4A1F31C6A0003E9E66 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = AS94HE7VCY;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -3609,18 +3611,20 @@
 		B7EECF5C1F31C6A0003E9E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = SearchMessageUI/SearchMessageUI.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				INFOPLIST_FILE = SearchMessageUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -3628,18 +3632,20 @@
 		B7EECF5D1F31C6A0003E9E66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = SearchMessageUI/SearchMessageUI.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				DEVELOPMENT_TEAM = AS94HE7VCY;
 				INFOPLIST_FILE = SearchMessageUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -3647,38 +3653,56 @@
 		B7EECF5F1F31C6A0003E9E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = SearchMessage/SearchMessage.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = AS94HE7VCY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/DataManagerSDK",
+					"$(PROJECT_DIR)/SearchMessage",
+				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SearchMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c8b168d9-a90a-44dd-87f9-7cca3a961c02";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP State SearchMessage";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		B7EECF601F31C6A0003E9E66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = SearchMessage/SearchMessage.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = AS94HE7VCY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/DataManagerSDK",
+					"$(PROJECT_DIR)/SearchMessage",
+				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SearchMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c8b168d9-a90a-44dd-87f9-7cca3a961c02";
+				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP State SearchMessage";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
