@@ -25,4 +25,5 @@ typedef enum  {
 @property (strong, nonatomic) id<MenuHeaderDelegate>menuHeaderDelegate;
 - (void)setTitleFromCount:(NSInteger)count title:(NSString*)title;
 - (void)tappedMenuTrackingList;
+- (void)tappedMenuProjectNear;
 @end

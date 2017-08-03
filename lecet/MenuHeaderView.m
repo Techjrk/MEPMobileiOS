@@ -61,4 +61,8 @@
     [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)MenuHeaderTrack forView:_buttonTracking];
 }
 
+- (void)tappedMenuProjectNear {
+    [self.menuHeaderDelegate tappedMenu:(MenuHeaderItem)MenuHeaderNear forView:_buttonNear];
+}
+
 @end

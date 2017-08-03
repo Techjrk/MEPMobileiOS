@@ -263,6 +263,10 @@
             [self navigateHome:nil];
             isProjectTrackingList = NO;
             [self.menuHeader tappedMenuTrackingList];
+        } else if ([[intent uppercaseString] isEqualToString:@"PROJECT NEAR ME"]) {
+      
+            [self navigateHome:nil];
+            [self.menuHeader tappedMenuProjectNear];
         }
         
         
