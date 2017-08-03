@@ -83,6 +83,11 @@
         }
     }
     
+    NSDictionary *activityDic = [launchOptions objectForKey:UIApplicationLaunchOptionsUserActivityDictionaryKey];
+    if (activityDic) {
+        
+    }
+    
     return YES;
 }
 
@@ -277,15 +282,16 @@
 }
 
 - (void)application:(UIApplication *)application didUpdateUserActivity:(NSUserActivity *)userActivity {
-    
+    //[self updateUserActivityState:userActivity];
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
     
-    return NO;
+    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application willContinueUserActivityWithType:(NSString *)userActivityType {
-    return NO;
+    return YES;
 }
+
 @end

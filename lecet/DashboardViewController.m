@@ -143,15 +143,21 @@
     [_chartRecentlyMade hideLeftButton:YES];
     [_chartRecentlyUpdated hideRightButton:YES];
     
-    if ([[DataManager sharedManager] isDebugMode]) {
-    }
-    
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateHome:) name:NOTIFICATION_HOME object:nil];
     
     [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
         
     } ];
+    
+    NSString *intent = [[DataManager sharedManager] getKeyChainValue:kIntentType serviceName:kKeychainServiceName];
+    
+    if (intent.length>0) {
+        
+        [[DataManager sharedManager] promptMessage:intent];
+        [[DataManager sharedManager] storeKeyChainValue:kIntentType password:@"" serviceName:kKeychainServiceName];
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -165,6 +171,7 @@
         [self showProjectDetailFromAPNS:appDelegate.notificationPayloadRecordID];
         appDelegate.notificationPayloadRecordID = nil;
     }
+    
 }
 
 - (void)showProjectDetailFromAPNS:(NSNumber *)recordID {

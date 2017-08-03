@@ -18,10 +18,87 @@
 					<array>
 						<dict>
 							<key>VocabularyItemPhrase</key>
-							<string>near</string>
+							<string>project near me</string>
 							<key>VocabularyItemExamples</key>
 							<array>
 								<string>project near me</string>
+								<string>projects near me</string>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>ParameterNames</key>
+			<array>
+				<string>INStartWorkoutIntent.workoutName</string>
+			</array>
+			<key>ParameterVocabulary</key>
+			<array>
+				<dict>
+					<key>VocabularyItemIdentifier</key>
+					<string>recently_updated</string>
+					<key>VocabularyItemSynonyms</key>
+					<array>
+						<dict>
+							<key>VocabularyItemPhrase</key>
+							<string>recently updated</string>
+							<key>VocabularyItemExamples</key>
+							<array>
+								<string>recently updated</string>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>ParameterNames</key>
+			<array>
+				<string>INStartWorkoutIntent.workoutName</string>
+			</array>
+			<key>ParameterVocabulary</key>
+			<array>
+				<dict>
+					<key>VocabularyItemIdentifier</key>
+					<string>project_tracking</string>
+					<key>VocabularyItemSynonyms</key>
+					<array>
+						<dict>
+							<key>VocabularyItemPhrase</key>
+							<string>project tracking</string>
+							<key>VocabularyItemExamples</key>
+							<array>
+								<string>project tracking</string>
+								<string>project track</string>
+								<string>project tracklist</string>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>ParameterNames</key>
+			<array>
+				<string>INStartWorkoutIntent.workoutName</string>
+			</array>
+			<key>ParameterVocabulary</key>
+			<array>
+				<dict>
+					<key>VocabularyItemIdentifier</key>
+					<string>company_tracking</string>
+					<key>VocabularyItemSynonyms</key>
+					<array>
+						<dict>
+							<key>VocabularyItemPhrase</key>
+							<string>company tracking</string>
+							<key>VocabularyItemExamples</key>
+							<array>
+								<string>company tracking</string>
+								<string>company track</string>
+								<string>company tracklist</string>
 							</array>
 						</dict>
 					</array>
@@ -36,7 +113,37 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project near me</string>
+				<string>start project near me in MEP</string>
+				<string>start projects near me in MEP</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INStartWorkoutIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>start project recently updated in MEP</string>
+				<string>start projects recently updated in MEP</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INStartWorkoutIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>start project tracking list in MEP</string>
+				<string>start project track list in MEP</string>
+				<string>start project tracklist in MEP</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INStartWorkoutIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>start company tracking list in MEP</string>
+				<string>start company track list in MEP</string>
+				<string>start company tracklist in MEP</string>
 			</array>
 		</dict>
 	</array>
