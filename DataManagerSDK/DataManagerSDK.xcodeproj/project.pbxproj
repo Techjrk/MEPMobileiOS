@@ -8,37 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		B7A3EDC81F28E6DA006ADEC5 /* DataManagerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EDC61F28E6DA006ADEC5 /* DataManagerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7A3EDD61F28E6FE006ADEC5 /* DataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EDD41F28E6FE006ADEC5 /* DataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EDD61F28E6FE006ADEC5 /* DataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EDD41F28E6FE006ADEC5 /* DataManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EDD71F28E6FE006ADEC5 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EDD51F28E6FE006ADEC5 /* DataManager.m */; };
-		B7A3EDDA1F28E75F006ADEC5 /* BaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EDD81F28E75F006ADEC5 /* BaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EDDA1F28E75F006ADEC5 /* BaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EDD81F28E75F006ADEC5 /* BaseManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EDDB1F28E75F006ADEC5 /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EDD91F28E75F006ADEC5 /* BaseManager.m */; };
-		B7A3EE1A1F28E804006ADEC5 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE0D1F28E804006ADEC5 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE1A1F28E804006ADEC5 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE0D1F28E804006ADEC5 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE1B1F28E804006ADEC5 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE0E1F28E804006ADEC5 /* AFHTTPSessionManager.m */; };
-		B7A3EE1C1F28E804006ADEC5 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE0F1F28E804006ADEC5 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7A3EE1D1F28E804006ADEC5 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE101F28E804006ADEC5 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE1C1F28E804006ADEC5 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE0F1F28E804006ADEC5 /* AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B7A3EE1D1F28E804006ADEC5 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE101F28E804006ADEC5 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE1E1F28E804006ADEC5 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE111F28E804006ADEC5 /* AFNetworkReachabilityManager.m */; };
-		B7A3EE1F1F28E804006ADEC5 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE121F28E804006ADEC5 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE1F1F28E804006ADEC5 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE121F28E804006ADEC5 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE201F28E804006ADEC5 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE131F28E804006ADEC5 /* AFSecurityPolicy.m */; };
-		B7A3EE211F28E804006ADEC5 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE141F28E804006ADEC5 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE211F28E804006ADEC5 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE141F28E804006ADEC5 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE221F28E804006ADEC5 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE151F28E804006ADEC5 /* AFURLRequestSerialization.m */; };
-		B7A3EE231F28E804006ADEC5 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE161F28E804006ADEC5 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE231F28E804006ADEC5 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE161F28E804006ADEC5 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE241F28E804006ADEC5 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE171F28E804006ADEC5 /* AFURLResponseSerialization.m */; };
-		B7A3EE251F28E804006ADEC5 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE181F28E804006ADEC5 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE251F28E804006ADEC5 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE181F28E804006ADEC5 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE261F28E804006ADEC5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE191F28E804006ADEC5 /* AFURLSessionManager.m */; };
 		B7A3EE2A1F28E869006ADEC5 /* SFHFKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE281F28E869006ADEC5 /* SFHFKeychainUtils.h */; };
 		B7A3EE2B1F28E869006ADEC5 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE291F28E869006ADEC5 /* SFHFKeychainUtils.m */; };
-		B7A3EE411F28E893006ADEC5 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE2D1F28E893006ADEC5 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE411F28E893006ADEC5 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE2D1F28E893006ADEC5 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE421F28E893006ADEC5 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE2E1F28E893006ADEC5 /* AFAutoPurgingImageCache.m */; };
-		B7A3EE431F28E893006ADEC5 /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE2F1F28E893006ADEC5 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE431F28E893006ADEC5 /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE2F1F28E893006ADEC5 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE441F28E893006ADEC5 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE301F28E893006ADEC5 /* AFImageDownloader.m */; };
-		B7A3EE451F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE311F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE451F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE311F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE461F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE321F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.m */; };
-		B7A3EE471F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE331F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE471F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE331F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE481F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE341F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.m */; };
-		B7A3EE491F28E893006ADEC5 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE351F28E893006ADEC5 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE491F28E893006ADEC5 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE351F28E893006ADEC5 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE4A1F28E893006ADEC5 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE361F28E893006ADEC5 /* UIButton+AFNetworking.m */; };
-		B7A3EE4B1F28E893006ADEC5 /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE371F28E893006ADEC5 /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7A3EE4C1F28E893006ADEC5 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE381F28E893006ADEC5 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE4B1F28E893006ADEC5 /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE371F28E893006ADEC5 /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B7A3EE4C1F28E893006ADEC5 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE381F28E893006ADEC5 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE4D1F28E893006ADEC5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE391F28E893006ADEC5 /* UIImageView+AFNetworking.m */; };
 		B7A3EE4E1F28E893006ADEC5 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE3A1F28E893006ADEC5 /* UIKit+AFNetworking.h */; };
 		B7A3EE4F1F28E893006ADEC5 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE3B1F28E893006ADEC5 /* UIProgressView+AFNetworking.h */; };
@@ -47,50 +47,50 @@
 		B7A3EE521F28E893006ADEC5 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE3E1F28E893006ADEC5 /* UIRefreshControl+AFNetworking.m */; };
 		B7A3EE531F28E893006ADEC5 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE3F1F28E893006ADEC5 /* UIWebView+AFNetworking.h */; };
 		B7A3EE541F28E893006ADEC5 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE401F28E893006ADEC5 /* UIWebView+AFNetworking.m */; };
-		B7A3EE561F28EC5A006ADEC5 /* constants.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE551F28EC5A006ADEC5 /* constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7A3EE591F28ED49006ADEC5 /* LocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE571F28ED49006ADEC5 /* LocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EE561F28EC5A006ADEC5 /* constants.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE551F28EC5A006ADEC5 /* constants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B7A3EE591F28ED49006ADEC5 /* LocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE571F28ED49006ADEC5 /* LocationManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EE5A1F28ED49006ADEC5 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EE581F28ED49006ADEC5 /* LocationManager.m */; };
 		B7A3EE5C1F28EE75006ADEC5 /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EE5B1F28EE75006ADEC5 /* PrefixHeader.pch */; };
-		B7A3EEA31F28F01F006ADEC5 /* DerivedNSManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA11F28F01F006ADEC5 /* DerivedNSManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEA31F28F01F006ADEC5 /* DerivedNSManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA11F28F01F006ADEC5 /* DerivedNSManagedObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEA41F28F01F006ADEC5 /* DerivedNSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEA21F28F01F006ADEC5 /* DerivedNSManagedObject.m */; };
-		B7A3EEC51F28F0A1006ADEC5 /* DB_Bid.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA51F28F0A0006ADEC5 /* DB_Bid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEC51F28F0A1006ADEC5 /* DB_Bid.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA51F28F0A0006ADEC5 /* DB_Bid.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEC61F28F0A1006ADEC5 /* DB_Bid.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEA61F28F0A0006ADEC5 /* DB_Bid.m */; };
-		B7A3EEC71F28F0A1006ADEC5 /* DB_Bid+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA71F28F0A0006ADEC5 /* DB_Bid+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEC71F28F0A1006ADEC5 /* DB_Bid+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA71F28F0A0006ADEC5 /* DB_Bid+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEC81F28F0A1006ADEC5 /* DB_Bid+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEA81F28F0A0006ADEC5 /* DB_Bid+CoreDataProperties.m */; };
-		B7A3EEC91F28F0A1006ADEC5 /* DB_BidRecent.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA91F28F0A0006ADEC5 /* DB_BidRecent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEC91F28F0A1006ADEC5 /* DB_BidRecent.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEA91F28F0A0006ADEC5 /* DB_BidRecent.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EECA1F28F0A1006ADEC5 /* DB_BidRecent.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEAA1F28F0A0006ADEC5 /* DB_BidRecent.m */; };
-		B7A3EECB1F28F0A1006ADEC5 /* DB_BidRecent+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEAB1F28F0A0006ADEC5 /* DB_BidRecent+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EECB1F28F0A1006ADEC5 /* DB_BidRecent+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEAB1F28F0A0006ADEC5 /* DB_BidRecent+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EECC1F28F0A1006ADEC5 /* DB_BidRecent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEAC1F28F0A0006ADEC5 /* DB_BidRecent+CoreDataProperties.m */; };
-		B7A3EECD1F28F0A1006ADEC5 /* DB_BidSoon.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEAD1F28F0A0006ADEC5 /* DB_BidSoon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EECD1F28F0A1006ADEC5 /* DB_BidSoon.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEAD1F28F0A0006ADEC5 /* DB_BidSoon.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EECE1F28F0A1006ADEC5 /* DB_BidSoon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEAE1F28F0A0006ADEC5 /* DB_BidSoon.m */; };
-		B7A3EECF1F28F0A1006ADEC5 /* DB_BidSoon+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEAF1F28F0A0006ADEC5 /* DB_BidSoon+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EECF1F28F0A1006ADEC5 /* DB_BidSoon+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEAF1F28F0A0006ADEC5 /* DB_BidSoon+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EED01F28F0A1006ADEC5 /* DB_BidSoon+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEB01F28F0A0006ADEC5 /* DB_BidSoon+CoreDataProperties.m */; };
-		B7A3EED11F28F0A1006ADEC5 /* DB_Company.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB11F28F0A0006ADEC5 /* DB_Company.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EED11F28F0A1006ADEC5 /* DB_Company.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB11F28F0A0006ADEC5 /* DB_Company.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EED21F28F0A1006ADEC5 /* DB_Company.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEB21F28F0A0006ADEC5 /* DB_Company.m */; };
-		B7A3EED31F28F0A1006ADEC5 /* DB_Company+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB31F28F0A0006ADEC5 /* DB_Company+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EED31F28F0A1006ADEC5 /* DB_Company+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB31F28F0A0006ADEC5 /* DB_Company+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EED41F28F0A1006ADEC5 /* DB_Company+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEB41F28F0A0006ADEC5 /* DB_Company+CoreDataProperties.m */; };
-		B7A3EED51F28F0A1006ADEC5 /* DB_CompanyContact.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB51F28F0A0006ADEC5 /* DB_CompanyContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EED51F28F0A1006ADEC5 /* DB_CompanyContact.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB51F28F0A0006ADEC5 /* DB_CompanyContact.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EED61F28F0A1006ADEC5 /* DB_CompanyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEB61F28F0A0006ADEC5 /* DB_CompanyContact.m */; };
-		B7A3EED71F28F0A1006ADEC5 /* DB_CompanyContact+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB71F28F0A0006ADEC5 /* DB_CompanyContact+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EED71F28F0A1006ADEC5 /* DB_CompanyContact+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB71F28F0A0006ADEC5 /* DB_CompanyContact+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EED81F28F0A1006ADEC5 /* DB_CompanyContact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEB81F28F0A0006ADEC5 /* DB_CompanyContact+CoreDataProperties.m */; };
-		B7A3EED91F28F0A1006ADEC5 /* DB_Contact.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB91F28F0A0006ADEC5 /* DB_Contact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EED91F28F0A1006ADEC5 /* DB_Contact.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEB91F28F0A0006ADEC5 /* DB_Contact.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEDA1F28F0A1006ADEC5 /* DB_Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEBA1F28F0A0006ADEC5 /* DB_Contact.m */; };
-		B7A3EEDB1F28F0A1006ADEC5 /* DB_Contact+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEBB1F28F0A0006ADEC5 /* DB_Contact+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEDB1F28F0A1006ADEC5 /* DB_Contact+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEBB1F28F0A0006ADEC5 /* DB_Contact+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEDC1F28F0A1006ADEC5 /* DB_Contact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEBC1F28F0A0006ADEC5 /* DB_Contact+CoreDataProperties.m */; };
-		B7A3EEDD1F28F0A1006ADEC5 /* DB_Participant.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEBD1F28F0A0006ADEC5 /* DB_Participant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEDD1F28F0A1006ADEC5 /* DB_Participant.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEBD1F28F0A0006ADEC5 /* DB_Participant.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEDE1F28F0A1006ADEC5 /* DB_Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEBE1F28F0A0006ADEC5 /* DB_Participant.m */; };
-		B7A3EEDF1F28F0A1006ADEC5 /* DB_Participant+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEBF1F28F0A0006ADEC5 /* DB_Participant+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEDF1F28F0A1006ADEC5 /* DB_Participant+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEBF1F28F0A0006ADEC5 /* DB_Participant+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEE01F28F0A1006ADEC5 /* DB_Participant+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEC01F28F0A1006ADEC5 /* DB_Participant+CoreDataProperties.m */; };
-		B7A3EEE11F28F0A1006ADEC5 /* DB_Project.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEC11F28F0A1006ADEC5 /* DB_Project.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEE11F28F0A1006ADEC5 /* DB_Project.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEC11F28F0A1006ADEC5 /* DB_Project.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEE21F28F0A1006ADEC5 /* DB_Project.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEC21F28F0A1006ADEC5 /* DB_Project.m */; };
-		B7A3EEE31F28F0A1006ADEC5 /* DB_Project+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEC31F28F0A1006ADEC5 /* DB_Project+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEE31F28F0A1006ADEC5 /* DB_Project+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEC31F28F0A1006ADEC5 /* DB_Project+CoreDataProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEE41F28F0A1006ADEC5 /* DB_Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEC41F28F0A1006ADEC5 /* DB_Project+CoreDataProperties.m */; };
 		B7A3EEE71F28F0BF006ADEC5 /* LECETV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEE51F28F0BF006ADEC5 /* LECETV2.xcdatamodeld */; };
-		B7A3EEEA1F28F301006ADEC5 /* CryproLib.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEE81F28F301006ADEC5 /* CryproLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEEA1F28F301006ADEC5 /* CryproLib.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEE81F28F301006ADEC5 /* CryproLib.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEEB1F28F301006ADEC5 /* CryproLib.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEE91F28F301006ADEC5 /* CryproLib.m */; };
-		B7A3EEEE1F28F4F7006ADEC5 /* TouchIDManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEEC1F28F4F7006ADEC5 /* TouchIDManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEEE1F28F4F7006ADEC5 /* TouchIDManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEEC1F28F4F7006ADEC5 /* TouchIDManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEEF1F28F4F7006ADEC5 /* TouchIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEED1F28F4F7006ADEC5 /* TouchIDManager.m */; };
-		B7A3EEF21F28F545006ADEC5 /* EHFAuthenticator.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEF01F28F545006ADEC5 /* EHFAuthenticator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7A3EEF21F28F545006ADEC5 /* EHFAuthenticator.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A3EEF01F28F545006ADEC5 /* EHFAuthenticator.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B7A3EEF31F28F545006ADEC5 /* EHFAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A3EEF11F28F545006ADEC5 /* EHFAuthenticator.m */; };
 /* End PBXBuildFile section */
 
@@ -351,11 +351,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A3EE1C1F28E804006ADEC5 /* AFNetworking.h in Headers */,
 				B7A3EEE11F28F0A1006ADEC5 /* DB_Project.h in Headers */,
 				B7A3EE561F28EC5A006ADEC5 /* constants.h in Headers */,
 				B7A3EED31F28F0A1006ADEC5 /* DB_Company+CoreDataProperties.h in Headers */,
 				B7A3EE4C1F28E893006ADEC5 /* UIImageView+AFNetworking.h in Headers */,
-				B7A3EE2A1F28E869006ADEC5 /* SFHFKeychainUtils.h in Headers */,
 				B7A3EE491F28E893006ADEC5 /* UIButton+AFNetworking.h in Headers */,
 				B7A3EECF1F28F0A1006ADEC5 /* DB_BidSoon+CoreDataProperties.h in Headers */,
 				B7A3EED11F28F0A1006ADEC5 /* DB_Company.h in Headers */,
@@ -367,7 +367,6 @@
 				B7A3EDD61F28E6FE006ADEC5 /* DataManager.h in Headers */,
 				B7A3EED91F28F0A1006ADEC5 /* DB_Contact.h in Headers */,
 				B7A3EEA31F28F01F006ADEC5 /* DerivedNSManagedObject.h in Headers */,
-				B7A3EE4E1F28E893006ADEC5 /* UIKit+AFNetworking.h in Headers */,
 				B7A3EEDB1F28F0A1006ADEC5 /* DB_Contact+CoreDataProperties.h in Headers */,
 				B7A3EEF21F28F545006ADEC5 /* EHFAuthenticator.h in Headers */,
 				B7A3EE211F28E804006ADEC5 /* AFURLRequestSerialization.h in Headers */,
@@ -381,10 +380,8 @@
 				B7A3EE431F28E893006ADEC5 /* AFImageDownloader.h in Headers */,
 				B7A3EEDF1F28F0A1006ADEC5 /* DB_Participant+CoreDataProperties.h in Headers */,
 				B7A3EEC91F28F0A1006ADEC5 /* DB_BidRecent.h in Headers */,
-				B7A3EE5C1F28EE75006ADEC5 /* PrefixHeader.pch in Headers */,
 				B7A3EED71F28F0A1006ADEC5 /* DB_CompanyContact+CoreDataProperties.h in Headers */,
 				B7A3EE451F28E893006ADEC5 /* AFNetworkActivityIndicatorManager.h in Headers */,
-				B7A3EE511F28E893006ADEC5 /* UIRefreshControl+AFNetworking.h in Headers */,
 				B7A3EE1F1F28E804006ADEC5 /* AFSecurityPolicy.h in Headers */,
 				B7A3EEEE1F28F4F7006ADEC5 /* TouchIDManager.h in Headers */,
 				B7A3EE471F28E893006ADEC5 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
@@ -392,10 +389,13 @@
 				B7A3EED51F28F0A1006ADEC5 /* DB_CompanyContact.h in Headers */,
 				B7A3EE231F28E804006ADEC5 /* AFURLResponseSerialization.h in Headers */,
 				B7A3EDC81F28E6DA006ADEC5 /* DataManagerSDK.h in Headers */,
-				B7A3EE531F28E893006ADEC5 /* UIWebView+AFNetworking.h in Headers */,
-				B7A3EE1C1F28E804006ADEC5 /* AFNetworking.h in Headers */,
-				B7A3EE4F1F28E893006ADEC5 /* UIProgressView+AFNetworking.h in Headers */,
 				B7A3EEEA1F28F301006ADEC5 /* CryproLib.h in Headers */,
+				B7A3EE2A1F28E869006ADEC5 /* SFHFKeychainUtils.h in Headers */,
+				B7A3EE4E1F28E893006ADEC5 /* UIKit+AFNetworking.h in Headers */,
+				B7A3EE5C1F28EE75006ADEC5 /* PrefixHeader.pch in Headers */,
+				B7A3EE511F28E893006ADEC5 /* UIRefreshControl+AFNetworking.h in Headers */,
+				B7A3EE531F28E893006ADEC5 /* UIWebView+AFNetworking.h in Headers */,
+				B7A3EE4F1F28E893006ADEC5 /* UIProgressView+AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

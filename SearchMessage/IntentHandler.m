@@ -6,9 +6,10 @@
 //  Copyright © 2017 Dom and TOm. All rights reserved.
 //
 
+
 #import "IntentHandler.h"
 
-#import <DataManagerSDK/DataManager.h>
+#import <DataManagerSDK/DataManagerSDK.h>
 
 @interface IntentHandler () <INSearchForMessagesIntentHandling>
 

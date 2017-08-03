@@ -412,6 +412,7 @@
 		B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104531CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib */; };
 		B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104571CECE91600EAD8E7 /* ContactFieldView.m */; };
 		B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */; };
+		B7E205741F33918D00075D81 /* DataManagerSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = B7FF1DFD1F338FA700149175 /* DataManagerSDK.framework */; };
 		B7EECF451F31C6A0003E9E66 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EECF441F31C6A0003E9E66 /* IntentHandler.m */; };
 		B7EECF5A1F31C6A0003E9E66 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A301CDB898100847FA3 /* BidSoonItem.m */; };
@@ -1087,6 +1088,7 @@
 		B7E104561CECE91600EAD8E7 /* ContactFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFieldView.h; sourceTree = "<group>"; };
 		B7E104571CECE91600EAD8E7 /* ContactFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFieldView.m; sourceTree = "<group>"; };
 		B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactFieldView.xib; sourceTree = "<group>"; };
+		B7E2059D1F3396A400075D81 /* DataManagerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManagerSDK.h; sourceTree = "<group>"; };
 		B7EECF411F31C6A0003E9E66 /* SearchMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7EECF431F31C6A0003E9E66 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		B7EECF441F31C6A0003E9E66 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -2690,6 +2692,7 @@
 			isa = PBXGroup;
 			children = (
 				B7D9C4641F31C75700682F9C /* SearchMessage.entitlements */,
+				B7E2059D1F3396A400075D81 /* DataManagerSDK.h */,
 				B7EECF431F31C6A0003E9E66 /* IntentHandler.h */,
 				B7EECF441F31C6A0003E9E66 /* IntentHandler.m */,
 				B7EECF461F31C6A0003E9E66 /* Info.plist */,
@@ -3064,6 +3067,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7E205741F33918D00075D81 /* DataManagerSDK.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3475,6 +3479,7 @@
 				INFOPLIST_FILE = SearchMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c8b168d9-a90a-44dd-87f9-7cca3a961c02";
