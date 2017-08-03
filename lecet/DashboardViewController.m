@@ -65,7 +65,7 @@
     TrackingListCellCollectionViewCell *trackList[2];
     BOOL isProjectTrackingList;
     BOOL isCompanyTrackingList;
-    
+    BOOL isFirstLoad;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -90,6 +90,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    isFirstLoad = YES;
     
     [[DataManager sharedManager] setIsLogged:YES];
     
@@ -154,7 +156,6 @@
         
     } ];
     
-    [self siriEvent];
 
 }
 
@@ -170,6 +171,11 @@
         appDelegate.notificationPayloadRecordID = nil;
     }
     
+    if (isFirstLoad) {
+        isFirstLoad = NO;
+        [self siriEvent];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -246,7 +252,7 @@
     isProjectTrackingList = YES;
     if (intent.length>0) {
         
-        if ([[intent uppercaseString] isEqualToString:@"RECENTLY ADDED"]) {
+        if ([[intent uppercaseString] isEqualToString:@"RECENTLY UPDATED"]) {
             
             [self navigateHome:nil];
             
