@@ -58,11 +58,11 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs acces to camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your location even when you are not using the app to receive notification updates from nearby projects?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your photo library</string>

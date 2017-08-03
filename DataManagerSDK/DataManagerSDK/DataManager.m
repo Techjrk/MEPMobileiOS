@@ -75,6 +75,7 @@
 #define kUrlWorkTypes                       @"WorkTypes?"
 
 #define kNotificationKey                    @"kNotificationKey"
+#define kPreviousAppVersionKey              @"kPreviousAppVersionKey"
 
 #define kUrlSearches                        @"Searches"
 #define kUrlSearchesUpdate                  @"Searches/%li"
@@ -1976,6 +1977,19 @@
             failure(object);
         }];
     
+}
+
+#pragma mark - App Version
+- (NSString *)currentAppVersion {
+    return  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)previousVersion {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kPreviousAppVersionKey];
+}
+
+- (void)setPreviousVersion:(NSString *)appVersion {
+    [[NSUserDefaults standardUserDefaults] setObject:appVersion forKey:kPreviousAppVersionKey];
 }
 
 @end

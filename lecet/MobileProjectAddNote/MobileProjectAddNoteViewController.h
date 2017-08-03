@@ -20,4 +20,5 @@
 @property (strong,nonatomic) NSDictionary *itemsToBeUpdate;
 @property (strong,nonatomic) NSNumber *projectID;
 @property (strong,nonatomic) UIImage *capturedImage;
+@property (strong,nonatomic) NSString *projectFullAddress;
 @end

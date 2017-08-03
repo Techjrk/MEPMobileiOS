@@ -7,13 +7,15 @@
 //
 
 #import "LandingViewController.h"
+#import "IntroViewController.h"
 
 #import "LoginViewController.h"
 #import "DashboardViewController.h"
 #import <DataManagerSDK/TouchIDManager.h>
 
-@interface LandingViewController ()<LoginDelegate, DashboardViewControllerDelegate>{
+@interface LandingViewController ()<LoginDelegate, DashboardViewControllerDelegate,IntroViewControllerDelegate>{
     BOOL isLogin;
+    BOOL showLoginDirect;
 }
 @end
 
@@ -32,7 +34,12 @@
     if (isLoginPersisted != nil & isLoginPersisted.length>0) {
 
         isLogin = YES;
-        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(autoLogin) userInfo:nil repeats:NO];
+        [self showIntroductionViewCOntrollerShow:^(id obj){
+            showLoginDirect = NO;
+            [self showIntroduction];
+        } dontShow:^(id obj) {
+            [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(autoLogin) userInfo:nil repeats:NO];
+        }];
         
     }
 
@@ -48,8 +55,16 @@
     if (!isLogin) {
         isLogin = YES;
         if (![[DataManager sharedManager] shouldLoginUsingTouchId]) {
-            [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
+            showLoginDirect = YES;
+            [self showIntroductionViewCOntrollerShow:^(id object){
+                [self showIntroduction];
+            } dontShow:^(id obj){
+                [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
+            }];
+            
+            
         } else {
+            showLoginDirect = NO;
             [self login];
         }
     }
@@ -79,7 +94,6 @@
 }
 
 - (void)showLogin {
-    
     LoginViewController *controller = [LoginViewController new];
     controller.loginDelegate = self;
     [self presentViewController:controller animated:NO completion:nil];
@@ -143,43 +157,58 @@
         }];
         
     } error:^{
+        showLoginDirect = YES;
         [self showLogin];
     } viewController:self];
 
 }
 
+- (void)showIntroduction{
+    IntroViewController *controller = [IntroViewController new];
+    controller.introViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 - (void)login {
+    showLoginDirect = NO;
+    [self showIntroductionViewCOntrollerShow:^(id object){
+        [self showIntroduction];
+    } dontShow:^(id object){
+        [self loginSub];
+    }];
     
-     if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {
-
-         NSDate *currentDate = [NSDate date];
-         NSDate *expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:kKeychainTouchIDExpiration];
+}
+- (void)loginSub {
+    if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {
         
-         if (expirationDate != nil) {
-
-             NSTimeInterval interval = [currentDate timeIntervalSinceDate:expirationDate];
-             
-             NSString *accessToken = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
-             
-             if (accessToken == nil) {
-                 accessToken = @"";
-             }
-             
-             if( ( interval > 0) || (accessToken.length==0) ) {
-                 [self loginUsingTouchId];
-             } else {
-                 [self showDashboard];
-             }
-
-         } else {
-             [self loginUsingTouchId];
-         }
-     
-     } else {
-         [self showDashboard];
-     }
-
-
+        NSDate *currentDate = [NSDate date];
+        NSDate *expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:kKeychainTouchIDExpiration];
+        
+        if (expirationDate != nil) {
+            
+            NSTimeInterval interval = [currentDate timeIntervalSinceDate:expirationDate];
+            
+            NSString *accessToken = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
+            
+            if (accessToken == nil) {
+                accessToken = @"";
+            }
+            
+            if( ( interval > 0) || (accessToken.length==0) ) {
+                [self loginUsingTouchId];
+            } else {
+                [self showDashboard];
+            }
+            
+        } else {
+            [self loginUsingTouchId];
+        }
+        
+    } else {
+        [self showDashboard];
+    }
+    
 }
 
 - (void)logout {
@@ -205,4 +234,33 @@
     [self presentViewController:alert animated:YES completion:nil];
 
 }
+
+#pragma mark - IntroViewControllerDelegate
+- (void)tappedIntroCloseButton {
+    if (showLoginDirect) {
+        [self showLogin];
+    } else {
+         [self login];
+    }
+}
+
+
+- (void)showIntroductionViewCOntrollerShow:(APIBlock)showIntro dontShow:(APIBlock)dontShowIntro{
+     NSString *currentAppVersion = [[DataManager sharedManager] currentAppVersion];
+     NSString *previousVersion = [[DataManager sharedManager] previousVersion];
+     
+     if (!previousVersion) {
+     // first Install or deleted
+         [[DataManager sharedManager] setPreviousVersion:currentAppVersion];
+         showIntro(nil);
+     } else if ([previousVersion isEqualToString:currentAppVersion]) {
+     // same version
+         dontShowIntro(nil);
+     } else {
+     // other version or updated
+         [[DataManager sharedManager] setPreviousVersion:currentAppVersion];
+         showIntro(nil);
+     }
+}
+
 @end

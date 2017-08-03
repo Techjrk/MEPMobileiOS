@@ -88,6 +88,8 @@
 		B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66DF8171D0076000071A6B5 /* ContactDetailViewController.xib */; };
 		B66DF81F1D007D000071A6B5 /* ProjectBidsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */; };
 		B66DF8201D007D000071A6B5 /* ProjectBidsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */; };
+		B6814D691F332DFD00677E0D /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6814D671F332DFD00677E0D /* IntroViewController.m */; };
+		B6814D6A1F332DFD00677E0D /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6814D681F332DFD00677E0D /* IntroViewController.xib */; };
 		B68337101D080CFA004226D3 /* ProfileNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = B683370E1D080CFA004226D3 /* ProfileNavView.m */; };
 		B68337111D080CFA004226D3 /* ProfileNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B683370F1D080CFA004226D3 /* ProfileNavView.xib */; };
 		B683371E1D081BD0004226D3 /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = B683371C1D081BD0004226D3 /* ChangePasswordView.m */; };
@@ -619,6 +621,9 @@
 		B66DF81C1D007D000071A6B5 /* ProjectBidsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectBidsListViewController.h; sourceTree = "<group>"; };
 		B66DF81D1D007D000071A6B5 /* ProjectBidsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectBidsListViewController.m; sourceTree = "<group>"; };
 		B66DF81E1D007D000071A6B5 /* ProjectBidsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectBidsListViewController.xib; sourceTree = "<group>"; };
+		B6814D661F332DFD00677E0D /* IntroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		B6814D671F332DFD00677E0D /* IntroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		B6814D681F332DFD00677E0D /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		B683370D1D080CFA004226D3 /* ProfileNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavView.h; sourceTree = "<group>"; };
 		B683370E1D080CFA004226D3 /* ProfileNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavView.m; sourceTree = "<group>"; };
 		B683370F1D080CFA004226D3 /* ProfileNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileNavView.xib; sourceTree = "<group>"; };
@@ -1601,6 +1606,16 @@
 			name = ProjectBidsList;
 			sourceTree = "<group>";
 		};
+		B6814D651F332DE300677E0D /* IntroViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B6814D661F332DFD00677E0D /* IntroViewController.h */,
+				B6814D671F332DFD00677E0D /* IntroViewController.m */,
+				B6814D681F332DFD00677E0D /* IntroViewController.xib */,
+			);
+			path = IntroViewController;
+			sourceTree = "<group>";
+		};
 		B68337121D080D02004226D3 /* ProfileNavView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2111,6 +2126,7 @@
 		B70155331CD0C7410050CF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6814D651F332DE300677E0D /* IntroViewController */,
 				B7FC24C51EC361CA0002802D /* LongPress */,
 				B7FC247F1EBA13780002802D /* PanoramaScene */,
 				B79AA7F81E9CC69600BA1B04 /* PhotoShutter */,
@@ -3040,6 +3056,7 @@
 				B6A81E691D0C888D0016B20F /* MyProfileCustomTextFieldView.xib in Resources */,
 				B6AF1CEF1D212D9600C95A8F /* ProjectFilterCollapsibleCollectionViewCell.xib in Resources */,
 				B73EFB0C1D14548100C6B3B2 /* ProjectTrackItemView.xib in Resources */,
+				B6814D6A1F332DFD00677E0D /* IntroViewController.xib in Resources */,
 				B62C51831E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib in Resources */,
 				B7FC24841EBA13780002802D /* PanoramaSceneViewController.xib in Resources */,
 				B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */,
@@ -3286,6 +3303,7 @@
 				B771C5EE1CEB1B24004A628A /* CompanyHeaderView.m in Sources */,
 				B7FC24C91EC361E50002802D /* LongPressViewController.m in Sources */,
 				B73EFADA1D11945C00C6B3B2 /* TrackingListView.m in Sources */,
+				B6814D691F332DFD00677E0D /* IntroViewController.m in Sources */,
 				B7FC246D1EBA02AC0002802D /* EAGLView.m in Sources */,
 				B6411BB11D0973F0002B6E88 /* SettingsNotificationsView.m in Sources */,
 				B683371E1D081BD0004226D3 /* ChangePasswordView.m in Sources */,

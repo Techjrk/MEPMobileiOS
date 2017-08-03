@@ -449,6 +449,9 @@
 "MPANV_ALERT_TITLE"                         =               "WARNING!";
 "MPANV_ALERT_MESSAGE"                       =               "All field will be cleared! Are you sure you want to continue?";
 "MPANV_ALERT_BODY_REQUIRED"                 =               "Post body is required!";
+"MPANV_LOCATION_TITLE"                      =               "LOCATION";
+"MPANV_LOCATION_PLACEHOLDER"                =               "Location Address";
+
 
 //MobileProjectNotePopUpViewController
 "MPNPV_TITLE"                               =               "You are about to post a public note.";
