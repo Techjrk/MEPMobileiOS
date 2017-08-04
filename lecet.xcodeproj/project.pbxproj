@@ -66,6 +66,8 @@
 		B647D0A41E2F9BF100A864D1 /* ProjectNearMeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A21E2F9BF100A864D1 /* ProjectNearMeListView.xib */; };
 		B647D0A91E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647D0A71E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m */; };
 		B647D0AA1E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A81E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib */; };
+		B64B6D071F34826100073DCB /* IntroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B6D051F34826100073DCB /* IntroCollectionViewCell.m */; };
+		B64B6D081F34826100073DCB /* IntroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64B6D061F34826100073DCB /* IntroCollectionViewCell.xib */; };
 		B64F17711EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */; };
 		B64F17721EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */; };
 		B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B65106481D12AD4000007759 /* ProjComTrackingTabView.m */; };
@@ -339,10 +341,6 @@
 		B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */; };
 		B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */; };
 		B79F1F411F33ABBB001D2D92 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B79F1F401F33ABBB001D2D92 /* IntentHandler.m */; };
-		B79F1F481F33ABBB001D2D92 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B796FC521F2793A700829E00 /* IntentsUI.framework */; };
-		B79F1F4C1F33ABBB001D2D92 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */; };
-		B79F1F4F1F33ABBB001D2D92 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */; };
-		B79F1F531F33ABBB001D2D92 /* SearchMessageUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
 		B79F1F601F347AF3001D2D92 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */; };
@@ -439,13 +437,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B79F1F511F33ABBB001D2D92 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B79F1F461F33ABBB001D2D92;
-			remoteInfo = SearchMessageUI;
-		};
 		B79F1F541F33ABBB001D2D92 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
@@ -477,7 +468,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */,
-				B79F1F531F33ABBB001D2D92 /* SearchMessageUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +577,9 @@
 		B647D0A61E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearMeListCollectionViewCell.h; sourceTree = "<group>"; };
 		B647D0A71E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearMeListCollectionViewCell.m; sourceTree = "<group>"; };
 		B647D0A81E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearMeListCollectionViewCell.xib; sourceTree = "<group>"; };
+		B64B6D041F34826100073DCB /* IntroCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroCollectionViewCell.h; sourceTree = "<group>"; };
+		B64B6D051F34826100073DCB /* IntroCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroCollectionViewCell.m; sourceTree = "<group>"; };
+		B64B6D061F34826100073DCB /* IntroCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroCollectionViewCell.xib; sourceTree = "<group>"; };
 		B64F176E1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoIndiListCollectionViewCell.h; sourceTree = "<group>"; };
 		B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoIndiListCollectionViewCell.m; sourceTree = "<group>"; };
 		B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoIndiListCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1007,11 +1000,6 @@
 		B79F1F3F1F33ABBB001D2D92 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		B79F1F401F33ABBB001D2D92 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
 		B79F1F421F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessageUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B79F1F4A1F33ABBB001D2D92 /* IntentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentViewController.h; sourceTree = "<group>"; };
-		B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
-		B79F1F4E1F33ABBB001D2D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		B79F1F501F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79F1F5E1F33ACA3001D2D92 /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
 		B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		B79F1F611F348283001D2D92 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -1278,14 +1266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B79F1F441F33ABBB001D2D92 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B79F1F481F33ABBB001D2D92 /* IntentsUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1560,6 +1540,16 @@
 				B6EC8B3E1D2BC3F600F4780A /* FilterSelectionViewController.xib */,
 			);
 			name = FilterSelectionViewController;
+			sourceTree = "<group>";
+		};
+		B64B6D031F34824A00073DCB /* IntroCell */ = {
+			isa = PBXGroup;
+			children = (
+				B64B6D041F34826100073DCB /* IntroCollectionViewCell.h */,
+				B64B6D051F34826100073DCB /* IntroCollectionViewCell.m */,
+				B64B6D061F34826100073DCB /* IntroCollectionViewCell.xib */,
+			);
+			path = IntroCell;
 			sourceTree = "<group>";
 		};
 		B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */ = {
@@ -2153,7 +2143,6 @@
 				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
 				B701551A1CD0C56A0050CF8A /* lecet */,
 				B79F1F3E1F33ABBB001D2D92 /* SearchMessage */,
-				B79F1F491F33ABBB001D2D92 /* SearchMessageUI */,
 				B70155191CD0C56A0050CF8A /* Products */,
 				B7DD9CC91D942A9600978CC7 /* Frameworks */,
 			);
@@ -2164,7 +2153,6 @@
 			children = (
 				B70155181CD0C56A0050CF8A /* Lecet MEP.app */,
 				B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */,
-				B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2311,6 +2299,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B64B6D031F34824A00073DCB /* IntroCell */,
 				B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */,
 				B62C517E1E83F1C40044830F /* CustomPhotoLibraryCell */,
 				B60909D91E7BF7A400DEAA17 /* CustomCameraViewCell */,
@@ -2805,17 +2794,6 @@
 			path = SearchMessage;
 			sourceTree = "<group>";
 		};
-		B79F1F491F33ABBB001D2D92 /* SearchMessageUI */ = {
-			isa = PBXGroup;
-			children = (
-				B79F1F4A1F33ABBB001D2D92 /* IntentViewController.h */,
-				B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */,
-				B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */,
-				B79F1F501F33ABBB001D2D92 /* Info.plist */,
-			);
-			path = SearchMessageUI;
-			sourceTree = "<group>";
-		};
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -3057,7 +3035,6 @@
 			);
 			dependencies = (
 				B7E2062D1F339BEF00075D81 /* PBXTargetDependency */,
-				B79F1F521F33ABBB001D2D92 /* PBXTargetDependency */,
 				B79F1F551F33ABBB001D2D92 /* PBXTargetDependency */,
 			);
 			name = lecet;
@@ -3080,23 +3057,6 @@
 			name = SearchMessage;
 			productName = SearchMessage;
 			productReference = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		B79F1F461F33ABBB001D2D92 /* SearchMessageUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B79F1F571F33ABBB001D2D92 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */;
-			buildPhases = (
-				B79F1F431F33ABBB001D2D92 /* Sources */,
-				B79F1F441F33ABBB001D2D92 /* Frameworks */,
-				B79F1F451F33ABBB001D2D92 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SearchMessageUI;
-			productName = SearchMessageUI;
-			productReference = B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -3136,11 +3096,6 @@
 							};
 						};
 					};
-					B79F1F461F33ABBB001D2D92 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AS94HE7VCY;
-						ProvisioningStyle = Manual;
-					};
 				};
 			};
 			buildConfigurationList = B70155131CD0C56A0050CF8A /* Build configuration list for PBXProject "lecet" */;
@@ -3164,7 +3119,6 @@
 			targets = (
 				B70155171CD0C56A0050CF8A /* lecet */,
 				B79F1F3C1F33ABBB001D2D92 /* SearchMessage */,
-				B79F1F461F33ABBB001D2D92 /* SearchMessageUI */,
 			);
 		};
 /* End PBXProject section */
@@ -3186,6 +3140,7 @@
 			files = (
 				B60909DE1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib in Resources */,
 				B73EFB011D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.xib in Resources */,
+				B64B6D081F34826100073DCB /* IntroCollectionViewCell.xib in Resources */,
 				B7BF60AA1D1D828900B3BDD7 /* SearchCompanyCollectionViewCell.xib in Resources */,
 				B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */,
 				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
@@ -3388,14 +3343,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B79F1F451F33ABBB001D2D92 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B79F1F4F1F33ABBB001D2D92 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3420,6 +3367,7 @@
 				B73EFB041D1435AF00C6B3B2 /* SelectMoveView.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B73EFACB1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m in Sources */,
+				B64B6D071F34826100073DCB /* IntroCollectionViewCell.m in Sources */,
 				B6411BEB1D09CEC8002B6E88 /* BidderListViewController.m in Sources */,
 				B6BDBAB51D180452001FB41C /* EditView.m in Sources */,
 				B6411BBE1D09ACBF002B6E88 /* MyProfileViewController.m in Sources */,
@@ -3615,22 +3563,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B79F1F431F33ABBB001D2D92 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B79F1F4C1F33ABBB001D2D92 /* IntentViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B79F1F521F33ABBB001D2D92 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B79F1F461F33ABBB001D2D92 /* SearchMessageUI */;
-			targetProxy = B79F1F511F33ABBB001D2D92 /* PBXContainerItemProxy */;
-		};
 		B79F1F551F33ABBB001D2D92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B79F1F3C1F33ABBB001D2D92 /* SearchMessage */;
@@ -3642,17 +3577,6 @@
 			targetProxy = B7E2062C1F339BEF00075D81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B79F1F4E1F33ABBB001D2D92 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B701552D1CD0C56A0050CF8A /* Debug */ = {
@@ -3813,44 +3737,6 @@
 			};
 			name = Release;
 		};
-		B79F1F581F33ABBB001D2D92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
-				INFOPLIST_FILE = SearchMessageUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B79F1F591F33ABBB001D2D92 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
-				INFOPLIST_FILE = SearchMessageUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		B79F1F5B1F33ABBB001D2D92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3912,14 +3798,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B79F1F571F33ABBB001D2D92 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B79F1F581F33ABBB001D2D92 /* Debug */,
-				B79F1F591F33ABBB001D2D92 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		B79F1F5A1F33ABBB001D2D92 /* Build configuration list for PBXNativeTarget "SearchMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3927,6 +3805,7 @@
 				B79F1F5C1F33ABBB001D2D92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
