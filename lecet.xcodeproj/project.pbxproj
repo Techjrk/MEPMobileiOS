@@ -346,6 +346,7 @@
 		B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
 		B79F1F601F347AF3001D2D92 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */; };
+		B79F1F621F348283001D2D92 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79F1F611F348283001D2D92 /* Photos.framework */; };
 		B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */; };
 		B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */; };
 		B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */; };
@@ -1013,6 +1014,7 @@
 		B79F1F501F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79F1F5E1F33ACA3001D2D92 /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
 		B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		B79F1F611F348283001D2D92 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		B7A1D3401CE4752D004E94B3 /* ProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailViewController.h; sourceTree = "<group>"; };
 		B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailViewController.m; sourceTree = "<group>"; };
 		B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDetailViewController.xib; sourceTree = "<group>"; };
@@ -1242,6 +1244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79F1F621F348283001D2D92 /* Photos.framework in Frameworks */,
 				B79F1F601F347AF3001D2D92 /* UserNotifications.framework in Frameworks */,
 				B79AA7C51E9CBE9100BA1B04 /* OpenGLES.framework in Frameworks */,
 				B79AA7C71E9CBEA100BA1B04 /* Foundation.framework in Frameworks */,
@@ -2823,6 +2826,7 @@
 		B7DD9CC91D942A9600978CC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B79F1F611F348283001D2D92 /* Photos.framework */,
 				B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */,
 				B7FF1DFB1F338F9600149175 /* DataManagerSDK.framework */,
 				B7FC24741EBA0AF20002802D /* libDMDViewerSample.a */,

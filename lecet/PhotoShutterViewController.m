@@ -204,6 +204,8 @@
 #pragma mark - MISC
 - (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
 {
+    
+    
     ALAssetsLibrary *library=[[ALAssetsLibrary alloc] init];
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
     [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
