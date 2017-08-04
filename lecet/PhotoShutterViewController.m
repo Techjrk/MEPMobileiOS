@@ -13,6 +13,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "PanoramaSceneViewController.h"
 #import "CustomLandscapeNavigationViewController.h"
+#import <Photos/Photos.h>
 
 @class PHLivePhotoView;
 
@@ -204,6 +205,7 @@
 #pragma mark - MISC
 - (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
 {
+    
     ALAssetsLibrary *library=[[ALAssetsLibrary alloc] init];
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
     [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {

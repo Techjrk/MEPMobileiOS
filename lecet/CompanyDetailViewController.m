@@ -264,7 +264,8 @@ typedef enum {
             
             fieldData = [[fieldData stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @YES} completionHandler:nil];
+            
             break;
         }
          
@@ -274,14 +275,16 @@ typedef enum {
                 fieldData = [@"http://" stringByAppendingString:fieldData];
             }
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fieldData]];
-
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fieldData] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @YES} completionHandler:nil];
+            
             break;
         }
             
         case ContactFieldTypeEmail: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"mailto:" stringByAppendingString:fieldData]]];
 
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"mailto:" stringByAppendingString:fieldData]] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @YES} completionHandler:nil];
+            
+            
             break;
         }
     }

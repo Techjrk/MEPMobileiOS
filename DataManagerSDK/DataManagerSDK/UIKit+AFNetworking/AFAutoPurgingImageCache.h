@@ -130,15 +130,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)init;
 
-/**
- Initialies the `AutoPurgingImageCache` instance with the given memory capacity and preferred memory usage
- after purge limit.
-
- @param memoryCapacity The total memory capacity of the cache in bytes.
- @param preferredMemoryUsageAfterPurge The preferred memory usage after purge in bytes.
-
- @return The new `AutoPurgingImageCache` instance.
- */
 - (instancetype)initWithMemoryCapacity:(UInt64)memoryCapacity preferredMemoryCapacity:(UInt64)preferredMemoryCapacity;
 
 @end

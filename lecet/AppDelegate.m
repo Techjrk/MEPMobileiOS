@@ -11,10 +11,11 @@
 #import "LandingViewController.h"
 #import "GoogleAnalytics/Library/GAI.h"
 #import <DataManagerSDK/DataManager.h>
+#import <UserNotifications/UserNotifications.h>
 
 @import HockeySDK;
 
-@interface AppDelegate (){
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>{
     BOOL isCheckingNotification;
 }
 @end
@@ -45,11 +46,14 @@
 
     [[DataManager sharedManager] startMonitoring];
 
-    // Handle Push Configuration
-    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
     
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-
+    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (error == nil) {
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        }
+    }];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     id vc = [LandingViewController new];
@@ -174,10 +178,6 @@
 
 #pragma mark - Push Notification
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-    [application registerForRemoteNotifications];
-}
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     self.pushToken = [NSString stringWithFormat:@"%@", deviceToken];
     
@@ -283,7 +283,6 @@
 }
 
 - (void)application:(UIApplication *)application didUpdateUserActivity:(NSUserActivity *)userActivity {
-    //[self updateUserActivityState:userActivity];
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {

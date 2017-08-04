@@ -10,14 +10,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UINavigationController *navController;
+@property (strong, nonatomic) UIWindow * _Nonnull window;
+@property (strong, nonatomic) UINavigationController * _Nonnull navController;
 
-/*
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
- */
 @property (strong, nonnull) NSString *pushToken;
 @property (nonatomic,strong) NSNumber * _Nullable notificationPayloadRecordID;
 
