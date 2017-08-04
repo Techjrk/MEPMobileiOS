@@ -34,16 +34,13 @@
     if (isLoginPersisted != nil & isLoginPersisted.length>0) {
 
         isLogin = YES;
-        /*
+        
         [self showIntroductionViewCOntrollerShow:^(id obj){
             showLoginDirect = NO;
             [self showIntroduction];
         } dontShow:^(id obj) {
             [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(autoLogin) userInfo:nil repeats:NO];
         }];
-        */
-        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(autoLogin) userInfo:nil repeats:NO];
-        
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUnAuthorized:) name:NOTIFICATION_UNAUTHORIZED object:nil];
@@ -58,17 +55,14 @@
     if (!isLogin) {
         isLogin = YES;
         if (![[DataManager sharedManager] shouldLoginUsingTouchId]) {
-            
-            /*
+
             showLoginDirect = YES;
             [self showIntroductionViewCOntrollerShow:^(id object){
                 [self showIntroduction];
             } dontShow:^(id obj){
                 [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
             }];
-            */
-            
-            [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
+        
         } else {
             //showLoginDirect = NO;
             [self login];
@@ -177,45 +171,12 @@
 }
 
 - (void)login {
-    /*
     showLoginDirect = NO;
     [self showIntroductionViewCOntrollerShow:^(id object){
         [self showIntroduction];
     } dontShow:^(id object){
         [self loginSub];
     }];
-    */
-    
-    if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {
-        
-        NSDate *currentDate = [NSDate date];
-        NSDate *expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:kKeychainTouchIDExpiration];
-        
-        if (expirationDate != nil) {
-            
-            NSTimeInterval interval = [currentDate timeIntervalSinceDate:expirationDate];
-            
-            NSString *accessToken = [[DataManager sharedManager] getKeyChainValue:kKeychainAccessToken serviceName:kKeychainServiceName];
-            
-            if (accessToken == nil) {
-                accessToken = @"";
-            }
-            
-            if( ( interval > 0) || (accessToken.length==0) ) {
-                [self loginUsingTouchId];
-            } else {
-                [self showDashboard];
-            }
-            
-        } else {
-            [self loginUsingTouchId];
-        }
-        
-    } else {
-        [self showDashboard];
-    }
-
-    
 }
 - (void)loginSub {
     if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {
