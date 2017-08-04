@@ -3768,7 +3768,6 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/lecet/PanoLite",
 					"$(PROJECT_DIR)/lecet",
-					"$(PROJECT_DIR)/lecet/viewer",
 					"$(PROJECT_DIR)/lecet/PanoLite/viewer",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
@@ -3804,7 +3803,6 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/lecet/PanoLite",
 					"$(PROJECT_DIR)/lecet",
-					"$(PROJECT_DIR)/lecet/viewer",
 					"$(PROJECT_DIR)/lecet/PanoLite/viewer",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage;
