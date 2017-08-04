@@ -218,7 +218,14 @@
 
 - (void)navigateHome:(NSNotification*)notification {
 
-    [self.navigationController popToViewController:self animated:NO];
+    if([[DataManager sharedManager] isModal]) {
+       [self.navigationController.topViewController dismissViewControllerAnimated:NO completion:^{
+           [self.navigationController popToViewController:self animated:NO];
+       }];
+    } else {
+        [self.navigationController popToViewController:self animated:NO];
+    }
+        
     
 }
 
