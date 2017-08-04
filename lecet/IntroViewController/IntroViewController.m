@@ -100,7 +100,7 @@
     
     CGSize size;
     
-    size = CGSizeMake( self.collectionView.frame.size.width, kDeviceHeight * 0.07);
+    size = CGSizeMake( self.collectionView.frame.size.width, kDeviceHeight * 0.055);
     return size;
 }
 

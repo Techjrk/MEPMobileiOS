@@ -437,13 +437,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B79F1F511F33ABBB001D2D92 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B79F1F461F33ABBB001D2D92;
-			remoteInfo = SearchMessageUI;
-		};
 		B79F1F541F33ABBB001D2D92 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B70155101CD0C56A0050CF8A /* Project object */;
@@ -1007,7 +1000,6 @@
 		B79F1F3F1F33ABBB001D2D92 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		B79F1F401F33ABBB001D2D92 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
 		B79F1F421F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessageUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79F1F5E1F33ACA3001D2D92 /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
 		B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		B79F1F611F348283001D2D92 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -1274,13 +1266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B79F1F441F33ABBB001D2D92 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2168,7 +2153,6 @@
 			children = (
 				B70155181CD0C56A0050CF8A /* Lecet MEP.app */,
 				B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */,
-				B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3051,7 +3035,6 @@
 			);
 			dependencies = (
 				B7E2062D1F339BEF00075D81 /* PBXTargetDependency */,
-				B79F1F521F33ABBB001D2D92 /* PBXTargetDependency */,
 				B79F1F551F33ABBB001D2D92 /* PBXTargetDependency */,
 			);
 			name = lecet;
@@ -3074,23 +3057,6 @@
 			name = SearchMessage;
 			productName = SearchMessage;
 			productReference = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		B79F1F461F33ABBB001D2D92 /* SearchMessageUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B79F1F571F33ABBB001D2D92 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */;
-			buildPhases = (
-				B79F1F431F33ABBB001D2D92 /* Sources */,
-				B79F1F441F33ABBB001D2D92 /* Frameworks */,
-				B79F1F451F33ABBB001D2D92 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SearchMessageUI;
-			productName = SearchMessageUI;
-			productReference = B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -3130,9 +3096,6 @@
 							};
 						};
 					};
-					B79F1F461F33ABBB001D2D92 = {
-						DevelopmentTeam = AS94HE7VCY;
-					};
 				};
 			};
 			buildConfigurationList = B70155131CD0C56A0050CF8A /* Build configuration list for PBXProject "lecet" */;
@@ -3156,7 +3119,6 @@
 			targets = (
 				B70155171CD0C56A0050CF8A /* lecet */,
 				B79F1F3C1F33ABBB001D2D92 /* SearchMessage */,
-				B79F1F461F33ABBB001D2D92 /* SearchMessageUI */,
 			);
 		};
 /* End PBXProject section */
@@ -3375,13 +3337,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B79F1F3B1F33ABBB001D2D92 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B79F1F451F33ABBB001D2D92 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3608,21 +3563,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B79F1F431F33ABBB001D2D92 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B79F1F521F33ABBB001D2D92 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B79F1F461F33ABBB001D2D92 /* SearchMessageUI */;
-			targetProxy = B79F1F511F33ABBB001D2D92 /* PBXContainerItemProxy */;
-		};
 		B79F1F551F33ABBB001D2D92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B79F1F3C1F33ABBB001D2D92 /* SearchMessage */;
@@ -3794,44 +3737,6 @@
 			};
 			name = Release;
 		};
-		B79F1F581F33ABBB001D2D92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
-				INFOPLIST_FILE = SearchMessageUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B79F1F591F33ABBB001D2D92 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
-				DEVELOPMENT_TEAM = AS94HE7VCY;
-				INFOPLIST_FILE = SearchMessageUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lecet.liunastage.SearchMessageUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1550cf64-c716-4cbc-a84f-b3f4135f7172";
-				PROVISIONING_PROFILE_SPECIFIER = "Lecet MEP Stage SearchMessageUI";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		B79F1F5B1F33ABBB001D2D92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3889,15 +3794,6 @@
 			buildConfigurations = (
 				B70155301CD0C56A0050CF8A /* Debug */,
 				B70155311CD0C56A0050CF8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B79F1F571F33ABBB001D2D92 /* Build configuration list for PBXNativeTarget "SearchMessageUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B79F1F581F33ABBB001D2D92 /* Debug */,
-				B79F1F591F33ABBB001D2D92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,7 +9,7 @@
 #import "IntroCollectionViewCell.h"
 
 #define FONT_CONTENT                       fontNameWithSize(FONT_NAME_LATO_BOLD, 11)
-#define COLOR_FONT_CONTENT                 RGB(255, 255, 255)
+#define COLOR_FONT_CONTENT                 RGB(121, 120, 120)
 
 @implementation IntroCollectionViewCell
 
