@@ -344,6 +344,7 @@
 		B79F1F4F1F33ABBB001D2D92 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */; };
 		B79F1F531F33ABBB001D2D92 /* SearchMessageUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
 		B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */; };
 		B7A1D3441CE4752D004E94B3 /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */; };
 		B7A1D3471CE4D3BD004E94B3 /* ProjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3461CE4D3BD004E94B3 /* ProjectHeaderView.m */; };
@@ -469,7 +470,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		B796FC681F2793A700829E00 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
@@ -477,7 +478,7 @@
 				B79F1F531F33ABBB001D2D92 /* SearchMessageUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B7E2062E1F339BEF00075D81 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -1009,6 +1010,7 @@
 		B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
 		B79F1F4E1F33ABBB001D2D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B79F1F501F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B79F1F5E1F33ACA3001D2D92 /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
 		B7A1D3401CE4752D004E94B3 /* ProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailViewController.h; sourceTree = "<group>"; };
 		B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailViewController.m; sourceTree = "<group>"; };
 		B7A1D3421CE4752D004E94B3 /* ProjectDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDetailViewController.xib; sourceTree = "<group>"; };
@@ -1269,6 +1271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2788,6 +2791,7 @@
 		B79F1F3E1F33ABBB001D2D92 /* SearchMessage */ = {
 			isa = PBXGroup;
 			children = (
+				B79F1F5E1F33ACA3001D2D92 /* SearchMessage.entitlements */,
 				B79F1F3F1F33ABBB001D2D92 /* IntentHandler.h */,
 				B79F1F401F33ABBB001D2D92 /* IntentHandler.m */,
 				B79F1F421F33ABBB001D2D92 /* Info.plist */,
@@ -3118,6 +3122,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = AS94HE7VCY;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					B79F1F461F33ABBB001D2D92 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -3841,6 +3850,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = SearchMessage/SearchMessage.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
@@ -3860,6 +3870,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = SearchMessage/SearchMessage.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harry Herrys Camigla (RTQA9YPQ4X)";
 				DEVELOPMENT_TEAM = AS94HE7VCY;
