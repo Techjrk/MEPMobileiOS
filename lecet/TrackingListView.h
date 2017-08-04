@@ -12,6 +12,8 @@
 
 @protocol TrackingListViewDelegate <NSObject>
 - (void)tappedTrackingListItem:(id)object view:(UIView*)view;
+@optional
+- (void)tappedExpand:(id)object status:(BOOL)status;
 @end
 
 @interface TrackingListView : BaseViewClass
@@ -20,7 +22,6 @@
 @property (nonatomic) BOOL isHeaderDisabled;
 - (CGFloat)viewHeight;
 - (void)setInfo:(id)info;
-- (BOOL)isExpandedStatus;
 - (void)setExpanded:(BOOL)expanded;
-- (BOOL)isExpandedInDefault;
+- (BOOL)isExpanded;
 @end

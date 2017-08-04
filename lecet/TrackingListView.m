@@ -23,7 +23,6 @@
 @interface TrackingListView()<CustomCollectionViewDelegate>{
     NSArray *infoDict;
     BOOL isExpanded;
-    BOOL isExpandedDefault;
 }
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet CustomCollectionView *collectionView;
@@ -45,14 +44,15 @@
     _collectionView.customCollectionViewDelegate = self;
     _constraintHeaderHeight.constant = kDeviceHeight * 0.08;
     _topView.backgroundColor = TRACK_LIST_TOPBAR_BG_COLOR;
-    isExpanded = YES;
-    isExpandedDefault = NO;
+    //isExpanded = YES;
+    _collectionView.cargo = [NSNumber numberWithBool:YES];
+
 }
 
 -(void)setInfo:(id)info {
     infoDict = info;
     [self changeButtonTitle];
-    _collectionView.cargo = [NSNumber numberWithBool:isExpanded];
+    //_collectionView.cargo = [NSNumber numberWithBool:isExpanded];
     [_collectionView reload];
 }
 
@@ -61,7 +61,7 @@
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[self.headerTitle stringByAppendingString:@"  "] attributes:@{NSFontAttributeName:TRACK_LIST_TOPBAR_TITLE_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}];
     
     if (!self.isHeaderDisabled) {
-        [title appendAttributedString:[[NSAttributedString alloc] initWithString:(!(isExpanded && isExpandedDefault))?SEE_ALL_CARET_DOWN_TEXT:SEE_ALL_CARET_UP_TEXT attributes:@{NSFontAttributeName:SEE_ALL_CARET_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}]];
+        [title appendAttributedString:[[NSAttributedString alloc] initWithString:![self isExpanded]?SEE_ALL_CARET_DOWN_TEXT:SEE_ALL_CARET_UP_TEXT attributes:@{NSFontAttributeName:SEE_ALL_CARET_FONT, NSForegroundColorAttributeName:TRACK_LIST_TOPBAR_TITLE_COLOR}]];
     } else {
         _buttonHeader.enabled = NO;
     }
@@ -71,31 +71,31 @@
 
 - (IBAction)tappedButtonHeader:(id)sender {
     
-    if (!isExpandedDefault) {
-        isExpanded = NO;
-        isExpandedDefault = YES;
-    }
-    
-    isExpanded = !isExpanded;
+    isExpanded = ![self isExpanded];
   
-    _collectionView.cargo = [NSNumber numberWithBool:isExpanded && isExpandedDefault];
+    _collectionView.cargo = [NSNumber numberWithBool:isExpanded];
     
     [self changeButtonTitle];
     [_collectionView reload];
+    
+    if (self.trackingListViewDelegate) {
+        [self.trackingListViewDelegate tappedExpand:[[self superview] superview] status:isExpanded];
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CELL_SIZE_CHANGE object:nil];
 }
 
 - (CGFloat)viewHeight {
     CGFloat count = infoDict.count;
-    return _buttonHeader.frame.size.height + ( (isExpanded && isExpandedDefault?count:0) * cellHeight);
+    return _buttonHeader.frame.size.height + ( ([self isExpanded]?count:0) * cellHeight);
 }
 
 - (void)setExpanded:(BOOL)expanded {
-    isExpandedDefault = expanded;
+    _collectionView.cargo = [NSNumber numberWithBool:expanded];
 }
 
-- (BOOL)isExpandedInDefault {
-    return isExpandedDefault;
+- (BOOL)isExpanded {
+    return [_collectionView.cargo boolValue];
 }
 
 #pragma mark - CustomCollectionView Delegate
@@ -111,7 +111,7 @@
 
 - (NSInteger)collectionViewItemCount {
  
-    return isExpanded && isExpandedDefault?infoDict.count:0;
+    return [self isExpanded]?infoDict.count:0;
 }
 
 - (NSInteger)collectionViewSectionCount {
@@ -133,7 +133,4 @@
     
 }
 
-- (BOOL)isExpandedStatus {
-    return isExpanded && isExpandedDefault;
-}
 @end

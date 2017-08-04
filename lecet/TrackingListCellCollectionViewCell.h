@@ -17,5 +17,4 @@
 - (void)setInfo:(id)info withTitle:(NSString*)title;
 - (id) cargo;
 - (void)expanded:(BOOL)expanded;
-- (BOOL)isExpandedInDefault;
 @end

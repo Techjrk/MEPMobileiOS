@@ -81,18 +81,22 @@
 @end
 
 @implementation DashboardViewController
-#define kCellIdentifier         @"kCellIdentifier"
-#define kCellIdentifierSoon     @"kCellIdentifierSoon"
-#define kCellIdentifierRecent   @"kCellIdentifierRecent"
-#define kTrackListProject       @"kTrackListProject"
-#define kTrackListCompany       @"kTrackListCompany"
-#define kTrackList              @[kTrackListProject,kTrackListCompany]
+#define kCellIdentifier                 @"kCellIdentifier"
+#define kCellIdentifierSoon             @"kCellIdentifierSoon"
+#define kCellIdentifierRecent           @"kCellIdentifierRecent"
+#define kTrackListProject               @"kTrackListProject"
+#define kTrackListCompany               @"kTrackListCompany"
+#define kTrackListProjectExpanded       @"kTrackListProjectExpanded"
+#define kTrackListCompanyExpanded       @"kTrackListCompanyExpanded"
+#define kTrackList                      @[kTrackListProject, kTrackListCompany, kTrackListProjectExpanded, kTrackListCompanyExpanded]
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     isFirstLoad = YES;
-    
+    isCompanyTrackingList = YES;
+    isProjectTrackingList = YES;
+
     [[DataManager sharedManager] setIsLogged:YES];
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
@@ -257,13 +261,14 @@
     
     isCompanyTrackingList = YES;
     isProjectTrackingList = YES;
+ 
     if (intent.length>0) {
         
         if ([[intent uppercaseString] isEqualToString:@"RECENTLY UPDATED"]) {
             
             [self navigateHome:nil];
             
-            [self.scrollPageView setContentOffset:CGPointMake(kDeviceWidth * 2,0)];
+            [self.scrollPageView setContentOffset:CGPointMake(kDeviceWidth * 3,0)];
             [self pageChangedForced:YES];
             
         } else if ([[intent uppercaseString] isEqualToString:@"PROJECT TRACKING"]) {
@@ -798,9 +803,13 @@
             [[DataManager sharedManager] userProjectTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
                 
                 trackingListInfo[kTrackList[0]] = [object mutableCopy];
+                trackingListInfo[kTrackList[2]] = @(isProjectTrackingList);
+                
                 [[DataManager sharedManager] userCompanyTrackingList:[NSNumber numberWithInteger:userId.integerValue] success:^(id object) {
                     [self.customLoadingIndicator stopAnimating];
                     trackingListInfo[kTrackList[1]] = [object mutableCopy];
+                    trackingListInfo[kTrackList[3]] = @(isCompanyTrackingList);
+                    
                     PopupViewController *controller = [PopupViewController new];
                     CGRect rect = [controller getViewPositionFromViewController:view controller:self];
                     rect.size.height =  rect.size.height * 0.85;
@@ -816,7 +825,6 @@
                     [self presentViewController:controller animated:NO completion:^{
                         isCompanyTrackingList = YES;
                         isProjectTrackingList = YES;
-                        
                     }];
                     
                 } failure:^(id object) {
@@ -1088,6 +1096,18 @@
 
 #pragma mark - TrackingListView Delegate
 
+- (void)tappedExpand:(id)object status:(BOOL)status {
+    
+    TrackingListCellCollectionViewCell *cell = object;
+    
+    UICollectionView *collectionView = (UICollectionView*)[cell superview];
+    NSIndexPath *indexPath = [collectionView indexPathForCell:cell];
+    
+    NSString *keyName = kTrackList[indexPath.row+2];
+    trackingListInfo[keyName] = @(status);
+
+}
+
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
     
     [[DataManager sharedManager] dismissPopup];
@@ -1142,16 +1162,13 @@
     if ([cell isKindOfClass:[TrackingListCellCollectionViewCell class]]) {
     
         TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
-        trackList[indexPath.row] = cellItem;
         
-        if (indexPath.row == 0) {
-            [cellItem expanded:isProjectTrackingList];
-        } else {
-            [cellItem expanded: isCompanyTrackingList];
-        }
+        trackList[indexPath.row] = cellItem;
         
         cellItem.trackingListViewDelegate = self;
         [cellItem setInfo:trackingListInfo[indexPath.row ==0 ? kTrackListProject: kTrackListCompany] withTitle:NSLocalizedLanguage(indexPath.row ==0 ? @"PROJECT_TRACKING_LIST": @"COMPANY_TRACKING_LIST")];
+        
+        [cellItem expanded:[trackingListInfo[ kTrackList[indexPath.row+2]] boolValue]];
     
     }
     
@@ -1174,19 +1191,24 @@
     
     TrackingListCellCollectionViewCell *cellItem = trackList[indexPath.row];
     CGFloat defaultHeight = kDeviceHeight * 0.08;
-    BOOL isExpanded = YES;
     
-    if (indexPath.row == 0) {
-        isExpanded = isProjectTrackingList;
-    } else {
-        isExpanded = isCompanyTrackingList;
+    NSString *keyName = kTrackList[indexPath.row+2];
+    
+    BOOL isExpanded = [trackingListInfo[keyName] boolValue];
+
+    /*
+    if (isFromSiri) {
+        if (indexPath.row == 0) {
+            isExpanded = isProjectTrackingList;
+        } else {
+            isExpanded = isCompanyTrackingList;
+        }
     }
 
     if (cellItem != nil) {
-        isExpanded =  [[cellItem cargo] boolValue];
-        [cellItem expanded:YES];
+        isExpanded = [[cellItem cargo] boolValue];
     }
-
+*/
     
     if (isExpanded) {
         CGFloat cellHeight = kDeviceHeight * 0.06;
