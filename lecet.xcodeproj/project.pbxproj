@@ -473,7 +473,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */,
-				B79F1F531F33ABBB001D2D92 /* SearchMessageUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1007,10 +1006,6 @@
 		B79F1F401F33ABBB001D2D92 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
 		B79F1F421F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SearchMessageUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B79F1F4A1F33ABBB001D2D92 /* IntentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentViewController.h; sourceTree = "<group>"; };
-		B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
-		B79F1F4E1F33ABBB001D2D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		B79F1F501F33ABBB001D2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79F1F5E1F33ACA3001D2D92 /* SearchMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchMessage.entitlements; sourceTree = "<group>"; };
 		B7A1D3401CE4752D004E94B3 /* ProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailViewController.h; sourceTree = "<group>"; };
 		B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailViewController.m; sourceTree = "<group>"; };
@@ -1280,7 +1275,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79F1F481F33ABBB001D2D92 /* IntentsUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2810,17 +2804,6 @@
 			path = SearchMessage;
 			sourceTree = "<group>";
 		};
-		B79F1F491F33ABBB001D2D92 /* SearchMessageUI */ = {
-			isa = PBXGroup;
-			children = (
-				B79F1F4A1F33ABBB001D2D92 /* IntentViewController.h */,
-				B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */,
-				B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */,
-				B79F1F501F33ABBB001D2D92 /* Info.plist */,
-			);
-			path = SearchMessageUI;
-			sourceTree = "<group>";
-		};
 		B7A1D32D1CE098AA004E94B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -3139,6 +3122,9 @@
 							};
 						};
 					};
+					B79F1F461F33ABBB001D2D92 = {
+						DevelopmentTeam = AS94HE7VCY;
+					};
 				};
 			};
 			buildConfigurationList = B70155131CD0C56A0050CF8A /* Build configuration list for PBXProject "lecet" */;
@@ -3391,7 +3377,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79F1F4F1F33ABBB001D2D92 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3619,7 +3604,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79F1F4C1F33ABBB001D2D92 /* IntentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3642,17 +3626,6 @@
 			targetProxy = B7E2062C1F339BEF00075D81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B79F1F4E1F33ABBB001D2D92 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B701552D1CD0C56A0050CF8A /* Debug */ = {
@@ -3921,6 +3894,7 @@
 				B79F1F591F33ABBB001D2D92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B79F1F5A1F33ABBB001D2D92 /* Build configuration list for PBXNativeTarget "SearchMessage" */ = {
 			isa = XCConfigurationList;
@@ -3929,6 +3903,7 @@
 				B79F1F5C1F33ABBB001D2D92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
