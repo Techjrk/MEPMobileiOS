@@ -235,7 +235,9 @@
 }
 
 - (IBAction)tappedButtonSignUp:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LOGIN_SIGNUP_URL]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LOGIN_SIGNUP_URL] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @NO} completionHandler:nil];
+    
 }
 
 @end

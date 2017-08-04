@@ -630,7 +630,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
-				STRIP_STYLE = debugging;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
@@ -653,7 +653,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
-				STRIP_STYLE = debugging;
+				STRIP_STYLE = "non-global";
 			};
 			name = Release;
 		};
