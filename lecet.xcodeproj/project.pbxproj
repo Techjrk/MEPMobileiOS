@@ -66,6 +66,8 @@
 		B647D0A41E2F9BF100A864D1 /* ProjectNearMeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A21E2F9BF100A864D1 /* ProjectNearMeListView.xib */; };
 		B647D0A91E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647D0A71E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m */; };
 		B647D0AA1E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B647D0A81E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib */; };
+		B64B6D071F34826100073DCB /* IntroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B6D051F34826100073DCB /* IntroCollectionViewCell.m */; };
+		B64B6D081F34826100073DCB /* IntroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64B6D061F34826100073DCB /* IntroCollectionViewCell.xib */; };
 		B64F17711EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */; };
 		B64F17721EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */; };
 		B651064A1D12AD4000007759 /* ProjComTrackingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B65106481D12AD4000007759 /* ProjComTrackingTabView.m */; };
@@ -339,10 +341,6 @@
 		B79AA7FC1E9CC6C700BA1B04 /* PhotoShutterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AA7FA1E9CC6C700BA1B04 /* PhotoShutterViewController.m */; };
 		B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */; };
 		B79F1F411F33ABBB001D2D92 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B79F1F401F33ABBB001D2D92 /* IntentHandler.m */; };
-		B79F1F481F33ABBB001D2D92 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B796FC521F2793A700829E00 /* IntentsUI.framework */; };
-		B79F1F4C1F33ABBB001D2D92 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79F1F4B1F33ABBB001D2D92 /* IntentViewController.m */; };
-		B79F1F4F1F33ABBB001D2D92 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79F1F4D1F33ABBB001D2D92 /* MainInterface.storyboard */; };
-		B79F1F531F33ABBB001D2D92 /* SearchMessageUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F471F33ABBB001D2D92 /* SearchMessageUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
 		B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */; };
@@ -585,6 +583,9 @@
 		B647D0A61E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearMeListCollectionViewCell.h; sourceTree = "<group>"; };
 		B647D0A71E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearMeListCollectionViewCell.m; sourceTree = "<group>"; };
 		B647D0A81E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearMeListCollectionViewCell.xib; sourceTree = "<group>"; };
+		B64B6D041F34826100073DCB /* IntroCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroCollectionViewCell.h; sourceTree = "<group>"; };
+		B64B6D051F34826100073DCB /* IntroCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroCollectionViewCell.m; sourceTree = "<group>"; };
+		B64B6D061F34826100073DCB /* IntroCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroCollectionViewCell.xib; sourceTree = "<group>"; };
 		B64F176E1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoIndiListCollectionViewCell.h; sourceTree = "<group>"; };
 		B64F176F1EA78DA80054B2CE /* PanoIndiListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoIndiListCollectionViewCell.m; sourceTree = "<group>"; };
 		B64F17701EA78DA80054B2CE /* PanoIndiListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoIndiListCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1556,6 +1557,16 @@
 			name = FilterSelectionViewController;
 			sourceTree = "<group>";
 		};
+		B64B6D031F34824A00073DCB /* IntroCell */ = {
+			isa = PBXGroup;
+			children = (
+				B64B6D041F34826100073DCB /* IntroCollectionViewCell.h */,
+				B64B6D051F34826100073DCB /* IntroCollectionViewCell.m */,
+				B64B6D061F34826100073DCB /* IntroCollectionViewCell.xib */,
+			);
+			path = IntroCell;
+			sourceTree = "<group>";
+		};
 		B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2147,7 +2158,6 @@
 				B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */,
 				B701551A1CD0C56A0050CF8A /* lecet */,
 				B79F1F3E1F33ABBB001D2D92 /* SearchMessage */,
-				B79F1F491F33ABBB001D2D92 /* SearchMessageUI */,
 				B70155191CD0C56A0050CF8A /* Products */,
 				B7DD9CC91D942A9600978CC7 /* Frameworks */,
 			);
@@ -2305,6 +2315,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B64B6D031F34824A00073DCB /* IntroCell */,
 				B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */,
 				B62C517E1E83F1C40044830F /* CustomPhotoLibraryCell */,
 				B60909D91E7BF7A400DEAA17 /* CustomCameraViewCell */,
@@ -3128,11 +3139,6 @@
 							};
 						};
 					};
-					B79F1F461F33ABBB001D2D92 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AS94HE7VCY;
-						ProvisioningStyle = Manual;
-					};
 				};
 			};
 			buildConfigurationList = B70155131CD0C56A0050CF8A /* Build configuration list for PBXProject "lecet" */;
@@ -3178,6 +3184,7 @@
 			files = (
 				B60909DE1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.xib in Resources */,
 				B73EFB011D1428F800C6B3B2 /* SectionHeaderCollectionViewCell.xib in Resources */,
+				B64B6D081F34826100073DCB /* IntroCollectionViewCell.xib in Resources */,
 				B7BF60AA1D1D828900B3BDD7 /* SearchCompanyCollectionViewCell.xib in Resources */,
 				B6CF764A1CF867F200BF6C69 /* ProjectDetailStateViewController.xib in Resources */,
 				B76C693E1CD22DC8009E9F15 /* Lato-Black.ttf in Resources */,
@@ -3412,6 +3419,7 @@
 				B73EFB041D1435AF00C6B3B2 /* SelectMoveView.m in Sources */,
 				B76C69791CD9F0ED009E9F15 /* CustomCalendar.m in Sources */,
 				B73EFACB1D0EF45D00C6B3B2 /* HiddenProjectCollectionViewCell.m in Sources */,
+				B64B6D071F34826100073DCB /* IntroCollectionViewCell.m in Sources */,
 				B6411BEB1D09CEC8002B6E88 /* BidderListViewController.m in Sources */,
 				B6BDBAB51D180452001FB41C /* EditView.m in Sources */,
 				B6411BBE1D09ACBF002B6E88 /* MyProfileViewController.m in Sources */,
