@@ -1113,6 +1113,7 @@ typedef enum {
     
 }
 
+/*
 - (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
 {
     
@@ -1147,6 +1148,7 @@ typedef enum {
     
     
 }
+*/
 
 - (void)presentImagePickerController:(UIViewController *)pickerController animated:(BOOL)animate
 {

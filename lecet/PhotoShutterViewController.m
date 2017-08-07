@@ -95,13 +95,15 @@
    
     [[Monitor instance] genEquiAt:ename withHeight:kDeviceHeight andWidth:0 andMaxWidth:0];
 
+    /*
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    
     [library writeImageDataToSavedPhotosAlbum:[NSData dataWithContentsOfFile:ename] metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
         if (assetURL)
         {
             [self latestPhotoWithCompletion:^(UIImage *photo) {
                 
-                UIImageRenderingMode renderingMode = /* DISABLES CODE */ (YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
+                UIImageRenderingMode renderingMode =(YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
                 capturedImage  = [photo imageWithRenderingMode:renderingMode];
                 
             }];
@@ -114,6 +116,35 @@
             }
         }
     }];
+    */
+    
+    __block PHObjectPlaceholder *placeholder;
+    
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest* createAssetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:[UIImage imageWithData:[NSData dataWithContentsOfFile:ename]]];
+        placeholder = [createAssetRequest placeholderForCreatedAsset];
+        
+    } completionHandler:^(BOOL success, NSError *error) {
+        if (success)
+        {
+            PHFetchOptions *options = [PHFetchOptions new];
+            options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO],];
+            
+            PHFetchResult<PHAsset *>  *assets = [PHAsset fetchAssetsWithOptions:options];
+            PHCachingImageManager *imageManager = [PHCachingImageManager new];
+            PHAsset *assetTemp = assets[0];
+            
+            [imageManager requestImageForAsset:assetTemp targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+                capturedImage  = result;
+            }];
+        
+        }
+        else
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+    
 }
 
 - (void)setIs360Selected:(BOOL)selected {
@@ -203,6 +234,7 @@
 }
 
 #pragma mark - MISC
+/*
 - (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
 {
     
@@ -235,6 +267,7 @@
         // Typically you should handle an error more gracefully than this.
     }];
 }
+*/
 
 #pragma mark - PanoramaViewerViewControllerDelegate
 - (void)tappedDoneButtonPanoramaViewer {
