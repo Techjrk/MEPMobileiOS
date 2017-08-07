@@ -34,13 +34,13 @@
     if (isLoginPersisted != nil & isLoginPersisted.length>0) {
 
         isLogin = YES;
+        
         [self showIntroductionViewCOntrollerShow:^(id obj){
             showLoginDirect = NO;
             [self showIntroduction];
         } dontShow:^(id obj) {
             [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(autoLogin) userInfo:nil repeats:NO];
         }];
-        
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUnAuthorized:) name:NOTIFICATION_UNAUTHORIZED object:nil];
@@ -55,16 +55,16 @@
     if (!isLogin) {
         isLogin = YES;
         if (![[DataManager sharedManager] shouldLoginUsingTouchId]) {
+
             showLoginDirect = YES;
             [self showIntroductionViewCOntrollerShow:^(id object){
                 [self showIntroduction];
             } dontShow:^(id obj){
                 [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(showLogin) userInfo:nil repeats:NO];
             }];
-            
-            
+        
         } else {
-            showLoginDirect = NO;
+            //showLoginDirect = NO;
             [self login];
         }
     }
@@ -177,7 +177,6 @@
     } dontShow:^(id object){
         [self loginSub];
     }];
-    
 }
 - (void)loginSub {
     if ([[DataManager sharedManager] shouldLoginUsingTouchId]) {

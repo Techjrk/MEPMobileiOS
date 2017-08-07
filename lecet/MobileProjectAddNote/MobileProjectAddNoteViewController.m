@@ -247,7 +247,7 @@
 }
 
 - (void)updateHeighForBodyTextEndEditing {
-    self.constraintTextViewHeight.constant = kDeviceHeight * (self.isAddPhoto? 0.4:0.6);
+    self.constraintTextViewHeight.constant = kDeviceHeight * (self.isAddPhoto? 0.35:0.5);
 }
 
 - (void)postTitleTextFieldText{
