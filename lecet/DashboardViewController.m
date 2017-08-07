@@ -1189,27 +1189,12 @@
 - (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath *)indexPath cargo:(id)cargo{
     NSArray *item = trackingListInfo[kTrackList[indexPath.row]];
     
-    TrackingListCellCollectionViewCell *cellItem = trackList[indexPath.row];
     CGFloat defaultHeight = kDeviceHeight * 0.08;
     
     NSString *keyName = kTrackList[indexPath.row+2];
     
     BOOL isExpanded = [trackingListInfo[keyName] boolValue];
 
-    /*
-    if (isFromSiri) {
-        if (indexPath.row == 0) {
-            isExpanded = isProjectTrackingList;
-        } else {
-            isExpanded = isCompanyTrackingList;
-        }
-    }
-
-    if (cellItem != nil) {
-        isExpanded = [[cellItem cargo] boolValue];
-    }
-*/
-    
     if (isExpanded) {
         CGFloat cellHeight = kDeviceHeight * 0.06;
         defaultHeight = defaultHeight+ ((item.count<4?item.count:4.25)*cellHeight);

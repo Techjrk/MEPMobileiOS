@@ -25,7 +25,9 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>IntentsRestrictedWhileLocked</key>
-			<array/>
+			<array>
+				<string>INStartWorkoutIntent</string>
+			</array>
 			<key>IntentsSupported</key>
 			<array>
 				<string>INStartWorkoutIntent</string>
