@@ -315,7 +315,8 @@
 
 - (void)addProjectUserImage {
     NSString *textBody = [self bodyText];
-    [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody image:self.capturedImage success:^(id object){
+
+    [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage success:^(id object){
 
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -328,7 +329,7 @@
 
 - (void)updateProjectUserImage {
     NSString *textBody = [self bodyText];
-    [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody image:self.capturedImage success:^(id object){
+    [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage success:^(id object){
         [self deleteImageFromFileManager];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.customLoadingIndicator stopAnimating];
@@ -341,7 +342,7 @@
 
 - (void)addProjetUserNotes {
     NSString *textBody = [self bodyText];
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody};
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -355,7 +356,7 @@
 - (void)updataProjetUserNotes {
     
     NSString *textBody = [self bodyText];
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody};
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text};
     [[DataManager sharedManager] updateProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
