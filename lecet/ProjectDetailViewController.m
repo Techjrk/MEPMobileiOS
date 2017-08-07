@@ -988,7 +988,9 @@ typedef enum {
         [self.navigationController pushViewController:controller animated:YES];
         
     } else {
-        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":itemID,@"imageLink":link};
+        
+        fAddress = fAddress.length > 0 ? fAddress:@"";
+        imageItemsToBeUpdated = @{@"title":title,@"detail":detail,@"itemID":itemID,@"imageLink":link,@"fullAddress":fAddress};
         [self showCustomCamera];
     }
     
@@ -1068,7 +1070,7 @@ typedef enum {
     
     controller.isAddPhoto = YES;
     controller.capturedImage = capturedImage;
-    //controller.projectFullAddress = referenceProject.fullAddress;
+    controller.projectFullAddress = items[@"fullAddress"];
     controller.mobileProjectAddNoteViewControllerDelegate = self;
     if (items != nil && items.count > 0) {
         controller.itemsToBeUpdate = items;

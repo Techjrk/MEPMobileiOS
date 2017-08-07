@@ -27,6 +27,8 @@
 @interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>{
     CGFloat defaultBodyTextViewHeight;
     BOOL isEndEditingInTextView;
+    
+    CLLocation *cLocation;
 }
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -140,6 +142,8 @@
     } else {
         [[[DataManager sharedManager] locationManager] requestAlways];
     }
+    
+    cLocation = [[DataManager sharedManager] locationManager].currentLocation;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -330,8 +334,8 @@
 
 - (void)addProjectUserImage {
     NSString *textBody = [self bodyText];
-    
-    [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage success:^(id object){
+    NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
+    [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage geocode:geo success:^(id object){
 
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -345,7 +349,8 @@
 - (void)updateProjectUserImage {
     NSString *textBody = [self bodyText];
     
-    [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage success:^(id object){
+    NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
+    [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage geocode:geo success:^(id object){
         [self deleteImageFromFileManager];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
         [self.customLoadingIndicator stopAnimating];
@@ -358,7 +363,12 @@
 
 - (void)addProjetUserNotes {
     NSString *textBody = [self bodyText];
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text};
+    
+
+
+    NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
+    
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text,@"geocode":geo};
     [[DataManager sharedManager] addProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -372,7 +382,8 @@
 - (void)updataProjetUserNotes {
     
     NSString *textBody = [self bodyText];
-    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text};
+    NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
+    NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text,@"geocode":geo};
     [[DataManager sharedManager] updateProjectUserNotes:self.projectID parameter:dic success:^(id object){
         [self.customLoadingIndicator stopAnimating];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
@@ -540,8 +551,8 @@
 #pragma mark - Get Location
 - (void)findLocation {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    CLLocation *cLoction = [[DataManager sharedManager] locationManager].currentLocation;
-    [geocoder reverseGeocodeLocation:cLoction
+    
+    [geocoder reverseGeocodeLocation:cLocation
                    completionHandler:^(NSArray* placemarks, NSError* error){
                        
                        if (placemarks && placemarks.count > 0) {

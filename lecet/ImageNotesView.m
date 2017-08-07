@@ -94,9 +94,25 @@
     
     NSDictionary *item = self.items[indexPath.row];
 
+    
+    
+    
+    
+    
+    
     NSString *timeStamp = item[@"createdAt"];
     NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
-    cell.stamp.text = timeAgoFromUnixTime([date timeIntervalSince1970]);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy";
+    cell.dateLabel.text = [formatter stringFromDate:date];
+    
+    
+    NSString *timeUpdated = item[@"updatedAt"];
+    NSDate *dateUp = [DerivedNSManagedObject dateFromDateAndTimeString:timeUpdated];
+    if (![timeStamp isEqualToString:timeUpdated]) {
+        cell.stamp.text = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
+    }
+    
     
     if ([item[@"cellType"] isEqualToString:@"note"] ) {
         cell.user.text = [NSString stringWithFormat:@"%@ %@",item[@"author"][@"first_name"], item[@"author"][@"last_name"]];
@@ -187,7 +203,7 @@
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
     
     CGFloat width = collectionView.frame.size.width * 0.9;
-    CGFloat height = textHeight(attributedString, width, NOTE_ITEM_FONT.pointSize);
+    CGFloat height = textHeight(attributedString, width, NOTE_ITEM_FONT.pointSize) + (18 + 8);
     
     if (item[@"url"] == nil) {
         size = CGSizeMake( width, [ImageNoteCollectionViewCell itemSize] + height);

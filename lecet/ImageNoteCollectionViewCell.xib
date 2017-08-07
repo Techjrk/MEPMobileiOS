@@ -49,7 +49,7 @@
                         </constraints>
                     </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="f5e-dj-MkU">
-                        <rect key="frame" x="5" y="217" width="325" height="98"/>
+                        <rect key="frame" x="5" y="217" width="325" height="75"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,7 +57,7 @@
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aop-Sb-fZH">
                         <rect key="frame" x="0.0" y="315" width="335" height="8"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="8" id="Nvc-uD-bmo"/>
                         </constraints>
@@ -136,6 +136,16 @@
                             <constraint firstItem="gv6-U7-giV" firstAttribute="leading" secondItem="NiX-v5-hdC" secondAttribute="trailing" constant="5" id="mOH-RO-S4v"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-KP-pQq">
+                        <rect key="frame" x="10.5" y="297" width="315.5" height="18"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="q6F-Xy-tDc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,15 +156,17 @@
                 <constraint firstItem="7ls-Y8-O3f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2vv-Vg-ooa"/>
                 <constraint firstAttribute="bottom" secondItem="7ls-Y8-O3f" secondAttribute="bottom" id="3vZ-uY-QT3"/>
                 <constraint firstItem="XJQ-ag-dHb" firstAttribute="centerX" secondItem="ZXu-CH-Nbl" secondAttribute="centerX" id="4J4-7W-crW"/>
-                <constraint firstItem="Aop-Sb-fZH" firstAttribute="top" secondItem="f5e-dj-MkU" secondAttribute="bottom" id="5iG-b0-tvY"/>
                 <constraint firstItem="1TM-tb-lez" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5pY-WE-UPL"/>
                 <constraint firstItem="XgQ-F0-GKb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AXH-Rv-uFD"/>
                 <constraint firstItem="p7Q-tu-M1N" firstAttribute="top" secondItem="XgQ-F0-GKb" secondAttribute="bottom" id="Bof-CS-DYq"/>
+                <constraint firstItem="Mhg-KP-pQq" firstAttribute="width" secondItem="f5e-dj-MkU" secondAttribute="width" multiplier="0.97" id="BtL-cr-xGd"/>
                 <constraint firstItem="7Bb-ZK-EJX" firstAttribute="top" secondItem="zyA-eV-Kgi" secondAttribute="bottom" constant="5" id="CfU-3e-pCy"/>
                 <constraint firstItem="p7Q-tu-M1N" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.74" id="D7K-Vc-uDi"/>
                 <constraint firstItem="t1j-Q7-OYs" firstAttribute="width" secondItem="1TM-tb-lez" secondAttribute="width" id="DBm-Ji-10o"/>
+                <constraint firstItem="Mhg-KP-pQq" firstAttribute="top" secondItem="f5e-dj-MkU" secondAttribute="bottom" constant="5" id="FOK-dy-CcS"/>
                 <constraint firstItem="1TM-tb-lez" firstAttribute="height" secondItem="p7Q-tu-M1N" secondAttribute="height" id="H45-I7-c6y"/>
                 <constraint firstItem="f5e-dj-MkU" firstAttribute="centerX" secondItem="ZXu-CH-Nbl" secondAttribute="centerX" id="Hkn-Yi-l7h"/>
+                <constraint firstItem="Aop-Sb-fZH" firstAttribute="top" secondItem="Mhg-KP-pQq" secondAttribute="bottom" id="J6k-Ws-Jdx"/>
                 <constraint firstItem="ZXu-CH-Nbl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KdA-Hi-2FW"/>
                 <constraint firstItem="7ls-Y8-O3f" firstAttribute="top" secondItem="Aop-Sb-fZH" secondAttribute="bottom" id="Lyw-tb-FhM"/>
                 <constraint firstItem="zyA-eV-Kgi" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.95" id="N4E-5U-5xL"/>
@@ -170,6 +182,7 @@
                 <constraint firstAttribute="trailing" secondItem="7ls-Y8-O3f" secondAttribute="trailing" id="iK8-kI-Idh"/>
                 <constraint firstAttribute="trailing" secondItem="Aop-Sb-fZH" secondAttribute="trailing" id="jC6-P4-kOF"/>
                 <constraint firstItem="7Bb-ZK-EJX" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.97" id="kMs-y8-bVy"/>
+                <constraint firstItem="Mhg-KP-pQq" firstAttribute="centerX" secondItem="f5e-dj-MkU" secondAttribute="centerX" id="o1t-ne-L8j"/>
                 <constraint firstItem="ZXu-CH-Nbl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="rn4-WD-0f8"/>
                 <constraint firstItem="7Bb-ZK-EJX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="s13-vY-7Wt"/>
                 <constraint firstAttribute="trailing" secondItem="1TM-tb-lez" secondAttribute="trailing" id="w1h-1w-Xe7"/>
@@ -184,14 +197,16 @@
                 <outlet property="buttonEdit" destination="1TM-tb-lez" id="W7j-Xg-zMc"/>
                 <outlet property="constraintBottomNoteSpacer" destination="Nvc-uD-bmo" id="oLZ-4W-zyH"/>
                 <outlet property="constraintBottomTitleSpacer" destination="7Aa-v2-F5a" id="cwH-Ke-RwX"/>
+                <outlet property="constraintHeightStampLabel" destination="q6F-Xy-tDc" id="UKU-Rs-VBl"/>
                 <outlet property="constraintImageBottomSpacer" destination="1Tb-DV-3ht" id="L3v-z8-k0z"/>
                 <outlet property="constraintImageHeight" destination="XKg-5F-8bb" id="ChM-5S-lir"/>
                 <outlet property="constraintTitleHeight" destination="Eo1-E5-Zgs" id="Zs9-ch-WuI"/>
                 <outlet property="constraintUserHeight" destination="st0-yb-J3G" id="XaK-6D-8ev"/>
+                <outlet property="dateLabel" destination="0gY-ql-qar" id="npP-70-vXp"/>
                 <outlet property="image" destination="ZXu-CH-Nbl" id="w2J-KD-sYt"/>
                 <outlet property="locationTitleLabel" destination="gv6-U7-giV" id="zjY-wM-zzp"/>
                 <outlet property="note" destination="f5e-dj-MkU" id="SeN-CH-m0z"/>
-                <outlet property="stamp" destination="0gY-ql-qar" id="Ju1-AG-MhF"/>
+                <outlet property="stamp" destination="Mhg-KP-pQq" id="Otn-gR-jfi"/>
                 <outlet property="titleLine" destination="zyA-eV-Kgi" id="wE7-ip-6SG"/>
                 <outlet property="titleView" destination="p7Q-tu-M1N" id="pCm-C2-S73"/>
                 <outlet property="user" destination="m1D-dg-Aj5" id="moZ-pU-aHO"/>

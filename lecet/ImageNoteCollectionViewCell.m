@@ -32,6 +32,9 @@
 #define LOC_COLOR                               RGB(190, 190, 190)
 #define LOC_FONT                                fontNameWithSize(FONT_NAME_LATO_REGULAR, 9)
 
+#define DATE_COLOR                             RGB(34, 34, 34)
+#define DATE_FONT                              fontNameWithSize(FONT_NAME_LATO_REGULAR, 9)
+
 @interface ImageNoteCollectionViewCell()
 
 //Constraints
@@ -46,6 +49,8 @@
 @property (weak, nonatomic) IBOutlet UIView *titleLine;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEdit;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDelete;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightStampLabel;
+
 
 @end
 
@@ -85,6 +90,9 @@
     
     self.locationTitleLabel.font = LOC_FONT;
     self.locationTitleLabel.textColor = LOC_COLOR;
+    
+    self.dateLabel.font = DATE_FONT;
+    self.dateLabel.textColor = DATE_COLOR;
 }
 
 -(void)layoutSubviews {
@@ -111,6 +119,10 @@
         self.buttonEdit.hidden = NO;
         self.buttonDelete.hidden = NO;
         [self setButtomImages];
+    }
+    
+    if (self.stamp.text.length == 0) {
+        self.constraintHeightStampLabel.constant = 0;
     }
 }
 
