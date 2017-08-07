@@ -127,12 +127,17 @@
     } completionHandler:^(BOOL success, NSError *error) {
         if (success)
         {
-            PHFetchResult *assets = [PHAsset fetchAssetsWithBurstIdentifier:placeholder.localIdentifier options:nil];
-            PHCachingImageManager *imageManager = [PHCachingImageManager new];
+            PHFetchOptions *options = [PHFetchOptions new];
+            options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO],];
             
-            [imageManager requestImageForAsset:assets.firstObject targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+            PHFetchResult<PHAsset *>  *assets = [PHAsset fetchAssetsWithOptions:options];
+            PHCachingImageManager *imageManager = [PHCachingImageManager new];
+            PHAsset *assetTemp = assets[0];
+            
+            [imageManager requestImageForAsset:assetTemp targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
                 capturedImage  = result;
             }];
+        
         }
         else
         {
