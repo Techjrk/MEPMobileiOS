@@ -1100,49 +1100,7 @@ typedef enum {
     self.picker.delegate = self;
     [self presentImagePickerController:self.picker animated:YES];
    
-    /*
-    PhotoShutterViewController *controller = [PhotoShutterViewController new];
-    [self.navigationController pushViewController:controller animated:YES];
-    */
-    
 }
-
-/*
-- (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
-{
-    
-    ALAssetsLibrary *library=[[ALAssetsLibrary alloc] init];
-    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        
-        // Within the group enumeration block, filter to enumerate just photos.
-        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-        
-        // For this example, we're only interested in the last item [group numberOfAssets]-1 = last.
-        if ([group numberOfAssets] > 0) {
-            [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets]-1] options:0
-                                 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
-                                     // The end of the enumeration is signaled by asset == nil.
-                                     if (alAsset) {
-                                         ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                                         // Do something interesting with the AV asset.
-                                         UIImage *img = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                                         
-                                         // completion
-                                         completion(img);
-                                         
-                                         // we only need the first (most recent) photo -- stop the enumeration
-                                         *innerStop = YES;
-                                     }
-                                 }];
-        }
-    } failureBlock: ^(NSError *error) {
-        // Typically you should handle an error more gracefully than this.
-    }];
-    
-    
-}
-*/
 
 - (void)presentImagePickerController:(UIViewController *)pickerController animated:(BOOL)animate
 {

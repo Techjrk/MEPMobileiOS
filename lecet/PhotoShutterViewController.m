@@ -94,29 +94,6 @@
     NSString *ename = [TMP_DIR stringByAppendingPathComponent:[imageName stringByAppendingString:@".jpeg"]];
    
     [[Monitor instance] genEquiAt:ename withHeight:kDeviceHeight andWidth:0 andMaxWidth:0];
-
-    /*
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    
-    [library writeImageDataToSavedPhotosAlbum:[NSData dataWithContentsOfFile:ename] metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
-        if (assetURL)
-        {
-            [self latestPhotoWithCompletion:^(UIImage *photo) {
-                
-                UIImageRenderingMode renderingMode =(YES) ? UIImageRenderingModeAlwaysOriginal : UIImageRenderingModeAlwaysTemplate;
-                capturedImage  = [photo imageWithRenderingMode:renderingMode];
-                
-            }];
-        }
-        else if (error)
-        {
-            if (error.code == ALAssetsLibraryAccessUserDeniedError || error.code == ALAssetsLibraryAccessGloballyDeniedError)
-            {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Permission needed to access camera roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-            }
-        }
-    }];
-    */
     
     __block PHObjectPlaceholder *placeholder;
     
@@ -233,41 +210,6 @@
     [self stopCapture];
 }
 
-#pragma mark - MISC
-/*
-- (void)latestPhotoWithCompletion:(void (^)(UIImage *photo))completion
-{
-    
-    ALAssetsLibrary *library=[[ALAssetsLibrary alloc] init];
-    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        
-        // Within the group enumeration block, filter to enumerate just photos.
-        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-        
-        // For this example, we're only interested in the last item [group numberOfAssets]-1 = last.
-        if ([group numberOfAssets] > 0) {
-            [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:[group numberOfAssets]-1] options:0
-                                 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
-                                     // The end of the enumeration is signaled by asset == nil.
-                                     if (alAsset) {
-                                         ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                                         // Do something interesting with the AV asset.
-                                         UIImage *img = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                                         
-                                         // completion
-                                         completion(img);
-                                         
-                                         // we only need the first (most recent) photo -- stop the enumeration
-                                         *innerStop = YES;
-                                     }
-                                 }];
-        }
-    } failureBlock: ^(NSError *error) {
-        // Typically you should handle an error more gracefully than this.
-    }];
-}
-*/
 
 #pragma mark - PanoramaViewerViewControllerDelegate
 - (void)tappedDoneButtonPanoramaViewer {
