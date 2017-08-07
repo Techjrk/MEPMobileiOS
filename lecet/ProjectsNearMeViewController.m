@@ -535,6 +535,9 @@ float MetersToMiles(float meters) {
                 
                 BOOL isLast = biddingWithin.integerValue<0;
                 
+                NSDate *startDate;
+                NSDate *endDate;
+                
                 NSTimeInterval bidDateGreaterThanLastDate = [lastDate timeIntervalSinceDate:dateBid];
                 
                 NSTimeInterval bidDateCurrentDate = [dateBid timeIntervalSinceDate: [NSDate date]];
