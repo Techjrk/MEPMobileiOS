@@ -18,8 +18,6 @@
 		B60909F51E7C0F7D00DEAA17 /* CameraControlListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60909F31E7C0F7D00DEAA17 /* CameraControlListView.xib */; };
 		B60BEFA51E854EC500C69640 /* CustomPhotoLibView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60BEFA31E854EC500C69640 /* CustomPhotoLibView.m */; };
 		B60BEFA61E854EC500C69640 /* CustomPhotoLibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60BEFA41E854EC500C69640 /* CustomPhotoLibView.xib */; };
-		B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */; };
-		B611D8621E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */; };
 		B620C1251D535371005CD4B6 /* FilterEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B620C1231D535371005CD4B6 /* FilterEntryCollectionViewCell.m */; };
 		B620C1261D535371005CD4B6 /* FilterEntryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B620C1241D535371005CD4B6 /* FilterEntryCollectionViewCell.xib */; };
 		B623B20D1CFC9AC900793D67 /* ProjectListCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B623B20B1CFC9AC900793D67 /* ProjectListCVCell.m */; };
@@ -421,6 +419,8 @@
 		B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */; };
 		B7E2062A1F339BEF00075D81 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
 		B7E2062B1F339BEF00075D81 /* DataManagerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7E2EB2C1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2EB2A1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m */; };
+		B7E2EB2D1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E2EB2B1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib */; };
 		B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A301CDB898100847FA3 /* BidSoonItem.m */; };
 		B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */; };
 		B7F10A381CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A361CDE64DF00847FA3 /* BidSoonItemCollectionViewCell.m */; };
@@ -503,9 +503,6 @@
 		B60BEFA21E854EC500C69640 /* CustomPhotoLibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoLibView.h; sourceTree = "<group>"; };
 		B60BEFA31E854EC500C69640 /* CustomPhotoLibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoLibView.m; sourceTree = "<group>"; };
 		B60BEFA41E854EC500C69640 /* CustomPhotoLibView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoLibView.xib; sourceTree = "<group>"; };
-		B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectNotePopUpViewController.h; sourceTree = "<group>"; };
-		B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectNotePopUpViewController.m; sourceTree = "<group>"; };
-		B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectNotePopUpViewController.xib; sourceTree = "<group>"; };
 		B61B52F81E800A5D00BF56F5 /* CameraControlListViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraControlListViewItem.h; sourceTree = "<group>"; };
 		B61F8BB01D0FFFA3009F70EF /* TextfieldViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextfieldViewDelegate.h; sourceTree = "<group>"; };
 		B620C1221D535371005CD4B6 /* FilterEntryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterEntryCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1201,6 +1198,9 @@
 		B7E205F91F339B8D00075D81 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		B7E205FA1F339B8D00075D81 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		B7E205FB1F339B8D00075D81 /* DataManagerSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = DataManagerSDK.xcodeproj; sourceTree = "<group>"; };
+		B7E2EB291F386D9C000A54A4 /* MobileProjectNotePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileProjectNotePopUpViewController.h; sourceTree = "<group>"; };
+		B7E2EB2A1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileProjectNotePopUpViewController.m; sourceTree = "<group>"; };
+		B7E2EB2B1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileProjectNotePopUpViewController.xib; sourceTree = "<group>"; };
 		B7F10A2F1CDB898100847FA3 /* BidSoonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSoonItem.h; sourceTree = "<group>"; };
 		B7F10A301CDB898100847FA3 /* BidSoonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSoonItem.m; sourceTree = "<group>"; };
 		B7F10A321CDB898D00847FA3 /* BidSoonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSoonItem.xib; sourceTree = "<group>"; };
@@ -1335,9 +1335,9 @@
 		B611D85D1E73095300189DA3 /* MobileProjectNotePopUp */ = {
 			isa = PBXGroup;
 			children = (
-				B611D85E1E7309A800189DA3 /* MobileProjectNotePopUpViewController.h */,
-				B611D85F1E7309A800189DA3 /* MobileProjectNotePopUpViewController.m */,
-				B611D8601E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib */,
+				B7E2EB291F386D9C000A54A4 /* MobileProjectNotePopUpViewController.h */,
+				B7E2EB2A1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m */,
+				B7E2EB2B1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib */,
 			);
 			path = MobileProjectNotePopUp;
 			sourceTree = "<group>";
@@ -3205,7 +3205,6 @@
 				B6411BD11D09B2D8002B6E88 /* MyProfileHeaderView.xib in Resources */,
 				B7BF60D01D211B2D00B3BDD7 /* ProjectFilterView.xib in Resources */,
 				B73EFB061D1435C200C6B3B2 /* SelectMoveView.xib in Resources */,
-				B611D8621E7309A800189DA3 /* MobileProjectNotePopUpViewController.xib in Resources */,
 				B701553F1CD0C7920050CF8A /* LoginViewController.xib in Resources */,
 				B7BF611C1D240F5300B3BDD7 /* ListItemExpandingViewCell.xib in Resources */,
 				B73EFB111D145BBC00C6B3B2 /* ProjectTrackItemCollectionViewCell.xib in Resources */,
@@ -3321,6 +3320,7 @@
 				B6A74EF51D15DBAC007CDFF3 /* CompanySortCollectionViewCell.xib in Resources */,
 				B796160F1CF437720089BC32 /* BusyViewController.xib in Resources */,
 				B66DF8191D0076000071A6B5 /* ContactDetailViewController.xib in Resources */,
+				B7E2EB2D1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib in Resources */,
 				B7F10A331CDB898D00847FA3 /* BidSoonItem.xib in Resources */,
 				B78607151E7ABBF800F7CE3E /* landscape.jpg in Resources */,
 				B7637A3C1CEA49DF00F0FA2F /* ProjectBiddersCollectionViewCell.xib in Resources */,
@@ -3493,7 +3493,6 @@
 				B76C69441CD2488A009E9F15 /* CustomTextField.m in Sources */,
 				B66544BC1D002CBD0033732F /* CDAssociatedProjectViewController.m in Sources */,
 				B60359551D01F2CA006E5231 /* ContactNavBarView.m in Sources */,
-				B611D8611E7309A800189DA3 /* MobileProjectNotePopUpViewController.m in Sources */,
 				B7BF60DD1D2154C400B3BDD7 /* CompanyFilterView.m in Sources */,
 				B6E032ED1CF2ED4200D3D02C /* DropDownMenuView.m in Sources */,
 				B73EFAC01D0ED11200C6B3B2 /* HiddenProjectsViewController.m in Sources */,
@@ -3546,6 +3545,7 @@
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
 				B6EC8B3F1D2BC3F600F4780A /* FilterSelectionViewController.m in Sources */,
 				B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */,
+				B7E2EB2C1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m in Sources */,
 				B707BC401CEF0B960003C836 /* LandingViewController.m in Sources */,
 				B65106681D12DCA900007759 /* CompanyTrackingListViewController.m in Sources */,
 				B647D0A91E2FA55000A864D1 /* ProjectNearMeListCollectionViewCell.m in Sources */,
