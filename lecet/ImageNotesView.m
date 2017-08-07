@@ -63,7 +63,8 @@
         
         urlString = filePath;
     }
-    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image itemID:recordID imageLink:urlString];
+    NSString *fAddress =  [DerivedNSManagedObject objectOrNil:item[@"fullAddress"]];
+    [self.imageNotesViewDelegate updateNoteAndImage:string detail:detail image:image itemID:recordID imageLink:urlString address:fAddress];
 }
 - (void)tappedDelete:(UIImage *)image itemID:(NSNumber *)itemID {
     [self.imageNotesViewDelegate deleteNoteAndImage:itemID image:image];

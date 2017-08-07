@@ -78,8 +78,6 @@ typedef enum {
     UIImage *capturedImage;
     NSDictionary *imageItemsToBeUpdated;
     NSNumber *jurisdictionIdentifier;
-    DB_Project *projectGlobal;
-    
 }
 
 @property (strong, nonatomic) UIImagePickerController *picker;
@@ -282,12 +280,8 @@ typedef enum {
 - (void)detailsFromProject:(DB_Project*)record {
     
     DB_Project *project = record;
-    projectGlobal = record;
     projectTitle = project.title;
     recordId = project.recordId;
-    
-    
-    
     referenceProject = project;
     [self loadNotes];
     
@@ -920,7 +914,7 @@ typedef enum {
  
     MobileProjectAddNoteViewController *controller = [MobileProjectAddNoteViewController new];
     controller.projectID = recordId;
-    controller.projectFullAddress = projectGlobal.fullAddress;
+    //controller.projectFullAddress = referenceProject.fullAddress;
     controller.mobileProjectAddNoteViewControllerDelegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     
@@ -979,7 +973,7 @@ typedef enum {
     }
 }
 
-- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image itemID:(NSNumber *)itemID imageLink:(NSString *)link{
+- (void)updateNoteAndImage:(NSString *)title detail:(NSString *)detail image:(UIImage *)image itemID:(NSNumber *)itemID imageLink:(NSString *)link address:(NSString *)fAddress{
     
     if (title == nil) {
         title = @"";
@@ -990,7 +984,7 @@ typedef enum {
         controller.mobileProjectAddNoteViewControllerDelegate = self;
         controller.projectID = itemID;
         controller.itemsToBeUpdate = @{@"title":title,@"detail":detail};
-        controller.projectFullAddress = projectGlobal.fullAddress;
+        controller.projectFullAddress = fAddress;
         [self.navigationController pushViewController:controller animated:YES];
         
     } else {
@@ -1074,7 +1068,7 @@ typedef enum {
     
     controller.isAddPhoto = YES;
     controller.capturedImage = capturedImage;
-    controller.projectFullAddress = projectGlobal.fullAddress;
+    //controller.projectFullAddress = referenceProject.fullAddress;
     controller.mobileProjectAddNoteViewControllerDelegate = self;
     if (items != nil && items.count > 0) {
         controller.itemsToBeUpdate = items;

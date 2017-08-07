@@ -11,7 +11,7 @@
 
 @protocol ImageNotesViewDelegate
 - (void)viewNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image imageNoteId:(NSNumber*)imageNoteId;
-- (void)updateNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image itemID:(NSNumber *)itemID imageLink:(NSString *)link;
+- (void)updateNoteAndImage:(NSString*)title detail:(NSString*)detail image:(UIImage*)image itemID:(NSNumber *)itemID imageLink:(NSString *)link address:(NSString *)fAddress;
 - (void)deleteNoteAndImage:(NSNumber *)itemsID image:(UIImage*)image;
 @end
 

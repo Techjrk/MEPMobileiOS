@@ -132,10 +132,25 @@
     }
     
     isEndEditingInTextView = YES;
+    
+    if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        [[[DataManager sharedManager] locationManager] startUpdatingLocation];
+        
+    } else {
+        [[[DataManager sharedManager] locationManager] requestAlways];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.locationTextField.text = self.projectFullAddress;
+    
+    if (self.projectFullAddress != [NSNull class]) {
+        if (self.projectFullAddress.length > 0) {
+            self.locationTextField.text = self.projectFullAddress;
+        } else {
+            [self findLocation];
+        }
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -521,4 +536,65 @@
     
     return tempString;
 }
+
+#pragma mark - Get Location
+- (void)findLocation {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    CLLocation *cLoction = [[DataManager sharedManager] locationManager].currentLocation;
+    [geocoder reverseGeocodeLocation:cLoction
+                   completionHandler:^(NSArray* placemarks, NSError* error){
+                       
+                       if (placemarks && placemarks.count > 0) {
+                           
+                           CLPlacemark *result = [placemarks objectAtIndex:0];
+                           NSDictionary *address = result.addressDictionary;
+                           NSLog(@"%@", [address description]);
+                    
+                           NSString *fullAddr = @"";
+                           NSString *street = [DerivedNSManagedObject objectOrNil:address[@"Street"]];
+                           NSString *city = [DerivedNSManagedObject objectOrNil:address[@"City"]];
+                           NSString *state = [DerivedNSManagedObject objectOrNil:address[@"State"]];
+                           NSString *countryCode = [DerivedNSManagedObject objectOrNil:address[@"CountryCode"]];
+                           NSString *zipString = [DerivedNSManagedObject objectOrNil:address[@"ZIP"]];
+                           
+                           street = [NSString stringWithFormat:@"%@ %@",street,city];
+                         
+                           if(street != nil) {
+                               fullAddr = [fullAddr stringByAppendingString:street];
+                               
+                               if (state != nil | zipString != nil) {
+                                   fullAddr = [fullAddr stringByAppendingString:@", "];
+                               }
+                           }
+                           
+                           if (state != nil) {
+                               fullAddr = [fullAddr stringByAppendingString:state];
+                               
+                               if (state != nil) {
+                                   fullAddr = [fullAddr stringByAppendingString:@" "];
+                               }
+                           }
+                           
+                           if (countryCode != nil) {
+                               fullAddr  = [fullAddr stringByAppendingString:countryCode];
+                           }
+                           
+                           if (zipString != nil) {
+                               fullAddr = [fullAddr stringByAppendingString:@" "];
+                               fullAddr = [fullAddr stringByAppendingString:zipString];
+                           
+                           }
+                           
+                           self.locationTextField.text = fullAddr;
+                           
+                       } else if (error != nil) {
+                           
+                       }
+                   }
+     ];
+    
+
+}
+
+
 @end
