@@ -29,6 +29,9 @@
 #define STAMP_COLOR                             RGB(190, 190, 190)
 #define STAMP_FONT                              fontNameWithSize(FONT_NAME_LATO_REGULAR, 9)
 
+#define LOC_COLOR                               RGB(190, 190, 190)
+#define LOC_FONT                                fontNameWithSize(FONT_NAME_LATO_REGULAR, 9)
+
 @interface ImageNoteCollectionViewCell()
 
 //Constraints
@@ -79,6 +82,9 @@
 
     self.activityIndicator.hidden = YES;
     self.imageId = nil;
+    
+    self.locationTitleLabel.font = LOC_FONT;
+    self.locationTitleLabel.textColor = LOC_COLOR;
 }
 
 -(void)layoutSubviews {

@@ -163,6 +163,7 @@
     }
     
     cell.titleView.text = [DerivedNSManagedObject objectOrNil:item[@"title"]];
+    cell.locationTitleLabel.text = [DerivedNSManagedObject objectOrNil:item[@"fullAddress"]];
     
     NSString *text = item[@"text"];
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
