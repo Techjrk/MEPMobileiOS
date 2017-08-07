@@ -1788,13 +1788,13 @@
     } authenticated:YES];
 }
 
-- (void)addProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure {
+- (void)addProjectUserImage:(NSNumber*)projectID title:(NSString*)title text:(NSString*)text address:(NSString *)address image:(UIImage*)image success:(APIBlock)success failure:(APIBlock)failure {
 
     NSString *encodedImage = [self base64StringForImage:image];
 
     NSString *url = [NSString stringWithFormat:kUrlProjectUserImageUpload, (long)projectID.integerValue];
 
-    [self HTTP_POST_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object) {
+    [self HTTP_POST_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage,@"fullAddress":address} success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);
@@ -1822,7 +1822,7 @@
     return base64Image;
 }
 
-- (void)updateProjectUserImage:(NSNumber *)projectID title:(NSString *)title text:(NSString *)text image:(UIImage *)image success:(APIBlock)success failure:(APIBlock)failure{
+- (void)updateProjectUserImage:(NSNumber *)projectID title:(NSString *)title text:(NSString *)text address:(NSString *)address image:(UIImage *)image success:(APIBlock)success failure:(APIBlock)failure{
     
     /*
     CGSize imageSize = image.size;
@@ -1838,7 +1838,7 @@
     NSString *encodedImage = [self base64StringForImage:image];
     NSString *url = [NSString stringWithFormat:kUrlImage, (long)projectID.integerValue];
     
-    [self HTTP_PUT_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage} success:^(id object){
+    [self HTTP_PUT_BODY:[self url:url] parameters:@{@"title":title, @"text":text, @"file":encodedImage,@"fullAddress":address} success:^(id object){
         success(object);
     }failure:^(id object){
         failure(object);
