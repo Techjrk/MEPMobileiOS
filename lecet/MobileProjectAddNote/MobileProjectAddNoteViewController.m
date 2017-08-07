@@ -315,7 +315,7 @@
 
 - (void)addProjectUserImage {
     NSString *textBody = [self bodyText];
-
+    
     [[DataManager sharedManager] addProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage success:^(id object){
 
         [self.customLoadingIndicator stopAnimating];
@@ -329,6 +329,7 @@
 
 - (void)updateProjectUserImage {
     NSString *textBody = [self bodyText];
+    
     [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage success:^(id object){
         [self deleteImageFromFileManager];
         [self.mobileProjectAddNoteViewControllerDelegate tappedUpdateUserNotes];
