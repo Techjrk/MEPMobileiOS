@@ -106,7 +106,11 @@
     
     double timeDifference =  [dateUp timeIntervalSinceDate:date];
     if (timeDifference > 60) {
-        cell.stamp.text = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
+        NSString *timeUpdated = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
+        if (![timeUpdated isEqualToString:@"just now"]) {
+            timeUpdated = [NSString stringWithFormat:@"Last Updated: %@",timeUpdated];
+        }
+        cell.stamp.text = timeUpdated;
         cell.stamp.hidden = NO;
         cell.constraintHeightStampLabel.constant = kDeviceHeight * 0.03;
         cell.constraintBottomNoteSpacer.constant =  kDeviceHeight * 0.005;
