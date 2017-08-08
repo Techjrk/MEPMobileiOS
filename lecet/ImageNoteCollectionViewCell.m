@@ -44,7 +44,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomTitleSpacer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintUserHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomNoteSpacer;
+
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UIView *titleLine;

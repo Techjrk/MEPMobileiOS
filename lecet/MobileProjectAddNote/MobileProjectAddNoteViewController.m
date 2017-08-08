@@ -27,7 +27,7 @@
 @interface MobileProjectAddNoteViewController ()<UITextViewDelegate,UITextFieldDelegate,MobileProjectNotePopUpViewControllerDelegate>{
     CGFloat defaultBodyTextViewHeight;
     BOOL isEndEditingInTextView;
-    
+    BOOL isStillEditing;
     CLLocation *cLocation;
 }
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -164,6 +164,7 @@
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillShowNotification
                                                   object:nil];
+    isStillEditing = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -192,6 +193,7 @@
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController presentViewController:controller animated:YES completion:nil];
+    isStillEditing = NO;
 
     //}
 }
@@ -433,7 +435,10 @@
     NSString *text = [self stripStringAndToLowerCaser:textView.text];
     
     if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto]) {
-     textView.text = @"";
+        if (!isStillEditing) {
+            textView.text = @"";
+            isStillEditing = YES;
+        }
     }
     textView.textColor = [UIColor blackColor];
     return YES;
@@ -505,7 +510,7 @@
     CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
     CGFloat keyboardheight;
     keyboardheight = self.isAddPhoto? keyboardFrame.size.height - (kDeviceHeight * 0.08):keyboardFrame.size.height;
-    
+    isStillEditing = YES;
     [UIView animateWithDuration:0.2 animations:^{
         self.constraintTextViewHeight.constant = (defaultBodyTextViewHeight - keyboardheight);
         [self.view layoutIfNeeded];
@@ -515,6 +520,7 @@
 }
 
 - (void)keyboardDidHide: (NSNotification *) notif{
+
     [UIView animateWithDuration:0.2 animations:^{
         [self updateHeighForBodyTextEndEditing];
         [self.view layoutIfNeeded];

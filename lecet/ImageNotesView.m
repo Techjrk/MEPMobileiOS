@@ -109,10 +109,11 @@
         cell.stamp.text = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
         cell.stamp.hidden = NO;
         cell.constraintHeightStampLabel.constant = kDeviceHeight * 0.03;
-        
+        cell.constraintBottomNoteSpacer.constant =  kDeviceHeight * 0.005;
     } else {
         cell.stamp.hidden = YES;
         cell.constraintHeightStampLabel.constant = 0;
+        cell.constraintBottomNoteSpacer.constant =  0;
     }
     
     
@@ -204,10 +205,24 @@
     NSString *text = item[@"text"];
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
     
+    NSString *timeStamp = item[@"createdAt"];
+    NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy";
+    NSString *timeUpdated = item[@"updatedAt"];
+    NSDate *dateUp = [DerivedNSManagedObject dateFromDateAndTimeString:timeUpdated];
+    
     CGFloat width = collectionView.frame.size.width * 0.9;
     CGFloat height = textHeight(attributedString, width, NOTE_ITEM_FONT.pointSize);
     CGFloat itemSize;
     
+    double timeDifference =  [dateUp timeIntervalSinceDate:date];
+    if (timeDifference > 60) {
+        
+    } else {
+        height = height - kDeviceHeight * 0.05;
+    }
+
     if (item[@"url"] == nil) {
         itemSize = [ImageNoteCollectionViewCell itemSize];
         size = CGSizeMake( width, itemSize + height);

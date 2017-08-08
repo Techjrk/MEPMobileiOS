@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSNumber *userId;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightStampLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomNoteSpacer;
 + (CGFloat)itemSize;
 + (CGFloat)itemSizeWithImage;
 
