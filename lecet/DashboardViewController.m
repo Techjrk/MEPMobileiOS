@@ -66,6 +66,7 @@
     BOOL isProjectTrackingList;
     BOOL isCompanyTrackingList;
     BOOL isFirstLoad;
+    BOOL isFromSiri;
 }
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyMade;
 @property (weak, nonatomic) IBOutlet ChartView *chartRecentlyUpdated;
@@ -96,7 +97,8 @@
     isFirstLoad = YES;
     isCompanyTrackingList = YES;
     isProjectTrackingList = YES;
-
+    isFromSiri = NO;
+    
     [[DataManager sharedManager] setIsLogged:YES];
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
@@ -276,13 +278,15 @@
             [self navigateHome:nil];
             isCompanyTrackingList = NO;
             [self.menuHeader tappedMenuTrackingList];
+            
         }else if ([[intent uppercaseString] isEqualToString:@"COMPANY TRACKING"]) {
             
             [self navigateHome:nil];
             isProjectTrackingList = NO;
             [self.menuHeader tappedMenuTrackingList];
+            
         } else if ([[intent uppercaseString] isEqualToString:@"PROJECT NEAR ME"]) {
-      
+            isFromSiri = YES;
             [self navigateHome:nil];
             [self.menuHeader tappedMenuProjectNear];
         }
@@ -783,7 +787,10 @@
 
             shouldUsePushZoomAnimation = NO;
             [[GAManager sharedManager] trackProjectsNearMe];
-            [self.navigationController pushViewController:[ProjectsNearMeViewController new] animated:YES];
+            ProjectsNearMeViewController *controller = [ProjectsNearMeViewController new];
+            controller.displayList = isFromSiri;
+            isFromSiri = NO;
+            [self.navigationController pushViewController:controller animated:YES];
             
             break;
         }

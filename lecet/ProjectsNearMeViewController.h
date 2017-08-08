@@ -10,5 +10,5 @@
 #import "BaseViewController.h"
 
 @interface ProjectsNearMeViewController : BaseViewController
-
+@property (nonatomic) BOOL displayList;
 @end
