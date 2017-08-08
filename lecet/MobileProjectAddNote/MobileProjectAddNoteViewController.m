@@ -29,6 +29,7 @@
     BOOL isEndEditingInTextView;
     BOOL isStillEditing;
     CLLocation *cLocation;
+    UILabel *placeHolderTextLabel;
 }
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -95,6 +96,12 @@
         self.bodyTitleLabel.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_BODY_TITLE") label:@""];
     }
     [self bodyTextViewPlaceHolder];
+    
+    placeHolderTextLabel = [UILabel new];
+    placeHolderTextLabel.frame = CGRectMake(kDeviceWidth * 0.01, 0, kDeviceWidth * 0.5, kDeviceHeight * 0.05);
+    placeHolderTextLabel.text =  NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+    placeHolderTextLabel.textColor = [UIColor lightGrayColor];
+    [self.bodyTextView addSubview:placeHolderTextLabel];
     
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
@@ -240,7 +247,6 @@
 
 - (NSString *)addButtonTitleString {
     NSString *tempTitle;
-    //NSLocalizedLanguage(@"MPANV_NAV_ADD")
     if (self.itemsToBeUpdate != nil && self.itemsToBeUpdate.count > 0) {
         tempTitle = NSLocalizedLanguage(@"MPANV_NAV_UPDATE");
     } else {
@@ -284,7 +290,7 @@
 
 - (void)bodyTextViewPlaceHolder {
 
-    self.bodyTextView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
+    //self.bodyTextView.text = NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
     
     NSString *tempBodyText;
     if (self.itemsToBeUpdate != nil && self.itemsToBeUpdate.count > 0) {
@@ -292,6 +298,7 @@
         
     }
     
+    /*
     NSString *stripString = [tempBodyText stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (stripString.length > 0 && stripString != nil) {
         self.bodyTextView.text = tempBodyText;
@@ -300,6 +307,7 @@
         self.bodyTextView.textColor = [UIColor lightGrayColor];
         
     }
+    */
     self.bodyTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     self.bodyTextView.layer.borderWidth = 0.5f;
 }
@@ -350,7 +358,6 @@
 
 - (void)updateProjectUserImage {
     NSString *textBody = [self bodyText];
-    
     NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
     [[DataManager sharedManager] updateProjectUserImage:self.projectID title:self.postTitleTextField.text text:textBody address:self.locationTextField.text image:self.capturedImage geocode:geo success:^(id object){
         [self deleteImageFromFileManager];
@@ -365,7 +372,7 @@
 
 - (void)addProjetUserNotes {
     NSString *textBody = [self bodyText];
-    
+
 
 
     NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
@@ -384,6 +391,7 @@
 - (void)updataProjetUserNotes {
     
     NSString *textBody = [self bodyText];
+    
     NSDictionary *geo = @{@"lat":@(cLocation.coordinate.latitude),@"lng":@(cLocation.coordinate.longitude)};
     NSDictionary *dic = @{@"public":@(YES),@"title":self.postTitleTextField.text,@"text":textBody,@"fullAddress":self.locationTextField.text,@"geocode":geo};
     [[DataManager sharedManager] updateProjectUserNotes:self.projectID parameter:dic success:^(id object){
@@ -399,20 +407,30 @@
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
+    placeHolderTextLabel.hidden = YES;
     isEndEditingInTextView = NO;
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     isEndEditingInTextView = YES;
+    
+    NSString *text = [self stripStringAndToLowerCaser:textView.text];
+    if (text.length == 0) {
+        placeHolderTextLabel.hidden = NO;
+    }
+    
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
     
+    placeHolderTextLabel.hidden = YES;
+    /*
     NSString *placeHolder = [NSString stringWithFormat:@"%@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
     NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
     NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
     NSString *text = [self stripStringAndToLowerCaser:textView.text];
+    
     
     if (!self.isAddPhoto) {
         if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
@@ -425,10 +443,24 @@
     if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
         //textView.text = @"";
     }
+    */
+    
+    NSString *text = [self stripStringAndToLowerCaser:textView.text];
+    if (!self.isAddPhoto) {
+        if (text.length == 0) {
+            self.addButton.userInteractionEnabled = NO;
+        } else {
+            self.addButton.userInteractionEnabled = YES;
+        }
+    }
+    
+    
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
+    
+    /*
     NSString *placeHolder = [NSString stringWithFormat:@"%@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
     NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
     NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
@@ -440,6 +472,7 @@
             isStillEditing = YES;
         }
     }
+    */
     textView.textColor = [UIColor blackColor];
     return YES;
 }
@@ -526,6 +559,7 @@
         [self.view layoutIfNeeded];
     }completion:^(BOOL fin){
         if (fin) {
+            /*
             NSString *placeHolder = [NSString stringWithFormat:@"%@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
             NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
             NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
@@ -536,20 +570,15 @@
                     self.bodyTextView.textColor = [UIColor lightGrayColor];
                 }
             }
+             */
         }
+             
     }];
 
 }
 
 - (NSString *)bodyText {
     NSString *tempString = self.bodyTextView.text;
-    NSString *placeHolder = [NSString stringWithFormat:@"%@",NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
-    NSString *bodyPlaceHolder = [self stripStringAndToLowerCaser:NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER")];
-    NSString *bodyPlaceHolderPhoto = [self stripStringAndToLowerCaser:placeHolder];
-    NSString *text = [self stripStringAndToLowerCaser:self.bodyTextView.text];
-    if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
-        tempString = @"";
-    }
     
     return tempString;
 }
