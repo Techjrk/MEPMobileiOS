@@ -421,7 +421,7 @@
     }
     
     if ([text isEqualToString:bodyPlaceHolder] || [text isEqualToString:bodyPlaceHolderPhoto] || text.length == 0) {
-        textView.text = @"";
+        //textView.text = @"";
     }
 }
 
