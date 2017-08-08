@@ -220,7 +220,13 @@
     if (timeDifference > 60) {
         
     } else {
-        height = height - kDeviceHeight * 0.05;
+        
+        if (item[@"url"] == nil) {
+            height = height - kDeviceHeight * 0.05;
+        } else {
+            height = height - kDeviceHeight * 0.02;
+        }
+        
     }
 
     if (item[@"url"] == nil) {
