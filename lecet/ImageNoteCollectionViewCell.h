@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSNumber *imageId;
 @property (strong, nonatomic) NSNumber *userId;
 @property (strong, nonatomic) NSIndexPath *indexPath;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightStampLabel;
 + (CGFloat)itemSize;
 + (CGFloat)itemSizeWithImage;
 

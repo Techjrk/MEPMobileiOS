@@ -14,8 +14,9 @@
 #define CONSTRAINT_BOTTOM_TITLE_SPACER          kDeviceHeight * 0.003
 #define CONSTRAINT_BOTTOM_NOTE_SPACER           kDeviceHeight * 0.005
 #define CONSTRAINT_USER                         kDeviceHeight * 0.05
+#define CONSTRAINT_STAMP_HEIGHT                 kDeviceHeight * 0.05
 
-#define ITEM_SIZE                               CONSTRAINT_IMAGE_BOTTOM_SPACER + CONSTRAINT_TITLE_HEIGHT + CONSTRAINT_BOTTOM_TITLE_SPACER + CONSTRAINT_BOTTOM_NOTE_SPACER + CONSTRAINT_USER
+#define ITEM_SIZE                               CONSTRAINT_IMAGE_BOTTOM_SPACER + CONSTRAINT_TITLE_HEIGHT + CONSTRAINT_BOTTOM_TITLE_SPACER + CONSTRAINT_BOTTOM_NOTE_SPACER + CONSTRAINT_USER + CONSTRAINT_STAMP_HEIGHT + 10
 
 #define SHADOW_COLOR                            RGB(0, 0, 0)
 
@@ -49,7 +50,7 @@
 @property (weak, nonatomic) IBOutlet UIView *titleLine;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEdit;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDelete;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightStampLabel;
+
 
 
 @end
