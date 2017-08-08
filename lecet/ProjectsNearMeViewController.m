@@ -210,6 +210,11 @@ float MetersToMiles(float meters) {
                 _mapView.delegate = self;
                 [self addItemsToMap:nil];
                 
+                if (self.displayList) {
+                    self.displayList = NO;
+                    [self tappedLocListButton:nil];
+                }
+
             } else {
                 
                 isDoneSearching = YES;
