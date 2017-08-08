@@ -15,6 +15,7 @@
 #define FONT_TILE                           fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
 #define FONT_TITLE_SECOND_LABEL             fontNameWithSize(FONT_NAME_LATO_ITALIC, 9)
 #define FONT_NAV_BUTTON                     fontNameWithSize(FONT_NAME_LATO_BOLD, 14)
+#define FONT_PLACEHOLDER                    [UIFont systemFontOfSize:14.0f];
 
 #pragma mark - COLOR
 #define COLOR_FONT_NAV_TITLE_LABEL          RGB(255,255,255)
@@ -101,6 +102,7 @@
     placeHolderTextLabel.frame = CGRectMake(kDeviceWidth * 0.01, 0, kDeviceWidth * 0.5, kDeviceHeight * 0.05);
     placeHolderTextLabel.text =  NSLocalizedLanguage(@"MPANV_BODY_PLACEHOLDER");
     placeHolderTextLabel.textColor = [UIColor lightGrayColor];
+    placeHolderTextLabel.font = FONT_PLACEHOLDER;
     [self.bodyTextView addSubview:placeHolderTextLabel];
     
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
