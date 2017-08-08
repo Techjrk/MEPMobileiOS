@@ -122,9 +122,10 @@
         [self setButtomImages];
     }
     
+    /*
     if (self.stamp.text.length == 0) {
         self.constraintHeightStampLabel.constant = 0;
-    }
+    }*/
 }
 
 - (void)setButtomImages {

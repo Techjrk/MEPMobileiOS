@@ -96,6 +96,7 @@
 
     NSString *timeStamp = item[@"createdAt"];
     NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMM dd, yyyy";
     cell.dateLabel.text = [formatter stringFromDate:date];
@@ -106,8 +107,12 @@
     double timeDifference =  [dateUp timeIntervalSinceDate:date];
     if (timeDifference > 60) {
         cell.stamp.text = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
+        cell.stamp.hidden = NO;
+        cell.constraintHeightStampLabel.constant = kDeviceHeight * 0.03;
+        
     } else {
-        cell.stamp.text = @"";
+        cell.stamp.hidden = YES;
+        cell.constraintHeightStampLabel.constant = 0;
     }
     
     
