@@ -780,7 +780,7 @@
     
     NSDate *previousMonth = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-(numberOfDays)];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"gte\":\"%@\"}}, \"limit\":250,\"dashboardTypes\":true,\"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}], \"where\":{\"lastPublishDate\":{\"gte\":\"%@\"}}, \"limit\":250,\"dashboardTypes\":true,\"order\":\"lastPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:previousMonth]];
 
     
     [self HTTP_GET:[self url:kUrlBidsRecentlyUpdated] parameters:@{@"filter":filter} success:^(id object) {
