@@ -96,7 +96,7 @@
     } else {
         self.bodyTitleLabel.attributedText = [self addLabelInTitle:NSLocalizedLanguage(@"MPANV_BODY_TITLE") label:@""];
     }
-    [self bodyTextViewPlaceHolder];
+   
     
     placeHolderTextLabel = [UILabel new];
     placeHolderTextLabel.frame = CGRectMake(kDeviceWidth * 0.01, 0, kDeviceWidth * 0.5, kDeviceHeight * 0.05);
@@ -107,6 +107,8 @@
     
     self.footerLabel.text = NSLocalizedLanguage(@"MPANV_FOOTER_TILE");
     self.bodyViewContainer.backgroundColor = [UIColor clearColor];
+    
+     [self bodyTextViewPlaceHolder];
     
     [self updateHeighForBodyTextEndEditing];
     defaultBodyTextViewHeight = self.constraintTextViewHeight.constant;
@@ -297,7 +299,9 @@
     NSString *tempBodyText;
     if (self.itemsToBeUpdate != nil && self.itemsToBeUpdate.count > 0) {
         tempBodyText = [DerivedNSManagedObject objectOrNil:self.itemsToBeUpdate[@"detail"]];
-        
+        self.bodyTextView.text = tempBodyText;
+        placeHolderTextLabel.hidden =YES;
+        self.bodyTextView.textColor = [UIColor blackColor];
     }
     
     /*
@@ -310,6 +314,7 @@
         
     }
     */
+    
     self.bodyTextView.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
     self.bodyTextView.layer.borderWidth = 0.5f;
 }
