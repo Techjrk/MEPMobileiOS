@@ -20,7 +20,9 @@
 #define NONE_COLOR                  RGBA(34, 34, 34, 50)
 #define NONE_FONT                   fontNameWithSize(FONT_NAME_LATO_ITALIC, 13)
 
-@interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate,ImageNoteCollectionViewCellDelegate>
+@interface ImageNotesView()<UICollectionViewDataSource, UICollectionViewDelegate,ImageNoteCollectionViewCellDelegate>{
+    UITextView *textViewTemp;
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *viewNone;
 @property (weak, nonatomic) IBOutlet UILabel *labelNone;
@@ -226,7 +228,7 @@
     } else {
         
         if (item[@"url"] == nil) {
-            height = height - kDeviceHeight * 0.05;
+            height = height - kDeviceHeight * 0.04;
         } else {
             height = height - kDeviceHeight * 0.02;
         }
