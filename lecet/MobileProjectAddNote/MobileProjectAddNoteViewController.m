@@ -117,6 +117,8 @@
     
     [self.postTitleTextField addTarget:self action:@selector(onEditing:) forControlEvents:UIControlEventEditingChanged];
     
+    [self.locationTextField addTarget:self action:@selector(beginEditing:) forControlEvents:UIControlEventAllEvents];
+    
     self.addButton.userInteractionEnabled = self.isAddPhoto?YES:NO;
     self.capturedImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.capturedImageView.image = self.capturedImage;
@@ -497,6 +499,20 @@
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
+}
+
+-(void)beginEditing:(id)sender {
+    if (self.postTitleTextField.text.length > 55) {
+        self.postTitleTextField.text = [self.postTitleTextField.text substringToIndex:self.postTitleTextField.text.length - 1];
+        return;
+    }
+    
+    NSString *countText = NSLocalizedLanguage(@"MPANV_POST_TITLE_COUNT");
+    self.postTitleCountLabel.text = [NSString stringWithFormat:countText,self.postTitleTextField.text.length];
+    
+    if (!self.addButton.userInteractionEnabled) {
+        self.addButton.userInteractionEnabled = YES;
+    }
 }
 
 -(void)onEditing:(id)sender {
