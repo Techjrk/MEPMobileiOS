@@ -96,14 +96,14 @@
     
     NSDictionary *item = self.items[indexPath.row];
 
-    NSString *timeStamp = item[@"createdAt"];
+    NSString *timeStamp = [DerivedNSManagedObject objectOrNil:item[@"createdAt"]];
     NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMM dd, yyyy";
     cell.dateLabel.text = [formatter stringFromDate:date];
     
-    NSString *timeUpdated = item[@"updatedAt"];
+    NSString *timeUpdated = [DerivedNSManagedObject objectOrNil:item[@"updatedAt"]];
     NSDate *dateUp = [DerivedNSManagedObject dateFromDateAndTimeString:timeUpdated];
     
     double timeDifference =  [dateUp timeIntervalSinceDate:date];
@@ -191,7 +191,8 @@
     cell.titleView.text = [DerivedNSManagedObject objectOrNil:item[@"title"]];
     cell.locationTitleLabel.text = [DerivedNSManagedObject objectOrNil:item[@"fullAddress"]];
     
-    NSString *text = item[@"text"];
+    NSString *text = [DerivedNSManagedObject objectOrNil:item[@"text"]];
+    text = text.length > 0 ? text : @"";
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
     
     cell.note.attributedText = attributedString;
@@ -208,27 +209,33 @@
     CGSize size = CGSizeZero;
     
     NSDictionary *item = self.items[indexPath.row];
-    NSString *text = item[@"text"];
+    NSString *text = [DerivedNSManagedObject objectOrNil:item[@"text"]];
+    text = text.length > 0 ? text : @"";
     NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
     
-    NSString *timeStamp = item[@"createdAt"];
+    NSString *timeStamp = [DerivedNSManagedObject objectOrNil:item[@"createdAt"]];
+    
+    
     NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMM dd, yyyy";
-    NSString *timeUpdated = item[@"updatedAt"];
+    NSString *timeUpdated = [DerivedNSManagedObject objectOrNil:item[@"updatedAt"]];
     NSDate *dateUp = [DerivedNSManagedObject dateFromDateAndTimeString:timeUpdated];
     
     CGFloat width = collectionView.frame.size.width * 0.9;
     CGFloat height = textHeight(attributedString, width, NOTE_ITEM_FONT.pointSize);
     CGFloat itemSize;
     
+    int numLines = height/NOTE_ITEM_FONT.pointSize;
+    int noteFontHeight = (height / numLines) + 1;
+    height = numLines * noteFontHeight;
     double timeDifference =  [dateUp timeIntervalSinceDate:date];
     if (timeDifference > 60) {
         
     } else {
         
         if (item[@"url"] == nil) {
-            height = height - kDeviceHeight * 0.04;
+            height = height - kDeviceHeight * 0.03;
         } else {
             height = height - kDeviceHeight * 0.02;
         }
