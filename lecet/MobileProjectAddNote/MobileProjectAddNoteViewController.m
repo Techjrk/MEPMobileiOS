@@ -192,22 +192,29 @@
 }
 
 - (IBAction)tappedAddButton:(id)sender {
-    if (!self.isAddPhoto) {
-        
-        if (self.bodyTextView.text.length==0) {
-            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"MPANV_ALERT_BODY_REQUIRED")];
-            return;
+    
+    NSString *stripString = [self.locationTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (stripString.length > 0) {
+        if (!self.isAddPhoto) {
+            
+            if (self.bodyTextView.text.length==0) {
+                [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"MPANV_ALERT_BODY_REQUIRED")];
+                return;
+            }
         }
+        
+        MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
+        controller.mobileProjectNotePopUpViewControllerDelegate = self;
+        controller.isAddImage = self.isAddPhoto;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self.navigationController presentViewController:controller animated:YES completion:nil];
+        isStillEditing = NO;
+        
+    } else {
+        [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"MPANV_ALERT_LOC_REQUIRED")];
     }
-
-    MobileProjectNotePopUpViewController *controller = [MobileProjectNotePopUpViewController new];
-    controller.mobileProjectNotePopUpViewControllerDelegate = self;
-    controller.isAddImage = self.isAddPhoto;
-    controller.modalPresentationStyle = UIModalPresentationCustom;
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
-    isStillEditing = NO;
-
+    
     //}
 }
 - (IBAction)tappedTrashcanButton:(id)sender {
