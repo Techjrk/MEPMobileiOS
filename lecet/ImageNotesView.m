@@ -211,7 +211,10 @@
     NSDictionary *item = self.items[indexPath.row];
     NSString *text = [DerivedNSManagedObject objectOrNil:item[@"text"]];
     text = text.length > 0 ? text : @"";
-    NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR}];
+    
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineSpacing = 1;
+    NSAttributedString *attributedString = [[NSAttributedString new] initWithString:text attributes:@{NSFontAttributeName: NOTE_ITEM_FONT, NSForegroundColorAttributeName: NOTE_ITEM_COLOR,NSParagraphStyleAttributeName:paragraphStyle}];
     
     NSString *timeStamp = [DerivedNSManagedObject objectOrNil:item[@"createdAt"]];
     
@@ -222,13 +225,10 @@
     NSString *timeUpdated = [DerivedNSManagedObject objectOrNil:item[@"updatedAt"]];
     NSDate *dateUp = [DerivedNSManagedObject dateFromDateAndTimeString:timeUpdated];
     
-    CGFloat width = collectionView.frame.size.width * 0.9;
+    CGFloat width = (collectionView.frame.size.width * 0.9) * 0.97;
     CGFloat height = textHeight(attributedString, width, NOTE_ITEM_FONT.pointSize);
     CGFloat itemSize;
-    
-    int numLines = height/NOTE_ITEM_FONT.pointSize;
-    int noteFontHeight = (height / numLines) + 1;
-    height = numLines * noteFontHeight;
+
     double timeDifference =  [dateUp timeIntervalSinceDate:date];
     if (timeDifference > 60) {
         

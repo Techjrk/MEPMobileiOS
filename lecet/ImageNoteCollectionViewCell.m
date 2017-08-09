@@ -94,6 +94,7 @@
     
     self.dateLabel.font = DATE_FONT;
     self.dateLabel.textColor = DATE_COLOR;
+    
 }
 
 -(void)layoutSubviews {
