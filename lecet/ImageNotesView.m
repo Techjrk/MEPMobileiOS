@@ -109,10 +109,7 @@
     double timeDifference =  [dateUp timeIntervalSinceDate:date];
     if (timeDifference > 60) {
         NSString *timeUpdated = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
-        if (![timeUpdated isEqualToString:@"just now"]) {
-            timeUpdated = [NSString stringWithFormat:NSLocalizedLanguage(@"INV_LAST_UPDATED"),timeUpdated];
-        }
-        cell.stamp.text = timeUpdated;
+        cell.stamp.text = [NSString stringWithFormat:NSLocalizedLanguage(@"INV_LAST_UPDATED"),timeUpdated];;
         cell.stamp.hidden = NO;
         cell.constraintHeightStampLabel.constant = kDeviceHeight * 0.03;
         cell.constraintBottomNoteSpacer.constant =  kDeviceHeight * 0.005;
@@ -235,7 +232,7 @@
     } else {
         
         if (item[@"url"] == nil) {
-            height = height - kDeviceHeight * 0.03;
+            height = height - kDeviceHeight * 0.025;
         } else {
             height = height - kDeviceHeight * 0.02;
         }
