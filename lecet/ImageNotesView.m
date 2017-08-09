@@ -108,7 +108,7 @@
     if (timeDifference > 60) {
         NSString *timeUpdated = timeAgoFromUnixTime([dateUp timeIntervalSince1970]);
         if (![timeUpdated isEqualToString:@"just now"]) {
-            timeUpdated = [NSString stringWithFormat:@"Last Updated: %@",timeUpdated];
+            timeUpdated = [NSString stringWithFormat:NSLocalizedLanguage(@"INV_LAST_UPDATED"),timeUpdated];
         }
         cell.stamp.text = timeUpdated;
         cell.stamp.hidden = NO;

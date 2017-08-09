@@ -525,3 +525,6 @@
 
 //LongPressViewController
 "RETURN_HOME"                               =               "Return to Home";
+
+//ImageNotesView
+"INV_LAST_UPDATED"                          =               "Last Updated: %@";
