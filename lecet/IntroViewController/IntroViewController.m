@@ -39,17 +39,13 @@
     self.titleLabel.text = @"What's new";
     
     collectionItems = [NSArray new];
-    collectionItems = @[@{@"title":@"• Search messages and construction projects using Siri"},
-                        @{@"title":@"• Search for construction projects in your jurisdiction"},
-                        @{@"title":@"• View full project information"},
-                        @{@"title":@"• Share project and company data with associates"},
-                        @{@"title":@"• Contact key project personnel with one touch"},
-                        @{@"title":@"TRACK"},
-                        @{@"title":@"• Add projects and companies to custom tracking lists"},
-                        @{@"title":@"• Review updates to targeted projects and companies MAP"},
-                        @{@"title":@"• Access projects near you"},
-                        @{@"title":@"• Obtain driving directions to call on projects and companies"},
-                        @{@"title":@"MEP Mobile...The power of construction project tracking in your hands"}];
+    collectionItems = @[@{@"title":@"A. Siri Support"},
+                        @{@"title":@"  User can now use their voice to:"},
+                        @{@"title":@"• List projects near them"},
+                        @{@"title":@"• List projects recently updated"},
+                        @{@"title":@"• Display project tracking list"},
+                        @{@"title":@"• Display company tracking list"},
+                        @{@"title":@"B. Lecet MEP now requires iOS and later"}];
     
     [self.collectionView registerNib:[UINib nibWithNibName:[[IntroCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     
