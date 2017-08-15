@@ -513,9 +513,9 @@ float MetersToMiles(float meters) {
             if (lastPublishDate) {
                 NSDate *publishdate = [DerivedNSManagedObject dateFromDateAndTimeString:lastPublishDate];
                 
-                NSDate *lastDate = [DerivedNSManagedObject getDate:[NSDate date] daysAhead:-updatedWithin.integerValue];
+                NSDate *lastDate = [DerivedNSManagedObject getDate:[DerivedNSManagedObject dateFromShortDateString:[DerivedNSManagedObject shortDateStringFromDate:[NSDate date]]] daysAhead:-updatedWithin.integerValue];
                 
-                if ([publishdate timeIntervalSinceDate:lastDate]>0){
+                if ([publishdate timeIntervalSinceDate:lastDate]>=0){
                     addItem = addItem && YES;
                 } else {
                     addItem = NO;
