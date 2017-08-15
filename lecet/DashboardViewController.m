@@ -623,6 +623,8 @@
 - (void)tappedItem:(id)object {
     CalendarItem *calendarItem = object;
     
+    _bidsCollectionView.delegate = nil;
+    
     CalendarItemState state = [calendarItem getState] != CalendarItemStateSelected ? CalendarItemStateSelected : [calendarItem getInitialState];
     [_calendarView clearSelection];
     [calendarItem setItemState:state];
@@ -639,6 +641,7 @@
         currentBidItems = bidItemsHappeningSoon;
     }
     
+    _bidsCollectionView.delegate = self;
     [_bidsCollectionView reloadData];
 }
 
@@ -662,6 +665,8 @@
 
     if ((page != currentPage) | forced) {
         currentPage = page;
+        
+        _bidsCollectionView.delegate = nil;
         
         _pageControl.currentPage = currentPage;
 
@@ -706,6 +711,7 @@
             }
         }
         
+        _bidsCollectionView.delegate = self;
         [_bidsCollectionView reloadData];
         
     }
@@ -963,6 +969,9 @@
 
 - (void)displayChartItemsForRecentlyMade:(NSString*)itemTag hasFocus:(BOOL)hasFocus {
     if (itemTag != nil) {
+        
+        _bidsCollectionView.delegate = nil;
+        
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentMade == YES"];
         
         if (hasFocus) {
@@ -985,6 +994,7 @@
         
         currentBidItems = bidItemsRecentlyMade;
         
+        _bidsCollectionView.delegate = self;
         [_bidsCollectionView reloadData];
     }
 }
@@ -993,6 +1003,7 @@
     if (itemTag != nil) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentUpdate == YES"];
         
+        _bidsCollectionView.delegate = nil;
         if (hasFocus) {
             
             NSInteger category = 0;
@@ -1013,6 +1024,7 @@
         
         currentBidItems = bidItemsRecentlyUpdated;
         
+        _bidsCollectionView.delegate = self;
         [_bidsCollectionView reloadData];
     }
 }
@@ -1021,6 +1033,7 @@
     if (itemTag != nil) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isRecentAdded == YES"];
         
+        _bidsCollectionView.delegate = nil;
         if (hasFocus) {
             
             NSInteger category = 0;
@@ -1041,6 +1054,7 @@
         
         currentBidItems = bidItemsRecentlyAdded;
         
+        _bidsCollectionView.delegate = self;
         [_bidsCollectionView reloadData];
     }
 }

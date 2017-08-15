@@ -11,7 +11,7 @@
 #import "LocationManager.h"
 #import "constants.h"
 
-#define kProduction                         1
+#define kProduction                         0
 
 #if kProduction
 
