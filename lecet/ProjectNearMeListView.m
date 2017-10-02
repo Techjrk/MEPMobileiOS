@@ -60,6 +60,27 @@
         [_postBidButton setTitle:postBidTitle forState:UIControlStateNormal];
         
         isPostBidHidden = YES;
+    
+    UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(userSwipe:)];
+    swipeGestureLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(userSwipe:)];
+    swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.collectionView addGestureRecognizer:swipeGestureLeft];
+    [self.collectionView addGestureRecognizer:swipeGestureRight];
+}
+
+- (void)userSwipe:(UISwipeGestureRecognizer*)sender {
+    CGPoint point = [sender locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+    
+    if (indexPath != nil) {
+        ProjectNearMeListCollectionViewCell* cell = (ProjectNearMeListCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        if (cell) {
+            [cell swipeExpand:sender.direction];
+        }
+    }
 }
 
 #pragma mark - MISC Methods
@@ -196,6 +217,7 @@
     
     NSDictionary *dicInfo = self.collectionItems[indexPath.row];
     cell.projectId = dicInfo[@"id"];
+    [cell swipeExpand:UISwipeGestureRecognizerDirectionRight];
     NSString *titleName = [DerivedNSManagedObject objectOrNil:dicInfo[@"title"]];
     cell.titleNameText = titleName;
     cell.titleAddressText = [self setFullAddress:dicInfo];
@@ -245,7 +267,6 @@
     }];
 }
 
-    
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
         return UIEdgeInsetsMake( 0, 0, 0, 0);

@@ -100,7 +100,7 @@
     NSDate *date = [DerivedNSManagedObject dateFromDateAndTimeString:timeStamp];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MMM dd, yyyy";
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm a";
     cell.dateLabel.text = [formatter stringFromDate:date];
     
     NSString *timeUpdated = [DerivedNSManagedObject objectOrNil:item[@"updatedAt"]];

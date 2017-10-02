@@ -170,7 +170,7 @@
         case ContactFieldTypePhone:{
             fieldData = [[fieldData stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @YES} completionHandler:nil];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel:" stringByAppendingString:fieldData]] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @NO} completionHandler:nil];
             break;
         }
         case ContactFieldTypeAccount:{
@@ -195,13 +195,13 @@
                 fieldData = [@"http://" stringByAppendingString:fieldData];
             }
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fieldData] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @YES} completionHandler:nil];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fieldData] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @NO} completionHandler:nil];
             
             break;
         }
             
         case ContactFieldTypeEmail: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"mailto:" stringByAppendingString:fieldData]] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @YES} completionHandler:nil];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"mailto:" stringByAppendingString:fieldData]] options:@{UIApplicationOpenURLOptionUniversalLinksOnly: @NO} completionHandler:nil];
             
             break;
         }

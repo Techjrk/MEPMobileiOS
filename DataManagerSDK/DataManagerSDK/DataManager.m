@@ -271,6 +271,8 @@
 
 - (void)changeHTTPHeader:(AFHTTPSessionManager *)manager {
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 }
 

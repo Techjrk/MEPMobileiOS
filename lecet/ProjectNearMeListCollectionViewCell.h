@@ -19,4 +19,5 @@
     @property (strong, nonatomic) NSString *dodgeNumber;
     @property (nonatomic) BOOL hasNoteAndImages;
     - (void)setInitInfo;
+- (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction;
 @end

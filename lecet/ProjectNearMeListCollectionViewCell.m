@@ -24,6 +24,9 @@
 #define colorBackgroundView                 RGB(255,255,255)
 #define colorBackgroundContainerUnionView   RGB(0,63,114)
 
+#define colorNoramlButton                   RGB(8, 36, 75)
+#define colorNoramlTapped                   RGB(248, 153, 0)
+
 #define distanceToFeet                      3.280
 #define distanceToMile                      0.000621371
 
@@ -39,6 +42,11 @@
     @property (weak, nonatomic) IBOutlet UIImageView *addressIconImageView;
     @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintUnionWidth;
     @property (weak, nonatomic) IBOutlet UIImageView *iconMarker;
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHorizontal;
+    @property (weak, nonatomic) IBOutlet UIView *viewContainer;
+    @property (weak, nonatomic) IBOutlet UIButton *buttonTrack;
+    @property (weak, nonatomic) IBOutlet UIButton *buttonShare;
+    @property (weak, nonatomic) IBOutlet UIButton *buttonHide;
 
 @end
 
@@ -47,8 +55,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.layer.cornerRadius = 5;
-
+    self.viewContainer.layer.cornerRadius = 5;
+    
+    self.constraintHorizontal.constant = 0;
+    
     self.unionLabel.textColor = colorFontUnionLabel;
     self.unionLabel.font = fontUnionLabel;
     
@@ -182,4 +192,23 @@
 - (void)dealloc {
     //[super dealloc];
 }
+
+- (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction {
+
+    if (direction == UISwipeGestureRecognizerDirectionLeft) {
+        self.constraintHorizontal.constant = -(self.frame.size.width * 0.75);
+    } else {
+        self.constraintHorizontal.constant = 0;
+    }
+
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        [self.viewContainer layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+}
+
 @end
