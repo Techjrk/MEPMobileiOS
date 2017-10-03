@@ -10,6 +10,11 @@
 #import <DataManagerSDK/DB_Bid.h>
 #import "BaseViewController.h"
 
+typedef enum {
+    ProjectDetailPopupModeTrack,
+    ProjectDetailPopupModeShare
+} ProjectDetailPopupMode;
+
 @interface ProjectDetailViewController : BaseViewController
 @property (nonatomic) CGRect previousRect;
 - (void)detailsFromProject:(DB_Project*)record;

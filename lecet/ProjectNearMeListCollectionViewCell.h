@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ProjectNearMeListCollectionViewCellDelegate
+- (void)didSelectItem:(id)sender;
+- (void)didTrackItem:(id)sender;
+- (void)didShareItem:(id)sender;
+- (void)didHideItem:(id)sender;
+- (void)didExpand:(id)sender;
+@end
+
 @interface ProjectNearMeListCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) id<ProjectNearMeListCollectionViewCellDelegate>projectNearMeListCollectionViewCellDelegate;
     @property (strong,nonatomic) NSNumber *projectId;
     @property (strong,nonatomic) NSString *titleNameText;
     @property (strong,nonatomic) NSString *titleAddressText;
@@ -19,5 +28,6 @@
     @property (strong, nonatomic) NSString *dodgeNumber;
     @property (nonatomic) BOOL hasNoteAndImages;
     - (void)setInitInfo;
-- (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction;
+    - (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction;
+    - (void)resetStatus;
 @end

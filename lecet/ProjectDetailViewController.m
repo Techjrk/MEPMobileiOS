@@ -56,11 +56,6 @@
 #define PROJECT_STATE_BUTTON_TEXT_FONT              fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
 #define BUTTON_TITLE_FONT                           fontNameWithSize(FONT_NAME_LATO_BOLD, 11)
 
-typedef enum {
-    ProjectDetailPopupModeTrack,
-    ProjectDetailPopupModeShare
-} ProjectDetailPopupMode;
-
 @interface ProjectDetailViewController ()<ProjectStateViewDelegate, ProjectHeaderDelegate,PariticipantsDelegate, ProjectBidderDelegate,ProjectDetailStateViewControllerDelegate, SeeAllViewDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, PopupViewControllerDelegate, ImageNotesViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomCameraViewControllerDelegate,MobileProjectAddNoteViewControllerDelegate,CustomPhotoLibraryViewControllerDelegate, NewProjectViewControllerDelegate>{
 
     BOOL isShownContentAdjusted;

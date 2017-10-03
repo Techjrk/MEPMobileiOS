@@ -11,6 +11,9 @@
 #import "ProjectDetailViewController.h"
 #import <MapKit/MapKit.h>
 #import "CustomActivityIndicatorView.h"
+#import "PopupViewController.h"
+#import "TrackingListCellCollectionViewCell.h"
+#import "ShareItemCollectionViewCell.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
@@ -19,11 +22,14 @@
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 #define kCellIdentifier                     @"kCellIdentifier"
 
-@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
+@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ProjectNearMeListCollectionViewCellDelegate, PopupViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate> {
     NSMutableArray *collectionItemsPostBid;
     NSMutableArray *collectionItemsPreBid;
-    
+    ProjectDetailPopupMode popupMode;
     BOOL isPostBidHidden;
+    NSArray *trackItemRecord;
+    NSNumber *projectId;
+    NSIndexPath *currentProjectIndexPath;
 }
     @property (weak, nonatomic) IBOutlet UIButton *preBidButton;
     @property (weak, nonatomic) IBOutlet UIButton *postBidButton;
@@ -225,6 +231,7 @@
     cell.geoCode = [DerivedNSManagedObject objectOrNil:dicInfo[@"geocode"]];
     NSNumber *value = [DerivedNSManagedObject objectOrNil:dicInfo[@"estLow"]];
 
+    cell.projectNearMeListCollectionViewCellDelegate = self;
     if (value == nil) {
         value = [DerivedNSManagedObject objectOrNil:dicInfo[@"estHigh"]];
     }
@@ -252,10 +259,31 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *dic = self.collectionItems[indexPath.row];
-    NSNumber *recordId = dic[@"id"];
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+        return UIEdgeInsetsMake( 0, 0, 0, 0);
+}
+
+#pragma mark - ProjectNearMeListCollectionViewCellDelegate Protocol
+
+- (NSIndexPath*)projectIndexPath:(id)sender {
+    return [self.collectionView indexPathForCell:(ProjectNearMeListCollectionViewCell*)sender];
+}
+
+- (NSDictionary*)itemDictionNary:(id)sender {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:(ProjectNearMeListCollectionViewCell*)sender];
+    
+    return self.collectionItems[indexPath.row];
+}
+
+- (void)didSelectItem:(id)sender {
+    
+    NSDictionary *dic = [self itemDictionNary:sender];
+    projectId = dic[@"id"];
     [self.customLoadingIndicator startAnimating];
-    [[DataManager sharedManager] projectDetail:recordId success:^(id object) {
+    [[DataManager sharedManager] projectDetail:projectId success:^(id object) {
         [self.customLoadingIndicator stopAnimating];
         ProjectDetailViewController *detail = [ProjectDetailViewController new];
         detail.view.hidden = NO;
@@ -265,10 +293,232 @@
     } failure:^(id object) {
         [self.customLoadingIndicator stopAnimating];
     }];
+
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
-- (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-        return UIEdgeInsetsMake( 0, 0, 0, 0);
+- (void)didTrackItem:(id)sender {
+    NSDictionary *dic = [self itemDictionNary:sender];
+    projectId = dic[@"id"];
+    currentProjectIndexPath = [self projectIndexPath:sender];
+    
+    popupMode = ProjectDetailPopupModeTrack;
+    [self.customLoadingIndicator startAnimating];
+    
+    [[DataManager sharedManager] projectAvailableTrackingList:projectId success:^(id object) {
+        
+        trackItemRecord = object;
+        
+        if (trackItemRecord.count>0) {
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:(ProjectNearMeListCollectionViewCell*)sender controller:self.parentCtrl];
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.popupViewControllerDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self.parentCtrl presentViewController:controller animated:NO completion:nil];
+        } else {
+            
+            [self PopupViewControllerDismissed];
+            
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"NO_TRACKING_LIST")];
+        }
+        [self.customLoadingIndicator stopAnimating];
+        
+    } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+        
+    }];
 }
+
+- (void)didShareItem:(id)sender {
+    
+    NSDictionary *dic = [self itemDictionNary:sender];
+    projectId = dic[@"id"];
+    currentProjectIndexPath = [self projectIndexPath:sender];
+    
+    popupMode = ProjectDetailPopupModeShare;
+    UIView *view = (ProjectNearMeListCollectionViewCell*)sender;
+    PopupViewController *controller = [PopupViewController new];
+    CGRect rect = [controller getViewPositionFromViewController:view controller:self.parentCtrl];
+    controller.popupRect = rect;
+    controller.popupWidth = 0.98;
+    controller.isGreyedBackground = YES;
+    controller.customCollectionViewDelegate = self;
+    controller.popupViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self.parentCtrl presentViewController:controller animated:NO completion:nil];
+}
+
+- (void)didHideItem:(id)sender {
+    
+    NSDictionary *dic = [self itemDictionNary:sender];
+    NSNumber *recordId = dic[@"id"];
+    currentProjectIndexPath = [self projectIndexPath:sender];
+    
+    [self.customLoadingIndicator startAnimating];
+    
+    [[DataManager sharedManager] hideProject:recordId success:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+    } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+    }];
+}
+
+- (void)didExpand:(id)sender {
+    NSArray *cells = [self.collectionView visibleCells];
+    
+    for (ProjectNearMeListCollectionViewCell *cell in cells) {
+        if (![cell isEqual:sender]) {
+            [cell swipeExpand:UISwipeGestureRecognizerDirectionRight];
+        }
+    }
+    
+}
+
+#pragma mark - CustomCollectionView Delegate
+
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    
+    CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            
+            [collectionView registerCollectionItemClass:[ShareItemCollectionViewCell class]];
+            break;
+        }
+    }
+}
+
+- (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
+    
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare :{
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[ShareItemCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        };
+            
+    }
+    
+    return nil;
+}
+
+- (NSInteger)collectionViewItemCount {
+    
+    return popupMode == ProjectDetailPopupModeTrack?1:2;
+    
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return 1;
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
+    
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            CGFloat defaultHeight = kDeviceHeight * 0.08;
+            CGFloat cellHeight = kDeviceHeight * 0.06;
+            defaultHeight = defaultHeight+ ((trackItemRecord.count<4?trackItemRecord.count:4.5)*cellHeight);
+            return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            return CGSizeMake(kDeviceWidth * 0.98, kDeviceHeight * 0.075);
+            break;
+        }
+            
+    }
+    
+    return CGSizeZero;
+}
+
+- (void)PopupViewControllerDismissed {
+    ProjectNearMeListCollectionViewCell *cell = (ProjectNearMeListCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:currentProjectIndexPath];
+    if(cell){
+        [cell resetStatus];
+    }
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    
+    NSDictionary *dict = self.collectionItems[currentProjectIndexPath.row];
+    NSNumber *recordId = dict[@"id"];
+
+    if (popupMode == ProjectDetailPopupModeShare) {
+        NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlProjectDetailShare, (long)recordId.integerValue]];
+        
+        NSString *dodgeNumber = dict[@"dodgeNumber"];
+        
+        if (indexPath.row == 0) {
+            NSString *html = [NSString stringWithFormat:@"<HTML><BODY>DODGE NUMBER :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", dodgeNumber, url];
+            [[DataManager sharedManager] sendEmail:html];
+            
+        } else {
+            
+            NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_PROJECT"), dodgeNumber];
+            [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
+            
+        }
+    }
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
+    
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            
+            TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+            cellItem.headerDisabled = YES;
+            cellItem.trackingListViewDelegate = self;
+            [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT")];
+            
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            
+            ShareItemCollectionViewCell *cellItem = (ShareItemCollectionViewCell*)cell;
+            [cellItem setShareItem:indexPath.row == 0?ShareItemEmail:ShareItemLink];
+            
+            break;
+        }
+            
+    }
+    
+}
+
+- (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    NSIndexPath *indexPath = object;
+    NSDictionary *dict = trackItemRecord[indexPath.row];
+    [[DataManager sharedManager] projectAddTrackingList:dict[@"id"] recordId:projectId success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
+        [self PopupViewControllerDismissed];
+    } failure:^(id object) {
+        
+    }];
+}
+
+#pragma mark - Project List Delegate and Method
+
+-(void)tappedDismissedProjectTrackList{
+    [self PopupViewControllerDismissed];
+}
+
 @end

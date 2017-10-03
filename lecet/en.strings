@@ -428,6 +428,11 @@
 "PLC_MILE"                                  =               "%li mile away";
 "PLC_MILES"                                 =               "%li miles away";
 "PLC_FEET"                                  =               "%li feet away";
+"PLC_TRACK"                                 =               "TRACK";
+"PLC_SHARE"                                 =               "SHARE";
+"PLC_HIDE"                                  =               "HIDE";
+"PLC_PROJECT_HIDDEN"                        =               "This project has been hidden.";
+"PLC_UNDO"                                  =               "Undo";
 
 //MobileProjectAddNoteViewController
 "MPANV_NAV_PHOTO_TITLE"                     =               "Add Photo";

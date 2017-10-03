@@ -15,6 +15,7 @@
 #define fontTitleFeetAway                   fontNameWithSize(FONT_NAME_LATO_REGULAR, 9)
 #define fontTitlePrice                      fontNameWithSize(FONT_NAME_LATO_BOLD, 11)
 #define fontUnionLabel                      fontNameWithSize(FONT_NAME_LATO_BOLD, 12)
+#define fontButton                          fontNameWithSize(FONT_NAME_LATO_REGULAR, 11)
 
 #define colorFontTitleName                  RGB(34,34,34)
 #define colorFontTitleAddress               RGB(159,164,166)
@@ -24,8 +25,9 @@
 #define colorBackgroundView                 RGB(255,255,255)
 #define colorBackgroundContainerUnionView   RGB(0,63,114)
 
-#define colorNoramlButton                   RGB(8, 36, 75)
-#define colorNoramlTapped                   RGB(248, 153, 0)
+#define colorButtonNormal                   RGB(8, 36, 75)
+#define colorButtonTapped                   RGB(248, 153, 0)
+#define colorButtonTitle                   RGB(248, 153, 0)
 
 #define distanceToFeet                      3.280
 #define distanceToMile                      0.000621371
@@ -45,8 +47,11 @@
     @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHorizontal;
     @property (weak, nonatomic) IBOutlet UIView *viewContainer;
     @property (weak, nonatomic) IBOutlet UIButton *buttonTrack;
+    @property (weak, nonatomic) IBOutlet UILabel *labelTrack;
     @property (weak, nonatomic) IBOutlet UIButton *buttonShare;
+    @property (weak, nonatomic) IBOutlet UILabel *labelShare;
     @property (weak, nonatomic) IBOutlet UIButton *buttonHide;
+    @property (weak, nonatomic) IBOutlet UILabel *labelHide;
 
 @end
 
@@ -74,6 +79,25 @@
     self.titleFeetAwayLabel.font = fontTitleFeetAway;
     self.titleFeetAwayLabel.textColor = colorFontTitleFeetAway;
     self.mapView.delegate = self;
+
+    self.buttonTrack.backgroundColor = colorButtonNormal;
+    self.buttonTrack.layer.cornerRadius = 5;
+    self.labelTrack.textColor = [UIColor whiteColor];
+    self.labelTrack.font = fontButton;
+    self.labelTrack.text = NSLocalizedLanguage(@"PLC_TRACK");
+
+    self.buttonShare.backgroundColor = colorButtonNormal;
+    self.buttonShare.layer.cornerRadius = 5;
+    self.labelShare.textColor = [UIColor whiteColor];
+    self.labelShare.font = fontButton;
+    self.labelShare.text = NSLocalizedLanguage(@"PLC_SHARE");
+
+    self.buttonHide.backgroundColor = colorButtonNormal;
+    self.buttonHide.layer.cornerRadius = 5;
+    self.labelHide.textColor = [UIColor whiteColor];
+    self.labelHide.font = fontButton;
+    self.labelShare.text = NSLocalizedLanguage(@"PLC_HIDE");
+
 }
 
 #pragma mark - Misc Methods
@@ -200,14 +224,94 @@
     } else {
         self.constraintHorizontal.constant = 0;
     }
-
-    [UIView animateWithDuration:1.0 animations:^{
+    
+    [self setNeedsUpdateConstraints];
+    
+    [UIView animateWithDuration:0.25 animations:^{
         
-        [self.viewContainer layoutIfNeeded];
+        [self layoutIfNeeded];
         
     } completion:^(BOOL finished) {
+        if (finished) {
+            
+            if (self.constraintHorizontal.constant < 0) {
+                if (self.projectNearMeListCollectionViewCellDelegate) {
+                    [self.projectNearMeListCollectionViewCellDelegate didExpand:self];
+                }
+            }
+        }
+    }];
+    
+}
+
+- (void)resetStatus {
+    self.buttonTrack.backgroundColor = colorButtonNormal;
+    self.buttonShare.backgroundColor = colorButtonNormal;
+    self.buttonHide.backgroundColor = colorButtonNormal;
+}
+
+#pragma mark - IBAction
+
+- (IBAction)tappedButtonSelected:(id)sender {
+    if (self.projectNearMeListCollectionViewCellDelegate) {
+        [self.projectNearMeListCollectionViewCellDelegate didSelectItem:self];
+    }
+}
+
+- (IBAction)tappedButtonTrack:(id)sender {
+    if (self.projectNearMeListCollectionViewCellDelegate) {
+        self.buttonTrack.backgroundColor = colorButtonTapped;
+        [self.projectNearMeListCollectionViewCellDelegate didTrackItem:self];
+    }
+}
+
+- (IBAction)tappedButtonShare:(id)sender {
+    if (self.projectNearMeListCollectionViewCellDelegate) {
+        self.buttonShare.backgroundColor = colorButtonTapped;
+        [self.projectNearMeListCollectionViewCellDelegate didShareItem:self];
+    }
+}
+
+- (IBAction)tappedButtonHide:(id)sender {
+    if (self.projectNearMeListCollectionViewCellDelegate) {
+        [self.projectNearMeListCollectionViewCellDelegate didHideItem:self];
+    }
+}
+
+#pragma mark - Project List Delegate and Method
+
+-(void)tappedDismissedProjectTrackList{
+    
+    //[_projectState clearSelection];
+}
+
+- (void)tappedProjectTrackListButton:(UIView*)view{
+    /*
+    popupMode = ProjectDetailPopupModeTrack;
+    [[DataManager sharedManager] projectAvailableTrackingList:recordId success:^(id object) {
+        
+        trackItemRecord = object;
+        
+        if (trackItemRecord.count>0) {
+            PopupViewController *controller = [PopupViewController new];
+            CGRect rect = [controller getViewPositionFromViewController:view controller:self];
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.popupViewControllerDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+        } else {
+            
+            [_projectState clearSelection];
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"NO_TRACKING_LIST")];
+        }
+        
+    } failure:^(id object) {
         
     }];
+    */
     
 }
 
