@@ -98,16 +98,18 @@
     for (NSDictionary *dicInfo in info) {
         NSDictionary *projectStage = dicInfo[@"projectStage"];
         
+        NSMutableDictionary *mutableDict = [dicInfo mutableCopy];
+        mutableDict[@"IS_HIDDEN"] = @(NO);
         if (projectStage != nil) {
             NSNumber *bidId = projectStage[@"parentId"];
             if (bidId.integerValue != 102) {
-                [collectionItemsPostBid addObject:dicInfo];
+                [collectionItemsPostBid addObject:mutableDict];
                 
             } else {
-                [collectionItemsPreBid addObject:dicInfo];
+                [collectionItemsPreBid addObject:mutableDict];
             }
         } else {
-            [collectionItemsPreBid addObject:dicInfo];
+            [collectionItemsPreBid addObject:mutableDict];
             
         }
     }
@@ -249,6 +251,10 @@
     cell.hasNoteAndImages = (userNotes.count>0) || (userImages.count>0);
     [cell setInitInfo];
     
+    NSNumber *isHidden = dicInfo[@"IS_HIDDEN"];
+ 
+    [cell projectHidden:isHidden.boolValue];
+    
     return cell;
 }
     
@@ -272,7 +278,7 @@
     return [self.collectionView indexPathForCell:(ProjectNearMeListCollectionViewCell*)sender];
 }
 
-- (NSDictionary*)itemDictionNary:(id)sender {
+- (NSMutableDictionary*)itemDictionNary:(id)sender {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:(ProjectNearMeListCollectionViewCell*)sender];
     
     return self.collectionItems[indexPath.row];
@@ -310,7 +316,10 @@
         
         if (trackItemRecord.count>0) {
             PopupViewController *controller = [PopupViewController new];
-            CGRect rect = [controller getViewPositionFromViewController:(ProjectNearMeListCollectionViewCell*)sender controller:self.parentCtrl];
+            
+            ProjectNearMeListCollectionViewCell *cell = (ProjectNearMeListCollectionViewCell*)sender;
+            
+            CGRect rect = [controller getViewPositionFromViewController:[cell trackButton] controller:self.parentCtrl];
             controller.popupRect = rect;
             controller.popupWidth = 0.98;
             controller.isGreyedBackground = YES;
@@ -334,14 +343,15 @@
 
 - (void)didShareItem:(id)sender {
     
+    ProjectNearMeListCollectionViewCell *cell = (ProjectNearMeListCollectionViewCell*)sender;
+    
     NSDictionary *dic = [self itemDictionNary:sender];
     projectId = dic[@"id"];
     currentProjectIndexPath = [self projectIndexPath:sender];
     
     popupMode = ProjectDetailPopupModeShare;
-    UIView *view = (ProjectNearMeListCollectionViewCell*)sender;
     PopupViewController *controller = [PopupViewController new];
-    CGRect rect = [controller getViewPositionFromViewController:view controller:self.parentCtrl];
+    CGRect rect = [controller getViewPositionFromViewController:[cell shareButton] controller:self.parentCtrl];
     controller.popupRect = rect;
     controller.popupWidth = 0.98;
     controller.isGreyedBackground = YES;
@@ -353,7 +363,7 @@
 
 - (void)didHideItem:(id)sender {
     
-    NSDictionary *dic = [self itemDictionNary:sender];
+    NSMutableDictionary *dic = [self itemDictionNary:sender];
     NSNumber *recordId = dic[@"id"];
     currentProjectIndexPath = [self projectIndexPath:sender];
     
@@ -361,6 +371,8 @@
     
     [[DataManager sharedManager] hideProject:recordId success:^(id object) {
         [self.customLoadingIndicator stopAnimating];
+        dic[@"IS_HIDDEN"] = @YES;
+        [self.collectionView reloadData];
     } failure:^(id object) {
         [self.customLoadingIndicator stopAnimating];
     }];
@@ -375,6 +387,25 @@
         }
     }
     
+}
+
+- (void)undoHide:(id)sender {
+    
+    NSMutableDictionary *dic = [self itemDictionNary:sender];
+    NSNumber *recordId = dic[@"id"];
+    currentProjectIndexPath = [self projectIndexPath:sender];
+    
+    [self.customLoadingIndicator startAnimating];
+    
+    [[DataManager sharedManager] unhideProject:recordId success:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+        dic[@"IS_HIDDEN"] = @NO;
+        [self.collectionView reloadData];
+
+    } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+    }];
+
 }
 
 #pragma mark - CustomCollectionView Delegate

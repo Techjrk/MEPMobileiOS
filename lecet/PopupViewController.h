@@ -29,4 +29,5 @@ typedef enum : NSUInteger {
 @property (nonatomic) PopupPlacement popupPalcement;
 @property (nonatomic) CGFloat popupWidth;
 - (CGRect)getViewPositionFromViewController:(UIView*)view controller:(UIViewController*)controller;
+- (CGRect)getViewPositionFromView:(UIView*)view parentView:(UIView*)parentView;
 @end

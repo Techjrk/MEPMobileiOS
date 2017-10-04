@@ -431,7 +431,7 @@
 "PLC_TRACK"                                 =               "TRACK";
 "PLC_SHARE"                                 =               "SHARE";
 "PLC_HIDE"                                  =               "HIDE";
-"PLC_PROJECT_HIDDEN"                        =               "This project has been hidden.";
+"PLC_PROJECT_HIDDEN"                        =               "This project has been hidden. ";
 "PLC_UNDO"                                  =               "Undo";
 
 //MobileProjectAddNoteViewController

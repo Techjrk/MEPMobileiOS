@@ -95,6 +95,12 @@
 
 }
 
+- (CGRect)getViewPositionFromView:(UIView*)view parentView:(UIView*)parentView {
+    
+    return [view convertRect:view.bounds toView:parentView];
+    
+}
+
 - (BOOL)automaticallyAdjustsScrollViewInsets {
     return YES;
 }

@@ -46,12 +46,15 @@
     @property (weak, nonatomic) IBOutlet UIImageView *iconMarker;
     @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHorizontal;
     @property (weak, nonatomic) IBOutlet UIView *viewContainer;
+    @property (weak, nonatomic) IBOutlet UIView *viewAction;
     @property (weak, nonatomic) IBOutlet UIButton *buttonTrack;
     @property (weak, nonatomic) IBOutlet UILabel *labelTrack;
     @property (weak, nonatomic) IBOutlet UIButton *buttonShare;
     @property (weak, nonatomic) IBOutlet UILabel *labelShare;
     @property (weak, nonatomic) IBOutlet UIButton *buttonHide;
     @property (weak, nonatomic) IBOutlet UILabel *labelHide;
+    @property (weak, nonatomic) IBOutlet UIView *viewHide;
+    @property (weak, nonatomic) IBOutlet UILabel *labelTextHide;
 
 @end
 
@@ -96,7 +99,16 @@
     self.buttonHide.layer.cornerRadius = 5;
     self.labelHide.textColor = [UIColor whiteColor];
     self.labelHide.font = fontButton;
-    self.labelShare.text = NSLocalizedLanguage(@"PLC_HIDE");
+    self.labelHide.text = NSLocalizedLanguage(@"PLC_HIDE");
+  
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedLanguage(@"PLC_PROJECT_HIDDEN") attributes:@{NSFontAttributeName: fontButton, NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    NSAttributedString *undo = [[NSAttributedString alloc] initWithString:NSLocalizedLanguage(@"PLC_UNDO") attributes:@{NSFontAttributeName: fontButton, NSForegroundColorAttributeName: [UIColor whiteColor], NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+    
+    [attributedString appendAttributedString:undo];
+    
+    self.labelTextHide.attributedText = attributedString;
+    [self projectHidden:YES];
 
 }
 
@@ -250,6 +262,20 @@
     self.buttonHide.backgroundColor = colorButtonNormal;
 }
 
+- (void)projectHidden:(BOOL)hidden {
+    self.viewHide.hidden = !hidden;
+    self.viewContainer.hidden = hidden;
+    self.viewAction.hidden = hidden;
+}
+
+- (UIView*)trackButton {
+    return self.buttonTrack;
+}
+
+- (UIView*)shareButton {
+    return self.buttonShare;
+}
+
 #pragma mark - IBAction
 
 - (IBAction)tappedButtonSelected:(id)sender {
@@ -278,41 +304,10 @@
     }
 }
 
-#pragma mark - Project List Delegate and Method
-
--(void)tappedDismissedProjectTrackList{
-    
-    //[_projectState clearSelection];
-}
-
-- (void)tappedProjectTrackListButton:(UIView*)view{
-    /*
-    popupMode = ProjectDetailPopupModeTrack;
-    [[DataManager sharedManager] projectAvailableTrackingList:recordId success:^(id object) {
-        
-        trackItemRecord = object;
-        
-        if (trackItemRecord.count>0) {
-            PopupViewController *controller = [PopupViewController new];
-            CGRect rect = [controller getViewPositionFromViewController:view controller:self];
-            controller.popupRect = rect;
-            controller.popupWidth = 0.98;
-            controller.isGreyedBackground = YES;
-            controller.customCollectionViewDelegate = self;
-            controller.popupViewControllerDelegate = self;
-            controller.modalPresentationStyle = UIModalPresentationCustom;
-            [self presentViewController:controller animated:NO completion:nil];
-        } else {
-            
-            [_projectState clearSelection];
-            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"NO_TRACKING_LIST")];
-        }
-        
-    } failure:^(id object) {
-        
-    }];
-    */
-    
+- (IBAction)tappedButtonUndo:(id)sender {
+    if (self.projectNearMeListCollectionViewCellDelegate) {
+        [self.projectNearMeListCollectionViewCellDelegate undoHide:self];
+    }
 }
 
 @end

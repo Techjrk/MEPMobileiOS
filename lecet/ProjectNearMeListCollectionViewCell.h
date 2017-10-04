@@ -14,6 +14,7 @@
 - (void)didShareItem:(id)sender;
 - (void)didHideItem:(id)sender;
 - (void)didExpand:(id)sender;
+- (void)undoHide:(id)sender;
 @end
 
 @interface ProjectNearMeListCollectionViewCell : UICollectionViewCell
@@ -30,4 +31,7 @@
     - (void)setInitInfo;
     - (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction;
     - (void)resetStatus;
+    - (void)projectHidden:(BOOL)hidden;
+    - (UIView*)trackButton;
+    - (UIView*)shareButton;
 @end
