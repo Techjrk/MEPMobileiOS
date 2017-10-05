@@ -534,3 +534,10 @@
 
 //ImageNotesView
 "INV_LAST_UPDATED"                          =               "Last Updated: %@";
+
+//NewTrackingListCollectionViewCell
+"NTL_TEXT"                                  =               "New Tracking List";
+"NTL_TRACKINGNAME"                          =               "New Tracking List";
+"NTL_NEWNAME"                               =               "Enter Name";
+"NTL_CANCEL"                                =               "Cancel";
+"NTL_ADDED"                                 =               "Project added to %@";

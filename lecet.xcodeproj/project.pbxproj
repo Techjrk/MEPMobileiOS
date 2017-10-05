@@ -255,6 +255,8 @@
 		B7637A411CEA4AA700F0FA2F /* ProjectBidderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7637A401CEA4AA700F0FA2F /* ProjectBidderView.xib */; };
 		B7690DAD1E2F893F0016577F /* ProjectNearMeFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7690DAB1E2F893F0016577F /* ProjectNearMeFilterViewController.m */; };
 		B7690DAE1E2F893F0016577F /* ProjectNearMeFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7690DAC1E2F893F0016577F /* ProjectNearMeFilterViewController.xib */; };
+		B769C9AC1F85175500B8D82B /* NewTrackingListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B769C9AA1F85175500B8D82B /* NewTrackingListCollectionViewCell.m */; };
+		B769C9AD1F85175500B8D82B /* NewTrackingListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B769C9AB1F85175500B8D82B /* NewTrackingListCollectionViewCell.xib */; };
 		B76C69301CD21CD7009E9F15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */; };
 		B76C69321CD21CF6009E9F15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */; };
 		B76C69341CD21CFD009E9F15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C69331CD21CFD009E9F15 /* MapKit.framework */; };
@@ -872,6 +874,9 @@
 		B7690DAA1E2F893F0016577F /* ProjectNearMeFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNearMeFilterViewController.h; sourceTree = "<group>"; };
 		B7690DAB1E2F893F0016577F /* ProjectNearMeFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectNearMeFilterViewController.m; sourceTree = "<group>"; };
 		B7690DAC1E2F893F0016577F /* ProjectNearMeFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectNearMeFilterViewController.xib; sourceTree = "<group>"; };
+		B769C9A91F85175500B8D82B /* NewTrackingListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewTrackingListCollectionViewCell.h; sourceTree = "<group>"; };
+		B769C9AA1F85175500B8D82B /* NewTrackingListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewTrackingListCollectionViewCell.m; sourceTree = "<group>"; };
+		B769C9AB1F85175500B8D82B /* NewTrackingListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTrackingListCollectionViewCell.xib; sourceTree = "<group>"; };
 		B76C692E1CD21B6E009E9F15 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B76C692F1CD21CD7009E9F15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B76C69311CD21CF6009E9F15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2299,6 +2304,7 @@
 		B70155341CD0C74D0050CF8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B769C9A81F85172200B8D82B /* NewTrackingListCell */,
 				B64B6D031F34824A00073DCB /* IntroCell */,
 				B64F176D1EA78D830054B2CE /* PanoIndiListCollectionViewCell */,
 				B62C517E1E83F1C40044830F /* CustomPhotoLibraryCell */,
@@ -2636,6 +2642,16 @@
 				B7690DAC1E2F893F0016577F /* ProjectNearMeFilterViewController.xib */,
 			);
 			name = ProjectNearMeFilter;
+			sourceTree = "<group>";
+		};
+		B769C9A81F85172200B8D82B /* NewTrackingListCell */ = {
+			isa = PBXGroup;
+			children = (
+				B769C9A91F85175500B8D82B /* NewTrackingListCollectionViewCell.h */,
+				B769C9AA1F85175500B8D82B /* NewTrackingListCollectionViewCell.m */,
+				B769C9AB1F85175500B8D82B /* NewTrackingListCollectionViewCell.xib */,
+			);
+			name = NewTrackingListCell;
 			sourceTree = "<group>";
 		};
 		B76C69351CD22413009E9F15 /* AppConstants */ = {
@@ -3220,6 +3236,7 @@
 				B6268D881F3386B100994F06 /* IntroViewController.xib in Resources */,
 				B62C51831E83F2100044830F /* CustomPhotoLibraryCollectionViewCell.xib in Resources */,
 				B7FC24841EBA13780002802D /* PanoramaSceneViewController.xib in Resources */,
+				B769C9AD1F85175500B8D82B /* NewTrackingListCollectionViewCell.xib in Resources */,
 				B66591131CFECA6B00CFD10C /* MoreMenuViewController.xib in Resources */,
 				B7BF60D51D21248700B3BDD7 /* FilterEntryView.xib in Resources */,
 				B75EB7961E8BF24C00F147D6 /* UserLocationPinViewController.xib in Resources */,
@@ -3445,6 +3462,7 @@
 				B60909DD1E7BF7C700DEAA17 /* CustomCameraCollectionViewCell.m in Sources */,
 				B7BF611B1D240F5300B3BDD7 /* ListItemExpandingViewCell.m in Sources */,
 				B707BC0C1CEDA18C0003C836 /* MapViewController.m in Sources */,
+				B769C9AC1F85175500B8D82B /* NewTrackingListCollectionViewCell.m in Sources */,
 				B7BF60CE1D211B1D00B3BDD7 /* ProjectFilterView.m in Sources */,
 				B6A74EFA1D15DBD3007CDFF3 /* CompanySortViewController.m in Sources */,
 				B76C69761CD7890C009E9F15 /* CustomPieChartLayer.m in Sources */,

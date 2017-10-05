@@ -54,7 +54,7 @@
 
 #define kUrlProjectTrackingList             @"projectlists/%li/projects"
 #define kUrlProjectTrackingListUpdates      @"projectlists/%li/updates"
-//#define kUrlProjectTrackingListMoveIds      @"projectlists/%li"
+#define kUrlProjectTrackingListCreate       @"projectlists"
 #define kUrlProjectTrackingListMoveIds      @"projectlists/%li/syncItems"
 #define kUrlProjectAddTrackingList          @"projectlists/%li/projects/rel/%li"
 #define kUrlProjectSearch                   @"Projects/search"
@@ -1237,6 +1237,24 @@
     
     NSString *url = [NSString stringWithFormat:kUrlProjectAddTrackingList, (long)trackId.integerValue, (long)recordId.integerValue];
     [self HTTP_PUT:[self url:url] parameters:nil success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+- (void)createProjectTrackingList:(NSNumber*)projectId trackingName:(NSString*)trackingName success:(APIBlock)success failure:(APIBlock)failure {
+
+    NSString *url = kUrlProjectTrackingListCreate;
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary new];
+    parameter[@"projectIds"] = @[projectId];
+    parameter[@"optIn"] = @YES;
+    parameter[@"active"] = @YES;
+    parameter[@"name"] = trackingName;
+    
+    [self HTTP_POST_BODY:[self url:url] parameters:parameter success:^(id object) {
         success(object);
     } failure:^(id object) {
         failure(object);

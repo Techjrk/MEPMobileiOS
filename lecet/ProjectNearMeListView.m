@@ -14,6 +14,7 @@
 #import "PopupViewController.h"
 #import "TrackingListCellCollectionViewCell.h"
 #import "ShareItemCollectionViewCell.h"
+#import "NewTrackingListCollectionViewCell.h"
 
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
@@ -21,8 +22,9 @@
 
 #define TOP_HEADER_BG_COLOR                 RGB(5, 35, 74)
 #define kCellIdentifier                     @"kCellIdentifier"
+#define kCellIdentifierTrack                @"kCellIdentifierTrack"
 
-@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ProjectNearMeListCollectionViewCellDelegate, PopupViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate> {
+@interface ProjectNearMeListView () <UICollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ProjectNearMeListCollectionViewCellDelegate, PopupViewControllerDelegate, CustomCollectionViewDelegate, TrackingListViewDelegate, NewTrackingListCollectionViewCellDelegate> {
     NSMutableArray *collectionItemsPostBid;
     NSMutableArray *collectionItemsPreBid;
     ProjectDetailPopupMode popupMode;
@@ -49,7 +51,10 @@
         [super awakeFromNib];
         
          [self.collectionView registerNib:[UINib nibWithNibName:[[ProjectNearMeListCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
-        
+    
+        [self.collectionView registerNib:[UINib nibWithNibName:[[NewTrackingListCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifierTrack];
+    
+    
         _topHeaderView.backgroundColor = TOP_HEADER_BG_COLOR;
         _markerView.backgroundColor = BUTTON_MARKER_COLOR;
         
@@ -416,6 +421,7 @@
     switch (popupMode) {
             
         case ProjectDetailPopupModeTrack: {
+            [collectionView registerCollectionItemClass:[NewTrackingListCollectionViewCell class]];
             [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
             break;
         }
@@ -433,7 +439,12 @@
     switch (popupMode) {
             
         case ProjectDetailPopupModeTrack: {
-            return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            
+            if (indexPath.row == 0) {
+                return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            } else {
+                return [collectionView dequeueReusableCellWithReuseIdentifier:[[NewTrackingListCollectionViewCell class] description]forIndexPath:indexPath];
+            }
             break;
         }
             
@@ -449,7 +460,7 @@
 
 - (NSInteger)collectionViewItemCount {
     
-    return popupMode == ProjectDetailPopupModeTrack?1:2;
+    return popupMode == ProjectDetailPopupModeTrack?2:2;
     
 }
 
@@ -463,8 +474,12 @@
             
         case ProjectDetailPopupModeTrack: {
             CGFloat defaultHeight = kDeviceHeight * 0.08;
-            CGFloat cellHeight = kDeviceHeight * 0.06;
-            defaultHeight = defaultHeight+ ((trackItemRecord.count<4?trackItemRecord.count:4.5)*cellHeight);
+            if (indexPath.row == 0) {
+                
+                CGFloat cellHeight = kDeviceHeight * 0.06;
+                defaultHeight = defaultHeight+ ((trackItemRecord.count<4?trackItemRecord.count:4.5)*cellHeight);
+            }
+            
             return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
             break;
         }
@@ -515,10 +530,17 @@
             
         case ProjectDetailPopupModeTrack: {
             
-            TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
-            cellItem.headerDisabled = YES;
-            cellItem.trackingListViewDelegate = self;
-            [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT")];
+            if (indexPath.row == 0) {
+                TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+                cellItem.headerDisabled = YES;
+                cellItem.trackingListViewDelegate = self;
+                [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT")];
+            } else {
+                NewTrackingListCollectionViewCell *cellItem = (NewTrackingListCollectionViewCell*)cell;
+                cellItem.labelTitle.text = NSLocalizedLanguage(@"NTL_TEXT");
+                [cellItem.labelTitle sizeToFit];
+                cellItem.newtrackingListCollectionViewCellDelegate = self;
+            }
             
             break;
         }
@@ -538,11 +560,16 @@
 - (void)tappedTrackingListItem:(id)object view:(UIView *)view {
     NSIndexPath *indexPath = object;
     NSDictionary *dict = trackItemRecord[indexPath.row];
+    [self.customLoadingIndicator startAnimating];
+
     [[DataManager sharedManager] projectAddTrackingList:dict[@"id"] recordId:projectId success:^(id object) {
         [[DataManager sharedManager] dismissPopup];
         [self PopupViewControllerDismissed];
+        [self.customLoadingIndicator stopAnimating];
+
     } failure:^(id object) {
-        
+        [self.customLoadingIndicator stopAnimating];
+
     }];
 }
 
@@ -550,6 +577,69 @@
 
 -(void)tappedDismissedProjectTrackList{
     [self PopupViewControllerDismissed];
+}
+
+#pragma mark - NewTrackingListCollectionViewCellDelegate
+- (void)getNewTrackingList {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedLanguage(@"NTL_TRACKINGNAME") message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = @"";
+        textField.placeholder = NSLocalizedLanguage(@"NTL_NEWNAME");
+    }];
+    
+    UIAlertAction *actionAccept = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION_ACCEPT") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        for (int i=0; i<alert.textFields.count; i++) {
+            UITextField *alertTextField = alert.textFields[i];
+            
+            if (alertTextField) {
+                if (alertTextField.text.length>0) {
+                    [self.customLoadingIndicator startAnimating];
+
+                    [[DataManager sharedManager] createProjectTrackingList:projectId trackingName:alertTextField.text success:^(id object) {
+                        [self PopupViewControllerDismissed];
+                        
+                        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"NTL_ADDED"), alertTextField.text];
+                     
+                        [[DataManager sharedManager] promptMessage:message];
+                        ProjectNearMeListCollectionViewCell *cell = (ProjectNearMeListCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:currentProjectIndexPath];
+                        if(cell){
+                            [cell resetStatus];
+                            [cell swipeExpand:UISwipeGestureRecognizerDirectionRight];
+                        }
+
+                        [self.customLoadingIndicator stopAnimating];
+
+                    } failure:^(id object) {
+                        [self PopupViewControllerDismissed];
+                        [self.customLoadingIndicator stopAnimating];
+}];
+                }
+            }
+        }
+    }];
+    
+    [alert addAction:actionAccept];
+    
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"NTL_CANCEL") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:actionCancel];
+    
+    
+    [self.parentCtrl presentViewController:alert animated:YES completion:nil];
+    
+
+}
+
+-(void)didTappedNewTrackingList:(id)sender {
+    
+    [self.parentCtrl dismissViewControllerAnimated:NO completion:^{
+        [self PopupViewControllerDismissed];
+        [self getNewTrackingList];
+    }];
 }
 
 @end

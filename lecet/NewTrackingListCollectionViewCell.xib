@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NewTrackingListCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="46"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="46"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9Y-WL-eyU">
+                        <rect key="frame" x="0.0" y="0.0" width="16.5" height="46"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icon_newTrackList" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-HJ-aQa">
+                        <rect key="frame" x="58.5" y="14.5" width="49.5" height="23"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcN-wZ-8ZR">
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="46"/>
+                        <connections>
+                            <action selector="tappedButtonTrack:" destination="gTV-IL-0wX" eventType="touchUpInside" id="KnT-1a-eGj"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J13-km-7T8">
+                        <rect key="frame" x="16.5" y="0.0" width="42" height="46"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="4IU-HJ-aQa" firstAttribute="leading" secondItem="J13-km-7T8" secondAttribute="trailing" id="248-Wd-S5M"/>
+                <constraint firstItem="TcN-wZ-8ZR" firstAttribute="leading" secondItem="SEy-5g-ep8" secondAttribute="leading" id="4Vw-HB-Eqs"/>
+                <constraint firstItem="J13-km-7T8" firstAttribute="top" secondItem="SEy-5g-ep8" secondAttribute="top" id="8AH-he-tc2"/>
+                <constraint firstItem="u9Y-WL-eyU" firstAttribute="leading" secondItem="SEy-5g-ep8" secondAttribute="leading" id="8YN-Jh-534"/>
+                <constraint firstItem="4IU-HJ-aQa" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.5" id="9tD-bL-Bpg"/>
+                <constraint firstItem="u9Y-WL-eyU" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.05" id="Add-g5-P96"/>
+                <constraint firstItem="SEy-5g-ep8" firstAttribute="bottom" secondItem="u9Y-WL-eyU" secondAttribute="bottom" id="DAb-J3-oa3"/>
+                <constraint firstItem="u9Y-WL-eyU" firstAttribute="top" secondItem="SEy-5g-ep8" secondAttribute="top" id="DFB-aC-ffK"/>
+                <constraint firstItem="SEy-5g-ep8" firstAttribute="bottom" secondItem="TcN-wZ-8ZR" secondAttribute="bottom" id="Gye-Wd-RMu"/>
+                <constraint firstItem="4IU-HJ-aQa" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.15" id="JT9-9D-7Iy"/>
+                <constraint firstItem="4IU-HJ-aQa" firstAttribute="centerY" secondItem="SEy-5g-ep8" secondAttribute="centerY" constant="3" id="MNI-dt-m3P"/>
+                <constraint firstItem="TcN-wZ-8ZR" firstAttribute="top" secondItem="SEy-5g-ep8" secondAttribute="top" id="Ur6-wB-wRu"/>
+                <constraint firstItem="SEy-5g-ep8" firstAttribute="trailing" secondItem="TcN-wZ-8ZR" secondAttribute="trailing" id="bpf-gc-Civ"/>
+                <constraint firstItem="J13-km-7T8" firstAttribute="leading" secondItem="u9Y-WL-eyU" secondAttribute="trailing" id="nN1-tS-nss"/>
+                <constraint firstItem="SEy-5g-ep8" firstAttribute="bottom" secondItem="J13-km-7T8" secondAttribute="bottom" id="vih-c6-jqD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="330" height="46"/>
+            <connections>
+                <outlet property="labelTitle" destination="J13-km-7T8" id="2RE-wA-IzQ"/>
+            </connections>
+            <point key="canvasLocation" x="54" y="149"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icon_newTrackList" width="22" height="17"/>
+    </resources>
+</document>
