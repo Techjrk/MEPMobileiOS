@@ -198,6 +198,7 @@
 		B70FDF861CEA0BFD0035A6D9 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF851CEA0BFD0035A6D9 /* NotesView.xib */; };
 		B71B6BFA1D18299300B916BA /* ProjectTrackEditCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B6BF81D18299300B916BA /* ProjectTrackEditCollectionViewCell.m */; };
 		B71B6BFB1D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71B6BF91D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib */; };
+		B71E1D341F8CC5C700E99733 /* LecetApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B71E1D331F8CC5C700E99733 /* LecetApplication.m */; };
 		B725DAC81D756C2800B6CCC4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DAC71D756C2800B6CCC4 /* CoreData.framework */; };
 		B725DACA1D756C3200B6CCC4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DAC91D756C3200B6CCC4 /* SystemConfiguration.framework */; };
 		B725DACC1D756C5B00B6CCC4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B725DACB1D756C5B00B6CCC4 /* libsqlite3.tbd */; };
@@ -781,6 +782,8 @@
 		B71B6BF71D18299300B916BA /* ProjectTrackEditCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTrackEditCollectionViewCell.h; sourceTree = "<group>"; };
 		B71B6BF81D18299300B916BA /* ProjectTrackEditCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTrackEditCollectionViewCell.m; sourceTree = "<group>"; };
 		B71B6BF91D18299300B916BA /* ProjectTrackEditCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTrackEditCollectionViewCell.xib; sourceTree = "<group>"; };
+		B71E1D321F8CC5C700E99733 /* LecetApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LecetApplication.h; sourceTree = "<group>"; };
+		B71E1D331F8CC5C700E99733 /* LecetApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LecetApplication.m; sourceTree = "<group>"; };
 		B725DABD1D756BCF00B6CCC4 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		B725DABE1D756BCF00B6CCC4 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		B725DABF1D756BCF00B6CCC4 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -2696,6 +2699,8 @@
 				B79AA7AD1E93900200BA1B04 /* NewProjectAnnotation.m */,
 				B79AA7AF1E93917E00BA1B04 /* NewProjectAnnotationView.h */,
 				B79AA7B01E93917E00BA1B04 /* NewProjectAnnotationView.m */,
+				B71E1D321F8CC5C700E99733 /* LecetApplication.h */,
+				B71E1D331F8CC5C700E99733 /* LecetApplication.m */,
 			);
 			name = BaseClass;
 			sourceTree = "<group>";
@@ -3561,6 +3566,7 @@
 				B7BF60A41D1D6FB900B3BDD7 /* SearchProjectCollectionViewCell.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
+				B71E1D341F8CC5C700E99733 /* LecetApplication.m in Sources */,
 				B6EC8B3F1D2BC3F600F4780A /* FilterSelectionViewController.m in Sources */,
 				B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */,
 				B7E2EB2C1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m in Sources */,

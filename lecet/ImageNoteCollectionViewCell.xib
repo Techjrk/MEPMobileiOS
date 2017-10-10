@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,7 +51,7 @@
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5e-dj-MkU">
                         <rect key="frame" x="5" y="217" width="325" height="75"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -69,13 +69,13 @@
                                 <rect key="frame" x="0.0" y="10" width="33.5" height="13.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 mins ago   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gY-ql-qar">
-                                <rect key="frame" x="226.5" y="0.0" width="100.5" height="33"/>
+                                <rect key="frame" x="193" y="0.0" width="134" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1D-dg-Aj5">
-                                <rect key="frame" x="33.5" y="0.0" width="193" height="33"/>
+                                <rect key="frame" x="33.5" y="0.0" width="159.5" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                             <constraint firstAttribute="trailing" secondItem="0gY-ql-qar" secondAttribute="trailing" constant="8" id="Anq-pY-Wg5"/>
                             <constraint firstAttribute="bottom" secondItem="0gY-ql-qar" secondAttribute="bottom" id="DM8-FB-Y1R"/>
                             <constraint firstItem="0gY-ql-qar" firstAttribute="leading" secondItem="m1D-dg-Aj5" secondAttribute="trailing" id="Kk4-F9-xP5"/>
-                            <constraint firstItem="0gY-ql-qar" firstAttribute="width" secondItem="7ls-Y8-O3f" secondAttribute="width" multiplier="0.3" id="Qnm-hI-xcF"/>
+                            <constraint firstItem="0gY-ql-qar" firstAttribute="width" secondItem="7ls-Y8-O3f" secondAttribute="width" multiplier="0.4" id="Qnm-hI-xcF"/>
                             <constraint firstItem="m1D-dg-Aj5" firstAttribute="top" secondItem="7ls-Y8-O3f" secondAttribute="top" id="cHz-KQ-axv"/>
                             <constraint firstItem="0gY-ql-qar" firstAttribute="top" secondItem="7ls-Y8-O3f" secondAttribute="top" id="fz2-K6-sn6"/>
                             <constraint firstItem="m1D-dg-Aj5" firstAttribute="leading" secondItem="GoQ-xJ-PT2" secondAttribute="trailing" id="hTW-gI-cf4"/>
