@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonSettings;
 @property (weak, nonatomic) IBOutlet UIView *leftSideView;
 @property (weak, nonatomic) IBOutlet UIView *rightSideView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSupport;
 - (IBAction)tappedDropDownButtonMenu:(id)sender;
 @end
 
@@ -34,9 +35,11 @@
     _buttonMyProfile.titleLabel.font = DROPDOWN_MENU_BUTTON_MY_PROFILE_FONT;
     _buttonHiddenProjects.titleLabel.font = DROPDOWN_MENU_BUTTON_HIDDEN_PROJECTS_FONT;
     _buttonSettings.titleLabel.font = DROPDOWN_MENU_BUTTON_SETTINGS_FONT;
+    _buttonSupport.titleLabel.font = DROPDOWN_MENU_BUTTON_SUPPORT_FONT;
 
     _buttonMyProfile.titleLabel.textColor = DROPDOWN_MENU_BUTTON_FONT_COLOR;
     _buttonHiddenProjects.titleLabel.textColor = DROPDOWN_MENU_BUTTON_FONT_COLOR;
+    _buttonSettings.titleLabel.textColor = DROPDOWN_MENU_BUTTON_FONT_COLOR;
     _buttonSettings.titleLabel.textColor = DROPDOWN_MENU_BUTTON_FONT_COLOR;
     
     _buttonMyProfile.tag = DropDownMenuMyProfile;
@@ -47,7 +50,10 @@
     
     _buttonSettings.tag = DropDownMenuSettings;
     [_buttonSettings setTitle:NSLocalizedLanguage(@"DROPDOWNMENU_SETTING_BUTTON_TEXT") forState:UIControlStateNormal];
-    
+
+    _buttonSupport.tag = DropDownMenuSupport;
+    [_buttonSupport setTitle:NSLocalizedLanguage(@"DROPDOWNMENU_SUPPORT_BUTTON_TEXT") forState:UIControlStateNormal];
+
     [self.view setBackgroundColor:DROPDOWN_MENU_VIEW_BG_COLOR];
     self.layer.cornerRadius = kDeviceWidth * (0.0106);
     self.layer.masksToBounds = YES;

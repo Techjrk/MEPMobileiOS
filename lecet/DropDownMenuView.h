@@ -14,6 +14,7 @@
 #define DROPDOWN_MENU_BUTTON_MY_PROFILE_FONT                    fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define DROPDOWN_MENU_BUTTON_HIDDEN_PROJECTS_FONT               fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 #define DROPDOWN_MENU_BUTTON_SETTINGS_FONT                      fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
+#define DROPDOWN_MENU_BUTTON_SUPPORT_FONT                      fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 12)
 
 #define DROPDOWN_MENU_LABEL_EMAIL_ADDRESS_FONT_COLOR            RGB(159, 164, 166)
 #define DROPDOWN_MENU_LABEL_USERNAME_FONT_COLOR                 RGB(34, 34, 34)
@@ -25,6 +26,7 @@ typedef enum  {
     DropDownMenuMyProfile = 0,
     DropDownMenuHiddenProjects = 1,
     DropDownMenuSettings = 2,
+    DropDownMenuSupport = 3,
 } DropDownMenuItem;
 
 @protocol DropDownMenuDelegate <NSObject>

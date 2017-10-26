@@ -41,7 +41,7 @@
 #import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "CustomActivityIndicatorView.h"
-
+#import <ZendeskSDK/ZendeskSDK.h>
 #import <Intents/Intents.h>
 
 #define DASHBOARD_BG_COLOR                      RGB(9, 49, 97)
@@ -919,6 +919,12 @@
             controller.settingsViewControllerDelegate = self;
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        }
+            
+        case DropDownMenuSupport:{
+            ZDKHelpCenterOverviewContentModel *helpCenterContentModel = [ZDKHelpCenterOverviewContentModel defaultContent];
+
+            [ZDKHelpCenter presentHelpCenterOverview:self withContentModel:helpCenterContentModel];
         }
             
     }

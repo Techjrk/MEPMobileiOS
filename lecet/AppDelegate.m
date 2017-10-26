@@ -12,6 +12,7 @@
 #import "GoogleAnalytics/Library/GAI.h"
 #import <DataManagerSDK/DataManager.h>
 #import <UserNotifications/UserNotifications.h>
+#import <ZendeskSDK/ZendeskSDK.h>
 
 @import HockeySDK;
 
@@ -24,6 +25,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[ZDKConfig instance]
+     initializeWithAppId:@"13321c86c1f635553ba30f397ebe5616af6273355ba30bb5"
+     zendeskUrl:@"https://lecet.zendesk.com"
+     clientId:@"mobile_sdk_client_1c1b82af717d278cd558"];
+    
+    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
+    [ZDKConfig instance].userIdentity = identity;
     
     [[DataManager sharedManager] setIsLogged:NO];
     [[DataManager sharedManager] setApplication:[UIApplication sharedApplication]];

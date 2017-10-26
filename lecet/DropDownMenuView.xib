@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropDownMenuView">
@@ -11,6 +15,7 @@
                 <outlet property="buttonHiddenProjects" destination="eau-je-pvb" id="Pl6-vV-vB3"/>
                 <outlet property="buttonMyProfile" destination="uax-bP-PWQ" id="G4N-RU-IiT"/>
                 <outlet property="buttonSettings" destination="5GJ-X8-LCk" id="pCb-Ka-SsR"/>
+                <outlet property="buttonSupport" destination="keq-AL-p5h" id="VFu-im-89A"/>
                 <outlet property="emailAddressLabel" destination="vIj-ob-uHa" id="5h3-P2-4jG"/>
                 <outlet property="leftSideView" destination="2ku-04-PgP" id="6ur-bv-jQA"/>
                 <outlet property="rightSideView" destination="xm5-Wb-GHS" id="vNI-tE-u2A"/>
@@ -27,53 +32,67 @@
                     <rect key="frame" x="23" y="76" width="320" height="144"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eau-je-pvb">
-                            <rect key="frame" x="0.0" y="50.5" width="320" height="43"/>
+                            <rect key="frame" x="0.0" y="36" width="320" height="35.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Hidden Projects">
-                                <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="tappedDropDownButtonMenu:" destination="-1" eventType="touchUpInside" id="nGv-qe-1KS"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GJ-X8-LCk">
-                            <rect key="frame" x="0.0" y="93.5" width="320" height="43.5"/>
+                            <rect key="frame" x="0.0" y="107" width="320" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Settings">
-                                <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="tappedDropDownButtonMenu:" destination="-1" eventType="touchUpInside" id="xU0-q6-Lug"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uax-bP-PWQ">
-                            <rect key="frame" x="0.0" y="7" width="320" height="43.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="My Profile">
-                                <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="tappedDropDownButtonMenu:" destination="-1" eventType="touchUpInside" id="18E-mw-uq5"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keq-AL-p5h">
+                            <rect key="frame" x="0.0" y="71.5" width="320" height="35.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Support">
+                                <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedDropDownButtonMenu:" destination="-1" eventType="touchUpInside" id="2cI-eB-SAA"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="uax-bP-PWQ" firstAttribute="leading" secondItem="jdh-pK-ZjY" secondAttribute="leading" id="2wi-o4-BlE"/>
                         <constraint firstItem="eau-je-pvb" firstAttribute="leading" secondItem="jdh-pK-ZjY" secondAttribute="leading" id="3sD-3C-bXJ"/>
+                        <constraint firstItem="5GJ-X8-LCk" firstAttribute="top" secondItem="keq-AL-p5h" secondAttribute="bottom" id="8G2-Vf-tfb"/>
                         <constraint firstItem="5GJ-X8-LCk" firstAttribute="leading" secondItem="jdh-pK-ZjY" secondAttribute="leading" id="8cs-5z-SVQ"/>
                         <constraint firstAttribute="trailing" secondItem="uax-bP-PWQ" secondAttribute="trailing" id="AFl-r0-OqI"/>
                         <constraint firstItem="eau-je-pvb" firstAttribute="top" secondItem="uax-bP-PWQ" secondAttribute="bottom" id="Bw7-pE-dZw"/>
+                        <constraint firstItem="keq-AL-p5h" firstAttribute="leading" secondItem="jdh-pK-ZjY" secondAttribute="leading" id="GEb-aN-vES"/>
+                        <constraint firstItem="keq-AL-p5h" firstAttribute="height" secondItem="eau-je-pvb" secondAttribute="height" id="IVL-10-wVz"/>
                         <constraint firstItem="5GJ-X8-LCk" firstAttribute="height" secondItem="eau-je-pvb" secondAttribute="height" id="Jfn-Jl-0dw"/>
                         <constraint firstAttribute="trailing" secondItem="eau-je-pvb" secondAttribute="trailing" id="Olo-Zt-wBF"/>
-                        <constraint firstItem="eau-je-pvb" firstAttribute="centerY" secondItem="jdh-pK-ZjY" secondAttribute="centerY" id="R8f-tz-RzC"/>
+                        <constraint firstItem="uax-bP-PWQ" firstAttribute="top" secondItem="jdh-pK-ZjY" secondAttribute="top" id="Tjn-wu-lhj"/>
                         <constraint firstAttribute="trailing" secondItem="5GJ-X8-LCk" secondAttribute="trailing" id="b97-SN-LuH"/>
+                        <constraint firstAttribute="trailing" secondItem="keq-AL-p5h" secondAttribute="trailing" id="bBt-Jp-unC"/>
                         <constraint firstItem="uax-bP-PWQ" firstAttribute="top" secondItem="jdh-pK-ZjY" secondAttribute="top" id="c5U-9h-USU"/>
-                        <constraint firstItem="5GJ-X8-LCk" firstAttribute="top" secondItem="eau-je-pvb" secondAttribute="bottom" id="csV-XN-Dvs"/>
+                        <constraint firstItem="keq-AL-p5h" firstAttribute="top" secondItem="eau-je-pvb" secondAttribute="bottom" id="esG-QW-8o1"/>
                         <constraint firstItem="5GJ-X8-LCk" firstAttribute="top" secondItem="eau-je-pvb" secondAttribute="bottom" constant="9" id="gUb-Cn-KtT"/>
                         <constraint firstItem="eau-je-pvb" firstAttribute="top" secondItem="uax-bP-PWQ" secondAttribute="bottom" constant="7" id="iaK-SY-sPc"/>
-                        <constraint firstItem="uax-bP-PWQ" firstAttribute="height" secondItem="jdh-pK-ZjY" secondAttribute="height" multiplier="0.3" id="jk1-xh-8VT"/>
+                        <constraint firstItem="uax-bP-PWQ" firstAttribute="height" secondItem="jdh-pK-ZjY" secondAttribute="height" multiplier="0.25" id="jk1-xh-8VT"/>
                         <constraint firstItem="eau-je-pvb" firstAttribute="centerY" secondItem="jdh-pK-ZjY" secondAttribute="centerY" id="pYK-7v-PS6"/>
                         <constraint firstItem="eau-je-pvb" firstAttribute="height" secondItem="uax-bP-PWQ" secondAttribute="height" id="syL-ju-yBq"/>
                     </constraints>
@@ -98,17 +117,17 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kate Bailey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ua-K9-nLW">
                                     <rect key="frame" x="0.0" y="0.0" width="269" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kbailey@lecet.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-ob-uHa">
                                     <rect key="frame" x="0.0" y="25" width="269" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" red="0.62352941176470589" green="0.64313725490196072" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.62352941176470589" green="0.64313725490196072" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="8ua-K9-nLW" secondAttribute="trailing" id="6hv-xg-Mqa"/>
                                 <constraint firstItem="vIj-ob-uHa" firstAttribute="height" secondItem="FTw-FN-Atu" secondAttribute="height" multiplier="0.45" id="7wQ-C8-dKY"/>
@@ -121,7 +140,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="FTw-FN-Atu" firstAttribute="height" secondItem="8rT-iY-DGg" secondAttribute="height" id="IHY-VK-Vvi"/>
                         <constraint firstItem="8rT-iY-DGg" firstAttribute="centerY" secondItem="03O-Pw-ctF" secondAttribute="centerY" id="XHj-cX-h5E"/>
@@ -135,14 +154,14 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ku-04-PgP">
                     <rect key="frame" x="0.0" y="0.0" width="23" height="220"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xm5-Wb-GHS">
                     <rect key="frame" x="343" y="0.0" width="23" height="220"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.4257909788" green="0.2130645249" blue="0.96973157050000003" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.4257909788" green="0.2130645249" blue="0.96973157050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="03O-Pw-ctF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.34" id="1by-XA-PO0"/>
                 <constraint firstItem="jdh-pK-ZjY" firstAttribute="top" secondItem="03O-Pw-ctF" secondAttribute="bottom" constant="1" id="J3j-2y-lbh"/>

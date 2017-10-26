@@ -93,6 +93,7 @@
 
 //DropDownMenu.xib
 "DROPDOWNMENU_MYPROFILE_BUTTON_TEXT"        =               "My Profile";
+"DROPDOWNMENU_SUPPORT_BUTTON_TEXT"          =               "Support";
 "DROPDOWNMENU_HIDDENPROJECTS_BUTTON_TEXT"   =               "Hidden Projects";
 "DROPDOWNMENU_SETTING_BUTTON_TEXT"          =               "Settings";
 
