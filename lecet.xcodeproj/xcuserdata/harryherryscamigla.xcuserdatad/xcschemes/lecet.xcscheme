@@ -82,7 +82,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../../LIUNA_HQ.gpx"
+         identifier = "../LIUNA_HQ.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

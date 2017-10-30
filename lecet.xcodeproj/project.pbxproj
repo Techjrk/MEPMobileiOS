@@ -183,6 +183,8 @@
 		B707BC3C1CEE11590003C836 /* PushZoomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B707BC3B1CEE11590003C836 /* PushZoomAnimator.m */; };
 		B707BC401CEF0B960003C836 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B707BC3E1CEF0B960003C836 /* LandingViewController.m */; };
 		B707BC411CEF0B960003C836 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B707BC3F1CEF0B960003C836 /* LandingViewController.xib */; };
+		B70878031FA2224F00645C82 /* ActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70878021FA2224F00645C82 /* ActionView.m */; };
+		B70878051FA2226400645C82 /* ActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70878041FA2226400645C82 /* ActionView.xib */; };
 		B70FDF641CE634F00035A6D9 /* ProjectStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70FDF631CE634F00035A6D9 /* ProjectStateView.m */; };
 		B70FDF661CE635030035A6D9 /* ProjectStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF651CE635030035A6D9 /* ProjectStateView.xib */; };
 		B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = B70FDF671CE639450035A6D9 /* FontAwesome.otf */; };
@@ -343,7 +345,7 @@
 		B79AA7FD1E9CC6C700BA1B04 /* PhotoShutterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79AA7FB1E9CC6C700BA1B04 /* PhotoShutterViewController.xib */; };
 		B79F1F411F33ABBB001D2D92 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B79F1F401F33ABBB001D2D92 /* IntentHandler.m */; };
 		B79F1F561F33ABBB001D2D92 /* SearchMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B79F1F3D1F33ABBB001D2D92 /* SearchMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B79F1F5D1F33AC83001D2D92 /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
+		B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
 		B79F1F601F347AF3001D2D92 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79F1F5F1F347AF3001D2D92 /* UserNotifications.framework */; };
 		B79F1F621F348283001D2D92 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79F1F611F348283001D2D92 /* Photos.framework */; };
 		B7A1D3431CE4752D004E94B3 /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1D3411CE4752D004E94B3 /* ProjectDetailViewController.m */; };
@@ -420,8 +422,8 @@
 		B7E104551CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104531CECC9CA00EAD8E7 /* ContactFieldCollectionViewCell.xib */; };
 		B7E104581CECE91600EAD8E7 /* ContactFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104571CECE91600EAD8E7 /* ContactFieldView.m */; };
 		B7E1045A1CECE92700EAD8E7 /* ContactFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104591CECE92700EAD8E7 /* ContactFieldView.xib */; };
-		B7E2062A1F339BEF00075D81 /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
-		B7E2062B1F339BEF00075D81 /* ReferenceProxy in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7E2062A1F339BEF00075D81 /* DataManagerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; };
+		B7E2062B1F339BEF00075D81 /* DataManagerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7E206291F339B8D00075D81 /* DataManagerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7E2EB2C1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2EB2A1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.m */; };
 		B7E2EB2D1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E2EB2B1F386D9C000A54A4 /* MobileProjectNotePopUpViewController.xib */; };
 		B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F10A301CDB898100847FA3 /* BidSoonItem.m */; };
@@ -483,7 +485,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B7E2062B1F339BEF00075D81 /* ReferenceProxy in Embed Frameworks */,
+				B7E2062B1F339BEF00075D81 /* DataManagerSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,6 +770,9 @@
 		B707BC3D1CEF0B960003C836 /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
 		B707BC3E1CEF0B960003C836 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		B707BC3F1CEF0B960003C836 /* LandingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
+		B70878011FA2224F00645C82 /* ActionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionView.h; sourceTree = "<group>"; };
+		B70878021FA2224F00645C82 /* ActionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionView.m; sourceTree = "<group>"; };
+		B70878041FA2226400645C82 /* ActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionView.xib; sourceTree = "<group>"; };
 		B70FDF621CE634F00035A6D9 /* ProjectStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStateView.h; sourceTree = "<group>"; };
 		B70FDF631CE634F00035A6D9 /* ProjectStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStateView.m; sourceTree = "<group>"; };
 		B70FDF651CE635030035A6D9 /* ProjectStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectStateView.xib; sourceTree = "<group>"; };
@@ -1261,7 +1266,7 @@
 				B79AA7BB1E9CBE4F00BA1B04 /* CoreMedia.framework in Frameworks */,
 				B79AA7B91E9CBE4400BA1B04 /* CoreVideo.framework in Frameworks */,
 				B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */,
-				B7E2062A1F339BEF00075D81 /* ReferenceProxy in Frameworks */,
+				B7E2062A1F339BEF00075D81 /* DataManagerSDK.framework in Frameworks */,
 				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
 				B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */,
 				B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */,
@@ -1282,7 +1287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79F1F5D1F33AC83001D2D92 /* ReferenceProxy in Frameworks */,
+				B79F1F5D1F33AC83001D2D92 /* DataManagerSDK.framework in Frameworks */,
 				E53BF1905D39DDB20526118B /* libPods-SearchMessage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2429,6 +2434,7 @@
 		B70155351CD0C7570050CF8A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B70878001FA2221F00645C82 /* ActionView */,
 				B6B25A2E1EC23EC300DB5006 /* CustomLoadingIndicator */,
 				B68680C41EB202F2006B9651 /* CustomLandscapeNavigation */,
 				B68B22C51EA65CEF00C7512E /* PanomaraIndicatorListView */,
@@ -2601,6 +2607,16 @@
 				B707BC3B1CEE11590003C836 /* PushZoomAnimator.m */,
 			);
 			name = CustomClass;
+			sourceTree = "<group>";
+		};
+		B70878001FA2221F00645C82 /* ActionView */ = {
+			isa = PBXGroup;
+			children = (
+				B70878011FA2224F00645C82 /* ActionView.h */,
+				B70878021FA2224F00645C82 /* ActionView.m */,
+				B70878041FA2226400645C82 /* ActionView.xib */,
+			);
+			name = ActionView;
 			sourceTree = "<group>";
 		};
 		B725DABB1D756BCF00B6CCC4 /* GoogleAnalytics */ = {
@@ -3288,6 +3304,7 @@
 				B6EFFE921D0455CF00727323 /* ContactAllListView.xib in Resources */,
 				B6411BB21D0973F0002B6E88 /* SettingsNotificationsView.xib in Resources */,
 				B6AF1CFB1D21325F00C95A8F /* ProjectFilterSearchNavView.xib in Resources */,
+				B70878051FA2226400645C82 /* ActionView.xib in Resources */,
 				B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */,
 				B70FDF681CE6395B0035A6D9 /* FontAwesome.otf in Resources */,
 				B76C69861CDA0546009E9F15 /* CalendarItem.xib in Resources */,
@@ -3673,6 +3690,7 @@
 				B7BF60A41D1D6FB900B3BDD7 /* SearchProjectCollectionViewCell.m in Sources */,
 				B7F10A311CDB898100847FA3 /* BidSoonItem.m in Sources */,
 				B76C69601CD3B432009E9F15 /* ChartView.m in Sources */,
+				B70878031FA2224F00645C82 /* ActionView.m in Sources */,
 				B71E1D341F8CC5C700E99733 /* LecetApplication.m in Sources */,
 				B6EC8B3F1D2BC3F600F4780A /* FilterSelectionViewController.m in Sources */,
 				B79616151CF5C6340089BC32 /* BidItemRecent.m in Sources */,

@@ -173,8 +173,18 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     [_container layoutSubviews];
+    
+    if ((self.popupRect.origin.y + self.popupRect.size.height + [_container contentSize].height) > kDeviceHeight) {
+        
+        self.popupRect = CGRectMake(self.popupRect.origin.x, self.popupRect.origin.y - self.popupRect.size.height, self.popupRect.size.width, self.popupRect.size.height);
+        
+        self.popupPlacementBottom.hidden = NO;
+        self.popupPlacementTop.hidden = YES;
+        self.popupPalcement = PopupPlacementBottom;
+    }
+    
     if (!self.popupPlacementBottom.hidden) {
-        _constraintPlacementTop.constant = (kDeviceHeight - (_constraintPopupHeight.constant + self.popupRect.size.height + (_popupPlacementBottom.frame.size.height * 2)));
+        _constraintPlacementTop.constant = (kDeviceHeight - (_constraintPopupHeight.constant + (self.popupRect.size.height) + (_popupPlacementBottom.frame.size.height * 2)));
     }
 }
 

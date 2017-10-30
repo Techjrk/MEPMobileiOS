@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActionView.h"
 
 @interface AssociatedBidCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) id<ActionViewDelegate> actionViewDelegate;
 - (void)setInfo:(id)info;
 @end

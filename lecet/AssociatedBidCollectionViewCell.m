@@ -12,6 +12,8 @@
 
 @interface AssociatedBidCollectionViewCell()
 @property (weak, nonatomic) IBOutlet AssociatedBidView *item;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintExpand;
+@property (weak, nonatomic) IBOutlet ActionView *actionView;
 @end
 
 @implementation AssociatedBidCollectionViewCell
@@ -23,4 +25,11 @@
 - (void)setInfo:(id)info {
     [_item setInfo:info];
 }
+
+#pragma mark - Delegate
+
+- (void)setActionViewDelegate:(id<ActionViewDelegate>)actionViewDelegate {
+    self.actionView.actionViewDelegate = actionViewDelegate;
+}
+
 @end
