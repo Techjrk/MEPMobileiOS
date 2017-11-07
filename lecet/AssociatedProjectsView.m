@@ -11,9 +11,9 @@
 #import "SectionTitleView.h"
 #import "AssociatedBidCollectionViewCell.h"
 #import "AssociatedBidView.h"
-#import "ActionView.h"
 #import <DataManagerSDK/DB_Project.h>
 
+#import "ActionView.h"
 #import "PopupViewController.h"
 #import "ProjectDetailViewController.h"
 #import "NewTrackingListCollectionViewCell.h"
@@ -89,7 +89,8 @@
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     constraintHeight.constant = 0;
-    _constraintButtonSeeAll.constant = items.count>3?(kDeviceHeight * 0.04):0;
+    //HARRY TEMPORARY
+    _constraintButtonSeeAll.constant = items.count>1?(kDeviceHeight * 0.04):0;
     
     if (_constraintButtonSeeAll.constant == 0) {
         _buttonSeeAll.hidden = YES;

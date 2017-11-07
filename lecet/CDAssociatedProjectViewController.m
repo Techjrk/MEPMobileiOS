@@ -122,4 +122,7 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+- (UIViewController *)parentItemController {
+    return self;
+}
 @end

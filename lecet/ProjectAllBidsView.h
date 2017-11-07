@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewClass.h"
 
+#import "ActionView.h"
+
 @protocol ProjectAllBidsViewDelegate <NSObject>
 - (void)selectedProjectAllBidItem:(id)object;
+- (UIViewController*)parentController;
 @end
 
 @interface ProjectAllBidsView : BaseViewClass

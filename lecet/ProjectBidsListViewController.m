@@ -18,6 +18,7 @@
 @interface ProjectBidsListViewController ()<ProjectNavViewDelegate,ProjectSortViewControllerDelegate, ProjectAllBidsViewDelegate, ProjectTabViewDelegate>{
     NSMutableArray *bidList, *upcomingBid, *pastBid;
     NSString *companyName;
+
 }
 @property (weak, nonatomic) IBOutlet ProjectNavigationBarView *projectNavigationView;
 @property (weak, nonatomic) IBOutlet ProjectTabView *projectTabView;
@@ -125,6 +126,9 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+- (UIViewController *)parentController {
+    return self;
+}
 
 #pragma mark - Misc
 - (UIStatusBarStyle)preferredStatusBarStyle {

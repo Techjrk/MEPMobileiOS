@@ -11,6 +11,7 @@
 
 @protocol ProjectAllAssociatedProjectViewDelegate <NSObject>
 - (void)selectedAssociatedProjectItem:(id)object;
+- (UIViewController*)parentItemController;
 @end
 @interface ProjectAllAssociatedProjectView : BaseViewClass
 @property (strong, nonatomic) id<ProjectAllAssociatedProjectViewDelegate>projectAllAssociatedProjectViewDelegate;
