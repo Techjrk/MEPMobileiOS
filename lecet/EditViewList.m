@@ -11,7 +11,7 @@
 
 @interface EditViewList ()<UICollectionViewDelegate, UICollectionViewDataSource,EditViewCollectionViewCellDelegate>{
     NSMutableArray *collectionDataItems;
-    NSLayoutConstraint *constraintHeight;
+    //NSLayoutConstraint *constraintHeight;
     CGFloat cellHeight;
     NSMutableArray *flagSelectedUnSelected;
     

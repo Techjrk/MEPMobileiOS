@@ -19,6 +19,15 @@
 - (void)undoHide:(id)sender;
 @end
 
-@interface ActionView : BaseViewClass
+@interface ActionView : BaseViewClass {
+}
 @property (strong, nonatomic) id<ActionViewDelegate> actionViewDelegate;
+@property (strong, nonatomic) NSLayoutConstraint *constraintHorizontal;
+@property (strong, nonatomic) UIView *viewContainer;
+- (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction;
+- (void)projectHidden:(BOOL)hidden;
+- (UIView*)trackButton;
+- (UIView*)shareButton;
+- (void)resetStatus;
+- (void)setUndoLabelTextColor:(UIColor*)color;
 @end

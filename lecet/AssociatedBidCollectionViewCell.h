@@ -11,5 +11,6 @@
 
 @interface AssociatedBidCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) id<ActionViewDelegate> actionViewDelegate;
+@property (weak, nonatomic) IBOutlet ActionView *actionView;
 - (void)setInfo:(id)info;
 @end

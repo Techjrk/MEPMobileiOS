@@ -14,6 +14,7 @@
 @required
 - (void)tappededSeeAllAssociateProject;
 - (void)tappedAssociatedProject:(id)object;
+- (UIViewController*)parentController;
 @end
 
 

@@ -13,6 +13,7 @@
 @protocol ProjectBidListDelegate <NSObject>
 - (void)tappedProjectItemBidder:(id)object;
 - (void)tappedProjectItemBidSeeAll:(id)object;
+- (UIViewController*)itemParentController;
 @end
 
 @interface ProjectBidListView : BaseViewClass

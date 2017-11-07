@@ -297,6 +297,10 @@ typedef enum {
     [self tappedProjectBidsList:fetchRecord];
 }
 
+- (UIViewController *)itemParentController {
+    return self;
+}
+
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {
     if (usePushZoom) {
         PushZoomAnimator *animator = [[PushZoomAnimator alloc] init];
@@ -351,6 +355,9 @@ typedef enum {
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+- (UIViewController*)parentController {
+    return self;
+}
 #pragma mark - ContactListView Delegate
 
 - (void)selectedContact:(id)item {

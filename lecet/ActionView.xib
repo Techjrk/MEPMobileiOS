@@ -10,7 +10,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionView">
+            <connections>
+                <outlet property="buttonHide" destination="FSW-3X-ueh" id="ax6-ef-Po9"/>
+                <outlet property="buttonShare" destination="lrG-nD-dhP" id="03g-Vt-B0p"/>
+                <outlet property="buttonTrack" destination="uLu-AQ-EMX" id="5M5-aV-KmZ"/>
+                <outlet property="labelHide" destination="J6o-EL-XpV" id="Es3-vi-6nj"/>
+                <outlet property="labelShare" destination="O0G-r6-se5" id="j1I-3X-2lr"/>
+                <outlet property="labelTextHide" destination="MgV-Mk-9TH" id="Q6r-Dv-GGf"/>
+                <outlet property="labelTrack" destination="Lrn-vD-Km7" id="pvu-ux-Jx5"/>
+                <outlet property="viewAction" destination="qDC-xz-diq" id="YsX-zQ-nch"/>
+                <outlet property="viewHide" destination="O4H-98-1X5" id="zzv-Xg-h6u"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="339" height="91"/>
@@ -22,6 +34,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSW-3X-ueh">
                             <rect key="frame" x="170" y="0.0" width="80.5" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="tappedButtonHide:" destination="-1" eventType="touchUpInside" id="9ps-pR-VyF"/>
+                            </connections>
                         </button>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDG-4C-xBX">
                             <rect key="frame" x="170.5" y="23" width="80.5" height="45.5"/>
@@ -54,6 +69,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrG-nD-dhP">
                             <rect key="frame" x="86" y="0.0" width="81" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="tappedButtonShare:" destination="-1" eventType="touchUpInside" id="cke-KQ-73o"/>
+                            </connections>
                         </button>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thg-PF-a1l">
                             <rect key="frame" x="86.5" y="23.5" width="81" height="45.5"/>
@@ -87,6 +105,9 @@
                             <rect key="frame" x="2" y="0.0" width="80.5" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                            <connections>
+                                <action selector="tappedButtonTrack:" destination="-1" eventType="touchUpInside" id="q6i-E0-yox"/>
+                            </connections>
                         </button>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ns8-yD-OOm">
                             <rect key="frame" x="2.5" y="23" width="80.5" height="45.5"/>
@@ -162,6 +183,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvW-qZ-GR1">
                             <rect key="frame" x="210" y="0.0" width="67.5" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="tappedButtonUndo:" destination="-1" eventType="touchUpInside" id="xAg-h5-7cc"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4B-M4-LAr">
                             <rect key="frame" x="277.5" y="0.0" width="61.5" height="91"/>
