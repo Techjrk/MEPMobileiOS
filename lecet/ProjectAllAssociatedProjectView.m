@@ -89,12 +89,12 @@
     [[cell contentView] layoutIfNeeded];
     
     [cell.actionView swipeExpand:UISwipeGestureRecognizerDirectionRight];
-    [cell.actionView projectHidden:NO];
+    [cell.actionView itemHidden:NO];
     [cell.actionView setUndoLabelTextColor: LABEL_COLOR];
     cell.actionViewDelegate = self;
     
     if(project.isHidden != nil) {
-        [cell.actionView projectHidden:project.isHidden.boolValue];
+        [cell.actionView itemHidden:project.isHidden.boolValue];
     }
 
     return cell;

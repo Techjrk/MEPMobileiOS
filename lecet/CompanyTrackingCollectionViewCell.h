@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ActionView.h"
+
 @protocol CompanyTrackingCollectionViewCellDelegate <NSObject>
 - (void)tappedButtonAtTag:(int)tag;
 @end
 
 @interface CompanyTrackingCollectionViewCell : UICollectionViewCell
 @property (nonatomic,assign) id <CompanyTrackingCollectionViewCellDelegate> companyTrackingCollectionViewCellDelegate;
+@property (strong, nonatomic) id<ActionViewDelegate> actionViewDelegate;
+@property (weak, nonatomic) IBOutlet ActionView *actionView;
+
 - (void)setTitleName:(NSString *)text;
 - (void)setAddressTop:(NSString *)text;
 - (void)setAddressBelow:(NSString *)text;

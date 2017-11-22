@@ -64,6 +64,7 @@
 
 #define kUrlCompanyTrackingList             @"companylists/%li/companies"
 #define kUrlCompanyTrackingListUpdates      @"companylists/%li/updates"
+#define kUrlCompanyTrackingListCreate       @"companylists"
 #define kUrlCompanyTrackingListMoveIds      @"companylists/%li/syncItems"
 #define kUrlCompanyAddTrackingList          @"companylists/%li/companies/rel/%li"
 #define kUrlCompanySearch                   @"Companies/search"
@@ -1265,7 +1266,10 @@
 - (void)projectSearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
     
     [self HTTP_GET:[self url:kUrlProjectSearch] parameters:filter success:^(id object) {
-        data[SEARCH_RESULT_PROJECT] = (id)[object mutableCopy];
+        NSMutableDictionary *mutableObject = (id)[object mutableCopy];
+        NSMutableArray *results = [object[@"results"] mutableCopy];
+        mutableObject[@"results"] = results;
+        data[SEARCH_RESULT_PROJECT] = mutableObject;
         data[SEARCH_RESULT_PROJECT_FILTER] = (id)filter;
         data[SEARCH_RESULT_PROJECT_URL] = (id)[self url:kUrlProjectSearch];
         
@@ -1410,11 +1414,32 @@
 
 }
 
+- (void)createCompanyTrackingList:(NSNumber*)companyId trackingName:(NSString*)trackingName success:(APIBlock)success failure:(APIBlock)failure {
+    
+    NSString *url = kUrlCompanyTrackingListCreate;
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary new];
+    parameter[@"companyIds"] = @[companyId];
+    parameter[@"optIn"] = @YES;
+    parameter[@"active"] = @YES;
+    parameter[@"name"] = trackingName;
+    
+    [self HTTP_POST_BODY:[self url:url] parameters:parameter success:^(id object) {
+        success(object);
+    } failure:^(id object) {
+        failure(object);
+    } authenticated:YES];
+    
+}
+
+
 - (void)companySearch:(NSMutableDictionary *)filter data:(NSMutableDictionary *)data success:(APIBlock)success failure:(APIBlock)failure {
     
     [self HTTP_GET:[self url:kUrlCompanySearch] parameters:filter success:^(id object) {
-        
-        data[SEARCH_RESULT_COMPANY] = (id)[object mutableCopy];
+        NSMutableDictionary *mutableObject = (id)[object mutableCopy];
+        NSMutableArray *results = [object[@"results"] mutableCopy];
+        mutableObject[@"results"] = results;
+        data[SEARCH_RESULT_COMPANY] = mutableObject;
         data[SEARCH_RESULT_COMPANY_FILTER] = (id)filter;
         data[SEARCH_RESULT_COMPANY_URL] = (id)[self url:kUrlCompanySearch];
         

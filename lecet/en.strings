@@ -542,3 +542,4 @@
 "NTL_NEWNAME"                               =               "Enter Name";
 "NTL_CANCEL"                                =               "Cancel";
 "NTL_ADDED"                                 =               "Project added to %@";
+"NTL_COMPANYADDED"                          =               "Company added to %@";

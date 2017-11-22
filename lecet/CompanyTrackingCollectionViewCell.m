@@ -9,10 +9,12 @@
 #import "CompanyTrackingCollectionViewCell.h"
 #import "CompanyTrackingView.h"
 
-@interface CompanyTrackingCollectionViewCell ()<CompanyTrackingViewDelegate>{
+@interface CompanyTrackingCollectionViewCell ()<CompanyTrackingViewDelegate, ActionViewDelegate>{
     
 }
 @property (weak, nonatomic) IBOutlet CompanyTrackingView *companyTrackingView;
+@property (strong, nonatomic)id<ActionViewDelegate> cellDelegate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintExpand;
 
 @end
 
@@ -21,8 +23,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.layer setCornerRadius:4.0f];
-    self.layer.masksToBounds = YES;
+    [self.companyTrackingView.layer setCornerRadius:4.0f];
+    self.companyTrackingView.layer.masksToBounds = YES;
  
     _companyTrackingView.companyTrackingViewDelegate = self;
 }
@@ -37,6 +39,9 @@
 }
 - (void)setTitleName:(NSString *)text {
     [_companyTrackingView setName:text];
+    self.actionView.constraintHorizontal = self.contraintExpand;
+    self.actionView.viewContainer = self.companyTrackingView;
+    
 }
 
 - (void)setButtonLabelTitle:(NSString *)text {
@@ -71,4 +76,50 @@
 - (void)setUpdateInfo:(id)info {
     [_companyTrackingView setUpdateInfo:info];
 }
+
+#pragma mark - Delegate
+
+- (void)setActionViewDelegate:(id<ActionViewDelegate>)actionViewDelegate {
+    self.actionView.actionViewDelegate = self;
+    self.cellDelegate = actionViewDelegate;
+}
+
+#pragma mark - ActionViewDelegate
+
+- (void)didSelectItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didSelectItem:self];
+    }
+}
+
+- (void)didTrackItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didTrackItem:self];
+    }
+}
+
+- (void)didShareItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didShareItem:self];
+    }
+}
+
+- (void)didHideItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didHideItem:self];
+    }
+}
+
+- (void)didExpand:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didExpand:self];
+    }
+}
+
+- (void)undoHide:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate undoHide:self];
+    }
+}
+
 @end

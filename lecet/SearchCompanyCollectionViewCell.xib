@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,8 +26,28 @@
                             <constraint firstAttribute="height" constant="1" id="ZOW-ff-9vi"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h04-8Y-TU9">
+                        <rect key="frame" x="25" y="9" width="390" height="64"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ark-UF-ODO">
+                                <rect key="frame" x="378.5" y="0.0" width="11.5" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ark-UF-ODO" firstAttribute="width" secondItem="h04-8Y-TU9" secondAttribute="width" multiplier="0.03" id="9zV-eB-Ah7"/>
+                            <constraint firstAttribute="trailing" secondItem="ark-UF-ODO" secondAttribute="trailing" id="gOO-ht-x2z"/>
+                            <constraint firstAttribute="bottom" secondItem="ark-UF-ODO" secondAttribute="bottom" id="jS2-aQ-rrZ"/>
+                            <constraint firstItem="ark-UF-ODO" firstAttribute="top" secondItem="h04-8Y-TU9" secondAttribute="top" id="uOX-jw-SQ6"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uq2-N1-Oxk" customClass="ActionView">
+                        <rect key="frame" x="33" y="9" width="370.5" height="64"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e14-qi-q4s">
-                        <rect key="frame" x="24" y="9" width="390" height="64"/>
+                        <rect key="frame" x="25" y="9" width="390" height="64"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxQ-vJ-FUt">
                                 <rect key="frame" x="0.0" y="0.0" width="68" height="64"/>
@@ -102,16 +122,27 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="h04-8Y-TU9" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.94" id="66h-5h-hln"/>
                 <constraint firstItem="kbE-jq-aeT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CDP-kR-g7T"/>
+                <constraint firstItem="uq2-N1-Oxk" firstAttribute="height" secondItem="h04-8Y-TU9" secondAttribute="height" id="FEi-94-flB"/>
                 <constraint firstAttribute="trailing" secondItem="kbE-jq-aeT" secondAttribute="trailing" constant="1" id="GA3-WT-PoR"/>
                 <constraint firstItem="e14-qi-q4s" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.94" id="HpK-KH-9yF"/>
-                <constraint firstAttribute="trailing" secondItem="e14-qi-q4s" secondAttribute="trailing" constant="1.5" id="ME8-Hy-xkh"/>
+                <constraint firstItem="h04-8Y-TU9" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.78" id="MFF-0j-AUq"/>
+                <constraint firstItem="uq2-N1-Oxk" firstAttribute="centerY" secondItem="h04-8Y-TU9" secondAttribute="centerY" id="Q0C-8W-OC3"/>
                 <constraint firstItem="e14-qi-q4s" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="T3J-HA-76X"/>
+                <constraint firstItem="ark-UF-ODO" firstAttribute="leading" secondItem="uq2-N1-Oxk" secondAttribute="trailing" id="WEt-qr-LCg"/>
                 <constraint firstItem="e14-qi-q4s" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.78" id="cn8-sW-yjF"/>
+                <constraint firstItem="h04-8Y-TU9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="der-fo-uk9"/>
+                <constraint firstItem="uq2-N1-Oxk" firstAttribute="width" secondItem="h04-8Y-TU9" secondAttribute="width" multiplier="0.95" id="hRk-5J-yJd"/>
                 <constraint firstAttribute="bottom" secondItem="kbE-jq-aeT" secondAttribute="bottom" id="m3P-5o-Ws3"/>
+                <constraint firstItem="e14-qi-q4s" firstAttribute="centerX" secondItem="h04-8Y-TU9" secondAttribute="centerX" id="tCx-ci-yUL"/>
+                <constraint firstAttribute="trailing" secondItem="h04-8Y-TU9" secondAttribute="trailing" id="vpU-6I-QEW"/>
             </constraints>
             <size key="customSize" width="415" height="82"/>
             <connections>
+                <outlet property="actionView" destination="uq2-N1-Oxk" id="aYQ-Nh-1Se"/>
+                <outlet property="constraintExpand" destination="tCx-ci-yUL" id="3kS-ep-XJj"/>
+                <outlet property="item" destination="e14-qi-q4s" id="PHr-FW-FuI"/>
                 <outlet property="labelLocation" destination="3lv-eq-aZX" id="fUz-iZ-Lna"/>
                 <outlet property="labelTitle" destination="v6g-Ku-CFt" id="250-gb-NyU"/>
                 <outlet property="lineView" destination="kbE-jq-aeT" id="9EV-2T-cWj"/>

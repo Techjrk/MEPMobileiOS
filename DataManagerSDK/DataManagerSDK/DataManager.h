@@ -105,6 +105,7 @@
 - (void)companyTrackingListUpdates:(NSNumber*)trackId success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyTrackingMoveIds:(NSNumber*)trackId recordIds:(NSDictionary*)track success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companyAddTrackingList:(NSNumber*)trackId recordId:(NSNumber*)recordId success:(APIBlock)success failure:(APIBlock)failure;
+- (void)createCompanyTrackingList:(NSNumber*)companyId trackingName:(NSString*)trackingName success:(APIBlock)success failure:(APIBlock)failure;
 - (void)companySearch:(NSMutableDictionary*)filter data:(NSMutableDictionary*)data success:(APIBlock)success failure:(APIBlock)failure;
 
 //PROJECTS

@@ -15,7 +15,7 @@
 #define LABEL_LOCATION_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_LOCATION_COLOR                RGB(159, 164, 166)
 
-@interface SearchCompanyCollectionViewCell()<MKMapViewDelegate>{
+@interface SearchCompanyCollectionViewCell()<MKMapViewDelegate, ActionViewDelegate>{
     CGFloat geoCodeLat;
     CGFloat geoCodeLng;
 }
@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelLocation;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic)id<ActionViewDelegate> cellDelegate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintExpand;
+@property (weak, nonatomic) IBOutlet UIView *item;
 @end
 
 @implementation SearchCompanyCollectionViewCell
@@ -151,6 +154,52 @@
     
     return userAnnotationView;
     
+}
+
+- (void)setActionViewDelegate:(id<ActionViewDelegate>)actionViewDelegate {
+    self.actionView.actionViewDelegate = self;
+    self.cellDelegate = actionViewDelegate;
+    self.actionView.constraintHorizontal = self.constraintExpand;
+    self.actionView.viewContainer = self.item;
+
+}
+
+#pragma mark - ActionViewDelegate
+
+- (void)didSelectItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didSelectItem:self];
+    }
+}
+
+- (void)didTrackItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didTrackItem:self];
+    }
+}
+
+- (void)didShareItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didShareItem:self];
+    }
+}
+
+- (void)didHideItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didHideItem:self];
+    }
+}
+
+- (void)didExpand:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didExpand:self];
+    }
+}
+
+- (void)undoHide:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate undoHide:self];
+    }
 }
 
 @end

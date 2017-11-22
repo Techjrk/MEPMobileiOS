@@ -1,23 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProjectTrackItemCollectionViewCell">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProjectTrackItemCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="116" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="116" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anu-hK-BeE" customClass="ActionView">
+                        <rect key="frame" x="0.0" y="0.0" width="116" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxQ-B5-Z6x" customClass="ProjectTrackItemView">
                         <rect key="frame" x="0.0" y="0.0" width="116" height="50"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -25,13 +29,19 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="JxQ-B5-Z6x" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9SM-Cz-EL2"/>
-                <constraint firstAttribute="bottom" secondItem="JxQ-B5-Z6x" secondAttribute="bottom" id="9im-Ql-zc8"/>
-                <constraint firstItem="JxQ-B5-Z6x" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="I6m-FP-SOx"/>
-                <constraint firstAttribute="trailing" secondItem="JxQ-B5-Z6x" secondAttribute="trailing" id="dg2-W0-81y"/>
+                <constraint firstItem="JxQ-B5-Z6x" firstAttribute="width" secondItem="anu-hK-BeE" secondAttribute="width" id="13r-1J-3SY"/>
+                <constraint firstItem="JxQ-B5-Z6x" firstAttribute="centerX" secondItem="anu-hK-BeE" secondAttribute="centerX" id="7hD-2Z-QnB"/>
+                <constraint firstItem="anu-hK-BeE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EFE-yj-RWJ"/>
+                <constraint firstItem="JxQ-B5-Z6x" firstAttribute="height" secondItem="anu-hK-BeE" secondAttribute="height" id="GST-Xs-J69"/>
+                <constraint firstItem="anu-hK-BeE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="crd-ny-Xws"/>
+                <constraint firstAttribute="bottom" secondItem="anu-hK-BeE" secondAttribute="bottom" id="rOc-Qa-tDN"/>
+                <constraint firstItem="JxQ-B5-Z6x" firstAttribute="centerY" secondItem="anu-hK-BeE" secondAttribute="centerY" id="xvV-Ja-5Lp"/>
+                <constraint firstAttribute="trailing" secondItem="anu-hK-BeE" secondAttribute="trailing" id="zUd-Ag-ZHx"/>
             </constraints>
             <size key="customSize" width="116" height="50"/>
             <connections>
+                <outlet property="actionView" destination="anu-hK-BeE" id="3xt-zm-8GJ"/>
+                <outlet property="constraintExpand" destination="7hD-2Z-QnB" id="XG8-tU-jsC"/>
                 <outlet property="item" destination="JxQ-B5-Z6x" id="M3L-Xr-6eC"/>
             </connections>
             <point key="canvasLocation" x="199" y="236"/>

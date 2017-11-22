@@ -24,6 +24,7 @@
     @property (weak, nonatomic) IBOutlet UIView *viewHide;
     @property (weak, nonatomic) IBOutlet UILabel *labelTextHide;
     @property (weak, nonatomic) IBOutlet UIView *viewAction;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintButtonHide;
 
 @end
 
@@ -51,7 +52,7 @@
     self.labelHide.text = NSLocalizedLanguage(@"PLC_HIDE");
     
     [self setUndoLabelTextColor:[UIColor whiteColor]];
-    [self projectHidden:YES];
+    [self itemHidden:YES];
 }
 
 - (void)setUndoLabelTextColor:(UIColor*)color {
@@ -67,7 +68,7 @@
 - (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction {
     
     if (direction == UISwipeGestureRecognizerDirectionLeft) {
-        self.constraintHorizontal.constant = -(self.frame.size.width * 0.75);
+        self.constraintHorizontal.constant = -(self.frame.size.width * 0.8);
     } else {
         self.constraintHorizontal.constant = 0;
     }
@@ -91,13 +92,17 @@
     
 }
 
+- (void)disableHide {
+    _constraintButtonHide.constant = -(self.frame.size.width * _constraintButtonHide.multiplier);
+}
+
 - (void)resetStatus {
     self.buttonTrack.backgroundColor = colorButtonNormal;
     self.buttonShare.backgroundColor = colorButtonNormal;
     self.buttonHide.backgroundColor = colorButtonNormal;
 }
 
-- (void)projectHidden:(BOOL)hidden {
+- (void)itemHidden:(BOOL)hidden {
     self.viewHide.hidden = !hidden;
     self.viewContainer.hidden = hidden;
     self.viewAction.hidden = hidden;

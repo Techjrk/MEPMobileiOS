@@ -26,12 +26,18 @@
 #import "SaveSearchChangeItemView.h"
 #import "CustomActivityIndicatorView.h"
 #import "ListItemCollectionViewCell.h"
+#import "PopupViewController.h"
+#import "NewTrackingListCollectionViewCell.h"
+#import "TrackingListCellCollectionViewCell.h"
+#import "ShareItemCollectionViewCell.h"
+#import "ActionView.h"
 
 #define SEACRCH_TEXTFIELD_TEXT_FONT                     fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 
 #define SEACRCH_PLACEHOLDER_FONT                        fontNameWithSize(FONT_NAME_AWESOME, 14)
 #define SEACRCH_PLACEHOLDER_COLOR                       RGB(255, 255, 255)
 #define SEACRCH_PLACEHOLDER_TEXT                        [NSString stringWithFormat:@"%C", 0xf002]
+#define LABEL_COLOR                                     RGB(34, 34, 34)
 
 typedef enum : NSUInteger {
     SearchSectionRecent = 0,
@@ -45,7 +51,7 @@ typedef enum : NSUInteger {
 } SearchSection;
 
 
-@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate, SearchFilterViewControllerDelegate,RecentSearchCollectionViewCellDelegate>{
+@interface SearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, SeeAllCollectionViewCellDelegate, SearchResultViewDelegate, SaveSearchChangeItemViewDelegate, SearchFilterViewControllerDelegate,RecentSearchCollectionViewCellDelegate, ActionViewDelegate, CustomCollectionViewDelegate, PopupViewControllerDelegate, TrackingListViewDelegate, NewTrackingListCollectionViewCellDelegate>{
     BOOL searchMode;
     BOOL showResult;
     NSMutableDictionary *collectionItems;
@@ -62,6 +68,11 @@ typedef enum : NSUInteger {
     ListViewItemArray *stageItems;
     ListViewItemArray *jurisdictionItems;
     ListViewItemArray *projectTypeItems;
+    NSIndexPath *currentItemIndexPath;
+    NSNumber *currentProjectId;
+    NSNumber *currentCompanyId;
+    ProjectDetailPopupMode popupMode;
+    NSArray *trackItemRecord;
     
 }
 @property (weak, nonatomic) IBOutlet SaveSearchChangeItemView *saveSearchesView;
@@ -148,6 +159,15 @@ typedef enum : NSUInteger {
 
     [_collectionView registerNib:[UINib nibWithNibName:[[SearchResultCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier(SearchSectionResult)];
 
+    UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(userSwipe:)];
+    swipeGestureLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(userSwipe:)];
+    swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.collectionView addGestureRecognizer:swipeGestureLeft];
+    [self.collectionView addGestureRecognizer:swipeGestureRight];
+
     searchMode = NO;
     showResult = NO;
     
@@ -160,6 +180,21 @@ typedef enum : NSUInteger {
         [self.customLoadingIndicator stopAnimating];
     }];
     
+}
+
+- (void)userSwipe:(UISwipeGestureRecognizer*)sender {
+    CGPoint point = [sender locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+    
+    if (indexPath != nil) {
+        UICollectionViewCell *cell = (UICollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        
+        if( [cell respondsToSelector:@selector(actionView)]){
+            ActionView * actionView = [cell performSelector:@selector(actionView)];
+            [actionView swipeExpand:sender.direction];
+        }
+
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -382,7 +417,16 @@ typedef enum : NSUInteger {
             NSArray *items = result[@"results"];
             
             SearchProjectCollectionViewCell *cellItem = (SearchProjectCollectionViewCell*)cell;
-            [cellItem setInfo:items[indexPath.row ]];
+            NSMutableDictionary *project = items[indexPath.row];
+            [cellItem setInfo:project];
+            [cellItem.actionView swipeExpand:UISwipeGestureRecognizerDirectionRight];
+            [cellItem.actionView itemHidden:NO];
+            if (project[@"IS_HIDDEN"]) {
+                [cellItem.actionView itemHidden:[project[@"IS_HIDDEN"] boolValue]];
+            }
+            
+            [cellItem.actionView setUndoLabelTextColor: LABEL_COLOR];
+            cellItem.actionViewDelegate = self;
             
             break;
         }
@@ -391,9 +435,19 @@ typedef enum : NSUInteger {
 
             NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
             NSArray *items = result[@"results"];
+            NSMutableDictionary *company = items[indexPath.row];
             
             SearchCompanyCollectionViewCell *cellItem = (SearchCompanyCollectionViewCell*)cell;
-            [cellItem setInfo:items[indexPath.row ]];
+            [cellItem setInfo:company];
+            [cellItem.actionView disableHide];
+            [cellItem.actionView swipeExpand:UISwipeGestureRecognizerDirectionRight];
+            [cellItem.actionView itemHidden:NO];
+            if (company[@"IS_HIDDEN"]) {
+                [cellItem.actionView itemHidden:[company[@"IS_HIDDEN"] boolValue]];
+            }
+            
+            [cellItem.actionView setUndoLabelTextColor: LABEL_COLOR];
+            cellItem.actionViewDelegate = self;
 
             break;
         }
@@ -1307,6 +1361,604 @@ typedef enum : NSUInteger {
 
 - (void)endRequestRecentSearchView {
     [self.customLoadingIndicator stopAnimating];
+}
+
+#pragma mark - Project Tracking List
+
+- (void)displayProjectTrackingList:(id)sender {
+    
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+    NSArray *items = result[@"results"];
+    
+    NSMutableDictionary *project = items[currentItemIndexPath.row];
+    currentProjectId = project[@"id"];
+    
+    popupMode = ProjectDetailPopupModeTrack;
+    
+    [[DataManager sharedManager] projectAvailableTrackingList:currentProjectId success:^(id object) {
+        
+        trackItemRecord = object;
+        
+        if (trackItemRecord.count>0) {
+            PopupViewController *controller = [PopupViewController new];
+            
+            SearchProjectCollectionViewCell *cell = (SearchProjectCollectionViewCell*)sender;
+            
+            CGRect rect = [controller getViewPositionFromViewController:[cell.actionView trackButton] controller:self];
+            controller.popupRect = rect;
+            controller.popupWidth = 0.98;
+            controller.isGreyedBackground = YES;
+            controller.customCollectionViewDelegate = self;
+            controller.popupViewControllerDelegate = self;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+        } else {
+            
+            [self PopupViewControllerDismissed];
+            
+            [[DataManager sharedManager] promptMessage:NSLocalizedLanguage(@"NO_TRACKING_LIST")];
+        }
+        
+    } failure:^(id object) {
+        
+    }];
+}
+
+- (void)displayCompanyTrackingList:(id)sender {
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
+    NSArray *items = result[@"results"];
+    
+    NSMutableDictionary *company = items[currentItemIndexPath.row];
+    currentCompanyId = company[@"id"];
+
+    popupMode = ProjectDetailPopupModeTrack;
+    [[DataManager sharedManager] companyAvailableTrackingList:currentCompanyId success:^(id object) {
+        
+        trackItemRecord = object;
+        PopupViewController *controller = [PopupViewController new];
+        SearchCompanyCollectionViewCell *cell = (SearchCompanyCollectionViewCell*)sender;
+        
+        CGRect rect = [controller getViewPositionFromViewController:[cell.actionView trackButton] controller:self];
+        controller.popupRect = rect;
+        controller.popupWidth = 0.98;
+        controller.isGreyedBackground = YES;
+        controller.customCollectionViewDelegate = self;
+        controller.popupViewControllerDelegate = self;
+        controller.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:controller animated:NO completion:nil];
+        
+    } failure:^(id object) {
+        
+    }];
+
+}
+
+#pragma mark - ActionView
+
+- (NSIndexPath*)indexPathForSender:(id)sender {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:(UICollectionViewCell*)sender];
+    return indexPath;
+}
+
+- (void)didSelectItem:(id)sender {
+    NSIndexPath *indexPath = [self indexPathForSender:sender];
+    //[self.associatedProjectDelegate tappedAssociatedProject:collectionItems[indexPath.row]];
+}
+
+- (void)didTrackItem:(id)sender {
+    currentItemIndexPath = [self indexPathForSender:sender];
+    
+    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+    
+    switch (sectionType) {
+        case SearchSectionProjects: {
+            [self displayProjectTrackingList:sender];
+            break;
+        }
+        case SearchSectionCompanies: {
+            [self displayCompanyTrackingList:sender];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)shareProject:(id)sender {
+
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+    NSArray *items = result[@"results"];
+    
+    SearchProjectCollectionViewCell *cell = (SearchProjectCollectionViewCell*)sender;
+    currentItemIndexPath = [self indexPathForSender:sender];
+    NSDictionary *project = items[currentItemIndexPath.row];
+    currentProjectId = project[@"id"];
+    
+    popupMode = ProjectDetailPopupModeShare;
+    PopupViewController *controller = [PopupViewController new];
+    CGRect rect = [controller getViewPositionFromViewController:[cell.actionView shareButton] controller:self];
+    controller.popupRect = rect;
+    controller.popupWidth = 0.98;
+    controller.isGreyedBackground = YES;
+    controller.customCollectionViewDelegate = self;
+    controller.popupViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
+
+}
+
+- (void)shareCompany:(id)sender {
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+    NSArray *items = result[@"results"];
+    
+    SearchCompanyCollectionViewCell *cell = (SearchCompanyCollectionViewCell*)sender;
+    currentItemIndexPath = [self indexPathForSender:sender];
+    NSDictionary *company = items[currentItemIndexPath.row];
+    currentProjectId = company[@"id"];
+    
+    popupMode = ProjectDetailPopupModeShare;
+    PopupViewController *controller = [PopupViewController new];
+    CGRect rect = [controller getViewPositionFromViewController:[cell.actionView shareButton] controller:self];
+    controller.popupRect = rect;
+    controller.popupWidth = 0.98;
+    controller.isGreyedBackground = YES;
+    controller.customCollectionViewDelegate = self;
+    controller.popupViewControllerDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
+
+}
+
+- (void)didShareItem:(id)sender {
+    currentItemIndexPath = [self indexPathForSender:sender];
+    
+    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+    
+    switch (sectionType) {
+        case SearchSectionProjects: {
+            [self shareProject:sender];
+            break;
+        }
+        case SearchSectionCompanies: {
+            [self shareCompany:sender];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)didHideProject:(id)sender {
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+    NSMutableArray *items = result[@"results"];
+    
+    currentItemIndexPath = [self indexPathForSender:sender];
+    NSMutableDictionary *project = [items[currentItemIndexPath.row] mutableCopy];
+    currentProjectId = project[@"id"];
+    
+    [[DataManager sharedManager] hideProject:currentProjectId success:^(id object) {
+        project[@"IS_HIDDEN"] = @YES;
+        items[currentItemIndexPath.row] = project;
+        [[DataManager sharedManager] saveContext];
+        [self.collectionView reloadData];
+    } failure:^(id object) {
+    }];
+}
+
+- (void)didHideItem:(id)sender {
+    currentItemIndexPath = [self indexPathForSender:sender];
+    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+    
+    switch (sectionType) {
+        case SearchSectionProjects: {
+            [self didHideProject:sender];
+            break;
+        }
+        case SearchSectionCompanies: {
+            break;
+        }
+        default:
+            break;
+    }
+
+}
+
+- (void)didExpand:(id)sender {
+    NSArray *cells = [self.collectionView visibleCells];
+    
+    for (UICollectionViewCell *cell in cells) {
+        if (![cell isEqual:sender]) {
+            
+            if( [cell respondsToSelector:@selector(actionView)]){
+                ActionView * actionView = [cell performSelector:@selector(actionView)];
+                [actionView swipeExpand:UISwipeGestureRecognizerDirectionRight];
+            }
+        }
+    }
+    
+}
+
+- (void)unhideProject:(id)sender {
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+    NSArray *items = result[@"results"];
+    currentItemIndexPath = [self indexPathForSender:sender];
+    NSMutableDictionary *project = items[currentItemIndexPath.row];
+    currentProjectId = project[@"id"];
+    
+    [[DataManager sharedManager] unhideProject:currentProjectId success:^(id object) {
+        project[@"IS_HIDDEN"] = @NO;
+        [[DataManager sharedManager] saveContext];
+        [self.collectionView reloadData];
+        
+    } failure:^(id object) {
+    }];
+}
+
+- (void)undoHide:(id)sender {
+    currentItemIndexPath = [self indexPathForSender:sender];
+    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+    
+    switch (sectionType) {
+        case SearchSectionProjects: {
+            [self unhideProject:sender];
+            break;
+        }
+        case SearchSectionCompanies: {
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+#pragma mark - CustomCollectionView Delegate
+    
+- (void)collectionViewItemClassRegister:(id)customCollectionView {
+    
+    CustomCollectionView *collectionView = (CustomCollectionView*)customCollectionView;
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            [collectionView registerCollectionItemClass:[NewTrackingListCollectionViewCell class]];
+            [collectionView registerCollectionItemClass:[TrackingListCellCollectionViewCell class]];
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            
+            [collectionView registerCollectionItemClass:[ShareItemCollectionViewCell class]];
+            break;
+        }
+    }
+}
+
+- (UICollectionViewCell*)collectionViewItemClassDeque:(NSIndexPath*)indexPath collectionView:(UICollectionView*)collectionView {
+    
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            
+            if (indexPath.row == 0) {
+                return [collectionView dequeueReusableCellWithReuseIdentifier:[[TrackingListCellCollectionViewCell class] description]forIndexPath:indexPath];
+            } else {
+                return [collectionView dequeueReusableCellWithReuseIdentifier:[[NewTrackingListCollectionViewCell class] description]forIndexPath:indexPath];
+            }
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare :{
+            return [collectionView dequeueReusableCellWithReuseIdentifier:[[ShareItemCollectionViewCell class] description]forIndexPath:indexPath];
+            break;
+        };
+            
+    }
+    
+    return nil;
+}
+
+- (NSInteger)collectionViewItemCount {
+    
+    return popupMode == ProjectDetailPopupModeTrack?2:2;
+    
+}
+
+- (NSInteger)collectionViewSectionCount {
+    return 1;
+}
+
+- (CGSize)collectionViewItemSize:(UIView*)view indexPath:(NSIndexPath*)indexPath cargo:(id)cargo {
+    
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            CGFloat defaultHeight = kDeviceHeight * 0.08;
+            if (indexPath.row == 0) {
+                
+                CGFloat cellHeight = kDeviceHeight * 0.06;
+                defaultHeight = defaultHeight+ ((trackItemRecord.count<4?trackItemRecord.count:4.5)*cellHeight);
+            }
+            
+            return CGSizeMake(kDeviceWidth * 0.98, defaultHeight);
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            return CGSizeMake(kDeviceWidth * 0.98, kDeviceHeight * 0.075);
+            break;
+        }
+            
+    }
+    
+    return CGSizeZero;
+}
+
+- (void)PopupViewControllerDismissed {
+    UICollectionViewCell *cell = (UICollectionViewCell*)[self.collectionView cellForItemAtIndexPath:currentItemIndexPath];
+    if(cell){
+        if( [cell respondsToSelector:@selector(actionView)]){
+            ActionView * actionView = [cell performSelector:@selector(actionView)];
+            [actionView resetStatus];
+        }
+    }
+}
+
+- (void)didSelectShareProject:(NSIndexPath*)indexPath {
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_PROJECT];
+    NSArray *items = result[@"results"];
+    
+    NSDictionary *dict = items[currentItemIndexPath.row];
+    NSNumber *recordId = dict[@"id"];
+    
+    if (popupMode == ProjectDetailPopupModeShare) {
+        NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlProjectDetailShare, (long)recordId.integerValue]];
+        
+        NSString *dodgeNumber = dict[@"dodgeNumber"];
+        
+        if (indexPath.row == 0) {
+            NSString *html = [NSString stringWithFormat:@"<HTML><BODY>DODGE NUMBER :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", dodgeNumber, url];
+            [[DataManager sharedManager] sendEmail:html];
+            
+        } else {
+            
+            NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_PROJECT"), dodgeNumber];
+            [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
+            
+        }
+    }
+}
+
+- (void)didSelectShareCompany:(NSIndexPath*)indexPath {
+    NSMutableDictionary *result = collectionItems[SEARCH_RESULT_COMPANY];
+    NSArray *items = result[@"results"];
+    
+    NSMutableDictionary *company = items[currentItemIndexPath.row];
+    currentCompanyId = company[@"id"];
+    
+    NSString *url = [kHost stringByAppendingString:[NSString stringWithFormat:kUrlCompanyDetailShare, (long)currentCompanyId.integerValue]];
+    
+    if (indexPath.row == 0) {
+        
+        NSString *html = [NSString stringWithFormat:@"<HTML><BODY>COMPANY NAME :<BR>%@ <BR>WEB LINK : <BR>%@ </BODY></HTML>", company[@"name"], url];
+        [[DataManager sharedManager] sendEmail:html];
+        
+    } else {
+        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"COPY_TO_CLIPBOARD_COMPANY"), company[@"name"]];
+        [[DataManager sharedManager] copyTextToPasteBoard:url withMessage:message];
+        
+    }
+
+}
+
+- (void)collectionViewDidSelectedItem:(NSIndexPath*)indexPath {
+    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+    
+    switch (sectionType) {
+        case SearchSectionProjects: {
+            [self didSelectShareProject:indexPath];
+            break;
+        }
+        case SearchSectionCompanies: {
+            [self didSelectShareCompany:indexPath];
+            break;
+        }
+        default:
+            break;
+    }
+
+}
+
+- (void)collectionViewPrepareItemForUse:(UICollectionViewCell*)cell indexPath:(NSIndexPath*)indexPath {
+    
+    switch (popupMode) {
+            
+        case ProjectDetailPopupModeTrack: {
+            
+            if (indexPath.row == 0) {
+                TrackingListCellCollectionViewCell *cellItem = (TrackingListCellCollectionViewCell*)cell;
+                cellItem.headerDisabled = YES;
+                cellItem.trackingListViewDelegate = self;
+                [cellItem setInfo:trackItemRecord withTitle:NSLocalizedLanguage(@"DROPDOWNPROJECTLIST_TITLE_TRACKING_LABEL_TEXT")];
+            } else {
+                NewTrackingListCollectionViewCell *cellItem = (NewTrackingListCollectionViewCell*)cell;
+                cellItem.labelTitle.text = NSLocalizedLanguage(@"NTL_TEXT");
+                [cellItem.labelTitle sizeToFit];
+                cellItem.newtrackingListCollectionViewCellDelegate = self;
+            }
+            
+            break;
+        }
+            
+        case ProjectDetailPopupModeShare: {
+            
+            ShareItemCollectionViewCell *cellItem = (ShareItemCollectionViewCell*)cell;
+            [cellItem setShareItem:indexPath.row == 0?ShareItemEmail:ShareItemLink];
+            
+            break;
+        }
+            
+    }
+    
+}
+
+- (void)trackProjectItem:(NSIndexPath*)indexPath {
+    NSDictionary *dict = trackItemRecord[indexPath.row];
+    [self.customLoadingIndicator startAnimating];
+    
+    [[DataManager sharedManager] projectAddTrackingList:dict[@"id"] recordId:currentProjectId success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
+        [self PopupViewControllerDismissed];
+        [self.customLoadingIndicator stopAnimating];
+        
+    } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+        
+    }];
+}
+
+- (void)trackCompanyItem:(NSIndexPath*)indexPath {
+    NSDictionary *dict = trackItemRecord[indexPath.row];
+    [self.customLoadingIndicator startAnimating];
+
+    [[DataManager sharedManager] companyAddTrackingList:dict[@"id"] recordId:currentCompanyId success:^(id object) {
+        [[DataManager sharedManager] dismissPopup];
+        [self PopupViewControllerDismissed];
+        [self.customLoadingIndicator stopAnimating];
+    } failure:^(id object) {
+        [self.customLoadingIndicator stopAnimating];
+    }];
+
+}
+
+- (void)tappedTrackingListItem:(id)object view:(UIView *)view {
+    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+    
+    switch (sectionType) {
+        case SearchSectionProjects: {
+            [self trackProjectItem:object];
+            break;
+        }
+        case SearchSectionCompanies: {
+            [self trackCompanyItem:object];
+            break;
+        }
+        default:
+            break;
+    }
+
+}
+
+#pragma mark - Project List Delegate and Method
+
+-(void)tappedDismissedProjectTrackList{
+    [self PopupViewControllerDismissed];
+}
+
+#pragma mark - NewTrackingListCollectionViewCellDelegate
+
+- (void)createNewProjectTrackingList:(UITextField*)alertTextField {
+    [[DataManager sharedManager] createProjectTrackingList:currentProjectId trackingName:alertTextField.text success:^(id object) {
+        [self PopupViewControllerDismissed];
+        
+        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"NTL_ADDED"), alertTextField.text];
+        
+        [[DataManager sharedManager] promptMessage:message];
+        
+        UICollectionViewCell *cell = (UICollectionViewCell*)[self.collectionView cellForItemAtIndexPath:currentItemIndexPath];
+        if(cell){
+            if([cell respondsToSelector:@selector(resetStatus)]){
+                [cell performSelector:@selector(resetStatus)];
+            }
+        }
+        
+        [self.customLoadingIndicator stopAnimating];
+        
+    } failure:^(id object) {
+        [self PopupViewControllerDismissed];
+        [self.customLoadingIndicator stopAnimating];
+    }];
+}
+
+- (void)createNewCompanyTrackingList:(UITextField*)alertTextField {
+    [[DataManager sharedManager] createCompanyTrackingList:currentCompanyId trackingName:alertTextField.text success:^(id object) {
+        [self PopupViewControllerDismissed];
+        
+        NSString *message = [NSString stringWithFormat:NSLocalizedLanguage(@"NTL_COMPANYADDED"), alertTextField.text];
+        
+        [[DataManager sharedManager] promptMessage:message];
+        
+        UICollectionViewCell *cell = (UICollectionViewCell*)[self.collectionView cellForItemAtIndexPath:currentItemIndexPath];
+        if(cell){
+            if([cell respondsToSelector:@selector(resetStatus)]){
+                [cell performSelector:@selector(resetStatus)];
+            }
+        }
+        
+        [self.customLoadingIndicator stopAnimating];
+        
+    } failure:^(id object) {
+        [self PopupViewControllerDismissed];
+        [self.customLoadingIndicator stopAnimating];
+    }];
+}
+
+- (void)getNewTrackingList {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedLanguage(@"NTL_TRACKINGNAME") message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = @"";
+        textField.placeholder = NSLocalizedLanguage(@"NTL_NEWNAME");
+    }];
+    
+    UIAlertAction *actionAccept = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"PROJECT_FILTER_LOCATION_ACCEPT") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        for (int i=0; i<alert.textFields.count; i++) {
+            UITextField *alertTextField = alert.textFields[i];
+            
+            if (alertTextField) {
+                if (alertTextField.text.length>0) {
+                    [self.customLoadingIndicator startAnimating];
+                    
+                    SearchSection sectionType = (SearchSection)currentItemIndexPath.section;
+                    
+                    switch (sectionType) {
+                        case SearchSectionProjects: {
+                            [self createNewProjectTrackingList:alertTextField];
+                            break;
+                        }
+                        case SearchSectionCompanies: {
+                            [self createNewCompanyTrackingList:alertTextField];
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+
+                    
+                }
+            }
+        }
+    }];
+    
+    [alert addAction:actionAccept];
+    
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:NSLocalizedLanguage(@"NTL_CANCEL") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:actionCancel];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
+
+-(void)didTappedNewTrackingList:(id)sender {
+    
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self PopupViewControllerDismissed];
+        [self getNewTrackingList];
+    }];
 }
 
 @end

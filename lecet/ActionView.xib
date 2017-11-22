@@ -15,6 +15,7 @@
                 <outlet property="buttonHide" destination="FSW-3X-ueh" id="ax6-ef-Po9"/>
                 <outlet property="buttonShare" destination="lrG-nD-dhP" id="03g-Vt-B0p"/>
                 <outlet property="buttonTrack" destination="uLu-AQ-EMX" id="5M5-aV-KmZ"/>
+                <outlet property="constraintButtonHide" destination="Vk1-Vt-Nvv" id="ydH-vf-nGr"/>
                 <outlet property="labelHide" destination="J6o-EL-XpV" id="Es3-vi-6nj"/>
                 <outlet property="labelShare" destination="O0G-r6-se5" id="j1I-3X-2lr"/>
                 <outlet property="labelTextHide" destination="MgV-Mk-9TH" id="Q6r-Dv-GGf"/>
@@ -67,20 +68,20 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrG-nD-dhP">
-                            <rect key="frame" x="86" y="0.0" width="81" height="91"/>
+                            <rect key="frame" x="86.5" y="0.0" width="80.5" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="tappedButtonShare:" destination="-1" eventType="touchUpInside" id="cke-KQ-73o"/>
                             </connections>
                         </button>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thg-PF-a1l">
-                            <rect key="frame" x="86.5" y="23.5" width="81" height="45.5"/>
+                            <rect key="frame" x="87" y="23.5" width="80.5" height="45.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Share" translatesAutoresizingMaskIntoConstraints="NO" id="eSt-rc-GWS">
                                     <rect key="frame" x="26.5" y="-2.5" width="28" height="27.5"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0G-r6-se5">
-                                    <rect key="frame" x="0.0" y="25" width="81" height="21"/>
+                                    <rect key="frame" x="0.0" y="25" width="80.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -98,11 +99,11 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkV-WZ-3oF">
-                            <rect key="frame" x="83" y="0.0" width="3.5" height="91"/>
+                            <rect key="frame" x="83.5" y="0.0" width="3.5" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLu-AQ-EMX">
-                            <rect key="frame" x="2" y="0.0" width="80.5" height="91"/>
+                            <rect key="frame" x="2.5" y="0.0" width="80.5" height="91"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                             <connections>
@@ -110,10 +111,10 @@
                             </connections>
                         </button>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ns8-yD-OOm">
-                            <rect key="frame" x="2.5" y="23" width="80.5" height="45.5"/>
+                            <rect key="frame" x="3" y="23" width="80.5" height="45.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Track" translatesAutoresizingMaskIntoConstraints="NO" id="eQK-hX-tfn">
-                                    <rect key="frame" x="28" y="-3" width="24" height="28"/>
+                                    <rect key="frame" x="27.5" y="-3" width="25" height="28"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrn-vD-Km7">
                                     <rect key="frame" x="0.0" y="25" width="80.5" height="21"/>
@@ -140,11 +141,11 @@
                         <constraint firstItem="uLu-AQ-EMX" firstAttribute="top" secondItem="qDC-xz-diq" secondAttribute="top" id="1My-9a-lgp"/>
                         <constraint firstItem="CDG-4C-xBX" firstAttribute="width" secondItem="FSW-3X-ueh" secondAttribute="width" id="4en-YY-6L7"/>
                         <constraint firstItem="FSW-3X-ueh" firstAttribute="leading" secondItem="91B-cb-utH" secondAttribute="trailing" id="50w-gP-1Sc"/>
+                        <constraint firstItem="lrG-nD-dhP" firstAttribute="width" secondItem="qDC-xz-diq" secondAttribute="width" multiplier="0.32" id="5hp-ct-t09"/>
                         <constraint firstItem="QkV-WZ-3oF" firstAttribute="width" secondItem="91B-cb-utH" secondAttribute="width" id="9fv-sC-3nA"/>
                         <constraint firstItem="thg-PF-a1l" firstAttribute="centerY" secondItem="lrG-nD-dhP" secondAttribute="centerY" id="Ejb-vg-Ufc"/>
                         <constraint firstItem="lrG-nD-dhP" firstAttribute="top" secondItem="qDC-xz-diq" secondAttribute="top" id="HFX-bO-Bdy"/>
                         <constraint firstItem="91B-cb-utH" firstAttribute="top" secondItem="qDC-xz-diq" secondAttribute="top" id="I3P-da-QbF"/>
-                        <constraint firstItem="lrG-nD-dhP" firstAttribute="width" secondItem="FSW-3X-ueh" secondAttribute="width" id="Ivq-qG-GvG"/>
                         <constraint firstItem="ns8-yD-OOm" firstAttribute="centerX" secondItem="uLu-AQ-EMX" secondAttribute="centerX" id="Lg7-NX-GLe"/>
                         <constraint firstItem="ns8-yD-OOm" firstAttribute="centerY" secondItem="uLu-AQ-EMX" secondAttribute="centerY" id="MQI-uq-Vkt"/>
                         <constraint firstAttribute="bottom" secondItem="lrG-nD-dhP" secondAttribute="bottom" id="QXt-FM-0fp"/>

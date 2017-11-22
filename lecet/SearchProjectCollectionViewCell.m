@@ -16,7 +16,7 @@
 #define LABEL_LOCATION_FONT                 fontNameWithSize(FONT_NAME_LATO_REGULAR, 12)
 #define LABEL_LOCATION_COLOR                RGB(159, 164, 166)
 
-@interface SearchProjectCollectionViewCell()<MKMapViewDelegate>{
+@interface SearchProjectCollectionViewCell()<MKMapViewDelegate,ActionViewDelegate>{
     BOOL isUserProject;
 }
 @property (weak, nonatomic) IBOutlet UIView *lineView;
@@ -25,7 +25,9 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconUpdateMarker;
 @property (strong, nonatomic) NSNumber *projectId;
-
+@property (strong, nonatomic)id<ActionViewDelegate> cellDelegate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintExpand;
+@property (weak, nonatomic) IBOutlet UIView *item;
 @end
 
 @implementation SearchProjectCollectionViewCell
@@ -46,6 +48,9 @@
 }
 
 - (void)setInfo:(id)info {
+    self.actionView.constraintHorizontal = self.contraintExpand;
+    self.actionView.viewContainer = self.item;
+    
     NSDictionary *item = info;
     
     self.iconUpdateMarker.hidden = YES;
@@ -134,6 +139,51 @@
     
     return userAnnotationView;
     
+}
+
+#pragma mark - Delegate
+
+- (void)setActionViewDelegate:(id<ActionViewDelegate>)actionViewDelegate {
+    self.actionView.actionViewDelegate = self;
+    self.cellDelegate = actionViewDelegate;
+}
+
+#pragma mark - ActionViewDelegate
+
+- (void)didSelectItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didSelectItem:self];
+    }
+}
+
+- (void)didTrackItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didTrackItem:self];
+    }
+}
+
+- (void)didShareItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didShareItem:self];
+    }
+}
+
+- (void)didHideItem:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didHideItem:self];
+    }
+}
+
+- (void)didExpand:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate didExpand:self];
+    }
+}
+
+- (void)undoHide:(id)sender {
+    if(self.cellDelegate) {
+        [self.cellDelegate undoHide:self];
+    }
 }
 
 @end

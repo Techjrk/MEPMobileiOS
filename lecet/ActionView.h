@@ -25,9 +25,10 @@
 @property (strong, nonatomic) NSLayoutConstraint *constraintHorizontal;
 @property (strong, nonatomic) UIView *viewContainer;
 - (void)swipeExpand:(UISwipeGestureRecognizerDirection)direction;
-- (void)projectHidden:(BOOL)hidden;
+- (void)itemHidden:(BOOL)hidden;
 - (UIView*)trackButton;
 - (UIView*)shareButton;
 - (void)resetStatus;
 - (void)setUndoLabelTextColor:(UIColor*)color;
+- (void)disableHide;
 @end
