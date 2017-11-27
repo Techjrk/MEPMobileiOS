@@ -1494,7 +1494,7 @@ typedef enum : NSUInteger {
     SearchCompanyCollectionViewCell *cell = (SearchCompanyCollectionViewCell*)sender;
     currentItemIndexPath = [self indexPathForSender:sender];
     NSDictionary *company = items[currentItemIndexPath.row];
-    currentProjectId = company[@"id"];
+    currentCompanyId = company[@"id"];
     
     popupMode = ProjectDetailPopupModeShare;
     PopupViewController *controller = [PopupViewController new];

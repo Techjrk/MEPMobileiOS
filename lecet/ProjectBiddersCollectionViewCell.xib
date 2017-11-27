@@ -1,34 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProjectBiddersCollectionViewCell">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProjectBiddersCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="321" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="321" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCE-4D-ucM">
+                        <rect key="frame" x="0.0" y="0.0" width="321" height="50"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxV-Vj-9hH">
+                                <rect key="frame" x="311.5" y="0.0" width="9.5" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fxV-Vj-9hH" firstAttribute="width" secondItem="jCE-4D-ucM" secondAttribute="width" multiplier="0.03" id="Sl1-fd-pMx"/>
+                            <constraint firstAttribute="bottom" secondItem="fxV-Vj-9hH" secondAttribute="bottom" id="eQu-s0-Twu"/>
+                            <constraint firstItem="fxV-Vj-9hH" firstAttribute="top" secondItem="jCE-4D-ucM" secondAttribute="top" id="jdV-j4-4nf"/>
+                            <constraint firstAttribute="trailing" secondItem="fxV-Vj-9hH" secondAttribute="trailing" id="m9A-qH-fLk"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZO-LB-nGi" customClass="ActionView">
+                        <rect key="frame" x="6.5" y="3" width="305" height="45"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWo-TO-EeR" customClass="CustomEntryField">
                         <rect key="frame" x="0.0" y="0.0" width="321" height="50"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-nc-q7S">
+                        <rect key="frame" x="0.0" y="49" width="321" height="1"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="yV5-uw-5O3"/>
+                        </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="mWo-TO-EeR" secondAttribute="trailing" id="Jbu-98-XOM"/>
-                <constraint firstItem="mWo-TO-EeR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LpE-0W-KYx"/>
-                <constraint firstItem="mWo-TO-EeR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eJ4-2U-V1w"/>
-                <constraint firstAttribute="bottom" secondItem="mWo-TO-EeR" secondAttribute="bottom" id="xoW-UL-8er"/>
+                <constraint firstAttribute="bottom" secondItem="BhU-nc-q7S" secondAttribute="bottom" id="0b5-fi-zCC"/>
+                <constraint firstItem="mWo-TO-EeR" firstAttribute="width" secondItem="jCE-4D-ucM" secondAttribute="width" id="3z4-Ik-fBh"/>
+                <constraint firstItem="mWo-TO-EeR" firstAttribute="centerX" secondItem="jCE-4D-ucM" secondAttribute="centerX" id="4IE-k4-BGh"/>
+                <constraint firstItem="mWo-TO-EeR" firstAttribute="height" secondItem="jCE-4D-ucM" secondAttribute="height" id="5r7-q6-qf7"/>
+                <constraint firstAttribute="trailing" secondItem="BhU-nc-q7S" secondAttribute="trailing" id="OkC-J3-ras"/>
+                <constraint firstItem="mWo-TO-EeR" firstAttribute="centerY" secondItem="jCE-4D-ucM" secondAttribute="centerY" id="PZ5-LX-pNF"/>
+                <constraint firstAttribute="bottom" secondItem="jCE-4D-ucM" secondAttribute="bottom" id="Vvm-3X-xnI"/>
+                <constraint firstItem="3ZO-LB-nGi" firstAttribute="width" secondItem="jCE-4D-ucM" secondAttribute="width" multiplier="0.95" id="YUm-Li-OuF"/>
+                <constraint firstItem="jCE-4D-ucM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ck4-q1-VL7"/>
+                <constraint firstItem="jCE-4D-ucM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rlU-xM-GZM"/>
+                <constraint firstItem="BhU-nc-q7S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sdA-Ns-IjA"/>
+                <constraint firstItem="fxV-Vj-9hH" firstAttribute="leading" secondItem="3ZO-LB-nGi" secondAttribute="trailing" id="sk2-JW-aJo"/>
+                <constraint firstItem="3ZO-LB-nGi" firstAttribute="centerY" secondItem="jCE-4D-ucM" secondAttribute="centerY" id="uPj-6L-UZC"/>
+                <constraint firstItem="3ZO-LB-nGi" firstAttribute="height" secondItem="jCE-4D-ucM" secondAttribute="height" multiplier="0.9" id="uzp-jh-Dh4"/>
+                <constraint firstAttribute="trailing" secondItem="jCE-4D-ucM" secondAttribute="trailing" id="yIt-Rh-mN3"/>
             </constraints>
             <size key="customSize" width="321" height="50"/>
             <connections>
+                <outlet property="actionView" destination="3ZO-LB-nGi" id="Fu4-m8-kUe"/>
+                <outlet property="contraintExpand" destination="4IE-k4-BGh" id="LCk-K1-VVE"/>
                 <outlet property="fieldItem" destination="mWo-TO-EeR" id="GLB-2Y-nLd"/>
+                <outlet property="lineView" destination="BhU-nc-q7S" id="mfR-tR-194"/>
             </connections>
             <point key="canvasLocation" x="261.5" y="308"/>
         </collectionViewCell>

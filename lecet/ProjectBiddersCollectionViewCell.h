@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActionView.h"
 
 @interface ProjectBiddersCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) id<ActionViewDelegate> actionViewDelegate;
+@property (weak, nonatomic) IBOutlet ActionView *actionView;
 - (void)setItem:(NSString*)title line1:(NSString*)line1 line2:(NSString*)line2;
 @end

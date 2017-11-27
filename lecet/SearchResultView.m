@@ -672,7 +672,7 @@
     CompanyTrackingCollectionViewCell *cell = (CompanyTrackingCollectionViewCell*)sender;
     currentItemIndexPath = [self indexPathForSender:sender];
     NSDictionary *company = collectionItemsCompanies[currentItemIndexPath.row];
-    currentProjectId = company[@"id"];
+    currentCompanyId = company[@"id"];
     
     popupMode = ProjectDetailPopupModeShare;
     PopupViewController *controller = [PopupViewController new];

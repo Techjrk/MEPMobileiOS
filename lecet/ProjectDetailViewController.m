@@ -647,6 +647,10 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (UIViewController *)projectBidderViewController {
+    return self;
+}
+
 #pragma mark - CustomCollectionView Delegate
 
 - (void)collectionViewItemClassRegister:(id)customCollectionView {
