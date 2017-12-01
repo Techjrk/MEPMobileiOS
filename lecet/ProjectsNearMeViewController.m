@@ -116,6 +116,12 @@ float MetersToMiles(float meters) {
 
 - (void)viewDidAppear:(BOOL)animated {
     [self viewWasLaunced];
+    
+    if (isListViewHidden) {
+        [self removeHiddenProjectsFromList];
+        [self addItemsToMap:nil];
+    }
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -206,7 +212,14 @@ float MetersToMiles(float meters) {
                     
                 }
                 
-                [mapItems addObjectsFromArray:result];
+                NSMutableArray *array = [result mutableCopy];
+                for (NSDictionary *itemArray in array) {
+                    NSMutableDictionary *mutableItemArray = [itemArray mutableCopy];
+                    mutableItemArray[@"IS_HIDDEN"] = @NO;
+                    [mapItems addObject:mutableItemArray];
+                }
+                
+                //[mapItems addObjectsFromArray:result];
                 _mapView.delegate = self;
                 [self addItemsToMap:nil];
                 
@@ -340,6 +353,43 @@ float MetersToMiles(float meters) {
     [_locListButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     
     _projectNearMeListView.hidden = isListViewHidden;
+    
+    if (isListViewHidden) {
+        [self removeHiddenProjectsFromList];
+        [self addItemsToMap:nil];
+    }
+}
+
+- (void)removeHiddenProjectsFromList {
+    
+    NSMutableArray *hiddenProjectIndex = [NSMutableArray new];
+    
+    for (int i=0; i < mapItems.count; i++){
+    
+        NSDictionary *item = mapItems[i];
+        
+        if (item[@"IS_HIDDEN"]) {
+            NSNumber *isHidden = item[@"IS_HIDDEN"];
+            if (isHidden.boolValue) {
+                [hiddenProjectIndex addObject:[NSNumber numberWithInteger:i]];
+            }
+        }
+    }
+    
+    BOOL shouldReloadMap = NO;
+    for (NSNumber *number in hiddenProjectIndex) {
+        [mapItems removeObjectAtIndex:number.integerValue];
+        
+        shouldReloadMap = YES;
+    }
+    
+    if (shouldReloadMap) {
+        _mapView.delegate = nil;
+        [_mapView removeAnnotations:_mapView.annotations];
+    }
+
+    _mapView.delegate = self;
+
 }
     
 #pragma mark - Map Routines
@@ -851,6 +901,7 @@ float MetersToMiles(float meters) {
     [_mapView removeAnnotations:_mapView.annotations];
     _mapView.delegate = self;
     
+    [self removeHiddenProjectsFromList];
     [self addItemsToMap:filter[@"filter"][@"searchFilter"]];
 }
 

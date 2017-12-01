@@ -100,11 +100,13 @@
     collectionItemsPreBid = [NSMutableArray new];
     collectionItemsPostBid = [NSMutableArray new];
     
-    for (NSDictionary *dicInfo in info) {
+    for (NSMutableDictionary *dicInfo in info) {
         NSDictionary *projectStage = dicInfo[@"projectStage"];
         
-        NSMutableDictionary *mutableDict = [dicInfo mutableCopy];
-        mutableDict[@"IS_HIDDEN"] = @(NO);
+        NSMutableDictionary *mutableDict = dicInfo;
+        
+        //NSMutableDictionary *mutableDict = [dicInfo mutableCopy];
+        //mutableDict[@"IS_HIDDEN"] = @(NO);
         if (projectStage != nil) {
             NSNumber *bidId = projectStage[@"parentId"];
             if (bidId.integerValue != 102) {
