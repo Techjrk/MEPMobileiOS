@@ -706,19 +706,25 @@
 - (void)bidsHappeningSoon:(NSInteger)numberOfDays success:(APIBlock)success failure:(APIBlock)failure {
     
     NSDateFormatter *formatter = [NSDateFormatter new];
+  
+    formatter.dateFormat=@"YYYY";
+    NSString *year = [formatter stringFromDate:[NSDate date]];
+    
     formatter.dateFormat=@"M";
-    
     NSInteger nextMonth = [[formatter stringFromDate:[NSDate date]] integerValue];
-    
+  
     if (nextMonth == 12) {
         nextMonth = 1;
     } else {
         nextMonth = nextMonth + 1;
     }
+    
+    if (nextMonth == 1) {
+        year = [NSString stringWithFormat:@"%ld", [year integerValue]+1 ];
+    }
    
     formatter.dateFormat=@"yyyy";
   
-    NSString *year = [formatter stringFromDate:[NSDate date]];
     
     NSString *nextMonthDate = [NSString stringWithFormat:@"%@-%02ld-01", year, (long)nextMonth];
     
