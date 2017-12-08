@@ -46,7 +46,8 @@
                         @{@"title":@"• Display project tracking list"},
                         @{@"title":@"• Display company tracking list"},
                         @{@"title":@"B. Help Center is added to support users"},
-                        @{@"title":@"C. Lecet MEP now requires iOS 10 and later"}];
+                        @{@"title":@"C. Added swipe for easy tracking"},
+                        @{@"title":@"D. Lecet MEP now requires iOS 10 and later"}];
     
     [self.collectionView registerNib:[UINib nibWithNibName:[[IntroCollectionViewCell class] description] bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     
