@@ -27,7 +27,7 @@
 #define BUTTON_FONT                         fontNameWithSize(FONT_NAME_LATO_SEMIBOLD, 11)
 #define BUTTON_COLOR                        RGB(255, 255, 255)
 #define BUTTON_MARKER_COLOR                 RGB(248, 152, 28)
-#define LABEL_COLOR                                     RGB(34, 34, 34)
+#define LABEL_COLOR                         RGB(255, 255, 255)
 
 @interface SearchResultView()<UICollectionViewDelegate, UICollectionViewDataSource, CustomCollectionViewDelegate, PopupViewControllerDelegate, TrackingListViewDelegate, NewTrackingListCollectionViewCellDelegate, ActionViewDelegate>{
     NSMutableDictionary *items;
@@ -247,7 +247,8 @@
     
     NSString *filterString = filter[@"filter"];
     
-    if ([filter respondsToSelector:@selector(dataUsingEncoding:)]) {
+    //if ([filter respondsToSelector:@selector(dataUsingEncoding:)]) {
+    if (filter) {
 
         NSData *data = [filterString dataUsingEncoding:NSUTF8StringEncoding];
         

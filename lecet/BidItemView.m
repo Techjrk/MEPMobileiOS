@@ -100,6 +100,7 @@
     DB_Project *project = item.relationshipProject;
     projectId = project.recordId;
     
+    //TODO : Harry
     CGFloat estlow = 0;
     if (item.amount != nil) {
         estlow = item.amount.integerValue;

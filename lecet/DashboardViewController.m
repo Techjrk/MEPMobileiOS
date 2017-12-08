@@ -98,7 +98,6 @@
     isCompanyTrackingList = YES;
     isProjectTrackingList = YES;
     isFromSiri = NO;
-    
     [[DataManager sharedManager] setIsLogged:YES];
     
     if([[DataManager sharedManager] locationManager].currentStatus == kCLAuthorizationStatusAuthorizedAlways) {
@@ -186,6 +185,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -922,9 +925,11 @@
         }
             
         case DropDownMenuSupport:{
+        
             ZDKHelpCenterOverviewContentModel *helpCenterContentModel = [ZDKHelpCenterOverviewContentModel defaultContent];
-
+            
             [ZDKHelpCenter presentHelpCenterOverview:self withContentModel:helpCenterContentModel];
+        
         }
             
     }
@@ -952,7 +957,7 @@
 }
 
 - (BOOL)automaticallyAdjustsScrollViewInsets {
-    return YES;
+    return NO;
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationObjectForOperation:(UINavigationControllerOperation)operation {

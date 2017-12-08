@@ -119,7 +119,6 @@ float MetersToMiles(float meters) {
     
     if (isListViewHidden) {
         [self removeHiddenProjectsFromList];
-        [self addItemsToMap:nil];
     }
 
 }

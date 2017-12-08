@@ -29,6 +29,7 @@
 
 - (void)setInfo:(id)info {
     self.actionView.constraintHorizontal = self.constraintExpand;
+    self.actionView.viewContainer = self.item;
     [_item setInfo:info];
 }
 

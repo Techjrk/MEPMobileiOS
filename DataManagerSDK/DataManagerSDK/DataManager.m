@@ -728,7 +728,7 @@
     
     NSString *nextMonthDate = [NSString stringWithFormat:@"%@-%02ld-01", year, (long)nextMonth];
     
-    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lt\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":250, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], nextMonthDate];
+    NSString *filter = [NSString stringWithFormat:@"{\"include\":[\"projectStage\", {\"primaryProjectType\":{\"projectCategory\":\"projectGroup\"}}],\"where\":{\"and\":[{\"bidDate\":{\"gte\":\"%@\"}},{\"bidDate\":{\"lt\":\"%@\"}}]},\"dashboardTypes\":true,\"limit\":500, \"order\":\"firstPublishDate DESC\"}", [DerivedNSManagedObject dateStringFromDateDay:[NSDate date]], nextMonthDate];
     
     [self HTTP_GET:[self url:kUrlBidsHappeningSoon] parameters:@{@"filter":filter} success:^(id object) {
         
