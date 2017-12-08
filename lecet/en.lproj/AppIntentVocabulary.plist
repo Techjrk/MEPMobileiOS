@@ -117,10 +117,6 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project near me list in MEP</string>
-				<string>start projects near me list in MEP</string>
-				<string>start project near me in MEP</string>
-				<string>start projects near me in MEP</string>
 				<string>start project within my location in MEP</string>
 			</array>
 		</dict>
@@ -129,11 +125,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project recently updated in MEP</string>
-				<string>start recent updated projects in MEP</string>
-				<string>start projects recently updated in MEP</string>
-				<string>start project recently updated in MEP</string>
-				<string>start projects recently updated in MEP</string>
+				<string>start project updated in MEP</string>
 			</array>
 		</dict>
 		<dict>
@@ -141,10 +133,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project tracking list in MEP</string>
-				<string>start project track list in MEP</string>
-				<string>start project tracklist in MEP</string>
-				<string>start project tracking in MEP</string>
+				<string>start project tracked in MEP</string>
 			</array>
 		</dict>
 		<dict>
@@ -152,10 +141,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start company tracking list in MEP</string>
-				<string>start company track list in MEP</string>
-				<string>start company tracklist in MEP</string>
-				<string>start company tracking in MEP</string>
+				<string>start company tracked in MEP</string>
 			</array>
 		</dict>
 	</array>
