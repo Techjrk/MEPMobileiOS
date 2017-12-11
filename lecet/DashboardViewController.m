@@ -269,7 +269,7 @@
  
     if (intent.length>0) {
         
-        if ([[intent uppercaseString] isEqualToString:@"UPDATE"]) {
+        if ([[intent uppercaseString] isEqualToString:@"UPDATE"] || [[intent uppercaseString] isEqualToString:@"PROJECT UPDATE"] || [[intent uppercaseString] isEqualToString:@"RECENTLY UPDATED"]) {
             
             [self navigateHome:nil];
             
@@ -288,7 +288,7 @@
             isProjectTrackingList = NO;
             [self.menuHeader tappedMenuTrackingList];
             
-        } else if ([[intent uppercaseString] isEqualToString:@"WITHIN"]) {
+        } else if ([[intent uppercaseString] isEqualToString:@"WITHIN"] || [[intent uppercaseString] isEqualToString:@"PROJECT NEAR"] || [[intent uppercaseString] isEqualToString:@"PROJECT NEAR ME"]) {
             isFromSiri = YES;
             [self navigateHome:nil];
             [self.menuHeader tappedMenuProjectNear];

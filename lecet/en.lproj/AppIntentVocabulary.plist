@@ -13,7 +13,7 @@
 			<array>
 				<dict>
 					<key>VocabularyItemIdentifier</key>
-					<string>recently_updated</string>
+					<string>update</string>
 					<key>VocabularyItemSynonyms</key>
 					<array>
 						<dict>
@@ -25,6 +25,7 @@
 							<array>
 								<string>updated</string>
 								<string>updates</string>
+								<string>recently updated</string>
 							</array>
 						</dict>
 					</array>
@@ -105,6 +106,7 @@
 								<string>location</string>
 								<string>project within my location</string>
 								<string>within</string>
+								<string>project near</string>
 							</array>
 						</dict>
 					</array>
