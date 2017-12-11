@@ -97,13 +97,14 @@
 					<array>
 						<dict>
 							<key>VocabularyItemPhrase</key>
-							<string>location</string>
+							<string>within</string>
 							<key>VocabularyItemPronunciation</key>
-							<string>location</string>
+							<string>within</string>
 							<key>VocabularyItemExamples</key>
 							<array>
 								<string>location</string>
 								<string>project within my location</string>
+								<string>within</string>
 							</array>
 						</dict>
 					</array>
@@ -118,7 +119,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project location in MEP</string>
+				<string>start project within in MEP</string>
 			</array>
 		</dict>
 		<dict>

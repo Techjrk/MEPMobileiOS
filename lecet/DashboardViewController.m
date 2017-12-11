@@ -288,7 +288,7 @@
             isProjectTrackingList = NO;
             [self.menuHeader tappedMenuTrackingList];
             
-        } else if ([[intent uppercaseString] isEqualToString:@"LOCATION"]) {
+        } else if ([[intent uppercaseString] isEqualToString:@"WITHIN"]) {
             isFromSiri = YES;
             [self navigateHome:nil];
             [self.menuHeader tappedMenuProjectNear];
