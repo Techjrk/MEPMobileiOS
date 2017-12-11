@@ -405,8 +405,6 @@
 		B7C525781EFA6AF100E4F3AE /* LIUNA_HQ.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7C525771EFA6AF100E4F3AE /* LIUNA_HQ.gpx */; };
 		B7D7A0CF1FDADE5A00521915 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D7A0CD1FDADE5A00521915 /* AppIntentVocabulary.plist */; };
 		B7D7A0D01FDADE5A00521915 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D7A0CD1FDADE5A00521915 /* AppIntentVocabulary.plist */; };
-		B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCA1D942A9700978CC7 /* AdSupport.framework */; };
-		B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DD9CCC1D942CF800978CC7 /* libAdIdAccess.a */; };
 		B7E104311CEC6D7600EAD8E7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104301CEC6D7600EAD8E7 /* ContactsView.m */; };
 		B7E104331CEC6D8600EAD8E7 /* ContactsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E104321CEC6D8600EAD8E7 /* ContactsView.xib */; };
 		B7E104381CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E104361CEC73DA00EAD8E7 /* ContactItemCollectionViewCell.m */; };
@@ -1266,10 +1264,8 @@
 				B79AA7BD1E9CBE5B00BA1B04 /* Security.framework in Frameworks */,
 				B79AA7BB1E9CBE4F00BA1B04 /* CoreMedia.framework in Frameworks */,
 				B79AA7B91E9CBE4400BA1B04 /* CoreVideo.framework in Frameworks */,
-				B7DD9CCB1D942A9700978CC7 /* AdSupport.framework in Frameworks */,
 				B7E2062A1F339BEF00075D81 /* DataManagerSDK.framework in Frameworks */,
 				B74FDB611D796F45003A1AFD /* MessageUI.framework in Frameworks */,
-				B7DD9CCD1D942CF800978CC7 /* libAdIdAccess.a in Frameworks */,
 				B725DACE1D756C6400B6CCC4 /* libz.tbd in Frameworks */,
 				B725DACC1D756C5B00B6CCC4 /* libsqlite3.tbd in Frameworks */,
 				B725DACA1D756C3200B6CCC4 /* SystemConfiguration.framework in Frameworks */,
