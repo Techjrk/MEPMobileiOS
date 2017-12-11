@@ -18,13 +18,13 @@
 					<array>
 						<dict>
 							<key>VocabularyItemPhrase</key>
-							<string>recently updated</string>
+							<string>updated</string>
 							<key>VocabularyItemPronunciation</key>
-							<string>recent updated projects</string>
+							<string>updates</string>
 							<key>VocabularyItemExamples</key>
 							<array>
-								<string>recently updated</string>
-								<string>recent updated projects</string>
+								<string>updated</string>
+								<string>updates</string>
 							</array>
 						</dict>
 					</array>
@@ -97,11 +97,12 @@
 					<array>
 						<dict>
 							<key>VocabularyItemPhrase</key>
-							<string>project near me</string>
+							<string>location</string>
+							<key>VocabularyItemPronunciation</key>
+							<string>location</string>
 							<key>VocabularyItemExamples</key>
 							<array>
-								<string>project near me</string>
-								<string>projects near me</string>
+								<string>location</string>
 								<string>project within my location</string>
 							</array>
 						</dict>
@@ -117,7 +118,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project within my location in MEP</string>
+				<string>start project location in MEP</string>
 			</array>
 		</dict>
 		<dict>
@@ -125,7 +126,7 @@
 			<string>INStartWorkoutIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>start project updated in MEP</string>
+				<string>start project updates in MEP</string>
 			</array>
 		</dict>
 		<dict>

@@ -269,7 +269,7 @@
  
     if (intent.length>0) {
         
-        if ([[intent uppercaseString] isEqualToString:@"RECENTLY UPDATED"]) {
+        if ([[intent uppercaseString] isEqualToString:@"UPDATE"]) {
             
             [self navigateHome:nil];
             
@@ -288,7 +288,7 @@
             isProjectTrackingList = NO;
             [self.menuHeader tappedMenuTrackingList];
             
-        } else if ([[intent uppercaseString] isEqualToString:@"PROJECT NEAR ME"]) {
+        } else if ([[intent uppercaseString] isEqualToString:@"LOCATION"]) {
             isFromSiri = YES;
             [self navigateHome:nil];
             [self.menuHeader tappedMenuProjectNear];
